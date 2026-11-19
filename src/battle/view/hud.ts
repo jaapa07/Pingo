@@ -40,7 +40,7 @@ export class CaixaStatus {
     this.faixa = div('bt-faixa', p.miolo);
     const wb = jog ? (compacta ? 50 : 72) : 56;
     this.bv = barra('vida', wb, (px, max) => { if (jog) this.escreverNum(Math.round((px / max) * this.vidaMax)); });
-    p.miolo.append(em(this.nome, 5, 2), em(this.nv, 0, 2), em(texto('VD', { cor: 'laranja' }), 4, jog && !compacta ? 13 : 15), em(this.bv.el, 17, 14), em(this.st, wb + (jog && compacta ? 19 : 20), 13));
+    p.miolo.append(em(this.nome, 5, 2), em(this.nv, 0, 2), em(texto('VD', { cor: 'laranja' }), 4, jog && !compacta ? 13 : 15), em(this.bv.el, 17, 14), em(this.st, wb + 19, 13));
     if (jog) this.el.classList.toggle('compacta', compacta);
     em(this.cap.el, 0, 2); this.cap.el.style.display = 'none'; p.miolo.append(this.cap.el);
     if (jog) {

@@ -236,15 +236,15 @@ export function menuEquipe(o: OpEquipe): Modal {
 
 /* ------------------------------ escolher um golpe (esquecer / receber PG) ------------------------------ */
 export function menuGolpeDe(o: { c: CriaturaInst; titulo: string; novo?: string; aoEscolher(slot: number): void }): Modal {
-  const el = moldura('madeira', 236, 122, 42, 6); el.classList.add('bt-esquecer');
-  el.append(em(texto(o.titulo, { cor: 'tinta', largura: 216, alinhar: 'centro' }), 10, 9));
+  const el = moldura('madeira', 276, 122, 22, 6); el.classList.add('bt-esquecer');
+  el.append(em(texto(o.titulo, { cor: 'tinta', largura: 256, alinhar: 'centro' }), 10, 9));
   const ids = [...o.c.golpes.map((g) => g.id), ...(o.novo ? [o.novo] : [])];
-  const fundo = div('bt-desc', el); em(fundo, 118, 22); fundo.style.width = '108px'; fundo.style.height = '88px';
-  const ficha = fichaGolpe(fundo, 3, 3, 76); const desc = texto('', { cor: 'tinta', largura: 100 }); fundo.append(em(desc, 3, 38));
+  const fundo = div('bt-desc', el); em(fundo, 148, 22); fundo.style.width = '118px'; fundo.style.height = '88px';
+  const ficha = fichaGolpe(fundo, 3, 3, 76); const desc = texto('', { cor: 'tinta', largura: 112 }); fundo.append(em(desc, 3, 44));
   const mostra = (i: number) => { const g = o.c.golpes[i]; ficha(ids[i], g ? g.pg : null, g ? g.pgMax : defGolpe(ids[i]).pg, null); escrever(desc, defGolpe(ids[i]).desc); };
   const lista = new Lista({
     itens: ids.map((id, i) => ({ rotulo: defGolpe(id).nome, icone: iconeTipo(defGolpe(id).tipo), cor: o.novo && i === ids.length - 1 ? 'verde' as const : undefined })),
-    x: 8, y: 22, largura: 108, visiveis: 5, moldura: null,
+    x: 8, y: 22, largura: 138, visiveis: 5, moldura: null,
     aoMover: mostra, aoEscolher: (i) => o.aoEscolher(i), aoCancelar: () => o.aoEscolher(-1),
   });
   el.append(lista.el); mostra(0);

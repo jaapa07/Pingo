@@ -101,6 +101,9 @@ export class Cena {
   private camFixa: { x: number; y: number } | null = null;
   private tremorT = 0;
   private quadro = 0;
+  /** tiles encobertos pelas copas das árvores (`T`/`t`): ali os atores ganham um vulto por cima da camada alta */
+  private copas = new Set<number>();
+  private vultos: HTMLElement[] = [];
 
   constructor() {
     injetarEstilo();
@@ -120,6 +123,11 @@ export class Cena {
     this.folha = null;
     if (this.bake) { const f = await lerJson(`assets/tiles/${zv.def.tileset}.json`); if (f?.pecas) { this.folha = { tema: temaDaZona(zv.def, f), src: `assets/tiles/${zv.def.tileset}.png`, periodos: f.periodos ?? ['dia'], alturaPeriodo: f.alturaPeriodo ?? 0, pecas: f.pecas }; await precarregar(this.folha.src); } }
     this.el.dataset.modo = this.debug ? 'debug' : 'bake';
+    this.copas.clear();
+    if (!this.debug && !['interior', 'ginasio'].includes(zv.def.tipo)) for (let y = 0; y < zv.h; y++) for (let x = 0; x < zv.w; x++) {
+      if (!'Tt'.includes(zv.ch(x, y))) continue;
+      for (let dy = 1; dy <= 2; dy++) for (let dx = -1; dx <= 1; dx++) if (zv.dentro(x + dx, y - dy)) this.copas.add(zv.i(x + dx, y - dy));
+    }
     this.conj = this.novoConjunto(this.periodoEfetivo(periodo));
   }
   limpar() {
@@ -344,7 +352,24 @@ export class Cena {
     if (this.tremorT > 0) { cx += this.tremorT % 4 < 2 ? 1 : -1; cy += this.tremorT % 6 < 3 ? 1 : -1; }
     if (cx !== this.camX || cy !== this.camY || !this.conj?.chunks.size) { this.camX = cx; this.camY = cy; this.cam.style.transform = `translate(${-cx}px,${-cy}px)`; this.sincronizar(); }
     this.desenharGrama(atores);
+    this.desenharVultos(atores);
     this.desenharEscuro(foco.px + 8 - this.camX, foco.py + 6 - this.camY);
+  }
+  /** ator debaixo de copa de árvore: cópia translúcida do sprite por cima da camada alta (não some no labirinto) */
+  private desenharVultos(atores: Ator[]) {
+    let n = 0;
+    if (this.copas.size) for (const a of atores) {
+      if (!a.visivel || !a.spr.meta) continue;
+      const tx = Math.floor((a.px + 8) / TILE), ty = Math.floor((a.py + 8) / TILE);
+      if (!this.zv.dentro(tx, ty) || !this.copas.has(this.zv.i(tx, ty))) continue;
+      let v = this.vultos[n];
+      if (!v) { v = this.vultos[n] = document.createElement('div'); v.className = 'spr vulto'; v.style.opacity = '0.5'; v.style.zIndex = '9999'; }
+      if (v.parentElement !== this.alto || this.alto.lastElementChild !== v) this.alto.append(v);
+      n++;
+      const o = a.spr.el.style, d = v.style;
+      d.display = o.display; d.width = o.width; d.height = o.height; d.backgroundImage = o.backgroundImage; d.backgroundSize = o.backgroundSize; d.backgroundPosition = o.backgroundPosition; d.transform = o.transform;
+    }
+    for (let i = n; i < this.vultos.length; i++) this.vultos[i].style.display = 'none';
   }
   private desenharGrama(atores: Ator[]) {
     let n = 0;

@@ -94,3 +94,16 @@ export function cena(f: () => Promise<void>) { void ocupar(f); }
 /** tile à frente de um ponto */
 export const frente = (x: number, y: number, d: Dir): [number, number] => [x + DX[d], y + DY[d]];
 export const chave = (x: number, y: number) => x + ',' + y;
+
+/* ------------------------------ desenhos comuns ------------------------------ */
+const girar = (g: string[]): string[] => g[0].split('').map((_, x) => g.map((l) => l[x]).reverse().join(''));
+const SETA_N = ['....w....', '...www...', '..ww.ww..', '.ww...ww.', '.........', '....w....', '...www...', '..ww.ww..', '.ww...ww.'];
+const SETA_L = girar(SETA_N), SETA_S = girar(SETA_L), SETA_O = girar(SETA_S);
+/** divisas duplas apontando para a direção (9×9), para correntes e esteiras */
+export const DIVISAS: Record<Dir, string[]> = { n: SETA_N, l: SETA_L, s: SETA_S, o: SETA_O };
+export const DIRS: Dir[] = ['n', 'l', 's', 'o'];
+export const NOME_DIR: Record<Dir, string> = { n: 'norte', s: 'sul', l: 'leste', o: 'oeste' };
+/** retângulo cheio de w×h px com a letra dada (para marcas simples) */
+export const bloco = (w: number, h: number, c = 'a'): string[] => Array.from({ length: h }, () => c.repeat(w));
+/** a mecânica da zona ainda está valendo? (mesma visita) */
+export const naZona = (id: string) => M.pronto && M.zv?.def.id === id;
