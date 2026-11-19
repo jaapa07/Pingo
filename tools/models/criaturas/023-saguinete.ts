@@ -32,14 +32,13 @@ function build() {
 }
 
 const anims = animsArboricola({ u: 0.95, hPerna: 0.16, mole: 1.1, caudaSegs: 2 }, unirExtras(bracosCurtos, {
-  idle: { leque_d: lz([0, 3, 7, 2]), leque_e: lz([0, 3, 7, 2]), cordao: lz([0, 8, 16, 6]), braco_e: lz([0, -5, -10, -4]), braco_d: lz([0, 5, 10, 4]), tronco: lr4([0, 2, 4, 1]) },
+  idle: { leque_d: lz([0, 3, 7, 2]), leque_e: lz([0, 3, 7, 2]), cordao: lz([0, 8, 16, 6]), braco_e: lz([0, -5, -10, -4]), braco_d: lz([0, 5, 10, 4]), tronco: lz([0, 2, 4, 1]) },
   // meia-lua: gira o tronco e desce o braço
   fisico: { braco_e: qz([10, 24, -80, -36, 0]), antebraco_e: qz([10, 20, -40, -14, 0]), tronco: qr([[0, 0, 6], [0, -14, 10], [0, 20, -16], [0, 8, -6], [0, 0, 0]]), cordao: qz([10, 20, -40, -14, 0]) },
   especial: { leque_d: qz([0, 14, 20, -24, -8, 0]), leque_e: qz([0, 14, 20, -24, -8, 0]), cordao: qz([0, 14, 22, -40, -14, 0]), cauda4: qz([0, 10, 16, -30, -10, 0]) },
   dano: { leque_d: qz([24, 8, 0]), leque_e: qz([24, 8, 0]), cordao: qz([-30, -10, 0]) },
   desmaio: { braco_e: qz([0, -30, -70, -110, -106]) },
 }));
-function lr4(v: number[]) { return lz(v); }
 
 export const saguinete = criatura({
   num: 23, id: 'saguinete', nome: 'Saguinete', porte: 'M', estagio: 'final', paleta: paletaSagui, build, anims,
