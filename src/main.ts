@@ -31,6 +31,7 @@ type Modulo = Record<string, unknown>;
 // módulos de outros times: carregados com tolerância (podem não existir ou falhar durante o desenvolvimento)
 const gMundo = import.meta.glob('./world/index.ts'), gBatalha = import.meta.glob('./battle/index.ts'), gAudio = import.meta.glob('./audio/index.ts');
 const gTelas = import.meta.glob(['./ui/telas/registro.ts', './battle/view/index.ts', './battle/view.ts']);
+const gMec = import.meta.glob('./world/mecanicas/index.ts');
 async function tentar(g: Record<string, () => Promise<unknown>>): Promise<Modulo | null> {
   const f = Object.values(g)[0]; if (!f) return null;
   try { return (await f()) as Modulo; } catch (e) { console.warn('[pingo] módulo indisponível:', Object.keys(g)[0], e); return null; }
@@ -93,7 +94,7 @@ async function iniciar() {
   registrarTela('vitrine-kit', criarVitrine);
 
   [audio, mundo] = await Promise.all([tentar(gAudio), tentar(gMundo)]);
-  await tentar(gBatalha); for (const [k, f] of Object.entries(gTelas)) await tentar({ [k]: f });
+  await tentar(gMec); await tentar(gBatalha); for (const [k, f] of Object.entries(gTelas)) await tentar({ [k]: f });
   aplicarVolumes();
   // o primeiro gesto libera o áudio (exigência do iOS)
   const liberar = () => { (audio?.audio as { unlock?(): void } | undefined)?.unlock?.(); };
