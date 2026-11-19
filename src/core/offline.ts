@@ -22,7 +22,7 @@ export const offline = {
 };
 
 const LOTE = 24;
-const CH_COMPLETO = 'pingo.offline';
+const CACHE_DADOS = 'pingo-dados'; // o mesmo nome usado pelo Service Worker (tools/build-sw.ts)
 let faixa: HTMLElement | null = null, somem = 0;
 
 function avisar(texto: string, sumirEm = 0) {
@@ -52,17 +52,16 @@ async function baixarResto() {
   if (!r.ok) throw new Error('lista de arquivos indisponível');
   const lista = (await r.json()) as Lista;
   offline.versao = lista.v;
-  let completo: string | null = null;
-  try { completo = localStorage.getItem(CH_COMPLETO); } catch { /* modo privado */ }
-  const nome = 'pingo-' + lista.v;
-  const alvo = lista.arquivos.filter((a) => a[3] !== 'd');
-  offline.total = alvo.length;
-  if (completo === lista.v && (await caches.has(nome))) { offline.feitos = alvo.length; offline.estado = 'pronto'; return; }
-  const cache = await caches.open(nome);
+  // sprites, arenas e zonas ficam num cache só, com o hash na chave: o que não muda entre versões não é baixado de novo
+  const chave = (a: Entrada) => new URL(a[0], location.href).href + '?h=' + a[1];
+  const alvo = lista.arquivos.filter((a) => a[3] === 'r');
+  const nucleo = lista.arquivos.filter((a) => a[3] === 'n').length;
+  offline.total = alvo.length + nucleo;
+  const cache = await caches.open(CACHE_DADOS);
   const ja = new Set((await cache.keys()).map((q) => q.url));
-  const falta = alvo.filter((a) => !ja.has(new URL(a[0], location.href).href));
-  offline.feitos = alvo.length - falta.length;
-  offline.estado = 'baixando';
+  const falta = alvo.filter((a) => !ja.has(chave(a)));
+  offline.feitos = offline.total - falta.length;
+  if (falta.length) offline.estado = 'baixando';
   const t0 = performance.now();
   let falhas = 0;
   for (let i = 0; i < falta.length; i += LOTE) {
@@ -71,7 +70,7 @@ async function baixarResto() {
         try {
           const resp = await fetch(new Request(a[0], { cache: 'reload' }));
           if (!resp.ok) throw new Error(String(resp.status));
-          await cache.put(new URL(a[0], location.href).href, resp);
+          await cache.put(chave(a), resp);
           offline.feitos++; return;
         } catch { await new Promise((ok) => setTimeout(ok, 400 * (tentativa + 1))); }
       }
@@ -80,9 +79,11 @@ async function baixarResto() {
     avisar(`Guardando o jogo para jogar sem internet: ${Math.floor((offline.feitos / offline.total) * 100)}%`);
     if (falhas > 20) break; // a rede caiu: continua na próxima abertura
   }
-  offline.tempoMs = Math.round(performance.now() - t0);
+  if (falta.length) offline.tempoMs = Math.round(performance.now() - t0);
   if (falhas) { offline.estado = 'falhou'; avisar('Sem rede: o download continua na próxima abertura.', 5000); return; }
-  try { localStorage.setItem(CH_COMPLETO, lista.v); } catch { /* confere pelo cache na próxima vez */ }
+  // faxina: chaves de versões antigas (hash que não está mais na lista) saem do cache
+  const validas = new Set(lista.arquivos.map(chave));
+  for (const q of ja) if (!validas.has(q)) void cache.delete(q).catch(() => undefined);
   offline.estado = 'pronto';
   if (falta.length) avisar('Pronto: o jogo já funciona sem internet.', 5000);
 }
@@ -104,7 +105,10 @@ export async function iniciarOffline(): Promise<void> {
       let recarregou = false;
       sw.addEventListener('controllerchange', () => { if (!recarregou) { recarregou = true; location.reload(); } });
       reg.waiting.postMessage('ativar');
-      return;
+      // se a troca não vier em 10 s, segue com a versão atual (a nova fica para a próxima abertura)
+      await new Promise((ok) => setTimeout(ok, 10000));
+      if (recarregou) return;
+      recarregou = true;
     }
     await sw.ready;
     await baixarResto();

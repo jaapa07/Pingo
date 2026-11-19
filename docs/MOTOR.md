@@ -62,3 +62,15 @@ SFX mínimos usados pelos motores: `ui-mover ui-ok ui-voltar ui-erro texto passo
 
 ## Testes
 `npx vite --port <sua porta>` e Playwright (`createRequire` em `/opt/node-tools/node_modules/playwright`), viewport 1280×720 e emulação de iPhone. `window.__pingo` expõe `{ jogo, telas, mundo, bus }` para inspeção. `?zona=A1&x=10&y=8` abre direto numa zona (com save de teste); `?batalha=10,5` inicia batalha selvagem contra a espécie 10 nível 5.
+
+## Integração mundo ↔ menus ↔ batalha (fase de integração)
+- **Atalho (SELECT):** `atalho()` em `src/world/campo.ts` usa o item de `flags['atalho']` (item de campo, Amuleto de menu ou item de tela); sem registro: bicicleta, senão a melhor vara.
+- **Amuletos como item-chave:** todo Amuleto ganho gera `amuleto-<id>` na mochila (`garantirItensDeAmuleto`, `src/world/integracao.ts`); é por ele que o menu usa Voo/Faro/Lampião (Voo abre `mapa-mundi` em `{ modo: 'voo' }`).
+- **HUD:** o mundo emite `bus 'obstaculo' { amuleto, pode }` quando o tile à frente muda e `bus 'clima' { id }` em `mundo.definirClima`.
+- **Contatos:** `bus 'treinador-vencido'` → `save.contatos` (regra `daContato`; `TreinadorDef.contato` força sim/não). Derrota em revanche do rádio: `mundo.derrotaNoCampo()`.
+- **Decoração do Quarto:** `ZonaDef.decoracao` = vagas por categoria; `src/world/decoracao.ts` desenha as peças de `save.decoracao` por cima do bake e refaz em `bus 'decoracao'`. Folha: `tsx tools/bake-decoracao.ts` (depois de assar `A1-quarto`).
+- **Criatura que segue:** `src/world/parceira.ts` (opção `opcoes.parceiraSegue`; Opções e Equipe → "Seguir você"). Flags: `passos-parceira`, `parceira-achado`.
+- **Cinemática:** tela `cinematica` (`{ id: 'trem' | 'saveiro', ms? }`), usada pelos warps `trem`/`saveiro` e por `['cinematica', id]` sem cinemática registrada.
+- **Mapa B fechado:** `MAPA_B_ABERTO` em `src/core/progresso.ts` (termo de condição `mapa-b`); trem/saveiro para fora do mapa A recusam com a fala de obras.
+- **Toque:** `palco.controles` = `embaixo` (em pé) · `fora` (deitado, nas margens; a tela desce de escala para abrir ≥ 84 px por lado) · `sobre` (sem margem possível: translúcidos). Em pé aceita meio passo de escala (`MEIO_PASSO_RETRATO`).
+- **Camadas:** `.tela.dialogo` fica acima da cortina; telas abertas sobre a batalha ficam acima dela (`src/styles/base.css`).

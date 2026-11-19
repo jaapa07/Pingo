@@ -1,0 +1,10 @@
+import { abrir } from './lib.mjs';
+const t = await abrir('?zona=A1&equipe=1:8,10:6&itens=radio-cipo,bike-bambu,vara-velha,amuleto-voo&amuletos=voo,remo&flags=visitou:A2,visitou:A1,intro-ok&parceira=1&periodo=dia');
+await t.pronto(); await t.espera(300);
+const q = () => t.ev(() => { const p = window.__pingo; return { parc: p.mundo.parceira && { x: p.mundo.parceira.x, y: p.mundo.parceira.y, v: p.mundo.parceira.visivel }, falas: p.mundo.falas.slice(-3), eq: p.jogo.save.equipe.map((c) => c.especie + ':' + c.vida) }; });
+console.log(await q());
+await t.tecla('n'); await t.espera(600); console.log(await t.st(), await q());
+await t.tecla('n'); await t.espera(600); console.log(await t.st(), await q());
+await t.foto('d1');
+console.log(t.erros);
+await t.browser.close();

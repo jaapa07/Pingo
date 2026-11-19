@@ -1,7 +1,7 @@
 /**
  * CINEMÁTICA de viagem (warps `trem` e `saveiro`, comando ['cinematica', id] sem cinemática própria): a paisagem
  * passa em camadas (parallax) atrás do vagão da Maria-Fumaça ou do Saveiro. Dura ~5 s; A, B ou um toque pulam.
- * Tudo em DOM: cada camada é um fundo repetido desenhado com retângulos de pixel (sem canvas).
+ * Tudo em DOM: cada camada é um fundo repetido desenhado com retângulos de pixel em SVG embutido.
  */
 import { periodo } from '../../core/estado';
 import { bus } from '../../core/events';

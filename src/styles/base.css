@@ -38,3 +38,5 @@ body { position: fixed; inset: 0; }
 #vitrine.aberta { display: flex; }
 #vitrine > .qr { background: #fff8e7; padding: 12px; box-shadow: 0 0 0 4px #1a1423, 0 0 0 8px #c98f4e, 0 0 0 12px #1a1423; pointer-events: auto; line-height: 0; }
 #vitrine svg { display: block; shape-rendering: crispEdges; }
+/* telas abertas por cima da batalha (apelido, equipe, mochila, evolução): a batalha tem z-index próprio e as esconderia */
+.tela.batalha ~ .tela:not(.dialogo) { z-index: 3; }

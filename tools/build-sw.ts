@@ -9,8 +9,10 @@
  *    com retomada: o que já está no cache não é baixado de novo.
  *  - `d` demanda: zonas de demonstração e, se o pacote passar do orçamento, o que não é do mapa A.
  *    Só entra no cache quando é pedido (cache-first).
- * Atualização: cada versão tem o seu cache (`pingo-<versão>`); ao ativar, o SW copia do cache antigo
- * o que não mudou (mesmo hash) e apaga os caches velhos.
+ * Caches: `pingo-n-<versão>` guarda o núcleo de cada versão; `pingo-dados` guarda o resto, com o hash do
+ * arquivo na chave (`<url>?h=<hash>`). Atualização: o SW novo aproveita do núcleo antigo o que não mudou,
+ * apaga os núcleos velhos ao ativar (troca rápida) e os dados que não mudaram continuam valendo; o que
+ * mudou é baixado pela página, que depois remove do cache as chaves sem uso.
  */
 import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync, statSync, writeFileSync, existsSync } from 'node:fs';
@@ -73,7 +75,8 @@ function codigoSw(versao: string, nucleo: string[]): string {
 'use strict';
 const VERSAO = ${JSON.stringify(versao)};
 const PREFIXO = 'pingo-';
-const CACHE = PREFIXO + VERSAO;
+const CACHE_NUCLEO = PREFIXO + 'n-' + VERSAO; // página, código, interface: um por versão
+const CACHE_DADOS = PREFIXO + 'dados';        // sprites, arenas e zonas: um só, com o hash na chave
 const NUCLEO = ${JSON.stringify(nucleo)};
 const LOTE = ${LOTE_NUCLEO};
 const BASE = self.registration.scope;
@@ -95,16 +98,21 @@ async function listaDe(cache) {
     return new Map(j.arquivos.map((a) => [a[0], a[1]]));
   } catch (e) { return null; }
 }
+let hashes = null; // caminho → hash desta versão (lido do núcleo quando o SW acorda)
+function mapa() {
+  if (!hashes) hashes = caches.open(CACHE_NUCLEO).then(listaDe).then((m) => m || new Map());
+  return hashes;
+}
 
 self.addEventListener('install', (ev) => {
   ev.waitUntil((async () => {
-    const cache = await caches.open(CACHE);
-    // a lista nova primeiro: com ela dá para aproveitar do cache antigo o que não mudou
+    const cache = await caches.open(CACHE_NUCLEO);
+    // a lista nova primeiro: com ela dá para aproveitar do núcleo antigo o que não mudou
     await baixar(cache, 'pingo-arquivos.json');
     const nova = await listaDe(cache);
     const antigos = [];
     for (const nome of await caches.keys()) {
-      if (!nome.startsWith(PREFIXO) || nome === CACHE) continue;
+      if (!nome.startsWith(PREFIXO + 'n-') || nome === CACHE_NUCLEO) continue;
       const c = await caches.open(nome), l = await listaDe(c);
       if (l) antigos.push([c, l]);
     }
@@ -124,18 +132,9 @@ self.addEventListener('install', (ev) => {
 
 self.addEventListener('activate', (ev) => {
   ev.waitUntil((async () => {
-    const cache = await caches.open(CACHE), nova = await listaDe(cache);
+    // troca limpa e rápida: só os núcleos de outras versões saem; os dados (com hash na chave) continuam valendo
     for (const nome of await caches.keys()) {
-      if (!nome.startsWith(PREFIXO) || nome === CACHE) continue;
-      const c = await caches.open(nome), l = await listaDe(c);
-      if (nova && l) {
-        const iguais = [...nova].filter(([caminho, h]) => l.get(caminho) === h).map(([caminho]) => caminho);
-        await emLotes(iguais, 32, async (caminho) => {
-          if (await cache.match(abs(caminho))) return;
-          const r = await c.match(abs(caminho)); if (r) await cache.put(abs(caminho), r);
-        });
-      }
-      await caches.delete(nome);
+      if (nome.startsWith(PREFIXO) && nome !== CACHE_NUCLEO && nome !== CACHE_DADOS) await caches.delete(nome);
     }
     await self.clients.claim();
   })());
@@ -147,19 +146,22 @@ self.addEventListener('message', (ev) => {
 });
 
 async function responder(req) {
-  const cache = await caches.open(CACHE);
-  if (req.mode === 'navigate') {
-    const pagina = await cache.match(abs('index.html'));
-    if (pagina) return pagina;
-  }
-  const guardado = await cache.match(req, { ignoreSearch: true });
-  if (guardado) return guardado;
+  const nucleo = await caches.open(CACHE_NUCLEO);
+  const pagina = () => nucleo.match(abs('index.html'));
+  if (req.mode === 'navigate') { const p = await pagina(); if (p) return p; }
+  const limpa = req.url.split('#')[0].split('?')[0];
+  const doNucleo = await nucleo.match(limpa);
+  if (doNucleo) return doNucleo;
+  const h = (await mapa()).get(decodeURIComponent(limpa.slice(BASE.length)));
+  const dados = h ? await caches.open(CACHE_DADOS) : null;
+  if (dados) { const guardado = await dados.match(limpa + '?h=' + h); if (guardado) return guardado; }
   try {
     const r = await fetch(req);
-    if (r.ok && r.type === 'basic') void cache.put(req.url.split('?')[0].split('#')[0], r.clone()).catch(() => undefined);
+    // por demanda: o que é do pacote e ainda não estava guardado entra no cache ao ser usado
+    if (dados && r.ok && r.type === 'basic') void dados.put(limpa + '?h=' + h, r.clone()).catch(() => undefined);
     return r;
   } catch (e) {
-    if (req.mode === 'navigate') { const pagina = await cache.match(abs('index.html')); if (pagina) return pagina; }
+    if (req.mode === 'navigate') { const p = await pagina(); if (p) return p; }
     return new Response('', { status: 504, statusText: 'sem rede e fora do cache' });
   }
 }

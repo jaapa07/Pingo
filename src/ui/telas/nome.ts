@@ -80,6 +80,7 @@ export function criarTelaNome(args: ArgsNome): Tela {
       pintarLetras(); pintarNome(); pintarFoco();
       input.digitar((k) => {
         if (k === 'Backspace') { apagar(); return true; }
+        if (k === 'Enter') { fim(); return true; } // "Enter confirma" onde quer que o cursor esteja
         if (k.length === 1 && k !== ' ' && PAGINAS.some((p) => p.some((l) => l.includes(k)))) { por(k); return true; }
         if (k === ' ') { if (nome && !nome.endsWith(' ')) por(' '); return true; }
         return false;
