@@ -1,0 +1,40 @@
+import type { TreinadorDef } from '../../core/tipos';
+
+/** Ginásio do Encanto (nº 4, Cidade Coral): as rendeiras do ateliê e a líder Iracema Lua. Líder nv 24–26 (tabela 4.5). */
+export const TREINADORES_GINASIO_04: TreinadorDef[] = [
+  { id: 'g04-1', classe: 'Rendeira', nome: 'Dona Zizi', sprite: 'cl-rendeira', ia: 'treinador', premio: 800,
+    equipe: [{ e: 149, nv: 20 }, { e: 47, nv: 20 }],
+    desafio: 'Não encoste no espelho com a mão suja! Primeiro batalha, depois mexe.', derrota: 'Perdi o ponto.', depois: 'O espelho gira entre duas posições só. Nas duas ele desvia a luz: o que muda é para que lado.' },
+  { id: 'g04-2', classe: 'Garota', nome: 'Estelinha', sprite: 'cl-crianca-f', ia: 'treinador', premio: 840,
+    equipe: [{ e: 123, nv: 21 }, { e: 99, nv: 21 }, { e: 27, nv: 21 }],
+    desafio: 'A vovó me deixou tomando conta deste espelho. Ninguém gira sem falar comigo!', derrota: 'Vovóóó!', depois: 'Com o raio para cima, a passagem da esquerda fecha. Com o raio para baixo, ela abre.' },
+  { id: 'g04-3', classe: 'Observadora', nome: 'Celeste', sprite: 'cl-observadora', ia: 'treinador', premio: 880,
+    equipe: [{ e: 77, nv: 22 }, { e: 47, nv: 22 }, { e: 90, nv: 22 }],
+    desafio: 'Estou anotando de onde vem cada raio. Você acabou de entrar na minha frente!', derrota: 'Perdi a conta e a batalha.', depois: 'A estrela deste salão fica na parede oeste. O espelho de cima precisa mandar a luz para lá, não para o leste.' },
+  { id: 'g04-4', classe: 'Rendeira', nome: 'Dona Bilu', sprite: 'cl-rendeira', ia: 'treinador', premio: 920,
+    equipe: [{ e: 27, nv: 23 }, { e: 99, nv: 23 }, { e: 77, nv: 23 }],
+    desafio: 'Menina… menino… quem mexe em espelho alheio leva sete anos de batalha!', derrota: 'Foram só sete minutos.', depois: 'Este espelho manda o raio para cima, na outra estrela, e de quebra libera a passagem do leste.' },
+  { id: 'g04-5', classe: 'Rendeira', nome: 'Mestra Dadá', sprite: 'cl-rendeira', ia: 'treinador', premio: 960,
+    equipe: [{ e: 90, nv: 24 }, { e: 123, nv: 23 }, { e: 27, nv: 24 }],
+    desafio: 'Abriu a cortina? Então a Iracema vai gostar de você. Mas antes passa por mim!', derrota: 'Desmanchou meu bordado inteiro.', depois: 'A Iracema confunde a cabeça do adversário e só depois bate. Leve fruta de curar encanto.' },
+  /*
+   * LÍDER — Iracema Lua (Encanto). Fraquezas do Encanto: Veneno e Ferro (e Brasa resiste).
+   * Estratégia: o Beija-florzim (Vento/Encanto) abre rápido com Brisa da Serra e Beijo de Beija-Flor; o Manatim
+   * (Rio/Encanto) apaga os tipos Brasa com Bolhas do Mangue e se cura com Água de Cacimba; a Pintinhas enfraquece
+   * o ataque com Cafuné e bate com Estrela-Guia; o Catingueirinho usa Toca e Foge para trocar sem perder ritmo.
+   * O ás é a Coralzinha (Veneno/Encanto) de nível 26: o Veneno dela anula a fraqueza do tipo, a Cortina de Brilho
+   * corta o dano especial e a Peçonha Forte pune outros Encanto e Mata.
+   * Cura: 1 Garrafada definida (no Aventureiro o motor só libera itens a partir do 8º ginásio); o ás segura uma Jabuticaba.
+   */
+  { id: 'lider-04', classe: 'Líder', nome: 'Iracema Lua', sprite: 'lider-06', ia: 'lider', premio: 2600, insignia: 4, musica: 'batalha-lider', flag: 'ginasio-04-vencido',
+    itens: ['garrafada'],
+    equipe: [
+      { e: 47, nv: 24, golpes: ['brisa-da-serra', 'beijo-de-beija-flor', 'estrela-guia', 'cafune'] },
+      { e: 77, nv: 24, golpes: ['bolhas-do-mangue', 'piscadela', 'agua-de-cacimba', 'cafune'] },
+      { e: 27, nv: 25, golpes: ['estrela-guia', 'ferroada', 'cafune', 'pele-amarga'] },
+      { e: 99, nv: 25, golpes: ['estrela-guia', 'toca-e-foge', 'beijo-de-beija-flor', 'cafune'] },
+      { e: 90, nv: 26, golpes: ['peconha-forte', 'estrela-guia', 'cortina-de-brilho', 'cuspe-acido'], item: 'jabuticaba' },
+    ],
+    desafio: 'Renda se faz com paciência, luz boa e mão firme. Batalha também. Sente-se… ou melhor, fique de pé: vamos trançar os fios!',
+    derrota: 'Ai, que beleza de ponto! Você arrematou a batalha sem deixar fio solto.', depois: 'Luz não se prende. A gente só mostra o caminho para ela.' },
+];

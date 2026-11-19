@@ -52,8 +52,8 @@ const zona: ZonaDef = {
     { ...g.p('k'), item: 'pt-18', flag: 'item:A-US-3:ilhota' },
   ],
   habitats: [
-    { metodo: 'caverna', taxa: 0.12, todos: [{ e: 141, nv: [20, 23], peso: 35 }, { e: 29, nv: [21, 24], peso: 35 }, { e: 142, nv: [22, 25], peso: 22 }, { e: 64, nv: [24, 25], peso: 8 }] },
-    { metodo: 'agua', taxa: 0.12, todos: [{ e: 115, nv: [24, 28], peso: 70 }, { e: 39, nv: [22, 26], peso: 30 }] },
+    { metodo: 'caverna', taxa: 0.12, todos: [{ e: 141, nv: [20, 23], peso: 45 }, { e: 28, nv: [21, 24], peso: 40 }, { e: 63, nv: [21, 24], peso: 15 }], camadas: [{ apos: 7, todos: [{ e: 29, nv: [36, 38], peso: 40 }, { e: 142, nv: [36, 38], peso: 40 }, { e: 64, nv: [37, 39], peso: 20 }] }] },
+    { metodo: 'agua', taxa: 0.12, todos: [{ e: 115, nv: [22, 25], peso: 70 }, { e: 39, nv: [21, 24], peso: 30 }] },
     { metodo: 'pesca-velha', todos: [{ e: 39, nv: [12, 16], peso: 100 }] },
     { metodo: 'pesca-boa', todos: [{ e: 115, nv: [22, 26], peso: 60 }, { e: 39, nv: [20, 25], peso: 40 }] },
   ],

@@ -2,8 +2,9 @@ import type { ZonaDef } from '../../core/tipos';
 import { grade } from './_a2-grade';
 
 /**
- * A5 Cidade Coral (passo 6): ilha das rendeiras. Chega-se remando pelo píer norte; o cais sul é o do Saveiro
- * (bilhete depois do Farol). No morro do noroeste abre a Gruta Breu (Lampião + insígnia 7), caminho da Serra Fumaça.
+ * A5 Cidade Coral (passo 4): ilha das rendeiras, Ginásio do Encanto. Chega-se remando pelo píer norte; o cais sul é o
+ * do Saveiro (só zarpa para Campeões da Liga, com bilhete). No morro do noroeste abre a Gruta Breu (Lampião + insígnia Raio),
+ * caminho da Serra Fumaça.
  */
 const g = grade('A5', 50, [
   '##########|##########|####~~####|##########|##########',
@@ -49,7 +50,7 @@ const g = grade('A5', 50, [
 ], { L: ';', Y: '~' });
 
 const zona: ZonaDef = {
-  id: 'A5', nome: 'Cidade Coral', mapa: 'A', tipo: 'cidade', tileset: 'costa', musica: 'cidade-frevo', arena: 'praia', passo: 6,
+  id: 'A5', nome: 'Cidade Coral', mapa: 'A', tipo: 'cidade', tileset: 'costa', musica: 'cidade-frevo', arena: 'praia', passo: 4,
   pouso: [18, 10],
   mapaChars: g.mapa,
   objetos: [
@@ -71,17 +72,17 @@ const zona: ZonaDef = {
   warps: [
     { x: 24, y: 0, para: { zona: 'A-BA', x: 50, y: 42, dir: 'n' }, tipo: 'borda' }, { x: 25, y: 0, para: { zona: 'A-BA', x: 51, y: 42, dir: 'n' }, tipo: 'borda' },
     { ...g.d('K', 1, 0), para: { zona: 'A-GB-1', x: 5, y: 26, dir: 'n' }, tipo: 'caverna' },
-    { ...g.d('O', 2, 0), para: { zona: 'A5-posto', x: 5, y: 7, dir: 'n' }, tipo: 'porta' },
+    { ...g.d('O', 2, 0), para: { zona: 'A5-posto', x: 6, y: 8, dir: 'n' }, tipo: 'porta' },
     { ...g.d('V', 1, 0), para: { zona: 'A5-venda', x: 5, y: 7, dir: 'n' }, tipo: 'porta' },
-    { ...g.d('A', 1, 0), para: { zona: 'A5-casa-1', x: 4, y: 7, dir: 'n' }, tipo: 'porta' },
-    { ...g.d('D', 2, 0), para: { zona: 'A5-casa-2', x: 4, y: 7, dir: 'n' }, tipo: 'porta' },
-    { ...g.d('B', 2, 0), para: { zona: 'A5-casa-1', x: 4, y: 7, dir: 'n' }, tipo: 'porta', requer: 'nunca', recusa: 'Trancada. Um bilhete na porta: "Fui ver as baleias. Volto quando esquentar."' },
-    { ...g.d('E', 1, 0), para: { zona: 'A5-casa-1', x: 4, y: 7, dir: 'n' }, tipo: 'porta', requer: 'nunca', recusa: 'Trancada. Lá de dentro vem um barulho de bilros: téc-téc-téc. Melhor não interromper.' },
+    { ...g.d('A', 1, 0), para: { zona: 'A5-casa-1', x: 5, y: 7, dir: 'n' }, tipo: 'porta' },
+    { ...g.d('D', 2, 0), para: { zona: 'A5-casa-2', x: 5, y: 7, dir: 'n' }, tipo: 'porta' },
+    { ...g.d('B', 2, 0), para: { zona: 'A5-casa-3', x: 5, y: 7, dir: 'n' }, tipo: 'porta' },
+    { ...g.d('E', 1, 0), para: { zona: 'A5-casa-2', x: 5, y: 7, dir: 'n' }, tipo: 'porta', requer: 'nunca', recusa: 'Trancada. Lá de dentro vem um barulho de bilros: téc-téc-téc. Melhor não interromper.' },
     { ...g.d('G', 3, 0), para: { zona: 'A5-ginasio', x: 8, y: 17, dir: 'n' }, tipo: 'porta' },
-    { ...g.d('Y', 0, -1), para: { zona: 'B9', x: 10, y: 24, dir: 'n' }, tipo: 'saveiro', requer: 'item:bilhete-saveiro', recusa: 'O mestre do Saveiro cruza os braços:\n— Sem bilhete, só embarca gaivota.' },
+    { ...g.d('Y', 0, -1), para: { zona: 'B9', x: 10, y: 24, dir: 'n' }, tipo: 'saveiro', requer: 'flag:liga-vencida&item:bilhete-saveiro', recusa: 'O mestre do Saveiro cruza os braços:\n— Rio acima só levo Campeão da Liga dos Guardiões, e de bilhete na mão. Sem isso, só embarca gaivota.' },
   ],
   portoes: [
-    { ...g.p('L'), requer: 'amuleto:lampiao&insignia:7', sprite: 'cl-montanhista', fala: 'Guia da Gruta Breu: lá dentro não se enxerga o próprio nariz, e os raios do Farol apagado deixaram a rocha dando choque.\nVolte com o Lampião e com a insígnia Raio, que eu abro a corda.' },
+    { ...g.p('L'), requer: 'amuleto:lampiao&insignia:5', sprite: 'cl-montanhista', fala: 'Guia da Gruta Breu: lá dentro não se enxerga o próprio nariz, e os raios do Farol apagado deixaram a rocha dando choque.\nVolte com o Lampião e com a insígnia Raio, do Faroleiro Volta, que eu abro a corda.' },
   ],
   npcs: [
     { id: 'peixeiro', sprite: 'npc-vendedor', ...g.d('Q', 3, 0), dir: 's', fala: ['Feira de Cidade Coral! Fruta fresca que veio de saveiro e peixe que veio nadando!'], loja: ['caju', 'pitanga', 'jabuticaba', 'acerola', 'acai', 'biscoito-de-polvilho', 'cuia-rede'] },
@@ -89,7 +90,7 @@ const zona: ZonaDef = {
     { id: 'rendeira-praca', sprite: 'cl-rendeira', ...g.p('h'), dir: 's', script: 'a2-missao-renda' },
     { id: 'idoso-fonte', sprite: 'npc-idoso', ...g.p('a'), dir: 'l', fala: ['Esta fonte nunca secou. Dizem que a água vem da Gruta Breu, por baixo do mar.', 'Meu compadre atravessou a gruta sem lampião. Saiu do outro lado três dias depois, em Serra Fumaça, jurando que tinha conversado com um macaco de olho de lua.'] },
     { id: 'menina', sprite: 'cl-crianca-f', ...g.p('n'), mov: 'vagar', fala: ['A Iracema Lua faz renda com raio de luz! No ginásio dela tem espelho para todo lado.', 'Criatura de Encanto não liga para golpe de Lenda. Mas de Ferro e de Veneno ela tem medo. Anota aí!'] },
-    { id: 'moca-cais', sprite: 'npc-mulher-2', x: 26, y: 30, mov: 'olhar', fala: ['O Saveiro sobe o rio até Porto Pantaneiro, lá no Sertão das Névoas.', 'Desde que o Farol apagou ele só anda de dia e com bilhete marcado. Segurança, diz o mestre.'] },
+    { id: 'moca-cais', sprite: 'npc-mulher-2', x: 26, y: 30, mov: 'olhar', fala: ['O Saveiro sobe o rio até Porto Pantaneiro, lá no Sertão das Névoas.', 'Mas o mestre só leva quem venceu a Liga dos Guardiões. Diz que o Sertão não é passeio de domingo.'] },
     { id: 'guarda-praia', sprite: 'npc-homem-1', x: 42, y: 15, mov: 'vagar', fala: ['No capinzal da ponta leste aparece siri, caranguejo e, de vez em quando, uma garça metida.', 'Na estação fria dá para ver jubarte pulando lá na baía. Parece ônibus caindo n’água.'] },
     { id: 't1', sprite: 'cl-rendeira', ...g.p('1'), dir: 's', mov: 'olhar', treinador: 'A5-1', visao: 3 },
     { id: 't2', sprite: 'cl-crianca-m', ...g.p('2'), dir: 'o', treinador: 'A5-2', visao: 3 },
@@ -101,10 +102,10 @@ const zona: ZonaDef = {
     { x: 46, y: 5, item: 'pedra-mare', oculto: true, flag: 'item:A5:nordeste' },
   ],
   habitats: [
-    { metodo: 'grama', taxa: 0.08, todos: [{ e: 129, nv: [26, 29], peso: 40 }, { e: 35, nv: [26, 29], peso: 35 }, { e: 107, nv: [27, 29], peso: 25 }] },
-    { metodo: 'agua', taxa: 0.05, todos: [{ e: 125, nv: [26, 30], peso: 40 }, { e: 79, nv: [26, 30], peso: 35 }, { e: 123, nv: [26, 29], peso: 25 }] },
+    { metodo: 'grama', taxa: 0.08, todos: [{ e: 129, nv: [21, 24], peso: 40 }, { e: 35, nv: [21, 24], peso: 35 }, { e: 107, nv: [22, 24], peso: 25 }] },
+    { metodo: 'agua', taxa: 0.05, todos: [{ e: 125, nv: [21, 24], peso: 40 }, { e: 79, nv: [21, 24], peso: 35 }, { e: 123, nv: [21, 24], peso: 25 }] },
     { metodo: 'pesca-velha', todos: [{ e: 37, nv: [12, 18], peso: 100 }] },
-    { metodo: 'pesca-boa', todos: [{ e: 37, nv: [22, 28], peso: 70 }, { e: 117, nv: [25, 29], peso: 30 }] },
+    { metodo: 'pesca-boa', todos: [{ e: 37, nv: [20, 24], peso: 70 }, { e: 117, nv: [21, 25], peso: 30 }] },
   ],
 };
 export default zona;

@@ -55,7 +55,7 @@ const zona: ZonaDef = {
     { id: 'c4', sprite: 'capanga-f', ...g.p('4'), dir: 'o', se: '!flag:usina-ok', treinador: 'A-US-4', visao: 4 },
     { id: 'zelador', sprite: 'npc-idoso', ...g.p('n'), se: '!flag:usina-ok', fala: ['Psiu! Sou o zelador. Estou fingindo que sou um tambor de óleo.', 'A chave geral fica no porão, depois do canal das turbinas. Sem ela a sala de controle não abre.', 'E a grade da escada de cima solta numa alavanca na salinha do fundo. Eu que lubrifico.'] },
     { id: 'zelador-2', sprite: 'npc-idoso', ...g.p('n'), se: 'flag:usina-ok', fala: ['Trinta anos varrendo esta usina e nunca vi tanta ferrugem ir embora de uma vez só.', 'Os grilos voltaram a cantar nos geradores. Dá até pena de ligar.'] },
-    { id: 'operaria', sprite: 'npc-mulher-2', x: 20, y: 8, mov: 'vagar', se: 'flag:usina-ok', fala: ['Geradores um e dois girando redondo. O Trem Serra-Sol já pode puxar energia!', 'Se achar um Vagalampo dormindo no painel, não acorde. Ele é o nosso fusível reserva.'] },
+    { id: 'operaria', sprite: 'npc-mulher-2', x: 20, y: 8, mov: 'vagar', se: 'flag:usina-ok', fala: ['Geradores um e dois girando redondo. O cais e a estação de Porto Sereia já podem puxar energia!', 'Se achar um Vagalampo dormindo no painel, não acorde. Ele é o nosso fusível reserva.'] },
   ],
   itens: [
     { ...g.p('k'), item: 'cuia-trancada', qtd: 3, flag: 'item:A-US-1:deposito-o' },
@@ -65,8 +65,8 @@ const zona: ZonaDef = {
   ],
   habitats: [{
     metodo: 'caverna', taxa: 0.12,
-    todos: [{ e: 141, nv: [19, 22], peso: 40 }, { e: 29, nv: [20, 23], peso: 35 }, { e: 142, nv: [22, 24], peso: 15 }, { e: 28, nv: [18, 21], peso: 8 }, { e: 64, nv: [23, 24], peso: 2 }],
-    camadas: [{ apos: 7, todos: [{ e: 29, nv: [30, 33], peso: 40 }, { e: 142, nv: [30, 34], peso: 35 }, { e: 141, nv: [24, 25], peso: 15 }, { e: 64, nv: [32, 35], peso: 10 }] }],
+    todos: [{ e: 141, nv: [20, 23], peso: 45 }, { e: 28, nv: [20, 23], peso: 35 }, { e: 63, nv: [21, 23], peso: 10 }, { e: 30, nv: [20, 22], peso: 10 }],
+    camadas: [{ apos: 7, todos: [{ e: 29, nv: [36, 38], peso: 40 }, { e: 142, nv: [36, 38], peso: 35 }, { e: 141, nv: [24, 25], peso: 15 }, { e: 64, nv: [37, 39], peso: 10 }] }],
   }],
 };
 export default zona;

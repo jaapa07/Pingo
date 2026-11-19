@@ -2,11 +2,11 @@ import type { ZonaDef, Encontro } from '../../core/tipos';
 import { grade } from './_a2-grade';
 
 /**
- * A-BA Baía Azul (passo 6; a enseada oeste já abre com o Remo). Tudo aqui se faz de canoa.
- * Oeste: píer de Porto Sereia, praia dos caranguejos e a boca do Manguezal (norte).
- * O recife de boias no meio fica fechado pela Capitania até a insígnia 5. Além dele: Cidade Coral (sul),
- * Ilha do Farol (leste, insígnia 6) e Praia das Tartarugas (norte, insígnia 6).
- * Para voltar depois: três poços de Mergulho (Recife Submerso) e a ilhota de pedra com trepadeira (Escalar).
+ * A-BA Baía Azul (passo 4). Tudo aqui se faz de canoa: o cais de Porto Sereia só solta a amarra com o Remo
+ * e com a Usina religada. Oeste: píer de Porto Sereia, praia dos caranguejos e a boca do Manguezal (norte).
+ * Pelo canal das boias chega-se a Cidade Coral (sul, livre). A Ilha do Farol (leste) e a Praia das Tartarugas
+ * (norte) só abrem com a insígnia Estrela. Para voltar depois: três poços de Mergulho (Recife Submerso)
+ * e a ilhota de pedra com trepadeira (Escalar).
  */
 const g = grade('A-BA', 90, [
   'TTTTTTTTTT|##~~######|##########|##########|##########|##########|~~########|##########|##########',
@@ -56,11 +56,13 @@ const g = grade('A-BA', 90, [
 ], { W: '=', N: '~', F: '~', G: '~', X: 'd', Y: 'd', Z: 'd', '1': ';', '2': ';', '3': ';', '4': ';', '5': ';', '6': ';', i: ';', j: ';', m: ';', q: ';', P: ';', a: ';', h: ';' });
 
 const N = g.todos('N')[0];
-const agua = (d: number): Encontro[] => [{ e: 79, nv: [26 + d, 30 + d], peso: 25 }, { e: 125, nv: [26 + d, 29 + d], peso: 25 }, { e: 123, nv: [26 + d, 29 + d], peso: 20 }, { e: 117, nv: [27 + d, 30 + d], peso: 14 }, { e: 37, nv: [25 + d, 28 + d], peso: 6 }, { e: 77, nv: [28 + d, 31 + d], peso: 4 }, { e: 131, nv: [28 + d, 32 + d], peso: 5, estacao: 'fria' }, { e: 132, nv: [40 + d, 42 + d], peso: 1 }];
-const aguaNoite = (d: number): Encontro[] => [{ e: 125, nv: [26 + d, 29 + d], peso: 24 }, { e: 79, nv: [26 + d, 30 + d], peso: 20 }, { e: 126, nv: [30 + d, 32 + d], peso: 16 }, { e: 123, nv: [26 + d, 29 + d], peso: 16 }, { e: 117, nv: [27 + d, 30 + d], peso: 12 }, { e: 121, nv: [28 + d, 31 + d], peso: 6 }, { e: 77, nv: [28 + d, 31 + d], peso: 3 }, { e: 131, nv: [28 + d, 32 + d], peso: 5, estacao: 'fria' }, { e: 132, nv: [40 + d, 42 + d], peso: 1 }];
+const agua = (d: number): Encontro[] => [{ e: 79, nv: [21 + d, 24 + d], peso: 25 }, { e: 125, nv: [21 + d, 24 + d], peso: 25 }, { e: 123, nv: [21 + d, 24 + d], peso: 20 }, { e: 117, nv: [22 + d, 25 + d], peso: 14 }, { e: 37, nv: [20 + d, 23 + d], peso: 7 }, { e: 77, nv: [22 + d, 25 + d], peso: 4 }, { e: 131, nv: [22 + d, 25 + d], peso: 5, estacao: 'fria' }];
+const aguaNoite = (d: number): Encontro[] => [{ e: 125, nv: [21 + d, 24 + d], peso: 30 }, { e: 79, nv: [21 + d, 24 + d], peso: 22 }, { e: 123, nv: [21 + d, 24 + d], peso: 18 }, { e: 117, nv: [22 + d, 25 + d], peso: 14 }, { e: 121, nv: [22 + d, 25 + d], peso: 8 }, { e: 77, nv: [22 + d, 25 + d], peso: 3 }, { e: 131, nv: [22 + d, 25 + d], peso: 5, estacao: 'fria' }];
+/** camada das águas depois da insígnia 8: os adultos chegam (Medusão à noite; Jubartão, raríssimo) */
+const adultos = (l: Encontro[], noite: boolean): Encontro[] => [...l, ...(noite ? [{ e: 126, nv: [36, 39] as [number, number], peso: 16 }] : []), { e: 132, nv: [40, 44] as [number, number], peso: 2 }];
 
 const zona: ZonaDef = {
-  id: 'A-BA', nome: 'Baía Azul', mapa: 'A', tipo: 'agua', tileset: 'costa', musica: 'agua', arena: 'baia', passo: 6,
+  id: 'A-BA', nome: 'Baía Azul', mapa: 'A', tipo: 'agua', tileset: 'costa', musica: 'agua', arena: 'baia', passo: 4,
   mapaChars: g.mapa,
   objetos: [
     { o: 'placa', ...g.p('P'), texto: 'ILHOTA DO MEIO\nSul: Cidade Coral · Leste: Ilha do Farol · Norte: Praia das Tartarugas.\nNão alimente as águas-vivas. Elas não agradecem.' },
@@ -79,9 +81,8 @@ const zona: ZonaDef = {
     { ...g.p('Y'), para: { zona: 'A-RS', x: 30, y: 30 } },
   ],
   portoes: [
-    { ...g.p('G'), w: 2, h: 2, requer: 'insignia:5', sprite: 'npc-marinheiro', fala: 'Capitania da Baía: travessia fechada!\nO Cartel Ferrugem largou redes-armadilha depois das boias. Só passa quem a Boiadeira Zefa, de Pantanal Grande, garantir que aguenta o tranco (insígnia Barro).' },
-    { ...N, w: 2, h: 1, requer: 'insignia:6', sprite: 'cl-biologa', fala: 'Projeto Tartaruí: a Praia das Tartarugas está em época de desova.\nSó entra quem tem a insígnia Estrela, da Iracema Lua. Ela ensina a pisar leve.' },
-    { ...g.p('F'), w: 1, h: 2, requer: 'insignia:6', sprite: 'npc-marinheiro', fala: 'O farol da ilha apagou e o canal está um breu de pedra e correnteza.\nSem a insígnia Estrela de Cidade Coral eu não deixo canoa nenhuma seguir para o leste.' },
+    { ...N, w: 2, h: 1, requer: 'insignia:4', sprite: 'cl-biologa', fala: 'Projeto Tartaruí: a Praia das Tartarugas está em época de desova.\nSó entra quem tem a insígnia Estrela, da Iracema Lua, de Cidade Coral. Ela ensina a pisar leve.' },
+    { ...g.p('F'), w: 1, h: 2, requer: 'insignia:4', sprite: 'npc-marinheiro', fala: 'O farol da ilha apagou e o canal está um breu de pedra e correnteza.\nSem a insígnia Estrela de Cidade Coral eu não deixo canoa nenhuma seguir para o leste.' },
   ],
   npcs: [
     { id: 'pescador-praia', sprite: 'cl-pescador', ...g.p('a'), dir: 'l', fala: ['Aqui na beirada dá Piabinha até com vara velha.', 'Na estação fria a baía enche de visita: baleia com filhote, e uns pinguins perdidos lá na praia do norte.', 'Baleia não se pesca, viu? Baleia a gente espera, de canoa e de boca fechada.'] },
@@ -102,10 +103,10 @@ const zona: ZonaDef = {
     { x: 3, y: 26, item: 'garrafada', flag: 'item:A-BA:praia' },
   ],
   habitats: [
-    { metodo: 'grama', taxa: 0.1, todos: [{ e: 35, nv: [24, 28], peso: 70 }, { e: 129, nv: [25, 28], peso: 20 }, { e: 107, nv: [25, 28], peso: 10 }], noite: [{ e: 35, nv: [24, 28], peso: 60 }, { e: 123, nv: [25, 28], peso: 25 }, { e: 129, nv: [25, 28], peso: 15 }], camadas: [{ apos: 12, todos: [{ e: 35, nv: [26, 27], peso: 50 }, { e: 36, nv: [44, 48], peso: 30 }, { e: 129, nv: [30, 33], peso: 20 }] }] },
-    { metodo: 'agua', taxa: 0.06, todos: agua(0), noite: aguaNoite(0), camadas: [{ apos: 12, todos: agua(6).map((e) => (e.e === 132 ? { ...e, nv: [48, 52], peso: 3 } : e)), noite: aguaNoite(6).map((e) => (e.e === 132 ? { ...e, nv: [48, 52], peso: 3 } : e)) }] },
+    { metodo: 'grama', taxa: 0.1, todos: [{ e: 35, nv: [21, 24], peso: 70 }, { e: 129, nv: [21, 24], peso: 20 }, { e: 107, nv: [21, 24], peso: 10 }], noite: [{ e: 35, nv: [21, 24], peso: 60 }, { e: 123, nv: [21, 24], peso: 25 }, { e: 129, nv: [21, 24], peso: 15 }], camadas: [{ apos: 8, todos: [{ e: 35, nv: [26, 27], peso: 50 }, { e: 36, nv: [38, 41], peso: 30 }, { e: 129, nv: [30, 33], peso: 20 }] }] },
+    { metodo: 'agua', taxa: 0.06, todos: agua(0), noite: aguaNoite(0), camadas: [{ apos: 8, todos: adultos(agua(8), false), noite: adultos(aguaNoite(8), true) }] },
     { metodo: 'pesca-velha', todos: [{ e: 37, nv: [12, 18], peso: 100 }] },
-    { metodo: 'pesca-boa', todos: [{ e: 37, nv: [22, 28], peso: 70 }, { e: 117, nv: [24, 28], peso: 20 }, { e: 125, nv: [24, 28], peso: 10 }] },
+    { metodo: 'pesca-boa', todos: [{ e: 37, nv: [20, 24], peso: 70 }, { e: 117, nv: [21, 25], peso: 20 }, { e: 125, nv: [21, 25], peso: 10 }] },
     { metodo: 'pesca-mestra', todos: [{ e: 37, nv: [28, 29], peso: 40 }, { e: 117, nv: [30, 31], peso: 35 }, { e: 121, nv: [32, 35], peso: 20 }, { e: 77, nv: [34, 38], peso: 5 }] },
   ],
 };
