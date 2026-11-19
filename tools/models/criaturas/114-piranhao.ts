@@ -9,7 +9,7 @@ import { paletaPiranha, dentes } from './113-piranhinha';
 
 function build() {
   const { rig } = peixe({
-    corpo: [0.36, 0.32, 0.19], flutua: 0.5, ergue: 8,
+    corpo: [0.36, 0.32, 0.19], flutua: 0.4, ergue: 8,
     boca: { len: 0.16, r: 0.11, queixo: 0.09 },
     cauda: { len: 0.1, r: 0.07, alt: 0.4, larg: 0.22, forma: 'lua' },
     dorsal: { alt: 0.15, len: 0.3, x: -0.1, espinhos: 5 },
@@ -19,7 +19,7 @@ function build() {
     rampas: { corpo: 0, barriga: 1, nadadeiras: 1, cauda: 3, boca: 1 },
   });
   rig.add('tronco', blob([0.3, 0.15, 0.16], m(3), { pos: [-0.03, 0.2, 0] }));
-  dentes(rig, 0.36, 0.32, 5, 0.03);
+  dentes(rig, 0.21, 0.07, 0.09, 5, 0.03);
   par((l, s) => {
     // sobrancelha de briga, pintas de brilho e punho nas peitorais
     rig.add('tronco', blob([0.1, 0.03, 0.03], m.sombra(3), { pos: [0.22, 0.17, 0.14 * s], rot: [0, 0, -24], seg: 10 }));
@@ -39,7 +39,7 @@ function build() {
   return rig;
 }
 
-const anims = animsPeixe({ u: 0.85, flutua: 0.5, mole: 0.8 }, {
+const anims = animsPeixe({ u: 0.85, flutua: 0.4, mole: 0.8 }, {
   idle: { mandibula: lz([0, -8, -14, -4]), cardume1: lp([[0, 0, 0], [0.02, 0.03, 0], [0.03, 0.01, 0], [0.01, -0.02, 0]]), cardume2: lp([[0, 0, 0], [-0.02, -0.02, 0], [0, -0.03, 0], [0.02, 0, 0]]) },
   fisico: { mandibula: qz([-16, -48, 8, 0, 0]), cardume1: [...qz([0, 10, -20, -6, 0]), ...[{ t: 0, p: [0, 0, 0] as V3 }, { t: 0.5, p: [0.3, -0.05, 0] as V3 }, { t: 1, p: [0, 0, 0] as V3 }]], cardume2: [{ t: 0, p: [0, 0, 0] as V3 }, { t: 0.6, p: [0.3, 0.08, 0] as V3 }, { t: 1, p: [0, 0, 0] as V3 }] },
   andar: { cardume1: ly([-10, 0, 10, 0]), cardume2: ly([10, 0, -10, 0]) },

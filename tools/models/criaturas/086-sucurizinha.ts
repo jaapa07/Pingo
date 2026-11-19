@@ -3,7 +3,7 @@
  * Traços únicos: olhos no alto da cabeça (como quem espia da água) · pintas escuras redondas no dorso ·
  * barriga estufada de quem acabou de almoçar · boné de lama na cabeça e ponta da cauda enlameada.
  */
-import { criatura, serpente, animsSerpente, blob, calota, par, m, lz, ls, qz, qr, type V3, type Rig, type Mat } from './kits';
+import { criatura, serpente, animsSerpente, blob, ring, calota, par, m, lz, ls, qz, qy, type V3, type Rig, type Mat } from './kits';
 
 export const paletaSucuri = {
   rampas: [
@@ -31,18 +31,50 @@ export function pintaFlanco(rig: Rig, osso: string, x: number, y: number, r: num
   rig.add(osso, blob([r * k, r * k, r * k], mat, { pos: [x, y + Math.cos(a) * r * 0.72, Math.sin(a) * r * 0.72], seg: 10, castShadow: false }));
 }
 /** Bote mais contido que o do kit (para a silhueta não estourar a célula). */
-export const boteCurto = (n: number) => Object.fromEntries(Array.from({ length: n }, (_, i) => ['pescoco' + (i + 1), qz([8, 15, -15, -6, 0])]));
-/** Desmaio da cobra: o pescoço tomba de lado em vez de se esticar para a frente. */
-export const tomboLado = (n: number) => ({
-  pescoco1: qr([[0, 0, 4], [8, 0, -4], [38, 0, -10], [78, 0, -16], [74, 0, -14]]),
-  ...Object.fromEntries(Array.from({ length: n - 1 }, (_, i) => ['pescoco' + (i + 2), qz([0, -4, -10, -14, -12])])),
-  cabeca: qz([0, 4, 10, 16, 14]),
-});
+export const boteCurto = (n: number) => Object.fromEntries(Array.from({ length: n }, (_, i) => ['pescoco' + (i + 1), qz([6, 12, -10, -4, 0])]));
+/** Desmaio da cobra: o pescoço se dobra e a cabeça pousa no chão junto do corpo (sem esticar a silhueta). */
+export const tomboCobra = (curvas: number[]) => {
+  const n = curvas.length, tot = curvas.reduce((x, y) => x + y, 0);
+  // primeira junta cede um pouco, as do meio dobram para a frente, a última aponta a cabeça para o chão
+  const alvo = curvas.map((c, i) => (i === 0 ? -c * 0.35 : -55));
+  alvo[n - 1] = -(tot + 70) - alvo.slice(0, n - 1).reduce((x, y) => x + y, 0);
+  return {
+    ...Object.fromEntries(alvo.map((v, i) => ['pescoco' + (i + 1), qz([4, v * 0.1, v * 0.5, v, v * 0.96])])),
+    cabeca: qz([0, 6, 24, 58, 54]),
+  };
+};
+/** Cauda mais contida nos golpes (a do kit abre a silhueta e encolhe o sprite). */
+export const caudaCalma = (n: number) => {
+  const z5 = Object.fromEntries(Array.from({ length: n }, (_, i) => ['cauda' + (i + 1), qy([2, 4, -4, -1, 0].map((x) => (i % 2 ? -x : x)))]));
+  const z6 = Object.fromEntries(Array.from({ length: n }, (_, i) => ['cauda' + (i + 1), qy([0, 4, -4, 5, -2, 0].map((x) => (i % 2 ? -x : x)))]));
+  return { fisico: z5, especial: z6 };
+};
+/** Junta os extras padrão das cobras deste lote: bote curto, tombo e cauda calma. */
+export function extrasCobra(curvas: number[], nCauda: number) {
+  const c = caudaCalma(nCauda);
+  return { fisico: { ...boteCurto(curvas.length), ...c.fisico }, especial: c.especial, desmaio: tomboCobra(curvas) };
+}
+
+/**
+ * Volta do corpo enrolado: toro deitado (eixo Y) em `osso`, com filete de barriga por baixo.
+ * `incl` inclina a volta (graus) para as voltas não ficarem paralelas.
+ */
+export function voltaCobra(rig: Rig, osso: string, pos: V3, raio: number, esp: number, mat: Mat, matBarriga: Mat | null, incl: [number, number] = [0, 0], achata = 1) {
+  rig.add(osso, ring(raio, esp, mat, { pos, rot: [90 + incl[0], incl[1], 0], scale: [1, achata, 1] }));
+  if (matBarriga) rig.add(osso, ring(raio * 1.02, esp * 0.72, matBarriga, { pos: [pos[0], pos[1] - esp * 0.42, pos[2]], rot: [90 + incl[0], incl[1], 0], scale: [1, achata, 1] }));
+}
+/** Pintas/manchas em volta de uma volta do corpo: `n` bolotas na face de fora, alternando a altura. */
+export function pintasVolta(rig: Rig, osso: string, pos: V3, raio: number, esp: number, n: number, mat: Mat, k = 0.5, fase = 0, achata = 1) {
+  for (let i = 0; i < n; i++) {
+    const a = ((i + fase) / n) * Math.PI * 2, rr = raio + esp * 0.62;
+    rig.add(osso, blob([esp * k, esp * k, esp * k], mat, { pos: [pos[0] + Math.cos(a) * rr, pos[1] + (i % 2 ? 0.45 : -0.05) * esp, pos[2] + Math.sin(a) * rr * achata], seg: 10, castShadow: false }));
+  }
+}
 
 function build() {
-  const r = 0.1, rF = 0.035, N = 6, len = 0.17;
+  const r = 0.11, rF = 0.04, N = 6, len = 0.17;
   const { rig } = serpente({
-    r, pescoco: { segs: 3, len: 0.14, curva: [56, 30, -16], rFim: 0.095 },
+    r, pescoco: { segs: 3, len: 0.15, curva: [58, 30, -16], rFim: 0.1 },
     cauda: { segs: N, len, curva: [30, -62, -52, 60, 70, 44], rFim: rF },
     cabeca: [0.19, 0.13, 0.155],
     olho: { r: 0.03, pos: [0.115, 0.125, 0.092] },
@@ -71,11 +103,11 @@ function build() {
   return rig;
 }
 
+const ex = extrasCobra([58, 30, -16], 6);
 const anims = animsSerpente({ u: 0.5, pescoco: 3, cauda: 6, mole: 1.1 }, {
-  desmaio: tomboLado(3),
-  fisico: boteCurto(3),
+  fisico: ex.fisico, desmaio: ex.desmaio,
   idle: { ponta: lz([0, 12, 20, 6]), cauda2: ls([1, [1, 1.04, 1.05] as V3, [1, 1.07, 1.08] as V3, [1, 1.03, 1.03] as V3]) },
-  especial: { ponta: qz([0, 20, 30, -30, -10, 0]) },
+  especial: { ...ex.especial, ponta: qz([0, 20, 30, -30, -10, 0]) },
   dano: { ponta: qz([30, 12, 0]) },
 });
 

@@ -35,6 +35,6 @@ const zona: ZonaDef = {
     { id: 'viajante', sprite: 'npc-mulher-3', x: 14, y: 5, dir: 's', fala: ['Vim da Costa do Sol só para comer doce de buriti.', 'Já estou na terceira viagem. É um doce muito bom.'] },
     { id: 'carregador', sprite: 'npc-homem-2', x: 4, y: 6, mov: 'vagar', fala: ['Dizem que tem gente estranha, de macacão cor de ferrugem, rondando o Pantanal.', 'Carregaram umas gaiolas no último trem de carga. Não gostei da cara deles.'] },
   ],
-  gatilhos: [{ x: 8, y: 5, w: 1, h: 1, script: 'b1-chegada', se: '!flag:b1-chegou', umaVez: true }],
+  gatilhos: [{ x: 7, y: 7, w: 4, h: 1, script: 'b1-chegada', se: '!flag:b1-chegou', umaVez: true }],
 };
 export default zona;

@@ -30,7 +30,7 @@ function build() {
   // garupa dourada arrepiada: calota clara + tufo de pelos para trás
   rig.add('corpo', calota([0.21, 0.25, 0.225], m.luz(0), { de: 0, ate: 72, pos: [-0.13, 0.0, 0], rot: [0, 0, 48] }));
   rig.bone('garupa', 'corpo', [-0.26, 0.12, 0], [0, 0, 62]);
-  rig.add('garupa', tufo(3, 0.14, 0.07, m.luz(0), { abre: 30 }));
+  rig.add('garupa', tufo(3, 0.2, 0.08, m.luz(0), { abre: 34 }));
   // miolo rosa das orelhas
   par((l, s) => rig.add('orelha_' + l, blob([0.035, 0.04, 0.02], m.luz(2), { pos: [0.03, 0.05, 0.012 * s], seg: 10 })));
   // bochechas creme e dentões

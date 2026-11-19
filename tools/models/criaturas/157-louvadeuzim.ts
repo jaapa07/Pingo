@@ -79,6 +79,7 @@ const anims = animsInseto({ u: 0.6, alt: 0.2, mole: 1.2 }, gingaLouva);
 export const louvadeuzim = criatura({
   num: 157, id: 'louvadeuzim', nome: 'Louvadeuzim', porte: 'P', estagio: 'basico', paleta: paletaLouva, anims,
   build: () => louva({ k: 1, pro: 0.27, foice: 0.18, faixa: 0.2, alt: 0.2 }).rig,
+  enquadre: { frente: { zoom: 1.04 } },
   olho: {
     frente: ['.aa.', 'aawa', 'aapa', '.aa.'],
     fechado: ['pppp', 'pppp', 'appa', 'pppp'],

@@ -18,7 +18,7 @@ export const paletaPirarucu = {
 
 function build() {
   const { rig, ref } = peixe({
-    corpo: [0.34, 0.15, 0.14], flutua: 0.36, ergue: 14,
+    corpo: [0.34, 0.15, 0.14], flutua: 0.24, ergue: 14,
     boca: { len: 0.1, r: 0.05, queixo: 0.03 },
     cauda: { len: 0.1, r: 0.07, alt: 0.24, larg: 0.16, forma: 'redonda' },
     dorsal: { alt: 0.07, len: 0.26, x: -0.6 },
@@ -41,7 +41,7 @@ function build() {
   return rig;
 }
 
-const anims = animsPeixe({ u: 0.6, flutua: 0.36, mole: 1.2 }, {
+const anims = animsPeixe({ u: 0.6, flutua: 0.24, mole: 1.2 }, {
   idle: { tronco: lz([0, 2, 4, 1]) },
   especial: { tronco: qz([-6, -12, -12, 26, 10, 0]) },
 });

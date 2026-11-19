@@ -17,7 +17,9 @@ export interface Grade {
   /** todas as posições da marca, em ordem de leitura */
   todos(m: string): Ponto[];
 }
-export function grade(id: string, linhas: string[], marcas: Record<string, string>): Grade {
+export function grade(id: string, bruto: string[], marcas: Record<string, string>): Grade {
+  // `|` é só régua visual (separa blocos de 10 colunas) e não entra na grade
+  const linhas = bruto.map((l) => l.split('|').join(''));
   const w = linhas[0].length, onde = new Map<string, Ponto[]>();
   const tortas = linhas.map((l, y) => (l.length !== w ? `${y}:${l.length}` : '')).filter(Boolean);
   if (tortas.length) throw new Error(`${id}: linhas fora da largura ${w} → ${tortas.join(' ')}`);
@@ -79,4 +81,77 @@ export function item(g: Grade, m: string, zona: string, it: string, qtd = 1, ocu
 export function placa(g: Grade, m: string, texto: string): { objeto: ObjetoSpawn; placa: { x: number; y: number; texto: string } } {
   const [x, y] = g.p(m);
   return { objeto: { o: 'placa', x, y }, placa: { x, y, texto } };
+}
+
+/* ------------------------------ serviços de cidade (mesma planta em toda a Costa do Sol) ------------------------------ */
+import type { ZonaDef } from '../../core/tipos';
+interface Visita { sprite: string; nome: string; fala: string[]; mov?: NpcDef['mov'] }
+/** Posto Guardião: atendente atrás do balcão (script `posto`), máquina de cura e terminal do Viveiro. Entrada em (6, 8). */
+export function postoGuardiao(cidade: string, nomeCidade: string, volta: Ponto, visitas: [Visita, Visita]): ZonaDef {
+  const id = `${cidade}-posto`;
+  const g = grade(id, [
+    '##############',
+    '###K######W###',
+    '#R..hh.1...V.#',
+    '#.....BBB....#',
+    '#............#',
+    '#.ss.......2.#',
+    '#..3..aa.....#',
+    '#.....aa....R#',
+    '#............#',
+    '######DD######',
+  ], { K: '#', W: '#', R: '.', h: '.', V: '.', B: '.', s: '.', a: ',', D: '+', '1': '.', '2': '.', '3': '.' });
+  return {
+    id, nome: `Posto Guardião de ${nomeCidade}`, mapa: 'A', tipo: 'interior', tileset: 'predio', musica: 'posto', arena: 'restinga',
+    mapaChars: g.mapa,
+    objetos: [
+      { o: 'tema', x: 0, y: 0, tema: 'posto' },
+      obj(g, 'K', 'poster-a'), obj(g, 'W', 'janela'),
+      ...g.todos('R').map(([x, y]) => ({ o: 'planta', x, y })),
+      { o: 'maquina-cura', x: g.todos('h')[0][0], y: g.todos('h')[0][1], texto: ['A máquina de cura do Posto: seis berços de cuia e uma luz verde que dá sono só de olhar.'] },
+      { o: 'balcao', x: g.todos('B')[0][0], y: g.todos('B')[0][1] },
+      obj(g, 'V', 'viveiro', { script: 'viveiro' }),
+      { o: 'banco-estacao', x: g.todos('s')[0][0], y: g.todos('s')[0][1] },
+      { o: 'tapete-a', x: g.todos('a')[2][0], y: g.todos('a')[2][1] },
+    ],
+    warps: saidas(g, 'D', cidade, volta[0], volta[1], 's', 'porta'),
+    npcs: [
+      gente(g, '1', 'atendente', 'npc-atendente-posto', 'Guardiã do Posto', { script: 'posto' }),
+      gente(g, '2', `${id}-a`, visitas[0].sprite, visitas[0].nome, { fala: visitas[0].fala, mov: visitas[0].mov ?? 'olhar' }),
+      gente(g, '3', `${id}-b`, visitas[1].sprite, visitas[1].nome, { fala: visitas[1].fala, mov: visitas[1].mov }),
+    ],
+  };
+}
+/** Venda: vendedor atrás do balcão; `estoques` = [condição, itens] em ordem (vale o primeiro que cumprir). Entrada em (5, 7). */
+export function venda(cidade: string, nomeCidade: string, volta: Ponto, vendedor: { nome: string; fala: string }, estoques: [string, string[]][], fregues: Visita): ZonaDef {
+  const id = `${cidade}-venda`;
+  const g = grade(id, [
+    '############',
+    '##K#####W###',
+    '#PP.PP..1.c#',
+    '#......BBB.#',
+    '#..........#',
+    '#.cs.....2.#',
+    '#.b..aa....#',
+    '#....aa..PP#',
+    '#####DD#####',
+  ], { K: '#', W: '#', P: '.', B: '.', c: '.', s: '.', b: '.', a: ',', D: '+', '1': '.', '2': '.' });
+  const pr = g.todos('P'), cx = g.todos('c'), [vx, vy] = g.p('1');
+  return {
+    id, nome: `Venda de ${nomeCidade}`, mapa: 'A', tipo: 'interior', tileset: 'predio', musica: 'venda', arena: 'restinga',
+    mapaChars: g.mapa,
+    objetos: [
+      { o: 'tema', x: 0, y: 0, tema: 'venda' },
+      obj(g, 'K', 'quadro'), obj(g, 'W', 'janela'),
+      ...[pr[0], pr[2], pr[4]].map(([x, y]) => ({ o: 'prateleira', x, y, texto: ['Prateleiras cheias: cuias, chás, mel e um pote de balas que ninguém sabe o preço.'] })),
+      { o: 'balcao', x: g.todos('B')[0][0], y: g.todos('B')[0][1] },
+      ...cx.map(([x, y]) => ({ o: 'caixote', x, y })), obj(g, 's', 'saco-graos'), obj(g, 'b', 'barril'),
+      { o: 'tapete-b', x: g.todos('a')[2][0], y: g.todos('a')[2][1] },
+    ],
+    warps: saidas(g, 'D', cidade, volta[0], volta[1], 's', 'porta'),
+    npcs: [
+      ...estoques.map(([se, loja], i) => ({ id: `vendedor-${i + 1}`, sprite: 'npc-vendedor', x: vx, y: vy, nome: vendedor.nome, fala: [vendedor.fala], loja, se } as NpcDef)),
+      gente(g, '2', `${id}-a`, fregues.sprite, fregues.nome, { fala: fregues.fala, mov: fregues.mov ?? 'olhar' }),
+    ],
+  };
 }

@@ -33,10 +33,10 @@ function build() {
     rig.add('tronco', folha3d(0.2, 0.16, m.luz(2), { pos: [-0.2, y, z], rot: [0, 0, g + 60], esp: 0.5 }));
   // três flores no manto e uma atrás da orelha
   const flores: [string, string, V3, V3, number][] = [
-    ['flor1', 'tronco', [-0.27, 0.12, 0.08], [0, 0, 80], 0.085],
-    ['flor2', 'tronco', [-0.2, -0.06, -0.17], [-50, 0, 70], 0.07],
-    ['flor3', 'tronco', [-0.16, 0.27, -0.06], [-10, 0, 40], 0.065],
-    ['flor4', 'cabeca', [-0.02, 0.2, -0.2], [-52, 0, 10], 0.085],
+    ['flor1', 'tronco', [-0.28, 0.12, 0.08], [0, 0, 80], 0.11],
+    ['flor2', 'tronco', [-0.2, -0.06, -0.17], [-50, 0, 70], 0.09],
+    ['flor3', 'tronco', [-0.16, 0.27, -0.06], [-10, 0, 40], 0.085],
+    ['flor4', 'cabeca', [0.02, 0.19, -0.22], [-58, 0, -10], 0.105],
   ];
   for (const [nome, pai, pos, rot, r] of flores) { rig.bone(nome, pai, pos, rot); flor(rig, nome, r); }
   sonha(rig);

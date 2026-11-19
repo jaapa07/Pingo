@@ -9,7 +9,7 @@ import { paletaPirarucu } from './111-pirarucinho';
 
 function build() {
   const { rig } = peixe({
-    corpo: [0.6, 0.2, 0.18], flutua: 0.42, ergue: 10,
+    corpo: [0.6, 0.2, 0.18], flutua: 0.32, ergue: 10,
     boca: { len: 0.16, r: 0.07, queixo: 0.05 },
     cauda: { len: 0.16, r: 0.1, alt: 0.4, larg: 0.24, forma: 'redonda' },
     dorsal: { alt: 0.13, len: 0.46, x: -0.6, espinhos: 4 },
@@ -39,7 +39,7 @@ function build() {
   return rig;
 }
 
-const anims = animsPeixe({ u: 0.9, flutua: 0.42, mole: 0.6, mapa: { comp: 0.6, larg: 1.6 } }, {
+const anims = animsPeixe({ u: 0.9, flutua: 0.32, mole: 0.6, mapa: { comp: 0.6, larg: 1.6 } }, {
   idle: { tronco: lz([0, 1, 3, 1]), cauda2: ly([-14, 10, 14, -10]) },
   especial: { tronco: qz([-4, -8, -8, 16, 6, 0]) },
 });
