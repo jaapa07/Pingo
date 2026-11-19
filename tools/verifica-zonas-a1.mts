@@ -1,12 +1,12 @@
 // verificador do time A1: larguras, warps, NPCs/itens em tiles livres, alcance do caminho principal, tabela 6.4
 import { readdirSync } from 'node:fs';
-import type { ZonaDef } from '/home/user/adventures-of-pingo/src/core/tipos';
-import { CATALOGO_EXTERIOR } from '/home/user/adventures-of-pingo/src/data/catalogo-objetos';
-import { CATALOGO_INTERIOR } from '/home/user/adventures-of-pingo/src/data/catalogo-interiores';
-import { TREINADORES_A1 } from '/home/user/adventures-of-pingo/src/data/treinadores/a1';
-import { EVENTOS_A1 } from '/home/user/adventures-of-pingo/src/data/eventos/a1';
-import { EVENTOS_COMUNS } from '/home/user/adventures-of-pingo/src/data/eventos/comuns';
-const dir = '/home/user/adventures-of-pingo/src/data/zonas/';
+import type { ZonaDef } from '../src/core/tipos';
+import { CATALOGO_EXTERIOR } from '../src/data/catalogo-objetos';
+import { CATALOGO_INTERIOR } from '../src/data/catalogo-interiores';
+import { TREINADORES_A1 } from '../src/data/treinadores/a1';
+import { EVENTOS_A1 } from '../src/data/eventos/a1';
+import { EVENTOS_COMUNS } from '../src/data/eventos/comuns';
+const dir = new URL('../src/data/zonas/', import.meta.url).pathname;
 const MEUS = /^(A1|A2|A3|A4|A-R1|A-R2|A-R3|A-MS|A-GE)(-|\.)/;
 const Z = new Map<string, ZonaDef>();
 for (const f of readdirSync(dir)) { if (f.startsWith('_')) continue; try { const m = await import(dir + f); if (m.default?.mapaChars) Z.set(m.default.id, m.default); } catch (e) { if (MEUS.test(f)) console.log('ERRO ao carregar', f, String(e).slice(0, 200)); } }
@@ -74,5 +74,74 @@ const T64: Record<string, [number, string][]> = {
   'A-GE': [[30, 'caverna'], [147, 'caverna'], [167, 'caverna'], [39, 'pesca-velha']],
 };
 for (const [zid, l] of Object.entries(T64)) for (const [e, m] of l) { const hb = Z.get(zid)?.habitats?.find((q) => q.metodo === m); const todas = [...(hb?.todos ?? []), ...(hb?.manha ?? []), ...(hb?.dia ?? []), ...(hb?.noite ?? [])]; if (!todas.some((q) => q.e === e)) E(`6.4: espécie ${e} ausente de ${zid} (${m})`); }
+
+/* ---------- alcance com Amuletos: itens/NPCs alcançáveis e áreas de Amuleto fechadas antes da hora ---------- */
+type Cap = 'facao' | 'remo' | 'forca' | 'quebra' | 'escalar' | 'portoes';
+function alcanceCom(z: ZonaDef, caps: Cap[]): Set<string> {
+  const { w, h, b } = blocos(z), ch = (x: number, y: number) => z.mapaChars[y]?.[x] ?? ' ', tem = (c: Cap) => caps.includes(c);
+  const portao = (x: number, y: number) => !tem('portoes') && (z.portoes ?? []).some((p) => x >= p.x && y >= p.y && x < p.x + (p.w ?? 1) && y < p.y + (p.h ?? 1));
+  const ok = (x: number, y: number) => {
+    if (x < 0 || y < 0 || x >= w || y >= h || b[y * w + x] || portao(x, y)) return false;
+    const c = ch(x, y);
+    return LIVRE.has(c) || (c === 'c' && tem('facao')) || ('~dw'.includes(c) && tem('remo')) || (c === 'p' && tem('forca')) || (c === 'r' && tem('quebra')) || (c === 'e' && tem('escalar'));
+  };
+  // partidas: pouso, chegadas de warps de outras zonas e o tile de cada warp de borda
+  const ini: [number, number][] = [];
+  if (z.pouso) ini.push(z.pouso);
+  for (const o of Z.values()) for (const q of o.warps) if (q.para.zona === z.id) ini.push([q.para.x, q.para.y]);
+  if (z.id === 'A1-quarto') ini.push([5, 5]);
+  const vis = new Set<string>(), fila: [number, number][] = [];
+  for (const [x, y] of ini) if (ok(x, y) && !vis.has(x + ',' + y)) { vis.add(x + ',' + y); fila.push([x, y]); }
+  while (fila.length) { const [x, y] = fila.shift()!;
+    for (const [dx, dy, s] of [[0, 1, 'v'], [0, -1, ''], [1, 0, '>'], [-1, 0, '<']] as [number, number, string][]) {
+      let nx = x + dx, ny = y + dy; if (s && ch(nx, ny) === s) { nx += dx; ny += dy; }
+      const wp = z.warps.find((q) => q.x === nx && q.y === ny);
+      if ((ok(nx, ny) || (wp && ehEnt(wp.tipo) && !b[ny * w + nx] === false)) && !vis.has(nx + ',' + ny)) { vis.add(nx + ',' + ny); if (ok(nx, ny)) fila.push([nx, ny]); } } }
+  return vis;
+}
+const TODAS: Cap[] = ['facao', 'remo', 'forca', 'quebra', 'escalar', 'portoes'];
+/** Amuleto (ou portão) esperado para cada item fechado: `zona:x,y` → capacidade. Tudo o que não está aqui tem de abrir só a pé. */
+const FECHADOS: Record<string, Cap> = {};
+const fechar = (zona: string, item: string, cap: Cap, n = 0) => { const it = (Z.get(zona)?.itens ?? []).filter((i) => i.item === item)[n]; if (!it) E(`esperado item ${item} em ${zona}`); else FECHADOS[`${zona}:${it.x},${it.y}`] = cap; };
+fechar('A1', 'cuia-trancada', 'facao'); fechar('A1', 'pedra-mare', 'remo'); fechar('A1', 'pt-14', 'facao');
+fechar('A-R1', 'pt-06', 'facao'); fechar('A-R1', 'pena-colorida', 'remo');
+fechar('A2', 'cuia-rede', 'remo');
+fechar('A-R2', 'pt-38', 'facao'); fechar('A-R2', 'cuia-ouro', 'remo'); fechar('A-R2', 'pepita', 'quebra'); fechar('A-R2', 'pedra-solar', 'forca');
+fechar('A-MS', 'cuia-mel', 'facao'); fechar('A-MS', 'pt-07', 'facao'); fechar('A-MS', 'pedra-lunar', 'remo');
+fechar('A3', 'pt-33', 'portoes'); fechar('A3', 'pedra-mare', 'remo'); fechar('A3', 'concha-rara', 'remo');
+fechar('A-R3', 'folha-ancestral', 'escalar'); fechar('A-R3', 'elixir-andiroba', 'quebra'); fechar('A-R3', 'cuia-rede', 'remo'); fechar('A-R3', 'pt-28', 'forca');
+fechar('A-GE', 'pt-42', 'remo'); fechar('A-GE', 'pt-41', 'quebra'); fechar('A-GE', 'pepita', 'remo'); fechar('A-GE', 'cuia-ouro', 'forca');
+fechar('A4', 'pt-31', 'escalar'); fechar('A4', 'pt-15', 'facao'); fechar('A4', 'pedra-mare', 'remo');
+let nFechados = 0, nVisao = 0;
+for (const z of meus) {
+  // na Trilha dos Cipós o Facão já é exigido na entrada: é a base da zona
+  const base: Cap[] = z.id === 'A-R3' ? ['facao'] : [];
+  const tudo = alcanceCom(z, TODAS), pe = alcanceCom(z, base);
+  const perto = (v: Set<string>, x: number, y: number) => v.has(x + ',' + y) || [[0, 1], [0, -1], [1, 0], [-1, 0]].some(([dx, dy]) => v.has(x + dx + ',' + (y + dy)));
+  for (const i of z.itens ?? []) {
+    const k = `${z.id}:${i.x},${i.y}`, cap = FECHADOS[k];
+    if (!tudo.has(i.x + ',' + i.y)) { E(`${z.id}: item ${i.item} (${i.x},${i.y}) inalcançável mesmo com todos os Amuletos`); continue; }
+    if (cap) {
+      nFechados++;
+      if (pe.has(i.x + ',' + i.y)) E(`${z.id}: item ${i.item} (${i.x},${i.y}) devia exigir ${cap}, mas abre a pé`);
+      else if (!alcanceCom(z, [...base, cap]).has(i.x + ',' + i.y)) E(`${z.id}: item ${i.item} (${i.x},${i.y}) não abre só com ${cap}`);
+      for (const outra of TODAS) if (outra !== cap && !base.includes(outra) && alcanceCom(z, [...base, outra]).has(i.x + ',' + i.y)) E(`${z.id}: item ${i.item} (${i.x},${i.y}) também abre com ${outra} (atalho)`);
+    } else if (!pe.has(i.x + ',' + i.y)) E(`${z.id}: item ${i.item} (${i.x},${i.y}) fechado sem estar na lista de áreas de Amuleto`);
+  }
+  for (const n of z.npcs ?? []) if (!perto(pe, n.x, n.y) && !perto(alcanceCom(z, [...base, 'portoes']), n.x, n.y)) E(`${z.id}: NPC ${n.id} (${n.x},${n.y}) inalcançável a pé`);
+  for (const o of z.objetos ?? []) if ((o.script || o.texto) && !perto(tudo, o.x, o.y) && !perto(tudo, o.x, o.y + 1)) E(`${z.id}: objeto interativo ${o.o} (${o.x},${o.y}) inalcançável`);
+  for (const p of z.placas ?? []) if (!perto(pe, p.x, p.y)) E(`${z.id}: placa (${p.x},${p.y}) inalcançável a pé`);
+  // linha de visão: o treinador precisa enxergar pelo menos 2 tiles livres e alcançáveis à frente
+  const { w, h, b } = blocos(z), D: Record<string, [number, number]> = { n: [0, -1], s: [0, 1], l: [1, 0], o: [-1, 0] };
+  for (const n of z.npcs ?? []) {
+    if (!n.treinador) continue;
+    nVisao++;
+    const [dx, dy] = D[n.dir ?? 's']; let vistos = 0, pisaveis = 0;
+    for (let k = 1; k <= (n.visao ?? 4); k++) { const x = n.x + dx * k, y = n.y + dy * k; if (x < 0 || y < 0 || x >= w || y >= h || b[y * w + x] || !LIVRE.has(z.mapaChars[y][x]) || (z.npcs ?? []).some((m) => m.x === x && m.y === y)) break; vistos++; if (pe.has(x + ',' + y)) pisaveis++; }
+    if (vistos < 2 || pisaveis < 2) E(`${z.id}: treinador ${n.id} olhando '${n.dir ?? 's'}' só enxerga ${vistos} tile(s) (${pisaveis} alcançáveis)`);
+    if ((z.warps ?? []).some((q) => { for (let k = 1; k <= (n.visao ?? 4); k++) if (q.x === n.x + dx * k && q.y === n.y + dy * k) return true; return false; })) E(`${z.id}: treinador ${n.id} enxerga um tile de warp`);
+  }
+}
+console.log(`áreas de Amuleto conferidas: ${nFechados} · linhas de visão conferidas: ${nVisao}`);
 console.log(`zonas minhas: ${meus.length} → ${meus.map((z) => `${z.id} ${z.mapaChars[0].length}×${z.mapaChars.length}`).join(' · ')}`);
 console.log(`treinadores: ${TREINADORES_A1.length} · eventos: ${EVENTOS_A1.length + EVENTOS_COMUNS.length} · erros: ${erros}`);

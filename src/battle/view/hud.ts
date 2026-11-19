@@ -38,7 +38,7 @@ export class CaixaStatus {
     this.w = jog ? 122 : 110; this.h = jog ? (compacta ? 31 : 39) : 27;
     const p = painel(this.w, this.h, jog ? 'jog' : 'ini'); this.el = p.el;
     this.faixa = div('bt-faixa', p.miolo);
-    const wb = jog ? 72 : 62;
+    const wb = jog ? 72 : 56;
     this.bv = barra('vida', wb, (px, max) => { if (jog) this.escreverNum(Math.round((px / max) * this.vidaMax)); });
     p.miolo.append(em(this.nome, 5, 2), em(this.nv, 0, 2), em(texto('VD', { cor: 'laranja' }), 4, 15), em(this.bv.el, 17, 14), em(this.st, wb + 20, 13));
     em(this.cap.el, 0, 2); this.cap.el.style.display = 'none'; p.miolo.append(this.cap.el);
