@@ -1,0 +1,18 @@
+import { appendFileSync } from 'node:fs';
+import { servir } from './servidor';
+import { gerar } from '../build-sw';
+import { launch } from '../lib/pw';
+const D = '/tmp/claude-0/-home-user/58474daf-1a50-5b1b-8bec-0786b708dc45/scratchpad/distA';
+const srv = await servir(D, 5320);
+const b = await launch(); const ctx = await b.newContext({ viewport: { width: 800, height: 450 } }); const page = await ctx.newPage();
+const info = () => page.evaluate(async () => ({ off: { ...(window as any).__pingoOffline }, caches: await caches.keys(), ctrl: !!navigator.serviceWorker.controller, itens: (await (await caches.open((await caches.keys())[0])).keys()).length }));
+const pronto = () => page.waitForFunction(() => { const o = (window as any).__pingoOffline; return o && (o.estado === 'pronto' || o.estado === 'falhou'); }, null, { timeout: 200000 });
+await page.goto(srv.url); await pronto(); const v1 = await info(); console.log('v1', v1.off.versao, v1.caches, v1.itens, 'pedidos', srv.pedidos);
+appendFileSync(D + '/index.html', '\n<!-- versão de teste -->\n'); const g = gerar(D); console.log('nova versão gerada', g.versao);
+let p0 = srv.pedidos;
+await page.reload(); await pronto(); await page.waitForTimeout(3000); let i = await info(); console.log('1ª abertura depois da atualização:', i.off.versao, i.caches, 'pedidos', srv.pedidos - p0, srv.caminhos.slice(p0).slice(0, 8));
+p0 = srv.pedidos;
+await page.reload(); await page.waitForTimeout(4000); await pronto(); i = await info(); console.log('2ª abertura:', i.off.versao, i.off.estado, i.caches, 'itens', i.itens, 'pedidos', srv.pedidos - p0, srv.caminhos.slice(p0).slice(0, 8));
+const html = await page.evaluate(async () => (await (await fetch('index.html')).text()).includes('versão de teste')); console.log('index novo servido pelo SW:', html);
+await ctx.setOffline(true); await page.reload(); await page.waitForFunction(() => (window as any).__pingo?.telas?.pilha?.length > 0, null, { timeout: 20000 }); console.log('abre sem rede na versão nova: ok');
+await b.close(); await srv.fechar();

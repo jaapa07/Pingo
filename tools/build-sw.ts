@@ -17,7 +17,7 @@ import { readdirSync, readFileSync, statSync, writeFileSync, existsSync } from '
 import { join, relative, sep } from 'node:path';
 
 const RAIZ = new URL('..', import.meta.url).pathname;
-const DIST = join(RAIZ, 'dist');
+const DIST_PADRAO = join(RAIZ, 'dist');
 /** acima disto, só o mapa A entra no pré-cache; o resto fica por demanda */
 export const ORCAMENTO_MB = 60;
 const LOTE_NUCLEO = 16;
@@ -47,7 +47,7 @@ function prioridade(c: string): number {
   return 30;
 }
 
-export function gerar(): { versao: string; total: number; bytes: number; nucleo: number; bytesNucleo: number; resto: number; bytesResto: number; demanda: number; bytesDemanda: number } {
+export function gerar(DIST: string = DIST_PADRAO): { versao: string; total: number; bytes: number; nucleo: number; bytesNucleo: number; resto: number; bytesResto: number; demanda: number; bytesDemanda: number } {
   if (!existsSync(join(DIST, 'index.html'))) throw new Error('dist/index.html não existe: rode `vite build` antes.');
   const brutos = andar(DIST).map((p) => relative(DIST, p).split(sep).join('/')).filter((c) => c !== 'sw.js' && c !== 'pingo-arquivos.json');
   const bytesTotal = brutos.reduce((s, c) => s + statSync(join(DIST, c)).size, 0);
