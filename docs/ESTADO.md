@@ -27,3 +27,5 @@ Depois: integração, testes jogando (QA) e polimento.
 
 ## Retomada em Fable (19/11, início manual)
 Itens 1–3 da fila relançados como agentes novos em Fable (continuam do disco): dados 61–120 (abb693e2d0ba7eb35), Zonas A1 (a6cfad1dc2bbf68c4), tela de batalha (a04be66a2a30cf5a5). Próximo da fila: 4. Menus.
+- Item 1 (dados 61–120) concluído e enviado. Item 4 (menus) lançado em Fable (a9958821a48a7151e).
+- **PEDIDO DO USUÁRIO: ao terminarem os 3 em andamento (Zonas A1, batalha, menus), PAUSAR — não lançar o item 5 até ele mandar.**
