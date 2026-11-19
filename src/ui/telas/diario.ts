@@ -20,7 +20,7 @@ import { Lista } from '../componentes/lista';
 import { informar } from '../componentes/confirmacao';
 import { figura, iconeCriatura, esp, n3, nomeEsp, faixaDica, placaTitulo, pix, caixa, rotulo, TOTAL_DIARIO, type Icone } from './comum';
 import { criarMapaDuplo, local } from './mapa-dados';
-import { habitatsDe, NOME_METODO, type PeriodoTabela } from './dados';
+import { habitatsDe, NOME_MEIO, type PeriodoTabela } from './dados';
 import { ESPECIES } from '../../data/criaturas';
 import { caber } from './mochila';
 import { T } from '../../data/textos-ui';
@@ -158,7 +158,7 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
     if (!hs.length) { rotulo(corpo, T.diario.semHabitat, 2, 78, 'chumbo', { largura: 186 }); return; }
     hs.slice(0, 5).forEach((h, i) => {
       const per = h.periodos.length >= 3 ? '' : `, ${h.periodos.map((p) => NOME_PER[p]).join('/')}`;
-      rotulo(corpo, '•', 2, 76 + i * 10, 'vermelho'); rotulo(corpo, caber(`${local(h.local)?.nome ?? h.local}: ${NOME_METODO[h.metodos[0]]}${per}`, 176), 10, 76 + i * 10, 'tinta');
+      rotulo(corpo, '•', 2, 76 + i * 10, 'vermelho'); rotulo(corpo, caber(`${local(h.local)?.nome ?? h.local}: ${NOME_MEIO[h.metodos[0]]}${per}`, 176), 10, 76 + i * 10, 'tinta');
     });
     if (hs.length > 5) rotulo(corpo, `e mais ${hs.length - 5} ${hs.length - 5 === 1 ? 'lugar' : 'lugares'}`, 2, 126, 'chumbo');
   }

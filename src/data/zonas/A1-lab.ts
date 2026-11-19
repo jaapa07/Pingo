@@ -19,6 +19,8 @@ const g = grade('A1-lab', [
 const m = g.todos('m'), e = g.todos('e'), c = g.todos('c')[0];
 /** colunas das três cuias na mesa (esquerda → direita: Mata, Brasa, Rio) — usadas pelo evento `lab-cuias` */
 export const COLUNAS_CUIAS: [number, number, number] = [c[0], c[0] + 1, c[0] + 2];
+/** linha da mesa das cuias (o jogador examina do tile logo abaixo) */
+export const LINHA_CUIAS = c[1];
 const zona: ZonaDef = {
   id: 'A1-lab', nome: 'Laboratório da Profª Ipê', mapa: 'A', tipo: 'interior', tileset: 'predio', musica: 'laboratorio', arena: 'restinga', passo: 1,
   mapaChars: g.mapa,

@@ -13,13 +13,13 @@ import { FX_TIPOS } from '../assets-src/fx/fx-tipos';
 import { FX_GERAIS } from '../assets-src/fx/fx-gerais';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
-const TODOS: FxDef[] = [...FX_TIPOS, ...FX_GERAIS];
+const LISTA_FX: FxDef[] = [...FX_TIPOS, ...FX_GERAIS];
 const LARGURA = 512;
 
 interface Tira { def: FxDef; quadros: Quadro[]; x: number; y: number }
 const erros: string[] = [];
 const vistos = new Set<string>();
-const tiras: Tira[] = TODOS.map((def) => {
+const tiras: Tira[] = LISTA_FX.map((def) => {
   if (vistos.has(def.id)) erros.push(`FX repetido: ${def.id}`);
   vistos.add(def.id);
   const quadros: Quadro[] = [];

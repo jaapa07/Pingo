@@ -93,7 +93,7 @@ async function iniciar() {
   registrarTela('vitrine-kit', criarVitrine);
 
   [audio, mundo] = await Promise.all([tentar(gAudio), tentar(gMundo)]);
-  await tentar(gBatalha); await tentar(gTelas);
+  await tentar(gBatalha); for (const [k, f] of Object.entries(gTelas)) await tentar({ [k]: f });
   aplicarVolumes();
   // o primeiro gesto libera o áudio (exigência do iOS)
   const liberar = () => { (audio?.audio as { unlock?(): void } | undefined)?.unlock?.(); };

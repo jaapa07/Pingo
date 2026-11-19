@@ -27,7 +27,7 @@ export const treinador = (id: string): TreinadorDef | undefined => _trein.get(id
 
 export type PeriodoTabela = 'manha' | 'dia' | 'noite';
 export interface Avistamento { local: string; metodos: MetodoEncontro[]; periodos: PeriodoTabela[]; /** menor peso com que aparece (quanto menor, mais rara) */ peso: number }
-export const NOME_METODO: Record<MetodoEncontro, string> = { grama: 'capim alto', caverna: 'caverna', agua: 'sobre a água', 'pesca-velha': 'pesca', 'pesca-boa': 'pesca', 'pesca-mestra': 'pesca', arvore: 'sacudindo árvores', rocha: 'quebrando rochas', mergulho: 'mergulho' };
+export const NOME_MEIO: Record<MetodoEncontro, string> = { grama: 'capim alto', caverna: 'caverna', agua: 'sobre a água', 'pesca-velha': 'pesca', 'pesca-boa': 'pesca', 'pesca-mestra': 'pesca', arvore: 'sacudindo árvores', rocha: 'quebrando rochas', mergulho: 'mergulho' };
 const PERIODOS: PeriodoTabela[] = ['manha', 'dia', 'noite'];
 function tabelasDe(h: Habitat): { t: Encontro[]; p: PeriodoTabela[] }[] {
   const r: { t: Encontro[]; p: PeriodoTabela[] }[] = [];
