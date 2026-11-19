@@ -30,7 +30,7 @@ const g = grade('A-US-3', 30, [
 ], { k: ';' });
 
 const zona: ZonaDef = {
-  id: 'A-US-3', nome: 'Usina Velha — Porão das Turbinas', mapa: 'A', tipo: 'dungeon', tileset: 'industrial', musica: 'cartel-tema', arena: 'turbinas', passo: 3,
+  id: 'A-US-3', nome: 'Usina Velha — Porão das Turbinas', mapa: 'A', tipo: 'dungeon', tileset: 'industrial', musica: 'cartel-tema', arena: 'usina', passo: 3,
   mapaChars: g.mapa,
   objetos: [
     { o: 'tema', x: 0, y: 0, tema: 'usina' },

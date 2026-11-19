@@ -1,6 +1,7 @@
 /**
  * Controles de toque no estilo do jogo: direcional de 8 direções por arraste, A e B grandes, Menu e Select.
- * Em pé ficam embaixo da tela; deitado, nas laterais sobre a imagem, com transparência.
+ * Em pé ficam embaixo da tela; deitado, nas margens ao lado da tela (o palco abre espaço: ver `palco.controles`);
+ * só quando não há margem possível vão por cima da imagem, menores e translúcidos.
  * A camada tem escala própria, inteira em pixels do aparelho, para os alvos terem tamanho de dedo.
  */
 import { input, type Acao } from '../core/input';
@@ -72,12 +73,16 @@ function arrumar() {
   raiz.classList.toggle('ativo', ativo);
   if (!ativo) return;
   const { vw, vh, dpr, seguro: s, modo } = palco;
-  const retrato = modo === 'retrato';
+  const retrato = modo === 'retrato', fora = !retrato && palco.controles === 'fora';
   raiz.classList.toggle('paisagem', !retrato);
+  raiz.classList.toggle('sobre', !retrato && !fora);
+  // margens laterais livres ao lado da tela (deitado)
+  const margemE = palco.x, margemD = vw - (palco.x + palco.w);
   // tamanho alvo do direcional em px CSS → escala inteira em pixels do aparelho
   const livreH = retrato ? vh - s.b - (palco.y + palco.h) : vh - s.t - s.b;
-  const alvo = Math.max(96, Math.min(retrato ? 150 : 124, (retrato ? Math.min(vw * 0.4, livreH * 0.5) : livreH * 0.36)));
-  escala = Math.max(1, Math.round((alvo * dpr) / DPAD)) / dpr;
+  const alvo = fora ? Math.max(64, Math.min(124, Math.min(margemE, margemD) - 8, livreH * 0.4))
+    : Math.max(retrato ? 96 : 72, Math.min(retrato ? 150 : 96, (retrato ? Math.min(vw * 0.4, livreH * 0.5) : livreH * 0.28)));
+  escala = Math.max(1, (fora ? Math.floor : Math.round)((alvo * dpr) / DPAD)) / dpr;
   raiz.style.transform = `scale(${escala})`;
   const u = (px: number) => Math.round(px / escala); // px CSS → unidades da camada
   const W = u(vw), esq = u(s.l), dirt = W - u(s.r), base = u(vh - s.b), topo = retrato ? u(palco.y + palco.h) : u(s.t);
@@ -90,16 +95,28 @@ function arrumar() {
     em(a.el, ax, ay); em(b.el, ax - BOTAO - 6, ay + BOTAO - 2);
     const py = Math.min(base - PIL_H - 8, meio + DPAD / 2 + Math.round((base - meio - DPAD / 2) * 0.45));
     em(select.el, Math.round(W / 2) - PIL_W - 5, py); em(menu.el, Math.round(W / 2) + 5, py);
+  } else if (fora) {
+    // cada controle no meio da sua margem, na altura do polegar (abaixo do entalhe, acima da barra inicial)
+    const mE = u(margemE), xD = u(palco.x + palco.w), mD = W - xD;
+    const cy = Math.min(base - DPAD / 2 - 6, Math.round(u(vh) * 0.62));
+    dx = Math.max(2, Math.round((mE - DPAD) / 2)); dy = cy - DPAD / 2;
+    // A (em cima, à direita) e B (embaixo, à esquerda) em escada, para caberem na largura da margem
+    const par = Math.min(BOTAO * 2 + 4, Math.max(BOTAO + 12, mD - 6)), px0 = xD + Math.max(2, Math.round((mD - par) / 2));
+    ax = px0 + par - BOTAO; ay = cy - BOTAO - 1;
+    em(a.el, ax, ay); em(b.el, px0, cy + 3);
+    const py = Math.max(u(s.t) + 6, Math.round(u(vh) * 0.1));
+    em(select.el, Math.max(2, Math.round((mE - PIL_W) / 2)), py); em(menu.el, xD + Math.max(2, Math.round((mD - PIL_W) / 2)), py);
   } else {
-    dx = esq + 5; dy = base - DPAD - 8;
-    ax = dirt - BOTAO - 5; ay = base - BOTAO * 2 - 6;
+    // sem margem: cantos de baixo, pequenos e translúcidos (a caixa de texto continua legível por trás)
+    dx = esq + 3; dy = base - DPAD - 4;
+    ax = dirt - BOTAO - 3; ay = base - BOTAO * 2 - 2;
     em(a.el, ax, ay); em(b.el, ax - BOTAO - 4, ay + BOTAO - 4);
-    em(select.el, esq + 5, topo + 5); em(menu.el, dirt - PIL_W - 5, topo + 5);
+    em(select.el, esq + 3, topo + 3); em(menu.el, dirt - PIL_W - 3, topo + 3);
   }
   em(dpad, dx, dy);
-  // a zona do direcional é maior que o desenho: o polegar pode escorregar
-  const m = Math.round(DPAD * 0.45);
-  zonaDpad.style.left = -Math.min(m, dx) + 'px'; zonaDpad.style.top = -m + 'px'; zonaDpad.style.width = DPAD + m + Math.min(m, dx) + 'px'; zonaDpad.style.height = DPAD + 2 * m + 'px';
+  // a zona do direcional é maior que o desenho: o polegar pode escorregar (sem invadir a tela quando está fora dela)
+  const m = Math.round(DPAD * 0.45), mDir = fora ? Math.max(2, Math.min(m, u(margemE) - dx - DPAD)) : m;
+  zonaDpad.style.left = -Math.min(m, dx) + 'px'; zonaDpad.style.top = -m + 'px'; zonaDpad.style.width = DPAD + mDir + Math.min(m, dx) + 'px'; zonaDpad.style.height = DPAD + 2 * m + 'px';
   folga(a, BOTAO, BOTAO); folga(b, BOTAO, BOTAO); folga(menu, PIL_W, PIL_H); folga(select, PIL_W, PIL_H);
 }
 

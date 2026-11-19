@@ -20,11 +20,13 @@ export const TREINADORES_GINASIO_06: TreinadorDef[] = [
     desafio: 'Passou pelas três salas? Então escute o último causo antes da Dona Benta: o da sua derrota!', derrota: 'Esse causo acabou diferente.', depois: 'A Dona Benta derruba a sua precisão com névoa e mau agouro. Golpe que nunca erra vale ouro.' },
   /*
    * LÍDER — Dona Benta Sombra (Assombro). Fraquezas do Assombro: Assombro e Encanto (Comum não o atinge).
-   * Estratégia: o Urubuzim (Vento/Assombro) abre com Mau Agouro e leva Cuspe Ácido para os tipos Encanto; o
-   * Urutauzim cega com Luz de Lamparina e bate com Assombração; o Graxaim (Comum/Assombro) é imune a Assombro,
-   * a fraqueza da casa, e usa Toca e Foge para trazer quem convém. O ás é o Noitim (Assombro/Mente) de nível 33:
-   * Pressentimento contra Veneno e Ginga, Assombração no mesmo tipo e Luz de Lamparina para fazer o desafiante errar.
-   * Cura: 1 Garrafada definida (no Aventureiro o motor só libera itens a partir do 8º ginásio); o ás segura uma Acerola.
+   * Equipe refeita pela regra do spec 4.5 (cada criatura na forma que teria no nível): quatro do tipo e uma cobertura.
+   * O Urubuzim (Vento/Assombro) abre com Mau Agouro; o Urutauzim cega com Luz de Lamparina; o Corujão-Orelha
+   * (Vento/Mente, evoluído no 24) é a cobertura contra Veneno e Ginga; o Noitim (Assombro/Mente) bate com
+   * Assombração e Pressentimento. Urubuzim, Urutauzim e Noitim só evoluem no 34–36, por isso aparecem na 1ª forma.
+   * O ás é o Jaguatiricão (Comum/Assombro, evoluído no 32) de nível 33: imune a Assombro, a fraqueza da casa,
+   * bate com Sombra Rasteira e Dentada e usa Toca e Foge para trazer quem convém; segura uma Acerola.
+   * Cura: 1 Garrafada definida, que o motor só libera a partir do 8º ginásio no Aventureiro.
    */
   { id: 'lider-06', classe: 'Líder', nome: 'Dona Benta Sombra', sprite: 'lider-08', ia: 'lider', premio: 3300, insignia: 6, musica: 'batalha-lider', flag: 'ginasio-06-vencido',
     itens: ['garrafada'],

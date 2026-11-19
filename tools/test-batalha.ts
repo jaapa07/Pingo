@@ -6,9 +6,10 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
-import { TIPOS, STATS, type CriaturaInst, type EspecieDef, type TipoId, type TreinadorDef, type ClimaId } from '../src/core/tipos';
+import { TIPOS, STATS, type CriaturaInst, type EspecieDef, type TipoId, type TreinadorDef, type ClimaId, type MembroEquipe } from '../src/core/tipos';
 import { rng } from '../src/core/rng';
 import { jogo, novoSave, forcarPeriodo } from '../src/core/estado';
+import { bus } from '../src/core/events';
 import { GOLPES, DESESPERO, golpe, temGolpe, type Efeito } from '../src/data/golpes';
 import { TABELA, eficaciaContra } from '../src/data/tabela-tipos';
 import { ITENS, PERGAMINHOS, item, temItemDef } from '../src/data/itens';
@@ -440,7 +441,10 @@ teste('dupla 2×2: quatro em campo, alvos, golpes em área (×0,75), reposição
 teste('dificuldade muda só a qualidade da IA e os recursos — nunca vida ou dano', () => {
   igual(nivelEfetivo('treinador', 'explorador'), 'novato', 'explorador: um abaixo'); igual(nivelEfetivo('treinador', 'aventureiro'), 'treinador', 'aventureiro: igual'); igual(nivelEfetivo('treinador', 'veterano'), 'lider', 'veterano: um acima');
   igual(nivelEfetivo('novato', 'explorador'), 'novato', 'piso'); igual(nivelEfetivo('conselho', 'veterano'), 'conselho', 'teto');
-  igual(iaUsaItens('novato', 'veterano'), true, 'veterano: todos usam itens'); igual(iaUsaItens('treinador', 'aventureiro'), false, 'treinador comum não usa'); igual(iaUsaItens('lider', 'aventureiro'), true, 'líder usa'); igual(iaUsaItens('lider', 'explorador'), false, 'explorador rebaixa o líder');
+  igual(iaUsaItens('novato', 'veterano'), true, 'veterano: todos usam itens'); igual(iaUsaItens('treinador', 'aventureiro'), false, 'treinador comum não usa'); igual(iaUsaItens('lider', 'aventureiro'), false, 'sem itens definidos, nem o líder usa');
+  // spec 7A: no Aventureiro, quem tem itens só os usa do 8º ginásio em diante (7 insígnias)
+  igual(iaUsaItens('lider', 'aventureiro', { temItens: true, insignias: 6 }), false, 'líder 7 ainda não usa cura'); igual(iaUsaItens('lider', 'aventureiro', { temItens: true, insignias: 7 }), true, 'do 8º ginásio em diante usa');
+  igual(iaUsaItens('treinador', 'aventureiro', { temItens: false, insignias: 8 }), false, 'treinador comum sem itens não usa'); igual(iaUsaItens('lider', 'explorador', { temItens: true, insignias: 8 }), false, 'explorador: líder não usa'); igual(iaUsaItens('lider', 'veterano', { temItens: true, insignias: 0 }), true, 'veterano: sempre');
   const t: TreinadorDef = { id: 't', classe: 'Pescador', nome: 'Tião', sprite: 'pescador', equipe: [{ e: 9005, nv: 20 }], ia: 'treinador', desafio: '', derrota: '', premio: 480 };
   const linha = (dif: 'explorador' | 'aventureiro' | 'veterano') => {
     jogo.save = novoSave(); jogo.opcoes.dificuldade = dif; rng.seed(321);
@@ -459,11 +463,13 @@ teste('IA: escolhas válidas, novato 70/30, treinador prefere super-eficaz, líd
   rng.seed(14);
   // treinador escolhe o golpe de maior dano esperado
   const b = duelo([neutra(9013, 30, 'encontrao')], [neutra(9005, 30, 'encontrao', 'esguicho', 'cara-feia')]);
-  for (let i = 0; i < 20; i++) { const a = escolherAcaoIA(b, { lado: 1, pos: 0 }, 'treinador'); afirmar(a.tipo === 'golpe' && a.slot === 1, 'treinador usa o super-eficaz'); }
+  // treinador prefere o super-eficaz (e se distrai de vez em quando: ~25% das vezes solta um golpe qualquer)
+  let superEficaz = 0; for (let i = 0; i < 400; i++) { const a = escolherAcaoIA(b, { lado: 1, pos: 0 }, 'treinador'); if (a.tipo === 'golpe' && a.slot === 1) superEficaz++; }
+  afirmar(superEficaz / 400 > 0.7 && superEficaz / 400 < 0.95, `treinador usa o super-eficaz na grande maioria das vezes (${superEficaz}/400)`);
   let forte = 0; for (let i = 0; i < 1000; i++) { const a = escolherAcaoIA(b, { lado: 1, pos: 0 }, 'novato'); if (a.tipo === 'golpe' && a.slot === 1) forte++; }
   perto(forte / 1000, 0.3 + 0.7 / 3, 0.05, 'novato: 30% o mais forte + 70% ao acaso');
   // treinador troca em desvantagem grave
-  let trocou = 0; for (let i = 0; i < 100; i++) { const bt = duelo([neutra(9005, 40, 'enxurrada')], [neutra(9013, 30, 'encontrao'), neutra(9001, 30, 'sorver-seiva')]); bt.lados[0].revelados.set(bt.lados[0].equipe[0].uid, new Set(['enxurrada'])); if (escolherAcaoIA(bt, { lado: 1, pos: 0 }, 'treinador').tipo === 'troca') trocou++; }
+  let trocou = 0; for (let i = 0; i < 100; i++) { const bt = duelo([neutra(9005, 40, 'enxurrada')], [neutra(9013, 30, 'encontrao'), neutra(9001, 30, 'sorver-seiva')]); bt.lados[0].revelados.set(bt.lados[0].equipe[0].uid, new Set(['enxurrada'])); bt.vol({ lado: 1, pos: 0 }).turnos = 1; /* já lutou um turno: a criatura de abertura nunca sai antes disso */ if (escolherAcaoIA(bt, { lado: 1, pos: 0 }, 'treinador').tipo === 'troca') trocou++; }
   afirmar(trocou > 45 && trocou < 95, 'treinador troca em desvantagem grave (com acaso): ' + trocou);
   // líder: abre com status contra alvo saudável que não cai num golpe; cura com item quando está por um fio
   const bl = duelo([neutra(9013, 50, 'couraca-de-pedra')], [neutra(9011, 30, 'cantiga-de-ninar', 'lambida-fria')]);
@@ -583,7 +589,9 @@ teste('iniciarBatalha (headless): aplica experiência, prêmio, Diário, evoluç
   jogo.save = novoSave(); const meu = neutra(9003, 15, 'brasa-viva', 'arranhao'); meu.exp = expParaNivel('rapido', 16) - 1; jogo.save.equipe = [meu]; jogo.save.jogador.nome = 'Kauê'; jogo.save.jogador.zona = 'A-R1';
   const t: TreinadorDef = { id: 'teste', classe: 'Pescador', nome: 'Tião', sprite: 'pescador', equipe: [{ e: 9001, nv: 5 }, { e: 9014, nv: 4 }], ia: 'novato', desafio: '', derrota: '', premio: 480 };
   const dinheiro = jogo.save.jogador.dinheiro;
+  let fins = 0; const soltar = bus.on('batalha-fim', () => { fins++; });
   const r = await iniciarBatalha({ tipo: 'treinador', inimigos: t.equipe.map((m) => criarDeMembro(m, t.nome)), treinador: t, arena: 'rota' });
+  igual(fins, 1, "'batalha-fim' emitido uma única vez por batalha");
   igual(r.resultado, 'vitoria', 'resultado'); igual(jogo.save.jogador.dinheiro, dinheiro + 480, 'prêmio em patacas');
   afirmar(jogo.save.diario.visto.includes(9001) && jogo.save.diario.visto.includes(9014), 'Diário: vistos'); afirmar(!jogo.save.diario.capturado.includes(9001), 'visto não é capturado');
   igual(meu.especie, 9004, 'evoluiu ao fim da batalha'); afirmar(meu.nivel >= 16 && jogo.save.diario.capturado.includes(9004), 'evolução registrada no Diário');
@@ -591,6 +599,9 @@ teste('iniciarBatalha (headless): aplica experiência, prêmio, Diário, evoluç
   jogo.save.mochila = { cuia: 40 }; jogo.save.equipe = [neutra(9016, 40, 'cabeca-fria')]; const selv = cria(9014, 3);
   definirPiloto((c) => { c.iniciar(); let n = 0; while (!c.terminou && n++ < 60) { if (c.fase === 'acoes') c.agir({ tipo: 'item', item: 'cuia' }); else pilotoPadrao(c); } });
   const r2 = await iniciarBatalha({ tipo: 'selvagem', inimigos: [selv], arena: 'grama' }); definirPiloto(null);
+  igual(fins, 2, "'batalha-fim' uma vez por batalha (2 batalhas)"); soltar();
+  // o mundo não repete o evento quando o módulo de batalha está presente
+  const encontros = readFileSync(join(RAIZ, 'src/world/encontros.ts'), 'utf8'); afirmar(!encontros.includes("emit('batalha-fim'"), 'src/world/encontros.ts não emite batalha-fim (quem emite é src/battle/index.ts)');
   igual(r2.resultado, 'captura', 'captura'); igual(r2.capturada, selv, 'capturada devolvida'); igual(r2.destino, 'equipe', 'foi para a equipe');
   afirmar(jogo.save.equipe.includes(selv) && jogo.save.diario.capturado.includes(9014) && selv.treinadorOriginal === 'Kauê' && selv.localCaptura === 'A-R1' && selv.nivelCaptura === 3, 'dados da captura'); afirmar(jogo.save.mochila.cuia < 40, 'cuias saem da mochila do save');
   // derrota e equipe sem condições
@@ -601,6 +612,89 @@ teste('iniciarBatalha (headless): aplica experiência, prêmio, Diário, evoluç
   jogo.save.equipe = [neutra(9013, 30)]; igual((await iniciarBatalha({ tipo: 'selvagem', inimigos: [neutra(9007, 30)], arena: 'grama', errante: true })).resultado, 'fuga', 'errante foge');
   jogo.save.equipe = [neutra(9004, 40), neutra(9006, 40)]; igual((await iniciarBatalha({ tipo: 'selvagem', inimigos: [neutra(9014, 6), neutra(9001, 6)], arena: 'pantanal', dupla: true })).resultado, 'vitoria', 'dupla de selvagens');
   forcarPeriodo(null);
+});
+
+/* ============================== 8B. equilíbrio: defeitos corrigidos e peso do nível ============================== */
+teste('criarCriatura nasce com a vida cheia (todas as espécies, vários níveis e com atributos passados em `o`)', () => {
+  rng.seed(404);
+  for (const num of NUMS_BATALHA) for (const nv of [1, 5, 17, 42, 100]) {
+    const c = criarCriatura(num, nv); igual(c.vida, atributos(c).vida, `vida cheia: espécie ${num} nv ${nv}`);
+    const d = criarCriatura(num, nv, { gen: B(15, 0, 15, 0, 15, 0), esf: B(252, 0, 0, 0, 6, 252), personalidade: PERSONALIDADES[nv % PERSONALIDADES.length].id });
+    igual(d.vida, atributos(d).vida, `vida cheia com genes/esforço dados: espécie ${num} nv ${nv}`);
+    for (const g of c.golpes) afirmar(temGolpe(g.id), 'golpe inicial existe');
+  }
+  { const c = criarCriatura(9001, 20, { vida: 9999 }); igual(c.vida, atributos(c).vida, 'vida dada nunca passa do máximo'); }
+  // ganho de esforço que aumenta a vida máxima no meio da batalha leva a vida atual junto (era o "19/20")
+  const gorda: EspecieDef = ex(9101, 'Esforcim', ['comum'], B(40, 40, 40, 40, 40, 40), [[1, 'encontrao']], { esforco: { vida: 3 }, expBase: 1 });
+  registrarEspecies([gorda]);
+  const meu = neutra(9016, 60, 'encontrao'), cheia = atributos(meu).vida;
+  const bt = new Batalha({ tipo: 'treinador', trocaGratis: false, lados: [{ equipe: [meu], nome: 'T' }, { equipe: Array.from({ length: 6 }, () => neutra(9101, 2, 'berro')), nome: 'R' }] });
+  bt.iniciar(); let guarda = 0;
+  while (bt.fase !== 'fim' && guarda++ < 200) { if (bt.fase === 'acoes') bt.executarTurno(bt.pedidos().map((p) => ({ lado: p.lado, pos: p.pos, acao: { tipo: 'golpe', slot: 0 } as Acao }))); else if (bt.fase === 'substituir') bt.substituir(bt.pedidos().map((p) => ({ lado: p.lado, pos: p.pos, para: bt.reservas(p.lado)[0] }))); }
+  igual(bt.resultado, 'vitoria', 'venceu as seis'); afirmar(atributos(meu).vida > cheia, 'o esforço aumentou a vida máxima'); igual(meu.vida, atributos(meu).vida, 'continua com a vida cheia depois de ganhar esforço');
+});
+teste('golpes iniciais: quem já aprendeu golpes de dano nunca nasce só com golpes de status', () => {
+  for (const num of NUMS_BATALHA) for (const nv of [5, 12, 20, 30, 45, 62]) {
+    const e = especie(num), sabe = e.golpes.filter(([n, id]) => n <= nv && temGolpe(id)).map(([, id]) => golpe(id));
+    const tem = criarCriatura(num, nv).golpes.map((g) => golpe(g.id));
+    const danoSabido = new Set(sabe.filter((g) => g.cat !== 'status').map((g) => g.id)).size, dano = tem.filter((g) => g.cat !== 'status').length;
+    afirmar(dano >= Math.min(2, danoSabido), `${e.nome} nv ${nv}: ${dano} golpe(s) de dano, conhecendo ${danoSabido}`);
+    if (sabe.some((g) => g.cat !== 'status' && e.tipos.includes(g.tipo))) afirmar(tem.some((g) => g.cat !== 'status' && e.tipos.includes(g.tipo)), `${e.nome} nv ${nv}: sem golpe de dano do próprio tipo`);
+  }
+});
+teste('abertura: o treinador começa com a 1ª criatura da lista e a IA não a troca antes de ela agir', () => {
+  const t: MembroEquipe[] = [{ e: 9009, nv: 14 }, { e: 9005, nv: 15 }, { e: 9004, nv: 17 }];
+  for (const nivel of NIVEIS_IA) for (let k = 0; k < 40; k++) {
+    rng.seed(900 + k);
+    const rival = t.map((m) => criarDeMembro(m, 'Tainá'));
+    // adversário escolhido para deixar a 1ª do rival em desvantagem grave (é quando a IA mais quer trocar)
+    const bt = new Batalha({ tipo: 'treinador', trocaGratis: false, lados: [{ equipe: [neutra(9007, 22, 'relampago', 'choquinho'), neutra(9013, 20)], nome: 'J' }, { equipe: rival, nome: 'Tainá' }] });
+    const evs = bt.iniciar();
+    const entra = evs.find((e) => e.t === 'entra' && e.lado === 1);
+    afirmar(entra && entra.t === 'entra' && entra.indice === 0 && entra.criatura.uid === rival[0].uid, `abre com a 1ª da lista (${nivel})`);
+    igual(bt.lados[1].ativos[0], 0, 'índice 0 em campo');
+    const a = escolherAcaoIA(bt, { lado: 1, pos: 0 }, nivel);
+    afirmar(a.tipo !== 'troca', `a IA ${nivel} não troca a criatura de abertura antes do primeiro golpe`);
+    // quem entra depois de um desmaio também luta um turno antes de poder sair
+    bt.executarTurno([{ lado: 0, pos: 0, acao: { tipo: 'golpe', slot: 0 } }, { lado: 1, pos: 0, acao: a }]);
+  }
+});
+teste('peso do nível: com as mesmas espécies e a mesma IA, mais nível = mais vitórias (monotonia) e 10 níveis decidem', () => {
+  const linha = [9002, 9004, 9006, 9017], N = 80, base = 30;
+  const taxa = (delta: number): number => {
+    let v = 0;
+    for (let i = 0; i < N; i++) {
+      rng.seed(7000 + i);
+      const a = linha.map((n) => cria(n, base + delta)), b = linha.map((n) => cria(n, base));
+      const bt = new Batalha({ tipo: 'treinador', trocaGratis: false, ganhaExp: false, lados: [{ equipe: a, nome: 'A' }, { equipe: b, nome: 'B' }] });
+      resolverComIA(bt, ['treinador', 'treinador']); if (bt.resultado === 'vitoria') v++;
+    }
+    return v / N;
+  };
+  const deltas = [-10, -5, -2, 0, 2, 5, 10], r = deltas.map(taxa);
+  console.log('      vitórias por diferença de nível: ' + deltas.map((d, i) => `${d > 0 ? '+' : ''}${d}: ${(100 * r[i]).toFixed(0)}%`).join(' · '));
+  for (let i = 1; i < r.length; i++) afirmar(r[i] >= r[i - 1] - 0.05, `monotonia quebrada entre ${deltas[i - 1]} e ${deltas[i]}: ${r[i - 1]} → ${r[i]}`);
+  afirmar(r[3] > 0.3 && r[3] < 0.7, `níveis iguais ficam perto de 50% (${r[3]})`);
+  afirmar(r[5] > r[3] + 0.15, `5 níveis a mais pesam de verdade (${r[3]} → ${r[5]})`);
+  afirmar(r[6] >= 0.95, `10 níveis acima vence ≥ 95% (${r[6]})`); afirmar(r[0] <= 0.05, `10 níveis abaixo perde ≥ 95% (${r[0]})`);
+  // os atributos e o dano crescem sempre com o nível
+  for (const num of [9001, 9004, 9013]) for (let nv = 2; nv <= 100; nv++) { const x = atributosDe(especie(num).base, B(8, 8, 8, 8, 8, 8), B(0, 0, 0, 0, 0, 0), nv, ''), y = atributosDe(especie(num).base, B(8, 8, 8, 8, 8, 8), B(0, 0, 0, 0, 0, 0), nv - 1, ''); for (const s of STATS) afirmar(x[s] >= y[s], `atributo ${s} não cai com o nível`); afirmar(x.vida > y.vida, 'a vida sobe a cada nível'); afirmar(danoBase(nv, 60, x.atq, 50) >= danoBase(nv - 1, 60, y.atq, 50), 'o dano não cai com o nível'); }
+});
+teste('escada da IA: com as mesmas equipes, líder vence mais que treinador e treinador mais que novato; conselho não fica atrás do líder', () => {
+  const eqA = () => [9002, 9004, 9006, 9008, 9012].map((n) => cria(n, 40)), eqB = () => [9010, 9015, 9017, 9018, 9013].map((n) => cria(n, 40));
+  const duelar = (x: NivelIA, y: NivelIA, n: number): number => {
+    let v = 0;
+    for (let i = 0; i < n; i++) {
+      rng.seed(8100 + i);
+      const inv = i % 2 === 1, troca = i % 4 >= 2;
+      const bt = new Batalha({ tipo: 'treinador', trocaGratis: false, ganhaExp: false, lados: [{ equipe: troca ? eqB() : eqA(), nome: 'A' }, { equipe: troca ? eqA() : eqB(), nome: 'B' }] });
+      resolverComIA(bt, inv ? [y, x] : [x, y]); if ((bt.resultado === 'vitoria') !== inv) v++;
+    }
+    return v / n;
+  };
+  const tn = duelar('treinador', 'novato', 200), lt = duelar('lider', 'treinador', 300), cl = duelar('conselho', 'lider', 300), ct = duelar('conselho', 'treinador', 300);
+  console.log(`      treinador×novato ${(100 * tn).toFixed(0)}% · líder×treinador ${(100 * lt).toFixed(0)}% · conselho×líder ${(100 * cl).toFixed(0)}% · conselho×treinador ${(100 * ct).toFixed(0)}%`);
+  afirmar(tn > 0.55, `treinador vence o novato (${tn})`); afirmar(lt > 0.5, `líder vence o treinador (${lt})`); afirmar(ct > 0.5, `conselho vence o treinador (${ct})`); afirmar(cl >= 0.47, `conselho não fica atrás do líder (${cl})`);
 });
 
 /* ============================== 9. regras do projeto ============================== */

@@ -6,6 +6,9 @@ const b = (vida: number, atq: number, def: number, atqEsp: number, defEsp: numbe
 /**
  * Espécies 001-060 do Diário de Campo (tabela 6.4 do spec), escritas à mão.
  * Somas de atributos: básico 280–330 · médio/sem evolução 400–480 · final 500–540.
+ * Regra do spec 4.5 (equilíbrio): a forma final de uma linha curta que evolui cedo fica na faixa média — teto pela
+ * evolução: até o nível 12 → 420 · até 20 → 440 · até 24 → 450 · até 26 → 460 · até 28 → 470 · até 33 → 480 · 34–35 → 510.
+ * O casulo da linha do Lagartim (evolui no 7) fica em 330. Lista das mudanças em docs/EQUILIBRIO.md.
  * Iniciais: 310 → 405 → 530 nas três linhas, com papéis diferentes (tanque físico, veloz misto, especial resistente).
  */
 export const especies: EspecieDef[] = [

@@ -5,6 +5,9 @@ import type { TreinadorDef, MembroEquipe } from '../../core/tipos';
  * Níveis: Mestres com ás 41–44, Campeão com ás 46 (acima do líder 8, ás 40; abaixo do líder 9, 47–49).
  * Todos usam cura (spec 7A: do 8º ginásio em diante). Só estágios finais (nível ≥ 36) e sem os iniciais nem lendários.
  * Cada Mestre junta dois tipos e leva uma ou duas criaturas que cobrem a fraqueza comum do tema.
+ * EQUILÍBRIO (docs/EQUILIBRIO.md): golpes escolhidos à mão e tamanho das equipes (4, 4, 4, 4 e 4) definidos pelo simulador
+ * para a sequência inteira — cinco lutas sem cura grátis — ficar em 35–55% de vitória para o jogador de referência.
+ * Com 5–6 criaturas por Mestre a sequência não passava de 0–2%, mesmo com cada luta isolada em 80–95%.
  */
 const mestre = (id: string, classe: string, nome: string, sprite: string, equipe: MembroEquipe[], premio: number, desafio: string, derrota: string, extra: Partial<TreinadorDef> = {}): TreinadorDef =>
   ({ id, classe, nome, sprite, equipe, ia: 'lider', premio, desafio, derrota, itens: ['garrafada', 'garrafada'], musica: 'batalha-lider', ...extra });
@@ -12,7 +15,8 @@ const mestre = (id: string, classe: string, nome: string, sprite: string, equipe
 export const TREINADORES_LIGA: TreinadorDef[] = [
   /*
    * 1 · Mestra Maré (Rio/Veneno) — pescadora de mangue. Fraquezas do tema: Trovão e Mata (no Rio), Terra e Mente (no Veneno).
-   * Cobertura: Jararacuçu (Veneno/Terra) e o ás Jaú-Gigante (Rio/Terra) anulam Trovão; os venenosos castigam quem vem de Mata.
+   * Cobertura: Jararacuçu (Veneno/Terra) e o ás Jaú-Gigante (Rio/Terra) anulam Trovão; os venenosos castigam quem vem de Mata;
+   * o Sapo-Cururuí nina o adversário com Cantiga de Ninar.
    */
   mestre('liga-1', 'Mestra', 'Maré', 'cl-pescador',
     [
@@ -38,7 +42,8 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
     'Rachou o meu sino… e que som bonito ele fez. Vá, a neblina do Pajé está à sua espera.'),
   /*
    * 3 · Pajé Neblina (Mente/Assombro) — contador de lendas. Fraqueza comum: Assombro (bate em Mente e em Assombro).
-   * Cobertura: Jaguatiricão (Comum/Assombro) é imune a Assombro; Polvão (Rio/Mente) segura Brasa; o ás Noitão fecha com sono e susto.
+   * Cobertura: Jaguatiricão (Comum/Assombro) é imune a Assombro; Polvão (Rio/Mente) segura Brasa; o ás Noitão fecha com
+   * sono (Olho de Coruja) e susto.
    */
   mestre('liga-3', 'Pajé', 'Neblina', 'npc-idoso',
     [
@@ -51,8 +56,8 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
     'Essa história eu não conhecia: a do desafiante que atravessou a neblina. Vou contar aos meus netos. A Pampa é a próxima porteira.'),
   /*
    * 4 · Domadora Pampa (Comum/Ginga) — treinadora de bichos de rodeio. Fraquezas: Ginga (no Comum); Vento, Mente e Encanto (na Ginga).
-   * Cobertura: Bugio-Trovão (Ginga/Trovão) derruba Vento; Emaçu (Terra/Ginga) e Capivarona (Comum/Rio) seguram Brasa e Pedra;
-   * contra Assombro (imune a Comum e a Ginga) ela conta com o Trovão do Bugio e a água da Capivarona.
+   * Cobertura: Emaçu (Terra/Ginga) e Capivarona (Comum/Rio) seguram Brasa e Pedra; contra Assombro (imune a Comum e a
+   * Ginga) ela conta com a água da Capivarona e o Bico Furador do Seriemão.
    */
   mestre('liga-4', 'Domadora', 'Pampa', 'cl-vaqueiro',
     [
@@ -64,15 +69,14 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
     'Eita, chegou longe! Sou a Pampa, última porteira antes do Campeão. Bicho meu não é domado no grito: é no compasso. Segura o tranco, que o rodeio vai começar!',
     'Me derrubou da sela, e com classe! Atrás daquela porta está o Cacique Aracê. Tire o chapéu ao entrar.', { itens: ['garrafada', 'elixir-andiroba'] }),
   /*
-   * 5 · Campeão Cacique Aracê — equipe mista de 6, com uma criatura de tipo Lenda não lendária (Pirarucão, Rio/Lenda) como ás.
-   * Cada membro cobre a fraqueza de outro: Antão (Terra/Mata) anula Trovão para as aves e para o Pirarucão; Poraquê (Rio/Trovão)
-   * derruba Vento e Rio; Leão-Dourado (Brasa/Ginga) queima Mata, Geada e Inseto que ameaçam o Antão e o ás; Urubu-Rei
-   * (Vento/Assombro) é imune a Comum, Ginga e Terra; Gaviãozão (Comum/Vento) abre o jogo com velocidade.
+   * 5 · Campeão Cacique Aracê — equipe mista com uma criatura de tipo Lenda não lendária (Pirarucão, Rio/Lenda) como ás.
+   * Cada membro cobre a fraqueza de outro: Gaviãozão (Comum/Vento) abre o jogo com velocidade; Poraquê (Rio/Trovão)
+   * derruba Vento e Rio e paralisa; Leão-Dourado (Brasa/Ginga) queima Mata, Geada e Inseto que ameaçam o ás.
+   * É a única IA de nível "conselho" do mapa A: troca na hora certa e guarda o Pirarucão para o fim.
    */
   { id: 'liga-5', classe: 'Campeão', nome: 'Cacique Aracê', sprite: 'npc-homem-3', ia: 'conselho', premio: 9200, musica: 'batalha-conselho',
     equipe: [
       { e: 12, nv: 42, golpes: ['bico-furador', 'rasante', 'chuva-de-penas'] },
-      { e: 98, nv: 42, golpes: ['casco-pesado', 'espinho-de-mandacaru', 'erva-de-passarinho'] },
       { e: 116, nv: 43, golpes: ['zunido-de-alta-tensao', 'jato-de-igarape', 'choque-de-poraque'] },
       { e: 68, nv: 44, golpes: ['patada-ardente', 'meia-lua'] },
       { e: 112, nv: 46, golpes: ['rabanada', 'cabecada', 'rabada'] },

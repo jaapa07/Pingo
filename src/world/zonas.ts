@@ -8,9 +8,29 @@ let _zonas: Map<string, ZonaDef> | undefined;
 function zonas() {
   if (_zonas) return _zonas;
   _zonas = new Map();
-  for (const m of Object.values(mods)) for (const v of Object.values(m)) if (v && typeof v === 'object' && Array.isArray((v as ZonaDef).mapaChars)) _zonas.set((v as ZonaDef).id, v as ZonaDef);
+  for (const [arquivo, m] of Object.entries(mods)) for (const v of Object.values(m)) {
+    if (!v || typeof v !== 'object' || !Array.isArray((v as ZonaDef).mapaChars)) continue;
+    const z = v as ZonaDef, erro = erroDeZona(z);
+    // uma zona com defeito é pulada (e avisada), em vez de derrubar o carregamento do mundo inteiro
+    if (erro) { console.error(`[mundo] zona "${z.id ?? '?'}" (${arquivo}) IGNORADA: ${erro}. Os caminhos que levam a ela mostram "caminho em obras".`); continue; }
+    _zonas.set(z.id, z);
+  }
   return _zonas;
 }
+/** defeito que impede a zona de ser montada (ou null). Exportada para o verificador e os testes. */
+export function erroDeZona(z: ZonaDef): string | null {
+  if (typeof z.id !== 'string' || !z.id) return 'sem id';
+  if (!z.mapaChars.length) return 'grade vazia';
+  const largura = z.mapaChars[0]?.length ?? 0;
+  if (!largura) return 'primeira linha da grade vazia';
+  const ruim = z.mapaChars.findIndex((l) => typeof l !== 'string' || l.length !== largura);
+  if (ruim >= 0) return `linha ${ruim} da grade tem ${typeof z.mapaChars[ruim] === 'string' ? z.mapaChars[ruim].length : 0} colunas (esperado ${largura})`;
+  if (!Array.isArray(z.warps)) return 'sem a lista de warps';
+  return null;
+}
+/** o destino do warp existe? (zona ausente ou ignorada por defeito = caminho em obras) */
+export const zonaExiste = (id: string): boolean => zonas().has(id);
+export const AVISO_EM_OBRAS = 'Caminho em obras: esta passagem ainda não leva a lugar nenhum.';
 export const zonaDef = (id: string): ZonaDef | undefined => zonas().get(id);
 export const listaZonas = (): ZonaDef[] => [...zonas().values()];
 

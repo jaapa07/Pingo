@@ -23,20 +23,19 @@ export const TREINADORES_GINASIO_08: TreinadorDef[] = [
     desafio: 'Quarenta anos de mato e nunca vi desafiante passar pelos cipós tão ligeiro. Deixa eu ver de perto!', derrota: 'Ligeiro mesmo.', depois: 'A Dona Buriti cura a equipe com seiva e com garrafada no meio da luta. Não deixe a batalha se arrastar.' },
   /*
    * LÍDER — Dona Buriti (Mata). Fraquezas da Mata: Brasa, Geada, Vento, Inseto e Veneno.
-   * Estratégia: a Jabutipiranga (Mata/Pedra) abre levantando a Couraça de Pedra e responde a Brasa, Vento, Inseto e
-   * Geada com Soterrar; o Antão (Terra/Mata) semeia Erva-de-Passarinho para drenar e bate em Brasa e Veneno com Casco
-   * Pesado; a Jataí-Rainha adormece com Pólen Dorminhoco e cobre os tipos Ginga e Lenda com Poeira de Estrela; o
-   * Serelepão (Geada/Mata) é a resposta a Vento e a outros Mata com Mordida Gelada. O ás é o Bandeirão (Mata/Terra) de
-   * nível 40: Voçoroca contra Brasa e Veneno, Espinho de Mandacaru no mesmo tipo e Sorver Seiva para se manter de pé.
-   * Cura: 2 Garrafadas (o 8º ginásio é o primeiro em que o líder usa itens no Aventureiro); o ás segura uma Pitanga.
+   * Golpes definidos pelo simulador de equilíbrio (docs/EQUILIBRIO.md). O Jabutipiranga (Mata/Pedra) abre e apaga
+   * Brasa, Vento e Inseto com Soterrar; o Antão (Terra/Mata) castiga Brasa e Veneno com Casco Pesado; a Jataí-Rainha
+   * (Inseto/Encanto) responde a Mata alheia; o Serelepão (Geada/Mata) derruba Vento com Mordida Gelada.
+   * O ás é o Bandeirão (Mata/Terra) de nível 40: Voçoroca, Espinho de Mandacaru e Sorver Seiva; segura uma Pitanga.
+   * Cura: 2 Garrafadas — este é o 8º ginásio, então no Aventureiro ela JÁ usa os remédios (spec 7A).
    */
   { id: 'lider-08', classe: 'Líder', nome: 'Dona Buriti', sprite: 'lider-04', ia: 'lider', premio: 4000, insignia: 8, musica: 'batalha-lider', flag: 'ginasio-08-vencido',
     itens: ['garrafada', 'garrafada'],
     equipe: [
       { e: 82, nv: 38, golpes: ['soterrar', 'folhas-ao-vento', 'couraca-de-pedra'] },
-      { e: 98, nv: 38, golpes: ['casco-pesado', 'pisao-de-anta', 'erva-de-passarinho'] },
-      { e: 150, nv: 38, golpes: ['poeira-de-estrela', 'zumbido', 'polen-dorminhoco'] },
-      { e: 138, nv: 38, golpes: ['mordida-gelada', 'chicote-de-cipo', 'chuva-de-sementes'] },
+      { e: 98, nv: 38, golpes: ['casco-pesado', 'pisao-de-anta'] },
+      { e: 150, nv: 38, golpes: ['poeira-de-estrela', 'zumbido'] },
+      { e: 138, nv: 38, golpes: ['mordida-gelada', 'chicote-de-cipo'] },
       { e: 3, nv: 40, golpes: ['vocoroca', 'espinho-de-mandacaru', 'sorver-seiva', 'patada'], item: 'pitanga' },
     ],
     desafio: 'Menino, menina… senta aí que eu vou contar: toda planta tem um veneno e um remédio. Vamos ver qual dos dois você trouxe!',

@@ -98,7 +98,7 @@ const TRILHA_DOS_CIPOS: TreinadorDef[] = [
 const GRUTA_DO_ECO: TreinadorDef[] = [
   t('A-GE-1', 'Garimpeiro', 'Zé Bateia', 'cl-garimpeiro', [{ e: 167, nv: 19 }, { e: 33, nv: 19 }, { e: 30, nv: 19 }], 864,
     'A saída é minha. Achei primeiro. Quer passar? Garimpa uma vitória!', 'Só achei cascalho.', 'Porto Sereia tem cais, tem feira e tem ginásio do tipo Rio. Leve Mata ou Trovão.', { ia: 'treinador' }),
-  t('A-GE-2', 'Montanhista', 'Dona Estalactite', 'cl-montanhista', [{ e: 167, nv: 18 }, { e: 167, nv: 18 }, { e: 81, nv: 19 }], 792,
+  t('A-GE-2', 'Montanhista', 'Dona Estalactite', 'cl-montanhista', [{ e: 167, nv: 17 }, { e: 167, nv: 17 }, { e: 81, nv: 18 }], 792,
     'Ite ou ita? Stalactite desce, estalagmite sobe. E você, cai!', 'Caí eu. De cima.', 'O corredor ali ao norte leva ao salão da saída. O resto é passeio — com morcego.', { ia: 'treinador' }),
   t('A-GE-3', 'Pipeiro', 'Eco-Eco', 'cl-crianca-m', [{ e: 30, nv: 17 }, { e: 30, nv: 17 }], 320,
     'BATALHA! …alha! …lha! Ouviu? Até a gruta quer!', 'Perdi! …di! …di!', 'Morceguim é Vento e Assombro. Golpe Comum passa direto por ele, feito fumaça.'),
@@ -156,9 +156,10 @@ const P2 = 'De novo?! Tá, tá bom. Você treina… direitinho. Mas eu treino MA
 const D3 = 'Remo no cinto e luz no cais, é? Antes de ver o mar aberto, {JOGADOR}, você vai ver estrela. Minha equipe evoluiu — e eu também!';
 const P3 = 'Hunf. Perdi limpo, eu sei. …Aqueles capangas na Usina eram covardes com as criaturas. Você fez certo. Não conta para ninguém que eu disse isso.';
 const RIVAL: TreinadorDef[] = [
-  rival(1, 'brasa', [{ e: 4, nv: 5 }], 300, D1, P1),
-  rival(1, 'rio', [{ e: 7, nv: 5 }], 300, D1, P1),
-  rival(1, 'mata', [{ e: 1, nv: 5 }], 300, D1, P1),
+  // 1º duelo: no nível 5 a Tainá ainda não usa o golpe do tipo do inicial (senão a vantagem de tipo decide sozinha: o simulador dava 7–37% de vitória)
+  rival(1, 'brasa', [{ e: 4, nv: 5, golpes: ['encontrao', 'berro'] }], 300, D1, P1),
+  rival(1, 'rio', [{ e: 7, nv: 5, golpes: ['encontrao', 'charme-do-boto'] }], 300, D1, P1),
+  rival(1, 'mata', [{ e: 1, nv: 5, golpes: ['arranhao', 'cara-feia'] }], 300, D1, P1),
   rival(2, 'brasa', [{ e: 10, nv: 14 }, { e: 24, nv: 15 }, { e: 5, nv: 17 }], 960, D2, P2),
   rival(2, 'rio', [{ e: 10, nv: 14 }, { e: 17, nv: 15 }, { e: 8, nv: 17 }], 960, D2, P2),
   rival(2, 'mata', [{ e: 10, nv: 14 }, { e: 41, nv: 15 }, { e: 2, nv: 17 }], 960, D2, P2),

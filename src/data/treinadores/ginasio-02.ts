@@ -16,11 +16,11 @@ export const TREINADORES_GINASIO_02: TreinadorDef[] = [
     desafio: 'Conheço cada galho desta copa. E cada ferrão também!', derrota: 'Ai! Dessa vez a ferroada foi em mim.', depois: 'A de 6 nós leva até a Lia. Ela tece armadilha em batalha do mesmo jeito que tece ponte.' },
   /*
    * LÍDER — Lia Teia (Inseto). Fraquezas do Inseto: Brasa, Vento e Pedra.
-   * Estratégia: a Caranguejeirinha (Inseto/Veneno) abre com Teia Pegajosa para tirar a velocidade do desafiante e
-   * envenena com Espinho Peçonhento; o Vagalumim (Inseto/Trovão) derruba as aves com Choquinho; o Cupinzim
-   * (Inseto/Pedra) apaga Brasa e Vento com Pedrada. O ás é a Pintinhas (Inseto/Encanto) de nível 17, que não evolui: amolece o
-   * ataque do adversário com Cafuné e bate com Estrela-Guia e Ferroada (estágio final como a Bruxaluz só cabe do nível 36 em diante).
-   * Cura: 1 Garrafada definida (o motor só libera itens a partir do 8º ginásio no Aventureiro); a Pintinhas segura um Cupuaçu contra sono.
+   * Equipe e golpes definidos pelo simulador de equilíbrio (docs/EQUILIBRIO.md). O Cupinzim (Inseto/Pedra) abre e
+   * apaga Brasa e Vento com Pedrada; o Vagalumim (Inseto/Trovão) derruba as aves com Choquinho, que ainda paralisa;
+   * o ás é a Caranguejeirinha (Inseto/Veneno) de nível 17: prende com Formigueiro, envenena com Espinho Peçonhento
+   * e tira a velocidade com Teia Pegajosa.
+   * Cura: 1 Garrafada definida, que o motor só libera a partir do 8º ginásio no Aventureiro.
    */
   { id: 'lider-02', classe: 'Líder', nome: 'Lia Teia', sprite: 'lider-02', ia: 'lider', premio: 1700, insignia: 2, musica: 'batalha-lider', flag: 'ginasio-02-vencido',
     itens: ['garrafada'],

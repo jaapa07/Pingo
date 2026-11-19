@@ -18,12 +18,12 @@ export const TREINADORES_GINASIO_03: TreinadorDef[] = [
     equipe: [{ e: 115, nv: 19 }, { e: 73, nv: 19 }, { e: 107, nv: 20 }],
     desafio: 'Última eclusa antes do capitão. Daqui ninguém passa seco!', derrota: 'Encharcada eu já estava mesmo.', depois: 'O Marujo foi campeão de remo. Ele gosta de começar devagar e terminar em corredeira.' },
   /*
-   * LÍDER — Marujo Netuno Silva (Rio). Fraquezas do Rio: Mata e Trovão.
-   * Estratégia: a Garcinha (Vento/Rio) abre jogando areia e castiga os tipos Mata com Lufada; a Medusim (Rio/Veneno)
-   * envenena com Leite de Cururu e bate em Mata com Cuspe Ácido; o Caranguejim leva Bola de Barro para os tipos Trovão;
-   * o Poraquim (Rio/Trovão) paralisa com Choque de Poraquê e vence os outros Rio. O ás é a Botorosa de nível 22, que
-   * se recupera com Água de Cacimba e bate com Jato de Igarapé e Rabanada.
-   * Cura: 2 Garrafadas definidas (no Aventureiro o motor só libera itens de cura a partir do 8º ginásio); a Botorosa segura um Pequi contra paralisia.
+   * LÍDER — Marujo Netuno Silva (Rio). Fraquezas do Rio: Trovão e Mata.
+   * Equipe e golpes definidos pelo simulador de equilíbrio (docs/EQUILIBRIO.md). O Medusim (Rio/Veneno) abre e
+   * castiga quem vem de Mata com Cuspe Ácido; o Caranguejim segura o tranco com Fincar-Pé; o Poraquim (Rio/Trovão)
+   * responde a outros Rio e paralisa com Choque de Poraquê. O ás é a Botorosa de nível 22: Jato de Igarapé no mesmo
+   * tipo, Rabanada e Piscadela; segura um Pequi contra paralisia.
+   * Cura: 2 Garrafadas definidas, que o motor só libera a partir do 8º ginásio no Aventureiro.
    */
   { id: 'lider-03', classe: 'Líder', nome: 'Marujo Netuno Silva', sprite: 'lider-03', ia: 'lider', premio: 2200, insignia: 3, musica: 'batalha-lider', flag: 'ginasio-03-vencido',
     itens: ['garrafada', 'garrafada'],

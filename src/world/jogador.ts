@@ -3,7 +3,7 @@ import type { Dir, Warp, Gatilho } from '../core/tipos';
 import { jogo, cond, flag, setFlag } from '../core/estado';
 import { rng } from '../core/rng';
 import { M, ocupar, sfx, atorEm, quadros } from './vivo';
-import { DX, DY, SALIENCIA, zonaDef } from './zonas';
+import { DX, DY, SALIENCIA, zonaDef, zonaExiste, AVISO_EM_OBRAS } from './zonas';
 import { entrada, falar, abrirTela } from './deps';
 import type { OpMover } from './ator';
 import { mecanicas, cinematicas } from './registro';
@@ -49,7 +49,7 @@ function tentarAndar(d: Dir) {
   const j = M.jog, z = M.zv, tx = j.x + DX[d], ty = j.y + DY[d], modo = jogo.save.jogador.modo, e = entrada();
   if (!z.dentro(tx, ty)) {
     const w = z.warp(j.x, j.y);
-    if (w && !ehEntrada(w) && w.tipo !== 'buraco') { if (cond(w.requer) && !emObras(w)) void usarWarp(w); else recusar(w.recusa ?? 'O caminho está fechado por enquanto.', d); } else bater();
+    if (w && !ehEntrada(w) && w.tipo !== 'buraco') { if (!zonaExiste(w.para.zona)) recusar(AVISO_EM_OBRAS, d); else if (cond(w.requer) && !emObras(w)) void usarWarp(w); else recusar(w.recusa ?? 'O caminho está fechado por enquanto.', d); } else bater();
     return;
   }
   const portao = z.portao(tx, ty);
@@ -57,6 +57,7 @@ function tentarAndar(d: Dir) {
   const w = z.warp(tx, ty);
   if (w && !cond(w.requer) && z.ch(tx, ty) !== 'd') { recusar(w.recusa ?? 'O caminho está fechado por enquanto.', d); return; }
   if (w && emObras(w)) { recusar(EM_OBRAS[w.tipo as 'trem' | 'saveiro'], d); return; }
+  if (w && !zonaExiste(w.para.zona)) { recusar(AVISO_EM_OBRAS, d); return; }
   if (atorEm(tx, ty)) { bater(); return; }
   const ch = z.ch(tx, ty);
   if (modo === 'remo') {
@@ -121,6 +122,7 @@ function aoChegar() {
 /** troca de zona por warp, com som e transição conforme o tipo */
 export function usarWarp(w: Warp): Promise<void> {
   return ocupar(async () => {
+    if (!zonaExiste(w.para.zona)) { await falar(AVISO_EM_OBRAS); return; }
     const j = M.jog, t = w.tipo ?? 'borda';
     if (t === 'porta') sfx('porta'); else if (t === 'escada' || t === 'caverna') sfx('escada');
     else if (t === 'buraco') { sfx('pulo-saliencia'); await quadros(16, (i) => { j.ey = i; j.visivel = i < 12; }); j.ey = 0; }

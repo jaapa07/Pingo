@@ -70,8 +70,14 @@ json.lideres = lideres;
 out();
 
 /* ------------------------------ 3. treinadores de rota ------------------------------ */
-/** passo em que o treinador é enfrentado: o primeiro cujo líder tem ás ≥ o ás do treinador */
-function passoDoTreinador(t: TreinadorDef): number { const m = asDe(t); for (let k = 1; k <= 8; k++) if (m <= asDoChefe(d, k)) return k; return m <= asDoChefe(d, PASSO_LIGA) ? PASSO_LIGA : 99; }
+/** passo em que o treinador é enfrentado */
+function passoDoTreinador(t: TreinadorDef): number {
+  const g = /^g(\d\d)-/.exec(t.id); if (g) return Number(g[1]); // turma do ginásio N: enfrentada logo antes do líder N
+  const m = asDe(t);
+  // rota: quem tem o ás já no nível do ás de um líder está no trecho DEPOIS dele
+  for (let k = 1; k <= 8; k++) if (m < asDoChefe(d, k)) return k;
+  return m <= asDoChefe(d, PASSO_LIGA) ? PASSO_LIGA : 99;
+}
 const inicialContraRival = (id: string): number | null => (id.endsWith('-brasa') ? 1 : id.endsWith('-rio') ? 4 : id.endsWith('-mata') ? 7 : null);
 function equipeDeRota(t: TreinadorDef, ini: number, passo: number): { e: number; nv: number }[] {
   const as = Math.max(5, Math.min(asDoJogador(d, passo), asDe(t) + 1));

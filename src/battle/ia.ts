@@ -7,6 +7,16 @@
  *    nesta batalha, quantas reservas restam e quais criaturas já apareceram. Atributos do adversário são ESTIMADOS a partir
  *    da espécie e do nível (genes médios, sem esforço, sem personalidade) — nunca lidos da instância.
  * O acaso da IA também passa pelo `rng`. A dificuldade muda apenas o nível da IA e o uso de itens; nunca vida ou dano.
+ *
+ * A escada (cada degrau vence mais que o anterior com as mesmas equipes — números em docs/EQUILIBRIO.md):
+ *  - novato: 70% golpe ao acaso, 30% o mais forte;
+ *  - treinador: prefere o golpe forte e super-eficaz (poder × eficácia × mesmo-tipo, sem conta de atributos), distrai-se
+ *    uma vez em quatro e troca em desvantagem grave;
+ *  - líder: pensa o 1×1 como uma corrida (quem derruba quem primeiro) e dá valor a status, reforços, cura e troca pelo
+ *    que mudam nessa corrida; usa remédios (quando a regra de itens permite); erra pouco;
+ *  - conselho: a mesma conta sem deslizes, com estimativa mais fina do adversário, troca mais cedo, prefere o nocaute
+ *    mais seguro (prioridade quando é mais lento), prepara varridas e guarda o ás para o fim.
+ * Nenhum nível troca a criatura que acabou de entrar antes de ela agir um turno: quem abre a batalha é sempre a 1ª da lista.
  */
 import type { CriaturaInst, Opcoes, Stat, StatusId, TipoId } from '../core/tipos';
 import { rng } from '../core/rng';
@@ -286,7 +296,16 @@ function itemUtil(b: Batalha, p: Pos): Acao | null {
   return null;
 }
 
-export const AJ = { troca: true, as: true, status: true, margemL: 0.45, margemC: 0.3, distracaoTreinador: 0.15, deslizeLider: 0.1, folgaAs: 0.5, varrida: 0.05 };
+/**
+ * Ajustes finos da IA (medidos em tools/sim-equilibrio.ts; ver docs/EQUILIBRIO.md):
+ *  - distracaoTreinador: chance de o treinador comum soltar um golpe qualquer em vez do melhor;
+ *  - deslizeLider: chance de o líder escolher outro golpe que não o melhor (o conselho não erra);
+ *  - margemL / margemC: quanto a reserva precisa ser melhor para líder / conselho trocarem;
+ *  - folgaAs: o ás do conselho só sai antes do fim se for melhor que as outras opções por esta folga;
+ *  - varrida: valor que o conselho dá a um reforço de atributo por adversária que ainda resta;
+ *  - troca / status / as: chaves de estudo (desligam trocas, golpes de status e a guarda do ás).
+ */
+export const AJ = { troca: true, as: true, status: true, margemL: 0.45, margemC: 0.3, distracaoTreinador: 0.25, deslizeLider: 0.1, folgaAs: 0.5, varrida: 0.05 };
 /* ------------------------------ duelo 1×1 (líder e conselho) ------------------------------ */
 /**
  * Líder e Conselho pensam o 1×1 como uma CORRIDA: quem derruba quem primeiro, com o que cada ação muda nessa conta

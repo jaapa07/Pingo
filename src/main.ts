@@ -13,6 +13,7 @@ import { jogo, novoSave } from './core/estado';
 import { rng } from './core/rng';
 import { input, iniciarInput, pollInput } from './core/input';
 import { plataforma } from './core/plataforma';
+import './core/offline';
 import * as save from './core/save';
 import { telas, registrarTela, criarTela, temTela } from './ui/telas';
 import { iniciarPalco, palco } from './ui/palco';

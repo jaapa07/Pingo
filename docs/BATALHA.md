@@ -16,7 +16,7 @@ Spec: seções 6.1 (tipos), 7 (batalha), 8 (itens). Jogabilidade clássica 1×1 
 - Experiência: `floor(expBase·Nv/7)` (×1,5 treinador), dividida entre participantes; curvas `rapido` (0,8·n³), `medio` (n³), `lento` (1,25·n³). Esforço: ganho da espécie derrotada, máx. 252 por atributo e 510 total.
 - Estágios de atributo −6…+6; precisão/evasão; confusão, preso, atordoado; 6 status principais (o **encantado**: 50% de chance de, no lugar do seu golpe, imitar o último golpe usado pelo adversário; cura em 2–4 turnos).
 - Climas: sol (Brasa ×1,5, Rio ×0,5), chuva (Rio ×1,5, Brasa ×0,5), garoa gelada (dano leve a não-Geada), névoa (precisão ×0,8, exceto Assombro/Mente), poeira (dano leve a não-Terra/Pedra/Ferro).
-- Dificuldade (`jogo.opcoes.dificuldade`): muda a QUALIDADE da IA e os recursos (explorador: IA um nível abaixo, +1 item de cura ao jogador por posto; veterano: IA um nível acima, treinadores usam itens, sem trocar depois de nocaute "de graça"). Nunca altera vida/dano. DECISÃO DO AUTOR: **Aventureiro é o modo recomendado e o padrão** — luta equilibrada, em que é possível ganhar e perder, exige estratégia; rival, líderes e Conselho têm nível adequado à curva (seção 4.5) e usam itens de cura (quem tem `itens` definidos os usa em Aventureiro e Veterano, mas no Aventureiro só do 8º ginásio em diante: 7+ insígnias), como nos jogos clássicos.
+- Dificuldade (`jogo.opcoes.dificuldade`): muda a QUALIDADE da IA e os recursos (explorador: IA um nível abaixo, +1 item de cura ao jogador por posto; veterano: IA um nível acima, treinadores usam itens, sem trocar depois de nocaute "de graça"). Nunca altera vida/dano. DECISÃO DO AUTOR: **Aventureiro é o modo recomendado e o padrão** — luta equilibrada, em que é possível ganhar e perder, exige estratégia; rival, líderes e Conselho têm nível adequado à curva (seção 4.5) e usam itens de cura (quem tem `itens` definidos os usa em Aventureiro e Veterano, mas no Aventureiro só do 8º ginásio em diante: 7+ insígnias), como nos jogos clássicos. O esforço ganho no meio da batalha que aumenta a vida máxima leva a vida atual junto.
 
 ## Dados (dono: time de batalha)
 - `src/data/tabela-tipos.ts`: matriz completa do spec 6.1.
@@ -26,7 +26,11 @@ Spec: seções 6.1 (tipos), 7 (batalha), 8 (itens). Jogabilidade clássica 1×1 
 - `src/data/criaturas.ts` (dono: time de dados de criaturas): `ESPECIES: EspecieDef[]` das 180, conforme a tabela 6.4.
 
 ## IA (4 níveis, nunca trapaceia nem lê a escolha do jogador)
-`novato`: golpe válido ao acaso (70%) ou o mais forte (30%). `treinador`: maior dano esperado, troca em desvantagem grave. `lider`: usa status/clima/estágios quando compensa, itens de cura, troca para manter vantagem. `conselho`: avalia dano esperado × risco × velocidade, prevê trocas prováveis, combina clima+golpes, guarda a criatura mais forte.
+`novato`: golpe válido ao acaso (70%) ou o mais forte (30%). `treinador`: prefere o golpe forte e super-eficaz (poder × eficácia × mesmo-tipo, sem conta de atributos), distrai-se uma vez em quatro, troca em desvantagem grave. `lider`: pensa o 1×1 como uma corrida (quem derruba quem primeiro) e valoriza status, reforços, cura e troca pelo que mudam nessa corrida; usa itens de cura quando a regra abaixo permite. `conselho`: a mesma conta sem deslizes, com estimativa mais fina do adversário, nocaute mais seguro (prioridade quando é mais lento), varridas preparadas e o ás guardado para o fim. Nenhum nível troca a criatura que acabou de entrar antes de ela agir um turno (quem abre é sempre a 1ª da lista do treinador). Números da escada e das metas de equilíbrio: `docs/EQUILIBRIO.md` (`npx tsx tools/sim-equilibrio.ts`).
+
+Itens de cura (`iaUsaItens`, spec 7A): Veterano — todos, sempre; Aventureiro — só quem tem `itens` definidos e só com 7+ insígnias (do 8º ginásio em diante); Explorador — idem, mas só a IA de nível conselho.
+
+Golpes dos treinadores: `MembroEquipe.golpes` (escolhidos à mão) valem no jogo — o mundo cria as equipes com `criarDeMembro`. Sem `golpes`, a criatura usa `golpesIniciais` (os 4 mais recentes, garantindo dois de dano e um do próprio tipo quando ela já os aprendeu).
 
 ## Interface com o resto
 ```ts

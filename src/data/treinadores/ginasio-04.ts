@@ -18,13 +18,12 @@ export const TREINADORES_GINASIO_04: TreinadorDef[] = [
     equipe: [{ e: 90, nv: 24 }, { e: 123, nv: 23 }, { e: 27, nv: 24 }],
     desafio: 'Abriu a cortina? Então a Iracema vai gostar de você. Mas antes passa por mim!', derrota: 'Desmanchou meu bordado inteiro.', depois: 'A Iracema confunde a cabeça do adversário e só depois bate. Leve fruta de curar encanto.' },
   /*
-   * LÍDER — Iracema Lua (Encanto). Fraquezas do Encanto: Veneno e Ferro (e Brasa resiste).
-   * Estratégia: o Beija-florzim (Vento/Encanto) abre rápido com Brisa da Serra e Beijo de Beija-Flor; o Manatim
-   * (Rio/Encanto) apaga os tipos Brasa com Bolhas do Mangue e se cura com Água de Cacimba; a Pintinhas enfraquece
-   * o ataque com Cafuné e bate com Estrela-Guia; o Catingueirinho usa Toca e Foge para trocar sem perder ritmo.
-   * O ás é a Coralzinha (Veneno/Encanto) de nível 26: o Veneno dela anula a fraqueza do tipo, a Cortina de Brilho
-   * corta o dano especial e a Peçonha Forte pune outros Encanto e Mata.
-   * Cura: 1 Garrafada definida (no Aventureiro o motor só libera itens a partir do 8º ginásio); o ás segura uma Jabuticaba.
+   * LÍDER — Iracema Lua (Encanto). Fraquezas do Encanto: Veneno e Ferro.
+   * Equipe e golpes definidos pelo simulador de equilíbrio (docs/EQUILIBRIO.md). O Beija-florzim (Vento/Encanto)
+   * abre veloz com Brisa da Serra e se recupera com Beijo de Beija-Flor; o Manatim (Rio/Encanto) aguenta e se cura
+   * com Água de Cacimba; o Catingueirinho bate e volta com Toca e Foge. O ás é a Coralzinha (Veneno/Encanto) de
+   * nível 26, que não evolui: imune ao veneno que ameaça a casa, levanta a Cortina de Brilho e bate com Peçonha Forte.
+   * Cura: 1 Garrafada definida, que o motor só libera a partir do 8º ginásio no Aventureiro.
    */
   { id: 'lider-04', classe: 'Líder', nome: 'Iracema Lua', sprite: 'lider-06', ia: 'lider', premio: 2600, insignia: 4, musica: 'batalha-lider', flag: 'ginasio-04-vencido',
     itens: ['garrafada'],

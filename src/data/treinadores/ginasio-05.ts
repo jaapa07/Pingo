@@ -20,20 +20,20 @@ export const TREINADORES_GINASIO_05: TreinadorDef[] = [
     desafio: 'Conto os relâmpagos do alto do farol. Hoje vou contar os seus tropeços!', derrota: 'Um, dois… perdi a conta.', depois: 'O piso de teste só dá choque enquanto a chave 3 manda corrente para ele. Vire a chave e a ponte do Volta estende.' },
   /*
    * LÍDER — Faroleiro Volta (Trovão). Fraqueza do Trovão: Terra (que é imune a Trovão).
-   * Estratégia: o Grilinho abre jogando areia para atrapalhar quem vem de Terra e bate com Zunido de Alta Tensão;
-   * o Vagalumim cega com Luz de Lamparina e usa Nuvem de Mosquitos contra Terra/Mata; a Ararinha (Vento) é a
-   * cobertura: imune a Terra, castiga Mata e Inseto com Brisa da Serra e se cura com Barro Curativo.
-   * O ás é o Poraquim (Rio/Trovão) de nível 30: Bolhas do Mangue derruba os tipos Terra, Choque de Poraquê paralisa
-   * e Zunido de Alta Tensão fecha a conta.
-   * Cura: 1 Garrafada definida (no Aventureiro o motor só libera itens a partir do 8º ginásio); o ás segura um Caju.
+   * Equipe refeita pela regra do spec 4.5 (cada criatura na forma que teria no nível): três do tipo e uma cobertura.
+   * O Poraquim (Rio/Trovão, só evolui no 34) abre e derruba os tipos Terra com Bolhas do Mangue; a Ararinha (Vento,
+   * só evolui no 34) é a cobertura: imune a Terra, castiga Mata e Inseto; o Vagalampo (Inseto/Trovão, evoluído no 27)
+   * cega com Luz de Lamparina e bate com Corisco e Ferroada. O ás é o Grilão-Elétrico (Inseto/Trovão, evoluído no 26) de nível 30: Zunido de Alta
+   * Tensão no mesmo tipo, Nuvem de Mosquitos contra Mata e Terra e areia nos olhos de quem tenta resistir.
+   * Cura: 1 Garrafada definida, que o motor só libera a partir do 8º ginásio no Aventureiro.
    */
   { id: 'lider-05', classe: 'Líder', nome: 'Faroleiro Volta', sprite: 'lider-07', ia: 'lider', premio: 3000, insignia: 5, musica: 'batalha-lider', flag: 'ginasio-05-vencido',
     itens: ['garrafada'],
     equipe: [
       { e: 115, nv: 28, golpes: ['bolhas-do-mangue', 'faisca-dupla', 'choque-de-poraque'] },
-      { e: 51, nv: 28, golpes: ['brisa-da-serra', 'rasante', 'barro-curativo'] },
-      { e: 29, nv: 28, golpes: ['choquinho', 'ferroada', 'luz-de-lamparina'] },
-      { e: 142, nv: 30, golpes: ['zunido-de-alta-tensao', 'nuvem-de-mosquitos', 'jogar-areia', 'corisco'] },
+      { e: 51, nv: 28, golpes: ['brisa-da-serra', 'rasante'] },
+      { e: 29, nv: 28, golpes: ['ferroada', 'corisco', 'luz-de-lamparina'] },
+      { e: 142, nv: 30, golpes: ['zunido-de-alta-tensao', 'nuvem-de-mosquitos', 'jogar-areia'] },
     ],
     desafio: 'Eureca! Um desafiante que entende de circuito! Eu sou o Volta: acendo o farol, conserto rádio e dou choque em treinador distraído. Liga a chave, que lá vai descarga!',
     derrota: 'Curto-circuito geral! Mas que beleza de apagão…', depois: 'Energia boa é a que chega aonde precisa. A sua chega.' },

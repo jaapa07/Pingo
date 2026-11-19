@@ -24,20 +24,20 @@ export const TREINADORES_GINASIO_07: TreinadorDef[] = [
     desafio: 'Trinta anos de chão de fábrica. Ninguém chega à engenheira sem passar pelo meu controle de qualidade!', derrota: 'Aprovado. Com louvor.', depois: 'A Bigorna endurece a defesa antes de bater. Golpe especial atravessa melhor que pancada.' },
   /*
    * LÍDER — Engenheira Bigorna (Ferro). Fraquezas do Ferro: Brasa, Ginga e Terra.
-   * Estratégia: o Besourim (Inseto/Ferro) abre com Casulo e Pião de Ferro; o Sirizim (Rio) é a resposta a Brasa e
-   * Terra com Bolhas do Mangue; o Preguinho (Ginga) pune os outros Ferro e os Pedra que o desafiante traz, e afia
-   * as garras antes; o Escorpim (Veneno/Terra) envenena com Leite de Cururu e bate em Brasa com Tatu-Bola.
-   * O ás é o Herculão (Inseto/Ferro) de nível 36: Bigornada no mesmo tipo, Terra Batida contra Brasa e Mordida de
-   * Saúva contra Mata e Mente.
-   * Cura: 1 Garrafada definida (no Aventureiro o motor só libera itens a partir do 8º ginásio); o ás segura uma Pitanga.
+   * Equipe refeita pela regra do spec 4.5 (cada criatura na forma que teria no nível): três de Ferro e uma cobertura.
+   * A Tatucanastra (Terra/Ferro, evoluída no 30) abre com Tatu-Bola e segura Brasa; o Siri-Couraça (Rio/Ferro,
+   * evoluído no 34) é a resposta a Brasa e Terra com Rabanada; o Preguinho (Ginga, só evolui no 36) é a cobertura
+   * contra outros Ferro e contra Pedra. O ás é o Tuco-Escavador (Terra/Ferro, evoluído no 32) de nível 36: Unha de
+   * Aço no mesmo tipo, Dentada para o resto e areia nos olhos de quem tenta resistir.
+   * Cura: 1 Garrafada definida, que o motor só libera a partir do 8º ginásio no Aventureiro.
    */
   { id: 'lider-07', classe: 'Líder', nome: 'Engenheira Bigorna', sprite: 'lider-12', ia: 'lider', premio: 3600, insignia: 7, musica: 'batalha-lider', flag: 'ginasio-07-vencido',
     itens: ['garrafada'],
     equipe: [
       { e: 34, nv: 34, golpes: ['tatu-bola', 'unha-de-aco', 'jogar-areia'] },
-      { e: 130, nv: 34, golpes: ['rabanada', 'unha-de-aco', 'casulo'] },
+      { e: 130, nv: 34, golpes: ['rabanada', 'casulo'] },
       { e: 65, nv: 35, golpes: ['meia-lua', 'pedrada', 'amolar-garras'] },
-      { e: 162, nv: 36, golpes: ['unha-de-aco', 'dentada', 'tatu-bola', 'jogar-areia'] },
+      { e: 162, nv: 36, golpes: ['unha-de-aco', 'dentada', 'jogar-areia'] },
     ],
     desafio: 'Projetei cada parafuso desta fábrica, e você desmontou o meu circuito em dez minutos. Agora quero ver o seu projeto de batalha. Liguem as máquinas!',
     derrota: 'Parada geral! Meu projeto tinha uma falha: não contava com você.', depois: 'Toda engrenagem importa. Até a menor.' },

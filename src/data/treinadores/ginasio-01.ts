@@ -12,14 +12,14 @@ export const TREINADORES_GINASIO_01: TreinadorDef[] = [
     equipe: [{ e: 43, nv: 8 }, { e: 49, nv: 9 }],
     desafio: 'Psiu! Estou contando gaivotas. Já que espantou todas, batalhe comigo!', derrota: 'Voaram todas… e a minha vitória também.', depois: 'A alavanca vira os cata-ventos. A prancha por onde você subiu passa a soprar de volta.' },
   { id: 'g01-4', classe: 'Surfista', nome: 'Kai', sprite: 'cl-surfista', ia: 'treinador', premio: 400,
-    equipe: [{ e: 167, nv: 9 }, { e: 45, nv: 9 }, { e: 51, nv: 9 }],
+    equipe: [{ e: 167, nv: 8 }, { e: 45, nv: 8 }, { e: 51, nv: 9 }],
     desafio: 'Vento terral, mar liso… só falta uma batalha para o dia ficar perfeito!', derrota: 'Tomei um caldo.', depois: 'A última corrente leva direto ao Mestre. Respira fundo e vai!' },
   /*
    * LÍDER — Mestre Gaivota (Vento). Fraquezas do Vento: Trovão, Geada e Pedra.
-   * Estratégia: abre com o Quero-querinho jogando areia para baixar a precisão de quem vem de Pedra; a Garcinha
-   * (Vento/Rio) responde a Pedra e Brasa com Esguicho; o Andorim (Vento/Pedra) segura Geada e Trovão com Estilingue.
-   * O ás é a Ararinha de nível 12, que bate com Lufada (mesmo tipo) e assusta com Assobio Agudo antes do golpe forte.
-   * Cura: 1 Chá de Erva-Cidreira definido (o motor só libera itens a partir do 8º ginásio no Aventureiro); a Ararinha segura um Caju.
+   * Equipe e golpes definidos pelo simulador de equilíbrio (docs/EQUILIBRIO.md): no nível 10–12 cada criatura a mais
+   * do líder pesa demais, então o primeiro ginásio tem só duas. O Quero-querinho abre jogando areia e berrando para
+   * amolecer o desafiante; o ás é a Ararinha de nível 12, que confunde com Assobio Agudo e bate de Bicada (mesmo tipo).
+   * Cura: 1 Chá de Erva-Cidreira definido, que o motor só libera a partir do 8º ginásio no Aventureiro.
    */
   { id: 'lider-01', classe: 'Líder', nome: 'Mestre Gaivota', sprite: 'lider-01', ia: 'lider', premio: 1200, insignia: 1, musica: 'batalha-lider', flag: 'ginasio-01-vencido',
     itens: ['cha-cidreira'],
