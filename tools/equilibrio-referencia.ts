@@ -165,7 +165,8 @@ export function itensReferencia(passo: number): Record<string, number> {
   if (passo === 6) return { garrafada: 6 };
   if (passo === 7) return { garrafada: 6, 'elixir-andiroba': 1 };
   if (passo === 8) return { garrafada: 6, 'elixir-andiroba': 2 };
-  return { garrafada: 12, 'elixir-andiroba': 5, 'cha-guarana': 4, 'pomada-copaiba': 3, garapa: 4 };
+  // Liga: cinco lutas seguidas pedem mochila cheia (o prêmio dos treinadores do mapa A paga isso com folga)
+  return { garrafada: 15, 'elixir-andiroba': 10, 'cha-guarana': 6, 'pomada-copaiba': 4, garapa: 6 };
 }
 /** contra treinador de rota o jogador gasta pouco: no máximo dois remédios simples */
 export function itensDeRota(passo: number): Record<string, number> { return passo <= 3 ? { 'cha-cidreira': 2 } : { garrafada: 2 }; }
@@ -322,7 +323,7 @@ export function cuidarEntreLutas(equipe: CriaturaInst[], itens: Record<string, n
     if (c.vida <= 0) continue;
     if (c.status && itens['pomada-copaiba']) { c.status = null; delete c.sonoTurnos; gastar('pomada-copaiba'); }
     for (const g of c.golpes) if (g.pg <= 2 && itens.garapa) { g.pg = Math.min(g.pgMax, g.pg + 10); gastar('garapa'); }
-    while (c.vida < max * 0.6) {
+    while (c.vida < max * 0.75) {
       if (max - c.vida > 90 && itens['elixir-andiroba']) { c.vida = max; gastar('elixir-andiroba'); }
       else if (itens.garrafada) { c.vida = Math.min(max, c.vida + 50); gastar('garrafada'); }
       else if (itens['elixir-andiroba']) { c.vida = max; gastar('elixir-andiroba'); }

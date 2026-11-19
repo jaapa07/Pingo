@@ -13,6 +13,7 @@ import { hipocampim } from './119-hipocampim';
 import { hipocampo } from './120-hipocampo';
 import { polvinho } from './121-polvinho';
 import { polvao } from './122-polvao';
+import { estrelinha } from './123-estrelinha';
 
 /** Criaturas 109-132 do Diário de Campo: harpias e a fauna de rio e de mar. */
-export const modelos: PixModel[] = [harpinha, harpia, pirarucinho, pirarucao, piranhinha, piranhao, poraquim, poraque, arraiazinha, arraiao, hipocampim, hipocampo, polvinho, polvao];
+export const modelos: PixModel[] = [harpinha, harpia, pirarucinho, pirarucao, piranhinha, piranhao, poraquim, poraque, arraiazinha, arraiao, hipocampim, hipocampo, polvinho, polvao, estrelinha];

@@ -59,7 +59,7 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
       { e: 104, nv: 43, golpes: ['meia-lua', 'bico-furador', 'patada', 'toca-e-foge'] },
       { e: 102, nv: 43, golpes: ['casco-pesado', 'queixada', 'pisoteio', 'esquiva'] },
       { e: 58, nv: 43, golpes: ['jato-de-igarape', 'cabecada', 'cafune'] },
-      { e: 72, nv: 44, golpes: ['queixada', 'dentada', 'amolar-garras', 'bote-ligeiro'] },
+      { e: 72, nv: 44, golpes: ['queixada', 'dentada', 'bote-ligeiro'] },
     ], 4400,
     'Eita, chegou longe! Sou a Pampa, última porteira antes do Campeão. Bicho meu não é domado no grito: é no compasso. Segura o tranco, que o rodeio vai começar!',
     'Me derrubou da sela, e com classe! Atrás daquela porta está o Cacique Aracê. Tire o chapéu ao entrar.', { itens: ['garrafada', 'elixir-andiroba'] }),
