@@ -6,6 +6,7 @@ import { minhocao } from './160-minhocao';
 import { tuquim } from './161-tuquim';
 import { tucoEscavador } from './162-tuco-escavador';
 import { boitata } from './173-boitata';
+import { boiuna } from './174-boiuna';
 
 /** Criaturas 157-180 do Diário de Campo. */
-export const modelos: PixModel[] = [louvadeuzim, louvaMestre, minhocucu, minhocao, tuquim, tucoEscavador, boitata];
+export const modelos: PixModel[] = [louvadeuzim, louvaMestre, minhocucu, minhocao, tuquim, tucoEscavador, boitata, boiuna];

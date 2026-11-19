@@ -1,0 +1,13 @@
+import { casaSimples } from './_a1-grade';
+
+/** Casa da Dona Carandá, a doceira de Vila Buriti. */
+export default casaSimples({
+  id: 'A10-casa-1', nome: 'Casa da Dona Carandá', tema: 'sertaneja', musica: 'cidade-baiao', arena: 'mata', passo: 8, volta: [6, 23],
+  estante: ['Vidros de doce de buriti em fila, cada um com a data. O de 1987 tem uma faixa: "reserva especial".'],
+  tv: ['Reprise da final da Liga: "…e o Cacique Aracê chama o Pirarucão! O Platô inteiro prende a respiração!"'],
+  bau: ['Formas de doce, colheres de pau e um caderno de receitas trancado a cadeado.'],
+  moradores: [
+    { id: 'a10-neto', sprite: 'cl-crianca-m', nome: 'Buritizinho', mov: 'vagar', fala: ['A vó diz que o fruto de buriti deixa a criatura mais amiga.', 'Eu comi seis e continuo brigando com a minha irmã.'] },
+    { id: 'a10-comadre', sprite: 'npc-mulher-3', nome: 'Comadre Vereda', mov: 'olhar', fala: ['Depois da Liga, dizem que o trem de Porto Sereia finalmente aceita passageiro.', 'Campeão viaja de graça para o Sertão das Névoas. O resto de nós fica com o apito.'] },
+  ],
+});
