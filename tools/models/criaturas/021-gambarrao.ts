@@ -19,7 +19,7 @@ function build() {
     rig.add('cabeca', blob([0.07, 0.022, 0.05], m.sombra(0), { pos: [0.21, 0.115, 0.115 * s], rot: [-20 * s, 0, -24], seg: 8 }));
   });
   // NINHADA: três filhotes no lombo
-  const filhotes: [string, V3, number, number][] = [['filhote1', [0.12, 0.27, 0.05], 1, 14], ['filhote2', [-0.07, 0.3, -0.06], 0.9, -8], ['filhote3', [-0.24, 0.25, 0.06], 0.82, 20]];
+  const filhotes: [string, V3, number, number][] = [['filhote1', [0.1, 0.3, 0.07], 1.55, 24], ['filhote2', [-0.1, 0.33, -0.08], 1.45, -20], ['filhote3', [-0.3, 0.27, 0.05], 1.3, 30]];
   for (const [nome, pos, e, vira] of filhotes) {
     rig.bone(nome, 'corpo', pos, [0, vira, 0]);
     rig.add(nome,
@@ -29,7 +29,7 @@ function build() {
       blob([0.018 * e, 0.018 * e, 0.018 * e], m.plano(2), { pos: [0.175 * e, 0.03 * e, 0], seg: 8 }));
     par((_, s) => rig.add(nome,
       blob([0.02 * e, 0.035 * e, 0.03 * e], m.plano(2), { pos: [0.04 * e, 0.11 * e, 0.05 * e * s], seg: 8 }),
-      blob([0.014, 0.016, 0.012], m.sombra(0), { pos: [0.11 * e, 0.06 * e, 0.055 * e * s], seg: 6, castShadow: false })));
+      blob([0.018, 0.02, 0.014], m.sombra(0), { pos: [0.11 * e, 0.06 * e, 0.058 * e * s], seg: 6, castShadow: false })));
   }
   fedor(rig, 'fedor1', [-0.56, 0.36, 0.12], 0.1);
   fedor(rig, 'fedor2', [-0.46, 0.6, -0.14], 0.07);

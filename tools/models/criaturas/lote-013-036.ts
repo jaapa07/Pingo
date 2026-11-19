@@ -16,6 +16,13 @@ import { sapoCururui } from './026-sapo-cururui';
 import { pintinhas } from './027-pintinhas';
 import { vagalumim } from './028-vagalumim';
 import { vagalampo } from './029-vagalampo';
+import { morceguim } from './030-morceguim';
+import { morcegao } from './031-morcegao';
+import { vampirinha } from './032-vampirinha';
+import { tatuzim } from './033-tatuzim';
+import { tatucanastra } from './034-tatucanastra';
+import { caranguejim } from './035-caranguejim';
+import { guaiamuque } from './036-guaiamuque';
 
 /** Criaturas 013-036 do Diário de Campo. */
-export const modelos: PixModel[] = [cotiazinha, cotiada, lagartim, casulim, bruxaluz, formigaco, sauvaRainha, gambazinho, gambarrao, saguinho, saguinete, pererequinha, pererecao, sapoCururui, pintinhas, vagalumim, vagalampo];
+export const modelos: PixModel[] = [cotiazinha, cotiada, lagartim, casulim, bruxaluz, formigaco, sauvaRainha, gambazinho, gambarrao, saguinho, saguinete, pererequinha, pererecao, sapoCururui, pintinhas, vagalumim, vagalampo, morceguim, morcegao, vampirinha, tatuzim, tatucanastra, caranguejim, guaiamuque];

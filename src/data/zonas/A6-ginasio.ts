@@ -42,7 +42,7 @@ const zona: ZonaDef = {
     { o: 'gerador', x: 15, y: 16 }, { o: 'painel', x: 1, y: 2 },
     { o: 'gin-no-circuito', x: 4, y: 14 }, { o: 'gin-no-circuito', x: 14, y: 14 }, { o: 'gin-no-circuito', x: 14, y: 10 }, { o: 'gin-no-circuito', x: 9, y: 7 },
   ],
-  warps: [{ x: 8, y: 18, para: { zona: 'A6', x: 20, y: 10, dir: 's' }, tipo: 'porta' }],
+  warps: [{ x: 8, y: 18, para: { zona: 'A6', x: 16, y: 9, dir: 's' }, tipo: 'porta' }],
   npcs: [
     { id: 'g05-1', sprite: 'cl-ferreiro', x: 1, y: 14, dir: 'l', treinador: 'g05-1', visao: 3 },
     { id: 'g05-2', sprite: 'cl-crianca-m', x: 7, y: 11, dir: 'o', treinador: 'g05-2', visao: 3 },

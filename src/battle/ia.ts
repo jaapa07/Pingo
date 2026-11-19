@@ -22,8 +22,17 @@ export function nivelEfetivo(base: NivelIA, dificuldade: Opcoes['dificuldade']):
   const d = dificuldade === 'explorador' ? -1 : dificuldade === 'veterano' ? 1 : 0;
   return NIVEIS_IA[Math.max(0, Math.min(3, NIVEIS_IA.indexOf(base) + d))];
 }
-/** treinadores usam itens de cura a partir do nível líder; no veterano, todos usam */
-export const iaUsaItens = (nivelBase: NivelIA, dificuldade: Opcoes['dificuldade']) => dificuldade === 'veterano' || NIVEIS_IA.indexOf(nivelEfetivo(nivelBase, dificuldade)) >= 2;
+/**
+ * Quem usa itens de cura em batalha (spec 7A, decisão do autor):
+ *  - veterano: todos, sempre;
+ *  - aventureiro: só quem tem `itens` definidos (rival, líderes, chefes, Liga, Conselho) e só do 8º ginásio em diante (7+ insígnias);
+ *  - explorador: como no aventureiro, mas só a IA de nível conselho.
+ */
+export function iaUsaItens(nivelBase: NivelIA, dificuldade: Opcoes['dificuldade'], o: { temItens?: boolean; insignias?: number } = {}): boolean {
+  if (dificuldade === 'veterano') return true;
+  if (!o.temItens || (o.insignias ?? 0) < 7) return false;
+  return dificuldade === 'aventureiro' || nivelBase === 'conselho';
+}
 
 export interface OpcoesIA {
   /** pode usar os itens do próprio lado */
@@ -277,6 +286,248 @@ function itemUtil(b: Batalha, p: Pos): Acao | null {
   return null;
 }
 
+export const AJ = { troca: true, as: true, status: true, margemL: 0.45, margemC: 0.3, distracaoTreinador: 0.15, deslizeLider: 0.08, folgaAs: 0.5 };
+/* ------------------------------ duelo 1×1 (líder e conselho) ------------------------------ */
+/**
+ * Líder e Conselho pensam o 1×1 como uma CORRIDA: quem derruba quem primeiro, com o que cada ação muda nessa conta
+ * (dormir o adversário rende turnos livres, paralisar inverte a ordem, subir Ataque encurta a corrida, curar alonga…).
+ * Só entram estimativas públicas (ver cabeçalho). A nota vai de −1 (perco sem arranhar) a +1 (ganho com a vida cheia).
+ */
+interface Duelo {
+  eu: number; euMax: number; ele: number; eleMax: number;
+  /** dano médio por turno: meu (`D`) e dele (`A`) */
+  D: number; A: number;
+  /** dano só deste turno (padrão: `D`) */
+  d1?: number;
+  primeiro: boolean;
+  /** desgaste por turno (veneno, queimadura, parasita): positivo = perde vida */
+  chipEle: number; chipEu: number;
+  /** turnos sem agir */
+  eleParado: number; euParado: number;
+}
+function corrida(d: Duelo): number {
+  let eu = d.eu, ele = d.ele, eleParado = d.eleParado, euParado = d.euParado;
+  for (let t = 0; t < 14; t++) {
+    const meu = euParado >= 1 ? 0 : t === 0 && d.d1 !== undefined ? d.d1 : d.D, dele = eleParado >= 1 ? 0 : d.A;
+    euParado = Math.max(0, euParado - 1); eleParado = Math.max(0, eleParado - 1);
+    if (d.primeiro) { ele -= meu; if (ele <= 0) break; eu -= dele; if (eu <= 0) break; }
+    else { eu -= dele; if (eu <= 0) break; ele -= meu; if (ele <= 0) break; }
+    ele -= d.chipEle; if (ele <= 0) break;
+    eu = Math.min(d.euMax, eu - d.chipEu); if (eu <= 0) break;
+  }
+  if (ele <= 0) return 0.5 + (0.5 * Math.max(0, eu)) / d.euMax;
+  if (eu <= 0) return -Math.min(1, ele / d.eleMax);
+  return 0.25 * (eu / d.euMax - ele / d.eleMax);
+}
+/** gasto o turno num efeito: se sou mais lento, apanho antes de o efeito valer */
+function aposEfeito(base: Duelo, aplicar: (d: Duelo) => void): number {
+  const d = { ...base };
+  if (base.primeiro) { aplicar(d); d.d1 = 0; return corrida(d); }
+  if (base.eleParado < 1) { d.eu -= base.A; if (d.eu <= 0) return -Math.min(1, d.ele / d.eleMax); }
+  d.eleParado = Math.max(0, d.eleParado - 1);
+  d.ele -= d.chipEle; d.eu = Math.min(d.euMax, d.eu - d.chipEu);
+  if (d.ele <= 0) return 0.5 + (0.5 * Math.max(0, d.eu)) / d.euMax;
+  if (d.eu <= 0) return -Math.min(1, d.ele / d.eleMax);
+  aplicar(d);
+  return corrida(d);
+}
+const CATEGORIA = (a: Record<Stat, number>) => (a.atq >= a.atqEsp ? 'fisico' : 'especial');
+/** poder do golpe "genérico" que a IA supõe no adversário, conforme o nível dele */
+const poderSuposto = (nivel: number) => Math.max(45, Math.min(90, 35 + nivel));
+/** maior dano que `ele` deve causar em `eu` por turno (golpes já vistos + um golpe suposto de cada tipo dele) */
+function ameacaDe(b: Batalha, ele: Lutador, eu: Lutador, ladoDele: 0 | 1, fino: boolean): number {
+  const vistos = [...(b.lados[ladoDele].revelados.get(ele.c.uid) ?? [])].map(defGolpe).filter((g) => g.cat !== 'status');
+  const cat = CATEGORIA(estimados(ele.c)), poder = fino ? poderSuposto(ele.nivel) : 70;
+  const genericos = ele.tipos.map((t): GolpeDef => ({ id: '?' + t, nome: '', tipo: t, cat, poder, precisao: 100, pg: 1, desc: '', anim: '', efeitos: [], alvo: 'um' }));
+  const barreira = (g: GolpeDef) => b.lados[(1 - ladoDele) as 0 | 1].barreira[g.cat === 'fisico' ? 'fisico' : 'especial'] > 0;
+  return Math.max(0, ...[...vistos, ...genericos].map((g) => danoEsperado(b, ele, g, eu, barreira(g)) * (g.precisao === 0 ? 1 : g.precisao / 100)));
+}
+interface NotaDuelo { slot: number; g: GolpeDef; nota: number; nocauteia: boolean; acerto: number }
+/** nota de cada golpe utilizável de `p` contra o único adversário `q` */
+function notasDeDuelo(b: Batalha, p: Pos, q: Pos, nivel: NivelIA): { notas: NotaDuelo[]; base: Duelo; eu: Lutador; ele: Lutador } {
+  const fino = nivel === 'conselho';
+  const c = b.criatura(p)!, eu = lutador(b, p, true), ele = lutador(b, q, false), v = b.vol(p), volQ = b.vol(q);
+  const lado = b.lados[p.lado], outro = b.lados[q.lado];
+  const golpes = b.golpesValidos(p).map((slot) => ({ slot, g: defGolpe(c.golpes[slot].id) }));
+  const danoDe = (g: GolpeDef) => (volQ.some && !g.efeitos.some((e) => e.t === 'carga') ? 0 : danoEsperado(b, eu, g, ele, outro.barreira[g.cat === 'fisico' ? 'fisico' : 'especial'] > 0));
+  // dano "de cruzeiro": o melhor golpe repetido (recarga e carga rendem metade; precisão entra na média)
+  const cruzeiro = (g: GolpeDef) => danoDe(g) * chanceAcerto(b, p, g, q) * (g.efeitos.some((e) => e.t === 'recarga' || (e.t === 'carga' && e.semCargaNoClima !== b.clima)) ? 0.5 : 1);
+  const melhor = golpes.filter((x) => x.g.cat !== 'status').reduce<{ g: GolpeDef; d: number } | null>((a, x) => { const d = cruzeiro(x.g); return !a || d > a.d ? { g: x.g, d } : a; }, null);
+  const A = ameacaDe(b, ele, eu, q.lado, fino);
+  const catDele = CATEGORIA(estimados(ele.c)), catMinha = melhor?.g.cat ?? 'fisico';
+  const base: Duelo = {
+    eu: eu.vida, euMax: eu.vidaMax, ele: ele.vida, eleMax: ele.vidaMax, D: melhor?.d ?? 0, A, primeiro: eu.vel > ele.vel,
+    chipEle: (ele.status === 'envenenado' ? ele.vidaMax / 8 : ele.status === 'queimado' ? ele.vidaMax / 16 : 0) + (volQ.semente ? ele.vidaMax / 8 : 0),
+    chipEu: (eu.status === 'envenenado' ? eu.vidaMax / 8 : eu.status === 'queimado' ? eu.vidaMax / 16 : 0) + (v.semente ? eu.vidaMax / 8 : 0),
+    eleParado: ele.status === 'dormindo' ? 1 : ele.status === 'congelado' ? 2 : volQ.recarga ? 1 : 0, euParado: 0,
+  };
+  const razao = (est: number, n: number) => multEstagio(Math.max(-6, Math.min(6, est + n))) / multEstagio(est);
+  /** efeito de status principal sobre o adversário */
+  const comStatus = (s: StatusId) => (d: Duelo) => {
+    if (s === 'dormindo') d.eleParado += 2;
+    else if (s === 'congelado') d.eleParado += 3;
+    else if (s === 'paralisado') { if (ele.vel / 4 < eu.vel) d.primeiro = true; d.A *= 0.75; }
+    else if (s === 'queimado') { d.chipEle += ele.vidaMax / 16; if (catDele === 'fisico') d.A *= 0.5; }
+    else if (s === 'envenenado') d.chipEle += ele.vidaMax / 8;
+    else if (s === 'encantado') d.A *= 0.7;
+  };
+  const podeStatus = (s: StatusId) => !ele.status && !ele.tipos.some((t) => IMUNES[s].includes(t)) && outro.barreira.status <= 0 && !(s === 'congelado' && b.clima === 'sol');
+  const notas: NotaDuelo[] = golpes.map(({ slot, g }) => {
+    const acerto = chanceAcerto(b, p, g, q);
+    /** modificações que o golpe deixa no duelo quando acerta, cada uma com a sua chance */
+    const efeitos: { ch: number; f: (d: Duelo) => void }[] = [];
+    let bonus = 0; // valor tático que a corrida não enxerga (campo, equipe)
+    for (const e of g.efeitos) {
+      const ch = ('chance' in e && e.chance !== undefined ? e.chance : 100) / 100;
+      switch (e.t) {
+        case 'status': if (podeStatus(e.s)) efeitos.push({ ch, f: comStatus(e.s) }); break;
+        case 'volatil':
+          if (e.eu) efeitos.push({ ch: 1, f: (d) => { d.D *= 0.8; } });
+          else if (e.v === 'confuso' && volQ.confuso <= 0 && outro.barreira.status <= 0) efeitos.push({ ch, f: (d) => { d.A *= 0.7; d.chipEle += ele.vidaMax * 0.04; } });
+          else if (e.v === 'semente' && !volQ.semente && !ele.tipos.includes('mata')) efeitos.push({ ch, f: (d) => { d.chipEle += ele.vidaMax / 8; d.chipEu -= ele.vidaMax / 8; } });
+          else if (e.v === 'atordoado' && eu.vel > ele.vel) efeitos.push({ ch, f: (d) => { d.eleParado = Math.max(d.eleParado, 1); } });
+          break;
+        case 'estagio': {
+          const quem = e.eu ? v : volQ, r = razao(quem.est[e.s], e.n);
+          if (r === 1) break;
+          if (e.eu) {
+            if ((e.s === 'atq' && catMinha === 'fisico') || (e.s === 'atqEsp' && catMinha === 'especial')) efeitos.push({ ch, f: (d) => { d.D *= r; } });
+            else if ((e.s === 'def' && catDele === 'fisico') || (e.s === 'defEsp' && catDele === 'especial')) efeitos.push({ ch, f: (d) => { d.A /= r; } });
+            else if (e.s === 'vel') efeitos.push({ ch, f: (d) => { d.primeiro = eu.vel * r > ele.vel; } });
+            else if (e.s === 'eva') efeitos.push({ ch, f: (d) => { d.A *= e.n > 0 ? 0.75 : 1.2; } });
+            else if (e.s === 'prec') efeitos.push({ ch, f: (d) => { d.D *= e.n > 0 ? 1.1 : 0.8; } });
+          } else {
+            if ((e.s === 'def' && catMinha === 'fisico') || (e.s === 'defEsp' && catMinha === 'especial')) efeitos.push({ ch, f: (d) => { d.D /= r; } });
+            else if ((e.s === 'atq' && catDele === 'fisico') || (e.s === 'atqEsp' && catDele === 'especial')) efeitos.push({ ch, f: (d) => { d.A *= r; } });
+            else if (e.s === 'vel') efeitos.push({ ch, f: (d) => { d.primeiro = eu.vel > ele.vel * r; } });
+            else if (e.s === 'prec') efeitos.push({ ch, f: (d) => { d.A *= e.n < 0 ? 0.75 : 1; } });
+            else if (e.s === 'eva') efeitos.push({ ch, f: (d) => { d.D *= e.n < 0 ? 1.15 : 0.8; } });
+          }
+          break;
+        }
+        case 'cura': if (g.cat === 'status') efeitos.push({ ch: 1, f: (d) => { d.eu = Math.min(d.euMax, d.eu + (d.euMax * e.pct) / 100); } }); break;
+        case 'descanso': efeitos.push({ ch: 1, f: (d) => { d.eu = d.euMax; d.euParado += 2; d.chipEu = 0; } }); break;
+        case 'curaStatus': if (eu.status) efeitos.push({ ch: 1, f: (d) => { d.chipEu = 0; if (eu.status === 'paralisado') d.primeiro = eu.vel * 4 > ele.vel; if (eu.status === 'queimado' && catMinha === 'fisico') d.D *= 2; } }); bonus += e.equipe ? 0.08 * lado.equipe.filter((m) => m.vida > 0 && m.status && m !== c).length : 0; break;
+        case 'barreira':
+          if (lado.barreira[e.b] <= 0) { if (e.b === 'status') bonus += 0.04; else if (e.b === catDele) { efeitos.push({ ch: 1, f: (d) => { d.A *= 0.5; } }); bonus += 0.05 * Math.min(2, b.reservas(p.lado).length); } }
+          break;
+        case 'espinhos': if (!outro.espinhos) bonus += Math.min(0.3, 0.1 * b.reservas(q.lado).length); break;
+        case 'armadilha': if (volQ.preso <= 0) efeitos.push({ ch: 1, f: (d) => { d.chipEle += ele.vidaMax / 16; } }); break;
+        case 'foco': if (v.foco < 1) efeitos.push({ ch: 1, f: (d) => { d.D *= 1.08; } }); break;
+        case 'protecao': if (v.protUsos === 0 && (volQ.carga || base.chipEle > 0)) bonus += 0.15; break;
+        case 'limpaEstagios': {
+          const deles = Object.values(volQ.est).reduce((x, y) => x + y, 0), meusEst = Object.values(v.est).reduce((x, y) => x + y, 0);
+          if (deles - meusEst >= 2) bonus += 0.3; break;
+        }
+        case 'trocaForcada': {
+          const soma = volQ.est.atq + volQ.est.atqEsp + volQ.est.def + volQ.est.defEsp + volQ.est.vel;
+          if (!b.selvagem && b.reservas(q.lado).length) bonus += soma >= 2 ? 0.3 : outro.espinhos ? 0.1 : 0; break;
+        }
+        case 'clima': {
+          if (b.clima === e.c) break;
+          const bom: TipoId | null = e.c === 'sol' ? 'brasa' : e.c === 'chuva' ? 'rio' : null, ruim: TipoId | null = e.c === 'sol' ? 'rio' : e.c === 'chuva' ? 'brasa' : null;
+          if (bom && melhor && melhor.g.tipo === bom) efeitos.push({ ch: 1, f: (d) => { d.D *= 1.5; } });
+          if (ruim && ele.tipos.includes(ruim)) efeitos.push({ ch: 1, f: (d) => { d.A *= 0.75; } });
+          if (bom) bonus += Math.min(0.12, 0.04 * lado.equipe.filter((m) => m.vida > 0 && m !== c && m.golpes.some((x) => { const y = defGolpe(x.id); return y.tipo === bom && y.cat !== 'status'; })).length);
+          if (e.c === 'garoa' || e.c === 'poeira') {
+            const imune = (t: TipoId[]) => (e.c === 'garoa' ? t.includes('geada') : t.some((x) => x === 'terra' || x === 'pedra' || x === 'ferro'));
+            efeitos.push({ ch: 1, f: (d) => { if (!imune(ele.tipos)) d.chipEle += ele.vidaMax / 16; if (!imune(eu.tipos)) d.chipEu += eu.vidaMax / 16; } });
+          }
+          if (e.c === 'nevoa' && eu.tipos.some((t) => t === 'assombro' || t === 'mente') && !ele.tipos.some((t) => t === 'assombro' || t === 'mente')) efeitos.push({ ch: 1, f: (d) => { d.A *= 0.8; } });
+          break;
+        }
+      }
+    }
+    const todos = (d: Duelo) => { for (const x of efeitos) x.f(d); };
+    const chEfeito = efeitos.length ? Math.max(...efeitos.map((x) => x.ch)) : 0;
+    let nota: number, nocauteia = false;
+    if (g.cat === 'status') {
+      const pega = g.alvo === 'proprio' || g.alvo === 'campo' ? 1 : acerto * chEfeito;
+      nota = efeitos.length ? pega * aposEfeito(base, todos) + (1 - pega) * aposEfeito(base, () => {}) : aposEfeito(base, () => {});
+    } else {
+      const d = danoDe(g), carga = g.efeitos.some((e) => e.t === 'carga' && e.semCargaNoClima !== b.clima), recarga = g.efeitos.some((e) => e.t === 'recarga');
+      nocauteia = d >= ele.vida && !carga;
+      const rec = g.efeitos.find((e) => e.t === 'recuo'), dre = g.efeitos.find((e) => e.t === 'dreno');
+      const golpear = (comEf: boolean): number => {
+        const x: Duelo = { ...base, d1: carga ? 0 : d };
+        if (rec && rec.t === 'recuo') x.eu -= (Math.min(d, ele.vida) * rec.pct) / 100;
+        if (dre && dre.t === 'dreno') x.eu = Math.min(x.euMax, x.eu + (Math.min(d, ele.vida) * dre.pct) / 100);
+        if (recarga && d < ele.vida) x.euParado = 1.5; // descansa no turno seguinte
+        if (comEf) todos(x);
+        if (carga) { const y = { ...x, d1: 0 }; const some = g.efeitos.some((e) => e.t === 'carga' && e.some); if (some) y.eleParado = Math.max(y.eleParado, 1); y.D = Math.max(y.D, d * 0.5); return corrida(y); }
+        return corrida(x);
+      };
+      const acertou = efeitos.length ? chEfeito * golpear(true) + (1 - chEfeito) * golpear(false) : golpear(false);
+      nota = d <= 0 ? aposEfeito(base, () => {}) - 0.05 : acerto * acertou + (1 - acerto) * aposEfeito(base, () => {});
+      if (g.efeitos.some((e) => e.t === 'bateVolta') && b.reservas(p.lado).length && base.A >= eu.vida * 0.6) bonus += 0.08;
+    }
+    return { slot, g, nota: nota + bonus, nocauteia, acerto };
+  });
+  return { notas, base, eu, ele };
+}
+/** nota de uma criatura da reserva contra o adversário em campo; `apanhaAoEntrar`: troca voluntária (leva um golpe na entrada) */
+function notaReserva(b: Batalha, lado: 0 | 1, indice: number, q: Pos, apanhaAoEntrar: boolean, fino: boolean): number {
+  const meu = b.lados[lado].equipe[indice], eu = lutadorReserva(meu, true), ele = lutador(b, q, false);
+  const D = Math.max(0, ...meu.golpes.filter((x) => x.pg > 0).map((x) => defGolpe(x.id)).filter((g) => g.cat !== 'status').map((g) => danoEsperado(b, eu, g, ele) * (g.precisao === 0 ? 1 : g.precisao / 100) * (g.efeitos.some((e) => e.t === 'recarga' || e.t === 'carga') ? 0.5 : 1)));
+  const A = ameacaDe(b, ele, eu, q.lado, fino);
+  const espinhos = b.lados[lado].espinhos && !eu.tipos.includes('vento') ? eu.vidaMax / 8 : 0;
+  const d: Duelo = { eu: eu.vida - espinhos - (apanhaAoEntrar ? A : 0), euMax: eu.vidaMax, ele: ele.vida, eleMax: ele.vidaMax, D, A, primeiro: eu.vel > ele.vel, chipEle: 0, chipEu: 0, eleParado: 0, euParado: 0 };
+  if (d.eu <= 0) return -1;
+  return corrida(d);
+}
+/** decisão de líder e conselho no 1×1 */
+function decidirDuelo(b: Batalha, p: Pos, q: Pos, nivel: NivelIA, o: OpcoesIA): Acao {
+  const fino = nivel === 'conselho', mem = memoria(b), c = b.criatura(p)!;
+  const { notas, base, eu, ele } = notasDeDuelo(b, p, q, nivel);
+  const reservaPadrao = b.reservas(p.lado)[0];
+  const comoAcao = (n: NotaDuelo): Acao => ({ tipo: 'golpe', slot: n.slot, ...(n.g.efeitos.some((e) => e.t === 'bateVolta') && reservaPadrao !== undefined ? { trocaPara: melhorReservaDuelo(b, p, q, nivel)?.para ?? reservaPadrao } : {}) });
+  if (!AJ.status) for (const n of notas) if (n.g.cat === 'status') n.nota = -9;
+  let melhor = notas.reduce((a, n) => (n.nota > a.nota ? n : a));
+  // nocaute à mão: o mais certeiro; mais lento e em risco, o de prioridade
+  const kos = notas.filter((n) => n.nocauteia);
+  if (kos.length) {
+    const emRisco = !base.primeiro && base.A >= eu.vida && base.eleParado < 1;
+    const seguro = (n: NotaDuelo) => n.acerto + ((n.g.prioridade ?? 0) > 0 && emRisco ? 0.6 : 0) - (n.g.efeitos.some((e) => e.t === 'recarga' || e.t === 'recuo') ? 0.03 : 0);
+    melhor = kos.reduce((a, n) => (seguro(n) > seguro(a) ? n : a));
+    if (!emRisco || (melhor.g.prioridade ?? 0) > 0 || !b.podeTrocar(p)) return comoAcao(melhor);
+  } else if (!fino && notas.length > 1 && rng.chance(AJ.deslizeLider)) {
+    // o líder joga bem, mas não é perfeito: de vez em quando fica com a segunda melhor ideia
+    const resto = notas.filter((n) => n !== melhor);
+    melhor = resto.reduce((a, n) => (n.nota > a.nota ? n : a));
+  } else if (fino) {
+    // entre opções quase iguais, o conselho fica com a mais precisa
+    const perto = notas.filter((n) => n.nota >= melhor.nota - 0.03);
+    melhor = perto.reduce((a, n) => (n.acerto > a.acerto ? n : a), melhor);
+  }
+  // remédio: abaixo de ~1/3 da vida e só se alongar a corrida vale mais do que bater
+  if (o.usaItens && eu.vida / eu.vidaMax < 0.34 && !melhor.nocauteia) {
+    const lado = b.lados[p.lado], indice = lado.ativos[p.pos], max = atributos(c).vida;
+    const curas = Object.keys(lado.itens).filter((id) => lado.itens[id] > 0 && temItemDef(id) && defItem(id).uso?.cura && b.itemServe(p.lado, id, indice))
+      .map((id) => { const u = defItem(id).uso!.cura!; return { id, v: u === 'total' ? max - c.vida : Math.min(u, max - c.vida) }; }).sort((x, y) => y.v - x.v);
+    if (curas.length) {
+      const fator = eu.vidaMax / max, nota = aposEfeito(base, (d) => { d.eu = Math.min(d.euMax, d.eu + curas[0].v * fator); });
+      if (!fino || nota > melhor.nota + 0.02 || base.A < curas[0].v * fator * 0.8) return { tipo: 'item', item: curas[0].id, alvo: indice };
+    }
+  }
+  if (o.usaItens && (c.status === 'dormindo' || c.status === 'congelado')) { const it = itemUtil(b, p); if (it) return it; }
+  // troca: só depois de a criatura ter agido ao menos um turno em campo (quem abre a luta luta) e com folga entre trocas
+  if (AJ.troca && b.podeTrocar(p) && b.vol(p).turnos >= 1 && b.turno - mem.ultimaTroca[p.lado] >= 3) {
+    const t = melhorReservaDuelo(b, p, q, nivel);
+    const margem = fino ? AJ.margemC : AJ.margemL;
+    if (t && melhor.nota < 0.5 && t.nota - melhor.nota > margem && t.nota > 0) { mem.ultimaTroca[p.lado] = b.turno; return { tipo: 'troca', para: t.para }; }
+  }
+  return comoAcao(melhor);
+}
+function melhorReservaDuelo(b: Batalha, p: Pos, q: Pos, nivel: NivelIA): { para: number; nota: number } | null {
+  const res = b.reservas(p.lado), as = AJ.as && nivel === 'conselho' ? indiceDoAs(b.lados[p.lado].equipe) : -1;
+  let r: { para: number; nota: number } | null = null;
+  let notaAs = -9;
+  for (const i of res) { const n = notaReserva(b, p.lado, i, q, true, nivel === 'conselho'); if (i === as && res.length > 1) { notaAs = n; continue; } if (!r || n > r.nota) r = { para: i, nota: n }; }
+  // o ás fica guardado para o fim; só sai antes se for, de longe, a melhor resposta
+  if (r && notaAs - r.nota > AJ.folgaAs + 0.4) r = { para: as, nota: notaAs };
+  return r;
+}
+
 /**
  * Escolhe a ação da posição `p` no nível dado. Não recebe (nem consulta) a ação do outro lado.
  */
@@ -304,16 +555,30 @@ export function escolherAcaoIA(b: Batalha, p: Pos, nivel: NivelIA, o: OpcoesIA =
   const eu = lutador(b, p, true);
   const risco = Math.max(0, ...adv.map((q) => ameaca(b, q, eu, p.lado))) / eu.vida;
   const melhor = melhorPor((n) => n.valor);
-  const podeTrocarAgora = b.turno - mem.ultimaTroca[p.lado] >= 3;
+  // quem acabou de entrar luta pelo menos um turno antes de ser trocada (a criatura que abre a batalha é sempre a 1ª da lista e fica)
+  const podeTrocarAgora = b.turno - mem.ultimaTroca[p.lado] >= 3 && b.vol(p).turnos >= 1;
   const troca = podeTrocarAgora ? melhorTroca(b, p, nivel) : null;
 
-  /* treinador: maior dano esperado; troca em desvantagem grave */
+  /* treinador: prefere o golpe forte e super-eficaz (poder × eficácia × mesmo-tipo, sem fazer conta de atributos); troca em desvantagem grave */
   if (nivel === 'treinador') {
     if (troca && risco >= 0.5 && melhor.valor < 0.25 && troca.ganho > 0.4 && rng.chance(0.7)) { mem.ultimaTroca[p.lado] = b.turno; return { tipo: 'troca', para: troca.para }; }
-    return melhor.valor > 0 ? comoAcao(melhor) : golpeAleatorio(b, p);
+    // de vez em quando se distrai e solta qualquer golpe (inclusive de status)
+    if (rng.chance(AJ.distracaoTreinador)) return golpeAleatorio(b, p);
+    const meusTipos = tiposDe(c);
+    const simples = notas.map((n) => {
+      if (n.g.cat === 'status') return { n, v: 0, alvo: n.alvo };
+      const fixo = n.g.efeitos.some((e) => e.t === 'fixo'), lento = n.g.efeitos.some((e) => e.t === 'recarga' || (e.t === 'carga' && e.semCargaNoClima !== b.clima));
+      const base = (fixo ? 60 : n.g.poder * media(n.g)) * (n.g.id !== DESESPERO.id && meusTipos.includes(n.g.tipo) ? 1.5 : 1) * (lento ? 0.6 : 1) * (n.g.precisao === 0 ? 1 : n.g.precisao / 100);
+      let v = 0, alvo = n.alvo;
+      for (const q of adv) { const x = base * (fixo ? (eficaciaGolpe(n.g, b.tipos(q)) === 0 ? 0 : 1) : eficaciaGolpe(n.g, b.tipos(q))) * (b.vol(q).some ? 0 : 1); if (x > v) { v = x; alvo = q; } }
+      return { n, v, alvo };
+    });
+    const top = simples.reduce((a, x) => (x.v > a.v ? x : a));
+    return top.v > 0 ? comoAcao({ ...top.n, alvo: top.alvo }) : golpeAleatorio(b, p);
   }
 
   /* líder e conselho */
+  if (b.porLado === 1 && adv.length === 1) return decidirDuelo(b, p, adv[0], nivel, o);
   if (o.usaItens) { const it = itemUtil(b, p); if (it && !melhor.nocauteia) return it; }
   const maisRapido = adv.every((q) => eu.vel > lutador(b, q, false).vel);
   if (nivel === 'conselho') {
@@ -350,11 +615,15 @@ export function escolherSubstitutoIA(b: Batalha, lado: 0 | 1, nivel: NivelIA, ex
   if (!res.length) return b.reservas(lado)[0] ?? -1;
   if (nivel === 'novato') return res[0];
   const adv = b.ativosDe((1 - lado) as 0 | 1);
-  const as = nivel === 'conselho' ? indiceDoAs(b.lados[lado].equipe) : -1;
+  const as = AJ.as && nivel === 'conselho' ? indiceDoAs(b.lados[lado].equipe) : -1;
   const candidatos = res.length > 1 ? res.filter((i) => i !== as) : res;
   if (!adv.length) return candidatos[0];
-  const nota = (i: number) => Math.min(...adv.map((q) => confronto(b, b.lados[lado].equipe[i], q)));
-  return candidatos.reduce((a, i) => (nota(i) > nota(a) ? i : a));
+  const duelo = (nivel === 'lider' || nivel === 'conselho') && b.porLado === 1 && adv.length === 1;
+  const nota = (i: number) => (duelo ? notaReserva(b, lado, i, adv[0], false, nivel === 'conselho') : Math.min(...adv.map((q) => confronto(b, b.lados[lado].equipe[i], q))));
+  const escolhido = candidatos.reduce((a, i) => (nota(i) > nota(a) ? i : a));
+  // o ás do conselho fica para o fim, a não ser que as outras opções sejam claramente piores
+  if (duelo && as >= 0 && res.includes(as) && !candidatos.includes(as) && nota(as) - nota(escolhido) > AJ.folgaAs) return as;
+  return escolhido;
 }
 
 /**

@@ -1,0 +1,50 @@
+// Travessia do caminho principal na ordem nova: cais de A4 → Baía Azul → Cidade Coral (boticária, ginásio) →
+// Ilha do Farol → Gruta Breu (2 andares) → Serra Fumaça → Encosta da Fumaça (rochas) → Vila Ferrugem (pedregulho)
+import { abrir } from './lib.mjs';
+const t = await abrir('A4', 30, 38, '&dir=s&insignias=3&amuletos=facao,remo&flags=inicial-mata,usina-ok,rival-3');
+const ganhar = (ins, am, flags = []) => t.pagina(([ins, am, flags]) => { const p = window.__pingo, s = p.jogo.save; if (ins && !s.insignias.includes(ins)) s.insignias.push(ins); if (am && !s.amuletos.includes(am)) s.amuletos.push(am); for (const f of flags) s.flags[f] = true; p.mundo.reavaliar(); }, [ins, am, flags]);
+const ids = () => t.pagina(() => window.__pingo.mundo.npcs.map((q) => q.id));
+try {
+  let s = await t.irAte(30, 44); await t.confere(s.zona === 'A-BA' && s.modo === 'remo', `zarpou do cais (${s.zona} ${s.x},${s.y} ${s.modo})`);
+  await t.foto('trav-baia');
+  await t.confere((await t.plano(89, 14)) === null && (await t.plano(60, 0)) === null, 'Capitania fecha o leste e a praia sem a insígnia Estrela');
+  s = await t.irAte(50, 43); await t.confere(s.zona === 'A5', `chegou a Cidade Coral (${s.x},${s.y}) batalhas=${s.nb}`);
+  await t.confere((await t.plano(7, 8)) === null, 'Gruta Breu fechada sem Lampião + Raio');
+  await t.usar(30, 33); console.log('   bilheteiro:', (await t.falas(2))[0].slice(0, 80));
+  await ganhar(0, '', ['m-xarope', 'farol-ok']);
+  await t.usar(30, 11); await t.confere((await t.flags('xarope')).flags.includes('xarope-na-mao'), 'boticária entregou o Xarope de Algas');
+  await t.usar(21, 19); await t.assentar(); await t.confere((await t.flags('m-carta')).flags.includes('m-carta'), 'rendeira confiou a carta');
+  s = await t.irAte(34, 16); await t.confere(s.zona === 'A5-ginasio', 'porta do ginásio Encanto'); 
+  s = await t.irAte(8, 18); await t.confere(s.zona === 'A5' && s.x === 34 && s.y === 17, `volta do ginásio (${s.x},${s.y})`);
+  await t.foto('trav-a5');
+  await ganhar(4);
+  s = await t.irAte(24, 0); await t.confere(s.zona === 'A-BA', 'de volta à baía');
+  s = await t.irAte(89, 14); await t.confere(s.zona === 'A6', `Ilha do Farol pelo canal leste (${s.x},${s.y})`);
+  await ganhar(5, 'lampiao', ['farol-remedio']);
+  s = await t.irAte(0, 16); s = await t.irAte(50, 43); await t.confere(s.zona === 'A5', 'voltou a Cidade Coral');
+  s = await t.irAte(7, 8); await t.confere(s.zona === 'A-GB-1', `entrou na Gruta Breu (${s.x},${s.y})`);
+  await t.foto('trav-gruta');
+  s = await t.irAte(36, 2); await t.confere(s.zona === 'A-GB-2', `desceu ao lago (batalhas=${s.nb})`);
+  s = await t.irAte(35, 21); await t.confere(s.zona === 'A7' && s.x === 5 && s.y === 4, `saiu em Serra Fumaça (${s.zona} ${s.x},${s.y})`);
+  await t.foto('trav-a7');
+  await t.usar(13, 6); s = await t.st(); await t.confere(s.zona === 'A7-casa-1', 'sobrado da Vó Candinha');
+  await t.usar(2, 4); await t.assentar(); await t.confere((await t.flags('m-carta')).flags.includes('m-carta-entregue'), 'carta entregue: ' + (await t.falas(1))[0].slice(0, 60));
+  s = await t.irAte(5, 8); await t.confere(s.zona === 'A7', 'saiu do sobrado');
+  await t.usar(7, 23); await t.confere(!!(await t.flags('x')).mochila['regador'], 'jardineira deu o Regador');
+  await t.usar(44, 20); await t.assentar(); await t.confere((await t.flags('m-arvore')).flags.includes('m-arvore') && !(await ids()).includes('galho'), 'o galho que se mexe virou batalha e saiu do portão');
+  await t.confere((await t.plano(60, 16)) !== undefined, '-');
+  s = await t.irAte(49, 14); await t.confere(s.zona === 'A-R5', 'Encosta da Fumaça');
+  await t.confere((await t.plano(89, 16)) === null, 'rocha rachada fecha a estrada sem o Quebra-pedra');
+  await ganhar(6, 'quebra-pedra');
+  s = await t.irAte(89, 16); await t.confere(s.zona === 'A8' && s.x === 1, `Vila Ferrugem (batalhas=${s.nb})`);
+  await t.foto('trav-a8');
+  s = await t.irAte(53, 15); await t.ir('l'); s = await t.st(); await t.confere(s.x === 53, 'pedregulho não anda sem a Força');
+  await ganhar(7, 'forca');
+  await t.agir('l'); await t.ir('llll'); s = await t.st(); await t.confere(s.x === 55 && s.y === 15, `empurrou o pedregulho dois tiles (${s.x},${s.y})`);
+  await t.foto('trav-pedregulho');
+  const temR7 = await t.pagina(async () => { const z = await import('/src/world/zonas.ts'); return !!z.zonaDef('A-R7'); });
+  await t.ir('nllls'); s = await t.st(); await t.confere(s.x === 58 && s.y === 15, `contornou até a borda leste (${s.x},${s.y})`);
+  if (temR7) { await t.ir('l'); s = await t.assentar(); await t.confere(s.zona === 'A-R7', `Estrada do Buriti (${s.zona} ${s.x},${s.y})`); } else console.log('   (A-R7 do time A1 ainda não existe: parei na borda)');
+  console.log('batalhas no total:', s.nb);
+} catch (e) { console.log('FALHA', e.message, JSON.stringify(await t.st()), await t.falas(3)); await t.foto('erro'); }
+await t.fim();

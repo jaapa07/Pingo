@@ -41,7 +41,7 @@ const zona: ZonaDef = {
     { o: 'gin-pedestal', x: 9, y: 2 },
     { o: 'gin-lamparina', x: 13, y: 16 }, { o: 'gin-lamparina', x: 2, y: 11 }, { o: 'gin-lamparina', x: 15, y: 11 }, { o: 'gin-lamparina', x: 11, y: 7 }, { o: 'gin-lamparina', x: 1, y: 6 },
   ],
-  warps: [{ x: 8, y: 18, para: { zona: 'A7', x: 20, y: 10, dir: 's' }, tipo: 'porta' }],
+  warps: [{ x: 8, y: 18, para: { zona: 'A7', x: 24, y: 14, dir: 's' }, tipo: 'porta' }],
   npcs: [
     { id: 'g06-1', sprite: 'cl-crianca-m', x: 4, y: 16, dir: 'l', treinador: 'g06-1', visao: 4 },
     { id: 'g06-2', sprite: 'cl-repentista', x: 5, y: 11, dir: 'o', treinador: 'g06-2', visao: 1 },

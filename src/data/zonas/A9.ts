@@ -73,7 +73,7 @@ const zona: ZonaDef = {
     { x: 36, y: 13, item: 'cuia-guardia', flag: 'item:A9:leste' },
     { x: 5, y: 9, item: 'elixir-andiroba', qtd: 3, flag: 'item:A9:oeste' },
     { x: 16, y: 4, item: 'pena-colorida', oculto: true, flag: 'item:A9:pedra' },
-    { x: 34, y: 27, item: 'rapadura', oculto: true, flag: 'item:A9:sul' },
+    { x: 32, y: 27, item: 'rapadura', oculto: true, flag: 'item:A9:sul' },
   ],
   habitats: [
     { metodo: 'grama', taxa: 0.08, todos: [{ e: 168, nv: [58, 61], peso: 30 }, { e: 110, nv: [58, 61], peso: 20 }, { e: 54, nv: [58, 61], peso: 25 }, { e: 156, nv: [58, 61], peso: 10 }, { e: 100, nv: [58, 61], peso: 15 }] },

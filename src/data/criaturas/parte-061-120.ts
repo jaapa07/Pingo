@@ -42,7 +42,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 64, id: 'bugio-trovao', nome: 'Bugio-Trovão', tipos: ['ginga', 'trovao'],
-    base: b(85, 100, 70, 105, 75, 85),
+    base: b(79, 92, 65, 97, 69, 78),
     golpes: [[1, 'arranhao'], [1, 'berro'], [5, 'chapa-de-costas'], [9, 'assobio-agudo'], [13, 'rasteira'], [17, 'eco-da-serra'], [21, 'bencao'], [25, 'grito-de-guerra'], [29, 'meia-lua'], [32, 'zunido-de-alta-tensao'], [37, 'estrondo'], [42, 'tempestade-de-raios'], [48, 'rabo-de-arraia'], [55, 'trovoada']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-16', 'pt-17', 'pt-18', 'pt-19', 'pt-23', 'pt-24', 'pt-25'],
     taxaCaptura: 45, expBase: 196, esforco: { atqEsp: 2, atq: 1 }, crescimento: 'medio', femeas: 0.5,
@@ -101,7 +101,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 70, id: 'jaguatiricao', nome: 'Jaguatiricão', tipos: ['comum', 'assombro'],
-    base: b(78, 108, 68, 70, 72, 112),
+    base: b(74, 102, 64, 66, 68, 106),
     golpes: [[1, 'arranhao'], [1, 'cara-feia'], [5, 'bote-ligeiro'], [9, 'faro-fino'], [13, 'dentada'], [17, 'tabefes'], [21, 'susto'], [25, 'patada'], [29, 'toca-e-foge'], [32, 'sombra-rasteira'], [36, 'amolar-garras'], [40, 'nevoeiro'], [45, 'atropelo'], [51, 'sumico']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-29', 'pt-41', 'pt-42', 'pt-43', 'pt-44'],
     taxaCaptura: 45, expBase: 194, esforco: { vel: 2, atq: 1 }, crescimento: 'medio', femeas: 0.5,
@@ -141,7 +141,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 74, id: 'ariranhao', nome: 'Ariranhão', tipos: ['rio', 'ginga'],
-    base: b(88, 112, 72, 65, 70, 103),
+    base: b(83, 105, 68, 61, 66, 97),
     golpes: [[1, 'arranhao'], [1, 'assobio-agudo'], [5, 'esguicho'], [9, 'chapa-de-costas'], [13, 'dentada'], [17, 'rabanada'], [21, 'rasteira'], [25, 'grito-de-guerra'], [29, 'canoa-virada'], [32, 'meia-lua'], [37, 'mordida-de-piranha'], [42, 'queixada'], [48, 'cachoeirada'], [55, 'rabo-de-arraia']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-14', 'pt-15', 'pt-16', 'pt-23', 'pt-24', 'pt-25'],
     taxaCaptura: 45, expBase: 198, esforco: { atq: 2, vel: 1 }, crescimento: 'medio', femeas: 0.5,
@@ -160,7 +160,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 76, id: 'lontra-veloz', nome: 'Lontra-Veloz', tipos: ['rio', 'vento'],
-    base: b(72, 82, 65, 95, 72, 120),
+    base: b(68, 78, 62, 90, 68, 114),
     golpes: [[1, 'encontrao'], [1, 'faro-fino'], [5, 'esguicho'], [9, 'bote-ligeiro'], [13, 'redemoinho'], [17, 'espuma-do-mar'], [21, 'toca-e-foge'], [25, 'agua-de-cacimba'], [30, 'lufada'], [34, 'jato-de-igarape'], [38, 'vento-a-favor'], [42, 'pe-de-vento'], [47, 'enxurrada'], [53, 'ventania']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-06', 'pt-14', 'pt-15', 'pt-16', 'pt-20', 'pt-22', 'pt-29', 'pt-31', 'pt-32', 'pt-33', 'pt-37'],
     taxaCaptura: 45, expBase: 186, esforco: { vel: 3 }, crescimento: 'rapido', femeas: 0.5,
@@ -221,7 +221,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 82, id: 'jabutipiranga', nome: 'Jabutipiranga', tipos: ['mata', 'pedra'],
-    base: b(90, 85, 135, 75, 100, 30),
+    base: b(89, 84, 134, 74, 99, 30),
     golpes: [[1, 'encontrao'], [1, 'fincar-pe'], [5, 'sorver-seiva'], [9, 'estilingue'], [17, 'cara-feia'], [21, 'pedrada'], [25, 'erva-de-passarinho'], [29, 'folhas-ao-vento'], [33, 'soterrar'], [34, 'couraca-de-pedra'], [39, 'banho-de-sol'], [44, 'deslizamento'], [50, 'espinho-de-mandacaru'], [56, 'pedregulho-rolante']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-07', 'pt-08', 'pt-09', 'pt-12', 'pt-28', 'pt-29', 'pt-30', 'pt-36', 'pt-40', 'pt-41'],
     taxaCaptura: 45, expBase: 200, esforco: { def: 3 }, crescimento: 'lento', femeas: 0.5,
@@ -292,7 +292,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 89, id: 'jararacucu', nome: 'Jararacuçu', tipos: ['veneno', 'terra'],
-    base: b(80, 115, 75, 75, 70, 90),
+    base: b(76, 109, 71, 71, 67, 86),
     golpes: [[1, 'bote-ligeiro'], [1, 'cara-feia'], [5, 'presa-dupla'], [9, 'jogar-areia'], [13, 'cuspe-acido'], [17, 'dentada'], [21, 'pele-amarga'], [25, 'peconha-forte'], [29, 'toca-e-foge'], [32, 'pisao-de-anta'], [36, 'curare'], [41, 'bote-de-jararaca'], [47, 'toca-de-tatu'], [54, 'tremor-de-terra']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-06', 'pt-09', 'pt-26', 'pt-27', 'pt-28', 'pt-29', 'pt-30', 'pt-40', 'pt-43'],
     taxaCaptura: 45, expBase: 192, esforco: { atq: 2, vel: 1 }, crescimento: 'medio', femeas: 0.5,
@@ -320,7 +320,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 92, id: 'cascavelao', nome: 'Cascavelão', tipos: ['veneno', 'terra'],
-    base: b(82, 95, 90, 95, 78, 70),
+    base: b(77, 90, 85, 89, 73, 66),
     golpes: [[1, 'bote-ligeiro'], [1, 'assobio-agudo'], [5, 'presa-dupla'], [9, 'jogar-areia'], [13, 'cuspe-acido'], [17, 'areia-movedica'], [25, 'peconha-forte'], [29, 'bola-de-barro'], [30, 'eco-da-serra'], [35, 'bote-de-jararaca'], [40, 'poeirao'], [45, 'estrondo'], [51, 'borra-de-timbo'], [57, 'tremor-de-terra']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-05', 'pt-06', 'pt-26', 'pt-27', 'pt-28', 'pt-29', 'pt-30', 'pt-40', 'pt-43'],
     taxaCaptura: 45, expBase: 195, esforco: { atq: 1, atqEsp: 1, def: 1 }, crescimento: 'medio', femeas: 0.5,
@@ -341,7 +341,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 94, id: 'graxaim-da-nevoa', nome: 'Graxaim-da-Névoa', tipos: ['assombro'],
-    base: b(80, 65, 70, 115, 90, 95),
+    base: b(79, 65, 69, 114, 89, 94),
     golpes: [[1, 'arranhao'], [1, 'faro-fino'], [5, 'susto'], [9, 'bote-ligeiro'], [13, 'lambida-fria'], [21, 'luz-de-lamparina'], [25, 'toca-e-foge'], [29, 'assombracao'], [33, 'mau-agouro'], [34, 'nevoeiro'], [39, 'sombra-rasteira'], [44, 'bola-de-breu'], [50, 'noite-sem-lua'], [57, 'rasga-mortalha']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-06', 'pt-13', 'pt-22', 'pt-29', 'pt-35', 'pt-36', 'pt-42', 'pt-43', 'pt-44'],
     taxaCaptura: 45, expBase: 198, esforco: { atqEsp: 2, vel: 1 }, crescimento: 'medio', femeas: 0.5,
@@ -360,7 +360,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 96, id: 'quatizao', nome: 'Quatizão', tipos: ['comum', 'ginga'],
-    base: b(85, 105, 80, 60, 75, 95),
+    base: b(80, 99, 75, 56, 71, 89),
     golpes: [[1, 'arranhao'], [1, 'faro-fino'], [5, 'rabada'], [9, 'jogar-areia'], [13, 'tabefes'], [17, 'dentada'], [21, 'toca-e-foge'], [25, 'patada'], [28, 'rasteira'], [32, 'grito-de-guerra'], [36, 'meia-lua'], [41, 'cabecada'], [46, 'atropelo'], [52, 'armada']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-09', 'pt-23', 'pt-24', 'pt-25', 'pt-29', 'pt-30', 'pt-41'],
     taxaCaptura: 45, expBase: 184, esforco: { atq: 2, vel: 1 }, crescimento: 'rapido', femeas: 0.6,
@@ -379,7 +379,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 98, id: 'antao', nome: 'Antão', tipos: ['terra', 'mata'],
-    base: b(125, 105, 95, 60, 85, 55),
+    base: b(122, 102, 92, 58, 83, 53),
     golpes: [[1, 'encontrao'], [1, 'faro-fino'], [5, 'jogar-areia'], [13, 'bola-de-barro'], [17, 'fincar-pe'], [21, 'pisao-de-anta'], [25, 'barro-curativo'], [29, 'cabecada'], [33, 'casco-pesado'], [34, 'erva-de-passarinho'], [39, 'terra-batida'], [44, 'espinho-de-mandacaru'], [50, 'tremor-de-terra'], [57, 'queda-de-jequitiba']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-07', 'pt-08', 'pt-09', 'pt-12', 'pt-14', 'pt-28', 'pt-29', 'pt-30', 'pt-40'],
     taxaCaptura: 35, expBase: 214, esforco: { vida: 2, atq: 1 }, crescimento: 'medio', femeas: 0.5,
@@ -438,7 +438,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 104, id: 'seriemao', nome: 'Seriemão', tipos: ['ginga', 'comum'],
-    base: b(78, 110, 72, 60, 70, 110),
+    base: b(75, 106, 69, 58, 67, 105),
     golpes: [[1, 'bicada'], [1, 'assobio-agudo'], [5, 'jogar-areia'], [9, 'bote-ligeiro'], [17, 'eco-da-serra'], [21, 'faro-fino'], [25, 'patada'], [29, 'toca-e-foge'], [30, 'bencao'], [34, 'bico-furador'], [38, 'meia-lua'], [43, 'estrondo'], [48, 'armada'], [54, 'martelo']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-23', 'pt-24', 'pt-25', 'pt-30', 'pt-31'],
     taxaCaptura: 45, expBase: 186, esforco: { atq: 2, vel: 1 }, crescimento: 'rapido', femeas: 0.5,
@@ -478,7 +478,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 108, id: 'garca-real', nome: 'Garça-Real', tipos: ['vento', 'rio'],
-    base: b(75, 70, 65, 110, 90, 95),
+    base: b(71, 66, 62, 105, 86, 90),
     golpes: [[1, 'bicada'], [1, 'faro-fino'], [5, 'esguicho'], [9, 'lufada'], [13, 'jogar-areia'], [17, 'espuma-do-mar'], [21, 'pouso-no-galho'], [25, 'brisa-da-serra'], [29, 'vento-a-favor'], [30, 'chuva-de-penas'], [35, 'jato-de-igarape'], [40, 'pe-de-vento'], [46, 'enxurrada'], [52, 'ventania']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-06', 'pt-14', 'pt-15', 'pt-16', 'pt-20', 'pt-22', 'pt-31', 'pt-32', 'pt-33', 'pt-37', 'pt-49'],
     taxaCaptura: 45, expBase: 188, esforco: { atqEsp: 2, vel: 1 }, crescimento: 'rapido', femeas: 0.5,
@@ -537,7 +537,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 114, id: 'piranhao', nome: 'Piranhão', tipos: ['rio', 'ginga'],
-    base: b(72, 125, 65, 55, 60, 123),
+    base: b(69, 120, 62, 53, 58, 118),
     golpes: [[1, 'encontrao'], [1, 'cara-feia'], [5, 'esguicho'], [9, 'bote-ligeiro'], [13, 'dentada'], [17, 'rabanada'], [21, 'amolar-garras'], [29, 'mordida-de-piranha'], [30, 'rasteira'], [35, 'grito-de-guerra'], [40, 'mergulho-fundo'], [45, 'queixada'], [51, 'cachoeirada'], [57, 'arpao-de-cabeca']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-14', 'pt-15', 'pt-16', 'pt-23', 'pt-24', 'pt-25', 'pt-43'],
     taxaCaptura: 45, expBase: 184, esforco: { atq: 2, vel: 1 }, crescimento: 'rapido', femeas: 0.5,
@@ -556,7 +556,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 116, id: 'poraque', nome: 'Poraquê', tipos: ['rio', 'trovao'],
-    base: b(90, 70, 75, 125, 85, 70),
+    base: b(89, 70, 74, 124, 84, 69),
     golpes: [[1, 'encontrao'], [1, 'cara-feia'], [5, 'esguicho'], [9, 'choquinho'], [17, 'faisca-dupla'], [21, 'choque-de-poraque'], [25, 'bolhas-do-mangue'], [29, 'zunido-de-alta-tensao'], [33, 'dinamo'], [36, 'mordida-eletrica'], [40, 'jato-de-igarape'], [45, 'tempestade-de-raios'], [51, 'enxurrada'], [58, 'curto-circuito']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-14', 'pt-15', 'pt-16', 'pt-17', 'pt-18', 'pt-19', 'pt-37', 'pt-48'],
     taxaCaptura: 45, expBase: 200, esforco: { atqEsp: 3 }, crescimento: 'medio', femeas: 0.5,
@@ -575,7 +575,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 118, id: 'arraiao', nome: 'Arraião', tipos: ['rio', 'veneno'],
-    base: b(100, 90, 105, 85, 95, 40),
+    base: b(93, 84, 98, 79, 89, 37),
     golpes: [[1, 'encontrao'], [1, 'jogar-areia'], [5, 'esguicho'], [9, 'espinho-peconhento'], [13, 'atoleiro'], [17, 'bolhas-do-mangue'], [21, 'pele-amarga'], [25, 'rabanada'], [29, 'peconha-forte'], [33, 'agua-de-cacimba'], [38, 'curare'], [43, 'mergulho-fundo'], [49, 'borra-de-timbo'], [56, 'enxurrada']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-14', 'pt-15', 'pt-16', 'pt-26', 'pt-27', 'pt-28', 'pt-29', 'pt-30', 'pt-43'],
     taxaCaptura: 45, expBase: 198, esforco: { def: 2, vida: 1 }, crescimento: 'medio', femeas: 0.5,
@@ -594,7 +594,7 @@ export const especies: EspecieDef[] = [
   },
   {
     num: 120, id: 'hipocampo', nome: 'Hipocampo', tipos: ['rio', 'lenda'],
-    base: b(78, 65, 95, 115, 100, 85),
+    base: b(74, 62, 90, 109, 95, 80),
     golpes: [[1, 'esguicho'], [1, 'cara-feia'], [6, 'redemoinho'], [11, 'espuma-do-mar'], [16, 'esquiva'], [21, 'sopro-ancestral'], [26, 'agua-de-cacimba'], [31, 'bolhas-do-mangue'], [34, 'escama-sagrada'], [38, 'chamado-antigo'], [43, 'jato-de-igarape'], [48, 'pulso-das-eras'], [54, 'enxurrada'], [61, 'estrela-cadente']],
     pergaminhos: ['pt-03', 'pt-06', 'pt-07', 'pt-14', 'pt-15', 'pt-16', 'pt-21', 'pt-22', 'pt-36', 'pt-37', 'pt-45', 'pt-46', 'pt-49'],
     taxaCaptura: 25, expBase: 226, esforco: { atqEsp: 2, defEsp: 1 }, crescimento: 'lento', femeas: 0.5,

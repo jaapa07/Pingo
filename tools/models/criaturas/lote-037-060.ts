@@ -13,5 +13,15 @@ import { beijaFlorzim } from './047-beija-florzim';
 import { beijaArcoIris } from './048-beija-arco-iris';
 import { tucaninho } from './049-tucaninho';
 import { tucanucu } from './050-tucanucu';
+import { ararinha } from './051-ararinha';
+import { araracanga } from './052-araracanga';
+import { papagaiozim } from './053-papagaiozim';
+import { papagalio } from './054-papagalio';
+import { urubuzim } from './055-urubuzim';
+import { urubuRei } from './056-urubu-rei';
+import { capivarinha } from './057-capivarinha';
+import { capivarona } from './058-capivarona';
+import { ouricoMirim } from './059-ourico-mirim';
+import { ouricudo } from './060-ouricudo';
 /** Criaturas 037-060 do Diário de Campo. */
-export const modelos: PixModel[] = [piabinha, douradoRei, mandizinho, jauGigante, calanguinho, calangao, corujinha, corujaoOrelha, queroQuerinho, queroGuarda, beijaFlorzim, beijaArcoIris, tucaninho, tucanucu];
+export const modelos: PixModel[] = [piabinha, douradoRei, mandizinho, jauGigante, calanguinho, calangao, corujinha, corujaoOrelha, queroQuerinho, queroGuarda, beijaFlorzim, beijaArcoIris, tucaninho, tucanucu, ararinha, araracanga, papagaiozim, papagalio, urubuzim, urubuRei, capivarinha, capivarona, ouricoMirim, ouricudo];

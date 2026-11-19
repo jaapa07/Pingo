@@ -3,12 +3,12 @@
  * Traços únicos: leques brancos enormes nas orelhas · estrela branca na testa sobre a cara escura ·
  * rabo comprido de anéis · gota de goma âmbar na mão.
  */
-import { criatura, arboricola, animsArboricola, unirExtras, blob, tufo, par, m, lz, qz, D2R, type V3 } from './kits';
+import { criatura, arboricola, animsArboricola, unirExtras, blob, calota, tufo, par, m, lz, qz, D2R, type V3 } from './kits';
 import { bracosCurtos } from './061-preguicim';
 
 export const paletaSagui = {
   rampas: [
-    ['#463a4e', '#8a7a78', '#cbbda4'], // 0 pelo cinza-pardo rajado
+    ['#54445a', '#a39284', '#e0d2b4'], // 0 pelo cinza-pardo rajado
     ['#a7a2b8', '#f1eee8', '#ffffff'], // 1 branco dos tufos e da estrela
     ['#221a2a', '#44333f', '#6c5660'], // 2 cara, mãos e anéis escuros
     ['#a8582a', '#ea9c38', '#ffdc7a'], // 3 goma âmbar · cordão do acrobata
@@ -32,8 +32,10 @@ export function corpoSagui(p: SaguiP) {
     rampas: { pelo: 0, barriga: 0, rosto: 2, maos: 2, cauda: 0 },
   });
   const rig = kit.rig;
+  // capuz escuro: a cabeça inteira é escura, só a estrela e os leques são brancos
+  rig.add('cabeca', calota([cx * 1.05, cy * 1.05, cz * 1.05], m(2), { de: 0, ate: 124, rot: [0, 0, 80] }));
   // estrela branca na testa e focinho mais claro
-  rig.add('cabeca', blob([cx * 0.16, cy * 0.26, cz * 0.24], m.plano(1), { pos: [cx * 0.9, cy * 0.5, 0], rot: [0, 0, 20], seg: 10 }));
+  rig.add('cabeca', blob([cx * 0.2, cy * 0.3, cz * 0.3], m.plano(1), { pos: [cx * 0.9, cy * 0.52, 0], rot: [0, 0, 20], seg: 10 }));
   rig.add('cabeca', blob([cx * 0.12, cy * 0.1, cz * 0.2], m.luz(2), { pos: [cx * 1.08, -cy * 0.32, 0], seg: 8 }));
   // LEQUES das orelhas (ossos próprios)
   par((l, s) => {
@@ -51,9 +53,9 @@ export function corpoSagui(p: SaguiP) {
 }
 
 function build() {
-  const { rig } = corpoSagui({ k: 0.95, cabeca: [0.2, 0.185, 0.2], bracos: 0.5, curva: 22, tufo: 0.17, rabo: 0.9, caudaAng: 40, caudaCurva: 26 });
+  const { rig } = corpoSagui({ k: 0.95, cabeca: [0.2, 0.185, 0.2], bracos: 0.5, curva: 22, tufo: 0.2, rabo: 0.9, caudaAng: 40, caudaCurva: 26 });
   // gota de goma âmbar erguida na mão da frente
-  rig.bones.braco_e.rotation.z = 46 * D2R; rig.bones.antebraco_e.rotation.z = 44 * D2R;
+  rig.bones.braco_e.rotation.z = 34 * D2R; rig.bones.antebraco_e.rotation.z = 24 * D2R; rig.bones.braco_e.rotation.x = 30 * D2R;
   rig.bone('goma', 'antebraco_e', [0.17, -0.22, -0.02]);
   rig.add('goma', blob([0.07, 0.085, 0.07], m(3), { rot: [0, 0, 10] }), blob([0.025, 0.03, 0.025], m.luz(3), { pos: [0.025, 0.03, -0.04], seg: 8 }));
   return rig;

@@ -46,6 +46,7 @@ const zona: ZonaDef = {
     { o: 'placa', ...g.p('s'), texto: 'ENCOSTA DA FUMAÇA\n← Serra Fumaça · Vila Ferrugem →\nCuidado: rocha rachada na pista. Quem não quebra, não passa.' },
     { o: 'placa', ...g.p('q'), texto: 'VILA FERRUGEM a 50 passos.\n"Cidade operária: aqui até o galo canta em turno."' },
     { o: 'araucaria', x: 5, y: 6 }, { o: 'araucaria', x: 20, y: 3 }, { o: 'araucaria', x: 30, y: 16 }, { o: 'araucaria', x: 44, y: 25 }, { o: 'araucaria', x: 58, y: 21 }, { o: 'araucaria', x: 72, y: 20 }, { o: 'araucaria', x: 83, y: 12 },
+    { o: 'bromelia', x: 17, y: 9 }, { o: 'cupinzeiro', x: 33, y: 6 }, { o: 'pedra-grande', x: 70, y: 10 }, { o: 'tronco-caido', x: 45, y: 22 }, { o: 'bromelia', x: 58, y: 5 }, { o: 'cupinzeiro', x: 80, y: 8 },
     { o: 'tronco-caido', x: 27, y: 24 }, { o: 'pedra-grande', x: 53, y: 11 }, { o: 'cupinzeiro', x: 47, y: 13 },
   ],
   warps: [

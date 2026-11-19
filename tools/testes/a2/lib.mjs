@@ -18,7 +18,7 @@ export async function abrir(zona, x, y, extra = '', turbo = 4) {
     const st = window.setTimeout.bind(window);
     window.setTimeout = (f, ms, ...a) => st(f, (ms || 0) / k, ...a);
   }, turbo);
-  await page.goto(`http://localhost:5192/?zona=${zona}&x=${x}&y=${y}&equipe=${EQUIPE}&semente=7&flags=inicial-mata${extra}`);
+  await page.goto(`http://localhost:5192/?zona=${zona}&x=${x}&y=${y}&equipe=${EQUIPE}&semente=7${extra}`);
   await page.waitForFunction(() => window.__pingo?.mundo?.pronto, null, { timeout: 40000 });
   await page.evaluate(async () => {
     window.__a2 = await import('/src/world/vivo.ts');

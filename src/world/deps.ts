@@ -3,8 +3,9 @@
  * tolerância à ausência: cada módulo é procurado por `import.meta.glob`; se ainda não existir,
  * entra uma reserva mínima (ver reserva.ts) para o motor de mundo poder rodar e ser testado sozinho.
  */
-import type { CriaturaInst, EspecieDef, ItemDef, TreinadorDef, EventoDef, ClimaId, Stat, TipoId } from '../core/tipos';
+import type { CriaturaInst, EspecieDef, ItemDef, TreinadorDef, EventoDef, ClimaId, Stat, TipoId, MembroEquipe } from '../core/tipos';
 import { jogo } from '../core/estado';
+import { bus } from '../core/events';
 import { temTela } from '../ui/telas';
 import { rng } from '../core/rng';
 import { treinadoresExtras, eventosExtras } from './registro';
@@ -60,7 +61,10 @@ export async function iniciarBatalha(p: PedidoBatalha): Promise<ResultadoBatalha
   // sem o módulo de batalha (teste isolado): anuncia e devolve vitória
   const e = p.inimigos[0];
   await falar(p.treinador ? `${p.treinador.classe} ${p.treinador.nome} quer batalhar!` : `Um ${nomeCriatura(e)} selvagem apareceu!`);
-  return { resultado: (jogo.save.flags['teste-resultado-batalha'] as ResultadoBatalha['resultado']) ?? 'vitoria' };
+  const resultado = (jogo.save.flags['teste-resultado-batalha'] as ResultadoBatalha['resultado']) ?? 'vitoria';
+  // com o módulo de batalha, quem emite 'batalha-fim' é ele (uma vez só); aqui é o substituto do teste isolado
+  bus.emit('batalha-fim', { tipo: p.tipo, resultado, pedido: p });
+  return { resultado };
 }
 const ST: Stat[] = ['vida', 'atq', 'def', 'atqEsp', 'defEsp', 'vel'];
 const zeros = () => Object.fromEntries(ST.map((s) => [s, 0])) as Record<Stat, number>;
@@ -69,6 +73,12 @@ export function criarCriatura(especie: number, nivel: number, o?: Partial<Criatu
   if (f) return f(especie, nivel, o);
   const gen = zeros(); for (const s of ST) gen[s] = rng.int(0, 15);
   return { uid: 'c' + rng.int(1, 0x7fffffff).toString(36), especie, nivel, exp: nivel ** 3, vida: 10 + nivel * 3, status: null, golpes: [], gen, esf: zeros(), personalidade: 'serena', sexo: null, amizade: 70, cuia: 'cuia-simples', treinadorOriginal: jogo.save.jogador.nome, ...o };
+}
+/** criatura de treinador: usa os `golpes` escolhidos à mão em `MembroEquipe`, quando o módulo de batalha está carregado */
+export function criarDeMembro(m: MembroEquipe, dono = ''): CriaturaInst {
+  const f = bat()?.criarDeMembro;
+  if (f) return f(m, dono);
+  return criarCriatura(m.e, m.nv, m.item ? { item: m.item } : undefined);
 }
 export function curarEquipe(o?: { posto?: boolean }) {
   const f = bat()?.curarEquipe;

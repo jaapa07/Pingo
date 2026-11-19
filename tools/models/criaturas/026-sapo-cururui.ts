@@ -4,8 +4,8 @@
  * Cresce: corpanzil largo e verrugoso em verde-oliva · duas GLÂNDULAS enormes atrás dos olhos brilhando em
  * lilás-limão · verrugas que brilham no lombo · sobrancelha ossuda · gotas de peçonha escorrendo · bocarra.
  */
-import { criatura, anfibio, animsAnfibio, blob, par, m, ls, qs, lz, type V3 } from './kits';
-import { paletaPerereca } from './024-pererequinha';
+import { criatura, anfibio, animsAnfibio, blob, par, m, ls, qs, unirExtras, type V3 } from './kits';
+import { paletaPerereca, contido } from './024-pererequinha';
 
 const paleta = {
   ...paletaPerereca,
@@ -30,7 +30,7 @@ function build() {
     rig.add('glandula_' + l, blob([0.17, 0.085, 0.1], m(3)), blob([0.11, 0.05, 0.07], m.luz(3), { pos: [0.01, 0.045, 0.02 * s], seg: 12 }));
     for (const x of [-0.08, 0.0, 0.08]) rig.add('glandula_' + l, blob([0.02, 0.02, 0.02], m.sombra(3), { pos: [x, 0.07, 0.06 * s], seg: 6, castShadow: false }));
     // sobrancelha ossuda e canto da boca
-    rig.add('cabeca', blob([0.11, 0.03, 0.05], m.sombra(0), { pos: [0.14, 0.215, 0.2 * s], rot: [0, 0, -14], seg: 10 }));
+    rig.add('cabeca', blob([0.1, 0.026, 0.06], m.sombra(0), { pos: [0.13, 0.2, 0.2 * s], rot: [0, 0, -14], seg: 10 }));
     rig.add('cabeca', blob([0.2, 0.02, 0.03], m.sombra(0), { pos: [0.16, -0.045, 0.27 * s], rot: [0, -22 * s, 4], seg: 8 }));
     // gota de peçonha escorrendo da glândula
     rig.bone('pingo_' + l, 'cabeca', [-0.02, 0.02, 0.34 * s]);
@@ -52,12 +52,11 @@ function build() {
 
 const acende = (nomes: string[]) => Object.fromEntries(nomes.map((n, i) => { const v = [1, 1.1, 1.25, 1.1]; return [n, ls([...v.slice(i % 4), ...v.slice(0, i % 4)])]; }));
 const brilhos = ['glandula_d', 'glandula_e', 'verruga0', 'verruga1', 'verruga2', 'verruga3'];
-const anims = animsAnfibio({ u: 0.8, papo: true, mole: 0.8 }, {
+const anims = animsAnfibio({ u: 0.8, papo: true, mole: 0.8 }, unirExtras(contido, {
   idle: { ...acende(brilhos), pingo_d: ls([1, 1.2, 1.5, 0.6]), pingo_e: ls([1.5, 0.6, 1, 1.2]) },
   status: acende(brilhos),
   especial: { glandula_d: qs([1, 1.2, 1.4, 1.8, 1.3, 1]), glandula_e: qs([1, 1.2, 1.4, 1.8, 1.3, 1]), verruga0: qs([1, 1.3, 1.6, 2.2, 1.4, 1]), verruga1: qs([1, 1.3, 1.6, 2, 1.4, 1]), verruga2: qs([1, 1.3, 1.6, 2, 1.4, 1]) },
-  fisico: { glandula_d: lz([0, 0, 0, 0, 0]) },
-});
+}));
 
 export const sapoCururui = criatura({
   num: 26, id: 'sapo-cururui', nome: 'Sapo-Cururuí', porte: 'G', estagio: 'final', paleta, build, anims,

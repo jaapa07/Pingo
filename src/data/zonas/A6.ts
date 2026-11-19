@@ -15,11 +15,11 @@ const g = grade('A6', 50, [
   '~~~~~~~~;;|;;;;;;....|....;;;;~~|~~##...HH.|......##~~',
   '~~~~~~;q;;|..........|.......;;;|~##....FH.|...k...#~~',
   '~~~~~;;;..|...HHHHHH.|........;;|;#.....:..|.......#~~',
-  '~~~~;;;...|...HHHHHH.|..T......;|;#.....:..|..2....#~~',
+  '~~~~;;;...|...HHHHHH.|..T......;|;#.....:.2|.......#~~',
   '~~~;;;....|...HHHHHH.|.........;|##.....:..|.......#~~',
   '~~~;;.....|...GHHHHH.|..,.......|#...::::..|.....###~~',
   '~~;;;..T..|...h..:...|..........|#...:.....|...###~~~~',
-  '~~;;......|......:..u|.........:|:::::..3..|.###~~~~~~',
+  '~~;;......|......:..u|.........:|:::3:.....|.###~~~~~~',
   '~~;;...b..|......:...|HHHHHHHHH:|#.."""""".|##~~~~~~~~',
   '~~;;;.....|......:...|HHHHHHHHH:|#.."""""##|~~~~~~~~~~',
   '~~~;;;....|......:...|OHHHHVHHH:|####vv###~|~~~~~~~~~~',
@@ -45,7 +45,7 @@ const g = grade('A6', 50, [
   '~~~~~~~~~~|~~~;;#.n.#|;;~~=~~;;;|;;;;;~~~~~|~~~~~~~~~~',
   '~~~~~~~~~~|~~~~~#####|~~~~=~~~~~|~~~~~~~~~~|~~~~~~~~~~',
   '~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~',
-], { q: ';', a: ';', '6': ';' });
+], { q: ';', a: ';', '6': ';', '3': ':' });
 
 const G = g.p('G'), F = g.p('F');
 const zona: ZonaDef = {
@@ -83,8 +83,8 @@ const zona: ZonaDef = {
     { id: 'a6-senhora', sprite: 'npc-idosa', ...g.p('h'), fala: ['O Volta é um gênio, mas esquece a chave até do próprio ginásio.', 'Tipo Trovão morre de medo de Terra. O resto ele eletrocuta e pede desculpa depois.'] },
     { id: 'a6-radialista', sprite: 'npc-homem-3', ...g.p('j'), mov: 'olhar', script: 'a2-m-radio' },
     { id: 'A6-1', sprite: 'cl-crianca-f', ...g.p('1'), dir: 's', treinador: 'A6-1', visao: 3 },
-    { id: 'A6-2', sprite: 'capanga-f', ...g.p('2'), dir: 'o', se: '!flag:farol-ok', treinador: 'A6-2', visao: 4 },
-    { id: 'A6-3', sprite: 'capanga-m', ...g.p('3'), dir: 'o', se: '!flag:farol-ok', treinador: 'A6-3', visao: 3 },
+    { id: 'A6-2', sprite: 'capanga-f', ...g.p('2'), dir: 'o', se: '!flag:farol-ok', treinador: 'A6-2', visao: 2 },
+    { id: 'A6-3', sprite: 'capanga-m', ...g.p('3'), dir: 'o', se: '!flag:farol-ok', treinador: 'A6-3', visao: 2 },
     { id: 'A6-4', sprite: 'cl-observadora', ...g.p('4'), dir: 'o', mov: 'olhar', treinador: 'A6-4', visao: 3 },
     { id: 'A6-5', sprite: 'cl-surfista', ...g.p('5'), dir: 'l', treinador: 'A6-5', visao: 4 },
     { id: 'A6-6', sprite: 'cl-pescador', ...g.p('6'), dir: 'o', treinador: 'A6-6', visao: 4 },

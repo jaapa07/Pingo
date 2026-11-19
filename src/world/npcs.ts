@@ -6,7 +6,7 @@ import { bus } from '../core/events';
 import { Ator } from './ator';
 import { M, atorEm, quadros, sfx, type NpcVivo } from './vivo';
 import { DX, DY, OPOSTO } from './zonas';
-import { treinador, falar, abrirTela, criarCriatura } from './deps';
+import { treinador, falar, abrirTela, criarDeMembro } from './deps';
 import { lutar } from './encontros';
 import { rodarEvento } from './eventos';
 
@@ -90,7 +90,7 @@ export async function abordagem(n: NpcVivo) {
 export async function desafiar(t: TreinadorDef, n?: NpcVivo, extra: { semDerrota?: boolean } = {}): Promise<boolean> {
   const quem = { nome: `${t.classe} ${t.nome}`, retrato: t.sprite };
   await falar(t.desafio, quem);
-  const inimigos = t.equipe.map((m) => criarCriatura(m.e, m.nv, m.item ? { item: m.item } : undefined));
+  const inimigos = t.equipe.map((m) => criarDeMembro(m, t.nome));
   const r = await lutar({ tipo: 'treinador', inimigos, treinador: t, arena: M.zv.def.arena, clima: M.zv.def.clima, dupla: t.dupla, musica: t.musica, ...extra });
   if (r.resultado !== 'vitoria') return false;
   setFlag(flagVitoria(t));

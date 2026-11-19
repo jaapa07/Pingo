@@ -96,7 +96,8 @@ export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } 
   const s = jogo.save, dif = jogo.opcoes.dificuldade, t = p.treinador;
   const nivel: NivelIA = p.tipo === 'treinador' ? nivelEfetivo(t?.ia ?? 'treinador', dif) : p.tipo === 'lendario' ? nivelEfetivo('treinador', dif) : 'novato';
   const itens: Record<string, number> = {};
-  const usaItens = p.tipo === 'treinador' && (iaUsaItens(t?.ia ?? 'treinador', dif) || (dif !== 'explorador' && !!t?.itens?.length && s.insignias.length >= 7)); // Aventureiro: quem tem itens definidos só os usa a partir do 8º ginásio (7 insígnias já conquistas); antes disso o desafio é por estratégia
+  // Aventureiro: quem tem itens definidos só os usa a partir do 8º ginásio (7 insígnias já conquistadas); antes disso o desafio é por estratégia
+  const usaItens = p.tipo === 'treinador' && iaUsaItens(t?.ia ?? 'treinador', dif, { temItens: !!t?.itens?.length, insignias: s.insignias.length });
   if (usaItens) {
     for (const id of t?.itens ?? []) itens[id] = (itens[id] ?? 0) + 1;
     if (!Object.keys(itens).length && dif === 'veterano') { const nv = Math.max(...p.inimigos.map((c) => c.nivel)); itens[nv < 20 ? 'cha-cidreira' : nv < 45 ? 'garrafada' : 'elixir-andiroba'] = 1; }
@@ -177,7 +178,8 @@ async function finalizar(controle: ControleBatalha, headless: boolean): Promise<
     bus.emit('evoluiu', { uid: c.uid, de, para: ev.para });
   }
   if (pendentes.length) r.golpesPendentes = pendentes;
-  bus.emit('batalha-fim', { resultado, pedido: p, capturada: r.capturada });
+  // único emissor de 'batalha-fim' do jogo (o mundo não repete o evento)
+  bus.emit('batalha-fim', { tipo: p.tipo, resultado, pedido: p, capturada: r.capturada });
   return r;
 }
 

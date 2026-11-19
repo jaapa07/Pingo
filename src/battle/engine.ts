@@ -737,7 +737,11 @@ export class Batalha {
     const cada = Math.max(1, Math.floor(expDerrota(inimigo, this.cfg.tipo === 'treinador') / quem.length));
     const esforco = especie(inimigo.especie).esforco;
     for (const c of quem) {
+      // o esforço pode aumentar a vida máxima na hora: a vida atual sobe junto (senão a criatura ficava "19/20" de vida cheia)
+      const vidaAntes = atributos(c).vida;
       ganharEsforco(c, esforco);
+      const ganhoVida = atributos(c).vida - vidaAntes;
+      if (ganhoVida > 0 && c.vida > 0) c.vida += ganhoVida;
       if (c.nivel >= NIVEL_MAX) continue;
       const curva = especie(c.especie).crescimento, de = c.exp;
       c.exp = Math.min(c.exp + cada, expParaNivel(curva, NIVEL_MAX));

@@ -83,11 +83,20 @@ export function ganharExp(c: CriaturaInst, qtd: number): SubidaNivel[] {
 let contador = 0;
 const novoUid = () => 'c' + rng.int(0, 0xffffff).toString(36) + (contador++).toString(36);
 const zeros = (): Record<Stat, number> => ({ vida: 0, atq: 0, def: 0, atqEsp: 0, defEsp: 0, vel: 0 });
-/** os até 4 golpes mais recentes que a espécie conhece neste nível */
+/**
+ * Os até 4 golpes mais recentes que a espécie conhece neste nível — garantindo, quando ela já os aprendeu, pelo menos
+ * dois golpes de dano e um de dano do próprio tipo (os "4 mais recentes" puros deixavam criaturas só com golpes de status).
+ */
 export function golpesIniciais(num: number, nivel: number): GolpeSlot[] {
-  const ids: string[] = [];
-  for (const [n, id] of especie(num).golpes) if (n <= nivel && temGolpe(id) && !ids.includes(id)) ids.push(id);
+  const e = especie(num), ids: string[] = [];
+  for (const [n, id] of e.golpes) if (n <= nivel && temGolpe(id) && !ids.includes(id)) ids.push(id);
   const r = ids.slice(-4);
+  const dano = (id: string) => golpe(id).cat !== 'status', doTipo = (id: string) => dano(id) && e.tipos.includes(golpe(id).tipo);
+  // troca o golpe de status mais antigo (ou, na falta, o de dano mais antigo que não seja do tipo) pelo golpe pedido
+  const encaixar = (id: string, manter: (x: string) => boolean) => { let i = r.findIndex((x) => !dano(x)); if (i < 0) i = r.findIndex((x) => !manter(x)); if (i >= 0) { r.splice(i, 1); r.push(id); } };
+  const fora = () => ids.filter((x) => !r.includes(x)).reverse();
+  if (!r.some(doTipo)) { const id = fora().find(doTipo); if (id) encaixar(id, doTipo); }
+  while (r.filter(dano).length < 2) { const id = fora().find(dano); if (!id || !r.some((x) => !dano(x))) break; encaixar(id, dano); }
   return (r.length ? r : ['encontrao']).map(novoSlot);
 }
 /** Cria uma criatura: genes, personalidade, sexo e golpes do nível são sorteados no `rng` (salvo o que vier em `o`). */
@@ -102,7 +111,9 @@ export function criarCriatura(num: number, nivel: number, o: Partial<CriaturaIns
     golpes: golpesIniciais(num, nivel), gen, esf: zeros(), personalidade: pers, sexo, amizade: 70, cuia: 'cuia', treinadorOriginal: '',
     ...o,
   };
-  if (o.vida === undefined) c.vida = atributos(c).vida;
+  // vida cheia por padrão; se vier em `o`, nunca acima do máximo (o máximo depende de genes/esforço/nível, que também podem vir em `o`)
+  const max = atributos(c).vida;
+  c.vida = o.vida === undefined ? max : Math.max(0, Math.min(max, Math.floor(o.vida)));
   return c;
 }
 /** Cria a criatura de um treinador a partir de `MembroEquipe` (golpes fixos, se dados). */
