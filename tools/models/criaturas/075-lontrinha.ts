@@ -25,7 +25,7 @@ function build() {
   rig.bone('pedrinha', 'cabeca', [ref.pontaFocinho[0] + 0.02, ref.pontaFocinho[1] + 0.16, 0]);
   rig.add('pedrinha', blob([0.085, 0.07, 0.08], m(3), { rot: [0, 0, 14], seg: 10 }), blob([0.03, 0.02, 0.03], m.luz(3), { pos: [0.01, 0.03, -0.03], seg: 6 }));
   // gotas no lombo
-  const g: V3[] = [[-0.1, 0.19, 0.06], [0.12, 0.2, -0.05], [-0.28, 0.14, 0.02]];
+  const g: V3[] = [[-0.12, 0.17, 0.1]];
   g.forEach((pos, i) => { rig.bone('gota' + i, 'corpo', pos); rig.add('gota' + i, blob([0.025, 0.035, 0.025], m.luz(3), { seg: 8 })); });
   return rig;
 }

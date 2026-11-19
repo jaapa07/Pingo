@@ -15,7 +15,12 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
    * Cobertura: Jararacuçu (Veneno/Terra) e o ás Jaú-Gigante (Rio/Terra) anulam Trovão; os venenosos castigam quem vem de Mata.
    */
   mestre('liga-1', 'Mestra', 'Maré', 'cl-pescador',
-    [{ e: 126, nv: 40 }, { e: 118, nv: 40 }, { e: 89, nv: 40 }, { e: 26, nv: 40 }, { e: 40, nv: 41 }], 4100,
+    [
+      { e: 126, nv: 40, golpes: ['peconha-forte', 'bolhas-do-mangue', 'leite-de-cururu', 'luz-de-lamparina'] },
+      { e: 89, nv: 40, golpes: ['curare', 'pisao-de-anta', 'presa-dupla', 'toca-e-foge'] },
+      { e: 26, nv: 40, golpes: ['jato-de-igarape', 'cantiga-de-ninar', 'agua-de-cacimba', 'leite-de-cururu'] },
+      { e: 40, nv: 41, golpes: ['vocoroca', 'rabanada', 'atoleiro', 'agua-de-cacimba'] },
+    ], 4100,
     'Sou a Maré, primeira Mestra. No mangue a água sobe devagar e quando você vê já está no pescoço. Assim é a minha equipe: veneno primeiro, enchente depois!',
     'A maré virou… e virou para o seu lado. Passe, desafiante: a forja do Brasa-Viva já está acesa.'),
   /*
@@ -23,7 +28,12 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
    * Cobertura: Tucanuçu (Vento/Brasa) voa por cima da Terra e bica quem vem de Ginga; Siri-Couraça (Rio/Ferro) apaga Brasa e Pedra alheias.
    */
   mestre('liga-2', 'Ferreiro', 'Brasa-Viva', 'cl-ferreiro',
-    [{ e: 42, nv: 41 }, { e: 34, nv: 41 }, { e: 50, nv: 41 }, { e: 130, nv: 41 }, { e: 146, nv: 42 }], 4200,
+    [
+      { e: 42, nv: 41, golpes: ['patada-ardente', 'pedrada', 'cinzas-quentes', 'couraca-de-pedra'] },
+      { e: 50, nv: 41, golpes: ['pe-de-vento', 'brasa-viva', 'bico-furador', 'pouso-no-galho'] },
+      { e: 130, nv: 41, golpes: ['canoa-virada', 'unha-de-aco', 'casulo', 'bote-ligeiro'] },
+      { e: 146, nv: 42, golpes: ['curare', 'unha-de-aco', 'tatu-bola', 'leite-de-cururu'] },
+    ], 4200,
     'Brasa-Viva, segundo Mestre! Sino bom se faz batendo: ferro na brasa, martelo no ferro. Vamos ver de que liga é feita a sua equipe!',
     'Rachou o meu sino… e que som bonito ele fez. Vá, a neblina do Pajé está à sua espera.'),
   /*
@@ -31,7 +41,12 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
    * Cobertura: Jaguatiricão (Comum/Assombro) é imune a Assombro; Polvão (Rio/Mente) segura Brasa; o ás Noitão fecha com sono e susto.
    */
   mestre('liga-3', 'Pajé', 'Neblina', 'npc-idoso',
-    [{ e: 44, nv: 42 }, { e: 94, nv: 42 }, { e: 122, nv: 42 }, { e: 70, nv: 42 }, { e: 170, nv: 42 }, { e: 172, nv: 43 }], 4300,
+    [
+      { e: 44, nv: 42, golpes: ['onda-mental', 'pe-de-vento', 'cisma', 'pouso-no-galho'] },
+      { e: 122, nv: 42, golpes: ['dor-de-cabeca', 'jato-de-igarape', 'cisma'] },
+      { e: 70, nv: 42, golpes: ['sombra-rasteira', 'dentada', 'toca-e-foge'] },
+      { e: 172, nv: 43, golpes: ['assombracao', 'pressentimento', 'olho-de-coruja', 'sombra-rasteira'] },
+    ], 4300,
     'Sente, desafiante. Eu sou o Neblina, e toda luta minha começa com uma história: era uma vez uma equipe que entrou nesta sala… e não lembrava como saiu.',
     'Essa história eu não conhecia: a do desafiante que atravessou a neblina. Vou contar aos meus netos. A Pampa é a próxima porteira.'),
   /*
@@ -40,7 +55,12 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
    * contra Assombro (imune a Comum e a Ginga) ela conta com o Trovão do Bugio e a água da Capivarona.
    */
   mestre('liga-4', 'Domadora', 'Pampa', 'cl-vaqueiro',
-    [{ e: 104, nv: 43 }, { e: 96, nv: 43 }, { e: 102, nv: 43 }, { e: 64, nv: 43 }, { e: 58, nv: 43 }, { e: 72, nv: 44 }], 4400,
+    [
+      { e: 104, nv: 43, golpes: ['meia-lua', 'bico-furador', 'patada', 'toca-e-foge'] },
+      { e: 102, nv: 43, golpes: ['casco-pesado', 'queixada', 'pisoteio', 'esquiva'] },
+      { e: 58, nv: 43, golpes: ['jato-de-igarape', 'cabecada', 'cafune'] },
+      { e: 72, nv: 44, golpes: ['queixada', 'dentada', 'amolar-garras', 'bote-ligeiro'] },
+    ], 4400,
     'Eita, chegou longe! Sou a Pampa, última porteira antes do Campeão. Bicho meu não é domado no grito: é no compasso. Segura o tranco, que o rodeio vai começar!',
     'Me derrubou da sela, e com classe! Atrás daquela porta está o Cacique Aracê. Tire o chapéu ao entrar.', { itens: ['garrafada', 'elixir-andiroba'] }),
   /*
@@ -50,8 +70,14 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
    * (Vento/Assombro) é imune a Comum, Ginga e Terra; Gaviãozão (Comum/Vento) abre o jogo com velocidade.
    */
   { id: 'liga-5', classe: 'Campeão', nome: 'Cacique Aracê', sprite: 'npc-homem-3', ia: 'conselho', premio: 9200, musica: 'batalha-conselho',
-    equipe: [{ e: 12, nv: 44 }, { e: 98, nv: 44 }, { e: 116, nv: 45 }, { e: 68, nv: 45 }, { e: 56, nv: 45 }, { e: 112, nv: 46 }],
-    itens: ['elixir-andiroba', 'elixir-andiroba'],
+    equipe: [
+      { e: 12, nv: 42, golpes: ['bico-furador', 'rasante', 'chuva-de-penas'] },
+      { e: 98, nv: 42, golpes: ['casco-pesado', 'espinho-de-mandacaru', 'erva-de-passarinho'] },
+      { e: 116, nv: 43, golpes: ['zunido-de-alta-tensao', 'jato-de-igarape', 'choque-de-poraque'] },
+      { e: 68, nv: 44, golpes: ['patada-ardente', 'meia-lua'] },
+      { e: 112, nv: 46, golpes: ['rabanada', 'cabecada', 'rabada'] },
+    ],
+    itens: ['garrafada', 'garrafada'],
     desafio: 'Aracê quer dizer "o nascer do dia". Há vinte anos eu vejo o sol nascer deste Platô, e há vinte anos ninguém me tira daqui.\fVocê trouxe oito insígnias e venceu quatro Mestres. Falta um amanhecer. Mostre-me a sua equipe inteira, {JOGADOR}!',
     derrota: 'O sol… nasceu do outro lado hoje. Vinte anos! E perdi sorrindo. Você e as suas criaturas lutam como quem conversa.' },
 

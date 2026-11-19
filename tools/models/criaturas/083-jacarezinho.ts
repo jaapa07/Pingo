@@ -1,5 +1,5 @@
 /**
- * 083 · JACAREZINHO (Rio) — filhote de jacaré-de-papo-amarelo, todo cabeça e dentinhos.
+ * 083 · JACAREZINHO (Rio) — filhote de jacaré-de-papo-amarelo, só cabeça e dentinhos.
  * Traços únicos: papo amarelo-ouro · olhões no alto da cabeça · focinho curto e largo de sorriso dentado ·
  * rabo de faixas escuras · fileira de escudos no lombo.
  * Este arquivo guarda o corpo comum dos três jacarés (084 e 085 reaproveitam).

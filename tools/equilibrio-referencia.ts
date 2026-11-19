@@ -99,8 +99,9 @@ function candidatos(d: Dados): Candidato[] {
       const tabelas: [Encontro[] | undefined, number][] = [[h.todos, 1], [h.dia, 1], [h.manha, 0.6], [h.noite, 0.5]];
       for (const [tab, pt] of tabelas) for (const e of tab ?? []) {
         // a zona conta para o passo em que o jogador de fato a atravessa: o primeiro em que o nível mínimo cabe no ás dele
-        let passo = z.passo; while (passo < 8 && e.nv[0] > asDoJogador(d, passo)) passo++;
-        if (e.nv[0] > asDoJogador(d, passo)) continue;
+        // (conta o nível máximo do encontro: uma rota de selvagens acima do ás do jogador ainda não foi atravessada)
+        let passo = z.passo; while (passo < 8 && e.nv[1] > asDoJogador(d, passo) + 1) passo++;
+        if (e.nv[1] > asDoJogador(d, passo) + 1) continue;
         const linha = raiz(e.e), c = mapa.get(linha), peso = e.peso * pm * pt;
         if (!c || passo < c.passo) mapa.set(linha, { linha, nvMin: e.nv[0], peso: c && passo === c.passo ? c.peso + peso : peso, passo });
         else if (passo === c.passo) { c.peso += peso; c.nvMin = Math.min(c.nvMin, e.nv[0]); }
@@ -131,7 +132,7 @@ export function equipeReferencia(d: Dados, inicial: number, passo: number, as = 
       // no nível do ás) pela melhor que as rotas já abertas oferecem, com leve preferência por um tipo que ainda não tem
       const forca = (c: Candidato) => somaBase(especie(formaNoNivel(c.linha, asK)));
       const tipos = tiposDaEquipe();
-      const novo = cands.filter((c) => c.passo <= k && !linhas.includes(c)).map((c) => ({ c, f: forca(c) * (especie(formaNoNivel(c.linha, asK)).tipos.some((x) => !tipos.has(x)) ? 1.1 : 1) + c.peso / 1000 })).sort((a, b) => b.f - a.f || a.c.linha - b.c.linha)[0]?.c;
+      const novo = cands.filter((c) => c.passo <= k && c.peso >= 8 && !linhas.includes(c)).map((c) => ({ c, f: forca(c) * (especie(formaNoNivel(c.linha, asK)).tipos.some((x) => !tipos.has(x)) ? 1.1 : 1) + c.peso / 1000 })).sort((a, b) => b.f - a.f || a.c.linha - b.c.linha)[0]?.c;
       if (novo) {
         if (linhas.length < 5) linhas.push(novo);
         else { let pior = 0; for (let i = 1; i < linhas.length; i++) if (forca(linhas[i]) < forca(linhas[pior])) pior = i; if (forca(novo) > forca(linhas[pior])) linhas[pior] = novo; }
@@ -171,7 +172,7 @@ export function itensDeRota(passo: number): Record<string, number> { return pass
 
 /* ============================== pilotos do jogador ============================== */
 export type PilotoId = 'bobo' | 'esperto' | 'ia';
-interface Memoria { ultimaTroca: number }
+interface Memoria { ultimaTroca: number; curas: Map<string, number> }
 export interface Piloto { acao(b: Batalha, p: Pos, m: Memoria): Acao; substituto(b: Batalha, m: Memoria): number; oferta(b: Batalha, proxima: number, m: Memoria): number | null }
 
 const GEN8: Record<Stat, number> = { vida: 8, atq: 8, def: 8, atqEsp: 8, defEsp: 8, vel: 8 }, ESF0: Record<Stat, number> = { vida: 0, atq: 0, def: 0, atqEsp: 0, defEsp: 0, vel: 0 };
@@ -244,12 +245,14 @@ export const pilotoEsperto: Piloto = {
     const nocauteio = mel.dano >= ele.vida, maisRapido = eu.a.vel > ele.a.vel;
     // remédio abaixo de 1/3 da vida, se a cura compensa o que o adversário tira
     const max = atributos(c).vida;
-    if (c.vida * 3 < max && !(nocauteio && maisRapido)) {
+    // (só cura quem aguenta pelo menos dois golpes depois de curado, e no máximo duas vezes a mesma criatura por luta)
+    const curasDela = m.curas.get(c.uid) ?? 0;
+    if (c.vida * 3 < max && !(nocauteio && maisRapido) && curasDela < 2 && max > risco * 2.2) {
       const itens = b.lados[0].itens, indice = b.lados[0].ativos[p.pos];
       const curas = Object.keys(itens).filter((id) => itens[id] > 0 && temItemDef(id) && defItem(id).uso?.cura && b.itemServe(0, id, indice))
         .map((id) => { const u = defItem(id).uso!.cura!; return { id, v: u === 'total' ? max - c.vida : Math.min(u, max - c.vida) }; }).sort((x, y) => x.v - y.v);
       const boa = curas.find((x) => x.v >= (max - c.vida) * 0.7 && x.v > risco * 1.2) ?? curas.filter((x) => x.v > risco * 1.2).pop();
-      if (boa) return { tipo: 'item', item: boa.id, alvo: indice };
+      if (boa) { m.curas.set(c.uid, curasDela + 1); return { tipo: 'item', item: boa.id, alvo: indice }; }
     }
     // troca em desvantagem clara: bato pouco, apanho muito e há alguém bem melhor na reserva
     if (b.podeTrocar(p) && b.turno - m.ultimaTroca >= 3) {
@@ -276,13 +279,13 @@ export const pilotoIA = (nivel: NivelIA = 'treinador'): Piloto => ({
 export const PILOTOS: Record<PilotoId, Piloto> = { bobo: pilotoBobo, esperto: pilotoEsperto, ia: pilotoIA() };
 
 /* ============================== batalha headless ============================== */
-export interface OpcoesLuta { ia?: NivelIA; itensIA?: Record<string, number>; maxTurnos?: number }
+export interface OpcoesLuta { ia?: NivelIA; itensIA?: Record<string, number>; maxTurnos?: number; /** o jogador ganha experiência e sobe de nível durante a luta (sequência da Liga) */ ganhaExp?: boolean }
 export interface ResultadoLuta { vitoria: boolean; turnos: number; empacou: boolean }
 /** uma batalha jogador × treinador no motor puro. Altera as criaturas e os itens recebidos (vida, PG, status). */
 export function lutarContra(equipe: CriaturaInst[], itens: Record<string, number>, inimigos: CriaturaInst[], nome: string, piloto: Piloto, ia: NivelIA, o: OpcoesLuta = {}): ResultadoLuta {
   const itensIA = o.itensIA ?? {};
-  const b = new Batalha({ tipo: 'treinador', lados: [{ equipe, itens, nome: 'Ref' }, { equipe: inimigos, itens: itensIA, nome }], trocaGratis: true, ganhaExp: false });
-  const mem: Memoria = { ultimaTroca: -9 }, max = o.maxTurnos ?? 300, usaItens = Object.keys(itensIA).length > 0;
+  const b = new Batalha({ tipo: 'treinador', lados: [{ equipe, itens, nome: 'Ref' }, { equipe: inimigos, itens: itensIA, nome }], trocaGratis: true, ganhaExp: !!o.ganhaExp, autoAprender: true });
+  const mem: Memoria = { ultimaTroca: -9, curas: new Map() }, max = o.maxTurnos ?? 300, usaItens = Object.keys(itensIA).length > 0;
   b.iniciar();
   while (b.fase !== 'fim') {
     if (b.turno > max) return { vitoria: false, turnos: b.turno, empacou: true };

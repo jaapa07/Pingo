@@ -127,7 +127,7 @@ function liga(piloto: PilotoId, n: number, delta = 0): { completa: number; porLu
     for (let k = 0; k < IDS_LIGA.length && ok; k++) {
       const t = d.treinadores.get(IDS_LIGA[k]); if (!t) { ok = false; break; }
       if (k > 0) cuidarEntreLutas(equipe, itens);
-      ok = lutarContra(equipe, itens, inimigosDe(t), t.nome, PILOTOS[piloto], t.ia, { itensIA: itensDoTreinador(t, 8) }).vitoria;
+      ok = lutarContra(equipe, itens, inimigosDe(t), t.nome, PILOTOS[piloto], t.ia, { itensIA: itensDoTreinador(t, 8), ganhaExp: true }).vitoria;
       if (ok) venceu[k]++;
     }
     if (ok) completa++;

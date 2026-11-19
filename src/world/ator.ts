@@ -17,6 +17,8 @@ export class Ator {
   visivel = true; solido = true; removido = false;
   /** deslocamento visual (tremor, pulo de animação) */
   ex = 0; ey = 0;
+  /** desce o balão de emoção (criaturas baixas) */
+  balaoDy = 0;
   spr: Sprite;
   /** desenho de reserva quando o modelo não tem sprite */
   boneco?: Pix;
@@ -80,7 +82,7 @@ export class Ator {
     s.x = this.px + 8 + this.ex; s.y = this.py + 14 - arco + this.ey; s.z = this.py + 16; s.visivel = this.visivel;
     s.desenhar();
     if (this.boneco) this.boneco.ver(this.visivel).pos(this.px + 8 - (this.boneco.w >> 1) + this.ex, this.py + 15 - this.boneco.h - arco + this.ey, this.py + 16);
-    if (this.balao) this.balao.pos(this.px + 3, this.py - 22 - arco, this.py + 400);
+    if (this.balao) this.balao.pos(this.px + 3, this.py - 22 - arco + this.balaoDy, this.py + 400);
   }
   remover() { this.removido = true; this.spr.remover(); this.boneco?.remover(); this.balao?.remover(); const f = this.fim; this.fim = undefined; f?.(); }
 }

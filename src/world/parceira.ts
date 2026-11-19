@@ -42,7 +42,7 @@ export function sincronizarParceira(recriar = false) {
   remover();
   if (!c || !chave) return;
   const a = new Ator('c:' + (especie(c.especie)?.id ?? 'especie-' + c.especie), M.cena.sprites, x, y, M.jog.dir);
-  a.solido = false; a.visivel = visivel && !(x === M.jog.x && y === M.jog.y);
+  a.solido = false; a.balaoDy = 7; a.visivel = visivel && !(x === M.jog.x && y === M.jog.y);
   // sem sprite: o boneco de reserva vira um vulto discreto
   if (a.boneco) { a.boneco.el.style.opacity = '0.45'; a.boneco.el.style.filter = 'grayscale(1) brightness(0.55)'; }
   if (ehRara(c)) a.spr.el.style.filter = 'hue-rotate(150deg) saturate(1.35)';

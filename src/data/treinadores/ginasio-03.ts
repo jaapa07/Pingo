@@ -29,9 +29,9 @@ export const TREINADORES_GINASIO_03: TreinadorDef[] = [
     itens: ['garrafada', 'garrafada'],
     equipe: [
       { e: 125, nv: 20, golpes: ['cuspe-acido', 'redemoinho', 'esguicho'] },
-      { e: 35, nv: 20, golpes: ['bolhas-do-mangue', 'arranhao', 'fincar-pe'] },
-      { e: 115, nv: 20, golpes: ['faisca-dupla', 'esguicho'] },
-      { e: 8, nv: 22, golpes: ['jato-de-igarape', 'rabanada', 'piscadela'] },
+      { e: 35, nv: 21, golpes: ['bolhas-do-mangue', 'arranhao', 'fincar-pe'] },
+      { e: 115, nv: 21, golpes: ['faisca-dupla', 'esguicho', 'choque-de-poraque'] },
+      { e: 8, nv: 22, golpes: ['jato-de-igarape', 'rabanada', 'piscadela'], item: 'pequi' },
     ],
     desafio: 'Remei da nascente até a foz do Rio Sereia sem parar para o almoço. Acha que meia dúzia de comportas me cansam? Em guarda, marujo de primeira viagem!',
     derrota: 'Homem ao mar! E o homem sou eu…', depois: 'Rio que corre nunca passa duas vezes pela mesma pedra. Siga em frente.' },
