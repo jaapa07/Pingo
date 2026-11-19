@@ -108,6 +108,8 @@ export async function iniciarOffline(): Promise<void> {
     }
     await sw.ready;
     await baixarResto();
+    // procura versão nova já nesta sessão; se houver, ela instala em segundo plano e vale na próxima abertura
+    if (tinhaControle && navigator.onLine) void reg.update().catch(() => undefined);
   } catch (e) {
     offline.estado = 'falhou';
     console.warn('[pingo] modo sem internet indisponível:', e);

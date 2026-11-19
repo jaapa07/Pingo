@@ -13,6 +13,8 @@ let p0 = srv.pedidos;
 await page.reload(); await pronto(); await page.waitForTimeout(3000); let i = await info(); console.log('1ª abertura depois da atualização:', i.off.versao, i.caches, 'pedidos', srv.pedidos - p0, srv.caminhos.slice(p0).slice(0, 8));
 p0 = srv.pedidos;
 await page.reload(); await page.waitForTimeout(4000); await pronto(); i = await info(); console.log('2ª abertura:', i.off.versao, i.off.estado, i.caches, 'itens', i.itens, 'pedidos', srv.pedidos - p0, srv.caminhos.slice(p0).slice(0, 8));
+p0 = srv.pedidos;
+await page.reload(); await page.waitForTimeout(5000); await pronto(); i = await info(); console.log('3ª abertura:', i.off.versao, i.off.estado, i.caches, 'itens', i.itens, 'pedidos', srv.pedidos - p0, srv.caminhos.slice(p0).slice(0, 8));
 const html = await page.evaluate(async () => (await (await fetch('index.html')).text()).includes('versão de teste')); console.log('index novo servido pelo SW:', html);
 await ctx.setOffline(true); await page.reload(); await page.waitForFunction(() => (window as any).__pingo?.telas?.pilha?.length > 0, null, { timeout: 20000 }); console.log('abre sem rede na versão nova: ok');
 await b.close(); await srv.fechar();
