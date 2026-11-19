@@ -11,6 +11,7 @@ import { grilinho } from './141-grilinho';
 import { grilaoEletrico } from './142-grilao-eletrico';
 import { besourim } from './143-besourim';
 import { herculao } from './144-herculao';
+import { escorpim } from './145-escorpim';
 
 /** Criaturas 133-156 do Diário de Campo. */
-export const modelos: PixModel[] = [pinguinzinho, pinguimar, gralhinha, gralhaAzul, serelepim, serelepao, maracajim, maracajaNevado, grilinho, grilaoEletrico, besourim, herculao];
+export const modelos: PixModel[] = [pinguinzinho, pinguimar, gralhinha, gralhaAzul, serelepim, serelepao, maracajim, maracajaNevado, grilinho, grilaoEletrico, besourim, herculao, escorpim];

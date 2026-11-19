@@ -25,7 +25,7 @@ export function besouro(p: BesouroP): Rig {
   const { rig } = inseto({
     torax: [0.17 * k, 0.16 * k, 0.19 * k], abdomen: [0.21 * k, 0.19 * k, 0.21 * k], cabeca: [0.12 * k, 0.11 * k, 0.13 * k], alt: p.alt, caiAbdomen: 4,
     patas: { abre: 0.17 * k, r: 0.042 * k, joelho: 0.04 * k }, elitros: true,
-    olho: { r: 0.03 * k, pos: [0.13 * k, 0.03 * k, 0.1 * k] },
+    olho: { r: 0.03 * Math.min(k, 1.2), pos: [0.13 * k, 0.03 * k, 0.1 * k] },
     rampas: { torax: 1, abdomen: 1, cabeca: 1, patas: 1, elitros: 0, barriga: 3 },
   });
   // escudo do tórax (pronoto) alto e escuro com aba clara

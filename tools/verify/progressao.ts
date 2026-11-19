@@ -39,7 +39,7 @@ class Retida extends Error {}
 const ehEnt = (t?: string) => !!t && t !== 'borda' && t !== 'buraco';
 
 export interface Passo { insignias: number; zonasNovas: string[]; amuletos: string[]; disponiveis: number[]; flags: string[] }
-export interface ResultadoProgressao extends Achado { passos: Passo[] }
+export interface ResultadoProgressao extends Achado { passos: Passo[]; /** nº de insígnias com que cada treinador / zona fica alcançável pela primeira vez */ treinadorNoPasso: Map<string, number>; zonaNoPasso: Map<string, number> }
 
 class Sim {
   alc = new Map<string, Set<number>>(); // zona → tiles alcançados (acumulado)
@@ -47,7 +47,7 @@ class Sim {
   teto = 0; // maior insígnia que pode ser recebida agora
   disponiveis = new Set<number>();
   mudou = false;
-  rodados = new Set<string>();
+  treinadorNoPasso = new Map<string, number>();
   constructor(private d: Dados) {}
   private tem = (a: AmuletoId) => jogo.save.amuletos.includes(a);
 
@@ -99,6 +99,7 @@ class Sim {
   flag(k: string, v: unknown = true) { if (v === false || v === 0 && jogo.save.flags[k]) return; if (jogo.save.flags[k] !== v && !(jogo.save.flags[k] && v === true)) { setFlag(k, v as boolean | number | string); this.mudou = true; } }
   vencer(id: string, semMarca = false) {
     const t = this.d.treinadores.get(id); if (!t) return;
+    if (!this.treinadorNoPasso.has(id)) this.treinadorNoPasso.set(id, this.teto);
     if (t.insignia) this.insignia(t.insignia);
     if (!semMarca) this.flag(t.flag ?? 'venceu:' + id);
   }
@@ -155,7 +156,7 @@ class Sim {
 }
 
 export async function progressao(): Promise<ResultadoProgressao> {
-  const a: ResultadoProgressao = { ...novoAchado(), passos: [] }, d = await carregar();
+  const a: ResultadoProgressao = { ...novoAchado(), passos: [], treinadorNoPasso: new Map(), zonaNoPasso: new Map() }, d = await carregar();
   const guardado = jogo.save;
   try {
     jogo.save = novoSave();
@@ -198,6 +199,7 @@ export async function progressao(): Promise<ResultadoProgressao> {
     const nunca = [...d.zonas.values()].filter((z) => z.mapa === 'A' && !sim.alc.has(z.id)).map((z) => z.id);
     if (nunca.length) a.pendentes.push(`${nunca.length} zona(s) do mapa A só abrem com Amuletos/insígnias do mapa B (áreas de retorno): ${nunca.join(', ')}`);
     a.pendentes.push('mapa B, ginásios 9–16, Conselho e pós-jogo: fora da simulação até o mapa B abrir (MAPA_B_ABERTO = false)');
+    a.treinadorNoPasso = sim.treinadorNoPasso; a.zonaNoPasso = primeiraVez;
     const tiles = [...sim.alc.values()].reduce((s, v) => s + v.size, 0);
     a.info.push(`${sim.alc.size} zonas e ${tiles} tiles alcançados do quarto até a Liga; ${Object.keys(jogo.save.flags).length} flags; Amuletos finais: ${jogo.save.amuletos.join(', ')}`);
   } catch (e) { a.erros.push('tools/verify/progressao.ts: a simulação parou — ' + String((e as Error).stack ?? e).slice(0, 400)); }
