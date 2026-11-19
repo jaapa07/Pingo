@@ -786,6 +786,15 @@ Regras de jogabilidade herdadas dos RPGs de captura de portátil, reescritas par
 36. **Senhora do registro:** NPC que conta onde e em que nível cada criatura da equipe foi capturada (usa `localCaptura` e `nivelCaptura`).
 37. **Data especial:** num dia fixo do ano (ex.: aniversário do jogo), o topo do Pico tem neve brilhante; o treinador misterioso do Pico volta a cada vitória contra o Conselho.
 38. **Criatura das sextas:** uma criatura aquática rara só aparece numa gruta às sextas (uma por semana).
+
+**O que os jogadores mais elogiam (pesquisa na web sobre Gold/Silver/Crystal e HeartGold/SoulSilver) → como entra em Pingo:**
+39. **Relógio de tempo real** é o recurso mais citado: criaturas, eventos e NPCs mudam por dia da semana e período. Já é base de Pingo (seção 10 e itens 1–4); reforço: pelo menos 1 em cada 4 eventos/missões depende de dia ou período, e o Rádio Cipó sempre avisa a "agenda do dia".
+40. **Parceira que segue o jogador** é o recurso mais amado dos remakes: a criatura andando atrás, com balões de emoção, falas ao ser tocada e achados de itens. Já está na seção 10 (item 2); fica **ligada por padrão**, a variante rara aparece seguindo o jogador, e a criatura reage a clima, período e lugar (dorme à noite, se abriga na chuva).
+41. **Pós-jogo grande e uma segunda região** (voltar a uma região antiga depois da Liga): já é a estrutura de Pingo (mapa A + mapa B + Pico). Reforço: o mapa A muda depois do Conselho (novos NPCs, rotas que mudam, revanche dos líderes), para a volta ter novidade.
+42. **Equipamento de fôlego curto, fácil de pausar:** a Pokéwalker agradou por premiar a caminhada. Em Pingo vira "Passos do Companheiro" (opcional, sem hardware): cada 1000 passos no mapa rendem amizade e achados para a criatura que segue o jogador.
+43. **Dificuldade melhor nos remakes:** fãs elogiam equipes de líderes e rivais mais fortes (ótimo para Nuzlocke). Já há 3 modos de dificuldade (Explorador/Aventureiro/Veterano); reforço: o Veterano usa equipes em 4 fases (item 26) e um modo "Nuzlocke autoral" opcional (uma captura por zona, derrotadas ficam no Viveiro).
+44. **Nostalgia e identidade visual/musical:** fãs citam arte e música como parte do charme. Em Pingo isso se traduz em uma música marcante por cidade e por período do dia (já em docs/AUDIO.md) e uma "assinatura" visual por região.
+45. **Detalhes que o jogador esquece mas adora:** itens segurados, ovos, apitos e frutos (já nos itens 6, 9 e 11); criaturas errantes lendárias que se movem pelo mapa (já previstas para as 3 lendárias das feras e para o 179/180).
 **O que NÃO entra (perderia a essência ou é específico demais da franquia):** caça-níqueis, troca/batalha por cabo, criaturas de evento de distribuição, variantes por letra e qualquer nome, texto, mapa ou enigma copiado.
 
 ## 11. Interface (identidade própria)
