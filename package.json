@@ -1,0 +1,26 @@
+{
+  "name": "adventures-of-pingo",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build && tsx tools/build-sw.ts",
+    "preview": "vite preview",
+    "assets": "tsx tools/render-all.ts",
+    "bake": "tsx tools/bake-maps.ts",
+    "check": "tsx tools/verify.ts",
+    "test": "tsx tools/test-batalha.ts",
+    "desktop": "npm run build && electron-builder --dir --config plataformas/desktop/electron-builder.yml",
+    "ios": "npm run build && npx cap sync ios"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/three": "^0.170.0",
+    "esbuild": "^0.24.0",
+    "three": "^0.170.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}
