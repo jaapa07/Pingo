@@ -144,7 +144,7 @@ export class Palco {
   apoio(lado: 0 | 1, pos: number): Pt {
     const a = this.arena.apoios[lado ? 'inimigo' : 'jogador'];
     if (!this.dupla) return [a.x, a.y];
-    return lado === 0 ? (pos === 0 ? [a.x - 24, a.y - 3] : [a.x + 28, a.y + 3]) : pos === 0 ? [a.x + 24, a.y + 3] : [a.x - 26, a.y - 2];
+    return lado === 0 ? (pos === 0 ? [a.x - 24, a.y - 3] : [a.x + 28, a.y + 3]) : pos === 0 ? [a.x + 6, a.y + 2] : [a.x - 46, a.y - 2];
   }
   ator(lado: 0 | 1, pos: number): Ator {
     const k = `${lado}:${pos}`; let a = this.atores.get(k);
@@ -168,7 +168,7 @@ export class Palco {
     if (c === 'chuva') { ladrilhar('clima-chuva', 32, 32); for (let i = 0; i < 9; i++) por('clima-respingo', 20 + ((i * 97) % 290), 96 + ((i * 53) % 60), { quadro: i % 3, fps: 8 + (i % 3) }); }
     else if (c === 'garoa') ladrilhar('clima-garoa', 32, 32);
     else if (c === 'poeira') ladrilhar('clima-poeira', 32, 32);
-    else if (c === 'nevoa') { for (let j = 0; j < 4; j++) for (let x = 0; x < 320; x += 64) por('clima-nevoa', x + 32 + (j % 2) * 20 - 10, 34 + j * 28, { quadro: j % 4, fps: 3 + (j % 2) }); }
+    else if (c === 'nevoa') { for (let j = 0; j < 3; j++) for (let x = -32; x < 352; x += 64) por('clima-nevoa', x + 32 + (j % 2) * 24, 40 + j * 36, { quadro: j % 4, fps: 3 + (j % 2) }).opacidade = 0.55; }
     else if (c === 'sol') por('clima-sol', 48, 48);
   }
 

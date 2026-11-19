@@ -33,18 +33,19 @@ export class CaixaStatus {
   private num = texto('', { cor: 'tinta' }); private st = div('bt-st'); private cap = fxUi('ui-cuia-mini', 0);
   private bv: Barra; private be: Barra | null = null;
   private vidaMax = 1; private vidaAlvo = 0; readonly w: number; readonly h: number;
-  constructor(readonly lado: 0 | 1, compacta = false) {
+  constructor(readonly lado: 0 | 1, private compacta = false) {
     const jog = lado === 0;
-    this.w = jog ? 122 : 110; this.h = jog ? (compacta ? 31 : 39) : 27;
+    this.w = jog ? 122 : 110; this.h = jog ? (compacta ? 25 : 39) : 27;
     const p = painel(this.w, this.h, jog ? 'jog' : 'ini'); this.el = p.el;
     this.faixa = div('bt-faixa', p.miolo);
-    const wb = jog ? 72 : 56;
+    const wb = jog ? (compacta ? 50 : 72) : 56;
     this.bv = barra('vida', wb, (px, max) => { if (jog) this.escreverNum(Math.round((px / max) * this.vidaMax)); });
-    p.miolo.append(em(this.nome, 5, 2), em(this.nv, 0, 2), em(texto('VD', { cor: 'laranja' }), 4, 15), em(this.bv.el, 17, 14), em(this.st, wb + 20, 13));
+    p.miolo.append(em(this.nome, 5, 2), em(this.nv, 0, 2), em(texto('VD', { cor: 'laranja' }), 4, jog && !compacta ? 13 : 15), em(this.bv.el, 17, 14), em(this.st, wb + (jog && compacta ? 19 : 20), 13));
+    if (jog) this.el.classList.toggle('compacta', compacta);
     em(this.cap.el, 0, 2); this.cap.el.style.display = 'none'; p.miolo.append(this.cap.el);
     if (jog) {
-      p.miolo.append(em(this.num, 0, 21));
-      if (!compacta) { this.be = barra('exp', 92); p.miolo.append(em(texto('EXP', { cor: 'azul' }), 4, 28), em(this.be.el, 23, 31)); }
+      p.miolo.append(em(this.num, 0, compacta ? 14 : 21));
+      if (!compacta) { this.be = barra('exp', 92); p.miolo.append(em(texto('EXP', { cor: 'azul' }), 4, 29), em(this.be.el, 23, 31)); }
       
     }
     this.el.style.visibility = 'hidden';
@@ -66,7 +67,7 @@ export class CaixaStatus {
   }
   nivel(n: number) { escrever(this.nv, `Nv${n}`); this.nv.style.left = this.w - 8 - medir(`Nv${n}`) + 'px'; }
   vida(v: number, max: number, animar = true) { this.vidaMax = max; this.vidaAlvo = v; this.bv.definir(v / max, animar); if (!animar && this.lado === 0) this.escreverNum(v); }
-  status(s: StatusId | 'desmaiado' | null) { this.st.replaceChildren(); if (s) this.st.append(iconeStatus(s)); }
+  status(s: StatusId | 'desmaiado' | null) { this.st.replaceChildren(); if (s) this.st.append(iconeStatus(s, this.compacta && this.lado === 0)); }
   exp(frac: number, animar = true) { this.be?.definir(Math.max(0, Math.min(1, frac)), animar); }
   /** a barra de vida está perto de acabar? (alerta sonoro) */
   get fracVida() { return this.vidaAlvo / this.vidaMax; }

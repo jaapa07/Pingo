@@ -27,9 +27,9 @@ export function criarPerfil(): Tela {
   linha('Nome', j.nome, 24); linha('Patacas', patacas(j.dinheiro), 37); linha('Tempo de jogo', fmtTempo(s.tempoJogo), 50);
   linha('Diário', `${s.diario.capturado.length} capturadas de ${TOTAL_DIARIO}`, 63); linha('Avistadas', String(s.diario.visto.length), 76);
   linha('Amuletos de Campo', `${s.amuletos.length} de 10`, 89);
-  rotulo(papel, nomeLocal(j.zona), 6, 102, 'chumbo', { largura: 76, alinhar: 'centro' });
-  rotulo(papel, `Insígnias ${s.insignias.length}/16`, 8, 112, 'marrom');
-  const fil = fileiraInsignias(s.insignias, 16, 17); papel.append(em(fil, 8, 122));
+  rotulo(papel, nomeLocal(j.zona), 6, 101, 'chumbo', { largura: 76, alinhar: 'centro' });
+  rotulo(papel, `Insígnias ${s.insignias.length}/16`, 90, 105, 'marrom');
+  const fil = fileiraInsignias(s.insignias, 16, 17); papel.append(em(fil, 10, 121));
   const bt = moldura('botao-foco', 52, 14); bt.append(em(texto('A: Estojo', { cor: 'tinta' }), 5, 3)); papel.append(em(bt, 228, 105)); tocavel(bt, () => void estojo());
   faixaDica(el)('A: estojo de insígnias   B: voltar');
   let ocupado = false;

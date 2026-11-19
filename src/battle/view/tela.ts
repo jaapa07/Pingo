@@ -48,10 +48,10 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
   const caixas: CaixaStatus[][] = [[], []];
   for (const lado of [0, 1] as const) for (let pos = 0; pos < b.porLado; pos++) {
     const cx = new CaixaStatus(lado, dupla); caixas[lado][pos] = cx;
-    em(cx.el, lado === 0 ? 194 : 4, lado === 0 ? (dupla ? 68 + pos * 33 : 94) : 6 + pos * 29);
+    em(cx.el, lado === 0 ? 194 : 4, lado === 0 ? (dupla ? 82 + pos * 26 : 94) : 6 + pos * 29);
     hud.append(cx.el);
   }
-  const bolinhas = [new Bolinhas(314, dupla ? 58 : 84, true), new Bolinhas(6, 6 + b.porLado * 29 + 1, false)];
+  const bolinhas = [new Bolinhas(314, dupla ? 72 : 84, true), new Bolinhas(6, 6 + b.porLado * 29 + 1, false)];
   hud.append(bolinhas[0].el, bolinhas[1].el); bolinhas[0].el.style.visibility = bolinhas[1].el.style.visibility = 'hidden';
   const pintarBolinhas = () => {
     for (const lado of [0, 1] as const) {

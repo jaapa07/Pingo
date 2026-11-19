@@ -52,10 +52,10 @@ export function criarResumo(args: ArgsResumo = {}): Tela {
     [...esq.querySelectorAll('.dyn')].forEach((x) => x.remove());
     const d = caixa('dyn', 100, 140); esq.append(em(d, 4, 4));
     fig = figura(k.especie, 96, 92, { misterio: !!k.ovo }); d.append(em(fig.el, 2, 0), maoEl);
-    rotulo(d, `${nomeCri(k)} ${sexoTxt(k)}`, 2, 96, 'creme');
-    rotulo(d, k.ovo ? 'Ovo' : `Nv${k.nivel}`, 2, 108, 'amarelo');
-    if (!k.ovo) { const s = k.vida <= 0 ? 'desmaiado' : k.status; if (s) d.append(em(iconeStatus(s), 70, 108)); }
-    if (e && !k.ovo) e.tipos.forEach((t, i) => d.append(em(chipTipo(t, 49), i * 51, 122)));
+    rotulo(d, `${nomeCri(k)} ${sexoTxt(k)}`, 0, 92, 'creme', { largura: 100, alinhar: 'centro' });
+    rotulo(d, k.ovo ? 'Ovo' : `Nv${k.nivel}`, 24, 103, 'amarelo');
+    if (!k.ovo) { const s = k.vida <= 0 ? 'desmaiado' : k.status; if (s) d.append(em(iconeStatus(s), 62, 102)); }
+    if (e && !k.ovo) e.tipos.forEach((t, i) => d.append(em(chipTipo(t, 56), 24, e.tipos.length === 1 ? 120 : 114 + i * 13)));
     escrever(posT, `${ind + 1} de ${lista.length}`); posT.style.left = Math.floor((108 - parseInt(posT.style.width)) / 2) + 'px';
   }
   function paginaInfo() {
@@ -71,7 +71,7 @@ export function criarResumo(args: ArgsResumo = {}): Tela {
     if (e && k.nivel < 100) { const b = barra('exp', 186); const a0 = expParaNivel(e.crescimento, k.nivel), a1 = expParaNivel(e.crescimento, k.nivel + 1); b.definir(Math.max(0, Math.min(1, (k.exp - a0) / Math.max(1, a1 - a0)))); corpo.append(em(b.el, 2, 73)); }
     rotulo(corpo, `Amizade: ${coracoes(k.amizade)}`, 2, 82);
     rotulo(corpo, fraseAmizade(k.amizade), 2, 94, 'chumbo', { largura: 186 });
-    const bt = moldura('botao-foco', 94, 14); bt.append(em(texto('A: Fazer cafuné', { cor: 'tinta' }), 6, 3)); corpo.append(em(bt, 94, 116)); tocavel(bt, fazerCafune);
+    const bt = moldura('botao-foco', 94, 14); bt.append(em(texto('A: Fazer cafuné', { cor: 'tinta' }), 6, 3)); corpo.append(em(bt, 72, 116)); tocavel(bt, fazerCafune);
   }
   function paginaAtributos() {
     const k = c(), e = esp(k.especie);

@@ -33,7 +33,7 @@
 .bt-faixa { position: absolute; left: 0; top: 0; right: 0; height: 12px; background: #4fa346; }
 .bt-faixa::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: rgba(255, 248, 231, 0.45); }
 .bt-st { width: 29px; height: 9px; }
-.bt-painel.jog .bt-st { left: 4px !important; top: 21px !important; }
+.bt-painel.jog:not(.compacta) .bt-st { left: 4px !important; top: 20px !important; }
 .bt-bolinhas { position: absolute; height: 7px; }
 .bt-bolinhas::before { content: ''; position: absolute; left: -2px; right: 0; top: -1px; bottom: -1px; background: #2c1a14; opacity: 0.6; }
 .bt-nivel .bt-miolo { background: #fff8e7; }

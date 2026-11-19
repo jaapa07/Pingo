@@ -164,9 +164,9 @@ export const TIPOS_2: Record<string, AnimGolpe> = {
     await emCada(k, async (a) => {
       const b = k.c.fx('pedra-bloco', a.x, a.y - a.alt - 80, { parado: true });
       const s = noAlvo(k, 'fis-pisao', a, { base: true, atras: true, parado: true });
-      await k.c.mover(b, a.x, a.y - Math.round(a.alt * 0.6), 0.3);
+      await juntos(k.c.mover(b, a.x, a.y - Math.round(a.alt * 0.6), 0.3), k.c.rel.entre(0.3, (t) => { b.quadro = Math.floor(t * 4) % 2; }));
       s.remover(); k.som('quebrar'); void k.c.tremor(5, 0.44); void k.c.flash('#e8dcc0', 0.12, 0.5);
-      b.quadro = 1; await esp(k, 0.12); b.remover();
+      b.quadro = 2; await esp(k, 0.07); b.quadro = 3; await esp(k, 0.07); b.remover();
       noAlvo(k, 'pedra-quebra', a); noAlvo(k, 'terra-poeira', a, { base: true, dx: -14 }); noAlvo(k, 'terra-poeira', a, { base: true, dx: 14, espelho: true });
       await estilhacos(k, 'pedra-lasca', a.centro, { n: 8, raio: 32, dur: 0.36, queda: 10 });
     });
@@ -258,10 +258,10 @@ export const TIPOS_2: Record<string, AnimGolpe> = {
   'ferro-3': async (k) => {
     await emCada(k, async (a) => {
       const b = k.c.fx('ferro-bigorna', a.x, a.y - a.alt - 90, { parado: true });
-      await k.c.mover(b, a.x, a.y - Math.round(a.alt * 0.7), 0.26);
-      b.quadro = 1; k.som('golpe-forte'); void k.c.tremor(5, 0.4);
+      await juntos(k.c.mover(b, a.x, a.y - Math.round(a.alt * 0.7), 0.26), k.c.rel.entre(0.26, (t) => { b.quadro = Math.floor(t * 4) % 2; }));
+      b.quadro = 2; k.som('golpe-forte'); void k.c.tremor(5, 0.4);
       a.dy = 3; void estilhacos(k, 'ferro-fagulha', a.centro, { n: 6, raio: 28, dur: 0.3 });
-      await esp(k, 0.2); a.dy = 0;
+      await esp(k, 0.2); a.dy = 0; b.quadro = 3;
       await k.c.mover(b, a.x + k.d * 10, a.y - a.alt - 10, 0.14, 6); b.remover();
     });
     await esp(k, 0.2);

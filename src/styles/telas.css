@@ -23,3 +23,5 @@
 .brilho { background: #fff8e7; box-shadow: -1px 0 0 #fff8e7, 1px 0 0 #fff8e7, 0 -1px 0 #fff8e7, 0 1px 0 #fff8e7; animation: brilho 1.8s steps(1, end) infinite; pointer-events: none; }
 @keyframes brilho { 0% { visibility: hidden; } 70% { visibility: visible; } 85% { visibility: hidden; } }
 .papel-cartao { background: #f6e6b8 linear-gradient(#e8c07a 0 1px, transparent 1px) 0 3px / 8px 14px; box-shadow: inset 0 0 0 1px #c98f4e; }
+.pisca-lento { animation: quica 0.8s steps(1, end) infinite; }
+.hud-mapa { position: absolute; left: 0; top: 0; }

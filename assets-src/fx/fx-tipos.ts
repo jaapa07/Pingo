@@ -123,7 +123,7 @@ export const FX_TIPOS: FxDef[] = [
   }),
   fx('geada-floco', 12, 12, 4, 8, (q, i) => { const p = R.geada, a0 = (i * TAU) / 24; for (let k = 0; k < 6; k++) { const a = a0 + (k * TAU) / 6; q.linha(6, 6, 6 + Math.cos(a) * 4.6, 6 + Math.sin(a) * 4.6, p[3]); q.set(6 + Math.cos(a + 0.5) * 3, 6 + Math.sin(a + 0.5) * 3, p[2]); } q.set(6, 6, '#ffffff'); q.contorno(p[1]); }),
   fx('geada-estilhaco', 36, 36, 5, 14, (q, i) => { const p = R.geada, rnd = semente(140); for (let k = 0; k < 9; k++) { const a = (k * TAU) / 9 + rnd() * 0.5, d = 3 + i * (2.4 + rnd() * 1.2), len = Math.max(1, 4.5 - i * 0.7 + rnd() * 2); lasca(q, 18 + Math.cos(a) * d, 18 + Math.sin(a) * d, len, len * 0.4, a, p); } if (i < 2) q.cintilar(18, 18, 5 - i * 2, '#ffffff'); q.contorno(p[0]); }),
-  fx('geada-lanca', 24, 12, 3, 12, (q, i) => { const p = R.geada; lasca(q, 12, 6, 10, 3, 0, p); if (i) q.cintilar(4 + i * 6, 3 + i, 1, '#ffffff'); q.contorno(p[0]); }),
+  fx('geada-lanca', 24, 12, 4, 12, (q, i) => { const p = R.geada; lasca(q, 12, 6, 10, 3, 0, p); q.cintilar(3 + i * 6, 4 + (i % 2) * 3, i % 2 ? 2 : 1, '#ffffff'); q.set(1 - (i % 2), 6, p[3]); q.contorno(p[0]); }),
   fx('geada-sopro', 32, 20, 4, 12, (q, i) => { const p = R.geada, rnd = semente(160 + i); for (let k = 0; k < 14; k++) { const x = (rnd() * 32 + i * 9) % 32, y = 10 + (rnd() - 0.5) * (6 + x * 0.35); if (k % 3 === 0) q.cintilar(x, y, 1, p[3], '#ffffff'); else q.linha(x, y, x + 2 + rnd() * 3, y, k % 2 ? p[3] : p[4]); } q.contorno(p[1]); }),
 
   /* ------------------------------ ginga ------------------------------ */
@@ -137,7 +137,7 @@ export const FX_TIPOS: FxDef[] = [
   fx('veneno-gota', 16, 12, 4, 12, (q, i) => { gota(q, 10 - (i % 2), 6, 3.3, R.veneno); q.set(4 - i, 6 + (i % 2 ? 2 : -2), R.veneno[3]); q.contorno(R.veneno[0]); }),
   fx('veneno-bolha', 20, 20, 6, 10, (q, i) => { const p = R.veneno; if (i < 4) { const r = 2.5 + i * 1.8; q.disco(10, 11, r, p[2]); q.disco(10 - r * 0.15, 11 - r * 0.15, r * 0.7, p[3]); q.set(10 - r * 0.5, 11 - r * 0.5, p[4]); q.set(10 - r * 0.5 + 1, 11 - r * 0.5, p[4]); } else for (let k = 0; k < 7; k++) { const a = (k * TAU) / 7, d = 6 + (i - 4) * 3; gota(q, 10 + Math.cos(a) * d, 10 + Math.sin(a) * d, 1.2, p, a + Math.PI); } q.contorno(p[0]); }),
   fx('veneno-poca', 36, 12, 4, 6, (q, i) => { const p = R.veneno; q.elipse(18, 8, 15, 3, p[1]); q.elipse(18, 7, 14, 2.4, p[2]); q.elipse(13, 6.5, 5, 0.8, p[3]); const b = [[8, 0], [24, 1], [16, 2], [28, 3]] as const; for (const [x, o] of b) { const fase = (i + o) % 4; if (fase < 3) q.anel(x, 5 - fase, 1 + fase * 0.5, 1 + fase * 0.5, 1, p[4]); } q.contorno(p[0]); }),
-  fx('veneno-espinho', 16, 8, 2, 10, (q, i) => { const p = R.veneno; lasca(q, 8, 4, 7, 2, 0, p); q.set(1 - i, 4, p[3]); q.contorno(p[0]); }),
+  fx('veneno-espinho', 16, 8, 4, 10, (q, i) => { const p = R.veneno; lasca(q, 8, 4, 7, 2, 0, p); q.set(1 - (i % 2), 4, p[3]); q.set(4 + i * 3, 3, p[4]); if (i > 1) q.set(0, 2 + (i - 2) * 4, p[2]); q.contorno(p[0]); }),
 
   /* ------------------------------ terra ------------------------------ */
   fx('terra-fenda', 56, 16, 5, 12, (q, i) => { const p = R.terra, rnd = semente(240), L = [12, 28, 44, 54, 54][i]; let y = 9; for (let x = 28 - L / 2; x < 28 + L / 2; x++) { y += (rnd() - 0.5) * 2.4; y = Math.max(6, Math.min(12, y)); const e = Math.sin(((x - (28 - L / 2)) / L) * Math.PI) * (i === 4 ? 1.5 : 2.6); for (let k = -e; k <= e; k++) q.set(x, y + k, Math.abs(k) < e * 0.5 ? '#1a1423' : p[1]); if (i > 0 && i < 4 && rnd() < 0.25) q.disco(x, y - e - 2 - rnd() * (4 + i), 1, p[2]); } q.contorno(p[0]); }),
@@ -159,14 +159,21 @@ export const FX_TIPOS: FxDef[] = [
 
   /* ------------------------------ inseto ------------------------------ */
   fx('inseto-enxame', 40, 32, 6, 14, (q, i, f) => { const p = R.inseto; for (let k = 0; k < 8; k++) { const a = f * TAU + k * 0.9, x = 20 + Math.cos(a * (1 + (k % 3))) * (6 + k * 1.4), y = 16 + Math.sin(a * 2 + k) * (4 + (k % 4) * 2.4); q.ret(Math.round(x), Math.round(y), 2, 2, k % 2 ? p[2] : R.trovao[2]); q.set(x + 2, y + 1, p[0]); const asa = (i + k) % 2; q.set(x, y - 1 - asa, '#ffffff'); q.set(x + 1, y - 1 - asa, p[4]); } q.contorno(p[0]); }),
-  fx('inseto-ferrao', 20, 8, 2, 12, (q, i) => { const p = R.inseto; q.poli([[2, 2], [19, 4], [2, 6]], p[2]); q.linha(3, 3, 17, 4, p[4]); q.set(1 - i, 4, p[3]); q.set(0, 2 + i * 4, p[3]); q.contorno(p[0]); }),
+  fx('inseto-ferrao', 20, 8, 4, 12, (q, i) => { const p = R.inseto; q.poli([[2, 2], [19, 4], [2, 6]], p[2]); q.linha(3, 3, 17, 4, p[4]); q.set(1 - (i % 2), 4, p[3]); q.set(0, 2 + (i % 2) * 4, p[3]); q.set(6 + i * 3, 3, '#ffffff'); q.contorno(p[0]); }),
   fx('inseto-teia', 40, 40, 5, 10, (q, i) => { const p = R.branco, r = [5, 10, 15, 18, 18][i]; for (let k = 0; k < 8; k++) { const a = (k * TAU) / 8 + 0.2; q.linha(20, 20, 20 + Math.cos(a) * r, 20 + Math.sin(a) * r, p[2]); } for (let rr = 5; rr <= r; rr += 5) for (let k = 0; k < 8; k++) { const a = (k * TAU) / 8 + 0.2, b = a + TAU / 8, m = a + TAU / 16; const mx = 20 + Math.cos(m) * rr * 0.8, my = 20 + Math.sin(m) * rr * 0.8; q.linha(20 + Math.cos(a) * rr, 20 + Math.sin(a) * rr, mx, my, p[1]); q.linha(mx, my, 20 + Math.cos(b) * rr, 20 + Math.sin(b) * rr, p[1]); } q.contorno(R.ferro[1]); }),
   fx('inseto-po', 28, 28, 4, 10, (q, i) => { const p = R.inseto, rnd = semente(330); for (let k = 0; k < 16; k++) { const x = rnd() * 26 + 1, y = (rnd() * 26 + i * 3 * (0.5 + rnd())) % 26 + 1; if ((k + i) % 4 === 0) q.cintilar(x, y, 1, p[3], p[4]); else q.set(x, y, k % 2 ? p[3] : R.trovao[3]); } q.contorno(p[1]); }),
 
   /* ------------------------------ pedra ------------------------------ */
   fx('pedra-rocha', 20, 20, 4, 8, (q, i) => { const p = R.pedra, a = (i * TAU) / 4, o: Pt[] = [[-8, -2], [-4, -7], [3, -8], [8, -3], [7, 4], [2, 8], [-5, 6]]; q.poli(girar(o, a, 10, 10), p[2]); q.poli(girar([[-8, -2], [-4, -7], [3, -8], [1, -1], [-4, 1]], a, 10, 10), p[3]); q.poli(girar([[7, 4], [2, 8], [-5, 6], [0, 3]], a, 10, 10), p[1]); q.set(10 + Math.cos(a - 2.3) * 5, 10 + Math.sin(a - 2.3) * 5, p[4]); q.contorno(p[0]); }),
   fx('pedra-lasca', 12, 12, 4, 12, (q, i, f) => { lasca(q, 6, 6, 4.6, 2, f * TAU, R.pedra); q.contorno(R.pedra[0]); }),
-  fx('pedra-bloco', 32, 32, 2, 4, (q, i) => { const p = R.pedra, o: Pt[] = [[4, 12], [10, 3], [21, 2], [29, 10], [28, 23], [20, 30], [8, 29], [3, 21]]; q.poli(o, p[2]); q.poli([[4, 12], [10, 3], [21, 2], [18, 12], [9, 16]], p[3]); q.poli([[28, 23], [20, 30], [8, 29], [14, 22], [24, 18]], p[1]); q.linha(18, 12, 24, 18, p[1]); q.linha(9, 16, 14, 22, p[1]); q.set(11 + i, 6, p[4]); q.set(12 + i, 6, p[4]); q.set(11 + i, 7, p[4]); q.contorno(p[0]); }),
+  // quadros: 0–1 inteiro (o brilho anda) · 2 rachado · 3 partido
+  fx('pedra-bloco', 32, 32, 4, 4, (q, i) => {
+    const p = R.pedra, o: Pt[] = [[4, 12], [10, 3], [21, 2], [29, 10], [28, 23], [20, 30], [8, 29], [3, 21]];
+    q.poli(o, p[2]); q.poli([[4, 12], [10, 3], [21, 2], [18, 12], [9, 16]], p[3]); q.poli([[28, 23], [20, 30], [8, 29], [14, 22], [24, 18]], p[1]); q.linha(18, 12, 24, 18, p[1]); q.linha(9, 16, 14, 22, p[1]);
+    const k = i % 2; q.set(11 + k, 6, p[4]); q.set(12 + k, 6, p[4]); q.set(11 + k, 7, p[4]);
+    if (i >= 2) { const rnd = semente(1690); q.raio(15, 2, 17, 30, rnd, 4, p[0], i === 3 ? 2 : 1, 6); if (i === 3) { q.raio(4, 14, 28, 18, rnd, 3, p[0], 1, 5); for (let y = 0; y < 32; y++) for (let x = 31; x >= 17; x--) { if (x + 2 < 32) q.d[y * 32 + x + 0] = q.d[y * 32 + x - 2]; } } }
+    q.contorno(p[0]);
+  }),
   fx('pedra-quebra', 40, 32, 5, 12, (q, i) => { const p = R.pedra, rnd = semente(370); for (let k = 0; k < 9; k++) { const a = Math.PI + (k / 8) * Math.PI + (rnd() - 0.5) * 0.3, d = 4 + i * (2.5 + rnd() * 2), tam = Math.max(1, 4 - i * 0.6 + rnd() * 1.5); const x = 20 + Math.cos(a) * d * 1.3, y = 26 + Math.sin(a) * d + i * i * 0.5; q.poli(girar([[-tam, -tam * 0.6], [tam * 0.5, -tam], [tam, tam * 0.5], [-tam * 0.4, tam]], k + i, x, y), p[2]); q.set(x - 1, y - 1, p[3]); } if (i < 2) q.elipse(20, 28, 10 + i * 4, 2, p[4]); q.contorno(p[0]); }),
 
   /* ------------------------------ assombro ------------------------------ */
@@ -186,7 +193,14 @@ export const FX_TIPOS: FxDef[] = [
   fx('ferro-lamina', 36, 36, 5, 18, (q, i) => { const p = R.ferro, L = [0.35, 0.8, 1, 1, 1][i], e = [2, 3.4, 3, 1.6, 0.6][i]; const n = Math.round(30 * L); for (let t = 0; t < n; t++) { const k = Math.sin((t / 30) * Math.PI) * e; for (let d = -k; d <= k; d++) q.set(32 - t + d * 0.7, 3 + t + d * 0.7, Math.abs(d) < k * 0.4 ? '#ffffff' : d < 0 ? p[3] : p[2]); } if (i === 2) q.cintilar(17, 18, 4, '#ffffff'); q.contorno(p[0]); }),
   fx('ferro-engrenagem', 24, 24, 4, 12, (q, i) => { const p = R.ferro, a0 = (i * TAU) / 32; for (let k = 0; k < 8; k++) { const a = a0 + (k * TAU) / 8; q.poli(girar([[6, -2], [11, -1.5], [11, 1.5], [6, 2]], a, 12, 12), p[2]); } q.disco(12, 12, 7.5, p[2]); q.anel(12, 12, 7.5, 7.5, 2, p[3], 0.5, 0.85); q.anel(12, 12, 7.5, 7.5, 2, p[1], 0, 0.35); q.disco(12, 12, 3, p[0]); q.disco(12, 12, 1.4, p[1]); q.contorno(p[0]); }),
   fx('ferro-fagulha', 20, 20, 5, 16, (q, i) => { const p = R.ferro, rnd = semente(470); for (let k = 0; k < 8; k++) { const a = (k * TAU) / 8 + rnd(), d = 2 + i * 2, len = Math.max(0.5, 3.5 - i * 0.7); q.linha(10 + Math.cos(a) * d, 10 + Math.sin(a) * d + i * i * 0.2, 10 + Math.cos(a) * (d + len), 10 + Math.sin(a) * (d + len) + i * i * 0.2, k % 2 ? R.ouro[3] : '#ffffff'); } if (i === 0) q.cintilar(10, 10, 4, '#ffffff'); q.contorno(R.ouro[1]); }),
-  fx('ferro-bigorna', 32, 24, 2, 4, (q, i) => { const p = R.ferro; q.poli([[2, 3], [29, 3], [26, 9], [20, 11], [20, 16], [25, 19], [25, 22], [7, 22], [7, 19], [12, 16], [12, 11], [6, 9]], p[2]); q.ret(3, 3, 26, 2, p[3]); q.ret(13, 11, 2, 6, p[3]); q.ret(18, 11, 2, 6, p[1]); q.ret(8, 20, 17, 2, p[1]); q.ret(4 + i * 12, 3, 5, 1, '#ffffff'); q.contorno(p[0]); }),
+  // quadros: 0–1 caindo (o reflexo corre) · 2 batida (achatada 1 px, com faíscas) · 3 assentada
+  fx('ferro-bigorna', 32, 24, 4, 4, (q, i) => {
+    const p = R.ferro, dy = i === 2 ? 1 : 0;
+    q.poli([[2, 3 + dy], [29, 3 + dy], [26, 9], [20, 11], [20, 16], [25, 19], [25, 22], [7, 22], [7, 19], [12, 16], [12, 11], [6, 9]], p[2]); q.ret(3, 3 + dy, 26, 2, p[3]); q.ret(13, 11, 2, 6, p[3]); q.ret(18, 11, 2, 6, p[1]); q.ret(8, 20, 17, 2, p[1]);
+    q.ret(4 + (i % 4) * 6, 3 + dy, 5, 1, '#ffffff');
+    q.contorno(p[0]);
+    if (i === 2) { q.cintilar(3, 21, 2, R.ouro[3], '#ffffff'); q.cintilar(29, 20, 2, R.ouro[3], '#ffffff'); }
+  }),
   fx('ferro-escudo', 28, 32, 4, 10, (q, i) => { const p = R.ferro; q.poli([[4, 3], [24, 3], [24, 16], [14, 29], [4, 16]], p[2]); q.poli([[4, 3], [14, 3], [14, 29], [4, 16]], p[3]); q.poli([[7, 6], [21, 6], [21, 15], [14, 24], [7, 15]], p[1]); q.poli([[7, 6], [14, 6], [14, 24], [7, 15]], p[2]); const x = 2 + i * 7; q.linha(x, 16, x + 6, 4, '#ffffff'); q.contorno(p[0]); for (let y = 0; y < 32; y++) for (let k = 0; k < 28; k++) if (!q.cheio(k, y)) continue; }),
 
   /* ------------------------------ encanto ------------------------------ */

@@ -25,13 +25,13 @@ export function criarInsignias(): Tela {
   const grade = new Grade({ colunas: 8, celulas, w: 36, h: 40, vao: 1, x: 0, y: 0, aoMover: pintar, aoEscolher: pintar, aoCancelar: () => fechar(tela) });
   veludo.append(grade.el);
   const info = moldura('tinta', 312, 46, 4, 118); el.append(info);
-  const corpo = caixa('', 300, 38); info.append(em(corpo, 6, 4));
+  const corpo = caixa('', 264, 38); info.append(em(corpo, 24, 4));
   faixaDica(el)(T.insignias.dica);
   function pintar() {
     const i = grade.indice, l = LIDERES[i];
     corpo.replaceChildren();
     rotulo(corpo, `${i + 1}. Insígnia ${/^[AEO]/.test(NOME_INSIGNIA[i]) ? 'do' : 'da'} ${NOME_INSIGNIA[i]}`.replace('do Estrela', 'da Estrela').replace('do Engrenagem', 'da Engrenagem').replace('do Escama', 'da Escama').replace('da Casulo', 'do Casulo').replace('da Barro', 'do Barro').replace('da Raio', 'do Raio').replace('da Cristal', 'do Cristal').replace('da Berimbau', 'do Berimbau').replace('da Floco', 'do Floco').replace('da Espinho', 'do Espinho'), 0, 1, 'amarelo', { sombra: true });
-    corpo.append(em(chipTipo(TIPO_INSIGNIA[i], 56), 244, 0));
+    corpo.append(em(chipTipo(TIPO_INSIGNIA[i], 56), 208, 0));
     rotulo(corpo, `Líder: {c:agua}${l.lider}{/c}, de ${l.cidade}`, 0, 14, 'creme');
     rotulo(corpo, tem(i + 1) ? `"${l.frase}"` : T.insignias.falta, 0, 26, tem(i + 1) ? 'creme' : 'cinza');
   }

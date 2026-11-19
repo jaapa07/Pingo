@@ -39,7 +39,7 @@ export function criarMenu(): Tela {
   const lista = new Lista({ itens: ops.map((o) => o.rotulo), tamanho: 12, visiveis: ops.length, inicial: Math.max(0, ops.findIndex((o) => o.id === ultimo)), aoEscolher: (i) => void escolher(ops[i].id), aoCancelar: () => fechar(tela) });
   const fundo = document.createElement('div'); fundo.style.cssText = 'position:absolute;left:0;top:0;width:320px;height:180px'; tocavel(fundo, () => { som('ui-voltar'); fechar(tela); });
   em(lista.el, 316 - lista.largura, 4); el.append(fundo, lista.el);
-  const cx = moldura('tinta', 132, 46, 4, 130); el.append(cx);
+  const cx = moldura('tinta', 132, 46, 26, 118); el.append(cx);
   const l1 = texto(nomeLocal(s.jogador.zona), { cor: 'amarelo', sombra: true }), l2 = texto('', { cor: 'creme' }), l3 = texto(`${patacas(s.jogador.dinheiro)} patacas`, { cor: 'creme' });
   cx.append(em(l1, 6, 5), em(spr(periodo() === 'noite' ? 'lua' : 'sol'), 5, 15), em(l2, 22, 18), em(l3, 6, 32));
   const hora = () => `${tempoRelogio(minutosAgora())} · ${NOME_PERIODO[periodo()]}${s.repelente > 0 ? ` · fumaça ${s.repelente}` : ''}`;

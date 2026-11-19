@@ -196,9 +196,8 @@ export async function usarItemEm(id: string, c: CriaturaInst): Promise<Resultado
   }
   if (u.nivel) {
     if (c.nivel >= 100) return nada(`${nome} já está no nível máximo.`);
-    const curva = esp(c.especie)!.crescimento, antes = atributos(c);
+    const curva = esp(c.especie)!.crescimento;
     const subidas = ganharExp(c, Math.max(1, expParaNivel(curva, c.nivel + 1) - c.exp));
-    const depois = atributos(c); if (c.vida > 0) c.vida = Math.min(depois.vida, c.vida + (depois.vida - antes.vida));
     som('subir-nivel');
     await informar(`${nome} subiu para o nível ${c.nivel}!`);
     for (const s of subidas) for (const g of s.golpes) if (!c.golpes.some((x) => x.id === g)) await ensinar(c, g); else await informar(`${nome} aprendeu ${golpe(g).nome}!`);

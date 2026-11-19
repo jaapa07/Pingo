@@ -34,7 +34,7 @@ const PAL: Record<CategoriaDeco, Record<string, string>> = {
 };
 
 /** mostra uma carta em papel; fecha com A ou B */
-function lerCarta(c: (typeof CARTAS)[number]): Promise<void> {
+export function lerCarta(c: { de: string; assunto: string; texto: string }): Promise<void> {
   return new Promise((ok) => {
     const el = elTela('ui', 'veu');
     const papel = moldura('texto', 264, 150, 28, 14); el.append(papel);

@@ -118,9 +118,9 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
     const e = esp(atual), cap = tem(atual);
     esqDyn.replaceChildren(); corpo.replaceChildren(); anim = []; pisca = []; jog = null;
     figF = figura(atual, 96, 92, { silhueta: !cap }); esqDyn.append(em(figF.el, 2, 0));
-    rotulo(esqDyn, nomeEsp(atual), 0, 96, 'creme', { largura: 100, alinhar: 'centro' });
-    rotulo(esqDyn, cap ? '{c:verde}Capturada{/c}' : '{c:cinza}Avistada{/c}', 0, 108, 'creme', { largura: 100, alinhar: 'centro' });
-    if (e) e.tipos.forEach((t, i) => esqDyn.append(em(chipTipo(t, 49), e.tipos.length === 1 ? 25 : i * 51, 122)));
+    rotulo(esqDyn, nomeEsp(atual), 0, 92, 'creme', { largura: 100, alinhar: 'centro' });
+    rotulo(esqDyn, cap ? '{c:verde}Capturada{/c}' : '{c:cinza}Avistada{/c}', 0, 102, 'creme', { largura: 100, alinhar: 'centro' });
+    if (e) e.tipos.forEach((t, i) => esqDyn.append(em(chipTipo(t, 56), 24, e.tipos.length === 1 ? 120 : 114 + i * 13)));
     escrever(posT, `Nº ${n3(atual)}`); posT.style.left = Math.floor((108 - parseInt(posT.style.width)) / 2) + 'px';
     if (!e) { rotulo(corpo, T.diario.soVisto, 2, 4, 'tinta', { largura: 186 }); return; }
     [pgFicha, pgPorte, pgHabitat, pgEvolucao][abas.indice](e, cap);
@@ -131,7 +131,7 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
     rotulo(corpo, `Altura: ${cap ? num1(e.altura) + ' m' : '???'}`, 2, 24); rotulo(corpo, `Peso: ${cap ? num1(e.peso) + ' kg' : '???'}`, 100, 24);
     corpo.append(em(caixa('linha-div', 186, 1), 2, 36));
     rotulo(corpo, cap ? e.diario : T.diario.soVisto, 2, 41, 'chumbo', { largura: 186 });
-    const bt = moldura('botao-foco', 98, 14); bt.append(em(texto('A: Ouvir o grito ♪', { cor: 'tinta' }), 6, 3)); corpo.append(em(bt, 90, 117)); tocavel(bt, () => gritar());
+    const bt = moldura('botao-foco', 98, 14); bt.append(em(texto('A: Ouvir o grito ♪', { cor: 'tinta' }), 6, 3)); corpo.append(em(bt, 68, 117)); tocavel(bt, () => gritar());
   }
   function pgPorte(e: EspecieDef, cap: boolean) {
     if (!cap) { rotulo(corpo, T.diario.soVisto, 2, 4, 'tinta', { largura: 186 }); return; }

@@ -44,3 +44,4 @@ Próximos da fila: 5 (ginásios 1–8), 6 (A2), 7 (B1)… No máximo 3 agentes, 
 Rodando: Zonas A1 — jogar a abertura e corrigir (a6cfad1dc2bbf68c4) · Batalha — exercitar tudo, toque e polimento (a04be66a2a30cf5a5).
 Depois: menus restantes (retomar a9958821a48a7151e), então item 5 da fila em diante.
 - Regra atual do usuário: até 3 agentes; trabalhar até ~90% da cota da sessão e parar com tudo compilando e enviado. Menus retomado (a9958821a48a7151e).
+- Menus CONCLUÍDO (14 telas + HUD, toque testado no iPhone). Integração pendente com o mundo (fazer na fase de integração): `atalho()` em src/world/campo.ts ler flags['atalho'] → usarItemNoCampo; A1-quarto montar save.decoracao e escutar bus 'decoracao'; mundo emitir bus 'obstaculo' {amuleto,pode} e 'clima'; preencher save.contatos após batalhas; derrota em revanche do rádio; direcional de toque cobre cantos em paisagem (src/ui/toque.ts); palco em escala 1 no iPhone em pé (palco.ts).
