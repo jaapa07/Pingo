@@ -1,0 +1,10 @@
+import { createRequire } from 'node:module';
+const pw = createRequire(import.meta.url)('/opt/node-tools/node_modules/playwright');
+const b = await pw.chromium.launch(); const p = await b.newPage();
+p.on('pageerror', (e) => console.log('PAGEERROR', String(e).slice(0, 400)));
+p.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') console.log(m.type(), m.text().slice(0, 300)); });
+await p.goto('http://localhost:5196/?zona=A7-ginasio&x=8&y=17&equipe=6:95,3:95&amuletos=todos');
+await p.waitForTimeout(8000);
+console.log(await p.evaluate(() => ({ pingo: !!window.__pingo, pronto: window.__pingo?.mundo?.pronto, zona: window.__pingo?.mundo?.zona?.id })));
+await p.screenshot({ path: 'dbgload.png' });
+await b.close();

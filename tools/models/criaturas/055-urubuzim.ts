@@ -1,7 +1,7 @@
 /**
  * 055 · URUBUZIM (Vento/Assombro) — filhote de urubu, uma bola de penugem creme de cara pelada.
  * Traços únicos: corpo de penugem creme · cabeça pelada escura com um tufinho no cocuruto · gola fofa ·
- * asinhas pretas curtas demais · bico e pés alaranjados · fogo-fátuo lilás que o segue.
+ * pescoço pelado esticado para a frente e ombros corcundas · asas creme de pontas pretas · bico e pés alaranjados · fogo-fátuo lilás que o segue.
  */
 import { asasContidas } from './051-ararinha';
 import { criatura, ave, animsAve, blob, tufo, chamaDupla, par, m, lz, lp, ls, qz, qs, type V3, unirExtras } from './kits';
@@ -29,31 +29,35 @@ export const fatuoAnda = (nomes: string[]) => Object.fromEntries(nomes.map((n, i
 
 function build() {
   const { rig, ref } = ave({
-    corpo: [0.21, 0.21, 0.2], ergue: 58,
-    pescoco: { len: 0.1, ang: 72, r: 0.09 },
-    cabeca: [0.15, 0.14, 0.14],
-    bico: { len: 0.14, r: 0.07, y: -0.12, gancho: 46, achata: 0.75, inferior: 0.6 },
-    asa: { len: 0.2, larg: 0.13, cai: 34, ponta: 0.5 },
-    cauda: { len: 0.12, larg: 0.09, ang: -10, penas: 3, abre: 16 },
-    pernas: { alt: 0.09, r: 0.032, z: 0.5, dedo: 0.09 },
-    olho: { r: 0.028, pos: [0.085, 0.03, 0.115] },
-    rampas: { corpo: 0, peito: 0, cabeca: 1, asa: 1, asaPonta: 1, cauda: 1, bico: 2, perna: 2 },
+    corpo: [0.23, 0.19, 0.19], ergue: 26,
+    pescoco: { len: 0.2, ang: 52, r: 0.065 },
+    cabeca: [0.125, 0.115, 0.115],
+    bico: { len: 0.2, r: 0.062, y: -0.1, gancho: 70, achata: 0.75, inferior: 0.55 },
+    asa: { len: 0.3, larg: 0.19, cai: 30, ponta: 0.5 },
+    cauda: { len: 0.14, larg: 0.1, ang: -6, penas: 3, abre: 16 },
+    pernas: { alt: 0.17, r: 0.034, z: 0.5, dedo: 0.1 },
+    olho: { r: 0.026, pos: [0.075, 0.03, 0.095] },
+    rampas: { corpo: 0, peito: 0, cabeca: 1, asa: 0, asaPonta: 1, cauda: 1, bico: 2, perna: 2 },
   });
+  // corcunda de urubu: ombros da asa acima da linha da cabeça
+  par((l, s) => {
+    rig.add('asa_' + l, blob([0.11, 0.1, 0.07], m(0), { pos: [-0.02, 0.07, 0.02 * s], seg: 12 }), blob([0.13, 0.03, 0.05], m(1), { pos: [-0.2, -0.1, 0.03 * s], rot: [0, 0, 8], seg: 10 }));
+  });
+  rig.add('pescoco', blob([0.06, 0.07, 0.06], m(1), { pos: [0.06, 0.08, 0], seg: 10 }));
   // gola fofa: cacho de penugem em volta do pescoço
-  for (const [x, z, r] of [[0.07, 0, 0.085], [0.02, 0.09, 0.08], [0.02, -0.09, 0.08], [-0.06, 0.05, 0.075], [-0.06, -0.05, 0.075]] as const)
-    rig.add('pescoco', blob([r, r * 0.8, r], m.luz(0), { pos: [x, -0.02, z], seg: 12 }));
+  for (const [x, z, r] of [[0.06, 0, 0.075], [0.01, 0.08, 0.07], [0.01, -0.08, 0.07], [-0.06, 0.04, 0.07], [-0.06, -0.04, 0.07]] as const)
+    rig.add('pescoco', blob([r, r * 0.8, r], m.luz(0), { pos: [x, -0.03, z], seg: 12 }));
   // penugem do corpo: flocos saltados
-  par((_, s) => { rig.add('tronco', blob([0.07, 0.07, 0.06], m(0), { pos: [-0.12, 0.1, 0.14 * s], seg: 10 }), blob([0.07, 0.06, 0.06], m(0), { pos: [0.02, -0.16, 0.13 * s], seg: 10 })); });
   rig.add('tronco', blob([0.08, 0.07, 0.09], m(0), { pos: [-0.2, -0.02, 0], seg: 10 }));
   // tufinho do cocuruto e ponta escura do bico
   rig.bone('topete', 'cabeca', [ref.topo[0] - 0.02, ref.topo[1] - 0.02, 0], [0, 0, 16]);
   rig.add('topete', tufo(3, 0.08, 0.04, m(0), { abre: 36 }));
   rig.add('cabeca', blob([0.035, 0.035, 0.035], m.sombra(1), { pos: [ref.pontaBico[0] - 0.03, ref.pontaBico[1] - 0.04, 0], seg: 8 }));
-  fatuo(rig, 'fatuo', 'corpo', [-0.2, 0.3, 0.12], 0.17, 10);
+  fatuo(rig, 'fatuo', 'corpo', [-0.3, 0.3, 0.1], 0.17, 10);
   return rig;
 }
 
-const anims = animsAve({ u: 0.6, hPerna: 0.09, mole: 1.4 }, unirExtras(asasContidas, {
+const anims = animsAve({ u: 0.6, hPerna: 0.17, mole: 1.4 }, unirExtras(asasContidas, {
   todas: fatuoAnda(['fatuo']),
   idle: { topete: lz([0, 6, 12, -4]) },
   especial: { topete: qz([0, 16, 22, -28, -10, 0]), fatuo: qs([1, 1.2, 1.4, 1.7, 1.3, 1]) },

@@ -286,7 +286,7 @@ function itemUtil(b: Batalha, p: Pos): Acao | null {
   return null;
 }
 
-export const AJ = { troca: true, as: true, status: true, margemL: 0.45, margemC: 0.3, distracaoTreinador: 0.15, deslizeLider: 0.08, folgaAs: 0.5 };
+export const AJ = { troca: true, as: true, status: true, margemL: 0.45, margemC: 0.3, distracaoTreinador: 0.15, deslizeLider: 0.1, folgaAs: 0.5, varrida: 0.05 };
 /* ------------------------------ duelo 1×1 (líder e conselho) ------------------------------ */
 /**
  * Líder e Conselho pensam o 1×1 como uma CORRIDA: quem derruba quem primeiro, com o que cada ação muda nessa conta
@@ -438,6 +438,11 @@ function notasDeDuelo(b: Batalha, p: Pos, q: Pos, nivel: NivelIA): { notas: Nota
         }
       }
     }
+    // conselho: reforço que fica em campo vale também contra as próximas adversárias (varrida), se dá tempo de usá-lo
+    if (fino && AJ.varrida && g.cat === 'status' && A * 3 < eu.vida) {
+      const restam = b.reservas(q.lado).length;
+      for (const e of g.efeitos) if (e.t === 'estagio' && e.eu && e.n > 0 && v.est[e.s] < 2 && ((e.s === 'atq' && catMinha === 'fisico') || (e.s === 'atqEsp' && catMinha === 'especial') || e.s === 'vel')) bonus += Math.min(0.3, AJ.varrida * e.n * restam);
+    }
     const todos = (d: Duelo) => { for (const x of efeitos) x.f(d); };
     const chEfeito = efeitos.length ? Math.max(...efeitos.map((x) => x.ch)) : 0;
     let nota: number, nocauteia = false;
@@ -491,9 +496,8 @@ function decidirDuelo(b: Batalha, p: Pos, q: Pos, nivel: NivelIA, o: OpcoesIA): 
     melhor = kos.reduce((a, n) => (seguro(n) > seguro(a) ? n : a));
     if (!emRisco || (melhor.g.prioridade ?? 0) > 0 || !b.podeTrocar(p)) return comoAcao(melhor);
   } else if (!fino && notas.length > 1 && rng.chance(AJ.deslizeLider)) {
-    // o líder joga bem, mas não é perfeito: de vez em quando fica com a segunda melhor ideia
-    const resto = notas.filter((n) => n !== melhor);
-    melhor = resto.reduce((a, n) => (n.nota > a.nota ? n : a));
+    // o líder joga bem, mas não é perfeito: de vez em quando escolhe outro golpe
+    melhor = rng.escolha(notas.filter((n) => n !== melhor));
   } else if (fino) {
     // entre opções quase iguais, o conselho fica com a mais precisa
     const perto = notas.filter((n) => n.nota >= melhor.nota - 0.03);

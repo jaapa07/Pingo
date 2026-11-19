@@ -20,15 +20,13 @@ function build() {
     rampas: { corpo: 0, barriga: 1, patas: 2, pontas: 2, pincas: 0 },
   });
   // GARRA gigante do lado da câmera: palma enorme com crosta de pedra e dedos creme
-  rig.bones.garra_e.scale.setScalar(2.2);
-  rig.bones.pinca_e.rotation.z = 0.75; rig.bones.pinca_e.rotation.y = 0.35;
-  // dedos da garra em creme, grossos, para a tenaz ler de longe
-  rig.add('garra_e', garra(0.2, 0.05, m.luz(1), { pos: [0.13, 0.05, 0], curva: 0.3 }));
-  rig.add('dedo_e', garra(0.17, 0.042, m(1), { pos: [0.0, 0.0, 0], curva: -0.25 }));
-  rig.add('garra_e', blob([0.14, 0.12, 0.1], m(3), { pos: [0.085, 0, 0], seg: 9 }));
-  rig.add('garra_e',
-    blob([0.075, 0.07, 0.05], m.luz(3), { pos: [0.04, 0.09, -0.05], seg: 8 }), blob([0.05, 0.045, 0.045], m.sombra(3), { pos: [0.14, 0.09, -0.03], seg: 7 }),
-    blob([0.045, 0.04, 0.04], m.luz(3), { pos: [0.0, 0.02, -0.075], seg: 7 }), blob([0.04, 0.03, 0.04], m.sombra(3), { pos: [0.09, -0.03, -0.07], seg: 7 }));
+  rig.bones.garra_e.scale.setScalar(2.1);
+  rig.bones.pinca_e.rotation.z = 0.7; rig.bones.pinca_e.rotation.y = 0.3;
+  rig.bones.dedo_e.rotation.z = -0.75;
+  // palma em pedra, pequena; os dois DEDOS da tenaz são grossos, compridos e abertos em "C" (azul em cima, creme embaixo)
+  rig.add('garra_e', blob([0.1, 0.095, 0.085], m(3), { pos: [0.06, 0, 0], seg: 9 }), blob([0.045, 0.04, 0.04], m.luz(3), { pos: [0.02, 0.08, -0.04], seg: 7 }), blob([0.04, 0.035, 0.04], m.sombra(3), { pos: [0.0, -0.05, -0.06], seg: 7 }));
+  rig.add('garra_e', garra(0.34, 0.075, m(0), { pos: [0.1, 0.07, 0], rot: [0, 0, 26], curva: 0.75 }), blob([0.035, 0.03, 0.03], m.luz(1), { pos: [0.4, 0.07, 0], seg: 7 }));
+  rig.add('dedo_e', garra(0.3, 0.06, m(1), { pos: [-0.02, 0.0, 0], rot: [0, 0, 0], curva: -0.7 }));
   par((l, s) => {
     rig.add('dedo_' + l, blob([0.04, 0.025, 0.03], m.plano(1), { pos: [0.09, -0.014, 0], seg: 8 }));
     // dentes da borda da carapaça e sulco do "H"
