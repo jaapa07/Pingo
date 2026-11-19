@@ -320,21 +320,28 @@ Cada obstáculo exige um **Amuleto de Campo**, que é um item-chave. Ele **só f
 | 7 | A8 (via A-R6) | **7 · Ferro (Engrenagem)** | 34–36 | Mergulho (A-RS) |
 | 8 | A10 Vila Buriti (nova cidade do mapa A) | **8 · Mata (Folha)** | 38–40 | caminho para o Platô da Liga |
 | Liga | A-LG Platô da Liga | **Liga dos Guardiões** (4 Mestres + Campeão) | 41–46 | **libera o mapa B:** Passe do Trem + Bilhete do Saveiro |
-| 9 | B2 (trem → B1 → rota) | **9 · Terra (Barro)** | 45–47 | Força; a líder conta que o Cartel age no mapa A → volta de trem |
-| 10 | B3 (Saveiro → B9 → B-R2) | evento da Mina → **10 · Pedra (Cristal)** | 47–49 | Escalar |
-| 11 | B4 (via B-CH) | **11 · Brasa (Chama)** | 49–51 | B-CV (Boitatá) |
-| 12 | B5 | **12 · Ginga (Berimbau)** | 51–53 | Cachoeira → volta ao mapa A |
-| 13 | B6 (via B-TA) | evento do Laboratório → **13 · Veneno (Espinho)** | 53–55 | Queixada-Caipora começa a vagar |
-| 14 | B7 (via B-R4) | **14 · Geada (Floco)** | 55–57 | **Voo** |
-| 15 | B8 (via B-R5, Lampião) | **15 · Mente (Olho)** | 57–59 | o guardião do Monte Tupã abre o caminho |
-| 16 | A9 (via A-MT) | **16 · Lenda (Escama)** | 59–61 | Portão do Pico Pindorama |
-| Final | PP | **Conselho dos Guardiões** (4 + Guardião-Mor) e Coronel Garrote do Cartel | 62–68 | créditos e pós-jogo |
+| 9 | B2 (trem → B1 → rota) | **9 · Terra (Barro)** | 47–49 | Força; a líder conta que o Cartel age no mapa A → volta de trem |
+| 10 | B3 (Saveiro → B9 → B-R2) | evento da Mina → **10 · Pedra (Cristal)** | 49–51 | Escalar |
+| 11 | B4 (via B-CH) | **11 · Brasa (Chama)** | 51–53 | B-CV (Boitatá) |
+| 12 | B5 | **12 · Ginga (Berimbau)** | 53–55 | Cachoeira → volta ao mapa A |
+| 13 | B6 (via B-TA) | evento do Laboratório → **13 · Veneno (Espinho)** | 55–57 | Queixada-Caipora começa a vagar |
+| 14 | B7 (via B-R4) | **14 · Geada (Floco)** | 57–59 | **Voo** |
+| 15 | B8 (via B-R5, Lampião) | **15 · Mente (Olho)** | 59–61 | o guardião do Monte Tupã abre o caminho |
+| 16 | A9 (via A-MT) | **16 · Lenda (Escama)** | 61–63 | Portão do Pico Pindorama |
+| Final | PP | **Conselho dos Guardiões** (4 + Guardião-Mor) e Coronel Garrote do Cartel | 64–70 | créditos e pós-jogo |
 
 **Regras de montagem (obrigatórias):**
 - **Sem atalhos que pulem etapas:** cada transição exige o Amuleto ou o evento indicado.
 - Os **portões narrativos** são diálogos com motivo na história, nunca paredes invisíveis. Exemplos: o guardião do Monte Tupã só abre com 15 insígnias; a ponte de B-R5 guarda a névoa.
 - **Áreas visíveis, mas inalcançáveis**, ficam espalhadas desde cedo com recompensas raras: ilhas, prateleiras de rocha, poças de mergulho. É o "metroidvania" do gênero, que dá motivo para voltar.
 - **Curva de nível:** cada zona define faixas de nível coerentes com o passo em que fica acessível. As zonas antigas ganham uma **"camada pós-insígnia X"** com criaturas evoluídas: a mesma rota, revisitada, tem novas espécies em níveis maiores.
+
+**Regra de coerência de níveis (decisão do autor: a dificuldade tem de acompanhar o nível das criaturas):**
+- A curva só sobe: **líder 8 (38–40) < Liga (41–46, Campeão com ás 46) < líder 9 (47–49) < … < líder 16 (61–63) < Garrote (≈63–65) < Conselho (64–70, Guardião-Mor com o lendário no nível 70)**. Depois do 16, o Conselho é claramente mais forte que qualquer ginásio e que a Liga.
+- **Mapa A (1 a 8 + Liga):** as criaturas selvagens das rotas vão de 2–5 até ~40 (camadas pós-insígnia chegam a 44). **Mapa B:** o selvagem começa em ~44–48, ou seja, a Liga termina onde o mapa B começa; só o pós-jogo leva as rotas além disso.
+- **Nível esperado da equipe:** o jogador que capturou e treinou o normal chega em cada líder com o nível da sua melhor criatura 2 a 4 níveis abaixo do ás do líder, e o ás do líder fica no limite superior da faixa. O jogador que for direto fica abaixo e precisa de estratégia; o que treinou demais passa folgado, mas isso não é o caminho recomendado.
+- **Estágio compatível com o nível:** criaturas de 1º estágio (atributos 280–330) só aparecem em equipes até o nível ~25; de 2º estágio (400–480) de ~25 a ~45; **estágio final (500–540) só a partir do nível ~36**, e o selvagem de estágio final só em camadas pós-insígnia. Isso evita casos como uma criatura de soma 500 no nível 10.
+- **Verificação automática (`npm run check`):** confere a monotonia da curva acima, que cada treinador/líder/selvagem esteja dentro da faixa do seu passo, que o ás do líder seja o mais alto da equipe, e que nenhuma criatura apareça em nível menor que o da sua evolução anterior ou muito acima da faixa do seu estágio.
 
 ### 4.6 Formato das zonas (`src/data/zonas/<id>.ts`, escrito à mão)
 - **`tilemap`:** grade de caracteres com tile de 48 px e camadas `chao`, `objetos` e `alto` (copas e telhados que passam na frente do jogador). A legenda de cada tileset fica documentada em `docs/ZONAS.md`.
@@ -384,7 +391,7 @@ Cada ginásio tem um **quebra-cabeça temático**, de 4 a 7 treinadores e um lí
 **Liga dos Guardiões (fim do mapa A) — pedido do autor: "uma liga depois da 8ª insígnia para liberar o mapa B":**
 - **Estrutura (como nos jogos clássicos de duas regiões):** o mapa A é uma aventura completa, com 8 ginásios (A2 a A8 e A10), terminando na **Liga dos Guardiões**, no **Platô da Liga (zona `A-LG`)**, ao fim da trilha que sai de Vila Buriti. Só depois de vencer a Liga o **mapa B (Sertão das Névoas)** é aberto. Isso substitui o trem aberto desde o 3º ginásio.
 - **Portal de acesso:** o Platô exige as **8 insígnias** (portão narrativo: o Guardião da Entrada confere as insígnias).
-- **Formato:** **5 lutas seguidas, sem sair do Platô** (4 Mestres + Campeão), na ordem abaixo, com sala de espera, música própria e cura só por itens entre as lutas; derrota = volta à entrada do Platô (a Liga recomeça do 1º mestre). Níveis 41–46. Rival Tainá aparece depois da Liga (encontro `rival-4`, ver abaixo).
+- **Formato:** **5 lutas seguidas, sem sair do Platô** (4 Mestres + Campeão), na ordem abaixo, com sala de espera, música própria e cura só por itens entre as lutas; derrota = volta à entrada do Platô (a Liga recomeça do 1º mestre). Níveis 41–46 (Mestres 41–44, Campeão com o ás no nível 46). Rival Tainá aparece depois da Liga (encontro `rival-4`, ver abaixo).
   1. **Mestra Maré (Rio/Veneno):** pescadora de mangue.
   2. **Ferreiro Brasa-Viva (Brasa/Ferro):** forjador de sinos.
   3. **Pajé Neblina (Mente/Assombro):** contador de lendas.
