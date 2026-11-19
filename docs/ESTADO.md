@@ -39,3 +39,7 @@ Feito nesta rodada (Fable): dados 61–120 (180 espécies completas) · tela de 
 - Menus: faltam `mapa-mundi` (+voo), `radio` + src/data/radio.ts, `creditos`, `foto`, src/ui/hud.ts; testar toque/iPhone e fluxos de item/loja/viveiro. Mundo ainda não lê flags['atalho'] nem save.decoracao, nem emite 'obstaculo'.
 - Equilíbrio: somas de atributos das partes 1–60/121–180 (caso Bruxaluz); IA de líder/conselho.
 Próximos da fila: 5 (ginásios 1–8), 6 (A2), 7 (B1)… No máximo 3 agentes, em Fable.
+
+## Retomado em 19/11 com 2 agentes (regra nova do usuário: no máximo 2 em paralelo, em Fable)
+Rodando: Zonas A1 — jogar a abertura e corrigir (a6cfad1dc2bbf68c4) · Batalha — exercitar tudo, toque e polimento (a04be66a2a30cf5a5).
+Depois: menus restantes (retomar a9958821a48a7151e), então item 5 da fila em diante.
