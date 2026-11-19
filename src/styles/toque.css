@@ -1,0 +1,7 @@
+/* Controles de toque: camada irmã do quadro, com escala própria (inteira em pixels do aparelho). */
+#toque { position: absolute; left: 0; top: 0; width: 0; height: 0; display: none; transform-origin: 0 0; z-index: 20; }
+#toque.ativo { display: block; }
+#toque.paisagem { opacity: 0.72; }
+.tq { position: absolute; touch-action: none; pointer-events: auto; }
+.tq > .k { position: absolute; pointer-events: none; }
+.tq-zona { position: absolute; touch-action: none; pointer-events: auto; }

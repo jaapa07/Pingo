@@ -15,16 +15,56 @@ interface VozDef {
 }
 
 export const VOZES: Record<string, VozDef> = {
-  tama: { f: 128, varia: 3, sil: 0.13, onda: 'sawtooth', formante: 0.85, aspero: 0.12, vib: [5, 0.15], vol: 0.32 },
-  lili: { f: 430, varia: 5, sil: 0.075, onda: 'sawtooth', formante: 1.38, aspero: 0.04, vib: [7, 0.2], vol: 0.24 },
-  'vo-bugio': { f: 108, varia: 4, sil: 0.155, onda: 'sawtooth', formante: 0.8, aspero: 0.35, vib: [6.5, 0.6], vol: 0.3 },
-  tucano: { f: 290, varia: 6, sil: 0.1, onda: 'square', formante: 1.15, aspero: 0.1, vib: [4, 0.1], vol: 0.17 },
-  quati: { f: 370, varia: 4, sil: 0.062, onda: 'square', formante: 1.25, aspero: 0.15, vib: [9, 0.25], vol: 0.16 },
-  'bem-te-vi': { f: 1350, varia: 7, sil: 0.085, onda: 'sine', formante: 2, aspero: 0, vib: [12, 0.3], vol: 0.16, assobio: true },
-  preguica: { f: 92, varia: 2, sil: 0.27, onda: 'triangle', formante: 0.75, aspero: 0.3, vib: [3, 0.2], vol: 0.4 },
-  javalim: { f: 118, varia: 3, sil: 0.1, onda: 'square', formante: 0.85, aspero: 0.55, vib: [25, 0.4], vol: 0.2 },
-  barao: { f: 88, varia: 5, sil: 0.145, onda: 'sawtooth', formante: 0.74, aspero: 0.25, vib: [5.5, 0.5], vol: 0.3 },
+  // protagonistas (Kauê e Ayra) e família
+  'jogador': { f: 250, varia: 4, sil: 0.085, onda: 'square', formante: 1.15, aspero: 0.05, vib: [6, 0.15], vol: 0.2 },
+  'jogador-kaue': { f: 215, varia: 4, sil: 0.088, onda: 'square', formante: 1.1, aspero: 0.06, vib: [6, 0.15], vol: 0.2 },
+  'jogador-ayra': { f: 315, varia: 5, sil: 0.082, onda: 'square', formante: 1.22, aspero: 0.04, vib: [6.5, 0.15], vol: 0.19 },
+  'mae': { f: 268, varia: 5, sil: 0.098, onda: 'sawtooth', formante: 1.16, aspero: 0.05, vib: [5.5, 0.25], vol: 0.24 },
+  // pesquisadoras e guia
+  'prof-ipe': { f: 232, varia: 6, sil: 0.092, onda: 'sawtooth', formante: 1.1, aspero: 0.07, vib: [5, 0.3], vol: 0.25 },
+  'dra-buriti': { f: 205, varia: 4, sil: 0.105, onda: 'triangle', formante: 1.05, aspero: 0.14, vib: [4.5, 0.2], vol: 0.36 },
+  'seu-aroeira': { f: 112, varia: 4, sil: 0.135, onda: 'sawtooth', formante: 0.82, aspero: 0.3, vib: [6, 0.5], vol: 0.3 },
+  // rival
+  'taina': { f: 345, varia: 6, sil: 0.07, onda: 'square', formante: 1.26, aspero: 0.06, vib: [7, 0.2], vol: 0.18 },
+  // Cartel Ferrugem
+  'coronel-garrote': { f: 84, varia: 3, sil: 0.15, onda: 'sawtooth', formante: 0.72, aspero: 0.4, vib: [5, 0.4], vol: 0.32 },
+  'tenente-lata': { f: 176, varia: 5, sil: 0.075, onda: 'square', formante: 0.98, aspero: 0.3, vib: [11, 0.3], vol: 0.18 },
+  'tenente-arame': { f: 298, varia: 7, sil: 0.068, onda: 'sawtooth', formante: 1.2, aspero: 0.18, vib: [8, 0.4], vol: 0.2 },
+  'tenente-rebite': { f: 98, varia: 2, sil: 0.165, onda: 'square', formante: 0.76, aspero: 0.45, vib: [20, 0.3], vol: 0.2 },
+  'capanga': { f: 138, varia: 3, sil: 0.1, onda: 'square', formante: 0.9, aspero: 0.35, vib: [14, 0.3], vol: 0.18 },
+  // líderes de ginásio e Conselho
+  'lider-m': { f: 132, varia: 5, sil: 0.115, onda: 'sawtooth', formante: 0.88, aspero: 0.12, vib: [5, 0.3], vol: 0.3 },
+  'lider-f': { f: 255, varia: 6, sil: 0.1, onda: 'sawtooth', formante: 1.14, aspero: 0.06, vib: [5.5, 0.3], vol: 0.25 },
+  'guardiao': { f: 100, varia: 4, sil: 0.16, onda: 'triangle', formante: 0.78, aspero: 0.2, vib: [4, 0.4], vol: 0.42 },
+  // gente das vilas
+  'crianca-m': { f: 400, varia: 6, sil: 0.068, onda: 'square', formante: 1.36, aspero: 0.03, vib: [8, 0.2], vol: 0.17 },
+  'crianca-f': { f: 455, varia: 7, sil: 0.066, onda: 'sawtooth', formante: 1.42, aspero: 0.03, vib: [8, 0.2], vol: 0.22 },
+  'idoso': { f: 106, varia: 3, sil: 0.16, onda: 'sawtooth', formante: 0.82, aspero: 0.4, vib: [6.5, 0.7], vol: 0.28 },
+  'idosa': { f: 218, varia: 4, sil: 0.15, onda: 'sawtooth', formante: 1.06, aspero: 0.28, vib: [6.5, 0.7], vol: 0.25 },
+  'treinador-m': { f: 150, varia: 5, sil: 0.092, onda: 'square', formante: 0.95, aspero: 0.1, vib: [6, 0.2], vol: 0.19 },
+  'treinador-f': { f: 285, varia: 6, sil: 0.086, onda: 'square', formante: 1.2, aspero: 0.06, vib: [6, 0.2], vol: 0.18 },
+  'atendente': { f: 300, varia: 4, sil: 0.09, onda: 'triangle', formante: 1.2, aspero: 0.05, vib: [5, 0.2], vol: 0.36 },
+  // vozes especiais
+  'radio': { f: 190, varia: 6, sil: 0.08, onda: 'square', formante: 1.5, aspero: 0.3, vib: [30, 0.1], vol: 0.13 },
+  'assobio': { f: 1300, varia: 7, sil: 0.085, onda: 'sine', formante: 2, aspero: 0, vib: [12, 0.3], vol: 0.16, assobio: true },
 };
+
+/** Nomes alternativos aceitos (ids de NPC e de retrato usados pelos eventos). */
+const APELIDOS: Record<string, string> = {
+  kaue: 'jogador-kaue', ayra: 'jogador-ayra', ipe: 'prof-ipe', 'profa-ipe': 'prof-ipe', buriti: 'dra-buriti', aroeira: 'seu-aroeira',
+  rival: 'taina', garrote: 'coronel-garrote', coronel: 'coronel-garrote', lata: 'tenente-lata', arame: 'tenente-arame', rebite: 'tenente-rebite',
+  cartel: 'capanga', lider: 'lider-m', conselho: 'guardiao', crianca: 'crianca-m', menino: 'crianca-m', menina: 'crianca-f',
+  velho: 'idoso', velha: 'idosa', vovo: 'idoso', vovó: 'idosa', homem: 'treinador-m', mulher: 'treinador-f', enfermeira: 'atendente', vendedor: 'treinador-m',
+};
+const GENERICAS = ['treinador-m', 'treinador-f', 'lider-m', 'lider-f', 'idoso', 'idosa', 'crianca-m', 'crianca-f', 'atendente'];
+
+/** Resolve o nome pedido para uma voz definida; nomes desconhecidos caem sempre na mesma voz genérica (por hash). */
+export function resolverVoz(voz: string): string {
+  const k = (voz || 'jogador').toLowerCase();
+  if (VOZES[k]) return k;
+  if (APELIDOS[k]) return APELIDOS[k];
+  return GENERICAS[hashTexto(k) % GENERICAS.length];
+}
 
 const VOG: Record<string, [number, number]> = { a: [800, 1150], e: [500, 1750], i: [300, 2250], o: [520, 860], u: [320, 760], y: [300, 2250] };
 const FRIC = new Set(['s', 'f', 'x', 'z', 'j', 'v', 'h']);
@@ -52,8 +92,9 @@ function silabas(texto: string): Silaba[] {
 
 const ativos = new Map<string, { g: GainNode; fontes: (OscillatorNode | AudioBufferSourceNode)[] }>();
 
-export function balbuciar(c: AudioContext, dest: AudioNode, voz: string, texto: string): void {
-  const v = VOZES[voz] ?? VOZES.tama;
+export function balbuciar(c: AudioContext, dest: AudioNode, vozPedida: string, texto: string): void {
+  const voz = resolverVoz(vozPedida);
+  const v = VOZES[voz];
   const sil = silabas(texto);
   if (!sil.length) return;
   const t0 = c.currentTime + 0.02;

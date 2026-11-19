@@ -35,7 +35,7 @@ export function acorde(sim: string, oitava: number): number[] {
 }
 
 /** Converte uma parte melódica (compassos com `|`) em eventos. */
-export function lerParte(texto: string, passoInicial: number, passosCompasso: number, parte: Parte, inst: InstId, eventos: Evento[], ultimo: { ev: Evento | null; dur: number }): number {
+export function lerParte(texto: string, passoInicial: number, passosCompasso: number, parte: Parte, inst: InstId, eventos: Evento[], ultimo: { ev: Evento | null; dur: number }, avisos?: string[]): number {
   const compassos = texto.split('|');
   let p = passoInicial;
   for (const comp of compassos) {
@@ -59,18 +59,19 @@ export function lerParte(texto: string, passoInicial: number, passosCompasso: nu
       p += dur;
     }
     // compasso incompleto é completado com pausa; compasso estourado mantém a grade
+    if (avisos && fichas.length && p !== ini + passosCompasso) avisos.push(`${parte}: compasso ${Math.round((ini - passoInicial) / passosCompasso) + 1} soma ${p - ini} (esperado ${passosCompasso}): ${comp.trim()}`);
     p = ini + passosCompasso;
   }
   return p;
 }
 
-export function lerAcordes(texto: string, passoInicial: number, pc: number, estilo: EstiloHarmonia, inst: InstId, eventos: Evento[], anterior: { a: string }): void {
-  const compassos = texto.split('|');
+export interface AcordeNoTempo { sim: string; passo: number; dur: number }
+
+/** Lê a cifra (compassos com `|`, vários acordes por compasso dividem o tempo por igual; `%` repete, `-` cala). */
+export function listarAcordes(texto: string, passoInicial: number, pc: number, anterior: { a: string }): AcordeNoTempo[] {
+  const lista: AcordeNoTempo[] = [];
   let p = passoInicial;
-  const oit = estilo.oitava ?? 4;
-  // primeiro coleta acordes com início e duração (acordes iguais seguidos viram um só no pad)
-  const lista: { sim: string; passo: number; dur: number }[] = [];
-  for (const comp of compassos) {
+  for (const comp of texto.split('|')) {
     const sims = comp.trim().split(/\s+/).filter(Boolean);
     const n = Math.max(1, sims.length);
     const fatia = pc / n;
@@ -81,6 +82,11 @@ export function lerAcordes(texto: string, passoInicial: number, pc: number, esti
     });
     p += pc;
   }
+  return lista;
+}
+
+export function lerAcordes(lista: AcordeNoTempo[], passoInicial: number, estilo: EstiloHarmonia, inst: InstId, eventos: Evento[]): void {
+  const oit = estilo.oitava ?? 4;
   for (const a of lista) {
     if (a.sim === '-') continue;
     const notas = acorde(a.sim, oit);
@@ -110,6 +116,57 @@ export function lerAcordes(texto: string, passoInicial: number, pc: number, esti
   }
 }
 
+/** Fundamental (ou baixo invertido `C/E`) e intervalos do acorde, para o baixo derivado da cifra. */
+function raizBaixo(sim: string): { pc: number; q: number[] } {
+  const [corpo, inv] = sim.split('/');
+  const m = /^([A-G])(#|b)?(.*)$/.exec(corpo);
+  if (!m) throw new Error('acorde inválido: ' + sim);
+  const q = QUAL[m[3]] ?? QUAL[''];
+  const classe = (l: string, ac?: string) => (((NOTAS[l.toLowerCase()] + (ac === '#' ? 1 : ac === 'b' ? -1 : 0)) % 12) + 12) % 12;
+  const raiz = classe(m[1], m[2]);
+  if (inv) {
+    const mi = /^([A-G])(#|b)?$/.exec(inv);
+    if (mi) { const b = classe(mi[1], mi[2]); return { pc: b, q: q.map((iv) => (((raiz + iv - b) % 12) + 12) % 12) }; }
+  }
+  return { pc: raiz, q };
+}
+
+const alturaBaixo = (pc: number): number => (pc > 8 ? pc + 24 : pc + 36);
+
+/** Baixo derivado da cifra por uma grade rítmica (ver `Secao` em types.ts). */
+export function lerBaixoAuto(texto: string, lista: AcordeNoTempo[], passoInicial: number, pc: number, compassos: number, inst: InstId, eventos: Evento[]): void {
+  const grades = texto.split('|').map((g) => g.trim()).filter(Boolean);
+  const validos = lista.filter((a) => a.sim !== '-');
+  if (!grades.length || !validos.length) return;
+  for (let b = 0; b < compassos; b++) {
+    const grade = grades[b % grades.length];
+    for (let q = 0; q < pc && q < grade.length; q++) {
+      const ch = grade[q];
+      if (ch === '.' || ch === '-') continue;
+      const passo = passoInicial + b * pc + q;
+      let i = -1;
+      for (let k = 0; k < lista.length; k++) if (lista[k].passo <= passo) i = k;
+      if (i < 0 || lista[i].sim === '-') continue;
+      const r = raizBaixo(lista[i].sim);
+      const base = alturaBaixo(r.pc);
+      let midi = base;
+      if (ch === '3') midi = base + r.q[1];
+      else if (ch === '5') midi = base + r.q[2] - (r.q[2] > 5 && base > 38 ? 12 : 0);
+      else if (ch === '7') midi = base + (r.q[3] ?? (r.q[1] === 3 ? 10 : 9)) - 12;
+      else if (ch === '8') midi = base + 12;
+      else if (ch === 'a') {
+        let j = i + 1;
+        while (j < lista.length && (lista[j].sim === '-' || lista[j].sim === lista[i].sim)) j++;
+        const prox = j < lista.length ? lista[j] : validos[0];
+        midi = alturaBaixo(raizBaixo(prox.sim).pc) - 1;
+      } else if (ch !== '1') continue;
+      let fim = q + 1;
+      while (fim < pc && fim < grade.length && grade[fim] === '.') fim++;
+      eventos.push({ passo, dur: fim - q, midi, vel: q % 4 === 0 ? 0.85 : 0.7, inst, parte: 'baixo' });
+    }
+  }
+}
+
 const VEL: Record<string, number> = { X: 1, x: 0.75, o: 0.38 };
 
 export interface Compilada {
@@ -120,7 +177,7 @@ export interface Compilada {
   compassos: number;
 }
 
-export function compilar(f: Faixa): Compilada {
+export function compilar(f: Faixa, avisos?: string[]): Compilada {
   const pc = f.passos ?? 16;
   const eventos: Evento[] = [];
   let p = 0;
@@ -132,10 +189,21 @@ export function compilar(f: Faixa): Compilada {
     if (!s) throw new Error(`seção ${id} ausente em ${f.id}`);
     const n = s.acordes.split('|').length;
     const inst = { ...f.inst, ...(s.inst ?? {}) };
-    lerParte(s.melodia, p, pc, 'melodia', inst.melodia, eventos, ult.melodia);
-    lerParte(s.contra, p, pc, 'contra', inst.contra, eventos, ult.contra);
-    lerParte(s.baixo, p, pc, 'baixo', inst.baixo, eventos, ult.baixo);
-    lerAcordes(s.acordes, p, pc, s.estilo ?? f.estilo, inst.harmonia, eventos, ant);
+    const av = avisos ? [] as string[] : undefined;
+    for (const [nome, txt] of [['melodia', s.melodia], ['contra', s.contra]] as const) {
+      const nb = txt.split('|').length;
+      if (av && nb !== n && txt.trim() !== '-') av.push(`${nome}: ${nb} compassos para ${n} de cifra`);
+    }
+    lerParte(s.melodia, p, pc, 'melodia', inst.melodia, eventos, ult.melodia, av);
+    lerParte(s.contra, p, pc, 'contra', inst.contra, eventos, ult.contra, av);
+    const lista = listarAcordes(s.acordes, p, pc, ant);
+    if (s.baixo.trim().startsWith('@')) { lerBaixoAuto(s.baixo.trim().slice(1), lista, p, pc, n, inst.baixo, eventos); ult.baixo.ev = null; }
+    else {
+      if (av && s.baixo.split('|').length !== n) av.push(`baixo: ${s.baixo.split('|').length} compassos para ${n} de cifra`);
+      lerParte(s.baixo, p, pc, 'baixo', inst.baixo, eventos, ult.baixo, av);
+    }
+    if (av && avisos) for (const a of av) avisos.push(`${f.id}/${id} ${a}`);
+    lerAcordes(lista, p, s.estilo ?? f.estilo, inst.harmonia, eventos);
     const pads = s.bateria.trim().split(/\s+/);
     for (let b = 0; b < n; b++) {
       const pid = pads[b % pads.length];

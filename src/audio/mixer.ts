@@ -5,6 +5,7 @@ import { impulso, PRESETS_REVERB, type PresetReverb } from './reverb';
 export interface Mixer {
   c: AudioContext;
   musica: GainNode;   // entrada do canal de música
+  jingle: GainNode;   // jingles (captura, vitória curta): mesmo volume da música, mas fora do ducking
   sfx: GainNode;      // entrada do canal de efeitos
   amb: GainNode;      // entrada do canal de ambiente
   envioMusica: GainNode; // envio de reverb da música (ajustado por faixa)
@@ -26,6 +27,12 @@ let mx: Mixer | null = null;
 
 export function mixer(c: AudioContext): Mixer {
   if (mx && mx.c === c) return mx;
+  mx = criaMixer(c);
+  return mx;
+}
+
+/** Monta uma cadeia de mixagem nova (a renderização offline de medição usa a sua própria). */
+export function criaMixer(c: AudioContext, reverbInicial: PresetReverb = 'mata'): Mixer {
   const comp = c.createDynamicsCompressor();
   comp.threshold.value = -16;
   comp.knee.value = 12;
@@ -50,10 +57,10 @@ export function mixer(c: AudioContext): Mixer {
   const volSfx = ganho(c, 0.9, lpSfx);
   const sfx = ganho(c, 1, volSfx);
 
-  const retorno = ganho(c, PRESETS_REVERB.mata.ret, lpMundo);
+  const retorno = ganho(c, PRESETS_REVERB[reverbInicial].ret, lpMundo);
   const gA = ganho(c, 1, retorno);
   const gB = ganho(c, 0, retorno);
-  const convA = c.createConvolver(); convA.buffer = impulso(c, 'mata'); convA.connect(gA);
+  const convA = c.createConvolver(); convA.buffer = impulso(c, reverbInicial); convA.connect(gA);
   const convB = c.createConvolver(); convB.connect(gB);
   const entradaRev = c.createGain();
   entradaRev.connect(convA); entradaRev.connect(convB);
@@ -66,8 +73,8 @@ export function mixer(c: AudioContext): Mixer {
 
   const sfxRev = ganho(c, 0.9, entradaRev);
   const ambRev = ganho(c, 0.7, entradaRev);
-  mx = { c, musica, sfx, amb, envioMusica, envioSfx, volMusica, volSfx, volAmb, duck, lpMundo, lpSfx, convA, convB, gA, gB, ladoA: true, retorno, preset: 'mata', sfxRev, ambRev };
-  return mx;
+  const jingle = ganho(c, 0.6, volMusica);
+  return { c, jingle, musica, sfx, amb, envioMusica, envioSfx, volMusica, volSfx, volAmb, duck, lpMundo, lpSfx, convA, convB, gA, gB, ladoA: true, retorno, preset: reverbInicial, sfxRev, ambRev };
 }
 
 export function trocaReverb(m: Mixer, p: PresetReverb): void {

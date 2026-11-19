@@ -1,4 +1,4 @@
-/** Instrumentos sintetizados (melódicos e percussão). Cada nota cria seus próprios nós e se desliga sozinha. */
+/** Instrumentos sintetizados: ondas de portátil clássico (pulso/triângulo/ruído) e timbres brasileiros (sanfona, viola, cavaquinho, zabumba…). Cada nota cria seus próprios nós e se desliga sozinha. */
 import type { InstId, PecaId } from '../data/music/types';
 import { curvaDist, envPerc, envSus, filtro, fonteRuido, ganho, inicia, mtof, oscilador } from './core';
 
@@ -15,6 +15,115 @@ function vibrato(c: AudioContext, alvo: AudioParam[], t: number, fim: number, ta
   lfo.start(t); lfo.stop(fim + 0.05);
   return lfo;
 }
+
+// ---------------------------------------------------------------- ondas de portátil clássico
+const ondas = new WeakMap<BaseAudioContext, Map<number, PeriodicWave>>();
+/** Onda de pulso com largura (duty) arbitrária, montada por série de Fourier e guardada por contexto. */
+export function ondaPulso(c: BaseAudioContext, largura: number): PeriodicWave {
+  let mapa = ondas.get(c);
+  if (!mapa) { mapa = new Map(); ondas.set(c, mapa); }
+  const pronta = mapa.get(largura);
+  if (pronta) return pronta;
+  const n = 40;
+  const re = new Float32Array(n);
+  const im = new Float32Array(n);
+  for (let k = 1; k < n; k++) {
+    re[k] = (2 * Math.sin(2 * Math.PI * k * largura)) / (Math.PI * k);
+    im[k] = (2 * (1 - Math.cos(2 * Math.PI * k * largura))) / (Math.PI * k);
+  }
+  const w = c.createPeriodicWave(re, im);
+  mapa.set(largura, w);
+  return w;
+}
+
+function oscPulso(c: AudioContext, largura: number, f: number, dest: AudioNode): OscillatorNode {
+  const o = c.createOscillator();
+  o.setPeriodicWave(ondaPulso(c, largura));
+  o.frequency.value = f;
+  o.connect(dest);
+  return o;
+}
+
+/** Canal de pulso: ataque seco, pequena queda e vibrato tardio, como nos chips de portátil, mas com filtro suave. */
+function canalPulso(largura: number, nivel: number): Instrumento {
+  return (c, out, t, m, d, v) => {
+    const f = mtof(m);
+    const g = ganho(c, 0, out);
+    const fim = envSus(g.gain, t, nivel * v, 0.004, d * 0.94, 0.72, 0.045);
+    const lp = filtro(c, 'lowpass', Math.min(9000, 2600 + f * 3), 0.5, g);
+    const o = oscPulso(c, largura, f, lp);
+    if (d > 0.22) vibrato(c, [o.detune], t, fim, 5.8, 9, Math.min(0.3, d * 0.6));
+    inicia([o], t, fim);
+  };
+}
+const pulso = canalPulso(0.5, 0.105);
+const pulso25 = canalPulso(0.25, 0.115);
+const pulso12 = canalPulso(0.125, 0.125);
+
+/** Canal de triângulo: baixo redondo ou flautim. */
+const tri: Instrumento = (c, out, t, m, d, v) => {
+  const f = mtof(m);
+  const g = ganho(c, 0, out);
+  const grave = m < 55;
+  const fim = envSus(g.gain, t, (grave ? 0.42 : 0.26) * v, 0.004, d * 0.95, 0.85, 0.04);
+  const o = oscilador(c, 'triangle', f, g);
+  const nos: OscillatorNode[] = [o];
+  if (grave) nos.push(oscPulso(c, 0.5, f, filtro(c, 'lowpass', 420, 0.7, ganho(c, 0.16, g))));
+  inicia(nos, t, fim);
+};
+
+// ---------------------------------------------------------------- cor brasileira
+/** Sanfona: palhetas levemente desafinadas entre si, fole que incha a nota e corpo nasal. */
+const sanfona: Instrumento = (c, out, t, m, d, v) => {
+  const f = mtof(m);
+  const g = ganho(c, 0, out);
+  const fim = envSus(g.gain, t, 0.085 * v, 0.022, d * 0.96, 0.92, 0.07);
+  // fole: leve inchaço depois do ataque
+  const fole = ganho(c, 0.8, g);
+  fole.gain.setValueAtTime(0.8, t);
+  fole.gain.linearRampToValueAtTime(1, t + Math.min(0.18, d * 0.5));
+  const corpo = filtro(c, 'peaking', 1150, 1.4, fole); corpo.gain.value = 7;
+  const lp = filtro(c, 'lowpass', 4200, 0.6, corpo);
+  const a = oscPulso(c, 0.25, f, lp); a.detune.value = -7;
+  const b = oscPulso(c, 0.25, f, lp); b.detune.value = 8;
+  const o8 = oscilador(c, 'sawtooth', f * 2, ganho(c, 0.28, lp)); o8.detune.value = 3;
+  const g1 = oscilador(c, 'square', f / 2, ganho(c, m > 62 ? 0.22 : 0.08, lp));
+  inicia([a, b, o8, g1], t, fim);
+};
+
+/** Viola caipira: cordas duplas em oitava, ponteio brilhante e sustentação longa. */
+const viola: Instrumento = (c, out, t, m, d, v) => {
+  const f = mtof(m);
+  const g = ganho(c, 0, out);
+  const fim = t + Math.min(Math.max(d * 1.3, 0.3), 1.6);
+  envPerc(g.gain, t, 0.21 * v, 0.002, fim - t);
+  const lp = filtro(c, 'lowpass', 5200, 1.6, g);
+  lp.frequency.setValueAtTime(6200, t);
+  lp.frequency.exponentialRampToValueAtTime(1300, t + 0.55);
+  const o1 = oscilador(c, 'sawtooth', f, lp); o1.detune.value = -4;
+  const o2 = oscilador(c, 'sawtooth', f * 2, ganho(c, 0.5, lp)); o2.detune.value = 6;
+  const o3 = oscPulso(c, 0.25, f, ganho(c, 0.35, lp)); o3.detune.value = 5;
+  const gp = ganho(c, 0, out); envPerc(gp.gain, t, 0.06 * v, 0.001, 0.018);
+  const p = fonteRuido(c, 'branco', filtro(c, 'bandpass', 4200, 1.2, gp), m * 0.027);
+  inicia([o1, o2, o3, p], t, fim);
+};
+
+/** Cavaquinho: palhetada curta, aguda e estalada. */
+const cavaquinho: Instrumento = (c, out, t, m, d, v) => {
+  const f = mtof(m);
+  const g = ganho(c, 0, out);
+  const fim = t + Math.min(Math.max(d, 0.14), 0.5);
+  envPerc(g.gain, t, 0.2 * v, 0.0015, fim - t);
+  const hp = filtro(c, 'highpass', 320, 0.7, g);
+  const lp = filtro(c, 'lowpass', 5600, 2, hp);
+  lp.frequency.setValueAtTime(7000, t);
+  lp.frequency.exponentialRampToValueAtTime(1800, t + 0.22);
+  const o1 = oscPulso(c, 0.125, f, lp);
+  const o2 = oscilador(c, 'sawtooth', f, ganho(c, 0.45, lp)); o2.detune.value = 7;
+  const gp = ganho(c, 0, out); envPerc(gp.gain, t, 0.07 * v, 0.0008, 0.014);
+  const p = fonteRuido(c, 'branco', filtro(c, 'highpass', 3500, 0.8, gp), m * 0.019);
+  inicia([o1, o2, p], t, fim);
+};
 
 // ---------------------------------------------------------------- melódicos
 const marimba: Instrumento = (c, out, t, m, _d, v) => {
@@ -385,33 +494,119 @@ const tamborim: Instrumento = (c, out, t, _m, _d, v) => {
   inicia([o, n], t, t + 0.11);
 };
 
-const scratch: Instrumento = (c, out, t, _m, d, v) => {
-  const dur = Math.min(0.24, Math.max(0.1, d));
-  const g = ganho(c, 0, out); envPerc(g.gain, t, 0.2 * v, 0.005, dur);
-  const bp = filtro(c, 'bandpass', 900, 4, g);
-  bp.frequency.setValueAtTime(500, t);
-  bp.frequency.exponentialRampToValueAtTime(2600, t + dur * 0.45);
-  bp.frequency.exponentialRampToValueAtTime(700, t + dur);
-  const n = fonteRuido(c, 'rosa', bp, 0.31);
-  const o = oscilador(c, 'sawtooth', 160, filtro(c, 'lowpass', 1200, 1, ganho(c, 0.3, g)));
-  o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(420, t + dur * 0.45); o.frequency.exponentialRampToValueAtTime(150, t + dur);
-  inicia([n, o], t, t + dur + 0.02);
+// ---------------------------------------------------------------- percussão brasileira e de chip
+/** Zabumba (pele grave, maceta). */
+const zabumba: Instrumento = (c, out, t, _m, _d, v) => {
+  const g = ganho(c, 0, out); envPerc(g.gain, t, 0.9 * v, 0.002, 0.3);
+  const o = oscilador(c, 'sine', 118, g);
+  o.frequency.setValueAtTime(122, t);
+  o.frequency.exponentialRampToValueAtTime(58, t + 0.11);
+  const gn = ganho(c, 0, out); envPerc(gn.gain, t, 0.22 * v, 0.0008, 0.03);
+  const n = fonteRuido(c, 'rosa', filtro(c, 'lowpass', 1400, 0.8, gn), 0.27);
+  inicia([o, n], t, t + 0.34);
 };
 
-const bumboDj: Instrumento = (c, out, t, _m, _d, v) => {
-  const g = ganho(c, 0, out); envPerc(g.gain, t, 1.0 * v, 0.002, 0.5);
-  const ws = c.createWaveShaper(); ws.curve = curvaDist(4); ws.connect(g);
-  const o = oscilador(c, 'sine', 160, ws);
-  o.frequency.setValueAtTime(170, t);
-  o.frequency.exponentialRampToValueAtTime(42, t + 0.16);
-  inicia([o], t, t + 0.52);
+/** Bacalhau: a vareta fina na pele de baixo da zabumba. */
+const bacalhau: Instrumento = (c, out, t, _m, _d, v) => {
+  const g = ganho(c, 0, out); envPerc(g.gain, t, 0.3 * v, 0.0006, 0.05);
+  const n = fonteRuido(c, 'branco', filtro(c, 'bandpass', 2100, 1.4, g), 0.61);
+  const gt = ganho(c, 0, out); envPerc(gt.gain, t, 0.2 * v, 0.0006, 0.045);
+  const o = oscilador(c, 'triangle', 330, gt); o.frequency.exponentialRampToValueAtTime(250, t + 0.04);
+  inicia([n, o], t, t + 0.08);
+};
+
+/** Triângulo (ferrinho): abafado na mão ou solto. */
+function ferrinho(queda: number, nivel: number): Instrumento {
+  return (c, out, t, _m, _d, v) => {
+    const os: OscillatorNode[] = [];
+    ([[4380, 1, 1], [6210, 0.55, 0.8], [8930, 0.3, 0.5]] as const).forEach(([f, a, q]) => {
+      const g = ganho(c, 0, out); envPerc(g.gain, t, nivel * a * v, 0.0006, queda * q);
+      os.push(oscilador(c, 'sine', f, g));
+    });
+    inicia(os, t, t + queda + 0.02);
+  };
+}
+
+/** Alfaia do maracatu: tambor grande de corda, golpe com baque de madeira. */
+const alfaia: Instrumento = (c, out, t, _m, _d, v) => {
+  const g = ganho(c, 0, out); envPerc(g.gain, t, 0.85 * v, 0.002, 0.42);
+  const o = oscilador(c, 'sine', 96, g);
+  o.frequency.setValueAtTime(104, t);
+  o.frequency.exponentialRampToValueAtTime(62, t + 0.16);
+  const o2 = oscilador(c, 'triangle', 190, ganho(c, 0.25, g)); o2.frequency.exponentialRampToValueAtTime(120, t + 0.1);
+  const gn = ganho(c, 0, out); envPerc(gn.gain, t, 0.3 * v, 0.0006, 0.022);
+  const n = fonteRuido(c, 'branco', filtro(c, 'bandpass', 1500, 0.9, gn), 0.45);
+  inicia([o, o2, n], t, t + 0.46);
+};
+
+/** Gonguê: sino de ferro grave do maracatu. */
+const gongue: Instrumento = (c, out, t, _m, _d, v) => {
+  const g = ganho(c, 0, out); envPerc(g.gain, t, 0.14 * v, 0.001, 0.26);
+  const bp = filtro(c, 'bandpass', 1500, 2.5, g);
+  const os = [562, 845, 1410].map((f) => oscilador(c, 'square', f, bp));
+  inicia(os, t, t + 0.28);
+};
+
+/** Reco-reco: raspada curta em três dentes. */
+const reco: Instrumento = (c, out, t, _m, _d, v) => {
+  const nos: AudioBufferSourceNode[] = [];
+  for (let i = 0; i < 4; i++) {
+    const g = ganho(c, 0, out); envPerc(g.gain, t + i * 0.013, 0.11 * v, 0.001, 0.012);
+    nos.push(fonteRuido(c, 'branco', filtro(c, 'bandpass', 3100 + i * 260, 3, g), 0.15 + i * 0.21));
+  }
+  inicia(nos, t, t + 0.08);
+};
+
+/** Atabaque: tom de pele com tapa. */
+const atabaque: Instrumento = (c, out, t, _m, _d, v) => {
+  const g = ganho(c, 0, out); envPerc(g.gain, t, 0.5 * v, 0.0015, 0.2);
+  const o = oscilador(c, 'sine', 255, g); o.frequency.exponentialRampToValueAtTime(205, t + 0.09);
+  const gn = ganho(c, 0, out); envPerc(gn.gain, t, 0.16 * v * v, 0.0006, 0.03);
+  const n = fonteRuido(c, 'branco', filtro(c, 'bandpass', 1900, 1.2, gn), 0.83);
+  inicia([o, n], t, t + 0.23);
+};
+
+/** Sapateado da catira: salto de bota no assoalho. */
+const sapato: Instrumento = (c, out, t, _m, _d, v) => {
+  const g = ganho(c, 0, out); envPerc(g.gain, t, 0.6 * v, 0.001, 0.09);
+  const o = oscilador(c, 'sine', 140, g); o.frequency.exponentialRampToValueAtTime(82, t + 0.05);
+  const gn = ganho(c, 0, out); envPerc(gn.gain, t, 0.25 * v, 0.0005, 0.03);
+  const n = fonteRuido(c, 'rosa', filtro(c, 'lowpass', 1100, 1, gn), 0.39);
+  inicia([o, n], t, t + 0.12);
+};
+
+/** Bumbo de chip: triângulo em queda rápida. */
+const chipBumbo: Instrumento = (c, out, t, _m, _d, v) => {
+  const g = ganho(c, 0, out); envPerc(g.gain, t, 0.8 * v, 0.001, 0.16);
+  const o = oscilador(c, 'triangle', 190, g);
+  o.frequency.setValueAtTime(210, t);
+  o.frequency.exponentialRampToValueAtTime(44, t + 0.09);
+  inicia([o], t, t + 0.19);
+};
+
+/** Caixa de chip: rajada do canal de ruído. */
+const chipCaixa: Instrumento = (c, out, t, _m, _d, v) => {
+  const g = ganho(c, 0, out); envPerc(g.gain, t, 0.3 * v, 0.0008, 0.1);
+  const n = fonteRuido(c, 'branco', filtro(c, 'bandpass', 3400, 0.5, g), 0.47);
+  const gt = ganho(c, 0, out); envPerc(gt.gain, t, 0.18 * v, 0.0008, 0.04);
+  const o = oscilador(c, 'triangle', 260, gt); o.frequency.exponentialRampToValueAtTime(170, t + 0.04);
+  inicia([n, o], t, t + 0.12);
+};
+
+/** Chimbal de chip: estalo curto do canal de ruído. */
+const chipHat: Instrumento = (c, out, t, _m, _d, v) => {
+  const g = ganho(c, 0, out); envPerc(g.gain, t, 0.13 * v, 0.0005, 0.028);
+  const n = fonteRuido(c, 'branco', filtro(c, 'highpass', 6200, 0.7, g), 1.03);
+  inicia([n], t, t + 0.04);
 };
 
 export const INSTRUMENTOS = {
+  pulso, pulso25, pulso12, tri, sanfona, viola, cavaquinho,
   marimba, berimbau, cordas, flauta, pad, padBrilho, baixo, baixoSub, baixoDist, guitarra, violao, metais, sino, pizz, lead, kalimba,
 } satisfies Record<InstId, Instrumento>;
 
 export const BATERIA = {
+  chipBumbo, chipCaixa, chipHat, zabumba, bacalhau, triF: ferrinho(0.035, 0.1), triA: ferrinho(0.3, 0.085), alfaia, gongue, reco, atabaque, sapato,
   bumbo, caixa, aro, chimbal, aberto, prato, surdo, tom, agogoA: agogo(1180), agogoB: agogo(860), pandeiro, ganza, caxixi, palmas,
-  metal, bigorna, vapor, gota, tamborim, scratch, bumboDj,
+  metal, bigorna, vapor, gota, tamborim,
 } satisfies Record<PecaId, Instrumento>;

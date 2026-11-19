@@ -58,8 +58,18 @@ export class Tocador {
     if (this.parado || this.terminou) return;
     const agora = this.c.currentTime;
     if (this.proximo < agora - 0.25) this.proximo = agora + 0.02; // aba em segundo plano: retoma sem rajada
+    this.agendarAte(agora + ANTECIPA, agora);
+  }
+
+  /** Duração total em segundos de uma passada (para jingles). */
+  duracao(): number {
+    return this.comp.total * this.durPasso();
+  }
+
+  /** Agenda todos os passos até o instante dado (a renderização offline chama direto, sem avisos de batida). */
+  agendarAte(limite: number, agora = -1): void {
     const f = this.comp.faixa;
-    while (this.proximo < agora + ANTECIPA) {
+    while (!this.terminou && this.proximo < limite) {
       const dp = this.durPasso();
       const swing = f.swing && this.passo % 2 === 1 ? f.swing * dp : 0;
       const t = this.proximo + swing;
@@ -69,7 +79,7 @@ export class Tocador {
         const fn = e.parte === 'bateria' ? BATERIA[e.inst as keyof typeof BATERIA] : INSTRUMENTOS[e.inst as keyof typeof INSTRUMENTOS];
         if (fn) fn(this.c, destino, ti, e.midi, e.dur * dp, e.vel);
       }
-      if (this.passo % 4 === 0) {
+      if (agora >= 0 && this.passo % 4 === 0) {
         const b = this.batida++;
         const atraso = Math.max(0, (t - agora) * 1000);
         setTimeout(() => { if (!this.parado) this.aoBater(b); }, atraso);
@@ -77,7 +87,7 @@ export class Tocador {
       this.proximo += dp;
       this.passo++;
       if (this.passo >= this.comp.total) {
-        if (f.loop) this.passo = 0;
+        if (f.loop) this.passo = Math.min(this.comp.total - this.comp.pc, Math.max(0, (f.voltaEm ?? 0) * this.comp.pc));
         else { this.terminou = true; break; }
       }
     }

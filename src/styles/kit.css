@@ -1,0 +1,52 @@
+/* Kit de interface (as imagens e posições que dependem do índice gerado são injetadas por ui/kit.ts) */
+.txt { position: relative; pointer-events: none; }
+.txt > i { display: block; }
+.k { position: relative; background-repeat: no-repeat; }
+.mol { position: absolute; box-sizing: border-box; }
+.mol > b { position: absolute; display: block; pointer-events: none; }
+.tocavel { cursor: pointer; pointer-events: auto; }
+
+/* cursor de mão: balança 2 px em dois tempos */
+.cursor-mao { position: absolute; width: 16px; height: 11px; pointer-events: none; z-index: 5; }
+.cursor-mao > .k { animation: mao 0.6s steps(1, end) infinite; }
+@keyframes mao { 0% { transform: translateX(0); } 50% { transform: translateX(-2px); } }
+.pisca { animation: pisca 0.7s steps(1, end) infinite; }
+@keyframes pisca { 0% { visibility: visible; } 50% { visibility: hidden; } }
+.quica { animation: quica 0.6s steps(1, end) infinite; }
+@keyframes quica { 0% { transform: translateY(0); } 50% { transform: translateY(1px); } }
+
+/* barras: enchimento em três tons, sem suavização */
+.barra-ench { position: absolute; left: 1px; top: 1px; height: 4px; }
+.barra-ench.exp { height: 2px; background: linear-gradient(to bottom, #6fc7e8 0 1px, #2f86c4 1px 2px); }
+.barra-ench.verde { background: linear-gradient(to bottom, #d9f07a 0 1px, #8fd45a 1px 3px, #4fa346 3px 4px); }
+.barra-ench.amarelo { background: linear-gradient(to bottom, #fff07a 0 1px, #f9c22b 1px 3px, #f58a4b 3px 4px); }
+.barra-ench.vermelho { background: linear-gradient(to bottom, #f58a4b 0 1px, #e0483c 1px 3px, #a32638 3px 4px); }
+
+.chip-tipo { position: relative; }
+.fileira { position: relative; }
+
+/* lista */
+.lista { position: absolute; }
+.lista-janela { position: absolute; overflow: hidden; }
+.lista-trilho { position: absolute; left: 0; top: 0; }
+.lista-item { position: absolute; left: 0; }
+.lista-item.foco::before { content: ''; position: absolute; left: -1px; right: -1px; top: -2px; bottom: -1px; background: #e8c07a; }
+.lista.escura .lista-item.foco::before { background: #4a4a5e; }
+.lista-item > * { position: absolute; }
+
+/* caixa de texto e avisos */
+.dlg-retrato { position: absolute; width: 48px; height: 48px; left: 4px; top: 4px; overflow: hidden; }
+.aviso { position: absolute; transition: transform 0.25s steps(6, end); transform: translateY(-24px); }
+.aviso.dentro { transform: translateY(0); }
+
+/* teclado em grade */
+.tecla.foco::before { content: ''; position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: #f9c22b; box-shadow: 0 0 0 1px #1a1423; }
+.tecla { position: absolute; }
+.tecla > * { position: absolute; }
+
+/* fundos de tela do kit */
+.fundo-noite { background: #1a1423; }
+.fundo-papel { background: #f6e6b8; }
+.fundo-mata { background: #2f6b3a; }
+.fundo-azul { background: #1f4f7a; }
+.padrao-palha { background-repeat: repeat; }
