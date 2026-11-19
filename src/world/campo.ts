@@ -11,7 +11,7 @@ import { Ator } from './ator';
 import { M, AMULETOS, ajudante, ocupar, sfx, quadros, npcEm, atorEm } from './vivo';
 import { DX, DY, OPOSTO, ehAgua } from './zonas';
 import { falar, simNao, escolher, avisar, abrirTela, nomeCriatura, nomeItem, especie, item as itemDef, usoItem, entrada } from './deps';
-import { pixObstaculo, pixItem, pixCanteiro, pixFolha, pixPoeira, pixBrilho, pixBolha, type TileVivo } from './pixel';
+import { pixObstaculo, pixItem, pixCanteiro, pixPlanta, pixFolha, pixPoeira, pixBrilho, pixBolha, type TileVivo } from './pixel';
 import { mecanicas } from './registro';
 import { interagirNpc } from './npcs';
 import { rodarEvento } from './eventos';
@@ -34,11 +34,12 @@ export function estagioCanteiro(x: number, y: number): number {
   const min = (agoraJogo() - c.plantado) / 60000;
   return min < 20 ? 1 : min < 60 ? 2 : 3;
 }
+const fabObstaculo = (c: string) => M.cena.peca('din-' + c, (p) => pixObstaculo(c as TileVivo, p));
 export function pintarTile(x: number, y: number) {
   const ch = M.zv.ch(x, y), k = kTile(x, y);
   M.cena.tirarProp(k);
-  if (ch === 'c' || ch === 'p' || ch === 'r') M.cena.prop(k, (p) => pixObstaculo(ch as TileVivo, p), x * TILE, y * TILE);
-  else if (ch === 'C') M.cena.prop(k, pixCanteiro, x * TILE, y * TILE).quadro(estagioCanteiro(x, y));
+  if (ch === 'c' || ch === 'p' || ch === 'r') M.cena.prop(k, fabObstaculo(ch), x * TILE, y * TILE);
+  else if (ch === 'C') M.cena.prop(k, M.cena.debug ? pixCanteiro : pixPlanta, x * TILE, y * TILE).quadro(estagioCanteiro(x, y));
 }
 export function montarProps() {
   const z = M.zv;
@@ -99,7 +100,7 @@ async function ativarForca(d: Dir) {
 export function empurrar(x: number, y: number, d: Dir): boolean {
   const bx = x + DX[d], by = y + DY[d], z = M.zv;
   if (!z.chao(bx, by) || atorEm(bx, by) || z.warp(bx, by) || itemBloqueia(bx, by)) return false;
-  const p = M.cena.prop(kTile(x, y), (pai) => pixObstaculo('p', pai), x * TILE, y * TILE);
+  const p = M.cena.prop(kTile(x, y), fabObstaculo('p'), x * TILE, y * TILE);
   z.set(x, y, pisoBase()); z.set(bx, by, 'p');
   sfx('empurrar');
   void ocupar(async () => {

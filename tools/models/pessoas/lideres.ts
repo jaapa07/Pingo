@@ -34,7 +34,7 @@ export const lideres: PixModel[] = [
   pessoa({ id: 'lider-09', pele: 'oliva', cabelo: 'castanhoEscuro', a: 'terra', b: 'jeans', d: 'ipe', iris: '#b88a1a', ...L, zoomBatalha: 0.92,
     v: { cabelo: 'curto', barba: 'barba', sobrancelha: 'grossa', chapeu: 'capacete', rChapeu: R_D, rChapeuFaixa: R_D, manga: 'curta', sobre: 'macacao', rSobre: R_B, rSobreFaixa: R_D, pes: 'bota', rPes: R_A, luvas: R_A, prop: 'picareta', rProp: R_A, rPropFaixa: R_B } }),
   // 10 Chama · Ferreira Labareda
-  pessoa({ id: 'lider-10', pele: 'castanha', cabelo: TONS.laranja, a: 'cinza', b: 'carvao', d: 'couro', iris: '#c84a1a', ...L,
+  pessoa({ id: 'lider-10', pele: 'morena', cabelo: TONS.laranja, a: 'urucum', b: 'carvao', d: 'couro', iris: '#c84a1a', ...L,
     v: { porte: 'forte', cabelo: 'rabo-alto', sobrancelha: 'grossa', chapeu: 'faixa', rChapeu: R_A, manga: 'sem', sobre: 'avental', rSobre: R_D, rSobreFaixa: R_A, pes: 'bota', rPes: R_D, luvas: R_D, prop: 'martelo', rProp: R_D, rPropFaixa: R_A } }),
   // 11 Berimbau · Mestre Gingado, capoeirista
   pessoa({ id: 'lider-11', pele: 'retinta', cabelo: 'preto', a: 'branco', b: 'palha', d: 'urucum', iris: '#2a1a1a', ...L, zoomBatalha: 0.9,

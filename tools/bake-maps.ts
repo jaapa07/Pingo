@@ -11,7 +11,7 @@ import type { ZonaDef } from '../src/core/tipos';
 import type { TilesetExterior } from '../src/data/tilesets/tipos';
 import { CATALOGO_EXTERIOR } from '../src/data/catalogo-objetos';
 import { Img, VAZIO, PERIODOS, tabelaPeriodo, corNoPeriodo, type Periodo } from './pixel/tile';
-import { Compositor, QUADROS, T, type ZonaPintada } from './scenery/exterior/compositor';
+import { Compositor, QUADROS, T, completarPintada, type TilesetProprio, type ZonaPintada } from './scenery/exterior/compositor';
 import { PINTORES_EXTRA, type InfoObjeto, type PintorObjeto } from './scenery/exterior/objetos';
 import { gravarTilesheet } from './scenery/exterior/tilesheet';
 
@@ -21,12 +21,6 @@ const args = process.argv.slice(2);
 const filtros = args.filter((a) => !a.startsWith('--'));
 const opcao = (k: string) => args.find((a) => a.startsWith(`--${k}`))?.split('=')[1] ?? (args.includes(`--${k}`) ? '1' : undefined);
 
-/** Um tileset "pintável": exterior (dados + compositor comum) ou com pintor próprio (interiores). */
-export interface TilesetProprio {
-  nome: string; periodos: boolean;
-  /** pinta a zona inteira nas cores de `dia` */
-  pintarZona(zona: ZonaDef, catalogo: Record<string, InfoObjeto>): ZonaPintada;
-}
 type QualquerTileset = TilesetExterior | TilesetProprio;
 const ehProprio = (t: QualquerTileset): t is TilesetProprio => typeof (t as TilesetProprio).pintarZona === 'function';
 
@@ -35,9 +29,16 @@ function listar(pasta: string): string[] { return existsSync(pasta) ? readdirSyn
 
 async function carregarTilesets(): Promise<Map<string, QualquerTileset>> {
   const mapa = new Map<string, QualquerTileset>();
-  for (const pasta of ['src/data/tilesets', 'tools/scenery/interior/tilesets']) for (const f of listar(resolve(RAIZ, pasta))) {
-    const m = await importar<{ default?: QualquerTileset }>(f);
-    if (m.default && typeof m.default.nome === 'string') mapa.set(m.default.nome, m.default);
+  for (const f of listar(resolve(RAIZ, 'src/data/tilesets'))) {
+    const m = await importar<{ default?: TilesetExterior }>(f);
+    if (m.default && typeof m.default.nome === 'string' && m.default.arte) mapa.set(m.default.nome, m.default);
+  }
+  // tilesets com pintor próprio (interiores): tools/scenery/interior/index.ts exporta TILESETS_INTERIOR
+  const interior = resolve(RAIZ, 'tools/scenery/interior/index.ts');
+  if (existsSync(interior)) {
+    const m = await importar<{ TILESETS_INTERIOR?: TilesetProprio[]; PINTORES_INTERIOR?: Record<string, PintorObjeto> }>(interior);
+    for (const t of m.TILESETS_INTERIOR ?? []) mapa.set(t.nome, t);
+    Object.assign(PINTORES_EXTRA, m.PINTORES_INTERIOR ?? {});
   }
   return mapa;
 }
@@ -48,18 +49,15 @@ async function carregarCatalogo(): Promise<Record<string, InfoObjeto>> {
     const m = await importar<Record<string, unknown>>(interior);
     for (const v of Object.values(m)) if (v && typeof v === 'object') for (const [nome, info] of Object.entries(v as Record<string, InfoObjeto>)) if (info && typeof info.w === 'number' && typeof info.h === 'number') cat[nome] = info;
   }
-  const pintores = resolve(RAIZ, 'tools/scenery/interior/objetos.ts');
-  if (existsSync(pintores)) {
-    const m = await importar<{ PINTORES_INTERIOR?: Record<string, PintorObjeto> }>(pintores);
-    Object.assign(PINTORES_EXTRA, m.PINTORES_INTERIOR ?? {});
-  }
   return cat;
 }
 async function carregarZonas(): Promise<ZonaDef[]> {
   const zonas: ZonaDef[] = [];
   for (const f of listar(resolve(RAIZ, 'src/data/zonas'))) {
-    const m = await importar<{ default?: ZonaDef }>(f);
-    if (m.default && Array.isArray(m.default.mapaChars)) zonas.push(m.default);
+    try {
+      const m = await importar<{ default?: ZonaDef }>(f);
+      if (m.default && Array.isArray(m.default.mapaChars)) zonas.push(m.default);
+    } catch (e) { console.error(`! não consegui carregar ${f}: ${String((e as Error).message).split('\n')[0]}`); }
   }
   return zonas;
 }
@@ -85,7 +83,7 @@ function noPeriodo(img: Img, p: Periodo, z: ZonaPintada): Img {
 }
 
 export function assarZona(zona: ZonaDef, ts: QualquerTileset, catalogo: Record<string, InfoObjeto>, saida: string): { chunks: number; arquivos: number; previas: [Periodo, Img][] } {
-  const z = ehProprio(ts) ? ts.pintarZona(zona, catalogo) : new Compositor(zona, ts, catalogo).pintar();
+  const z: ZonaPintada = ehProprio(ts) ? completarPintada(ts.pintarZona(zona, catalogo)) : new Compositor(zona, ts, catalogo).pintar();
   const soDia = !ts.periodos || ['interior', 'caverna', 'ginasio', 'dungeon'].includes(zona.tipo);
   const periodos: Periodo[] = soDia ? ['dia'] : PERIODOS;
   rmSync(saida, { recursive: true, force: true });
@@ -113,8 +111,8 @@ export function assarZona(zona: ZonaDef, ts: QualquerTileset, catalogo: Record<s
     }
   }
   writeFileSync(resolve(saida, 'zona.json'), JSON.stringify({
-    id: zona.id, tileset: zona.tileset, largura: z.larg, altura: z.alt, tile: T, chunk: CHUNK, colunas: cols, linhas: lins,
-    periodos, quadros: QUADROS, fps: 4, chunks, gramaAlta: z.gramaAlta, dinamicos: z.dinamicos, luzes: z.luzes,
+    id: zona.id, tileset: zona.tileset, largura: z.larg, altura: z.alt, w: z.larg, h: z.alt, tile: T, chunk: CHUNK * T, chunkTiles: CHUNK, colunas: cols, linhas: lins,
+    periodos, quadros: QUADROS, animQuadros: QUADROS, animMs: 250, chunks, gramaAlta: z.gramaAlta, dinamicos: z.dinamicos, luzes: z.luzes,
   }));
   const previas = (['dia', 'noite'] as Periodo[]).filter((p) => periodos.includes(p)).map((p) => { const i = noPeriodo(z.quadros[0], p, z).copia(); i.colar(noPeriodo(z.alto, p, z), 0, 0); return [p, i] as [Periodo, Img]; });
   return { chunks: chunks.length, arquivos: arquivos + 1, previas };

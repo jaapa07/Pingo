@@ -94,7 +94,7 @@ const frutifera: PintorArvore = (c, v) => folhosa(c, v, {
 });
 const manaca: PintorArvore = (c, v) => folhosa(c, v, {
   w: 36, h: 46, troncoLarg: 4, troncoTopo: 24, bolhas: [COPA_B, COPA_A],
-  pintas: { cor: c('p'), cada: 9, cor2: c('w') },
+  pintas: { cor: c('p'), cada: 11 },
 });
 const ipe = (flor: [string, string, string, string]): PintorArvore => (c, v) => {
   const copa = flor.map(c);

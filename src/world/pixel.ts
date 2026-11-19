@@ -75,6 +75,8 @@ export type TileVivo = 'c' | 'p' | 'r';
 export const pixObstaculo = (c: TileVivo, pai: HTMLElement) => (c === 'c' ? new Pix([CIPO], VERDE, pai) : c === 'p' ? new Pix([PEDREGULHO], PEDRA, pai) : new Pix([ROCHA], RACHA, pai));
 export const pixItem = (pai: HTMLElement) => new Pix([ITEM], CUIA, pai);
 export const pixCanteiro = (pai: HTMLElement) => new Pix(CANTEIRO, { ...HORTA, m: '#7a4e2a' }, pai);
+/** só as plantas (o canteiro de terra já vem pintado no bake) */
+export const pixPlanta = (pai: HTMLElement) => new Pix(CANTEIRO.map((q) => q.map((l, y) => (y >= 10 ? V : l))), { ...HORTA, m: '#7a4e2a' }, pai);
 export const pixGrama = (pai: HTMLElement) => new Pix(GRAMA, { k: '#1d4a22', g: '#2f7d32', G: '#58b04a' }, pai);
 export const pixRespingo = (pai: HTMLElement) => new Pix(RESPINGO, { w: '#d6ecff' }, pai);
 export const pixBrilho = (pai: HTMLElement) => new Pix(BRILHO, { y: '#ffe066', w: '#ffffff' }, pai);

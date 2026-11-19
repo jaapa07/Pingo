@@ -71,7 +71,7 @@ export const vilaJacaranda: Faixa = {
       baixo: '@1.......5...1...', acordes: 'Em | Bm | C | G | Em | Bm | C | D', bateria: 'a',
     },
     D: {
-      melodia: 'g5:2 b5:2 d6:4 b5:2 d6:2 g6:4 | f#6:4 d6:4 a5:8 | g5:2 b5:2 e6:4 d6:2 b5:2 g5:4 | e5:4 g5:4 c6:8 | b5:2 d6:2 g6:4 f#6:2 e6:2 d6:4 | a5:4 d6:4 f#6:6 e6:2 | e6:4 c6:4 d6:4 a5:4 | g5:12 r:4',
+      melodia: 'g5:2 b5:2 d6:4 b5:2 d6:2 g6:4 | f#6:4 d6:4 a5:8 | g5:2 b5:2 e6:4 d6:2 b5:2 g5:4 | e5:4 g5:4 c6:8 | b5:2 d6:2 g6:4 f#6:2 e6:2 d6:4 | a5:4 d6:4 f#6:6 e6:2 | e6:4 c6:4 d6:4 a5:4 | g5:4 d5:4 g5:8',
       contra: V8, baixo: '@1.....5.1...5...', acordes: 'G | D/F# | Em | C | G | D | C D | G', bateria: 'b',
     },
   },
@@ -138,7 +138,7 @@ export const rotaNoiteA: Faixa = {
       estilo: { tipo: 'arpejo', padrao: [0, 1, 2, 1], passo: 2, oitava: 4 }, inst: { harmonia: 'kalimba' },
     },
     D: {
-      melodia: 'a5:4 e5:4 a5:4 c6:4 | e6:6 d6:2 c6:4 g5:4 | b5:4 d6:4 g6:8 | e6:8 b5:8 | c6:4 a5:4 f5:4 a5:4 | g5:4 c6:4 e6:8 | f6:4 d6:4 e6:4 g#5:4 | a5:12 r:4',
+      melodia: 'a5:4 e5:4 a5:4 c6:4 | e6:6 d6:2 c6:4 g5:4 | b5:4 d6:4 g6:8 | e6:8 b5:8 | c6:4 a5:4 f5:4 a5:4 | g5:4 c6:4 e6:8 | f6:4 d6:4 e6:4 g#5:4 | a5:6 e5:2 a4:8',
       contra: '-', baixo: '@1.......5...1...', acordes: 'Am | C | G | Em | F | C | Dm E | Am', bateria: 'b',
     },
   },
@@ -194,7 +194,7 @@ export const rotaNoiteB: Faixa = {
       contra: '-', baixo: '@1.......5.......', acordes: 'Em | A | Em | Bm | Em | A | C | B7', bateria: 'a',
     },
     B: {
-      melodia: 'd5:4 g5:4 b5:6 a5:2 | a5:6 f#5:2 d5:8 | e5:2 g5 b5:4 a5:2 g5 e5:4 | e5:12 r:4 | b5:4 d6:4 g5:6 b5:2 | a5:4 d6:4 f#5:8 | e5:2 a5 c6:4 b5:2 a5 e5:4 | f#5:8 b4:8',
+      melodia: 'd5:4 g5:4 b5:6 a5:2 | a5:6 f#5:2 d5:8 | e5:2 g5 b5:4 a5:2 g5 e5:4 | e5:8 b4:4 e5:4 | b5:4 d6:4 g5:6 b5:2 | a5:4 d6:4 f#5:8 | e5:2 a5 c6:4 b5:2 a5 e5:4 | f#5:8 b4:8',
       contra: 'r:8 b4:4 d5:4 | r:8 a4:4 f#4:4 | - | r:4 b4:4 g4:4 e4:4 | r:8 d5:4 b4:4 | r:8 a4:4 d5:4 | - | r:8 d#5:4 f#5:4',
       baixo: '@1.......5...1...', acordes: 'G | D | Em | Em | G | D | Am | B7', bateria: 'b',
     },
@@ -263,7 +263,7 @@ export const agua: Faixa = {
       baixo: '@1.....5.8.....5.', acordes: 'Dm | Am | Bb | F | Dm | Am | Gm | C', bateria: 'b',
     },
     C: {
-      melodia: 'bb5:6 d6:2 f6:8 | g6:6 e6:2 c6:8 | e6:4 c6:4 a5:6 c6:2 | d6:8 a5:4 f5:4 | bb5:2 d6 f6:4 d6:2 f6 bb5:4 | c6:2 e6 g6:4 e6:2 g6 c6:4 | a5:4 c6:4 f6:8 | f6:8 r:8',
+      melodia: 'bb5:6 d6:2 f6:8 | e6:6 g6:2 c6:8 | e6:4 c6:4 a5:6 c6:2 | d6:8 a5:4 f5:4 | bb5:2 d6 f6:4 d6:2 f6 bb5:4 | c6:2 e6 g6:4 e6:2 g6 c6:4 | a5:4 c6:4 f6:8 | f6:8 r:8',
       contra: '-', baixo: '@1.....5.8.....5.', acordes: 'Bb | C | Am | Dm | Bb | C | F | F', bateria: 'b',
     },
     D: {
@@ -296,12 +296,12 @@ export const mergulho: Faixa = {
       contra: '-', baixo: '@1.......5.......', acordes: 'Am | Em | C | D | Am | Em | C D | Em', bateria: 'b',
     },
     C: {
-      melodia: 'd6:4 b5:4 g5:8 | f#5:4 a5:4 d6:8 | e6:4 b5:4 g5:4 e5:4 | f#5:8 b5:8 | g5:4 c6:4 e6:8 | d6:4 b5:4 g5:8 | a5:4 c6:4 e6:4 a6:4 | f#6:8 d6:8',
+      melodia: 'd6:4 b5:4 g5:8 | f#5:4 a5:4 d6:8 | e6:4 b5:4 g5:4 e5:4 | f#5:8 b5:8 | g5:4 c6:4 e6:8 | b5:4 d6:4 g6:8 | a5:4 c6:4 e6:4 a6:4 | f#6:8 d6:8',
       contra: '-', baixo: '@1.......5.......', acordes: 'G | D | Em | Bm | C | G | Am | D', bateria: 'b',
       estilo: { tipo: 'arpejo', padrao: [0, 1, 2, 1], passo: 4, oitava: 4 },
     },
     D: {
-      melodia: 'b5:8 e6:8 | d6:8 f#6:8 | e6:4 c6:4 a5:8 | g5:8 b5:8 | b5:4 g5:4 e5:4 g5:4 | a5:4 f#5:4 d5:4 a5:4 | g5:8 b5:8 | e5:12 r:4',
+      melodia: 'b5:8 e6:8 | d6:8 f#6:8 | e6:4 c6:4 a5:8 | g5:8 b5:8 | b5:4 g5:4 e5:4 g5:4 | a5:4 f#5:4 d5:4 a5:4 | b5:8 g5:8 | e5:12 r:4',
       contra: 'g4:16 | f#4:16 | e4:16 | e4:16 | g4:16 | f#4:16 | e4:16 | e4:12 r:4',
       baixo: '@1...............', acordes: 'Cmaj7 | Bm | Am | Em | Cmaj7 | D | Em | Em', bateria: 'a',
     },

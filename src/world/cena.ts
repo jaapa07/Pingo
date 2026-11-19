@@ -11,25 +11,45 @@ import type { Ator } from './ator';
 import { ZonaViva, objCat } from './zonas';
 import { Pix, injetarEstilo, padrao, pixGrama, pixFolha, pixRespingo, pixPoeira, type Ret } from './pixel';
 
-export interface BakeMeta { w: number; h: number; chunk: number; periodos: Periodo[]; chunks: Map<string, { alto: boolean; anim: boolean }>; quadros: number; animMs: number }
-/** lê public/assets/zonas/<id>/zona.json; null se o bake ainda não existe */
-export async function lerBake(id: string): Promise<BakeMeta | null> {
-  try {
-    const r = await fetch(`assets/zonas/${id}/zona.json`);
-    if (!r.ok || !(r.headers.get('content-type') ?? '').includes('json')) return null;
-    const j = await r.json();
-    const chunk = j.chunk ?? j.chunkPx ?? 160;
-    const w = j.w ?? j.largura, h = j.h ?? j.altura;
-    if (!w || !h) return null;
-    const chunks = new Map<string, { alto: boolean; anim: boolean }>();
-    const lista: unknown[] | undefined = j.chunks;
-    if (Array.isArray(lista)) for (const c of lista as any[]) {
-      if (typeof c === 'string') chunks.set(c, { alto: true, anim: true });
-      else chunks.set(`${c.cx ?? c.x}_${c.cy ?? c.y}`, { alto: !!c.alto, anim: !!c.anim });
-    } else for (let cy = 0; cy * chunk < h * TILE; cy++) for (let cx = 0; cx * chunk < w * TILE; cx++) chunks.set(`${cx}_${cy}`, { alto: true, anim: true });
-    return { w, h, chunk, periodos: j.periodos ?? ['dia'], chunks, quadros: j.anim?.quadros ?? j.animQuadros ?? 4, animMs: j.anim?.ms ?? j.animMs ?? 250 };
-  } catch { return null; }
+export interface BakeMeta { w: number; h: number; /** lado do chunk em px */ chunk: number; periodos: Periodo[]; chunks: Map<string, { alto: boolean; anim: boolean }>; quadros: number; animMs: number }
+interface FolhaTiles { src: string; periodos: Periodo[]; alturaPeriodo: number; pecas: Record<string, { x: number; y: number; w: number; h: number; quadros: number }> }
+async function lerJson(url: string): Promise<any | null> {
+  try { const r = await fetch(url); if (!r.ok || !(r.headers.get('content-type') ?? '').includes('json')) return null; return await r.json(); } catch { return null; }
 }
+/** lê public/assets/zonas/<id>/zona.json (formato de tools/bake-maps.ts); null se o bake ainda não existe */
+export async function lerBake(id: string): Promise<BakeMeta | null> {
+  const j = await lerJson(`assets/zonas/${id}/zona.json`);
+  if (!j) return null;
+  const w = j.largura ?? j.w, h = j.altura ?? j.h, tile = j.tile ?? TILE;
+  if (!w || !h) return null;
+  const bruto = j.chunk ?? 10, chunk = bruto <= 40 ? bruto * tile : bruto;
+  const chunks = new Map<string, { alto: boolean; anim: boolean }>();
+  if (Array.isArray(j.chunks)) for (const c of j.chunks as any[]) {
+    if (typeof c === 'string') chunks.set(c, { alto: true, anim: true });
+    else chunks.set(`${c.cx ?? c.x}_${c.cy ?? c.y}`, { alto: !!c.alto, anim: !!c.anim });
+  } else for (let cy = 0; cy * chunk < h * TILE; cy++) for (let cx = 0; cx * chunk < w * TILE; cx++) chunks.set(`${cx}_${cy}`, { alto: true, anim: true });
+  return { w, h, chunk, periodos: j.periodos ?? ['dia'], chunks, quadros: j.quadros ?? 4, animMs: j.animMs ?? 1000 / (j.fps ?? 4) };
+}
+/** peça do tilesheet (public/assets/tiles/<tileset>.png): sprites que não vão no bake (obstáculos removíveis, grama de passagem) */
+export class Peca {
+  el = document.createElement('div');
+  w: number; h: number; private q = 0; private per = 0;
+  constructor(private f: FolhaTiles, private nome: string, pai: HTMLElement, periodo: Periodo) {
+    const p = f.pecas[nome];
+    this.w = p.w; this.h = p.h;
+    this.el.className = 'chunk peca'; this.el.style.width = p.w + 'px'; this.el.style.height = p.h + 'px';
+    this.el.style.backgroundImage = `url(${f.src})`;
+    this.periodo(periodo);
+    pai.append(this.el);
+  }
+  private pinta() { const p = this.f.pecas[this.nome]; this.el.style.backgroundPosition = `${-(p.x + (this.q % p.quadros) * p.w)}px ${-(p.y + this.per * this.f.alturaPeriodo)}px`; }
+  periodo(p: Periodo) { this.per = Math.max(0, this.f.periodos.indexOf(p)); this.pinta(); }
+  quadro(i: number): this { if (i !== this.q) { this.q = i; this.pinta(); } return this; }
+  pos(x: number, y: number, z?: number): this { this.el.style.transform = `translate(${Math.round(x)}px,${Math.round(y)}px)`; if (z !== undefined) this.el.style.zIndex = String(Math.round(z)); return this; }
+  ver(b: boolean): this { this.el.style.display = b ? '' : 'none'; return this; }
+  remover() { this.el.remove(); }
+}
+export type Prop = Pix | Peca;
 
 const COR: Record<string, string> = { '.': '#7ec850', ',': '#93d864', ':': '#d9b97a', ';': '#ecd9a0', '"': '#4fa843', '%': '#74644f', '~': '#3f7fd9', d: '#1f3f99', w: '#9fd0ff', '=': '#a8763e', '#': '#5a5560', T: '#1f5a25', t: '#2f7a2a', b: '#4f8f3f', f: '#8a6a4a', e: '#7a8a4a', v: '#b89a5a', '<': '#b89a5a', '>': '#b89a5a', g: '#cfeeff', l: '#6a4a2a', x: '#a03fa0', o: '#15121a', '+': '#c8a070', M: '#7a4a2a', ' ': '#000000' };
 const BORDA: Record<string, string> = { v: 'border-bottom:3px solid #6b5230', '<': 'border-left:3px solid #6b5230', '>': 'border-right:3px solid #6b5230', t: 'border:2px solid #7a4e2a', e: 'background-image:repeating-linear-gradient(0deg,#3f8f3a 0 2px,transparent 2px 5px)', '"': 'background-image:repeating-linear-gradient(90deg,#2f7d32 0 1px,transparent 1px 4px)', d: 'border:2px dotted #9fd0ff', w: 'background-image:repeating-linear-gradient(0deg,#ffffff 0 1px,transparent 1px 4px)', x: 'border:1px dashed #000' };
@@ -57,12 +77,14 @@ export class Cena {
   sobre = document.createElement('div');
   flash = document.createElement('div');
   zv!: ZonaViva; bake: BakeMeta | null = null; debug = false;
+  /** tilesheet do tileset da zona (só com bake) */
+  folha: FolhaTiles | null = null;
   camX = 0; camY = 0;
   private conj?: Conjunto; private velho?: Conjunto; private trocaT = 0;
   private animQ = 0; private animT = 0;
-  private props = new Map<string, Pix>();
+  private props = new Map<string, Prop>();
   private parts: Particula[] = [];
-  private gramas: { el: HTMLElement; pix?: Pix; anim?: HTMLElement }[] = [];
+  private gramas: Prop[] = [];
   private farfalho = new Map<number, number>();
   private clima: ClimaId = 'limpo'; private camadas: CamadaClima[] = []; private climaT = 0;
   private escuro: { raio: number; cor: string } | null = null; private buraco?: HTMLElement; private faixas: HTMLElement[] = [];
@@ -86,6 +108,8 @@ export class Cena {
     this.zv = zv;
     this.bake = forcarDebug ? null : await lerBake(zv.def.id);
     this.debug = !this.bake;
+    this.folha = null;
+    if (this.bake) { const f = await lerJson(`assets/tiles/${zv.def.tileset}.json`); if (f?.pecas) { this.folha = { src: `assets/tiles/${zv.def.tileset}.png`, periodos: f.periodos ?? ['dia'], alturaPeriodo: f.alturaPeriodo ?? 0, pecas: f.pecas }; await precarregar(this.folha.src); } }
     this.el.dataset.modo = this.debug ? 'debug' : 'bake';
     this.conj = this.novoConjunto(this.periodoEfetivo(periodo));
   }
@@ -94,7 +118,7 @@ export class Cena {
     this.conj = this.velho = undefined;
     for (const p of this.props.values()) p.remover(); this.props.clear();
     for (const p of this.parts) p.p.remover(); this.parts = [];
-    for (const g of this.gramas) g.el.remove(); this.gramas = [];
+    for (const g of this.gramas) g.remover(); this.gramas = [];
     this.farfalho.clear(); this.pan = null; this.camFixa = null; this.tremorT = 0;
     this.sprites.replaceChildren();
   }
@@ -125,6 +149,7 @@ export class Cena {
     novo.eb.style.opacity = novo.ea.style.opacity = '1';
     this.trocaT = 66;
     this.el.dataset.periodo = ef;
+    for (const p of [...this.props.values(), ...this.gramas]) if (p instanceof Peca) p.periodo(ef);
   }
   get periodo() { return this.conj?.periodo; }
   private url(camada: string, per: Periodo, k: string) { return `assets/zonas/${this.zv.def.id}/${camada}-${per}-${k}.png`; }
@@ -196,7 +221,11 @@ export class Cena {
   tremer(quadros: number) { this.tremorT = Math.max(this.tremorT, quadros); }
 
   /* ------------------------------ props e partículas ------------------------------ */
-  prop(chave: string, fab: (pai: HTMLElement) => Pix, x: number, y: number): Pix {
+  /** peça do tilesheet, se a zona tem bake e o tileset traz a peça; senão o desenho de reserva */
+  peca(nome: string, reserva: (pai: HTMLElement) => Pix): (pai: HTMLElement) => Prop {
+    return (pai) => (this.folha?.pecas[nome] ? new Peca(this.folha, nome, pai, this.conj?.periodo ?? 'dia') : reserva(pai));
+  }
+  prop(chave: string, fab: (pai: HTMLElement) => Prop, x: number, y: number): Prop {
     let p = this.props.get(chave);
     if (!p) { p = fab(this.sprites); this.props.set(chave, p); }
     return p.pos(x, y, y + p.h);
@@ -311,32 +340,11 @@ export class Cena {
       if (!a.visivel || a.arco > 0) continue;
       const tx = Math.floor((a.px + 8) / TILE), ty = Math.floor((a.py + 10) / TILE);
       if (this.zv.ch(tx, ty) !== '"') continue;
-      let g = this.gramas[n];
-      if (!g) { g = this.criarGrama(); this.gramas[n] = g; }
+      const g = (this.gramas[n] ??= this.peca('grama-passagem', pixGrama)(this.sprites));
       n++;
       const f = this.farfalho.get(this.zv.i(tx, ty)) ?? 0, dx = f ? (f % 6 < 3 ? 1 : -1) : 0;
-      g.el.style.display = '';
-      g.el.style.transform = `translate(${tx * TILE + dx}px,${ty * TILE + 10}px)`;
-      g.el.style.zIndex = String(a.py + 17);
-      if (g.pix) g.pix.quadro(f ? 1 : 0);
-      else if (this.bake && this.conj) {
-        const T = this.bake.chunk, k = `${Math.floor((tx * TILE) / T)}_${Math.floor((ty * TILE) / T)}`, ox = (tx * TILE) % T, oy = ((ty * TILE) % T) + 10;
-        g.el.style.backgroundImage = `url(${this.url('chao', this.conj.periodo, k)})`;
-        g.el.style.backgroundPosition = `${-ox}px ${-oy}px`;
-        if (g.anim) {
-          const tem = this.bake.chunks.get(k)?.anim;
-          g.anim.style.display = tem ? '' : 'none';
-          if (tem) { g.anim.style.backgroundImage = `url(${this.url('anim', this.conj.periodo, k)})`; g.anim.style.backgroundPosition = `${-ox - this.animQ * T}px ${-oy}px`; }
-        }
-      }
+      g.ver(true).quadro(f ? 1 : 0).pos(tx * TILE + dx, ty * TILE + TILE - g.h, a.py + 17);
     }
-    for (let i = n; i < this.gramas.length; i++) this.gramas[i].el.style.display = 'none';
-  }
-  private criarGrama() {
-    if (!this.bake) { const pix = pixGrama(this.sprites); return { el: pix.el, pix }; }
-    const el = document.createElement('div'); el.className = 'chunk grama-passagem'; el.style.width = '16px'; el.style.height = '6px';
-    const anim = document.createElement('div'); anim.className = 'chunk'; anim.style.width = '16px'; anim.style.height = '6px';
-    el.append(anim); this.sprites.append(el);
-    return { el, anim };
+    for (let i = n; i < this.gramas.length; i++) this.gramas[i].ver(false);
   }
 }

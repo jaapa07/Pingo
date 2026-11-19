@@ -14,6 +14,7 @@ import { FAIXAS } from '../data/music';
 import { AMBIENTES, SFX, SONS_AMB } from '../data/sfx';
 import { GRITOS } from '../data/gritos';
 import { bus } from '../core/events';
+import { jogo } from '../core/estado';
 
 export type { PresetReverb } from './reverb';
 
@@ -28,6 +29,8 @@ let bomba: ReturnType<typeof setInterval> | null = null;
 let ambDesejado: string | null = null;
 let musicaPendente: { id: string; fade: number } | null = null;
 let vols: Vols = { musica: 0.7, sfx: 0.85, ambiente: 0.7 };
+/** alguém já chamou setVolumes; senão, o primeiro unlock lê as opções do jogo */
+let volumesDefinidos = false;
 let debaixoDagua = false;
 let reverbAtual: PresetReverb = 'mata';
 /** o jogador já fez um gesto e o contexto foi liberado ao menos uma vez */
@@ -81,6 +84,10 @@ export const audio = {
     const c = getCtx();
     if (!c) return;
     const m = mixer(c);
+    if (!volumesDefinidos) {
+      const o = jogo.opcoes;
+      vols = { musica: o.musica, sfx: o.sfx, ambiente: Math.min(1, o.sfx * 0.85) };
+    }
     volumes(m, vols);
     const seguir = () => {
       liberado = true;
@@ -98,6 +105,7 @@ export const audio = {
 
   /** Volumes de 0 a 1 (as opções do jogo trazem `musica` e `sfx`; `ambiente` acompanha o de efeitos se omitido). */
   setVolumes(v: { musica?: number; sfx?: number; ambiente?: number } = {}): void {
+    volumesDefinidos = true;
     const sfx = v.sfx ?? vols.sfx;
     vols = { musica: v.musica ?? vols.musica, sfx, ambiente: v.ambiente ?? (v.sfx !== undefined ? Math.min(1, sfx * 0.85) : vols.ambiente) };
     const c = getCtx();
@@ -121,7 +129,7 @@ export const audio = {
   },
 
   /** id da música tocando (ou aguardando a liberação do áudio) */
-  currentMusic(): string | null { return musicaAtual ?? musicaPendente?.id ?? null; },
+  currentMusic(): string | null { return musicaPendente?.id ?? musicaAtual ?? null; },
 
   /**
    * Toca uma faixa curta por cima da música atual (que abaixa e volta sozinha). Retorna a duração em ms,

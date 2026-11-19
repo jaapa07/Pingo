@@ -54,8 +54,6 @@ export function iniciarPalco(): HTMLElement {
   const barrar = (e: Event) => e.preventDefault();
   for (const ev of ['gesturestart', 'gesturechange', 'gestureend', 'contextmenu', 'dragstart', 'selectstart']) document.addEventListener(ev, barrar);
   document.addEventListener('touchmove', barrar, { passive: false });
-  let ultimoToque = 0;
-  document.addEventListener('touchend', (e) => { const t = Date.now(); if (t - ultimoToque < 320) e.preventDefault(); ultimoToque = t; }, { passive: false });
   document.addEventListener('wheel', (e) => { if (e.ctrlKey) e.preventDefault(); }, { passive: false });
   return document.getElementById('tela')!;
 }

@@ -103,7 +103,7 @@ export async function iniciarSave(): Promise<void> {
   if (!cache.has(CH_OPCOES) && plataforma.toque) jogo.opcoes.qualidade = 'celular';
   pronto = true;
   bus.on('autosave', () => autosalvar());
-  bus.on('zona-entrou', () => autosalvar());
+  bus.on('zona', () => autosalvar());
   bus.on('posto-entrou', () => autosalvar());
 }
 const registro = (i: number) => desembrulhar(cache.get(CH_SLOT(i))) ?? desembrulhar(cache.get(CH_SLOT(i) + '.bak'));

@@ -158,14 +158,14 @@ function veiculos(r: Rig, escuro: number) {
     tube([[0.2, 0.52, -0.17], [0.2, 0.52, 0.17]], 0.026, no, { seg: 3, radial: 7 }), blob([0.09, 0.03, 0.06], pneu, { pos: [-0.11, 0.45, 0] }),
     blob([0.04, 0.04, 0.02], cor, { pos: [0.02, 0.17, 0.06] }), blob([0.04, 0.04, 0.02], cor, { pos: [0.02, 0.17, -0.06] }));
 
-  r.bone('vCanoa', 'root');
+  r.bone('vCanoa', 'root', [0, 0.05, 0]);
   const casco = (p: { x: number; y: number }) => { if (p.y > 0.03) p.y = 0.03 + (p.y - 0.03) * 0.12; p.y += (p.x / 0.5) ** 2 * 0.09; };
   const borda: [number, number, number][] = [];
   for (let i = 0; i < 12; i++) { const a = (i / 12) * Math.PI * 2, x = Math.cos(a) * 0.46; borda.push([x, 0.2 + (x / 0.5) ** 2 * 0.09, Math.sin(a) * 0.175]); }
   r.add('vCanoa', blob([0.5, 0.17, 0.2], bambu, { pos: [0, 0.16, 0], deform: [casco] }), tube(borda, 0.034, tom(R_B), { seg: 36, radial: 6, closed: true }), blob([0.36, 0.02, 0.12], no, { pos: [0, 0.2, 0] }));
 
   r.bone('vRemo', 'tronco', [0.14, 0.12, 0]);
-  r.add('vRemo', tube([[0, -0.34, 0], [0, 0.3, 0]], 0.024, bambu, { seg: 3, radial: 7 }), blob([0.03, 0.12, 0.075], cor, { pos: [0, -0.42, 0] }), blob([0.035, 0.03, 0.05], no, { pos: [0, 0.3, 0] }));
+  r.add('vRemo', tube([[0, -0.24, 0], [0, 0.3, 0]], 0.024, bambu, { seg: 3, radial: 7 }), blob([0.03, 0.1, 0.075], cor, { pos: [0, -0.3, 0] }), blob([0.035, 0.03, 0.05], no, { pos: [0, 0.3, 0] }));
 
   r.bone('vCuia', 'maoD', [0.02, -0.05, 0]);
   r.add('vCuia', blob([0.08, 0.075, 0.08], bambu), ring(0.076, 0.02, cor, { rot: [90, 0, 0], pos: [0, 0.01, 0] }), blob([0.025, 0.03, 0.025], no, { pos: [0, 0.075, 0] }));

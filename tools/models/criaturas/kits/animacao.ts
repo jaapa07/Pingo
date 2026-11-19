@@ -126,6 +126,14 @@ export function somar(...camadas: (Partial<Record<Mov | 'todas', Faixas>> | unde
   return out;
 }
 
+/** Une dois conjuntos de extras por movimento (o segundo sobrescreve campo a campo). */
+export function unirExtras(a: Partial<Record<Mov | 'todas', Faixas>>, b?: Partial<Record<Mov | 'todas', Faixas>>): Partial<Record<Mov | 'todas', Faixas>> {
+  if (!b) return a;
+  const out: Partial<Record<Mov | 'todas', Faixas>> = { ...a };
+  for (const k of Object.keys(b) as (Mov | 'todas')[]) out[k] = junta(a[k], b[k]);
+  return out;
+}
+
 /** Proporções "de bolso" só para a vista de mapa (24 px): encurta, alarga e aumenta a cabeça. */
 export interface MapaChibi { /** escala do comprimento do corpo */ comp?: number; /** escala da largura */ larg?: number; /** escala da cabeça */ cabeca?: number; /** ampliação extra nas vistas de frente/costas (S e N), que são estreitas */ frontal?: number; /** ampliação do marcador de olho */ olho?: number }
 

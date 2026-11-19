@@ -46,19 +46,19 @@ export function pessoa(f: Ficha): PixModel {
   const P = PORTES[v.porte ?? 'adulto'];
   const topo = Math.max(v.chapeu ? TOPO[v.chapeu] : 0, v.chapeu2 ? TOPO[v.chapeu2] : 0, v.cabelo === 'black' ? 0.14 : v.cabelo === 'coque' || v.cabelo === 'rabo-alto' ? 0.1 : 0.03);
   const vistas: Record<string, Vista> = {
-    mapa: { cell: [24, 32], pivot: [12, 30], altura: 1.6, yaw: 0, pitch: 15, anims: animsMapa(!!f.jogador, !!v.propNoMapa, v.propBraco), olho: OLHO_MAPA },
+    mapa: { cell: [24, 32], pivot: [12, 28], altura: 1.7, yaw: 0, pitch: 15, anims: animsMapa(!!f.jogador, !!v.propNoMapa, v.propBraco), olho: OLHO_MAPA },
   };
   // proporção de batalha: pernas e tronco esticam, cabeça encolhe (ver anims.compor)
   const base = P.e[1] * (HIP * P.perna + 0.02 + 0.31 * P.tronco);
   const kc = P.cab * P.cabBat;
   const alt = base + kc * (HY + 0.28 + topo);
   if (f.batalha) {
-    const ppu = Math.min(40, 57 / alt) * (f.zoomBatalha ?? 1);
-    vistas.batalha = { cell: [64, 64], pivot: [33 + (f.dxBatalha ?? 0), 61], altura: 64 / ppu, yaw: -50, pitch: 10, anims: animsBatalha(P, 28, v.propBraco), olho: OLHO_BAT, olhoFechado: OLHO_BAT_FECHADO };
+    const ppu = Math.min(40, 55 / alt) * (f.zoomBatalha ?? 1);
+    vistas.batalha = { cell: [64, 64], pivot: [33 + (f.dxBatalha ?? 0), 59], altura: 64 / ppu, yaw: -50, pitch: 10, anims: animsBatalha(P, 28, v.propBraco), olho: OLHO_BAT, olhoFechado: OLHO_BAT_FECHADO };
   }
   if (f.jogador) {
-    const ppu = Math.min(44, 58 / alt);
-    vistas.costas = { cell: [64, 64], pivot: [30, 61], altura: 64 / ppu, yaw: 140, pitch: 16, anims: animsCostas(P), olho: ['.'] };
+    const ppu = Math.min(44, 55 / alt);
+    vistas.costas = { cell: [64, 64], pivot: [30, 59], altura: 64 / ppu, yaw: 140, pitch: 16, anims: animsCostas(P), olho: ['.'] };
   }
   if (f.retrato) {
     const ppu = (27 / (kc * 0.6)) / (1 + topo * 0.9);

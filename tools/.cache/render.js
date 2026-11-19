@@ -2983,13 +2983,13 @@
     }
     applyQuaternion(q) {
       const vx = this.x, vy = this.y, vz = this.z;
-      const qx = q.x, qy2 = q.y, qz2 = q.z, qw = q.w;
-      const tx = 2 * (qy2 * vz - qz2 * vy);
+      const qx = q.x, qy3 = q.y, qz2 = q.z, qw = q.w;
+      const tx = 2 * (qy3 * vz - qz2 * vy);
       const ty = 2 * (qz2 * vx - qx * vz);
-      const tz = 2 * (qx * vy - qy2 * vx);
-      this.x = vx + qw * tx + qy2 * tz - qz2 * ty;
+      const tz = 2 * (qx * vy - qy3 * vx);
+      this.x = vx + qw * tx + qy3 * tz - qz2 * ty;
       this.y = vy + qw * ty + qz2 * tx - qx * tz;
-      this.z = vz + qw * tz + qx * ty - qy2 * tx;
+      this.z = vz + qw * tz + qx * ty - qy3 * tx;
       return this;
     }
     project(camera2) {
@@ -32011,7 +32011,7 @@ void main() {
     rig.add("olho_e", olho("E", r, [0, 0, 0]));
   }
   function perna(rig, nome, pai, pos, p) {
-    const canela = "canela" + nome.replace(/^[a-z]+/, "");
+    const canela = p.segundo ?? "canela" + nome.replace(/^[a-z]+/, "");
     const d = (p.dobra ?? 0) * D2R2 / 2;
     const hPe = p.pe ? p.pe.r[1] : p.r2;
     const L2 = (p.alt - hPe) / Math.cos(d), fr = p.coxa ?? 0.5;
@@ -33772,7 +33772,7 @@ void main() {
       case "rabo-alto":
         o.push(casco(m2, { corte: -0.08 }));
         mechas(3, 0.09);
-        if (!sob) o.push(blob([0.09, 0.08, 0.1], m2, { pos: h(-0.24, 0.2, 0) }), tube([h(-0.24, 0.2, 0), h(-0.42, 0.22, 0), h(-0.5, 0.02, 0), h(-0.45, -0.22, 0)], (t) => 0.1 - t * 0.055, m2, { seg: 14, radial: 8 }));
+        if (!sob) o.push(blob([0.09, 0.08, 0.1], m2, { pos: h(-0.24, 0.2, 0) }), tube([h(-0.24, 0.2, 0), h(-0.37, 0.2, 0), h(-0.42, 0.02, 0), h(-0.38, -0.2, 0)], (t) => 0.095 - t * 0.055, m2, { seg: 14, radial: 8 }));
         else o.push(tube([h(-0.27, 0, 0), h(-0.4, -0.05, 0), h(-0.4, -0.25, 0)], (t) => 0.08 - t * 0.04, m2, { seg: 12, radial: 8 }));
         if (laco && !sob) o.push(blob([0.06, 0.08, 0.1], laco, { pos: h(-0.3, 0.2, 0) }));
         break;
@@ -33805,8 +33805,8 @@ void main() {
         o.push(casco(m2, { corte: -0.08 }));
         mechas(3, 0.08);
         for (const s of [1, -1]) {
-          o.push(blob([0.11, 0.13, 0.11], m2, { pos: h(-0.08, 0, 0.39 * s) }));
-          if (laco) o.push(blob([0.05, 0.06, 0.05], laco, { pos: h(-0.07, 0.07, 0.31 * s) }));
+          o.push(blob([0.11, 0.13, 0.11], m2, { pos: h(-0.08, 0, 0.35 * s) }));
+          if (laco) o.push(blob([0.05, 0.06, 0.05], laco, { pos: h(-0.07, 0.07, 0.29 * s) }));
         }
         break;
     }
@@ -33837,7 +33837,7 @@ void main() {
     capacete: 0.06,
     quepe: 0.1,
     boina: 0.05,
-    cocar: 0.22,
+    cocar: 0.28,
     "cocar-grande": 0.3,
     gorro: 0.14,
     faixa: 0,
@@ -33888,7 +33888,7 @@ void main() {
       case "palha":
         return [lathe([[1e-3, 0.37], [0.14, 0.36], [0.24, 0.3], [0.285, 0.16], [0.29, 0.1], [1e-3, 0.1]], m2, { pos: h(-0.02, 0, 0), scale: [1, 1, 1.08], seg: 24 }), aba(0.46, 0.12, -0.02), faixaAro(0.29, 0.15)];
       case "aba-larga":
-        return [lathe([[1e-3, 0.4], [0.12, 0.39], [0.22, 0.32], [0.285, 0.16], [0.29, 0.1], [1e-3, 0.1]], m2, { pos: h(-0.02, 0, 0), scale: [1, 1, 1.08], seg: 24 }), aba(0.5, 0.12, -0.06), faixaAro(0.29, 0.15)];
+        return [lathe([[1e-3, 0.4], [0.12, 0.39], [0.22, 0.32], [0.285, 0.16], [0.29, 0.1], [1e-3, 0.1]], m2, { pos: h(-0.02, 0, 0), scale: [1, 1, 1.08], seg: 24 }), aba(0.45, 0.12, -0.05), faixaAro(0.29, 0.15)];
       case "couro":
         return [lathe([[1e-3, 0.36], [0.16, 0.35], [0.27, 0.28], [0.3, 0.14], [0.3, 0.09], [1e-3, 0.09]], m2, { pos: h(-0.02, 0, 0), scale: [1, 1, 1.08], seg: 24 }), aba(0.4, 0.1, 0.09, 0.035), blob([0.03, 0.05, 0.05], f, { pos: h(0.26, 0.23, 0) }), faixaAro(0.3, 0.13, e2, 0.02)];
       case "pantaneiro":
@@ -33934,7 +33934,7 @@ void main() {
       case "goggles":
         return [faixaAro(0.262, 0.14, e2, 0.028), blob([0.045, 0.065, 0.075], f, { pos: h(0.255, 0.15, 0.1) }), blob([0.045, 0.065, 0.075], f, { pos: h(0.255, 0.15, -0.1) }), ring(0.07, 0.022, m2, { pos: h(0.265, 0.15, 0.1), rot: [0, 90, 0] }), ring(0.07, 0.022, m2, { pos: h(0.265, 0.15, -0.1), rot: [0, 90, 0] })];
       case "pena":
-        return [faixaAro(0.262, 0.13, f, 0.035), pena2(0.3, 0.06, m2, h(-0.2, 0.14, 0.12), [0, 90, 0]), pena2(0.24, 0.05, f, h(-0.2, 0.14, -0.02), [0, 90, 0])];
+        return [faixaAro(0.262, 0.13, f, 0.035), pena2(0.22, 0.06, m2, h(-0.2, 0.14, 0.12), [0, 90, 0]), pena2(0.18, 0.05, f, h(-0.2, 0.14, -0.02), [0, 90, 0])];
       case "coroa-folhas": {
         const o = [faixaAro(0.262, 0.14, f, 0.03)];
         for (let i = 0; i < 10; i++) {
@@ -33949,7 +33949,7 @@ void main() {
         const o = [faixaAro(0.262, 0.13, f, 0.04)];
         const n = g ? 5 : 4;
         for (let i = -n; i <= n; i++) {
-          const a = i / n * (g ? 100 : 82), len = (g ? 0.44 : 0.33) - Math.abs(i) * 0.022;
+          const a = i / n * (g ? 78 : 70), len = (g ? 0.25 : 0.2) - Math.abs(i) * 0.022;
           const s = Math.sin(a * Math.PI / 180), c = Math.cos(a * Math.PI / 180);
           o.push(pena2(len, g ? 0.062 : 0.055, i % 2 === 0 ? m2 : f, h(-0.05, 0.02 + c * 0.24, s * 0.29), [a, 90, 0]));
           if (g && i % 2 === 0) o.push(blob([0.03, 0.04, 0.04], e2, { pos: h(-0.04, 0.02 + c * (0.24 + len), s * (0.29 + len)) }));
@@ -33975,7 +33975,7 @@ void main() {
       case "jardineira":
         return [roundBox([0.05, 0.18, 0.2], 0.02, m2, { pos: [0.115, 0.1, 0] }), blob([0.14, 0.03, 0.035], m2, { pos: [0, 0.3, 0.1] }), blob([0.14, 0.03, 0.035], m2, { pos: [0, 0.3, -0.1] }), blob([0.02, 0.04, 0.05], f, { pos: [0.14, 0.1, 0] })];
       case "capa":
-        return [blob([0.07, 0.37, 0.31], m2, { pos: [-0.15, -0.04, 0], deform: [taper("y", -0.37, 0.37, 1.15, 0.75)] }), blob([0.15, 0.06, 0.24], m2, { pos: [-0.01, 0.3, 0] }), blob([0.035, 0.04, 0.04], f, { pos: [0.13, 0.29, 0] })];
+        return [blob([0.07, 0.3, 0.31], m2, { pos: [-0.15, 0.02, 0], deform: [taper("y", -0.3, 0.3, 1.15, 0.75)] }), blob([0.15, 0.06, 0.24], m2, { pos: [-0.01, 0.3, 0] }), blob([0.035, 0.04, 0.04], f, { pos: [0.13, 0.29, 0] })];
       case "xale":
         return [blob([0.185, 0.1, 0.27], m2, { pos: [0, 0.265, 0] }), blob([0.05, 0.1, 0.07], m2, { pos: [0.14, 0.18, 0] }), blob([0.19, 0.03, 0.275], f, { pos: [0, 0.2, 0] })];
       case "faixa-peito":
@@ -34216,7 +34216,7 @@ void main() {
       blob([0.04, 0.04, 0.02], cor2, { pos: [0.02, 0.17, 0.06] }),
       blob([0.04, 0.04, 0.02], cor2, { pos: [0.02, 0.17, -0.06] })
     );
-    r.bone("vCanoa", "root");
+    r.bone("vCanoa", "root", [0, 0.05, 0]);
     const casco2 = (p) => {
       if (p.y > 0.03) p.y = 0.03 + (p.y - 0.03) * 0.12;
       p.y += (p.x / 0.5) ** 2 * 0.09;
@@ -34228,7 +34228,7 @@ void main() {
     }
     r.add("vCanoa", blob([0.5, 0.17, 0.2], bambu, { pos: [0, 0.16, 0], deform: [casco2] }), tube(borda, 0.034, tom(R_B), { seg: 36, radial: 6, closed: true }), blob([0.36, 0.02, 0.12], no, { pos: [0, 0.2, 0] }));
     r.bone("vRemo", "tronco", [0.14, 0.12, 0]);
-    r.add("vRemo", tube([[0, -0.34, 0], [0, 0.3, 0]], 0.024, bambu, { seg: 3, radial: 7 }), blob([0.03, 0.12, 0.075], cor2, { pos: [0, -0.42, 0] }), blob([0.035, 0.03, 0.05], no, { pos: [0, 0.3, 0] }));
+    r.add("vRemo", tube([[0, -0.24, 0], [0, 0.3, 0]], 0.024, bambu, { seg: 3, radial: 7 }), blob([0.03, 0.1, 0.075], cor2, { pos: [0, -0.3, 0] }), blob([0.035, 0.03, 0.05], no, { pos: [0, 0.3, 0] }));
     r.bone("vCuia", "maoD", [0.02, -0.05, 0]);
     r.add("vCuia", blob([0.08, 0.075, 0.08], bambu), ring(0.076, 0.02, cor2, { rot: [90, 0, 0], pos: [0, 0.01, 0] }), blob([0.025, 0.03, 0.025], no, { pos: [0, 0.075, 0] }));
     r.bone("vMascara", "cabeca");
@@ -34308,7 +34308,7 @@ void main() {
       cabeca: c4({ t: 0, r: [0, 10, 8] }, { t: 0, r: [0, 4, -2] }, { t: 0, r: [0, -10, 8] }, { t: 0, r: [0, -4, -2] }),
       bracoD: c4({ t: 0, r: [-20, 0, 70] }, { t: 0, r: [-20, 0, 15] }, { t: 0, r: [40, 0, 95] }, { t: 0, r: [40, 0, 60] }),
       bracoE: c4({ t: 0, r: [-40, 0, 95] }, { t: 0, r: [-40, 0, 60] }, { t: 0, r: [20, 0, 70] }, { t: 0, r: [20, 0, 15] }),
-      vRemo: c4({ t: 0, r: [-28, 0, 32], p: [0.04, 0, 0.24] }, { t: 0, r: [-28, 0, -32], p: [-0.06, 0, 0.24] }, { t: 0, r: [28, 0, 32], p: [0.04, 0, -0.24] }, { t: 0, r: [28, 0, -32], p: [-0.06, 0, -0.24] }),
+      vRemo: c4({ t: 0, r: [-28, 0, 32], p: [0.04, 0, 0.19] }, { t: 0, r: [-28, 0, -32], p: [-0.06, 0, 0.19] }, { t: 0, r: [28, 0, 32], p: [0.04, 0, -0.19] }, { t: 0, r: [28, 0, -32], p: [-0.06, 0, -0.19] }),
       vCanoa: c4(R(0), R(0, -0.02), R(0), R(0, -0.02))
     }
   };
@@ -34494,18 +34494,18 @@ void main() {
     const P = PORTES[v.porte ?? "adulto"];
     const topo = Math.max(v.chapeu ? TOPO[v.chapeu] : 0, v.chapeu2 ? TOPO[v.chapeu2] : 0, v.cabelo === "black" ? 0.14 : v.cabelo === "coque" || v.cabelo === "rabo-alto" ? 0.1 : 0.03);
     const vistas = {
-      mapa: { cell: [24, 32], pivot: [12, 30], altura: 1.6, yaw: 0, pitch: 15, anims: animsMapa(!!f.jogador, !!v.propNoMapa, v.propBraco), olho: OLHO_MAPA }
+      mapa: { cell: [24, 32], pivot: [12, 28], altura: 1.7, yaw: 0, pitch: 15, anims: animsMapa(!!f.jogador, !!v.propNoMapa, v.propBraco), olho: OLHO_MAPA }
     };
     const base = P.e[1] * (HIP * P.perna + 0.02 + 0.31 * P.tronco);
     const kc = P.cab * P.cabBat;
     const alt = base + kc * (HY + 0.28 + topo);
     if (f.batalha) {
-      const ppu = Math.min(40, 57 / alt) * (f.zoomBatalha ?? 1);
-      vistas.batalha = { cell: [64, 64], pivot: [33 + (f.dxBatalha ?? 0), 61], altura: 64 / ppu, yaw: -50, pitch: 10, anims: animsBatalha(P, 28, v.propBraco), olho: OLHO_BAT, olhoFechado: OLHO_BAT_FECHADO };
+      const ppu = Math.min(40, 55 / alt) * (f.zoomBatalha ?? 1);
+      vistas.batalha = { cell: [64, 64], pivot: [33 + (f.dxBatalha ?? 0), 59], altura: 64 / ppu, yaw: -50, pitch: 10, anims: animsBatalha(P, 28, v.propBraco), olho: OLHO_BAT, olhoFechado: OLHO_BAT_FECHADO };
     }
     if (f.jogador) {
-      const ppu = Math.min(44, 58 / alt);
-      vistas.costas = { cell: [64, 64], pivot: [30, 61], altura: 64 / ppu, yaw: 140, pitch: 16, anims: animsCostas(P), olho: ["."] };
+      const ppu = Math.min(44, 55 / alt);
+      vistas.costas = { cell: [64, 64], pivot: [30, 59], altura: 64 / ppu, yaw: 140, pitch: 16, anims: animsCostas(P), olho: ["."] };
     }
     if (f.retrato) {
       const ppu = 27 / (kc * 0.6) / (1 + topo * 0.9);
@@ -34800,9 +34800,9 @@ void main() {
     // 10 Chama · Ferreira Labareda
     pessoa({
       id: "lider-10",
-      pele: "castanha",
+      pele: "morena",
       cabelo: TONS.laranja,
-      a: "cinza",
+      a: "urucum",
       b: "carvao",
       d: "couro",
       iris: "#c84a1a",
@@ -34910,7 +34910,8 @@ void main() {
       d: "limao",
       iris: "#3a7a1a",
       ...G,
-      v: { cabelo: "rabo", laco: R_D, chapeu: "coroa-folhas", rChapeu: R_A, rChapeuFaixa: R_D, manga: "sem", cinto: R_D, pes: "descalco", sobre: "faixa-peito", rSobre: R_B, rSobreFaixa: R_D, costas: "aljava", rCostas: R_B, rCostasFaixa: R_D, pescoco: "colar", rPescoco: R_D, rPescocoFaixa: R_D, prop: "lanca", rProp: R_B, rPropFaixa: R_D, propNoMapa: true, propBraco: 35 }
+      zoomBatalha: 0.88,
+      v: { cabelo: "rabo", laco: R_D, chapeu: "coroa-folhas", rChapeu: R_A, rChapeuFaixa: R_D, manga: "sem", cinto: R_D, pes: "descalco", sobre: "faixa-peito", rSobre: R_B, rSobreFaixa: R_D, costas: "aljava", rCostas: R_B, rCostasFaixa: R_D, pescoco: "colar", rPescoco: R_D, rPescocoFaixa: R_D, prop: "lanca", rProp: R_B, rPropFaixa: R_D, propBraco: 35 }
     }),
     // Guardiã do Céu Jandaia — Vento e Trovão: amarelo e laranja de jandaia, penas no cabelo
     pessoa({
@@ -34935,7 +34936,7 @@ void main() {
       iris: "#7a4a2a",
       ...G,
       zoomBatalha: 0.95,
-      v: { porte: "forte", cabelo: "careca", barba: "longa", sobrancelha: "grossa", chapeu: "faixa", rChapeu: R_D, manga: "sem", pes: "bota", rPes: R_D, cinto: R_D, sobre: "ombreiras", rSobre: R_D, rSobreFaixa: R_D, luvas: R_B, prop: "martelo", rProp: R_B, rPropFaixa: R_D, propNoMapa: true }
+      v: { porte: "forte", cabelo: "careca", barba: "barba", sobrancelha: "grossa", chapeu: "faixa", rChapeu: R_D, manga: "sem", pes: "bota", rPes: R_D, cinto: R_D, sobre: "ombreiras", rSobre: R_D, rSobreFaixa: R_D, luvas: R_B, prop: "martelo", rProp: R_B, rPropFaixa: R_D, propNoMapa: true }
     }),
     // Guardião-Mor Arandu: grande cocar azul e ouro, túnica branca, capa anil, cajado
     pessoa({
@@ -35018,13 +35019,13 @@ void main() {
     }),
     pessoa({
       id: "cl-mateira",
-      pele: "castanha",
+      pele: "canela",
       cabelo: "preto",
       a: "oliva",
       b: "terra",
-      d: "ferro",
+      d: "laranja",
       ...T,
-      v: { cabelo: "rabo", chapeu: "lenco", rChapeu: R_B, rChapeuFaixa: R_B, manga: "longa", pes: "bota", rPes: R_B, cinto: R_B, costas: "saco", rCostas: R_B, rCostasFaixa: R_D, prop: "facao", rProp: R_D, rPropFaixa: R_D }
+      v: { cabelo: "rabo", chapeu: "lenco", rChapeu: R_D, rChapeuFaixa: R_D, manga: "longa", pes: "bota", rPes: R_B, cinto: R_B, costas: "saco", rCostas: R_B, rCostasFaixa: R_D, prop: "facao", rProp: R_B, rPropFaixa: R_A }
     }),
     pessoa({
       id: "cl-garimpeiro",
@@ -35078,7 +35079,7 @@ void main() {
     }),
     pessoa({
       id: "cl-ferreiro",
-      pele: "castanha",
+      pele: "oliva",
       cabelo: "preto",
       a: "cinza",
       b: "carvao",

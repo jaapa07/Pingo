@@ -443,7 +443,7 @@ P.coreto = (x) => {
 };
 P.cais = (x) => {
   const k = kit(x), { t, W, H } = k;
-  for (let j = 0; j < H - 4; j++) for (let i = 0; i < W; i++) t.p(i, j, j % 8 === 7 ? k.mad[0] : (i + ((j / 8) | 0) * 5) % 16 === 0 ? k.mad[0] : (i * 3 + j) % 13 === 0 ? k.mad[2] : k.mad[1]);
+  for (let j = 0; j < H - 4; j++) for (let i = 0; i < W; i++) t.p(i, j, i % 4 === 3 ? k.mad[0] : (i % 4 === 0 && (j + i) % 9 < 5) ? k.mad[2] : k.mad[1]);
   t.ret(0, 0, W, 1, k.mad[2]); t.ret(0, H - 5, W, 2, k.mad[0]);
   for (const px of [2, 20, 40, W - 6]) { t.ret(px, H - 4, 4, 4, k.mad[0]); t.ret(px, H - 4, 1, 3, k.mad[1]); t.ret(px - 1, H - 1, 6, 1, k.c('e')); }
   for (const px of [1, W - 6]) { t.ret(px, 2, 5, 6, k.met[0]); t.ret(px, 1, 5, 2, k.met[1]); t.p(px + 1, 1, k.met[2]); }

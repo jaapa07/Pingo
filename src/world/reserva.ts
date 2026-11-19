@@ -30,6 +30,9 @@ export const entradaReserva: Entrada = {
 export function pollReserva() { ligar(); ap = new Set(filaAp); so = new Set(filaSo); filaAp.length = 0; filaSo.length = 0; }
 
 /* ------------------------------ diálogo mínimo ------------------------------ */
+/** a entrada em uso (a real, se existir) e a leitura por passo; definidos por deps.ts */
+let ent: () => Entrada = () => entradaReserva, poll: () => void = pollReserva;
+export function ligarEntrada(e: () => Entrada, p: () => void) { ent = e; poll = p; }
 const subst = (s: string) => s.replace(/\{JOGADOR\}/g, jogo.save.jogador.nome).replace(/\{RIVAL\}/g, String(jogo.save.flags['rival'] ?? 'Tainá'));
 function caixa(y: number, h: number) {
   const el = document.createElement('div');
@@ -40,7 +43,7 @@ function caixa(y: number, h: number) {
 function sobre(el: HTMLElement, passo: (fechar: () => void) => void): Promise<void> {
   return new Promise((res) => {
     let quadros = 0;
-    const t: Tela = { el, sobreposta: true, atualizar() { pollReserva(); if (++quadros > 6) passo(() => { telas.desempilhar(t); res(); }); } };
+    const t: Tela = { el, sobreposta: true, atualizar() { poll(); if (++quadros > 6) passo(() => { telas.desempilhar(t); res(); }); } };
     telas.empilhar(t);
   });
 }
@@ -49,7 +52,7 @@ export async function falarR(texto: string, quem?: { nome?: string }): Promise<v
     const el = caixa(132, 44);
     el.dataset.dialogo = '1';
     el.textContent = (quem?.nome ? quem.nome + ': ' : '') + pagina;
-    await sobre(el, (f) => { if (entradaReserva.apertou('a') || entradaReserva.apertou('b')) f(); });
+    await sobre(el, (f) => { if (ent().apertou('a') || ent().apertou('b')) f(); });
   }
 }
 export async function escolherR(pergunta: string, opcoes: string[], padrao = 0): Promise<number> {
@@ -59,7 +62,7 @@ export async function escolherR(pergunta: string, opcoes: string[], padrao = 0):
   const pinta = () => { el.textContent = subst(pergunta) + '\n' + opcoes.map((o, k) => (k === i ? '> ' : '  ') + o).join('\n'); };
   pinta();
   await sobre(el, (f) => {
-    const e = entradaReserva;
+    const e = ent();
     if (e.apertou('cima')) { i = (i + opcoes.length - 1) % opcoes.length; pinta(); }
     if (e.apertou('baixo')) { i = (i + 1) % opcoes.length; pinta(); }
     if (e.apertou('a')) { r = i; f(); } else if (e.apertou('b')) { r = -1; f(); }

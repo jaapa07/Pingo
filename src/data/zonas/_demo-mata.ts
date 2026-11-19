@@ -1,0 +1,31 @@
+import type { ZonaDef } from '../../core/tipos';
+
+/** Zona de demonstração do tileset `mata`: usa todos os caracteres da legenda (validação visual do bake). */
+const zona: ZonaDef = {
+  id: '_demo-mata', nome: 'Demonstração: Mata', mapa: 'A', tipo: 'floresta', tileset: 'mata', musica: 'vila', arena: 'campo',
+  mapaChars: [
+    '##############################',
+    '#TTtTT.....####......TTTTtTTT#',
+    '#T..."""...#ee#..,....."""..T#',
+    '#T.."""",..........b...""",.T#',
+    '#...........:::::::.........T#',
+    '######v####.:.....:..fffff...#',
+    '#....,.....::.C.C.:..f...f.T.#',
+    '#.b.....p..:......:..f.o.f...#',
+    '#..r..c....:..M...:::::::::::#',
+    '#######....:....<.gg.>...ll..#',
+    '#~~~~w##...:....<.gg.>...ll..#',
+    '#~~~~w~~~~~=~~~~~.....xx.....#',
+    '#~~d~~~~~~~=~~~~~~~...xx.,...#',
+    '#~~~~~~~~~~=~~~~d~~~.........#',
+    '#;;~~~~;;;;:;;;~~~~~..TT.t.T.#',
+    '#;;;;;;;;;;:;;;;;~~~.........#',
+    '#.,..%%%%..:..+++.;;.##..##..#',
+    '#T...%%%%..:..+++....#########',
+    '#TT.T......:.......TT#########',
+    '###########  #################',
+  ],
+  objetos: [{ o: 'casa-d', x: 13, y: 3 }, { o: 'tronco-caido', x: 6, y: 7 }, { o: 'bromelia', x: 9, y: 3 }, { o: 'pedra-grande', x: 23, y: 12 }, { o: 'caverna-entrada', x: 25, y: 15 }, { o: 'placa', x: 12, y: 15 }],
+  warps: [],
+};
+export default zona;

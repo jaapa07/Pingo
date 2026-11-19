@@ -50,6 +50,7 @@ function aoApertarTecla(e: KeyboardEvent) {
   if (capturando) { e.preventDefault(); const f = capturando; capturando = null; f(e.code); return; }
   if (digitando && !e.repeat && digitando(e.key)) { e.preventDefault(); return; }
   if (digitando && e.repeat && (e.key.length === 1 || e.key === 'Backspace')) { digitando(e.key); e.preventDefault(); return; }
+  if (digitando && e.code.startsWith('Shift')) return; // Shift serve para digitar maiúsculas
   const a = mapa.get(e.code);
   if (!a) return;
   e.preventDefault();
@@ -144,9 +145,13 @@ export const input = {
 export function tocavel(el: HTMLElement, aoTocar: () => void, aoApontar?: () => void) {
   const vale = () => !telas.ocupada && (!telas.topo || telas.topo.el.contains(el) || !el.closest('.tela'));
   el.classList.add('tocavel');
-  el.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') input.modo = 'toque'; if (vale()) aoApontar?.(); });
+  let armado = false;
+  el.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') input.modo = 'toque'; else if (e.button !== 0) return; armado = true; e.stopPropagation(); if (vale()) aoApontar?.(); });
   el.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse' && vale()) aoApontar?.(); });
-  el.addEventListener('click', (e) => { e.stopPropagation(); if (vale()) aoTocar(); });
+  el.addEventListener('pointerleave', () => { armado = false; });
+  el.addEventListener('pointercancel', () => { armado = false; });
+  // pointerup (e não click): responde na hora e não depende do clique sintético do navegador
+  el.addEventListener('pointerup', (e) => { if (!armado) return; armado = false; e.stopPropagation(); if (vale()) aoTocar(); });
 }
 
 let iniciado = false;

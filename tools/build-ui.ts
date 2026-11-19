@@ -1,7 +1,7 @@
 /**
  * build-ui — transforma as artes desenhadas à mão em grades de caracteres (assets-src/ui/*.ts)
  * nos PNGs de `public/assets/ui/` e no índice `src/ui/gerado/kit.json`.
- * PNG puro em Node (zlib), sem canvas. Uso: `npx tsx tools/build-ui.ts [--previa]`.
+ * PNG puro em Node (zlib), sem elemento de desenho. Uso: `npx tsx tools/build-ui.ts [--previa]`.
  */
 import { deflateSync } from 'node:zlib';
 import { mkdirSync, writeFileSync } from 'node:fs';

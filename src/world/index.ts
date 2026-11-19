@@ -13,7 +13,7 @@ import { Cena } from './cena';
 import { Ator } from './ator';
 import { ZonaViva, zonaDef, listaZonas } from './zonas';
 import { M, ajudante, musica, rodarVigias, quadros, type NpcVivo } from './vivo';
-import { pollEntrada, avisar, falar, criarCriatura, iniciarBatalha, diarioBatalhas, especie, nomeCriatura, temBatalha } from './deps';
+import { pollEntrada, avisar, falar, criarCriatura, iniciarBatalha, diarioBatalhas, diarioFalas, especie, nomeCriatura, temBatalha } from './deps';
 import { mecanicas } from './registro';
 import { sincronizarNpcs, limparNpcs, atualizarNpcs } from './npcs';
 import { atualizarJogador, baseDoModo } from './jogador';
@@ -179,6 +179,8 @@ export const mundo = {
   esperarQuadros: (n: number) => quadros(n).then(() => undefined),
   get ultimaBatalha() { return diarioBatalhas[diarioBatalhas.length - 1]; },
   get batalhas() { return diarioBatalhas; },
+  /** textos mostrados por falar/escolher/avisar (testes) */
+  get falas() { return diarioFalas; },
   relogio: { periodo, diaSemana, estacaoFria, minutos: minutosAgora, forcarPeriodo },
   /** tabela de encontros em vigor nesta zona para o método (período, camada e estação aplicados) */
   tabela: (metodo: MetodoEncontro) => tabela(M.zv.def, metodo)?.t ?? [],

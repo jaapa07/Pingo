@@ -85,7 +85,7 @@ export const cidadeSamba: Faixa = {
       contra: V8, baixo: '@1.....5.1.....5.', acordes: 'C | C | G7 | G7 | Dm | G7 | C | C', bateria: 'a a a a a a a v',
     },
     B: {
-      melodia: 'a5:3 c6:1 _:2 f6:2 e6:3 d6:1 _:2 c6:2 | a5:3 c6:1 _:2 a5:2 f5:4 r:4 | g5:3 c6:1 _:2 e6:2 d6:3 c6:1 _:2 g5:2 | e5:3 g5:1 _:2 e5:2 c5:4 r:4 | b5:3 d6:1 _:2 g6:2 f6:3 d6:1 _:2 b5:2 | g5:2 a5 b5 d6 f6:4 d6:4 | e6:3 c6:1 _:2 g5:2 e6:3 c6:1 _:2 g5:2 | bb5:4 g5:4 e5:4 c5:4',
+      melodia: 'a5:3 c6:1 _:2 f6:2 e6:3 d6:1 _:2 c6:2 | a5:3 c6:1 _:2 a5:2 f5:4 r:4 | g5:3 c6:1 _:2 e6:2 d6:3 c6:1 _:2 g5:2 | e5:3 g5:1 _:2 c6:2 g5:4 r:4 | b5:3 d6:1 _:2 g6:2 f6:3 d6:1 _:2 b5:2 | g5:2 a5 b5 d6 f6:4 d6:4 | e6:3 c6:1 _:2 g5:2 e6:3 c6:1 _:2 g5:2 | bb5:4 g5:4 e5:4 c5:4',
       contra: '- | r:8 a5:2 c6 f6:4 | - | r:8 g5:2 c6 e6:4 | - | - | - | -',
       baixo: '@1.....5.1...5.a.', acordes: 'F | F | C | C | G7 | G7 | C | C7', bateria: 'b b b b b b b v',
     },
@@ -157,7 +157,7 @@ export const cidadeMaracatu: Faixa = {
       contra: V8, baixo: '@1.....1.5..1..5.', acordes: 'F | C | Gm | Dm | F | C | A7 | A7', bateria: 'b b b b b b b v',
     },
     C: {
-      melodia: 'd6:4 d6:2 f6:6 d6:4 | e6:4 e6:2 g6:6 e6:4 | f6:3 e6:3 d6:2 a5:8 | a5:2 c6 d6:4 r:8 | bb5:4 d6:2 f6:6 d6:4 | c6:4 e6:2 g6:6 e6:4 | a6:3 g6:3 f6:2 d6:8 | d6:8 r:8',
+      melodia: 'd6:4 d6:2 f6:6 d6:4 | e6:4 e6:2 g6:6 e6:4 | f6:3 e6:3 d6:2 a5:8 | a5:2 c6 d6:4 r:8 | bb5:4 d6:2 f6:6 d6:4 | c6:4 e6:2 g6:6 e6:4 | a6:3 g6:3 f6:2 d6:8 | d6:4 a5:4 d5:8',
       contra: 'bb4:8 d5:8 | c5:8 e5:8 | d5:8 f5:8 | r:8 a4:2 c5 d5 f5 | bb4:8 d5:8 | c5:8 g5:8 | f5:8 a5:8 | r:8 d5:2 f5 a5 d6',
       baixo: '@1.....1.5.....5.', acordes: 'Bb | C | Dm | Dm | Bb | C | Dm | Dm', bateria: 'a a a a a a a v',
     },

@@ -73,7 +73,8 @@ const PADRAO: Record<string, FnComando> = {
   musica: ([id]) => { musica(String(id), true); },
   sfx: ([id]) => { sfx(String(id)); },
   tela: async ([id, args]) => { await abrirTela(String(id), args); musica(M.zv.def.musica); },
-  fade: ([como]) => (telas.raiz ? telas.cortina(como === 'fora', 'fade', 350) : espera(350)),
+  // com a cortina fechada o mapa continua simulando (o laço principal pausa as telas enquanto `telas.ocupada`)
+  fade: async ([como]) => { if (!telas.raiz) { await espera(350); return; } await telas.cortina(como === 'fora', 'fade', 350); telas.ocupada = false; },
   warp: ([z, x, y, d]) => irPara(String(z), Number(x), Number(y), d as Dir | undefined),
   camera: async ([x, y, ms]) => {
     if (x === 'jogador') { await M.cena.panPara(M.jog.x, M.jog.y, 300); M.cena.soltarCamera(); return; }

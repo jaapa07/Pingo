@@ -289,6 +289,12 @@ export function escolherAcaoIA(b: Batalha, p: Pos, nivel: NivelIA, o: OpcoesIA =
   const reservaPadrao = b.reservas(p.lado)[0];
   const notas = ok.map((slot) => ({ slot, g: defGolpe(c.golpes[slot].id), ...avaliar(b, p, defGolpe(c.golpes[slot].id), nivel) }));
   const comoAcao = (n: (typeof notas)[number]): Acao => ({ tipo: 'golpe', slot: n.slot, ...(n.alvo && adv.length > 1 ? { alvo: n.alvo } : {}), ...(n.g.efeitos.some((e) => e.t === 'bateVolta') && reservaPadrao !== undefined ? { trocaPara: melhorTroca(b, p, nivel)?.para ?? reservaPadrao } : {}) });
+  const riscoAgora = Math.max(0, ...adv.map((q) => ameaca(b, q, lutador(b, p, true), p.lado))) / Math.max(1, c.vida);
+  if (nivel === 'lider' || nivel === 'conselho') {
+    // um turno sem causar dano custa caro: preparação só vale se nenhum golpe já resolve bem
+    const maiorDano = Math.max(0, ...notas.filter((n) => n.g.cat !== 'status').map((n) => n.valor));
+    for (const n of notas) if (n.g.cat === 'status') n.valor *= maiorDano >= 1 ? 0.15 : maiorDano >= 0.34 || riscoAgora >= 0.5 ? 0.45 : 1;
+  }
   const melhorPor = (f: (n: (typeof notas)[number]) => number) => notas.reduce((a, n) => (f(n) > f(a) ? n : a));
 
   /* novato: 70% ao acaso, 30% o mais forte */
@@ -317,8 +323,6 @@ export function escolherAcaoIA(b: Batalha, p: Pos, nivel: NivelIA, o: OpcoesIA =
       const seguro = (n: (typeof notas)[number]) => chanceAcerto(b, p, n.g, n.alvo!) + ((n.g.prioridade ?? 0) > 0 && !maisRapido ? 0.5 : 0) - (n.g.efeitos.some((e) => e.t === 'recarga' || e.t === 'recuo' || e.t === 'carga') ? 0.05 : 0);
       if (maisRapido || risco < 1 || kos.some((n) => (n.g.prioridade ?? 0) > 0)) return comoAcao(kos.reduce((a, n) => (seguro(n) > seguro(a) ? n : a)));
     }
-    // vou cair antes de agir e não nocauteio: sair de campo vale mais do que apanhar (se a troca aguenta)
-    if (!maisRapido && risco >= 1.2 && melhor.valor < 0.45 && troca && troca.ganho > 0.7) { mem.ultimaTroca[p.lado] = b.turno; return { tipo: 'troca', para: troca.para }; }
     // o adversário está em desvantagem grave e tem reservas: provavelmente troca → valorizo preparação e golpes de cobertura
     const outroLado = (1 - p.lado) as 0 | 1;
     const provavelTroca = adv.length === 1 && !b.selvagem && b.reservas(outroLado).length > 0 && melhor.valor >= 0.6 && risco < 0.3 && b.vol(adv[0]).preso <= 0;
@@ -332,11 +336,11 @@ export function escolherAcaoIA(b: Batalha, p: Pos, nivel: NivelIA, o: OpcoesIA =
     // entre opções parecidas, a mais precisa
     const topo = melhorPor((n) => n.valor), candidatos = notas.filter((n) => n.valor >= topo.valor * 0.9);
     const final = candidatos.reduce((a, n) => ((n.g.precisao || 101) > (a.g.precisao || 101) ? n : a), topo);
-    if (troca && final.valor < 0.2 && troca.ganho > 0.5) { mem.ultimaTroca[p.lado] = b.turno; return { tipo: 'troca', para: troca.para }; }
+    if (troca && final.valor < 0.15 && risco >= 0.4 && troca.ganho > 0.6) { mem.ultimaTroca[p.lado] = b.turno; return { tipo: 'troca', para: troca.para }; }
     return final.valor > 0 ? comoAcao(final) : golpeAleatorio(b, p);
   }
   // líder: troca para manter a vantagem quando o confronto é ruim e não há boa jogada
-  if (troca && ((risco >= 0.5 && melhor.valor < 0.3 && troca.ganho > 0.4) || (melhor.valor < 0.15 && troca.ganho > 0.6))) { mem.ultimaTroca[p.lado] = b.turno; return { tipo: 'troca', para: troca.para }; }
+  if (troca && risco >= 0.5 && melhor.valor < 0.25 && troca.ganho > 0.5) { mem.ultimaTroca[p.lado] = b.turno; return { tipo: 'troca', para: troca.para }; }
   return melhor.valor > 0 ? comoAcao(melhor) : golpeAleatorio(b, p);
 }
 

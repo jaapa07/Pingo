@@ -42,6 +42,29 @@ export interface ZonaPintada {
   acesas: Map<number, number>;
 }
 
+/**
+ * Tileset com pintor próprio (interiores): o bake só chama `pintarZona` e recorta o resultado.
+ * Obrigatório devolver `larg`, `alt`, `quadros` (1 a 4 imagens do chão inteiro) e `alto`; o resto é opcional.
+ */
+export interface TilesetProprio {
+  nome: string; periodos: boolean;
+  pintarZona(zona: ZonaDef, catalogo: Record<string, InfoObjeto>): Pick<ZonaPintada, 'larg' | 'alt' | 'quadros' | 'alto'> & Partial<ZonaPintada>;
+}
+export function completarPintada(p: ReturnType<TilesetProprio['pintarZona']>): ZonaPintada {
+  const quadros = Array.from({ length: QUADROS }, (_, i) => p.quadros[i % p.quadros.length]);
+  let animado = p.animado;
+  if (!animado) {
+    // sem a marcação: compara os quadros tile a tile
+    animado = new Uint8Array(p.larg * p.alt);
+    if (p.quadros.length > 1) for (let ty = 0; ty < p.alt; ty++) for (let tx = 0; tx < p.larg; tx++) {
+      let muda = false;
+      for (let f = 1; f < QUADROS && !muda; f++) for (let j = 0; j < T && !muda; j++) for (let i = 0; i < T; i++) if (quadros[f].get(tx * T + i, ty * T + j) !== quadros[0].get(tx * T + i, ty * T + j)) { muda = true; break; }
+      animado[ty * p.larg + tx] = muda ? 1 : 0;
+    }
+  }
+  return { larg: p.larg, alt: p.alt, quadros, alto: p.alto, animado, luz: p.luz ?? new Uint8Array(p.larg * T * p.alt * T), gramaAlta: p.gramaAlta ?? [], dinamicos: p.dinamicos ?? [], luzes: p.luzes ?? [], acesas: p.acesas ?? new Map() };
+}
+
 export function coresDoTileset(ts: TilesetExterior): Cores {
   const tab = new Map<string, number>();
   for (const [k, v] of Object.entries(ts.paleta)) tab.set(k, hex(v));

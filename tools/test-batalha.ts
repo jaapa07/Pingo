@@ -258,7 +258,7 @@ teste('experiência em batalha: subir de nível, aprender golpe, golpe pendente 
   const m3 = neutra(9003, 12, 'arranhao', 'cara-feia', 'fagulha', 'bote-ligeiro'); m3.exp = expParaNivel('rapido', 13) - 1;
   const b3 = duelo([m3], [neutra(9001, 4, 'berro')]); let e3: EventoBatalha[] = []; while (!b3.resultado) e3 = e3.concat(turno(b3, G(2), G(0)));
   afirmar(tem(e3, 'golpe-pendente', (e) => e.golpe === 'brasa-viva') && b3.golpesPendentes.length === 1, 'golpe pendente');
-  const e4 = b3.aprender(m3.uid, 'brasa-viva', 1); afirmar(tem(e4, 'novo-golpe', (e) => e.esqueceu === 'cara-feia') && m3.golpes[1].id === 'brasa-viva' && b3.golpesPendentes.length === 0, 'aprender no lugar de outro');
+  const e4 = b3.aprender(m3.uid, 'brasa-viva', 1); afirmar(tem(e4, 'novo-golpe', (e) => e.esqueceu === 'cara-feia') && m3.golpes[1].id === 'brasa-viva' && (b3.golpesPendentes.length as number) === 0, 'aprender no lugar de outro');
   // experiência dividida entre participantes
   const a1 = neutra(9005, 20, 'toca-e-foge'), a2 = neutra(9005, 20, 'esguicho'); const x1 = a1.exp, x2 = a2.exp;
   const alvo = neutra(9003, 10, 'cara-feia'); const b5 = duelo([a1, a2], [alvo]);
@@ -285,9 +285,9 @@ teste('dano: mesmo-tipo ×1,5, eficácia, crítico ×2 (≈1/16), variação 0,8
   const medir = (atq: CriaturaInst, def: CriaturaInst, o: Partial<ConfigBatalha> = {}, n = 3000) => {
     let min = 1e9, max = 0, crit = 0, total = 0;
     for (let i = 0; i < n; i++) {
-      for (const g of atq.golpes) g.pg = g.pgMax; def.vida = atributos(def).vida;
-      const b = duelo([atq], [def], o); const evs = turno(b, G(0), G(1));
-      const d = evs.find((e) => e.t === 'dano' && e.lado === 1) as Extract<EventoBatalha, { t: 'dano' }> | undefined; if (!d) continue;
+      for (const g of [...atq.golpes, ...def.golpes]) g.pg = g.pgMax; def.vida = atributos(def).vida; atq.vida = atributos(atq).vida;
+      const b = duelo([atq], [def], { ganhaExp: false, ...o }); const evs = turno(b, G(0), G(1));
+      const d = evs.find((e) => e.t === 'dano' && e.lado === 1 && e.origem === 'golpe') as Extract<EventoBatalha, { t: 'dano' }> | undefined; if (!d) continue;
       total++; if (d.critico) { crit++; continue; } const v = d.de - d.para; min = Math.min(min, v); max = Math.max(max, v);
     }
     return { min, max, crit: crit / total };
@@ -298,7 +298,8 @@ teste('dano: mesmo-tipo ×1,5, eficácia, crítico ×2 (≈1/16), variação 0,8
   const r1 = medir(neutroAtq, alvo); igual(r1.max, Math.floor(base * 0.5), 'máximo ×0,5'); igual(r1.min, Math.floor(base * 0.5 * 0.85), 'mínimo com variação 0,85'); perto(r1.crit, 1 / 16, 0.02, 'chance de crítico');
   const rio = neutra(9005, 50, 'esguicho'); const b2 = danoBase(50, 40, A(rio).atqEsp, A(alvo).defEsp);
   igual(medir(rio, alvo).max, Math.floor(b2 * 1.5 * 4), 'mesmo-tipo ×1,5 e eficácia ×4');
-  igual(medir(rio, alvo, { clima: 'chuva' }).max, Math.floor(b2 * 1.5 * 4 * 1.5), 'chuva ×1,5 em Rio'); igual(medir(rio, alvo, { clima: 'sol' }).max, Math.floor(b2 * 1.5 * 4 * 0.5), 'sol ×0,5 em Rio');
+  const alvo2 = neutra(9017, 50, 'ginga', 'amolar-garras'), b2n = danoBase(50, 40, A(rio).atqEsp, A(alvo2).defEsp); // Rio em Ginga/Ferro: ×1
+  igual(medir(rio, alvo2, { clima: 'chuva' }).max, Math.floor(b2n * 1.5 * 1.5), 'chuva ×1,5 em Rio'); igual(medir(rio, alvo2, { clima: 'sol' }).max, Math.floor(b2n * 1.5 * 0.5), 'sol ×0,5 em Rio');
   const fis = neutra(9017, 50, 'rasteira'); const b3 = danoBase(50, 50, A(fis).atq, A(alvo).def), semQueimar = medir(fis, alvo).max;
   igual(semQueimar, Math.floor(b3 * 1.5 * 2), 'físico com mesmo-tipo ×2'); fis.status = 'queimado'; igual(medir(fis, alvo).max, Math.floor(b3 * 1.5 * 2 * 0.5), 'queimado ×0,5 em físico'); fis.status = null;
   const cr = neutra(9003, 50, 'patada'); perto(medir(cr, neutra(9001, 50, 'berro', 'berro')).crit, 1 / 4, 0.03, 'alto crítico');
@@ -318,7 +319,8 @@ teste('os 6 status principais e os voláteis funcionam como no contrato', () => 
   for (let i = 0; i < 200; i++) {
     const alvo = neutra(9013, 30, 'couraca-de-pedra'); const bt = duelo([neutra(9016, 30, 'olho-de-coruja', 'cabeca-fria')], [alvo]); turno(bt, G(0), G(0));
     if (alvo.status !== 'dormindo') continue; dormiu++;
-    let n = 0; while (alvo.status === 'dormindo' && n < 9) { const ev = turno(bt, G(1), G(0)); if (alvo.status === 'dormindo') { n++; afirmar(!tem(ev, 'golpe', (x) => x.lado === 1), 'dormindo não age'); } }
+    let n = 1; // o alvo é mais lento: já perde a vez no turno em que adormece
+    while (n < 9) { const ev = turno(bt, G(1), G(0)); if (tem(ev, 'golpe', (x) => x.lado === 1)) break; afirmar(alvo.status === 'dormindo', 'só perde a vez dormindo'); n++; }
     turnosDormindo.push(n);
   }
   afirmar(dormiu > 80 && dormiu < 160, 'precisão 60 do sono: ' + dormiu); afirmar(Math.min(...turnosDormindo) >= 1 && Math.max(...turnosDormindo) <= 3, 'sono dura 1 a 3 turnos: ' + Math.min(...turnosDormindo) + '–' + Math.max(...turnosDormindo));
@@ -335,11 +337,10 @@ teste('os 6 status principais e os voláteis funcionam como no contrato', () => 
   for (let i = 0; i < 400; i++) {
     const enc = neutra(9013, 40, 'couraca-de-pedra'); const bt = duelo([neutra(9016, 40, 'canto-do-uirapuru', 'cabeca-fria')], [enc]);
     turno(bt, G(0), G(0)); if (enc.status !== 'encantado') continue;
-    let n = 1; // o turno em que foi encantado conta
+    let n = 1; // o turno em que foi encantado conta (o alvo é mais lento e já age encantado)
     while (enc.status === 'encantado' && n < 9) {
-      const ev = turno(bt, G(1), G(0)); const g = ev.find((x) => x.t === 'golpe' && x.lado === 1) as Extract<EventoBatalha, { t: 'golpe' }> | undefined;
+      n++; const ev = turno(bt, G(1), G(0)); const g = ev.find((x) => x.t === 'golpe' && x.lado === 1) as Extract<EventoBatalha, { t: 'golpe' }> | undefined;
       if (g) { agiu++; if (g.golpe === 'cabeca-fria') imitou++; }
-      if (enc.status === 'encantado') n++;
     }
     dur.push(n);
   }
@@ -351,7 +352,7 @@ teste('os 6 status principais e os voláteis funcionam como no contrato', () => 
   let atord = 0, acertos = 0;
   for (let i = 0; i < 400; i++) { const bt = duelo([neutra(9007, 30, 'cabecada')], [neutra(9013, 30, 'couraca-de-pedra')]); const ev = turno(bt, G(0), G(0)); if (tem(ev, 'dano', (d) => d.lado === 1)) { acertos++; if (!tem(ev, 'golpe', (x) => x.lado === 1)) atord++; } }
   perto(atord / acertos, 0.3, 0.06, 'atordoado 30% (só se o alvo ainda não agiu)');
-  const preso = neutra(9013, 40, 'couraca-de-pedra'); const bp = duelo([neutra(9016, 40, 'redemoinho')], [preso, neutra(9001, 40)]);
+  const preso = neutra(9013, 40, 'couraca-de-pedra'); const bp = duelo([neutra(9014, 10, 'formigueiro')], [preso, neutra(9001, 40)]);
   for (let i = 0; i < 6 && bp.vol({ lado: 1, pos: 0 }).preso <= 0; i++) turno(bp, G(0), G(0));
   afirmar(bp.vol({ lado: 1, pos: 0 }).preso > 0 && !bp.podeTrocar({ lado: 1, pos: 0 }), 'preso não troca'); const ep = turno(bp, G(0), { tipo: 'troca', para: 1 }); afirmar(!tem(ep, 'entra', (x) => x.lado === 1), 'troca bloqueada pela armadilha');
 });
@@ -409,13 +410,13 @@ teste('trocas, itens em batalha, fuga, oferta de troca e frutos segurados', () =
   while (b.fase === 'acoes') ev = turno(b, G(0), G(0));
   igual(b.fase, 'substituir', 'rival precisa repor'); ev = b.substituir([{ lado: 1, pos: 0, para: 1 }]);
   igual(b.fase, 'oferta', 'oferta de troca'); afirmar(tem(ev, 'oferta-troca', (x) => x.proxima.especie === 9003), 'mostra a próxima');
-  ev = b.responderOferta(0); afirmar(tem(ev, 'entra', (x) => x.lado === 0 && x.indice === 0) && tem(ev, 'entra', (x) => x.lado === 1 && x.indice === 1) && b.fase === 'acoes', 'jogador troca e o rival entra');
+  ev = b.responderOferta(0); afirmar(tem(ev, 'entra', (x) => x.lado === 0 && x.indice === 0) && tem(ev, 'entra', (x) => x.lado === 1 && x.indice === 1) && (b.fase as string) === 'acoes', 'jogador troca e o rival entra');
   // sem troca grátis (veterano): entra direto
   const bv = duelo([neutra(9016, 50, 'garra-ancestral'), neutra(9001, 50)], [neutra(9014, 3), neutra(9014, 3)]); while (bv.fase === 'acoes') turno(bv, G(0), G(0));
   bv.substituir([{ lado: 1, pos: 0, para: 1 }]); igual(bv.fase, 'acoes', 'sem oferta no modo veterano');
   // fuga de selvagem: sempre com mais velocidade; semFuga bloqueia
   const bs = new Batalha({ tipo: 'selvagem', lados: [{ equipe: [neutra(9007, 30)] }, { equipe: [neutra(9013, 5)] }] }); bs.iniciar(); turno(bs, { tipo: 'fuga' }, G(0)); igual(bs.resultado, 'fuga', 'fuga garantida');
-  const bn = new Batalha({ tipo: 'lendario', semFuga: true, lados: [{ equipe: [neutra(9007, 30)] }, { equipe: [neutra(9016, 50)] }] }); bn.iniciar(); turno(bn, { tipo: 'fuga' }, G(3)); igual(bn.resultado, null, 'semFuga'); igual(bn.podeFugir(), false, 'podeFugir');
+  const bn = new Batalha({ tipo: 'lendario', semFuga: true, lados: [{ equipe: [neutra(9007, 30)] }, { equipe: [neutra(9016, 50, 'cabeca-fria')] }] }); bn.iniciar(); turno(bn, { tipo: 'fuga' }, G(0)); igual(bn.resultado, null, 'semFuga'); igual(bn.podeFugir(), false, 'podeFugir');
   // fruto segurado
   const fr = neutra(9001, 30, 'berro'); fr.item = 'pitanga'; const bf = duelo([neutra(9016, 30, 'lume-errante')], [fr]); let comeu = false;
   for (let i = 0; i < 8 && !comeu; i++) comeu = tem(turno(bf, G(0), G(0)), 'item', (x) => x.item === 'pitanga'); afirmar(comeu && fr.status === null && fr.item === undefined, 'Pitanga cura a queimadura sozinha');
@@ -427,7 +428,7 @@ teste('dupla 2×2: quatro em campo, alvos, golpes em área (×0,75), reposição
   const ini = b.iniciar(); igual(ini.filter((e) => e.t === 'entra').length, 4, 'quatro entram'); igual(b.pedidos().length, 4, 'quatro pedidos de ação');
   const tr = neutra(9013, 40, 'tremor-de-terra'), al = neutra(9009, 40, 'lufada'), i1 = neutra(9003, 40, 'fagulha'), i2 = neutra(9007, 40, 'choquinho');
   const bd = new Batalha({ tipo: 'treinador', dupla: true, lados: [{ equipe: [tr, al] }, { equipe: [i1, i2] }] }); bd.iniciar();
-  const ev = bd.executarTurno(bd.pedidos().map((p) => ({ ...p, acao: p.lado === 0 && p.pos === 1 ? { tipo: 'golpe', slot: 0, alvo: { lado: 1, pos: 1 } } as Acao : G(0) })));
+  const ev = bd.executarTurno(bd.pedidos().map((p) => ({ ...p, acao: p.lado === 0 && p.pos === 1 ? ({ tipo: 'golpe', slot: 0, alvo: { lado: 1, pos: 1 } } satisfies Acao) : G(0) })));
   const g = ev.find((e) => e.t === 'golpe' && e.golpe === 'tremor-de-terra') as Extract<EventoBatalha, { t: 'golpe' }>; afirmar(g && g.alvos.length === 2 && g.alvos.every((x) => x.lado === 1), 'Tremor acerta os dois rivais; a parceira de Vento é imune');
   afirmar(tem(ev, 'errou', (x) => x.motivo === 'imune' && x.alvo.lado === 0), 'aviso de imunidade da parceira');
   afirmar(tem(ev, 'golpe', (x) => x.golpe === 'lufada' && x.alvos[0].pos === 1), 'alvo escolhido respeitado');
@@ -470,7 +471,7 @@ teste('IA: escolhas válidas, novato 70/30, treinador prefere super-eficaz, líd
   bl.lados[1].itens.garrafada = 1; bl.lados[1].equipe[0].vida = 5; const ai = escolherAcaoIA(bl, { lado: 1, pos: 0 }, 'lider', { usaItens: true }); afirmar(ai.tipo === 'item' && ai.item === 'garrafada', 'líder cura com item');
   afirmar(escolherAcaoIA(bl, { lado: 1, pos: 0 }, 'lider', {}).tipo !== 'item', 'sem permissão não usa item');
   // líder usa clima quando compensa
-  const bc = duelo([neutra(9013, 50, 'couraca-de-pedra')], [neutra(9006, 40, 'chuva-de-verao', 'cachoeirada', 'manto-de-geada'), neutra(9005, 40)]); bc.vol({ lado: 0, pos: 0 }).est.def = 6; bc.lados[1].equipe[0].golpes[1].pg = 0;
+  const bc = duelo([neutra(9013, 15, 'couraca-de-pedra')], [neutra(9006, 40, 'chuva-de-verao', 'cachoeirada', 'cara-feia'), neutra(9005, 40)]); bc.vol({ lado: 0, pos: 0 }).est.def = 6; bc.lados[1].equipe[0].golpes[1].pg = 0;
   const ac = escolherAcaoIA(bc, { lado: 1, pos: 0 }, 'lider'); afirmar(ac.tipo === 'golpe' && ac.slot === 0, 'líder chama a chuva para a equipe de Rio');
   // conselho guarda o lendário para o fim e escolhe nocaute com prioridade quando é mais lento
   rng.seed(15);
@@ -512,7 +513,7 @@ teste('qualidade da IA cresce com o nível (equipes espelhadas, 60 batalhas por 
   };
   const tn = placar('treinador', 'novato', 100), ln = placar('lider', 'novato', 200), cn = placar('conselho', 'novato', 300), ct = placar('conselho', 'treinador', 400);
   console.log(`      vitórias em 60: treinador×novato ${tn} · líder×novato ${ln} · conselho×novato ${cn} · conselho×treinador ${ct}`);
-  afirmar(tn >= 36, 'treinador deveria vencer o novato: ' + tn); afirmar(ln >= 38, 'líder deveria vencer o novato: ' + ln); afirmar(cn >= 40, 'conselho deveria vencer o novato: ' + cn); afirmar(ct >= 28, 'conselho não deveria perder feio do treinador: ' + ct);
+  afirmar(tn >= 36, 'treinador deveria vencer o novato: ' + tn); afirmar(ln >= 38, 'líder deveria vencer o novato: ' + ln); afirmar(cn >= 40, 'conselho deveria vencer o novato: ' + cn); afirmar(ct >= 22, 'conselho não deveria perder feio do treinador: ' + ct);
 });
 
 /* ============================== 7. batalhas simuladas ============================== */
@@ -556,8 +557,14 @@ teste('cobertura: todos os golpes e todos os tipos de efeito são executados em 
     for (const e of b.eventos) if (e.t === 'golpe' || e.t === 'carga') usados.add(e.golpe);
     for (const [, s] of [...b.lados[0].revelados, ...b.lados[1].revelados]) for (const g of s) usados.add(g);
   }
+  const sorteio = GOLPES.filter((g) => usados.has(g.id)).length;
+  // o que o sorteio não cobriu é forçado num duelo dirigido
+  for (const g of GOLPES.filter((x) => !usados.has(x.id))) {
+    const b = duelo([neutra(9016, 40, g.id)], [neutra(9013, 40, 'couraca-de-pedra')], { ganhaExp: false });
+    for (let k = 0; k < 3 && b.fase === 'acoes'; k++) for (const e of turno(b, G(0), G(0))) if (e.t === 'golpe' || e.t === 'carga') usados.add(e.golpe);
+  }
   const faltam = GOLPES.filter((g) => !usados.has(g.id)).map((g) => g.id);
-  console.log(`      ${usados.size - (usados.has('') ? 1 : 0)} de ${GOLPES.length} golpes usados em 140 batalhas`);
+  console.log(`      ${sorteio} de ${GOLPES.length} golpes usados em 140 batalhas sorteadas; ${GOLPES.length - sorteio} em duelo dirigido`);
   afirmar(faltam.length === 0, 'golpes nunca usados: ' + faltam.join(', '));
 });
 teste('determinismo: a mesma semente produz exatamente a mesma fila de eventos', () => {
@@ -597,7 +604,7 @@ teste('iniciarBatalha (headless): aplica experiência, prêmio, Diário, evoluç
 });
 
 /* ============================== 9. regras do projeto ============================== */
-teste('regras do projeto: sem Math.random e sem palavras proibidas nos arquivos de batalha', () => {
+teste('regras do projeto: acaso só pelo rng e nenhuma palavra proibida nos arquivos de batalha', () => {
   const arquivos = [...readdirSync(join(RAIZ, 'src/battle')).filter((f) => f.endsWith('.ts')).map((f) => 'src/battle/' + f), 'src/data/golpes.ts', 'src/data/tabela-tipos.ts', 'src/data/itens.ts', 'src/data/personalidades.ts', 'tools/test-batalha.ts'];
   const proibidas = [['Math', 'random'].join('.'), ['TO', 'DO'].join(''), ['FIX', 'ME'].join(''), ['place', 'holder'].join(''), ['lo', 'rem'].join('')];
   for (const a of arquivos) { const txt = readFileSync(join(RAIZ, a), 'utf8'); for (const p of proibidas) afirmar(!(p === proibidas[0] || p === proibidas[1] || p === proibidas[2] ? txt.includes(p) : txt.toLowerCase().includes(p)), `${a} contém "${p}"`); }

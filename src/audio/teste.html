@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Pingo · bancada de áudio</title>
+<style>
+  body { font: 13px/1.4 monospace; background: #14201a; color: #dfe9d8; margin: 12px; }
+  button { font: inherit; margin: 2px; padding: 3px 6px; background: #2c4a36; color: #fff; border: 1px solid #5b8a66; cursor: pointer; }
+  h2 { margin: 14px 0 4px; font-size: 14px; color: #f2c14e; }
+  #saida { white-space: pre; margin-top: 10px; }
+</style>
+</head>
+<body>
+<h1>Adventures of Pingo · bancada de áudio</h1>
+<div><button id="parar">parar música</button> <button id="nivelar">medir tudo (offline)</button> <input id="fala" value="Oi! Quer batalhar comigo, {JOGADOR}?" size="40"></div>
+<h2>Músicas</h2><div id="musicas"></div>
+<h2>Ambientes</h2><div id="ambientes"></div>
+<h2>Vozes</h2><div id="vozes"></div>
+<h2>SFX</h2><div id="sfx"></div>
+<h2>Gritos</h2><div id="gritos"></div>
+<div id="saida"></div>
+<script type="module" src="./teste.ts"></script>
+</body>
+</html>

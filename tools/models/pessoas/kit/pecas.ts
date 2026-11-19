@@ -56,7 +56,7 @@ export function cabelo(tipo: Cabelo, m: Mat, sob: boolean, laco?: Mat): Obj[] {
       break;
     }
     case 'rabo': lado(); o.push(casco(m, { corte: -0.08 }), tube([h(-0.27, 0.08, 0), h(-0.42, 0.02, 0), h(-0.43, -0.22, 0)], (t) => 0.085 - t * 0.045, m, { seg: 12, radial: 8 })); if (laco) o.push(blob([0.06, 0.07, 0.08], laco, { pos: h(-0.31, 0.08, 0) })); break;
-    case 'rabo-alto': o.push(casco(m, { corte: -0.08 })); mechas(3, 0.09); if (!sob) o.push(blob([0.09, 0.08, 0.1], m, { pos: h(-0.24, 0.2, 0) }), tube([h(-0.24, 0.2, 0), h(-0.42, 0.22, 0), h(-0.5, 0.02, 0), h(-0.45, -0.22, 0)], (t) => 0.1 - t * 0.055, m, { seg: 14, radial: 8 })); else o.push(tube([h(-0.27, 0.0, 0), h(-0.4, -0.05, 0), h(-0.4, -0.25, 0)], (t) => 0.08 - t * 0.04, m, { seg: 12, radial: 8 })); if (laco && !sob) o.push(blob([0.06, 0.08, 0.1], laco, { pos: h(-0.3, 0.2, 0) })); break;
+    case 'rabo-alto': o.push(casco(m, { corte: -0.08 })); mechas(3, 0.09); if (!sob) o.push(blob([0.09, 0.08, 0.1], m, { pos: h(-0.24, 0.2, 0) }), tube([h(-0.24, 0.2, 0), h(-0.37, 0.2, 0), h(-0.42, 0.02, 0), h(-0.38, -0.2, 0)], (t) => 0.095 - t * 0.055, m, { seg: 14, radial: 8 })); else o.push(tube([h(-0.27, 0.0, 0), h(-0.4, -0.05, 0), h(-0.4, -0.25, 0)], (t) => 0.08 - t * 0.04, m, { seg: 12, radial: 8 })); if (laco && !sob) o.push(blob([0.06, 0.08, 0.1], laco, { pos: h(-0.3, 0.2, 0) })); break;
     case 'tranca': meio(); costeletas(); o.push(casco(m, { corte: -0.1 }), tube([h(-0.26, -0.02, 0), h(-0.33, -0.2, 0), h(-0.27, -0.42, 0), h(-0.3, -0.58, 0)], (t) => 0.085 - t * 0.03, m, { seg: 14, radial: 8 })); if (laco) o.push(blob([0.055, 0.05, 0.055], laco, { pos: h(-0.3, -0.6, 0) })); break;
     case 'trancas': {
       o.push(casco(m, { corte: -0.1 })); meio();
@@ -65,7 +65,7 @@ export function cabelo(tipo: Cabelo, m: Mat, sob: boolean, laco?: Mat): Obj[] {
     }
     case 'coque': o.push(casco(m, { corte: -0.08 })); meio(0.19); if (!sob) o.push(blob([0.13, 0.12, 0.14], m, { pos: h(-0.17, 0.33, 0) })); else o.push(blob([0.1, 0.1, 0.12], m, { pos: h(-0.31, -0.02, 0) })); if (laco && !sob) o.push(ring(0.09, 0.025, laco, { pos: h(-0.15, 0.27, 0), rot: [90, 0, 25] })); break;
     case 'chanel': o.push(casco(m, { dx: -0.02, e: 1.02 }), blob([0.2, 0.2, 0.09], m, { pos: h(-0.03, -0.12, 0.27) }), blob([0.2, 0.2, 0.09], m, { pos: h(-0.03, -0.12, -0.27) }), blob([0.1, 0.2, 0.28], m, { pos: h(-0.22, -0.1, 0) }), franja(0.24, 0.1)); break;
-    case 'chiquinhas': o.push(casco(m, { corte: -0.08 })); mechas(3, 0.08); for (const s of [1, -1]) { o.push(blob([0.11, 0.13, 0.11], m, { pos: h(-0.08, 0.0, 0.39 * s) })); if (laco) o.push(blob([0.05, 0.06, 0.05], laco, { pos: h(-0.07, 0.07, 0.31 * s) })); } break;
+    case 'chiquinhas': o.push(casco(m, { corte: -0.08 })); mechas(3, 0.08); for (const s of [1, -1]) { o.push(blob([0.11, 0.13, 0.11], m, { pos: h(-0.08, 0.0, 0.35 * s) })); if (laco) o.push(blob([0.05, 0.06, 0.05], laco, { pos: h(-0.07, 0.07, 0.29 * s) })); } break;
   }
   return o;
 }
@@ -89,7 +89,7 @@ export type Chapeu =
 
 /** altura extra acima do topo da cabeça, para enquadrar as vistas */
 export const TOPO: Record<Chapeu, number> = {
-  palha: 0.1, couro: 0.1, pantaneiro: 0.14, pescador: 0.06, bone: 0.03, lenco: 0.03, 'lenco-queixo': 0.03, capacete: 0.06, quepe: 0.1, boina: 0.05, cocar: 0.22, 'cocar-grande': 0.3,
+  palha: 0.1, couro: 0.1, pantaneiro: 0.14, pescador: 0.06, bone: 0.03, lenco: 0.03, 'lenco-queixo': 0.03, capacete: 0.06, quepe: 0.1, boina: 0.05, cocar: 0.28, 'cocar-grande': 0.3,
   gorro: 0.14, faixa: 0, flor: 0.02, goggles: 0, marinheiro: 0.08, touca: 0.05, turbante: 0.14, 'coroa-folhas': 0.08, explorador: 0.1, tiara: 0.02, viseira: 0.02, 'aba-larga': 0.12, pena: 0.2,
 };
 /** chapéus que cobrem o topo do cabelo */
@@ -106,7 +106,7 @@ export function chapeu(tipo: Chapeu, m: Mat, f: Mat, e: Mat): Obj[] {
   const faixaAro = (r: number, y: number, mm: Mat = f, t = 0.035) => ring(r, t, mm, { pos: h(r < 0.27 ? -0.045 : -0.02, y, 0), rot: [90, 0, 0], scale: [1, 1.09, 1] });
   switch (tipo) {
     case 'palha': return [lathe([[0.001, 0.37], [0.14, 0.36], [0.24, 0.3], [0.285, 0.16], [0.29, 0.1], [0.001, 0.1]], m, { pos: h(-0.02, 0, 0), scale: [1, 1, 1.08], seg: 24 }), aba(0.46, 0.12, -0.02), faixaAro(0.29, 0.15)];
-    case 'aba-larga': return [lathe([[0.001, 0.4], [0.12, 0.39], [0.22, 0.32], [0.285, 0.16], [0.29, 0.1], [0.001, 0.1]], m, { pos: h(-0.02, 0, 0), scale: [1, 1, 1.08], seg: 24 }), aba(0.5, 0.12, -0.06), faixaAro(0.29, 0.15)];
+    case 'aba-larga': return [lathe([[0.001, 0.4], [0.12, 0.39], [0.22, 0.32], [0.285, 0.16], [0.29, 0.1], [0.001, 0.1]], m, { pos: h(-0.02, 0, 0), scale: [1, 1, 1.08], seg: 24 }), aba(0.45, 0.12, -0.05), faixaAro(0.29, 0.15)];
     case 'couro': return [lathe([[0.001, 0.36], [0.16, 0.35], [0.27, 0.28], [0.3, 0.14], [0.3, 0.09], [0.001, 0.09]], m, { pos: h(-0.02, 0, 0), scale: [1, 1, 1.08], seg: 24 }), aba(0.4, 0.1, 0.09, 0.035), blob([0.03, 0.05, 0.05], f, { pos: h(0.26, 0.23, 0) }), faixaAro(0.3, 0.13, e, 0.02)];
     case 'pantaneiro': return [lathe([[0.001, 0.38], [0.2, 0.4], [0.26, 0.34], [0.27, 0.14], [0.29, 0.09], [0.001, 0.09]], m, { pos: h(-0.02, 0, 0), scale: [1, 1, 1.08], seg: 24 }), aba(0.47, 0.11, 0.04, 0.03), faixaAro(0.285, 0.15)];
     case 'pescador': return [lathe([[0.001, 0.33], [0.2, 0.32], [0.29, 0.2], [0.38, 0.06], [0.37, 0.03], [0.28, 0.1], [0.001, 0.1]], m, { pos: h(-0.02, 0, 0), scale: [1, 1, 1.08], seg: 24 }), faixaAro(0.3, 0.19)];
@@ -126,14 +126,14 @@ export function chapeu(tipo: Chapeu, m: Mat, f: Mat, e: Mat): Obj[] {
     case 'tiara': return [ring(0.3, 0.03, m, { pos: h(-0.03, 0.02, 0), rot: [0, 90, 0], arc: 180, scale: [1.06, 1, 1] })];
     case 'flor': { const o: Obj[] = [blob([0.045, 0.045, 0.04], f, { pos: h(0.12, 0.2, 0.275) })]; for (let i = 0; i < 5; i++) { const a = (i / 5) * Math.PI * 2; o.push(blob([0.05, 0.05, 0.03], m, { pos: h(0.12 + Math.cos(a) * 0.07, 0.2 + Math.sin(a) * 0.07, 0.26) })); } return o; }
     case 'goggles': return [faixaAro(0.262, 0.14, e, 0.028), blob([0.045, 0.065, 0.075], f, { pos: h(0.255, 0.15, 0.1) }), blob([0.045, 0.065, 0.075], f, { pos: h(0.255, 0.15, -0.1) }), ring(0.07, 0.022, m, { pos: h(0.265, 0.15, 0.1), rot: [0, 90, 0] }), ring(0.07, 0.022, m, { pos: h(0.265, 0.15, -0.1), rot: [0, 90, 0] })];
-    case 'pena': return [faixaAro(0.262, 0.13, f, 0.035), pena(0.3, 0.06, m, h(-0.2, 0.14, 0.12), [0, 90, 0]), pena(0.24, 0.05, f, h(-0.2, 0.14, -0.02), [0, 90, 0])];
+    case 'pena': return [faixaAro(0.262, 0.13, f, 0.035), pena(0.22, 0.06, m, h(-0.2, 0.14, 0.12), [0, 90, 0]), pena(0.18, 0.05, f, h(-0.2, 0.14, -0.02), [0, 90, 0])];
     case 'coroa-folhas': { const o: Obj[] = [faixaAro(0.262, 0.14, f, 0.03)]; for (let i = 0; i < 10; i++) { const a = (i / 10) * Math.PI * 2; o.push(pena(0.17, 0.06, i % 2 ? m : f, h(-0.02 + Math.cos(a) * 0.28, 0.13, Math.sin(a) * 0.31), [0, 90 - (a * 180) / Math.PI, 0])); } return o; }
     case 'cocar': case 'cocar-grande': {
       const g = tipo === 'cocar-grande';
       const o: Obj[] = [faixaAro(0.262, 0.13, f, 0.04)];
       const n = g ? 5 : 4;
       for (let i = -n; i <= n; i++) {
-        const a = (i / n) * (g ? 100 : 82), len = (g ? 0.44 : 0.33) - Math.abs(i) * 0.022;
+        const a = (i / n) * (g ? 78 : 70), len = (g ? 0.25 : 0.2) - Math.abs(i) * 0.022;
         const s = Math.sin((a * Math.PI) / 180), c = Math.cos((a * Math.PI) / 180);
         o.push(pena(len, g ? 0.062 : 0.055, i % 2 === 0 ? m : f, h(-0.05, 0.02 + c * 0.24, s * 0.29), [a, 90, 0]));
         if (g && i % 2 === 0) o.push(blob([0.03, 0.04, 0.04], e, { pos: h(-0.04, 0.02 + c * (0.24 + len), s * (0.29 + len)) }));
@@ -155,7 +155,7 @@ export function sobre(tipo: Sobre, m: Mat, f: Mat): Obj[] {
     case 'avental': return [roundBox([0.05, 0.36, 0.27], 0.02, m, { pos: [0.125, 0.03, 0] }), blob([0.03, 0.03, 0.2], f, { pos: [0.13, 0.02, 0] })];
     case 'macacao': return [roundBox([0.05, 0.2, 0.22], 0.02, m, { pos: [0.115, 0.1, 0] }), blob([0.14, 0.03, 0.035], m, { pos: [0, 0.3, 0.1] }), blob([0.14, 0.03, 0.035], m, { pos: [0, 0.3, -0.1] }), blob([0.02, 0.025, 0.025], f, { pos: [0.14, 0.18, 0.08] }), blob([0.02, 0.025, 0.025], f, { pos: [0.14, 0.18, -0.08] })];
     case 'jardineira': return [roundBox([0.05, 0.18, 0.2], 0.02, m, { pos: [0.115, 0.1, 0] }), blob([0.14, 0.03, 0.035], m, { pos: [0, 0.3, 0.1] }), blob([0.14, 0.03, 0.035], m, { pos: [0, 0.3, -0.1] }), blob([0.02, 0.04, 0.05], f, { pos: [0.14, 0.1, 0] })];
-    case 'capa': return [blob([0.07, 0.37, 0.31], m, { pos: [-0.15, -0.04, 0], deform: [taper('y', -0.37, 0.37, 1.15, 0.75)] }), blob([0.15, 0.06, 0.24], m, { pos: [-0.01, 0.3, 0] }), blob([0.035, 0.04, 0.04], f, { pos: [0.13, 0.29, 0] })];
+    case 'capa': return [blob([0.07, 0.3, 0.31], m, { pos: [-0.15, 0.02, 0], deform: [taper('y', -0.3, 0.3, 1.15, 0.75)] }), blob([0.15, 0.06, 0.24], m, { pos: [-0.01, 0.3, 0] }), blob([0.035, 0.04, 0.04], f, { pos: [0.13, 0.29, 0] })];
     case 'xale': return [blob([0.185, 0.1, 0.27], m, { pos: [0, 0.265, 0] }), blob([0.05, 0.1, 0.07], m, { pos: [0.14, 0.18, 0] }), blob([0.19, 0.03, 0.275], f, { pos: [0, 0.2, 0] })];
     case 'faixa-peito': return [tube([[0.02, 0.33, 0.17], [0.15, 0.18, 0.02], [0.05, 0.02, -0.19], [-0.14, 0.18, -0.02], [0.02, 0.33, 0.17]], 0.04, m, { seg: 20, radial: 8, closed: true }), blob([0.03, 0.045, 0.045], f, { pos: [0.16, 0.19, 0.03] })];
     case 'ombreiras': return [blob([0.085, 0.045, 0.085], m, { pos: [0, 0.3, 0.215] }), blob([0.085, 0.045, 0.085], m, { pos: [0, 0.3, -0.215] }), blob([0.03, 0.03, 0.03], f, { pos: [0.14, 0.24, 0.08] }), blob([0.03, 0.03, 0.03], f, { pos: [0.14, 0.17, 0.08] })];

@@ -5,9 +5,10 @@
  */
 import type { CriaturaInst, EspecieDef, ItemDef, TreinadorDef, EventoDef, ClimaId, Stat, TipoId } from '../core/tipos';
 import { jogo } from '../core/estado';
+import { temTela } from '../ui/telas';
 import { rng } from '../core/rng';
 import { treinadoresExtras, eventosExtras } from './registro';
-import { entradaReserva, pollReserva, falarR, escolherR, simNaoR, pedirNomeR, avisarR, abrirTelaR, type Entrada } from './reserva';
+import { entradaReserva, pollReserva, ligarEntrada, falarR, escolherR, pedirNomeR, avisarR, abrirTelaR, type Entrada } from './reserva';
 
 type Mod = Record<string, any>;
 const primeiro = (g: Record<string, unknown>): Mod | undefined => Object.values(g)[0] as Mod | undefined;
@@ -26,16 +27,24 @@ export const temInputReal = () => !!primeiro(gInput)?.input;
 export const entrada = (): Entrada => (primeiro(gInput)?.input as Entrada | undefined) ?? entradaReserva;
 /** só faz algo quando a entrada é a reserva (a real é lida pelo laço principal) */
 export function pollEntrada() { if (!temInputReal()) pollReserva(); }
+ligarEntrada(entrada, pollEntrada);
 
 /* ------------------------------ diálogo ------------------------------ */
 export interface Quem { nome?: string; retrato?: string; expressao?: 'neutro' | 'feliz' | 'bravo'; voz?: string }
 const dlg = () => primeiro(gDialogo);
-export const falar = (texto: string, quem?: Quem): Promise<void> => (dlg()?.falar ?? falarR)(texto, quem);
-export const escolher = (p: string, o: string[], padrao?: number): Promise<number> => (dlg()?.escolher ?? escolherR)(p, o, padrao);
-export const simNao = (p: string): Promise<boolean> => (dlg()?.simNao ?? simNaoR)(p);
+/** registro dos textos mostrados (inspeção em testes via window.__pingo.mundo.falas) */
+export const diarioFalas: { t: 'falar' | 'escolher' | 'avisar'; texto: string }[] = [];
+const anotar = (t: 'falar' | 'escolher' | 'avisar', texto: string) => { diarioFalas.push({ t, texto }); if (diarioFalas.length > 200) diarioFalas.shift(); };
+export const falar = (texto: string, quem?: Quem): Promise<void> => { anotar('falar', texto); return (dlg()?.falar ?? falarR)(texto, quem); };
+export const escolher = (p: string, o: string[], padrao?: number): Promise<number> => { anotar('escolher', p); return (dlg()?.escolher ?? escolherR)(p, o, padrao); };
+export const simNao = (p: string): Promise<boolean> => escolher(p, ['Sim', 'Não']).then((i) => i === 0);
 export const pedirNome = (t: string, max: number, padrao?: string): Promise<string> => (dlg()?.pedirNome ?? pedirNomeR)(t, max, padrao);
-export const avisar = (t: string): void => (dlg()?.avisar ?? avisarR)(t);
-export const abrirTela = (id: string, args?: unknown): Promise<unknown> => (dlg()?.abrirTela ?? abrirTelaR)(id, args);
+export const avisar = (t: string): void => { anotar('avisar', t); (dlg()?.avisar ?? avisarR)(t); };
+/** empilha uma tela registrada e resolve quando ela fecha; tela ainda não registrada = aviso no console e segue */
+export function abrirTela(id: string, args?: unknown): Promise<unknown> {
+  if (!temTela(id)) { console.warn('[mundo] tela não registrada:', id); return Promise.resolve(undefined); }
+  return (dlg()?.abrirTela ?? abrirTelaR)(id, args);
+}
 
 /* ------------------------------ batalha ------------------------------ */
 export interface PedidoBatalha { tipo: 'selvagem' | 'treinador' | 'lendario'; inimigos: CriaturaInst[]; treinador?: TreinadorDef; arena: string; clima?: ClimaId; dupla?: boolean; semFuga?: boolean; semCaptura?: boolean; tutorial?: boolean; musica?: string; /** criatura errante: tenta fugir no primeiro turno */ errante?: boolean }
