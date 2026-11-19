@@ -125,6 +125,6 @@ const zona: ZonaDef = {
     { x: 46, y: 38, item: 'concha-rara', oculto: true, flag: 'item:A4:46,38' },
     { x: 55, y: 3, item: 'rapadura', oculto: true, flag: 'item:A4:55,3' },
   ],
-  gatilhos: [{ x: 29, y: 35, w: 2, h: 3, script: 'rival-3', se: 'flag:usina-ok&!flag:rival-3' }],
+  gatilhos: [{ x: 29, y: 35, w: 3, h: 4, script: 'rival-3', se: 'flag:usina-ok&!flag:rival-3' }],
 };
 export default zona;

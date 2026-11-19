@@ -23,7 +23,7 @@ export const TREINADORES_GINASIO_03: TreinadorDef[] = [
    * envenena com Leite de Cururu e bate em Mata com Cuspe Ácido; o Caranguejim leva Bola de Barro para os tipos Trovão;
    * o Poraquim (Rio/Trovão) paralisa com Choque de Poraquê e vence os outros Rio. O ás é a Botorosa de nível 22, que
    * se recupera com Água de Cacimba e bate com Jato de Igarapé e Rabanada.
-   * Cura: 2 Garrafadas (uma para o Poraquim, outra para a Botorosa, que ainda segura um Pequi contra paralisia).
+   * Cura: 2 Garrafadas definidas (no Aventureiro o motor só libera itens de cura a partir do 8º ginásio); a Botorosa segura um Pequi contra paralisia.
    */
   { id: 'lider-03', classe: 'Líder', nome: 'Marujo Netuno Silva', sprite: 'lider-03', ia: 'lider', premio: 2200, insignia: 3, musica: 'batalha-lider', flag: 'ginasio-03-vencido',
     itens: ['garrafada', 'garrafada'],

@@ -71,9 +71,9 @@ const zona: ZonaDef = {
   habitats: [
     {
       metodo: 'grama', taxa: 0.1,
-      manha: [{ e: 10, nv: [6, 8], peso: 25 }, { e: 15, nv: [6, 8], peso: 25 }, { e: 41, nv: [7, 9], peso: 15 }, { e: 33, nv: [7, 9], peso: 15 }, { e: 81, nv: [7, 9], peso: 12 }, { e: 47, nv: [8, 9], peso: 8 }],
-      dia: [{ e: 10, nv: [6, 8], peso: 25 }, { e: 15, nv: [6, 8], peso: 22 }, { e: 41, nv: [7, 9], peso: 22 }, { e: 33, nv: [7, 9], peso: 14 }, { e: 81, nv: [7, 9], peso: 12 }, { e: 47, nv: [8, 10], peso: 5 }],
-      noite: [{ e: 20, nv: [6, 9], peso: 55 }, { e: 33, nv: [7, 9], peso: 25 }, { e: 81, nv: [7, 9], peso: 20 }],
+      manha: [{ e: 10, nv: [8, 10], peso: 25 }, { e: 15, nv: [8, 10], peso: 25 }, { e: 41, nv: [9, 11], peso: 15 }, { e: 33, nv: [9, 11], peso: 15 }, { e: 81, nv: [9, 11], peso: 12 }, { e: 47, nv: [10, 11], peso: 8 }],
+      dia: [{ e: 10, nv: [8, 10], peso: 25 }, { e: 15, nv: [8, 10], peso: 22 }, { e: 41, nv: [9, 11], peso: 22 }, { e: 33, nv: [9, 11], peso: 14 }, { e: 81, nv: [9, 11], peso: 12 }, { e: 47, nv: [10, 12], peso: 5 }],
+      noite: [{ e: 20, nv: [8, 11], peso: 55 }, { e: 33, nv: [9, 11], peso: 25 }, { e: 81, nv: [9, 11], peso: 20 }],
       camadas: [
         { apos: 5, dia: [{ e: 10, nv: [20, 23], peso: 20 }, { e: 16, nv: [20, 22], peso: 15 }, { e: 41, nv: [21, 24], peso: 25 }, { e: 33, nv: [21, 24], peso: 15 }, { e: 81, nv: [21, 24], peso: 15 }, { e: 47, nv: [22, 25], peso: 10 }], noite: [{ e: 20, nv: [20, 23], peso: 45 }, { e: 21, nv: [24, 26], peso: 15 }, { e: 33, nv: [21, 24], peso: 20 }, { e: 81, nv: [21, 24], peso: 20 }] },
         { apos: 10, dia: [{ e: 11, nv: [34, 37], peso: 25 }, { e: 42, nv: [34, 38], peso: 25 }, { e: 34, nv: [34, 38], peso: 20 }, { e: 82, nv: [35, 38], peso: 15 }, { e: 47, nv: [33, 36], peso: 15 }], noite: [{ e: 21, nv: [34, 38], peso: 45 }, { e: 34, nv: [34, 38], peso: 30 }, { e: 82, nv: [35, 38], peso: 25 }] },
@@ -81,8 +81,8 @@ const zona: ZonaDef = {
     },
     {
       metodo: 'arvore',
-      dia: [{ e: 149, nv: [7, 9], peso: 65 }, { e: 27, nv: [7, 9], peso: 35 }],
-      noite: [{ e: 20, nv: [7, 9], peso: 100 }],
+      dia: [{ e: 149, nv: [9, 11], peso: 65 }, { e: 27, nv: [9, 11], peso: 35 }],
+      noite: [{ e: 20, nv: [9, 11], peso: 100 }],
       camadas: [{ apos: 5, dia: [{ e: 149, nv: [21, 24], peso: 60 }, { e: 27, nv: [21, 25], peso: 40 }], noite: [{ e: 20, nv: [21, 24], peso: 100 }] }],
     },
     { metodo: 'agua', taxa: 0.08, todos: [{ e: 37, nv: [22, 26], peso: 60 }, { e: 57, nv: [22, 26], peso: 40 }] },

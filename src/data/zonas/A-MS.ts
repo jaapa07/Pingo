@@ -91,8 +91,8 @@ const zona: ZonaDef = {
   habitats: [
     {
       metodo: 'grama', taxa: 0.12,
-      dia: [{ e: 13, nv: [8, 10], peso: 30 }, { e: 15, nv: [8, 10], peso: 30 }, { e: 95, nv: [9, 11], peso: 30 }, { e: 157, nv: [10, 12], peso: 8 }, { e: 90, nv: [11, 12], peso: 2 }],
-      noite: [{ e: 43, nv: [9, 11], peso: 34 }, { e: 95, nv: [9, 11], peso: 22 }, { e: 59, nv: [9, 11], peso: 18 }, { e: 13, nv: [8, 10], peso: 12 }, { e: 17, nv: [10, 12], peso: 7 }, { e: 157, nv: [10, 12], peso: 5 }, { e: 90, nv: [11, 12], peso: 2 }],
+      dia: [{ e: 13, nv: [10, 12], peso: 30 }, { e: 15, nv: [10, 12], peso: 30 }, { e: 95, nv: [11, 13], peso: 30 }, { e: 157, nv: [12, 14], peso: 8 }, { e: 90, nv: [13, 14], peso: 2 }],
+      noite: [{ e: 43, nv: [11, 13], peso: 34 }, { e: 95, nv: [11, 13], peso: 22 }, { e: 59, nv: [11, 13], peso: 18 }, { e: 13, nv: [10, 12], peso: 12 }, { e: 17, nv: [12, 14], peso: 7 }, { e: 157, nv: [12, 14], peso: 5 }, { e: 90, nv: [13, 14], peso: 2 }],
       camadas: [
         { apos: 5, dia: [{ e: 13, nv: [22, 25], peso: 25 }, { e: 16, nv: [22, 24], peso: 20 }, { e: 95, nv: [23, 26], peso: 30 }, { e: 157, nv: [24, 27], peso: 15 }, { e: 90, nv: [25, 28], peso: 10 }], noite: [{ e: 43, nv: [23, 26], peso: 30 }, { e: 59, nv: [23, 26], peso: 25 }, { e: 95, nv: [23, 26], peso: 20 }, { e: 17, nv: [24, 27], peso: 15 }, { e: 90, nv: [25, 28], peso: 10 }] },
         { apos: 10, dia: [{ e: 14, nv: [35, 38], peso: 25 }, { e: 96, nv: [35, 38], peso: 30 }, { e: 157, nv: [34, 37], peso: 20 }, { e: 158, nv: [36, 39], peso: 10 }, { e: 90, nv: [36, 39], peso: 15 }], noite: [{ e: 44, nv: [35, 38], peso: 30 }, { e: 60, nv: [35, 38], peso: 25 }, { e: 96, nv: [35, 38], peso: 20 }, { e: 17, nv: [35, 38], peso: 15 }, { e: 90, nv: [36, 39], peso: 10 }] },
@@ -100,8 +100,8 @@ const zona: ZonaDef = {
     },
     {
       metodo: 'arvore',
-      dia: [{ e: 22, nv: [9, 11], peso: 45 }, { e: 16, nv: [8, 10], peso: 18 }, { e: 49, nv: [9, 11], peso: 15 }, { e: 63, nv: [10, 12], peso: 15 }, { e: 61, nv: [10, 12], peso: 7 }],
-      noite: [{ e: 63, nv: [10, 12], peso: 45 }, { e: 16, nv: [8, 10], peso: 45 }, { e: 171, nv: [11, 13], peso: 10 }],
+      dia: [{ e: 22, nv: [11, 13], peso: 45 }, { e: 16, nv: [10, 12], peso: 18 }, { e: 49, nv: [11, 13], peso: 15 }, { e: 63, nv: [12, 14], peso: 15 }, { e: 61, nv: [12, 14], peso: 7 }],
+      noite: [{ e: 63, nv: [12, 14], peso: 45 }, { e: 16, nv: [10, 12], peso: 45 }, { e: 171, nv: [13, 15], peso: 10 }],
       camadas: [{ apos: 5, dia: [{ e: 22, nv: [23, 25], peso: 35 }, { e: 16, nv: [22, 24], peso: 15 }, { e: 49, nv: [23, 26], peso: 20 }, { e: 63, nv: [23, 26], peso: 20 }, { e: 61, nv: [24, 27], peso: 10 }], noite: [{ e: 63, nv: [23, 26], peso: 45 }, { e: 16, nv: [22, 24], peso: 35 }, { e: 171, nv: [24, 27], peso: 20 }] }],
     },
     { metodo: 'agua', taxa: 0.08, todos: [{ e: 37, nv: [22, 26], peso: 60 }, { e: 57, nv: [22, 26], peso: 40 }] },

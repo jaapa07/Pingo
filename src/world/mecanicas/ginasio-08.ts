@@ -1,5 +1,5 @@
 /**
- * Ginásio 4 (Mata, B1) — labirinto de cipós que cresce a cada passo.
+ * Ginásio 8 (Mata, A10) — labirinto de cipós que cresce a cada passo.
  * Cada cipó tem uma raiz, uma rota (tiles em ordem) e um atraso em passos. A cada passo do jogador, o cipó que já
  * "acordou" avança um tile pela rota (não cresce sobre gente). Os vasos de extrato (`C`) fazem todos murcharem
  * e zeram a contagem; o Facão (com criatura de Mata, Inseto ou Ginga) corta um cipó, que recomeça da raiz.
@@ -13,7 +13,7 @@ import { nomeCriatura } from '../deps';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, DX, DY, cena, falar, avisar, sfx, quadros, livre } from './_pecas';
 
-const ZONA = 'B1-ginasio';
+const ZONA = 'A10-ginasio';
 interface Cipo { tiles: [number, number][]; atraso: number; nasc: number; n: number }
 const PLANTA: { de: [number, number]; rota: string; atraso: number }[] = [
   { de: [1, 14], rota: 'llllllllllllll', atraso: 0 }, // salão sul: corre pela fila 14 até a portinhola
@@ -24,7 +24,7 @@ const PLANTA: { de: [number, number]; rota: string; atraso: number }[] = [
 const enf = new Enfeites();
 let cipos: Cipo[] = [], passos = 0;
 
-const vencido = () => flag('ginasio-04-vencido');
+const vencido = () => flag('ginasio-08-vencido');
 const cipoEm = (x: number, y: number) => cipos.find((c) => c.tiles.slice(0, c.n).some(([a, b]) => a === x && b === y));
 function murchar(c: Cipo, i: number) {
   for (let k = 0; k < c.n; k++) { const [x, y] = c.tiles[k]; M.zv.bloquear(x, y, false); enf.tirar(`c${i}-${k}`); }

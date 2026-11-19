@@ -78,14 +78,14 @@ const zona: ZonaDef = {
   habitats: [
     {
       metodo: 'grama', taxa: 0.1,
-      dia: [{ e: 57, nv: [14, 16], peso: 30 }, { e: 107, nv: [14, 16], peso: 28 }, { e: 155, nv: [14, 17], peso: 27 }, { e: 18, nv: [15, 17], peso: 15 }],
-      noite: [{ e: 24, nv: [14, 16], peso: 32 }, { e: 28, nv: [14, 17], peso: 30 }, { e: 57, nv: [14, 16], peso: 20 }, { e: 155, nv: [14, 17], peso: 10 }, { e: 18, nv: [15, 17], peso: 8 }],
+      dia: [{ e: 57, nv: [15, 17], peso: 30 }, { e: 107, nv: [15, 17], peso: 28 }, { e: 155, nv: [15, 18], peso: 27 }, { e: 18, nv: [16, 18], peso: 15 }],
+      noite: [{ e: 24, nv: [15, 17], peso: 32 }, { e: 28, nv: [15, 18], peso: 30 }, { e: 57, nv: [15, 17], peso: 20 }, { e: 155, nv: [15, 18], peso: 10 }, { e: 18, nv: [16, 18], peso: 8 }],
       camadas: [
         { apos: 6, dia: [{ e: 57, nv: [26, 29], peso: 28 }, { e: 107, nv: [26, 29], peso: 26 }, { e: 155, nv: [26, 30], peso: 24 }, { e: 18, nv: [26, 29], peso: 14 }, { e: 19, nv: [28, 31], peso: 8 }], noite: [{ e: 24, nv: [26, 28], peso: 25 }, { e: 25, nv: [27, 30], peso: 15 }, { e: 28, nv: [26, 29], peso: 25 }, { e: 29, nv: [28, 31], peso: 10 }, { e: 57, nv: [26, 29], peso: 25 }] },
         { apos: 11, dia: [{ e: 58, nv: [38, 41], peso: 30 }, { e: 108, nv: [38, 41], peso: 28 }, { e: 155, nv: [36, 39], peso: 22 }, { e: 19, nv: [38, 41], peso: 20 }], noite: [{ e: 25, nv: [38, 41], peso: 35 }, { e: 29, nv: [38, 41], peso: 35 }, { e: 58, nv: [38, 41], peso: 30 }] },
       ],
     },
-    { metodo: 'arvore', dia: [{ e: 155, nv: [15, 17], peso: 60 }, { e: 18, nv: [15, 17], peso: 40 }], noite: [{ e: 28, nv: [15, 17], peso: 100 }] },
+    { metodo: 'arvore', dia: [{ e: 155, nv: [16, 18], peso: 60 }, { e: 18, nv: [16, 18], peso: 40 }], noite: [{ e: 28, nv: [16, 18], peso: 100 }] },
     { metodo: 'agua', taxa: 0.08, todos: [{ e: 37, nv: [22, 26], peso: 50 }, { e: 57, nv: [22, 26], peso: 30 }, { e: 24, nv: [22, 26], peso: 20 }] },
     { metodo: 'pesca-velha', todos: [{ e: 37, nv: [10, 14], peso: 100 }] },
     { metodo: 'pesca-boa', todos: [{ e: 37, nv: [18, 23], peso: 85 }, { e: 24, nv: [18, 22], peso: 15 }] },

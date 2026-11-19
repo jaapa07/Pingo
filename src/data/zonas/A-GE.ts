@@ -76,8 +76,8 @@ const zona: ZonaDef = {
   habitats: [
     {
       metodo: 'caverna', taxa: 0.1,
-      todos: [{ e: 30, nv: [15, 17], peso: 55 }, { e: 167, nv: [15, 18], peso: 45 }],
-      noite: [{ e: 30, nv: [15, 17], peso: 45 }, { e: 167, nv: [15, 18], peso: 35 }, { e: 147, nv: [16, 18], peso: 20 }],
+      todos: [{ e: 30, nv: [16, 18], peso: 55 }, { e: 167, nv: [16, 19], peso: 45 }],
+      noite: [{ e: 30, nv: [16, 18], peso: 45 }, { e: 167, nv: [16, 19], peso: 35 }, { e: 147, nv: [17, 19], peso: 20 }],
       camadas: [
         { apos: 6, todos: [{ e: 30, nv: [26, 29], peso: 45 }, { e: 167, nv: [26, 30], peso: 40 }, { e: 31, nv: [28, 31], peso: 15 }], noite: [{ e: 30, nv: [26, 29], peso: 35 }, { e: 167, nv: [26, 30], peso: 30 }, { e: 147, nv: [27, 30], peso: 25 }, { e: 31, nv: [28, 31], peso: 10 }] },
         { apos: 11, todos: [{ e: 31, nv: [38, 42], peso: 45 }, { e: 168, nv: [38, 42], peso: 40 }, { e: 167, nv: [36, 39], peso: 15 }], noite: [{ e: 31, nv: [38, 42], peso: 35 }, { e: 168, nv: [38, 42], peso: 30 }, { e: 147, nv: [37, 40], peso: 20 }, { e: 148, nv: [39, 42], peso: 15 }] },

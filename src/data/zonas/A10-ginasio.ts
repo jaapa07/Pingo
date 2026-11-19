@@ -1,8 +1,8 @@
 import type { ZonaDef } from '../../core/tipos';
 
 /**
- * Ginásio da Mata (nº 4, Vila Buriti) — estufa da raizeira Dona Buriti. Tema g04.
- * Quebra-cabeça (src/world/mecanicas/ginasio-04.ts): labirinto de sebes (`b`) em que quatro cipós crescem um tile
+ * Ginásio da Mata (nº 8, Vila Buriti) — estufa da raizeira Dona Buriti. Tema g04.
+ * Quebra-cabeça (src/world/mecanicas/ginasio-08.ts): labirinto de sebes (`b`) em que quatro cipós crescem um tile
  * a cada passo do jogador, fechando corredores. Borrifar o extrato de um vaso (`C`) faz todos murcharem e a
  * contagem recomeçar; com o Facão dá para cortar um cipó de cada vez.
  * Solução: atravesse o salão sul sem enrolar (o cipó corre pela fila de cima), borrife o vaso ao lado da
@@ -13,7 +13,7 @@ import type { ZonaDef } from '../../core/tipos';
  * Verificado por busca em (posição, passos desde o vaso): sem os vasos 2 e 3 não há solução.
  */
 const zona: ZonaDef = {
-  id: 'B1-ginasio', nome: 'Ginásio de Vila Buriti', mapa: 'B', tipo: 'ginasio', tileset: 'ginasio', musica: 'ginasio', arena: 'ginasio-04', passo: 4,
+  id: 'A10-ginasio', nome: 'Ginásio de Vila Buriti', mapa: 'A', tipo: 'ginasio', tileset: 'ginasio', musica: 'ginasio', arena: 'ginasio-04', passo: 8,
   mapaChars: [
     '###################',
     '#...b....,........#',
@@ -41,14 +41,14 @@ const zona: ZonaDef = {
     { o: 'gin-estatua', x: 10, y: 17, texto: ['Os vasos guardam extrato de raiz amarga. Borrifou, todos os cipós murcham e começam de novo.', 'Cada cipó acorda depois de um certo número de passos. O do corredor norte fecha a subida no 16º passo; o da fila do meio fecha a saída no 10º.'] },
     { o: 'gin-pedestal', x: 9, y: 2 },
   ],
-  warps: [{ x: 8, y: 18, para: { zona: 'B1', x: 31, y: 8, dir: 's' }, tipo: 'porta' }],
+  warps: [{ x: 8, y: 18, para: { zona: 'A10', x: 20, y: 10, dir: 's' }, tipo: 'porta' }],
   npcs: [
-    { id: 'g04-1', sprite: 'cl-mateira', x: 12, y: 17, dir: 'n', treinador: 'g04-1', visao: 3 },
-    { id: 'g04-2', sprite: 'cl-biologa', x: 17, y: 8, dir: 'o', treinador: 'g04-2', visao: 4 },
-    { id: 'g04-3', sprite: 'cl-crianca-f', x: 1, y: 8, dir: 'l', treinador: 'g04-3', visao: 2 },
-    { id: 'g04-4', sprite: 'cl-escoteira', x: 17, y: 6, dir: 'o', treinador: 'g04-4', visao: 2 },
-    { id: 'g04-5', sprite: 'cl-mateira', x: 5, y: 1, dir: 's', treinador: 'g04-5', visao: 1 },
-    { id: 'lider', sprite: 'lider-04', x: 9, y: 1, dir: 's', script: 'ginasio-04-lider' },
+    { id: 'g08-1', sprite: 'cl-mateira', x: 12, y: 17, dir: 'n', treinador: 'g08-1', visao: 3 },
+    { id: 'g08-2', sprite: 'cl-biologa', x: 17, y: 8, dir: 'o', treinador: 'g08-2', visao: 4 },
+    { id: 'g08-3', sprite: 'cl-crianca-f', x: 1, y: 8, dir: 'l', treinador: 'g08-3', visao: 2 },
+    { id: 'g08-4', sprite: 'cl-escoteira', x: 17, y: 6, dir: 'o', treinador: 'g08-4', visao: 2 },
+    { id: 'g08-5', sprite: 'cl-mateira', x: 5, y: 1, dir: 's', treinador: 'g08-5', visao: 1 },
+    { id: 'lider', sprite: 'lider-04', x: 9, y: 1, dir: 's', script: 'ginasio-08-lider' },
   ],
   pouso: [8, 17],
 };

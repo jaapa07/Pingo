@@ -13,7 +13,7 @@ export const EVENTOS_GINASIO_02: EventoDef[] = [
         ['batalha', 'lider-02'],
         ['flag', 'venceu:lider-02'],
         ['musica', 'ginasio'],
-        ['falar', LIA, 'Incrível! Nem a minha Bruxaluz conseguiu enrolar você. A Insígnia Casulo é sua!'],
+        ['falar', LIA, 'Incrível! Nem a minha Pintinhas conseguiu enrolar você. A Insígnia Casulo é sua!'],
         ['insignia', 2],
         ['falar', null, '{JOGADOR} recebeu a Insígnia Casulo!'],
         ['falar', LIA, 'Leve também o Amuleto do Facão. Com uma criatura de Mata, Inseto ou Ginga na equipe, cipó grosso deixa de ser parede.'],

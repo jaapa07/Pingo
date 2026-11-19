@@ -19,7 +19,7 @@ export const TREINADORES_GINASIO_01: TreinadorDef[] = [
    * Estratégia: abre com o Quero-querinho jogando areia para baixar a precisão de quem vem de Pedra; a Garcinha
    * (Vento/Rio) responde a Pedra e Brasa com Esguicho; o Andorim (Vento/Pedra) segura Geada e Trovão com Estilingue.
    * O ás é a Ararinha de nível 12, que bate com Lufada (mesmo tipo) e assusta com Assobio Agudo antes do golpe forte.
-   * Cura: 1 Chá de Erva-Cidreira, guardado para a Ararinha, que ainda segura um Caju.
+   * Cura: 1 Chá de Erva-Cidreira definido (o motor só libera itens a partir do 8º ginásio no Aventureiro); a Ararinha segura um Caju.
    */
   { id: 'lider-01', classe: 'Líder', nome: 'Mestre Gaivota', sprite: 'lider-01', ia: 'lider', premio: 1200, insignia: 1, musica: 'batalha-lider', flag: 'ginasio-01-vencido',
     itens: ['cha-cidreira'],

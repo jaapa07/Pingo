@@ -18,9 +18,9 @@ export const TREINADORES_GINASIO_02: TreinadorDef[] = [
    * LÍDER — Lia Teia (Inseto). Fraquezas do Inseto: Brasa, Vento e Pedra.
    * Estratégia: a Caranguejeirinha (Inseto/Veneno) abre com Teia Pegajosa para tirar a velocidade do desafiante e
    * envenena com Espinho Peçonhento; o Vagalumim (Inseto/Trovão) derruba as aves com Choquinho; o Cupinzim
-   * (Inseto/Pedra) apaga Brasa e Vento com Pedrada. O ás é a Bruxaluz (Inseto/Encanto) de nível 17: põe para dormir com
-   * Pólen Dorminhoco pela vantagem de velocidade ganha com a teia e bate com Piscadela e Lufada.
-   * Cura: 1 Garrafada para a Bruxaluz, que segura um Cupuaçu contra sono.
+   * (Inseto/Pedra) apaga Brasa e Vento com Pedrada. O ás é a Pintinhas (Inseto/Encanto) de nível 17, que não evolui: amolece o
+   * ataque do adversário com Cafuné e bate com Estrela-Guia e Ferroada (estágio final como a Bruxaluz só cabe do nível 36 em diante).
+   * Cura: 1 Garrafada definida (o motor só libera itens a partir do 8º ginásio no Aventureiro); a Pintinhas segura um Cupuaçu contra sono.
    */
   { id: 'lider-02', classe: 'Líder', nome: 'Lia Teia', sprite: 'lider-02', ia: 'lider', premio: 1700, insignia: 2, musica: 'batalha-lider', flag: 'ginasio-02-vencido',
     itens: ['garrafada'],
@@ -28,7 +28,7 @@ export const TREINADORES_GINASIO_02: TreinadorDef[] = [
       { e: 147, nv: 15, golpes: ['teia-pegajosa', 'espinho-peconhento', 'formigueiro', 'cara-feia'] },
       { e: 28, nv: 15, golpes: ['choquinho', 'ferroada', 'luz-de-lamparina', 'encontrao'] },
       { e: 163, nv: 16, golpes: ['pedrada', 'mordida-de-sauva', 'casulo', 'cara-feia'] },
-      { e: 17, nv: 17, golpes: ['polen-dorminhoco', 'piscadela', 'ferroada', 'lufada'], item: 'cupuacu' },
+      { e: 27, nv: 17, golpes: ['estrela-guia', 'ferroada', 'cafune', 'piscadela'], item: 'cupuacu' },
     ],
     desafio: 'Passei três anos morando nesta copa para entender uma única aranha. Vamos ver quanto tempo você leva para entender a minha equipe!',
     derrota: 'Você desfez a minha teia fio por fio. Que beleza de se ver!', depois: 'Toda teia começa com um fio só. Continue tecendo a sua.' },
