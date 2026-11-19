@@ -31,7 +31,7 @@ function murchar(c: Cipo, i: number) {
   c.n = 0; c.nasc = passos;
 }
 function crescer() {
-  if (vencido()) return;
+  if (vencido()) { cipos.forEach((c, i) => { if (c.n) murchar(c, i); }); return; }
   let cresceu = false;
   cipos.forEach((c, i) => {
     if (c.n >= c.tiles.length || c.n >= passos - c.nasc - c.atraso) return;

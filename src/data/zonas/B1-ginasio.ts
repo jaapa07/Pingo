@@ -16,7 +16,7 @@ const zona: ZonaDef = {
   id: 'B1-ginasio', nome: 'Ginásio de Vila Buriti', mapa: 'B', tipo: 'ginasio', tileset: 'ginasio', musica: 'ginasio', arena: 'ginasio-04', passo: 4,
   mapaChars: [
     '###################',
-    '#..b.....,........#',
+    '#...b....,........#',
     '#.................#',
     '#.Cbbbbbbbbbbbbbbb#',
     '#.....b.....b.....#',
@@ -47,7 +47,7 @@ const zona: ZonaDef = {
     { id: 'g04-2', sprite: 'cl-biologa', x: 17, y: 8, dir: 'o', treinador: 'g04-2', visao: 4 },
     { id: 'g04-3', sprite: 'cl-crianca-f', x: 1, y: 8, dir: 'l', treinador: 'g04-3', visao: 2 },
     { id: 'g04-4', sprite: 'cl-escoteira', x: 17, y: 6, dir: 'o', treinador: 'g04-4', visao: 2 },
-    { id: 'g04-5', sprite: 'cl-mateira', x: 6, y: 2, dir: 'o', treinador: 'g04-5', visao: 3 },
+    { id: 'g04-5', sprite: 'cl-mateira', x: 5, y: 1, dir: 's', treinador: 'g04-5', visao: 1 },
     { id: 'lider', sprite: 'lider-04', x: 9, y: 1, dir: 's', script: 'ginasio-04-lider' },
   ],
   pouso: [8, 17],

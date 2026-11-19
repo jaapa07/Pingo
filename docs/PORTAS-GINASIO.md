@@ -5,3 +5,5 @@ Uma linha por cidade: `<cidade>: x, y` (o ginásio devolve o jogador para este t
 A2: 21, 8
 A3: 25, 7
 A4: 13, 17
+B1: 31, 8
+A5: 34, 17
