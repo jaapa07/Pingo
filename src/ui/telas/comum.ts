@@ -129,14 +129,14 @@ export class Esperas {
  */
 export function escolherEm(titulo: string, itens: ItemLista[], o: { descricao?(i: number): string; inicial?: number; vazio?: string; fundo?: string } = {}): Promise<number> {
   return new Promise((resolver) => {
-    const el = elTela('ui', 'janela-escolha', o.fundo ?? 'veu');
+    const el = elTela('ui', 'janela-escolha', o.fundo ?? 'fundo-roxo');
     placaTitulo(el, titulo, 2, 1, 186);
     const painel = moldura('madeira', 186, 146, 2, 17), info = moldura('tinta', 128, 146, 190, 17); el.append(painel, info);
     const d = texto('', { cor: 'creme', largura: 116 }); info.append(em(d, 6, 6));
     const pintar = (i: number) => escrever(d, itens.length ? (o.descricao?.(i) ?? '') : (o.vazio ?? ''));
     const fim = (i: number) => { retirar(tela); resolver(i); };
     const lista = new Lista({ itens, moldura: null, largura: 170, visiveis: 10, inicial: o.inicial ?? 0, aoMover: pintar, aoEscolher: (i) => fim(i), aoCancelar: () => fim(-1) });
-    painel.append(em(lista.el, 8, 10)); pintar(lista.indice);
+    painel.append(em(lista.el, 8, 10)); pintar(lista.indice); faixaDica(el)('A: escolher   B: voltar');
     const tela: Tela = { el, sobreposta: true, atualizar(dt) { if (!itens.length) { if (input.apertou('a') || input.apertou('b')) { input.consumir('a'); input.consumir('b'); fim(-1); } return; } lista.atualizar(dt); } };
     telas.empilhar(tela);
   });

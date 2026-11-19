@@ -41,7 +41,7 @@ export const T = {
     soltar: 'Soltar {N} de volta na natureza? Não dá para desfazer.', soltou: '{N} voltou para {H}. Boa sorte, amiga!', soltarOvo: 'Um ovo não pode ser solto.',
   },
   pc: {
-    titulo: 'PC DO QUARTO', guardar: 'Guardar item', retirar: 'Retirar item', descartar: 'Descartar item', cartas: 'Cartas', decoracao: 'Decoração do Quarto', desligar: 'Desligar',
+    titulo: 'PC DO QUARTO', guardar: 'Guardar item', retirar: 'Retirar item', descartar: 'Descartar item', cartas: 'Cartas', decoracao: 'Decoração', desligar: 'Desligar',
     nadaGuardar: 'Não há nada na mochila que caiba no PC.', nadaPc: 'O PC não guarda nenhum item.', semCartas: 'Nenhuma carta por enquanto.',
     dica: 'A: escolher   B: voltar', aplicado: 'Pronto! O quarto vai ficar uma beleza.', naoTem: 'Você ainda não tem esta peça.',
   },

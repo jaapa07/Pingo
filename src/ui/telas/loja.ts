@@ -6,7 +6,7 @@ import { jogo, qtdItem, darItem, tirarItem } from '../../core/estado';
 import { ITENS, item as itemDef, temItemDef, type ItemInfo } from '../../data/itens';
 import type { Tela } from '../telas';
 import { elTela, fechar } from '../base';
-import { texto, escrever, em } from '../fonte';
+import { texto, escrever, em, medir } from '../fonte';
 import { moldura, som, iconeBolso } from '../kit';
 import { Lista } from '../componentes/lista';
 import { informar } from '../componentes/confirmacao';
@@ -37,7 +37,7 @@ export function criarLoja(args: ArgsLoja = {}): Tela {
       lista = new Lista({ itens: [T.loja.comprar, T.loja.vender, T.loja.sair], moldura: null, largura: 170, tamanho: 12, inicial: indice, aoMover: pintarInfo, aoCancelar: () => fechar(tela), aoEscolher: (i) => { if (i === 2) { fechar(tela); return; } modo = i === 0 ? 'comprar' : 'vender'; montar(0); } });
     } else {
       atuais = modo === 'comprar' ? venda : vendaveis();
-      lista = new Lista({ itens: atuais.map((i) => { const v = modo === 'comprar' ? patacas(i.preco) : `×${qtdItem(i.id)}  ${patacas(precoVenda(i))}`; return { rotulo: caber(i.nome, 96), valor: v, desabilitado: modo === 'comprar' && i.preco > s.jogador.dinheiro }; }), moldura: null, largura: 170, visiveis: 10, inicial: Math.min(indice, Math.max(0, atuais.length - 1)), aoMover: pintarInfo, aoCancelar: () => { modo = 'menu'; montar(0); }, aoEscolher: (i) => void negociar(atuais[i]) });
+      lista = new Lista({ itens: atuais.map((i) => { const v = modo === 'comprar' ? patacas(i.preco) : `×${qtdItem(i.id)}  ${patacas(precoVenda(i))}`; return { rotulo: caber(i.nome, 148 - medir(v) - 8), valor: v, desabilitado: modo === 'comprar' && i.preco > s.jogador.dinheiro }; }), moldura: null, largura: 170, visiveis: 10, inicial: Math.min(indice, Math.max(0, atuais.length - 1)), aoMover: pintarInfo, aoCancelar: () => { modo = 'menu'; montar(0); }, aoEscolher: (i) => void negociar(atuais[i]) });
       if (!atuais.length) { const v = texto(modo === 'vender' ? T.loja.nadaVender : 'A prateleira está vazia hoje.', { cor: 'marrom', largura: 160, alinhar: 'centro' }); v.classList.add('vazio'); painel.append(em(v, 13, 60)); }
     }
     painel.append(em(lista.el, 8, 10)); pintarInfo(); dica(T.loja.dica);

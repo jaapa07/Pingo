@@ -71,7 +71,7 @@ export function criarViveiro(): Tela {
       const e = esp(c.especie);
       figInfo = figura(c.especie, 100, 52, { misterio: !!c.ovo }); infoDyn.append(em(figInfo.el, 0, 0));
       rotulo(infoDyn, `${nomeCri(c)} ${sexoTxt(c)}`, 0, 54, 'creme');
-      if (!c.ovo) { rotulo(infoDyn, `Nv${c.nivel}  ${c.vida}/${vidaMaxDe(c)}`, 0, 65, 'amarelo'); e?.tipos.forEach((t, i) => infoDyn.append(em(iconeTipo(t), 74 + i * 13, 63))); const st = c.vida <= 0 ? 'desmaiado' : c.status; if (st) infoDyn.append(em(iconeStatus(st, true), 62, 65)); }
+      if (!c.ovo) { rotulo(infoDyn, `Nv${c.nivel}  ${c.vida}/${vidaMaxDe(c)}`, 0, 65, 'amarelo'); e?.tipos.forEach((t, i) => infoDyn.append(em(iconeTipo(t), 74 + i * 13, 63))); const st = c.vida <= 0 ? 'desmaiado' : c.status; if (st) infoDyn.append(em(iconeStatus(st, true), 90, 54)); }
     } else rotulo(infoDyn, cur.area === 'topo' ? `${nomeCaixa(cx)}: ${s.viveiro[cx].filter(Boolean).length} de 30 vagas ocupadas.` : 'Vaga livre.', 0, 30, 'cinza', { largura: 100, alinhar: 'centro' });
     dica(pego ? T.viveiro.dicaMover : cur.area === 'topo' ? T.viveiro.dicaTopo : T.viveiro.dica);
   }

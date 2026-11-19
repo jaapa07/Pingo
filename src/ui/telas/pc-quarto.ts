@@ -55,7 +55,7 @@ export function criarPcQuarto(): Tela {
   const ops = [T.pc.guardar, T.pc.retirar, T.pc.descartar, T.pc.cartas, T.pc.decoracao, T.pc.desligar];
   const AJUDA = ['Passe para o PC o que pesa na mochila. Itens-chave ficam com você.', 'Pegue de volta o que está guardado.', 'Apague de vez itens guardados no PC.', 'Recados da família, dos amigos e de quem mais escrever.', 'Tapete, pôster, planta, pelúcia, console e cama: o quarto fica com a sua cara.', 'Desliga o computador.'];
   let ocupado = false, viva = true;
-  const lista = new Lista({ itens: ops, x: 2, y: 18, largura: 150, tamanho: 12, aoMover: pintar, aoEscolher: (i) => void escolher(i), aoCancelar: () => fechar(tela) });
+  const lista = new Lista({ itens: ops, x: 2, y: 18, largura: 150, tamanho: 12, visiveis: 6, aoMover: pintar, aoEscolher: (i) => void escolher(i), aoCancelar: () => fechar(tela) });
   el.append(lista.el);
   faixaDica(el)(T.pc.dica);
   const cartas = () => CARTAS.filter((c) => cond(c.se));
