@@ -21908,8 +21908,44 @@ void main() {
     }
   };
 
+  // tools/models/criaturas/lote-001-012.ts
+  var modelos = [];
+
+  // tools/models/criaturas/lote-013-036.ts
+  var modelos2 = [];
+
+  // tools/models/criaturas/lote-037-060.ts
+  var modelos3 = [];
+
+  // tools/models/criaturas/lote-061-084.ts
+  var modelos4 = [];
+
+  // tools/models/criaturas/lote-085-108.ts
+  var modelos5 = [];
+
+  // tools/models/criaturas/lote-109-132.ts
+  var modelos6 = [];
+
+  // tools/models/criaturas/lote-133-156.ts
+  var modelos7 = [];
+
+  // tools/models/criaturas/lote-157-180.ts
+  var modelos8 = [];
+
+  // tools/models/pessoas/index.ts
+  var modelos9 = [];
+
+  // tools/models/objetos/index.ts
+  var modelos10 = [];
+
+  // tools/models/fx/index.ts
+  var modelos11 = [];
+
+  // tools/scenery/index.ts
+  var modelos12 = [];
+
   // tools/models/index.ts
-  var MODELOS = [tamanduiTeste];
+  var MODELOS = [tamanduiTeste, ...modelos, ...modelos2, ...modelos3, ...modelos4, ...modelos5, ...modelos6, ...modelos7, ...modelos8, ...modelos9, ...modelos10, ...modelos11, ...modelos12];
 
   // tools/render/client.ts
   var S = 8;

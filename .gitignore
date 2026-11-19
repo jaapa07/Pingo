@@ -1,0 +1,7 @@
+node_modules/
+dist/
+tools/.cache/
+verify-shots/
+*.zip
+plataformas/ios/ios/App/Pods/
+plataformas/desktop/out/
