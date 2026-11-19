@@ -4,7 +4,8 @@ import { grade, obj, entrada, saidas, gente, duelista, item, placa } from './_a1
 /**
  * A4 · Porto Sereia — cidade portuária: Estação do Trem Serra-Sol (norte), Ginásio do Rio (Capitã Marola), mercado de
  * peixe, praia e o cais sul, de onde se rema para a Baía Azul. A boca da Gruta do Eco fica no paredão do noroeste.
- * A estrada leste (Usina Velha) só abre com a Insígnia da Concha; a estação, com o Passe do Trem.
+ * A estrada leste (Usina Velha) só abre com a Insígnia da Concha. O cais sul pede o Remo (insígnia 3) E a luz da Usina
+ * (`usina-ok`, que religa o guincho das canoas). A estação reabre com a luz, mas o trem é só para Campeões da Liga.
  * Para depois: o platô da trepadeira (Escalar), a ilhota do sudoeste (Remo) e a toca de pedra do cipó (Facão).
  */
 const g = grade('A4', [
@@ -61,7 +62,7 @@ const g = grade('A4', [
 });
 const placas = [
   placa(g, 'a', 'GRUTA DO ECO\nAtalho para a Trilha dos Cipós e Bosque Alto. Grite "oi" lá dentro: ela responde com juros.'),
-  placa(g, 'q', 'ESTAÇÃO DE PORTO SEREIA\nTrem Serra-Sol — Porto Sereia ↔ Vila Buriti.\nSó embarca quem tem o Passe do Trem.'),
+  placa(g, 'q', 'ESTAÇÃO DE PORTO SEREIA\nTrem Serra-Sol — Porto Sereia ↔ Sertão das Névoas.\nLinha da serra: embarque só para Campeões da Liga dos Guardiões.'),
   placa(g, 'm', 'POSTO GUARDIÃO\nCura grátis. Sal grosso na porta por conta da casa.'),
   placa(g, 'n', 'VENDA DO PORTO\nCuias, remédios e novidade que chega de trem.'),
   placa(g, 'u', 'GINÁSIO DE PORTO SEREIA\nLíder: Capitã Marola — "quem não sabe remar, que aprenda a nadar".'),
@@ -98,11 +99,11 @@ const zona: ZonaDef = {
     entrada(g, 'H', 'casa-f', 'A4-casa-3', 5, 7),
     entrada(g, 'Y', 'ginasio', 'A4-ginasio', 8, 17),
     ...saidas(g, 'E', 'A-R4', 1, 12, 'l'),
-    { x: dx, y: dy, para: { zona: 'A-BA', x: 4, y: 20, dir: 'l' }, tipo: 'borda', requer: 'amuleto:remo', recusa: 'O cais termina aqui. Para lá é só Baía Azul — e sem o Amuleto do Remo ninguém sai do porto.' },
+    { x: dx, y: dy, para: { zona: 'A-BA', x: 4, y: 20, dir: 'l' }, tipo: 'borda', requer: 'amuleto:remo&flag:usina-ok', recusa: 'O cais termina aqui. Para lá é só Baía Azul.\fSem o Amuleto do Remo ninguém sai do porto — e, enquanto a Usina Velha não devolver a luz, o guincho das canoas não desce nem com reza.' },
   ],
   portoes: [
     { x: qx, y: qy, requer: 'insignia:3', sprite: 'npc-homem-2', fala: 'Estrada da Usina interditada! Tem fio solto cuspindo faísca por todo lado.\fA Capitã Marola mandou liberar só para quem tiver a Insígnia da Concha. Ordem é ordem, e a dela vem com apito.' },
-    { x: 44, y: 8, requer: 'item:passe-trem', sprite: 'npc-maquinista', fala: 'Estação fechada, freguesia. Sem energia da Usina Velha, a Maria-Fumaça não apita nem para espantar galinha.\fQuando a luz voltar, apareça com o Passe do Trem.' },
+    { x: 44, y: 8, requer: 'flag:usina-ok', sprite: 'npc-maquinista', fala: 'Estação fechada, freguesia. Sem energia da Usina Velha, a Maria-Fumaça não apita nem para espantar galinha.\fQuando a luz voltar eu abro a porta. Embarcar já é outra conversa: a linha da serra é só para Campeões da Liga.' },
   ],
   npcs: [
     gente(g, '1', 'a4-moca', 'npc-mulher-2', 'Moça do Guarda-sol', { mov: 'olhar', fala: ['Criatura do tipo Rio apaga Brasa, afoga Terra e desgasta Pedra.', 'Para enfrentar a Capitã Marola, leve Mata ou Trovão. E um casaco: lá dentro respinga.'] }),
@@ -111,7 +112,7 @@ const zona: ZonaDef = {
     gente(g, '4', 'a4-senhora', 'npc-idosa', 'Dona Maroca', { fala: ['No meu tempo, a luz da Usina Velha nunca piscava.', 'Agora pisca tanto que meu rádio aprendeu código Morse sozinho.'] }),
     gente(g, '5', 'a4-surfista', 'cl-surfista', 'Surfista Lua', { mov: 'vagar', fala: ['A Baía Azul liga tudo: a Cidade Coral, a Ilha do Farol, a Praia das Tartarugas.', 'Mas sem Remo e sem parceira do tipo Rio, você só liga para a sua mãe vir buscar.'] }),
     gente(g, '9', 'a4-marinheiro', 'npc-marinheiro', 'Marinheiro Bartô', { dir: 'o', script: 'm-carta-barto' }),
-    { id: 'taina', sprite: 'taina', x: 46, y: 9, dir: 'o', se: 'item:passe-trem&!flag:rival-3', script: 'rival-3' },
+    { id: 'taina', sprite: 'taina', x: 31, y: 36, dir: 'o', se: 'flag:usina-ok&!flag:rival-3', script: 'rival-3' },
     duelista(g, '6', 'A4-1', 'cl-surfista', 'l', 4),
     duelista(g, '7', 'A4-2', 'cl-rendeira', 'o', 4, { mov: 'olhar' }),
     duelista(g, '8', 'A4-3', 'cl-pescador', 'l', 2),
@@ -124,6 +125,6 @@ const zona: ZonaDef = {
     { x: 46, y: 38, item: 'concha-rara', oculto: true, flag: 'item:A4:46,38' },
     { x: 55, y: 3, item: 'rapadura', oculto: true, flag: 'item:A4:55,3' },
   ],
-  gatilhos: [{ x: 41, y: 8, w: 6, h: 2, script: 'rival-3', se: 'item:passe-trem&!flag:rival-3' }],
+  gatilhos: [{ x: 29, y: 35, w: 2, h: 3, script: 'rival-3', se: 'flag:usina-ok&!flag:rival-3' }],
 };
 export default zona;

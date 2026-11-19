@@ -126,8 +126,8 @@ export const EVENTOS_A1: EventoDef[] = [
           se('!flag:ovo-no-aroeira', [f('prof', 'O Seu Aroeira mora em Vila Caiçara, ao norte, no fim da Trilha do Ipê. É a casa grande com cheiro de café.\fCuidado com o Ovo Pintado: nada de correr com ele debaixo do braço!')], [
             se('!flag:ovo-entregue', [['chamar', 'rival-1']], [
               se('!insignia:1', [f('prof', 'O Diário de Campo anota sozinho cada criatura que você encontra. As que você captura ganham ficha completa.\fO primeiro ginásio fica em Vila Caiçara. O Mestre Gaivota é do tipo Vento: Trovão e Pedra dão trabalho para ele.')], [
-                se('!insignia:3', [f('prof', 'Insígnia no estojo e criatura bem cuidada: você está me saindo melhor que a encomenda!\fDepois de Bosque Alto, siga até Porto Sereia. De lá sai o Trem Serra-Sol para o sertão — quando tem luz.')], [
-                  f('prof', 'Três insígnias! Eu sabia que aquele atraso todo era só para tomar impulso.\fDo outro lado da serra trabalha a Drª Buriti, minha colega. Se cruzar com ela em Vila Buriti, diga que eu mandei um abraço e que ela me deve um livro.'),
+                se('!insignia:3', [f('prof', 'Insígnia no estojo e criatura bem cuidada: você está me saindo melhor que a encomenda!\fDepois de Bosque Alto, siga até Porto Sereia. A Capitã Marola, de lá, é quem entrega o Amuleto do Remo: a Costa do Sol continua pelo mar.')], [
+                  f('prof', 'Três insígnias! Eu sabia que aquele atraso todo era só para tomar impulso.\fSão oito insígnias na Costa do Sol, e depois delas a Liga dos Guardiões, no Platô. Só Campeão da Liga embarca para o Sertão das Névoas.\fA última insígnia fica em Vila Buriti, onde trabalha a Drª Buriti, minha colega. Diga que eu mandei um abraço e que ela me deve um livro.'),
                 ]),
               ]),
             ]),
@@ -319,14 +319,14 @@ export const EVENTOS_A1: EventoDef[] = [
       se('!flag:rival-3', [
         ['emote', 'taina', '!'],
         ['virar', 'taina', 'o'],
-        f('taina', '{JOGADOR}! Então foi VOCÊ que religou a Usina Velha? Eu cheguei lá e só achei capanga chorando e tomada funcionando.'),
+        f('taina', '{JOGADOR}! Então foi VOCÊ que religou a Usina Velha? Eu cheguei lá e só achei capanga chorando e tomada funcionando.\fO guincho do cais voltou a descer canoa por sua causa. Antes de você zarpar, eu quero a minha revanche!'),
         ...batalhaRival(3),
       ]),
       se('flag:rival-3', [
         se('flag:batalha-perdida', [f(TAINA, 'Essa foi minha! Anota aí no seu Diário: "Tainá, espécie rara, invicta hoje".')]),
-        f(TAINA, 'O tal Cartel Ferrugem não é brincadeira, {JOGADOR}. Ouvi um capanga dizer que a carga da Usina ia de trem para o sertão.\fEu vou no próximo vagão. Se você for também, senta longe: eu gosto da janela.'),
+        f(TAINA, 'O tal Cartel Ferrugem não é brincadeira, {JOGADOR}. Ouvi um capanga dizer que a carga da Usina saiu de barco, para os lados da Ilha do Farol.\fEu vou remando atrás. Se você for também, não cola na minha canoa: eu gosto de espaço.'),
         ['dar', 'garrafada', 2],
-        f(TAINA, 'Isso é para as suas criaturas, não para você. Elas lutaram bem. Você só apertou os botões.\fTe vejo em Vila Buriti. Ou não. Tanto faz!'),
+        f(TAINA, 'Isso é para as suas criaturas, não para você. Elas lutaram bem. Você só apertou os botões.\fTe vejo na Cidade Coral. Ou no Farol. Ou não. Tanto faz!'),
         ['esconder', 'taina'],
       ]),
     ],

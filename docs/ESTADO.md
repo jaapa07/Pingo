@@ -63,3 +63,4 @@ Depois: menus restantes (retomar a9958821a48a7151e), então item 5 da fila em di
 ## RETOMADO (3 agentes em Fable) — reestrutura da Liga em andamento
 Contrato no topo de docs/HISTORIA.md. Rodando: ginásios (a988838ea973147d3: renumerar Mata→A10/08, Remo no 3, construir 4 Encanto, 5 Trovão, 6 Assombro, 7 Ferro) · time A1 (a6cfad1dc2bbf68c4: ajustar A4/Usina/trem, A-R7, A10, A-LG, Liga) · time A2 (a0af74a086c6bdfc5: A-R4…A8 no caminho novo, depois áreas de retorno).
 Depois: zonas B1/B2 (+níveis novos do mapa B), ginásios 9–16 (9 Terra tem projeto), lotes de criaturas (171–180 + 181/182), regras 10A, verificador, plataformas, integração/QA.
+- 4º agente (autorizado pelo usuário): lendários 171–180, 163–170 e extras 181/182 com dados (a240dd789bbb726ba). Regra atual: até 4 agentes em Fable.

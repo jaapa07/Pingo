@@ -79,7 +79,7 @@ const TRILHA_DOS_CIPOS: TreinadorDef[] = [
   t('A-R3-2', 'Escoteira', 'Trepadeira', 'cl-escoteira', [{ e: 57, nv: 15 }, { e: 18, nv: 15 }], 600,
     'Cortou o cipó? Então já pode apanhar de escoteira!', 'Quem apanhou fui eu.', 'O cipó cresce de novo quando você sai da trilha. A mata não guarda rancor, mas guarda cipó.', { ia: 'treinador' }),
   t('A-R3-3', 'Bióloga', 'Drª Samambaia', 'cl-biologa', [{ e: 155, nv: 16 }, { e: 18, nv: 16 }, { e: 28, nv: 16 }], 704,
-    'Três insetos, três tipos diferentes. Vamos ver se você estudou.', 'Nota dez. Para você.', 'Lá no alto tem um platô com trepadeira. Só escala quem tem o Amuleto certo — e ele mora longe, no sertão.', { ia: 'treinador' }),
+    'Três insetos, três tipos diferentes. Vamos ver se você estudou.', 'Nota dez. Para você.', 'Lá no alto tem um platô com trepadeira. Só escala quem tem o Amuleto certo — e esse mora longe, do outro lado da serra.', { ia: 'treinador' }),
   t('A-R3-4', 'Capoeirista', 'Rabo-de-Arraia', 'cl-capoeirista', [{ e: 63, nv: 16 }, { e: 157, nv: 16 }], 640,
     'Estrada estreita, jogo apertado. Ginga, que eu quero ver!', 'Você gingou melhor.', 'Com o Amuleto da Força dá para empurrar pedregulho. Tem um cofre de pedra aqui perto esperando por isso.', { ia: 'treinador' }),
   t('A-R3-5', 'Mateira', 'Embira', 'cl-mateira', [{ e: 24, nv: 15 }, { e: 57, nv: 16 }, { e: 95, nv: 16 }], 640,
@@ -95,7 +95,7 @@ const TRILHA_DOS_CIPOS: TreinadorDef[] = [
 /* ------------------------------ A-GE · Gruta do Eco ------------------------------ */
 const GRUTA_DO_ECO: TreinadorDef[] = [
   t('A-GE-1', 'Garimpeiro', 'Zé Bateia', 'cl-garimpeiro', [{ e: 167, nv: 18 }, { e: 33, nv: 18 }, { e: 30, nv: 18 }], 864,
-    'A saída é minha. Achei primeiro. Quer passar? Garimpa uma vitória!', 'Só achei cascalho.', 'Porto Sereia tem trem, tem cais e tem ginásio do tipo Rio. Leve Mata ou Trovão.', { ia: 'treinador' }),
+    'A saída é minha. Achei primeiro. Quer passar? Garimpa uma vitória!', 'Só achei cascalho.', 'Porto Sereia tem cais, tem feira e tem ginásio do tipo Rio. Leve Mata ou Trovão.', { ia: 'treinador' }),
   t('A-GE-2', 'Montanhista', 'Dona Estalactite', 'cl-montanhista', [{ e: 167, nv: 17 }, { e: 167, nv: 17 }, { e: 81, nv: 18 }], 792,
     'Ite ou ita? Stalactite desce, estalagmite sobe. E você, cai!', 'Caí eu. De cima.', 'O corredor ali ao norte leva ao salão da saída. O resto é passeio — com morcego.', { ia: 'treinador' }),
   t('A-GE-3', 'Pipeiro', 'Eco-Eco', 'cl-crianca-m', [{ e: 30, nv: 16 }, { e: 30, nv: 16 }], 320,
@@ -117,7 +117,7 @@ const PORTO_SEREIA: TreinadorDef[] = [
   t('A4-2', 'Rendeira', 'Dona Bilro', 'cl-rendeira', [{ e: 17, nv: 18 }, { e: 27, nv: 18 }, { e: 149, nv: 19 }], 836,
     'Renda se faz com paciência. Batalha, também. Senta que lá vem ponto!', 'Embolou a linha.', 'Criatura do tipo Encanto não teme Lenda nenhuma. Guarde isso para o fim da sua viagem.', { ia: 'treinador' }),
   t('A4-3', 'Pescador', 'Seu Robalinho', 'cl-pescador', [{ e: 37, nv: 18 }, { e: 39, nv: 19 }, { e: 37, nv: 19 }], 760,
-    'Este cais é do Clube do Anzol. Para pisar aqui, tem que fisgar uma vitória!', 'A linha arrebentou.', 'Do fim do cais para lá é a Baía Azul. Quando tiver o Remo, o mar é seu.', { ia: 'treinador' }),
+    'Este cais é do Clube do Anzol. Para pisar aqui, tem que fisgar uma vitória!', 'A linha arrebentou.', 'Do fim do cais para lá é a Baía Azul. Com o Remo da Capitã e a luz da Usina no guincho, o mar é seu.', { ia: 'treinador' }),
 ];
 
 /* ------------------------------ Rival Tainá (encontros 1 a 3) ------------------------------ */
@@ -127,13 +127,13 @@ const PORTO_SEREIA: TreinadorDef[] = [
  */
 const rival = (n: 1 | 2 | 3, dela: 'brasa' | 'rio' | 'mata', equipe: MembroEquipe[], premio: number, desafio: string, derrota: string): TreinadorDef => ({
   id: `rival-${n}-${dela}`, classe: 'Rival', nome: 'Tainá', sprite: 'taina', equipe, ia: n === 1 ? 'novato' : 'treinador', premio,
-  desafio, derrota, musica: 'batalha-rival', flag: `rival-${n}`, ...(n === 3 ? { itens: ['garrafada'] } : {}),
+  desafio, derrota, musica: 'batalha-rival', flag: `rival-${n}`, // sem itens de cura: no Aventureiro só se usa cura em batalha do 8º ginásio em diante (spec 7A)
 });
 const D1 = 'Então a professora te deu uma criatura também? Ótimo. A minha já nasceu ganhando de você!';
 const P1 = 'Quê?! Isso foi… foi o sol no meu olho! Da próxima vez não tem desculpa. Nem para você!';
 const D2 = 'Insígnia do Casulo? Eu peguei a minha ontem, de olho fechado. Vem, {JOGADOR}: vou mostrar o que é equipe de verdade!';
 const P2 = 'De novo?! Tá, tá bom. Você treina… direitinho. Mas eu treino MAIS, ouviu?';
-const D3 = 'Passe do Trem na mão, é? Antes de ir ver o sertão, {JOGADOR}, você vai ver estrela. Minha equipe evoluiu — e eu também!';
+const D3 = 'Remo no cinto e luz no cais, é? Antes de ver o mar aberto, {JOGADOR}, você vai ver estrela. Minha equipe evoluiu — e eu também!';
 const P3 = 'Hunf. Perdi limpo, eu sei. …Aqueles capangas na Usina eram covardes com as criaturas. Você fez certo. Não conta para ninguém que eu disse isso.';
 const RIVAL: TreinadorDef[] = [
   rival(1, 'brasa', [{ e: 4, nv: 5 }], 300, D1, P1),
