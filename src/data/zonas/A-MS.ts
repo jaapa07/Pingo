@@ -36,7 +36,7 @@ const g = grade('A-MS', [
   'TT.TTTTTTT|TT:TTT..T.|""""::""""|..T.~~~~~~|~..5..TTTT',
   'TT.TT...TT|TT:TTT.TT.|""""..""""|..T.~~;n~~|~~....TTTT',
   'TT.TT.T.TT|TT:TTT.TT.|."""""""".|..T.~~~~~~|~~~...TTTT',
-  'TT.TT.T.TT|TT::::.TT.|..""6""...|.TT.~~~~~~|~~...TTTTT',
+  'TT.TT.T.TT|TT::::....|..""6""...|.TT.~~~~~~|~~...TTTTT',
   'TT.TT.T.TT|TTTTTTTTT.|...""""...|..T..~~~~~|~....TTTTT',
   'TT.TT.T..T|TTTTTTTT..|....,.....|..TT......|...TTTTTTT',
   'TT.TT.TT.T|TTt.......|...7......|.TTTT.TTTT|TT.TTTTTTT',
