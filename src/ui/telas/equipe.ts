@@ -51,12 +51,12 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
       const max = vidaMaxDe(c);
       escrever(nome, `${nomeCri(c)} ${sexoTxt(c)}`); escrever(nv, c.ovo ? '' : `Nv${c.nivel}`); nv.style.left = 150 - parseInt(nv.style.width) + 'px';
       st.replaceChildren();
-      if (c.ovo) { escrever(num, c.ovo > 1200 ? 'Vai demorar a chocar.' : c.ovo > 300 ? 'Mexe de vez em quando.' : 'Está quase chocando!'); return; }
+      if (c.ovo) { escrever(num, c.ovo > 1200 ? 'Vai demorar…' : c.ovo > 300 ? 'Às vezes se mexe.' : 'Quase chocando!'); return; }
       vida!.definir(c.vida / max, animar);
       if (!animar) escrever(num, `${c.vida}/${max}`);
       const s = c.vida <= 0 ? 'desmaiado' : c.status; if (s) st.append(iconeStatus(s));
       const n = nota(c); escrever(obs, n || (c.item && temItemDef(c.item) ? `{c:agua}${itemDef(c.item).nome.slice(0, 11)}{/c}` : ''));
-      obs.style.left = 150 - parseInt(obs.style.width) + 'px';
+      obs.style.left = 142 - parseInt(obs.style.width) + 'px';
     };
     pintar();
     return { el: cx, ic, vida, pintar };

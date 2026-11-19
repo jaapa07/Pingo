@@ -16,6 +16,10 @@ import { telas, criarTela, temTela } from '../telas';
 import { texto, escrever, em, type CorTexto } from '../fonte';
 import { moldura, CORES_TIPO, iconeTipo, NOME_STATUS, som } from '../kit';
 import { perguntar, informar } from '../componentes/confirmacao';
+import { Lista, type ItemLista } from '../componentes/lista';
+import { input } from '../../core/input';
+import { elTela, retirar } from '../base';
+import type { Tela } from '../telas';
 
 /* ------------------------------ espécies (tolerante a lotes ainda não entregues) ------------------------------ */
 const MAPA_ESP = new Map<number, EspecieDef>(ESPECIES.map((e) => [e.num, e]));
@@ -25,7 +29,7 @@ export const nomeEsp = (n: number) => esp(n)?.nome ?? `Criatura nº ${n}`;
 export const nomeCri = (c: CriaturaInst) => (c.ovo ? 'Ovo' : c.apelido || nomeEsp(c.especie));
 export const tiposDe = (n: number): TipoId[] => esp(n)?.tipos ?? ['comum'];
 export const vidaMaxDe = (c: CriaturaInst) => (esp(c.especie) ? atributos(c).vida : Math.max(1, c.vida));
-export const sexoTxt = (c: CriaturaInst) => (c.sexo === 'F' ? '{c:rosa}♀{/c}' : c.sexo === 'M' ? '{c:azul}♂{/c}' : '');
+export const sexoTxt = (c: CriaturaInst) => (c.ovo ? '' : c.sexo === 'F' ? '{c:rosa}♀{/c}' : c.sexo === 'M' ? '{c:azul}♂{/c}' : '');
 export const n3 = (n: number) => String(n).padStart(3, '0');
 export const patacas = (n: number) => String(Math.floor(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
@@ -117,6 +121,25 @@ export class Esperas {
   dormir(s: number): Promise<void> { return new Promise((r) => this.apos(s, r)); }
   tique(dt: number) { for (const e of [...this.fila]) { e.t -= dt; if (e.t <= 0) { this.fila.splice(this.fila.indexOf(e), 1); e.f(); } } }
   get vazia() { return !this.fila.length; }
+}
+
+/**
+ * Janela de escolha com descrição: lista à esquerda (madeira) e painel escuro à direita com o texto de `descricao(i)`.
+ * Devolve o índice escolhido ou −1 (B). Usada pelo PC do quarto, pela loja e pelo rádio.
+ */
+export function escolherEm(titulo: string, itens: ItemLista[], o: { descricao?(i: number): string; inicial?: number; vazio?: string; fundo?: string } = {}): Promise<number> {
+  return new Promise((resolver) => {
+    const el = elTela('ui', 'janela-escolha', o.fundo ?? 'veu');
+    placaTitulo(el, titulo, 2, 1, 186);
+    const painel = moldura('madeira', 186, 146, 2, 17), info = moldura('tinta', 128, 146, 190, 17); el.append(painel, info);
+    const d = texto('', { cor: 'creme', largura: 116 }); info.append(em(d, 6, 6));
+    const pintar = (i: number) => escrever(d, itens.length ? (o.descricao?.(i) ?? '') : (o.vazio ?? ''));
+    const fim = (i: number) => { retirar(tela); resolver(i); };
+    const lista = new Lista({ itens, moldura: null, largura: 170, visiveis: 10, inicial: o.inicial ?? 0, aoMover: pintar, aoEscolher: (i) => fim(i), aoCancelar: () => fim(-1) });
+    painel.append(em(lista.el, 8, 10)); pintar(lista.indice);
+    const tela: Tela = { el, sobreposta: true, atualizar(dt) { if (!itens.length) { if (input.apertou('a') || input.apertou('b')) { input.consumir('a'); input.consumir('b'); fim(-1); } return; } lista.atualizar(dt); } };
+    telas.empilhar(tela);
+  });
 }
 
 /* ------------------------------ uso de itens fora de batalha ------------------------------ */

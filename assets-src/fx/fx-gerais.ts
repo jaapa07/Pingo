@@ -121,7 +121,7 @@ export const FX_GERAIS: FxDef[] = [
   fx('clima-respingo', 8, 4, 3, 12, (q, i) => { const c = '#e8ffff'; if (i === 0) q.ret(3, 2, 2, 1, c); else { q.set(3 - i * 1.5, 3 - i, c); q.set(4 + i * 1.5, 3 - i, c); q.set(3.5, 2 - i, '#6fc7e8'); } }),
 
   /* ------------------------------ captura ------------------------------ */
-  ...Object.entries(CUIAS).map(([id, cores]) => fx('cuia-' + id.replace(/^cuia-?/, '') || 'cuia-', 16, 16, 8, 10, (q, i) => quadroCuia(q, i, cores))),
+  ...Object.entries(CUIAS).map(([id, cores]) => fx(id, 16, 16, 8, 10, (q, i) => quadroCuia(q, i, cores))),
   fx('cap-luz', 40, 40, 5, 14, (q, i) => { const r = [4, 10, 16, 18, 18][i]; if (i < 3) { q.disco(20, 20, r, R.ouro[3]); q.disco(20, 20, r * 0.7, R.ouro[4]); q.disco(20, 20, r * 0.4, BR); q.estrela(20, 20, r + 3, r * 0.4, 8, i * 0.3, R.ouro[4]); } else { q.anel(20, 20, r, r, i === 3 ? 2 : 1, R.ouro[3]); for (let k = 0; k < 8; k++) { const a = (k * TAU) / 8; q.cintilar(20 + Math.cos(a) * (r - 4), 20 + Math.sin(a) * (r - 4), i === 3 ? 2 : 1, BR); } } q.contorno(R.ouro[1]); }),
   fx('cap-estrelas', 40, 20, 5, 10, (q, i) => { const p = R.ouro; for (let k = -1; k <= 1; k++) { const x = 20 + k * (4 + i * 3), y = 16 - [4, 10, 13, 12, 8][i] + Math.abs(k) * 3, r = [2, 4, 5, 4, 2][i]; q.estrela(x, y, r, r * 0.42, 5, -Math.PI / 2 + k * 0.3, p[3]); q.set(x, y, BR); } q.contorno(p[0]); }),
   fx('cap-folhas', 44, 44, 5, 12, (q, i) => { const p = R.mata, rnd = semente(900); for (let k = 0; k < 8; k++) { const a = (k * TAU) / 8 + rnd() * 0.4, d = 4 + i * 4 + rnd() * 2, ang = a + i * 0.9; q.elipseRot(22 + Math.cos(a) * d, 22 + Math.sin(a) * d + i * i * 0.3, 3.2, 1.5, ang, k % 3 ? p[2] : p[3]); q.set(22 + Math.cos(a) * d, 22 + Math.sin(a) * d + i * i * 0.3, p[4]); } if (i < 2) q.cintilar(22, 22, 4 - i * 2, BR); q.contorno(p[0]); }),
@@ -148,4 +148,14 @@ export const FX_GERAIS: FxDef[] = [
   fx('ui-equipe', 14, 14, 1, 1, (q) => { const p = R.terra; q.elipse(7, 8.5, 5, 4, p[2]); q.elipse(5.5, 7.5, 2.4, 1.6, p[3]); q.ret(2, 5, 10, 2, R.ouro[2]); q.set(3, 5, R.ouro[4]); q.set(5, 6, R.ouro[1]); q.set(7, 5, R.ouro[4]); q.set(9, 6, R.ouro[1]); q.elipse(7, 3.5, 3.6, 1.6, R.ouro[1]); q.set(7, 1, R.brasa[2]); q.contorno(p[0]); }),
   fx('ui-fugir', 14, 14, 1, 1, (q) => { const p = R.vento; q.elipseRot(4, 9, 2.4, 1.6, -0.6, BR); q.elipseRot(10, 5, 2.4, 1.6, -0.6, BR); for (const [x, y] of [[2, 6], [4, 5], [6, 6], [8, 2], [10, 1], [12, 2]] as const) q.set(x, y, BR); q.linha(1, 12, 4, 12, p[3]); q.linha(7, 9, 10, 9, p[3]); q.contorno(p[0]); }),
   fx('ui-cuia-mini', 7, 7, 3, 1, (q, i) => { const c = [['#b0784a', '#e8c07a'], ['#4a4a5e', '#8a8aa0'], ['#3b2a35', '#3b2a35']][i]; if (i < 2) { q.elipse(3, 3.5, 2, 2, c[0]); q.ret(1, 2, 5, 1, c[1]); q.set(2, 4, c[1]); q.contorno('#1a1423'); } else q.anel(3, 3, 2, 2, 1, c[0]); }),
+  // vulto de reserva para criaturas cujo sprite ainda não foi gerado: bicho arredondado que respira (2 quadros) e a miniatura dele
+  fx('ui-vulto', 48, 48, 2, 2, (q, i) => {
+    const p: Rampa = ['#3b2a35', '#8a8aa0', '#c4c6d4', '#f0f4f8', '#ffffff'], dy = i;
+    q.elipse(24, 31 + dy, 15, 13 - dy, p[1]); q.elipse(23, 29 + dy, 13, 11 - dy, p[2]); q.elipse(20, 25 + dy, 7, 5, p[3]);
+    q.elipse(13, 16 + dy, 4, 6, p[2]); q.elipse(34, 16 + dy, 4, 6, p[1]); q.elipse(13, 16 + dy, 2, 3, p[3]);
+    q.elipse(15, 44, 4, 2, p[1]); q.elipse(33, 44, 4, 2, p[1]);
+    q.ret(28, 27 + dy, 2, 4, '#1a1423'); q.ret(35, 27 + dy, 2, 4, '#1a1423'); q.set(28, 27 + dy, BR); q.set(35, 27 + dy, BR);
+    q.contorno(p[0]);
+  }),
+  fx('ui-vulto-mini', 16, 16, 1, 1, (q) => { const p: Rampa = ['#3b2a35', '#8a8aa0', '#c4c6d4', '#f0f4f8', '#ffffff']; q.elipse(8, 10, 6, 5, p[1]); q.elipse(7.5, 9, 5, 4, p[2]); q.elipse(4, 4, 1.6, 2.4, p[2]); q.elipse(11, 4, 1.6, 2.4, p[1]); q.set(9, 9, '#1a1423'); q.set(12, 9, '#1a1423'); q.contorno(p[0]); }),
 ];

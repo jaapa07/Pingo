@@ -1,0 +1,25 @@
+/* Telas de menu (equipe, resumo, mochila, diário, viveiro, rádio, mapa-múndi, loja, foto…) e HUD do mapa. */
+.px { position: absolute; pointer-events: none; }
+.px > i { position: absolute; display: block; left: -1px; top: -1px; width: 1px; height: 1px; }
+.mosaico { position: absolute; left: 0; top: 0; }
+.mosaico > b { position: absolute; display: block; }
+.ic-cri, .fig-cri { overflow: hidden; pointer-events: none; }
+.silhueta { filter: brightness(0); }
+.fundo-trama { background: #2f6b3a linear-gradient(45deg, #2a6134 25%, transparent 25%, transparent 75%, #2a6134 75%) 0 0 / 8px 8px; }
+.fundo-papel-trama { background: #f6e6b8 linear-gradient(#e8c07a 0 1px, transparent 1px) 0 0 / 8px 12px; }
+.fundo-azulejo { background: #1f4f7a linear-gradient(45deg, #245a8a 25%, transparent 25%, transparent 75%, #245a8a 75%) 0 0 / 8px 8px; }
+.fundo-terra { background: #6b4226 linear-gradient(45deg, #5d3a22 25%, transparent 25%, transparent 75%, #5d3a22 75%) 0 0 / 8px 8px; }
+.fundo-roxo { background: #3b2a35 linear-gradient(45deg, #453040 25%, transparent 25%, transparent 75%, #453040 75%) 0 0 / 8px 8px; }
+.faixa-dica { z-index: 4; }
+.cartao-cri.movendo::after, .cel-viv.pega::after { content: ''; position: absolute; left: 1px; top: 1px; right: 1px; bottom: 1px; box-shadow: inset 0 0 0 1px #f9c22b; pointer-events: none; }
+.trilho-stat { background: #3b2a35; }
+.ench-stat { background: linear-gradient(to bottom, #f9c22b 0 1px, #f58a4b 1px 3px); }
+.linha-div { background: #c98f4e; }
+.confirmacao, .janela-qtd, .veu { background: linear-gradient(45deg, rgba(26, 20, 35, 0.55) 25%, transparent 25%, transparent 75%, rgba(26, 20, 35, 0.55) 75%) 0 0 / 2px 2px; }
+.abs { position: absolute; }
+.recorte { position: absolute; overflow: hidden; }
+.veludo { background: #a32638 linear-gradient(45deg, #8f2032 25%, transparent 25%, transparent 75%, #8f2032 75%) 0 0 / 4px 4px; box-shadow: inset 0 0 0 1px #1a1423, inset 2px 2px 0 0 #6b1826; }
+.cel-insignia { background: rgba(26, 20, 35, 0.25); }
+.brilho { background: #fff8e7; box-shadow: -1px 0 0 #fff8e7, 1px 0 0 #fff8e7, 0 -1px 0 #fff8e7, 0 1px 0 #fff8e7; animation: brilho 1.8s steps(1, end) infinite; pointer-events: none; }
+@keyframes brilho { 0% { visibility: hidden; } 70% { visibility: visible; } 85% { visibility: hidden; } }
+.papel-cartao { background: #f6e6b8 linear-gradient(#e8c07a 0 1px, transparent 1px) 0 3px / 8px 14px; box-shadow: inset 0 0 0 1px #c98f4e; }

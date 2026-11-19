@@ -1,0 +1,24 @@
+/** Registro das telas de menu e do HUD do mapa (importado pelo main.ts na inicialização). */
+import '../../styles/telas.css';
+import { registrarTela } from '../telas';
+import { criarEquipe } from './equipe';
+import { criarResumo } from './resumo';
+
+registrarTela('equipe', criarEquipe);
+registrarTela('resumo', criarResumo);
+import { criarMochila } from './mochila';
+import { criarMenu } from './menu';
+import { criarDiario } from './diario';
+registrarTela('mochila', criarMochila);
+registrarTela('menu', criarMenu);
+registrarTela('diario', criarDiario);
+import { criarViveiro } from './viveiro';
+import { criarInsignias } from './insignias';
+import { criarPerfil } from './perfil';
+import { criarLoja } from './loja';
+import { criarPcQuarto } from './pc-quarto';
+registrarTela('viveiro', criarViveiro);
+registrarTela('insignias', criarInsignias);
+registrarTela('perfil', criarPerfil);
+registrarTela('loja', criarLoja);
+registrarTela('pc-quarto', criarPcQuarto);

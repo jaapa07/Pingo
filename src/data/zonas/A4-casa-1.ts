@@ -1,0 +1,12 @@
+import { casaSimples } from './_a1-grade';
+
+/** Casa do Mestre Remendo, o veleiro que costura as velas dos saveiros da Baía Azul. */
+export default casaSimples({
+  id: 'A4-casa-1', nome: 'Casa do Mestre Remendo', tema: 'caicara', musica: 'cidade-frevo', arena: 'praia', passo: 3, volta: [10, 27], parede: 'rede-pesca',
+  estante: ['Rolos de lona, agulhas do tamanho de um dedo e um livro: "Nós de Marinheiro — volume 7 de 12".'],
+  bau: ['Uma vela dobrada com um remendo em forma de Botinho.'],
+  moradores: [
+    { id: 'a4-remendo', sprite: 'npc-idoso', nome: 'Mestre Remendo', fala: ['Canoa em Pindorama não tem motor nem vela: quem puxa é criatura do tipo Rio.', 'O Amuleto do Remo quem entrega é o líder de Vila Buriti, lá no sertão. De trem se chega.'] },
+    { id: 'a4-neta', sprite: 'cl-crianca-f', nome: 'Nina', mov: 'vagar', fala: ['O vô costura vela o dia todo e ronca a noite toda.', 'Eu durmo de algodão no ouvido. É tipo dormir numa nuvem surda.'] },
+  ],
+});

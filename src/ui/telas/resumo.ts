@@ -63,7 +63,7 @@ export function criarResumo(args: ArgsResumo = {}): Tela {
     if (k.ovo) { rotulo(corpo, T.resumo.ovo, 2, 4, 'tinta', { largura: 186 }); return; }
     rotulo(corpo, `Nº ${n3(k.especie)}  ${e?.nome ?? '???'}`, 2, 2, 'marrom');
     rotulo(corpo, `Treinador: {c:azul}${k.treinadorOriginal || jogo.save.jogador.nome}{/c}`, 2, 14);
-    rotulo(corpo, `Jeito: ${p ? `${p.nome}  {c:vermelho}+${NOME_STAT[p.mais]}{/c} {c:azul}−${NOME_STAT[p.menos]}{/c}` : 'Sereno'}`, 2, 26);
+    rotulo(corpo, `Jeito: ${p ? `${p.nome}  {c:vermelho}+${NOME_STAT[p.mais]}{/c} {c:azul}-${NOME_STAT[p.menos]}{/c}` : 'Sereno'}`, 2, 26);
     rotulo(corpo, `Encontro: ${nomeLocal(k.localCaptura)}${k.nivelCaptura ? `, Nv${k.nivelCaptura}` : ''}`, 2, 38);
     rotulo(corpo, `Item: ${k.item && temItemDef(k.item) ? `{c:agua}${itemDef(k.item).nome}{/c}` : 'nenhum'}`, 2, 50);
     const prox = k.nivel >= 100 || !e ? 0 : expParaNivel(e.crescimento, k.nivel + 1) - k.exp;
@@ -71,7 +71,7 @@ export function criarResumo(args: ArgsResumo = {}): Tela {
     if (e && k.nivel < 100) { const b = barra('exp', 186); const a0 = expParaNivel(e.crescimento, k.nivel), a1 = expParaNivel(e.crescimento, k.nivel + 1); b.definir(Math.max(0, Math.min(1, (k.exp - a0) / Math.max(1, a1 - a0)))); corpo.append(em(b.el, 2, 73)); }
     rotulo(corpo, `Amizade: ${coracoes(k.amizade)}`, 2, 82);
     rotulo(corpo, fraseAmizade(k.amizade), 2, 94, 'chumbo', { largura: 186 });
-    const bt = moldura('botao-foco', 80, 14); bt.append(em(texto('A: Fazer cafuné', { cor: 'tinta' }), 6, 3)); corpo.append(em(bt, 106, 116)); tocavel(bt, fazerCafune);
+    const bt = moldura('botao-foco', 94, 14); bt.append(em(texto('A: Fazer cafuné', { cor: 'tinta' }), 6, 3)); corpo.append(em(bt, 94, 116)); tocavel(bt, fazerCafune);
   }
   function paginaAtributos() {
     const k = c(), e = esp(k.especie);

@@ -155,3 +155,41 @@ export function venda(cidade: string, nomeCidade: string, volta: Ponto, vendedor
     ],
   };
 }
+/**
+ * Casa de morador (planta caiçara de sala e cozinha): dois moradores, estante, fogão, mesa e baú com textos próprios.
+ * Entrada em (5, 7). `parede` = objeto pendurado no meio da parede (quadro, rede de pesca, mapa…).
+ */
+export function casaSimples(o: {
+  id: string; nome: string; tema: string; musica: string; arena?: string; passo: number; volta: Ponto; parede?: string;
+  estante: string[]; tv?: string[]; bau: string[]; moradores: [Partial<NpcDef> & { id: string; sprite: string; nome: string }, (Partial<NpcDef> & { id: string; sprite: string; nome: string })?];
+}): ZonaDef {
+  const g = grade(o.id, [
+    '############',
+    '##W###K##N##',
+    '#EE..T..FF.#',
+    '#..........#',
+    '#.1...hmmh.#',
+    '#..........#',
+    '#B...aa..2.#',
+    '#....aa....#',
+    '#####DD#####',
+  ], { W: '#', K: '#', N: '#', E: '.', T: '.', F: '.', h: '.', m: '.', B: '.', a: ',', D: '+', '1': '.', '2': '.' });
+  const h = g.todos('h'), [m1, m2] = o.moradores;
+  const pessoa = (marca: string, m: Partial<NpcDef> & { id: string; sprite: string; nome: string }): NpcDef => { const [x, y] = g.p(marca); return { ...m, x, y } as NpcDef; };
+  return {
+    id: o.id, nome: o.nome, mapa: 'A', tipo: 'interior', tileset: 'casa', musica: o.musica, arena: o.arena ?? 'restinga', passo: o.passo,
+    mapaChars: g.mapa,
+    objetos: [
+      { o: 'tema', x: 0, y: 0, tema: o.tema },
+      obj(g, 'W', 'janela'), obj(g, 'K', o.parede ?? 'quadro'), obj(g, 'N', 'relogio'),
+      { o: 'estante', x: g.todos('E')[0][0], y: g.todos('E')[0][1], texto: o.estante },
+      o.tv ? obj(g, 'T', 'tv', { texto: o.tv }) : obj(g, 'T', 'filtro-barro', { texto: ['Água fresca do filtro de barro. Não tem geladeira que faça igual.'] }),
+      { o: 'fogao-lenha', x: g.todos('F')[0][0], y: g.todos('F')[0][1] },
+      { o: 'cadeira', x: h[0][0], y: h[0][1] }, { o: 'mesa', x: h[0][0] + 1, y: h[0][1] }, { o: 'cadeira', x: h[1][0], y: h[1][1] },
+      obj(g, 'B', 'bau', { texto: o.bau }),
+      { o: 'tapete-a', x: g.todos('a')[2][0], y: g.todos('a')[2][1] },
+    ],
+    warps: saidas(g, 'D', o.id.split('-')[0], o.volta[0], o.volta[1], 's', 'porta'),
+    npcs: [pessoa('1', m1), ...(m2 ? [pessoa('2', m2)] : [])],
+  };
+}
