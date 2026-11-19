@@ -102,7 +102,7 @@ const zona: ZonaDef = {
     duelista(g, '3', 'A-R1-3', 'cl-crianca-f', 'l', 5),
     duelista(g, '4', 'A-R1-4', 'cl-observadora', 'o', 4, { mov: 'olhar' }),
     duelista(g, '5', 'A-R1-5', 'cl-mateira', 'o', 3),
-    duelista(g, '6', 'A-R1-6', 'cl-pescador', 'o', 2),
+    duelista(g, '6', 'A-R1-6', 'cl-pescador', 'l', 3),
   ],
   itens: [
     item(g, 'a', 'A-R1', 'cha-cidreira'),

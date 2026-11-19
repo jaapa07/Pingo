@@ -54,7 +54,7 @@ export class CaixaStatus {
     const [base, escura] = CORES_TIPO[tipo];
     this.faixa.style.background = base; this.faixa.style.boxShadow = `inset 0 -1px 0 ${escura}`;
     const sexo = r.sexo === 'F' ? ' {c:rosa}♀{/c}' : r.sexo === 'M' ? ' {c:agua}♂{/c}' : '';
-    let nome = r.nome; while (medir(nome) > this.w - 52 && nome.length > 3) nome = nome.slice(0, -1);
+    let nome = r.nome; while (medir(nome) > this.w - 42 && nome.length > 3) nome = nome.slice(0, -1);
     escrever(this.nome, nome + sexo);
     this.cap.el.style.display = capturada && this.lado === 1 ? '' : 'none';
     this.cap.el.style.left = 6 + medir(nome + (r.sexo ? ' ♀' : '')) + 3 + 'px';

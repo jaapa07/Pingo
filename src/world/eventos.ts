@@ -55,14 +55,18 @@ const PADRAO: Record<string, FnComando> = {
     if (s.equipe.length < 6) s.equipe.push(c); else { const cx = s.viveiro.find((x) => x.includes(null)); if (cx) cx[cx.indexOf(null)] = c; }
     await falar('{JOGADOR} recebeu um ovo!\nEle vai chocar depois de uma boa caminhada.');
   },
-  batalha: async ([id]) => {
-    const t = treinador(String(id));
+  // ['batalha', id, { segue: true }] = duelo de história: perder não encerra o roteiro (marca `batalha-perdida` e a flag do treinador)
+  batalha: async ([id, o]) => {
+    const t = treinador(String(id)), segue = !!(o as { segue?: boolean } | undefined)?.segue;
     if (!t) { console.warn('[mundo] treinador desconhecido:', id); return; }
-    if (!(await desafiar(t, M.npcs.find((n) => n.treinador === t)))) throw new Encerrar();
+    const venceu = await desafiar(t, M.npcs.find((n) => n.treinador === t), segue ? { semDerrota: true } : {});
+    setFlag('batalha-perdida', !venceu);
+    if (!venceu && !segue) throw new Encerrar();
+    if (!venceu) setFlag(t.flag ?? 'venceu:' + t.id);
   },
   selvagem: async ([e, nv, o]) => {
-    const op = (o ?? {}) as { lendario?: boolean; semFuga?: boolean; semCaptura?: boolean };
-    const r = await lutar({ tipo: op.lendario ? 'lendario' : 'selvagem', inimigos: [criarCriatura(Number(e), Number(nv))], arena: M.zv.def.arena, clima: M.zv.def.clima, semFuga: op.semFuga, semCaptura: op.semCaptura });
+    const op = (o ?? {}) as { lendario?: boolean; semFuga?: boolean; semCaptura?: boolean; tutorial?: boolean };
+    const r = await lutar({ tipo: op.lendario ? 'lendario' : 'selvagem', inimigos: [criarCriatura(Number(e), Number(nv))], arena: M.zv.def.arena, clima: M.zv.def.clima, semFuga: op.semFuga, semCaptura: op.semCaptura, tutorial: op.tutorial });
     setFlag('ultima-batalha', r.resultado);
     if (r.resultado === 'derrota') throw new Encerrar();
   },

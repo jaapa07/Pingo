@@ -48,10 +48,10 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
   const caixas: CaixaStatus[][] = [[], []];
   for (const lado of [0, 1] as const) for (let pos = 0; pos < b.porLado; pos++) {
     const cx = new CaixaStatus(lado, dupla); caixas[lado][pos] = cx;
-    em(cx.el, lado === 0 ? 194 : 4, lado === 0 ? (dupla ? 70 + pos * 33 : 96) : 6 + pos * 29);
+    em(cx.el, lado === 0 ? 194 : 4, lado === 0 ? (dupla ? 68 + pos * 33 : 94) : 6 + pos * 29);
     hud.append(cx.el);
   }
-  const bolinhas = [new Bolinhas(314, dupla ? 60 : 86, true), new Bolinhas(6, 6 + b.porLado * 29 + 1, false)];
+  const bolinhas = [new Bolinhas(314, dupla ? 58 : 84, true), new Bolinhas(6, 6 + b.porLado * 29 + 1, false)];
   hud.append(bolinhas[0].el, bolinhas[1].el); bolinhas[0].el.style.visibility = bolinhas[1].el.style.visibility = 'hidden';
   const pintarBolinhas = () => {
     for (const lado of [0, 1] as const) {
@@ -335,6 +335,7 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
     }
     await rel.dormir(0.55);
     if (e.sucesso) {
+      if (pedido.tutorial) guiaDita = 'fim';
       som('cuia-sucesso'); bus.emit('jingle', 'captura');
       cena.fx('cap-estrelas', a.x, chao - 16); cena.fx('st-brilho', a.x - 12, chao - 6); cena.fx('st-brilho', a.x + 12, chao - 10);
       caixas[e.lado][e.pos].mostrar(false); emCampo[e.lado][e.pos] = null;
@@ -398,16 +399,29 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
     hud.style.visibility = 'hidden';
     return abrir<number>((f) => menuEquipe({ equipe: b.lados[0].equipe, titulo, emCampo: b.lados[0].ativos.filter((i) => i >= 0 && b.lados[0].equipe[i]?.vida > 0), pode, obrigatorio, aoEscolher: f }), el).then((i) => { hud.style.visibility = ''; return i; });
   };
+  /** modo tutorial (pedido.tutorial): guia de captura em dois passos — cansar com LUTAR, depois arremessar a cuia */
+  let guiaDita = '';
+  function faseTutorial(): 'lutar' | 'cuia' | null {
+    if (!pedido.tutorial || !b.podeCapturar()) return null;
+    const temCuia = Object.keys(b.lados[0].itens).some((id) => temItemDef(id) && defItem(id).uso?.cuia && b.lados[0].itens[id] > 0);
+    if (!temCuia) return null;
+    const alvo = b.ativosDe(1)[0], v = alvo && vis.get(b.criatura(alvo)!.uid);
+    return v && v.vida / v.vidaMax > 0.5 ? 'lutar' : 'cuia';
+  }
   async function escolherAcao(p: Pedido, podeVoltar: boolean, reservados: number[]): Promise<Acao | 'voltar'> {
     const c = b.criatura(p)!, nome = vis.get(c.uid)?.nome ?? '';
     for (;;) {
+      const guia = faseTutorial();
+      if (guia && guia !== guiaDita) { guiaDita = guia; await dizer(guia === 'lutar' ? 'Guia de captura, passo 1: escolha LUTAR e canse a criatura selvagem. Cansada, ela resiste menos à cuia.' : 'Passo 2: a criatura cansou! Abra a MOCHILA, vá ao bolso Cuias e arremesse uma cuia.', 4); }
       mostrar(`O que\n${nome} vai fazer?`); caixa.completar();
       const a = await abrir<string>((f) => { const m = menuAcao({ fugir: 'FUGIR', voltar: podeVoltar, aoEscolher: f }); em(m.el, 178, 135); return m; });
       if (a === 'voltar') return 'voltar';
+      if (guia === 'lutar' && a !== 'lutar') { som('ui-erro'); await dizer('Ainda não: primeiro use LUTAR para cansar a criatura.', 2); continue; }
+      if (guia === 'cuia' && a !== 'mochila') { som('ui-erro'); await dizer('Agora é a hora da cuia: abra a MOCHILA e escolha uma no bolso Cuias.', 2); continue; }
       if (a === 'lutar') {
         if (!b.golpesValidos(p).length) return { tipo: 'golpe', slot: -1 };
         caixa.el.style.visibility = 'hidden';
-        const slot = await abrir<number>((f) => { const m = menuGolpes({ c, eficacia: (id) => eficaciaConhecida(p, id), aoEscolher: f }); em(m.el, 4, 130); return m; });
+        const slot = await abrir<number>((f) => { const m = menuGolpes({ c, eficacia: (id) => eficaciaConhecida(p, id), aoEscolher: f }); em(m.el, 4, 135); return m; });
         caixa.el.style.visibility = '';
         if (slot < 0) continue;
         const adv = b.adversarios(p);
@@ -424,6 +438,7 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
         const id = await abrir<string | null>((f) => menuMochila({ mochila: b.lados[0].itens, podeCuia: !motivo, motivoCuia: motivo, aoEscolher: f }));
         if (!id || !temItemDef(id)) continue;
         const u = defItem(id).uso ?? {};
+        if (guia === 'cuia' && !u.cuia) { som('ui-erro'); await dizer('Esse não: escolha uma cuia no bolso Cuias.', 2); continue; }
         if (u.cuia) return { tipo: 'item', item: id };
         const alvo = await telaEquipe(`USAR ${defItem(id).nome.toUpperCase()}`, (i) => (b.itemServe(0, id, i) ? true : 'Não teria efeito.'));
         if (alvo < 0) continue;

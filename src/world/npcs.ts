@@ -87,11 +87,11 @@ export async function abordagem(n: NpcVivo) {
   j.virar(OPOSTO[a.dir]);
   await desafiar(n.treinador!, n);
 }
-export async function desafiar(t: TreinadorDef, n?: NpcVivo): Promise<boolean> {
+export async function desafiar(t: TreinadorDef, n?: NpcVivo, extra: { semDerrota?: boolean } = {}): Promise<boolean> {
   const quem = { nome: `${t.classe} ${t.nome}`, retrato: t.sprite };
   await falar(t.desafio, quem);
   const inimigos = t.equipe.map((m) => criarCriatura(m.e, m.nv, m.item ? { item: m.item } : undefined));
-  const r = await lutar({ tipo: 'treinador', inimigos, treinador: t, arena: M.zv.def.arena, clima: M.zv.def.clima, dupla: t.dupla, musica: t.musica });
+  const r = await lutar({ tipo: 'treinador', inimigos, treinador: t, arena: M.zv.def.arena, clima: M.zv.def.clima, dupla: t.dupla, musica: t.musica, ...extra });
   if (r.resultado !== 'vitoria') return false;
   setFlag(flagVitoria(t));
   if (t.insignia && !jogo.save.insignias.includes(t.insignia)) { jogo.save.insignias.push(t.insignia); bus.emit('insignia', t.insignia); }

@@ -26,18 +26,18 @@ const se = (c: string, entao: Comando[], senao?: Comando[]): Comando => (senao ?
 const f = (quem: unknown, texto: string): Comando => ['falar', quem, texto];
 /** a Tainá usa o inicial que vence o do jogador */
 const batalhaRival = (n: 1 | 2 | 3): Comando[] => [
-  se('flag:inicial-mata', [['batalha', `rival-${n}-brasa`]]),
-  se('flag:inicial-brasa', [['batalha', `rival-${n}-rio`]]),
-  se('flag:inicial-rio', [['batalha', `rival-${n}-mata`]]),
+  se('flag:inicial-mata', [['batalha', `rival-${n}-brasa`, { segue: true }]]),
+  se('flag:inicial-brasa', [['batalha', `rival-${n}-rio`, { segue: true }]]),
+  se('flag:inicial-rio', [['batalha', `rival-${n}-mata`, { segue: true }]]),
 ];
 /** apresentação e confirmação de uma das três cuias do laboratório */
-const cuia = (id: string, num: number, tipo: string, flagTipo: string, descricao: string): EventoDef => ({
+const cuia = (id: string, num: number, nome: string, tipo: string, flagTipo: string, descricao: string): EventoDef => ({
   id,
   passos: [
     ['sfx', 'cuia-balanco'],
     ['vitrine', num],
     f(null, descricao),
-    ['simnao', `Você vai escolher esta criatura, do tipo ${tipo}?`, 'cuia-sim'],
+    ['simnao', `Você vai escolher ${nome}, do tipo ${tipo}?`, 'cuia-sim'],
     ['vitrineFim'],
     se('flag:cuia-sim', [
       ['flag', 'inicial', num], ['flag', flagTipo],
@@ -150,16 +150,16 @@ export const EVENTOS_A1: EventoDef[] = [
       ]),
     ],
   },
-  cuia('lab-cuia-mata', 1, 'Mata', 'inicial-mata', 'A cuia da esquerda se abre: é o Tamanduí, um tamanduá-mirim de pelagem de folhas!\fCalmo e carinhoso, abraça tudo o que vê. Criaturas do tipo Mata levam a melhor sobre Rio, Terra e Pedra.'),
-  cuia('lab-cuia-brasa', 4, 'Brasa', 'inicial-brasa', 'A cuia do meio se abre: é o Guaraxim, um filhote de lobo-guará com a crina em brasa!\fArisco e orgulhoso, esquenta a sala inteira. Criaturas do tipo Brasa levam a melhor sobre Mata, Geada, Inseto e Ferro.'),
-  cuia('lab-cuia-rio', 7, 'Rio', 'inicial-rio', 'A cuia da direita se abre: é o Botinho, um filhote de boto-cor-de-rosa!\fBrincalhão e esperto, já molhou o chão. Criaturas do tipo Rio levam a melhor sobre Brasa, Terra e Pedra.'),
+  cuia('lab-cuia-mata', 1, 'Tamanduí', 'Mata', 'inicial-mata', 'A cuia da esquerda se abre: é o Tamanduí, um tamanduá-mirim de pelagem de folhas!\fCalmo e carinhoso, abraça tudo o que vê. Criaturas do tipo Mata levam a melhor sobre Rio, Terra e Pedra.'),
+  cuia('lab-cuia-brasa', 4, 'Guaraxim', 'Brasa', 'inicial-brasa', 'A cuia do meio se abre: é o Guaraxim, um filhote de lobo-guará com a crina em brasa!\fArisco e orgulhoso, esquenta a sala inteira. Criaturas do tipo Brasa levam a melhor sobre Mata, Geada, Inseto e Ferro.'),
+  cuia('lab-cuia-rio', 7, 'Botinho', 'Rio', 'inicial-rio', 'A cuia da direita se abre: é o Botinho, um filhote de boto-cor-de-rosa!\fBrincalhão e esperto, já molhou o chão. Criaturas do tipo Rio levam a melhor sobre Brasa, Terra e Pedra.'),
   {
     id: 'lab-depois-da-escolha',
     passos: [
       f('prof', 'Olha só como vocês já se entenderam! Cuide bem dela: criatura feliz luta melhor e vai mais longe.\fSe ela se machucar, a sua mãe e qualquer Posto Guardião dão jeito de graça.'),
       f('prof', 'Agora, o favor. Aqui está o Ovo Pintado. Segure com as duas mãos!'),
-      ['sfx', 'item-obtido'],
-      f(null, '{JOGADOR} recebeu o Ovo Pintado!\nEle é morno e, de vez em quando, dá uma batidinha por dentro.'),
+      ['dar', 'ovo-pintado'],
+      f(null, 'O ovo é morno e, de vez em quando, dá uma batidinha por dentro.'),
       ['flag', 'ovo-pintado'],
       f('prof', 'Leve ao Seu Aroeira, em Vila Caiçara: saia da vila pelo norte e siga a Trilha do Ipê até o fim.\fDepois volte aqui para me contar o que ele disse. Vou deixar um presente separado para você!'),
     ],
@@ -173,7 +173,7 @@ export const EVENTOS_A1: EventoDef[] = [
         ['emote', 'aroeira', '!'],
         f('aroeira', 'Ora, ora! Visita da Vila Jacarandá — e trazendo ovo! Deixa eu ver isso de perto, com licença…'),
         f('aroeira', 'Hum. Casca pintadinha, morna, batendo por dentro… Menino, em sessenta anos de viveiro eu só vi dois assim.\fVêm de ninho de praia, enterrado na areia. Esse aqui tem história, e eu vou chocar ele com todo o capricho.'),
-        ['flag', 'ovo-no-aroeira'], ['flag', 'ovo-pintado', false],
+        ['tirar', 'ovo-pintado'], ['flag', 'ovo-no-aroeira'], ['flag', 'ovo-pintado', false],
         f(null, '{JOGADOR} entregou o Ovo Pintado ao Seu Aroeira.'),
         f('aroeira', 'Diga à Ipê que o ovo ficou em boas mãos e que, quando nascer, eu aviso pelo Rádio Cipó.\fE leve isto para a viagem de volta. Chá de erva-cidreira: bom para criatura e para gente.'),
         ['dar', 'cha-cidreira', 2],
@@ -207,7 +207,8 @@ export const EVENTOS_A1: EventoDef[] = [
         ...batalhaRival(1),
       ]),
       se('flag:rival-1', [
-        f(TAINA, 'Tá bom, tá bom. Hoje foi seu. Mas eu vou conquistar as dezesseis insígnias antes de você decorar o caminho de Vila Caiçara!\fFui! Não me segue, que eu não gosto de plateia.'),
+        se('flag:batalha-perdida', [f(TAINA, 'Ganhei! Eu disse que a minha já nasceu ganhando. Não fica assim, {JOGADOR}: perder para mim é quase um elogio.')]),
+        f(TAINA, 'Tá bom, tá bom. Hoje foi só o começo. Mas eu vou conquistar as dezesseis insígnias antes de você decorar o caminho de Vila Caiçara!\fFui! Não me segue, que eu não gosto de plateia.'),
         ['esconder', 'taina'], ['esconder', 'taina-depois'],
         ['sfx', 'porta'],
         f('prof', 'Essa menina vai longe. Tomara que na direção certa.\fMas me conte: o Seu Aroeira ficou com o ovo? Ah, que alívio! Promessa é dívida: aqui estão os seus presentes.'),
@@ -240,7 +241,7 @@ export const EVENTOS_A1: EventoDef[] = [
           f('jurema', 'A cuia balança uma, duas, três vezes. Se fechar com um estalo, pronto: parceira nova no Diário de Campo.\fCriatura dormindo ou paralisada entra mais fácil. E de noite aparecem bichos que de dia nem dão as caras.'),
           f('jurema', 'Chega de conversa. Olha aquela moita mexendo… É uma Cotiazinha! Vai, é toda sua. Enfraquece e arremessa!'),
           ['flag', 'tutorial-captura'],
-          ['selvagem', 13, 2],
+          ['selvagem', 13, 2, { tutorial: true }],
           f('jurema', 'Viu só? Com o tempo a mão acostuma. Toma mais duas cuias, por conta da aula.'),
           ['dar', 'cuia', 2],
           f('jurema', 'Vila Caiçara tem Venda: lá a cuia custa pouco e o conselho da Dona Cotinha sai de graça. Boa caçada — quer dizer, bom convite!'),
@@ -303,7 +304,8 @@ export const EVENTOS_A1: EventoDef[] = [
         ...batalhaRival(2),
       ]),
       se('flag:rival-2', [
-        f(TAINA, 'Olha, vou te contar uma coisa, mas só porque você ganhou: vi uns sujeitos de macacão cor de ferrugem na Trilha dos Cipós.\fCarregavam gaiola. GAIOLA, {JOGADOR}. Quem é que põe criatura em gaiola?'),
+        se('flag:batalha-perdida', [f(TAINA, 'Rá! Viu só? Treina mais, {JOGADOR}. Mas escuta, que isto é sério.')]),
+        f(TAINA, 'Olha, vou te contar uma coisa, e não é para espalhar: vi uns sujeitos de macacão cor de ferrugem na Trilha dos Cipós.\fCarregavam gaiola. GAIOLA, {JOGADOR}. Quem é que põe criatura em gaiola?'),
         f(TAINA, 'Eles foram para os lados de Porto Sereia. Eu vou atrás. Você… faz o que quiser. Mas leva isto, que eu peguei duas sem querer.'),
         ['dar', 'cuia-rapida', 2],
         f(TAINA, 'Não é presente! É… excesso de bagagem. Tchau!'),
@@ -321,6 +323,7 @@ export const EVENTOS_A1: EventoDef[] = [
         ...batalhaRival(3),
       ]),
       se('flag:rival-3', [
+        se('flag:batalha-perdida', [f(TAINA, 'Essa foi minha! Anota aí no seu Diário: "Tainá, espécie rara, invicta hoje".')]),
         f(TAINA, 'O tal Cartel Ferrugem não é brincadeira, {JOGADOR}. Ouvi um capanga dizer que a carga da Usina ia de trem para o sertão.\fEu vou no próximo vagão. Se você for também, senta longe: eu gosto da janela.'),
         ['dar', 'garrafada', 2],
         f(TAINA, 'Isso é para as suas criaturas, não para você. Elas lutaram bem. Você só apertou os botões.\fTe vejo em Vila Buriti. Ou não. Tanto faz!'),
@@ -337,6 +340,7 @@ export const EVENTOS_A1: EventoDef[] = [
       se('flag:m-chapeu-ok', [f('a1-zica', 'Chapéu na cabeça e cocada no tabuleiro: a vida voltou ao normal.\fPassa aqui quando quiser, que para você sempre sobra uma.')], [
         se('flag:m-chapeu-achou', [
           f('a1-zica', 'Meu chapéu de palha! Trinta anos comigo e nunca tinha ido tão longe sozinho.\fToma, meu bem: cocada de rapadura, receita de família. Dá uma energia que só vendo.'),
+          ['tirar', 'chapeu-da-vo-zica'],
           ['dar', 'rapadura', 2],
           ['dar', 'cuia', 3],
           ['flag', 'm-chapeu-ok'],
@@ -351,8 +355,8 @@ export const EVENTOS_A1: EventoDef[] = [
     id: 'm-chapeu-pier',
     passos: [
       se('flag:m-chapeu&!flag:m-chapeu-achou', [
-        ['sfx', 'item-obtido'],
-        f(null, 'Um chapéu de palha enganchado no cabeço de amarração!\f{JOGADOR} pegou o Chapéu da Vó Zica. Está um pouco salgado, mas inteiro.'),
+        f(null, 'Um chapéu de palha enganchado no cabeço de amarração! Está um pouco salgado, mas inteiro.'),
+        ['dar', 'chapeu-da-vo-zica'],
         ['flag', 'm-chapeu-achou'],
       ], [f(null, 'Um cabeço de amarração. A corda cheira a maresia e a peixe de ontem.')]),
     ],
@@ -394,14 +398,14 @@ export const EVENTOS_A1: EventoDef[] = [
       se('flag:m-carta-ok', [f('a1-neto', 'Li a resposta do meu pai umas dez vezes. Ele disse que volta no próximo saveiro!\fA vó já está fazendo cocada para a chegada. Vai sobrar para você, pode deixar.')], [
         se('flag:m-carta-resposta', [
           f('a1-neto', 'Uma resposta do meu pai?! Me dá, me dá! …Ele escreveu que está com saudade e que trouxe um presente de além-mar.\fVocê atravessou a costa inteira por causa de uma carta. Fica com isto: achei na praia e nunca soube usar.'),
+          ['tirar', 'resposta-do-barto'],
           ['dar', 'pt-16'],
           ['flag', 'm-carta-ok'],
         ], [
           se('flag:m-carta', [f('a1-neto', 'Meu pai é o Marinheiro Bartô. Ele vive no cais de Porto Sereia, bem lá na ponta, olhando o mar.\fÉ longe: depois de Bosque Alto e da Gruta do Eco. Sem pressa — carta boa não azeda.')], [
             se('!flag:inicial', [f('a1-neto', 'Um dia eu vou a Porto Sereia visitar meu pai. Ele é marinheiro!\fMas a vó não deixa eu pisar na grama alta sem criatura.')], [
               f('a1-neto', 'Você vai viajar com a sua criatura? Então você pode ir aonde eu não posso!\fMeu pai é o Marinheiro Bartô, do cais de Porto Sereia. Escrevi uma carta para ele faz um mês e não tenho como mandar. Você leva?'),
-              ['sfx', 'item-obtido'],
-              f(null, '{JOGADOR} guardou a Carta do Dudu no bolso de dentro da mochila.'),
+              ['dar', 'carta-do-dudu'],
               ['flag', 'm-carta'],
             ]),
           ]),
@@ -416,9 +420,10 @@ export const EVENTOS_A1: EventoDef[] = [
         ['emote', 'a4-marinheiro', '!'],
         f('a4-marinheiro', 'Carta? Para mim? Da Vila Jacarandá?! …É a letra do meu Dudu. Olha o tamanho desse "papai"!\fEspera. Espera aí, que homem do mar não chora, só marejou.'),
         f('a4-marinheiro', 'Vou responder agora mesmo. Pronto. Leve de volta para ele, por favor: diga que eu chego no próximo saveiro.\fE fique com isto pela viagem. Quem carrega carta merece carregar coisa boa.'),
+        ['tirar', 'carta-do-dudu'],
         ['dar', 'cuia-rede', 5],
+        ['dar', 'resposta-do-barto'],
         ['flag', 'm-carta-resposta'],
-        f(null, '{JOGADOR} guardou a Resposta do Bartô junto das insígnias.'),
       ], [
         se('flag:m-carta-resposta', [f('a4-marinheiro', 'Entregou a resposta ao Dudu? Aquele menino escreve melhor que eu navego.\fQuando tiver o Remo, lembre: o cais é a porta da Baía Azul.')], [
           f('a4-marinheiro', 'Daqui do cais eu vejo a Baía Azul inteira. Lá longe, quando o tempo abre, pisca o Farol.\fTenho um filho em Vila Jacarandá. Faz tempo que não chega notícia de lá.'),

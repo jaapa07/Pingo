@@ -35,7 +35,8 @@ export async function lutar(p: PedidoBatalha): Promise<ResultadoBatalha> {
   musica(M.zv.def.musica, true);
   M.passosSeguros = 4;
   bus.emit('batalha-fim', { tipo: p.tipo, resultado: r.resultado });
-  if (r.resultado === 'derrota') await derrota();
+  if (r.resultado === 'derrota' && p.semDerrota) { curarEquipe(); reavaliar(); }
+  else if (r.resultado === 'derrota') await derrota();
   else reavaliar();
   return r;
 }

@@ -1,7 +1,7 @@
 /* Batalha: arena em camadas, atores, FX do atlas, caixas de status autorais e menus. Tudo em px nativos inteiros. */
 .tela.batalha, .tela.evolucao { background: #1a1423; z-index: 2; }
 .bt-palco, .bt-mundo, .bt-cenario, .bt-camada, .bt-sombras, .bt-fx, .bt-atores, .bt-clima, .bt-veu, .bt-penumbra, .bt-hud, .ev-fundo { position: absolute; left: 0; top: 0; width: 320px; height: 180px; }
-.bt-palco { overflow: hidden; }
+.bt-palco { overflow: hidden; z-index: 0; }
 .bt-cenario.bt-liso { background: linear-gradient(to bottom, #6fc7e8 0 60px, #8fd45a 60px 64px, #4fa346 64px 180px); }
 .bt-camada { background-repeat: no-repeat; image-rendering: pixelated; }
 .bt-anim { position: absolute; background-repeat: no-repeat; image-rendering: pixelated; pointer-events: none; }
@@ -46,7 +46,7 @@
 .bt-botao { position: absolute; }
 
 /* golpes */
-.bt-golpe { position: absolute; width: 104px; height: 19px; }
+.bt-golpe { position: absolute; width: 104px; height: 18px; }
 .bt-golpe.foco { background: #e8c07a; box-shadow: 0 0 0 1px #c98f4e; }
 .bt-divisa { position: absolute; width: 1px; background: #c98f4e; }
 .bt-ficha { position: absolute; width: 76px; height: 44px; }
@@ -56,7 +56,7 @@
 .bt-zona-alvo { position: absolute; }
 
 /* mochila, equipe e esquecer golpe */
-.bt-desc { position: absolute; width: 212px; height: 23px; background: #fff8e7; box-shadow: 0 0 0 1px #c98f4e; }
+.bt-desc { position: absolute; width: 212px; height: 33px; background: #fff8e7; box-shadow: 0 0 0 1px #c98f4e; }
 .bt-equipe { position: absolute; left: 0; top: 0; width: 320px; height: 180px; z-index: 50; background: #2f6b3a;
   background-image: repeating-linear-gradient(45deg, rgba(20, 51, 31, 0.5) 0 2px, transparent 2px 8px), repeating-linear-gradient(-45deg, rgba(20, 51, 31, 0.5) 0 2px, transparent 2px 8px); }
 .bt-cartao.foco { box-shadow: 0 0 0 1px #f9c22b; }
