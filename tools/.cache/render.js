@@ -32102,6 +32102,9 @@ void main() {
       p.z *= o.achata ?? 1;
     }, ...o.gancho ? [bend(-o.gancho, len)] : [], ...o.deform ?? []] });
   }
+  function pinta(r, mat, pos, rot = [0, 0, 0]) {
+    return blob([r, r, r * 0.35], mat, { pos, rot, seg: 10, castShadow: false });
+  }
 
   // tools/models/criaturas/kits/animacao.ts
   var RITMO = {
@@ -32862,6 +32865,199 @@ void main() {
       parado: { cauda1: ly([0, 12]), cauda2: ly([0, 14]), ...nd(lr, [0, 14]) }
     };
     return montar(somar(movBase(o), membros, extra), {}, { comp: 0.9, larg: 1.6, cabeca: 1, frontal: 1.3, ...o.mapa });
+  }
+
+  // tools/models/criaturas/kits/serpente.ts
+  function serpente(p) {
+    const R2 = p.rampas, t = (i) => tom(i ?? R2.corpo);
+    const rig = novoRig(p.r);
+    rig.add("corpo", blob([p.r * 1.1, p.r, p.r * 1.1], t(R2.corpo), { seg: 16 }));
+    const cor2 = (i) => t(R2.anel !== void 0 && i % 2 ? R2.anel : R2.corpo);
+    let pai = "corpo";
+    const np = p.pescoco.segs, rF = p.pescoco.rFim ?? p.r * 0.8;
+    for (let i = 1; i <= np; i++) {
+      rig.bone("pescoco" + i, pai, i === 1 ? [0, 0, 0] : [p.pescoco.len, 0, 0], [0, 0, p.pescoco.curva[i - 1] ?? 0]);
+      const ra = p.r + (rF - p.r) * ((i - 1) / np), rb = p.r + (rF - p.r) * (i / np);
+      rig.add("pescoco" + i, segmento([0, 0, 0], [p.pescoco.len, 0, 0], ra, rb, cor2(i)));
+      if (R2.barriga !== void 0) rig.add("pescoco" + i, segmento([p.pescoco.len * 0.1, -ra * 0.25, 0], [p.pescoco.len * 0.9, -rb * 0.25, 0], ra * 0.85, rb * 0.85, t(R2.barriga)));
+      pai = "pescoco" + i;
+    }
+    const [hx, hy, hz] = p.cabeca;
+    rig.bone("cabeca", pai, [p.pescoco.len, 0, 0], [0, 0, -p.pescoco.curva.reduce((a, b) => a + b, 0) * 0.75]);
+    rig.add("cabeca", blob([hx, hy, hz], t(R2.cabeca), { pos: [hx * 0.55, hy * 0.1, 0], deform: [(v) => {
+      if (v.x > 0) {
+        v.z *= 1 - v.x / hx * 0.3;
+        v.y *= 1 - v.x / hx * 0.25;
+      }
+    }] }));
+    if (p.capuz) rig.add(pai, blob([p.pescoco.len * 0.7, rF * 0.7, p.capuz], t(R2.corpo), { pos: [p.pescoco.len * 0.6, 0, 0], seg: 18 }));
+    rig.bone("mandibula", "cabeca", [hx * 0.1, -hy * 0.35, 0]);
+    rig.add("mandibula", blob([hx * 0.75, hy * 0.35, hz * 0.8], t(R2.barriga ?? R2.cabeca), { pos: [hx * 0.5, 0, 0], seg: 14 }));
+    olhos(rig, "cabeca", p.olho.r, p.olho.pos);
+    pai = "corpo";
+    const nc = p.cauda.segs, rC = p.cauda.rFim ?? p.r * 0.25;
+    for (let i = 1; i <= nc; i++) {
+      rig.bone("cauda" + i, pai, i === 1 ? [0, 0, 0] : [-p.cauda.len, 0, 0], [0, p.cauda.curva[i - 1] ?? 0, 0]);
+      const ra = p.r + (rC - p.r) * ((i - 1) / nc), rb = p.r + (rC - p.r) * (i / nc);
+      rig.add("cauda" + i, segmento([0, ra - p.r, 0], [-p.cauda.len, rb - p.r, 0], ra, rb, cor2(i + np)));
+      pai = "cauda" + i;
+    }
+    if (p.ponta) rig.add(pai, blob([p.ponta * 1.4, p.ponta, p.ponta], t(R2.ponta ?? R2.anel), { pos: [-p.cauda.len - p.ponta, rC - p.r + p.ponta * 0.4, 0], seg: 12 }));
+    return { rig, ref: { topo: [hx * 0.4, hy, 0], focinho: [hx * 1.5, 0, 0], nuca: [-hx * 0.3, hy * 0.6, 0], meio: [0, p.r, 0], fimCauda: [-p.cauda.len, 0, 0] } };
+  }
+  function animsSerpente(o, extra) {
+    const P = (f) => Object.fromEntries(Array.from({ length: o.pescoco }, (_, i) => ["pescoco" + (i + 1), f(i)]));
+    const C = (f) => Object.fromEntries(Array.from({ length: o.cauda }, (_, i) => ["cauda" + (i + 1), f(i)]));
+    const gira = (v, i) => [...v.slice(i % v.length), ...v.slice(0, i % v.length)];
+    const membros = {
+      entrada: { ...P(() => qz([-20, 8, -10, 3, 0])), ...C((i) => qy(gira([14, -10, 6, 0, 0], 0).map((x) => i % 2 ? -x : x))) },
+      // balanço hipnótico: cada junta do pescoço pende para um lado, em onda
+      idle: { ...P((i) => ly(gira([0, 6, 0, -6], i))), cabeca: lz([0, -2, -4, -1]), ...C((i) => ly(gira([0, 4, 0, -4], i + 1))) },
+      // bote: recolhe (S apertado) e estica de uma vez
+      fisico: { ...P(() => qz([10, 20, -30, -12, 0])), cabeca: qz([0, 10, 20, 8, 0]), mandibula: qz([0, -10, -40, -14, 0]), ...C((i) => qy([4, 8, -8, -3, 0].map((x) => i % 2 ? -x : x))) },
+      especial: { ...P(() => qz([-6, -12, -12, 14, 5, 0])), mandibula: qz([0, 0, -6, -46, -18, 0]), cabeca: qz([4, 8, 8, -6, -2, 0]), ...C((i) => qy([0, 10, -10, 12, -5, 0].map((x) => i % 2 ? -x : x))) },
+      dano: { ...P(() => qz([14, 5, 0])), mandibula: qz([-24, -8, 0]), ...C((i) => qy([12, 4, 0].map((x) => i % 2 ? -x : x))) },
+      // o pescoço desaba no chão
+      desmaio: { ...P((i) => qz([4, -6, -22, -34, -32].map((x) => x * (i === 0 ? 1.4 : 1)))), cabeca: qz([0, 6, 30, 60, 56]), mandibula: qz([0, -6, -14, -20, -18]) },
+      status: { ...P((i) => ly(gira([8, 0, -8, 0], i))), cabeca: lz([-10, -12, -10, -8]) },
+      // serpenteio: onda viajando da cabeça para a cauda
+      andar: { ...C((i) => ly(gira([16, 0, -16, 0], i))), ...P((i) => ly(gira([6, 0, -6, 0], i + 2))) },
+      parado: { ...P((i) => ly(i % 2 ? [0, 5] : [0, -5])) }
+    };
+    return montar(somar(movBase({ mole: 0.5, ...o }), membros, extra), {}, { comp: 0.85, larg: 1.2, cabeca: 1.3, frontal: 1.2, ...o.mapa });
+  }
+
+  // tools/models/criaturas/kits/inseto.ts
+  function inseto(p) {
+    const [tx, ty, tz] = p.torax, [ax, ay, az] = p.abdomen, [hx, hy, hz] = p.cabeca, R2 = p.rampas, t = (i) => tom(i ?? R2.torax);
+    const f = p.flutua ?? 0;
+    const rig = novoRig(p.alt + f);
+    rig.add("corpo", blob([tx, ty, tz], t(R2.torax)));
+    rig.bone("abdomen", "corpo", [-tx * 0.7, 0, 0], [0, 0, p.caiAbdomen ?? 8]);
+    rig.add("abdomen", blob([ax, ay, az], t(R2.abdomen), { pos: [-ax * 0.8, 0, 0] }));
+    if (R2.barriga !== void 0) rig.add("abdomen", blob([ax * 0.85, ay * 0.7, az * 0.85], t(R2.barriga), { pos: [-ax * 0.8, -ay * 0.36, 0] }));
+    rig.bone("cabeca", "corpo", [tx * 0.8, ty * 0.1, 0]);
+    rig.add("cabeca", blob([hx, hy, hz], t(R2.cabeca), { pos: [hx * 0.6, 0, 0] }));
+    olhos(rig, "cabeca", p.olho.r, p.olho.pos);
+    if (p.mandibulas) par((_, s) => rig.add("cabeca", tube([[hx * 1.3, -hy * 0.4, hz * 0.4 * s], [hx * 1.3 + p.mandibulas * 0.7, -hy * 0.5, hz * 0.5 * s], [hx * 1.3 + p.mandibulas, -hy * 0.5, hz * 0.1 * s]], (u) => p.mandibulas * 0.22 * (1 - u * 0.7), t(R2.patas), { seg: 8, radial: 8 })));
+    if (p.antenas) {
+      const a = p.antenas;
+      par((l, s) => {
+        rig.bone("antena_" + l, "cabeca", [hx * 0.9, hy * 0.7, hz * 0.4 * s], [-(a.abre ?? 24) * s, 0, 0]);
+        rig.add("antena_" + l, tube([[0, 0, 0], [a.len * 0.3, a.len * 0.6, 0], [a.len * 0.8, a.len * 0.8, 0]], a.r ?? 0.012, t(R2.antenas ?? R2.patas), { seg: 8, radial: 6 }));
+        if (a.bola) rig.add("antena_" + l, blob([a.bola, a.bola, a.bola], t(R2.antenas ?? R2.patas), { pos: [a.len * 0.8, a.len * 0.8, 0], seg: 10 }));
+      });
+    }
+    const J = p.patas.joelho ?? ty * 0.6;
+    par((l, s) => {
+      [0.55, 0, -0.55].forEach((fx, i) => {
+        const dx = [0.5, 0, -0.6][i] * p.patas.abre;
+        membro2(
+          rig,
+          `pata${i + 1}_${l}`,
+          `tarso${i + 1}_${l}`,
+          "corpo",
+          [tx * fx, -ty * 0.3, tz * 0.8 * s],
+          [dx * 0.5, J, p.patas.abre * 0.55 * s],
+          [dx * 0.5, -(J + p.alt - ty * 0.3) + (f ? p.alt * 0.5 : 0), p.patas.abre * 0.45 * s],
+          [p.patas.r, p.patas.r * 0.85, p.patas.r * 0.5],
+          t(R2.patas)
+        );
+      });
+    });
+    if (p.elitros) par((l, s) => {
+      rig.bone("elitro_" + l, "corpo", [-tx * 0.5, ty * 0.5, az * 0.12 * s]);
+      rig.add("elitro_" + l, blob([ax * 1.08, ay * 0.9, az * 0.6], t(R2.elitros), { pos: [-ax * 0.95, -ay * 0.25, az * 0.42 * s] }));
+    });
+    if (p.asas) {
+      const w = p.asas;
+      par((l, s) => {
+        rig.bone("asa_" + l, "corpo", [-tx * 0.1, ty * 0.85, tz * 0.4 * s], [-20 * s, 40 * s, 0]);
+        rig.add("asa_" + l, blob([w.len * 0.5, w.larg * 0.08, w.larg * 0.5], t(R2.asas), { pos: [-w.len * 0.5, 0, 0], seg: 16, castShadow: false }));
+        if (w.pares === 2) rig.add("asa_" + l, blob([w.len * 0.36, w.larg * 0.07, w.larg * 0.4], t(R2.asas), { pos: [-w.len * 0.4, -w.larg * 0.1, -w.larg * 0.45 * s], rot: [0, -30 * s, 0], seg: 14, castShadow: false }));
+      });
+    }
+    return { rig, ref: { dorso: [0, ty, 0], testa: [hx * 1.4, hy * 0.5, 0], topo: [hx * 0.6, hy, 0], fimAbdomen: [-ax * 1.8, 0, 0], costasAbdomen: [-ax * 0.8, ay, 0], boca: [hx * 1.6, -hy * 0.3, 0] } };
+  }
+  function animsInseto(o, extra) {
+    const tripe = (q, v) => {
+      const A = ["pata1_d", "pata3_d", "pata2_e"], B = ["pata1_e", "pata3_e", "pata2_d"];
+      return Object.fromEntries([...A.map((n) => [n, q(v.map((x) => n.endsWith("_d") ? x : -x))]), ...B.map((n) => [n, q(v.map((x) => n.endsWith("_d") ? -x : x))])]);
+    };
+    const bate = (q, v) => o.asas ? { "?asa_d": q(v.map((a) => [-a, 0, 0])), "?asa_e": q(v.map((a) => [a, 0, 0])) } : {};
+    const ant = (q, v) => ({ "?antena_d": q(v), "?antena_e": q(v.map((x) => x * 0.8)) });
+    const membros = {
+      entrada: { abdomen: qz([-16, 10, 14, -4, 0]), ...ant(qz, [20, -14, 10, -3, 0]), ...bate(qr, [50, -20, 40, -10, 0]) },
+      idle: { ...ant(lz, [0, 8, 14, 4]), abdomen: lz([0, 2, 4, 1]), cabeca: lr([[0, 0, 0], [0, 0, 0], [8, 0, 0], [0, 0, 0]]), ...bate(lr, [0, 40, 0, 40]) },
+      fisico: { cabeca: qz([8, 14, -18, -6, 0]), abdomen: qz([-6, -12, 14, 5, 0]), pata1_d: qr([[0, 20, 20], [0, 30, 34], [0, -30, -10], [0, -10, 0], [0, 0, 0]]), pata1_e: qr([[0, -20, 20], [0, -30, 34], [0, 30, -10], [0, 10, 0], [0, 0, 0]]), ...ant(qz, [10, 20, -24, -8, 0]), ...bate(qr, [30, 50, -20, 10, 0]) },
+      especial: { abdomen: qz([4, 10, 12, -22, -8, 0]), cabeca: qz([-4, -8, -8, 10, 4, 0]), ...ant(qz, [-8, -16, -16, 24, 8, 0]), ...bate(qr, [20, 60, -20, 60, -20, 0]), "?elitro_d": qr([[0, 0, 0], [0, 10, 0], [0, 14, 0], [-20, 50, 0], [-8, 20, 0], [0, 0, 0]]), "?elitro_e": qr([[0, 0, 0], [0, -10, 0], [0, -14, 0], [20, -50, 0], [8, -20, 0], [0, 0, 0]]) },
+      dano: { cabeca: qz([16, 6, 0]), abdomen: qz([-12, -4, 0]), ...ant(qz, [30, 10, 0]), ...tripe(qy, [14, 5, 0]) },
+      // arria e encolhe as patas
+      desmaio: { corpo: qp([[0, 0.02 * o.alt, 0], [0, 0, 0], [0, -0.4 * o.alt, 0], [0, -0.75 * o.alt - (o.flutua ?? 0), 0], [0, -0.72 * o.alt - (o.flutua ?? 0), 0]]), ...ant(qz, [0, -10, -24, -40, -38]), abdomen: qz([0, 4, 8, 12, 10]), ...Object.fromEntries(["d", "e"].flatMap((l) => [1, 2, 3].map((i) => [`tarso${i}_${l}`, qr([[0, 0, 0], [0, 0, 0], [l === "d" ? -30 : 30, 0, 0], [l === "d" ? -60 : 60, 0, 0], [l === "d" ? -56 : 56, 0, 0]])]))) },
+      status: { ...ant(lz, [-20, -24, -20, -16]), cabeca: lr([[8, 0, -6], [0, 0, -8], [-8, 0, -6], [0, 0, -4]]), abdomen: lz([6, 8, 6, 4]), ...bate(lr, [0, 20, 0, 20]) },
+      andar: { ...tripe(ly, [22, 0, -22, 0]), ...ant(lz, [0, 6, 0, 6]), abdomen: lr([[0, 4, 0], [0, 0, 0], [0, -4, 0], [0, 0, 0]]), ...bate(lr, [40, -10, 40, -10]) },
+      parado: { ...ant(lz, [0, 10]), ...bate(lr, [0, 40]) }
+    };
+    return montar(somar(movBase({ ...o, flutua: 0 }), o.flutua ? { idle: { corpo: [{ t: 0, p: [0, 0, 0] }, { t: 0.5, p: [0, 0.05 * o.u, 0] }, { t: 1, p: [0, 0, 0] }] } } : void 0, membros, extra), {}, { comp: 0.9, larg: 1.2, cabeca: 1.2, frontal: 1.15, ...o.mapa });
+  }
+
+  // tools/models/criaturas/kits/reptil.ts
+  function lagarto(p) {
+    const [tx, ty, tz] = p.tronco, [hx, hy, hz] = p.cabeca, R2 = p.rampas, t = (i) => tom(i ?? R2.pele);
+    const rig = novoRig(p.alt + ty);
+    rig.add("corpo", blob([tx, ty, tz], t(R2.pele), { deform: [taper("x", -tx, tx, 0.8, 1)] }));
+    if (R2.barriga !== void 0) rig.add("corpo", blob([tx * 0.9, ty * 0.7, tz * 0.9], t(R2.barriga), { pos: [0, -ty * 0.4, 0] }));
+    const chao = -(p.alt + ty * 0.7), pe = p.pernas.pe ?? p.pernas.r * 1.5;
+    par((l, s) => {
+      for (const [q, fx, dx] of [["f", 0.6, 0.25], ["t", -0.6, -0.2]]) {
+        const c = membro2(
+          rig,
+          `perna_${q}${l}`,
+          `canela_${q}${l}`,
+          "corpo",
+          [tx * fx, -ty * 0.3, tz * 0.8 * s],
+          [p.pernas.abre * dx, p.pernas.r, p.pernas.abre * 0.7 * s],
+          [p.pernas.abre * dx * 0.6, chao - p.pernas.r + ty * 0.3 + pe * 0.4, p.pernas.abre * 0.3 * s],
+          [p.pernas.r * 1.1, p.pernas.r, p.pernas.r * 0.8],
+          t(R2.pernas)
+        );
+        rig.add(c, blob([pe, pe * 0.4, pe * 0.85], t(R2.pernas), { pos: [p.pernas.abre * dx * 0.6 + pe * 0.5, chao - p.pernas.r + ty * 0.3 + pe * 0.4, p.pernas.abre * 0.3 * s], seg: 12 }));
+      }
+    });
+    const a = (p.pescoco.ang ?? 12) * Math.PI / 180, fim = [Math.cos(a) * p.pescoco.len, Math.sin(a) * p.pescoco.len, 0];
+    rig.bone("pescoco", "corpo", [tx * 0.75, ty * 0.1, 0]);
+    rig.add("pescoco", segmento([-tx * 0.15, 0, 0], fim, p.pescoco.r * 1.15, p.pescoco.r, t(R2.pele)));
+    rig.bone("cabeca", "pescoco", fim);
+    const f = p.focinho ?? 0;
+    rig.add("cabeca", blob([hx, hy, hz], t(R2.cabeca), { pos: [hx * 0.5, hy * 0.1, 0] }));
+    if (f) rig.add("cabeca", segmento([hx * 0.8, hy * 0.15, 0], [hx * 1.2 + f, hy * 0, 0], hy * 0.62, hy * 0.42, t(R2.cabeca), [(v) => {
+      v.z *= 1.5;
+    }]));
+    rig.bone("mandibula", "cabeca", [hx * 0.1, -hy * 0.4, 0]);
+    rig.add("mandibula", segmento([0, 0, 0], [hx * 1.1 + f, hy * 0.05, 0], hy * 0.45, hy * 0.3, t(R2.barriga ?? R2.cabeca), [(v) => {
+      v.z *= 1.6;
+    }]));
+    if (R2.dentro !== void 0) rig.add("mandibula", blob([(hx + f) * 0.5, hy * 0.12, hz * 0.5], tom(R2.dentro, { plano: true }), { pos: [(hx + f) * 0.55, hy * 0.28, 0], seg: 10 }));
+    olhos(rig, "cabeca", p.olho.r, p.olho.pos);
+    cauda(rig, "corpo", [-tx * 0.85, 0, 0], { ...p.cauda, mat: t(R2.cauda) });
+    if (p.crista) for (let i = 0; i < p.crista.n; i++) {
+      const u = p.crista.n === 1 ? 0.5 : i / (p.crista.n - 1), x = tx * (0.75 - 1.5 * u), k2 = 1 - Math.abs(u - 0.4) * 0.8;
+      rig.add("corpo", lathe([[p.crista.alt * 0.4 * k2, 0], [p.crista.alt * 0.25 * k2, p.crista.alt * 0.5 * k2], [1e-3, p.crista.alt * k2]], t(R2.crista), { seg: 8, pos: [x, ty * Math.sqrt(Math.max(0.05, 1 - (x / tx) ** 2)) * 0.92, 0], rot: [0, 0, 14], deform: [(v) => {
+        v.z *= 0.5;
+      }] }));
+    }
+    return { rig, ref: { dorso: [0, ty, 0], topo: [hx * 0.4, hy * 1.1, 0], focinho: [hx * 1.3 + f, 0, 0], garupa: [-tx * 0.7, ty * 0.7, 0], papada: [0, -p.pescoco.r, 0] } };
+  }
+  function animsLagarto(o, extra) {
+    const n = o.caudaSegs ?? 3, gira = (v, i) => [...v.slice(i % v.length), ...v.slice(0, i % v.length)];
+    const onda = (v) => Object.fromEntries(Array.from({ length: n }, (_, i) => ["?cauda" + (i + 1), ly(gira(v, i))]));
+    return animsQuadrupede({ mole: 0.7, passo: 30, mapa: { comp: 0.6, larg: 1.3, frontal: 1.4, cabeca: 1.3 }, ...o }, unirExtras({
+      idle: { ...onda([0, 8, 0, -8]), "?mandibula": lz([0, 0, -6, 0]), pescoco: lr([[0, 0, 0], [0, 4, -2], [0, 0, -3], [0, -4, -1]]) },
+      fisico: { "?mandibula": qz([-10, -44, 4, 0, 0]), "?cauda1": qy([10, 20, -26, -10, 0]) },
+      especial: { "?mandibula": qz([0, -8, -12, -50, -20, 0]) },
+      dano: { "?mandibula": qz([-22, -8, 0]) },
+      andar: { ...onda([14, 0, -14, 0]), corpo: lr([[0, 5, 0], [0, 0, 0], [0, -5, 0], [0, 0, 0]]) }
+    }, extra));
   }
 
   // tools/models/criaturas/kits/arboricola.ts
@@ -33754,8 +33950,128 @@ void main() {
   // tools/models/criaturas/lote-001-012.ts
   var modelos = [tamandui, tamanduaCopa, bandeirao, guaraxim, guaraflama, loboFornalha, botinho, botorosa, iaraboto, pipirim, bemTeVico, gaviaozao];
 
+  // tools/models/criaturas/013-cotiazinha.ts
+  var paletaCotia = {
+    rampas: [
+      ["#7a3f3a", "#b8703c", "#e2a658"],
+      // 0 pelo castanho (sombra vinho, luz dourada)
+      ["#c9a184", "#f5e2c0", "#fffaee"],
+      // 1 creme do queixo, barriga e dentes
+      ["#3a2638", "#5c3c48", "#f0998a"],
+      // 2 patas e nariz ameixa · luz = rosa da orelha
+      ["#5a7a2a", "#9ac43e", "#e0ee7c"]
+      // 3 coquinho verde e brotos
+    ],
+    contorno: "#2e1b2b",
+    extras: { w: "#ffffff", p: "#2e1b2b", f: "#b8703c" }
+  };
+  function build14() {
+    const { rig, ref } = quadrupede({
+      tronco: [0.27, 0.23, 0.21],
+      peito: 0.86,
+      pernas: { alt: 0.2, r: 0.055, rFim: 0.042, xF: 0.55, xT: -0.5, z: 0.6, dobraF: 6, dobraT: -28, pe: [0.07, 0.035, 0.05] },
+      pescoco: { len: 0.13, ang: 34, r: 0.13, x: 0.6, y: 0.2 },
+      cabeca: [0.2, 0.18, 0.18],
+      focinho: { len: 0.1, r0: 0.1, r1: 0.07, cai: 12, y: -0.25, nariz: 0.035 },
+      orelha: { tipo: "redonda", alt: 0.11, larg: 0.12, x: -0.2, z: 0.75, abre: 30, deita: 12 },
+      olho: { r: 0.03, pos: [0.19, 0.045, 0.14] },
+      rampas: { pelo: 0, barriga: 1, canelaF: 2, canelaT: 2, pe: 2, nariz: 2, orelha: 0 }
+    });
+    rig.add("corpo", calota([0.21, 0.25, 0.225], m.luz(0), { de: 0, ate: 72, pos: [-0.13, 0, 0], rot: [0, 0, 48] }));
+    rig.bone("garupa", "corpo", [-0.26, 0.12, 0], [0, 0, 62]);
+    rig.add("garupa", tufo(3, 0.14, 0.07, m.luz(0), { abre: 30 }));
+    par((l, s) => rig.add("orelha_" + l, blob([0.035, 0.04, 0.02], m.luz(2), { pos: [0.03, 0.05, 0.012 * s], seg: 10 })));
+    const pf = ref.pontaFocinho;
+    par((_, s) => rig.add("cabeca", blob([0.07, 0.06, 0.045], m(1), { pos: [0.14, -0.08, 0.12 * s], seg: 12 })));
+    rig.add("cabeca", blob([0.022, 0.04, 0.04], m.luz(1), { pos: [pf[0] - 5e-3, pf[1] - 0.055, 0], seg: 10 }));
+    rig.bone("semente", "cabeca", [pf[0] + 0.06, pf[1] - 0.075, 0]);
+    rig.add("semente", blob([0.075, 0.085, 0.075], m(3), { seg: 14 }), blob([0.035, 0.03, 0.035], m.sombra(3), { pos: [0, 0.075, 0], seg: 8 }));
+    return rig;
+  }
+  var anims13 = animsQuadrupede({ u: 0.7, hPerna: 0.2, mole: 1.2, mapa: { comp: 0.75, larg: 1.35, frontal: 1.3 } }, {
+    idle: { semente: lz([0, 5, 9, 3]), garupa: lz([0, -5, -9, -3]) },
+    especial: { semente: qz([0, 10, 14, -30, -10, 0]), garupa: qz([0, 12, 18, -22, -8, 0]) },
+    dano: { garupa: qz([-24, -8, 0]) }
+  });
+  var cotiazinha = criatura({
+    num: 13,
+    id: "cotiazinha",
+    nome: "Cotiazinha",
+    porte: "P",
+    estagio: "basico",
+    paleta: paletaCotia,
+    build: build14,
+    anims: anims13,
+    olho: {
+      frente: [".pp.", "pwpp", "pppp", "pppw", ".pp."],
+      fechado: ["ffff", "ffff", "pffp", ".pp.", "ffff"],
+      mapa: ["p", "p"]
+    }
+  });
+
+  // tools/models/criaturas/014-cotiada.ts
+  function build15() {
+    const { rig, ref } = quadrupede({
+      tronco: [0.36, 0.27, 0.24],
+      peito: 0.84,
+      pernas: { alt: 0.27, r: 0.06, rFim: 0.045, xF: 0.58, xT: -0.5, z: 0.62, dobraF: 6, dobraT: -32, pe: [0.085, 0.04, 0.055] },
+      pescoco: { len: 0.17, ang: 38, r: 0.15, x: 0.6, y: 0.2 },
+      cabeca: [0.22, 0.19, 0.19],
+      focinho: { len: 0.14, r0: 0.11, r1: 0.075, cai: 12, y: -0.25, nariz: 0.04 },
+      orelha: { tipo: "redonda", alt: 0.12, larg: 0.13, x: -0.25, z: 0.72, abre: 30, deita: 14 },
+      olho: { r: 0.03, pos: [0.2, 0.055, 0.15] },
+      rampas: { pelo: 0, barriga: 1, canelaF: 2, canelaT: 2, pe: 2, nariz: 2, orelha: 0 }
+    });
+    rig.add("corpo", calota([0.28, 0.29, 0.255], m.luz(0), { de: 0, ate: 74, pos: [-0.16, 0, 0], rot: [0, 0, 46] }));
+    const crista = [["pelo1", [-0.1, 0.25, 0], 30, 0.15], ["pelo2", [-0.24, 0.2, 0], 52, 0.19], ["pelo3", [-0.35, 0.08, 0], 78, 0.2]];
+    for (const [nome, pos, rz, alt] of crista) {
+      rig.bone(nome, "corpo", pos, [0, 0, rz]);
+      rig.add(nome, tufo(3, alt, 0.075, m.luz(0), { abre: 26 }));
+    }
+    rig.bone("muda", "corpo", [-0.17, 0.27, 0], [0, 0, 8]);
+    rig.add(
+      "muda",
+      segmento([0, 0, 0], [0, 0.13, 0], 0.025, 0.02, m.sombra(3)),
+      folha3d(0.2, 0.13, m(3), { pos: [0, 0.11, 0], rot: [0, 0, -50], esp: 0.5 }),
+      folha3d(0.17, 0.12, m.luz(3), { pos: [0, 0.11, 0], rot: [0, 0, 44], esp: 0.5 }),
+      folha3d(0.15, 0.1, m(3), { pos: [0, 0.12, 0], rot: [50, 0, 0], esp: 0.5 })
+    );
+    par((l, s) => rig.add("orelha_" + l, blob([0.04, 0.045, 0.02], m.luz(2), { pos: [0.03, 0.055, 0.012 * s], seg: 10 })));
+    par((l, s) => {
+      rig.bone("bochecha_" + l, "cabeca", [0.13, -0.075, 0.14 * s]);
+      rig.add("bochecha_" + l, blob([0.12, 0.11, 0.1], m(1), { seg: 16 }), blob([0.045, 0.05, 0.04], m.luz(1), { pos: [0.02, 0.02, 0.075 * s], seg: 10 }));
+    });
+    const pf = ref.pontaFocinho;
+    rig.add("cabeca", blob([0.024, 0.05, 0.045], m.luz(1), { pos: [pf[0] - 5e-3, pf[1] - 0.065, 0], seg: 10 }));
+    for (const z2 of [-0.11, 0, 0.11]) rig.add("pescoco", blob([0.055, 0.06, 0.055], m(3), { pos: [0.1 - Math.abs(z2) * 0.5, -0.09 + Math.abs(z2) * 0.25, z2], seg: 12 }));
+    rig.add("corpo", calota([0.2, 0.285, 0.25], m.sombra(0), { de: 0, ate: 50, pos: [0.14, 0, 0], rot: [0, 0, -20] }));
+    return rig;
+  }
+  var infla = (v) => ({ bochecha_d: v, bochecha_e: v });
+  var anims14 = animsQuadrupede({ u: 0.95, hPerna: 0.27, mole: 1, mapa: { comp: 0.72, larg: 1.3, frontal: 1.25 } }, {
+    idle: { muda: lz([0, 5, 9, 3]), pelo2: lz([0, -4, -7, -2]), pelo3: lz([0, -5, -9, -3]), bochecha_d: ls(infla([1, 1.05, 1.1, 1.04]).bochecha_d), bochecha_e: ls(infla([1, 1.05, 1.1, 1.04]).bochecha_e) },
+    especial: { muda: qz([0, 12, 16, -26, -8, 0]), bochecha_d: qs([1, 1.2, 1.35, 0.8, 0.95, 1]), bochecha_e: qs([1, 1.2, 1.35, 0.8, 0.95, 1]), pelo1: qz([0, 10, 14, -18, -6, 0]), pelo2: qz([0, 12, 18, -22, -8, 0]), pelo3: qz([0, 12, 18, -22, -8, 0]) },
+    dano: { muda: qz([22, 8, 0]), pelo3: qz([-22, -8, 0]) },
+    andar: { muda: lz([0, 7, 0, -7]) }
+  });
+  var cotiada = criatura({
+    num: 14,
+    id: "cotiada",
+    nome: "Cotiad\xE3",
+    porte: "M",
+    estagio: "final",
+    paleta: paletaCotia,
+    build: build15,
+    anims: anims14,
+    olho: {
+      frente: [".ppp.", "ppwpp", "ppppp", "pwppp", ".ppp."],
+      fechado: ["fffff", "fffff", "pfffp", ".ppp.", "fffff"],
+      mapa: ["p", "p"]
+    }
+  });
+
   // tools/models/criaturas/lote-013-036.ts
-  var modelos2 = [];
+  var modelos2 = [cotiazinha, cotiada];
 
   // tools/models/criaturas/037-piabinha.ts
   var paletaPiaba = {
@@ -33772,7 +34088,7 @@ void main() {
     contorno: "#272445",
     extras: { w: "#ffffff", p: "#1c1a33", f: "#a9c2dc", a: "#f2c94a" }
   };
-  function build14() {
+  function build16() {
     const { rig } = peixe({
       corpo: [0.27, 0.2, 0.13],
       flutua: 0.34,
@@ -33782,7 +34098,7 @@ void main() {
       dorsal: { alt: 0.13, len: 0.2, x: -0.1 },
       anal: { alt: 0.09, len: 0.16, x: -0.45 },
       nad: { len: 0.13, larg: 0.08, y: -0.4 },
-      olho: { r: 0.042, pos: [0.15, 0.045, 0.1] },
+      olho: { r: 0.035, pos: [0.15, 0.045, 0.105] },
       rampas: { corpo: 0, barriga: 1, nadadeiras: 2, cauda: 2, boca: 1 }
     });
     rig.add("tronco", calota([0.275, 0.208, 0.125], m.plano(3), { de: 0, ate: 48, deform: [(v) => {
@@ -33800,11 +34116,14 @@ void main() {
     rig.add("cauda2", slab([[0, 0.03], [-0.1, 0.03], [-0.13, 0], [-0.1, -0.03], [0, -0.03]], 0.04, m.sombra(3)));
     rig.add("dorsal", blob([0.03, 0.09, 0.02], m.luz(2), { pos: [0.07, 0.07, 0], rot: [0, 0, 18], seg: 10 }));
     rig.add("tronco", blob([0.05, 0.035, 0.07], m(1), { pos: [0.25, -0.02, 0], seg: 12 }));
-    rig.bone("bolha", "corpo", [0.4, 0.12, 0.02]);
-    rig.add("bolha", espuma(0.035, m.luz(1)));
+    par((_, s) => {
+      for (const [x, y] of [[-0.03, -0.05], [-0.1, 0.04]]) rig.add("tronco", blob([0.03, 0.03, 0.015], m.luz(0), { pos: [x, y, 0.118 * s], seg: 8, castShadow: false }));
+    });
+    rig.bone("bolha", "corpo", [0.33, 0.1, 0.02]);
+    rig.add("bolha", espuma(0.028, m.luz(1)));
     return rig;
   }
-  var anims13 = animsPeixe({ u: 0.5, flutua: 0.34, mole: 1.3 }, {
+  var anims15 = animsPeixe({ u: 0.5, flutua: 0.34, mole: 1.3 }, {
     idle: { bolha: [...lp([[0, 0, 0], [0.01, 0.04, 0], [0.02, 0.08, 0], [0.02, 0.11, 0]]), ...ls([0.6, 0.9, 1.1, 0.4])] },
     especial: { bolha: [...qp([[0, 0, 0], [0, 0, 0], [0, 0.02, 0], [0.1, 0.05, 0], [0.14, 0.1, 0], [0, 0, 0]]), ...qs([0.8, 1.2, 1.6, 2, 1.2, 0.6])] },
     desmaio: { bolha: qs([0.6, 0.3, 0.01, 0.01, 0.01]) },
@@ -33820,8 +34139,8 @@ void main() {
     porte: "P",
     estagio: "basico",
     paleta: paletaPiaba,
-    build: build14,
-    anims: anims13,
+    build: build16,
+    anims: anims15,
     olho: {
       frente: [".ppp.", "pwwpp", "pwppp", "ppppp", ".ppp."],
       fechado: ["fffff", "fffff", "pfffp", ".ppp.", "fffff"],
@@ -33829,8 +34148,358 @@ void main() {
     }
   });
 
+  // tools/models/criaturas/038-dourado-rei.ts
+  var paleta3 = {
+    rampas: [
+      ["#a8571f", "#eeaa22", "#ffe27a"],
+      // 0 ouro do corpo (sombra cobre)
+      ["#c99a6a", "#fbe6b0", "#fffbe6"],
+      // 1 barriga clara, dentes e miolo das chamas
+      ["#8e1f2c", "#e2412a", "#ff8a3a"],
+      // 2 vermelho-brasa das nadadeiras, escamas e chamas
+      ["#30192e", "#5a2a3a", "#8a4a4a"]
+      // 3 pinta, risca e sobrancelha (vinho escuro)
+    ],
+    contorno: "#2e1524",
+    extras: { w: "#ffffff", p: "#22101c", f: "#eeaa22", a: "#e2412a" }
+  };
+  function build17() {
+    const { rig } = peixe({
+      corpo: [0.4, 0.25, 0.16],
+      flutua: 0.42,
+      ergue: 8,
+      boca: { len: 0.13, r: 0.085, queixo: 0.05 },
+      cauda: { len: 0.1, r: 0.07, alt: 0.5, larg: 0.26, forma: "lua" },
+      anal: { alt: 0.12, len: 0.2, x: -0.45 },
+      nad: { len: 0.2, larg: 0.11, y: -0.4 },
+      olho: { r: 0.03, pos: [0.24, 0.07, 0.125] },
+      rampas: { corpo: 0, barriga: 1, nadadeiras: 2, cauda: 2, boca: 0 }
+    });
+    rig.add("tronco", calota([0.41, 0.26, 0.165], m.sombra(0), { de: 0, ate: 38, rot: [0, 0, -78] }));
+    par((_, s) => {
+      rig.add("tronco", blob([0.07, 0.022, 0.02], m.plano(3), { pos: [0.25, 0.115, 0.12 * s], rot: [0, 14 * s, -22], seg: 10 }));
+      rig.add("tronco", blob([0.045, 0.055, 0.02], m.plano(3), { pos: [0.1, 0.04, 0.152 * s], seg: 10 }));
+      rig.add("tronco", blob([0.13, 0.02, 0.02], m.plano(3), { pos: [-0.24, 0, 0.1 * s], rot: [0, -12 * s, 0], seg: 10 }));
+      for (const [x, y, r] of [[0, 0.1, 0.034], [-0.09, 0.09, 0.03], [-0.17, 0.07, 0.026], [-0.03, -0.03, 0.032], [-0.12, -0.03, 0.028]])
+        rig.add("tronco", blob([r, r, 0.016], m.luz(2), { pos: [x, y, (0.15 - Math.abs(x) * 0.12) * s], seg: 8, castShadow: false }));
+    });
+    for (const x of [0.03, 0.08, 0.13]) par((_, s) => rig.add("mandibula", blob([0.016, 0.03, 0.016], m.luz(1), { pos: [x, 0.07, 0.045 * s], seg: 8 })));
+    rig.add("tronco", blob([0.07, 0.05, 0.1], m(0), { pos: [0.38, 0, 0], seg: 12 }));
+    rig.add("cauda1", blob([0.04, 0.085, 0.065], m.luz(1), { pos: [-0.07, 0, 0], seg: 12 }));
+    rig.add("cauda2", slab([[0, 0.04], [-0.12, 0.04], [-0.16, 0], [-0.12, -0.04], [0, -0.04]], 0.05, m.plano(3)));
+    const coroa = [[0.12, 0.2, 0.2, 0.075], [-0.02, 0.24, 0.3, 0.095], [-0.17, 0.2, 0.22, 0.08]];
+    coroa.forEach(([x, y, alt, r], i) => {
+      rig.bone("chama" + (i + 1), "tronco", [x, y, 0], [0, 0, 8 + i * 12]);
+      rig.add("chama" + (i + 1), ...chamaDupla(alt, r, m.plano(2), m.luz(2), { curva: 22 }));
+    });
+    rig.bone("chama4", "cauda2", [-0.2, 0.2, 0], [0, 0, 62]);
+    rig.add("chama4", ...chamaDupla(0.2, 0.07, m.luz(2), m.luz(1), { curva: 20 }));
+    rig.bone("chama5", "cauda2", [-0.2, -0.2, 0], [0, 0, 118]);
+    rig.add("chama5", ...chamaDupla(0.18, 0.065, m.luz(2), m.luz(1), { curva: -20 }));
+    par((l, s) => rig.add("nad_" + l, blob([0.05, 0.04, 0.02], m.luz(2), { pos: [-0.18, 0, 5e-3 * s], seg: 8 })));
+    return rig;
+  }
+  var anims16 = animsPeixe({ u: 0.75, flutua: 0.42, mole: 0.8 }, {
+    todas: tremula(["chama1", "chama2", "chama3", "chama4", "chama5"]),
+    idle: { chama2: lz([0, 6, 0, -6]) },
+    especial: { chama1: qz([0, -10, -14, 20, 8, 0]), chama3: qz([0, 10, 14, -20, -8, 0]) }
+  });
+  var douradoRei = criatura({
+    num: 38,
+    id: "dourado-rei",
+    nome: "Dourado-Rei",
+    porte: "G",
+    estagio: "final",
+    paleta: paleta3,
+    build: build17,
+    anims: anims16,
+    olho: {
+      frente: ["ppp..", "pwapp", ".pppp", "..pp."],
+      fechado: ["fffff", "pfffp", "fpppf", "fffff"],
+      mapa: ["w", "p"]
+    }
+  });
+
+  // tools/models/criaturas/039-mandizinho.ts
+  var paletaMandi = {
+    rampas: [
+      ["#6a4f3a", "#c49a3c", "#f0d878"],
+      // 0 couro amarelo-oliva
+      ["#bfa58e", "#f6e8c8", "#fffbee"],
+      // 1 barriga e beiço creme
+      ["#2e2a3e", "#514a66", "#8a84a2"],
+      // 2 pintas, bigodes e ferrão (ardósia)
+      ["#2f6a78", "#5fb7ae", "#c8f2dc"]
+      // 3 nadadeiras verde-água
+    ],
+    contorno: "#2a2238",
+    extras: { w: "#ffffff", p: "#1e1a2c", f: "#c49a3c" }
+  };
+  function bigode(rig, nome, pai, pos, len, r, s, abre, cai, mat = m.plano(2)) {
+    rig.bone(nome, pai, pos, [0, -abre * s, 0]);
+    rig.add(nome, tube([[0, 0, 0], [len * 0.5, -len * cai * 0.35, 0], [len, -len * cai, 0]], (t) => r * (1 - t * 0.55), mat, { seg: 10, radial: 8 }));
+  }
+  function build18() {
+    const { rig } = peixe({
+      corpo: [0.27, 0.19, 0.19],
+      flutua: 0.3,
+      ergue: 10,
+      boca: { len: 0.07, r: 0.06 },
+      cauda: { len: 0.12, r: 0.055, alt: 0.3, larg: 0.19, forma: "furcada" },
+      dorsal: { alt: 0.1, len: 0.14, x: 0.05 },
+      anal: { alt: 0.07, len: 0.16, x: -0.5 },
+      nad: { len: 0.15, larg: 0.09, y: -0.5 },
+      olho: { r: 0.03, pos: [0.19, 0.075, 0.12] },
+      rampas: { corpo: 0, barriga: 1, nadadeiras: 3, cauda: 3, boca: 1 }
+    });
+    rig.add("tronco", blob([0.15, 0.15, 0.2], m(0), { pos: [0.17, -0.01, 0] }));
+    rig.add("tronco", blob([0.07, 0.045, 0.17], m(1), { pos: [0.28, -0.07, 0], seg: 14 }));
+    for (const [x, y, z2, r] of [[-0.02, 0.15, 0.07, 0.035], [-0.12, 0.13, -0.05, 0.03], [0.06, 0.13, -0.09, 0.03], [-0.1, 0.07, 0.13, 0.032], [-0.2, 0.09, 0.05, 0.026], [0, 0.08, -0.16, 0.03]])
+      rig.add("tronco", blob([r, r * 0.6, r], m.plano(2), { pos: [x, y, z2], seg: 8, castShadow: false }));
+    rig.add("dorsal", spike(0.17, 0.028, m.plano(2), { pos: [0.06, 0, 0], rot: [0, 0, -12] }));
+    rig.add("tronco", blob([0.06, 0.035, 0.02], m(3), { pos: [-0.2, 0.12, 0], seg: 10 }));
+    par((l, s) => {
+      bigode(rig, "bigode_" + l, "tronco", [0.29, -0.03, 0.14 * s], 0.19, 0.028, s, 75, 0.7);
+      bigode(rig, "bigode2_" + l, "tronco", [0.3, -0.1, 0.07 * s], 0.12, 0.024, s, 25, 1.2);
+    });
+    par((_, s) => rig.add("tronco", blob([0.05, 0.04, 0.03], m.luz(0), { pos: [0.2, -0.02, 0.185 * s], seg: 10 })));
+    return rig;
+  }
+  var bigodes = {
+    idle: { bigode_d: lz([0, 6, 10, 3]), bigode_e: lz([0, 4, 10, 5]), "?bigode2_d": lz([0, -5, -8, -2]), "?bigode2_e": lz([0, -5, -8, -2]) },
+    especial: { bigode_d: qz([0, 14, 20, -24, -8, 0]), bigode_e: qz([0, 14, 20, -24, -8, 0]) },
+    dano: { bigode_d: qz([26, 10, 0]), bigode_e: qz([26, 10, 0]) },
+    desmaio: { bigode_d: qz([0, -8, -18, -26, -24]), bigode_e: qz([0, -8, -18, -26, -24]) }
+  };
+  var anims17 = animsPeixe({ u: 0.45, flutua: 0.26, mole: 1.3 }, bigodes);
+  var mandizinho = criatura({
+    num: 39,
+    id: "mandizinho",
+    nome: "Mandizinho",
+    porte: "P",
+    estagio: "basico",
+    paleta: paletaMandi,
+    build: build18,
+    anims: anims17,
+    olho: {
+      frente: [".pp.", "pwpp", "pppp", ".pp."],
+      fechado: ["ffff", "pffp", ".pp.", "ffff"],
+      mapa: ["p", "p"]
+    }
+  });
+
+  // tools/models/criaturas/040-jau-gigante.ts
+  var paleta4 = {
+    rampas: [
+      ["#4a3a3a", "#8f7440", "#c9b060"],
+      // 0 couro oliva-barrento (mais escuro que o do filhote)
+      ["#b59c88", "#f0e0c0", "#fffaea"],
+      // 1 barriga, beiço e papada
+      ["#2e2a3e", "#6a5a58", "#a89888"],
+      // 2 pintas e bigodes · pedra · luz da pedra
+      ["#2f6a78", "#5fb7ae", "#c8f2dc"]
+      // 3 nadadeiras e broto verde-água
+    ],
+    contorno: "#261e30",
+    extras: { w: "#ffffff", p: "#1a1626", f: "#8f7440" }
+  };
+  function build19() {
+    const { rig } = peixe({
+      corpo: [0.42, 0.24, 0.28],
+      flutua: 0.36,
+      ergue: 9,
+      boca: { len: 0.12, r: 0.09 },
+      cauda: { len: 0.14, r: 0.085, alt: 0.4, larg: 0.2, forma: "redonda" },
+      dorsal: { alt: 0.12, len: 0.18, x: 0 },
+      anal: { alt: 0.09, len: 0.2, x: -0.5 },
+      nad: { len: 0.24, larg: 0.14, y: -0.55 },
+      olho: { r: 0.026, pos: [0.3, 0.13, 0.17] },
+      rampas: { corpo: 0, barriga: 1, nadadeiras: 3, cauda: 0, boca: 1 }
+    });
+    rig.add("tronco", blob([0.22, 0.19, 0.3], m(0), { pos: [0.26, -0.01, 0] }));
+    rig.add("tronco", blob([0.1, 0.06, 0.27], m(1), { pos: [0.43, -0.09, 0], seg: 14 }));
+    rig.add("tronco", blob([0.16, 0.1, 0.22], m(1), { pos: [0.26, -0.17, 0], seg: 14 }));
+    rig.add("tronco", blob([0.09, 0.02, 0.22], m.sombra(2), { pos: [0.44, -0.035, 0], seg: 12 }));
+    rig.add("tronco", calota([0.36, 0.255, 0.25], m.plano(2), { de: 0, ate: 50, pos: [-0.06, 0, 0] }));
+    for (const [x, y, z2, r] of [[-0.02, 0.25, 0.1, 0.075], [-0.16, 0.22, -0.06, 0.09], [-0.26, 0.17, 0.08, 0.06]])
+      rig.add("tronco", blob([r, r * 0.75, r * 0.9], m.luz(2), { pos: [x, y, z2], seg: 6 }));
+    for (const [x, z2, a] of [[0.08, 0, 30], [-0.1, 0.12, -40], [-0.2, -0.02, 70]])
+      rig.add("tronco", blob([0.07, 0.012, 0.014], m.sombra(2), { pos: [x, 0.25 - Math.abs(x) * 0.2, z2], rot: [0, a, 0], seg: 6, castShadow: false }));
+    par((_, s) => {
+      for (const [x, y, r] of [[0.02, 0.06, 0.04], [-0.12, 0.02, 0.036], [-0.24, 0.05, 0.03], [0.12, -0.02, 0.03]])
+        rig.add("tronco", blob([r, r, 0.02], m.sombra(2), { pos: [x, y, (0.27 - Math.abs(x) * 0.25) * s], seg: 8, castShadow: false }));
+    });
+    rig.add("dorsal", spike(0.2, 0.04, m.sombra(2), { pos: [0.08, 0, 0], rot: [0, 0, -10] }));
+    rig.bone("broto", "tronco", [-0.14, 0.28, -0.05], [0, 0, 10]);
+    rig.add("broto", folha3d(0.22, 0.13, m(3), { rot: [0, 30, -28], curva: 20 }), folha3d(0.17, 0.11, m.luz(3), { rot: [0, -40, 34], curva: -20 }), blob([0.04, 0.04, 0.04], m.sombra(3), { seg: 8 }));
+    par((l, s) => {
+      bigode(rig, "bigode_" + l, "tronco", [0.44, -0.03, 0.22 * s], 0.3, 0.045, s, 78, 0.8, m.sombra(2));
+      bigode(rig, "bigode2_" + l, "tronco", [0.46, -0.13, 0.12 * s], 0.2, 0.036, s, 25, 1.3, m.sombra(2));
+      rig.add("tronco", blob([0.05, 0.035, 0.03], m.luz(0), { pos: [0.33, 0.04, 0.26 * s], seg: 10 }));
+    });
+    rig.add("cauda2", blob([0.035, 0.19, 0.035], m(3), { pos: [-0.18, 0, 0], seg: 8 }));
+    return rig;
+  }
+  var anims18 = animsPeixe({ u: 0.7, flutua: 0.3, mole: 0.6 }, {
+    ...bigodes,
+    idle: { ...bigodes.idle, broto: lz([0, 5, 8, -4]) },
+    especial: { ...bigodes.especial, broto: qz([0, 10, 14, -24, -8, 0]) }
+  });
+  var jauGigante = criatura({
+    num: 40,
+    id: "jau-gigante",
+    nome: "Ja\xFA-Gigante",
+    porte: "G",
+    estagio: "final",
+    paleta: paleta4,
+    build: build19,
+    anims: anims18,
+    olho: {
+      frente: ["pppp.", ".pwpp", ".pppp", "..pp."],
+      fechado: ["fffff", "pfffp", "fpppf", "fffff"],
+      mapa: ["p", "p"]
+    }
+  });
+
+  // tools/models/criaturas/041-calanguinho.ts
+  var paletaCalango = {
+    rampas: [
+      ["#5e4a44", "#a98a52", "#e2cf8c"],
+      // 0 couro areia-oliva
+      ["#c2a48a", "#f6e6c4", "#fffbee"],
+      // 1 barriga e listras creme
+      ["#e8521c", "#ffb02e", "#fff29a"],
+      // 2 brasa: papo, fagulhas e chama
+      ["#2e1e2e", "#55343e", "#8a5a52"]
+      // 3 faixas escuras, dedos e máscara
+    ],
+    contorno: "#2c1a26",
+    extras: { w: "#ffffff", p: "#22141e", f: "#a98a52", a: "#ffb02e" }
+  };
+  function build20() {
+    const { rig } = lagarto({
+      tronco: [0.24, 0.12, 0.15],
+      alt: 0.09,
+      pernas: { abre: 0.17, r: 0.042, pe: 0.07 },
+      pescoco: { len: 0.14, r: 0.1, ang: 52 },
+      cabeca: [0.15, 0.11, 0.13],
+      cauda: { segs: 4, len: 0.5, r0: 0.085, r1: 0.03, ang: -4, curva: 20 },
+      olho: { r: 0.03, pos: [0.11, 0.07, 0.105] },
+      rampas: { pele: 0, barriga: 1, pernas: 0, cabeca: 0, cauda: 0, dentro: 2 }
+    });
+    rig.bones.corpo.rotation.z = 10 * D2R2;
+    par((_, s) => {
+      rig.add("corpo", blob([0.2, 0.025, 0.022], m.plano(1), { pos: [-0.01, 0.1, 0.07 * s], seg: 10, castShadow: false }));
+      rig.add("corpo", blob([0.18, 0.03, 0.03], m.plano(3), { pos: [-0.01, 0.065, 0.118 * s], seg: 10, castShadow: false }));
+      rig.add("corpo", blob([0.022, 0.018, 0.022], m.plano(2), { pos: [-0.14, 0.105, 0.03 * s], seg: 8, castShadow: false }));
+    });
+    rig.add("corpo", blob([0.022, 0.018, 0.022], m.plano(2), { pos: [-0.05, 0.12, 0], seg: 8, castShadow: false }));
+    rig.add("pescoco", blob([0.08, 0.09, 0.09], m(2), { pos: [0.1, 0.02, 0], seg: 14 }));
+    par((_, s) => rig.add("cabeca", blob([0.07, 0.025, 0.02], m.plano(3), { pos: [0.03, 0.06, 0.125 * s], seg: 10 })));
+    rig.add("cabeca", calota([0.155, 0.118, 0.1], m.luz(0), { de: 0, ate: 50, pos: [0.075, 0.012, 0] }));
+    rig.add("cauda2", blob([0.03, 0.07, 0.07], m.plano(3), { pos: [-0.06, 0, 0], seg: 10 }));
+    rig.add("cauda3", blob([0.028, 0.055, 0.055], m.plano(3), { pos: [-0.06, 0, 0], seg: 10 }));
+    rig.bone("chama1", "cauda4", [-0.1, 0, 0], [0, 0, 60]);
+    rig.add("chama1", ...chamaDupla(0.2, 0.075, m.plano(2), m.luz(2), { curva: 18 }));
+    return rig;
+  }
+  var anims19 = animsLagarto({ u: 0.45, hPerna: 0.09, caudaSegs: 4, mole: 1.1 }, { todas: tremula(["chama1"]) });
+  var calanguinho = criatura({
+    num: 41,
+    id: "calanguinho",
+    nome: "Calanguinho",
+    porte: "P",
+    estagio: "basico",
+    paleta: paletaCalango,
+    build: build20,
+    anims: anims19,
+    olho: {
+      frente: [".pp.", "pwpp", "pppp", ".pp."],
+      fechado: ["ffff", "pffp", ".pp.", "ffff"],
+      mapa: ["p", "p"]
+    }
+  });
+
+  // tools/models/criaturas/042-calangao.ts
+  var paleta5 = {
+    ...paletaCalango,
+    rampas: [
+      ["#6a5248", "#b0905a", "#e6d394"],
+      // 0 faixas areia (o couro do filhote)
+      paletaCalango.rampas[1],
+      paletaCalango.rampas[2],
+      ["#261c2e", "#4a3a4e", "#7a6878"]
+      // 3 basalto do corpo e das placas
+    ],
+    extras: { w: "#ffffff", p: "#1a121e", f: "#4a3a4e", a: "#ffb02e" }
+  };
+  function build21() {
+    const { rig } = lagarto({
+      tronco: [0.36, 0.17, 0.21],
+      alt: 0.12,
+      pernas: { abre: 0.24, r: 0.065, pe: 0.1 },
+      pescoco: { len: 0.17, r: 0.14, ang: 34 },
+      cabeca: [0.19, 0.12, 0.15],
+      focinho: 0.1,
+      cauda: { segs: 4, len: 0.68, r0: 0.13, r1: 0.05, ang: -6, curva: 17 },
+      crista: { n: 6, alt: 0.13 },
+      olho: { r: 0.026, pos: [0.15, 0.09, 0.115] },
+      rampas: { pele: 3, barriga: 1, pernas: 3, cabeca: 3, cauda: 3, crista: 3, dentro: 2 }
+    });
+    rig.bones.corpo.rotation.z = 7 * D2R2;
+    for (const x of [0.2, 0.04, -0.13, -0.27]) rig.add("corpo", blob([0.035, 0.168 * Math.sqrt(1 - (x / 0.4) ** 2), 0.215 * Math.sqrt(1 - (x / 0.4) ** 2)], m(0), { pos: [x, 0.012, 0], seg: 14, castShadow: false }));
+    par((_, s) => {
+      rig.add("corpo", blob([0.26, 0.022, 0.022], m.plano(1), { pos: [-0.02, 0.15, 0.085 * s], seg: 10, castShadow: false }));
+      rig.add("corpo", tube([[0.22, 0.05, 0.19 * s], [0.12, -0.02, 0.215 * s], [0.03, 0.05, 0.22 * s], [-0.08, -0.01, 0.215 * s]], 0.017, m.plano(2), { seg: 12, radial: 6 }));
+      rig.add("corpo", tube([[-0.16, 0.06, 0.2 * s], [-0.22, 0, 0.19 * s], [-0.3, 0.03, 0.15 * s]], 0.015, m.plano(2), { seg: 8, radial: 6 }));
+      rig.add("perna_f" + (s > 0 ? "d" : "e"), blob([0.085, 0.07, 0.085], m.luz(3), { pos: [0.02, 0.03, 0.05 * s], seg: 6 }));
+      rig.add("cabeca", blob([0.08, 0.028, 0.02], m.plano(0), { pos: [0.08, 0.035, 0.15 * s], seg: 10 }));
+      rig.add("cabeca", blob([0.07, 0.03, 0.03], m.luz(3), { pos: [0.13, 0.13, 0.09 * s], rot: [0, 0, -18], seg: 8 }));
+    });
+    rig.add("pescoco", blob([0.11, 0.1, 0.12], m(2), { pos: [0.1, -0.04, 0], seg: 14 }));
+    rig.bone("lingua", "mandibula", [0.3, 0.04, 0]);
+    rig.add("lingua", tube([[0, 0, 0], [0.09, 0.01, 0], [0.16, 0, 0.04]], 0.02, m.luz(2), { seg: 8, radial: 6 }), tube([[0.09, 0.01, 0], [0.16, 0, -0.04]], 0.02, m.luz(2), { seg: 6, radial: 6 }));
+    rig.add("cauda2", blob([0.035, 0.105, 0.105], m(0), { pos: [-0.08, 0, 0], seg: 12 }));
+    rig.add("cauda3", blob([0.03, 0.08, 0.08], m(0), { pos: [-0.08, 0, 0], seg: 12 }));
+    rig.bone("chama1", "cauda4", [-0.15, 0, 0], [0, 0, 60]);
+    rig.add("chama1", ...chamaDupla(0.3, 0.11, m.plano(2), m.luz(2), { curva: 18 }));
+    rig.bone("chama2", "cauda3", [-0.1, 0.07, 0], [0, 0, 30]);
+    rig.add("chama2", ...chamaDupla(0.17, 0.07, m.plano(2), m.luz(2), { curva: 18 }));
+    rig.bone("chama3", "cauda2", [-0.08, 0.1, 0], [0, 0, 24]);
+    rig.add("chama3", ...chamaDupla(0.14, 0.06, m.plano(2), m.luz(2), { curva: 18 }));
+    rig.add("cabeca", calota([0.2, 0.13, 0.12], m.luz(3), { de: 0, ate: 45, pos: [0.095, 0.012, 0] }));
+    return rig;
+  }
+  var anims20 = animsLagarto({ u: 0.7, hPerna: 0.12, caudaSegs: 4, mole: 0.6 }, {
+    todas: tremula(["chama1", "chama2", "chama3"]),
+    idle: { lingua: [...qs([0.01, 0.01, 1, 0.01]), ...lz([0, 0, 0, 0])] },
+    fisico: { lingua: qs([0.01, 0.01, 1, 0.6, 0.01]) },
+    especial: { lingua: [...qs([0.01, 0.01, 0.01, 1.3, 1, 0.01]), ...qp([[0, 0, 0], [0, 0, 0], [0, 0, 0], [0.03, 0, 0], [0, 0, 0], [0, 0, 0]])] },
+    entrada: { lingua: qs([0.01, 0.01, 0.01, 0.01, 0.01]) },
+    dano: { lingua: qs([0.01, 0.01, 0.01]) },
+    desmaio: { lingua: qs([0.01, 0.4, 0.8, 1, 1]) },
+    status: { lingua: qs([0.01, 0.01, 0.01, 0.01]) },
+    andar: { lingua: qs([0.01, 0.01, 0.01, 0.01]) },
+    parado: { lingua: qs([0.01, 0.01]) }
+  });
+  var calangao = criatura({
+    num: 42,
+    id: "calangao",
+    nome: "Calang\xE3o",
+    porte: "G",
+    estagio: "final",
+    paleta: paleta5,
+    build: build21,
+    anims: anims20,
+    olho: {
+      frente: ["aaa..", "awpa.", ".appa", "..aa."],
+      fechado: ["fffff", "afffa", "faaaf", "fffff"],
+      mapa: ["a", "p"]
+    }
+  });
+
   // tools/models/criaturas/lote-037-060.ts
-  var modelos3 = [piabinha];
+  var modelos3 = [piabinha, douradoRei, mandizinho, jauGigante, calanguinho, calangao];
 
   // tools/models/criaturas/061-preguicim.ts
   var paletaPreguica = {
@@ -33857,16 +34526,16 @@ void main() {
       cabeca: p.cabeca,
       rosto: 0.78,
       focinho: { len: cx * 0.3, r: cy * 0.28 },
-      olho: { r: 0.028, pos: [cx * 0.8, cy * 0.08, cz * 0.5] },
+      olho: { r: 0.03, pos: [cx * 0.82, cy * 0.1, cz * 0.48] },
       rampas: { pelo: 0, barriga: 1, rosto: 1, maos: 0, garras: 1 }
     });
     const rig = kit.rig;
-    par((_, s) => rig.add("cabeca", blob([cx * 0.2, cy * 0.18, cz * 0.34], m.sombra(0), { pos: [cx * 0.7, -cy * 0.02, cz * 0.6 * s], rot: [0, -34 * s, -18], seg: 12 })));
+    par((_, s) => rig.add("cabeca", blob([cx * 0.16, cy * 0.2, cz * 0.4], m.sombra(0), { pos: [cx * 0.72, -cy * 0, cz * 0.62 * s], rot: [0, -36 * s, -22], seg: 12 })));
     rig.add("cabeca", blob([cx * 0.13, cy * 0.11, cz * 0.16], m.plano(0), { pos: [cx * 1.1, -cy * 0.22, 0], seg: 10 }));
     rig.add(
       "cabeca",
-      ring(cy * 0.2, cy * 0.075, m.plano(3), { pos: [cx * 0.86, cy * 0.52, 0], rot: [0, 90, 28] }),
-      blob([cy * 0.07, cy * 0.07, cy * 0.07], m.luz(3), { pos: [cx * 0.93, cy * 0.5, 0], seg: 8 })
+      ring(cy * 0.15, cy * 0.06, m.plano(3), { pos: [cx * 0.84, cy * 0.56, 0], rot: [0, 90, 30] }),
+      blob([cy * 0.06, cy * 0.06, cy * 0.06], m.luz(3), { pos: [cx * 0.9, cy * 0.55, 0], seg: 8 })
     );
     return kit;
   }
@@ -33874,21 +34543,31 @@ void main() {
     rig.bones.cabeca.rotation.x = 8 * D2R2;
     rig.bones.cabeca.rotation.z = -6 * D2R2;
   };
-  function build15() {
-    const { rig, ref } = corpoPreguica({ k: 1, cabeca: [0.2, 0.19, 0.21], bracos: 0.62, garras: 3, curva: 16 });
-    rig.bone("topete", "cabeca", [ref.topo[0] - 0.03, ref.topo[1] - 0.03, 0], [0, 0, 20]);
-    rig.add("topete", tufo(3, 0.11, 0.05, m(0), { abre: 34 }));
-    rig.add("tronco", calota([0.21, 0.25, 0.22], m(2), { de: 0, ate: 42, rot: [0, 0, 62] }));
-    rig.bone("musgo", "tronco", [-0.14, 0.17, 0], [0, 0, 40]);
-    rig.add("musgo", tufo(2, 0.1, 0.04, m.luz(2), { abre: 30 }));
+  var bracosCurtos = {
+    fisico: { braco_e: qr([[0, 0, -16], [0, 0, -40], [0, 0, 44], [0, 0, 20], [0, 0, 0]]), antebraco_e: qz([-20, -40, 16, 6, 0]) },
+    especial: {
+      braco_d: qr([[0, 0, 8], [10, 0, 20], [10, 0, 20], [-16, 0, 70], [-8, 0, 34], [0, 0, 0]]),
+      braco_e: qr([[0, 0, 8], [-10, 0, 20], [-10, 0, 20], [16, 0, 70], [8, 0, 34], [0, 0, 0]]),
+      antebraco_d: qz([14, 34, 34, 6, 10, 0]),
+      antebraco_e: qz([14, 34, 34, 6, 10, 0])
+    },
+    entrada: { braco_d: qz([-24, -50, 14, -5, 0]), braco_e: qz([-24, -50, 14, -5, 0]) },
+    dano: { braco_d: qz([30, 10, 0]), braco_e: qz([36, 12, 0]) }
+  };
+  function build22() {
+    const { rig, ref } = corpoPreguica({ k: 0.92, cabeca: [0.25, 0.225, 0.25], bracos: 0.6, garras: 3, curva: 14 });
+    rig.bone("topete", "cabeca", [ref.topo[0] - 0.02, ref.topo[1] - 0.04, 0], [0, 0, 14]);
+    rig.add("topete", tufo(3, 0.17, 0.075, m(0), { abre: 38 }));
+    rig.bone("musgo", "tronco", [-0.16, 0.1, 0], [0, 0, 62]);
+    rig.add("musgo", blob([0.1, 0.07, 0.13], m(2)), tufo(3, 0.15, 0.06, m.luz(2), { abre: 40 }));
     sonha(rig);
     return rig;
   }
-  var anims14 = animsArboricola({ u: 0.7, hPerna: 0.13, mole: 1.3 }, {
+  var anims21 = animsArboricola({ u: 0.7, hPerna: 0.12, mole: 1.3 }, unirExtras(bracosCurtos, {
     idle: { topete: lz([0, 5, 9, 3]), musgo: lz([0, -5, -8, -2]) },
     especial: { topete: qz([0, 12, 16, -22, -8, 0]) },
     andar: { topete: lz([0, 8, 0, -8]) }
-  });
+  }));
   var preguicim = criatura({
     num: 61,
     id: "preguicim",
@@ -33896,20 +34575,160 @@ void main() {
     porte: "P",
     estagio: "basico",
     paleta: paletaPreguica,
-    build: build15,
-    anims: anims14,
+    build: build22,
+    anims: anims21,
     olho: {
-      frente: [".pp.", "pwpp", "pppp", "fppf"],
-      fechado: ["ffff", "ffff", "pppp", "ffff"],
+      frente: [".pp.", "pwpp", "pppp", ".pp."],
+      fechado: ["....", "p..p", ".pp.", "...."],
+      mapa: ["p", "p"]
+    }
+  });
+
+  // tools/models/criaturas/062-preguicona.ts
+  function flor(rig, osso, r) {
+    for (let i = 0; i < 5; i++) {
+      const a = i / 5 * Math.PI * 2;
+      rig.add(osso, blob([r * 0.6, r * 0.3, r * 0.6], m(3), { pos: [Math.cos(a) * r * 0.7, 0, Math.sin(a) * r * 0.7], seg: 10 }));
+    }
+    rig.add(osso, blob([r * 0.42, r * 0.42, r * 0.42], m.luz(1), { pos: [0, r * 0.12, 0], seg: 10 }));
+  }
+  function build23() {
+    const { rig, ref } = corpoPreguica({ k: 1.3, cabeca: [0.27, 0.24, 0.27], bracos: 0.98, garras: 3, curva: 12 });
+    rig.bones.braco_e.rotation.z = 118 * D2R2;
+    rig.bones.antebraco_e.rotation.z = 34 * D2R2;
+    rig.bones.braco_e.rotation.x = 14 * D2R2;
+    rig.bone("topete", "cabeca", [ref.topo[0] - 0.02, ref.topo[1] - 0.04, 0], [0, 0, 14]);
+    rig.add("topete", tufo(4, 0.2, 0.085, m(0), { abre: 44 }));
+    par((l) => {
+      rig.bone("franja_" + l, "braco_" + l, [0.03, -0.18, 0], [0, 0, 180]);
+      rig.add("franja_" + l, tufo(3, 0.2, 0.07, m.sombra(0), { abre: 30 }));
+    });
+    rig.add("tronco", calota([0.275, 0.33, 0.29], m(2), { de: 0, ate: 80, rot: [0, 0, 84] }));
+    for (const [y, z2, g] of [[-0.12, 0.2, 150], [-0.12, -0.2, 150], [0.26, 0, 20]])
+      rig.add("tronco", folha3d(0.2, 0.16, m.luz(2), { pos: [-0.2, y, z2], rot: [0, 0, g + 60], esp: 0.5 }));
+    const flores = [
+      ["flor1", "tronco", [-0.27, 0.12, 0.08], [0, 0, 80], 0.085],
+      ["flor2", "tronco", [-0.2, -0.06, -0.17], [-50, 0, 70], 0.07],
+      ["flor3", "tronco", [-0.16, 0.27, -0.06], [-10, 0, 40], 0.065],
+      ["flor4", "cabeca", [-0.02, 0.2, -0.2], [-52, 0, 10], 0.085]
+    ];
+    for (const [nome, pai, pos, rot, r] of flores) {
+      rig.bone(nome, pai, pos, rot);
+      flor(rig, nome, r);
+    }
+    sonha(rig);
+    return rig;
+  }
+  var anims22 = animsArboricola({ u: 1, hPerna: 0.17, mole: 0.9 }, unirExtras(bracosCurtos, {
+    idle: { topete: lz([0, 4, 7, 2]), braco_e: lz([0, 5, 9, 4]), antebraco_e: lz([0, -8, -14, -6]), franja_e: lz([0, -6, -10, -4]) },
+    fisico: { braco_e: qz([10, 24, -70, -30, 0]), antebraco_e: qz([10, 20, -30, -10, 0]) },
+    especial: { topete: qz([0, 12, 16, -22, -8, 0]), braco_e: qz([0, 6, 8, -14, -6, 0]), flor1: qz([0, 6, 8, -12, -4, 0]) },
+    desmaio: { braco_e: qz([0, -20, -60, -110, -108]) },
+    andar: { topete: lz([0, 8, 0, -8]), braco_e: lz([0, 6, 0, -6]) }
+  }));
+  var preguicona = criatura({
+    num: 62,
+    id: "preguicona",
+    nome: "Pregui\xE7ona",
+    porte: "M",
+    estagio: "final",
+    paleta: paletaPreguica,
+    build: build23,
+    anims: anims22,
+    olho: {
+      frente: [".ppp.", "ppwpp", "ppppp", "pwppp", ".ppp."],
+      fechado: [".....", ".....", "p...p", ".ppp.", "....."],
       mapa: ["p", "p"]
     }
   });
 
   // tools/models/criaturas/lote-061-084.ts
-  var modelos4 = [preguicim];
+  var modelos4 = [preguicim, preguicona];
+
+  // tools/models/criaturas/086-sucurizinha.ts
+  var paletaSucuri = {
+    rampas: [
+      ["#34504c", "#6c8f48", "#a8c268"],
+      // 0 verde-oliva do corpo (sombra azulada)
+      ["#b08748", "#eccb66", "#fff3b4"],
+      // 1 amarelo da barriga
+      ["#1e2434", "#343b47", "#565c62"],
+      // 2 pintas e risca do olho (grafite azulado)
+      ["#5a3840", "#96623f", "#cf9a62"]
+      // 3 lama e casca de tronco
+    ],
+    contorno: "#1c2630",
+    extras: { w: "#ffffff", p: "#1c2630", f: "#6c8f48", a: "#f08a3c" }
+  };
+  var gomo = (r, rFim, n, i) => {
+    const rm = r + (rFim - r) * ((i - 0.5) / n);
+    return { rm, y: rm - r };
+  };
+  function pintaFlanco(rig, osso, x, y, r, ang, mat, k2 = 0.46) {
+    const a = ang * Math.PI / 180;
+    rig.add(osso, blob([r * k2, r * k2, r * k2], mat, { pos: [x, y + Math.cos(a) * r * 0.72, Math.sin(a) * r * 0.72], seg: 10, castShadow: false }));
+  }
+  var boteCurto = (n) => Object.fromEntries(Array.from({ length: n }, (_, i) => ["pescoco" + (i + 1), qz([8, 15, -15, -6, 0])]));
+  var tomboLado = (n) => ({
+    pescoco1: qr([[0, 0, 4], [8, 0, -4], [38, 0, -10], [78, 0, -16], [74, 0, -14]]),
+    ...Object.fromEntries(Array.from({ length: n - 1 }, (_, i) => ["pescoco" + (i + 2), qz([0, -4, -10, -14, -12])])),
+    cabeca: qz([0, 4, 10, 16, 14])
+  });
+  function build24() {
+    const r = 0.1, rF = 0.035, N = 6, len = 0.17;
+    const { rig } = serpente({
+      r,
+      pescoco: { segs: 3, len: 0.14, curva: [56, 30, -16], rFim: 0.095 },
+      cauda: { segs: N, len, curva: [30, -62, -52, 60, 70, 44], rFim: rF },
+      cabeca: [0.19, 0.13, 0.155],
+      olho: { r: 0.03, pos: [0.115, 0.125, 0.092] },
+      rampas: { corpo: 0, barriga: 1, cabeca: 0 }
+    });
+    par((_, s) => {
+      rig.add("cabeca", blob([0.05, 0.045, 0.045], m(0), { pos: [0.1, 0.105, 0.082 * s], seg: 12 }));
+      rig.add("cabeca", blob([0.08, 0.028, 0.02], m.plano(2), { pos: [0, 0.05, 0.132 * s], rot: [0, 10 * s, 14], seg: 10 }));
+      rig.add("cabeca", blob([0.018, 0.014, 0.014], m.plano(2), { pos: [0.26, 0.075, 0.035 * s], seg: 8 }));
+    });
+    rig.add("cabeca", calota([0.135, 0.14, 0.145], m(3), { de: 0, ate: 58, pos: [0, 0.02, 0], rot: [0, 0, 34] }));
+    rig.add("cabeca", blob([0.045, 0.06, 0.045], m(3), { pos: [-0.07, 0.05, 0.08], seg: 10 }));
+    const g2 = gomo(r, rF, N, 2);
+    rig.add("cauda2", blob([0.13, 0.135, 0.145], m(0), { pos: [-len / 2, g2.y + 0.035, 0] }));
+    rig.add("cauda2", blob([0.11, 0.09, 0.13], m(1), { pos: [-len / 2, g2.y - 0.02, 0] }));
+    for (const a of [-55, 0, 55]) pintaFlanco(rig, "cauda2", -len / 2, g2.y + 0.035, 0.14, a, m.plano(2), 0.4);
+    for (const i of [1, 3, 4, 5]) {
+      const g = gomo(r, rF, N, i);
+      for (const a of [-50, 50]) pintaFlanco(rig, "cauda" + i, -len * (a > 0 ? 0.3 : 0.7), g.y, g.rm, a, m.plano(2));
+    }
+    for (const a of [-70, 70]) pintaFlanco(rig, "pescoco1", 0.08, 0, 0.1, a, m.plano(2));
+    rig.bone("ponta", "cauda" + N, [-len, rF - r, 0], [0, 0, -60]);
+    rig.add("ponta", blob([0.06, 0.05, 0.05], m(3), { pos: [-0.03, 0, 0], seg: 12 }), blob([0.035, 0.035, 0.035], m.luz(3), { pos: [-0.085, 0.01, 0], seg: 10 }));
+    return rig;
+  }
+  var anims23 = animsSerpente({ u: 0.5, pescoco: 3, cauda: 6, mole: 1.1 }, {
+    desmaio: tomboLado(3),
+    fisico: boteCurto(3),
+    idle: { ponta: lz([0, 12, 20, 6]), cauda2: ls([1, [1, 1.04, 1.05], [1, 1.07, 1.08], [1, 1.03, 1.03]]) },
+    especial: { ponta: qz([0, 20, 30, -30, -10, 0]) },
+    dano: { ponta: qz([30, 12, 0]) }
+  });
+  var sucurizinha = criatura({
+    num: 86,
+    id: "sucurizinha",
+    nome: "Sucurizinha",
+    porte: "P",
+    estagio: "basico",
+    paleta: paletaSucuri,
+    build: build24,
+    anims: anims23,
+    olho: {
+      frente: [".pp.", "pwpp", "pppp", ".pp."],
+      fechado: ["ffff", "pffp", ".pp.", "ffff"],
+      mapa: ["p", "p"]
+    }
+  });
 
   // tools/models/criaturas/lote-085-108.ts
-  var modelos5 = [];
+  var modelos5 = [sucurizinha];
 
   // tools/models/criaturas/109-harpinha.ts
   var paletaHarpia = {
@@ -33926,7 +34745,7 @@ void main() {
     contorno: "#22203a",
     extras: { w: "#ffffff", p: "#1b1828", f: "#e6e9f2", a: "#c24a3a" }
   };
-  function build16() {
+  function build25() {
     const { rig, ref } = ave({
       corpo: [0.2, 0.19, 0.18],
       ergue: 44,
@@ -33943,11 +34762,11 @@ void main() {
       const mesh = x;
       if (mesh.isMesh) mesh.material = m.plano(2);
     });
-    rig.add("tronco", calota([0.21, 0.2, 0.19], m(1), { de: 0, ate: 48, rot: [0, 0, -78], pos: [0.01, 0.01, 0] }));
+    rig.add("tronco", blob([0.05, 0.06, 0.17], m(1), { pos: [0.15, 0.06, 0], rot: [0, 0, -30], seg: 14, castShadow: false }));
     rig.add("tronco", calota([0.21, 0.2, 0.19], m(1), { de: 0, ate: 60, rot: [0, 0, 60] }));
     par((l, s) => {
-      rig.bone("penacho_" + l, "cabeca", [ref.topo[0] - 0.04, ref.topo[1] - 0.04, 0.05 * s], [-26 * s, 0, 22]);
-      rig.add("penacho_" + l, tufo(2, 0.17, 0.045, m(1), { abre: 12 }), blob([0.03, 0.035, 0.03], m.sombra(2), { pos: [0, 0.165, 0], seg: 8 }));
+      rig.bone("penacho_" + l, "cabeca", [ref.topo[0] - 0.04, ref.topo[1] - 0.04, 0.05 * s], [-46 * s, 0, 16]);
+      rig.add("penacho_" + l, tufo(2, 0.2, 0.05, m(1), { abre: 12 }), blob([0.03, 0.035, 0.03], m.sombra(2), { pos: [0, 0.19, 0], seg: 8 }));
     });
     par((_, s) => rig.add("cabeca", blob([0.085, 0.07, 0.03], m.luz(1), { pos: [0.07, 0.02, 0.155 * s], rot: [0, 14 * s, 0], seg: 12 })));
     rig.add("cabeca", blob([0.06, 0.05, 0.06], m.luz(3), { pos: [0.16, -0.01, 0], seg: 10 }));
@@ -33957,7 +34776,7 @@ void main() {
     par((l) => rig.add("perna_" + l, blob([0.07, 0.07, 0.07], m(0), { pos: [0, -0.02, 0], seg: 12 })));
     return rig;
   }
-  var anims15 = animsAve({ u: 0.6, hPerna: 0.13, mole: 1.2 }, {
+  var anims24 = animsAve({ u: 0.6, hPerna: 0.13, mole: 1.2 }, {
     idle: { penacho_d: lz([0, 5, 10, -6]), penacho_e: lz([0, 8, 6, -4]) },
     fisico: { perna_d: qz([-10, -30, 60, 20, 0]), canela_d: qz([0, -30, 20, 0, 0]) },
     especial: { penacho_d: qz([0, 14, 18, -26, -8, 0]), penacho_e: qz([0, 14, 18, -26, -8, 0]) },
@@ -33970,8 +34789,8 @@ void main() {
     porte: "P",
     estagio: "basico",
     paleta: paletaHarpia,
-    build: build16,
-    anims: anims15,
+    build: build25,
+    anims: anims24,
     olho: {
       frente: [".pp.", "ppwp", "pppp", ".pp."],
       fechado: ["ffff", "pffp", ".pp.", "ffff"],
@@ -33979,14 +34798,547 @@ void main() {
     }
   });
 
+  // tools/models/criaturas/110-harpia.ts
+  var paleta6 = { ...paletaHarpia, extras: { ...paletaHarpia.extras, f: "#99a3bf" } };
+  function build26() {
+    const { rig, ref } = ave({
+      corpo: [0.3, 0.25, 0.23],
+      ergue: 62,
+      pescoco: { len: 0.15, ang: 78, r: 0.15 },
+      cabeca: [0.18, 0.165, 0.165],
+      bico: { len: 0.19, r: 0.08, y: -0.08, achata: 0.75, gancho: 66, inferior: 0.5 },
+      asa: { len: 0.56, larg: 0.3, cai: 24, ponta: 0.5 },
+      cauda: { len: 0.4, larg: 0.12, ang: -38, penas: 5, abre: 24 },
+      pernas: { alt: 0.26, r: 0.045, z: 0.55, x: -0.08, dedo: 0.17 },
+      olho: { r: 0.024, pos: [0.115, 0.035, 0.15] },
+      rampas: { corpo: 1, peito: 0, cabeca: 1, asa: 1, asaPonta: 1, cauda: 1, bico: 3, perna: 2 }
+    });
+    for (const o of ["canela_d", "canela_e"]) rig.bones[o].traverse((x) => {
+      const mesh = x;
+      if (mesh.isMesh) mesh.material = m.plano(2);
+    });
+    rig.bones.asa_d.rotation.y = 0.34;
+    rig.bones.asa_e.rotation.y = -0.34;
+    rig.add("cabeca", blob([0.185, 0.17, 0.17], m.luz(1), { pos: [5e-3, 0, 0] }));
+    rig.add("cabeca", blob([0.07, 0.06, 0.07], m.luz(3), { pos: [0.16, 0.01, 0], seg: 10 }));
+    par((_, s) => rig.add("cabeca", blob([0.11, 0.03, 0.035], m.sombra(2), { pos: [0.08, 0.09, 0.125 * s], rot: [0, 12 * s, -18], seg: 12 })));
+    rig.add("pescoco", calota([0.19, 0.17, 0.2], m.sombra(2), { de: 35, ate: 110, rot: [0, 0, 72], pos: [0, 0, 0] }));
+    rig.add("tronco", blob([0.07, 0.09, 0.22], m.sombra(2), { pos: [0.21, 0.1, 0], rot: [0, 0, -25], seg: 14, castShadow: false }));
+    par((l, s) => {
+      rig.bone("penacho_" + l, "cabeca", [ref.topo[0] - 0.05, ref.topo[1] - 0.04, 0.05 * s], [-40 * s, 0, 20]);
+      rig.add("penacho_" + l, tufo(3, 0.3, 0.055, m(1), { abre: 20 }), blob([0.04, 0.05, 0.035], m.sombra(2), { pos: [0, 0.28, 0], seg: 8 }));
+    });
+    rig.bone("penacho_m", "cabeca", [ref.topo[0] - 0.07, ref.topo[1] - 0.03, 0], [0, 0, 34]);
+    rig.add("penacho_m", tufo(1, 0.26, 0.05, m(1)), blob([0.035, 0.045, 0.035], m.sombra(2), { pos: [0, 0.25, 0], seg: 8 }));
+    par((l, s) => {
+      rig.add("asa_" + l, blob([0.2, 0.03, 0.04], m.luz(1), { pos: [-0.26, -0.03, 0.06 * s], rot: [0, 0, 8], seg: 10 }), blob([0.18, 0.028, 0.04], m.luz(1), { pos: [-0.28, -0.13, 0.06 * s], rot: [0, 0, 8], seg: 10 }));
+      rig.add("asa2_" + l, pena(0.24, 0.11, m.sombra(2), { esp: 0.055, pos: [-0.1, -0.02, 0.02 * s] }), pena(0.18, 0.1, m.sombra(2), { esp: 0.055, pos: [-0.02, -0.13, 0.02 * s], rot: [0, 0, 14] }));
+    });
+    for (const [x, mat] of [[-0.14, m.sombra(2)], [-0.26, m.sombra(2)], [-0.36, m(0)]])
+      rig.add("cauda1", blob([0.035, 0.032, 0.17], mat, { pos: [x, 0, 0], seg: 10 }));
+    par((l) => {
+      rig.add("perna_" + l, blob([0.1, 0.14, 0.095], m(0), { pos: [0, -0.05, 0], seg: 14 }), blob([0.085, 0.022, 0.1], m(1), { pos: [0.01, -0.04, 0], seg: 10 }), blob([0.075, 0.022, 0.09], m(1), { pos: [0.01, -0.11, 0], seg: 10 }));
+      for (const g of [-34, 0, 34]) rig.add("canela_" + l, garra(0.085, 0.03, m.sombra(2), { pos: [Math.cos(g * D2R2) * 0.15 - 0.014, -0.135, -Math.sin(g * D2R2) * 0.15], rot: [0, g, 0], curva: 0.9 }));
+    });
+    rig.bones.perna_d.rotation.z = 58 * D2R2;
+    rig.bones.canela_d.rotation.z = -50 * D2R2;
+    return rig;
+  }
+  var anims25 = animsAve({ u: 1.15, hPerna: 0.26, mole: 0.6 }, {
+    idle: { penacho_d: lz([0, 4, 8, -5]), penacho_e: lz([0, 6, 5, -3]), penacho_m: lz([0, 3, 7, -4]), perna_d: lz([0, 3, 6, 2]) },
+    fisico: { perna_d: qz([10, 30, -40, -12, 0]), canela_d: qz([-10, -30, 46, 14, 0]) },
+    especial: { penacho_d: qz([0, 12, 16, -24, -8, 0]), penacho_e: qz([0, 12, 16, -24, -8, 0]), penacho_m: qz([0, 12, 16, -24, -8, 0]) },
+    dano: { penacho_m: qz([24, 10, 0]) },
+    desmaio: { perna_d: qz([0, -10, -20, 12, 8]) },
+    andar: { perna_d: lz([-32, -58, -84, -58]) }
+  });
+  var harpia = criatura({
+    num: 110,
+    id: "harpia",
+    nome: "Harpia",
+    porte: "G",
+    estagio: "final",
+    paleta: paleta6,
+    build: build26,
+    anims: anims25,
+    olho: {
+      frente: ["pppp.", "fappf", "fapwf", ".fff."],
+      fechado: ["fffff", "pfffp", "fpppf", "fffff"],
+      mapa: ["p", "p"]
+    }
+  });
+
+  // tools/models/criaturas/111-pirarucinho.ts
+  var paletaPirarucu = {
+    rampas: [
+      ["#2f4a52", "#55806f", "#9cc08e"],
+      // 0 verde-oliva do dorso
+      ["#8a2440", "#d8443c", "#ff8f5a"],
+      // 1 vermelho das escamas e da cauda
+      ["#a9a58c", "#efe6c2", "#fffbe8"],
+      // 2 creme da barriga e da placa da cabeça
+      ["#1f2a3c", "#34495a", "#5f7f86"]
+      // 3 nadadeiras escuras
+    ],
+    contorno: "#1c2233",
+    extras: { w: "#ffffff", p: "#1c2233", f: "#55806f" }
+  };
+  function build27() {
+    const { rig, ref } = peixe({
+      corpo: [0.34, 0.15, 0.14],
+      flutua: 0.36,
+      ergue: 14,
+      boca: { len: 0.1, r: 0.05, queixo: 0.03 },
+      cauda: { len: 0.1, r: 0.07, alt: 0.24, larg: 0.16, forma: "redonda" },
+      dorsal: { alt: 0.07, len: 0.26, x: -0.6 },
+      anal: { alt: 0.07, len: 0.24, x: -0.6 },
+      nad: { len: 0.14, larg: 0.09, x: 0.3, y: -0.5 },
+      olho: { r: 0.03, pos: [0.2, 0.04, 0.115] },
+      rampas: { corpo: 0, barriga: 2, nadadeiras: 3, cauda: 1, boca: 2 }
+    });
+    rig.add("tronco", calota([0.17, 0.11, 0.13], m(2), { de: 0, ate: 62, pos: [0.2, 0.06, 0], rot: [0, 0, -24] }));
+    par((_, s) => {
+      for (const [x, y, r] of [[-0.04, 0.03, 0.03], [-0.13, 0.05, 0.036], [-0.12, -0.04, 0.034], [-0.22, 0.02, 0.04], [-0.21, -0.06, 0.034]])
+        rig.add("tronco", pinta(r, m(1), [x, y, (0.14 - Math.abs(x) * 0.12) * s], [0, 0, 0]));
+      rig.add("cauda1", blob([0.1, 0.075, 0.055], m(1), { pos: [-0.04, 0, 0.012 * s], seg: 12 }));
+    });
+    rig.add("cauda2", blob([0.03, 0.11, 0.03], m.luz(1), { pos: [-0.15, 0, 0], seg: 10 }));
+    return rig;
+  }
+  var anims26 = animsPeixe({ u: 0.6, flutua: 0.36, mole: 1.2 }, {
+    idle: { tronco: lz([0, 2, 4, 1]) },
+    especial: { tronco: qz([-6, -12, -12, 26, 10, 0]) }
+  });
+  var pirarucinho = criatura({
+    num: 111,
+    id: "pirarucinho",
+    nome: "Pirarucinho",
+    porte: "P",
+    estagio: "basico",
+    paleta: paletaPirarucu,
+    build: build27,
+    anims: anims26,
+    olho: {
+      frente: [".pp.", "pwpp", "pppp", ".pp."],
+      fechado: ["ffff", "pffp", ".pp.", "ffff"],
+      mapa: ["p", "p"]
+    }
+  });
+
+  // tools/models/criaturas/112-pirarucao.ts
+  function build28() {
+    const { rig } = peixe({
+      corpo: [0.6, 0.2, 0.18],
+      flutua: 0.42,
+      ergue: 10,
+      boca: { len: 0.16, r: 0.07, queixo: 0.05 },
+      cauda: { len: 0.16, r: 0.1, alt: 0.4, larg: 0.24, forma: "redonda" },
+      dorsal: { alt: 0.13, len: 0.46, x: -0.6, espinhos: 4 },
+      anal: { alt: 0.12, len: 0.4, x: -0.6 },
+      nad: { len: 0.24, larg: 0.13, x: 0.4, y: -0.55 },
+      olho: { r: 0.028, pos: [0.42, 0.05, 0.14] },
+      rampas: { corpo: 0, barriga: 2, nadadeiras: 1, cauda: 1, boca: 2 }
+    });
+    rig.add("tronco", calota([0.26, 0.15, 0.17], m(2), { de: 0, ate: 66, pos: [0.38, 0.07, 0], rot: [0, 0, -20] }));
+    rig.add("tronco", slab([[0.2, 0], [0.08, 0.07], [-0.1, 0.05], [-0.16, 0]], 0.04, m(2), { pos: [0.34, 0.19, 0] }));
+    par((_, s) => {
+      rig.add("tronco", blob([0.09, 0.025, 0.03], m.sombra(0), { pos: [0.42, 0.1, 0.125 * s], rot: [0, 0, -16], seg: 10 }));
+      rig.add("mandibula", segmento([0.08, -0.02, 0.04 * s], [0.02, -0.16, 0.07 * s], 0.022, 0.012, m(2)));
+      for (let i = 0; i < 6; i++) {
+        const x = 0.16 - i * 0.12, k2 = 1 - Math.abs(x) * 0.5;
+        rig.add("tronco", pinta(0.05 + i * 4e-3, m(1), [x, 0.07, 0.185 * k2 * s]), pinta(0.045 + i * 4e-3, m(1), [x - 0.06, -0.035, 0.19 * k2 * s]));
+        if (i > 1) rig.add("tronco", pinta(0.03, m.luz(1), [x + 0.01, 0.075, 0.2 * k2 * s]));
+      }
+      rig.add("cauda1", blob([0.16, 0.11, 0.075], m(1), { pos: [-0.06, 0, 0.014 * s], seg: 12 }));
+      rig.add("nad_" + (s > 0 ? "d" : "e"), blob([0.06, 0.06, 0.03], m.luz(1), { pos: [-0.19, 0, 0], seg: 10 }));
+    });
+    rig.add("cauda2", blob([0.04, 0.18, 0.035], m.luz(1), { pos: [-0.23, 0, 0], seg: 10 }), blob([0.03, 0.13, 0.04], m(3), { pos: [-0.1, 0, 0], seg: 10 }));
+    rig.add("mandibula", blob([0.07, 0.025, 0.05], m.luz(2), { pos: [0.12, 0.05, 0], seg: 10 }));
+    return rig;
+  }
+  var anims27 = animsPeixe({ u: 0.9, flutua: 0.42, mole: 0.6, mapa: { comp: 0.6, larg: 1.6 } }, {
+    idle: { tronco: lz([0, 1, 3, 1]), cauda2: ly([-14, 10, 14, -10]) },
+    especial: { tronco: qz([-4, -8, -8, 16, 6, 0]) }
+  });
+  var pirarucao = criatura({
+    num: 112,
+    id: "pirarucao",
+    nome: "Piraruc\xE3o",
+    porte: "G",
+    estagio: "final",
+    paleta: paletaPirarucu,
+    build: build28,
+    anims: anims27,
+    olho: {
+      frente: ["ppp..", "pwpp.", "pppp.", ".pp.."],
+      fechado: ["ffff.", "pffp.", ".pp..", "ffff."],
+      mapa: ["p", "p"]
+    },
+    enquadre: {}
+  });
+
+  // tools/models/criaturas/113-piranhinha.ts
+  var paletaPiranha = {
+    rampas: [
+      ["#3c4a78", "#6f8fbf", "#b9d8ee"],
+      // 0 prata-azulado
+      ["#8f1f3a", "#e0402f", "#ff9450"],
+      // 1 vermelho da barriga e das nadadeiras
+      ["#b8b4c8", "#f4f1ea", "#ffffff"],
+      // 2 dentes e brilhos
+      ["#1e2140", "#343a66", "#59649a"]
+      // 3 dorso e cauda escuros
+    ],
+    contorno: "#1b1a38",
+    extras: { w: "#ffffff", p: "#1b1a38", f: "#6f8fbf", a: "#e0402f" }
+  };
+  function dentes(rig, cx, cy, n, t) {
+    for (let i = 0; i < n; i++) {
+      const z2 = (i - (n - 1) / 2) * t * 1.5;
+      rig.add("mandibula", spike(t * 2.2, t, m.plano(2), { pos: [cx * 0.3 - Math.abs(z2) * 0.6, t * 0.6, z2] }));
+      if (i < n - 1) rig.add("tronco", spike(t * 1.8, t * 0.9, m.plano(2), { pos: [cx * 0.98 - Math.abs(z2 + t * 0.75) * 0.7, -cy * 0.2, z2 + t * 0.75], rot: [180, 0, 0] }));
+    }
+  }
+  function build29() {
+    const { rig } = peixe({
+      corpo: [0.24, 0.22, 0.13],
+      flutua: 0.4,
+      ergue: 6,
+      boca: { len: 0.1, r: 0.07, queixo: 0.05 },
+      cauda: { len: 0.07, r: 0.05, alt: 0.26, larg: 0.15, forma: "lua" },
+      dorsal: { alt: 0.09, len: 0.18, x: -0.15, espinhos: 3 },
+      anal: { alt: 0.08, len: 0.16, x: -0.45 },
+      nad: { len: 0.12, larg: 0.08, x: 0.2, y: -0.4 },
+      olho: { r: 0.034, pos: [0.14, 0.07, 0.105] },
+      rampas: { corpo: 0, barriga: 1, nadadeiras: 1, cauda: 3, boca: 1 }
+    });
+    rig.add("tronco", blob([0.2, 0.1, 0.11], m(3), { pos: [-0.02, 0.135, 0] }));
+    dentes(rig, 0.24, 0.22, 4, 0.02);
+    par((_, s) => {
+      for (const [x, y] of [[-0.02, 0.06], [-0.1, 0.02], [0.05, 0]]) rig.add("tronco", pinta(0.022, m.luz(0), [x, y, 0.128 * s]));
+    });
+    return rig;
+  }
+  var anims28 = animsPeixe({ u: 0.55, flutua: 0.4, mole: 1.3 }, {
+    idle: { mandibula: lz([0, -8, -14, -4]) },
+    fisico: { mandibula: qz([-16, -44, 8, 0, 0]) }
+  });
+  var piranhinha = criatura({
+    num: 113,
+    id: "piranhinha",
+    nome: "Piranhinha",
+    porte: "P",
+    estagio: "basico",
+    paleta: paletaPiranha,
+    build: build29,
+    anims: anims28,
+    olho: {
+      frente: ["pp...", "wapp.", "wapp.", ".pp.."],
+      fechado: ["ffff.", "pffp.", ".pp..", "ffff."],
+      mapa: ["a", "p"]
+    }
+  });
+
+  // tools/models/criaturas/114-piranhao.ts
+  function build30() {
+    const { rig } = peixe({
+      corpo: [0.36, 0.32, 0.19],
+      flutua: 0.5,
+      ergue: 8,
+      boca: { len: 0.16, r: 0.11, queixo: 0.09 },
+      cauda: { len: 0.1, r: 0.07, alt: 0.4, larg: 0.22, forma: "lua" },
+      dorsal: { alt: 0.15, len: 0.3, x: -0.1, espinhos: 5 },
+      anal: { alt: 0.12, len: 0.24, x: -0.45 },
+      nad: { len: 0.2, larg: 0.13, x: 0.2, y: -0.4 },
+      olho: { r: 0.034, pos: [0.22, 0.11, 0.155] },
+      rampas: { corpo: 0, barriga: 1, nadadeiras: 1, cauda: 3, boca: 1 }
+    });
+    rig.add("tronco", blob([0.3, 0.15, 0.16], m(3), { pos: [-0.03, 0.2, 0] }));
+    dentes(rig, 0.36, 0.32, 5, 0.03);
+    par((l, s) => {
+      rig.add("tronco", blob([0.1, 0.03, 0.03], m.sombra(3), { pos: [0.22, 0.17, 0.14 * s], rot: [0, 0, -24], seg: 10 }));
+      for (const [x, y] of [[-0.04, 0.08], [-0.16, 0.03], [0.06, -0.01], [-0.08, -0.06]]) rig.add("tronco", pinta(0.03, m.luz(0), [x, y, 0.188 * s]));
+      rig.add("nad_" + l, blob([0.06, 0.06, 0.05], m.luz(1), { pos: [-0.17, 0, 0], seg: 10 }));
+    });
+    rig.add("tronco", blob([0.07, 0.014, 0.02], m.plano(2), { pos: [-0.1, 0.1, 0.18], rot: [0, 0, 40], seg: 8 }), blob([0.07, 0.014, 0.02], m.plano(2), { pos: [-0.1, 0.1, 0.18], rot: [0, 0, -40], seg: 8 }));
+    const peq = [["cardume1", [-0.5, 0.26, 0.3], 1], ["cardume2", [-0.42, -0.2, -0.36], 0.85]];
+    for (const [nome, pos, k2] of peq) {
+      rig.bone(nome, "corpo", pos);
+      rig.add(
+        nome,
+        blob([0.12 * k2, 0.11 * k2, 0.07 * k2], m(0)),
+        blob([0.1 * k2, 0.07 * k2, 0.065 * k2], m(1), { pos: [0.01, -0.045 * k2, 0] }),
+        blob([0.09 * k2, 0.04 * k2, 0.055 * k2], m(3), { pos: [-0.01, 0.075 * k2, 0] }),
+        slab([[0, 0.02], [-0.1, 0.09], [-0.07, 0], [-0.1, -0.09], [0, -0.02]], 0.02, m(3), { pos: [-0.11 * k2, 0, 0], scale: k2 }),
+        blob([0.022, 0.022, 0.022], m.plano(1), { pos: [0.07 * k2, 0.025 * k2, 0.05 * k2], seg: 8 }),
+        blob([0.022, 0.022, 0.022], m.plano(1), { pos: [0.07 * k2, 0.025 * k2, -0.05 * k2], seg: 8 })
+      );
+    }
+    return rig;
+  }
+  var anims29 = animsPeixe({ u: 0.85, flutua: 0.5, mole: 0.8 }, {
+    idle: { mandibula: lz([0, -8, -14, -4]), cardume1: lp([[0, 0, 0], [0.02, 0.03, 0], [0.03, 0.01, 0], [0.01, -0.02, 0]]), cardume2: lp([[0, 0, 0], [-0.02, -0.02, 0], [0, -0.03, 0], [0.02, 0, 0]]) },
+    fisico: { mandibula: qz([-16, -48, 8, 0, 0]), cardume1: [...qz([0, 10, -20, -6, 0]), ...[{ t: 0, p: [0, 0, 0] }, { t: 0.5, p: [0.3, -0.05, 0] }, { t: 1, p: [0, 0, 0] }]], cardume2: [{ t: 0, p: [0, 0, 0] }, { t: 0.6, p: [0.3, 0.08, 0] }, { t: 1, p: [0, 0, 0] }] },
+    andar: { cardume1: ly([-10, 0, 10, 0]), cardume2: ly([10, 0, -10, 0]) },
+    desmaio: { cardume1: [{ t: 0, p: [0, 0, 0] }, { t: 1, p: [-0.1, -0.5, 0] }], cardume2: [{ t: 0, p: [0, 0, 0] }, { t: 1, p: [-0.1, -0.1, 0] }] }
+  });
+  var piranhao = criatura({
+    num: 114,
+    id: "piranhao",
+    nome: "Piranh\xE3o",
+    porte: "M",
+    estagio: "final",
+    paleta: paletaPiranha,
+    build: build30,
+    anims: anims29,
+    olho: {
+      frente: ["ppp..", "wappp", "wapp.", ".pp.."],
+      fechado: ["fffff", "pffpf", ".pp..", "ffff."],
+      mapa: ["a", "p"]
+    }
+  });
+
   // tools/models/criaturas/lote-109-132.ts
-  var modelos6 = [harpinha];
+  var modelos6 = [harpinha, harpia, pirarucinho, pirarucao, piranhinha, piranhao];
+
+  // tools/models/criaturas/133-pinguinzinho.ts
+  var paletaPinguim = {
+    rampas: [
+      ["#232a4a", "#3b4a73", "#6079a3"],
+      // 0 costas azul-ardósia (sombra anil)
+      ["#a9b6d6", "#eef3fb", "#ffffff"],
+      // 1 barriga branca (sombra azulada)
+      ["#4f9fd0", "#9ad9f2", "#e2fbff"],
+      // 2 gelo e água
+      ["#b0506a", "#f08a8a", "#ffc9b0"]
+      // 3 pés, bico e bochecha rosados
+    ],
+    contorno: "#1a1c38",
+    extras: { w: "#ffffff", p: "#1a1c38", f: "#3b4a73" }
+  };
+  function pinguimBase(k2, cabeca) {
+    const { rig, ref } = ave({
+      corpo: [0.27 * k2, 0.2 * k2, 0.2 * k2],
+      ergue: 80,
+      pescoco: { len: 0.07 * k2, ang: 80, r: 0.15 * k2 },
+      cabeca: [0.2 * cabeca, 0.185 * cabeca, 0.19 * cabeca],
+      bico: { len: 0.13 * cabeca, r: 0.06 * cabeca, y: -0.2, achata: 0.8 },
+      asa: { len: 0.3 * k2, larg: 0.12 * k2, esp: 0.03 * k2, cai: 34, ponta: 0.3 },
+      cauda: { len: 0.12 * k2, larg: 0.07 * k2, ang: 30, penas: 3, abre: 20 },
+      pernas: { alt: 0.07 * k2, r: 0.04 * k2, z: 0.5, x: 0, dedo: 0.13 * k2 },
+      olho: { r: 0.03 * cabeca, pos: [0.115 * cabeca, 0.035 * cabeca, 0.155 * cabeca] },
+      rampas: { corpo: 0, cabeca: 0, asa: 0, asaPonta: 0, cauda: 0, bico: 3, perna: 3 }
+    });
+    rig.bones.asa_d.rotation.x = -0.55;
+    rig.bones.asa_e.rotation.x = 0.55;
+    rig.add("tronco", blob([0.25 * k2, 0.17 * k2, 0.185 * k2], m(1), { pos: [-0, -0.065 * k2, 0] }));
+    for (const [de, ate] of [[44, 54], [64, 72]])
+      rig.add("tronco", calota([0.176 * k2, 0.26 * k2, 0.192 * k2], m.plano(0), { de, ate, pos: [0, -0.065 * k2, 0], rot: [0, 0, -90] }));
+    par((_, s) => rig.add("cabeca", blob([0.085 * cabeca, 0.07 * cabeca, 0.04 * cabeca], m(1), { pos: [0.06 * cabeca, -0.07 * cabeca, 0.155 * cabeca * s], seg: 14 })));
+    rig.add("cabeca", blob([0.1 * cabeca, 0.06 * cabeca, 0.14 * cabeca], m(1), { pos: [0.07 * cabeca, -0.13 * cabeca, 0] }));
+    return { rig, ref };
+  }
+  function build31() {
+    const { rig, ref } = pinguimBase(1, 1.1);
+    rig.bone("topete", "cabeca", [ref.topo[0] + 0.02, ref.topo[1] - 0.03, 0], [0, 0, 10]);
+    rig.add(
+      "topete",
+      spike(0.13, 0.04, m.luz(2), { rot: [0, 0, -30] }),
+      spike(0.17, 0.045, m(2), { rot: [0, 0, 8] }),
+      spike(0.12, 0.04, m.luz(2), { rot: [0, 0, 44] })
+    );
+    par((_, s) => rig.add("cabeca", blob([0.035, 0.028, 0.02], m.plano(3), { pos: [0.1, -0.055, 0.17 * s], seg: 10 })));
+    rig.add("cauda1", calota([0.05, 0.05, 0.05], m.luz(2), { de: 0, ate: 180, pos: [-0.12, 0, 0] }));
+    return rig;
+  }
+  var anims30 = animsAve({ u: 0.7, hPerna: 0.07, mole: 1.3 }, {
+    idle: { topete: lz([0, 5, 9, -4]) },
+    especial: { topete: qz([0, 12, 16, -26, -8, 0]) },
+    dano: { topete: qz([26, 10, 0]) }
+  });
+  var pinguinzinho = criatura({
+    num: 133,
+    id: "pinguinzinho",
+    nome: "Pinguinzinho",
+    porte: "P",
+    estagio: "basico",
+    paleta: paletaPinguim,
+    build: build31,
+    anims: anims30,
+    olho: {
+      frente: [".ww.", "wpwp", "wppp", ".pp."],
+      fechado: ["ffff", "wffw", "fwwf", "ffff"],
+      mapa: ["w", "p"]
+    }
+  });
+
+  // tools/models/criaturas/134-pinguimar.ts
+  function build32() {
+    const { rig, ref } = pinguimBase(1.25, 1.12);
+    rig.bones.corpo.position.y += 0.07;
+    rig.bones.corpo.rotation.z = -8 * D2R2;
+    rig.bones.asa_d.rotation.x = -0.95;
+    rig.bones.asa_e.rotation.x = 0.7;
+    rig.bones.asa_e.rotation.z += 0.5;
+    rig.bone("prancha", "base", [0, 0.045, 0], [0, 0, 4]);
+    rig.add(
+      "prancha",
+      slab([[0.62, 0], [0.42, 0.17], [0, 0.2], [-0.42, 0.16], [-0.52, 0], [-0.42, -0.16], [0, -0.2], [0.42, -0.17]], 0.035, m(2), { rot: [90, 0, 0] }),
+      blob([0.5, 0.012, 0.03], m.plano(3), { pos: [0.02, 0.03, 0], seg: 12, castShadow: false }),
+      slab([[0, 0], [-0.14, -0.1], [-0.1, 0]], 0.03, m.sombra(2), { pos: [-0.36, -0.02, 0], smooth: false })
+    );
+    for (const z2 of [-0.12, 0.12]) rig.add("prancha", blob([0.07, 0.012, 0.025], m.luz(2), { pos: [0.34, 0.03, z2], seg: 10, castShadow: false }));
+    rig.bone("onda", "base", [-0.5, 0, 0]);
+    rig.add(
+      "onda",
+      tube([[-0.02, 0, 0], [-0.2, 0.26, 0], [-0.12, 0.52, 0], [0.1, 0.6, 0], [0.24, 0.47, 0]], (t) => 0.17 * (1 - t * 0.62), m(2), { scale: [1, 1, 1.7], seg: 24 }),
+      blob([0.24, 0.08, 0.3], m.sombra(2), { pos: [0.04, 0.03, 0] })
+    );
+    rig.bone("espuma1", "onda", [0.26, 0.45, 0.04]);
+    rig.add("espuma1", espuma(0.085, m.luz(1)));
+    rig.bone("espuma2", "onda", [0.12, 0.64, -0.1]);
+    rig.add("espuma2", espuma(0.06, m.luz(1)));
+    rig.bone("espuma3", "onda", [0.2, 0.52, 0.14]);
+    rig.add("espuma3", espuma(0.055, m.luz(1)));
+    rig.bone("topete", "cabeca", [ref.topo[0] + 0.05, ref.topo[1] - 0.04, 0], [0, 0, 40]);
+    rig.add(
+      "topete",
+      spike(0.2, 0.055, m.luz(2), { rot: [0, 0, -34], curve: -0.3 }),
+      spike(0.28, 0.065, m(2), { rot: [0, 0, 6], curve: -0.3 }),
+      spike(0.22, 0.055, m.luz(2), { rot: [0, 0, 38], curve: -0.2 }),
+      spike(0.14, 0.05, m(2), { rot: [0, 0, 70] })
+    );
+    for (let i = 0; i < 5; i++) {
+      const a = (-60 + i * 30) * D2R2;
+      rig.add("pescoco", blob([0.035, 0.035, 0.035], i % 2 ? m.luz(2) : m.plano(3), { pos: [Math.cos(a) * 0.24, -0.1 - Math.cos(a) * 0.03, Math.sin(a) * 0.2], seg: 10 }));
+    }
+    par((l, s) => rig.add("asa2_" + l, blob([0.07, 0.05, 0.03], m.luz(2), { pos: [-0.09, -0.01, 0.01 * s], seg: 10 })));
+    return rig;
+  }
+  var anims31 = animsAve({ u: 1, hPerna: 0.09, mole: 0.9 }, {
+    todas: { "?espuma1": ls([1, 1.15, 0.9, 1.06]), "?espuma2": ls([1.1, 0.92, 1.06, 1]), "?espuma3": ls([0.92, 1.06, 1, 1.14]) },
+    idle: { topete: lz([0, 5, 9, -4]), prancha: lz([4, 6, 4, 2]), onda: ls([1, [1, 1.05, 1], [1, 1.08, 1], [1, 1.03, 1]]) },
+    fisico: { prancha: qz([4, -4, 14, 8, 4]) },
+    especial: { topete: qz([0, 12, 16, -26, -8, 0]), onda: [{ t: 0, s: 1 }, { t: 0.4, s: 0.85 }, { t: 0.6, s: [1.1, 1.35, 1.1] }, { t: 1, s: 1 }] },
+    dano: { topete: qz([26, 10, 0]), prancha: qz([-8, -2, 4]) },
+    desmaio: { onda: [{ t: 0, s: 1 }, { t: 0.5, s: [1, 0.5, 1] }, { t: 1, s: [1, 0.2, 1] }] }
+  });
+  var pinguimar = criatura({
+    num: 134,
+    id: "pinguimar",
+    nome: "Pinguimar",
+    porte: "M",
+    estagio: "final",
+    paleta: paletaPinguim,
+    build: build32,
+    anims: anims31,
+    olho: {
+      frente: ["www..", "wpwp.", "wpppp", ".ppp."],
+      fechado: ["fffff", "wfffw", "fwwwf", "fffff"],
+      mapa: ["w", "p"]
+    }
+  });
 
   // tools/models/criaturas/lote-133-156.ts
-  var modelos7 = [];
+  var modelos7 = [pinguinzinho, pinguimar];
+
+  // tools/models/criaturas/157-louvadeuzim.ts
+  var paletaLouva = {
+    rampas: [
+      ["#256652", "#58ad48", "#b6e267"],
+      // 0 verde-folha (sombra azulada, luz amarelada)
+      ["#a9a060", "#eee59c", "#fffbd8"],
+      // 1 creme do ventre e das lâminas
+      ["#8f2a52", "#dc4b5c", "#ff9c84"],
+      // 2 faixa de ginga
+      ["#2a2342", "#4b4268", "#807aa6"]
+      // 3 olhos, antenas e pontas das patas
+    ],
+    contorno: "#231d38",
+    extras: { w: "#ffffff", p: "#231d38", f: "#58ad48", a: "#eee59c" }
+  };
+  function louva(p) {
+    const k2 = p.k;
+    const { rig } = inseto({
+      torax: [0.11 * k2, 0.09 * k2, 0.09 * k2],
+      abdomen: [0.2 * k2, 0.095 * k2, 0.11 * k2],
+      cabeca: [0.115 * k2, 0.11 * k2, 0.17 * k2],
+      alt: p.alt,
+      caiAbdomen: -22,
+      patas: { abre: 0.2 * k2, r: 0.026 * k2, joelho: 0.09 * k2 },
+      antenas: { len: 0.16 * k2, r: 0.014 * k2, abre: 30 },
+      olho: { r: 0.024 * k2, pos: [0.115 * k2, 0.04 * k2, 0.158 * k2] },
+      rampas: { torax: 0, abdomen: 0, cabeca: 0, patas: 0, antenas: 3, barriga: 1 }
+    });
+    const cab = [0.14 * k2, p.pro, 0];
+    rig.bones.cabeca.position.set(...cab);
+    rig.add(
+      "corpo",
+      segmento([0.04 * k2, 0.02 * k2, 0], [cab[0] - 0.01 * k2, cab[1] - 0.03 * k2, 0], 0.075 * k2, 0.06 * k2, m(0)),
+      segmento([0.09 * k2, 0, 0], [cab[0] + 0.03 * k2, cab[1] - 0.08 * k2, 0], 0.05 * k2, 0.04 * k2, m(1))
+    );
+    rig.add("cabeca", blob([0.07 * k2, 0.07 * k2, 0.07 * k2], m(0), { pos: [0.09 * k2, -0.07 * k2, 0], seg: 14 }));
+    par((_, s) => rig.add("cabeca", blob([0.055 * k2, 0.066 * k2, 0.05 * k2], m.plano(3), { pos: [0.08 * k2, 0.035 * k2, 0.122 * k2 * s], seg: 14 })));
+    par((l, s) => {
+      const a = rig.bones["pata1_" + l], b = rig.bones["tarso1_" + l];
+      a.clear();
+      b.clear();
+      a.add(b);
+      a.position.set(cab[0] - 0.03 * k2, cab[1] - 0.15 * k2, 0.1 * k2 * s);
+      const cot = [0.13 * k2, -0.1 * k2, 0.03 * k2 * s];
+      b.position.set(...cot);
+      rig.add("pata1_" + l, segmento([0, 0, 0], cot, 0.04 * k2, 0.05 * k2, m(0)));
+      rig.add(
+        "tarso1_" + l,
+        segmento([0, 0, 0], [0.03 * k2, p.foice, 0], 0.055 * k2, 0.03 * k2, m(0)),
+        blob([0.026 * k2, p.foice * 0.48, 0.03 * k2], m(1), { pos: [0.055 * k2, p.foice * 0.5, 0], seg: 10 }),
+        blob([0.03 * k2, 0.03 * k2, 0.03 * k2], m.plano(3), { pos: [0.035 * k2, p.foice + 0.01 * k2, 0], seg: 8 })
+      );
+    });
+    rig.add(
+      "abdomen",
+      folha3d(0.2 * k2, 0.15 * k2, m.luz(0), { pos: [-0.25 * k2, 0.03 * k2, 0], rot: [0, 0, 78], esp: 0.6 }),
+      calota([0.205 * k2, 0.1 * k2, 0.115 * k2], m.sombra(0), { de: 0, ate: 50, pos: [-0.16 * k2, 4e-3, 0] })
+    );
+    par((l) => {
+      for (const i of [2, 3]) rig.add(`tarso${i}_${l}`, blob([0.03 * k2, 0.022 * k2, 0.03 * k2], m.plano(3), { pos: [0, -(0.09 * k2 + p.alt - 0.027 * k2) + 0.015, 0.09 * k2 * (l === "d" ? 1 : -1)], seg: 8 }));
+    });
+    rig.add("corpo", ring(0.1 * k2, 0.034 * k2, m(2), { pos: [-0.07 * k2, 0, 0], rot: [0, 90, 0] }));
+    rig.bone("faixa", "corpo", [-0.08 * k2, 0.02 * k2, -0.1 * k2], [0, 0, 60]);
+    rig.add(
+      "faixa",
+      pena(p.faixa, 0.075 * k2, m(2), { esp: 0.035 * k2, rot: [0, 0, -10] }),
+      pena(p.faixa * 0.75, 0.065 * k2, m.luz(2), { esp: 0.035 * k2, rot: [0, 0, 30] }),
+      blob([0.045 * k2, 0.045 * k2, 0.045 * k2], m.luz(2), { seg: 8 })
+    );
+    return { rig, topo: [0.06 * k2, 0.1 * k2, 0] };
+  }
+  var gingaLouva = {
+    idle: { faixa: lz([0, 8, 14, 5]), tarso1_e: lz([0, -5, -9, -3]), tarso1_d: lz([0, -3, -6, -2]) },
+    fisico: { faixa: qz([10, 20, -24, -8, 0]), pata1_e: qr([[0, 0, 30], [0, 0, 50], [0, 0, -40], [0, 0, -20], [0, 0, 0]]), tarso1_e: qz([-10, -20, -70, -30, 0]), pata1_d: qr([[0, 0, 10], [0, 0, 16], [0, 0, -10], [0, 0, -4], [0, 0, 0]]) },
+    especial: { faixa: qz([0, 10, 14, -26, -10, 0]), pata1_e: qz([10, 30, 40, -30, -10, 0]), pata1_d: qz([10, 30, 40, -30, -10, 0]), tarso1_e: qz([0, -10, -10, -60, -20, 0]), tarso1_d: qz([0, -10, -10, -60, -20, 0]) },
+    dano: { faixa: qz([30, 12, 0]) },
+    andar: { faixa: lz([0, 10, 0, 10]), pata1_d: lz([0, 4, 0, 4]), pata1_e: lz([4, 0, 4, 0]) }
+  };
+  var anims32 = animsInseto({ u: 0.6, alt: 0.2, mole: 1.2 }, gingaLouva);
+  var louvadeuzim = criatura({
+    num: 157,
+    id: "louvadeuzim",
+    nome: "Louvadeuzim",
+    porte: "P",
+    estagio: "basico",
+    paleta: paletaLouva,
+    anims: anims32,
+    build: () => louva({ k: 1, pro: 0.27, foice: 0.18, faixa: 0.2, alt: 0.2 }).rig,
+    olho: {
+      frente: [".aa.", "aawa", "aapa", ".aa."],
+      fechado: ["pppp", "pppp", "appa", "pppp"],
+      mapa: ["a", "p"]
+    }
+  });
 
   // tools/models/criaturas/lote-157-180.ts
-  var modelos8 = [];
+  var modelos8 = [louvadeuzim];
 
   // tools/models/pessoas/kit/paletas.ts
   var R_PELE = 0;
@@ -34869,7 +36221,7 @@ void main() {
     const rampas = [PELES[f.pele], typeof f.cabelo === "string" ? CABELOS[f.cabelo] : f.cabelo, ton(f.a), ton(f.b), ton(f.d)];
     let escuro = 1;
     for (let i = 2; i < rampas.length; i++) if (lum(rampas[i][0]) < lum(rampas[escuro][0])) escuro = i;
-    const paleta3 = {
+    const paleta7 = {
       rampas,
       contorno: f.contorno ?? CONTORNO[f.pele],
       extras: { p: "#1b1524", w: "#ffffff", i: f.iris ?? "#5a3a2a", s: rampas[0][1], t: rampas[0][0] }
@@ -34896,7 +36248,7 @@ void main() {
       const yc = base + kc * HY;
       vistas.retrato = { cell: [48, 48], pivot: [25, Math.round(25 + (f.dyRetrato ?? 0) + topo * ppu * 0.45 + yc * Math.cos(6 * Math.PI / 180) * ppu)], altura: 48 / ppu, yaw: -58, pitch: 6, anims: animsRetrato(P, 38), olho: OLHO_RET, olhoFechado: OLHO_RET_FELIZ };
     }
-    return { id: f.id, categoria: "pessoa", paleta: paleta3, build: () => construir(v, escuro, !!f.jogador), vistas, minMalhas: 20, limiares: [0.58, 0.98] };
+    return { id: f.id, categoria: "pessoa", paleta: paleta7, build: () => construir(v, escuro, !!f.jogador), vistas, minMalhas: 20, limiares: [0.58, 0.98] };
   }
 
   // tools/models/pessoas/principais.ts
@@ -35747,7 +37099,7 @@ void main() {
       sheet.width = cw * cols;
       sheet.height = ch * rows;
       const sctx = sheet.getContext("2d");
-      const anims16 = {};
+      const anims33 = {};
       const usadas = /* @__PURE__ */ new Set();
       let fi = 0;
       for (const [an, anim] of Object.entries(v.anims)) {
@@ -35756,7 +37108,7 @@ void main() {
         rigLuz.rotation.y = (90 - yaw) * Math.PI / 180;
         rigLuz.updateMatrixWorld(true);
         const facingRight = Math.sin(yaw * Math.PI / 180) >= 0;
-        anims16[an] = { i: fi, n: anim.frames, fps: anim.fps ?? 8, loop: anim.loop ?? true };
+        anims33[an] = { i: fi, n: anim.frames, fps: anim.fps ?? 8, loop: anim.loop ?? true };
         for (let f = 0; f < anim.frames; f++, fi++) {
           applyAnim(rig.bones, anim, frameT(anim, f));
           rig.root.updateMatrixWorld(true);
@@ -35786,7 +37138,7 @@ void main() {
           sctx.putImageData(new ImageData(p.rgba, cw, ch), fi % cols * cw, Math.floor(fi / cols) * ch);
         }
       }
-      out[vn] = { png: sheet.toDataURL("image/png"), cw, ch, cols, px: v.pivot[0], py: v.pivot[1], anims: anims16, cores: usadas.size };
+      out[vn] = { png: sheet.toDataURL("image/png"), cw, ch, cols, px: v.pivot[0], py: v.pivot[1], anims: anims33, cores: usadas.size };
     }
     rig.root.traverse((o) => {
       const m2 = o;

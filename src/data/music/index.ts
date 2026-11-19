@@ -22,6 +22,14 @@ export const FAIXAS: Record<string, Faixa> = Object.fromEntries(LISTA.map((f) =>
 /** Apelidos aceitos por compatibilidade. */
 FAIXAS['game-over'] = derrota;
 FAIXAS['titulo'] = temaTitulo;
+FAIXAS['vila'] = vilaJacaranda;
+FAIXAS['casa'] = vilaJacaranda;
+FAIXAS['submerso'] = mergulho;
+FAIXAS['cartel'] = cartelTema;
+FAIXAS['rota-1'] = rotaDiaA;
+FAIXAS['rota'] = rotaDiaA;
+FAIXAS['conselho'] = batalhaConselho;
+FAIXAS['vitoria'] = vitoriaSelvagem;
 
 /** Tema de cidade sugerido para cada cidade dos dois mapas. */
 export const MUSICA_DA_CIDADE: Record<string, string> = {

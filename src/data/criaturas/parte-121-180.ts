@@ -91,7 +91,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-14', 'pt-16', 'pt-29', 'pt-30', 'pt-41'],
     evolui: [{ para: 130, nivel: 34 }],
     taxaCaptura: 225, expBase: 58, esforco: { atq: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'O último par de patas do siri é achatado como um remo, e é isso que o separa do caranguejo: o siri nada, e nada de lado. O Sirizim levanta as pinças para todo mundo, até para a própria sombra.',
+    diario: 'O último par de patas do siri é achatado como um remo, e é isso que o separa do caranguejo: o siri nada, e nada de lado. O Sirizim levanta as pinças para qualquer um, até para a própria sombra.',
     altura: 0.3, peso: 1.5, habitat: 'Beira da praia e raízes do manguezal', porte: 'P',
   },
   {
@@ -110,7 +110,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-14', 'pt-16', 'pt-20', 'pt-22', 'pt-28'],
     evolui: [{ para: 132, nivel: 40 }],
     taxaCaptura: 60, expBase: 68, esforco: { vida: 1 }, crescimento: 'lento', femeas: 0.5,
-    diario: 'As baleias-francas sobem todo inverno ao litoral sul do Brasil para ter os filhotes, que nascem com uns quatro metros e mamam um leite grosso como pasta. A Baleiazinha só aparece na estação fria e chora baixinho se perde a mãe de vista.',
+    diario: 'As baleias-francas sobem a cada inverno ao litoral sul do Brasil para ter os filhotes, que nascem com uns quatro metros e mamam um leite grosso como pasta. A Baleiazinha só aparece na estação fria e chora baixinho se perde a mãe de vista.',
     altura: 1.9, peso: 320, habitat: 'Enseadas da baía, só na estação fria', porte: 'M',
   },
   {
@@ -119,7 +119,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'esguicho'], [1, 'berro'], [12, 'rabanada'], [17, 'eco-da-serra'], [22, 'sopro-frio'], [27, 'cantiga-de-ninar'], [32, 'jato-de-igarape'], [37, 'pisoteio'], [40, 'geada-serrana'], [45, 'mergulho-fundo'], [50, 'estrondo'], [56, 'vento-minuano'], [62, 'pororoca'], [70, 'tromba-dagua']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-14', 'pt-15', 'pt-16', 'pt-20', 'pt-21', 'pt-22', 'pt-28', 'pt-40', 'pt-45'],
     taxaCaptura: 25, expBase: 225, esforco: { vida: 2 }, crescimento: 'lento', femeas: 0.5,
-    diario: 'Os machos de jubarte cantam canções que duram até vinte minutos, e todos os machos da mesma região cantam a mesma, que muda de um ano para o outro. O canto do Jubartão traz o frio da Antártida e embaça as vidraças do farol.',
+    diario: 'Os machos de jubarte cantam canções que duram até vinte minutos, e os machos de uma mesma região cantam sempre a mesma, que muda de um ano para o outro. O canto do Jubartão traz o frio da Antártida e embaça as vidraças do farol.',
     altura: 6.5, peso: 2800, habitat: 'Mar aberto da baía e a Lagoa Gelada', porte: 'G',
   },
   {
@@ -129,7 +129,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-06', 'pt-14', 'pt-16', 'pt-20', 'pt-22', 'pt-31'],
     evolui: [{ para: 134, nivel: 32 }],
     taxaCaptura: 150, expBase: 62, esforco: { defEsp: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Todo inverno, pinguins-de-magalhães jovens seguem as correntes frias desde a Patagônia e alguns chegam exaustos às praias brasileiras. O Pinguinzinho chega perdido, mas finge que veio de propósito.',
+    diario: 'A cada inverno, pinguins-de-magalhães jovens seguem as correntes frias desde a Patagônia e alguns chegam exaustos às praias brasileiras. O Pinguinzinho chega perdido, mas finge que veio de propósito.',
     altura: 0.5, peso: 3.5, habitat: 'Praia na estação fria e margens da Lagoa Gelada', porte: 'P',
   },
   {
@@ -150,7 +150,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-02', 'pt-03', 'pt-04', 'pt-06', 'pt-20', 'pt-22', 'pt-31', 'pt-32', 'pt-33'],
     evolui: [{ para: 136, nivel: 30 }],
     taxaCaptura: 220, expBase: 55, esforco: { vel: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'A gralha-azul é uma das aves mais espertas do Brasil e tem um vocabulário de mais de uma dezena de gritos diferentes. A Gralhinha ainda está decorando todos e, na dúvida, usa o mais alto.',
+    diario: 'A gralha-azul é uma das aves mais espertas do Brasil e tem um vocabulário de mais de uma dezena de gritos diferentes. A Gralhinha ainda está decorando a lista e, na dúvida, usa o mais alto.',
     altura: 0.3, peso: 0.2, habitat: 'Pinheirais da Serra Gelada, de dia', porte: 'P',
   },
   {
@@ -228,7 +228,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-29', 'pt-38', 'pt-39', 'pt-41', 'pt-47', 'pt-48'],
     evolui: [{ para: 144, nivel: 34 }],
     taxaCaptura: 150, expBase: 62, esforco: { def: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'A larva do besouro-rinoceronte vive anos dentro da madeira podre antes de virar adulto, e sai de lá já do tamanho definitivo. O Besourim nasce com um toquinho de chifre que lustra todo dia na casca das árvores.',
+    diario: 'A larva do besouro-rinoceronte vive anos dentro da madeira podre antes de virar adulto, e sai de lá já do tamanho definitivo. O Besourim nasce com um toquinho de chifre que lustra diariamente na casca das árvores.',
     altura: 0.3, peso: 4.5, habitat: 'Troncos caídos e árvores de seiva doce', porte: 'P',
   },
   {
@@ -247,7 +247,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-06', 'pt-26', 'pt-27', 'pt-28', 'pt-29', 'pt-30', 'pt-41', 'pt-44'],
     evolui: [{ para: 146, nivel: 36 }],
     taxaCaptura: 200, expBase: 64, esforco: { def: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'As fêmeas do escorpião-amarelo se reproduzem sozinhas, sem macho, e carregam os filhotes nas costas até a primeira troca de pele. Como todo escorpião, o Escorpim brilha azul-esverdeado sob luz ultravioleta, e acha isso o máximo.',
+    diario: 'As fêmeas do escorpião-amarelo se reproduzem sozinhas, sem macho, e carregam os filhotes nas costas até a primeira troca de pele. Como qualquer escorpião, o Escorpim brilha azul-esverdeado sob luz ultravioleta, e acha isso o máximo.',
     altura: 0.3, peso: 1.1, habitat: 'Frestas da Caverna do Vulcão e pedras do sertão', porte: 'P',
   },
   {
@@ -370,7 +370,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'faro-fino'], [6, 'chapa-de-costas'], [14, 'mordida-de-sauva'], [18, 'rasteira'], [22, 'au-giratorio'], [26, 'esquiva'], [30, 'meia-lua'], [35, 'ginga'], [40, 'sanguessuga'], [45, 'armada'], [50, 'amolar-garras'], [56, 'martelo'], [63, 'chifrada-de-besouro']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-23', 'pt-24', 'pt-25', 'pt-31', 'pt-35', 'pt-38', 'pt-39', 'pt-41', 'pt-44'],
     taxaCaptura: 35, expBase: 210, esforco: { atq: 2 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'O bote do louva-a-deus dura poucos centésimos de segundo, rápido demais para o olho humano acompanhar. O Louva-Mestre repete a mesma sequência de golpes todo amanhecer no Planalto, e os capoeiristas sobem a serra só para assistir.',
+    diario: 'O bote do louva-a-deus dura poucos centésimos de segundo, rápido demais para o olho humano acompanhar. O Louva-Mestre repete a mesma sequência de golpes a cada amanhecer no Planalto, e os capoeiristas sobem a serra só para assistir.',
     altura: 1.3, peso: 21, habitat: 'Campos altos do Planalto', porte: 'M',
   },
 
@@ -498,7 +498,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-03', 'pt-04', 'pt-06', 'pt-34', 'pt-35', 'pt-37', 'pt-42', 'pt-43', 'pt-44', 'pt-49'],
     evolui: [{ para: 172, nivel: 34 }],
     taxaCaptura: 190, expBase: 64, esforco: { vel: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Os macacos-da-noite são os únicos macacos noturnos do mundo e, coisa rara entre os primatas, é o pai quem carrega o filhote quase o tempo todo. O Noitim anda agarrado às costas de quem confia e cochicha no ouvido o que viu no escuro.',
+    diario: 'Os macacos-da-noite são os únicos macacos noturnos do mundo e, coisa rara entre os primatas, é o pai quem carrega o filhote quase o tempo inteiro. O Noitim anda agarrado às costas de quem confia e cochicha no ouvido o que viu no escuro.',
     altura: 0.3, peso: 0.9, habitat: 'Galerias escuras e copas fechadas, à noite', porte: 'P',
   },
   {

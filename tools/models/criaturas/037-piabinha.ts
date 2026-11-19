@@ -24,7 +24,7 @@ function build() {
     dorsal: { alt: 0.13, len: 0.2, x: -0.1 },
     anal: { alt: 0.09, len: 0.16, x: -0.45 },
     nad: { len: 0.13, larg: 0.08, y: -0.4 },
-    olho: { r: 0.042, pos: [0.15, 0.045, 0.1] },
+    olho: { r: 0.035, pos: [0.15, 0.045, 0.105] },
     rampas: { corpo: 0, barriga: 1, nadadeiras: 2, cauda: 2, boca: 1 },
   });
   // lombo azul mais escuro (sela limpa ao longo do dorso)
@@ -42,8 +42,10 @@ function build() {
   // beicinho e bochecha
   rig.add('tronco', blob([0.05, 0.035, 0.07], m(1), { pos: [0.25, -0.02, 0], seg: 12 }));
   // bolhinha num osso próprio
-  rig.bone('bolha', 'corpo', [0.4, 0.12, 0.02]);
-  rig.add('bolha', espuma(0.035, m.luz(1)));
+  // escamas de brilho no flanco
+  par((_, s) => { for (const [x, y] of [[-0.03, -0.05], [-0.1, 0.04]] as const) rig.add('tronco', blob([0.03, 0.03, 0.015], m.luz(0), { pos: [x, y, 0.118 * s], seg: 8, castShadow: false })); });
+  rig.bone('bolha', 'corpo', [0.33, 0.1, 0.02]);
+  rig.add('bolha', espuma(0.028, m.luz(1)));
   return rig;
 }
 

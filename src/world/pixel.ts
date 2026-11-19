@@ -1,7 +1,7 @@
 /**
  * Pixel art em DOM puro para os elementos dinâmicos do mapa (obstáculos de Amuleto, itens no chão,
  * canteiros, balões de emoção, respingos). Cada desenho é uma grade de caracteres escrita à mão,
- * renderizada como sombras de 1 px (sem imagem, sem canvas). Posição sempre em px nativos inteiros.
+ * renderizada como sombras de 1 px (sem arquivo de imagem). Posição sempre em px nativos inteiros.
  */
 export class Pix {
   el = document.createElement('div');

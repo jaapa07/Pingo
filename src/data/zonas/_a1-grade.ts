@@ -19,6 +19,8 @@ export interface Grade {
 }
 export function grade(id: string, linhas: string[], marcas: Record<string, string>): Grade {
   const w = linhas[0].length, onde = new Map<string, Ponto[]>();
+  const tortas = linhas.map((l, y) => (l.length !== w ? `${y}:${l.length}` : '')).filter(Boolean);
+  if (tortas.length) throw new Error(`${id}: linhas fora da largura ${w} → ${tortas.join(' ')}`);
   const mapa = linhas.map((l, y) => {
     if (l.length !== w) throw new Error(`${id}: linha ${y} tem ${l.length} colunas (esperado ${w})`);
     let s = '';

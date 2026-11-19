@@ -62,7 +62,7 @@ export function posto(o: Interior & { mural: string[]; gente: NpcDef[]; mimo?: O
     id: o.id, nome: o.nome, mapa: o.mapa ?? 'B', tipo: 'interior', tileset: 'predio', musica: 'posto', arena: 'campo', passo: o.passo,
     mapaChars: g.fim(),
     objetos: [
-      { o: 'balcao', x: 5, y: 3 }, { o: 'maquina-cura', x: 8, y: 2 }, { o: 'pc', x: 12, y: 2, script: 'viveiro' }, { o: 'radio', x: 1, y: 2, script: 'radio' },
+      { o: 'balcao', x: 5, y: 3 }, { o: 'maquina-cura', x: 8, y: 2 }, { o: 'viveiro', x: 12, y: 2, script: 'viveiro' }, { o: 'radio', x: 1, y: 2, script: 'radio' },
       { o: 'quadro', x: 3, y: 1, texto: o.mural }, { o: 'janela', x: 10, y: 1 }, { o: 'planta', x: 1, y: 8 }, { o: 'banco-estacao', x: 10, y: 6 },
       ...(o.mimo ?? []),
     ],
@@ -85,12 +85,12 @@ export function venda(o: Interior & { loja: string[]; fala: string; gente: NpcDe
 }
 
 /** casa de morador: cada uma recebe sua própria mobília e gente */
-export function casa(o: Interior & { w?: number; h?: number; porta?: number; tema?: string; chao?: (g: Grade) => void; objetos: ObjetoSpawn[]; gente: NpcDef[]; extra?: Partial<ZonaDef>; warps?: Warp[] }): ZonaDef {
+export function casa(o: Interior & { w?: number; h?: number; porta?: number; tema?: string; musica?: string; chao?: (g: Grade) => void; objetos: ObjetoSpawn[]; gente: NpcDef[]; extra?: Partial<ZonaDef>; warps?: Warp[] }): ZonaDef {
   const w = o.w ?? 10, h = o.h ?? 8, porta = o.porta ?? 4;
   const g = sala(w, h, porta);
   o.chao?.(g);
   return {
-    id: o.id, nome: o.nome, mapa: o.mapa ?? 'B', tipo: 'interior', tileset: 'casa', musica: 'cidade-samba', arena: 'campo', passo: o.passo,
+    id: o.id, nome: o.nome, mapa: o.mapa ?? 'B', tipo: 'interior', tileset: 'casa', musica: o.musica ?? 'cidade-samba', arena: 'campo', passo: o.passo,
     mapaChars: g.fim(),
     objetos: [...(o.tema ? [{ o: 'tema', x: 0, y: 0, tema: o.tema }] : []), ...o.objetos],
     warps: [{ x: porta, y: h - 1, para: { ...o.saida, dir: 's' }, tipo: 'porta' }, ...(o.warps ?? [])],

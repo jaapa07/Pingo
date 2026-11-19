@@ -193,7 +193,7 @@ export const mundo = {
 function expor() { const w = window as unknown as { __pingo?: Record<string, unknown> }; w.__pingo = Object.assign(w.__pingo ?? {}, { jogo, telas, mundo, bus }); }
 
 /* ------------------------------ atalhos de URL (testes) ------------------------------ */
-const TODOS_AMULETOS: AmuletoId[] = ['facao', 'remo', 'forca', 'lampiao', 'quebra-pedra', 'escalar', 'cachoeira', 'mergulho', 'voo', 'faro'];
+const AMULETOS_DE_TESTE: AmuletoId[] = ['facao', 'remo', 'forca', 'lampiao', 'quebra-pedra', 'escalar', 'cachoeira', 'mergulho', 'voo', 'faro'];
 /**
  * Atalhos de teste: `?zona=A1&x=10&y=8` (abre a zona com um save de teste) e `?batalha=10,5` (selvagem nº 10 nv 5).
  * Extras: `debug` (mapa por caractere), `equipe=1:5,20:12`, `amuletos=todos|facao,remo`, `insignias=3`,
@@ -213,7 +213,7 @@ export async function iniciarPorUrl(params: URLSearchParams | string = location.
   const equipe = lista('equipe');
   if (equipe.length || !s.equipe.length) { s.equipe = []; for (const t of equipe.length ? equipe : ['1:5']) { const [e, nv] = t.split(':').map(Number); if (e) s.equipe.push(criarCriatura(e, nv || 5)); } }
   const am = lista('amuletos');
-  if (am.length) s.amuletos = am[0] === 'todos' ? [...TODOS_AMULETOS] : (am as AmuletoId[]);
+  if (am.length) s.amuletos = am[0] === 'todos' ? [...AMULETOS_DE_TESTE] : (am as AmuletoId[]);
   if (p.get('insignias')) s.insignias = Array.from({ length: Number(p.get('insignias')) }, (_, i) => i + 1);
   for (const t of lista('itens')) { const [id, q] = t.split(':'); darItem(id, Number(q) || 1); }
   for (const f of lista('flags')) setFlag(f);

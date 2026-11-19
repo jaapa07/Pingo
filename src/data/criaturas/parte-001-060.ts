@@ -262,7 +262,7 @@ export const especies: EspecieDef[] = [
   {
     num: 26, id: 'sapo-cururui', nome: 'Sapo-Cururuí', tipos: ['rio', 'veneno'],
     base: b(110, 80, 95, 90, 95, 50),
-    golpes: [[1, 'encontrao'], [1, 'berro'], [4, 'esguicho'], [12, 'redemoinho'], [16, 'jato-de-igarape'], [20, 'cantiga-de-ninar'], [26, 'bolhas-do-mangue'], [30, 'agua-de-cacimba'], [38, 'leite-de-cururu'], [42, 'pele-amarga'], [46, 'enxurrada'], [51, 'peconha-forte'], [56, 'chorume']],
+    golpes: [[1, 'encontrao'], [1, 'berro'], [4, 'esguicho'], [8, 'bote-ligeiro'], [12, 'redemoinho'], [16, 'jato-de-igarape'], [20, 'cantiga-de-ninar'], [26, 'bolhas-do-mangue'], [30, 'agua-de-cacimba'], [38, 'leite-de-cururu'], [42, 'pele-amarga'], [46, 'enxurrada'], [51, 'peconha-forte'], [56, 'chorume']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-15', 'pt-16', 'pt-22', 'pt-26', 'pt-28', 'pt-30', 'pt-43'],
     taxaCaptura: 35, expBase: 212, esforco: { vida: 2, def: 1 }, crescimento: 'medio', femeas: 0.5,
     diario: 'O sapo-cururu tem atrás dos olhos duas glândulas que soltam um veneno leitoso quando apertadas, defesa que afasta quase todo predador. As glândulas de Sapo-Cururuí reluzem no escuro como lamparinas, avisando de longe que é melhor não morder.',

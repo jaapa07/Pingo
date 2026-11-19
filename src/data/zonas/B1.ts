@@ -34,8 +34,8 @@ const zona: ZonaDef = {
     'T~~~~~~~~;|;;;;;C;;;:|:;;C;;;;~~|~~~~~~~~~T',
     'T~~~~~~===|====;;;;;:|:;;;;~~~~~|~~~;;~~~~T',
     'T~~~~~~~~~|~~~~~~;;;:|:;;~~~~~~~|~~~~~~~~~T',
-    'TTTTTTTTTT|TTTTTTTTT:|:TTTTTTTTT|TTTTTTTTTT',
-  ],
+    'T~~~~~~~~~|~~~~~~~;;:|:;;~~~~~~~|~~~~~~~~~T',
+  ].map((l) => l.replace(/\|/g, '')),
   objetos: [
     { o: 'estacao', x: 2, y: 5 },
     { o: 'ginasio', x: 28, y: 7, cor: '#2c5c2c,#4c9c3c,#a4dc6c' },

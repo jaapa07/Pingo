@@ -1,0 +1,61 @@
+import type { ZonaDef } from '../../core/tipos';
+import { grade } from './_a2-grade';
+
+/**
+ * A-US-3 Usina Velha, porão das turbinas. A chave geral (painel do nordeste) religa a sala de controle.
+ * O Cartel guarda aqui as jaulas das criaturas de Trovão. O canal de baixo só se cruza de canoa
+ * (Remo, bem depois): ilhota com item e os Poraquins.
+ */
+const g = grade('A-US-3', 30, [
+  '##########|##########|##########',
+  '##########|##########|##########',
+  '#A........|..#.......|....PH...#',
+  '#.........|..#..%%%%.|.........#',
+  '#...%%%...|..#..%%%%.|....2....#',
+  '#...%%%...|..#.......|.........#',
+  '#.........|..########|###...####',
+  '#..1......|..........|.........#',
+  '#.........|.....xx...|.........#',
+  '#~~~~~~~~~|~=~~~~~~~~|~~=~~~~~~#',
+  '#~~~~~~~~~|~=~~~~~~~~|~~=~~~~~~#',
+  '#~~~~~~~~~|~=~~~~~~~~|~~=~~~~~~#',
+  '#.........|..........|.........#',
+  '#.JJ.JJ.JJ|..........|..%%%....#',
+  '#.........|....3.....|..%%%....#',
+  '#.....i...|..........|.........#',
+  '#~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~#',
+  '#~~~~~~~~~|~~~;k;~~~~|~~~~~~~~~#',
+  '#~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~#',
+  '##########|##########|##########',
+], { k: ';' });
+
+const zona: ZonaDef = {
+  id: 'A-US-3', nome: 'Usina Velha — Porão das Turbinas', mapa: 'A', tipo: 'dungeon', tileset: 'industrial', musica: 'cartel-tema', arena: 'turbinas', passo: 3,
+  mapaChars: g.mapa,
+  objetos: [
+    { o: 'tema', x: 0, y: 0, tema: 'usina' },
+    { o: 'escada-sobe', ...g.p('A') },
+    { o: 'painel', ...g.p('P'), script: 'a2-usina-chave-geral' },
+    ...g.todos('J').map((p) => ({ o: 'jaula', ...p, script: 'a2-usina-jaula' })),
+    { o: 'turbina', x: 16, y: 8, texto: 'A turbina está parada. Dá para ouvir a água do canal reclamando.' },
+    { o: 'tambor', x: 28, y: 12 }, { o: 'tambor', x: 28, y: 15 },
+  ],
+  warps: [{ ...g.p('A'), para: { zona: 'A-US-1', x: 2, y: 2, dir: 'l' }, tipo: 'escada' }],
+  npcs: [
+    { id: 'c1', sprite: 'capanga-f', ...g.p('1'), dir: 'l', mov: 'olhar', se: '!flag:usina-ok', treinador: 'A-US-8', visao: 4 },
+    { id: 'c2', sprite: 'capanga-m', ...g.p('2'), dir: 'o', se: '!flag:usina-ok', treinador: 'A-US-9', visao: 4 },
+    { id: 'c3', sprite: 'capanga-m', ...g.p('3'), dir: 'o', se: '!flag:usina-ok', treinador: 'A-US-10', visao: 5 },
+    { id: 'tecnico', sprite: 'npc-homem-3', x: 20, y: 14, mov: 'vagar', se: 'flag:usina-ok', fala: ['Soltamos as criaturas das jaulas. Saíram em fila, feito bloco de carnaval, e sumiram no capim da estrada.', 'No canal de baixo ficaram uns Poraquins. Esses são da casa: moram aqui desde antes da Usina.'] },
+  ],
+  itens: [
+    { ...g.p('i'), item: 'mel-puro', qtd: 2, flag: 'item:A-US-3:jaulas' },
+    { ...g.p('k'), item: 'pt-18', flag: 'item:A-US-3:ilhota' },
+  ],
+  habitats: [
+    { metodo: 'caverna', taxa: 0.12, todos: [{ e: 141, nv: [20, 23], peso: 35 }, { e: 29, nv: [21, 24], peso: 35 }, { e: 142, nv: [22, 25], peso: 22 }, { e: 64, nv: [24, 25], peso: 8 }] },
+    { metodo: 'agua', taxa: 0.12, todos: [{ e: 115, nv: [24, 28], peso: 70 }, { e: 39, nv: [22, 26], peso: 30 }] },
+    { metodo: 'pesca-velha', todos: [{ e: 39, nv: [12, 16], peso: 100 }] },
+    { metodo: 'pesca-boa', todos: [{ e: 115, nv: [22, 26], peso: 60 }, { e: 39, nv: [20, 25], peso: 40 }] },
+  ],
+};
+export default zona;

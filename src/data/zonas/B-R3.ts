@@ -74,7 +74,7 @@ const zona: ZonaDef = {
   ],
   itens: [
     { x: 8, y: 4, item: 'garrafada', flag: 'B-R3-i1' },
-    { x: 3, y: 27, item: 'pt-25', flag: 'B-R3-i2' },
+    { x: 3, y: 27, item: 'pt-33', flag: 'B-R3-i2' },
     { x: 49, y: 3, item: 'cuia-ouro', qtd: 2, flag: 'B-R3-i3' },
     { x: 59, y: 3, item: 'pedra-solar', flag: 'B-R3-i4' },
     { x: 95, y: 4, item: 'pepita', flag: 'B-R3-i5' },

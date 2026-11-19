@@ -31,12 +31,12 @@ function build() {
   // pés e mandíbula chapados (a rampa 2 mistura escuro/amarelo/marfim)
   for (const o of ['canela_d', 'canela_e']) rig.bones[o].traverse((x) => { const mesh = x as { isMesh?: boolean; material?: unknown }; if (mesh.isMesh) mesh.material = m.plano(2); });
   // babador cinza no alto do peito e manto no dorso
-  rig.add('tronco', calota([0.21, 0.2, 0.19], m(1), { de: 0, ate: 48, rot: [0, 0, -78], pos: [0.01, 0.01, 0] }));
+  rig.add('tronco', blob([0.05, 0.06, 0.17], m(1), { pos: [0.15, 0.06, 0], rot: [0, 0, -30], seg: 14, castShadow: false }));
   rig.add('tronco', calota([0.21, 0.2, 0.19], m(1), { de: 0, ate: 60, rot: [0, 0, 60] }));
   // penacho duplo em V (dois ossos, um para cada lado)
   par((l, s) => {
-    rig.bone('penacho_' + l, 'cabeca', [ref.topo[0] - 0.04, ref.topo[1] - 0.04, 0.05 * s], [-26 * s, 0, 22]);
-    rig.add('penacho_' + l, tufo(2, 0.17, 0.045, m(1), { abre: 12 }), blob([0.03, 0.035, 0.03], m.sombra(2), { pos: [0, 0.165, 0], seg: 8 }));
+    rig.bone('penacho_' + l, 'cabeca', [ref.topo[0] - 0.04, ref.topo[1] - 0.04, 0.05 * s], [-46 * s, 0, 16]);
+    rig.add('penacho_' + l, tufo(2, 0.2, 0.05, m(1), { abre: 12 }), blob([0.03, 0.035, 0.03], m.sombra(2), { pos: [0, 0.19, 0], seg: 8 }));
   });
   // disco facial mais cinza em volta do olho + sobrancelha
   par((_, s) => rig.add('cabeca', blob([0.085, 0.07, 0.03], m.luz(1), { pos: [0.07, 0.02, 0.155 * s], rot: [0, 14 * s, 0], seg: 12 })));
