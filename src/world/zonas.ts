@@ -35,7 +35,8 @@ export function objCat(nome: string): ObjCat | undefined {
   const b = catalogoBruto()[nome];
   let r: ObjCat | null = null;
   if (b) {
-    const w = Math.max(1, b.w ?? 1), h = Math.max(1, b.h ?? 1);
+    // pseudo-objetos (w ou h = 0, ex.: `tema`) não ocupam tiles
+    const w = Math.max(0, b.w ?? 1), h = Math.max(0, b.h ?? 1);
     const col: number[][] = [];
     for (let j = 0; j < h; j++) {
       const linha: number[] = [];

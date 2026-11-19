@@ -12,7 +12,7 @@ import { ZonaViva, objCat } from './zonas';
 import { Pix, injetarEstilo, padrao, pixGrama, pixFolha, pixRespingo, pixPoeira, type Ret } from './pixel';
 
 export interface BakeMeta { w: number; h: number; /** lado do chunk em px */ chunk: number; periodos: Periodo[]; chunks: Map<string, { alto: boolean; anim: boolean }>; quadros: number; animMs: number }
-interface FolhaTiles { src: string; periodos: Periodo[]; alturaPeriodo: number; pecas: Record<string, { x: number; y: number; w: number; h: number; quadros: number }> }
+interface FolhaTiles { /** prefixo do tema de interior ('' nos exteriores) */ tema: string; src: string; periodos: Periodo[]; alturaPeriodo: number; pecas: Record<string, { x: number; y: number; w: number; h: number; quadros: number }> }
 async function lerJson(url: string): Promise<any | null> {
   try { const r = await fetch(url); if (!r.ok || !(r.headers.get('content-type') ?? '').includes('json')) return null; return await r.json(); } catch { return null; }
 }
@@ -29,6 +29,15 @@ export async function lerBake(id: string): Promise<BakeMeta | null> {
     else chunks.set(`${c.cx ?? c.x}_${c.cy ?? c.y}`, { alto: !!c.alto, anim: !!c.anim });
   } else for (let cy = 0; cy * chunk < h * TILE; cy++) for (let cx = 0; cx * chunk < w * TILE; cx++) chunks.set(`${cx}_${cy}`, { alto: true, anim: true });
   return { w, h, chunk, periodos: j.periodos ?? ['dia'], chunks, quadros: j.quadros ?? 4, animMs: j.animMs ?? 1000 / (j.fps ?? 4) };
+}
+/** tema de interior da zona: pseudo-objeto `tema`, senão as regras `porZona`/`rodizio` do tilesheet (as mesmas do bake) */
+function temaDaZona(z: { id: string; objetos?: { o: string; [k: string]: unknown }[] }, f: { porZona?: [string, string][]; rodizio?: string[] }): string {
+  const o = z.objetos?.find((x) => x.o === 'tema');
+  if (o && typeof o.tema === 'string') return o.tema;
+  for (const [er, id] of f.porZona ?? []) if (new RegExp(er).test(z.id)) return id;
+  if (!f.rodizio?.length) return '';
+  let s = 0; for (const ch of z.id) s = (s * 31 + ch.charCodeAt(0)) >>> 0;
+  return f.rodizio[s % f.rodizio.length];
 }
 /** peça do tilesheet (public/assets/tiles/<tileset>.png): sprites que não vão no bake (obstáculos removíveis, grama de passagem) */
 export class Peca {
@@ -109,7 +118,7 @@ export class Cena {
     this.bake = forcarDebug ? null : await lerBake(zv.def.id);
     this.debug = !this.bake;
     this.folha = null;
-    if (this.bake) { const f = await lerJson(`assets/tiles/${zv.def.tileset}.json`); if (f?.pecas) { this.folha = { src: `assets/tiles/${zv.def.tileset}.png`, periodos: f.periodos ?? ['dia'], alturaPeriodo: f.alturaPeriodo ?? 0, pecas: f.pecas }; await precarregar(this.folha.src); } }
+    if (this.bake) { const f = await lerJson(`assets/tiles/${zv.def.tileset}.json`); if (f?.pecas) { this.folha = { tema: temaDaZona(zv.def, f), src: `assets/tiles/${zv.def.tileset}.png`, periodos: f.periodos ?? ['dia'], alturaPeriodo: f.alturaPeriodo ?? 0, pecas: f.pecas }; await precarregar(this.folha.src); } }
     this.el.dataset.modo = this.debug ? 'debug' : 'bake';
     this.conj = this.novoConjunto(this.periodoEfetivo(periodo));
   }
@@ -223,7 +232,10 @@ export class Cena {
   /* ------------------------------ props e partículas ------------------------------ */
   /** peça do tilesheet, se a zona tem bake e o tileset traz a peça; senão o desenho de reserva */
   peca(nome: string, reserva: (pai: HTMLElement) => Pix): (pai: HTMLElement) => Prop {
-    return (pai) => (this.folha?.pecas[nome] ? new Peca(this.folha, nome, pai, this.conj?.periodo ?? 'dia') : reserva(pai));
+    return (pai) => {
+      const f = this.folha, n = f ? [f.tema + '/' + nome, nome].find((k) => f.pecas[k]) : undefined;
+      return f && n ? new Peca(f, n, pai, this.conj?.periodo ?? 'dia') : reserva(pai);
+    };
   }
   prop(chave: string, fab: (pai: HTMLElement) => Prop, x: number, y: number): Prop {
     let p = this.props.get(chave);

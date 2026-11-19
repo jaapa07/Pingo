@@ -5,6 +5,7 @@
  *   - marca única: `g.p('a')` → { x, y }
  *   - marca repetida: `g.todos('q')` → [{ x, y }…] (fileiras de coqueiros, postes…)
  *   - `H` é reservado: miolo de prédio/objeto grande (vira o chão padrão) só para enxergar a planta na grade.
+ *   - `|` é só régua visual (blocos de 10 colunas) e some antes da leitura.
  * Linhas com largura errada derrubam a carga com a lista completa dos erros.
  */
 const LEGENDA = new Set('.,:;"%~dw=#Ttbfcprev<>glxCo+M ');
@@ -28,7 +29,8 @@ export interface Grade {
 export function grade(id: string, largura: number, linhas: string[], sob: Record<string, string> = {}, padrao = '.'): Grade {
   const erros: string[] = [];
   const achados = new Map<string, Ponto[]>();
-  const mapa = linhas.map((l, y) => {
+  const mapa = linhas.map((bruta, y) => {
+    const l = bruta.split('|').join('');
     if (l.length !== largura) erros.push(`linha ${y}: ${l.length} colunas (esperado ${largura})`);
     let s = '';
     for (let x = 0; x < l.length; x++) {
