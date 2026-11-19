@@ -3,7 +3,7 @@ import type { ZonaDef } from '../../core/tipos';
 /**
  * Ginásio do Rio (nº 3, Porto Sereia) — eclusas do Marujo Netuno Silva. Tema g03.
  * Quebra-cabeça (src/world/mecanicas/ginasio-03.ts): quatro canais (A, B, C e o braço D) começam vazios.
- * Balsas só encostam no cais com o canal CHEIO (A e C); passarelas de pedra só aparecem com o canal VAZIO (B e D).
+ * Balsas só encostam no cais com o canal CHEIO (A e C); passarelas baixas só aparecem com o canal VAZIO (B e D).
  * Volante 1 (entrada) enche/esvazia A e B · volante 2 (salão do meio, oeste) B e D · volante 3 (salão do meio, leste) C.
  * Solução: volante 1 (A e B enchem), balsa do canal A, atravesse o braço D ainda vazio até o lado leste, volante 3
  * (C enche), volte, volante 2 (B esvazia, D enche), passarela do canal B, balsa do canal C e o líder.
@@ -34,7 +34,7 @@ const zona: ZonaDef = {
   ],
   objetos: [
     { o: 'tema', x: 0, y: 0, tema: 'g03' },
-    { o: 'gin-estatua', x: 6, y: 17, texto: ['GINÁSIO DE PORTO SEREIA\nLíder: Marujo Netuno Silva\n"Maré não espera ninguém."', 'Dica das eclusas: balsa só encosta no cais com o canal cheio. Passarela de pedra só aparece com o canal vazio.'] },
+    { o: 'gin-estatua', x: 6, y: 17, texto: ['GINÁSIO DE PORTO SEREIA\nLíder: Marujo Netuno Silva\n"Maré não espera ninguém."', 'Dica das eclusas: balsa só encosta no cais com o canal cheio. Passarela baixa só aparece com o canal vazio.'] },
     { o: 'gin-estatua', x: 10, y: 17, texto: ['Cada volante mexe em mais de um canal ao mesmo tempo: o que enche um pode esvaziar o outro.', 'O volante do salão leste é o único que enche o canal do líder. Passe por ele antes de fechar o caminho.'] },
     { o: 'gin-pedestal', x: 9, y: 2 },
     { o: 'gin-comporta', x: 4, y: 15 }, { o: 'gin-comporta', x: 2, y: 9 }, { o: 'gin-comporta', x: 16, y: 9 },

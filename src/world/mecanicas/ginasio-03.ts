@@ -1,7 +1,7 @@
 /**
  * Ginásio 3 (Rio, A4) — comportas que mudam o nível da água.
  * Quatro canais, cada um cheio ou vazio. Canal cheio: a água assada do mapa aparece, a balsa encosta no cais
- * (vira ponte) e a passarela de pedra some debaixo d'água. Canal vazio: o leito molhado aparece, a passarela de
+ * (vira ponte) e a passarela baixa some debaixo d'água. Canal vazio: o leito molhado aparece, a passarela de
  * pedra fica à mostra e a balsa encalha no fundo. Três volantes (`gin-comporta`) alternam os canais em grupo.
  * Tudo recomeça vazio ao sair.
  */
@@ -72,9 +72,9 @@ registrarMecanica(ZONA, {
     if (M.zv.chao(x, y)) return false;
     let t: string;
     if (BALSA[k]) t = 'A balsa está encalhada no fundo do canal. Só com o canal cheio ela sobe até o cais.';
-    else if (PASSARELA[k]) t = 'Dá para ver uma passarela de pedra debaixo d\'água. Com o canal vazio ela ficaria à mostra.';
+    else if (PASSARELA[k]) t = 'Dá para ver uma passarela baixa debaixo d\'água. Com o canal vazio ela ficaria à mostra.';
     else if (cheio[c]) t = 'A água do canal corre forte e funda. Sem balsa, nada feito.';
-    else t = 'O leito do canal fica dois metros abaixo do piso, liso de limo. Só a passarela de pedra atravessa.';
+    else t = 'O leito do canal fica dois metros abaixo do piso, liso de limo. Só a passarela baixa atravessa.';
     cena(() => falar(t));
     return true;
   },
