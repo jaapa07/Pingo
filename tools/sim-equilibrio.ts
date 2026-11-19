@@ -38,7 +38,7 @@ const out = (s = '') => { saida.push(s); };
 /* ------------------------------ 1. equipes de referência ------------------------------ */
 out('### 1. Equipe de referência do jogador por passo');
 out();
-out('Derivada das tabelas de habitat (grama, caverna e árvore das zonas do mapa A abertas até o passo). Ás = ás do chefe − 3 (Liga: Campeão − 4).');
+out('Derivada das tabelas de habitat (grama, caverna e árvore das zonas do mapa A abertas até o passo). Ás do jogador = ás do chefe − 2 nos passos 1–3, − 3 do 4 ao 8 e − 4 na Liga.');
 out();
 out('| Passo | Ás do chefe | Inicial Mata | Inicial Brasa | Inicial Rio | Remédios |');
 out('|---|---|---|---|---|---|');

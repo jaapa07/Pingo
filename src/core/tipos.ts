@@ -20,7 +20,7 @@ export type AmuletoId = 'facao' | 'remo' | 'forca' | 'lampiao' | 'quebra-pedra' 
 /**
  * Condição textual usada em portões, warps, NPCs e eventos. Termos unidos por '&' (e) ou '|' (ou, sem misturar):
  *  'insignia:3' (tem a insígnia nº 3) · 'insignias:15' (tem ≥ 15) · 'flag:usina-ok' · '!flag:x' · 'amuleto:remo'
- *  'item:passe-trem' · 'diario:150' (≥ 150 capturadas) · 'periodo:noite' · 'pos-jogo'
+ *  'item:passe-trem' · 'diario:150' (≥ 150 capturadas) · 'periodo:noite' · 'pos-jogo' · 'mapa-b' (mapa B aberto neste pacote)
  */
 export type Cond = string;
 
@@ -108,6 +108,8 @@ export interface TreinadorDef {
   insignia?: number;
   /** flag marcada ao ser vencido (padrão: 'venceu:<id>') */
   flag?: string;
+  /** passa (true) ou nunca passa (false) o número para o Rádio Cipó depois de vencido; sem o campo vale a regra de src/world/integracao.ts */
+  contato?: boolean;
 }
 
 /* ============================== zonas ============================== */
@@ -176,6 +178,8 @@ export interface ZonaDef {
   /** nível médio esperado (verificação da curva) e passo de progressão em que fica acessível (1..17) */
   passo?: number;
   correnteza?: { x: number; y: number; w: number; h: number; dir: Dir }[];
+  /** vagas da Decoração do Quarto: categoria → canto inferior esquerdo da peça (desenhadas pelo mundo, fora do bake) */
+  decoracao?: Record<string, [number, number]>;
 }
 
 /* ============================== eventos (scripts declarativos) ============================== */

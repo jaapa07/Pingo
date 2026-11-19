@@ -18,7 +18,8 @@ export class Ator {
   /** deslocamento visual (tremor, pulo de animação) */
   ex = 0; ey = 0;
   spr: Sprite;
-  private boneco?: Pix;
+  /** desenho de reserva quando o modelo não tem sprite */
+  boneco?: Pix;
   private balao?: Pix; private balaoT = 0;
   private fim?: () => void; private aoChegar?: () => void;
   private poseAtual = '';

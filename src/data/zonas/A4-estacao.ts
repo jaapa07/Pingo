@@ -36,7 +36,8 @@ const zona: ZonaDef = {
     { x: 9, y: 10, para: { zona: 'A4', x: 44, y: 8, dir: 's' }, tipo: 'borda' },
   ],
   npcs: [
-    { id: 'a4-maquinista', sprite: 'npc-maquinista', x: 10, y: 4, dir: 's', se: 'flag:liga-vencida', fala: ['Campeão a bordo! É só subir no vagão que a Maria-Fumaça faz o resto.', 'Do outro lado da serra o mundo é outro: cerrado, pantanal e uma névoa que não acaba mais.'] },
+    { id: 'a4-maquinista', sprite: 'npc-maquinista', x: 10, y: 4, dir: 's', se: 'flag:liga-vencida&mapa-b', fala: ['Campeão a bordo! É só subir no vagão que a Maria-Fumaça faz o resto.', 'Do outro lado da serra o mundo é outro: cerrado, pantanal e uma névoa que não acaba mais.'] },
+    { id: 'a4-maquinista-obras', sprite: 'npc-maquinista', x: 10, y: 4, dir: 's', se: 'flag:liga-vencida&!mapa-b', fala: ['Campeão! Quem diria… Pena que a linha da serra está em obras: caiu barreira no túnel.', 'Guarde o Passe do Trem. Quando a Maria-Fumaça voltar a subir, o Rádio Cipó avisa na hora.'] },
     { id: 'a4-maquinista-espera', sprite: 'npc-maquinista', x: 10, y: 4, dir: 's', se: '!flag:liga-vencida', fala: ['A caldeira está quente e a luz voltou, mas a linha da serra é perigosa: bicho de lá derruba treinador de cá.', 'Ordem dos Guardiões: só embarca quem vencer a Liga, no Platô, depois de Vila Buriti. Oito insígnias e muita coragem.'] },
     { id: 'a4-viajante', sprite: 'npc-homem-3', x: 4, y: 5, dir: 's', mov: 'olhar', fala: ['Minha irmã mora no sertão. Venho todo dia ver se o trem já aceita gente comum.', 'Levo de presente um vidro de água do mar. Ela nunca viu o mar. Vai achar que é só água suja com sal. E é.'] },
     { id: 'a4-carregadora', sprite: 'npc-mulher-4', x: 13, y: 5, mov: 'vagar', fala: ['Dizem que a Drª Buriti, de Vila Buriti, anda procurando treinador de confiança.', 'Parece que ela tem uma criatura rara esperando por quem vencer o ginásio de lá.'] },

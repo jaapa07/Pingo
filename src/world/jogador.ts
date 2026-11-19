@@ -3,7 +3,7 @@ import type { Dir, Warp, Gatilho } from '../core/tipos';
 import { jogo, cond, flag, setFlag } from '../core/estado';
 import { rng } from '../core/rng';
 import { M, ocupar, sfx, atorEm, quadros } from './vivo';
-import { DX, DY, SALIENCIA } from './zonas';
+import { DX, DY, SALIENCIA, zonaDef } from './zonas';
 import { entrada, falar, abrirTela } from './deps';
 import type { OpMover } from './ator';
 import { mecanicas, cinematicas } from './registro';
@@ -12,23 +12,19 @@ import { quemVe, abordagem } from './npcs';
 import { tentarEncontro, passoDaEquipe } from './encontros';
 import { rodarEvento } from './eventos';
 import { irPara } from './index';
+import { MAPA_B_ABERTO, EM_OBRAS } from '../core/progresso';
+import { seguirParceira, recolherParceira, passoDaParceira } from './parceira';
 
 export const baseDoModo = (correndo: boolean) => ({ pe: correndo ? 'correr' : 'andar', bike: 'bike', remo: 'remar', mergulho: 'mergulhar' })[jogo.save.jogador.modo];
+/** trem/saveiro que leva para fora do mapa A enquanto o mapa B não abre (src/core/progresso.ts) */
+const emObras = (w: Warp) => !MAPA_B_ABERTO && (w.tipo === 'trem' || w.tipo === 'saveiro') && zonaDef(w.para.zona)?.mapa !== 'A';
 const ehEntrada = (w: Warp | undefined) => !!w && w.tipo !== 'borda' && w.tipo !== 'buraco' && w.tipo !== undefined;
 /** o jogador pode pisar em (x, y) a pé? (chão livre ou tile de porta/escada/caverna) */
 const pisavel = (x: number, y: number) => (M.zv.chao(x, y) || (ehEntrada(M.zv.warp(x, y)) && M.zv.dentro(x, y) && !M.zv.agua(x, y))) && !itemBloqueia(x, y);
 
 function salvarPos() { const s = jogo.save.jogador, j = M.jog; s.zona = M.zv.def.id; s.x = j.x; s.y = j.y; s.dir = j.dir; jogo.save.rng = rng.estado(); }
 function bater() { if (M.quadro - M.batidaT > 26) { M.batidaT = M.quadro; sfx('batida'); } }
-function seguir(ox: number, oy: number, dur: number) {
-  const p = M.parceira; if (!p) return;
-  const modo = jogo.save.jogador.modo;
-  p.visivel = modo === 'pe' && (ox !== M.jog.x || oy !== M.jog.y);
-  if (!p.visivel) { p.teleportar(ox, oy); return; }
-  const dx = ox - p.x, dy = oy - p.y;
-  if (Math.abs(dx) + Math.abs(dy) !== 1) { p.teleportar(ox, oy); return; }
-  void p.mover(dx > 0 ? 'l' : dx < 0 ? 'o' : dy > 0 ? 's' : 'n', dur);
-}
+const seguir = seguirParceira;
 /** inicia um passo do jogador; `aoChegar` roda no quadro da chegada */
 function andar(d: Dir, dur: number, o: OpMover = {}, correndo = false) {
   const j = M.jog, ox = j.x, oy = j.y;
@@ -45,7 +41,7 @@ export async function andarJogador(d: Dir, dur: number, o: OpMover = {}) {
   j.base = baseDoModo(false); j.pose();
   salvarPos();
 }
-function seguirDepois(ox: number, oy: number) { if (M.parceira) { M.parceira.teleportar(ox, oy); M.parceira.visivel = false; } }
+function seguirDepois(ox: number, oy: number) { recolherParceira(ox, oy); }
 
 function recusar(texto: string, d: Dir) { M.travaDir = d; void ocupar(() => falar(texto)); }
 
@@ -53,13 +49,14 @@ function tentarAndar(d: Dir) {
   const j = M.jog, z = M.zv, tx = j.x + DX[d], ty = j.y + DY[d], modo = jogo.save.jogador.modo, e = entrada();
   if (!z.dentro(tx, ty)) {
     const w = z.warp(j.x, j.y);
-    if (w && !ehEntrada(w) && w.tipo !== 'buraco') { if (cond(w.requer)) void usarWarp(w); else recusar(w.recusa ?? 'O caminho está fechado por enquanto.', d); } else bater();
+    if (w && !ehEntrada(w) && w.tipo !== 'buraco') { if (cond(w.requer) && !emObras(w)) void usarWarp(w); else recusar(w.recusa ?? 'O caminho está fechado por enquanto.', d); } else bater();
     return;
   }
   const portao = z.portao(tx, ty);
   if (portao) { recusar(portao.fala, d); return; }
   const w = z.warp(tx, ty);
   if (w && !cond(w.requer) && z.ch(tx, ty) !== 'd') { recusar(w.recusa ?? 'O caminho está fechado por enquanto.', d); return; }
+  if (w && emObras(w)) { recusar(EM_OBRAS[w.tipo as 'trem' | 'saveiro'], d); return; }
   if (atorEm(tx, ty)) { bater(); return; }
   const ch = z.ch(tx, ty);
   if (modo === 'remo') {
@@ -101,10 +98,10 @@ function aoChegar() {
   const j = M.jog, z = M.zv, x = j.x, y = j.y, ch = z.ch(x, y), modo = jogo.save.jogador.modo;
   M.parouEm = M.quadro; M.passos++;
   salvarPos();
-  passoDaEquipe();
+  passoDaEquipe(); passoDaParceira();
   if (mecanicas.get(z.def.id)?.passo?.(x, y) === true) return;
   const w = z.warp(x, y);
-  if (w && ch !== 'd' && !z.def.submerso && cond(w.requer)) { void usarWarp(w); return; }
+  if (w && ch !== 'd' && !z.def.submerso && cond(w.requer) && !emObras(w)) { void usarWarp(w); return; }
   const g = gatilhoEm(x, y);
   if (g) { if (g.umaVez) setFlag(chaveGatilho(g)); void ocupar(() => rodarEvento(g.script)); return; }
   if (jogo.save.equipe.length) { const t = quemVe(); if (t) { void ocupar(() => abordagem(t)); return; } }

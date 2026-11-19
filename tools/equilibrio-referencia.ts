@@ -53,17 +53,21 @@ export function formaNoNivel(num: number, nivel: number): number {
   let n = raiz(num);
   for (;;) { const ev = especie(n).evolui?.find((x) => x.nivel !== undefined && !x.item && nivel >= x.nivel); if (!ev) return n; n = ev.para; }
 }
-const valorGolpe = (id: string) => { const g = defGolpe(id); return g.cat === 'status' ? 45 : (g.poder * (g.precisao || 100)) / 100; };
-/** os 4 golpes de um jogador comum: aprende tudo o que aparece e, com 4, troca o mais fraco se o novo for melhor (mesma regra do motor) */
+const valorGolpe = (id: string) => { const g = defGolpe(id); return g.cat === 'status' ? 0 : (g.poder * (g.precisao || 100)) / 100 * (g.efeitos.some((e) => e.t === 'carga' || e.t === 'recarga') ? 0.6 : 1); };
+/**
+ * Os 4 golpes de um jogador comum: os três melhores golpes de dano que a espécie já aprendeu (poder × precisão, com
+ * preferência por um do próprio tipo e por tipos variados) e, se houver, o golpe de status mais recente.
+ */
 export function golpesDeJogador(num: number, nivel: number): string[] {
-  const ids: string[] = [];
-  for (const [n, id] of especie(num).golpes) {
-    if (n > nivel || !temGolpe(id) || ids.includes(id)) continue;
-    if (ids.length < 4) { ids.push(id); continue; }
-    let pior = 0; for (let i = 1; i < 4; i++) if (valorGolpe(ids[i]) < valorGolpe(ids[pior])) pior = i;
-    if (valorGolpe(id) > valorGolpe(ids[pior])) ids[pior] = id;
-  }
-  return ids.length ? ids : ['encontrao'];
+  const e = especie(num), ids: string[] = [];
+  for (const [n, id] of e.golpes) if (n <= nivel && temGolpe(id) && !ids.includes(id)) ids.push(id);
+  const dano = ids.filter((id) => defGolpe(id).cat !== 'status'), status = ids.filter((id) => defGolpe(id).cat === 'status');
+  const r: string[] = [];
+  const nota = (id: string) => valorGolpe(id) * (e.tipos.includes(defGolpe(id).tipo) ? 1.5 : 1) * (r.some((x) => defGolpe(x).tipo === defGolpe(id).tipo) ? 0.6 : 1);
+  const vagasDano = status.length ? 3 : 4;
+  while (r.length < vagasDano) { const livres = dano.filter((id) => !r.includes(id)); if (!livres.length) break; r.push(livres.reduce((a, id) => (nota(id) > nota(a) ? id : a))); }
+  for (const id of status.slice().reverse()) { if (r.length >= 4) break; r.push(id); }
+  return r.length ? r : ['encontrao'];
 }
 
 /* ============================== curva e equipe de referência ============================== */
@@ -80,8 +84,8 @@ export function asDoChefe(d: Dados, passo: number): number {
   if (!t) throw new Error('sem líder para o passo ' + passo);
   return asDe(t);
 }
-/** nível do ás do jogador de referência: 3 abaixo do ás do líder (faixa do spec: 2 a 4); na Liga, 4 abaixo do ás do Campeão */
-export function asDoJogador(d: Dados, passo: number): number { return asDoChefe(d, passo) - (passo >= PASSO_LIGA ? 4 : 3); }
+/** nível do ás do jogador de referência (faixa do spec: 2 a 4 abaixo do ás do líder): 2 abaixo nos passos 1–3, em que um nível pesa muito mais, 3 abaixo do 4 ao 8 e 4 abaixo do ás do Campeão na Liga */
+export function asDoJogador(d: Dados, passo: number): number { return asDoChefe(d, passo) - (passo >= PASSO_LIGA ? 4 : passo <= 3 ? 2 : 3); }
 
 interface Candidato { linha: number; nvMin: number; peso: number; passo: number }
 /** linhas evolutivas capturáveis em cada passo, pelas tabelas de habitat (grama, caverna e árvore; sem camadas pós-insígnia) */

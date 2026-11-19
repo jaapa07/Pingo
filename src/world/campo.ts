@@ -8,7 +8,9 @@ import { jogo, flag, setFlag, darItem, tirarItem, qtdItem, temAmuleto } from '..
 import { rng } from '../core/rng';
 import { bus } from '../core/events';
 import { Ator } from './ator';
-import { M, AMULETOS, ajudante, ocupar, sfx, quadros, npcEm, atorEm } from './vivo';
+import { M, AMULETOS, ajudante, ocupar, sfx, musica, quadros, npcEm, atorEm } from './vivo';
+import { parceiraEm, falarComParceira } from './parceira';
+import { exameDecoracao } from './decoracao';
 import { DX, DY, OPOSTO, ehAgua } from './zonas';
 import { falar, simNao, escolher, avisar, abrirTela, nomeCriatura, nomeItem, especie, item as itemDef, usoItem, entrada } from './deps';
 import { pixObstaculo, pixItem, pixCanteiro, pixPlanta, pixFolha, pixPoeira, pixBrilho, pixBolha, type TileVivo } from './pixel';
@@ -19,6 +21,8 @@ import { sortear, batalhaSelvagem, tabela } from './encontros';
 import { irPara, zonaDef, atualizarLuz } from './index';
 import { andarJogador, baseDoModo } from './jogador';
 
+/** itens-chave que abrem uma tela (os mesmos da Mochila) */
+const TELA_DO_ITEM: Record<string, string> = { 'radio-cipo': 'radio', 'diario-de-campo': 'diario', 'estojo-de-insignias': 'insignias', 'camera-de-bolso': 'foto' };
 export const IDS = { bike: 'bike-bambu', varas: { velha: 'vara-velha', boa: 'vara-boa', mestra: 'vara-mestra' } as const };
 const FRUTOS = ['caju', 'pitanga', 'jabuticaba', 'cupuacu', 'pequi', 'buriti', 'acai', 'acerola'];
 const pisoBase = () => (M.zv.def.tipo === 'caverna' || M.zv.def.tipo === 'dungeon' ? '%' : '.');
@@ -268,6 +272,16 @@ export async function usarItemNoCampo(id: string): Promise<boolean> {
 }
 /** botão select: bicicleta, se tiver; senão pesca com a melhor vara */
 export async function atalho() {
+  // item registrado na Mochila (`flags['atalho']`): tela própria, Amuleto de menu ou item de campo
+  const reg = String(jogo.save.flags['atalho'] ?? '');
+  if (reg && qtdItem(reg)) {
+    const u = usoItem(reg) as { amuleto?: AmuletoId } | undefined;
+    if (TELA_DO_ITEM[reg]) { await ocupar(() => abrirTela(TELA_DO_ITEM[reg])); musica(M.zv.def.musica); return; }
+    if (u?.amuleto) { await usarAmuleto(u.amuleto); return; }
+    if (await usarItemNoCampo(reg)) return;
+    if (!M.ocupado && reg !== IDS.bike) await ocupar(() => falar(`${nomeItem(reg)} não tem uso aqui.`));
+    return;
+  }
   if (qtdItem(IDS.bike)) { await alternarBike(); return; }
   const v = melhorVara();
   if (v) await ocupar(() => pescar(v));
@@ -280,13 +294,15 @@ export function interagir(): Promise<void> {
     if (mecanicas.get(z.def.id)?.interagir?.(x, y) === true) return;
     const n = npcEm(x, y) ?? ('M#'.includes(z.ch(x, y)) || z.temObjeto(x, y) ? npcEm(x + DX[d], y + DY[d]) : undefined);
     if (n) { await interagirNpc(n); return; }
-    if (M.parceira?.visivel && M.parceira.x === x && M.parceira.y === y) { const c = jogo.save.equipe[0]; M.parceira.olharPara(j.x, j.y); M.parceira.emote(c.amizade >= 150 ? 'coracao' : 'nota', 50); await falar(`${nomeCriatura(c)} ${c.amizade >= 150 ? 'está radiante ao seu lado!' : 'olha curiosa para você.'}`); return; }
+    if (parceiraEm(x, y)) { await falarComParceira(); return; }
     const g = M.guardas.find((q) => q.ator.x === x && q.ator.y === y)?.p ?? z.portao(x, y);
     if (g) { await falar(g.fala); return; }
     const it = itemEm(x, y);
     if (it) { await pegar(it); return; }
     const placa = z.def.placas?.find((p) => p.x === x && p.y === y);
     if (placa) { await falar(placa.texto); return; }
+    const deco = exameDecoracao(x, y);
+    if (deco) { for (const t of deco) await falar(t); return; }
     const o = z.objeto(x, y);
     if (o && (o.script || o.texto || o.tela)) {
       if (typeof o.script === 'string') await rodarEvento(o.script);

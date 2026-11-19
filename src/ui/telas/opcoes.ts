@@ -22,16 +22,16 @@ export function criarOpcoes(): Tela {
   const o = jogo.opcoes;
   let telaCheia = !!document.fullscreenElement;
   let sub: Lista | null = null, capturando: Acao | null = null;
-  const DIF = ['explorador', 'aventureiro', 'veterano'] as const, NOME_DIF = { explorador: 'Explorador', aventureiro: 'Aventureiro', veterano: 'Veterano' };
+  const DIF = ['explorador', 'aventureiro', 'veterano'] as const, NOME_DIF = { explorador: 'Explorador', aventureiro: 'Aventureiro (Recomendado)', veterano: 'Veterano' };
   const linhas: Linha[] = [
     { rotulo: 'Música', valor: () => nivel(o.musica), mudar: (d) => { o.musica = passo(o.musica, d); aplicarVolumes(); }, dica: 'Volume da música.' },
     { rotulo: 'Efeitos', valor: () => nivel(o.sfx), mudar: (d) => { o.sfx = passo(o.sfx, d); aplicarVolumes(); som('ui-ok'); }, dica: 'Volume dos efeitos, vozes e gritos das criaturas.' },
     { rotulo: 'Velocidade do texto', valor: () => ['Calma', 'Normal', 'Ligeira'][o.velTexto - 1], mudar: (d) => { o.velTexto = (((o.velTexto - 1 + d + 3) % 3) + 1) as 1 | 2 | 3; }, dica: 'Ritmo das letras nas caixas de fala.' },
-    { rotulo: 'Dificuldade', valor: () => NOME_DIF[o.dificuldade], mudar: (d) => { o.dificuldade = DIF[(DIF.indexOf(o.dificuldade) + d + 3) % 3]; }, dica: 'Explorador: batalhas leves. Aventureiro: equilíbrio. Veterano: rivais espertos.' },
+    { rotulo: 'Dificuldade', valor: () => NOME_DIF[o.dificuldade], mudar: (d) => { o.dificuldade = DIF[(DIF.indexOf(o.dificuldade) + d + 3) % 3]; }, dica: 'Explorador: batalhas leves. Aventureiro (recomendado): luta equilibrada. Veterano: rivais espertos.' },
     { rotulo: 'Animações de batalha', valor: () => simNao(o.animBatalha), mudar: () => { o.animBatalha = !o.animBatalha; }, dica: 'Mostra as animações dos golpes.' },
     { rotulo: 'Números de dano', valor: () => simNao(o.numerosDano), mudar: () => { o.numerosDano = !o.numerosDano; }, dica: 'Mostra quanto de vida cada golpe tirou.' },
     { rotulo: 'Vibração', valor: () => simNao(o.vibrar), mudar: () => { o.vibrar = !o.vibrar; input.vibrar(30, true); }, dica: 'Vibra em críticos, capturas e insígnias (celular e controle).' },
-    { rotulo: 'Parceira segue', valor: () => simNao(o.parceiraSegue), mudar: () => { o.parceiraSegue = !o.parceiraSegue; }, dica: 'A primeira criatura da equipe anda atrás de você no mapa.' },
+    { rotulo: 'Parceira segue', valor: () => simNao(o.parceiraSegue), mudar: () => { o.parceiraSegue = !o.parceiraSegue; }, dica: 'A primeira criatura da equipe anda atrás de você no mapa. Também liga e desliga pela tela da Equipe.' },
     { rotulo: 'Qualidade', valor: () => (o.qualidade === 'pc' ? 'PC' : 'Celular'), mudar: () => { o.qualidade = o.qualidade === 'pc' ? 'celular' : 'pc'; }, dica: 'Celular: menos efeitos de cenário, para poupar bateria.' },
     ...(plataforma.alvo === 'ios' ? [] : [{ rotulo: 'Tela cheia', valor: () => simNao(telaCheia), mudar: () => { telaCheia = !telaCheia; plataforma.telaCheia(telaCheia); }, dica: 'Usa a tela inteira do aparelho.' } as Linha]),
     { rotulo: 'Teclas…', valor: () => '', acao: abrirTeclas, dica: 'Escolha as teclas de cada ação.' },

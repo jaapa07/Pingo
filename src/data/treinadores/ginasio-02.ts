@@ -25,10 +25,9 @@ export const TREINADORES_GINASIO_02: TreinadorDef[] = [
   { id: 'lider-02', classe: 'Líder', nome: 'Lia Teia', sprite: 'lider-02', ia: 'lider', premio: 1700, insignia: 2, musica: 'batalha-lider', flag: 'ginasio-02-vencido',
     itens: ['garrafada'],
     equipe: [
-      { e: 147, nv: 15, golpes: ['teia-pegajosa', 'espinho-peconhento', 'formigueiro', 'cara-feia'] },
-      { e: 28, nv: 15, golpes: ['choquinho', 'ferroada', 'luz-de-lamparina', 'encontrao'] },
-      { e: 163, nv: 16, golpes: ['pedrada', 'mordida-de-sauva', 'casulo', 'cara-feia'] },
-      { e: 27, nv: 17, golpes: ['estrela-guia', 'ferroada', 'cafune', 'piscadela'], item: 'cupuacu' },
+      { e: 163, nv: 15, golpes: ['pedrada', 'mordida-de-sauva', 'casulo'] },
+      { e: 28, nv: 16, golpes: ['choquinho', 'ferroada'] },
+      { e: 147, nv: 17, golpes: ['espinho-peconhento', 'formigueiro', 'teia-pegajosa', 'arranhao'] },
     ],
     desafio: 'Passei três anos morando nesta copa para entender uma única aranha. Vamos ver quanto tempo você leva para entender a minha equipe!',
     derrota: 'Você desfez a minha teia fio por fio. Que beleza de se ver!', depois: 'Toda teia começa com um fio só. Continue tecendo a sua.' },

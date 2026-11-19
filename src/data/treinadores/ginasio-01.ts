@@ -24,10 +24,8 @@ export const TREINADORES_GINASIO_01: TreinadorDef[] = [
   { id: 'lider-01', classe: 'Líder', nome: 'Mestre Gaivota', sprite: 'lider-01', ia: 'lider', premio: 1200, insignia: 1, musica: 'batalha-lider', flag: 'ginasio-01-vencido',
     itens: ['cha-cidreira'],
     equipe: [
-      { e: 45, nv: 10, golpes: ['bicada', 'jogar-areia', 'bote-ligeiro', 'berro'] },
-      { e: 107, nv: 10, golpes: ['esguicho', 'lufada', 'bicada', 'faro-fino'] },
-      { e: 167, nv: 11, golpes: ['estilingue', 'lufada', 'bicada', 'faro-fino'] },
-      { e: 51, nv: 12, golpes: ['lufada', 'bicada', 'assobio-agudo', 'berro'], item: 'caju' },
+      { e: 45, nv: 10, golpes: ['bicada', 'jogar-areia', 'berro'] },
+      { e: 51, nv: 12, golpes: ['bicada', 'berro', 'assobio-agudo'] },
     ],
     desafio: 'Sessenta anos soltando pipa neste píer. O vento me conta tudo… e ele disse que você vinha. Mostre o que sabe!',
     derrota: 'Eita! Você cortou a minha linha em pleno céu.', depois: 'Vento bom é o que empurra a gente para a frente.' },

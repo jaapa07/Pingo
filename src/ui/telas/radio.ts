@@ -17,7 +17,7 @@ import { informar } from '../componentes/confirmacao';
 import { abrirTela, falar, simNao } from '../dialogo';
 import { faixaDica, placaTitulo, escolherEm, caixa, rotulo, nomeEsp, pix } from './comum';
 import { local } from './mapa-dados';
-import { treinador, zona, rarasDoDia, diaDoAno, musicasDisponiveis, dadosProntos, NOME_MEIO, hoje } from './dados';
+import { treinador, zona, rarasDoDia, diaDoAno, musicasDisponiveis, dadosProntos, NOME_MEIO, hoje, moduloMundo } from './dados';
 import { lerCarta } from './pc-quarto';
 import { caber } from './mochila';
 import { NOTICIAS, FAIXAS_RADIO, RECADOS_SEMANA, FALAS_CONTATO } from '../../data/radio';
@@ -70,7 +70,11 @@ export function criarRadio(): Tela {
     const r = await iniciarBatalha({ tipo: 'treinador', treinador: forte, inimigos: forte.equipe.map((m) => criarDeMembro(m, t.nome)), arena: zona(s.jogador.zona)?.arena ?? 'campo' });
     const mz = zona(s.jogador.zona)?.musica; if (mz) bus.emit('musica', mz);
     if (r.resultado === 'vitoria') { s.jogador.dinheiro += forte.premio; await falar(`${F.venceu}\f{JOGADOR} recebeu ${forte.premio} patacas.`, quem); }
-    else await falar(F.perdeu, quem);
+    else {
+      await falar(F.perdeu, quem);
+      // sem criaturas de pé: derrota de verdade (último Posto, metade das patacas); o rádio e os menus fecham
+      if (r.resultado === 'derrota') { const m = await moduloMundo(); const f = m?.derrotaNoCampo as (() => Promise<void>) | undefined; if (f) await f(); else for (const c of s.equipe) if (!c.ovo) c.vida = Math.max(1, c.vida); }
+    }
   }
   async function verContatos() {
     let ind = 0;

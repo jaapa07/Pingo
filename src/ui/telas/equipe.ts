@@ -6,6 +6,7 @@
 import type { CriaturaInst } from '../../core/tipos';
 import { jogo, qtdItem, tirarItem, darItem } from '../../core/estado';
 import { input } from '../../core/input';
+import { gravarOpcoes } from '../../core/save';
 import { item as itemDef, temItemDef } from '../../data/itens';
 import { podeEvoluir } from '../../battle/index';
 import { periodo } from '../../core/estado';
@@ -98,10 +99,18 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
         if (r.gasta && !qtdItem(args.item)) fechar(tela, true);
         return;
       }
-      const ops = ['Resumo', ...(eq.length > 1 ? ['Mover'] : []), ...(c.ovo ? [] : [c.item ? 'Tirar item' : 'Dar item']), 'Voltar'];
+      // atalho da criatura que segue (spec 10A item 40): liga/desliga `opcoes.parceiraSegue`; quem segue é sempre a 1ª da equipe
+      const segue = jogo.opcoes.parceiraSegue && i === 0;
+      const ops = ['Resumo', ...(eq.length > 1 ? ['Mover'] : []), ...(c.ovo ? [] : [c.item ? 'Tirar item' : 'Dar item', segue ? 'Parar de seguir' : 'Seguir você']), 'Voltar'];
       const op = ops[await perguntar(nomeCri(c), ops)];
       if (op === 'Resumo') { const r = (await abrirTela('resumo', { lista: eq, indice: i })) as number | undefined; montar(typeof r === 'number' ? r : i); }
       else if (op === 'Mover') { movendo = i; pintarFoco(); }
+      else if (op === 'Parar de seguir') { jogo.opcoes.parceiraSegue = false; gravarOpcoes(); som('ui-ok'); await informar(`${nomeCri(c)} volta para a cuia e não segue mais você no mapa.`); }
+      else if (op === 'Seguir você') {
+        jogo.opcoes.parceiraSegue = true; gravarOpcoes(); som('ui-ok');
+        if (i > 0) { [eq[0], eq[i]] = [eq[i], eq[0]]; montar(0); }
+        await informar(c.vida > 0 ? `${nomeCri(c)} vai na frente da equipe e anda atrás de você no mapa!` : `${nomeCri(c)} vai seguir você assim que se recuperar.`);
+      }
       else if (op === 'Tirar item' && c.item) { darItem(c.item); const n = temItemDef(c.item) ? itemDef(c.item).nome : c.item; delete c.item; cartoes[i].pintar(); await informar(`${n} voltou para a mochila.`); }
       else if (op === 'Dar item') {
         const id = (await abrirTela('mochila', { modo: 'escolher', filtro: 'dar', titulo: 'DAR QUAL ITEM?' })) as string | null;

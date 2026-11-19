@@ -66,6 +66,11 @@ async function entrarNoMundo() {
   irAoTitulo();
 }
 async function novoJogo(slot: number) {
+  // seletor de dificuldade do novo jogo (spec 7A): Aventureiro é o padrão recomendado; dá para trocar depois em Opções
+  const DIF = ['explorador', 'aventureiro', 'veterano'] as const;
+  const d = await dialogo.escolher('Escolha a dificuldade da aventura.\nDá para mudar depois, em Opções.', ['Explorador: batalhas leves', 'Aventureiro (Recomendado)', 'Veterano: rivais espertos'], Math.max(0, DIF.indexOf(jogo.opcoes.dificuldade)));
+  if (d < 0) return;
+  jogo.opcoes.dificuldade = DIF[d]; save.gravarOpcoes();
   jogo.slot = slot; jogo.carregar(novoSave()); rng.seed(jogo.save.rng);
   // a sequência de abertura é um evento do time de level design; se existir, ela cuida do nome e do relógio
   if (temTela('intro')) { await telas.trocar(criarTela('intro')); return; }

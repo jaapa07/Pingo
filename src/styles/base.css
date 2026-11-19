@@ -24,6 +24,8 @@ body { position: fixed; inset: 0; }
 .cortina { position: absolute; left: 0; top: 0; width: 320px; height: 180px; z-index: 1000; pointer-events: none; background: #1a1423; opacity: 0;
   transition-property: opacity, clip-path, transform; transition-timing-function: steps(8, end); }
 .cortina.fechada { opacity: 1; pointer-events: auto; }
+/* a caixa de fala fica por cima da cortina: roteiros falam com a tela escurecida (['fade','fora'] … ['falar', …]) */
+.tela.dialogo { z-index: 1001; }
 .cortina.branco { background: #fff8e7; }
 .cortina.faixas { opacity: 1; background: repeating-linear-gradient(to bottom, #1a1423 0 12px, transparent 12px 24px), repeating-linear-gradient(to bottom, transparent 0 12px, #1a1423 12px 24px);
   background-size: 320px 180px, 320px 180px; background-repeat: no-repeat; background-position: -320px 0, 320px 0; transition-property: background-position; }

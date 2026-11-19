@@ -20,10 +20,14 @@ import { atualizarJogador, baseDoModo } from './jogador';
 import { montarProps, atualizarCanteiros, farejar, usarAmuleto, usarItemNoCampo, pintarTile, pescar } from './campo';
 import { moverErrantes, soltarErrante, batalhaSelvagem, tabela } from './encontros';
 import { rodarEvento, rodarPassos, COMANDOS_PADRAO } from './eventos';
+import { sincronizarParceira, atualizarParceira } from './parceira';
+import { montarDecoracao } from './decoracao';
+import { vigiarObstaculo, derrotaNoCampo } from './integracao';
 
 export { registrarComando, registrarMecanica, registrarCinematica, registrarTreinador, registrarEvento, type Mecanica } from './registro';
 export { rodarEvento, rodarPassos } from './eventos';
 export { usarAmuleto, usarItemNoCampo, pescar } from './campo';
+export { derrotaNoCampo } from './integracao';
 export { soltarErrante, batalhaSelvagem, tabela as tabelaDeEncontros } from './encontros';
 export { zonaDef, listaZonas, objCat } from './zonas';
 export type { NpcVivo } from './vivo';
@@ -74,13 +78,12 @@ async function carregar(id: string, x: number, y: number, dir: Dir) {
   if (j.modo === 'bike' && ['interior', 'ginasio'].includes(def.tipo)) j.modo = 'pe';
   M.jog = new Ator(j.avatar, cena.sprites, x, y, dir);
   M.jog.base = baseDoModo(false); M.jog.pose();
-  M.parceira = null;
-  const lider = s.equipe[0];
-  if (jogo.opcoes.parceiraSegue && lider && !lider.ovo) { M.parceira = new Ator('c:' + (especie(lider.especie)?.id ?? 'especie-' + lider.especie), cena.sprites, x, y, dir); M.parceira.solido = false; M.parceira.visivel = false; }
+  M.parceira = null; sincronizarParceira(true);
   M.forca = false; M.sacudidas.clear(); M.passosSeguros = 3; M.travaDir = null; M.viraT = 0;
   j.zona = id; j.x = x; j.y = y; j.dir = dir;
   sincronizarNpcs();
   montarProps();
+  await montarDecoracao();
   cena.definirClima(def.clima ?? (def.nevoa ? 'nevoa' : 'limpo'));
   M.pronto = true;
   atualizarLuz();
@@ -118,7 +121,7 @@ function atualizar(dt: number) {
   rodarVigias();
   atualizarJogador();
   atualizarNpcs();
-  M.jog.atualizar(dt); M.parceira?.atualizar(dt);
+  M.jog.atualizar(dt); atualizarParceira(dt); vigiarObstaculo();
   for (const n of M.npcs) n.ator.atualizar(dt);
   for (const g of M.guardas) g.ator.atualizar(dt);
   M.extras = M.extras.filter((a) => !a.removido);
@@ -184,7 +187,9 @@ export const mundo = {
   relogio: { periodo, diaSemana, estacaoFria, minutos: minutosAgora, forcarPeriodo },
   /** tabela de encontros em vigor nesta zona para o método (período, camada e estação aplicados) */
   tabela: (metodo: MetodoEncontro) => tabela(M.zv.def, metodo)?.t ?? [],
-  definirClima(c: ClimaId) { cena.definirClima(c); },
+  definirClima(c: ClimaId) { cena.definirClima(c); bus.emit('clima', { id: c }); },
+  derrotaNoCampo,
+  get parceira() { return M.parceira; },
   comandos: COMANDOS_PADRAO,
   usarAmuleto: (id: AmuletoId) => usarAmuleto(id),
   usarItem: (id: string) => usarItemNoCampo(id),

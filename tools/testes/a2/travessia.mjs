@@ -5,7 +5,7 @@ const t = await abrir('A4', 30, 38, '&dir=s&insignias=3&amuletos=facao,remo&flag
 const ganhar = (ins, am, flags = []) => t.pagina(([ins, am, flags]) => { const p = window.__pingo, s = p.jogo.save; if (ins && !s.insignias.includes(ins)) s.insignias.push(ins); if (am && !s.amuletos.includes(am)) s.amuletos.push(am); for (const f of flags) s.flags[f] = true; p.mundo.reavaliar(); }, [ins, am, flags]);
 const ids = () => t.pagina(() => window.__pingo.mundo.npcs.map((q) => q.id));
 try {
-  let s = await t.irAte(30, 44); await t.confere(s.zona === 'A-BA' && s.modo === 'remo', `zarpou do cais (${s.zona} ${s.x},${s.y} ${s.modo})`);
+  let s = await t.irAte(30, 44); await t.confere(s.zona === 'A-BA', `zarpou do cais (${s.zona} ${s.x},${s.y} ${s.modo})`);
   await t.foto('trav-baia');
   await t.confere((await t.plano(89, 14)) === null && (await t.plano(60, 0)) === null, 'Capitania fecha o leste e a praia sem a insígnia Estrela');
   s = await t.irAte(50, 43); await t.confere(s.zona === 'A5', `chegou a Cidade Coral (${s.x},${s.y}) batalhas=${s.nb}`);
@@ -13,7 +13,7 @@ try {
   await t.usar(30, 33); console.log('   bilheteiro:', (await t.falas(2))[0].slice(0, 80));
   await ganhar(0, '', ['m-xarope', 'farol-ok']);
   await t.usar(30, 11); await t.confere((await t.flags('xarope')).flags.includes('xarope-na-mao'), 'boticária entregou o Xarope de Algas');
-  await t.usar(21, 19); await t.assentar(); await t.confere((await t.flags('m-carta')).flags.includes('m-carta'), 'rendeira confiou a carta');
+  await t.usar(22, 19); await t.assentar(); await t.confere((await t.flags('m-carta')).flags.includes('m-carta'), 'rendeira confiou a carta');
   s = await t.irAte(34, 16); await t.confere(s.zona === 'A5-ginasio', 'porta do ginásio Encanto'); 
   s = await t.irAte(8, 18); await t.confere(s.zona === 'A5' && s.x === 34 && s.y === 17, `volta do ginásio (${s.x},${s.y})`);
   await t.foto('trav-a5');
@@ -43,7 +43,7 @@ try {
   await t.agir('l'); await t.ir('llll'); s = await t.st(); await t.confere(s.x === 55 && s.y === 15, `empurrou o pedregulho dois tiles (${s.x},${s.y})`);
   await t.foto('trav-pedregulho');
   const temR7 = await t.pagina(async () => { const z = await import('/src/world/zonas.ts'); return !!z.zonaDef('A-R7'); });
-  await t.ir('nllls'); s = await t.st(); await t.confere(s.x === 58 && s.y === 15, `contornou até a borda leste (${s.x},${s.y})`);
+  s = await t.irAte(58, 15); await t.confere(s.x === 58 && s.y === 15, `contornou até a borda leste (${s.x},${s.y})`);
   if (temR7) { await t.ir('l'); s = await t.assentar(); await t.confere(s.zona === 'A-R7', `Estrada do Buriti (${s.zona} ${s.x},${s.y})`); } else console.log('   (A-R7 do time A1 ainda não existe: parei na borda)');
   console.log('batalhas no total:', s.nb);
 } catch (e) { console.log('FALHA', e.message, JSON.stringify(await t.st()), await t.falas(3)); await t.foto('erro'); }

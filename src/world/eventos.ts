@@ -10,6 +10,8 @@ import type { Ator } from './ator';
 import { desafiar, ocultarNpc } from './npcs';
 import { lutar, soltarErrante } from './encontros';
 import { irPara, reavaliar } from './index';
+import { seguirParceira } from './parceira';
+import { garantirItensDeAmuleto } from './integracao';
 
 /** lançado para encerrar o script em curso (derrota em batalha) */
 class Encerrar extends Error {}
@@ -38,9 +40,9 @@ const PADRAO: Record<string, FnComando> = {
   simnao: async ([p, f]) => { const s = await simNao(String(p)); if (f) setFlag(String(f), s); },
   mover: async ([q, dirs]) => {
     const a = atorDe(q); if (!a) return;
-    for (const d of dirs as Dir[]) await a.mover(d, 16, { base: 'andar' });
+    for (const d of dirs as Dir[]) { const ox = a.x, oy = a.y, m = a.mover(d, 16, { base: 'andar' }); if (a === M.jog) seguirParceira(ox, oy, 16); await m; }
     const n = M.npcs.find((x) => x.ator === a); if (n) { n.ox = a.x; n.oy = a.y; }
-    if (a === M.jog) { const s = jogo.save.jogador; s.x = a.x; s.y = a.y; s.dir = a.dir; if (M.parceira) { M.parceira.teleportar(a.x, a.y); M.parceira.visivel = false; } }
+    if (a === M.jog) { const s = jogo.save.jogador; s.x = a.x; s.y = a.y; s.dir = a.dir; }
   },
   virar: ([q, d]) => { atorDe(q)?.virar(d as Dir); },
   esperar: ([ms]) => espera(Number(ms)),
@@ -73,7 +75,7 @@ const PADRAO: Record<string, FnComando> = {
   },
   flag: ([n, v]) => { setFlag(String(n), (v ?? true) as boolean | number | string); },
   insignia: ([n]) => { const k = Number(n); if (!jogo.save.insignias.includes(k)) jogo.save.insignias.push(k); sfx('insignia'); bus.emit('insignia', k); },
-  amuleto: ([id]) => { const a = id as AmuletoId; if (!temAmuleto(a)) jogo.save.amuletos.push(a); sfx('item-obtido'); bus.emit('amuleto', a); avisar(`Amuleto de Campo: ${AMULETOS[a]?.nome ?? a}`); },
+  amuleto: ([id]) => { const a = id as AmuletoId; if (!temAmuleto(a)) jogo.save.amuletos.push(a); garantirItensDeAmuleto(); sfx('item-obtido'); bus.emit('amuleto', a); avisar(`Amuleto de Campo: ${AMULETOS[a]?.nome ?? a}`); },
   se: async ([c, entao, senao]) => { await passos(cond(String(c)) ? (entao as Comando[]) : ((senao as Comando[] | undefined) ?? [])); },
   musica: ([id]) => { musica(String(id), true); },
   sfx: ([id]) => { sfx(String(id)); },
