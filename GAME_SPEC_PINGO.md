@@ -738,7 +738,7 @@ Duas criaturas **secretas**, numeradas 181 e 182. Não contam para os 180 do Di�
 ---
 
 ### 10A. Regrinhas clássicas do gênero (pedido do autor: adicionar o que tiver lógica, sem perder a essência)
-Regras de jogabilidade herdadas dos RPGs de captura de portátil, reescritas para o mundo de Pingo (nomes, textos e conteúdo próprios). Fonte: conhecimento geral do gênero; o site de detonados indicado pelo autor não pôde ser consultado (rede bloqueada) e deve ser conferido depois para completar esta lista.
+Regras de jogabilidade herdadas dos RPGs de captura de portátil, reescritas para o mundo de Pingo (nomes, textos e conteúdo próprios). Fonte: conhecimento geral do gênero e os detonados de Gold/Silver, Crystal e HeartGold/SoulSilver de pokemythology.net (itens 25–38).
 
 **Tempo e calendário**
 1. **Criaturas do dia da semana:** em cada dia, um "irmão da semana" (7 NPCs espalhados pelos 2 mapas) aparece num lugar fixo e dá um item de reforço de tipo diferente; reunir os 7 rende um prêmio.
@@ -770,6 +770,22 @@ Regras de jogabilidade herdadas dos RPGs de captura de portátil, reescritas par
 23. **Medidor de bicicleta e atalhos**, **cortar/empurrar/iluminar/atravessar água** pelos Amuletos (já previsto, sem ocupar golpes).
 24. **Golpes e batalha:** divisão físico/especial por golpe (já), clima em batalha, golpes de preparo em 2 turnos, armadilhas de entrada, golpes de prioridade, acerto crítico, congelar/dormir/paralisar/queimar/envenenar, confusão e encanto, fuga garantida por velocidade, experiência dividida com o "Amuleto de Partilha" e experiência extra para criaturas trocadas.
 
+
+**Conferido nos detonados (Gold/Silver, Crystal e HeartGold/SoulSilver do site indicado pelo autor) — acréscimos com lógica para Pingo:**
+25. **Revanche de líderes por agenda:** depois da Liga, cada líder dá o número do rádio num lugar e dia certos (ex.: "no mirante, às segundas"). Ligando no dia/período dele, a revanche acontece num Ginásio de Treino em B-capital, com equipe de nível alto.
+26. **Equipes de treinador em 4 fases:** treinadores com contato no rádio evoluem a equipe em 4 etapas (início, depois do Cartel na rádio, depois da insígnia 8, depois das 16). Cada um aceita revanche em um dia e período fixo da semana, publicado numa tabela do Diário.
+27. **Rival semanal:** depois da Liga, a Tainá treina numa caverna às terças e quintas e aceita uma batalha por dia.
+28. **Árvore que se mexe:** uma "árvore" no caminho é uma criatura disfarçada; só sai com o Regador ganho na floricultura depois da insígnia 3 e vira um encontro especial.
+29. **Criatura emprestada:** um NPC empresta uma criatura com carta presa para entregar a alguém na rota seguinte (recompensa: pergaminho); outro empresta um parceiro se você tiver espaço na equipe, e ele volta para o dono se pedir.
+30. **Remédio do farol:** a criatura do líder 5 está doente e só a farmácia de outra cidade tem o remédio (missão obrigatória que leva a uma cidade nova).
+31. **Quiz do rádio:** 5 perguntas de sim/não sobre fauna e o jogo dão o cartão do rádio (programas extras).
+32. **Gincana de Criaturas (no lugar do Pokéathlon):** minijogos de agilidade, força e salto com sucos de frutos que melhoram o desempenho; pontos trocam por itens.
+33. **Parque de Safári regional (pós-jogo):** o dono vai montando áreas novas conforme o jogador traz objetos de ambiente; encontros só dali.
+34. **Vira-Pedra (no lugar do caça-níqueis):** minijogo de lógica de virar peças com pistas numéricas; fichas trocam por prêmios (sem aposta de dinheiro).
+35. **Torre de Desafios simplificada:** 1 batalha por dia com níveis fixados em 50, sem experiência; pontos trocam por itens raros.
+36. **Senhora do registro:** NPC que conta onde e em que nível cada criatura da equipe foi capturada (usa `localCaptura` e `nivelCaptura`).
+37. **Data especial:** num dia fixo do ano (ex.: aniversário do jogo), o topo do Pico tem neve brilhante; o treinador misterioso do Pico volta a cada vitória contra o Conselho.
+38. **Criatura das sextas:** uma criatura aquática rara só aparece numa gruta às sextas (uma por semana).
 **O que NÃO entra (perderia a essência ou é específico demais da franquia):** caça-níqueis, troca/batalha por cabo, criaturas de evento de distribuição, variantes por letra e qualquer nome, texto, mapa ou enigma copiado.
 
 ## 11. Interface (identidade própria)
