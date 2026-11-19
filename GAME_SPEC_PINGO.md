@@ -298,13 +298,13 @@ Cada obstáculo exige um **Amuleto de Campo**, que é um item-chave. Ele **só f
 | Amuleto | Obstáculo | Tipos que ajudam | Como se obtém |
 |---|---|---|---|
 | **Facão** | cipós grossos | Mata · Inseto · Ginga | insígnia 2 |
-| **Remo** | água (canoa puxada pela criatura) | Rio | insígnia 4 |
-| **Força** | empurrar pedregulhos | Terra · Pedra · Ginga | insígnia 5 |
-| **Lampião** | cavernas escuras e névoa | Brasa · Trovão · Encanto | derrotar o Cartel no Farol (antes da insígnia 7) |
-| **Quebra-pedra** | rochas rachadas | Pedra · Terra · Ferro · Ginga | insígnia 8 |
-| **Escalar** | paredões com trepadeiras | Ginga · Comum · Inseto | insígnia 9 |
-| **Cachoeira** | subir cascatas | Rio · Lenda | insígnia 11 |
-| **Mergulho** | águas fundas marcadas | Rio | insígnia 12 |
+| **Remo** | água (canoa puxada pela criatura) | Rio | insígnia 3 |
+| **Força** | empurrar pedregulhos | Terra · Pedra · Ginga | insígnia 7 |
+| **Lampião** | cavernas escuras e névoa | Brasa · Trovão · Encanto | derrotar o Cartel no Farol (antes da insígnia 5) |
+| **Quebra-pedra** | rochas rachadas | Pedra · Terra · Ferro · Ginga | insígnia 6 |
+| **Escalar** | paredões com trepadeiras | Ginga · Comum · Inseto | insígnia 10 |
+| **Cachoeira** | subir cascatas | Rio · Lenda | insígnia 12 |
+| **Mergulho** | águas fundas marcadas | Rio | insígnia 9 |
 | **Voo** | viagem rápida | Vento | insígnia 14 |
 | **Faro** | itens e criaturas ocultas brilham | qualquer criatura com amizade alta | missão do Seu Aroeira, depois da insígnia 1 |
 
@@ -313,14 +313,14 @@ Cada obstáculo exige um **Amuleto de Campo**, que é um item-chave. Ele **só f
 |---|---|---|---|---|
 | 1 | A2 | **1 · Vento (Pena)** | 10–12 | Faro (missão) |
 | 2 | A3 | **2 · Inseto (Casulo)** | 15–17 | Facão → A-R3, A-MG parcial |
-| 3 | A4 | **3 · Rio (Concha)** | 20–22 | A-R4 → evento da Usina → **Trem** |
+| 3 | A4 | **3 · Rio (Concha)** | 20–22 | **Remo**; A-R4 → evento da Usina (religa o cais) → Baía Azul |
 | 4 | A5 (via Baía, Remo) | **4 · Encanto (Estrela)** | 24–26 | A-PR (inicial extra), A-MG completo |
-| 5 | A6 | evento do Farol → **5 · Trovão (Raio)** | 28–30 | Lampião |
-| 6 | A7 (via A-GB, Lampião) | **6 · Assombro (Lamparina)** | 31–33 | Quebra-pedra |
-| 7 | A8 (via A-R6) | **7 · Ferro (Engrenagem)** | 34–36 | Mergulho (A-RS) |
-| 8 | A10 Vila Buriti (nova cidade do mapa A) | **8 · Mata (Folha)** | 38–40 | caminho para o Platô da Liga |
+| 5 | A6 | evento do Farol → **5 · Trovão (Raio)** | 28–30 | Lampião (evento do Farol) → A-GB |
+| 6 | A7 (via A-GB, Lampião) | **6 · Assombro (Lamparina)** | 31–33 | Quebra-pedra → A-R5 → A8 |
+| 7 | A8 (via A-R5, Quebra-pedra) | **7 · Ferro (Engrenagem)** | 34–36 | Força → A-R7 → A10 |
+| 8 | A10 Vila Buriti (nova; via A-R7, Força) | **8 · Mata (Folha)** | 38–40 | caminho para o Platô da Liga |
 | Liga | A-LG Platô da Liga | **Liga dos Guardiões** (4 Mestres + Campeão) | 41–46 | **libera o mapa B:** Passe do Trem + Bilhete do Saveiro |
-| 9 | B2 (trem → B1 → rota) | **9 · Terra (Barro)** | 47–49 | Força; a líder conta que o Cartel age no mapa A → volta de trem |
+| 9 | B2 (trem → B1 → rota) | **9 · Terra (Barro)** | 47–49 | Mergulho (B-TA, A-RS); evento do Pantanal |
 | 10 | B3 (Saveiro → B9 → B-R2) | evento da Mina → **10 · Pedra (Cristal)** | 49–51 | Escalar |
 | 11 | B4 (via B-CH) | **11 · Brasa (Chama)** | 51–53 | B-CV (Boitatá) |
 | 12 | B5 | **12 · Ginga (Berimbau)** | 53–55 | Cachoeira → volta ao mapa A |

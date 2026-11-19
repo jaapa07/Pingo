@@ -1,5 +1,17 @@
 # HISTORIA.md — roteiro, flags e ligações entre times (contrato de level design)
 
+> ## ⚠ REESTRUTURA DA LIGA (vale sobre qualquer linha antiga deste arquivo e sobre arquivos já escritos)
+> O mapa B só abre depois da **Liga dos Guardiões**, vencida após a 8ª insígnia (spec 4.5, 5 e "Liga dos Guardiões").
+> - **Ordem:** 1 Vento A2 · 2 Inseto A3 · 3 Rio A4 · 4 Encanto A5 · 5 Trovão A6 · 6 Assombro A7 · 7 Ferro A8 · 8 Mata **A10 Vila Buriti (zona nova)** · **Liga em `A-LG` Platô da Liga** · 9 Terra B2 · 10 Pedra B3 · 11 Brasa B4 · 12 Ginga B5 · 13 Veneno B6 · 14 Geada B7 · 15 Mente B8 · 16 Lenda A9 · Garrote + Conselho no PP.
+> - **Níveis do ás:** 12, 17, 22, 26, 30, 33, 36, 40 · Liga 41–46 · 49, 51, 53, 55, 57, 59, 61, 63 · Conselho 64–70. Selvagens do mapa B começam em 44–48. Estágio final só em equipes de nível ≥ 36.
+> - **Amuletos:** faro (missão, após 1) · facao=2 · **remo=3** · lampiao = evento do Farol (antes da 5) · **quebra-pedra=6** · **forca=7** · **mergulho=9** · escalar=10 · cachoeira=12 · voo=14.
+> - **Caminho do mapa A:** A4 —cais sul (exige `amuleto:remo` **e** `flag:usina-ok`)→ A-BA → A5 (4) → A6 (Farol, 5) → A-GB (Lampião) → A7 (6) → A-R5 (Quebra-pedra) → A8 (7) → **A-R7 Estrada do Buriti (Força)** → **A10** (8) → **A-LG** (portão: `insignias:8`). A-R6 (Cachoeira) e A-RS (Mergulho) viram áreas de retorno depois do mapa B.
+> - **Usina (`usina-ok`, após a insígnia 3):** religa a energia do cais e da estação; **não dá mais o Passe do Trem**. A estação reabre, mas o maquinista só embarca quem tem `flag:liga-vencida` ("linha da serra só para Campeões").
+> - **Liga (`liga-vencida`):** dá `item:passe-trem` e `item:bilhete-saveiro`. Trem A4↔B1, Saveiro A5↔B9 e a trilha do Pico exigem `flag:liga-vencida`. O Farol dá só o Lampião.
+> - **Rival:** 1 lab · 2 A3 · 3 A4 (gatilho: `flag:usina-ok&!flag:rival-3`, antes de zarpar) · **4 Farol A6** · **5 Platô, logo depois da Liga** · 6 B4 · 7 B7 · 8 Pico.
+> - **Times:** A1 fica com A10 (+ginásio é do time de ginásios: `A10-ginasio`), A-R7 e A-LG (zona, 5 treinadores da Liga em `src/data/treinadores/liga.ts`, evento em `src/data/eventos/liga.ts`). Ligação **A8 ↔ A-R7**: A-R7 chega em (1, 15) vindo de A8; A8 recebe em (58, 15) (saída leste de A8, bloqueada por pedregulhos de Força). B1 não tem mais ginásio (o prédio vira o "Salão da Raizeira", sem insígnia) e `inicial-extra-1` passa para a Drª Buriti em A10 (após a insígnia 8).
+> - Arquivos de ginásio são numerados pela **insígnia nova** (`ginasio-04` = Encanto … `ginasio-08` = Mata).
+
 Base: spec seções 4.5 (ordem), 9 (personagens e eventos), 10. Tom: aventura ensolarada, humor brasileiro, conservação.
 
 ## Flags e marcos (nomes exatos)
