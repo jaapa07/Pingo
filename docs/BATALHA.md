@@ -16,7 +16,7 @@ Spec: seções 6.1 (tipos), 7 (batalha), 8 (itens). Jogabilidade clássica 1×1 
 - Experiência: `floor(expBase·Nv/7)` (×1,5 treinador), dividida entre participantes; curvas `rapido` (0,8·n³), `medio` (n³), `lento` (1,25·n³). Esforço: ganho da espécie derrotada, máx. 252 por atributo e 510 total.
 - Estágios de atributo −6…+6; precisão/evasão; confusão, preso, atordoado; 6 status principais (o **encantado**: 50% de chance de, no lugar do seu golpe, imitar o último golpe usado pelo adversário; cura em 2–4 turnos).
 - Climas: sol (Brasa ×1,5, Rio ×0,5), chuva (Rio ×1,5, Brasa ×0,5), garoa gelada (dano leve a não-Geada), névoa (precisão ×0,8, exceto Assombro/Mente), poeira (dano leve a não-Terra/Pedra/Ferro).
-- Dificuldade (`jogo.opcoes.dificuldade`): muda a QUALIDADE da IA e os recursos (explorador: IA um nível abaixo, +1 item de cura ao jogador por posto; veterano: IA um nível acima, treinadores usam itens, sem trocar depois de nocaute "de graça"). Nunca altera vida/dano.
+- Dificuldade (`jogo.opcoes.dificuldade`): muda a QUALIDADE da IA e os recursos (explorador: IA um nível abaixo, +1 item de cura ao jogador por posto; veterano: IA um nível acima, treinadores usam itens, sem trocar depois de nocaute "de graça"). Nunca altera vida/dano. DECISÃO DO AUTOR: **Aventureiro é o modo recomendado e o padrão** — luta equilibrada, em que é possível ganhar e perder, exige estratégia; rival, líderes e Conselho têm nível adequado à curva (seção 4.5) e usam itens de cura (quem tem `itens` definidos os usa em Aventureiro e Veterano), como nos jogos clássicos.
 
 ## Dados (dono: time de batalha)
 - `src/data/tabela-tipos.ts`: matriz completa do spec 6.1.

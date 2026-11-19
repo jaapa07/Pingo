@@ -971,3 +971,9 @@ O progresso fica salvo.
    - **Loop resiliente:** agende o próximo quadro em `finally`, para uma exceção não congelar o jogo.
 3. **Validação dos modelos:** antes de renderizar em massa, renderize 1 quadro de cada modelo e **olhe a imagem**. Se parecer um bloco de primitivas, refine a escultura.
 4. **Entrega final:** comandos para rodar no PC (`npm install && npm run dev`), gerar o PWA (`npm run build`), o app desktop (`npm run desktop`) e o projeto iOS (`npm run ios`, depois abrir no Xcode); lista do que foi criado; screenshots de PC e iPhone; resultado do `npm run check`.
+
+### 7A. Dificuldade (decisão do autor)
+- **Aventureiro é o modo recomendado e o padrão** (a tela de nome/novo jogo o marca como "Recomendado"). A luta tem de ser **equilibrada: dá para ganhar e dá para perder**, e vencer exige estratégia (tipos, status, troca no momento certo, uso de itens), não só nível.
+- **Lutadores principais com nível adequado:** rival, líderes, Conselho e chefes do Cartel seguem a curva de níveis da seção 4.5; o jogador que explorou, capturou e treinou o normal chega neles em nível parecido, sem precisar de "moagem" e sem passar por cima.
+- **Itens de cura como nos jogos clássicos:** rival, líderes, Conselho e chefes usam Chá, Garrafada e Elixir em batalha (limitados a 1–2 por luta, só quando a criatura está abaixo de ~1/3 da vida), e o jogador também tem itens de cura nas lojas e prêmios. Treinadores comuns usam itens só no Veterano.
+- **Explorador** (mais fácil: IA um degrau abaixo, mais cura grátis) e **Veterano** (IA um degrau acima, todos usam itens, sem troca "de graça") continuam como opções. A dificuldade nunca altera vida, dano ou nível das criaturas.

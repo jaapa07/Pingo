@@ -96,7 +96,7 @@ export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } 
   const s = jogo.save, dif = jogo.opcoes.dificuldade, t = p.treinador;
   const nivel: NivelIA = p.tipo === 'treinador' ? nivelEfetivo(t?.ia ?? 'treinador', dif) : p.tipo === 'lendario' ? nivelEfetivo('treinador', dif) : 'novato';
   const itens: Record<string, number> = {};
-  const usaItens = p.tipo === 'treinador' && iaUsaItens(t?.ia ?? 'treinador', dif);
+  const usaItens = p.tipo === 'treinador' && (iaUsaItens(t?.ia ?? 'treinador', dif) || (dif !== 'explorador' && !!t?.itens?.length)); // quem tem itens definidos (rival, líderes) os usa no Aventureiro, como nos jogos clássicos
   if (usaItens) {
     for (const id of t?.itens ?? []) itens[id] = (itens[id] ?? 0) + 1;
     if (!Object.keys(itens).length && dif === 'veterano') { const nv = Math.max(...p.inimigos.map((c) => c.nivel)); itens[nv < 20 ? 'cha-cidreira' : nv < 45 ? 'garrafada' : 'elixir-andiroba'] = 1; }
