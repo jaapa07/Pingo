@@ -761,7 +761,7 @@ Regras de jogabilidade herdadas dos RPGs de captura de portátil, reescritas par
 14. **Mãe poupadora:** guarda parte do dinheiro ganho e às vezes compra itens e pelúcias por conta própria (telefona avisando).
 15. **Telefone dos treinadores:** depois de vencidos, alguns pedem o número; ligam para revanche (equipes que crescem com as insígnias), avisam de enxames e dão itens.
 16. **Repelente, corda de fuga, doce de nível** (rapadura) e **mochila por bolsos** (já previstos); **item registrado no Select**.
-17. **Cassino → "Barraca de Prendas":** minijogos de habilidade (memória de cartas e roda), sem aposta de dinheiro real nem caça-níqueis; fichas trocam por pergaminhos e uma criatura rara.
+17. *(removido a pedido do autor: nada de cassino ou substituto de cassino)*
 18. **Sorteio da semana no rádio:** um número é sorteado às sextas; quem tiver criatura com id que termine igual ganha prêmio (2, 3 ou 5 dígitos).
 19. **Ruínas com enigmas de painel deslizante** que liberam criaturas-símbolo (variantes de forma por letra não entram; em Pingo são 4 pinturas rupestres que liberam câmaras com itens).
 20. **Arvoredos de frutos:** cada árvore dá 1 fruto por dia; canteiros para replantar (já previsto).
@@ -776,12 +776,12 @@ Regras de jogabilidade herdadas dos RPGs de captura de portátil, reescritas par
 26. **Equipes de treinador em 4 fases:** treinadores com contato no rádio evoluem a equipe em 4 etapas (início, depois do Cartel na rádio, depois da insígnia 8, depois das 16). Cada um aceita revanche em um dia e período fixo da semana, publicado numa tabela do Diário.
 27. **Rival semanal:** depois da Liga, a Tainá treina numa caverna às terças e quintas e aceita uma batalha por dia.
 28. **Árvore que se mexe:** uma "árvore" no caminho é uma criatura disfarçada; só sai com o Regador ganho na floricultura depois da insígnia 3 e vira um encontro especial.
-29. **Criatura emprestada:** um NPC empresta uma criatura com carta presa para entregar a alguém na rota seguinte (recompensa: pergaminho); outro empresta um parceiro se você tiver espaço na equipe, e ele volta para o dono se pedir.
+29. **Entrega de carta (aprovado, simples):** um morador entrega uma carta presa numa ave mensageira (ocupa 1 espaço da equipe, não luta e sai ao entregar) para alguém na rota seguinte; recompensa: pergaminho. Vale também o contrário: um NPC pede para você cuidar de uma criatura dele por 1 dia (a criatura segue a equipe) e devolve com um presente.
 30. **Remédio do farol:** a criatura do líder 5 está doente e só a farmácia de outra cidade tem o remédio (missão obrigatória que leva a uma cidade nova).
-31. **Quiz do rádio:** 5 perguntas de sim/não sobre fauna e o jogo dão o cartão do rádio (programas extras).
+31. **Quiz do rádio:** na Torre do Rádio de B-capital, uma locutora faz 5 perguntas de Sim/Não sobre fauna brasileira e sobre o jogo (ex.: "o tamanduá-bandeira tem dentes?"). Acertando 4 ou mais, ganha o **Cartão do Rádio**, que libera programas extras (música de zonas visitadas, "Bicho do Dia" com dica de captura e cantiga das lendas). Errou: tenta de novo no dia seguinte; cada resposta vem explicada.
 32. **Gincana de Criaturas (no lugar do Pokéathlon):** minijogos de agilidade, força e salto com sucos de frutos que melhoram o desempenho; pontos trocam por itens.
 33. **Parque de Safári regional (pós-jogo):** o dono vai montando áreas novas conforme o jogador traz objetos de ambiente; encontros só dali.
-34. **Vira-Pedra (no lugar do caça-níqueis):** minijogo de lógica de virar peças com pistas numéricas; fichas trocam por prêmios (sem aposta de dinheiro).
+34. *(removido a pedido do autor)*
 35. **Torre de Desafios simplificada:** 1 batalha por dia com níveis fixados em 50, sem experiência; pontos trocam por itens raros.
 36. **Senhora do registro:** NPC que conta onde e em que nível cada criatura da equipe foi capturada (usa `localCaptura` e `nivelCaptura`).
 37. **Data especial:** num dia fixo do ano (ex.: aniversário do jogo), o topo do Pico tem neve brilhante; o treinador misterioso do Pico volta a cada vitória contra o Conselho.
@@ -789,13 +789,13 @@ Regras de jogabilidade herdadas dos RPGs de captura de portátil, reescritas par
 
 **O que os jogadores mais elogiam (pesquisa na web sobre Gold/Silver/Crystal e HeartGold/SoulSilver) → como entra em Pingo:**
 39. **Relógio de tempo real** é o recurso mais citado: criaturas, eventos e NPCs mudam por dia da semana e período. Já é base de Pingo (seção 10 e itens 1–4); reforço: pelo menos 1 em cada 4 eventos/missões depende de dia ou período, e o Rádio Cipó sempre avisa a "agenda do dia".
-40. **Parceira que segue o jogador** é o recurso mais amado dos remakes: a criatura andando atrás, com balões de emoção, falas ao ser tocada e achados de itens. Já está na seção 10 (item 2); fica **ligada por padrão**, a variante rara aparece seguindo o jogador, e a criatura reage a clima, período e lugar (dorme à noite, se abriga na chuva).
+40. **Criatura que segue o jogador (opcional, aprovado):** é uma opção ("Companheira segue"), ligada por padrão no Aventureiro, que o jogador liga ou desliga a qualquer momento em Opções e em um atalho no menu de Equipe; a escolha fica salva no save. Ligada: balões de emoção, falas ao tocar, achados de itens, a variante rara aparece seguindo e ela reage a clima, período e lugar (dorme à noite, se abriga da chuva). Desligada: o jogo funciona igual, só sem ela andando atrás.
 41. **Pós-jogo grande e uma segunda região** (voltar a uma região antiga depois da Liga): já é a estrutura de Pingo (mapa A + mapa B + Pico). Reforço: o mapa A muda depois do Conselho (novos NPCs, rotas que mudam, revanche dos líderes), para a volta ter novidade.
 42. **Equipamento de fôlego curto, fácil de pausar:** a Pokéwalker agradou por premiar a caminhada. Em Pingo vira "Passos do Companheiro" (opcional, sem hardware): cada 1000 passos no mapa rendem amizade e achados para a criatura que segue o jogador.
-43. **Dificuldade melhor nos remakes:** fãs elogiam equipes de líderes e rivais mais fortes (ótimo para Nuzlocke). Já há 3 modos de dificuldade (Explorador/Aventureiro/Veterano); reforço: o Veterano usa equipes em 4 fases (item 26) e um modo "Nuzlocke autoral" opcional (uma captura por zona, derrotadas ficam no Viveiro).
+43. **Modo Nuzlocke (opcional, escolhido ao começar um jogo novo):** é um desafio criado pela comunidade para tornar a aventura mais tensa. Regras em Pingo: (1) só se pode capturar a **primeira criatura encontrada em cada zona**; se ela fugir ou desmaiar sem captura, a zona fica sem captura; (2) criatura que **desmaiar morre**: vai para a caixa "Memorial" do Viveiro e nunca mais entra em batalha, mas continua no Diário; (3) apelido obrigatório para criar laço; (4) derrota total = fim do jogo salvo ou recomeço do capítulo, a escolha do jogador. Dentro do modo, as zonas já capturadas são marcadas no mapa-múndi. Quem não quiser joga normal.
 44. **Nostalgia e identidade visual/musical:** fãs citam arte e música como parte do charme. Em Pingo isso se traduz em uma música marcante por cidade e por período do dia (já em docs/AUDIO.md) e uma "assinatura" visual por região.
 45. **Detalhes que o jogador esquece mas adora:** itens segurados, ovos, apitos e frutos (já nos itens 6, 9 e 11); criaturas errantes lendárias que se movem pelo mapa (já previstas para as 3 lendárias das feras e para o 179/180).
-**O que NÃO entra (perderia a essência ou é específico demais da franquia):** caça-níqueis, troca/batalha por cabo, criaturas de evento de distribuição, variantes por letra e qualquer nome, texto, mapa ou enigma copiado.
+**O que NÃO entra (perderia a essência ou é específico demais da franquia):** cassino e qualquer substituto dele, caça-níqueis, troca/batalha por cabo, criaturas de evento de distribuição, variantes por letra e qualquer nome, texto, mapa ou enigma copiado.
 
 ## 11. Interface (identidade própria)
 - **Fonte:** autoral "Pindorama Talha", em SVG, com letras entalhadas em madeira.
