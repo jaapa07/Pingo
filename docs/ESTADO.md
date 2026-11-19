@@ -29,3 +29,13 @@ Depois: integração, testes jogando (QA) e polimento.
 Itens 1–3 da fila relançados como agentes novos em Fable (continuam do disco): dados 61–120 (abb693e2d0ba7eb35), Zonas A1 (a6cfad1dc2bbf68c4), tela de batalha (a04be66a2a30cf5a5). Próximo da fila: 4. Menus.
 - Item 1 (dados 61–120) concluído e enviado. Item 4 (menus) lançado em Fable (a9958821a48a7151e).
 - **PEDIDO DO USUÁRIO: ao terminarem os 3 em andamento (Zonas A1, batalha, menus), PAUSAR — não lançar o item 5 até ele mandar.**
+
+## PAUSADO em 19/11 (a pedido do usuário) — estado: tsc limpo, 26 testes ok, `vite build` ok
+`npm run build` completo ainda falha no último passo: `tools/build-sw.ts` não existe (item 18, plataformas).
+Feito nesta rodada (Fable): dados 61–120 (180 espécies completas) · tela de batalha + 96 anims + 134 FX + evolução · 10 telas de menu · Zonas A1 (31 zonas, 51 treinadores, 36 eventos, abertura).
+**Falta nos itens parciais (retomar antes do item 5):**
+- Zonas A1: NADA foi jogado no navegador (abertura, cuias, rival, trem); prévias de A-R2, A-MS, A3, A-R3, A-GE não conferidas a olho; itens de história sem id (Ovo Pintado etc.); tutorial de captura sem modo `tutorial`; verificador em tools/verifica-zonas-a1.mts.
+- Batalha: nunca exercitados na tela — captura, item, troca, fuga, treinador, duplas, climas, evolução; toque/iPhone; só ~14 das 96 anims vistas; criatura do jogador encobre o painel de golpes e o painel corta a barra de EXP (ver docs/capturas/batalha-b.png).
+- Menus: faltam `mapa-mundi` (+voo), `radio` + src/data/radio.ts, `creditos`, `foto`, src/ui/hud.ts; testar toque/iPhone e fluxos de item/loja/viveiro. Mundo ainda não lê flags['atalho'] nem save.decoracao, nem emite 'obstaculo'.
+- Equilíbrio: somas de atributos das partes 1–60/121–180 (caso Bruxaluz); IA de líder/conselho.
+Próximos da fila: 5 (ginásios 1–8), 6 (A2), 7 (B1)… No máximo 3 agentes, em Fable.
