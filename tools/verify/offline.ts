@@ -36,7 +36,7 @@ export interface ResultadoOffline { perfil: string; ok: boolean; passos: string[
 type Acao = 'a' | 'b' | 'menu' | 'select' | 'cima' | 'baixo' | 'esq' | 'dir';
 const TECLA: Record<Acao, string> = { a: 'KeyZ', b: 'KeyX', menu: 'Escape', select: 'KeyV', cima: 'ArrowUp', baixo: 'ArrowDown', esq: 'ArrowLeft', dir: 'ArrowRight' };
 
-async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { pedidos: number; bytes: number }): Promise<ResultadoOffline> {
+async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { pedidos: number; bytes: number; caminhos: string[] }): Promise<ResultadoOffline> {
   const r: ResultadoOffline = { perfil: perfil.nome, ok: false, passos: [], falhas: [], precacheMs: 0, arquivos: 0, bytes: 0, pedidosSemRede: 0 };
   const ctx = await browser.newContext({ ...perfil.opcoes, serviceWorkers: 'allow' });
   const page = await ctx.newPage();
@@ -52,7 +52,13 @@ async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { ped
     const st = window.setTimeout.bind(window);
     (window as any).setTimeout = (f: TimerHandler, ms?: number, ...a: unknown[]) => st(f, (ms || 0) / k, ...a);
   }, TURBO);
-  const foto = (nome: string) => page.screenshot({ path: `${CAPTURAS}${perfil.id}-${nome}.png` });
+  // a captura é registro, não critério: se o navegador demorar (acontece com a rede cortada), tenta pelo CDP e segue
+  const foto = async (nome: string) => {
+    const arq = `${CAPTURAS}${perfil.id}-${nome}.png`;
+    try { await page.screenshot({ path: arq, timeout: 8000 }); return; } catch { /* tenta pelo CDP */ }
+    try { const c = cdp ?? (await ctx.newCDPSession(page)); const r = await c.send('Page.captureScreenshot', { format: 'png' }); writeFileSync(arq, Buffer.from(r.data, 'base64')); }
+    catch { console.log(`  [${perfil.id}] (captura ${nome} não saiu)`); }
+  };
   const passo = (t: string) => { r.passos.push(t); console.log(`  [${perfil.id}] ${t}`); };
   const dormir = (ms: number) => page.waitForTimeout(ms);
   const st = () => page.evaluate(() => {
@@ -68,26 +74,36 @@ async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { ped
 
   /* ----- controles: teclado no PC; dedo (CDP) nos botões virtuais no iPhone ----- */
   const alvo = async (a: Acao): Promise<[number, number]> => {
+    // (sem funções nomeadas aqui dentro: o tsx embrulha funções nomeadas com um auxiliar que não existe na página)
     const cx = await page.evaluate((acao: string) => {
-      const els = [...document.querySelectorAll('#toque > .tq')] as HTMLElement[];
       const idx: Record<string, number> = { a: 1, b: 2, menu: 3, select: 4 };
-      const ret = (el: HTMLElement) => { const q = el.getBoundingClientRect(); return [q.left, q.top, q.width, q.height]; };
-      if (acao in idx) { const [l, t, w, h] = ret(els[idx[acao]]); return [l + w / 2, t + h / 2]; }
-      const [l, t, w, h] = ret(els[0]); const d: Record<string, [number, number]> = { cima: [0, -0.32], baixo: [0, 0.32], esq: [-0.32, 0], dir: [0.32, 0] };
-      return [l + w / 2 + d[acao][0] * w, t + h / 2 + d[acao][1] * h];
+      const q = (document.querySelectorAll('#toque > .tq')[acao in idx ? idx[acao] : 0] as HTMLElement).getBoundingClientRect();
+      const d: Record<string, [number, number]> = { cima: [0, -0.32], baixo: [0, 0.32], esq: [-0.32, 0], dir: [0.32, 0] };
+      const [dx, dy] = d[acao] ?? [0, 0];
+      return [q.left + q.width / 2 + dx * q.width, q.top + q.height / 2 + dy * q.height];
     }, a);
     return [cx[0], cx[1]];
   };
   const baixar = async (a: Acao) => { if (cdp) { const [x, y] = await alvo(a); await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y, id: 1 }] }); } else await page.keyboard.down(TECLA[a]); };
   const soltar = async (a: Acao) => { if (cdp) await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); else await page.keyboard.up(TECLA[a]); };
   const apertar = async (a: Acao, ms = 50) => { await baixar(a); await dormir(ms); await soltar(a); await dormir(60); };
+  /** tela de nome/apelido: leva o foco ao botão "Fim" com o direcional e confirma com A (no PC, Enter: a tecla Z escreveria a letra z) */
+  const foco = () => page.evaluate(() => { const f = document.querySelector('.tecla.foco'); return f ? [...document.querySelectorAll('.tecla')].indexOf(f) : -1; });
+  const confirmarNome = async () => {
+    const total = await page.evaluate(() => document.querySelectorAll('.tecla').length);
+    for (let i = 0; i < 6 && (await foco()) < total - 4; i++) await apertar('cima');
+    for (let i = 0; i < 5 && (await foco()) !== total - 1; i++) await apertar('dir');
+    await dormir(120);
+    if (cdp) await apertar('a'); else { await page.keyboard.down('Enter'); await dormir(60); await page.keyboard.up('Enter'); }
+    await dormir(200);
+  };
   /** aperta A até a condição valer (falas, confirmações, cenas) */
   const avancar = async (ate: (s: St) => boolean, max = 120000, oque = '') => {
     const t0 = Date.now();
     for (;;) {
       const s = await st(); if (ate(s)) return s;
       if (Date.now() - t0 > max) throw new Error(`tempo esgotado esperando ${oque}: ${JSON.stringify(s)}`);
-      if (!s.cortina) await apertar('a'); else await dormir(80);
+      if (s.cortina) await dormir(80); else if (/tela-nome/.test(topo(s))) await confirmarNome(); else await apertar('a');
       await dormir(90);
     }
   };
@@ -127,8 +143,13 @@ async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { ped
     await avancar((s) => /tela-saves/.test(topo(s)) && !s.cortina, 30000, 'a tela de jogos'); await foto('2-jogos');
     const sNome = await avancar((s) => /tela-nome/.test(topo(s)) || (livre(s) && s.zona === 'A1-quarto' && s.flags > 2), 180000, 'a abertura chegar ao nome');
     if (/tela-nome/.test(topo(sNome))) {
-      await dormir(300); await apertar('a'); await apertar('dir'); await apertar('a'); await apertar('baixo'); await apertar('a'); await foto('3-nome');
-      await apertar('menu'); await dormir(150); await apertar('a');
+      // o nome já vem sugerido; no toque, escreve mais duas letras no teclado da tela antes de confirmar
+      await dormir(300);
+      if (cdp) { await apertar('dir'); await apertar('a'); await apertar('baixo'); await apertar('a'); }
+      await foto('3-nome');
+      await confirmarNome();
+      for (let i = 0; i < 20 && /tela-nome/.test(topo(await st())); i++) { await dormir(150); if (i === 8) await confirmarNome(); }
+      if (/tela-nome/.test(topo(await st()))) throw new Error('a tela de nome não fechou');
     }
     let s = await avancar((q) => livre(q) && q.zona === 'A1-quarto' && !/tela-nome/.test(topo(q)), 180000, 'acordar no quarto');
     if (!s.nome) r.falhas.push('o nome do jogador ficou vazio');
@@ -180,18 +201,20 @@ async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { ped
     }
     const fim = await page.evaluate(() => { const b = (window as any).__pingo.mundo.ultimaBatalha; return b ? JSON.stringify(b).slice(0, 160) : ''; });
     s = await st();
-    passo(`batalha jogada até o fim com ${perfil.toque ? 'o botão A de toque' : 'a tecla A'}: equipe ${antes} → ${s.equipe.join(' ')} ${fim}`);
+    // perder também vale: o jogo leva o jogador de volta para casa (a batalha é de verdade, com o acaso do jogo)
+    passo(`batalha jogada até o fim com ${perfil.toque ? 'o botão A de toque' : 'a tecla A'}: equipe ${antes} → ${s.equipe.join(' ')}; depois dela, ${s.zona} (${s.x},${s.y})${s.zona === 'A-R1' ? '' : ' — a criatura desmaiou e o jogo voltou para casa'} ${fim.slice(0, 60)}`);
     if (!s.equipe.length) r.falhas.push('a equipe sumiu depois da batalha');
 
     /* salvar pelo menu */
     const idx = await page.evaluate(() => { const v = (window as any).__pingo.jogo.save; let n = 0; if (v.mochila['diario-de-campo'] || v.flags['ovo-entregue'] || v.diario.visto.length) n++; if (v.equipe.length) n++; n++; if (v.mochila['radio-cipo'] || v.flags['intro-ok']) n++; return n + 1; });
+    const zonaAoSalvar = (await st()).zona;
     await apertar('menu'); await dormir(500);
     let q = await st(); if (!/menu/.test(topo(q))) throw new Error('o menu não abriu: ' + JSON.stringify(q.telas));
     for (let i = 0; i < idx; i++) { await apertar('baixo'); await dormir(120); }
     await foto('8-menu-salvar');
     await apertar('a'); await dormir(500); await apertar('a'); await dormir(600);
     const salvo = await page.evaluate(() => { const p = (window as any).__pingo; const l = p.save.listarSlots()[p.jogo.slot]; return l ? { zona: l.zona, equipe: l.equipe, idade: Date.now() - l.quando, slot: p.jogo.slot } : null; });
-    if (!salvo || salvo.idade > 20000 || salvo.zona !== 'A-R1') throw new Error('o Salvar do menu não gravou o jogo: ' + JSON.stringify(salvo));
+    if (!salvo || salvo.idade > 20000 || salvo.zona !== zonaAoSalvar) throw new Error(`o Salvar do menu não gravou o jogo (estava em ${zonaAoSalvar}): ` + JSON.stringify(salvo));
     await foto('9-salvou');
     for (let i = 0; i < 6; i++) { q = await st(); if (livre(q)) break; await apertar(/menu/.test(topo(q)) ? 'b' : 'a'); await dormir(250); }
     s = await st();
@@ -211,8 +234,11 @@ async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { ped
     const andou = (await andar('dir')) || (await andar('esq')) || (await andar('baixo')) || (await andar('cima'));
     await dormir(300); await foto('11-continuou');
     passo(`recarregou sem rede e continuou: ${voltou.nome} em ${voltou.zona} (${voltou.x},${voltou.y}), equipe ${voltou.equipe}; voltou a andar: ${andou}`);
-    r.pedidosSemRede = srv.pedidos - pedidosAntes;
-    if (r.pedidosSemRede) r.falhas.push(`${r.pedidosSemRede} pedido(s) chegaram ao servidor com a rede cortada`);
+    // o navegador ainda confere se há sw.js novo a cada abertura (essa checagem não passa pelo corte de rede do
+    // Playwright e, sem rede de verdade, apenas falha em silêncio); qualquer outro pedido é erro
+    const vazou = srv.caminhos.slice(pedidosAntes).filter((c) => c !== 'sw.js');
+    r.pedidosSemRede = vazou.length;
+    if (vazou.length) r.falhas.push(`${vazou.length} pedido(s) chegaram ao servidor com a rede cortada: ${vazou.slice(0, 5).join(', ')}`);
     // nada atrás do entalhe: a tela do jogo fica dentro da área segura
     const dentro = await page.evaluate(() => { const p = (window as any).__pingo.palco; return p.x >= p.seguro.l - 0.5 && p.y >= p.seguro.t - 0.5 && p.x + p.w <= window.innerWidth - p.seguro.r + 0.5 && p.y + p.h <= window.innerHeight - p.seguro.b + 0.5 && document.documentElement.scrollHeight <= window.innerHeight && document.documentElement.scrollWidth <= window.innerWidth; });
     if (!dentro) r.falhas.push('a tela do jogo sai da área segura ou a página rola');

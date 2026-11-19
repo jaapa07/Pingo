@@ -26,8 +26,8 @@ export function escorpiao(p: EscP): { rig: Rig; fim: string; seg: number } {
   const k = p.k, c: V3 = [0.27 * k, 0.11 * k, 0.17 * k];
   const { rig } = aracnideo({
     corpo: c, alt: p.alt, patas: { pares: 4, abre: 0.2 * k, r: 0.034 * k, joelho: 0.09 * k },
-    pincas: { braco: 0.17 * k, r: 0.04 * k, garra: [0.11 * k, 0.065 * k, 0.06 * k], abre: 34 },
-    cauda: { segs: 5, len: p.cauda.len, r0: p.cauda.r, r1: p.cauda.r * 0.78, curva: 36, ferrao: p.cauda.ferrao },
+    pincas: { braco: 0.17 * k, r: 0.04 * k, garra: [0.13 * k, 0.085 * k, 0.075 * k], abre: 34 },
+    cauda: { segs: 5, len: p.cauda.len, r0: p.cauda.r, r1: p.cauda.r * 0.78, curva: 42, ferrao: p.cauda.ferrao },
     olho: { r: 0.028 * k, pos: [0.24 * k, 0.05 * k, 0.085 * k] },
     rampas: { corpo: 0, barriga: 0, patas: 0, pontas: 1, pincas: 0, cauda: 0 },
   });

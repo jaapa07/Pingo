@@ -18,7 +18,7 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
    * Cobertura: Jararacuçu (Veneno/Terra) e o ás Jaú-Gigante (Rio/Terra) anulam Trovão; os venenosos castigam quem vem de Mata;
    * o Sapo-Cururuí nina o adversário com Cantiga de Ninar.
    */
-  mestre('liga-1', 'Mestra', 'Maré', 'cl-pescador',
+  mestre('liga-1', 'Mestra', 'Maré', 'liga-mare',
     [
       { e: 126, nv: 40, golpes: ['peconha-forte', 'bolhas-do-mangue', 'leite-de-cururu', 'luz-de-lamparina'] },
       { e: 89, nv: 40, golpes: ['curare', 'pisao-de-anta', 'presa-dupla', 'toca-e-foge'] },
@@ -31,7 +31,7 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
    * 2 · Ferreiro Brasa-Viva (Brasa/Ferro) — forjador de sinos. Fraquezas: Rio, Terra, Pedra (na Brasa); Brasa, Ginga, Terra (no Ferro).
    * Cobertura: Tucanuçu (Vento/Brasa) voa por cima da Terra e bica quem vem de Ginga; Siri-Couraça (Rio/Ferro) apaga Brasa e Pedra alheias.
    */
-  mestre('liga-2', 'Ferreiro', 'Brasa-Viva', 'cl-ferreiro',
+  mestre('liga-2', 'Ferreiro', 'Brasa-Viva', 'liga-brasa-viva',
     [
       { e: 42, nv: 41, golpes: ['patada-ardente', 'pedrada', 'cinzas-quentes', 'couraca-de-pedra'] },
       { e: 50, nv: 41, golpes: ['pe-de-vento', 'brasa-viva', 'bico-furador', 'pouso-no-galho'] },
@@ -45,7 +45,7 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
    * Cobertura: Jaguatiricão (Comum/Assombro) é imune a Assombro; Polvão (Rio/Mente) segura Brasa; o ás Noitão fecha com
    * sono (Olho de Coruja) e susto.
    */
-  mestre('liga-3', 'Pajé', 'Neblina', 'npc-idoso',
+  mestre('liga-3', 'Pajé', 'Neblina', 'liga-neblina',
     [
       { e: 44, nv: 42, golpes: ['onda-mental', 'pe-de-vento', 'cisma', 'pouso-no-galho'] },
       { e: 122, nv: 42, golpes: ['dor-de-cabeca', 'jato-de-igarape', 'cisma'] },
@@ -59,7 +59,7 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
    * Cobertura: Emaçu (Terra/Ginga) e Capivarona (Comum/Rio) seguram Brasa e Pedra; contra Assombro (imune a Comum e a
    * Ginga) ela conta com a água da Capivarona e o Bico Furador do Seriemão.
    */
-  mestre('liga-4', 'Domadora', 'Pampa', 'cl-vaqueiro',
+  mestre('liga-4', 'Domadora', 'Pampa', 'liga-pampa',
     [
       { e: 104, nv: 43, golpes: ['meia-lua', 'bico-furador', 'patada', 'toca-e-foge'] },
       { e: 102, nv: 43, golpes: ['casco-pesado', 'queixada', 'pisoteio', 'esquiva'] },
@@ -74,7 +74,7 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
    * derruba Vento e Rio e paralisa; Leão-Dourado (Brasa/Ginga) queima Mata, Geada e Inseto que ameaçam o ás.
    * É a única IA de nível "conselho" do mapa A: troca na hora certa e guarda o Pirarucão para o fim.
    */
-  { id: 'liga-5', classe: 'Campeão', nome: 'Cacique Aracê', sprite: 'npc-homem-3', ia: 'conselho', premio: 9200, musica: 'batalha-conselho',
+  { id: 'liga-5', classe: 'Campeão', nome: 'Cacique Aracê', sprite: 'liga-arace', ia: 'conselho', premio: 9200, musica: 'batalha-conselho',
     equipe: [
       { e: 12, nv: 42, golpes: ['bico-furador', 'rasante', 'chuva-de-penas'] },
       { e: 116, nv: 43, golpes: ['zunido-de-alta-tensao', 'jato-de-igarape', 'choque-de-poraque'] },

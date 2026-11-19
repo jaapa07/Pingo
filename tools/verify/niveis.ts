@@ -47,37 +47,53 @@ export async function niveis(prog: ResultadoProgressao): Promise<Achado> {
 
   /* treinadores do mapa A dentro da faixa do passo em que ficam alcançáveis */
   const preEvo = new Map<number, number>(); for (const e of [...ESPECIES, ...VISITANTES]) for (const v of e.evolui ?? []) if (v.nivel) preEvo.set(v.para, Math.min(v.nivel, preEvo.get(v.para) ?? 999));
-  let conferidos = 0, semPasso = 0;
+  let conferidos = 0, retorno = 0; const semPasso: string[] = [];
+  const zonaDe = new Map<string, string>(); for (const z of d.zonas.values()) for (const n of z.npcs ?? []) if (n.treinador) zonaDe.set(n.treinador, z.id);
+  /** passo declarado da zona (campo `passo`): acima de 8 é área de retorno, com níveis do mapa B */
+  const passoDaZona = (zid: string | undefined) => (zid ? d.zonas.get(zid)?.passo : undefined);
   for (const t of d.treinadores.values()) {
     const k = prog.treinadorNoPasso.get(t.id);
-    const doA = k !== undefined;
-    if (!doA) { if (!/^(B|b\d|g09|g1\d|lider-(09|1\d))/.test(t.id) && !(t.insignia && t.insignia > 8)) semPasso++; }
+    const doA = k !== undefined && (passoDaZona(zonaDe.get(t.id)) ?? 0) <= 8;
+    if (k !== undefined && !doA) retorno++;
+    if (!doA) { if (k === undefined && !/^(B|b\d|g09|g1\d|lider-(09|1\d))/.test(t.id) && !(t.insignia && t.insignia > 8)) semPasso.push(t.id); }
     for (const m of t.equipe) {
       const min = preEvo.get(m.e);
       if (min && m.nv < min) (doA ? a.erros : a.pendentes).push(`${arq(t.id)}: ${t.id} usa ${nome(m.e)} no nível ${m.nv}, antes do nível em que a forma anterior evolui (${min})`);
     }
     if (!doA || t.insignia || /^liga-/.test(t.id)) continue;
     conferidos++;
-    const teto = topo[Math.min(9, k + 1)], piso = k === 0 ? 2 : Math.max(2, topo[k] - 9);
+    // enfrenta antes do líder p: o da zona (campo `passo`) ou o seguinte às insígnias com que fica alcançável
+    const p = Math.min(9, Math.max(k + 1, passoDaZona(zonaDe.get(t.id)) ?? 0));
+    const teto = topo[p], piso = p <= 1 ? 2 : Math.max(2, topo[p - 1] - 9);
     for (const m of t.equipe) {
-      if (m.nv > teto) a.erros.push(`${arq(t.id)}: ${t.id} (alcançável com ${k} insígnia(s)) tem ${nome(m.e)} no nível ${m.nv}, acima do ás do ${k + 1 <= 8 ? 'líder ' + (k + 1) : 'Campeão'} (nv ${teto})`);
+      if (m.nv > teto) a.erros.push(`${arq(t.id)}: ${t.id} (alcançável com ${k} insígnia(s)) tem ${nome(m.e)} no nível ${m.nv}, acima do ás do ${p <= 8 ? 'líder ' + p : 'Campeão'} (nv ${teto})`);
       else if (m.nv < piso) a.avisos.push(`${arq(t.id)}: ${t.id} (alcançável com ${k} insígnia(s)) tem ${nome(m.e)} no nível ${m.nv}, bem abaixo da faixa (${piso}–${teto})`);
     }
   }
-  if (semPasso) a.avisos.push(`${semPasso} treinador(es) do mapa A não foram encontrados pela simulação (áreas de retorno ou revanches): faixa não conferida`);
+  if (retorno) a.pendentes.push(`${retorno} treinador(es) em áreas de retorno do mapa A (zonas com passo > 8): níveis do mapa B, conferir com a curva nova`);
+  // a simulação escolhe o inicial de Mata: as outras duas versões da rival ficam de fora por construção
+  const longe = semPasso.filter((id) => (passoDaZona(zonaDe.get(id)) ?? 0) > 8);
+  if (longe.length) a.pendentes.push(`${longe.length} treinador(es) em áreas de retorno que só abrem depois do mapa B: ${longe.join(', ')}`);
+  const outros = semPasso.filter((id) => !/^rival-\d-(rio|mata)$/.test(id) && !longe.includes(id));
+  if (outros.length) a.avisos.push(`${outros.length} treinador(es) do mapa A fora do caminho da simulação (áreas de retorno, revanches ou sem NPC): faixa não conferida — ${outros.join(', ')}`);
 
   /* selvagens: média da tabela base ≤ ás do próximo líder − 2 (spec 16.2) */
   let tabelas = 0;
   for (const z of d.zonas.values()) {
     const k = prog.zonaNoPasso.get(z.id); if (z.mapa !== 'A' || k === undefined) continue;
+    if ((z.passo ?? 0) > 8) {
+      if (z.habitats?.length || (z.npcs ?? []).some((n) => n.treinador)) a.avisos.push(`${d.arquivoDaZona.get(z.id)}: área de retorno (passo ${z.passo}) já alcançável com ${k} insígnia(s) — conferir se há portão antes dos encontros de nível alto`);
+      continue;
+    }
     for (const h of z.habitats ?? []) {
       if (!['grama', 'caverna', 'agua'].includes(h.metodo)) continue;
       const base = [...(h.todos ?? []), ...(h.manha ?? []), ...(h.dia ?? []), ...(h.noite ?? [])]; if (!base.length) continue;
       tabelas++;
       const peso = base.reduce((s, e) => s + e.peso, 0) || 1, media = base.reduce((s, e) => s + ((e.nv[0] + e.nv[1]) / 2) * e.peso, 0) / peso;
       // a água só se anda com o Remo (insígnia 3): a faixa de quem rema é a do passo 3 em diante
-      const passo = h.metodo === 'agua' ? Math.max(k, 3) : k, limite = topo[Math.min(9, passo + 1)] - 2;
-      if (media > limite) a.erros.push(`${d.arquivoDaZona.get(z.id)}: selvagens de ${h.metodo} com média de nível ${media.toFixed(1)}, acima de ${limite} (ás do próximo líder − 2; zona alcançável com ${k} insígnia(s))`);
+      const p = Math.min(9, Math.max(k + 1, z.passo ?? 0, h.metodo === 'agua' ? 4 : 0)), limite = topo[p] - 2;
+      if (media > limite && media <= limite + 1) a.avisos.push(`${d.arquivoDaZona.get(z.id)}: selvagens de ${h.metodo} com média de nível ${media.toFixed(1)}, no limite de ${limite} (ás do líder ${p} − 2)`);
+      else if (media > limite) a.erros.push(`${d.arquivoDaZona.get(z.id)}: selvagens de ${h.metodo} com média de nível ${media.toFixed(1)}, acima de ${limite} (ás do próximo líder − 2; zona alcançável com ${k} insígnia(s))`);
       for (const e of base) { const min = preEvo.get(e.e); if (min && e.nv[0] < min) a.erros.push(`${d.arquivoDaZona.get(z.id)}: ${nome(e.e)} selvagem no nível ${e.nv[0]}, antes do nível em que a forma anterior evolui (${min})`); }
     }
   }

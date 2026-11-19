@@ -5,5 +5,6 @@ import { lideres } from './lideres';
 import { conselho } from './conselho';
 import { classes } from './classes';
 import { npcs } from './npcs';
+import { liga } from './liga';
 
-export const modelos: PixModel[] = [...principais, ...lideres, ...conselho, ...classes, ...npcs];
+export const modelos: PixModel[] = [...principais, ...lideres, ...conselho, ...classes, ...npcs, ...liga];

@@ -17,17 +17,17 @@ export const paletaJacare = {
   extras: { w: '#ffffff', p: '#10161a', f: '#587842', a: '#f0cc58' },
 };
 
-export interface JacareP { k: number; tronco: V3; cabeca: V3; focinho: number; rabo: number; crista: number; nCrista: number; alt: number; faixas?: number; dentes?: number }
+export interface JacareP { k: number; tronco: V3; cabeca: V3; focinho: number; rabo: number; crista: number; nCrista: number; alt: number; faixas?: number; dentes?: number; /** pose: rabo em arco para cima e cabeça erguida */ raboAng?: number; raboCurva?: number; pescAng?: number; pescLen?: number }
 
 /** Corpo comum: baixo e comprido, olhos saltados, papo claro, rabo de faixas, dentes. */
 export function corpoJacare(p: JacareP) {
   const [hx, hy, hz] = p.cabeca, k = p.k;
   const kit = lagarto({
-    tronco: p.tronco, alt: p.alt, pernas: { abre: 0.19 * k, r: 0.05 * k }, pescoco: { len: 0.1 * k, r: hy * 0.95, ang: 30 },
+    tronco: p.tronco, alt: p.alt, pernas: { abre: 0.19 * k, r: 0.05 * k }, pescoco: { len: p.pescLen ?? 0.1 * k, r: hy * 0.95, ang: p.pescAng ?? 30 },
     cabeca: p.cabeca, focinho: p.focinho,
-    cauda: { segs: 4, len: p.rabo, r0: p.tronco[1] * 0.9, r1: 0.025 * k, ang: 2, curva: 13 },
+    cauda: { segs: 4, len: p.rabo, r0: p.tronco[1] * 0.9, r1: 0.025 * k, ang: p.raboAng ?? 2, curva: p.raboCurva ?? 13 },
     crista: { n: p.nCrista, alt: p.crista },
-    olho: { r: 0.028, pos: [hx * 0.5, hy * 1.05, hz * 0.72] },
+    olho: { r: Math.max(0.028, hz * 0.19), pos: [hx * 0.52, hy * 1.08, hz * 0.76] },
     rampas: { pele: 0, barriga: 1, crista: 2, dentro: 3 },
   });
   const rig = kit.rig, sl = p.rabo / 4;
@@ -44,13 +44,14 @@ export function corpoJacare(p: JacareP) {
 }
 
 function build() {
-  const { rig } = corpoJacare({ k: 0.9, tronco: [0.24, 0.11, 0.14], cabeca: [0.17, 0.115, 0.15], focinho: 0.1, rabo: 0.5, crista: 0.06, nCrista: 5, alt: 0.07 });
+  const { rig } = corpoJacare({ k: 0.9, tronco: [0.2, 0.125, 0.15], cabeca: [0.2, 0.14, 0.18], focinho: 0.1, rabo: 0.42, crista: 0.07, nCrista: 4, alt: 0.075, raboAng: 28, raboCurva: 24, pescAng: 50, pescLen: 0.12 });
   // papo amarelo bem cheio
-  rig.add('pescoco', blob([0.11, 0.08, 0.12], m(1), { pos: [0.06, -0.06, 0], seg: 12 }));
+  rig.add('pescoco', blob([0.12, 0.1, 0.13], m(1), { pos: [0.07, -0.02, 0], seg: 12 }));
+  rig.bones.mandibula.rotation.z = -0.16;
   return rig;
 }
 
-const anims = animsLagarto({ u: 0.4, hPerna: 0.07, caudaSegs: 4, mole: 1.1 }, { idle: { cabeca: lz([0, 2, 5, 2]) } });
+const anims = animsLagarto({ u: 0.45, hPerna: 0.075, caudaSegs: 4, mole: 1.1 }, { idle: { cabeca: lz([0, 2, 5, 2]) } });
 
 export const jacarezinho = criatura({
   num: 83, id: 'jacarezinho', nome: 'Jacarezinho', porte: 'P', estagio: 'basico', paleta: paletaJacare, build, anims,

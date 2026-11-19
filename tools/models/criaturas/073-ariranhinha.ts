@@ -17,7 +17,7 @@ export const paletaAriranha = {
   extras: { w: '#ffffff', p: '#140e16', f: '#684434' },
 };
 
-export interface LontraP { k: number; cabeca: V3; rabo: number; ang: number; barriga?: boolean; tronco?: V3 }
+export interface LontraP { k: number; cabeca: V3; rabo: number; ang: number; barriga?: boolean; tronco?: V3; /** pose: pescoço mais comprido e rabo erguido */ pescLen?: number; raboAng?: number; raboCurva?: number }
 
 /** Corpo comum de ariranhas e lontras: salsichão de pernas curtas, pescoço erguido, rabo grosso afinando. */
 export function corpoLontra(p: LontraP) {
@@ -25,11 +25,11 @@ export function corpoLontra(p: LontraP) {
   const kit = quadrupede({
     tronco: p.tronco ?? [0.33 * k, 0.17 * k, 0.17 * k], peito: 1.02,
     pernas: { alt: 0.11 * k, r: 0.058 * k, xF: 0.6, xT: -0.6, z: 0.66, pe: [0.085 * k, 0.03 * k, 0.08 * k] },
-    pescoco: { len: 0.25 * k, ang: p.ang, r: 0.125 * k, x: 0.72, y: 0.2 },
+    pescoco: { len: p.pescLen ?? 0.25 * k, ang: p.ang, r: 0.125 * k, x: 0.72, y: 0.2 },
     cabeca: p.cabeca,
     focinho: { len: cx * 0.42, r0: cy * 0.62, r1: cy * 0.5, cai: 4, y: -0.22, nariz: cy * 0.24 },
     orelha: { tipo: 'redonda', alt: cy * 0.3, larg: cy * 0.36, x: -0.4, z: 0.86, abre: 44, deita: -6 },
-    cauda: { segs: 4, len: p.rabo, r0: 0.11 * k, r1: 0.035 * k, ang: -14, curva: 16 },
+    cauda: { segs: 4, len: p.rabo, r0: 0.11 * k, r1: 0.035 * k, ang: p.raboAng ?? -14, curva: p.raboCurva ?? 16 },
     olho: { r: 0.027, pos: [cx * 0.82, cy * 0.3, cz * 0.6] },
     rampas: { pelo: 0, ...(p.barriga ? { barriga: 1 } : {}), pe: 2, nariz: 2, orelha: 0 },
   });
@@ -45,12 +45,13 @@ export function peixinho(rig: ReturnType<typeof corpoLontra>['rig'], pai: string
 }
 
 function build() {
-  const { rig, ref } = corpoLontra({ k: 1, cabeca: [0.18, 0.16, 0.17], rabo: 0.5, ang: 66 });
+  const { rig, ref } = corpoLontra({ k: 1, cabeca: [0.2, 0.175, 0.19], rabo: 0.5, ang: 82, tronco: [0.27, 0.18, 0.18], pescLen: 0.42, raboAng: 18, raboCurva: 14 });
   // mancha creme da garganta: três pedaços irregulares
-  rig.add('pescoco', blob([0.08, 0.12, 0.115], m(1), { pos: [0.1, 0.12, 0], seg: 12 }), blob([0.055, 0.06, 0.055], m(1), { pos: [0.13, 0.0, 0.07], seg: 8 }));
+  rig.add('pescoco', blob([0.085, 0.2, 0.14], m(1), { pos: [0.1, 0.2, 0], seg: 12, castShadow: false }), blob([0.06, 0.07, 0.06], m(1), { pos: [0.1, 0.04, 0.07], seg: 8 }), blob([0.045, 0.05, 0.045], m(1), { pos: [0.1, 0.0, -0.08], seg: 8 }));
   rig.add('cabeca', blob([0.07, 0.04, 0.1], m(1), { pos: [0.1, -0.13, 0], seg: 10 }));
   // remo do rabo
-  rig.add('cauda4', blob([0.1, 0.028, 0.075], m(2), { pos: [-0.07, 0, 0], seg: 12 }));
+  rig.add('cauda4', blob([0.12, 0.03, 0.1], m(2), { pos: [-0.08, 0, 0], seg: 12 }));
+  rig.add('cauda3', blob([0.08, 0.04, 0.085], m(2), { pos: [-0.1, 0, 0], seg: 12 }));
   peixinho(rig, 'cabeca', [ref.pontaFocinho[0] + 0.02, ref.pontaFocinho[1] - 0.045, 0], 0.9, [0, 90, -10]);
   return rig;
 }

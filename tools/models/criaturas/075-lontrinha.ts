@@ -18,12 +18,14 @@ export const paletaLontra = {
 };
 
 function build() {
-  const { rig, ref } = corpoLontra({ k: 1, cabeca: [0.175, 0.155, 0.165], rabo: 0.55, ang: 56, barriga: true });
-  rig.add('pescoco', blob([0.09, 0.13, 0.11], m(1), { pos: [0.1, 0.1, 0], seg: 12 }));
+  const { rig, ref } = corpoLontra({ k: 1, cabeca: [0.21, 0.18, 0.2], rabo: 0.6, ang: 44, barriga: true, tronco: [0.27, 0.19, 0.19], pescLen: 0.2, raboAng: 40, raboCurva: 26 });
+  rig.add('pescoco', blob([0.1, 0.13, 0.12], m(1), { pos: [0.1, 0.06, 0], seg: 12 }));
+  // bochechas creme bem cheias e bigodes
+  for (const s of [1, -1]) rig.add('cabeca', blob([0.07, 0.065, 0.07], m.luz(1), { pos: [0.19, -0.05, 0.1 * s], seg: 10 }));
   rig.add('cabeca', blob([0.09, 0.05, 0.13], m(1), { pos: [0.1, -0.12, 0], seg: 10 }));
   // pedrinha no focinho (osso próprio)
   rig.bone('pedrinha', 'cabeca', [ref.pontaFocinho[0] + 0.02, ref.pontaFocinho[1] + 0.16, 0]);
-  rig.add('pedrinha', blob([0.085, 0.07, 0.08], m(3), { rot: [0, 0, 14], seg: 10 }), blob([0.03, 0.02, 0.03], m.luz(3), { pos: [0.01, 0.03, -0.03], seg: 6 }));
+  rig.add('pedrinha', blob([0.1, 0.085, 0.095], m(3), { rot: [0, 0, 14], seg: 10 }), blob([0.035, 0.025, 0.035], m.luz(3), { pos: [0.01, 0.04, -0.03], seg: 6 }));
   // gotas no lombo
   const g: V3[] = [[-0.12, 0.17, 0.1]];
   g.forEach((pos, i) => { rig.bone('gota' + i, 'corpo', pos); rig.add('gota' + i, blob([0.025, 0.035, 0.025], m.luz(3), { seg: 8 })); });

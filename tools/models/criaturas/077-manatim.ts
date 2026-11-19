@@ -16,13 +16,13 @@ export const paletaManati = {
   extras: { w: '#ffffff', p: '#1c2036', f: '#8796ae' },
 };
 
-export interface ManatiP { k: number; flutua: number }
+export interface ManatiP { k: number; flutua: number; /** graus que o corpo empina (padrão 8) */ ergue?: number }
 
 /** Corpo comum da linha: barril sem dorsal, beição, remo redondo. */
 export function corpoManati(p: ManatiP) {
   const k = p.k;
   const kit = aquatico({
-    tronco: [0.36 * k, 0.24 * k, 0.24 * k], flutua: p.flutua, ergue: 8,
+    tronco: [0.36 * k, 0.24 * k, 0.24 * k], flutua: p.flutua, ergue: p.ergue ?? 8,
     cabeca: { r: [0.2 * k, 0.185 * k, 0.19 * k], x: 0.78, y: 0.06, gira: -4 },
     cauda: { len: 0.24 * k, r0: 0.16 * k, r1: 0.1 * k, cai: 8 },
     lobos: { len: 0.26 * k, larg: 0.22 * k, abre: 16 },
@@ -62,9 +62,11 @@ export function bolha(rig: ReturnType<typeof corpoManati>['rig'], nome: string, 
 }
 
 function build() {
-  const { rig, ref } = corpoManati({ k: 0.9, flutua: 0.3 });
-  florAguape(rig, 'flor', 'cabeca', [ref.melao[0] - 0.08, ref.melao[1] + 0.0, 0], 0.07, 10);
-  bolha(rig, 'bolha1', [0.42, 0.26, 0.12], 0.04); bolha(rig, 'bolha2', [0.3, 0.4, -0.1], 0.028);
+  const { rig, ref } = corpoManati({ k: 0.9, flutua: 0.34, ergue: 40 });
+  // barrigão rosado bem à mostra, agora que ele flutua empinado
+  rig.add('tronco', blob([0.2, 0.17, 0.19], m(1), { pos: [0.1, -0.09, 0], seg: 14 }));
+  florAguape(rig, 'flor', 'cabeca', [ref.melao[0] - 0.08, ref.melao[1] + 0.0, 0], 0.11, 10);
+  bolha(rig, 'bolha1', [0.4, 0.5, 0.12], 0.045); bolha(rig, 'bolha2', [0.24, 0.62, -0.1], 0.032);
   return rig;
 }
 

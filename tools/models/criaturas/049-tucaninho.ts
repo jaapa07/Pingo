@@ -21,7 +21,7 @@ function build() {
     corpo: [0.2, 0.19, 0.18], ergue: 44,
     pescoco: { len: 0.1, ang: 66, r: 0.13 },
     cabeca: [0.16, 0.155, 0.155],
-    bico: { len: 0.32, r: 0.095, y: -0.02, achata: 0.62, gancho: 26, inferior: 0.86 },
+    bico: { len: 0.5, r: 0.12, y: -0.02, achata: 0.6, gancho: 30, inferior: 0.88 },
     asa: { len: 0.27, larg: 0.17, cai: 20, ponta: 0.4 },
     cauda: { len: 0.2, larg: 0.1, ang: 40, penas: 3, abre: 12 },
     pernas: { alt: 0.1, r: 0.028, z: 0.5, dedo: 0.08 },
@@ -35,8 +35,8 @@ function build() {
   rig.add('tronco', blob([0.05, 0.05, 0.16], m(3), { pos: [0.13, -0.15, 0], rot: [0, 0, -30], seg: 12 }));
   rig.add('cauda1', blob([0.05, 0.035, 0.06], m(3), { pos: [0.04, -0.04, 0], seg: 10 }));
   // bico: risca escura na base, ponta alaranjada
-  rig.add('cabeca', blob([0.022, 0.1, 0.075], m.sombra(0), { pos: [0.135, -0.02, 0], seg: 12 }));
-  rig.add('cabeca', blob([0.07, 0.055, 0.045], m.luz(3), { pos: [ref.pontaBico[0] - 0.06, ref.pontaBico[1] - 0.045, 0], rot: [0, 0, -30], seg: 10 }));
+  rig.add('cabeca', blob([0.024, 0.125, 0.085], m.sombra(0), { pos: [0.135, -0.02, 0], seg: 12 }));
+  rig.add('cabeca', blob([0.09, 0.065, 0.05], m.luz(3), { pos: [ref.pontaBico[0] - 0.06, ref.pontaBico[1] - 0.045, 0], rot: [0, 0, -30], seg: 10 }));
   // anel azul do olho (pele nua)
   par((_, s) => rig.add('cabeca', blob([0.05, 0.05, 0.02], m.plano(2), { pos: [0.085, 0.045, 0.128 * s], seg: 10 })));
   // penugem arrepiada no cocuruto (osso próprio)

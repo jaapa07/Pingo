@@ -65,8 +65,8 @@ function acordar() { if (dormindo) { dormindo = false; if (M.parceira) M.parceir
 
 /* ------------------------------ Passos do Companheiro (item 42) ------------------------------ */
 const ACHADOS: { id: string; peso: number; apos?: number }[] = [
-  { id: 'pitanga', peso: 30 }, { id: 'caju', peso: 26 }, { id: 'cha-cidreira', peso: 22 }, { id: 'cuia-simples', peso: 18 },
-  { id: 'jabuticaba', peso: 14, apos: 2 }, { id: 'acerola', peso: 12, apos: 2 }, { id: 'cuia-boa', peso: 10, apos: 3 },
+  { id: 'pitanga', peso: 30 }, { id: 'caju', peso: 26 }, { id: 'cha-cidreira', peso: 22 }, { id: 'cuia', peso: 18 },
+  { id: 'jabuticaba', peso: 14, apos: 2 }, { id: 'acerola', peso: 12, apos: 2 }, { id: 'cuia-trancada', peso: 10, apos: 3 },
   { id: 'acai', peso: 8, apos: 4 }, { id: 'pequi', peso: 8, apos: 5 }, { id: 'buriti', peso: 6, apos: 6 },
 ];
 function sortearAchado(): string | null {

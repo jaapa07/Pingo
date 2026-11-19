@@ -16,13 +16,13 @@ export const paletaJabuti = {
   extras: { w: '#ffffff', p: '#1c1218', f: '#6c4e40' },
 };
 
-export interface JabutiP { casco: V3; alt: number; perna: number; r: number; cabeca: V3; pescoco: number }
+export interface JabutiP { casco: V3; alt: number; perna: number; r: number; cabeca: V3; pescoco: number; pescAng?: number }
 
 /** Corpo comum da linha: cúpula alta de escudos amarelos, escamas vermelhas, patas de coluna. */
 export function corpoJabuti(p: JabutiP) {
   const [hx, hy, hz] = p.cabeca;
   const kit = tartaruga({
-    casco: p.casco, alt: p.alt, pernas: { len: p.perna, r: p.r }, pescoco: { len: p.pescoco, r: hy * 0.62, ang: 28 },
+    casco: p.casco, alt: p.alt, pernas: { len: p.perna, r: p.r }, pescoco: { len: p.pescoco, r: hy * 0.62, ang: p.pescAng ?? 28 },
     cabeca: p.cabeca, cauda: p.casco[0] * 0.28, escudos: 7,
     olho: { r: 0.027, pos: [hx * 0.72, hy * 0.38, hz * 0.8] },
     rampas: { casco: 0, borda: 0, plastrao: 1, pele: 0, escudos: 1 },
@@ -44,7 +44,10 @@ export function broto(rig: ReturnType<typeof corpoJabuti>['rig'], nome: string, 
 }
 
 function build() {
-  const { rig, ref } = corpoJabuti({ casco: [0.25, 0.25, 0.22], alt: 0.09, perna: 0.12, r: 0.062, cabeca: [0.12, 0.105, 0.105], pescoco: 0.13 });
+  const { rig, ref } = corpoJabuti({ casco: [0.25, 0.25, 0.22], alt: 0.1, perna: 0.12, r: 0.066, cabeca: [0.145, 0.125, 0.125], pescoco: 0.24, pescAng: 44 });
+  // cabeça para fora do casco e mais clara que ele: pescoço comprido e amarelado, cocuruto vermelho largo
+  rig.add('pescoco', blob([0.1, 0.06, 0.07], m(1), { pos: [0.12, 0.06, 0], rot: [0, 0, 44], seg: 10 }));
+  rig.add('cabeca', blob([0.09, 0.05, 0.1], m.plano(3), { pos: [0.07, 0.105, 0], seg: 10 }), blob([0.06, 0.035, 0.085], m(1), { pos: [0.15, -0.035, 0], seg: 8 }));
   broto(rig, 'broto', 'corpo', [ref.topoCasco[0] - 0.02, ref.topoCasco[1] - 0.02, 0], 0.15, -6);
   // seixo de estimação (fica no chão, ao lado)
   rig.bone('seixo', 'base', [0.2, 0.05, 0.3]);
@@ -52,7 +55,7 @@ function build() {
   return rig;
 }
 
-const anims = animsTartaruga({ u: 0.5, hPerna: 0.09, pescoco: 0.13, mole: 0.5 }, {
+const anims = animsTartaruga({ u: 0.5, hPerna: 0.1, pescoco: 0.24, mole: 0.5 }, {
   idle: { broto: lz([0, 5, 10, 3]) },
   especial: { broto: qz([0, 12, 18, -24, -8, 0]) },
   dano: { broto: qz([26, 8, 0]) },

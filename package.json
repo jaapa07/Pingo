@@ -12,7 +12,9 @@
     "check": "tsx tools/verify.ts",
     "test": "tsx tools/test-batalha.ts",
     "desktop": "npm run build && electron-builder --dir --config plataformas/desktop/electron-builder.yml",
-    "ios": "npm run build && npx cap sync ios"
+    "ios": "npm run build && npx cap sync ios",
+    "test:offline": "tsx tools/verify/offline.ts",
+    "icones": "tsx tools/build-icones.ts"
   },
   "devDependencies": {
     "@capacitor/cli": "8.6.0",

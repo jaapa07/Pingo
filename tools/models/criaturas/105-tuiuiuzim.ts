@@ -44,16 +44,16 @@ export function peixeNoBico(rig: ReturnType<typeof corpoTuiuiu>['rig'], pos: V3,
 }
 
 function build() {
-  const { rig } = corpoTuiuiu({ k: 0.85, pescoco: 0.17, perna: 0.24, cabeca: [0.12, 0.11, 0.105], bico: 0.27, gola: 0.095, ergue: 30 });
+  const { rig } = corpoTuiuiu({ k: 0.78, pescoco: 0.34, perna: 0.42, cabeca: [0.12, 0.105, 0.1], bico: 0.4, gola: 0.085, ergue: 40 });
   // penugem de nuvem: flocos saltados
-  for (const [x, y, z] of [[-0.14, 0.14, 0.1], [-0.14, 0.14, -0.1], [0.06, -0.14, 0.12], [0.06, -0.14, -0.12], [-0.24, 0.0, 0]] as const) rig.add('tronco', blob([0.07, 0.065, 0.065], m.luz(0), { pos: [x, y, z], seg: 10 }));
+  for (const [x, y, z] of [[-0.14, 0.12, 0.08], [-0.14, 0.12, -0.08], [-0.22, 0.0, 0]] as const) rig.add('tronco', blob([0.055, 0.05, 0.05], m.luz(0), { pos: [x, y, z], seg: 10 }));
   rig.add('cabeca', blob([0.05, 0.04, 0.05], m(0), { pos: [-0.04, 0.1, 0], seg: 8 }));
-  peixeNoBico(rig, [0.1, 0.0, 0], 0.7);
+  peixeNoBico(rig, [0.2, 0.0, 0], 0.7);
   void par;
   return rig;
 }
 
-const anims = animsAve({ u: 0.7, hPerna: 0.24, mole: 1.3 }, unirExtras(asasContidas, {
+const anims = animsAve({ u: 0.95, hPerna: 0.42, mole: 1.3 }, unirExtras(asasContidas, {
   idle: { peixe: lz([0, 6, 0, -6]) },
   dano: { peixe: qz([-30, -10, 0]) },
 }));

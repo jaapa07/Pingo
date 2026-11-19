@@ -19,23 +19,26 @@ export const paletaAndor = {
 
 function build() {
   const { rig } = ave({
-    corpo: [0.22, 0.19, 0.18], ergue: 30,
+    corpo: [0.23, 0.2, 0.19], ergue: 40,
     pescoco: { len: 0.07, ang: 60, r: 0.13 },
     cabeca: [0.21, 0.19, 0.2],
     bico: { len: 0.07, r: 0.05, y: -0.2, achata: 1.5, inferior: 0.9 },
-    asa: { len: 0.44, larg: 0.19, cai: 4, ponta: 0.7 },
-    cauda: { len: 0.2, larg: 0.08, ang: 6, penas: 2, abre: 26 },
+    asa: { len: 0.4, larg: 0.19, cai: 4, ponta: 0.7 },
+    cauda: { len: 0.26, larg: 0.09, ang: -16, penas: 2, abre: 30 },
     pernas: { alt: 0.1, r: 0.03, z: 0.5, dedo: 0.08 },
     olho: { r: 0.034, pos: [0.12, 0.02, 0.15] },
     rampas: { corpo: 0, cabeca: 0, asa: 0, asaPonta: 0, cauda: 0, bico: 2, perna: 2 },
   });
   // coleira branca inteira
-  rig.add('pescoco', calota([0.18, 0.175, 0.19], m.luz(1), { de: 38, ate: 122, rot: [0, 0, 60], pos: [-0.01, -0.03, 0] }));
+  rig.add('pescoco', calota([0.2, 0.19, 0.21], m.luz(1), { de: 30, ate: 128, rot: [0, 0, 60], pos: [-0.01, -0.03, 0] }));
+  rig.add('tronco', blob([0.09, 0.1, 0.13], m(1), { pos: [0.17, -0.04, 0], seg: 12 }));
   // asas-foice cruzadas, apontando para cima e para trás
-  par((l, s) => { rig.bones['asa_' + l].rotation.set(0, 12 * s * D2R, -22 * D2R); rig.add('asa2_' + l, pena(0.26, 0.07, m.sombra(0), { esp: 0.04, pos: [-0.14, 0.02, 0], rot: [0, 0, -14] })); });
+  par((l, s) => { rig.bones['asa_' + l].rotation.set(0, 14 * s * D2R, -38 * D2R); rig.add('asa2_' + l, pena(0.26, 0.07, m.sombra(0), { esp: 0.04, pos: [-0.14, 0.02, 0], rot: [0, 0, -14] })); });
   // lasca de pedra onde se agarra
   rig.bones.corpo.position.y += 0.12;
-  rig.add('base', pedra([0.34, 0.14, 0.3], m(2), [0.02, 0.06, 0], [0, 24, 6]), pedra([0.14, 0.1, 0.14], m.luz(2), [-0.2, 0.05, 0.12], [10, 50, 0]));
+  rig.add('base', pedra([0.3, 0.14, 0.28], m(2), [0.02, 0.06, 0], [0, 24, 6]), pedra([0.13, 0.1, 0.13], m.luz(2), [-0.18, 0.05, 0.12], [10, 50, 0]));
+  // respingo da cachoeira na lasca
+  rig.add('base', blob([0.07, 0.035, 0.09], m(3), { pos: [0.24, 0.1, -0.12], seg: 8 }), blob([0.035, 0.045, 0.035], m.luz(3), { pos: [0.3, 0.2, -0.16], seg: 6 }), blob([0.028, 0.035, 0.028], m.luz(3), { pos: [0.2, 0.26, -0.26], seg: 6 }));
   rig.add('cabeca', blob([0.07, 0.05, 0.1], m.luz(0), { pos: [0.1, 0.11, 0], seg: 10 }));
   return rig;
 }

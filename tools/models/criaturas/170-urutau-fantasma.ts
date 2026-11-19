@@ -32,15 +32,18 @@ function build() {
     for (let i = 0; i < 2; i++) {
       const nome = 'nev_' + l + (i + 1);
       rig.bone(nome, 'asa2_' + l, [-0.1 - i * 0.16, -0.1, 0], [0, 0, 200]);
-      rig.add(nome, chama(0.24 - i * 0.04, 0.07, m.luz(3), { curva: 20 }));
+      rig.add(nome, chama(0.3 - i * 0.05, 0.09, m(3), { curva: 20 }), chama(0.16 - i * 0.03, 0.05, m.luz(3), { curva: 20 }));
     }
     // "chifres" de pena e líquen no peito
     rig.bone('chifre_' + l, 'cabeca', [ref.topo[0] - 0.06, ref.topo[1] - 0.05, 0.14 * s], [34 * s, 0, 24]);
-    rig.add('chifre_' + l, tufo(2, 0.2, 0.06, m.sombra(0), { abre: 16 }));
+    rig.add('chifre_' + l, tufo(2, 0.28, 0.075, m.sombra(0), { abre: 18 }));
     rig.add('tronco', blob([0.06, 0.04, 0.03], m(1), { pos: [0.1, 0.06, 0.2 * s], seg: 8 }), blob([0.05, 0.035, 0.03], m(1), { pos: [-0.08, -0.03, 0.19 * s], seg: 8 }));
   });
   rig.bone('fatuo', 'base', [0.5, 0.9, 0.2]);
-  rig.add('fatuo', chama(0.22, 0.08, m.luz(3), { curva: 24 }), chama(0.1, 0.045, m(1), { scale: [1, 1, 1.9] }));
+  rig.add('fatuo', chama(0.3, 0.11, m(3), { curva: 24 }), chama(0.17, 0.065, m.luz(3), { curva: 16 }), chama(0.09, 0.04, m.luz(1), { scale: [1, 1, 1.9] }));
+  // riscas de casca no peito e meia-lua de líquen: de frente ele deixa de ser um tronco liso
+  for (const [x, y, z, a] of [[0.2, 0.0, 0.07, -8], [0.19, -0.06, -0.08, 10], [0.12, -0.15, 0.03, 4], [0.24, 0.1, -0.03, 0]] as const) rig.add('tronco', blob([0.11, 0.02, 0.025], m.plano(2), { pos: [x, y, z], rot: [0, a, 0], seg: 6, castShadow: false }));
+  rig.add('tronco', blob([0.035, 0.05, 0.13], m.luz(1), { pos: [0.3, 0.02, 0], rot: [0, 0, -14], seg: 10, castShadow: false }));
   rig.bones.cabeca.rotation.z = 8 * D2R;
   return rig;
 }

@@ -34,16 +34,18 @@ function build() {
     rig.add('asa2_' + l, pena(0.16, 0.07, m.luz(3), { esp: 0.05, pos: [-0.14, 0.03, 0.02 * s] }));
     // faíscas (ossos próprios, um de cada lado)
     rig.bone('faisca_' + l, 'corpo', [0.16 - 0.36 * (s > 0 ? 1 : 0), 0.4 + 0.1 * s, 0.26 * s]);
-    rig.add('faisca_' + l, raio(0.2, m.luz(1), 0.05));
+    rig.add('faisca_' + l, raio(0.3, m.luz(1), 0.07));
+    // raio amarelo riscando a asa de ponta a ponta
+    const rz = raio(0.42, m.luz(1), 0.075); rz.rotation.set(0, 0, Math.PI / 2 + 0.25); rz.position.set(-0.06, 0.03, 0.075 * s); rig.add('asa_' + l, rz);
   });
   // bico de cima claro (marca da arara-vermelha)
   rig.add('cabeca', blob([0.09, 0.05, 0.075], m.luz(1), { pos: [0.2, 0.01, 0], rot: [0, 0, -24], seg: 10 }));
   // CRISTA de três raios
-  const cr: [string, V3, number, number][] = [['raio1', [0.06, 0.16, 0], 0.26, -24], ['raio2', [-0.03, 0.18, 0], 0.34, 6], ['raio3', [-0.12, 0.14, 0], 0.26, 36]];
-  for (const [nome, pos, alt, tomba] of cr) { rig.bone(nome, 'cabeca', pos, [0, 0, tomba]); rig.add(nome, raio(alt, m(1), 0.05)); }
+  const cr: [string, V3, number, number][] = [['raio1', [0.07, 0.15, 0], 0.3, -34], ['raio2', [-0.03, 0.18, 0], 0.42, 4], ['raio3', [-0.13, 0.13, 0], 0.32, 46]];
+  for (const [nome, pos, alt, tomba] of cr) { rig.bone(nome, 'cabeca', pos, [0, 0, tomba]); rig.add(nome, raio(alt, m(1), 0.06)); }
   // cauda: duas penas-raio compridas e ponta azul
   rig.bone('cauda2', 'cauda1', [-0.3, 0, 0], [0, 0, 0]);
-  rig.add('cauda2', raio(0.5, m(1), 0.05), raio(0.4, m.luz(3), 0.05));
+  rig.add('cauda2', raio(0.56, m.luz(1), 0.08), raio(0.46, m.luz(3), 0.07));
   rig.bones.cauda2.children[0].rotation.set(0, 0, Math.PI / 2 + 0.12); rig.bones.cauda2.children[1].rotation.set(0.5, 0, Math.PI / 2 - 0.2);
   rig.add('cauda1', pena(0.3, 0.09, m(3), { esp: 0.04, rot: [90, 0, 0], pos: [-0.1, 0.03, 0] }));
   // babador escuro sob o bico

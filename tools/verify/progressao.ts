@@ -141,7 +141,10 @@ class Sim {
         const s = this.alc.get(zid)!, w = z.mapaChars[0].length;
         for (const wp of z.warps) { if (!s.has(wp.y * w + wp.x) || !vale(wp.requer) || !this.d.zonas.has(wp.para.zona)) continue; const destino = this.d.zonas.get(wp.para.zona)!; if (destino.mapa !== 'A' && !vale('mapa-b')) continue; this.semear(wp.para.zona, wp.para.x, wp.para.y); }
         for (const n of z.npcs ?? []) {
-          if (!vale(n.se) || !this.perto(z, n.x, n.y, n.treinador ? Math.max(1, n.visao ?? 4) : 1)) continue;
+          if (!this.perto(z, n.x, n.y, n.treinador ? Math.max(1, n.visao ?? 4) : 1)) continue;
+          // o passo do treinador vale mesmo que ele já tenha ido embora (NPCs do Cartel somem ao fim do evento)
+          if (n.treinador && this.d.treinadores.has(n.treinador) && !this.treinadorNoPasso.has(n.treinador)) this.treinadorNoPasso.set(n.treinador, this.teto);
+          if (!vale(n.se)) continue;
           if (n.treinador) { try { this.vencer(n.treinador); } catch (e) { if (!(e instanceof Retida)) throw e; } }
           if (n.script) this.rodar(n.script);
         }
