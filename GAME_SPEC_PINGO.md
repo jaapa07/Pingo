@@ -314,19 +314,20 @@ Cada obstáculo exige um **Amuleto de Campo**, que é um item-chave. Ele **só f
 | 1 | A2 | **1 · Vento (Pena)** | 10–12 | Faro (missão) |
 | 2 | A3 | **2 · Inseto (Casulo)** | 15–17 | Facão → A-R3, A-MG parcial |
 | 3 | A4 | **3 · Rio (Concha)** | 20–22 | A-R4 → evento da Usina → **Trem** |
-| 4 | B1 (trem) | **4 · Mata (Folha)** | 24–26 | Remo → B-PA |
-| 5 | B2 | **5 · Terra (Barro)** | 28–30 | Força; a líder conta que o Cartel está no Farol → volta de trem |
-| 6 | A5 (via Baía, Remo) | **6 · Encanto (Estrela)** | 31–33 | A-PR (inicial extra), A-MG completo |
-| 7 | A6 | evento do Farol → **7 · Trovão (Raio)** | 34–36 | Lampião + Bilhete do Saveiro |
-| 8 | A7 (via A-GB, Lampião) | **8 · Assombro (Lamparina)** | 38–40 | Quebra-pedra |
-| 9 | B3 (Saveiro → B9 → B-R2) | evento da Mina → **9 · Pedra (Cristal)** | 41–43 | Escalar |
-| 10 | B4 (via B-CH) | **10 · Brasa (Chama)** | 44–46 | B-CV (Boitatá) |
-| 11 | B5 | **11 · Ginga (Berimbau)** | 47–49 | Cachoeira → volta ao mapa A |
-| 12 | A8 (via A-R6, Cachoeira) | **12 · Ferro (Engrenagem)** | 50–52 | Mergulho (A-RS, B-TA) |
-| 13 | B6 (via B-TA) | evento do Laboratório → **13 · Veneno (Espinho)** | 52–54 | Queixada-Caipora começa a vagar |
-| 14 | B7 (via B-R4) | **14 · Geada (Floco)** | 54–56 | **Voo** |
-| 15 | B8 (via B-R5, Lampião) | **15 · Mente (Olho)** | 56–58 | o guardião do Monte Tupã abre o caminho |
-| 16 | A9 (via A-MT) | **16 · Lenda (Escama)** | 58–60 | Portão do Pico Pindorama |
+| 4 | A5 (via Baía, Remo) | **4 · Encanto (Estrela)** | 24–26 | A-PR (inicial extra), A-MG completo |
+| 5 | A6 | evento do Farol → **5 · Trovão (Raio)** | 28–30 | Lampião |
+| 6 | A7 (via A-GB, Lampião) | **6 · Assombro (Lamparina)** | 31–33 | Quebra-pedra |
+| 7 | A8 (via A-R6) | **7 · Ferro (Engrenagem)** | 34–36 | Mergulho (A-RS) |
+| 8 | A10 Vila Buriti (nova cidade do mapa A) | **8 · Mata (Folha)** | 38–40 | caminho para o Platô da Liga |
+| Liga | A-LG Platô da Liga | **Liga dos Guardiões** (4 Mestres + Campeão) | 41–46 | **libera o mapa B:** Passe do Trem + Bilhete do Saveiro |
+| 9 | B2 (trem → B1 → rota) | **9 · Terra (Barro)** | 45–47 | Força; a líder conta que o Cartel age no mapa A → volta de trem |
+| 10 | B3 (Saveiro → B9 → B-R2) | evento da Mina → **10 · Pedra (Cristal)** | 47–49 | Escalar |
+| 11 | B4 (via B-CH) | **11 · Brasa (Chama)** | 49–51 | B-CV (Boitatá) |
+| 12 | B5 | **12 · Ginga (Berimbau)** | 51–53 | Cachoeira → volta ao mapa A |
+| 13 | B6 (via B-TA) | evento do Laboratório → **13 · Veneno (Espinho)** | 53–55 | Queixada-Caipora começa a vagar |
+| 14 | B7 (via B-R4) | **14 · Geada (Floco)** | 55–57 | **Voo** |
+| 15 | B8 (via B-R5, Lampião) | **15 · Mente (Olho)** | 57–59 | o guardião do Monte Tupã abre o caminho |
+| 16 | A9 (via A-MT) | **16 · Lenda (Escama)** | 59–61 | Portão do Pico Pindorama |
 | Final | PP | **Conselho dos Guardiões** (4 + Guardião-Mor) e Coronel Garrote do Cartel | 62–68 | créditos e pós-jogo |
 
 **Regras de montagem (obrigatórias):**
@@ -357,15 +358,15 @@ Cada ginásio tem um **quebra-cabeça temático**, de 4 a 7 treinadores e um lí
 | 1 | Pena | Vento | Vila Caiçara | **Mestre Gaivota**, velho pescador de pipa | correntes de vento empurram o jogador sobre o píer |
 | 2 | Casulo | Inseto | Bosque Alto | **Lia Teia**, bióloga de copa | pontes de teia que só se atravessam na ordem certa |
 | 3 | Concha | Rio | Porto Sereia | **Marujo Netuno Silva**, ex-campeão de remo | comportas mudam o nível da água |
-| 4 | Folha | Mata | Vila Buriti | **Dona Buriti**, raizeira | labirinto de cipós que cresce a cada passo |
-| 5 | Barro | Terra | Pantanal Grande | **Boiadeira Zefa**, peoa | pisos de lama que afundam |
-| 6 | Estrela | Encanto | Cidade Coral | **Iracema Lua**, rendeira | espelhos de renda refletem raios de luz |
-| 7 | Raio | Trovão | Ilha do Farol | **Faroleiro Volta**, inventor | circuitos ligam pontes elétricas |
-| 8 | Lamparina | Assombro | Serra Fumaça | **Dona Benta Sombra**, contadora de causos | salas escuras; só a lamparina mostra o caminho real |
-| 9 | Cristal | Pedra | Chapada Rubra | **Garimpeiro Topázio** | trilhos de vagonete para desviar |
-| 10 | Chama | Brasa | Arraial Brasa | **Ferreira Labareda** | fogueiras de São João a acender em sequência musical |
-| 11 | Berimbau | Ginga | Cidade Ginga | **Mestre Gingado**, capoeirista | roda de capoeira: duelos no ritmo do berimbau (minijogo) |
-| 12 | Engrenagem | Ferro | Vila Ferrugem | **Engenheira Bigorna** | esteiras e engrenagens que mudam de direção |
+| 4 | Estrela | Encanto | Cidade Coral | **Iracema Lua**, rendeira | espelhos de renda refletem raios de luz |
+| 5 | Raio | Trovão | Ilha do Farol | **Faroleiro Volta**, inventor | circuitos ligam pontes elétricas |
+| 6 | Lamparina | Assombro | Serra Fumaça | **Dona Benta Sombra**, contadora de causos | salas escuras; só a lamparina mostra o caminho real |
+| 7 | Engrenagem | Ferro | Vila Ferrugem | **Engenheira Bigorna** | esteiras e engrenagens que mudam de direção |
+| 8 | Folha | Mata | Vila Buriti | **Dona Buriti**, raizeira | labirinto de cipós que cresce a cada passo |
+| 9 | Barro | Terra | Pantanal Grande | **Boiadeira Zefa**, peoa | pisos de lama que afundam |
+| 10 | Cristal | Pedra | Chapada Rubra | **Garimpeiro Topázio** | trilhos de vagonete para desviar |
+| 11 | Chama | Brasa | Arraial Brasa | **Ferreira Labareda** | fogueiras de São João a acender em sequência musical |
+| 12 | Berimbau | Ginga | Cidade Ginga | **Mestre Gingado**, capoeirista | roda de capoeira: duelos no ritmo do berimbau (minijogo) |
 | 13 | Espinho | Veneno | Brejo Roxo | **Doutor Peçonha**, herpetólogo | piso tóxico; plantas antídoto marcam o caminho |
 | 14 | Floco | Geada | Serra da Geada | **Gaúcha Pinhão** | gelo escorregadio (o jogador desliza até bater) |
 | 15 | Olho | Mente | Planalto Lume | **Astrônoma Jaci** | teletransportes entre constelações |
@@ -379,6 +380,21 @@ Cada ginásio tem um **quebra-cabeça temático**, de 4 a 7 treinadores e um lí
 - **Guardião-Mor Arandu:** equipe mista com 1 lendário.
 
 **Revanches:** pelo Rádio Cipó, com equipes de nível mais alto no pós-jogo.
+
+**Liga dos Guardiões (fim do mapa A) — pedido do autor: "uma liga depois da 8ª insígnia para liberar o mapa B":**
+- **Estrutura (como nos jogos clássicos de duas regiões):** o mapa A é uma aventura completa, com 8 ginásios (A2 a A8 e A10), terminando na **Liga dos Guardiões**, no **Platô da Liga (zona `A-LG`)**, ao fim da trilha que sai de Vila Buriti. Só depois de vencer a Liga o **mapa B (Sertão das Névoas)** é aberto. Isso substitui o trem aberto desde o 3º ginásio.
+- **Portal de acesso:** o Platô exige as **8 insígnias** (portão narrativo: o Guardião da Entrada confere as insígnias).
+- **Formato:** **5 lutas seguidas, sem sair do Platô** (4 Mestres + Campeão), na ordem abaixo, com sala de espera, música própria e cura só por itens entre as lutas; derrota = volta à entrada do Platô (a Liga recomeça do 1º mestre). Níveis 41–46. Rival Tainá aparece depois da Liga (encontro `rival-4`, ver abaixo).
+  1. **Mestra Maré (Rio/Veneno):** pescadora de mangue.
+  2. **Ferreiro Brasa-Viva (Brasa/Ferro):** forjador de sinos.
+  3. **Pajé Neblina (Mente/Assombro):** contador de lendas.
+  4. **Domadora Pampa (Comum/Ginga):** treinadora de bichos de rodeio.
+  5. **Campeão Cacique Aracê:** equipe mista de 6 e 1 criatura de tipo Lenda não lendária (ex.: Pirarucão ou Jacaruçu), com a melhor IA do mapa A.
+  Cada mestre tem um tema de tipos diferente dos 8 ginásios do mapa A, para a Liga testar o jogador de outro jeito (combos de tipo), e **nenhum** usa os tipos do Conselho final.
+- **Recompensas:** o **Passe do Trem** e o **Bilhete do Saveiro** (só agora liberam as passagens para o mapa B), o título de Campeão do mapa A (flag `liga-vencida`), uma **Pedra de Evolução** à escolha e a entrada de **Hall da Fama** (tela de créditos curta com a equipe). Depois da Liga a Tainá (rival-4) desafia no Platô e o Rádio Cipó anuncia "a região do Sertão agora está aberta".
+- **Passagens para o mapa B:** trem (A4 → B1), Saveiro (A5 → B9) e a trilha do Pico exigem `flag:liga-vencida`. Os ginásios 9 a 16 ficam no mapa B (B2 a B8) e A9, e a **Liga dos Guardiões não é a mesma coisa que o Conselho final** do Pico Pindorama (depois das 16 insígnias).
+- **Revanche da Liga:** pós-jogo, a Liga pode ser refeita por agendamento do Rádio Cipó (equipes nível 55+).
+- **Consequências no projeto (a aplicar quando as equipes de zona retomarem):** (a) o ginásio da Mata deixa B1 e vai para **A10 Vila Buriti (nova zona)**, sobe para insígnia 8 e para níveis 38–40; (b) o **Remo** passa do ginásio da Mata para o do **Rio (insígnia 3)**; (c) B1 vira cidade de chegada, sem ginásio; (d) as zonas B têm de subir as faixas de nível de captura em ~20 níveis (os ginásios 9–16 vão de 45 a 61); (e) A5 (Cidade Coral) passa a ser o 4º ginásio, A6 o 5º, A7 o 6º, A8 o 7º; (f) o trem e o Saveiro ficam fechados até `liga-vencida` (a Usina e o Passe do Trem na A4 mudam de lugar na história); (g) criar a zona `A-LG` e o evento da Liga.
 
 ---
 
