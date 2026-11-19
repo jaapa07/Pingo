@@ -1,23 +1,44 @@
 [
  {
   "perfil": "iPhone 13 em pé (toque)",
-  "ok": false,
+  "ok": true,
   "passos": [
-   "SW instalado e pacote no cache: 8183 arquivos em 22.6 s (8370 pedidos, 27.4 MB); página controlada: true; armazenamento persistente: false",
+   "SW instalado e pacote no cache: 8183 arquivos em 46.5 s (8363 pedidos, 27.3 MB); página controlada: true; armazenamento persistente: false",
    "manifest: \"Adventures of Pingo\", display fullscreen, 4 ícones + apple-touch-icon",
    "rede cortada; recarregou e o jogo abriu do cache",
    "jogo novo começado pela interface; Kauêbo acordou em A1-quarto (5,5)",
    "andou 8 passos no quarto com o direcional de toque → (5,5)",
    "recebeu o inicial pelo evento da cuia: equipe 1:5:125",
-   "encontro selvagem no capim depois de 5 passos",
-   "batalha jogada até o fim com o botão A de toque: equipe 1:5:125 → 1:5:149; depois dela, A-R1 (23,2) {\"tipo\":\"selvagem\",\"inimigos\":[{\"uid\":\"c5wv6f1\",\"especie\":20"
+   "encontro selvagem no capim depois de 12 passos",
+   "batalha jogada até o fim com o botão A de toque: equipe 1:5:125 → 1:5:154; depois dela, A-R1 (24,2) {\"tipo\":\"selvagem\",\"inimigos\":[{\"uid\":\"c1v9fp1\",\"especie\":13",
+   "salvou pelo menu (jogo 1, A-R1); gravado em localStorage: true, IndexedDB: true",
+   "recarregou sem rede e continuou: Kauêbo em A-R1 (24,2), equipe 1:5:154; voltou a andar: true"
   ],
-  "falhas": [
-   "page.screenshot: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n"
+  "falhas": [],
+  "precacheMs": 46479,
+  "arquivos": 8363,
+  "bytes": 28657480,
+  "pedidosSemRede": 0
+ },
+ {
+  "perfil": "iPhone 13 deitado (toque)",
+  "ok": true,
+  "passos": [
+   "SW instalado e pacote no cache: 8183 arquivos em 14.3 s (8373 pedidos, 27.4 MB); página controlada: true; armazenamento persistente: false",
+   "manifest: \"Adventures of Pingo\", display fullscreen, 4 ícones + apple-touch-icon",
+   "rede cortada; recarregou e o jogo abriu do cache",
+   "jogo novo começado pela interface; Kauêbo acordou em A1-quarto (5,5)",
+   "andou 8 passos no quarto com o direcional de toque → (5,5)",
+   "recebeu o inicial pelo evento da cuia: equipe 1:5:125",
+   "encontro selvagem no capim depois de 12 passos",
+   "batalha jogada até o fim com o botão A de toque: equipe 1:5:125 → 1:5:149; depois dela, A-R1 (22,2) {\"tipo\":\"selvagem\",\"inimigos\":[{\"uid\":\"c6wkhd1\",\"especie\":20",
+   "salvou pelo menu (jogo 1, A-R1); gravado em localStorage: true, IndexedDB: true",
+   "recarregou sem rede e continuou: Kauêbo em A-R1 (22,2), equipe 1:5:149; voltou a andar: true"
   ],
-  "precacheMs": 22571,
-  "arquivos": 8370,
-  "bytes": 28687228,
+  "falhas": [],
+  "precacheMs": 14322,
+  "arquivos": 8373,
+  "bytes": 28702733,
   "pedidosSemRede": 0
  }
 ]
