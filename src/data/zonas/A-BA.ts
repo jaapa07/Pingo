@@ -72,7 +72,7 @@ const zona: ZonaDef = {
   ],
   warps: [
     { ...g.p('W'), para: { zona: 'A4', x: 30, y: 43, dir: 'n' }, tipo: 'borda' },
-    { x: 12, y: 0, para: { zona: 'A-MG', x: 40, y: 38, dir: 'n' }, tipo: 'borda' }, { x: 13, y: 0, para: { zona: 'A-MG', x: 41, y: 38, dir: 'n' }, tipo: 'borda' },
+    { x: 12, y: 0, para: { zona: 'A-MG', x: 40, y: 34, dir: 'n' }, tipo: 'borda' }, { x: 13, y: 0, para: { zona: 'A-MG', x: 41, y: 34, dir: 'n' }, tipo: 'borda' },
     { x: 60, y: 0, para: { zona: 'A-PR', x: 34, y: 33, dir: 'n' }, tipo: 'borda' }, { x: 61, y: 0, para: { zona: 'A-PR', x: 35, y: 33, dir: 'n' }, tipo: 'borda' },
     { x: 89, y: 14, para: { zona: 'A6', x: 1, y: 16, dir: 'l' }, tipo: 'borda' }, { x: 89, y: 15, para: { zona: 'A6', x: 1, y: 17, dir: 'l' }, tipo: 'borda' },
     { x: 50, y: 43, para: { zona: 'A5', x: 24, y: 1, dir: 's' }, tipo: 'borda' }, { x: 51, y: 43, para: { zona: 'A5', x: 25, y: 1, dir: 's' }, tipo: 'borda' },

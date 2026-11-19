@@ -86,6 +86,7 @@ const zona: ZonaDef = {
   ],
   npcs: [
     { id: 'peixeiro', sprite: 'npc-vendedor', ...g.d('Q', 3, 0), dir: 's', fala: ['Feira de Cidade Coral! Fruta fresca que veio de saveiro e peixe que veio nadando!'], loja: ['caju', 'pitanga', 'jabuticaba', 'acerola', 'acai', 'biscoito-de-polvilho', 'cuia-rede'] },
+    { id: 'a5-boticaria', sprite: 'npc-mulher-4', x: 30, y: 11, dir: 's', script: 'a2-m-xarope-alga' },
     { id: 'bilheteiro', sprite: 'npc-marinheiro', x: 30, y: 33, dir: 's', script: 'a2-a5-bilheteiro' },
     { id: 'rendeira-praca', sprite: 'cl-rendeira', ...g.p('h'), dir: 's', script: 'a2-missao-renda' },
     { id: 'idoso-fonte', sprite: 'npc-idoso', ...g.p('a'), dir: 'l', fala: ['Esta fonte nunca secou. Dizem que a água vem da Gruta Breu, por baixo do mar.', 'Meu compadre atravessou a gruta sem lampião. Saiu do outro lado três dias depois, em Serra Fumaça, jurando que tinha conversado com um macaco de olho de lua.'] },

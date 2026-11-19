@@ -31,6 +31,7 @@ export function grade(id: string, largura: number, linhas: string[], sob: Record
   const achados = new Map<string, Ponto[]>();
   const mapa = linhas.map((bruta, y) => {
     const l = bruta.split('|').join('');
+    if (bruta.includes('|')) bruta.split('|').forEach((bl, i, t) => { if (bl.length !== 10 && !(i === t.length - 1 && bl.length < 10)) erros.push(`linha ${y}: bloco ${i} com ${bl.length} colunas (régua de 10)`); });
     if (l.length !== largura) erros.push(`linha ${y}: ${l.length} colunas (esperado ${largura})`);
     let s = '';
     for (let x = 0; x < l.length; x++) {

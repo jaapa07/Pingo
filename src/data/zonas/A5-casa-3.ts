@@ -1,0 +1,12 @@
+import { casaSimples } from './_a1-grade';
+
+/** Casa do Clube da Renda: troca de dicas sobre evolução por Pedra Maré e a missão da renda rasgada. */
+export default casaSimples({
+  id: 'A5-casa-3', nome: 'Clube da Renda', tema: 'caicara', musica: 'cidade-frevo', arena: 'praia', passo: 4, volta: [8, 15],
+  estante: ['Moldes de renda: "ponto concha", "ponto onda", "ponto Estrelinha" e "ponto final (para quem errar tudo)".'],
+  bau: ['Novelos de linha de todas as cores, organizados por humor.'],
+  moradores: [
+    { id: 'a5-presidenta', sprite: 'cl-rendeira', nome: 'Rendeira Marocas', fala: ['Estrelinha só evolui com Pedra Maré. Tem uma escondida numa ilhota da baía, quem rema acha.', 'E Beija-florzim só com Pedra Solar. Bicho chique evolui com joia.'] },
+    { id: 'a5-aprendiz', sprite: 'cl-crianca-f', nome: 'Lili', mov: 'vagar', fala: ['Eu ainda estou no ponto "nó cego". Mas é um nó cego muito bonito.'] },
+  ],
+});

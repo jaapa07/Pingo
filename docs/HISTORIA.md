@@ -12,50 +12,59 @@
 > - **Times:** A1 fica com A10 (+ginásio é do time de ginásios: `A10-ginasio`), A-R7 e A-LG (zona, 5 treinadores da Liga em `src/data/treinadores/liga.ts`, evento em `src/data/eventos/liga.ts`). Ligação **A8 ↔ A-R7**: A-R7 chega em (1, 15) vindo de A8; A8 recebe em (58, 15) (saída leste de A8, bloqueada por pedregulhos de Força). B1 não tem mais ginásio (o prédio vira o "Salão da Raizeira", sem insígnia) e `inicial-extra-1` passa para a Drª Buriti em A10 (após a insígnia 8).
 > - Arquivos de ginásio são numerados pela **insígnia nova** (`ginasio-04` = Encanto … `ginasio-08` = Mata).
 
-Base: spec seções 4.5 (ordem), 9 (personagens e eventos), 10. Tom: aventura ensolarada, humor brasileiro, conservação.
+Base: spec seções 4.4, 4.5 (ordem), 5 (ginásios e Liga dos Guardiões), 7A, 9 (personagens e eventos), 10. Tom: aventura ensolarada, humor brasileiro, conservação.
+Dono deste arquivo: time A1. O bloco acima é o resumo da reestrutura; as tabelas abaixo já estão atualizadas e valem junto com ele.
 
 ## Flags e marcos (nomes exatos)
 | Flag | Quando |
 |---|---|
 | `intro-ok` | terminou a abertura (nome, relógio com a mãe, Rádio Cipó) |
-| `inicial` = 1 \| 4 \| 7 | espécie escolhida no laboratório |
-| `ovo-entregue` | entregou o Ovo Pintado ao Seu Aroeira (A-R1/A2) e voltou; a Profª dá 5 Cuias e o Diário de Campo (`item:diario`) |
-| `rival-1` … `rival-8` | encontros com a Tainá: 1 lab/A1 (após o ovo), 2 A3, 3 A4 (antes do trem), 4 B2, 5 A6 (farol), 6 B4, 7 B7, 8 Pico (antes do Conselho) |
-| `faro-ok` | missão do Seu Aroeira após a insígnia 1 → amuleto `faro` |
-| `usina-ok` | Cartel derrotado na Usina Velha (tenente Lata) → `item:passe-trem` |
-| `pantanal-ok` | ninhos do Pantanal salvos (3º evento, tenente Arame; após insígnia 5) |
-| `farol-ok` | Cartel derrotado no Farol (tenente Rebite) → amuleto `lampiao` + `item:bilhete-saveiro` |
-| `mina-ok` | Mina de Chapada Rubra libertada (antes da insígnia 9) |
+| `inicial` = 1 \| 4 \| 7 | espécie escolhida no laboratório; junto vai `inicial-mata` \| `inicial-brasa` \| `inicial-rio` (para usar em `se`) |
+| `ovo-pintado` → `ovo-no-aroeira` → `ovo-entregue` | recebeu o Ovo Pintado (`item:ovo-pintado`) → entregou ao Seu Aroeira (A2) → voltou ao laboratório; a Profª dá 5 Cuias e o Diário de Campo (`item:diario-de-campo`, flag `diario`) |
+| `rival-1` … `rival-8` | encontros com a Tainá: 1 lab/A1 (após o ovo) · 2 A3 (após a insígnia 2) · 3 A4, no cais (`flag:usina-ok&!flag:rival-3`, antes de zarpar) · 4 Farol A6 · 5 Platô da Liga, logo depois da Liga · 6 B4 · 7 B7 · 8 Pico (antes do Conselho). A flag é marcada ao fim do duelo, vença ou perca (`['batalha', id, { segue: true }]`); `batalha-perdida` diz o resultado do último duelo |
+| `tutorial-captura` | fez o tutorial de captura com a Mateira Jurema (A-R1) |
+| `faro-missao` → `faro-achou` → `faro-ok` | missão do Seu Aroeira após a insígnia 1 → achou a Paçoca (A-R2) → amuleto `faro` |
+| `usina-ok` | Cartel derrotado na Usina Velha (tenente Lata), após a insígnia 3: religa o guincho do cais sul de A4 e a estação. **Não dá o Passe do Trem** |
+| `farol-ok` | Cartel derrotado no Farol (tenente Rebite), antes da insígnia 5 → amuleto `lampiao` (só o Lampião) |
+| `inicial-extra-1`, `inicial-extra-2` | Drª Buriti em `A10-lab` (após a insígnia 8) e ovo da Praia das Tartarugas (A-PR) — regra do spec 6.2 |
+| `liga-em-curso`, `liga-1` … `liga-4` | dentro da Liga (a porta da sala de espera fecha) e Mestres já vencidos nesta tentativa; a derrota zera tudo |
+| `liga-vencida` | venceu o Campeão Cacique Aracê em `A-LG`: Hall da Fama, `item:passe-trem`, `item:bilhete-saveiro`, pedra de evolução à escolha, aviso do Rádio Cipó; libera o mapa B |
+| `pantanal-ok` | ninhos do Pantanal salvos (tenente Arame; mapa B) |
+| `mina-ok` | Mina de Chapada Rubra libertada (antes da insígnia 10) |
 | `laboratorio-ok` | laboratório secreto do Brejo Roxo destruído (antes da insígnia 13); Queixada-Caipora (176) passa a vagar |
 | `garrote-vencido` | Coronel Garrote derrotado no Pico (antes do Conselho) |
 | `conselho-vencido` | créditos; libera pós-jogo (`pos-jogo`), B-FA, Lobo-Jaci e Onça-Guaraci errantes |
 | `venceu:<idTreinador>` | marcada pelo motor ao vencer um treinador |
-| `inicial-extra-1`, `inicial-extra-2` | Drª Buriti (B1, após insígnia 4) e ovo da Praia das Tartarugas (A-PR, após insígnia 6) — regra do spec 6.2 |
+| missões paralelas do time A1 | `m-chapeu(-achou/-ok)`, `m-pintinhas(-ok)`, `m-carta(-resposta/-ok)`, `m-perdido(-ok)`, `m-ponte(-ok)`, `m-eco(-achou/-ok)`, `m-peixe(-ok)`, `vara-velha-ok` |
 
-Amuletos: dados pelo líder junto com a insígnia conforme a tabela 4.4 (facao=2, remo=4, forca=5, quebra-pedra=8, escalar=9, cachoeira=11, mergulho=12, voo=14), exceto `faro` e `lampiao` (eventos acima).
-Portões narrativos obrigatórios: saída de A1 só com criatura (`flag:inicial`); A4→estação exige `item:passe-trem`; cais de A5 exige `item:bilhete-saveiro`; guardião do Monte Tupã (A-MT) exige `insignias:15`; Portão dos Guardiões (PP) exige `insignias:16`; B-FA exige `pos-jogo`.
+Amuletos: dados pelo líder junto com a insígnia (tabela 4.4): facao=2, **remo=3**, **quebra-pedra=6**, **forca=7**, **mergulho=9**, escalar=10, cachoeira=12, voo=14; `faro` (missão do Seu Aroeira, após a 1) e `lampiao` (evento do Farol, antes da 5) vêm de eventos.
+Portões narrativos obrigatórios: saída de A1 só com criatura (`flag:inicial`); A2→A-R2 `insignia:1`; A4→A-R4 `insignia:3`; porta da estação de A4 `flag:usina-ok`; cais sul de A4 `amuleto:remo&flag:usina-ok`; vagão do trem (A4-estacao e B1-estacao) `flag:liga-vencida&item:passe-trem`; cais do Saveiro de A5 `flag:liga-vencida&item:bilhete-saveiro`; Portão das Oito Insígnias em A-LG `insignias:8`; guardião do Monte Tupã (A-MT) `insignias:15`; Portão dos Guardiões (PP) `insignias:16`; B-FA `pos-jogo`.
+Itens de cura em batalha (spec 7A): rival, líderes e chefes só usam do 8º ginásio em diante (Liga inclusive).
 
 ## Convenções de zonas
 - Ids: `A1`, `A-R1`, `B-PA`, `PP`… (tabelas 4.1/4.2). Interiores: `<zona>-<nome>` (`A1-quarto`, `A1-casa-jogador`, `A1-lab`, `A2-posto`, `A2-venda`, `A2-casa-1`…). Dungeons com andares: `A-US-1`, `A-US-2`.
-- **Ginásios**: a zona interior `<cidade>-ginasio` é do time de ginásios. O time da cidade coloca o prédio `ginasio` e um warp de porta para `{ zona: '<cidade>-ginasio', x: 8, y: 17, dir: 'n' }`; o ginásio devolve para o tile logo abaixo da porta — declare esse tile em `docs/PORTAS-GINASIO.md` (uma linha por cidade: `A2: x, y`).
-- Posto Guardião: atendente com `script: 'posto'` (cura + salva `ultimoPosto`), `objetos` `maquina-cura` e `pc` (`script: 'viveiro'`). Venda: NPC com `loja`. Estes scripts genéricos (`posto`, `viveiro`, `pc-quarto`, `radio`) são do time do mapa A parte 1 em `src/data/eventos/comuns.ts`.
-- Treinadores: `src/data/treinadores/<time>.ts` exportando `TreinadorDef[]` (ids `<zona>-<n>`); sprites = ids de classe de `docs/MODELOS.md`; níveis conforme o `passo` da zona (tabela 4.5: nível do líder − 2 a − 6 nas rotas anteriores a ele). ≥ 150 no jogo: cada time ≥ 40.
+- **Ginásios**: a zona interior `<cidade>-ginasio` é do time de ginásios. O time da cidade coloca o prédio `ginasio` e um warp de porta para `{ zona: '<cidade>-ginasio', x: 8, y: 17, dir: 'n' }`; o ginásio devolve para o tile logo abaixo da porta — declare esse tile em `docs/PORTAS-GINASIO.md` (uma linha por cidade: `A2: x, y`). Arquivos de ginásio são numerados pela insígnia nova.
+- Posto Guardião: atendente com `script: 'posto'` (cura + salva `ultimoPosto`), `objetos` `maquina-cura` e `viveiro` (`script: 'viveiro'`). Venda: NPC com `loja`. Scripts genéricos (`posto`, `viveiro`, `pc-quarto`, `radio`, `mae-poupanca`) e comandos extras (`opcao`, `temEspecie`, `temItens`, `temDinheiro`, `poupar`, `sacar`, `contato`, `grito`, `vitrine`) ficam em `src/data/eventos/comuns.ts` (time A1).
+- Treinadores: `src/data/treinadores/<time>.ts` exportando `TreinadorDef[]` (ids `<zona>-<n>`); sprites = ids de classe de `docs/MODELOS.md`. **Níveis: ás do líder do passo −2 a −6** nas rotas anteriores a ele (ás: 12, 17, 22, 26, 30, 33, 36, 40 · Liga 41–46 · 49…63). Exceção assumida: a Trilha do Ipê (A-R1) vai de 3 a 8, porque o inicial sai do laboratório no nível 5. Estágio final só em equipes de nível ≥ 36. ≥ 150 treinadores no jogo: cada time ≥ 40.
 - Eventos de história que acontecem numa zona são do time dono da zona (`src/data/eventos/<time>.ts`).
+- Duelo de história que não pode travar o roteiro: `['batalha', id, { segue: true }]` (derrota cura a equipe e segue; `batalha-perdida` marca o resultado). Sequência que recomeça (Liga): acrescente `semMarca: true`.
 
 ## Ligações entre times (coordenadas fixas de chegada)
 | Ligação | Chegada |
 |---|---|
-| A4 → A-R4 (borda leste de A4) | A-R4 em (1, 12) olhando 'l'; volta: A4 em (58, 20) olhando 'o' |
-| A4 estação ↔ B1 estação (trem) | zona `A4-estacao` (time A1) plataforma em (8, 6); `B1-estacao` (time B1) plataforma em (8, 6); o warp `trem` fica no vagão |
-| A5 cais ↔ B9 cais (saveiro) | A5 em (30, 34) olhando 'n'; B9 em (10, 24) olhando 'n' |
-| A-BA ↔ A4 (cais sul de A4, exige remo) | A-BA em (4, 20); A4 em (30, 43) |
+| A4 → A-R4 (borda leste de A4, `insignia:3`) | A-R4 em (1, 12) olhando 'l'; volta: A4 em (58, 20) olhando 'o' |
+| A-BA ↔ A4 (cais sul de A4; exige `amuleto:remo&flag:usina-ok`) | A-BA em (4, 20); A4 em (30, 43) |
+| A8 ↔ A-R7 (saída leste de A8, fechada por pedregulhos de Força) | A-R7 em (1, 15) olhando 'l'; volta: A8 em (58, 15) olhando 'o' |
+| A-R7 ↔ A10 ↔ A-LG | mesmo time (A1): A10 em (1, 15) vindo da estrada; A-LG em (15, 68) vindo de A10; A10 em (21, 1) descendo do Platô |
+| A4 estação ↔ B1 estação (trem; `flag:liga-vencida&item:passe-trem`) | zona `A4-estacao` (time A1) plataforma em (8, 6); `B1-estacao` (time B1) plataforma em (8, 6); o warp `trem` fica no vagão |
+| A5 cais ↔ B9 cais (saveiro; `flag:liga-vencida&item:bilhete-saveiro`) | A5 em (30, 34) olhando 'n'; B9 em (10, 24) olhando 'n' |
 | B4 → B-R3 (borda leste) | B-R3 em (1, 14) 'l'; volta: B4 em (48, 16) 'o' |
 | A-MT topo → PP (lado A) | PP em (6, 52) 'n'; volta: A-MT em (20, 3) 's' |
 | B-R4 → PP (lado B) | PP em (34, 52) 'n'; volta: B-R4 em (24, 3) 's' |
 | B5 ↔ B-TA, B-TA ↔ B6 | mesmo time (B2) |
 
 ## Times de zonas
-- **A1**: A1 (+quarto, casa, lab, casas), A-R1, A2, A-R2, A-MS, A3, A-R3, A-GE, A4 (+estação) e a ABERTURA completa do jogo.
+- **A1**: A1 (+quarto, casa, lab, casas), A-R1, A2, A-R2, A-MS, A3, A-R3, A-GE, A4 (+estação, mercado), **A-R7, A10 (+posto, venda, lab da Drª Buriti, casas), A-LG (+posto, venda)**, a ABERTURA completa do jogo e a **Liga dos Guardiões** (`treinadores/liga.ts`, `eventos/liga.ts`).
 - **A2**: A-R4, A-US, A-BA, A5, A6 (+farol), A-PR, A-MG, A-GB, A7, A-R5, A-R6, A8, A-RS, A-MT, A9.
-- **B1**: B1 (+estação), B-R1, B-CE, B-PA, B2, B9, B-R2, B3 (+mina), B-CH, B-CV, B4.
+- **B1**: B1 (+estação; sem ginásio — o prédio é o "Salão da Raizeira"), B-R1, B-CE, B-PA, B2, B9, B-R2, B3 (+mina), B-CH, B-CV, B4.
 - **B2**: B-R3, B5, B-TA, B6 (+laboratório do Cartel), B-VV, B-R4, B7, B-SG, B-LG, B-R5, B8, B-FA, PP (Pico Pindorama: Portão, Garrote, salas do Conselho, créditos).

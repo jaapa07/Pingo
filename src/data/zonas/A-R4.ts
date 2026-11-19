@@ -46,7 +46,7 @@ const zona: ZonaDef = {
     { o: 'usina-fachada', ...g.p('U') },
     { o: 'placa', ...g.p('P'), texto: 'ESTRADA DA USINA\n← Porto Sereia · Usina Velha →\nRamal sul: Manguezal (leve o Facão).' },
     { o: 'placa', ...g.p('Q'), texto: 'USINA VELHA — Companhia de Luz da Costa do Sol.\nAlguém pichou por cima: "FECHADA PARA REFORMA. ASS.: NINGUÉM SUSPEITO."' },
-    { o: 'poste', x: 29, y: 9 }, { o: 'poste', x: 49, y: 9 }, { o: 'poste', x: 62, y: 14 },
+    { o: 'poste', x: 29, y: 9 }, { o: 'poste', x: 49, y: 9 }, { o: 'poste', x: 64, y: 14 },
   ],
   warps: [
     { ...g.p('W'), para: { zona: 'A4', x: 58, y: 20, dir: 'o' }, tipo: 'borda' },
@@ -71,7 +71,7 @@ const zona: ZonaDef = {
     { ...g.p('j'), item: 'cuia-rede', qtd: 3, flag: 'item:A-R4:represa' },
     { ...g.p('k'), item: 'pepita', flag: 'item:A-R4:furna' },
     { ...g.p('m'), item: 'concha-rara', oculto: true, flag: 'item:A-R4:acude' },
-    { x: 77, y: 12, item: 'garrafada', flag: 'item:A-R4:patio' },
+    { x: 76, y: 12, item: 'garrafada', flag: 'item:A-R4:patio' },
     { x: 2, y: 1, item: 'unguento', flag: 'item:A-R4:capim' },
     { x: 44, y: 22, item: 'mel-puro', oculto: true, flag: 'item:A-R4:trilha' },
   ],

@@ -45,7 +45,7 @@ const g = grade('A10', [
 });
 const placas = [
   placa(g, 'q', 'Norte: PLATÔ DA LIGA\nSó sobe quem carrega as oito insígnias da Costa do Sol.'),
-  placa(g, 'e', 'GINÁSIO DE VILA BURITI\nLíder: Raizeira Jurema-Preta — "quem planta paciência colhe vitória".'),
+  placa(g, 'e', 'GINÁSIO DE VILA BURITI\nOitava insígnia da Costa do Sol: a Insígnia da Folha. "Quem planta paciência colhe vitória."'),
   placa(g, 'i', 'POSTO GUARDIÃO\nÚltima cura grátis antes do Platô. Aproveite.'),
   placa(g, 'j', 'VENDA DA VEREDA\nEstoque de véspera de Liga: elixir, garrafada e coragem a granel (a coragem está em falta).'),
   placa(g, 'a', 'Casa da Dona Carandá, doceira.\nDoce de buriti: um por pessoa, dois por Campeão.'),
@@ -76,7 +76,7 @@ const zona: ZonaDef = {
   npcs: [
     gente(g, '1', 'a10-menina', 'cl-crianca-f', 'Juçara', { mov: 'vagar', fala: ['Quando eu crescer vou subir o Platô e ganhar do Cacique Aracê!', 'Minha mãe disse que primeiro eu tenho de ganhar da tabuada.'] }),
     gente(g, '2', 'a10-vaqueiro', 'cl-vaqueiro', 'Vaqueiro Aboio', { mov: 'olhar', fala: ['Na Liga são cinco lutas de enfiada: quatro Mestres e o Campeão. Entrou, não tem porteira de volta.', 'Lá dentro ninguém cura criatura de graça. Encha a mochila de Garrafada e Elixir aqui na Venda.'] }),
-    gente(g, '3', 'a10-velha', 'npc-idosa', 'Dona Carandá', { fala: ['A Raizeira do ginásio só luta com criatura do tipo Mata. Fogo, geada, bicada e veneno incomodam as plantas dela.', 'Mas ela deixa o chão crescer no meio da luta. Não se demore, que o cipó sobe.'] }),
+    gente(g, '3', 'a10-velha', 'npc-idosa', 'Dona Carandá', { fala: ['A líder do ginásio só luta com criatura do tipo Mata. Fogo, geada, bicada e veneno incomodam as plantas dela.', 'Mas ela deixa o chão crescer no meio da luta. Não se demore, que o cipó sobe.'] }),
     gente(g, '4', 'a10-assistente', 'npc-homem-1', 'Assistente Babaçu', { mov: 'vagar', fala: ['A Drª Buriti cuida de uma criatura que veio do laboratório da Profª Ipê, lá de Vila Jacarandá.', 'Ela só entrega para quem provar que sabe cuidar: quer ver a Insígnia da Folha no estojo.'] }),
   ],
   itens: [

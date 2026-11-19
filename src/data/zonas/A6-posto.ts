@@ -1,0 +1,7 @@
+import { postoGuardiao } from './_a1-grade';
+
+/** Posto Guardião da Ilha do Farol. */
+export default { ...postoGuardiao('A6', 'Ilha do Farol', [22, 14], [
+  { sprite: 'cl-pescador', nome: 'Pescador Faísca', fala: ['Sem farol eu não saio de noite. Da última vez pesquei a própria canoa.', 'Lá no alto prenderam as criaturas de Trovão em jaula. Dá para ouvir o zumbido daqui.'] },
+  { sprite: 'npc-mulher-1', nome: 'Dona Candeia', fala: ['Quem derrotar aquela gente do farol ganha o Lampião do Volta, pode apostar. Ele dá presente até para o carteiro.', 'Lampião só acende com parceira de Brasa, Trovão ou Encanto na equipe.'], mov: 'parado' },
+]), passo: 5 };

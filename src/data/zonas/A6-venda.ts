@@ -1,0 +1,7 @@
+import { venda } from './_a1-grade';
+
+/** Venda da Ilha do Farol: Cuia Noturna e Cuia Rápida chegam quando o farol reacende. */
+export default { ...venda('A6', 'Ilha do Farol', [26, 14], { nome: 'Seu Pavio', fala: 'Venda do Pavio! Vela, pilha, cuia e conversa fiada. A conversa é grátis.' }, [
+  ['flag:farol-ok', ['cuia', 'cuia-rede', 'cuia-trancada', 'cuia-noturna', 'cuia-rapida', 'garrafada', 'elixir-andiroba', 'mel-puro', 'unguento', 'pomada-copaiba', 'cha-guarana', 'garapa', 'fumaca-andiroba-forte', 'corda-de-cipo']],
+  ['!flag:farol-ok', ['cuia', 'cuia-rede', 'cuia-trancada', 'garrafada', 'mel-puro', 'unguento', 'pomada-copaiba', 'cha-guarana', 'fumaca-andiroba', 'corda-de-cipo']],
+], { sprite: 'cl-escoteira', nome: 'Escoteira Luzia', fala: ['Cuia Noturna funciona melhor de noite e em caverna. Na Gruta Breu deve ser uma festa.', 'Paralisia cura com Pomada de Copaíba. Contra o Volta, leve um punhado.'] }), passo: 5 };

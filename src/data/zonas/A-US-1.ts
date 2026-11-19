@@ -11,7 +11,7 @@ const g = grade('A-US-1', 30, [
   '##########|##########|##########',
   '#A...L#...|..........|...#....B#',
   '#.....#..%|%%%....%%%|...#.....#',
-  '#..1..#..%|%%%....%%%|...#.....#',
+  '#.1...#..%|%%%....%%%|...#.....#',
   '#.....#...|..........|...#..2..#',
   '###.###...|...xx.....|...###J###',
   '#.........|...xx.....|.........#',
@@ -49,7 +49,7 @@ const zona: ZonaDef = {
   ],
   portoes: [{ ...g.p('J'), requer: 'flag:usina-grade', fala: 'Uma grade de ferro fecha a passagem.\nDeve haver uma alavanca em algum canto desta usina.' }],
   npcs: [
-    { id: 'c1', sprite: 'capanga-m', ...g.p('1'), dir: 's', se: '!flag:usina-ok', treinador: 'A-US-1', visao: 3 },
+    { id: 'c1', sprite: 'capanga-m', ...g.p('1'), dir: 'l', se: '!flag:usina-ok', treinador: 'A-US-1', visao: 3 },
     { id: 'c2', sprite: 'capanga-f', ...g.p('2'), dir: 'o', se: '!flag:usina-ok', treinador: 'A-US-2', visao: 3 },
     { id: 'c3', sprite: 'capanga-m', ...g.p('3'), dir: 'l', mov: 'olhar', se: '!flag:usina-ok', treinador: 'A-US-3', visao: 4 },
     { id: 'c4', sprite: 'capanga-f', ...g.p('4'), dir: 'o', se: '!flag:usina-ok', treinador: 'A-US-4', visao: 4 },
@@ -65,7 +65,7 @@ const zona: ZonaDef = {
   ],
   habitats: [{
     metodo: 'caverna', taxa: 0.12,
-    todos: [{ e: 141, nv: [20, 23], peso: 45 }, { e: 28, nv: [20, 23], peso: 35 }, { e: 63, nv: [21, 23], peso: 10 }, { e: 30, nv: [20, 22], peso: 10 }],
+    todos: [{ e: 141, nv: [20, 23], peso: 45 }, { e: 28, nv: [20, 23], peso: 35 }, { e: 63, nv: [21, 23], peso: 10 }, { e: 30, nv: [20, 21], peso: 10 }],
     camadas: [{ apos: 7, todos: [{ e: 29, nv: [36, 38], peso: 40 }, { e: 142, nv: [36, 38], peso: 35 }, { e: 141, nv: [24, 25], peso: 15 }, { e: 64, nv: [37, 39], peso: 10 }] }],
   }],
 };

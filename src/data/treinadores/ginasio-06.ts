@@ -1,0 +1,39 @@
+import type { TreinadorDef } from '../../core/tipos';
+
+/**
+ * Ginásio do Assombro (nº 6, Serra Fumaça): a plateia dos causos e a líder Dona Benta Sombra. Líder nv 31–33.
+ * As linhas de Assombro só chegam ao estágio final a partir do nível 34–36, então a equipe da líder ainda é de
+ * criaturas sem evoluir; o ás é o Noitim de nível 33.
+ */
+export const TREINADORES_GINASIO_06: TreinadorDef[] = [
+  { id: 'g06-1', classe: 'Garoto', nome: 'Zeca Medroso', sprite: 'cl-crianca-m', ia: 'treinador', premio: 1120,
+    equipe: [{ e: 30, nv: 28 }, { e: 93, nv: 28 }],
+    desafio: 'Q-quem está aí? Ah, é gente. Então batalha comigo, que assim eu esqueço o medo!', derrota: 'Agora o medo é de você.', depois: 'A lamparina de pé ali do canto acende a sua. Sem luz, não dá para saber onde o chão é chão.' },
+  { id: 'g06-2', classe: 'Repentista', nome: 'Chico Viola', sprite: 'cl-repentista', ia: 'treinador', premio: 1200,
+    equipe: [{ e: 169, nv: 29 }, { e: 55, nv: 29 }, { e: 93, nv: 30 }],
+    desafio: 'No escuro desta sala / fiz um verso de arrepiar: / quem pisa sem lamparina / vai lá embaixo se encontrar!', derrota: 'Perdi a rima e a batalha.', depois: 'O óleo acaba antes da porta. No fim da fila de baixo tem outra lamparina: é reto, pode ir.' },
+  { id: 'g06-3', classe: 'Observadora', nome: 'Dalva', sprite: 'cl-observadora', ia: 'treinador', premio: 1240,
+    equipe: [{ e: 171, nv: 30 }, { e: 30, nv: 30 }, { e: 169, nv: 31 }],
+    desafio: 'Psiu! Estou esperando a assombração da meia-noite. Enquanto ela não vem, serve você.', derrota: 'A assombrada fui eu.', depois: 'Corredor comprido para o leste? É beco. O caminho bom sobe só dois passos e vira para o oeste.' },
+  { id: 'g06-4', classe: 'Repentista', nome: 'Mestre Agouro', sprite: 'cl-repentista', ia: 'treinador', premio: 1280,
+    equipe: [{ e: 55, nv: 31 }, { e: 171, nv: 31 }, { e: 93, nv: 32 }],
+    desafio: 'Passou pelas três salas? Então escute o último causo antes da Dona Benta: o da sua derrota!', derrota: 'Esse causo acabou diferente.', depois: 'A Dona Benta derruba a sua precisão com névoa e mau agouro. Golpe que nunca erra vale ouro.' },
+  /*
+   * LÍDER — Dona Benta Sombra (Assombro). Fraquezas do Assombro: Assombro e Encanto (Comum não o atinge).
+   * Estratégia: o Urubuzim (Vento/Assombro) abre com Mau Agouro e leva Cuspe Ácido para os tipos Encanto; o
+   * Urutauzim cega com Luz de Lamparina e bate com Assombração; o Graxaim (Comum/Assombro) é imune a Assombro,
+   * a fraqueza da casa, e usa Toca e Foge para trazer quem convém. O ás é o Noitim (Assombro/Mente) de nível 33:
+   * Pressentimento contra Veneno e Ginga, Assombração no mesmo tipo e Luz de Lamparina para fazer o desafiante errar.
+   * Cura: 1 Garrafada definida (no Aventureiro o motor só libera itens a partir do 8º ginásio); o ás segura uma Acerola.
+   */
+  { id: 'lider-06', classe: 'Líder', nome: 'Dona Benta Sombra', sprite: 'lider-08', ia: 'lider', premio: 3300, insignia: 6, musica: 'batalha-lider', flag: 'ginasio-06-vencido',
+    itens: ['garrafada'],
+    equipe: [
+      { e: 55, nv: 31, golpes: ['sombra-rasteira', 'cuspe-acido', 'mau-agouro', 'golpe-de-asa'] },
+      { e: 169, nv: 31, golpes: ['assombracao', 'lufada', 'luz-de-lamparina', 'eco-da-serra'] },
+      { e: 93, nv: 32, golpes: ['assombracao', 'dentada', 'toca-e-foge', 'luz-de-lamparina'] },
+      { e: 171, nv: 33, golpes: ['assombracao', 'pressentimento', 'luz-de-lamparina', 'lambida-fria'], item: 'acerola' },
+    ],
+    desafio: 'Senta que lá vem história… Era uma vez um desafiante que atravessou o breu sem cair. Como termina? Isso a gente descobre agora!',
+    derrota: 'E viveram assombrados para sempre… eu, pelo menos. Que causo bom você me deu!', depois: 'Medo é só uma história mal contada.' },
+];

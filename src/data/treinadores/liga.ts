@@ -1,0 +1,65 @@
+import type { TreinadorDef, MembroEquipe } from '../../core/tipos';
+
+/**
+ * LIGA DOS GUARDIÕES (Platô da Liga, A-LG) — fim do mapa A, depois da 8ª insígnia (spec 4.5 e 5). Cinco lutas seguidas.
+ * Níveis: Mestres com ás 41–44, Campeão com ás 46 (acima do líder 8, ás 40; abaixo do líder 9, 47–49).
+ * Todos usam cura (spec 7A: do 8º ginásio em diante). Só estágios finais (nível ≥ 36) e sem os iniciais nem lendários.
+ * Cada Mestre junta dois tipos e leva uma ou duas criaturas que cobrem a fraqueza comum do tema.
+ */
+const mestre = (id: string, classe: string, nome: string, sprite: string, equipe: MembroEquipe[], premio: number, desafio: string, derrota: string, extra: Partial<TreinadorDef> = {}): TreinadorDef =>
+  ({ id, classe, nome, sprite, equipe, ia: 'lider', premio, desafio, derrota, itens: ['garrafada', 'garrafada'], musica: 'batalha-lider', ...extra });
+
+export const TREINADORES_LIGA: TreinadorDef[] = [
+  /*
+   * 1 · Mestra Maré (Rio/Veneno) — pescadora de mangue. Fraquezas do tema: Trovão e Mata (no Rio), Terra e Mente (no Veneno).
+   * Cobertura: Jararacuçu (Veneno/Terra) e o ás Jaú-Gigante (Rio/Terra) anulam Trovão; os venenosos castigam quem vem de Mata.
+   */
+  mestre('liga-1', 'Mestra', 'Maré', 'cl-pescador',
+    [{ e: 126, nv: 40 }, { e: 118, nv: 40 }, { e: 89, nv: 40 }, { e: 26, nv: 40 }, { e: 40, nv: 41 }], 4100,
+    'Sou a Maré, primeira Mestra. No mangue a água sobe devagar e quando você vê já está no pescoço. Assim é a minha equipe: veneno primeiro, enchente depois!',
+    'A maré virou… e virou para o seu lado. Passe, desafiante: a forja do Brasa-Viva já está acesa.'),
+  /*
+   * 2 · Ferreiro Brasa-Viva (Brasa/Ferro) — forjador de sinos. Fraquezas: Rio, Terra, Pedra (na Brasa); Brasa, Ginga, Terra (no Ferro).
+   * Cobertura: Tucanuçu (Vento/Brasa) voa por cima da Terra e bica quem vem de Ginga; Siri-Couraça (Rio/Ferro) apaga Brasa e Pedra alheias.
+   */
+  mestre('liga-2', 'Ferreiro', 'Brasa-Viva', 'cl-ferreiro',
+    [{ e: 42, nv: 41 }, { e: 34, nv: 41 }, { e: 50, nv: 41 }, { e: 130, nv: 41 }, { e: 146, nv: 42 }], 4200,
+    'Brasa-Viva, segundo Mestre! Sino bom se faz batendo: ferro na brasa, martelo no ferro. Vamos ver de que liga é feita a sua equipe!',
+    'Rachou o meu sino… e que som bonito ele fez. Vá, a neblina do Pajé está à sua espera.'),
+  /*
+   * 3 · Pajé Neblina (Mente/Assombro) — contador de lendas. Fraqueza comum: Assombro (bate em Mente e em Assombro).
+   * Cobertura: Jaguatiricão (Comum/Assombro) é imune a Assombro; Polvão (Rio/Mente) segura Brasa; o ás Noitão fecha com sono e susto.
+   */
+  mestre('liga-3', 'Pajé', 'Neblina', 'npc-idoso',
+    [{ e: 44, nv: 42 }, { e: 94, nv: 42 }, { e: 122, nv: 42 }, { e: 70, nv: 42 }, { e: 170, nv: 42 }, { e: 172, nv: 43 }], 4300,
+    'Sente, desafiante. Eu sou o Neblina, e toda luta minha começa com uma história: era uma vez uma equipe que entrou nesta sala… e não lembrava como saiu.',
+    'Essa história eu não conhecia: a do desafiante que atravessou a neblina. Vou contar aos meus netos. A Pampa é a próxima porteira.'),
+  /*
+   * 4 · Domadora Pampa (Comum/Ginga) — treinadora de bichos de rodeio. Fraquezas: Ginga (no Comum); Vento, Mente e Encanto (na Ginga).
+   * Cobertura: Bugio-Trovão (Ginga/Trovão) derruba Vento; Emaçu (Terra/Ginga) e Capivarona (Comum/Rio) seguram Brasa e Pedra;
+   * contra Assombro (imune a Comum e a Ginga) ela conta com o Trovão do Bugio e a água da Capivarona.
+   */
+  mestre('liga-4', 'Domadora', 'Pampa', 'cl-vaqueiro',
+    [{ e: 104, nv: 43 }, { e: 96, nv: 43 }, { e: 102, nv: 43 }, { e: 64, nv: 43 }, { e: 58, nv: 43 }, { e: 72, nv: 44 }], 4400,
+    'Eita, chegou longe! Sou a Pampa, última porteira antes do Campeão. Bicho meu não é domado no grito: é no compasso. Segura o tranco, que o rodeio vai começar!',
+    'Me derrubou da sela, e com classe! Atrás daquela porta está o Cacique Aracê. Tire o chapéu ao entrar.', { itens: ['garrafada', 'elixir-andiroba'] }),
+  /*
+   * 5 · Campeão Cacique Aracê — equipe mista de 6, com uma criatura de tipo Lenda não lendária (Pirarucão, Rio/Lenda) como ás.
+   * Cada membro cobre a fraqueza de outro: Antão (Terra/Mata) anula Trovão para as aves e para o Pirarucão; Poraquê (Rio/Trovão)
+   * derruba Vento e Rio; Leão-Dourado (Brasa/Ginga) queima Mata, Geada e Inseto que ameaçam o Antão e o ás; Urubu-Rei
+   * (Vento/Assombro) é imune a Comum, Ginga e Terra; Gaviãozão (Comum/Vento) abre o jogo com velocidade.
+   */
+  { id: 'liga-5', classe: 'Campeão', nome: 'Cacique Aracê', sprite: 'npc-homem-3', ia: 'conselho', premio: 9200, musica: 'batalha-conselho',
+    equipe: [{ e: 12, nv: 44 }, { e: 98, nv: 44 }, { e: 116, nv: 45 }, { e: 68, nv: 45 }, { e: 56, nv: 45 }, { e: 112, nv: 46 }],
+    itens: ['elixir-andiroba', 'elixir-andiroba'],
+    desafio: 'Aracê quer dizer "o nascer do dia". Há vinte anos eu vejo o sol nascer deste Platô, e há vinte anos ninguém me tira daqui.\fVocê trouxe oito insígnias e venceu quatro Mestres. Falta um amanhecer. Mostre-me a sua equipe inteira, {JOGADOR}!',
+    derrota: 'O sol… nasceu do outro lado hoje. Vinte anos! E perdi sorrindo. Você e as suas criaturas lutam como quem conversa.' },
+
+  /* Rival Tainá, encontro 5: no terreiro do Platô, logo depois da Liga. Sufixo = tipo do inicial DELA (o que vence o do jogador). */
+  ...(['brasa', 'rio', 'mata'] as const).map((dela): TreinadorDef => ({
+    id: `rival-5-${dela}`, classe: 'Rival', nome: 'Tainá', sprite: 'taina', ia: 'lider', premio: 4500, musica: 'batalha-rival', flag: 'rival-5', itens: ['garrafada'],
+    equipe: [{ e: 12, nv: 42 }, { e: 29, nv: 42 }, { e: dela === 'brasa' ? 26 : dela === 'rio' ? 17 : 42, nv: 42 }, { e: 64, nv: 43 }, { e: 108, nv: 43 }, { e: dela === 'brasa' ? 6 : dela === 'rio' ? 9 : 3, nv: 45 }],
+    desafio: 'CAMPEÃO?! Você?! Eu estava presa no terceiro Mestre e ouvi o sino do Platô tocar para VOCÊ!\fNão, não, não. Antes de qualquer festa, {JOGADOR}: eu e você, aqui, agora. Equipe completa!',
+    derrota: 'Tá. Tá bom! Você é o Campeão e eu sou… a próxima. Anota: a PRÓXIMA.',
+  })),
+];

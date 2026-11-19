@@ -6,8 +6,11 @@ import { CATALOGO_INTERIOR } from '../src/data/catalogo-interiores';
 import { TREINADORES_A1 } from '../src/data/treinadores/a1';
 import { EVENTOS_A1 } from '../src/data/eventos/a1';
 import { EVENTOS_COMUNS } from '../src/data/eventos/comuns';
+import { TREINADORES_LIGA } from '../src/data/treinadores/liga';
+import { EVENTOS_LIGA } from '../src/data/eventos/liga';
+import { ESPECIES } from '../src/data/criaturas';
 const dir = new URL('../src/data/zonas/', import.meta.url).pathname;
-const MEUS = /^(A1|A2|A3|A4|A-R1|A-R2|A-R3|A-MS|A-GE)(-|\.)/;
+const MEUS = /^(A1|A2|A3|A4|A10|A-R1|A-R2|A-R3|A-R7|A-MS|A-GE|A-LG)(-|\.)/;
 const Z = new Map<string, ZonaDef>();
 for (const f of readdirSync(dir)) { if (f.startsWith('_')) continue; try { const m = await import(dir + f); if (m.default?.mapaChars) Z.set(m.default.id, m.default); } catch (e) { if (MEUS.test(f)) console.log('ERRO ao carregar', f, String(e).slice(0, 200)); } }
 const cat: Record<string, any> = { ...CATALOGO_EXTERIOR, ...CATALOGO_INTERIOR };
@@ -23,7 +26,8 @@ function blocos(z: ZonaDef) {
 }
 const ehEnt = (t?: string) => !!t && t !== 'borda' && t !== 'buraco';
 const meus = [...Z.values()].filter((z) => MEUS.test(z.id + '.') && !z.id.endsWith('-ginasio'));
-const ids = new Set(TREINADORES_A1.map((t) => t.id)), evs = new Set([...EVENTOS_A1, ...EVENTOS_COMUNS].map((e) => e.id));
+const TREINADORES = [...TREINADORES_A1, ...TREINADORES_LIGA], EVENTOS = [...EVENTOS_A1, ...EVENTOS_COMUNS, ...EVENTOS_LIGA];
+const ids = new Set(TREINADORES.map((t) => t.id)), evs = new Set(EVENTOS.map((e) => e.id));
 for (const z of meus) {
   const { w, h, b } = blocos(z);
   z.mapaChars.forEach((l, y) => { if (l.length !== w) E(`${z.id}: linha ${y} com ${l.length} (esperado ${w})`); });
@@ -77,7 +81,7 @@ for (const [zid, l] of Object.entries(T64)) for (const [e, m] of l) { const hb =
 
 /* ---------- alcance com Amuletos: itens/NPCs alcançáveis e áreas de Amuleto fechadas antes da hora ---------- */
 type Cap = 'facao' | 'remo' | 'forca' | 'quebra' | 'escalar' | 'portoes';
-function alcanceCom(z: ZonaDef, caps: Cap[]): Set<string> {
+function alcanceCom(z: ZonaDef, caps: Cap[], inicio?: [number, number][]): Set<string> {
   const { w, h, b } = blocos(z), ch = (x: number, y: number) => z.mapaChars[y]?.[x] ?? ' ', tem = (c: Cap) => caps.includes(c);
   const portao = (x: number, y: number) => !tem('portoes') && (z.portoes ?? []).some((p) => x >= p.x && y >= p.y && x < p.x + (p.w ?? 1) && y < p.y + (p.h ?? 1));
   const ok = (x: number, y: number) => {
@@ -86,10 +90,12 @@ function alcanceCom(z: ZonaDef, caps: Cap[]): Set<string> {
     return LIVRE.has(c) || (c === 'c' && tem('facao')) || ('~dw'.includes(c) && tem('remo')) || (c === 'p' && tem('forca')) || (c === 'r' && tem('quebra')) || (c === 'e' && tem('escalar'));
   };
   // partidas: pouso, chegadas de warps de outras zonas e o tile de cada warp de borda
-  const ini: [number, number][] = [];
+  const ini: [number, number][] = inicio ? [...inicio] : [];
+  if (inicio) { /* partida fixa */ } else {
   if (z.pouso) ini.push(z.pouso);
   for (const o of Z.values()) for (const q of o.warps) if (q.para.zona === z.id) ini.push([q.para.x, q.para.y]);
   if (z.id === 'A1-quarto') ini.push([5, 5]);
+  }
   const vis = new Set<string>(), fila: [number, number][] = [];
   for (const [x, y] of ini) if (ok(x, y) && !vis.has(x + ',' + y)) { vis.add(x + ',' + y); fila.push([x, y]); }
   while (fila.length) { const [x, y] = fila.shift()!;
@@ -112,10 +118,11 @@ fechar('A3', 'pt-33', 'portoes'); fechar('A3', 'pedra-mare', 'remo'); fechar('A3
 fechar('A-R3', 'folha-ancestral', 'escalar'); fechar('A-R3', 'elixir-andiroba', 'quebra'); fechar('A-R3', 'cuia-rede', 'remo'); fechar('A-R3', 'pt-28', 'forca');
 fechar('A-GE', 'pt-42', 'remo'); fechar('A-GE', 'pt-41', 'quebra'); fechar('A-GE', 'pepita', 'remo'); fechar('A-GE', 'cuia-ouro', 'forca');
 fechar('A4', 'pt-31', 'escalar'); fechar('A4', 'pt-15', 'facao'); fechar('A4', 'pedra-mare', 'remo');
+fechar('A-R7', 'pt-46', 'escalar'); fechar('A-R7', 'pepita', 'quebra'); fechar('A-R7', 'pedra-mare', 'remo'); fechar('A10', 'pedra-lunar', 'remo');
 let nFechados = 0, nVisao = 0;
 for (const z of meus) {
   // na Trilha dos Cipós o Facão já é exigido na entrada: é a base da zona
-  const base: Cap[] = z.id === 'A-R3' ? ['facao'] : [];
+  const base: Cap[] = z.id === 'A-R3' ? ['facao'] : z.id === 'A-R7' ? ['forca'] : z.id === 'A-LG' ? ['portoes'] : [];
   const tudo = alcanceCom(z, TODAS), pe = alcanceCom(z, base);
   const perto = (v: Set<string>, x: number, y: number) => v.has(x + ',' + y) || [[0, 1], [0, -1], [1, 0], [-1, 0]].some(([dx, dy]) => v.has(x + dx + ',' + (y + dy)));
   for (const i of z.itens ?? []) {
@@ -143,5 +150,33 @@ for (const z of meus) {
   }
 }
 console.log(`áreas de Amuleto conferidas: ${nFechados} · linhas de visão conferidas: ${nVisao}`);
+
+/* ---------- zonas novas: Estrada do Buriti só com Força; Platô; referências de eventos ---------- */
+{
+  const r7 = Z.get('A-R7'), chega = (caps: Cap[]) => !!r7 && r7.warps.some((q) => q.para.zona === 'A10' && alcanceCom(r7, caps, [[1, 15]]).has(q.x - 1 + ',' + q.y));
+  if (r7) { if (chega([])) E('A-R7: dá para chegar a A10 sem Força'); if (chega(['quebra', 'facao', 'remo'])) E('A-R7: dá para chegar a A10 sem Força (com outros Amuletos)'); if (!chega(['forca'])) E('A-R7: não dá para chegar a A10 com Força'); }
+  const lg = Z.get('A-LG');
+  if (lg) {
+    const semPortoes = alcanceCom(lg, []), tudo = alcanceCom(lg, ['portoes']);
+    for (const id of ['liga-mare', 'liga-brasa-viva', 'liga-neblina', 'liga-pampa', 'liga-arace']) { const n = lg.npcs?.find((q) => q.id === id); if (!n) { E('A-LG: falta ' + id); continue; } const viz = (v: Set<string>) => [[0, 1], [0, -1], [1, 0], [-1, 0]].some(([dx, dy]) => v.has(n.x + dx + ',' + (n.y + dy))); if (viz(semPortoes)) E(`A-LG: ${id} alcançável sem passar pelos portões`); if (!viz(tudo)) E(`A-LG: ${id} inalcançável`); }
+  }
+  // comandos de evento: scripts chamados, treinadores de batalha, itens dados e zonas de warp têm de existir
+  const itens = new Set<string>(); { const m = await import('../src/data/itens'); for (const v of Object.values(m)) if (Array.isArray(v)) for (const i of v as any[]) if (i?.id && i?.bolso) itens.add(i.id); else if (v && typeof v === 'object') for (const i of Object.values(v as any) as any[]) if (i?.id && i?.bolso) itens.add(i.id); }
+  const anda = (ev: string, passos: any[]) => { for (const c of passos) { if (!Array.isArray(c)) continue; const [n, a, b, d] = c;
+    if (n === 'chamar' && !evs.has(a)) E(`evento ${ev}: chama ${a} inexistente`);
+    if (n === 'batalha' && !ids.has(a)) E(`evento ${ev}: batalha com ${a} inexistente`);
+    if ((n === 'dar' || n === 'tirar') && !itens.has(a)) E(`evento ${ev}: item ${a} inexistente`);
+    if (n === 'warp') { const zd = Z.get(a); if (!zd) E(`evento ${ev}: warp para zona ${a} inexistente`); else if (!LIVRE.has(zd.mapaChars[d]?.[b] ?? ' ')) E(`evento ${ev}: warp para ${a} (${b},${d}) bloqueado`); }
+    if ((n === 'darCriatura' || n === 'selvagem') && !ESPECIES.some((e) => e.num === a)) E(`evento ${ev}: espécie ${a} inexistente`);
+    if (n === 'se') { anda(ev, b ?? []); anda(ev, d ?? []); } } };
+  for (const e of EVENTOS) anda(e.id, e.passos);
+  for (const z of meus) for (const i of z.itens ?? []) if (!itens.has(i.item)) E(`${z.id}: item de chão ${i.item} inexistente`);
+  for (const z of meus) for (const n of z.npcs ?? []) for (const i of n.loja ?? []) if (!itens.has(i)) E(`${z.id}: loja de ${n.id} vende ${i} inexistente`);
+  // curva de níveis: equipes dentro da faixa do passo e sem evolução adiantada
+  const pre = new Map<number, number>(); for (const e of ESPECIES) for (const v of e.evolui ?? []) if (v.nivel) pre.set(v.para, v.nivel);
+  const FAIXA: [RegExp, number, number][] = [[/^A-R1-/, 3, 10], [/^(A-R2|A-MS|A3)-/, 11, 15], [/^(A-R3|A-GE|A4)-/, 16, 20], [/^A-R7-/, 34, 38], [/^liga-[1-4]$/, 40, 44], [/^liga-5$/, 44, 46]];
+  for (const t of TREINADORES) { const f = FAIXA.find(([r]) => r.test(t.id));
+    for (const m of t.equipe) { if (f && (m.nv < f[1] || m.nv > f[2])) E(`treinador ${t.id}: espécie ${m.e} no nv ${m.nv} fora da faixa ${f[1]}–${f[2]}`); const min = pre.get(m.e); if (min && m.nv < min) E(`treinador ${t.id}: espécie ${m.e} no nv ${m.nv} antes de evoluir (nv ${min})`); } }
+}
 console.log(`zonas minhas: ${meus.length} → ${meus.map((z) => `${z.id} ${z.mapaChars[0].length}×${z.mapaChars.length}`).join(' · ')}`);
-console.log(`treinadores: ${TREINADORES_A1.length} · eventos: ${EVENTOS_A1.length + EVENTOS_COMUNS.length} · erros: ${erros}`);
+console.log(`treinadores: ${TREINADORES.length} · eventos: ${EVENTOS.length} · erros: ${erros}`);

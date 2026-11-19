@@ -1,0 +1,62 @@
+import type { ZonaDef } from '../../core/tipos';
+import { grade } from './_a2-grade';
+
+/**
+ * A-GB-2 Gruta Breu, galeria do lago (escura). Da escada do noroeste segue-se pelo corredor norte e desce-se
+ * pela margem leste até a boca que sai em Serra Fumaça. O lago do meio guarda uma ilhota (Remo) e o balcão do
+ * nordeste só se alcança pela trepadeira (Escalar).
+ */
+const g = grade('A-GB-2', 40, [
+  '##########|##########|##########|##########',
+  '##########|##########|##########|##########',
+  '#U.%%%%%%#|###%%%%%%%|%%%%%#####|##%%%%%%##',
+  '#..%%%%%%%|%%%%%%%%%%|%%%%%%####|#%%%%q%%%#',
+  '#%%%%%%%%#|###%%%6%%%|%%%%%%%###|#%%%%%%%%#',
+  '##%%%%%%##|####%%%%%%|%###%%%%##|##%%%%%%##',
+  '###%%%####|#####%%%##|####%%%%%#|###e######',
+  '###%%%####|######~~~~|~~~~~%%%%%|%%%%%%%%##',
+  '##%%%%%###|####~~~~~~|~~~~~~%%%%|%%%%%7%%%#',
+  '##%%8%%%##|###~~~~~~~|~~~~~~~%%#|###%%%%%%#',
+  '##%%%%%%%#|###~~~;;~~|~~~~~~~~##|####%%%%##',
+  '###%%%%%%%|%%~~~~;h~~|~~~~~~~~~#|####%%%###',
+  '####%%%%%%|%%%~~~~~~~|~~~~~~~~~#|###%%%%###',
+  '#####%%%##|##%%~~~~~~|~~~~~~~%%#|##%%%%%%##',
+  '######%###|###%%%~~~~|~~~~~%%%%%|%%%%%%%%%#',
+  '#####%%%##|####%%%%%%|%%%%%%%%##|###%%%%%%#',
+  '####%%%%%#|#####%%%%%|%%9%%%####|####%%%%##',
+  '####%%y%%#|##########|##########|#####%%###',
+  '####%%%%##|##########|##########|####%%%%##',
+  '##########|##########|##########|####%%.%##',
+  '##########|##########|##########|####%+%%##',
+  '##########|##########|##########|#####X####',
+], { X: '+', q: '%', y: '%', h: ';', '6': '%', '7': '%', '8': '%', '9': '%' });
+const zona: ZonaDef = {
+  id: 'A-GB-2', nome: 'Gruta Breu — Lago do Fundo', mapa: 'A', tipo: 'caverna', tileset: 'caverna', musica: 'caverna', arena: 'caverna', escuro: true, passo: 6,
+  mapaChars: g.mapa,
+  objetos: [{ o: 'escada-sobe', ...g.p('U') }],
+  warps: [
+    { ...g.p('U'), para: { zona: 'A-GB-1', x: 36, y: 3, dir: 's' }, tipo: 'escada' },
+    { ...g.p('X'), para: { zona: 'A7', x: 5, y: 4, dir: 's' }, tipo: 'caverna' },
+  ],
+  npcs: [
+    { id: 'A-GB-6', sprite: 'cl-ferreiro', ...g.p('6'), dir: 's', treinador: 'A-GB-6', visao: 3 },
+    { id: 'A-GB-7', sprite: 'cl-repentista', ...g.p('7'), dir: 'o', treinador: 'A-GB-7', visao: 4 },
+    { id: 'A-GB-8', sprite: 'cl-pescador', ...g.p('8'), dir: 'l', mov: 'olhar', treinador: 'A-GB-8', visao: 3 },
+    { id: 'A-GB-9', sprite: 'cl-mateira', ...g.p('9'), dir: 'o', treinador: 'A-GB-9', visao: 4 },
+    { id: 'gb-andarilho', sprite: 'npc-idoso', x: 36, y: 18, fala: ['Está sentindo o ar frio? É a neblina de Serra Fumaça entrando pela boca da gruta.', 'Lá em cima a Dona Benta Sombra conta causo de arrepiar. O ginásio dela é escuro que nem isto aqui.'] },
+  ],
+  itens: [
+    { ...g.p('q'), item: 'pt-36', flag: 'item:A-GB-2:balcao' },
+    { ...g.p('y'), item: 'cuia-trancada', qtd: 3, flag: 'item:A-GB-2:oeste' },
+    { ...g.p('h'), item: 'pepita', oculto: true, flag: 'item:A-GB-2:ilhota' },
+    { x: 26, y: 15, item: 'mel-puro', oculto: true, flag: 'item:A-GB-2:margem' },
+  ],
+  habitats: [
+    { metodo: 'caverna', taxa: 0.09, todos: [{ e: 171, nv: [28, 31], peso: 32 }, { e: 30, nv: [20, 21], peso: 15 }, { e: 31, nv: [29, 31], peso: 23 }, { e: 165, nv: [28, 29], peso: 12 }, { e: 147, nv: [28, 30], peso: 8 }], camadas: [{ apos: 8, todos: [{ e: 31, nv: [36, 39], peso: 35 }, { e: 172, nv: [38, 41], peso: 30 }, { e: 166, nv: [37, 40], peso: 20 }, { e: 171, nv: [32, 33], peso: 15 }] }] },
+    { metodo: 'agua', taxa: 0.08, todos: [{ e: 39, nv: [28, 31], peso: 65 }, { e: 127, nv: [28, 31], peso: 35 }] },
+    { metodo: 'pesca-velha', todos: [{ e: 39, nv: [14, 18], peso: 100 }] },
+    { metodo: 'pesca-boa', todos: [{ e: 39, nv: [27, 31], peso: 70 }, { e: 127, nv: [27, 31], peso: 30 }] },
+    { metodo: 'pesca-mestra', todos: [{ e: 39, nv: [33, 34], peso: 100 }] },
+  ],
+};
+export default zona;

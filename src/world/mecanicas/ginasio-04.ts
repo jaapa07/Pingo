@@ -20,7 +20,7 @@ const REFLEXO: Record<Giro, Record<Dir, Dir>> = { '/': { n: 'l', l: 'n', s: 'o',
 const enf = new Enfeites();
 let espelhos: Espelho[] = [], raio = new Set<string>(), acesas: boolean[] = [false, false], aberta = false;
 
-const BARRA = ['.......ww', '......www', '.....www.', '....www..', '...www...', '..www....', '.www.....', 'www......', 'ww.......'];
+const BARRA = ['......kkk', '.....kwwk', '....kwwk.', '...kwwk..', '..kwwk...', '.kwwk....', 'kwwk.....', 'kwk......', 'kk.......'];
 const CONTRA = BARRA.map((l) => l.split('').reverse().join(''));
 const ESTRELA = ['....k....', '...kwk...', 'kkkkwkkkk', 'kwwwwwwwk', '.kwwwwwk.', '..kwwwk..', '.kwwkwwk.', '.kwk.kwk.', '.kk...kk.'];
 const VITRAL = ['.kkkkk.', 'kywywyk', 'kwywywk', 'kywywyk', 'kwywywk', '.kkkkk.'];
@@ -46,7 +46,7 @@ function tracar() {
   ESTRELAS.forEach(([x, y], i) => enf.pix('e' + i, [ESTRELA], luz[i] ? { k: '#946414', w: '#fffcc0' } : { k: '#3c2c5c', w: '#8c7cac' }, x, y, { dx: 3, dy: 3, z: 3 }));
   return luz.some((l, i) => l && !antes[i]);
 }
-function pintarEspelho(e: Espelho) { enf.pix(`m${e.x},${e.y}`, [e.g === '/' ? BARRA : CONTRA], { w: '#fffcf0' }, e.x, e.y, { dx: 3, dy: -4, z: e.y * 16 + 20 }); }
+function pintarEspelho(e: Espelho) { enf.pix(`m${e.x},${e.y}`, [e.g === '/' ? BARRA : CONTRA], { w: '#fce46c', k: '#5c2c7c' }, e.x, e.y, { dx: 3, dy: -4, z: e.y * 16 + 20 }); }
 function cortina(fechada: boolean) {
   const [x, y] = CORTINA;
   M.zv.bloquear(x, y, fechada);

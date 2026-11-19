@@ -5,7 +5,7 @@
  * vela dorsal turquesa do alto da cabeça aos dorsos · barbilhões compridos, um deles com lanterna de navio-fantasma ·
  * anéis de espuma onde o corpo fura a água · pintas de luz pelos flancos.
  */
-import { criatura, serpente, animsSerpente, blob, calota, slab, ring, tube, espuma, folha3d, par, m, lz, ly, qz, lp, type V3, type V2, type Rig } from './kits';
+import { criatura, serpente, animsSerpente, blob, calota, slab, ring, tube, espuma, folha3d, par, m, lz, ly, qz, lp, qs, D2R, type V3, type V2, type Rig } from './kits';
 import { extrasCobra } from './086-sucurizinha';
 
 const paleta = {
@@ -19,7 +19,7 @@ const paleta = {
   extras: { w: '#ffffff', p: '#10122e', f: '#27356b', a: '#ffd24a', o: '#c9801c' },
 };
 
-const CURVA = [98, -6, -34, -44];
+const CURVA = [92, 0, -8, -24];
 
 /** Vela dorsal: placa de pontas (raios) crescendo em +Y ao longo de +X. */
 function vela(len: number, alt: number, mat: ReturnType<typeof m>, pontas = 3): ReturnType<typeof slab> {
@@ -42,42 +42,43 @@ function dorso(rig: Rig, nome: string, pos: V3, giro: number, R: number, e: numb
 }
 
 function build() {
-  const r = 0.17;
+  const r = 0.2;
   const { rig } = serpente({
-    r, pescoco: { segs: 4, len: 0.29, curva: CURVA, rFim: 0.15 },
+    r, pescoco: { segs: 4, len: 0.32, curva: CURVA, rFim: 0.17 },
     cauda: { segs: 1, len: 0.06, curva: [0], rFim: 0.12 },
-    cabeca: [0.36, 0.2, 0.27],
-    olho: { r: 0.045, pos: [0.2, 0.13, 0.2] },
+    cabeca: [0.38, 0.22, 0.3],
+    olho: { r: 0.045, pos: [0.22, 0.14, 0.225] },
     rampas: { corpo: 0, barriga: 1, cabeca: 0 },
   });
-  rig.bones.corpo.position.set(0.36, 0.0, 0.16);
+  rig.bones.corpo.position.set(0.3, 0.02, -0.06);
+  rig.bones.cabeca.rotation.z = -54 * D2R;
   // dois dorsos e a cauda de remo, em zigue-zague atrás do pescoço
-  dorso(rig, 'dorso1', [-0.2, 0, -0.14], 24, 0.27, 0.15);
-  dorso(rig, 'dorso2', [-0.7, 0, 0.16], -28, 0.2, 0.125);
-  rig.bone('remo', 'base', [-1.0, 0, -0.16], [0, 20, 40]);
-  rig.add('remo', tube([[0.12, -0.2, 0], [0, 0, 0], [-0.1, 0.24, 0]], (t) => 0.09 - t * 0.04, m(0), { seg: 8, radial: 10 }));
-  rig.add('remo', folha3d(0.36, 0.2, m(1), { pos: [-0.1, 0.22, 0], rot: [0, 0, 40], esp: 0.3 }), folha3d(0.3, 0.17, m.luz(1), { pos: [-0.1, 0.22, 0], rot: [0, 0, -28], esp: 0.3 }));
-  rig.add('base', ring(0.13, 0.05, m.luz(2), { pos: [-0.94, 0.02, -0.14], rot: [90, 0, 0] }));
+  dorso(rig, 'dorso1', [-0.3, 0, -0.2], 18, 0.3, 0.17);
+  dorso(rig, 'dorso2', [-0.6, 0, 0.26], -30, 0.22, 0.14);
+  rig.bone('remo', 'base', [-0.84, 0, -0.12], [0, 20, 30]);
+  rig.add('remo', tube([[0, 0, 0], [-0.03, 0.2, 0], [-0.1, 0.42, 0]], (t) => 0.1 - t * 0.04, m(0), { seg: 8, radial: 10 }));
+  rig.add('remo', folha3d(0.42, 0.24, m(1), { pos: [-0.1, 0.4, 0], rot: [0, 0, 44], esp: 0.3 }), folha3d(0.36, 0.2, m.luz(1), { pos: [-0.1, 0.4, 0], rot: [0, 0, -30], esp: 0.3 }));
+  rig.add('base', ring(0.14, 0.055, m.luz(2), { pos: [-0.84, 0.02, -0.12], rot: [90, 0, 0] }));
   // espuma na base do pescoço e flocos soltos
-  rig.add('base', ring(0.25, 0.075, m.luz(2), { pos: [0.36, 0.02, 0.16], rot: [90, 0, 0] }), ring(0.36, 0.04, m(2), { pos: [0.36, 0.0, 0.16], rot: [90, 0, 0] }));
-  const flocos: V3[] = [[0.62, 0.05, 0.3], [0.18, 0.05, 0.42], [0.52, 0.05, -0.06], [-0.44, 0.04, 0.06], [-0.86, 0.04, 0.02]];
+  rig.add('base', ring(0.29, 0.085, m.luz(2), { pos: [0.3, 0.02, -0.06], rot: [90, 0, 0] }), ring(0.42, 0.045, m(2), { pos: [0.3, 0.0, -0.06], rot: [90, 0, 0] }));
+  const flocos: V3[] = [[0.6, 0.05, 0.2], [0.1, 0.05, -0.46], [0.56, 0.05, -0.36], [-0.44, 0.04, 0.02], [-0.7, 0.04, -0.3]];
   flocos.forEach((p, i) => { rig.bone('floco' + (i + 1), 'base', p); rig.add('floco' + (i + 1), espuma(0.06 - i * 0.005, m.luz(2))); });
   // vela dorsal e pintas de luz no pescoço
-  for (const [o, alt] of [['pescoco2', 0.16], ['pescoco3', 0.22], ['pescoco4', 0.24]] as const) {
-    const v = vela(0.27, alt, m(1), 2); v.position.set(0.01, 0.12, 0); v.scale.x = -1; v.position.x = 0.28; rig.add(o, v);
+  for (const [o, alt] of [['pescoco2', 0.18], ['pescoco3', 0.24], ['pescoco4', 0.26]] as const) {
+    const v = vela(0.27, alt, m(1), 2); v.scale.x = -1; v.position.set(0.3, 0.14, 0); rig.add(o, v);
   }
-  par((_, s) => { for (const o of ['pescoco1', 'pescoco2', 'pescoco3', 'pescoco4']) rig.add(o, blob([0.04, 0.04, 0.03], m.luz(3), { pos: [0.15, 0.03, 0.155 * s], seg: 8, castShadow: false })); });
+  par((_, s) => { for (const o of ['pescoco1', 'pescoco2', 'pescoco3', 'pescoco4']) rig.add(o, blob([0.04, 0.04, 0.03], m.luz(3), { pos: [0.15, 0.03, 0.18 * s], seg: 8, castShadow: false })); });
   // CABEÇA: testa larga, sobrancelha, leques laterais, crista, narinas, presas e barbilhões
-  rig.add('cabeca', calota([0.27, 0.215, 0.25], m.sombra(0), { de: 0, ate: 52, pos: [0.08, 0.03, 0], rot: [0, 0, 24] }));
+  rig.add('cabeca', calota([0.29, 0.235, 0.28], m.sombra(0), { de: 0, ate: 52, pos: [0.08, 0.03, 0], rot: [0, 0, 24] }));
   const cr = vela(0.4, 0.26, m(1), 3); cr.scale.x = -1; cr.position.set(0.3, 0.17, 0); rig.add('cabeca', cr);
   par((l, s) => {
-    rig.add('cabeca', blob([0.085, 0.075, 0.06], m.plano(3), { pos: [0.19, 0.125, 0.15 * s], seg: 12 }));
-    rig.add('cabeca', blob([0.14, 0.035, 0.06], m.sombra(0), { pos: [0.22, 0.215, 0.15 * s], rot: [0, 10 * s, -20], seg: 10 }));
+    rig.add('cabeca', blob([0.085, 0.075, 0.06], m.plano(3), { pos: [0.21, 0.135, 0.175 * s], seg: 12 }));
+    rig.add('cabeca', blob([0.14, 0.035, 0.06], m.sombra(0), { pos: [0.24, 0.23, 0.17 * s], rot: [0, 10 * s, -20], seg: 10 }));
     rig.add('cabeca', blob([0.028, 0.022, 0.022], m.plano(1), { pos: [0.5, 0.08, 0.06 * s], seg: 8 }));
     rig.add('cabeca', blob([0.025, 0.065, 0.025], m.luz(2), { pos: [0.42, -0.07, 0.09 * s], seg: 8 }));
     // leque de três raios atrás da face
-    rig.bone('leque_' + l, 'cabeca', [-0.02, 0.02, 0.2 * s], [0, -40 * s, 0]);
-    for (const [g, len] of [[38, 0.3], [4, 0.36], [-32, 0.28]] as const) rig.add('leque_' + l, folha3d(len, 0.15, g === 4 ? m.luz(1) : m(1), { rot: [0, 0, 90 - g], esp: 0.3 }));
+    rig.bone('leque_' + l, 'cabeca', [-0.04, 0.06, 0.22 * s], [58 * s, 0, 24]);
+    for (const [g, len] of [[40, 0.34], [2, 0.44], [-36, 0.32]] as const) rig.add('leque_' + l, folha3d(len, 0.19, g === 2 ? m.luz(1) : m(1), { rot: [0, 0, g], esp: 0.3 }));
     rig.add('leque_' + l, blob([0.06, 0.07, 0.04], m(0), { seg: 10 }));
   });
   // barbilhões: o da frente da câmera leva a lanterna
@@ -92,12 +93,12 @@ function build() {
 
 const ex = extrasCobra(CURVA, 1);
 const FL = ['floco1', 'floco2', 'floco3', 'floco4', 'floco5'];
-const anims = animsSerpente({ u: 1.6, pescoco: 4, cauda: 1, mole: 0.35, mapa: { comp: 1, larg: 1, frontal: 1.05, cabeca: 1.15 } }, {
+const anims = animsSerpente({ u: 1.7, pescoco: 4, cauda: 1, mole: 0.35, mapa: { comp: 1, larg: 1, frontal: 1.05, cabeca: 1.15 } }, {
   todas: Object.fromEntries(FL.map((f, i) => ['?' + f, lp([[0, 0, 0], [0, 0.03, 0], [0, 0.05, 0], [0, 0.02, 0]].map((_, k, v) => v[(k + i) % 4] as V3))])),
   fisico: ex.fisico,
-  desmaio: { pescoco1: qz([4, -8, -24, -46, -44]), pescoco2: qz([0, -4, -20, -36, -34]), pescoco3: qz([0, -4, -14, -26, -24]), pescoco4: qz([0, -2, -8, -14, -12]), cabeca: qz([0, 4, 14, 28, 26]), remo: qz([0, -10, -30, -60, -58]) },
-  idle: { remo: lz([0, 6, 12, 4]), leque_d: ly([0, 8, 14, 5]), leque_e: ly([0, -8, -14, -5]), lanterna: lz([0, 6, 0, -6]), dorso1: lp([[0, 0, 0], [0, 0.015, 0], [0, 0.03, 0], [0, 0.01, 0]]), dorso2: lp([[0, 0.03, 0], [0, 0.015, 0], [0, 0, 0], [0, 0.015, 0]]) },
-  especial: { remo: qz([0, 20, 30, -34, -10, 0]), leque_d: [...qz([0, 0, 0, 0, 0, 0])], lanterna: qz([0, 12, 18, -24, -8, 0]) },
+  desmaio: { pescoco1: qz([4, -4, -8, -12, -11]), pescoco2: qz([0, -4, -8, -10, -9]), pescoco3: qz([0, -4, -10, -16, -15]), pescoco4: qz([0, -4, -12, -20, -19]), cabeca: qz([0, 6, 16, 30, 28]), corpo: qs([1, [1, 0.9, 1], [1, 0.66, 1], [1, 0.4, 1], [1, 0.43, 1]]), remo: qz([0, -10, -30, -60, -58]) },
+  idle: { remo: lz([0, 6, 12, 4]), leque_d: lz([0, 5, 9, 3]), leque_e: lz([0, 5, 9, 3]), lanterna: lz([0, 6, 0, -6]), dorso1: lp([[0, 0, 0], [0, 0.015, 0], [0, 0.03, 0], [0, 0.01, 0]]), dorso2: lp([[0, 0.03, 0], [0, 0.015, 0], [0, 0, 0], [0, 0.015, 0]]) },
+  especial: { remo: qz([0, 20, 30, -34, -10, 0]), leque_d: qz([0, -10, -14, 22, 8, 0]), leque_e: qz([0, -10, -14, 22, 8, 0]), lanterna: qz([0, 12, 18, -24, -8, 0]) },
   dano: { lanterna: qz([24, 10, 0]) },
   andar: { remo: lz([0, 14, 0, -14]), dorso1: lp([[0, 0, 0], [0, 0.04, 0], [0, 0, 0], [0, -0.03, 0]]), dorso2: lp([[0, 0, 0], [0, -0.03, 0], [0, 0, 0], [0, 0.04, 0]]) },
 });

@@ -62,7 +62,8 @@ const PADRAO: Record<string, FnComando> = {
     const venceu = await desafiar(t, M.npcs.find((n) => n.treinador === t), segue ? { semDerrota: true } : {});
     setFlag('batalha-perdida', !venceu);
     if (!venceu && !segue) throw new Encerrar();
-    if (!venceu) setFlag(t.flag ?? 'venceu:' + t.id);
+    // `semMarca`: a derrota não marca a flag do treinador (sequências que recomeçam, como a Liga)
+    if (!venceu && !(o as { semMarca?: boolean } | undefined)?.semMarca) setFlag(t.flag ?? 'venceu:' + t.id);
   },
   selvagem: async ([e, nv, o]) => {
     const op = (o ?? {}) as { lendario?: boolean; semFuga?: boolean; semCaptura?: boolean; tutorial?: boolean };

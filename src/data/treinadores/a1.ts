@@ -28,8 +28,8 @@ const TRILHA_DO_IPE: TreinadorDef[] = [
 
 /* ------------------------------ A-R2 · Campos de Restinga ------------------------------ */
 const CAMPOS_DE_RESTINGA: TreinadorDef[] = [
-  t('A-R2-1', 'Escoteira', 'Violeta', 'cl-escoteira', [{ e: 15, nv: 10 }, { e: 13, nv: 11 }], 216,
-    'Acampei aqui para ganhar a medalha de duna. Ganhar de você vale outra!', 'Fico só com a de duna, então.', 'Lagartim evolui cedo, no nível 7. Se o seu ainda não virou casulo, é teimosia dele.'),
+  t('A-R2-1', 'Escoteira', 'Violeta', 'cl-escoteira', [{ e: 16, nv: 11 }, { e: 13, nv: 11 }], 216,
+    'Acampei aqui para ganhar a medalha de duna. Ganhar de você vale outra!', 'Fico só com a de duna, então.', 'Lagartim evolui cedo, no nível 7, e vira Casulim. O meu já está no casulo, treinando para borboleta.'),
   t('A-R2-2', 'Pipeiro', 'Tatu-Bolinha', 'cl-crianca-m', [{ e: 33, nv: 11 }], 144,
     'Meu apelido é por causa do meu Tatuzim. Ele se enrola e eu também!', 'A gente se enrolou feio.', 'Tatuzim é do tipo Terra: choque de Trovão nem faz cócegas nele.'),
   t('A-R2-3', 'Observadora de Aves', 'Dona Garça', 'cl-observadora', [{ e: 10, nv: 11 }, { e: 45, nv: 11 }, { e: 47, nv: 12 }], 320,
@@ -122,6 +122,24 @@ const PORTO_SEREIA: TreinadorDef[] = [
     'Este cais é do Clube do Anzol. Para pisar aqui, tem que fisgar uma vitória!', 'A linha arrebentou.', 'Do fim do cais para lá é a Baía Azul. Com o Remo da Capitã e a luz da Usina no guincho, o mar é seu.', { ia: 'treinador' }),
 ];
 
+/* ------------------------------ A-R7 · Estrada do Buriti (líder 8, ás 40 → nv 34–38) ------------------------------ */
+const ESTRADA_DO_BURITI: TreinadorDef[] = [
+  t('A-R7-1', 'Montanhista', 'Seu Lajedo', 'cl-montanhista', [{ e: 31, nv: 34 }, { e: 168, nv: 36 }], 1440,
+    'Empurrou a primeira pedra? Parabéns. A segunda sou eu!', 'Rolei.', 'Pedregulho só anda um passo por empurrão e nunca sobe saliência. Pense antes de encostar.', { ia: 'treinador' }),
+  t('A-R7-2', 'Vaqueiro', 'Zé do Laço', 'cl-vaqueiro', [{ e: 96, nv: 36 }, { e: 102, nv: 36 }], 1440,
+    'Tropeiro velho não larga a estrada nem com pedra no meio. Nem com você no meio!', 'Perdi o laço e a pose.', 'O atalho do sul passa por uma rocha rachada. Quem tem Quebra-pedra nem precisa empurrar a segunda.', { ia: 'treinador' }),
+  t('A-R7-3', 'Garimpeiro', 'Tonho Cascalho', 'cl-garimpeiro', [{ e: 34, nv: 36 }, { e: 166, nv: 36 }, { e: 42, nv: 37 }], 1480,
+    'Essas pedras rolaram da serra com coisa boa dentro. Se eu não achei, você também não acha!', 'Achou foi a minha fraqueza.', 'Tem uma loca fechada por rocha rachada ali em cima. Pepita, eu aposto.', { ia: 'treinador' }),
+  t('A-R7-4', 'Capoeirista', 'Mestra Mandinga', 'cl-capoeirista', [{ e: 23, nv: 36 }, { e: 46, nv: 37 }], 1480,
+    'Vai para a Liga, é? A Domadora Pampa joga Ginga melhor que eu. Então treine comigo primeiro!', 'Axé, desafiante.', 'Ginga apanha de Vento, de Mente e de Encanto. Guarde isso para a quarta sala do Platô.', { ia: 'treinador' }),
+  t('A-R7-5', 'Ferreiro', 'Bigorna', 'cl-ferreiro', [{ e: 162, nv: 36 }, { e: 130, nv: 37 }], 1480,
+    'Aprendi o ofício com o Brasa-Viva em pessoa. Minha equipe é de ferro, e a sua?', 'Entortou.', 'Ferro não sente Veneno e ri de golpe Comum. Mas derrete com Brasa e afunda com Terra.', { ia: 'treinador' }),
+  t('A-R7-6', 'Bióloga', 'Drª Carnaúba', 'cl-biologa', [{ e: 150, nv: 36 }, { e: 154, nv: 36 }, { e: 82, nv: 37 }], 1480,
+    'Trabalho com a Drª Buriti. Ela mandou testar todo treinador que chega pela estrada. Ciência!', 'Resultado: aprovado.', 'A doutora guarda uma criatura especial para quem vencer o ginásio da vila. Não diga que eu contei.', { ia: 'treinador' }),
+  t('A-R7-7', 'Repentista', 'Chico Aboio', 'cl-repentista', [{ e: 21, nv: 37 }, { e: 44, nv: 38 }], 1520,
+    'Quem chega em Vila Buriti / com sete insígnias no peito / ou vence este cantador / ou volta sem ter direito!', 'Calou-se a viola / diante da sua escola.', 'Depois da vila é o Platô: quatro Mestres, um Campeão e nenhuma cura no caminho. Encha a mochila.', { ia: 'treinador' }),
+];
+
 /* ------------------------------ Rival Tainá (encontros 1 a 3) ------------------------------ */
 /**
  * A Tainá sempre fica com o inicial que leva vantagem sobre o do jogador (Mata → ela leva Brasa; Brasa → Rio; Rio → Mata).
@@ -150,5 +168,5 @@ const RIVAL: TreinadorDef[] = [
 ];
 
 export const TREINADORES_A1: TreinadorDef[] = [
-  ...TRILHA_DO_IPE, ...CAMPOS_DE_RESTINGA, ...MATA_DOS_SABIAS, ...BOSQUE_ALTO, ...TRILHA_DOS_CIPOS, ...GRUTA_DO_ECO, ...PORTO_SEREIA, ...RIVAL,
+  ...TRILHA_DO_IPE, ...CAMPOS_DE_RESTINGA, ...MATA_DOS_SABIAS, ...BOSQUE_ALTO, ...TRILHA_DOS_CIPOS, ...GRUTA_DO_ECO, ...PORTO_SEREIA, ...ESTRADA_DO_BURITI, ...RIVAL,
 ];
