@@ -76,9 +76,9 @@ const zona: ZonaDef = {
     { x: 60, y: 0, para: { zona: 'A-PR', x: 34, y: 33, dir: 'n' }, tipo: 'borda' }, { x: 61, y: 0, para: { zona: 'A-PR', x: 35, y: 33, dir: 'n' }, tipo: 'borda' },
     { x: 89, y: 14, para: { zona: 'A6', x: 1, y: 16, dir: 'l' }, tipo: 'borda' }, { x: 89, y: 15, para: { zona: 'A6', x: 1, y: 17, dir: 'l' }, tipo: 'borda' },
     { x: 50, y: 43, para: { zona: 'A5', x: 24, y: 1, dir: 's' }, tipo: 'borda' }, { x: 51, y: 43, para: { zona: 'A5', x: 25, y: 1, dir: 's' }, tipo: 'borda' },
-    { ...g.p('X'), para: { zona: 'A-RS', x: 14, y: 8 } },
+    { ...g.p('X'), para: { zona: 'A-RS', x: 15, y: 8 } },
     { ...g.p('Z'), para: { zona: 'A-RS', x: 44, y: 18 } },
-    { ...g.p('Y'), para: { zona: 'A-RS', x: 30, y: 30 } },
+    { ...g.p('Y'), para: { zona: 'A-RS', x: 30, y: 27 } },
   ],
   portoes: [
     { ...N, w: 2, h: 1, requer: 'insignia:4', sprite: 'cl-biologa', fala: 'Projeto Tartaruí: a Praia das Tartarugas está em época de desova.\nSó entra quem tem a insígnia Estrela, da Iracema Lua, de Cidade Coral. Ela ensina a pisar leve.' },

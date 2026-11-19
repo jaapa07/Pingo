@@ -112,7 +112,8 @@ export async function abrir(zona, x, y, extra = '', turbo = 4) {
   };
   /** fala/interage com o que está em (tx, ty): vai até um vizinho, vira e aperta A */
   t.usar = async (tx, ty) => {
-    const s = await t.irAte(tx, ty, { vizinho: true });
+    let s = await t.irAte(tx, ty, { vizinho: true });
+    for (let i = 0; i < 4; i++) { const n = s.nb; await t.espera(200); s = await t.assentar(); if (s.nb === n) break; s = await t.irAte(tx, ty, { vizinho: true }); }
     const d = tx > s.x ? 'l' : tx < s.x ? 'o' : ty > s.y ? 's' : 'n';
     return t.agir(d);
   };

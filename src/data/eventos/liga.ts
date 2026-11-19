@@ -25,14 +25,14 @@ registrarComando('hallDaFama', async () => {
   const pos = (e: HTMLElement, x: number, y: number) => { e.style.position = 'absolute'; e.style.left = x + 'px'; e.style.top = y + 'px'; return e; };
   el.append(pos(texto('HALL DA FAMA', { tamanho: 12, cor: 'creme', largura: 300, alinhar: 'centro' }), 0, 6));
   el.append(pos(texto(`Campeão da Costa do Sol: ${jogo.save.jogador.nome}`, { cor: 'creme', largura: 300, alinhar: 'centro' }), 0, 22));
-  const equipe = jogo.save.equipe.filter((c) => !c.ovo).slice(0, 6), passo = 46, x0 = 150 - ((equipe.length - 1) * passo) / 2;
+  const equipe = jogo.save.equipe.filter((c) => !c.ovo).slice(0, 6), passo = 48, x0 = 150 - ((equipe.length - 1) * passo) / 2;
   const sprites = equipe.map((c, i) => {
     const esp = ESPECIES.find((e) => e.num === c.especie);
     const cx = Math.round(x0 + i * passo);
     const pedestal = document.createElement('div');
     pedestal.style.cssText = `position:absolute;left:${cx - 16}px;top:74px;width:32px;height:6px;background:#f2c230;box-shadow:0 2px 0 #a0522d`;
     el.append(pedestal);
-    el.append(pos(texto(`${(c.apelido ?? esp?.nome ?? '').slice(0, 9)}`, { cor: 'creme', largura: 46, alinhar: 'centro' }), cx - 23, 84));
+    el.append(pos(texto(`${(c.apelido ?? esp?.nome ?? '').slice(0, 7)}`, { cor: 'creme', largura: 46, alinhar: 'centro' }), cx - 23, 84));
     el.append(pos(texto(`Nv${c.nivel}`, { cor: 'creme', largura: 46, alinhar: 'centro' }), cx - 23, 93));
     const s = new Sprite(esp?.id ?? '', 'mapa', el);
     s.x = cx; s.y = 72; s.tocar(s.tem('idle-s') ? 'idle-s' : 'andar-s');
