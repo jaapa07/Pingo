@@ -41,7 +41,7 @@ const zona: ZonaDef = {
     { o: 'gin-estatua', x: 10, y: 17, texto: ['Os vasos guardam extrato de raiz amarga. Borrifou, todos os cipós murcham e começam de novo.', 'Cada cipó acorda depois de um certo número de passos. O do corredor norte fecha a subida no 16º passo; o da fila do meio fecha a saída no 10º.'] },
     { o: 'gin-pedestal', x: 9, y: 2 },
   ],
-  warps: [{ x: 8, y: 18, para: { zona: 'B1', x: 20, y: 20, dir: 's' }, tipo: 'porta' }],
+  warps: [{ x: 8, y: 18, para: { zona: 'B1', x: 31, y: 8, dir: 's' }, tipo: 'porta' }],
   npcs: [
     { id: 'g04-1', sprite: 'cl-mateira', x: 12, y: 17, dir: 'n', treinador: 'g04-1', visao: 3 },
     { id: 'g04-2', sprite: 'cl-biologa', x: 17, y: 8, dir: 'o', treinador: 'g04-2', visao: 4 },
