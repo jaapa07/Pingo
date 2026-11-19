@@ -737,6 +737,41 @@ Duas criaturas **secretas**, numeradas 181 e 182. Não contam para os 180 do Di�
 
 ---
 
+### 10A. Regrinhas clássicas do gênero (pedido do autor: adicionar o que tiver lógica, sem perder a essência)
+Regras de jogabilidade herdadas dos RPGs de captura de portátil, reescritas para o mundo de Pingo (nomes, textos e conteúdo próprios). Fonte: conhecimento geral do gênero; o site de detonados indicado pelo autor não pôde ser consultado (rede bloqueada) e deve ser conferido depois para completar esta lista.
+
+**Tempo e calendário**
+1. **Criaturas do dia da semana:** em cada dia, um "irmão da semana" (7 NPCs espalhados pelos 2 mapas) aparece num lugar fixo e dá um item de reforço de tipo diferente; reunir os 7 rende um prêmio.
+2. **Eventos semanais:** concurso de captura de insetos no Parque (terças, quintas e sábados: 20 min, vence o maior exemplar, prêmio em pedras de evolução); feira às quintas; uma rara das águas que só aparece às sextas numa gruta; cabeleireiro de criaturas (aumenta a amizade) em dias alternados.
+3. **Encontros por período:** manhã, dia e noite com tabelas diferentes (já no 6.3); corujas e morcegos só à noite, borboletas só de manhã.
+4. **Enxames:** o Rádio Cipó anuncia um enxame do dia: numa zona, uma espécie rara passa a ter 40% de chance.
+
+**Captura e criaturas**
+5. **Variante rara de cor ("Pelagem Rara"):** 1 chance em 4096 em qualquer encontro, com brilho ao entrar em batalha e paleta alternativa por criatura; uma é garantida na história (a do Lago, evento do Cartel).
+6. **Cuias artesanais:** frutos de cuieira coloridos colhidos em árvores (voltam a cada dia) viram cuias especiais com o artesão — um dia de espera: cuia rápida (para as que fogem), cuia pesada (para as grandes), cuia da lua (para as que evoluem com pedra lunar), cuia amiga (amizade inicial alta), cuia de isca (para pescadas), cuia de nível (se o seu nível for maior), cuia do amor (sexo oposto da mesma espécie).
+7. **Sacudir árvores e quebrar rochas** revelam criaturas e itens (já previsto); **pesca em 3 varas**; **criaturas errantes** que mudam de zona a cada troca de rota e aparecem no mapa-múndi depois de vistas.
+8. **Febre da Mata:** condição raríssima e benéfica (1 em ~20 000 após batalha) que dobra o esforço ganho por 1–4 dias e passa para vizinhos da equipe; a enfermeira do Posto comenta.
+9. **Item segurado:** cada criatura segura 1 item; selvagens às vezes vêm segurando um (5%/1%); frutos se usam sozinhos em batalha (cura, status).
+10. **Amizade:** sobe ao andar, subir de nível, cafuné e cabeleireiro; cai ao desmaiar e com remédios amargos (baratos e fortes, mas a criatura não gosta); golpes cujo poder depende da amizade; evoluções por amizade (com variação dia/noite).
+11. **Ovos e ninhos:** compatibilidade por "grupos de ninho", passos para chocar, golpes herdados do pai, genes herdados; o casal de Seu Aroeira avisa pelo rádio; filhotes exclusivos de ovo (pré-estágios).
+12. **Trocas com NPCs:** 6 moradores trocam uma criatura específica por outra, que vem com apelido, item e ganha experiência extra, mas só obedece conforme o nº de insígnias.
+13. **Obediência:** criatura recebida em troca acima do nível permitido pelas insígnias pode desobedecer (limites 20/30/50/70/todas).
+
+**Mundo e serviços**
+14. **Mãe poupadora:** guarda parte do dinheiro ganho e às vezes compra itens e pelúcias por conta própria (telefona avisando).
+15. **Telefone dos treinadores:** depois de vencidos, alguns pedem o número; ligam para revanche (equipes que crescem com as insígnias), avisam de enxames e dão itens.
+16. **Repelente, corda de fuga, doce de nível** (rapadura) e **mochila por bolsos** (já previstos); **item registrado no Select**.
+17. **Cassino → "Barraca de Prendas":** minijogos de habilidade (memória de cartas e roda), sem aposta de dinheiro real nem caça-níqueis; fichas trocam por pergaminhos e uma criatura rara.
+18. **Sorteio da semana no rádio:** um número é sorteado às sextas; quem tiver criatura com id que termine igual ganha prêmio (2, 3 ou 5 dígitos).
+19. **Ruínas com enigmas de painel deslizante** que liberam criaturas-símbolo (variantes de forma por letra não entram; em Pingo são 4 pinturas rupestres que liberam câmaras com itens).
+20. **Arvoredos de frutos:** cada árvore dá 1 fruto por dia; canteiros para replantar (já previsto).
+21. **Torre de Desafios (pós-jogo):** 7 batalhas seguidas com níveis nivelados e sem itens, por faixas de nível; prêmios em vitaminas.
+22. **Segunda região e "chefe final secreto":** já é a estrutura do jogo (mapa B + Pico); no topo do Pico, depois dos 2 lendários extras, espera um treinador misterioso com a equipe mais forte do jogo.
+23. **Medidor de bicicleta e atalhos**, **cortar/empurrar/iluminar/atravessar água** pelos Amuletos (já previsto, sem ocupar golpes).
+24. **Golpes e batalha:** divisão físico/especial por golpe (já), clima em batalha, golpes de preparo em 2 turnos, armadilhas de entrada, golpes de prioridade, acerto crítico, congelar/dormir/paralisar/queimar/envenenar, confusão e encanto, fuga garantida por velocidade, experiência dividida com o "Amuleto de Partilha" e experiência extra para criaturas trocadas.
+
+**O que NÃO entra (perderia a essência ou é específico demais da franquia):** caça-níqueis, troca/batalha por cabo, criaturas de evento de distribuição, variantes por letra e qualquer nome, texto, mapa ou enigma copiado.
+
 ## 11. Interface (identidade própria)
 - **Fonte:** autoral "Pindorama Talha", em SVG, com letras entalhadas em madeira.
 - **Molduras:** de madeira e cipó, em 9-slice SVG.
