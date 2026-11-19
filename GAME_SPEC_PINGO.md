@@ -623,6 +623,20 @@ Multiplicadores: ×2 (forte), ×0,5 (fraco) e ×0 (nulo). Nas criaturas de dois 
 - Toda criatura da tabela aparece em **pelo menos um habitat** ou evento acessível.
 - Se o jogador **soltar ou perder um lendário**, ele reaparece no mesmo lugar depois do Conselho.
 
+### 6.5 Lendários extras do pós-jogo (pedido do autor: fora do esquema da fauna brasileira)
+Duas criaturas **secretas**, numeradas 181 e 182. Não contam para os 180 do Diário (o Diário continua "completo" com 180); aparecem numa página extra, "Visitantes", que só surge depois do primeiro encontro. Cada uma é o prêmio de uma **missão extra** liberada com as **16 insígnias**.
+
+| Nº | Nome | Tipos | Inspiração | Onde capturar |
+|---|---|---|---|---|
+| 181 | **Galo-Manaó** | Vento/Rio | galo-da-serra, ave símbolo dos arredores de Manaus; metade da plumagem é escura como o rio Negro e metade cor de areia como o Solimões, sem se misturar, como no Encontro das Águas | missão "O Encontro das Águas" (nv 60) |
+| 182 | **Borealce** | Geada/Encanto | alce nórdico europeu com galhada que acende em aurora boreal; um visitante de terras distantes, trazido por uma expedição de pesquisadores do norte | missão "A Expedição Boreal" (nv 65) |
+
+**Missão "O Encontro das Águas" (181):** com as 16 insígnias, um canoeiro em A4 Porto Sereia conta que uma ave rara só dança onde duas águas correm lado a lado. O jogador leva ao canoeiro um frasco de **água escura** (colhida de noite num rio do mapa A, com Mergulho) e um de **água barrenta** (colhida de dia num rio do mapa B, com Cachoeira). O canoeiro abre a rota para a zona nova `X-EA` (ilhota fluvial de duas cores, exige Remo). Ali há um quebra-cabeça de correnteza: remar sempre na linha em que as duas águas se encontram, sem cruzar para um lado só. No fim, o Galo-Manaó faz a dança de corte numa arena de pedra; a batalha só começa se o jogador assistir à dança sem se mexer.
+
+**Missão "A Expedição Boreal" (182):** depois de vencer o Conselho, um navio de pesquisa de bandeira estrangeira encalha no cais de B9. A pesquisadora-chefe, a **Drª Solveig**, perdeu o animal que estudava: ele subiu a serra atrás de frio. O jogador recolhe 4 **Lanternas Boreais** espalhadas pelas zonas geladas (cada uma guardada por um treinador da expedição, com criaturas de Geada) e as acende no alto do Pico Pindorama, de noite. O céu da zona ganha a aurora (camada de fundo animada exclusiva) e o Borealce aparece. É o único encontro do jogo com música e arena próprias de fora do Brasil; a Drª Solveig explica no Diário que ele é um visitante e não pertence à fauna local.
+
+**Regras:** atributos de lendário (soma 580–620), `taxaCaptura` 3, sem sexo, sem evolução; modelo, sprite, grito e animação próprios como os demais; se o jogador soltar ou perder, a missão permite reencontro. A verificação da progressão (`npm run check`) confere as duas missões além das 180.
+
 ---
 
 ## 7. Batalha
