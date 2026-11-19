@@ -24,3 +24,6 @@ Pausados em 19/11 às 07:15 (Brasília); retomar com SendMessage, na ordem, mant
 17. Verificador npm run check (a7430672cef314cb6)
 18. Plataformas PC/iPhone offline (adc15d43fcaf1e641)
 Depois: integração, testes jogando (QA) e polimento.
+
+## Retomada em Fable (19/11, início manual)
+Itens 1–3 da fila relançados como agentes novos em Fable (continuam do disco): dados 61–120 (abb693e2d0ba7eb35), Zonas A1 (a6cfad1dc2bbf68c4), tela de batalha (a04be66a2a30cf5a5). Próximo da fila: 4. Menus.
