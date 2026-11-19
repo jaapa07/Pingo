@@ -127,9 +127,11 @@ export function equipeReferencia(d: Dados, inicial: number, passo: number, as = 
     const livres = () => cands.filter((c) => c.passo === k && !linhas.includes(c)).sort((a, b) => nota(b) - nota(a) || a.linha - b.linha);
     for (let i = 0; i < (NOVAS_POR_PASSO[k - 1] ?? 0) && linhas.length < 5; i++) { const c = livres()[0]; if (c) linhas.push(c); }
     if (k > NOVAS_POR_PASSO.length && linhas.length) {
-      // troca a captura mais fraca (soma dos atributos da forma atual) pela melhor novidade do passo, se ela for mais forte
-      const forca = (c: Candidato) => somaBase(especie(formaNoNivel(c.linha, asK - 2)));
-      const novo = livres()[0];
+      // do passo 4 em diante o jogador renova a equipe: troca a captura mais fraca (soma dos atributos da forma que ela tem
+      // no nível do ás) pela melhor que as rotas já abertas oferecem, com leve preferência por um tipo que ainda não tem
+      const forca = (c: Candidato) => somaBase(especie(formaNoNivel(c.linha, asK)));
+      const tipos = tiposDaEquipe();
+      const novo = cands.filter((c) => c.passo <= k && !linhas.includes(c)).map((c) => ({ c, f: forca(c) * (especie(formaNoNivel(c.linha, asK)).tipos.some((x) => !tipos.has(x)) ? 1.1 : 1) + c.peso / 1000 })).sort((a, b) => b.f - a.f || a.c.linha - b.c.linha)[0]?.c;
       if (novo) {
         if (linhas.length < 5) linhas.push(novo);
         else { let pior = 0; for (let i = 1; i < linhas.length; i++) if (forca(linhas[i]) < forca(linhas[pior])) pior = i; if (forca(novo) > forca(linhas[pior])) linhas[pior] = novo; }
