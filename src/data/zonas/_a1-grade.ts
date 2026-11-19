@@ -193,3 +193,18 @@ export function casaSimples(o: {
     npcs: [pessoa('1', m1), ...(m2 ? [pessoa('2', m2)] : [])],
   };
 }
+
+/**
+ * Sub-bosque: toda árvore `T` cuja copa encobriria um tile andável (até 2 linhas acima, 1 coluna para cada lado)
+ * vira moita baixa `b`. Assim os corredores de um labirinto de mata ficam à vista: árvores altas ao fundo,
+ * moitas na beira de cá do caminho. Regra fixa, sem sorteio; a colisão não muda (as duas bloqueiam).
+ * `lados = false` (rotas abertas): só as árvores logo ao sul do tile andável; as paredes laterais continuam árvores.
+ */
+export function subBosque(mapa: string[], lados = true): string[] {
+  const livre = (x: number, y: number) => '.,:;"%=+'.includes(mapa[y]?.[x] ?? ' ');
+  return mapa.map((l, y) => [...l].map((c, x) => {
+    if (c !== 'T') return c;
+    for (let dy = 1; dy <= 2; dy++) for (let dx = lados ? -1 : 0; dx <= (lados ? 1 : 0); dx++) if (livre(x + dx, y - dy)) return 'b';
+    return c;
+  }).join(''));
+}

@@ -1,5 +1,5 @@
 import type { ZonaDef } from '../../core/tipos';
-import { grade, saidas, duelista, item, placa } from './_a1-grade';
+import { grade, saidas, duelista, item, placa, subBosque } from './_a1-grade';
 
 /**
  * A-R2 · Campos de Restinga (A2 a oeste → Mata dos Sabiás a leste). Dunas com saliências, cajueiros sacudíveis,
@@ -42,7 +42,7 @@ const p1 = placa(g, 's', 'CAMPOS DE RESTINGA\nOeste: Vila Caiçara · Leste: Mat
 const [px, py] = g.p('P');
 const zona: ZonaDef = {
   id: 'A-R2', nome: 'Campos de Restinga', mapa: 'A', tipo: 'rota', tileset: 'costa', musica: 'rota-dia-A', arena: 'restinga', passo: 2,
-  mapaChars: g.mapa,
+  mapaChars: subBosque(g.mapa, false),
   objetos: [p1.objeto],
   placas: [p1.placa],
   warps: [...saidas(g, 'W', 'A2', 42, 15, 'o'), ...saidas(g, 'E', 'A-MS', 2, 21, 'l')],

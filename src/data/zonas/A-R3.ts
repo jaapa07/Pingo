@@ -1,5 +1,5 @@
 import type { ZonaDef } from '../../core/tipos';
-import { grade, obj, entrada, saidas, gente, duelista, item, placa } from './_a1-grade';
+import { grade, obj, entrada, saidas, gente, duelista, item, placa, subBosque } from './_a1-grade';
 
 /**
  * A-R3 · Trilha dos Cipós (Bosque Alto a oeste → Gruta do Eco a leste). Os cipós grossos fecham a trilha logo na
@@ -45,7 +45,7 @@ const g = grade('A-R3', [
 const p1 = placa(g, 's', 'TRILHA DOS CIPÓS\nOeste: Bosque Alto · Leste: Gruta do Eco → Porto Sereia\nCipó grosso não se desata: corta-se. Traga o Facão e uma parceira que saiba usar.');
 const zona: ZonaDef = {
   id: 'A-R3', nome: 'Trilha dos Cipós', mapa: 'A', tipo: 'rota', tileset: 'mata', musica: 'rota-dia-A', arena: 'mata', passo: 3,
-  mapaChars: g.mapa,
+  mapaChars: subBosque(g.mapa, false),
   objetos: [obj(g, 'G', 'caverna-entrada'), p1.objeto],
   placas: [p1.placa],
   warps: [

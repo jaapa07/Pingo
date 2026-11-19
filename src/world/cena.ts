@@ -363,8 +363,8 @@ export class Cena {
       const tx = Math.floor((a.px + 8) / TILE), ty = Math.floor((a.py + 8) / TILE);
       if (!this.zv.dentro(tx, ty) || !this.copas.has(this.zv.i(tx, ty))) continue;
       let v = this.vultos[n];
-      if (!v) { v = this.vultos[n] = document.createElement('div'); v.className = 'spr vulto'; v.style.opacity = '0.5'; v.style.zIndex = '9999'; }
-      if (v.parentElement !== this.alto || this.alto.lastElementChild !== v) this.alto.append(v);
+      if (!v) { v = this.vultos[n] = document.createElement('div'); v.className = 'spr vulto'; v.style.opacity = '0.65'; v.style.zIndex = '9999'; }
+      if (v.parentElement !== this.alto) this.alto.append(v);
       n++;
       const o = a.spr.el.style, d = v.style;
       d.display = o.display; d.width = o.width; d.height = o.height; d.backgroundImage = o.backgroundImage; d.backgroundSize = o.backgroundSize; d.backgroundPosition = o.backgroundPosition; d.transform = o.transform;

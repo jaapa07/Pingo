@@ -91,9 +91,8 @@ export const EVENTOS_COMUNS: EventoDef[] = [
     id: 'radio',
     passos: [
       ['sfx', 'radio'],
-      se('item:radio-cipo', [['tela', 'radio']], [
-        ['falar', null, 'O rádio da sala chia e pega a Rádio Cipó:\n"…e segue o tempo firme em toda a Costa do Sol. A seguir, modas de viola e recados do sertão."'],
-      ]),
+      ['falar', null, 'O rádio chia e pega a Rádio Cipó:\n"…e segue o tempo firme em toda a Costa do Sol. A seguir, modas de viola e recados do sertão."'],
+      se('item:radio-cipo', [['tela', 'radio']]),
     ],
   },
   {

@@ -1,5 +1,5 @@
 import type { ZonaDef } from '../../core/tipos';
-import { grade, saidas, gente, duelista, item, placa } from './_a1-grade';
+import { grade, saidas, gente, duelista, item, placa, subBosque } from './_a1-grade';
 
 /**
  * A-R1 · Trilha do Ipê (A1 ao sul → A2 ao norte). Primeira rota: grama alta, saliências que encurtam a volta,
@@ -91,7 +91,7 @@ const g = grade('A-R1', [
 const p1 = placa(g, 'q', 'TRILHA DO IPÊ\nNorte: Vila Caiçara · Sul: Vila Jacarandá\nDica: pule as saliências para descer mais rápido.');
 const zona: ZonaDef = {
   id: 'A-R1', nome: 'Trilha do Ipê', mapa: 'A', tipo: 'rota', tileset: 'costa', musica: 'rota-dia-A', arena: 'restinga', passo: 1,
-  mapaChars: g.mapa,
+  mapaChars: subBosque(g.mapa, false),
   objetos: [p1.objeto],
   placas: [p1.placa],
   warps: [...saidas(g, 'N', 'A2', 21, 30, 'n'), ...saidas(g, 'S', 'A1', 19, 1, 's')],

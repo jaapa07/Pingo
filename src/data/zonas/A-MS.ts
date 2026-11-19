@@ -1,5 +1,5 @@
 import type { ZonaDef } from '../../core/tipos';
-import { grade, saidas, gente, duelista, item, placa } from './_a1-grade';
+import { grade, saidas, gente, duelista, item, placa, subBosque } from './_a1-grade';
 
 /**
  * A-MS · Mata dos Sabiás (A-R2 a oeste → Bosque Alto ao norte). Labirinto de árvores: o caminho certo desce ao sul,
@@ -60,7 +60,7 @@ const placas = [
 ];
 const zona: ZonaDef = {
   id: 'A-MS', nome: 'Mata dos Sabiás', mapa: 'A', tipo: 'floresta', tileset: 'mata', musica: 'rota-dia-A', arena: 'mata', passo: 2,
-  mapaChars: g.mapa,
+  mapaChars: subBosque(g.mapa),
   objetos: placas.map((p) => p.objeto),
   placas: placas.map((p) => p.placa),
   warps: [...saidas(g, 'W', 'A-R2', 77, 12, 'o'), ...saidas(g, 'N', 'A3', 21, 29, 'n')],

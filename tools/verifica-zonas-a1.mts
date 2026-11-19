@@ -22,7 +22,7 @@ function blocos(z: ZonaDef) {
   return { w, h, b };
 }
 const ehEnt = (t?: string) => !!t && t !== 'borda' && t !== 'buraco';
-const meus = [...Z.values()].filter((z) => MEUS.test(z.id + '.'));
+const meus = [...Z.values()].filter((z) => MEUS.test(z.id + '.') && !z.id.endsWith('-ginasio'));
 const ids = new Set(TREINADORES_A1.map((t) => t.id)), evs = new Set([...EVENTOS_A1, ...EVENTOS_COMUNS].map((e) => e.id));
 for (const z of meus) {
   const { w, h, b } = blocos(z);
