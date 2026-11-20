@@ -137,6 +137,21 @@ Equipes espelhadas, sem itens (teste `escada da IA`, 200–300 batalhas): treina
 9. `erroDeZona` não tem teste automático em Node (o carregador usa `import.meta.glob`, que só existe no Vite); foi conferido só por compilação.
 10. Mapa B, ginásio 9 em diante e duplas não foram simulados.
 
+## 8. Ajustes para o inicial de Mata (decisões do autor, 20/11)
+
+Medido no motor puro contra as equipes HONESTAS que o QA levou jogando (`tools/testes/qa/busca-honesta.ts`, `sim-inicial.ts`), piloto esperto / jogador que bebe remédio abaixo da metade. Diário completo em docs/AJUSTES-MATA.md.
+
+| Ajuste | Mata antes → depois | Brasa antes → depois | Rio antes → depois |
+|---|---|---|---|
+| Líder 1 (Garcinha 7 + Tucaninho 10, sem mudança): o Seu Aroeira dá um **Jabutim nv 6** (Mata/Pedra) só a quem tem o Tamanduí | 21/39% → **35/54%** | 44/83% → 44/83% (presente só para Mata) | 46/45% → 46/45% |
+| Tenente Lata: Besourim sem Mordida de Saúva (Cara Feia no lugar), equipe de mata-passo-8, 2 Garrafadas | 5% → **20%** | 74% → 74% | 63% → 65% |
+| Idem, `sim-inicial` com a mochila do checkpoint (3 Garrafadas + 2 Chás) | 9% → **26%** | 86% → 86% | 74% → 74% |
+| Tenente Lata + **2 Garrafadas à vista na antessala** (A-US-2), jogador que chega sem remédio (como o QA chegou duas vezes) | 3% → **27%** | 68% → 83% | 42% → 72% |
+
+- Jabutim mais alto vira degrau: nv 7 → 42/62%, nv 8 → 70/80%, nv 9 (aprende Estilingue) → ~100%. Crescimento lento: o jogador honesto chega com ele em 6–7 (no navegador chegou em 6 e 7).
+- Jogado no navegador: líder 1 com o Jabutim 1/3 (antes 1/4); tenente Lata com Mata, pegando as Garrafadas da antessala, 2/6 (antes 0/4).
+- Criatura de Rio antes do Remo: Piabinha na pesca da beira do cais de Porto Sereia (Vara Velha nv 11–15, Vara Boa nv 20–24) e troca com o Seu Arraia (Pipirim → Mandizinho "Bigode" nv 18, com 2 insígnias). A Piabinha já era pescável com a Vara Velha na Trilha do Ipê, Campos de Restinga, Mata dos Sabiás, Trilha dos Cipós e Estrada da Usina; faltava avisar e pescar no próprio cais.
+
 <!-- sim:inicio -->
 _Gerado por `npx tsx tools/sim-equilibrio.ts` (N = 300 por confronto de chefe, 80 por treinador de rota; sementes fixas)._
 

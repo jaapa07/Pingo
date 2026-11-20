@@ -32,6 +32,8 @@ export const TREINADORES_GINASIO_01: TreinadorDef[] = [
    * piloto esperto / jogador que bebe chá abaixo da metade: antes Mata 10/27%, Brasa 45/84%, Rio 34/35%; agora Mata
    * 21/40%, Brasa 43/82%, Rio 48/47%. Mata segue abaixo (o Tucaninho resiste a tudo que o Tamanduí sabe), como no
    * gênero: um nível a mais no inicial vale ~25 pontos. Números em docs/QA-TRECHO-1.md.
+   * Mata ganhou uma ferramenta só dele (decisão do autor, 20/11): o Seu Aroeira dá um Jabutim nv 6 (Mata/Pedra) a quem tem o
+   * Tamanduí (src/data/eventos/a1.ts, evento 'aroeira'). Mata 21/39% → 35/54%; Brasa e Rio sem mudança (docs/AJUSTES-MATA.md).
    * Cura: 1 Chá de Erva-Cidreira definido, que o motor só libera a partir do 8º ginásio no Aventureiro.
    */
   { id: 'lider-01', classe: 'Líder', nome: 'Mestre Gaivota', sprite: 'lider-01', ia: 'lider', premio: 1200, insignia: 1, musica: 'batalha-lider', flag: 'ginasio-01-vencido',

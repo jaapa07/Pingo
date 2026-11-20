@@ -47,7 +47,9 @@ const USINA_VELHA: TreinadorDef[] = [
    * Tenente Lata — o Besourim (Inseto/Ferro) não traz a Mordida de Saúva (Inseto, ×2 no inicial de Mata): Cara Feia no lugar
    * (decisão do autor, 20/11: +15 pontos para quem joga com Mata). Motor puro, IA de líder, equipe honesta de mata-passo-8
    * (inicial nv 32–34 + Pipirim/Quero-querinho/Gambazinho 8, Corujinha 17–18, Capivarinha 15), 2 Garrafadas:
-   * Mata 5% → 20%, Brasa 74% → 74%, Rio 63% → 65% (docs/AJUSTES-MATA.md).
+   * Mata 5% → 20%, Brasa 74% → 74%, Rio 63% → 65%. Como o jogador honesto chegava aqui sem remédio, a antessala (A-US-2)
+   * ganhou 2 Garrafadas à vista: sem remédio e com a tenente antiga Mata 3% / Brasa 68% / Rio 42% → com as duas e o
+   * Besourim novo 27% / 83% / 72%. Jogando (navegador, Mata): 0/4 → 2/6. Números em docs/AJUSTES-MATA.md.
    */
   t('A-US-lata', 'Tenente do Cartel', 'Lata', 'tenente-lata', [{ e: 141, nv: 23 }, { e: 115, nv: 24 }, { e: 143, nv: 24, golpes: ['unha-de-aco', 'cabecada', 'piao-de-ferro', 'cara-feia'] }, { e: 31, nv: 25, item: 'acerola' }], 2500,
     'Então é você que anda amassando os meus capangas. Eu sou a tenente Lata, do Cartel Ferrugem, e não amasso fácil!', 'Amassou… Lata velha é assim: faz barulho e entorta.', '',
