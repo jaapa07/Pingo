@@ -15,7 +15,7 @@ for (let i = 0; i < n; i++) {
   rng.seed(1000 + i * 7919);
   const eq = JSON.parse(JSON.stringify(sv.equipe.filter((c: { ovo?: boolean }) => !c.ovo)));
   if (curado) for (const c of eq) { c.vida = atributos(c).vida; c.status = null; for (const g of c.golpes) g.pg = g.pgMax; }
-  eq.sort((a: { nivel: number }, b: { nivel: number }) => b.nivel - a.nivel);
+  if (process.env.ORDEM === 'rodizio') { eq.sort((a: { nivel: number }, b: { nivel: number }) => b.nivel - a.nivel); const [x] = eq.splice(2, 1); eq.unshift(x); } else if (process.env.ORDEM !== 'save') eq.sort((a: { nivel: number }, b: { nivel: number }) => b.nivel - a.nivel);
   const itens: Record<string, number> = {}; for (const [k, v] of Object.entries(sv.mochila)) if (/garrafada|elixir|cha-|pomada|garapa|mel-puro|unguento/.test(k)) itens[k] = v as number;
   let ok = true;
   for (const [k, id] of seq.entries()) {

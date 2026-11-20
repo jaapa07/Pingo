@@ -46,3 +46,10 @@ erros de console: []
   [batalha] selvagem 45:3 → captura · equipe 1:7,10:2,13:2,45:3 · A-R1 · $2006
   caça em A-R1: 3 batalhas, equipe ["Tamanduí 7","Pipirim 2","Cotiazinha 2","Quero-querinho 3"]
   [batalha] A-R1-6 → vitoria · equipe 1:7,10:2,13:2,45:3 · A-R1 · $2150
+  [batalha] A-R1-5 → derrota · equipe 1:8,10:2,13:2,45:3 · A-R1 · $2150
+    turnos: Tamanduí7 22/26 x Cotiazinha5 19/19 → golpe chicote-de-cipo | Tamanduí7 17/26 x Cotiazinha5 10/19 → golpe chicote-de-cipo | Tamanduí8 19/28 x Gambazinho6 11/23 → golpe arranhao | Tamanduí8 19/28 x Cotiazinha6 23/23 → golpe chicote-de-cipo | Tamanduí8 8/28 x Cotiazinha6 23/23 → golpe chicote-de-cipo | Quero-querinho3 16/16 x Cotiazinha6 23/23 → golpe bicada | Quero-querinho3 6/16 x Cotiazinha6 15/23 → golpe bicada | Quero-querinho3 6/16 x Cotiazinha6 11/23 → troca 1 | Pipirim2 14/14 x Cotiazinha6 11/23 → golpe bicada | Quero-querinho3 6/16 x Cotiazinha6 11/23 → golpe bicada | Quero-querinho3 6/16 x Cotiazinha6 8/23 → golpe bicada | Cotiazinha2 14/14 x Cotiazinha6 8/23 → golpe encontrao
+  DERROTA para A-R1-5 (nv 6)
+  [batalha] A-R1-5 → derrota · equipe 1:8,10:3,13:2,45:3 · A-R1 · $1075
+    turnos: Tamanduí8 28/28 x Cotiazinha5 19/19 → golpe chicote-de-cipo | Pipirim2 14/14 x Gambazinho6 22/22 → troca 0 | Tamanduí8 21/28 x Gambazinho6 22/22 → golpe arranhao | Tamanduí8 21/28 x Gambazinho6 16/22 → golpe arranhao | Tamanduí8 13/28 x Gambazinho6 10/22 → golpe arranhao | Tamanduí8 5/28 x Gambazinho6 4/22 → golpe arranhao | Pipirim2 14/14 x Gambazinho6 4/22 → golpe bicada | Pipirim2 14/14 x Gambazinho6 2/22 → troca 3 | Quero-querinho3 16/16 x Gambazinho6 2/22 → golpe bicada | Pipirim3 16/16 x Cotiazinha6 22/22 → golpe bicada | Quero-querinho3 16/16 x Cotiazinha6 15/22 → golpe bicada | Quero-querinho3 5/16 x Cotiazinha6 11/22 → golpe bicada | Cotiazinha2 14/14 x Cotiazinha6 11/22 → golpe encontrao
+  DERROTA para A-R1-5 (nv 6)
+  [batalha] A-R1-5 → vitoria · equipe 1:9,10:3,13:2,45:3 · A-R1 · $729

@@ -174,7 +174,7 @@ console.log(`áreas de Amuleto conferidas: ${nFechados} · linhas de visão conf
   for (const z of meus) for (const n of z.npcs ?? []) for (const i of n.loja ?? []) if (!itens.has(i)) E(`${z.id}: loja de ${n.id} vende ${i} inexistente`);
   // curva de níveis: equipes dentro da faixa do passo e sem evolução adiantada
   const pre = new Map<number, number>(); for (const e of ESPECIES) for (const v of e.evolui ?? []) if (v.nivel) pre.set(v.para, v.nivel);
-  const FAIXA: [RegExp, number, number][] = [[/^A-R1-/, 3, 10], [/^(A-R2|A-MS|A3)-/, 11, 15], [/^(A-R3|A-GE|A4)-/, 16, 20], [/^A-R7-/, 34, 38], [/^liga-[1-4]$/, 40, 44], [/^liga-5$/, 41, 46]];
+  const FAIXA: [RegExp, number, number][] = [[/^A-R1-/, 2, 10], [/^(A-R2|A-MS|A3)-/, 11, 15], [/^(A-R3|A-GE|A4)-/, 16, 20], [/^A-R7-/, 34, 38], [/^liga-[1-4]$/, 40, 44], [/^liga-5$/, 41, 46]];
   for (const t of TREINADORES) { const f = FAIXA.find(([r]) => r.test(t.id));
     for (const m of t.equipe) { if (f && (m.nv < f[1] || m.nv > f[2])) E(`treinador ${t.id}: espécie ${m.e} no nv ${m.nv} fora da faixa ${f[1]}–${f[2]}`); const min = pre.get(m.e); if (min && m.nv < min) E(`treinador ${t.id}: espécie ${m.e} no nv ${m.nv} antes de evoluir (nv ${min})`); } }
 }

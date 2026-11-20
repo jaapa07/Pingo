@@ -58,3 +58,11 @@ erros de console: []
     turnos: Guaraxim6 22/22 x Cotiazinha5 20/20 → golpe fagulha | Guaraxim6 16/22 x Cotiazinha5 12/20 → golpe fagulha | Guaraxim6 10/22 x Cotiazinha5 5/20 → golpe fagulha | Cotiazinha5 21/21 x Gambazinho6 22/22 → golpe encontrao | Cotiazinha5 21/21 x Gambazinho6 15/22 → golpe encontrao | Cotiazinha5 10/21 x Gambazinho6 3/22 → golpe encontrao | Cotiazinha6 12/23 x Cotiazinha6 22/22 → golpe encontrao | Guaraxim6 3/22 x Cotiazinha6 16/22 → golpe fagulha | Guaraxim6 3/22 x Cotiazinha6 10/22 → golpe fagulha | Cotiazinha2 14/14 x Cotiazinha6 10/22 → golpe encontrao | Cotiazinha2 3/14 x Cotiazinha6 7/22 → golpe encontrao | Pipirim2 14/14 x Cotiazinha6 7/22 → golpe bicada | Pipirim2 4/14 x Cotiazinha6 5/22 → golpe bicada
   DERROTA para A-R1-5 (nv 6)
   [batalha] A-R1-5 → vitoria · equipe 4:7,13:6,13:2,10:2 · A-R1 · $2032
+  [batalha] A-R1-4 → vitoria · equipe 4:8,13:6,13:2,10:2 · A-R1 · $2192
+== checkpoint brasa-passo-3: ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"] $2192
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (129 s)
+  compras em A2-venda: nada · sobrou $2192
+== checkpoint brasa-pre-lider-1: ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"] $2192
+  ginásio 1, tentativa 1: equipe ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"]
+  [batalha] g01-1 → vitoria · equipe 4:9,13:6,13:2,10:2 · A2-ginasio · $2472

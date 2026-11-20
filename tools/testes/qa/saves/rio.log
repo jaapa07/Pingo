@@ -46,3 +46,6 @@ erros de console: []
   [batalha] selvagem 13:2 → captura · equipe 7:6,13:2 · A-R1 · $3536
   [batalha] selvagem 13:4 → fuga · equipe 7:6,13:2 · A-R1 · $3536
   [batalha] selvagem 10:2 → captura · equipe 7:6,13:2,10:2 · A-R1 · $3536
+  [batalha] selvagem 45:2 → captura · equipe 7:7,13:2,10:2,45:2 · A-R1 · $3536
+  caça em A-R1: 6 batalhas, equipe ["Botinho 7","Cotiazinha 2","Pipirim 2","Quero-querinho 2"]
+  [batalha] A-R1-6 → vitoria · equipe 7:7,13:2,10:2,45:2 · A-R1 · $3680

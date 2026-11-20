@@ -11,7 +11,9 @@ import { encontrosDe } from './integridade';
 import type { ResultadoProgressao } from './progressao';
 
 /** faixas do spec 4.5 para a equipe de cada líder do mapa A */
-const FAIXA_LIDER: [number, number][] = [[10, 12], [15, 17], [20, 22], [24, 26], [28, 30], [31, 33], [34, 36], [38, 40]];
+// líder 1: 7–10 (era 10–12). Medido no jogo honesto (tools/testes/qa): quem chega ao 1º ginásio tem o inicial no nv 8 e
+// capturas de nv 2–5; com o ás no 12 essa equipe vencia 0–17% das vezes. Spec 4.5 atualizado junto.
+const FAIXA_LIDER: [number, number][] = [[7, 10], [15, 17], [20, 22], [24, 26], [28, 30], [31, 33], [34, 36], [38, 40]];
 const LIGA: [number, number] = [41, 46];
 const as = (t: TreinadorDef) => Math.max(...t.equipe.map((m) => m.nv));
 

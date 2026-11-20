@@ -311,7 +311,7 @@ Cada obstáculo exige um **Amuleto de Campo**, que é um item-chave. Ele **só f
 ### 4.5 Ordem de progressão (montagem com idas e voltas)
 | Passo | Onde | Insígnia / evento | Nível do líder | Liberado depois |
 |---|---|---|---|---|
-| 1 | A2 | **1 · Vento (Pena)** | 10–12 | Faro (missão) |
+| 1 | A2 | **1 · Vento (Pena)** | 7–10 | Faro (missão) |
 | 2 | A3 | **2 · Inseto (Casulo)** | 15–17 | Facão → A-R3, A-MG parcial |
 | 3 | A4 | **3 · Rio (Concha)** | 20–22 | **Remo**; A-R4 → evento da Usina (religa o cais) → Baía Azul |
 | 4 | A5 (via Baía, Remo) | **4 · Encanto (Estrela)** | 24–26 | A-PR (inicial extra), A-MG completo |
