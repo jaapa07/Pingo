@@ -76,7 +76,7 @@ function saveValido(d: unknown): d is SaveData {
 /** completa campos que versões futuras venham a acrescentar, para um save antigo continuar abrindo */
 function completar(s: SaveData): SaveData { const base = novoSave(); return { ...base, ...s, jogador: { ...base.jogador, ...s.jogador }, relogio: { ...base.relogio, ...s.relogio }, diario: { ...base.diario, ...s.diario } }; }
 function resumir(s: SaveData): ResumoSlot {
-  return { nome: s.jogador.nome, avatar: s.jogador.avatar, insignias: [...s.insignias], diario: s.diario.capturado.length, vistos: s.diario.visto.length, tempo: Math.floor(s.tempoJogo), zona: s.jogador.zona, quando: Date.now(), equipe: s.equipe.map((c) => c.especie) };
+  return { nome: s.jogador.nome, avatar: s.jogador.avatar, insignias: [...s.insignias], diario: s.diario.capturado.filter((n) => n <= 180).length, vistos: s.diario.visto.length, tempo: Math.floor(s.tempoJogo), zona: s.jogador.zona, quando: Date.now(), equipe: s.equipe.map((c) => c.especie) };
 }
 function embrulhar(s: SaveData): string {
   const dados = JSON.parse(JSON.stringify(s)) as SaveData;

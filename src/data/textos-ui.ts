@@ -37,7 +37,7 @@ export const T = {
     // página extra dos Visitantes (spec 6.5): 181 e 182 não contam no total nem nas medalhas
     abaDiario: 'DIÁRIO', abaVisitantes: 'VISITANTES',
     dicaListaVis: 'A: ficha   SELECT: medalhas   MENU: visitantes   B: voltar', dicaPaginaVis: 'A: ficha   MENU: voltar às 180   B: sair',
-    visitanteCurto: 'Visitante: fora das 180 espécies',
+    visitanteCurto: 'Visitante, fora das 180',
     ondeVisitante: {
       181: 'Ilhota do Encontro das Águas, aonde só o canoeiro Seu Tarumã leva, a partir de Porto Sereia. Missão "O Encontro das Águas": com as 16 insígnias, leve a ele um frasco de água escura (de noite, Poço do Breu, Rio Cachoeira-Véu) e um de água barrenta (de dia, poço da cascata da Estrada Vermelha).',
       182: 'Alto do Pico Pindorama, de noite, sob a aurora das quatro Lanternas Boreais. Missão "A Expedição Boreal": depois do Conselho, fale com a Drª Solveig no navio encalhado de Porto Pantaneiro.',

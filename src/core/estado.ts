@@ -66,7 +66,7 @@ function termo(t: string): boolean {
     case 'flag': return !!flag(v);
     case 'amuleto': return temAmuleto(v as AmuletoId);
     case 'item': return qtdItem(v) > 0;
-    case 'diario': return jogo.save.diario.capturado.length >= Number(v);
+    case 'diario': return jogo.save.diario.capturado.filter((n) => n <= 180).length >= Number(v);
     case 'periodo': return periodo() === v;
     case 'pos-jogo': return !!flag('conselho-vencido');
     case 'mapa-b': return MAPA_B_ABERTO;

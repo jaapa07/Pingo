@@ -25,7 +25,7 @@ export function criarPerfil(): Tela {
   if (m) { spr = new Sprite(j.avatar, vista(j.avatar, 'batalha') ? 'batalha' : 'retrato', rec); spr.x = m.px + Math.floor((68 - m.cw) / 2); spr.y = m.py + Math.floor((68 - m.ch) / 2); spr.tocar(spr.tem('idle') ? 'idle' : 'neutro'); spr.desenhar(); }
   const linha = (rot: string, val: string, y: number) => { rotulo(papel, rot, 90, y, 'marrom'); rotulo(papel, val, 150, y, 'tinta', { largura: 130, alinhar: 'dir' }); const l = caixa('linha-div', 190, 1); papel.append(em(l, 90, y + 10)); };
   linha('Nome', j.nome, 24); linha('Patacas', patacas(j.dinheiro), 37); linha('Tempo de jogo', fmtTempo(s.tempoJogo), 50);
-  linha('Diário', `${s.diario.capturado.length} capturadas de ${TOTAL_DIARIO}`, 63); linha('Avistadas', String(s.diario.visto.length), 76);
+  linha('Diário', `${s.diario.capturado.filter((n) => n <= 180).length} capturadas de ${TOTAL_DIARIO}`, 63); linha('Avistadas', String(s.diario.visto.filter((n) => n <= 180).length), 76);
   linha('Amuletos de Campo', `${s.amuletos.length} de 10`, 89);
   rotulo(papel, nomeLocal(j.zona), 6, 101, 'chumbo', { largura: 76, alinhar: 'centro' });
   rotulo(papel, `Insígnias ${s.insignias.length}/16`, 90, 105, 'marrom');

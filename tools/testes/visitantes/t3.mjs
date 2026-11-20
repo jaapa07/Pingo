@@ -1,0 +1,15 @@
+import { abrir } from './lib.mjs';
+const Q = `?zona=B-R2&x=81&y=24&dir=s&periodo=dia&insignias=16&amuletos=todos&equipe=9:70&flags=ea-missao,pantanal-ok&itens=frasco-vazio:1,frasco-agua-escura:1`;
+const t = await abrir(Q);
+await t.pronto(); await t.assentar();
+await t.virar('s'); await t.k('z', 400); let s = await t.assentar(); console.log('embarcou', JSON.stringify(s));
+for (const d of ['l', 'l', 'l', 'l']) s = await t.passo(d);
+console.log('antes da cascata', JSON.stringify(s));
+await t.virar('n'); await t.tecla('n'); s = await t.assentar(); console.log('subiu?', JSON.stringify(s), (await t.falas(2)).join(' | '));
+await t.foto('br2-poco');
+await t.tecla('o'); await t.espera(500); await t.foto('br2-prompt'); s = await t.assentar();
+console.log((await t.falas(3)).join(' | '));
+const st = await t.ev(() => ({ m: window.__pingo.jogo.save.mochila['frasco-agua-barrenta'], f: window.__pingo.jogo.save.flags['ea-frasco-barrento'] }));
+t.ok(st.m === 1 && st.f, 'frasco barrento', JSON.stringify(st));
+console.log('erros', t.erros);
+await t.browser.close();

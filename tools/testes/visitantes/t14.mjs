@@ -1,0 +1,11 @@
+import { abrir } from './lib.mjs';
+const t = await abrir('?zona=A4&x=31&y=38&insignias=16&equipe=9:70,181:60&flags=diario,borealce-nota');
+await t.pronto(); await t.espera(1500);
+await t.ev(() => { const d = window.__pingo.jogo.save.diario; for (let n = 1; n <= 31; n++) { d.visto.push(n); d.capturado.push(n); } d.visto.push(181, 182); d.capturado.push(181); });
+await t.ev(() => { void window.__pingo.dialogo.abrirTela('diario'); }); await t.espera(2500);
+await t.foto('diario-lista');
+await t.k('Escape', 1500); await t.foto('diario-visitantes');
+await t.k('z', 2000); await t.foto('diario-ficha-galo');
+await t.k('ArrowRight', 800); await t.k('ArrowRight', 1500); await t.foto('diario-habitat-galo');
+await t.k('ArrowDown', 1500); await t.foto('diario-habitat-borealce');
+console.log('erros', t.erros); await t.browser.close();

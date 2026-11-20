@@ -222,7 +222,7 @@ registrarComando('vis-acender', async () => {
   const b = new Ator('c:borealce', M.cena.sprites, j.x, Math.max(1, j.y - 4), 's'); M.extras.push(b);
   b.spr.opacidade = 0;
   await quadros(40, (i) => { b.spr.opacidade = i / 40; });
-  for (let k = 0; k < 2; k++) await b.mover('s', 22);
+  for (let k = 0; k < 3; k++) await b.mover('s', 22);
   b.emote('!', 40); await quadros(40);
   setTimeout(() => { b.remover(); for (const l of luzes) l.remover(); }, 1500);
 });
