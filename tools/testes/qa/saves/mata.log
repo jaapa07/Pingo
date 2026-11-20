@@ -368,3 +368,5 @@ erros de console: []
   [batalha] g02-4 → derrota · equipe 2:21,10:6,13:4,45:8,20:8,43:14 · A3-ginasio · $1458
     turnos: Tamanduá-Copa21 66/66 x Caranguejeirinha14 37/37 → golpe arranhao | Tamanduá-Copa21 51/66 x Caranguejeirinha14 20/37 → golpe arranhao | Tamanduá-Copa21 47/66 x Besourim14 35/41 → golpe arranhao | Tamanduá-Copa21 5/66 x Besourim14 30/41 → golpe arranhao | Corujinha14 38/38 x Besourim14 25/41 → golpe lufada | Quero-querinho8 26/26 x Besourim14 13/41 → golpe bicada | Quero-querinho8 1/26 x Besourim14 9/41 → golpe bicada | Gambazinho8 26/26 x Besourim14 5/41 → golpe arranhao | Gambazinho8 26/26 x Besourim14 3/41 → golpe arranhao | Gambazinho8 2/26 x Besourim14 2/41 → golpe arranhao | Pipirim3 16/16 x Besourim14 2/41 → golpe bicada | Pipirim6 22/22 x Caranguejeirinha14 20/37 → golpe bicada | Cotiazinha4 18/18 x Caranguejeirinha14 20/37 → golpe encontrao
   perdeu no ginásio 2 (tentativa 2)
+  TREINO EXTRA {"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":11,"de":21,"para":22}
+  ginásio 2, tentativa 3: equipe ["Tamanduá-Copa 22","Pipirim 6","Cotiazinha 4","Quero-querinho 8","Gambazinho 8","Corujinha 14"]

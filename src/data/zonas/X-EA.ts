@@ -37,7 +37,7 @@ function linha(y: number): string {
     else if (y >= 47) c = 'T';
     else if (y >= 44) c = x <= 3 || x >= LARG - 4 ? 'T' : ';';
     else if (x === 2 || x === LARG - 3) c = y >= FAIXA[0] && y <= FAIXA[1] ? 'T' : y <= 0 ? 'T' : ';';
-    else c = x < MARGEM_ESCURA[y] ? 'd' : '~';
+    else c = '~';
     if (ilhota) {
       const borda = x === ILHOTA.x0 || x === ILHOTA.x1;
       if (y === ILHOTA.y0) c = 'T';

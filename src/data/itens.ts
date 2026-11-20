@@ -143,6 +143,8 @@ export const ITENS: ItemInfo[] = [
 
   /* ------------------------------ Pergaminhos de Técnica (50, reutilizáveis) ------------------------------ */
   ...Object.entries(PERGAMINHOS).map(([id, gid], n) => i(id, `PT${String(n + 1).padStart(2, '0')} ${NOME_PT[gid]}`, 'pergaminhos', 3000, `Pergaminho de Técnica reutilizável. Ensina ${NOME_PT[gid]} a uma criatura compatível.`, { golpe: gid })),
+  /* ------------------------------ regras clássicas (spec 10A) ------------------------------ */
+  i('cartao-radio', 'Cartão do Rádio', 'chave', 0, 'Prêmio do Quiz do Rádio. Libera os programas extras do Rádio Cipó: Cantiga das Lendas, músicas dos lugares visitados e dicas de captura no Bicho do Dia.'),
 ];
 
 const mapa = new Map<string, ItemInfo>(ITENS.map((x) => [x.id, x]));
