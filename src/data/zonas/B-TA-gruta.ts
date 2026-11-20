@@ -1,42 +1,62 @@
 /**
  * B-TA-gruta · Gruta do Fôlego — bolsão de ar no meio do Túnel Alagado (passo 13).
  * Chega-se pela piscina do oeste; um pedregulho (Força) fecha o corredor para o salão. No salão: o lago do Jaú-Gigante
- * (pesca), a prateleira de cima (Escalar) e a passagem para a piscina do leste, de onde se mergulha para o Brejo Roxo.
+ * (pesca), a prateleira de cima (Escalar, com um nicho atrás de rocha rachada) e o poço da cascata: só com a
+ * Cachoeira (insígnia 12) se sobe à piscina do leste, de onde se mergulha para o trecho que sai no Brejo Roxo.
+ * Às terças e quintas, depois do encontro 7, a Tainá treina aqui e aceita um duelo por dia (spec 10A-27, `b2-rival-semanal`).
  */
 import type { ZonaDef } from '../../core/tipos';
-import { Grade, E, npc, tr } from './_b2-lib';
+import { Pincel, grade, E, duelista, gente, item, placa, saidas, obj } from './_b2s-lib';
 
-const g = new Grade(44, 26, '#');
-g.r(3, 13, 9, 8, '~').r(5, 15, 4, 3, 'd').r(12, 12, 5, 8, ';').r(13, 11, 3, 1, ';').r(17, 14, 7, 1, '.').p('p', 18, 14);
-g.r(24, 9, 8, 8, '.').r(25, 10, 5, 2, ',').r(24, 17, 8, 5, '~').r(23, 18, 1, 3, '~').p(';', 24, 16, 25, 16, 30, 16, 31, 16);
-g.r(32, 11, 2, 2, '.').r(34, 9, 5, 5, ';').r(34, 3, 8, 6, '~').r(36, 4, 3, 3, 'd');
-g.r(17, 4, 11, 4, '.').p('e', 26, 8).p('r', 21, 5).r(17, 4, 4, 2, ',').p('T', 27, 4, 24, 9, 31, 9, 12, 12, 16, 19, 38, 13).p('b', 14, 19, 28, 15, 34, 13);
-
+const p = new Pincel(44, 26, '#');
+// piscina do oeste (com o poço que desce ao túnel) e a prainha
+p.r(2, 13, 8, 9, '~').r(4, 15, 4, 4, 'd').r(10, 13, 3, 8, ';').p('.', 10, 12, 11, 12).p(',', 11, 14, 12, 18);
+// corredor do pedregulho
+p.r(13, 15, 5, 1, '.').p('p', 15, 15);
+// salão, com chão de encontro e o lago do Jaú
+p.r(18, 8, 14, 11, '.').r(20, 10, 5, 3, '%').r(26, 13, 4, 3, '%').r(21, 15, 4, 2, '%').p(',', 19, 9, 30, 9, 25, 12, 19, 17).p('b', 18, 8, 31, 18, 24, 9);
+p.r(19, 19, 11, 4, '~').p(';', 18, 18, 30, 17).p('T', 18, 12, 31, 11);
+// poço da cascata e a piscina do leste (de cima)
+p.r(32, 10, 3, 3, '~').p('w', 33, 8, 33, 9).r(32, 2, 10, 6, '~').r(36, 3, 3, 3, 'd').r(42, 2, 1, 6, ';').r(30, 2, 2, 4, ';').p('b', 42, 7);
+// prateleira de cima (Escalar) e o nicho da rocha rachada
+p.r(19, 2, 9, 4, '.').p('e', 22, 6, 22, 7).p('r', 27, 3).p('.', 28, 3).p(',', 20, 3, 24, 2).p('T', 19, 5, 26, 2);
+// marcas
+for (const [x, y] of [[4, 15], [5, 15], [6, 15], [7, 15], [4, 16], [5, 16], [7, 16], [4, 17], [5, 17], [6, 17], [7, 17], [4, 18], [5, 18], [6, 18], [7, 18]]) p.t(x, y, 'W');
+p.t(6, 16, 'V');
+for (const [x, y] of [[36, 3], [37, 3], [38, 3], [36, 4], [37, 4], [36, 5], [37, 5], [38, 5]]) p.t(x, y, 'Q');
+p.t(38, 4, 'Z');
+p.t(28, 15, '1').t(20, 4, '2').t(29, 12, 'A').t(31, 3, 'B').t(27, 16, 'R').t(16, 14, 'P').t(29, 10, 'F');
+p.t(19, 2, 'a').t(28, 3, 'h').t(11, 19, 'i').t(25, 2, 'j').t(42, 6, 'k').t(18, 17, 'm');
+const g = grade('B-TA-gruta', p.fim(), {
+  W: 'd', V: 'd', Q: 'd', Z: 'd', '1': '%', '2': '.', A: '.', B: ';', R: '.', P: '.', F: '.', a: '.', h: '.', i: ';', j: '.', k: ';', m: '.',
+});
+const pl = placa(g, 'P', 'GRUTA DO FÔLEGO\nRespire. Conte até dez. Empurre o pedregulho.\n— Clube de Mergulho de Cidade Ginga');
 const zona: ZonaDef = {
   id: 'B-TA-gruta', nome: 'Gruta do Fôlego', mapa: 'B', tipo: 'caverna', tileset: 'caverna', musica: 'caverna', arena: 'caverna', passo: 13,
-  mapaChars: g.fim(),
-  objetos: [{ o: 'placa', x: 15, y: 12 }, { o: 'fogueira', x: 29, y: 13 }, { o: 'canoa', x: 35, y: 10 }],
-  placas: [{ x: 15, y: 12, texto: 'GRUTA DO FÔLEGO\nRespire. Conte até dez. Empurre o pedregulho.\n— Clube de Mergulho de Cidade Ginga' }],
+  mapaChars: g.mapa,
+  objetos: [pl.objeto, obj(g, 'F', 'fogueira'), { o: 'canoa', x: 30, y: 17 }],
+  placas: [pl.placa],
   warps: [
-    ...[5, 6, 7, 8].flatMap((x) => [15, 16, 17].map((y) => ({ x, y, para: { zona: 'B-TA', x: 26, y: 22, dir: 's' as const } }))),
-    ...[36, 37, 38].flatMap((x) => [4, 5, 6].map((y) => ({ x, y, para: { zona: 'B-TA', x: 36, y: 8, dir: 's' as const } }))),
+    ...saidas(g, 'W', 'B-TA', 26, 23, 'n'), ...saidas(g, 'V', 'B-TA', 26, 23, 'n'),
+    ...saidas(g, 'Q', 'B-TA', 36, 9, 's'), ...saidas(g, 'Z', 'B-TA', 36, 9, 's'),
   ],
   npcs: [
-    tr('B-TA-4', 'cl-pescador', 27, 14, 'o', { visao: 3 }),
-    tr('B-TA-5', 'cl-garimpeiro', 22, 6, 'l', { visao: 3 }),
-    npc('eremita', 'Eremita Bolha', 'npc-idoso', 30, 12, 'o', ['Moro aqui desde que perdi a hora de subir. Faz uns trinta anos.', 'No lago mora um Jaú do tamanho de uma canoa. Com Vara Velha ele nem se mexe; com Vara Mestra, ele pensa no assunto.', 'Se vir gente de macacão ferrugem do outro lado, não dê bom-dia. Eles levaram todos os sapos do brejo em jaulas.']),
-    npc('mergulhadora', 'Mergulhadora Anêmona', 'cl-mergulhador', 35, 11, 'n', ['A piscina de cá desce para o trecho do leste.', 'Siga as clareiras de luz no fundo: é nelas que dá para subir. A última sai no charco do Brejo Roxo.']),
+    duelista(g, '1', 'B-TA-4', 'cl-pescador', 'o', 3),
+    duelista(g, '2', 'B-TA-5', 'cl-garimpeiro', 'l', 3),
+    gente(g, 'A', 'eremita', 'npc-idoso', 'Eremita Bolha', { dir: 'o', fala: [
+      'Moro aqui desde que perdi a hora de subir. Faz uns trinta anos.',
+      'No lago mora um Jaú do tamanho de uma canoa. Com Vara Velha ele nem se mexe; com Vara Mestra, ele pensa no assunto.',
+      'A cascata do canto sobe para a piscina do leste. Quem tem o Amuleto da Cachoeira sobe remando. Quem não tem, me faz companhia.',
+    ] }),
+    gente(g, 'B', 'mergulhadora', 'cl-mergulhador', 'Mergulhadora Anêmona', { dir: 's', fala: ['A piscina de cá desce para o trecho do leste do túnel.', 'Siga as clareiras de luz no fundo: é nelas que dá para subir. A última sai no charco do Brejo Roxo.', 'Se vir gente de macacão ferrugem do outro lado, não dê bom-dia. Eles levaram os sapos do brejo em jaulas.'] }),
+    gente(g, 'R', 'taina-semanal', 'taina', 'Tainá', { dir: 'o', script: 'b2-rival-semanal', se: 'flag:rival-7' }),
   ],
-  itens: [
-    { x: 18, y: 5, item: 'pedra-lunar', flag: 'B-TA-gruta-i1' },
-    { x: 13, y: 18, item: 'cha-guarana', flag: 'B-TA-gruta-i2' },
-    { x: 25, y: 5, item: 'pepita', oculto: true, flag: 'B-TA-gruta-o1' },
-    { x: 37, y: 12, item: 'garapa', oculto: true, flag: 'B-TA-gruta-o2' },
-  ],
+  itens: [item(g, 'a', 'pedra-lunar'), item(g, 'h', 'pt-36'), item(g, 'i', 'cha-guarana'), item(g, 'j', 'pepita', 1, true), item(g, 'k', 'garapa', 1, true), item(g, 'm', 'rapadura', 1, true)],
   habitats: [
-    { metodo: 'pesca-velha', todos: [E(39, 40, 44, 1)] },
-    { metodo: 'pesca-boa', todos: [E(39, 44, 48, 16), E(40, 48, 50, 4)] },
-    { metodo: 'pesca-mestra', todos: [E(39, 46, 49, 10), E(40, 49, 53, 6)] },
+    { metodo: 'caverna', taxa: 0.08, todos: [E(31, 51, 53, 26), E(128, 51, 53, 20), E(36, 51, 53, 18), E(148, 52, 54, 16), E(89, 52, 54, 12), E(26, 53, 55, 8)] },
+    { metodo: 'pesca-velha', todos: [E(39, 20, 30, 100)] },
+    { metodo: 'pesca-boa', todos: [E(114, 51, 53, 70), E(40, 52, 54, 30)] },
+    { metodo: 'pesca-mestra', todos: [E(40, 53, 55, 55), E(114, 52, 54, 30), E(112, 54, 55, 15)] },
   ],
 };
 export default zona;

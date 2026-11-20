@@ -43,13 +43,13 @@ p.p('T', 0, 13, 0, 15, 99, 15, 99, 17);
 p.t(0, 14, 'W').t(99, 16, 'L');
 p.t(22, 25, '1').t(29, 15, '2').t(44, 9, '3').t(47, 5, '4').t(74, 26, '5').t(83, 15, '6').t(60, 21, '7').t(90, 19, '8');
 p.t(38, 26, 'A').t(36, 3, 'B').t(91, 24, 'K').t(6, 13, 'J').t(52, 20, 'Z').t(39, 21, 'V');
-p.t(8, 4, 'a').t(3, 27, 'b').t(49, 3, 'c').t(59, 3, 'd').t(95, 4, 'e').t(79, 27, 'f').t(22, 9, 'g').t(46, 28, 'h').t(58, 4, 'i').t(96, 8, 'j');
+p.t(8, 4, 'a').t(3, 27, 'k').t(49, 3, 'm').t(59, 3, 'n').t(95, 4, 'q').t(79, 27, 's').t(22, 9, 'u').t(46, 28, 'h').t(58, 4, 'i').t(96, 8, 'j');
 p.t(3, 13, 'P').t(96, 15, 'Q').t(41, 9, 'R').t(58, 21, 'S');
 p.t(10, 17, 'I').t(35, 9, 'U').t(68, 11, 'Y').t(17, 14, 'N').t(82, 9, 'N').t(63, 18, 'N').t(24, 28, 'X').t(77, 22, 'X').t(38, 22, 'F').t(39, 29, 'G');
 const g = grade('B-R3', p.fim(), {
   W: ':', L: ':', '1': ':', '2': '.', '3': '.', '4': '"', '5': ':', '6': '.', '7': '.', '8': '"',
   A: ':', B: '.', K: '.', J: '.', Z: '.', V: '.',
-  a: '"', b: '.', c: '"', d: '.', e: '"', f: '.', g: '"', h: '.', i: '.', j: ',',
+  a: '"', k: '.', m: '"', n: '.', q: '"', s: '.', u: '"', h: '.', i: '.', j: ',',
   P: '.', Q: '.', R: '.', S: '.', I: '.', U: '.', Y: '.', N: '.', X: '.', F: '.', G: '.',
 });
 const placas = [
@@ -89,8 +89,8 @@ const zona: ZonaDef = {
     gente(g, 'V', 'poeta', 'npc-homem-3', 'Violeiro Tião', { dir: 'n', fala: ['♪ Quem tem pressa come cru,\nquem tem Cuia come assado… ♪', 'Não faz sentido? Rima também cansa, criatura.', 'À noite a trilha muda de gente: some o Papagaiozim, aparece Quatizão revirando a fogueira.'] }),
   ],
   itens: [
-    item(g, 'a', 'garrafada'), item(g, 'b', 'pt-33'), item(g, 'c', 'cuia-ouro', 2), item(g, 'd', 'pedra-solar'), item(g, 'e', 'pepita'), item(g, 'f', 'pomada-copaiba'),
-    item(g, 'g', 'biscoito-de-polvilho', 2, true), item(g, 'h', 'cha-guarana', 1, true), item(g, 'i', 'concha-rara', 1, true), item(g, 'j', 'elixir-andiroba', 1, true),
+    item(g, 'a', 'garrafada'), item(g, 'k', 'pt-33'), item(g, 'm', 'cuia-ouro', 2), item(g, 'n', 'pedra-solar'), item(g, 'q', 'pepita'), item(g, 's', 'pomada-copaiba'),
+    item(g, 'u', 'biscoito-de-polvilho', 2, true), item(g, 'h', 'cha-guarana', 1, true), item(g, 'i', 'concha-rara', 1, true), item(g, 'j', 'elixir-andiroba', 1, true),
   ],
   habitats: [
     {

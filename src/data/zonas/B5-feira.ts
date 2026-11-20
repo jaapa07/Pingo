@@ -4,7 +4,7 @@
  * Dona Dendê pede os frutos do tabuleiro (missão `m-dende`).
  */
 import type { ZonaDef } from '../../core/tipos';
-import { grade, obj, objs, saidas, gente, item } from './_b2s-lib';
+import { grade, obj, peca, objs, saidas, gente, item } from './_b2s-lib';
 
 const g = grade('B5-feira', [
   '#################',
@@ -27,7 +27,7 @@ const zona: ZonaDef = {
     ...objs(g, 'J', 'janela'), obj(g, 'R', 'rede-pesca'), obj(g, 'Q', 'quadro-ex-voto'),
     ...objs(g, 'K', 'cesto'), obj(g, 'Z', 'saco-graos'), obj(g, 'S', 'barril'), obj(g, 'Y', 'pote-barro'),
     { o: 'balcao', x: g.todos('B')[0][0], y: g.todos('B')[0][1] }, { o: 'balcao', x: g.todos('B')[3][0], y: g.todos('B')[3][1] }, { o: 'balcao', x: g.todos('B')[6][0], y: g.todos('B')[6][1] },
-    obj(g, 'H', 'mesa'), obj(g, 'W', 'caixote'),
+    peca(g, 'H', 'mesa'), obj(g, 'W', 'caixote'),
   ],
   warps: saidas(g, 'D', 'B5', 9, 31, 's', 'porta'),
   npcs: [

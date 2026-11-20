@@ -1,4 +1,4 @@
-import { casaLivre, obj, objs, gente } from './_b2s-lib';
+import { casaLivre, obj, peca, gente } from './_b2s-lib';
 
 /** B5-casa-1 · Sobrado dos Sapateado (Cidade Ginga, passo 12): a avó capoeirista e o neto. */
 export default casaLivre({
@@ -17,8 +17,8 @@ export default casaLivre({
   marcas: { J: '#', Q: '#', R: '#', F: '.', P: '.', U: '.', K: '.', H: '.', h: '.', a: '.', L: '.', '1': '.', '2': '.' },
   objetos: (g) => [
     obj(g, 'J', 'janela'), obj(g, 'Q', 'quadro'), obj(g, 'R', 'relogio'),
-    obj(g, 'F', 'fogao-lenha'), obj(g, 'P', 'pia'), obj(g, 'U', 'radio', { texto: ['♪ …e atenção, ouvintes da Rádio Cipó: carregamento estranho de jaulas visto na estrada do Brejo Roxo… ♪'] }), obj(g, 'K', 'cristaleira'),
-    obj(g, 'H', 'mesa'), obj(g, 'h', 'cadeira'), { o: 'tapete-a', x: g.todos('a')[0][0], y: g.todos('a')[0][1] }, obj(g, 'L', 'planta'),
+    peca(g, 'F', 'fogao-lenha'), obj(g, 'P', 'pia'), obj(g, 'U', 'radio', { texto: ['♪ …e atenção, ouvintes da Rádio Cipó: carregamento estranho de jaulas visto na estrada do Brejo Roxo… ♪'] }), obj(g, 'K', 'cristaleira'),
+    peca(g, 'H', 'mesa'), obj(g, 'h', 'cadeira'), { o: 'tapete-a', x: g.todos('a')[0][0], y: g.todos('a')[0][1] }, obj(g, 'L', 'planta'),
   ],
   gente: (g) => [
     gente(g, '1', 'vo', 'npc-idosa', 'Vó Sapateado', { dir: 'l', fala: ['No meu tempo a roda ia até o sol nascer.', 'Hoje eu durmo às oito. Mas sonho que estou dando rasteira.'] }),

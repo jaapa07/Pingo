@@ -1,0 +1,7 @@
+import { venda } from './_b2n-lib';
+
+/** Venda de Planalto Lume (porta em (15, 17) na cidade). */
+export default venda('B8', 'Planalto Lume', 15, 'planalto', [15, 18],
+  { nome: 'Seu Quarto-Crescente', fala: 'Bem-vindo à Venda do Lume! Aqui a cuia é boa e o preço é astronômico. Brincadeira: o preço é o de sempre.' },
+  [['', ['cuia', 'cuia-trancada', 'cuia-ouro', 'cuia-rapida', 'cuia-noturna', 'cuia-rede', 'cuia-mel', 'garrafada', 'elixir-andiroba', 'cha-guarana', 'mel-puro', 'unguento', 'pomada-copaiba', 'garapa', 'fumaca-andiroba-forte', 'corda-de-cipo', 'rapadura']]],
+  { sprite: 'cl-crianca-f', nome: 'Menina Cometa', fala: ['Eu comprei uma Cuia Noturna para pegar um Noitão. Ele piscou para mim e foi embora.', 'A Cuia Noturna é boa de noite. De dia é só uma cuia pintada.'] });

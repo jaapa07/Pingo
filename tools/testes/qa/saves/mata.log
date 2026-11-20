@@ -325,3 +325,18 @@ erros de console: []
   [batalha] A-MS-7 → vitoria · equipe 2:16,10:3,13:4,45:8,20:8 · A-MS · $2087
   [batalha] A-MS-3 → vitoria · equipe 2:16,10:3,13:4,45:8,20:8 · A-MS · $2483
   [batalha] A-MS-4 → vitoria · equipe 2:17,10:3,13:4,45:8,20:8 · A-MS · $3011
+  [batalha] selvagem 157:14 → fuga · equipe 2:17,10:3,13:4,45:8,20:8 · A-MS · $3011
+  [batalha] selvagem 43:13 → captura · equipe 2:17,10:3,13:4,45:8,20:8,43:13 · A-MS · $3011
+  [batalha] A-MS-1 → vitoria · equipe 2:18,10:3,13:4,45:8,20:8,43:13 · A-MS · $3491
+  [batalha] A-MS-5 → vitoria · equipe 2:18,10:3,13:4,45:8,20:8,43:13 · A-MS · $3923
+  [batalha] A-MS-8 → derrota · equipe 2:18,10:3,13:4,45:8,20:8,43:13 · A-MS · $3923
+    turnos: Tamanduá-Copa18 48/58 x Cigarrim12 36/36 → golpe arranhao | Tamanduá-Copa18 25/58 x Cigarrim12 23/36 → golpe arranhao | Corujinha13 7/36 x Cigarrim12 11/36 → golpe lufada | Corujinha13 7/36 x Gambazinho13 38/38 → golpe intuicao | Quero-querinho8 26/26 x Gambazinho13 38/38 → golpe bicada | Gambazinho8 26/26 x Gambazinho13 38/38 → golpe arranhao | Gambazinho8 9/26 x Gambazinho13 27/38 → golpe arranhao | Cotiazinha4 18/18 x Gambazinho13 27/38 → golpe encontrao | Pipirim3 16/16 x Gambazinho13 27/38 → golpe bicada
+  DERROTA para A-MS-8 (nv 13)
+  [batalha] A-MS-8 → vitoria · equipe 2:19,10:3,13:4,45:8,20:8,43:13 · A-MS · $2533
+== checkpoint mata-passo-5: ["Tamanduá-Copa 19","Pipirim 3","Cotiazinha 4","Quero-querinho 8","Gambazinho 8","Corujinha 13"] $2533
+
+>> etapa 6: Bosque Alto: compras, treinadores da vila e ginásio 2 (Inseto)  (575 s)
+  [batalha] A3-2 → vitoria · equipe 2:19,10:3,13:4,45:8,20:8,43:13 · A3 · $2797
+  [batalha] A3-1 → vitoria · equipe 2:19,10:3,13:4,45:8,20:8,43:14 · A3 · $3317
+  compras em A3-venda: 4× cuia · sobrou $2517
+== checkpoint mata-pre-lider-2: ["Tamanduá-Copa 19","Pipirim 3","Cotiazinha 4","Quero-querinho 8","Gambazinho 8","Corujinha 14"] $2517

@@ -86,6 +86,12 @@ export function obj(g: Grade, m: string, o: string, extra: Record<string, unknow
   if (!cat(o)) erro(`${g.id}: objeto fora do catálogo: ${o}`);
   return { o, x, y, ...extra };
 }
+/** objeto de uma linha só desenhado por inteiro na grade ("HH" = mesa 2×1): âncora na primeira marca lida */
+export function peca(g: Grade, m: string, o: string, extra: Record<string, unknown> = {}): ObjetoSpawn {
+  const [x, y] = g.todos(m)[0] ?? [0, 0];
+  if (!cat(o)) erro(`${g.id}: objeto fora do catálogo: ${o}`);
+  return { o, x, y, ...extra };
+}
 /** um objeto em cada posição da marca repetida */
 export function objs(g: Grade, m: string, o: string, extra: Record<string, unknown> = {}): ObjetoSpawn[] {
   if (!cat(o)) erro(`${g.id}: objeto fora do catálogo: ${o}`);

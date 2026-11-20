@@ -1,4 +1,4 @@
-import { casaLivre, obj, gente } from './_b2s-lib';
+import { casaLivre, obj, peca, gente } from './_b2s-lib';
 
 /** B5-casa-2 · Ateliê da Dona Linha (Cidade Ginga, passo 12): abadás para gente e criatura. */
 export default casaLivre({
@@ -6,19 +6,19 @@ export default casaLivre({
   linhas: [
     '############',
     '###J###X####',
-    '#AM..EE..K.#',
-    '#..b.......#',
+    '#AY..EE..K.#',
+    '#..B.......#',
     '#...1......#',
     '#::.....2..#',
-    '#::...ttt.P#',
-    '#.....ttt..#',
+    '#::...ZZZ.P#',
+    '#.....ZZZ..#',
     '#####DD#####',
   ],
-  marcas: { J: '#', X: '#', A: '.', M: '.', E: '.', K: '.', b: '.', t: '.', P: '.', '1': '.', '2': '.' },
+  marcas: { J: '#', X: '#', A: '.', Y: '.', E: '.', K: '.', B: '.', Z: '.', P: '.', '1': '.', '2': '.' },
   objetos: (g) => [
-    obj(g, 'J', 'janela'), obj(g, 'X', 'quadro-ex-voto'), obj(g, 'A', 'armario'), obj(g, 'M', 'maquina-costura', { texto: ['A máquina de costura ainda está com um abadá enorme preso no pé: oito metros de calça branca.'] }),
-    obj(g, 'E', 'estante', { texto: ['Moldes de abadá em todos os tamanhos, de Saguinho a Capivarona.'] }), obj(g, 'K', 'cesto'), obj(g, 'b', 'banquinho'),
-    { o: 'tapete-b', x: g.todos('t')[3][0], y: g.todos('t')[3][1] }, obj(g, 'P', 'planta-c'),
+    obj(g, 'J', 'janela'), obj(g, 'X', 'quadro-ex-voto'), obj(g, 'A', 'armario'), obj(g, 'Y', 'maquina-costura', { texto: ['A máquina de costura ainda está com um abadá enorme preso no pé: oito metros de calça branca.'] }),
+    peca(g, 'E', 'estante', { texto: ['Moldes de abadá em todos os tamanhos, de Saguinho a Capivarona.'] }), obj(g, 'K', 'cesto'), obj(g, 'B', 'banquinho'),
+    { o: 'tapete-b', x: g.todos('Z')[3][0], y: g.todos('Z')[3][1] }, obj(g, 'P', 'planta-c'),
   ],
   gente: (g) => [
     gente(g, '1', 'linha', 'cl-rendeira', 'Dona Linha', { dir: 's', fala: ['Costuro abadá para gente e para criatura.', 'O mais difícil foi o da Sucurião do Doutor Peçonha, lá do Brejo Roxo. Oito metros de calça.', 'Ele sumiu faz dias e não veio buscar a encomenda. Estranho: aquele homem não perde prazo nem para tomar veneno.'], se: '!flag:laboratorio-ok' }),
