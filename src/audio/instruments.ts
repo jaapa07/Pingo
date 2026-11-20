@@ -344,6 +344,33 @@ const kalimba: Instrumento = (c, out, t, m, _d, v) => {
   inicia([o1, o2, o3], t, t + 0.95);
 };
 
+/**
+ * Violino nórdico de cordas simpáticas (só na faixa do visitante boreal, spec 6.5): arco com ataque áspero, vibrato
+ * rápido e um halo de cordas que vibram sozinhas (uníssono e quinta abaixo) e continuam soando depois da nota.
+ */
+const hardanger: Instrumento = (c, out, t, m, d, v) => {
+  const f = mtof(m);
+  const g = ganho(c, 0, out);
+  const fim = envSus(g.gain, t, 0.1 * v, 0.04, d, 0.8, 0.16);
+  const corpo = filtro(c, 'peaking', 2600, 1.3, g); corpo.gain.value = 6;
+  const lp = filtro(c, 'lowpass', 3600 + v * 1400, 0.7, corpo);
+  const a = oscilador(c, 'sawtooth', f, lp); a.detune.value = -5;
+  const b = oscilador(c, 'sawtooth', f, ganho(c, 0.55, lp)); b.detune.value = 6;
+  vibrato(c, [a.detune, b.detune], t, fim, 6.4, 10, 0.16);
+  // chiado do arco no ataque
+  const ga = ganho(c, 0, out); envPerc(ga.gain, t, 0.05 * v, 0.006, 0.07);
+  const arco = fonteRuido(c, 'rosa', filtro(c, 'bandpass', Math.min(f * 4, 9000), 2.2, ga), m * 0.031);
+  // cordas simpáticas: sobem devagar e somem bem depois da nota
+  const fimS = fim + 0.9;
+  const gs = ganho(c, 0, out); envPerc(gs.gain, t, 0.028 * v, Math.min(0.25, d * 0.6 + 0.05), fimS - t);
+  const ls = filtro(c, 'lowpass', 2400, 0.5, gs);
+  const s1 = oscilador(c, 'triangle', f, ls); s1.detune.value = 3;
+  const s2 = oscilador(c, 'triangle', (f * 2) / 3, ganho(c, 0.6, ls));
+  const s3 = oscilador(c, 'sine', f * 2, ganho(c, 0.35, ls)); s3.detune.value = -4;
+  inicia([a, b, arco], t, fim);
+  inicia([s1, s2, s3], t, fimS);
+};
+
 // ---------------------------------------------------------------- percussão
 const bumbo: Instrumento = (c, out, t, _m, _d, v) => {
   const g = ganho(c, 0, out); envPerc(g.gain, t, 0.95 * v, 0.002, 0.42);
@@ -602,7 +629,7 @@ const chipHat: Instrumento = (c, out, t, _m, _d, v) => {
 
 export const INSTRUMENTOS = {
   pulso, pulso25, pulso12, tri, sanfona, viola, cavaquinho,
-  marimba, berimbau, cordas, flauta, pad, padBrilho, baixo, baixoSub, baixoDist, guitarra, violao, metais, sino, pizz, lead, kalimba,
+  marimba, berimbau, cordas, flauta, pad, padBrilho, baixo, baixoSub, baixoDist, guitarra, violao, metais, sino, pizz, lead, kalimba, hardanger,
 } satisfies Record<InstId, Instrumento>;
 
 export const BATERIA = {

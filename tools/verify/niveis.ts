@@ -9,6 +9,7 @@ import { ESPECIES, VISITANTES } from '../../src/data/criaturas';
 import { RAIZ, carregar, cadaComando, novoAchado, type Achado } from './dados';
 import { encontrosDe } from './integridade';
 import type { ResultadoProgressao } from './progressao';
+import { AS_LIDER_B, AS_GARROTE, AS_RIVAL_8, AS_CONSELHO, faixaLiderB } from './curva-b';
 
 /** faixas do spec 4.5 para a equipe de cada líder do mapa A */
 // líder 1: 7–10 (era 10–12). Medido no jogo honesto (tools/testes/qa): quem chega ao 1º ginásio tem o inicial no nv 8 e
@@ -44,8 +45,23 @@ export async function niveis(prog: ResultadoProgressao): Promise<Achado> {
     const ant = liga[i - 1]; if (i > 0 && ant && x < as(ant)) a.erros.push(`${arq(t.id)}: o ás de ${t.id} (nv ${x}) é menor que o de ${ant.id} (nv ${as(ant)})`);
   });
   if (liga[4] && as(liga[4]) !== LIGA[1]) a.erros.push(`src/data/treinadores/liga.ts: o Campeão (liga-5) tem ás no nível ${as(liga[4])}; o spec 4.5 pede ${LIGA[1]}`);
-  /* líderes 9+: curva do mapa B */
-  for (const t of d.treinadores.values()) if ((t.insignia ?? 0) > 8) { const esperado = 47 + (t.insignia! - 9) * 2; if (as(t) < esperado) a.pendentes.push(`${arq(t.id)}: líder ${t.insignia} com ás no nível ${as(t)} (a curva nova pede ${esperado}–${esperado + 2}; mapa B)`); }
+  /* líderes 9–16, Garrote, rival 8 e Conselho: curva do mapa B (tools/verify/curva-b.ts, docs/EQUILIBRIO-MAPA-B.md) */
+  let antB = LIGA[1];
+  for (let n = 9; n <= 16; n++) {
+    const t = [...d.treinadores.values()].find((q) => q.insignia === n);
+    if (!t) { a.erros.push(`src/data/treinadores: não existe líder que dê a insígnia ${n}`); continue; }
+    const [lo, hi] = faixaLiderB(n);
+    if (as(t) !== hi) a.erros.push(`${arq(t.id)}: o ás do líder ${n} (${t.id}) está no nível ${as(t)}; a curva do mapa B pede ${hi}`);
+    for (const m of t.equipe) if (m.nv < lo || m.nv > hi) a.erros.push(`${arq(t.id)}: líder ${n} (${t.id}) tem ${nome(m.e)} no nível ${m.nv}, fora da faixa ${lo}–${hi}`);
+    if (as(t) <= antB) a.erros.push(`${arq(t.id)}: o ás do líder ${n} (nv ${as(t)}) não passa o do chefe anterior (nv ${antB})`);
+    antB = as(t);
+  }
+  const fim: [string, number][] = [['garrote', AS_GARROTE], ['rival-8-rio', AS_RIVAL_8], ...AS_CONSELHO.map((x, i): [string, number] => [`conselho-${i + 1}`, x])];
+  for (const [id, quer] of fim) {
+    const t = d.treinadores.get(id); if (!t) { a.erros.push(`src/data/treinadores: falta ${id}`); continue; }
+    if (as(t) !== quer) a.erros.push(`${arq(t.id)}: ${id} tem ás no nível ${as(t)}; a curva do mapa B pede ${quer}`);
+    if (as(t) <= AS_LIDER_B[16]) a.erros.push(`${arq(t.id)}: ${id} (ás ${as(t)}) tem de ficar acima do líder 16 (${AS_LIDER_B[16]})`);
+  }
 
   /* treinadores do mapa A dentro da faixa do passo em que ficam alcançáveis */
   const preEvo = new Map<number, number>(); for (const e of [...ESPECIES, ...VISITANTES]) for (const v of e.evolui ?? []) if (v.nivel) preEvo.set(v.para, Math.min(v.nivel, preEvo.get(v.para) ?? 999));
@@ -99,7 +115,7 @@ export async function niveis(prog: ResultadoProgressao): Promise<Achado> {
       for (const e of base) { const min = preEvo.get(e.e); if (min && e.nv[0] < min) a.erros.push(`${d.arquivoDaZona.get(z.id)}: ${nome(e.e)} selvagem no nível ${e.nv[0]}, antes do nível em que a forma anterior evolui (${min})`); }
     }
   }
-  a.info.push(`ás dos líderes 1–8: ${topo.slice(1, 9).join(', ')} · Liga: ${liga.map((t) => (t ? as(t) : '?')).join(', ')} · ${conferidos} treinadores e ${tabelas} tabelas de selvagens do mapa A dentro da faixa`);
+  a.info.push(`ás dos líderes 1–8: ${topo.slice(1, 9).join(', ')} · Liga: ${liga.map((t) => (t ? as(t) : '?')).join(', ')} · líderes 9–16: ${Object.values(AS_LIDER_B).join(', ')} · Garrote ${AS_GARROTE} · Conselho ${AS_CONSELHO.join(', ')} · ${conferidos} treinadores e ${tabelas} tabelas de selvagens do mapa A dentro da faixa`);
   return a;
 }
 

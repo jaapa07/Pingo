@@ -56,7 +56,7 @@ async function encontro(x: number, y: number) {
   const s = setorEm(x, y); if (!s) return;
   const t = tabelaSetor(s, periodo()); if (!t.length) return;
   const sorteio = rng.peso(t), nv = rng.int(sorteio.nv[0], sorteio.nv[1]);
-  sfx('encontro'); musica('batalha-selvagem', true);
+  sfx('encontro'); musica('safari'); // encontro de safári não é luta: a música do passeio continua
   await M.cena.piscar(2);
   const r = (await abrirTela('safari-encontro', { especie: sorteio.e, nivel: nv, arena: s.arena, setor: s.n })) as ResultadoSafari | undefined;
   musica(M.zv.def.musica, true); seguros = 3; pintarHud();

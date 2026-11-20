@@ -146,17 +146,17 @@ const zona: ZonaDef = {
       // Seriemim (i), Onçinha (mr). Nos níveis do Sertão (44+) todas já passaram da evolução e aparecem na forma seguinte;
       // os filhotes dessas linhas chegam ao jogador pelo Centro de Reabilitação de Pantanal Grande (b1-orfaos).
       metodo: 'grama', taxa: 0.1,
-      dia: [E(46, 48, 50, 26), E(50, 48, 50, 22), E(52, 49, 51, 18), E(104, 49, 51, 14), E(98, 49, 51, 14), E(72, 50, 51, 6)],
-      noite: [E(94, 48, 50, 28), E(46, 48, 50, 20), E(50, 48, 50, 16), E(104, 49, 51, 14), E(98, 49, 51, 16), E(72, 50, 51, 6)],
+      dia: [E(46, 50, 52, 26), E(50, 50, 52, 22), E(52, 51, 53, 18), E(104, 51, 53, 14), E(98, 51, 53, 14), E(72, 52, 53, 6)],
+      noite: [E(94, 50, 52, 28), E(46, 50, 52, 20), E(50, 50, 52, 16), E(104, 51, 53, 14), E(98, 51, 53, 16), E(72, 52, 53, 6)],
       camadas: [{
         apos: 11,
         dia: [E(46, 50, 52, 22), E(50, 50, 52, 20), E(52, 51, 53, 20), E(104, 51, 53, 14), E(98, 51, 53, 16), E(72, 52, 53, 8)],
         noite: [E(94, 50, 52, 26), E(46, 50, 52, 18), E(50, 50, 52, 14), E(104, 51, 53, 14), E(98, 51, 53, 18), E(72, 52, 53, 10)],
       }],
     },
-    { metodo: 'arvore', todos: [E(150, 48, 50, 100)], camadas: [{ apos: 11, todos: [E(150, 50, 52, 100)] }] },
+    { metodo: 'arvore', todos: [E(150, 50, 52, 100)], camadas: [{ apos: 11, todos: [E(150, 50, 52, 100)] }] },
     { metodo: 'pesca-velha', todos: [E(37, 20, 26, 70), E(39, 20, 26, 30)] },
-    { metodo: 'pesca-boa', todos: [E(38, 48, 50, 50), E(40, 48, 50, 30), E(114, 48, 50, 20)] },
+    { metodo: 'pesca-boa', todos: [E(38, 50, 52, 50), E(40, 50, 52, 30), E(114, 50, 52, 20)] },
   ],
 };
 export default zona;

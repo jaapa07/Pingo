@@ -4,6 +4,7 @@
 // forma em que ela está no nível do passo), a Queixada-Caipora errante e a faixa de níveis da curva nova
 // (líderes 12/13/14 com ás 55/57/59; revanches depois da insígnia 14 contam para o líder 15, ás 61).
 // Rodar: npx tsx tools/verifica-zonas-b2-sul.mts
+import { asDoPassoB } from './verify/curva-b';
 import { readdirSync } from 'node:fs';
 import type { ZonaDef, Encontro, Habitat, TreinadorDef } from '../src/core/tipos';
 import { CATALOGO_EXTERIOR } from '../src/data/catalogo-objetos';
@@ -206,16 +207,16 @@ for (const [nome, [zonas, l]] of Object.entries(T64)) {
     if (!ok) E(`6.4: espécie ${e} (${esp.get(e)?.nome}) ausente de ${nome} (${ms.join('/')}), nem na forma do nível`);
   }
 }
-// Queixada-Caipora (176): errante no mapa B depois da insígnia 13, nível 55
+// Queixada-Caipora (176): errante no mapa B depois da insígnia 13, nível 63 (curva de docs/EQUILIBRIO-MAPA-B.md)
 const solta = EVENTOS_B2S.find((e) => e.id === 'b2-caipora-solta');
-if (!JSON.stringify(solta?.passos ?? []).includes('["errante",176,55]')) E('b2-caipora-solta: não solta a Queixada-Caipora (176) no nível 55');
+if (!JSON.stringify(solta?.passos ?? []).includes('["errante",176,63]')) E('b2-caipora-solta: não solta a Queixada-Caipora (176) no nível 63');
 if (!(Z.get('B6')?.gatilhos ?? []).some((g) => g.script === 'b2-caipora-solta' && /insignia:13/.test(g.se ?? ''))) E('B6: a Queixada-Caipora não passa a vagar depois da insígnia 13');
 if (!JSON.stringify(EVENTOS_B2S.find((e) => e.id === 'b2-lab-final')?.passos ?? []).includes('["flag","laboratorio-ok"]')) E('b2-lab-final: não marca laboratorio-ok');
 
 /* ---------- coerência de níveis (spec 4.5, curva nova) ---------- */
 const evoluiDe = new Map<number, number>(); for (const e of ESPECIES) for (const v of e.evolui ?? []) if (v.nivel) evoluiDe.set(v.para, v.nivel);
-/** ás do líder por passo: 12 → 55, 13 → 57, 14 → 59, 15 → 61, 16 → 63; depois o Conselho (64–70) */
-const ASL = (p: number) => (p <= 16 ? 55 + 2 * (p - 12) : 66);
+/** ás do líder por passo (tools/verify/curva-b.ts): 12 → 63, 13 → 66, 14 → 68, 15 → 70, 16 → 72; depois o Garrote (74) */
+const ASL = (p: number) => asDoPassoB(p);
 function confere(onde: string, e: number, nv: number, basicoPermitido = false) {
   const s = esp.get(e); if (!s) { E(`${onde}: espécie ${e} inexistente`); return; }
   if (s.lendario) return;

@@ -4,9 +4,9 @@ import type { TreinadorDef, MembroEquipe } from '../../core/tipos';
  * Treinadores do time B2-sul (Sertão das Névoas, passos 12–14): Trilha da Roda, Cidade Ginga, Túnel Alagado
  * (+ Gruta do Fôlego), Brejo Roxo (+ laboratório do Cartel: capangas, a Doutora Zinabre e o tenente Lata),
  * Vale do Veneno, Subida da Serra, Serra da Geada, a rival Tainá no encontro 7 e a revanche de sábado da Contramestra Maré (spec 10A-25/26).
- * Curva (spec 4.5, "Regra de coerência de níveis"): líder 12 ás 55 → passo 12 nv 49–53 · líder 13 ás 57 → nv 51–55
- * (Zinabre ás 55, Lata ás 56) · líder 14 ás 59 → nv 53–57 (rival 7 com ás 58) · revanches depois da insígnia 14
- * contam para o líder 15 (ás 61): nv 55–59.
+ * Curva (spec 4.5 e docs/EQUILIBRIO-MAPA-B.md): líder 12 ás 63 → passo 12 nv 57–61 · líder 13 ás 66 → nv 60–64
+ * (Zinabre ás 64, Lata ás 65) · líder 14 ás 68 → nv 62–66 (rival 7 com ás 66) · revanches depois da insígnia 14
+ * contam para o líder 15 (ás 70): nv 64–68.
  * Todas as espécies aparecem no estágio que teriam no nível. Itens de cura em batalha (spec 7A): só chefes e rival.
  */
 const t = (id: string, classe: string, nome: string, sprite: string, equipe: MembroEquipe[], desafio: string, derrota: string, depois: string, extra: Partial<TreinadorDef> = {}): TreinadorDef =>
@@ -14,7 +14,7 @@ const t = (id: string, classe: string, nome: string, sprite: string, equipe: Mem
 const capanga = (id: string, f: boolean, equipe: MembroEquipe[], desafio: string, derrota: string, depois: string): TreinadorDef =>
   t(id, 'Capanga do Cartel', f ? 'Ferrolha' : 'Ferrolho', f ? 'capanga-f' : 'capanga-m', equipe, desafio, derrota, depois, { musica: 'batalha-cartel', contato: false });
 
-/* ------------------------------ B-R3 · Trilha da Roda (nv 49–53) ------------------------------ */
+/* ------------------------------ B-R3 · Trilha da Roda (nv 57–61) ------------------------------ */
 const TRILHA: TreinadorDef[] = [
   t('B-R3-1', 'Capoeirista', 'Mestre Cobrinha', 'cl-capoeirista', [{ e: 96, nv: 58 }, { e: 158, nv: 59 }],
     'Ê, camará! Na Trilha da Roda ninguém passa sem jogar. Vem, que o berimbau já chamou!', 'Jogo bonito. Perdi, mas perdi com ginga.', 'Na roda o Mestre Gingado manda criatura em dupla. Treine trocar a sua no compasso certo.'),
@@ -34,7 +34,7 @@ const TRILHA: TreinadorDef[] = [
     'Trouxe a forja nas costas até aqui. Agora você vai sentir o calor dela!', 'A brasa apagou. Volto para o Arraial reacender.', 'Cidade Ginga tem tudo, menos forja. Por isso eu levo a minha.'),
 ];
 
-/* ------------------------------ B5 · Cidade Ginga (nv 50–53; revanche nv 57–59) ------------------------------ */
+/* ------------------------------ B5 · Cidade Ginga (nv 58–61; revanche nv 65–67) ------------------------------ */
 const GINGA: TreinadorDef[] = [
   t('B5-1', 'Capoeirista', 'Capoeirista Ventania', 'cl-capoeirista', [{ e: 104, nv: 58 }, { e: 158, nv: 59 }, { e: 66, nv: 60 }],
     'Na praça da roda o desafio é aberto. Quem pisou na areia, jogou!', 'Saí da roda pela tangente. Boa, camará.', 'O Mestre Gingado escuta o berimbau antes de mandar golpe. Escute também.'),
@@ -46,7 +46,7 @@ const GINGA: TreinadorDef[] = [
     'Sábado de Roda Grande! A equipe treinou a semana inteira. Ê, volta do mundo, camará!', 'A volta do mundo deu a volta em mim.', 'Sábado que vem tem mais. A roda não acaba: só descansa.', { contato: true }),
 ];
 
-/* ------------------------------ B-TA · Túnel Alagado e Gruta do Fôlego (nv 52–54) ------------------------------ */
+/* ------------------------------ B-TA · Túnel Alagado e Gruta do Fôlego (nv 61–63) ------------------------------ */
 const TUNEL: TreinadorDef[] = [
   t('B-TA-1', 'Mergulhador', 'Mergulhador Bagre', 'cl-mergulhador', [{ e: 116, nv: 62 }, { e: 114, nv: 61 }],
     'Blub! Batalha debaixo d’água: quem respira primeiro perde!', 'Blub… blub… perdi o fôlego e a luta.', 'Suba nas clareiras de luz do fundo. A da gruta tem ar e um eremita que adora visita.'),
@@ -60,7 +60,7 @@ const TUNEL: TreinadorDef[] = [
     'Subi a trepadeira para garimpar a prateleira. Ninguém sobe aqui sem levar um desafio!', 'Ganhou de mim e da altura.', 'Tem um nicho atrás da rocha rachada. Eu esqueci o Amuleto do Quebra-pedra em casa. Você não esqueceu, né?'),
 ];
 
-/* ------------------------------ B6 · Brejo Roxo (nv 53–54) ------------------------------ */
+/* ------------------------------ B6 · Brejo Roxo (nv 62–63) ------------------------------ */
 const BREJO: TreinadorDef[] = [
   t('B6-1', 'Bióloga', 'Bióloga Sapé', 'cl-biologa', [{ e: 26, nv: 62 }, { e: 90, nv: 63 }],
     'Estou contando sapos para provar que o brejo está doente. Você vai entrar na estatística!', 'Estatística refeita: um a zero para você.', 'A Coralzinha tem anéis que brilham. Bonita, mas não chegue perto sem Mel Puro na mochila.'),
@@ -68,7 +68,7 @@ const BREJO: TreinadorDef[] = [
     'Pesco no charco desde que o charco era lagoa. Peixe roxo, mas pesco!', 'Fui pescado.', 'O Jacaruçu do charco é parente do Jacaretinga do Pantanal. Só que mais velho e mais rabugento.'),
 ];
 
-/* ------------------------------ laboratório do Cartel (capangas nv 52–55; chefes ás 55 e 56) ------------------------------ */
+/* ------------------------------ laboratório do Cartel (capangas nv 61–64; chefes ás 64 e 56) ------------------------------ */
 const LAB: TreinadorDef[] = [
   capanga('B6-porteiro', false, [{ e: 146, nv: 62 }, { e: 92, nv: 63 }],
     'Ei, ei! O curtume está fechado. Para obras. Obras de… curtume. Circulando!', 'Tá bom, tá bom! Entra. Mas eu não deixei, ouviu?', 'Eu vou dizer que você me enganou com um disfarce.'),
@@ -102,7 +102,7 @@ const LATA: TreinadorDef = {
   derrota: 'Ferro novo… enferrujou do mesmo jeito. O Coronel vai me mandar varrer o Pico.',
 };
 
-/* ------------------------------ B-VV · Vale do Veneno (nv 52–54) ------------------------------ */
+/* ------------------------------ B-VV · Vale do Veneno (nv 61–63) ------------------------------ */
 const VALE: TreinadorDef[] = [
   t('B-VV-1', 'Bióloga', 'Herpetóloga Surucucu', 'cl-biologa', [{ e: 89, nv: 63 }, { e: 90, nv: 62 }],
     'Estudo cobras há vinte anos. Agora vou estudar você!', 'Conclusão da pesquisa: fui picada pela derrota.', 'A Jararacuçu enxerga calor. A Coralzinha brilha de noite. A Herpetóloga aqui perde de dia e de noite.'),
@@ -122,7 +122,7 @@ const VALE: TreinadorDef[] = [
     'Acampamento na ilha do sul! A Sucurião é a guarda-costas da barraca.', 'A guarda-costas dormiu.', 'Distintivo de Sobrevivência no Brejo: conquistado. Distintivo de Vitória: fica para a próxima.'),
 ];
 
-/* ------------------------------ B-R4 · Subida da Serra (nv 54–57) ------------------------------ */
+/* ------------------------------ B-R4 · Subida da Serra (nv 63–66) ------------------------------ */
 const SERRA: TreinadorDef[] = [
   t('B-R4-1', 'Montanhista', 'Alpinista Pirambeira', 'cl-montanhista', [{ e: 166, nv: 65 }, { e: 168, nv: 64 }],
     'Primeiro patamar! Daqui até a Serra da Geada são quatro paredões. E eu!', 'Fiquei no primeiro patamar.', 'Trepadeira se sobe com Escalar. Pedregulho na fenda se empurra com Força. Saliência se desce pulando.'),
@@ -144,7 +144,7 @@ const SERRA: TreinadorDef[] = [
     'Pesquisa de altitude: como as criaturas se viram no frio? Teste prático!', 'Resultado: elas se viram melhor do lado de lá.', 'A Lavadeira-Dragão apareceu aqui por causa da cascata seca. Ela gosta de lugares onde a água já passou.'),
 ];
 
-/* ------------------------------ B7 · Serra da Geada (nv 56–57) ------------------------------ */
+/* ------------------------------ B7 · Serra da Geada (nv 65–66) ------------------------------ */
 const GEADA: TreinadorDef[] = [
   t('B7-1', 'Peão de Estância', 'Peão Galponeiro', 'cl-vaqueiro', [{ e: 104, nv: 65 }, { e: 140, nv: 65 }, { e: 34, nv: 66 }],
     'Buenas, tchê! Quem chega na serra, prova o chimarrão e a peleia. Começamos pela peleia!', 'Bah, que peleia! Agora sim, o chimarrão.', 'A Gaúcha Pinhão treina no gelo. O segredo é não ter medo de escorregar.'),
@@ -152,7 +152,7 @@ const GEADA: TreinadorDef[] = [
     'A minha Pinguimar surfa na geada! Vamos ver se a sua equipe aguenta o frio!', 'Congelei de vergonha.', 'Pinguim na serra parece mentira. Os da Lagoa Gelada vieram com uma frente fria e ficaram.'),
 ];
 
-/* ------------------------------ rival Tainá: encontro 7 (B7, ás 58) ------------------------------ */
+/* ------------------------------ rival Tainá: encontro 7 (B7, ás 66) ------------------------------ */
 const inicialDela = (dela: 'brasa' | 'rio' | 'mata') => (dela === 'brasa' ? 6 : dela === 'rio' ? 9 : 3);
 const meioDela = (dela: 'brasa' | 'rio' | 'mata') => (dela === 'brasa' ? 26 : dela === 'rio' ? 17 : 42);
 const RIVAL7: TreinadorDef[] = (['brasa', 'rio', 'mata'] as const).map((dela): TreinadorDef => ({

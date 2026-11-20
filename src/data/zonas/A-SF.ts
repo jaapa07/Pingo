@@ -29,7 +29,7 @@ const placas = [
   placa(g, 'J', 'O parque cresce com a ajuda de quem visita. Achou pedra de rio, muda de buriti ou tronco oco pela Costa do Sol? Leve ao Seu Jatobá.'),
 ];
 const zona: ZonaDef = {
-  id: 'A-SF', nome: 'Portaria do Safári', mapa: 'A', tipo: 'cidade', tileset: 'cerrado', musica: 'cidade-catira', arena: 'cerrado', passo: 9,
+  id: 'A-SF', nome: 'Portaria do Safári', mapa: 'A', tipo: 'cidade', tileset: 'cerrado', musica: 'safari', arena: 'cerrado', passo: 9,
   pouso: [12, 9],
   mapaChars: g.mapa,
   objetos: [

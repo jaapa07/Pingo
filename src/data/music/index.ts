@@ -2,8 +2,9 @@
 import type { Faixa } from './types';
 import { agua, caverna, mergulho, pico, rotaDiaA, rotaDiaB, rotaNoiteA, rotaNoiteB, temaTitulo, vilaJacaranda } from './cenario';
 import { cidadeBaiao, cidadeCatira, cidadeChoro, cidadeForro, cidadeFrevo, cidadeGaucha, cidadeMaracatu, cidadeSamba } from './cidades';
-import { batalhaCartel, batalhaConselho, batalhaLendario, batalhaLider, batalhaRival, batalhaSelvagem, batalhaTreinador, derrota, vitoriaLider, vitoriaSelvagem, vitoriaTreinador } from './batalhas';
+import { batalhaCartel, batalhaConselho, batalhaLendario, batalhaLider, batalhaRival, batalhaSelvagem, batalhaTreinador, borealce, derrota, vitoriaLider, vitoriaSelvagem, vitoriaTreinador } from './batalhas';
 import { captura, cartelTema, creditos, evolucao, ginasio, laboratorio, posto, saveiro, trem, venda } from './eventos';
+import { gincana, safari } from './passeios';
 
 export type { Faixa } from './types';
 
@@ -15,6 +16,7 @@ const LISTA: Faixa[] = [
   batalhaSelvagem, batalhaTreinador, batalhaRival, batalhaLider, batalhaCartel, batalhaConselho, batalhaLendario,
   vitoriaSelvagem, vitoriaTreinador, vitoriaLider, derrota,
   evolucao, captura, trem, saveiro, cartelTema, creditos,
+  gincana, safari, borealce,
 ];
 
 export const FAIXAS: Record<string, Faixa> = Object.fromEntries(LISTA.map((f) => [f.id, f]));

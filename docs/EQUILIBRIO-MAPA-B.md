@@ -124,3 +124,28 @@ líderes 9+ e faixas novas), `ASL` dos verificadores `tools/verifica-zonas-b1.mt
 Pendências honestas: o modelo de chegada é uma média (equipe por igual, FATOR calibrado em 4 checkpoints de UM jogo do
 QA com inicial de Rio); do 13 em diante é só estimativa (ninguém jogou B6→Pico honesto); o FATOR com a opção A
 (~1,0–1,2) é dedução da regra, não medida — o QA do mapa B trecho 2 deve medir.
+
+## Marco 4 (20/11) — DECISÃO DO AUTOR: opção A com alvo Conselho ~77 e revanche fase 4 = 81 (aplicando)
+- **Correção da minha estimativa da opção A.** Refiz o modelo de chegada de forma mecânica (`--limiar L`: a mais forte
+  derruba 20% + sorteio entre as seis; a reserva L+ atrás ganha metade). Com L = 2 ele reproduz o QA nos 4 checkpoints
+  (ás/média: 54,1/52,7 · 61,4/60 · 65,8/64,4 · 67,8/66,4 contra 55/52 · 60/59 · 65/64 · 68/67). Com L = 5 o ás da
+  equipe chega IGUAL (o Chocalho nunca dá nada à criatura da frente) e só a média cai ~2,5 níveis: a reserva fica 5
+  atrás e continua ganhando metade. Ou seja, a opção A sozinha NÃO tira os 6–14 níveis de sobra; o "fator 1,0" que eu
+  usei no Marco 2 era otimista. Registrado para o autor (ver Marco 6).
+- Motor: `LIMIAR_CHOCALHO = { antesDaLiga: 2, depoisDaLiga: 5 }` (src/battle/engine.ts, campo `limiarPartilha` da
+  batalha); `limiarChocalho(flags)` em src/battle/index.ts escolhe pela flag `liga-vencida` (mapa A intocado). Teste
+  novo em tools/test-batalha.ts (reserva 3 atrás ganha com limiar 2 e não ganha com 5; 5 atrás ganha nos dois; save
+  com/sem `liga-vencida`). Descrição do Chocalho em src/data/itens.ts atualizada.
+- Curva aplicada (tools/verify/curva-b.ts, usada pelos verificadores): líderes 9–16 = 55, 58, 61, 63, 66, 68, 70, 72 ·
+  Garrote 74 · rival 8 = 75 · Conselho 73, 74, 75, 76, 77 (Guardião-Mor com o lendário no 77) · revanches fase 4:
+  ALVO_LIDER = ALVO_RIVAL = 81, ALVO_COMUM = 75 (src/data/revancha.ts; fase 3 não mudou).
+- Subida por passo (treinadores das zonas do passo, turma do ginásio, líder e selvagens — inclusive camadas
+  pós-insígnia das zonas B2; as camadas do B1 ficam 48–57 como o verificador dela pede): passo 9 +6, 10 +7, 11 +8,
+  12 +8, 13–16 +9, Pico +7, Floresta Ancestral (pós-jogo) +7. Chefes: Arame +7 (55–57; enfrentado depois do líder 9),
+  Rebite +6, rival 6 +7 (ás 59), rival 7 +8 (ás 66), Cartel do laboratório +9, Roda Grande +8, Garrote +10, rival 8 +10.
+  Espécies evoluídas onde o nível novo passou da evolução (B-PA-3 e g09-2: Jacaretinga → Jacaruçu; selvagens das zonas
+  B); nas áreas de retorno do mapa A (A-RS, A-R6, A-MT, A9) a forma básica continua (o verificador do A2 permite).
+  Lendários/errantes: Boitatá 50 → 57, Queixada-Caipora 55 → 63, Uirapuru 60 → 67, Mapinguari 65 → 70, Jubartão
+  66 → 73, Lobo-Jaci e Onça-Guaraci (errantes pós-jogo) 70 → 77. Andarilho do Cume (75–80) não mudou.
+- Verificadores: tools/verify/niveis.ts (líderes 9–16 com ás exato e faixa ás−4…ás, Garrote/rival 8/Conselho acima
+  do 16), tools/verifica-zonas-b1/-b2-sul/-b2-norte.mts e a faixa das áreas de retorno em tools/verifica-zonas-a2.mts.

@@ -171,7 +171,7 @@ const RECIFE_SUBMERSO: TreinadorDef[] = [
   t('A-RS-1', 'Mergulhador', 'Glub-Glub', 'cl-mergulhador', [{ e: 126, nv: 55 }, { e: 130, nv: 56 }], 2450, '(Ele faz sinal de "batalha" com as mãos. Ou de "tubarão". Melhor batalhar.)', '(Sinal de "tudo bem". Bolhas tristes.)', '(Ele aponta para o fundo e desenha uma cobra enorme com o dedo.)'),
   t('A-RS-2', 'Mergulhadora', 'Coralina', 'cl-mergulhador', [{ e: 118, nv: 56 }, { e: 122, nv: 56 }, { e: 124, nv: 57 }], 2500, '(Ela mostra uma lousa: "ÁREA DE PESQUISA. BATALHA OBRIGATÓRIA.")', '(Lousa: "PESQUISA CONCLUÍDA. PERDI.")', '(Lousa: "O Hipocampo só aparece para quem tem paciência de coral.")'),
   t('A-RS-3', 'Mergulhador', 'Abissal', 'cl-mergulhador', [{ e: 80, nv: 57 }, { e: 78, nv: 57 }], 2500, '(Ele bate no próprio cilindro: tóin, tóin. É um desafio. Ou está sem ar.)', '(Tóin… tóin…)', '(Ele aponta a gruta do fundo e cruza os braços em X.)'),
-  t('A-RS-4', 'Mergulhadora', 'Sereia Aposentada', 'cl-mergulhador', [{ e: 120, nv: 57 }, { e: 130, nv: 57 }, { e: 126, nv: 58 }], 2550, '(Lousa: "NADEI COM A BOIÚNA EM 1974. ELA NÃO LEMBRA DE MIM. BATALHA?")', '(Lousa: "VOCÊ ELA VAI LEMBRAR.")', '(Lousa: "ELA SÓ ACORDA PARA QUEM JÁ DANÇOU NA RODA DE CIDADE GINGA.")'),
+  t('A-RS-4', 'Mergulhadora', 'Sereia Aposentada', 'cl-mergulhador', [{ e: 120, nv: 57 }, { e: 130, nv: 57 }, { e: 126, nv: 57 }], 2550, '(Lousa: "NADEI COM A BOIÚNA EM 1974. ELA NÃO LEMBRA DE MIM. BATALHA?")', '(Lousa: "VOCÊ ELA VAI LEMBRAR.")', '(Lousa: "ELA SÓ ACORDA PARA QUEM JÁ DANÇOU NA RODA DE CIDADE GINGA.")'),
 ];
 
 /* ------------------------------ A-MT · Monte Tupã (retorno, nv 57–61) ------------------------------ */

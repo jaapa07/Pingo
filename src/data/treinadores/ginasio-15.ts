@@ -1,8 +1,8 @@
 import type { TreinadorDef } from '../../core/tipos';
 
 /**
- * Ginásio da Mente (nº 15, Planalto Lume): os estudantes do observatório e a líder Astrônoma Jaci. Ás nv 61 (tabela 4.5:
- * 59–61); a turma fica entre 55 e 59 (ás − 2 a − 6). As linhas de Mente evoluem até o nível 36, então só aparecem
+ * Ginásio da Mente (nº 15, Planalto Lume): os estudantes do observatório e a líder Astrônoma Jaci. Ás nv 70 (tabela 4.5:
+ * 66–70); a turma fica entre 64 e 68 (ás − 2 a − 6). As linhas de Mente evoluem até o nível 36, então só aparecem
  * formas finais. Do 8º ginásio em diante a líder usa remédios no Aventureiro (spec 7A).
  */
 export const TREINADORES_GINASIO_15: TreinadorDef[] = [

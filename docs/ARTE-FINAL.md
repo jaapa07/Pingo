@@ -97,3 +97,35 @@ NPC do Andarilho), treinadores/b2-norte.ts (`PP-andarilho`), B-R5.ts (portão e 
 eventos/visitantes.ts (Tarumã, Solveig, 4 pesquisadores, consts de retrato), X-EA.ts (Tarumã na volta), treinadores/visitantes.ts
 (B-EXP-1..4), eventos/b2-norte.ts (`ANDARILHO` ganhou retrato). Não troquei: "Guarda da Serra Minuano" (B7) e a Guardiã-Mirim
 Jurema (B-FA), que são outros personagens.
+
+## 2ª rodada — Marco 2: pose nova das três que não resolveram (20/11)
+Cópia dos sprites de antes desta rodada: scratchpad da sessão (`antes3/criatura`). Pelagem rara regenerada (`build-raras.ts <ids>`).
+- 036 guaiamuque: a garra gigante deixou de ficar erguida na vertical (de perfil para a câmera, lia como um chifre/triângulo
+  creme). Agora o braço sai para o LADO do lado de lá e a tenaz fica de perfil para a câmera quase frontal: dedo azul em cima,
+  dedo creme embaixo, abertos em "C" à esquerda do corpo — lê como pinça, e o rosto com os dois olhos em pedúnculo fica livre.
+  Palma de pedra maior. Custo: o bicho ficou baixo e largo (repouso 64×31 na célula 80); o quadro 1 da `entrada` (do kit) ainda ergue a garra.
+- 146 escorpião-rei: câmera quase frontal (yaw −30, como os caranguejos), cabeça de ferro recuada e menor, coroa baixa e
+  ATRÁS dos olhos, pinças abertas e baixas ao lado do rosto. A cauda estava girada para o lado errado (enrolava mais):
+  desenrolada nos gomos 4–5 — o sino de ferro com a gota verde aparece acima do lombo no repouso. Olhos (âmbar) agora à
+  mostra no meio do rosto, ainda pequenos (4 px).
+- 148 caranguejeirão: o primeiro par de patas sobe para FORA e dobra para a frente em arco ao lado da cabeça (antes subia reto
+  e lia como chifre); seis tufos salmão soltos (pareciam bolhas) viraram uma mancha salmão limpa no alto do abdômen + um só
+  topete (traço do filhote) + franja castanho-clara. Rosto, olhos verdes e presas pingando ficam à mostra.
+- 079 tartaruí: casco mais abaulado e cabeça erguida em pescoço mais longo (de olho na arrebentação): 52×21 → 52×29 px.
+- 018 formigaço: no desmaio a folha deitava para a frente e alargava o quadro (o sprite inteiro encolhia, 67%); agora tomba
+  pouco para trás — repouso passou de 43×41 para 45×43 e o aviso do `checar.ts` sumiu.
+
+## 2ª rodada — Marco 3: fechamento (20/11)
+- Folhas: `docs/capturas/pessoas-novas.png` (por pessoa: batalha idle e derrota, retrato neutro/feliz/bravo, mapa s/l/n/o, 4×)
+  e `docs/capturas/retoques-3.png` (antes rosado × depois verde: frente, costas, mapa).
+- Atlas: 259 entradas (todas as pastas de sprites, 183 criaturas, as 7 pessoas novas com retrato). `tsc` limpo; no `verify.ts`
+  a integridade de sprites passa (as falhas atuais são de outros agentes: `cartel-lago` em captura.ts e caminhos absolutos em
+  tools/testes/qa3).
+### Continua fraco (pendências honestas)
+- 036 guaiamuque: a pinça lê, mas o bicho ficou baixo e largo na célula (64×31 de 80); o 1º quadro da `entrada` ainda ergue a garra.
+- 146 escorpião-rei: rosto à mostra, mas os olhos são pequenos (4 px) e a coroa vira uma mancha amarela, sem as três pontas.
+- 148 caranguejeirão: a mancha salmão do abdômen sai clara demais (quase creme) na luz de cima.
+- Sem retoque nesta rodada: 107 garcinha, 149 jataí, 119 hipocampim (revistos, aceitáveis) e 142 grilão-elétrico (costas 65% por
+  causa do especial).
+- Pessoas: guardiã da floresta tem retrato escuro (pele castanha + cabelo azeviche + folhas escuras); guarda da névoa é
+  correto mas genérico; os quatro pesquisadores dividem um sprite só (duas mulheres e dois homens no texto) — o capuz deixa neutro.

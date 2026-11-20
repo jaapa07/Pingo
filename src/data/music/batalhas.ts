@@ -344,3 +344,50 @@ export const derrota: Faixa = {
   },
   ordem: ['A'],
 };
+
+/**
+ * Batalha do visitante boreal (spec 6.5: a única com sonoridade de fora do Brasil). Dança nórdica em 3/4 (polska):
+ * violino de cordas simpáticas em ré dórico com a sexta maior e toques de quarta aumentada, bordão de quintas
+ * abertas nas cordas, flauta de salgueiro no contracanto, tambor de moldura grave e um canto de pastoreio na seção C.
+ */
+export const borealce: Faixa = {
+  id: 'borealce', titulo: 'Galhada de Aurora', bpm: 152, passos: 12, loop: true, voltaEm: 4, envio: 0.36,
+  inst: { melodia: 'hardanger', contra: 'flauta', baixo: 'baixoSub', harmonia: 'cordas' },
+  estilo: { tipo: 'pad', oitava: 3 },
+  vol: { melodia: 1, contra: 0.6, harmonia: 0.5, baixo: 0.85, bateria: 0.75 },
+  bateria: {
+    i: { surdo: 'X...........' },
+    j: { surdo: 'X.......x...', tom: '....x.......' },
+    a: { surdo: 'X.......X...', tom: '....x...x.x.', aro: '....x.......', ganza: 'x.x.x.x.x.x.' },
+    s: { surdo: 'X...........', tom: '........x...', ganza: 'x...x...x...' },
+    c: { surdo: 'X...x...X...', tom: '..x...x...xx', caixa: '....X.......', chimbal: 'x.x.x.x.x.x.', prato: 'x...........' },
+    v: { surdo: 'X..X..X..X..', tom: 'x.xx.xx.xxxx' },
+  },
+  secoes: {
+    intro: {
+      melodia: '- | - | a4:6 d5:6 | e5:4 f5:4 g#5:4', contra: 'a5:12 | e5:12 | - | -', baixo: '@1...........', acordes: 'D5 | D5 | Dm | E', bateria: 'i i j v',
+    },
+    A: {
+      melodia: 'd5:2 e5:2 f5:2 a5:2 d6:4 | c6:2 a5:2 g5:2 e5:2 c5:4 | d5:2 e5:2 f5:2 a5:2 b5:2 d6:2 | c6:3 b5:1 a5:4 e5:4 | f5:2 g5:2 a5:2 d6:2 e6:2 f6:2 | e6:2 d6:2 c6:2 a5:2 g5:4 | a5:2 b5:2 c6:2 b5:2 a5:2 g#5:2 | d6:8 a5:4',
+      contra: 'a4:12 | g4:12 | a4:12 | a4:6 c5:6 | a4:12 | g4:12 | b4:6 g#4:6 | a4:12',
+      baixo: '@1.....5.....', acordes: 'Dm | C | Dm6 | Am | Dm | C | E | Dm', bateria: 'a a a a a a a v',
+    },
+    B: {
+      melodia: 'a5:2 d6:2 f6:2 e6:2 d6:2 a5:2 | g#5:2 a5:2 b5:2 d6:2 e6:2 b5:2 | a5:2 c6:2 e6:2 a6:2 g6:2 e6:2 | f6:3 e6:1 d6:4 a5:4 | bb5:2 d6:2 f6:2 bb6:4 a6:2 | g6:2 f6:2 e6:2 c6:2 e6:4 | f6:2 e6:2 d6:2 c#6:2 a5:2 e6:2 | d6:6 a5:3 d6:3',
+      contra: 'd5:12 | b4:12 | c5:12 | a4:12 | d5:12 | e5:12 | c#5:12 | d5:12',
+      baixo: '@1.....5.....', acordes: 'Dm | E | Am | Dm | Bb | C | A | Dm', bateria: 'a a a a a a a v',
+    },
+    C: {
+      melodia: 'a6:8 g6:2 a6:2 | d6:12 | c6:2 d6:2 e6:8 | g5:12 | a6:8 b6:2 a6:2 | f6:6 e6:6 | d6:4 e6:4 g#6:4 | a6:12',
+      contra: 'd5:2 a5:2 d6:2 a5:2 f5:2 a5:2 | d5:2 a5:2 d6:2 a5:2 f5:2 a5:2 | c5:2 g5:2 c6:2 g5:2 e5:2 g5:2 | b4:2 d5:2 g5:2 d5:2 b4:2 d5:2 | d5:2 a5:2 b5:2 a5:2 f5:2 a5:2 | f5:2 a5:2 c6:2 a5:2 f5:2 a5:2 | e5:2 g#5:2 b5:2 g#5:2 e5:2 b4:2 | a4:2 c#5:2 e5:2 a5:2 e5:2 c#5:2',
+      baixo: '@1...........', acordes: 'Dm | Dm | C | G | Dm6 | F | E | A', bateria: 's s s s s s s v',
+      inst: { melodia: 'flauta', contra: 'hardanger' },
+    },
+    D: {
+      melodia: 'd6:1 e6:1 f6:1 g6:1 a6:2 f6:2 d6:2 a5:2 | c6:1 d6:1 e6:1 f6:1 g6:2 e6:2 c6:2 g5:2 | bb5:1 c6:1 d6:1 e6:1 f6:2 d6:2 bb5:2 f5:2 | a5:2 c#6:2 e6:2 a6:6 | d6:1 e6:1 f6:1 g6:1 a6:2 b6:2 a6:2 f6:2 | g6:2 e6:2 c6:2 e6:2 g6:4 | f6:2 e6:2 d6:2 e6:2 g#6:2 b6:2 | a6:6 a5:6',
+      contra: 'a5:12 | g5:12 | f5:12 | e5:12 | f5:12 | e5:12 | g#5:12 | a5:12',
+      baixo: '@1.....5.....', acordes: 'Dm | C | Bb | A | Dm6 | C | E | A', bateria: 'c c c c c c c v',
+    },
+  },
+  ordem: ['intro', 'A', 'B', 'C', 'D'],
+};

@@ -2,7 +2,7 @@ import type { TreinadorDef } from '../../core/tipos';
 
 /**
  * Ginásio da Brasa (nº 11, Arraial Brasa): ferreiros e repentistas do arraial e a líder Ferreira Labareda.
- * Mapa B, depois da Liga: líder com ás 53 (tabela 4.5, faixa 51–53); a turma fica de 47 a 51 (ás − 2 a − 6).
+ * Mapa B, depois da Liga: líder com ás 61 (tabela 4.5, faixa 57–61); a turma fica de 55 a 59 (ás − 2 a − 6).
  * Linhas de Brasa disponíveis nesses níveis, todas no estágio final: Calangão (30), Tucanuçu (30), Dourado-Rei (30),
  * Leão-Dourado (Pedra Solar) e Lobo-Fornalha (36).
  */

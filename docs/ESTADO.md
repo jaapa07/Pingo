@@ -129,3 +129,4 @@ Depois: zonas B1/B2 (+níveis novos do mapa B), ginásios 9–16 (9 Terra tem pr
 - DECISÃO DO USUÁRIO (equilíbrio mapa B): opção A (Chocalho só para quem está 5+ atrás, só após a Liga), com Conselho ≈ 77 e revanches fase 4 ≈ 81. Agente de equilíbrio retomado para aplicar.
 - +1 agente a pedido do usuário (4 rodando): polimento — músicas da Gincana/Safári/Borealce, arena boreal, colisão do navio de B9, neve brilhante no Pico, estrela de rara na caixa de vida (diário docs/POLIMENTO.md).
 - PEDIDO DO USUÁRIO: feedback do estado dos agentes a cada 30–40 min (agendado com send_later de 35 em 35 min, enquanto houver agentes rodando).
+- **REGRA ATUAL DO USUÁRIO: trabalhar com 5 agentes.** Lançado o 5º: QA das missões paralelas do mapa B (diário docs/QA-MISSOES-B.md).

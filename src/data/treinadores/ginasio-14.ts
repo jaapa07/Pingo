@@ -1,8 +1,8 @@
 import type { TreinadorDef } from '../../core/tipos';
 
 /**
- * Ginásio da Geada (nº 14, Serra da Geada): os peões do galpão gelado e a líder Gaúcha Pinhão. Ás nv 59 (tabela 4.5:
- * 57–59); a turma fica entre 53 e 57 (ás − 2 a − 6). As linhas de Geada evoluem entre 28 e 40, então só aparecem
+ * Ginásio da Geada (nº 14, Serra da Geada): os peões do galpão gelado e a líder Gaúcha Pinhão. Ás nv 68 (tabela 4.5:
+ * 64–68); a turma fica entre 62 e 66 (ás − 2 a − 6). As linhas de Geada evoluem entre 28 e 40, então só aparecem
  * formas finais. Do 8º ginásio em diante a líder usa remédios no Aventureiro (spec 7A).
  */
 export const TREINADORES_GINASIO_14: TreinadorDef[] = [

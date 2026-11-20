@@ -50,10 +50,10 @@ const zona: ZonaDef = {
   ],
   itens: [item(g, 'a', 'pedra-lunar'), item(g, 'h', 'pt-36'), item(g, 'i', 'cha-guarana'), item(g, 'j', 'pepita', 1, true), item(g, 'k', 'garapa', 1, true), item(g, 'm', 'rapadura', 1, true)],
   habitats: [
-    { metodo: 'caverna', taxa: 0.08, todos: [E(31, 56, 58, 26), E(128, 56, 58, 20), E(36, 56, 58, 18), E(148, 57, 59, 16), E(89, 57, 59, 12), E(26, 58, 60, 8)] },
+    { metodo: 'caverna', taxa: 0.08, todos: [E(31, 60, 62, 26), E(128, 60, 62, 20), E(36, 60, 62, 18), E(148, 61, 63, 16), E(89, 61, 63, 12), E(26, 62, 64, 8)] },
     { metodo: 'pesca-velha', todos: [E(39, 20, 30, 100)] },
-    { metodo: 'pesca-boa', todos: [E(114, 56, 58, 70), E(40, 57, 59, 30)] },
-    { metodo: 'pesca-mestra', todos: [E(40, 58, 60, 55), E(114, 57, 59, 30), E(112, 59, 60, 15)] },
+    { metodo: 'pesca-boa', todos: [E(114, 60, 62, 70), E(40, 61, 63, 30)] },
+    { metodo: 'pesca-mestra', todos: [E(40, 62, 64, 55), E(114, 61, 63, 30), E(112, 63, 64, 15)] },
   ],
 };
 export default zona;

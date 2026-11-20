@@ -639,3 +639,37 @@ erros de console: []
 
 >> etapa 9: Estrada da Usina e Usina Velha (tenente Lata)  (0 s)
   sem criatura de Rio para o Remo: guardou Cotiazinha 6 no Posto (atalho declarado) e vai capturar uma na A-R3
+FALHA Error: irAte: não chegou a (4,30) |     at t.irAte (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:172:11) |     at async t.viajar (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:192:17) |     at async t.emZona (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:216:81) {"pronto":true,"oc":false,"mov":false,"zona":"A-GE","x":22,"y":16,"dir":"o","modo":"pe","telas":1,"topo":"mundo tela-mundo","ocupada":false,"nres":0} ["A água é funda. Dá para ver peixes passando lá embaixo.\nO Remo precisa de uma criatura do tipo Rio na equipe.","A água é funda. Dá para ver peixes passando lá embaixo.\nO Remo precisa de uma criatura do tipo Rio na equipe.","A água é funda. Dá para ver peixes passando lá embaixo.\nO Remo precisa de uma criatura do tipo Rio na equipe."]
+resumo: {"zona":"A-GE","x":22,"y":16,"dinheiro":16252,"insignias":[1,2,3],"amuletos":["facao","remo"],"equipe":[{"e":2,"nome":"Tamanduá-Copa","nv":30,"vida":91,"max":91,"st":null,"golpes":["patada 25","laco-de-cipo 15","chicote-de-cipo 25","sorver-seiva 20"]},{"e":10,"nome":"Pipirim","nv":8,"vida":26,"max":26,"st":null,"golpes":["bicada 35","berro 40","lufada 35"]},{"e":45,"nome":"Quero-querinho","nv":8,"vida":26,"max":26,"st":null,"golpes":["bicada 35","berro 40","jogar-areia 15"]},{"e":20,"nome":"Gambazinho","nv":8,"vida":26,"max":26,"st":null,"golpes":["arranhao 35","fumaca-fedida 20","cara-feia 30"]},{"e":43,"nome":"Corujinha","nv":17,"vida":44,"max":44,"st":null,"golpes":["golpe-de-asa 30","lufada 35","intuicao 25","cisma 10"]}],"mochila":{"radio-cipo":1,"diario-de-campo":1,"pt-31":1,"fumaca-andiroba":1,"cuia-noturna":1,"unguento":2,"cuia":7,"amuleto-facao":1,"pt-38":1,"cuia-rapida":2,"pt-08":1,"pt-15":1,"garrafada":3,"cha-cidreira":2,"amuleto-remo":1,"pt-14":1},"tempo":35886,"posto":"A4-posto","capturado":7}
+treino extra: [{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":8,"de":20,"para":21},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":11,"de":21,"para":22},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":14,"de":22,"para":23}] derrotas: 10 curas: 47
+perguntas: []
+erros de console: []
+>> retomando de mata-passo-8
+
+>> etapa 9: Estrada da Usina e Usina Velha (tenente Lata)  (0 s)
+  sem criatura de Rio para o Remo: guardou Cotiazinha 6 no Posto (atalho declarado) e vai capturar uma na A-R3
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.ir (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:157:99) |     at async t.irAte (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:168:121) 0 0
+resumo: 0
+treino extra: [{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":8,"de":20,"para":21},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":11,"de":21,"para":22},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":14,"de":22,"para":23}] derrotas: 10 curas: 47
+perguntas: []
+erros de console: []
+>> retomando de mata-passo-8
+
+>> etapa 9: Estrada da Usina e Usina Velha (tenente Lata)  (0 s)
+  sem criatura de Rio para o Remo: guardou Cotiazinha 6 no Posto (atalho declarado) e vai capturar uma na A-R3
+  [batalha] selvagem 57:15 → captura · equipe 2:30,10:8,45:8,20:8,43:17,57:15 · A-R3 · $16252
+  caça em A-R3: 1 batalhas, equipe ["Tamanduá-Copa 30","Pipirim 8","Quero-querinho 8","Gambazinho 8","Corujinha 17","Capivarinha 15"]
+  [batalha] A-R4-1 → vitoria · equipe 2:30,10:8,45:8,20:8,43:17,57:15 · A-R4 · $16882
+  [batalha] A-R4-5 → vitoria · equipe 2:31,10:8,45:8,20:8,43:17,57:15 · A-R4 · $17687
+  [batalha] A-R4-4 → vitoria · equipe 2:31,10:8,45:8,20:8,43:17,57:15 · A-R4 · $18457
+  [batalha] A-R4-3 → vitoria · equipe 2:31,10:8,45:8,20:8,43:17,57:15 · A-R4 · $18877
+  [batalha] A-R4-2 → vitoria · equipe 2:31,10:8,45:8,20:8,43:17,57:15 · A-R4 · $19581
+  [batalha] A-R4-6 → derrota · equipe 2:31,10:8,45:8,20:8,43:17,57:15 · A-R4 · $19581
+    turnos: Tamanduá-Copa31 94/94 x Graxaim22 58/58 → golpe chicote-de-cipo | Tamanduá-Copa31 85/94 x Graxaim22 21/58 → golpe chicote-de-cipo | Tamanduá-Copa31 85/94 x Besourim22 48/60 → golpe patada | Tamanduá-Copa31 85/94 x Besourim22 39/60 → golpe patada | Tamanduá-Copa31 52/94 x Besourim22 29/60 → golpe patada | Tamanduá-Copa31 15/94 x Besourim22 19/60 → item cha-cidreira | Corujinha17 44/44 x Besourim22 19/60 → golpe lufada | Capivarinha15 45/45 x Besourim22 7/60 → golpe esguicho | Capivarinha15 13/45 x Graxaim22 21/58 → golpe esguicho | Pipirim8 26/26 x Graxaim22 21/58 → golpe bicada | Gambazinho8 26/26 x Graxaim22 21/58 → golpe arranhao | Gambazinho8 21/26 x Graxaim22 21/58 → golpe arranhao
+  DERROTA para A-R4-6 (nv 22)
+  [batalha] A-R4-6 → derrota · equipe 2:31,10:8,45:8,20:8,43:18,57:15 · A-R4 · $9790
+    turnos: Tamanduá-Copa31 94/94 x Graxaim22 57/57 → golpe chicote-de-cipo | Tamanduá-Copa31 84/94 x Graxaim22 22/57 → golpe chicote-de-cipo | Tamanduá-Copa31 84/94 x Besourim22 53/59 → golpe patada | Tamanduá-Copa31 56/94 x Besourim22 34/59 → golpe patada | Tamanduá-Copa31 27/94 x Besourim22 24/59 → golpe patada | Tamanduá-Copa31 1/94 x Besourim22 14/59 → golpe patada | Corujinha17 44/44 x Besourim22 5/59 → golpe lufada | Corujinha18 46/46 x Graxaim22 22/57 → golpe golpe-de-asa | Capivarinha15 45/45 x Graxaim22 8/57 → golpe esguicho | Capivarinha15 23/45 x Graxaim22 1/57 → golpe esguicho | Pipirim8 26/26 x Graxaim22 1/57 → golpe bicada | Quero-querinho8 26/26 x Graxaim22 1/57 → golpe bicada | Gambazinho8 26/26 x Graxaim22 1/57 → golpe arranhao
+  DERROTA para A-R4-6 (nv 22)
+  [batalha] A-R4-6 → vitoria · equipe 2:32,10:8,45:8,20:8,43:18,57:15 · A-R4 · $5775
+  [batalha] A-R4-7 → vitoria · equipe 2:32,10:8,45:8,20:8,43:18,57:15 · A-R4 · $6695
+  [batalha] A-US-4 → vitoria · equipe 2:32,10:8,45:8,20:8,43:18,57:15 · A-US-1 · $7615

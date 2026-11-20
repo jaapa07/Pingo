@@ -1,8 +1,8 @@
 import type { TreinadorDef } from '../../core/tipos';
 
 /**
- * Casa de Provas da Aldeia Tupã (ginásio nº 16): os guardiões das provas e o Pajé Trovão-Velho. Ás nv 63 (tabela 4.5:
- * 61–63); a turma fica entre 57 e 61 (ás − 2 a − 6). Só formas finais (as linhas de Lenda evoluem entre 34 e 45).
+ * Casa de Provas da Aldeia Tupã (ginásio nº 16): os guardiões das provas e o Pajé Trovão-Velho. Ás nv 72 (tabela 4.5:
+ * 68–72); a turma fica entre 66 e 70 (ás − 2 a − 6). Só formas finais (as linhas de Lenda evoluem entre 34 e 45).
  * O Pajé usa a IA 'conselho', a mais fina do jogo antes do Conselho dos Guardiões, e remédios no Aventureiro (spec 7A).
  */
 export const TREINADORES_GINASIO_16: TreinadorDef[] = [
@@ -24,22 +24,24 @@ export const TREINADORES_GINASIO_16: TreinadorDef[] = [
   /*
    * LÍDER — Pajé Trovão-Velho (Lenda). Fraquezas da Lenda: Geada, Lenda e Encanto.
    * Estratégia (IA 'conselho'): uma criatura para cada prova. A Lavadeira-Dragão (Inseto/Lenda, o vento) abre com
-   * Pulso das Eras e queima Geada com Labareda. O Hipocampo (Rio/Lenda, a água) acumula Chamado Antigo e ergue a
-   * Cortina de Brilho. O Leão-Dourado (Brasa/Ginga, o fogo) é a resposta à Geada: Labareda e Rabo-de-Arraia (contra
-   * Pedra e Ferro). O Minhocão (Terra/Lenda, a terra) bate com Garra Ancestral e Tremor de Terra e castiga Encanto com
-   * Borra de Timbó. O ás é o Pirarucão (Rio/Lenda) de nível 63: Garra Ancestral, Cachoeirada, Tremor de Terra e Escama
-   * Sagrada; segura um Caju. Ajuste pelo simulador: com seis criaturas, Estrela Cadente e Trovoada, o esperto vencia só
-   * 31–48%; assim fica em 59–75% (Δ 2–4 níveis).
+   * Pulso das Eras, Voo do Guardião e queima Geada com Labareda. O Hipocampo (Rio/Lenda, a água) acumula Chamado Antigo
+   * e ergue a Cortina de Brilho. O Leão-Dourado (Brasa/Ginga, o fogo) é a resposta à Geada: Carreira em Chamas e
+   * Rabo-de-Arraia (contra Pedra e Ferro). O Minhocão (Terra/Lenda, a terra) bate com Garra Ancestral e Tremor de Terra e
+   * castiga Encanto com Borra de Timbó; o Jacaruçu (Rio/Lenda) é a 2ª resposta ao Encanto (Marretada e Bote de Jararaca).
+   * O ás é o Pirarucão (Rio/Lenda) de nível 72: Garra Ancestral, Cachoeirada, Marretada e Escama Sagrada; segura um Caju.
+   * Curva nova (docs/EQUILIBRIO-MAPA-B.md): ás 72; com cinco criaturas a equipe do QA (Encanto/Vento) vencia 91–99% e a
+   * de referência 71–76%; com o Jacaruçu e a cobertura de Ferro/Veneno: referência 52–66%, equipe do QA 73–88%.
    * Cura: Elixir de Andiroba e Garrafada (spec 7A).
    */
   { id: 'lider-16', classe: 'Pajé', nome: 'Trovão-Velho', sprite: 'lider-16', ia: 'conselho', premio: 6300, insignia: 16, musica: 'batalha-lider', flag: 'ginasio-16-vencido',
     itens: ['elixir-andiroba', 'garrafada'],
     equipe: [
-      { e: 156, nv: 70, golpes: ['pulso-das-eras', 'labareda', 'voo-de-mamangava', 'sopro-ancestral'] },
+      { e: 156, nv: 70, golpes: ['pulso-das-eras', 'labareda', 'voo-de-mamangava', 'voo-do-guardiao'] },
       { e: 120, nv: 70, golpes: ['chamado-antigo', 'pulso-das-eras', 'enxurrada', 'cortina-de-brilho'] },
-      { e: 68, nv: 70, golpes: ['labareda', 'rabo-de-arraia', 'sol-a-pino', 'armada'] },
+      { e: 68, nv: 70, golpes: ['carreira-em-chamas', 'rabo-de-arraia', 'sol-a-pino', 'armada'] },
       { e: 160, nv: 70, golpes: ['garra-ancestral', 'tremor-de-terra', 'borra-de-timbo', 'vocoroca'] },
-      { e: 112, nv: 72, golpes: ['garra-ancestral', 'cachoeirada', 'tremor-de-terra', 'escama-sagrada'], item: 'caju' },
+      { e: 85, nv: 69, golpes: ['garra-ancestral', 'mergulho-fundo', 'marretada', 'bote-de-jararaca'] },
+      { e: 112, nv: 72, golpes: ['garra-ancestral', 'cachoeirada', 'marretada', 'escama-sagrada'], item: 'caju' },
     ],
     desafio: 'Você acendeu os quatro totens. O fogo, a terra, o vento e a água conversaram com você. Agora é a minha vez de ouvir o que a sua equipe tem a dizer.',
     derrota: 'O trovão se cala quando ouve uma voz verdadeira. Você venceu, caminhante.', depois: 'Quem cuida da terra é cuidado por ela. Não esqueça.' },

@@ -2,7 +2,7 @@ import type { TreinadorDef } from '../../core/tipos';
 
 /**
  * Ginásio da Terra (nº 9, Pantanal Grande): peões e pantaneiros do curral e a líder Boiadeira Zefa.
- * Primeiro ginásio depois da Liga: líder com ás 49 (tabela 4.5, faixa 47–49); a turma fica de 43 a 47 (ás − 2 a − 6).
+ * Primeiro ginásio depois da Liga: líder com ás 55 (tabela 4.5, faixa 51–55; curva de docs/EQUILIBRIO-MAPA-B.md); a turma fica de 49 a 53 (ás − 2 a − 6).
  * Estágios coerentes: Jacaretinga só até o 44 (vira Jacaruçu no 45), Emaçu e Antão depois do 34, Sucurião depois do 38.
  */
 export const TREINADORES_GINASIO_09: TreinadorDef[] = [

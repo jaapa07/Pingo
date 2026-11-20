@@ -2,7 +2,7 @@ import type { TreinadorDef } from '../../core/tipos';
 
 /**
  * Ginásio da Ginga (nº 12, Cidade Ginga): capoeiristas da academia e o líder Mestre Gingado.
- * Mapa B, depois da Liga: líder com ás 55 (tabela 4.5, faixa 53–55); a turma fica de 49 a 53 (ás − 2 a − 6).
+ * Mapa B, depois da Liga: líder com ás 63 (tabela 4.5, faixa 59–63); a turma fica de 57 a 61 (ás − 2 a − 6).
  * Estágios coerentes: Harpia só depois do 45, Pintada depois do 40, Prego-Mestre depois do 36; as demais linhas de
  * Ginga evoluem entre 25 e 34.
  */

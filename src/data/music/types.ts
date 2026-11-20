@@ -5,7 +5,9 @@ export type InstId =
   | 'pulso' | 'pulso25' | 'pulso12' | 'tri'
   | 'sanfona' | 'viola' | 'cavaquinho' | 'violao' | 'flauta' | 'berimbau'
   | 'marimba' | 'kalimba' | 'sino' | 'pizz' | 'cordas' | 'metais' | 'pad' | 'padBrilho'
-  | 'baixo' | 'baixoSub' | 'baixoDist' | 'guitarra' | 'lead';
+  | 'baixo' | 'baixoSub' | 'baixoDist' | 'guitarra' | 'lead'
+  /** violino nórdico de cordas simpáticas (só a faixa do visitante boreal: timbre de fora do Brasil, spec 6.5) */
+  | 'hardanger';
 
 /** Peças de percussão (uma letra por passo nas grades: X forte, x médio, o fantasma, . silêncio). */
 export type PecaId =

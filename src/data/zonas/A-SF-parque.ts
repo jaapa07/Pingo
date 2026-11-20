@@ -91,7 +91,7 @@ const g = grade('A-SF-parque', [...MATA.map((l, i) => l + TOCA[i]), ...VEREDA.ma
 export const PARQUE_ENTRADA: [number, number] = [10, 32];
 const obra = (x: number, y: number, n: number, onde: string) => ({ x, y, requer: `flag:safari-setor-${n}`, sprite: 'npc-homem-2', fala: `Cerca em obra! Aqui vai ser ${onde}. O Seu Jatobá ainda está montando: falta o material.` });
 const zona: ZonaDef = {
-  id: 'A-SF-parque', nome: 'Parque Safári', mapa: 'A', tipo: 'rota', tileset: 'cerrado', musica: 'rota-dia-A', arena: 'cerrado', passo: 9,
+  id: 'A-SF-parque', nome: 'Parque Safári', mapa: 'A', tipo: 'rota', tileset: 'cerrado', musica: 'safari', arena: 'cerrado', passo: 9,
   mapaChars: g.mapa,
   objetos: [
     ...g.todos('X').map(([x, y]) => ({ o: 'tronco-caido', x, y, texto: ['Um tronco oco trazido para a toca. Lá dentro, alguém dorme e ronca.'] })),

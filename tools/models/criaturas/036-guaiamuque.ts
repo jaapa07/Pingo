@@ -21,12 +21,14 @@ function build() {
   });
   // GARRA gigante do lado de lá do corpo: palma enorme com crosta de pedra e dedos creme
   // (fica do lado de LÁ e erguida, para não tapar a cara na vista de frente quase frontal)
-  rig.bones.garra_d.scale.setScalar(2.0);
-  rig.bones.pinca_d.rotation.z = 1.15; rig.bones.garra_d.rotation.z = 0.35;
-  rig.bones.dedo_d.rotation.z = -0.75;
+  // POSE (2ª rodada): o braço sai para o LADO (do lado de lá, que na câmera quase frontal fica à esquerda da tela) e a tenaz
+  // fica de perfil para a câmera — os dois dedos abertos em "C" aparecem inteiros ao lado do corpo, sem tapar a cara.
+  rig.bones.garra_d.scale.setScalar(1.55);
+  rig.bones.pinca_d.rotation.set(0, -0.95, 1.15); rig.bones.garra_d.rotation.set(0, 0.1, -0.5);
+  rig.bones.dedo_d.rotation.z = -1.05;
   rig.bones.pinca_e.rotation.z = 0.15; rig.bones.garra_e.rotation.z = 0.6;
   // palma em pedra, pequena; os dois DEDOS da tenaz são grossos, compridos e abertos em "C" (azul em cima, creme embaixo)
-  rig.add('garra_d', blob([0.1, 0.095, 0.085], m(3), { pos: [0.06, 0, 0], seg: 9 }), blob([0.045, 0.04, 0.04], m.luz(3), { pos: [0.02, 0.08, -0.04], seg: 7 }), blob([0.04, 0.035, 0.04], m.sombra(3), { pos: [0.0, -0.05, -0.06], seg: 7 }));
+  rig.add('garra_d', blob([0.13, 0.115, 0.1], m(3), { pos: [0.05, 0, 0], seg: 9 }), blob([0.045, 0.04, 0.04], m.luz(3), { pos: [0.02, 0.08, -0.04], seg: 7 }), blob([0.04, 0.035, 0.04], m.sombra(3), { pos: [0.0, -0.05, -0.06], seg: 7 }));
   rig.add('garra_d', garra(0.34, 0.075, m(0), { pos: [0.1, 0.07, 0], rot: [0, 0, 26], curva: 0.75 }), blob([0.035, 0.03, 0.03], m.luz(1), { pos: [0.4, 0.07, 0], seg: 7 }));
   rig.add('dedo_d', garra(0.3, 0.06, m(1), { pos: [-0.02, 0.0, 0], rot: [0, 0, 0], curva: -0.7 }));
   par((l, s) => {

@@ -26,20 +26,21 @@ export function estrela(rig: ReturnType<typeof tartaruga>['rig'], nome: string, 
 
 function build() {
   const { rig, ref } = tartaruga({
-    casco: [0.25, 0.17, 0.22], alt: 0.07, pernas: { len: 0.22, r: 0.05, nadadeira: true },
-    pescoco: { len: 0.12, r: 0.075, ang: 30 }, cabeca: [0.14, 0.12, 0.125], cauda: 0.09, escudos: 6,
+    // 2ª rodada: casco mais abaulado e cabeça ERGUIDA, de olho na arrebentação (antes lia como uma panqueca: 52×21 px)
+    casco: [0.25, 0.2, 0.22], alt: 0.08, pernas: { len: 0.22, r: 0.05, nadadeira: true },
+    pescoco: { len: 0.21, r: 0.075, ang: 68 }, cabeca: [0.155, 0.135, 0.135], cauda: 0.09, escudos: 6,
     olho: { r: 0.028, pos: [0.1, 0.05, 0.1] },
     rampas: { casco: 0, borda: 1, plastrao: 1, pele: 2, escudos: 0 },
   });
   // escudos claros por cima (o kit pinta com a mesma rampa: aqui clareamos o do meio)
-  rig.add('corpo', calota([0.11, 0.176, 0.1], m.luz(0), { de: 0, ate: 50 }));
+  rig.add('corpo', calota([0.11, 0.206, 0.1], m.luz(0), { de: 0, ate: 50 }));
   // casquinha de ovo de chapéu, com borda serrilhada
   rig.bone('casca', 'cabeca', [ref.topo[0] - 0.02, ref.topo[1] - 0.04, 0], [0, 0, 12]);
   rig.add('casca', calota([0.12, 0.11, 0.11], m(1), { de: 0, ate: 80 }));
   for (const a of [0, 72, 144, 216, 288]) rig.add('casca', blob([0.03, 0.035, 0.03], m.luz(1), { pos: [Math.cos((a * Math.PI) / 180) * 0.105, 0.0, Math.sin((a * Math.PI) / 180) * 0.095], seg: 6 }));
   // escamas claras nas nadadeiras
   par((l, s) => { rig.add('canela_f' + l, blob([0.05, 0.02, 0.035], m.luz(2), { pos: [0.06, -0.01, 0.05 * s], seg: 8, castShadow: false })); });
-  estrela(rig, 'estrela', 'corpo', [-0.14, 0.13, 0.08], 0.07, [20, 0, 24]);
+  estrela(rig, 'estrela', 'corpo', [-0.14, 0.155, 0.08], 0.07, [20, 0, 24]);
   return rig;
 }
 

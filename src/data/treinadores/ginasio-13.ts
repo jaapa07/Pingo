@@ -1,8 +1,8 @@
 import type { TreinadorDef } from '../../core/tipos';
 
 /**
- * Ginásio do Veneno (nº 13, Brejo Roxo): os assistentes do serpentário e o líder Doutor Peçonha. Ás nv 57 (tabela 4.5:
- * 55–57); a turma fica entre 51 e 55 (ás − 2 a − 6). Todas as linhas de Veneno já passaram da evolução nesses níveis,
+ * Ginásio do Veneno (nº 13, Brejo Roxo): os assistentes do serpentário e o líder Doutor Peçonha. Ás nv 66 (tabela 4.5:
+ * 62–66); a turma fica entre 60 e 64 (ás − 2 a − 6). Todas as linhas de Veneno já passaram da evolução nesses níveis,
  * então só aparecem formas finais. Do 8º ginásio em diante o líder usa remédios no Aventureiro (spec 7A).
  */
 export const TREINADORES_GINASIO_13: TreinadorDef[] = [

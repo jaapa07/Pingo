@@ -3,8 +3,8 @@ import type { TreinadorDef, MembroEquipe } from '../../core/tipos';
 /**
  * Treinadores do time B2-norte: Campos de Altitude (B-SG), Lagoa Gelada (B-LG), Caminho das Névoas (B-R5), Planalto Lume
  * (B8), a Subida do Pico Pindorama (PP, com dois capangas do Cartel) e a Floresta Ancestral (B-FA, pós-jogo).
- * Curva (spec 4.5): líder 14 ás 59 → B-SG e B-LG nv 55–57 · líder 15 ás 61 → B-R5 e B8 nv 55–59 · Pico depois do
- * líder 16 (ás 63) nv 62–64 · Floresta Ancestral (pós-jogo) nv 66–72. Só estágios finais (todas as linhas por nível
+ * Curva (spec 4.5 e docs/EQUILIBRIO-MAPA-B.md): líder 14 ás 68 → B-SG e B-LG nv 64–66 · líder 15 ás 70 → B-R5 e B8 nv
+ * 64–68 · Pico depois do líder 16 (ás 72) nv 69–71 · Floresta Ancestral (pós-jogo) nv 73–79. Só estágios finais (todas as linhas por nível
  * já evoluíram abaixo de 46). Itens de cura só no Veterano (regra do motor; nenhum treinador comum tem `itens`).
  * O Conselho, o Garrote e a rival 8 ficam em src/data/treinadores/conselho.ts.
  */
@@ -12,7 +12,7 @@ const t = (id: string, classe: string, nome: string, sprite: string, equipe: Mem
   ({ id, classe, nome, sprite, equipe, ia: 'treinador', premio: 40 * Math.max(...equipe.map((m) => m.nv)), desafio, derrota, depois, ...extra });
 const m = (...xs: [number, number][]): MembroEquipe[] => xs.map(([e, nv]) => ({ e, nv }));
 
-/* ------------------------------ B-SG · Campos de Altitude (nv 55–57) ------------------------------ */
+/* ------------------------------ B-SG · Campos de Altitude (nv 64–66) ------------------------------ */
 const CAMPOS: TreinadorDef[] = [
   t('B-SG-1', 'Vaqueiro', 'Peão Charqueada', 'cl-vaqueiro', m([138, 64], [102, 65]),
     'Tchê! Campo de altitude é campo de peão. Aqui o vento é minuano e a luta é no laço!', 'Me derrubou do pingo, tchê.', 'Quando a geada pega o capim, o Maracajá-Nevado sai para caçar. Só de noite, e só quem tem paciência vê.'),
@@ -30,7 +30,7 @@ const CAMPOS: TreinadorDef[] = [
     'Estudo o solo dos campos de altitude: turfa, musgo e Tuco-Escavador. Vamos ver o que você tem por baixo!', 'Escavei e achei a minha derrota.', 'O Tuquim mora em túneis que parecem um labirinto. Quando evolui, vira um minerador de Ferro.'),
 ];
 
-/* ------------------------------ B-LG · Lagoa Gelada (nv 55–57) ------------------------------ */
+/* ------------------------------ B-LG · Lagoa Gelada (nv 64–66) ------------------------------ */
 const LAGOA: TreinadorDef[] = [
   t('B-LG-1', 'Pescador', 'Seu Pacu-Frio', 'cl-pescador', m([134, 64], [76, 65]),
     'Pescar no gelo é arte: faz o furo, joga a linha e espera. Esperei você!', 'Peguei resfriado em vez de peixe.', 'O Pinguimar surfa nas ondinhas da lagoa. Ninguém sabe como ele chegou à serra. Ele também não conta.'),
@@ -44,7 +44,7 @@ const LAGOA: TreinadorDef[] = [
     'Cinquenta invernos nesta lagoa. Você é o primeiro peixe que fala!', 'O peixe me pescou.', 'Ilha do meio? Só de canoa. Lá tem o barraco do meu compadre Joca, pescador da família Alva.'),
 ];
 
-/* ------------------------------ B-R5 · Caminho das Névoas (nv 55–59) ------------------------------ */
+/* ------------------------------ B-R5 · Caminho das Névoas (nv 64–68) ------------------------------ */
 const NEVOAS: TreinadorDef[] = [
   t('B-R5-1', 'Montanhista', 'Guia Cerração', 'cl-montanhista', m([94, 64], [66, 65]),
     'Na névoa eu ando de olho fechado. Você anda de Lampião? Então é desafio justo!', 'Acendeu a luz em mim.', 'A trilha sobe pelo pinheiral e desce até a Ponte do Cânion. Não saia dela: o cânion não tem fundo de mentira.'),
@@ -64,7 +64,7 @@ const NEVOAS: TreinadorDef[] = [
     'Capoeira na névoa: o adversário não vê o golpe chegando. Nem eu, às vezes. Iê!', 'Iê, camarada. Bom jogo.', 'Na beira do Planalto Lume tem roda de choro, não de capoeira. Mas a ginga é a mesma.'),
 ];
 
-/* ------------------------------ B8 · Planalto Lume (nv 57–59) ------------------------------ */
+/* ------------------------------ B8 · Planalto Lume (nv 66–68) ------------------------------ */
 const LUME: TreinadorDef[] = [
   t('B8-1', 'Observadora de Aves', 'Dona Beija-Flor', 'cl-observadora', m([48, 66], [54, 67]),
     'Três anos para ver um Beija-Arco-Íris! Agora tenho um, e ele está louco para lutar!', 'Ele voou de volta para as flores.', 'Nos Campos do Lume, de dia, sacuda os ipês: a Jataí-Rainha mora no oco do tronco.'),
@@ -74,7 +74,7 @@ const LUME: TreinadorDef[] = [
     'Serenata no coreto para a lua e para você: / se eu perder, eu canto; se ganhar, canto também!', 'Canto a derrota: tem mais rima.', 'O Papagálio aprende qualquer golpe que escuta. Não fale estratégia perto dele.'),
 ];
 
-/* ------------------------------ PP · a Subida do Pico Pindorama (nv 62–64) ------------------------------ */
+/* ------------------------------ PP · a Subida do Pico Pindorama (nv 69–71) ------------------------------ */
 const PICO: TreinadorDef[] = [
   t('PP-1', 'Montanhista', 'Alpinista Cume-Raso', 'cl-montanhista', m([12, 69], [166, 69], [140, 70]),
     'Dezesseis insígnias? Bonito. Aqui em cima elas pesam o dobro. Vamos ver se você aguenta o peso!', 'Aguentou com folga.', 'A trilha sobe em zigue-zague. Cada curva tem um montanhista querendo provar alguma coisa. Inclusive eu.'),
@@ -94,7 +94,7 @@ const PICO: TreinadorDef[] = [
     'Última capanga antes do Coronel! Corrente nova, cuia nova, raiva velha!', 'Corrente arrebentada. Raiva também.', 'Eu só queria um emprego com vista para a serra. Arrumei um com vista para a derrota.', { musica: 'batalha-cartel', contato: false }),
 ];
 
-/* ------------------------------ B-FA · Floresta Ancestral, pós-jogo (nv 66–72) ------------------------------ */
+/* ------------------------------ B-FA · Floresta Ancestral, pós-jogo (nv 73–79) ------------------------------ */
 const FLORESTA: TreinadorDef[] = [
   t('B-FA-1', 'Mateira', 'Anciã Sumaúma', 'cl-mateira', m([98, 73], [62, 74], [144, 74]),
     'Esta floresta é mais velha que as cidades. Quem entra aqui, entra para aprender. Lição número um: respeito!', 'Lição aprendida. Por mim.', 'Os Ninhos Raros ficam nas clareiras: cada um com o filho de um dos três primeiros parceiros dos treinadores.'),

@@ -132,6 +132,8 @@ function busca(alvoFn, o = {}) {
   const ocup = new Set([...M.npcs.filter((n) => n.ator.visivel).map((n) => n.ator.x + ',' + n.ator.y), ...M.guardas.map((g) => g.ator.x + ',' + g.ator.y)]);
   const item = (x, y) => (z.def.itens ?? []).some((i) => i.x === x && i.y === y && !i.oculto && !jogo.save.flags[i.flag]);
   const evitar = o.evitar ?? (() => false);
+  // o Remo só puxa a canoa com uma criatura do tipo Rio na equipe (regra do jogo)
+  const remoServe = jogo.save.equipe.some((c) => !c.ovo && especie(c.especie).tipos.includes('rio'));
   const k0 = j.x + ',' + j.y, ant = new Map([[k0, null]]), fila = [[j.x, j.y, jogo.save.jogador.modo === 'remo']];
   if (alvoFn(j.x, j.y)) return { passos: [], fim: [j.x, j.y] };
   let fim = null;
@@ -145,7 +147,7 @@ function busca(alvoFn, o = {}) {
       const destino = alvoFn(nx, ny);
       if (w && !destino) continue;
       if (w && !cond(w.requer)) continue;
-      if (z.agua(nx, ny)) { if (ch === 'w') continue; passo = naAgua ? d : am.includes('remo') ? 'A' + d : null; agua = true; }
+      if (z.agua(nx, ny)) { if (ch === 'w') continue; passo = naAgua ? d : am.includes('remo') && remoServe ? 'A' + d : null; agua = true; }
       else if (SALIENCIA[ch]) {
         if (naAgua || SALIENCIA[ch] !== d) continue;
         const lx = nx + D[d][0], ly = ny + D[d][1];

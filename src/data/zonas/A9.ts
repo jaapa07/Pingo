@@ -76,8 +76,8 @@ const zona: ZonaDef = {
     { x: 32, y: 27, item: 'rapadura', oculto: true, flag: 'item:A9:sul' },
   ],
   habitats: [
-    { metodo: 'grama', taxa: 0.08, todos: [{ e: 168, nv: [63, 66], peso: 30 }, { e: 110, nv: [63, 66], peso: 20 }, { e: 54, nv: [63, 66], peso: 25 }, { e: 156, nv: [63, 66], peso: 10 }, { e: 100, nv: [63, 66], peso: 15 }] },
-    { metodo: 'arvore', todos: [{ e: 62, nv: [63, 66], peso: 70 }, { e: 68, nv: [63, 66], peso: 30 }] },
+    { metodo: 'grama', taxa: 0.08, todos: [{ e: 168, nv: [67, 70], peso: 30 }, { e: 110, nv: [67, 70], peso: 20 }, { e: 54, nv: [67, 70], peso: 25 }, { e: 156, nv: [67, 70], peso: 10 }, { e: 100, nv: [67, 70], peso: 15 }] },
+    { metodo: 'arvore', todos: [{ e: 62, nv: [67, 70], peso: 70 }, { e: 68, nv: [67, 70], peso: 30 }] },
   ],
 };
 export default zona;

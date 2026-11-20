@@ -2,7 +2,7 @@ import type { TreinadorDef } from '../../core/tipos';
 
 /**
  * Ginásio da Pedra (nº 10, Chapada Rubra): garimpeiros da mina e o líder Garimpeiro Topázio.
- * Mapa B, depois da Liga: líder com ás 51 (tabela 4.5, faixa 49–51); a turma do ginásio fica de 45 a 49 (ás − 2 a − 6).
+ * Mapa B, depois da Liga: líder com ás 58 (tabela 4.5, faixa 54–58); a turma do ginásio fica de 52 a 56 (ás − 2 a − 6).
  * Todas as espécies aparecem no estágio que teriam no nível (Mocó evolui no 30, Aruá no 32, Cupinzim no 34…).
  */
 export const TREINADORES_GINASIO_10: TreinadorDef[] = [

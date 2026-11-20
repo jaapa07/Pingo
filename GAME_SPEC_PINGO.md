@@ -320,15 +320,15 @@ Cada obstáculo exige um **Amuleto de Campo**, que é um item-chave. Ele **só f
 | 7 | A8 (via A-R5, Quebra-pedra) | **7 · Ferro (Engrenagem)** | 34–36 | Força → A-R7 → A10 |
 | 8 | A10 Vila Buriti (nova; via A-R7, Força) | **8 · Mata (Folha)** | 38–40 | caminho para o Platô da Liga |
 | Liga | A-LG Platô da Liga | **Liga dos Guardiões** (4 Mestres + Campeão) | 41–46 | **libera o mapa B:** Passe do Trem + Bilhete do Saveiro |
-| 9 | B2 (trem → B1 → rota) | **9 · Terra (Barro)** | 47–49 | Mergulho (B-TA, A-RS); evento do Pantanal |
-| 10 | B3 (Saveiro → B9 → B-R2) | evento da Mina → **10 · Pedra (Cristal)** | 49–51 | Escalar |
-| 11 | B4 (via B-CH) | **11 · Brasa (Chama)** | 51–53 | B-CV (Boitatá) |
-| 12 | B5 | **12 · Ginga (Berimbau)** | 53–55 | Cachoeira → volta ao mapa A |
-| 13 | B6 (via B-TA) | evento do Laboratório → **13 · Veneno (Espinho)** | 55–57 | Queixada-Caipora começa a vagar |
-| 14 | B7 (via B-R4) | **14 · Geada (Floco)** | 57–59 | **Voo** |
-| 15 | B8 (via B-R5, Lampião) | **15 · Mente (Olho)** | 59–61 | o guardião do Monte Tupã abre o caminho |
-| 16 | A9 (via A-MT) | **16 · Lenda (Escama)** | 61–63 | Portão do Pico Pindorama |
-| Final | PP | **Conselho dos Guardiões** (4 + Guardião-Mor) e Coronel Garrote do Cartel | 64–70 | créditos e pós-jogo |
+| 9 | B2 (trem → B1 → rota) | **9 · Terra (Barro)** | 51–55 | Mergulho (B-TA, A-RS); evento do Pantanal |
+| 10 | B3 (Saveiro → B9 → B-R2) | evento da Mina → **10 · Pedra (Cristal)** | 54–58 | Escalar |
+| 11 | B4 (via B-CH) | **11 · Brasa (Chama)** | 57–61 | B-CV (Boitatá) |
+| 12 | B5 | **12 · Ginga (Berimbau)** | 59–63 | Cachoeira → volta ao mapa A |
+| 13 | B6 (via B-TA) | evento do Laboratório → **13 · Veneno (Espinho)** | 62–66 | Queixada-Caipora começa a vagar |
+| 14 | B7 (via B-R4) | **14 · Geada (Floco)** | 64–68 | **Voo** |
+| 15 | B8 (via B-R5, Lampião) | **15 · Mente (Olho)** | 66–70 | o guardião do Monte Tupã abre o caminho |
+| 16 | A9 (via A-MT) | **16 · Lenda (Escama)** | 68–72 | Portão do Pico Pindorama |
+| Final | PP | **Conselho dos Guardiões** (4 + Guardião-Mor) e Coronel Garrote do Cartel | Garrote 70–74 · Conselho 72–77 | créditos e pós-jogo |
 
 **Regras de montagem (obrigatórias):**
 - **Sem atalhos que pulem etapas:** cada transição exige o Amuleto ou o evento indicado.
@@ -337,8 +337,9 @@ Cada obstáculo exige um **Amuleto de Campo**, que é um item-chave. Ele **só f
 - **Curva de nível:** cada zona define faixas de nível coerentes com o passo em que fica acessível. As zonas antigas ganham uma **"camada pós-insígnia X"** com criaturas evoluídas: a mesma rota, revisitada, tem novas espécies em níveis maiores.
 
 **Regra de coerência de níveis (decisão do autor: a dificuldade tem de acompanhar o nível das criaturas):**
-- A curva só sobe: **líder 8 (38–40) < Liga (41–46, Campeão com ás 46) < líder 9 (47–49) < … < líder 16 (61–63) < Garrote (≈63–65) < Conselho (64–70, Guardião-Mor com o lendário no nível 70)**. Depois do 16, o Conselho é claramente mais forte que qualquer ginásio e que a Liga.
-- **Mapa A (1 a 8 + Liga):** as criaturas selvagens das rotas vão de 2–5 até ~40 (camadas pós-insígnia chegam a 44). **Mapa B:** o selvagem começa em ~44–48, ou seja, a Liga termina onde o mapa B começa; só o pós-jogo leva as rotas além disso.
+- A curva só sobe: **líder 8 (38–40) < Liga (41–46, Campeão com ás 46) < líder 9 (ás 55) < 10 (58) < 11 (61) < 12 (63) < 13 (66) < 14 (68) < 15 (70) < líder 16 (ás 72) < Garrote (ás 74) < rival 8 (ás 75) < Conselho (ases 73 → 77, Guardião-Mor com o lendário no nível 77) < revanches de fase 4 (ás 81)**. Depois do 16, o Conselho é claramente mais forte que qualquer ginásio e que a Liga. (Mapa B refeito pela medição do jogo honesto: docs/EQUILIBRIO-MAPA-B.md; verificador em tools/verify/curva-b.ts.)
+- **Chocalho do Mutirão depois da Liga:** a reserva só ganha a metade da experiência quando está **5 níveis ou mais** atrás da mais forte (antes da Liga, 2). Ele continua pondo uma captura nova em dia, mas não leva a equipe nivelada inteira junto pelo mapa B.
+- **Mapa A (1 a 8 + Liga):** as criaturas selvagens das rotas vão de 2–5 até ~40 (camadas pós-insígnia chegam a 44). **Mapa B:** o selvagem começa em ~48–51 e acompanha a curva (selvagens e treinadores de rota de cada trecho = ás do próximo líder − 6 a − 2); só o pós-jogo (Floresta Ancestral 73–79) leva as rotas além do Conselho.
 - **Nível esperado da equipe:** o jogador que capturou e treinou o normal chega em cada líder com o nível da sua melhor criatura 2 a 4 níveis abaixo do ás do líder, e o ás do líder fica no limite superior da faixa. O jogador que for direto fica abaixo e precisa de estratégia; o que treinou demais passa folgado, mas isso não é o caminho recomendado.
 - **Estágio compatível com o nível (corrigido):** em equipes de treinadores e nos encontros, a criatura aparece **no estágio que teria naquele nível**: se já passou do nível de evolução da espécie, aparece evoluída; se não, aparece na forma anterior. O que não pode é uma espécie cuja evolução acontece cedo (ex.: nível 10–20) ter atributos de estágio final forte: nesses casos a soma de atributos da espécie é que deve cair para a faixa média (400–480). Líderes de nível baixo podem usar formas finais de linhas que evoluem cedo.
 - **Verificação automática (`npm run check`):** confere a monotonia da curva acima, que cada treinador/líder/selvagem esteja dentro da faixa do seu passo, que o ás do líder seja o mais alto da equipe, e que nenhuma criatura apareça em nível menor que o da sua evolução anterior ou muito acima da faixa do seu estágio.
@@ -400,8 +401,8 @@ Cada ginásio tem um **quebra-cabeça temático**, de 4 a 7 treinadores e um lí
   Cada mestre tem um tema de tipos diferente dos 8 ginásios do mapa A, para a Liga testar o jogador de outro jeito (combos de tipo), e **nenhum** usa os tipos do Conselho final.
 - **Recompensas:** o **Passe do Trem** e o **Bilhete do Saveiro** (só agora liberam as passagens para o mapa B), o título de Campeão do mapa A (flag `liga-vencida`), uma **Pedra de Evolução** à escolha e a entrada de **Hall da Fama** (tela de créditos curta com a equipe). Depois da Liga a Tainá (rival-4) desafia no Platô e o Rádio Cipó anuncia "a região do Sertão agora está aberta".
 - **Passagens para o mapa B:** trem (A4 → B1), Saveiro (A5 → B9) e a trilha do Pico exigem `flag:liga-vencida`. Os ginásios 9 a 16 ficam no mapa B (B2 a B8) e A9, e a **Liga dos Guardiões não é a mesma coisa que o Conselho final** do Pico Pindorama (depois das 16 insígnias).
-- **Revanche da Liga:** pós-jogo, a Liga pode ser refeita por agendamento do Rádio Cipó (equipes nível 55+).
-- **Consequências no projeto (a aplicar quando as equipes de zona retomarem):** (a) o ginásio da Mata deixa B1 e vai para **A10 Vila Buriti (nova zona)**, sobe para insígnia 8 e para níveis 38–40; (b) o **Remo** passa do ginásio da Mata para o do **Rio (insígnia 3)**; (c) B1 vira cidade de chegada, sem ginásio; (d) as zonas B têm de subir as faixas de nível de captura em ~20 níveis (os ginásios 9–16 vão de 45 a 61); (e) A5 (Cidade Coral) passa a ser o 4º ginásio, A6 o 5º, A7 o 6º, A8 o 7º; (f) o trem e o Saveiro ficam fechados até `liga-vencida` (a Usina e o Passe do Trem na A4 mudam de lugar na história); (g) criar a zona `A-LG` e o evento da Liga.
+- **Revanche da Liga:** pós-jogo, a Liga pode ser refeita por agendamento do Rádio Cipó (equipes nível 55+; revanches de líder e rival na fase 4 com ás 81, acima do Conselho).
+- **Consequências no projeto (a aplicar quando as equipes de zona retomarem):** (a) o ginásio da Mata deixa B1 e vai para **A10 Vila Buriti (nova zona)**, sobe para insígnia 8 e para níveis 38–40; (b) o **Remo** passa do ginásio da Mata para o do **Rio (insígnia 3)**; (c) B1 vira cidade de chegada, sem ginásio; (d) as zonas B têm de subir as faixas de nível de captura (os ginásios 9–16 vão de 49 a 72; ver a tabela acima); (e) A5 (Cidade Coral) passa a ser o 4º ginásio, A6 o 5º, A7 o 6º, A8 o 7º; (f) o trem e o Saveiro ficam fechados até `liga-vencida` (a Usina e o Passe do Trem na A4 mudam de lugar na história); (g) criar a zona `A-LG` e o evento da Liga.
 
 ---
 

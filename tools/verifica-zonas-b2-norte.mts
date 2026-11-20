@@ -4,6 +4,7 @@
 // (espécie citada ou a forma em que ela está no nível), curva de níveis (líder 14 = 59, 15 = 61, Pico 62–65, Conselho
 // 64–70, pós-jogo 65–75) e a estrutura da sequência final (Garrote, rival 8, cinco Guardiões, créditos, pós-jogo).
 // Rodar: npx tsx tools/verifica-zonas-b2-norte.mts
+import { AS_LIDER_B, AS_GARROTE, AS_RIVAL_8, AS_CONSELHO, FAIXA_CONSELHO } from './verify/curva-b';
 import { readdirSync } from 'node:fs';
 import type { ZonaDef, Encontro, Habitat, TreinadorDef } from '../src/core/tipos';
 import { CATALOGO_EXTERIOR } from '../src/data/catalogo-objetos';
@@ -206,10 +207,11 @@ function confere(onde: string, e: number, nv: number, basicoPermitido = false) {
 }
 /** faixa dos selvagens por zona e das camadas pós-insígnia */
 const FAIXA: [RegExp, [number, number], number, [number, number]][] = [
-  [/^(B-SG|B-LG)/, [55, 57], 15, [58, 60]],
-  [/^(B-R5|B8)/, [55, 59], 16, [60, 63]],
-  [/^PP/, [62, 65], 99, [0, 0]],
-  [/^B-FA/, [65, 75], 99, [0, 0]],
+  // curva de docs/EQUILIBRIO-MAPA-B.md (tools/verify/curva-b.ts): líder 14 ás 68, 15 ás 70, 16 ás 72, Garrote 74, Conselho 77
+  [/^(B-SG|B-LG)/, [64, 66], 15, [67, 69]],
+  [/^(B-R5|B8)/, [64, 68], 16, [68, 72]],
+  [/^PP/, [69, 72], 99, [0, 0]],
+  [/^B-FA/, [72, 82], 99, [0, 0]],
 ];
 let nTab = 0;
 for (const z of meus) {
@@ -229,7 +231,7 @@ for (const z of meus) {
   });
 }
 /** faixa dos treinadores: [regex do id, mínimo, máximo] */
-const FT: [RegExp, number, number][] = [[/^(B-SG|B-LG)-/, 55, 57], [/^(B-R5|B8)-/, 55, 59], [/^PP-[1-8]$/, 62, 64], [/^B-FA-/, 65, 75], [/^garrote$/, 62, 64], [/^rival-8-/, 63, 65], [/^conselho-/, 64, 70], [/^PP-andarilho$/, 75, 80]];
+const FT: [RegExp, number, number][] = [[/^(B-SG|B-LG)-/, 62, 66], [/^(B-R5|B8)-/, 64, 68], [/^PP-[1-8]$/, 68, 72], [/^B-FA-/, 72, 82], [/^garrote$/, AS_GARROTE - 4, AS_GARROTE], [/^rival-8-/, AS_RIVAL_8 - 4, AS_RIVAL_8], [/^conselho-/, FAIXA_CONSELHO[0], FAIXA_CONSELHO[1]], [/^PP-andarilho$/, 75, 80]];
 for (const t of TREINADORES) {
   const fx = FT.find(([re]) => re.test(t.id)); if (!fx) { E(`treinador ${t.id} sem faixa de nível`); continue; }
   for (const m of t.equipe) { confere(`treinador ${t.id}`, m.e, m.nv, /^rival/.test(t.id) && [3, 6, 9].includes(m.e)); if (m.nv < fx[1] || m.nv > fx[2]) E(`treinador ${t.id}: ${esp.get(m.e)?.nome} nv ${m.nv} fora de ${fx[1]}–${fx[2]}`); }
@@ -244,17 +246,18 @@ const asDe = (id: string) => Math.max(...(ids.get(id)?.equipe ?? [{ nv: 0 }]).ma
 const g = ids.get('garrote'); if (!g || g.flag !== 'garrote-vencido') E('garrote: falta o treinador ou a flag garrote-vencido');
 let antes = asDe('garrote');
 for (const r of ['rival-8-brasa', 'rival-8-rio', 'rival-8-mata']) { const t = ids.get(r); if (!t || t.flag !== 'rival-8') E(`${r}: falta ou flag errada`); if (asDe(r) <= antes) E(`${r}: ás ${asDe(r)} não passa o do Garrote (${antes})`); }
-antes = 63;
+antes = AS_LIDER_B[16];
 for (let n = 1; n <= 5; n++) {
   const t = ids.get(`conselho-${n}`); if (!t) { E(`conselho-${n}: não existe`); continue; }
   if (t.ia !== 'conselho') E(`conselho-${n}: IA ${t.ia} (esperado conselho)`);
   if (asDe(t.id) < antes) E(`conselho-${n}: ás ${asDe(t.id)} abaixo do anterior (${antes})`); antes = asDe(t.id);
   const lend = t.equipe.filter((m) => esp.get(m.e)?.lendario);
   if (n < 5 && lend.length) E(`conselho-${n}: só o Guardião-Mor leva lendário`);
-  if (n === 5 && (lend.length !== 1 || lend[0].nv !== 70)) E('conselho-5: o Guardião-Mor leva exatamente 1 lendário, no nível 70');
+  if (n === 5 && (lend.length !== 1 || lend[0].nv !== AS_CONSELHO[4])) E(`conselho-5: o Guardião-Mor leva exatamente 1 lendário, no nível ${AS_CONSELHO[4]}`);
   const ev = txtEv(`conselho-${n}`); if (!ev.includes(`"batalha","conselho-${n}"`) || !ev.includes('semMarca')) E(`evento conselho-${n}: sem a batalha da sequência (segue + semMarca)`);
 }
-if (asDe('conselho-5') !== 70) E('conselho-5: ás deve ser 70');
+for (let n = 1; n <= 5; n++) if (asDe(`conselho-${n}`) !== AS_CONSELHO[n - 1]) E(`conselho-${n}: ás deve ser ${AS_CONSELHO[n - 1]}`);
+if (asDe('garrote') !== AS_GARROTE) E(`garrote: ás deve ser ${AS_GARROTE}`);
 const vit = txtEv('conselho-vitoria');
 for (const k of ['"conselho-vencido"', '"pos-jogo"', '"creditos"', '["errante",179', '["errante",180', '"misterioso-pode"']) if (!vit.includes(k)) E(`conselho-vitoria: falta ${k}`);
 const der = txtEv('conselho-derrota'); const pp = Z.get('PP');

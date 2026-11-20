@@ -1,7 +1,8 @@
 // verificador do time B1 (Sertão das Névoas, passos 9–11): grades e marcas, objetos, warps em pares, tiles livres,
 // scripts/treinadores, linha de visão, alcance tile a tile com e sem Amuletos (caminho principal, portões e áreas
 // fechadas), tabela 6.4 (espécie citada ou a forma em que ela está no nível do Sertão), filhotes do Centro de
-// Reabilitação para as linhas que só existem no Sertão, e a faixa de níveis da curva nova (Liga 46 → líderes 49/51/53).
+// Reabilitação para as linhas que só existem no Sertão, e a faixa de níveis da curva nova (Liga 46 → líderes 55/58/61, tools/verify/curva-b.ts).
+import { AS_LIDER_B } from './verify/curva-b';
 import { readdirSync } from 'node:fs';
 import type { ZonaDef, Encontro, Habitat, TreinadorDef } from '../src/core/tipos';
 import { CATALOGO_EXTERIOR } from '../src/data/catalogo-objetos';
@@ -197,7 +198,7 @@ for (const z of Z.values()) for (const hb of z.habitats ?? []) for (const t of t
 /* ---------- coerência de níveis (spec 4.5, curva nova) ---------- */
 const evoluiDe = new Map<number, number>(); for (const e of ESPECIES) for (const v of e.evolui ?? []) if (v.nivel) evoluiDe.set(v.para, v.nivel);
 /** ás do próximo líder por passo e faixa dos treinadores comuns (ás −2 a −6) */
-const ASL: Record<number, number> = { 9: 49, 10: 51, 11: 53 };
+const ASL: Record<number, number> = { 9: AS_LIDER_B[9], 10: AS_LIDER_B[10], 11: AS_LIDER_B[11] };
 function confere(onde: string, e: number, nv: number, basicoPermitido = false) {
   const s = esp.get(e); if (!s) { E(`${onde}: espécie ${e} inexistente`); return; }
   if (s.lendario) return;

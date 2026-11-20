@@ -45,7 +45,7 @@ const placas = [
 ];
 const [rx, ry] = g.p('R');
 const zona: ZonaDef = {
-  id: 'A-GN', nome: 'Vale do Buriti-Alto', mapa: 'A', tipo: 'cidade', tileset: 'cerrado', musica: 'cidade-catira', arena: 'cerrado', passo: 9,
+  id: 'A-GN', nome: 'Vale do Buriti-Alto', mapa: 'A', tipo: 'cidade', tileset: 'cerrado', musica: 'gincana', arena: 'cerrado', passo: 9,
   pouso: GN_CHEGADA,
   mapaChars: g.mapa,
   objetos: [

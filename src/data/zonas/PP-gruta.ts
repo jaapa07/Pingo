@@ -34,7 +34,7 @@ const zona: ZonaDef = {
   itens: [item(g, 'k', 'pedra-lunar'), item(g, 'j', 'elixir-andiroba', 2, true), item(g, 'i', 'cuia-noturna', 3)],
   habitats: [{
     metodo: 'caverna', taxa: 0.1,
-    todos: [E(31, 67, 69, 24), E(172, 67, 69, 20), E(166, 67, 69, 18), E(162, 67, 69, 16), E(94, 67, 69, 12), E(32, 68, 70, 10)],
+    todos: [E(31, 69, 71, 24), E(172, 69, 71, 20), E(166, 69, 71, 18), E(162, 69, 71, 16), E(94, 69, 71, 12), E(32, 70, 72, 10)],
   }],
 };
 export default zona;

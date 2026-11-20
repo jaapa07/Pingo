@@ -36,8 +36,8 @@ const DELTA0 = lerDelta(arg('delta')), DELTA_S0 = lerDelta(arg('delta-selvagem')
 
 /** caminho do jogador, passo a passo (passo k = o que se enfrenta antes do líder k; 17 = Pico até o Conselho) */
 const CAMINHO: { passo: number; zonas: string[]; opcionais: string[]; chefes: string[]; lider: string[] }[] = [
-  { passo: 9, zonas: ['B-R1', 'B-CE', 'B-PA', 'B2', 'B2-ginasio'], opcionais: [], chefes: ['B-PA-arame'], lider: ['lider-09'] },
-  { passo: 10, zonas: ['B9', 'B-R2', 'B3', 'B3-mina-1', 'B3-mina-2', 'B3-ginasio'], opcionais: ['A-RS'], chefes: ['B3-rebite'], lider: ['lider-10'] },
+  { passo: 9, zonas: ['B-R1', 'B-CE', 'B-PA', 'B2', 'B2-ginasio'], opcionais: [], chefes: [], lider: ['lider-09'] },
+  { passo: 10, zonas: ['B9', 'B-R2', 'B3', 'B3-mina-1', 'B3-mina-2', 'B3-ginasio'], opcionais: ['A-RS'], chefes: ['B-PA-arame', 'B3-rebite'], lider: ['lider-10'] },
   { passo: 11, zonas: ['B-CH', 'B-CV', 'B4', 'B4-ginasio'], opcionais: [], chefes: ['rival-6-rio'], lider: ['lider-11'] },
   { passo: 12, zonas: ['B-R3', 'B5', 'B5-ginasio'], opcionais: [], chefes: [], lider: ['lider-12'] },
   { passo: 13, zonas: ['B-TA', 'B-TA-gruta', 'B6', 'B6-lab-1', 'B6-lab-2', 'B-VV', 'B6-ginasio'], opcionais: ['A-R6'], chefes: ['B6-porteiro', 'B6-lab-zinabre', 'B6-lab-lata'], lider: ['lider-13'] },

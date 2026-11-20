@@ -378,7 +378,7 @@ export const EVENTOS_VISITANTES: EventoDef[] = [
     id: 'vis-borealce-batalha',
     passos: [
       ['grito', 182],
-      ['vis-lendario', 182, 65, 'geada'],
+      ['vis-lendario', 182, 65, 'boreal', 'borealce'],
       se('flag:vis-capturou', [
         ['flag', 'borealce-ok'],
         f(null, 'O Borealce entrou na cuia. Lá no alto, a aurora ainda brilhou um pouco, como quem se despede.\fA Drª Solveig vai querer saber disso, lá em Porto Pantaneiro.'),

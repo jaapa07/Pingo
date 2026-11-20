@@ -44,7 +44,8 @@ const anims = animsInseto({ u: 0.6, alt: 0.23, mole: 0.9 }, {
   fisico: { folha: qz([-6, -12, 20, 8, 0]) },
   especial: { folha: qz([0, -8, -12, 26, 8, 0]) },
   dano: { folha: qz([-20, -8, 0]) },
-  desmaio: { folha: qz([0, -6, -14, -26, -24]) },
+  // 2ª rodada: a folha tomba só um pouco para trás (deitada para a frente alargava o quadro e encolhia o sprite inteiro)
+  desmaio: { folha: qz([0, 4, 8, 12, 11]) },
   andar: { folha: lz([0, 5, 0, -5]) },
 });
 

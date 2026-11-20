@@ -103,19 +103,19 @@ const zona: ZonaDef = {
   habitats: [
     {
       metodo: 'grama', taxa: 0.1,
-      todos: [{ e: 96, nv: [56, 59], peso: 30 }, { e: 96, nv: [53, 54], peso: 20 }, { e: 168, nv: [53, 55], peso: 18 }, { e: 168, nv: [57, 60], peso: 12 }, { e: 98, nv: [53, 55], peso: 10 }, { e: 98, nv: [57, 60], peso: 10 }],
-      noite: [{ e: 96, nv: [56, 59], peso: 30 }, { e: 96, nv: [53, 54], peso: 20 }, { e: 44, nv: [57, 60], peso: 20 }, { e: 168, nv: [53, 55], peso: 15 }, { e: 98, nv: [53, 55], peso: 15 }],
+      todos: [{ e: 96, nv: [60, 63], peso: 30 }, { e: 95, nv: [57, 58], peso: 20 }, { e: 167, nv: [57, 59], peso: 18 }, { e: 168, nv: [61, 64], peso: 12 }, { e: 97, nv: [57, 59], peso: 10 }, { e: 98, nv: [61, 64], peso: 10 }],
+      noite: [{ e: 96, nv: [60, 63], peso: 30 }, { e: 95, nv: [57, 58], peso: 20 }, { e: 44, nv: [61, 64], peso: 20 }, { e: 167, nv: [57, 59], peso: 15 }, { e: 97, nv: [57, 59], peso: 15 }],
     },
     {
       metodo: 'arvore',
-      dia: [{ e: 64, nv: [53, 55], peso: 30 }, { e: 23, nv: [56, 59], peso: 18 }, { e: 62, nv: [53, 55], peso: 16 }, { e: 138, nv: [53, 55], peso: 14 }, { e: 67, nv: [55, 57], peso: 10 }, { e: 50, nv: [57, 60], peso: 6 }, { e: 144, nv: [57, 60], peso: 6 }],
-      noite: [{ e: 64, nv: [53, 55], peso: 34 }, { e: 23, nv: [56, 59], peso: 22 }, { e: 62, nv: [53, 55], peso: 18 }, { e: 138, nv: [53, 55], peso: 14 }, { e: 50, nv: [57, 60], peso: 6 }, { e: 144, nv: [57, 60], peso: 6 }],
+      dia: [{ e: 63, nv: [57, 59], peso: 30 }, { e: 23, nv: [60, 63], peso: 18 }, { e: 61, nv: [57, 59], peso: 16 }, { e: 137, nv: [57, 59], peso: 14 }, { e: 67, nv: [59, 61], peso: 10 }, { e: 50, nv: [61, 64], peso: 6 }, { e: 144, nv: [61, 64], peso: 6 }],
+      noite: [{ e: 63, nv: [57, 59], peso: 34 }, { e: 23, nv: [60, 63], peso: 22 }, { e: 61, nv: [57, 59], peso: 18 }, { e: 137, nv: [57, 59], peso: 14 }, { e: 50, nv: [61, 64], peso: 6 }, { e: 144, nv: [61, 64], peso: 6 }],
     },
-    { metodo: 'rocha', todos: [{ e: 166, nv: [56, 59], peso: 60 }, { e: 164, nv: [56, 59], peso: 40 }] },
-    { metodo: 'agua', taxa: 0.09, todos: [{ e: 76, nv: [53, 55], peso: 28 }, { e: 114, nv: [53, 55], peso: 26 }, { e: 76, nv: [57, 60], peso: 16 }, { e: 114, nv: [57, 60], peso: 14 }, { e: 74, nv: [54, 56], peso: 8 }, { e: 168, nv: [57, 60], peso: 8 }] },
+    { metodo: 'rocha', todos: [{ e: 166, nv: [60, 63], peso: 60 }, { e: 164, nv: [60, 63], peso: 40 }] },
+    { metodo: 'agua', taxa: 0.09, todos: [{ e: 75, nv: [57, 59], peso: 28 }, { e: 113, nv: [57, 59], peso: 26 }, { e: 76, nv: [61, 64], peso: 16 }, { e: 114, nv: [61, 64], peso: 14 }, { e: 73, nv: [58, 60], peso: 8 }, { e: 168, nv: [61, 64], peso: 8 }] },
     { metodo: 'pesca-velha', todos: [{ e: 37, nv: [14, 18], peso: 100 }] },
-    { metodo: 'pesca-boa', todos: [{ e: 114, nv: [53, 55], peso: 50 }, { e: 114, nv: [56, 59], peso: 30 }, { e: 38, nv: [56, 59], peso: 20 }] },
-    { metodo: 'pesca-mestra', todos: [{ e: 38, nv: [57, 60], peso: 50 }, { e: 114, nv: [57, 60], peso: 30 }, { e: 40, nv: [57, 60], peso: 20 }] },
+    { metodo: 'pesca-boa', todos: [{ e: 113, nv: [57, 59], peso: 50 }, { e: 114, nv: [60, 63], peso: 30 }, { e: 38, nv: [60, 63], peso: 20 }] },
+    { metodo: 'pesca-mestra', todos: [{ e: 38, nv: [61, 64], peso: 50 }, { e: 114, nv: [61, 64], peso: 30 }, { e: 40, nv: [61, 64], peso: 20 }] },
   ],
 };
 export default zona;

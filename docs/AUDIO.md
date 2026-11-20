@@ -21,7 +21,7 @@ Tudo é sintetizado em tempo real (Web Audio); não há arquivos de som. Timbre:
 ### Pelo barramento (`bus.emit`)
 `'sfx' { id, vol?, pitch?, pan?, x? }` (x = 0–320 vira panorama) · `'musica' id | { id, fade? } | null` (null para parar; `'music'` também vale) · `'jingle' id` · `'babble' { voz, texto }` · `'grito' numero | { especie, vol?, pitch?, pan? }` · `'ambiente' id | null` · `'volumes' { musica?, sfx?, ambiente? }`.
 
-## Músicas (39)
+## Músicas (42)
 | id | título | compassos | compasso · andamento | modo |
 |---|---|---|---|---|
 | `tema-titulo` | Adventures of Pingo | 32 (intro 4) | 4/4 · 116 bpm | laço |
@@ -63,6 +63,9 @@ Tudo é sintetizado em tempo real (Web Audio); não há arquivos de som. Timbre:
 | `saveiro` | Travessia de Saveiro | 24 | 3/4 · 96 bpm | laço |
 | `cartel-tema` | Sombras do Cartel Ferrugem | 16 | 4/4 · 100 bpm | laço |
 | `creditos` | Até a Próxima Trilha | 48 | 4/4 · 104 bpm | laço |
+| `gincana` | Festa no Buriti-Alto (Gincana: marcha de quadrilha) | 32 | 4/4 · 136 bpm | laço |
+| `safari` | Capim, Vento e Cuia (Parque Safári, campo tranquilo) | 24 | 4/4 · 88 bpm | laço |
+| `borealce` | Galhada de Aurora (batalha do visitante boreal: polska nórdica, violino de cordas simpáticas) | 36 (intro 4) | 3/4 · 152 bpm | laço |
 
 Apelidos aceitos: `game-over` → `derrota` · `titulo` → `tema-titulo` · `vila` → `vila-jacaranda` · `casa` → `vila-jacaranda` · `submerso` → `mergulho` · `cartel` → `cartel-tema` · `rota-1` → `rota-dia-A` · `rota` → `rota-dia-A` · `conselho` → `batalha-conselho` · `vitoria` → `vitoria-selvagem`.
 
@@ -71,7 +74,7 @@ Faixas de batalha e vitória têm introdução que toca uma vez; o laço volta p
 ### Tema sugerido por cidade (`MUSICA_DA_CIDADE` em `src/data/music/index.ts`)
 A1 `vila-jacaranda` · A2 `cidade-samba` · A3 `cidade-choro` · A4 `cidade-frevo` · A5 `cidade-maracatu` · A6 `cidade-samba` · A7 `cidade-choro` · A8 `cidade-baiao` · A9 `cidade-catira` · B1 `cidade-catira` · B2 `cidade-baiao` · B3 `cidade-baiao` · B4 `cidade-forro` · B5 `cidade-samba` · B6 `cidade-maracatu` · B7 `cidade-gaucha` · B8 `cidade-choro` · B9 `cidade-frevo`
 
-Sugestões de uso: rotas e florestas do mapa A `rota-dia-A`/`rota-noite-A`; do mapa B `rota-dia-B`/`rota-noite-B`; cavernas, Usina e mina `caverna`; Baía Azul, Pantanal e Lagoa `agua`; Recife e Túnel Alagado `mergulho`; Pico Pindorama e Floresta Ancestral `pico`; cenas do Cartel `cartel-tema`; casas `vila-jacaranda` ou a música da cidade.
+Sugestões de uso: rotas e florestas do mapa A `rota-dia-A`/`rota-noite-A`; do mapa B `rota-dia-B`/`rota-noite-B`; cavernas, Usina e mina `caverna`; Baía Azul, Pantanal e Lagoa `agua`; Recife e Túnel Alagado `mergulho`; Pico Pindorama e Floresta Ancestral `pico`; cenas do Cartel `cartel-tema`; Gincana (A-GN) `gincana`; Portaria e Parque Safári (A-SF, A-SF-parque, também nos encontros do passeio) `safari`; encontro do Borealce (182) `borealce` com a arena `boreal` (única faixa com sonoridade de fora do Brasil, spec 6.5: ré dórico com toques de quarta aumentada, bordão de quintas, instrumento `hardanger`); casas `vila-jacaranda` ou a música da cidade.
 
 ## SFX (184)
 **interface (18):** `ui-mover` `ui-ok` `ui-voltar` `ui-erro` `ui-abrir` `ui-fechar` `ui-aba` `ui-confirmar` `ui-negar` `ui-pausa` `ui-digitar` `ui-apagar` `ui-limite` `ui-pagina` `ui-alternar` `texto` `texto-fim` `salvar`

@@ -5,8 +5,8 @@ import type { TreinadorDef, MembroEquipe } from '../../core/tipos';
  * Pantanal Alagado (+ capangas do ninhal e o tenente Arame), Pantanal Grande, Porto Pantaneiro, Estrada Vermelha,
  * Chapada Rubra (+ Mina Velha e o tenente Rebite), Chapada dos Paredões, Caverna Vulcânica, Arraial Brasa e a rival
  * Tainá no encontro 6.
- * Curva (spec 4.5, "Regra de coerência de níveis"): Campeão da Liga ás 46 · líder 9 ás 49 → rotas antes dele nv 43–47 ·
- * líder 10 ás 51 → nv 45–49 (tenentes do Cartel com ás 50) · líder 11 ás 53 → nv 47–51 (rival 6 com ás 52).
+ * Curva (spec 4.5 e docs/EQUILIBRIO-MAPA-B.md): Campeão da Liga ás 46 · líder 9 ás 55 → rotas antes dele nv 49–53 ·
+ * líder 10 ás 58 → nv 52–56 (tenentes do Cartel com ás 56–57) · líder 11 ás 61 → nv 55–59 (rival 6 com ás 59).
  * Todas as espécies aparecem no estágio que teriam no nível (nenhuma forma anterior acima do nível de evolução).
  * Itens de cura em batalha (spec 7A): tenentes e rival usam Garrafada; treinadores comuns só no Veterano (regra do motor).
  */
@@ -15,7 +15,7 @@ const t = (id: string, classe: string, nome: string, sprite: string, equipe: Mem
 const capanga = (id: string, f: boolean, equipe: MembroEquipe[], desafio: string, derrota: string, depois: string): TreinadorDef =>
   t(id, 'Capanga do Cartel', f ? 'Ferrolha' : 'Ferrolho', f ? 'capanga-f' : 'capanga-m', equipe, desafio, derrota, depois, { musica: 'batalha-cartel', contato: false });
 
-/* ------------------------------ B-R1 · Vereda dos Buritis (nv 43–45) ------------------------------ */
+/* ------------------------------ B-R1 · Vereda dos Buritis (nv 49–51) ------------------------------ */
 const VEREDA: TreinadorDef[] = [
   t('B-R1-1', 'Escoteira', 'Maiara', 'cl-escoteira', [{ e: 46, nv: 49 }, { e: 50, nv: 50 }],
     'Campeã da Costa, campeã da Costa… aqui no Sertão o bicho já nasce grande! Quero ver você aguentar!', 'Aguentou. E ainda sorriu.', 'Os selvagens daqui são do tamanho da Liga. Pare no Posto de Vila Cascavel sempre que puder.'),
@@ -31,7 +31,7 @@ const VEREDA: TreinadorDef[] = [
     'Roda de capoeira na beira da vereda! Entra, que o berimbau não espera!', 'Ginga boa, camarada. Ginga boa.', 'Lá em Cidade Ginga tem um mestre de verdade. Mas antes você tem muita chapada para subir.'),
 ];
 
-/* ------------------------------ B-CE · Cerrado Aberto (nv 44–46) ------------------------------ */
+/* ------------------------------ B-CE · Cerrado Aberto (nv 50–52) ------------------------------ */
 const CERRADO: TreinadorDef[] = [
   t('B-CE-1', 'Escoteira', 'Pitanga', 'cl-escoteira', [{ e: 102, nv: 50 }, { e: 19, nv: 51 }],
     'Lição de escoteira número um: nunca subestime um Emaçu. Lição número dois: nunca me subestime!', 'Lição número três: perder também ensina.', 'A estrada dá a volta no capinzal. Se você se perder, siga o cupinzeiro mais alto. Ou o mais baixo.'),
@@ -47,7 +47,7 @@ const CERRADO: TreinadorDef[] = [
     'Ô menino da Costa, que veio de trem, / no cerrado aberto não passa ninguém! / Só passa quem canta e quem luta também!', 'Perdi a rima, perdi a batalha, / sobrou a viola e um chapéu de palha.', 'De noite o cerrado brilha de Vagalampo. Quem anda no escuro anda com música.'),
 ];
 
-/* ------------------------------ B-PA · Pantanal Alagado, lado norte (nv 45–47) ------------------------------ */
+/* ------------------------------ B-PA · Pantanal Alagado, lado norte (nv 51–53) ------------------------------ */
 const PANTANAL_NORTE: TreinadorDef[] = [
   t('B-PA-1', 'Observadora de Aves', 'Dona Colhereira', 'cl-observadora', [{ e: 106, nv: 51 }, { e: 108, nv: 52 }],
     'O Tuiuiú é a ave símbolo do Pantanal. E esta batalha é o símbolo da minha teimosia!', 'O Tuiuiú voou para longe. Eu fiquei.', 'Ali na passarela tem um ninho no Morro do Urucum que a observadora vai querer na foto.'),
@@ -57,7 +57,7 @@ const PANTANAL_NORTE: TreinadorDef[] = [
     'Tocando boiada pelo alagado desde menino. Você é só mais um boi no caminho!', 'Boi bravo, esse. Respeito.', 'Pantanal Grande é logo ali, depois das palafitas. A Zefa não perde de ninguém… quase.'),
 ];
 
-/* ------------------------------ B2 · Pantanal Grande (nv 46–47) ------------------------------ */
+/* ------------------------------ B2 · Pantanal Grande (nv 52–53) ------------------------------ */
 const PANTANAL_GRANDE: TreinadorDef[] = [
   t('B2-1', 'Vaqueiro', 'Peão Laço-Firme', 'cl-vaqueiro', [{ e: 34, nv: 52 }, { e: 102, nv: 52 }, { e: 89, nv: 53 }],
     'Sou peão da Boiadeira Zefa! Antes de entrar no ginásio dela, passe por mim!', 'Passou. A Zefa vai gostar de você.', 'No ginásio o chão é de lama que afunda. Pense o caminho antes de dar o primeiro passo.'),
@@ -65,7 +65,7 @@ const PANTANAL_GRANDE: TreinadorDef[] = [
     'Aguapé flutua, Lavadeira-Dragão voa e você… você vai cair!', 'Caí eu, na lagoa, de roupa e tudo.', 'Leve criatura de Rio, Mata ou Geada para a Zefa. Bicho de Terra afunda na água.'),
 ];
 
-/* ------------------------------ B-PA · ninhal (depois da insígnia 9; nv 46–48 e o tenente com ás 50) ------------------------------ */
+/* ------------------------------ B-PA · ninhal (depois da insígnia 9; nv 53–55 e o tenente com ás 57) ------------------------------ */
 const NINHAL: TreinadorDef[] = [
   capanga('B-PA-5', false, [{ e: 89, nv: 52 }, { e: 31, nv: 53 }], 'Ninhal fechado para reforma! Reforma do Cartel Ferrugem, claro.', 'Reformaram foi a minha cara.', 'O tenente Arame está lá no meio, contando ovo. Ele conta errado de propósito para sobrar para ele.'),
   capanga('B-PA-6', true, [{ e: 146, nv: 53 }, { e: 118, nv: 53 }], 'Ovo de tuiuiú vale ouro lá fora. E você vale um pé no traseiro!', 'Quem levou o pé fui eu.', 'Os ovos estão no barco, prontos para descer o rio. Se o Arame cair, eles voltam para os ninhos.'),
@@ -74,12 +74,12 @@ const NINHAL: TreinadorDef[] = [
     'Ilhota do sudeste: meu pesqueiro secreto. Se você descobriu, vai ter que lutar!', 'Pode pescar aqui. Mas não conte para ninguém.', 'O Ariranhão anda em bando. Se aparecer um, já tem outros quatro olhando.'),
 ];
 const ARAME: TreinadorDef = t('B-PA-arame', 'Tenente do Cartel', 'Arame', 'tenente-arame',
-  [{ e: 89, nv: 52 }, { e: 118, nv: 52 }, { e: 146, nv: 53 }, { e: 85, nv: 54, item: 'acerola' }],
+  [{ e: 89, nv: 55 }, { e: 118, nv: 55 }, { e: 146, nv: 56 }, { e: 85, nv: 57, item: 'acerola' }],
   'Tenente Arame, do Cartel Ferrugem, às ordens do Coronel Garrote. Esse ninhal agora é cerca nossa, e cerca de arame farpado!\fCampeão da Liga, é? Na Costa você amassou a Lata e entortou o Rebite. Comigo não tem jeito: arame verga, mas não quebra!',
   'Vergou… e quebrou. Arame velho é assim.', '',
   { ia: 'lider', musica: 'batalha-cartel', itens: ['garrafada'], contato: false, premio: 5200 });
 
-/* ------------------------------ B9 · Porto Pantaneiro (nv 46–48) ------------------------------ */
+/* ------------------------------ B9 · Porto Pantaneiro (nv 53–55) ------------------------------ */
 const PORTO: TreinadorDef[] = [
   t('B9-1', 'Pescador', 'Mestre Dourado', 'cl-pescador', [{ e: 38, nv: 53 }, { e: 114, nv: 54 }, { e: 40, nv: 55 }],
     'No cais quem não pesca, luta. E eu faço os dois!', 'Hoje não deu peixe nem vitória.', 'O Saveiro desce o rio até Cidade Coral. Quem enjoa no barco, enjoa menos na volta.'),
@@ -87,7 +87,7 @@ const PORTO: TreinadorDef[] = [
     'Já surfei a pororoca! Uma batalhinha no cais é marolinha para mim!', 'Tomei um caixote. Dos grandes.', 'A Estrada Vermelha sobe para a Chapada Rubra. Lá em cima a única onda é de calor.'),
 ];
 
-/* ------------------------------ B-R2 · Estrada Vermelha (nv 46–49) ------------------------------ */
+/* ------------------------------ B-R2 · Estrada Vermelha (nv 53–56) ------------------------------ */
 const ESTRADA: TreinadorDef[] = [
   t('B-R2-1', 'Vaqueiro', 'Tropeiro Bentinho', 'cl-vaqueiro', [{ e: 166, nv: 53 }, { e: 34, nv: 54 }],
     'Tropa de mula parada na estrada? Não: tropa de criatura pronta para a briga!', 'A tropa voltou para o pasto.', 'Tem três rochas rachadas fechando a estrada. O Quebra-pedra abre, e o caminho segue.'),
@@ -105,7 +105,7 @@ const ESTRADA: TreinadorDef[] = [
     'Última curva antes da Chapada Rubra! Daqui para frente, só passa quem tiver casco duro!', 'Casco duro e cabeça mole, o meu.', 'Dizem que o Cartel tomou a Mina Velha. O Topázio desceu sozinho para tirar eles de lá.'),
 ];
 
-/* ------------------------------ B3 · Chapada Rubra e Mina Velha (nv 47–49; tenente com ás 50) ------------------------------ */
+/* ------------------------------ B3 · Chapada Rubra e Mina Velha (nv 54–56; tenente com ás 57) ------------------------------ */
 const CHAPADA_RUBRA: TreinadorDef[] = [
   t('B3-1', 'Garimpeiro', 'Juca Cascalho', 'cl-garimpeiro', [{ e: 166, nv: 54 }, { e: 42, nv: 55 }, { e: 164, nv: 55 }],
     'Ginásio fechado, mas eu estou aberto! Para batalha, quero dizer.', 'Fechei também.', 'O ginásio só abre quando o Topázio voltar da mina. A boca da mina fica a leste, depois da fogueira.'),
@@ -127,7 +127,7 @@ const REBITE: TreinadorDef = t('B3-rebite', 'Tenente do Cartel', 'Rebite', 'tene
   'Soltou… Rebite espanado não segura nem quadro.', '',
   { ia: 'lider', musica: 'batalha-cartel', itens: ['garrafada'], contato: false, premio: 5300 });
 
-/* ------------------------------ B-CH · Chapada dos Paredões (nv 48–51) ------------------------------ */
+/* ------------------------------ B-CH · Chapada dos Paredões (nv 56–59) ------------------------------ */
 const PAREDOES: TreinadorDef[] = [
   t('B-CH-1', 'Montanhista', 'Escalador Arenito', 'cl-montanhista', [{ e: 166, nv: 56 }, { e: 52, nv: 57 }],
     'Primeiro degrau! Quem não aguenta o primeiro degrau não sobe o quinto!', 'Desci um degrau na vida.', 'Cada paredão tem um pé de trepadeira. A saliência da beira é para descer rápido.'),
@@ -145,7 +145,7 @@ const PAREDOES: TreinadorDef[] = [
     'Último degrau antes do Arraial! Daqui para cima, só passa quem tem fôlego de boiada!', 'Fôlego de boiada você tem. Eu tenho fôlego de bezerro.', 'No Arraial Brasa a Ferreira Labareda acende fogueiras em ordem de música. Ouça a sanfona.'),
 ];
 
-/* ------------------------------ B-CV · Caverna Vulcânica (nv 49–51) ------------------------------ */
+/* ------------------------------ B-CV · Caverna Vulcânica (nv 57–59) ------------------------------ */
 const CAVERNA: TreinadorDef[] = [
   t('B-CV-1', 'Garimpeiro', 'Seu Obsidiana', 'cl-garimpeiro', [{ e: 42, nv: 57 }, { e: 146, nv: 58 }],
     'Pedra de vulcão é a mais bonita: preta e brilhante. Que nem a minha estratégia!', 'Estratégia rachada.', 'O chão esquenta para o norte. No fundo, dizem, mora quem esquenta o chão.'),
@@ -157,7 +157,7 @@ const CAVERNA: TreinadorDef[] = [
     'Vim buscar brasa de vulcão para a forja de Arraial Brasa. Brasa daqui não apaga nunca!', 'Apagou a minha.', 'A Labareda diz que o Boitatá é o padrinho das forjas do Arraial. Ela fala isso sério.'),
 ];
 
-/* ------------------------------ B4 · Arraial Brasa (nv 49–51) ------------------------------ */
+/* ------------------------------ B4 · Arraial Brasa (nv 57–59) ------------------------------ */
 const ARRAIAL: TreinadorDef[] = [
   t('B4-1', 'Ferreiro', 'Ferreiro Brasinha', 'cl-ferreiro', [{ e: 50, nv: 57 }, { e: 42, nv: 58 }, { e: 146, nv: 59 }],
     'Aprendiz da Ferreira Labareda! Primeiro você passa pelo meu martelo!', 'O martelo entortou. Eu também.', 'A Labareda acende as fogueiras do ginásio numa ordem de música. Escute a sanfona antes de sair acendendo.'),

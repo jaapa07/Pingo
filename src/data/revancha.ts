@@ -36,12 +36,13 @@ export const faixaDoPeriodo = (p: Periodo): PeriodoAgenda => (p === 'tarde' ? 'd
 /* ============================== alvos de nível por fase (spec 4.5) ============================== */
 /**
  * Ás de cada fase. Comuns: fase 2 ≈ líder 5 (o jogador passa a Usina na insígnia 3 e segue até a 8), fase 3 ≈ ás do
- * Campeão (o mapa B começa em 44–48), fase 4 ≈ líder 16. Líderes ficam acima: fase 3 entre os líderes 10 e 11 e
- * fase 4 no nível do Conselho. Nunca abaixo do ás original + 2 (a revanche é sempre mais forte que a 1ª luta).
+ * Campeão (o mapa B começa em 44–48), fase 4 acima do líder 16 (72). Líderes ficam acima: fase 3 entre os líderes 9 e 10
+ * e fase 4 ACIMA do Conselho (Guardião-Mor no 77; decisão do autor: revanche mais forte que tudo, docs/EQUILIBRIO-MAPA-B.md).
+ * Nunca abaixo do ás original + 2 (a revanche é sempre mais forte que a 1ª luta).
  */
-export const ALVO_COMUM: Record<Fase, number> = { 1: 0, 2: 28, 3: 50, 4: 67 };
-export const ALVO_LIDER: Record<Fase, number> = { 1: 0, 2: 0, 3: 57, 4: 73 };
-export const ALVO_RIVAL: Record<Fase, number> = { 1: 0, 2: 0, 3: 55, 4: 73 };
+export const ALVO_COMUM: Record<Fase, number> = { 1: 0, 2: 28, 3: 50, 4: 75 };
+export const ALVO_LIDER: Record<Fase, number> = { 1: 0, 2: 0, 3: 57, 4: 81 };
+export const ALVO_RIVAL: Record<Fase, number> = { 1: 0, 2: 0, 3: 55, 4: 81 };
 
 /* ============================== líderes (item 25) ============================== */
 export interface AgendaLider {

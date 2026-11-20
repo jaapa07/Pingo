@@ -1,5 +1,6 @@
 // verificador do time A2: grades, objetos, warps em pares, tiles livres, scripts/treinadores, linha de visão,
 // alcance tile a tile com e sem Amuletos (caminho principal e áreas fechadas), tabela 6.4 e coerência de níveis.
+import { asDoPassoB } from './verify/curva-b';
 import { readdirSync } from 'node:fs';
 import type { ZonaDef, Encontro, Habitat } from '../src/core/tipos';
 import { CATALOGO_EXTERIOR } from '../src/data/catalogo-objetos';
@@ -206,11 +207,12 @@ for (const [pref, l] of Object.entries(T64)) {
 /* ---------- coerência de níveis (spec 4.5) ---------- */
 const esp = new Map(ESPECIES.map((e) => [e.num, e])), soma = (n: number) => Object.values(esp.get(n)!.base).reduce((a, c) => a + c, 0);
 const evoluiDe = new Map<number, number>(); for (const e of ESPECIES) for (const v of e.evolui ?? []) if (v.nivel) evoluiDe.set(v.para, v.nivel);
-/** teto (ás do próximo líder − 1) e piso por passo; retorno = 48–62 */
+/** teto (ás do próximo líder − 1) e piso por passo; retorno = 48 até o ás do líder do passo dela − 1 (curva do mapa B, tools/verify/curva-b.ts) */
 const FAIXA: Record<number, [number, number]> = { 3: [19, 25], 4: [19, 25], 5: [23, 29], 6: [26, 32], 7: [29, 35] };
 /** zonas com treinadores de id próprio (A-MT-5 mora na gruta) */
 const ZONA_DO_TREINADOR: Record<string, string> = { 'A-MT-5': 'A-MT' };
 const RETORNO = /^(A-R6|A-RS|A-MT|A9)/;
+const faixaRetorno = (passo?: number): [number, number] => [48, asDoPassoB(passo ?? 16) - 1];
 function confere(onde: string, e: number, nv: number, selvagem: boolean, camada: boolean) {
   const s = esp.get(e); if (!s) { E(`${onde}: espécie ${e} inexistente`); return; }
   if (s.lendario) return;
@@ -220,14 +222,14 @@ function confere(onde: string, e: number, nv: number, selvagem: boolean, camada:
   const para = (s.evolui ?? []).find((v) => v.nivel); if (para?.nivel && nv >= para.nivel && !RETORNO.test(onde)) E(`${onde}: ${s.nome} no nível ${nv} já devia ter evoluído (nv ${para.nivel})`);
 }
 for (const z of meus) {
-  const ret = RETORNO.test(z.id), fx = ret ? [48, 62] : FAIXA[z.passo ?? 0];
+  const ret = RETORNO.test(z.id), fx = ret ? faixaRetorno(z.passo) : FAIXA[z.passo ?? 0];
   for (const hb of z.habitats ?? []) tabelas(hb).forEach((t, ci) => {
     for (const q of [...(t.todos ?? []), ...(t.manha ?? []), ...(t.dia ?? []), ...(t.noite ?? [])] as Encontro[]) {
       confere(`${z.id} ${hb.metodo}`, q.e, q.nv[0], true, ci > 0);
       if (q.nv[0] > q.nv[1]) E(`${z.id} ${hb.metodo}: faixa invertida da espécie ${q.e}`);
       if (ci === 0 && fx && !['pesca-mestra', 'rocha', 'pesca-velha'].includes(hb.metodo) && q.nv[1] > fx[1] + (hb.metodo === 'pesca-boa' ? 1 : 0)) E(`${z.id} ${hb.metodo}: espécie ${q.e} nv ${q.nv[1]} acima do teto ${fx[1]} do passo ${z.passo}`);
       if (ci > 0 && !ret && q.nv[1] > 44) E(`${z.id} ${hb.metodo}: camada com nv ${q.nv[1]} > 44`);
-      if (ret && (q.nv[0] < 48 || q.nv[1] > 62) && hb.metodo !== 'pesca-velha') E(`${z.id} ${hb.metodo}: espécie ${q.e} fora de 48–62`);
+      if (ret && (q.nv[0] < fx[0] || q.nv[1] > fx[1]) && hb.metodo !== 'pesca-velha') E(`${z.id} ${hb.metodo}: espécie ${q.e} fora de ${fx[0]}–${fx[1]}`);
     }
     const lista = [t.todos, t.manha, t.dia, t.noite].filter(Boolean) as Encontro[][];
     for (const l of lista) { const p = l.reduce((a, c) => a + c.peso, 0); if (l.length && (p < 80 || p > 125)) A(`${z.id} ${hb.metodo}: pesos somam ${p}`); }
@@ -235,7 +237,7 @@ for (const z of meus) {
 }
 for (const t of TREINADORES_A2) {
   const zid = t.id.startsWith('rival-4') ? 'A6' : t.id.replace(/-(FA-)?[0-9a-z]+$/, ''), z = Z.get(zid) ?? Z.get(zid + '-1'), ret = RETORNO.test(t.id);
-  const fx = ret ? [48, 62] : FAIXA[z?.passo ?? 0]; if (!fx) { A(`treinador ${t.id}: zona ${zid} sem faixa`); continue; }
+  const fx = ret ? faixaRetorno(z?.passo) : FAIXA[z?.passo ?? 0]; if (!fx) { A(`treinador ${t.id}: zona ${zid} sem faixa`); continue; }
   const chefe = /lata|rebite|rival/.test(t.id);
   for (const m of t.equipe) { confere(`treinador ${t.id}`, m.e, m.nv, false, false); if (m.nv > fx[1] + (chefe ? 1 : 0)) E(`treinador ${t.id}: nv ${m.nv} acima do teto ${fx[1]}`); if (m.nv < fx[0] && m.nv === Math.max(...t.equipe.map((q) => q.nv))) E(`treinador ${t.id}: ás nv ${m.nv} abaixo do piso ${fx[0]}`); }
   if (!t.desafio || !t.derrota || t.premio <= 0) E(`treinador ${t.id}: falta fala ou prêmio`);

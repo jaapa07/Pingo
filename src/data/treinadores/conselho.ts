@@ -3,10 +3,10 @@ import type { TreinadorDef, MembroEquipe } from '../../core/tipos';
 /**
  * A SEQUÊNCIA FINAL do Pico Pindorama (spec 4.5, 5 e 7A; docs/HISTORIA.md): Coronel Garrote do Cartel Ferrugem, a rival
  * Tainá no encontro 8 e o CONSELHO DOS GUARDIÕES — cinco lutas seguidas, sem sair do Salão e sem cura grátis.
- * Curva (spec 4.5): líder 16 com ás 63 < Garrote (62–64) < rival 8 (63–65) < Conselho 64–70, com o Guardião-Mor no topo e
- * o lendário dele no nível 70. Todos usam remédios (spec 7A: do 8º ginásio em diante), IA `conselho` no Salão.
+ * Curva (spec 4.5 e docs/EQUILIBRIO-MAPA-B.md): líder 16 com ás 72 < Garrote (72–74) < rival 8 (73–75) < Conselho 73–77,
+ * com o Guardião-Mor no topo e o lendário dele no nível 77. Todos usam remédios (spec 7A: do 8º ginásio em diante), IA `conselho` no Salão.
  * Tamanho das equipes medido no simulador (tools/equilibrio-referencia.ts, piloto esperto, 6 Elixires, 4 Chás de Guaraná,
- * 6 Garrafadas, cuidados entre as lutas): 3/3/3/4/4 criaturas, escoltas abaixo do ás. Equipe do Sertão no nv 63–65: 44–74%
+ * 6 Garrafadas, cuidados entre as lutas): 3/3/3/4/4 criaturas, escoltas abaixo do ás. Equipe do Sertão no nv 63–65 (curva antiga, ás 70): 44–74%
  * de vitória na sequência inteira; equipe só com capturas do mapa A: 4–24%. Com 4–5 criaturas por Guardião dava 0%.
  * O jogador ganha 2 Elixires e 2 Chás de Guaraná na oferenda do Portão. Só estágios finais (nível ≥ 60); nenhum inicial; o único lendário é o do Guardião-Mor.
  */

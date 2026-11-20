@@ -42,8 +42,8 @@ const zona: ZonaDef = {
     // 6.4 (B-CV, C): Morcegão (c), Vampirinha (r, noite), Calangão (c), Escorpim (c) e Escorpião-Rei (r) — o Escorpim já
     // aparece crescido no nível 48+. Completam a gruta Caranguejeirão e Noitão, das grutas da Costa, que fogem do frio.
     metodo: 'caverna', taxa: 0.1,
-    todos: [E(31, 53, 55, 24), E(42, 53, 55, 22), E(146, 53, 55, 22), E(148, 53, 55, 14), E(172, 54, 56, 12), E(166, 53, 55, 6)],
-    noite: [E(31, 53, 55, 22), E(42, 53, 55, 18), E(146, 53, 55, 18), E(32, 54, 56, 10), E(148, 53, 55, 14), E(172, 54, 56, 12), E(166, 53, 55, 6)],
+    todos: [E(31, 56, 58, 24), E(42, 56, 58, 22), E(146, 56, 58, 22), E(148, 56, 58, 14), E(172, 57, 59, 12), E(166, 56, 58, 6)],
+    noite: [E(31, 56, 58, 22), E(42, 56, 58, 18), E(146, 56, 58, 18), E(32, 57, 59, 10), E(148, 56, 58, 14), E(172, 57, 59, 12), E(166, 56, 58, 6)],
     camadas: [{
       apos: 13,
       todos: [E(31, 54, 56, 22), E(42, 54, 56, 22), E(146, 54, 56, 24), E(148, 54, 56, 14), E(172, 55, 57, 12), E(166, 54, 56, 6)],

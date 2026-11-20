@@ -108,14 +108,14 @@ const zona: ZonaDef = {
   habitats: [
     {
       metodo: 'grama', taxa: 0.1,
-      todos: [{ e: 168, nv: [62, 65], peso: 30 }, { e: 166, nv: [62, 65], peso: 25 }, { e: 110, nv: [62, 63], peso: 15 }, { e: 110, nv: [64, 66], peso: 10 }, { e: 156, nv: [63, 66], peso: 10 }, { e: 66, nv: [62, 65], peso: 10 }],
-      noite: [{ e: 168, nv: [62, 65], peso: 28 }, { e: 166, nv: [62, 65], peso: 24 }, { e: 140, nv: [62, 63], peso: 14 }, { e: 140, nv: [64, 66], peso: 10 }, { e: 110, nv: [62, 63], peso: 12 }, { e: 156, nv: [63, 66], peso: 12 }],
+      todos: [{ e: 168, nv: [66, 69], peso: 30 }, { e: 166, nv: [66, 69], peso: 25 }, { e: 109, nv: [66, 67], peso: 15 }, { e: 110, nv: [68, 70], peso: 10 }, { e: 156, nv: [67, 70], peso: 10 }, { e: 66, nv: [66, 69], peso: 10 }],
+      noite: [{ e: 168, nv: [66, 69], peso: 28 }, { e: 166, nv: [66, 69], peso: 24 }, { e: 139, nv: [66, 67], peso: 14 }, { e: 140, nv: [68, 70], peso: 10 }, { e: 109, nv: [66, 67], peso: 12 }, { e: 156, nv: [67, 70], peso: 12 }],
     },
-    { metodo: 'arvore', dia: [{ e: 62, nv: [62, 65], peso: 80 }, { e: 68, nv: [63, 66], peso: 20 }], noite: [{ e: 62, nv: [62, 65], peso: 60 }, { e: 172, nv: [63, 66], peso: 40 }] },
-    { metodo: 'agua', taxa: 0.08, todos: [{ e: 76, nv: [62, 65], peso: 45 }, { e: 168, nv: [62, 65], peso: 30 }, { e: 74, nv: [62, 65], peso: 25 }] },
+    { metodo: 'arvore', dia: [{ e: 62, nv: [66, 69], peso: 80 }, { e: 68, nv: [67, 70], peso: 20 }], noite: [{ e: 62, nv: [66, 69], peso: 60 }, { e: 172, nv: [67, 70], peso: 40 }] },
+    { metodo: 'agua', taxa: 0.08, todos: [{ e: 76, nv: [66, 69], peso: 45 }, { e: 168, nv: [66, 69], peso: 30 }, { e: 74, nv: [66, 69], peso: 25 }] },
     { metodo: 'pesca-velha', todos: [{ e: 37, nv: [14, 18], peso: 100 }] },
-    { metodo: 'pesca-boa', todos: [{ e: 114, nv: [61, 64], peso: 60 }, { e: 38, nv: [61, 64], peso: 40 }] },
-    { metodo: 'pesca-mestra', todos: [{ e: 38, nv: [63, 66], peso: 60 }, { e: 112, nv: [63, 66], peso: 40 }] },
+    { metodo: 'pesca-boa', todos: [{ e: 114, nv: [65, 68], peso: 60 }, { e: 38, nv: [65, 68], peso: 40 }] },
+    { metodo: 'pesca-mestra', todos: [{ e: 38, nv: [67, 70], peso: 60 }, { e: 112, nv: [67, 70], peso: 40 }] },
   ],
 };
 export default zona;
