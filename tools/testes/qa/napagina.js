@@ -53,7 +53,7 @@ const decidir0 = () => {
   if (ele && ped.tipo !== 'treinador' && b.podeCapturar() && !ped.semCaptura) {
     const cuias = cuiasNaMochila(), linha = raiz(ele.especie);
     const jaTem = s.diario.capturado.some((n) => raiz(n) === linha);
-    const quer = ped.tutorial || (Q.querCapturar && !jaTem && s.equipe.length < Q.maxEquipe);
+    const quer = ped.tutorial || (Q.querCapturar && !jaTem && s.equipe.length < Q.maxEquipe && (!Q.tipoQuer || especie(ele.especie).tipos.includes(Q.tipoQuer)));
     if (cuias.length && quer) {
       const frac = ele.vida / atributos(ele).vida;
       if (frac <= 0.5 || (!ped.tutorial && Q.enfraquecer >= 4)) return comoItem(cuias[0].id);

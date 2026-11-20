@@ -1,6 +1,7 @@
 // Etapas do trecho 1 (novo jogo → ginásio 4). Cada etapa só usa o teclado (via piloto) e termina num checkpoint.
 const A = 'KeyZ';
 const CUIA = { mata: 0, brasa: 1, rio: 2 };
+const temTipo = (t, tipo) => t.ev(async (tipo) => { const { jogo } = await import('/src/core/estado.ts'); const { especie } = await import('/src/battle/criatura.ts'); return jogo.save.equipe.some((c) => !c.ovo && especie(c.especie).tipos.includes(tipo)); }, tipo);
 const nivelMax = async (t) => Math.max(...(await t.resumo()).equipe.map((c) => c.nv));
 
 /** do splash ao quarto: título, jogos salvos, dificuldade, avatar e nome */
@@ -149,6 +150,19 @@ export const ETAPAS = [
     await t.viajar('A4'); await t.viajar('A4-posto'); await t.curar();
   } },
   { nome: 'Estrada da Usina e Usina Velha (tenente Lata)', fn: async (t) => {
+    // o Remo (insígnia 3) só funciona com uma criatura do tipo Rio na equipe (o Netuno avisa); a Baía Azul exige o Remo.
+    // Quem não tem uma: guarda a mais fraca no Posto (ATALHO DECLARADO: a caixa do Posto é mexida direto no save) e
+    // captura uma de Rio na grama da Trilha dos Cipós (Capivarinha/Garcinha de dia, Pererequinha de noite).
+    if (!(await temTipo(t, 'rio'))) {
+      const fraca = await t.ev(async () => { const { jogo } = await import('/src/core/estado.ts'); const { especie } = await import('/src/battle/criatura.ts'); const s = jogo.save; let i = 0; s.equipe.forEach((c, k) => { if (c.nivel < s.equipe[i].nivel) i = k; }); const [c] = s.equipe.splice(i, 1); const cx = s.viveiro.findIndex((b) => b.some((x) => !x)); s.viveiro[cx][s.viveiro[cx].findIndex((x) => !x)] = c; return especie(c.especie).nome + ' ' + c.nivel; });
+      t.log(`  sem criatura de Rio para o Remo: guardou ${fraca} no Posto (atalho declarado) e vai capturar uma na A-R3`);
+      await t.ev(() => { window.__qa.tipoQuer = 'rio'; });
+      const cuias = (await t.resumo()).mochila.cuia ?? 0; if (cuias < 5) await t.comprar('A4-venda', [['cuia', 5 - cuias]]);
+      for (let k = 0; k < 3 && !(await temTipo(t, 'rio')); k++) await t.cacar('A-R3', 6, 25);
+      await t.ev(() => { window.__qa.tipoQuer = null; });
+      if (!(await temTipo(t, 'rio'))) throw new Error('não capturou criatura de Rio');
+      await t.viajar('A4-posto'); await t.curar();
+    }
     await t.limpar('A-R4');
     await t.emZona('A-US-1'); await t.foto('usina-1');
     await t.limpar('A-US-1');

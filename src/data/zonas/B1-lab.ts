@@ -31,7 +31,7 @@ const zona: ZonaDef = {
   ],
   warps: saidas(g, 'D', 'B1', 35, 16, 's', 'porta'),
   npcs: [
-    gente(g, '1', 'b1-pesquisador', 'npc-homem-1', 'Pesquisador Baru', { dir: 's', fala: ['A Drª Buriti montou esta estação antes de ir para Vila Buriti, na Costa do Sol. Ela liga todo domingo pelo Rádio Cipó.', 'No Sertão, as criaturas já nascem para o nível de Campeão. Quem chega da Liga com equipe de 42 sente o tranco: treine na Vereda antes do Pantanal.'] }),
+    gente(g, '1', 'b1-pesquisador', 'npc-homem-1', 'Pesquisador Baru', { dir: 's', fala: ['A Drª Buriti montou esta estação antes de ir para Vila Buriti, na Costa do Sol. Ela liga todo domingo pelo Rádio Cipó.', 'No Sertão, as criaturas já nascem para o nível de Campeão. Quem chega da Liga com equipe de 45 sente o tranco nos primeiros dias, mas a Vereda e o Cerrado treinam ligeiro: no Pantanal você já está no passo.'] }),
     gente(g, '2', 'b1-pesquisadora', 'cl-biologa', 'Bióloga Ingá', { dir: 's', fala: ['As cheias do Pantanal deixam os ninhos do ninhal expostos. E o Cartel Ferrugem sabe disso.', 'A Boiadeira Zefa interditou o ninhal. Ela só deixa passar quem provar que sabe lidar com bicho grande: quem tiver a Insígnia do Barro.'] }),
     gente(g, '3', 'b1-estagiario', 'cl-crianca-m', 'Estagiário Tico', { mov: 'olhar', fala: ['Descobri que o Sapo-Cururuí canta em dó maior.', 'Descobri também que ele canta às três da manhã. Do lado da minha rede.'] }),
   ],

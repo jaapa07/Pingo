@@ -62,6 +62,25 @@ registrarComando('b1-orfao-menu', async () => {
   if (i >= 0 && i < lista.length) setFlag(`b1-orfao-sel-${lista[i]}`, true);
 });
 
+/**
+ * O filhote cresce com quem adota: nasce na faixa do Pantanal (44, `darCriatura`) e logo depois sobe até 4 níveis abaixo
+ * da média da equipe (nunca acima de 60), para ser útil numa equipe do mapa B (docs/EQUILIBRIO-MAPA-B.md). Não evolui
+ * aqui: evolui na primeira subida de nível em batalha, como qualquer criatura que passou do nível da evolução.
+ */
+registrarComando('b1-orfao-crescer', async ([num]) => {
+  const { ganharExp, expParaNivel, especie } = await import('../../battle/criatura');
+  const eq = jogo.save.equipe.filter((c) => !c.ovo && !(c.especie === Number(num) && c.nivelCaptura === ORFAO_NV && c.nivel === ORFAO_NV));
+  const media = eq.length ? Math.round(eq.reduce((a, c) => a + c.nivel, 0) / eq.length) : ORFAO_NV;
+  const alvo = Math.min(60, Math.max(ORFAO_NV, media - 4));
+  const todas = [...jogo.save.equipe, ...jogo.save.viveiro.flat()].filter((c): c is NonNullable<typeof c> => !!c);
+  const f = todas.reverse().find((c) => c.especie === Number(num) && c.nivelCaptura === ORFAO_NV && c.nivel === ORFAO_NV);
+  if (!f || alvo <= f.nivel) return;
+  ganharExp(f, expParaNivel(especie(f.especie).crescimento, alvo) - f.exp);
+  f.nivelCaptura = f.nivel;
+});
+/** nível em que o filhote sai do Centro (faixa dos selvagens do Pantanal, B-PA 44–47) */
+const ORFAO_NV = 44;
+
 /* ------------------------------ atalhos de roteiro ------------------------------ */
 const se = (c: string, entao: Comando[], senao?: Comando[]): Comando => (senao ? ['se', c, entao, senao] : ['se', c, entao]);
 const f = (quem: unknown, texto: string): Comando => ['falar', quem, texto];
@@ -230,10 +249,11 @@ export const EVENTOS_B1: EventoDef[] = [
         se('flag:m-orfaos-dia&!flag:b1-orfao-novo-dia', [f('b2-veterinaria', 'Hoje você já adotou um filhote. Um por dia, para cada um receber atenção de verdade. Volte amanhã!')], [
           f('b2-veterinaria', 'Os filhotes resgatados do Cartel estão crescendo! Soltos no mato eles não sobreviveriam: aprenderam a viver em gaiola.'),
           f('b2-veterinaria', 'Com um treinador eles aprendem a caçar, a nadar e a voar. Um filhote por dia, combinado? Assim cada um recebe atenção.'),
+          f('b2-veterinaria', 'E não se preocupe com o tamanho: aqui eles comem bem e treinam com a gente. Saem quase no passo da sua equipe.'),
           ['b1-orfao-menu'],
           se('!flag:b1-orfao-algum', [f('b2-veterinaria', 'Todos os filhotes já têm treinador! Você foi incrível. O Centro nunca esteve tão vazio, e isso é ótimo.'), ['flag', 'm-orfaos-ok']]),
           ...[...ORFAOS_NINHAL, ...ORFAOS_MINA].map((n): Comando => se(`flag:b1-orfao-sel-${n}`, [
-            ['darCriatura', n, 12, { apelidar: true }], ['flag', `orfao-${n}`], ['b1-marcar-dia', 'm-orfaos-dia'], ['flag', 'm-orfaos'],
+            ['darCriatura', n, ORFAO_NV, { apelidar: true }], ['b1-orfao-crescer', n], ['flag', `orfao-${n}`], ['b1-marcar-dia', 'm-orfaos-dia'], ['flag', 'm-orfaos'],
             f('b2-veterinaria', 'Cuide bem dele. E traga para visitar: a tratadora vai chorar de saudade.'),
           ])),
         ]),

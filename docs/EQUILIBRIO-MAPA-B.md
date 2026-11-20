@@ -58,3 +58,69 @@ passo a passo, a curva em que o ás de cada chefe = chegada + 3 com a turma e as
 **Decisão (regra da tarefa): PAREI.** Com as regras atuais a curva autoconsistente põe o Conselho em 98 (o
 Guardião-Mor no teto 100) e as revanches de fase 4, que têm de ficar acima, não cabem. A subida dos líderes 9–16,
 Garrote, rival, Conselho, rotas e revanches **não foi aplicada**; a proposta para o autor está no fim deste arquivo.
+
+## Marco 3 (20/11) — simulador dos líderes e do Conselho (`npx tsx tools/sim-mapa-b.ts --n 150`)
+Ferramenta nova: `tools/sim-mapa-b.ts` (piloto esperto; `ref` = equipe de referência da Liga, média dos 3 iniciais;
+`qa` = a equipe real do QA — Iaraboto, Gaviãozão, Cotiadã, Pintinhas, Tatucanastra, Vampirinha — com o ás Δ abaixo;
+líder com 6 Garrafadas + 2 Elixires; Conselho com a mochila da Liga, 5 lutas seguidas, ganhando experiência).
+Níveis ATUAIS (nada subiu). Meta: esperto 55–75% com Δ 2–4.
+
+| Chefe | Ás | ref Δ2 | ref Δ3 | ref Δ4 | qa Δ2 | qa Δ3 | qa Δ4 |
+|---|---|---|---|---|---|---|---|
+| 9 Zefa | 49 | 67% | 55% | 40% | 40% | 23% | 17% |
+| 10 Topázio (antes) | 51 | 82% | 75% | 54% | 43% | 34% | 27% |
+| **10 Topázio (depois)** | 51 | 85% | 77% | 65% | 51% | 40% | 60% |
+| 11 Labareda | 53 | 65% | 57% | 39% | 45% | 32% | 34% |
+| 12 Gingado | 55 | 82% | 59% | 48% | 90% | 84% | 69% |
+| 13 Peçonha | 57 | 80% | 63% | 51% | 14% | 7% | 4% |
+| 14 Pinhão | 59 | 86% | 67% | 64% | 89% | 79% | 68% |
+| 15 Jaci | 61 | 78% | 61% | 55% | 67% | 65% | 37% |
+| 16 Trovão-Velho | 63 | 77% | 73% | 61% | 97% | 96% | 91% |
+| Garrote | 64 | 89% | 86% | 76% | 21% | 21% | 12% |
+| Rival 8 (Rio) | 65 | 59% | 54% | 40% | 83% | 81% | 74% |
+| **Conselho, sequência inteira** | 70 | 74% | 57% | 51% | 86% | 82% | 74% |
+
+Leitura: na referência os oito ficam na faixa ou um pouco acima no Δ2; com a equipe do QA (muito Rio) a taxa depende do
+tipo: 9, 10, 11, 13 (Veneno: Pintinhas/Cotiadã sofrem) e Garrote são duros; 12, 14 e 16 fáceis. O Conselho com a
+mochila cheia passa da meta 35–55% (51–86%): fica no limite de baixo só com Δ4 na referência.
+
+**Líder 10 (aplicado):** Couraça de Pedra só no Cupinzeiro-Vivo (escudeiro) e no ás Mocó-da-Rocha; Aruazão e
+Jabutipiranga trocaram por Soterrar, Calangão por Dentada (todos golpes da lista de cada espécie). Equipe do QA:
+27–43% → 40–60%; referência 54–82% → 65–85% (src/data/treinadores/ginasio-10.ts).
+
+**Correções de passagem (aplicadas):**
+- Filhotes do Centro de Reabilitação (`b1-orfaos`, src/data/eventos/b1.ts): nascem no nível 44 (faixa do Pantanal) e o
+  comando novo `b1-orfao-crescer` sobe o filhote recém-adotado (na equipe ou no Viveiro) até a média da equipe − 4
+  (teto 60), com os golpes do caminho; evolui na primeira subida em batalha. A veterinária avisa ("saem quase no passo
+  da sua equipe"). Era nível 12.
+- Pesquisador Baru (src/data/zonas/B1-lab.ts): "Quem chega da Liga com equipe de 45 sente o tranco nos primeiros dias,
+  mas a Vereda e o Cerrado treinam ligeiro: no Pantanal você já está no passo." (o QA chegou da Liga com 45–48 e já
+  estava 6 acima do líder 9).
+- Conferido: `npx tsc --noEmit` limpo, `npm test` 37/37, `tools/verifica-zonas-b1.mts` 0 erros; `npm run check --
+  --rapido` só com os erros alheios da rodada (cartel-lago em eventos/captura.ts; zonas sem bake no dist).
+
+## PROPOSTA PARA O AUTOR (não aplicada — decisão dele)
+O que infla a curva é o **Chocalho do Mutirão**: com ele a equipe inteira ganha 2,0–2,5× a experiência de cada
+derrubada. Opções, com a curva autoconsistente que cada uma permite (líderes = chegada + 3, `--ajustar 3`):
+
+| Opção | Ás dos líderes 9 / 10 / 11 / 12 / 13 / 14 / 15 / 16 | Conselho (ás) | Revanche fase 4 (ás) | Mexe em |
+|---|---|---|---|---|
+| 0. Só subir os líderes (pedido original) | 60 / 66 / 70 / 77 / 82 / 86 / 89 / 95 | **98** | não cabe (teto 100) | — |
+| **A. Chocalho só puxa quem está 5+ níveis atrás** (recomendada) | 55 / 59 / 62 / 65 / 69 / 71 / 73 / 76 | ~79 (membros 74–78) | ~82–84 | `src/battle/engine.ts` (limiar do Chocalho: `topo − 2` → `topo − 5`, ou só depois de `liga-vencida` para não mexer no mapa A) |
+| B. Chocalho pela metade (reserva ganha 1/4) + treinador ×1,0 | 55 / 59 / 62 / 64 / 68 / 70 / 72 / 74 | ~77 | ~80 | `expDerrota` e `darExp` (vale para o jogo todo) |
+| C. Chocalho como está, mas 50% dos treinadores de rota opcionais (sem linha de visão) | 57 / … / 85 | 88 | ~91 | zonas do mapa B (visão dos treinadores) |
+| D. Chocalho 1,0 + treinador ×1,0 | 54 / 57 / 59 / 61 / 64 / 66 / 67 / 69 | ~71 (curva atual do spec) | 73 (como está) | engine + fórmula |
+
+Com A: turmas dos ginásios e rotas acompanham (ás do líder − 2 a − 6), selvagens do mapa B sobem ~60% do mesmo
+passo (B-R1 ~48–51 … A9 ~66), Garrote ~77, rival 8 ~78, Conselho 74–79, revanches de líder/rival fase 4 ~83, comuns
+~77. O Chocalho continua fazendo o que promete (pôr uma captura nova em dia com a equipe), mas deixa de levar a equipe
+nivelada inteira junto. A chegada ao líder 9 cai de ~56 para ~52 (o QA ganhou os 6–7 níveis extras já entre a Liga e
+o ginásio 9). Ao aprovar: aplicar o limiar, rodar `npx tsx tools/estima-chegada-b.ts --fator 1.0 --ajustar 3
+--selvagem-acompanha 0.6` (com fator medido de novo pelo QA), refazer as equipes 9–16/Garrote/rival 6–8/Conselho
+nas formas do nível, atualizar spec 4.5, bloco do topo do HISTORIA.md, `tools/verify/niveis.ts` (pendência dos
+líderes 9+ e faixas novas), `ASL` dos verificadores `tools/verifica-zonas-b1.mts` / `-b2-sul` / `-b2-norte`,
+`src/data/revancha.ts` (ALVO_LIDER/ALVO_RIVAL fase 4 acima do Conselho novo) e medir com `tools/sim-mapa-b.ts`.
+
+Pendências honestas: o modelo de chegada é uma média (equipe por igual, FATOR calibrado em 4 checkpoints de UM jogo do
+QA com inicial de Rio); do 13 em diante é só estimativa (ninguém jogou B6→Pico honesto); o FATOR com a opção A
+(~1,0–1,2) é dedução da regra, não medida — o QA do mapa B trecho 2 deve medir.
