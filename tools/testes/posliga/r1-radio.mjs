@@ -18,8 +18,8 @@ try {
   await t.foto('r1-radio-abre');
   await escolherIdx(t, 0); // Agenda do dia
   await t.foto('r1-agenda-carta');
-  await tecla(t, 'b', 2, 10);
-  if (!/tela-radio/.test(await topo(t))) await tecla(t, 'b', 1, 10);
+  let pags = 1; while (!/tela-radio/.test(await topo(t)) && pags < 8) { await tecla(t, 'a', 1, 10); if (!/tela-radio/.test(await topo(t))) { pags++; await t.foto('r1-agenda-carta-' + pags); } }
+  t.ok(/tela-radio/.test(await topo(t)), 'agenda lida até o fim', pags + ' página(s)');
   // Contatos → dia errado
   await escolherIdx(t, 1);
   await t.foto('r1-contatos');
@@ -41,6 +41,8 @@ try {
   await escolherIdx(t, idxRev, false); await t.foto('r1-revanches-lider');
   for (let k = 0; k < 6 && (await t.q(() => window.__pingo.telas.pilha.length)) > 1; k++) await tecla(t, 'b', 1, 10);
   await t.assentar();
+  // cura no Posto de Porto Sereia antes do treino (como um jogador faria)
+  await t.q(() => window.Q.viajar('A4-posto')); await t.q(() => window.Q.curarNoPosto()); await t.q(() => window.Q.viajar('A4'));
   // Ginásio de Treino
   await t.falarCom('a4-guia-treino');
   let s = await t.st();

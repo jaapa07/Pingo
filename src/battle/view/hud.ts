@@ -51,14 +51,19 @@ export class CaixaStatus {
     this.el.style.visibility = 'hidden';
   }
   private escreverNum(v: number) { escrever(this.num, `${v}/${this.vidaMax}`); this.num.style.left = this.w - 8 - medir(`${v}/${this.vidaMax}`) + 'px'; }
-  definir(r: ResumoCriatura, tipo: TipoId, capturada = false) {
+  /** `rara`: Pelagem Rara, marcada com uma estrela dourada depois do nome */
+  definir(r: ResumoCriatura, tipo: TipoId, capturada = false, rara = false) {
     const [base, escura] = CORES_TIPO[tipo];
     this.faixa.style.background = base; this.faixa.style.boxShadow = `inset 0 -1px 0 ${escura}`;
     const sexo = r.sexo === 'F' ? ' {c:rosa}♀{/c}' : r.sexo === 'M' ? ' {c:agua}♂{/c}' : '';
-    let nome = r.nome; while (medir(nome) > this.w - 42 && nome.length > 3) nome = nome.slice(0, -1);
-    escrever(this.nome, nome + sexo);
+    const estrela = rara ? ' {c:ouro}★{/c}' : '', wEstrela = rara ? medir(' ★') : 0;
+    // o nome encolhe até caber, com sexo, estrela e cuia, antes do nível (5 px de margem e 2 de folga)
+    const cuia = capturada && this.lado === 1 ? 11 : 0, livre = this.w - 8 - medir(`Nv${r.nivel}`) - 7;
+    const extra = (r.sexo ? medir(' ♀') : 0) + wEstrela + cuia;
+    let nome = r.nome; while ((medir(nome) > this.w - 42 || medir(nome) + extra > livre) && nome.length > 3) nome = nome.slice(0, -1);
+    escrever(this.nome, nome + sexo + estrela);
     this.cap.el.style.display = capturada && this.lado === 1 ? '' : 'none';
-    this.cap.el.style.left = 6 + medir(nome + (r.sexo ? ' ♀' : '')) + 3 + 'px';
+    this.cap.el.style.left = 6 + medir(nome + (r.sexo ? ' ♀' : '')) + wEstrela + 3 + 'px';
     this.nivel(r.nivel);
     this.vidaMax = r.vidaMax; this.vida(r.vida, r.vidaMax, false);
     this.status(r.status);

@@ -188,7 +188,6 @@ export const EVENTOS_B2S: EventoDef[] = [
         se('!insignia:14', [f('roda-b', 'Sábado a Roda Grande é aberta. Volte quando tiver a Insígnia Floco da Serra da Geada: aí eu trago a equipe de gente grande.')], [
           ['b2s-calendario'], ['b2s-dia-livre', 'b2-roda-dia', 'b2-roda-livre'],
           se('flag:b2-sabado&flag:b2-roda-livre', [
-            f('roda-b', 'Sábado de Roda Grande! Hoje a equipe está afiada. Ê, camará!'),
             ['b2s-marcar-dia', 'b2-roda-dia'],
             ['batalha', 'B5-mare-2'],
             f('roda-b', 'Valeu a roda. Sábado que vem tem mais.'),

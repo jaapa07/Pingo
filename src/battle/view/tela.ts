@@ -125,7 +125,7 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
     definirBase(a, r.status);
     if (rara) void brilhoRaro(a);
     som('entrada-criatura'); bus.emit('grito', r.especie);
-    const cx = caixas[p.lado][p.pos]; cx.definir(r, tipoDe(r.especie), jaCapturadas.has(r.especie));
+    const cx = caixas[p.lado][p.pos]; cx.definir(r, tipoDe(r.especie), jaCapturadas.has(r.especie), rara);
     pintarBolinhas();
     if (a.tem('entrada') && r.status !== 'dormindo' && r.status !== 'congelado') await a.tocar('entrada'); else await rel.dormir(0.3);
   }

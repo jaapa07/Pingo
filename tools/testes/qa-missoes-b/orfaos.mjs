@@ -1,7 +1,7 @@
 // Órfãos do Centro: um por dia, crescimento (b1-orfao-crescer), golpes e viveiro.
 import { abrir, montar, avancarDias, conversar, mostra, fv, junto, escolhas } from './lib.mjs';
 const sv = montar('B2-centro', 5, 5, { insignias: 11 });
-sv.viveiro = sv.viveiro.map(() => []);
+sv.viveiro = sv.viveiro.map(() => Array(30).fill(null));
 const t = await abrir(sv, { equipe: [[3, 70], [6, 66], [9, 64], [12, 60]], hora: 13 });
 const ver = () => t.page.evaluate(() => { const s = window.__pingo.jogo.save; const d = (c) => `${c.especie}:${c.nivel}:cap${c.nivelCaptura}:${c.localCaptura ?? ''}:[${c.golpes.map((g) => g.id).join('/')}]`; return { eq: s.equipe.map(d), viv: s.viveiro.flat().filter(Boolean).map(d), fl: Object.keys(s.flags).filter((k) => /orfao|m-orfaos/.test(k) && s.flags[k] !== false).map((k) => k + '=' + s.flags[k]) }; });
 try {
