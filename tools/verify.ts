@@ -6,13 +6,15 @@
  *         `--rapido` pula o build limpo (clone do HEAD + npm run build numa pasta temporária, ~1 min);
  *         `--so-head` faz o build limpo só do HEAD, sem as alterações locais ainda não commitadas;
  *         `--tudo` mostra todos os avisos (por padrão, os 12 primeiros de cada checagem);
- *         `--so=progressao,niveis` roda só as checagens citadas.
+ *         `--so=progressao,niveis` roda só as checagens citadas;
+ *         `--mapa-b` roda só as duas simulações de progressão (mapa A até a Liga e o mapa B aberto até o Conselho),
+ *         com todos os passos. A simulação do mapa B aberto também roda no check normal (linha "progressao-b").
  */
 import { spawn } from 'node:child_process';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { RAIZ, carregar, novoAchado, type Achado } from './verify/dados';
-import { integridade, detalhesMapaB } from './verify/integridade';
+import { integridade } from './verify/integridade';
 import { progressao, type ResultadoProgressao } from './verify/progressao';
 import { niveis, sprites } from './verify/niveis';
 import { buildLimpo, type ResultadoLimpo } from './verify/build-limpo';
@@ -20,7 +22,7 @@ import { pacote } from './verify/pacote';
 
 const args = process.argv.slice(2);
 const TUDO = args.includes('--tudo'), OFFLINE = args.includes('--offline'), RAPIDO = args.includes('--rapido'), SO_HEAD = args.includes('--so-head');
-const SO = args.find((a) => a.startsWith('--so='))?.slice(5).split(',');
+const SO = args.find((a) => a.startsWith('--so='))?.slice(5).split(',') ?? (args.includes('--mapa-b') ? ['progressao', 'progressao-b'] : undefined);
 interface Linha extends Achado { id: string; nome: string; ms: number }
 const linhas: Linha[] = [];
 
@@ -158,7 +160,11 @@ if (!RAPIDO && quer('limpo')) filhos.push(medir('limpo', 'Build limpo (git clone
 if (quer('palavras')) await medir('palavras', 'Palavras proibidas, acaso e canvas', palavras);
 if (quer('integridade')) await medir('integridade', 'Integridade de dados (ids referenciados)', integridade);
 let prog: ResultadoProgressao | undefined;
-if (quer('progressao') || quer('niveis') || quer('sprites')) { const l = await medir('progressao', 'Progressão do mapa A (quarto → Liga)', async () => (prog = await progressao())); if (!quer('progressao')) linhas.splice(linhas.indexOf(l), 1); }
+if (quer('progressao') || quer('progressao-b') || quer('niveis') || quer('sprites')) {
+  const l = await medir('progressao', 'Progressão do mapa A (quarto → Liga)', async () => (prog = await progressao({ mapaB: quer('progressao-b') })));
+  if (!quer('progressao')) linhas.splice(linhas.indexOf(l), 1);
+  if (prog?.b && quer('progressao-b')) { const b = prog.b; await medir('progressao-b', 'Progressão do mapa B aberto (Liga → Conselho → pós-jogo; simula MAPA_B_ABERTO = true)', async () => b); }
+}
 if (prog && quer('niveis')) await medir('niveis', 'Curva de níveis (líderes, Liga, treinadores, selvagens)', () => niveis(prog!));
 if (prog && quer('sprites')) await medir('sprites', 'Sprites das espécies do mapa A', () => sprites(prog!));
 await Promise.all(filhos);
@@ -167,19 +173,23 @@ if (quer('pacote')) await medir('pacote', 'Arquivos do mapa A no pacote publicad
 if (OFFLINE && quer('offline')) await medir('offline', 'Pacote offline e atualização no navegador (Playwright)', offline);
 if (quer('dist')) await medir('dist', 'Pacote dist/ e PWA', () => dist(pastaDist, !!limpo?.dist));
 
-const ORDEM = ['tsc', 'batalha', 'zonas-a1', 'zonas-a2', 'palavras', 'integridade', 'progressao', 'niveis', 'sprites', 'limpo', 'pacote', 'offline', 'dist'];
+const ORDEM = ['tsc', 'batalha', 'zonas-a1', 'zonas-a2', 'zonas-b1', 'zonas-b2-sul', 'zonas-b2-norte', 'palavras', 'integridade', 'progressao', 'progressao-b', 'niveis', 'sprites', 'limpo', 'pacote', 'offline', 'dist'];
 linhas.sort((x, y) => ORDEM.indexOf(x.id) - ORDEM.indexOf(y.id));
 for (const l of linhas) {
   const marca = l.erros.length ? '✗ FALHOU' : l.avisos.length ? '✓ ok (com avisos)' : '✓ ok';
   console.log(`${marca}  ${l.nome}  [${(l.ms / 1000).toFixed(1)} s]`);
   for (const i of l.info) if (i) console.log(`     ${i}`);
   if (l.id === 'progressao' && prog) for (const p of prog.passos) console.log(`     ${p.insignias} insígnia(s): ${p.disponiveis.length ? 'abre o líder ' + p.disponiveis.join(', ') : p.insignias === 8 ? 'Liga vencida' : 'nenhum líder novo'} · Amuletos [${p.amuletos.join(', ')}]${p.zonasNovas.length ? ' · zonas novas: ' + p.zonasNovas.join(' ') : ''}`);
+  if (l.id === 'progressao-b' && prog?.b) for (const p of prog.b.passos) {
+    const novos = p.flags.filter((f) => !prog!.b!.passos.some((q) => q.insignias < p.insignias && q.flags.includes(f)));
+    const oque = p.insignias === 17 ? 'pós-jogo' : p.disponiveis.length ? 'abre o líder ' + p.disponiveis.join(', ') : p.insignias === 16 ? 'Garrote e Conselho' : 'nenhum líder novo';
+    console.log(`     ${p.insignias === 17 ? 'depois do Conselho' : p.insignias + ' insígnia(s)'}: ${oque}${novos.length ? ' · marcos: ' + novos.join(', ') : ''} · Amuletos novos [${p.amuletos.slice(6).join(', ')}]${p.zonasNovas.length ? ' · zonas novas: ' + p.zonasNovas.join(' ') : ''}`);
+  }
   for (const e of l.erros) console.log(`     ✗ ${e}`);
   const av = TUDO ? l.avisos : l.avisos.slice(0, 12);
   for (const e of av) console.log(`     ! AVISO ${e}`);
   if (av.length < l.avisos.length) console.log(`     ! … e mais ${l.avisos.length - av.length} aviso(s) (use --tudo)`);
   for (const e of l.pendentes) console.log(`     ~ pendente: ${e}`);
-  if (l.id === 'integridade' && TUDO) for (const e of detalhesMapaB) console.log(`       · ${e}`);
 }
 const nE = linhas.reduce((s, l) => s + l.erros.length, 0), nA = linhas.reduce((s, l) => s + l.avisos.length, 0), nP = linhas.reduce((s, l) => s + l.pendentes.length, 0);
 const falhas = linhas.filter((l) => l.erros.length);

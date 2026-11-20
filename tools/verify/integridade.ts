@@ -1,6 +1,6 @@
 /**
  * Integridade de dados: todo id referenciado existe (golpe, item, espécie, sprite, arena, tileset, música,
- * script, treinador, zona de warp). Zonas do mapa B/Pico ainda não construídas entram como "pendente".
+ * script, treinador, zona de warp), nos mapas A e B, no Pico e no pós-jogo.
  */
 import { existsSync, readdirSync } from 'node:fs';
 import type { Comando, Encontro, Habitat } from '../../src/core/tipos';
@@ -12,23 +12,16 @@ import { COMANDOS_CONHECIDOS } from './progressao';
 import { comandosExtras } from '../../src/world/registro';
 import { RAIZ, carregar, cadaComando, novoAchado, temObjeto, type Achado } from './dados';
 
-/** zonas que ainda serão construídas (mapa B, Pico e o ginásio 16): warp para elas mostra "caminho em obras" */
-export const EM_OBRAS = /^(B\d|B-|PP|X-|A9-ginasio$)/;
 const pasta = (p: string) => (existsSync(RAIZ + p) ? new Set(readdirSync(RAIZ + p)) : new Set<string>());
 export const encontrosDe = (h: Habitat): Encontro[] => [...(h.todos ?? []), ...(h.manha ?? []), ...(h.dia ?? []), ...(h.noite ?? []), ...(h.camadas ?? []).flatMap((c) => [...(c.todos ?? []), ...(c.manha ?? []), ...(c.dia ?? []), ...(c.noite ?? [])])];
 
-/** referências quebradas em dados do mapa B (não derrubam o resultado); `npm run check -- --tudo` lista todas */
-export const detalhesMapaB: string[] = [];
 
 export async function integridade(): Promise<Achado> {
-  detalhesMapaB.length = 0;
   const a = novoAchado(), d = await carregar();
   const especies = new Map([...ESPECIES, ...VISITANTES].map((e) => [e.num, e]));
   const pessoas = pasta('public/assets/sprites/pessoa'), criaturas = pasta('public/assets/sprites/criatura'), arenas = pasta('public/assets/arenas'), tiles = pasta('public/assets/tiles');
-  // dados do mapa B (zonas, treinadores e eventos de B*/PP) ainda estão em construção: contam como pendentes
-  const doMapaB = (arq: string | undefined, m: string) => /\/(zonas\/(B|PP|X-)|treinadores\/b\d|eventos\/b\d|(treinadores|eventos)\/ginasio-(09|1\d))/.test(arq ?? '') || /^(treinador|evento) (B\d|B-|b\d)/.test(m);
-  let nB = 0;
-  const E = (arq: string | undefined, m: string) => { if (doMapaB(arq, m)) { nB++; detalhesMapaB.push(`${arq ?? '?'}: ${m}`); } else a.erros.push(`${arq ?? '?'}: ${m}`); };
+  // o mapa B, o Pico e o pós-jogo estão completos em zonas, ginásios e eventos (20/11): referência quebrada é erro em qualquer mapa
+  const E = (arq: string | undefined, m: string) => { a.erros.push(`${arq ?? '?'}: ${m}`); };
   for (const f of d.falhasDeCarga) a.erros.push(f);
   const temScript = (id: string) => d.eventos.has(id) || d.eventosEmCodigo.has(id);
   const spriteOk = (s: string) => (s.startsWith('c:') ? criaturas.has(s.slice(2)) : pessoas.has(s));
@@ -65,12 +58,11 @@ export async function integridade(): Promise<Achado> {
       if ((n === 'dar' || n === 'tirar') && !temItemDef(String(x))) E(arq, `evento ${ev.id}: item "${x}" não existe`);
       if ((n === 'darCriatura' || n === 'selvagem' || n === 'darOvo' || n === 'errante') && !especies.has(Number(x))) E(arq, `evento ${ev.id}: espécie ${x} não existe`);
       if (n === 'musica' && !FAIXAS[String(x)]) E(arq, `evento ${ev.id}: música "${x}" não existe`);
-      if (n === 'warp') { const zd = d.zonas.get(String(x)); if (!zd) { if (EM_OBRAS.test(String(x))) a.pendentes.push(`evento ${ev.id}: warp para ${x} (mapa B em obras)`); else E(arq, `evento ${ev.id}: warp para a zona "${x}", que não existe`); } else if (zd.mapaChars[Number(z)]?.[Number(y)] === undefined) E(arq, `evento ${ev.id}: warp para ${x} (${y},${z}) fora do mapa`); }
+      if (n === 'warp') { const zd = d.zonas.get(String(x)); if (!zd) E(arq, `evento ${ev.id}: warp para a zona "${x}", que não existe`); else if (zd.mapaChars[Number(z)]?.[Number(y)] === undefined) E(arq, `evento ${ev.id}: warp para ${x} (${y},${z}) fora do mapa`); }
       if (!arq?.includes('_motor') && !conhecidos.has(n) && n.length > 2) a.avisos.push(`${arq}: evento ${ev.id} usa o comando "${n}", que o motor de eventos não conhece`);
     });
   }
   /* zonas */
-  const emObras = new Map<string, number>();
   for (const z of d.zonas.values()) {
     const arq = d.arquivoDaZona.get(z.id);
     nRef += 3;
@@ -81,9 +73,8 @@ export async function integridade(): Promise<Achado> {
     for (const o of z.objetos ?? []) { nRef++; if (!temObjeto(o.o)) E(arq, `objeto "${o.o}" fora dos catálogos`); if (typeof o.script === 'string' && !temScript(o.script)) E(arq, `objeto ${o.o}: script "${o.script}" não existe`); }
     for (const w of z.warps) {
       nRef++;
-      if (d.zonas.has(w.para.zona)) continue;
-      if (EM_OBRAS.test(w.para.zona)) emObras.set(w.para.zona, (emObras.get(w.para.zona) ?? 0) + 1);
-      else E(arq, `warp (${w.x},${w.y}) leva à zona "${w.para.zona}", que não existe`);
+      if (d.zonas.has(w.para.zona)) { if (d.zonas.get(w.para.zona)!.mapaChars[w.para.y]?.[w.para.x] === undefined) E(arq, `warp (${w.x},${w.y}) chega em ${w.para.zona} (${w.para.x},${w.para.y}), fora do mapa`); continue; }
+      E(arq, `warp (${w.x},${w.y}) leva à zona "${w.para.zona}", que não existe`);
     }
     for (const n of z.npcs ?? []) {
       nRef++;
@@ -97,8 +88,6 @@ export async function integridade(): Promise<Achado> {
     for (const i of z.itens ?? []) { nRef++; if (!temItemDef(i.item)) E(arq, `item de chão "${i.item}" não existe`); }
     for (const h of z.habitats ?? []) for (const e of encontrosDe(h)) { nRef++; if (!especies.has(e.e)) E(arq, `habitat ${h.metodo}: espécie ${e.e} não existe`); }
   }
-  if (nB) a.pendentes.push(`${nB} referência(s) quebrada(s) em dados do mapa B (zonas B*, ginásios 9–16), ainda em construção`);
-  if (emObras.size) a.pendentes.push(`warps para ${emObras.size} zona(s) do mapa B/Pico ainda não construída(s): ${[...emObras.keys()].sort().join(', ')}`);
   a.info.push(`${nRef} referências conferidas em ${d.zonas.size} zonas, ${d.treinadores.size} treinadores, ${d.eventos.size} eventos, ${especies.size} espécies`);
   return a;
 }
