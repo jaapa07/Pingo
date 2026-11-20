@@ -47,7 +47,7 @@ const GINASIOS = {
   // do 2º mastro joga no mar, que devolve o jogador à entrada — é a única volta (não há caminho a pé)
   1: { cidade: 'A2', zona: 'A2-ginasio', saida: async (t) => { await seq(t, 'A2-ginasio', R('@8,2 ss ll @12,4 l s @13,5 s'), true); if ((await t.snap()).y === 5) { t.log('  (a prancha direita sopra para o norte: vira a alavanca de novo)'); await seq(t, 'A2-ginasio', R('nl !n os s'), true); } await seq(t, 'A2-ginasio', R('@13,9 s @8,16'), true); }, rota: R('nnn @8,11 ooo @5,11 n @5,10 noo @3,9 llll s @11,10 n @11,9 ll n @13,5 n @13,4 l !n os s @13,9 oo s @11,10 s oooooo @5,11 n noo n @3,5 n @3,4 l l @7,4 nnl !n') },
   // 2: pontes na ordem 1→6; a 7 (atalho) derruba de volta à entrada, e é por ela que se volta ao centro depois da 3
-  2: { cidade: 'A3', zona: 'A3-ginasio', rota: R('nnnnnn @8,11 lll l @12,10 nll nnnn @14,5 lnnno oo @8,16 nnnnnn ooo o @4,10 noo nnnn @2,5 lnnn lll @6,2 ll !n') },
+  2: { cidade: 'A3', zona: 'A3-ginasio', rota: R('nnnnnnn @8,10 lll l @12,10 nll nnnn @14,5 lnnno oo @8,16 nnnnnn ooo o @4,10 noo nnnn @2,5 lnnn lll @6,2 ll !n') },
   // 3: volantes e balsas (roteiro de tools/testes/ginasios/g3.mjs, com a ida e volta ao volante 2)
   3: { cidade: 'A4', zona: 'A4-ginasio', rota: R('nnn @8,14 ooos !o nlll nnn @8,11 n ooooo n @3,9 !o s lllllll l ooooooo n !o s lllllll lll @13,10 nll !l oos ooo ooooooo n @3,9 !o l nnn @4,6 n llllllllll nnn @14,2 n oooo @10,1 !o') },
   // 4: espelhos e raios (tools/testes/ginasios/e4.mjs)

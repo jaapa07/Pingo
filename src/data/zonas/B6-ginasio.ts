@@ -7,13 +7,12 @@ import type { ZonaDef } from '../../core/tipos';
  * assistentes devolvem o jogador à boca do tanque. Chão limpo não gasta nem devolve fôlego. A planta-antídoto (`,`)
  * devolve o fôlego inteiro, mas murcha na hora (vira poça). Sair do tanque por qualquer lado faz as plantas
  * rebrotarem. Os tanques crescem: A pede 4 plantas, B pede 7 numa ordem só, C pede 8.
- * Soluções (verificadas por busca em posição × fôlego × plantas usadas, scratch do agente 13–16):
- *  - Tanque A (boca em (8, 15) → saída (12, 10)): n o n n n o(planta 6,11) l l(planta 9,11)… l l(planta 12,11) n.
- *    Em palavras: suba pela planta da coluna 7 (fila 14), vá até a fila 11, pegue a planta da esquerda (6, 11),
- *    volte para a direita pelas plantas (9, 11) e (12, 11) e saia.
- *  - Tanque B (boca (18, 16) → saída (25, 10)): n n n n l l l(planta 21,12) s s l(…) — ver o diário.
- *  - Tanque C (boca (26, 6) → saída (12, 2)): suba a coluna 26 até a planta (26, 1), volte pela fila 2, desça a
- *    coluna 23 e atravesse a fila 4 para oeste pelas plantas (20, 4), (17, 4), (16, 4), suba a coluna 16 e saia.
+ * Soluções (busca em posição × fôlego × plantas usadas; passos a partir da boca, n/s/l/o):
+ *  - Tanque A, boca (8, 15) → saída (12, 10): `nonnnolllllln` — plantas (7, 14), (6, 11), (9, 11), (12, 11).
+ *  - Tanque B, boca (18, 16) → saída (25, 10): `nnnnllllssllslllnnnonon` — plantas (18, 12), (21, 12), (22, 14),
+ *    (24, 15), (27, 15), (26, 12), (25, 11). Única combinação de plantas que passa.
+ *  - Tanque C, boca (26, 6) → saída (12, 2): `nnnnnsooossooooooonnoooo` — plantas (26, 5), (26, 1), (24, 2), (23, 3),
+ *    (20, 4), (17, 4), (16, 4), (14, 2).
  */
 const zona: ZonaDef = {
   id: 'B6-ginasio', nome: 'Ginásio de Brejo Roxo', mapa: 'B', tipo: 'ginasio', tileset: 'ginasio', musica: 'ginasio', arena: 'ginasio-13', passo: 13,

@@ -347,3 +347,15 @@ resumo: {"zona":"A3-ginasio","x":10,"y":16,"dinheiro":2517,"insignias":[1],"amul
 treino extra: [] derrotas: 7 curas: 21
 perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
 erros de console: []
+>> retomando de mata-passo-5
+
+>> etapa 6: Bosque Alto: compras, treinadores da vila e ginásio 2 (Inseto)  (0 s)
+  [batalha] A3-2 → vitoria · equipe 2:19,10:3,13:4,45:8,20:8,43:13 · A3 · $2797
+  [batalha] A3-1 → vitoria · equipe 2:19,10:3,13:4,45:8,20:8,43:13 · A3 · $3317
+  compras em A3-venda: 4× cuia · sobrou $2517
+== checkpoint mata-pre-lider-2: ["Tamanduá-Copa 19","Pipirim 3","Cotiazinha 4","Quero-querinho 8","Gambazinho 8","Corujinha 13"] $2517
+  ginásio 2, tentativa 1: equipe ["Tamanduá-Copa 19","Pipirim 3","Cotiazinha 4","Quero-querinho 8","Gambazinho 8","Corujinha 13"]
+  [batalha] g02-1 → vitoria · equipe 2:19,10:3,13:4,45:8,20:8,43:14 · A3-ginasio · $2997
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] g02-2 → vitoria · equipe 2:20,10:3,13:4,45:8,20:8,43:14 · A3-ginasio · $2957
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
