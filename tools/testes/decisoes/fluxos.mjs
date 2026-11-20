@@ -27,7 +27,9 @@ async function cenario(save, prep, fn, arg) {
       };
     });
     if (prep) await t.q(prep, arg);
-    await fn(t);
+    // diagnóstico: a cada 10 s, a tela do topo e a última fala (se um roteiro travar, aparece aqui)
+    const vigia = setInterval(() => { t.page.evaluate(() => [window.__pingo.telas.topo?.el.className, window.Q.textos.slice(-1)[0], window.Q.inicios?.length]).then((x) => console.log('   …', JSON.stringify(x).slice(0, 200))).catch(() => 0); }, 10000);
+    try { await fn(t); } finally { clearInterval(vigia); }
   } finally { await t.fim(); }
 }
 const textos = (t) => t.q(() => window.Q.textos.join(' ⏎ '));
