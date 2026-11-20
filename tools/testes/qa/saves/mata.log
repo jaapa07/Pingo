@@ -4,3 +4,15 @@
 
 >> etapa 2: Trilha do Ipê e o Ovo Pintado até o Seu Aroeira  (113 s)
   [batalha] A-R1-1 → vitoria · equipe 1:5 · A-R1 · $3060
+  [batalha] A-R1-2 → derrota · equipe 1:5 · A-R1 · $3060
+  DERROTA para A-R1-2 (nv 4)
+  [batalha] A-R1-2 → derrota · equipe 1:6 · A-R1 · $1530
+  DERROTA para A-R1-2 (nv 4)
+  [batalha] A-R1-2 → derrota · equipe 1:6 · A-R1 · $765
+  DERROTA para A-R1-2 (nv 4)
+  [batalha] A-R1-3 → derrota · equipe 1:6 · A-R1 · $382
+FALHA Error: sem caminho em A1-casa-jogador de (4,4) até (7,42) |     at t.irAte (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:151:63) |     at async t.usar (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:162:15) |     at async t.limpar (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:218:100) {"pronto":true,"oc":false,"mov":false,"zona":"A1-casa-jogador","x":4,"y":4,"dir":"s","modo":"pe","telas":1,"topo":"mundo tela-mundo","ocupada":false,"nres":6} ["A minha Cotiazinha rói até casca de coco. Quer ver?","{JOGADOR} ficou sem criaturas para lutar!\nVocê corre até o último Posto Guardião…","Sua equipe foi curada. Cuide bem dela!"]
+resumo: {"zona":"A1-casa-jogador","x":4,"y":4,"dinheiro":191,"insignias":[],"amuletos":[],"equipe":[{"e":1,"nome":"Tamanduí","nv":6,"vida":24,"max":24,"st":null,"golpes":["arranhao 35","cara-feia 30","chicote-de-cipo 25"]}],"mochila":{"radio-cipo":1,"ovo-pintado":1,"cuia":2},"tempo":1245,"posto":"A1-casa-jogador","capturado":1}
+treino extra: [] derrotas: 4 curas: 2
+perguntas: ["Você vai escolher Tamanduí, do tipo Mata? → Sim","Quer dar um apelido para Tamanduí? → Não","Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco"]
+erros de console: []
