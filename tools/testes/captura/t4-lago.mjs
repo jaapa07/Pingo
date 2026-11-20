@@ -4,7 +4,7 @@ const t = await abrir('?zona=A-GB-2&x=27&y=8&dir=o&flags=liga-vencida&amuletos=t
 const { page } = t;
 await t.pronto(); await t.assentar(); await t.virar('o');
 await t.ev(async () => {
-  const E = await import('/src/battle/engine.ts'); window.__msgs = []; const m = E.Batalha.prototype.msg; E.Batalha.prototype.msg = function (x) { window.__msgs.push(x); return m.call(this, x); };
+  const E = await import('/src/battle/engine.ts'); window.__msgs = []; const m = E.Batalha.prototype.msg; E.Batalha.prototype.msg = function (x) { window.__msgs.push(x); return m.call(this, x); }; const ini = E.Batalha.prototype.iniciar; E.Batalha.prototype.iniciar = function () { if (this.cfg.tipo === 'treinador') for (const c of this.lados[1].equipe) c.vida = 1; return ini.call(this); };
   window.__fins = []; window.__pingo.bus.on('batalha-fim', (d) => window.__fins.push({ r: d.resultado, rara: d.pedido.inimigos.map((c) => !!c.rara) }));
 });
 t.ok(await t.ev(() => !!window.__pingo.mundo.npc('cartel-lago')?.ator.visivel), 'capanga visível no lago depois da Liga');

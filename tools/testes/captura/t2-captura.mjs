@@ -12,7 +12,7 @@ await t.ev(() => { window.__fim = null; window.__pingo.bus.on('batalha-fim', (d)
 let capturou = false;
 for (let tent = 0; tent < 6 && !capturou; tent++) {
   if (!(await menu())) break;
-  await t.k('ArrowDown', 250); await t.k('z', 500); // MOCHILA
+  await t.k('ArrowLeft', 200); await t.k('ArrowDown', 250); await t.k('z', 500); // MOCHILA (o menu lembra a última ação: volta ao LUTAR antes)
   if (tent === 0) await t.k('ArrowRight', 400); // bolso Cuias (a escolha fica lembrada)
   await t.k('ArrowDown', 250); // a 2ª da lista: Cuia de Nível
   await t.k('z', 300);
