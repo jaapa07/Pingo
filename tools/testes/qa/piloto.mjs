@@ -5,7 +5,7 @@ import { readFileSync, writeFileSync, existsSync, appendFileSync } from 'node:fs
 const req = createRequire(import.meta.url);
 export const pw = req('/opt/node-tools/node_modules/playwright');
 export const AQUI = new URL('.', import.meta.url).pathname;
-export const BASE = 'http://localhost:5194/';
+export const BASE = process.env.QA_BASE ?? 'http://localhost:5194/';
 const KEY = { n: 'ArrowUp', s: 'ArrowDown', l: 'ArrowRight', o: 'ArrowLeft' };
 
 /** respostas às perguntas do jogo: devolve o rótulo (ou índice) a escolher; padrão = primeira opção */

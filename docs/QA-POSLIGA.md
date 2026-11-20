@@ -65,3 +65,38 @@ Capturas em `/tmp/claude-0/-home-user/58474daf-1a50-5b1b-8bec-0786b708dc45/scrat
   recebe a cor, diz "secando" no mesmo dia e entrega no dia seguinte — as 7 cuias artesanais obtidas em 7 dias.
   Cada uma foi ARREMESSADA numa batalha selvagem na tela (A-R7, nv 34–37): todas saem da mochila e rodam a animação; nenhuma
   pegou (chances calculadas 12–35% com o bicho no amarelo, ×2 da Cuia de Nível = 23–70%): coerente.
+- (M9) Ninho do Seu Aroeira — `r8-ninho.mjs ninho`. Casal Gaviãozão ♀ + Vampirinha ♂ (voadores, "se dão bem"); ovo depois de
+  2049 passos (sorteio a cada 256, 25%); **aviso pelo Rádio Cipó** ("Trim, trim!… deixou um ovo!"); ovo recolhido (1024 passos);
+  chocou andando: "Nasceu Pipirim!" (nº 10, nv 1, golpes do pai Golpe de Asa/Rasante herdados, treinador = Kauê); retirar
+  custa 100 + 100/nível; com a equipe cheia avisa e não cobra. Casal incompatível (Gaviãozão ♀ + Cotiadã ♀) → "nem se olham".
+  Obs.: o filhote nasce no nível 1 (nos clássicos, 5) — só registro.
+- (M10) Trocas — `r8-ninho.mjs troca`. Capturas na tela de Cotiazinha (A-R1) e Caranguejim (A5) + Cupinzim do Viveiro (levado
+  para a equipe direto no save, como o jogador faria pelo PC); Dona Quitéria → Pipoca nv16 (caju), Seu Maré-Cheia → Marola
+  nv26 (açaí), Mestre Zé Malho → Trovoada nv30 (pequi); nenhum troca 2ª vez. Obediência: com 8 insígnias o limite é "todas"
+  (não há desobediência possível no pós-Liga; a regra foi exercitada pelo agente de captura com 0 insígnias).
+- (M11) Lago da Gruta Breu — `r8-ninho.mjs lago` (com o `['lagoDuelo']` novo). Capanga visível pós-Liga; duelo na tela (vitória
+  em 4 turnos; numa 1ª rodada com a equipe gasta, derrota → "Rá! Volta pra casa", cura e pode tentar de novo); Mandizinho
+  furta-cor nv 38 com Concha Rara capturado na tela com a Cuia de Ouro; foi para o Viveiro (equipe cheia); capanga some;
+  flags `lago-raro-ok`, `rara:39`. Estrela de rara conferida (r10-estrela.mjs): painel do Viveiro, Equipe ("+" amarelo no
+  cartão) e Diário (estrela no canto da figura; a figura é a da Pelagem Rara).
+- (M12) TOQUE, iPhone 13 deitado (`r9-toque.mjs`; palco "paisagem", controles "fora", escala 1,67): menu → Rádio tocando no item;
+  Agenda paginada fechada com o botão A; ligação para o líder tocando no contato (rolagem pelo direcional); Revanches legível;
+  Corrida aberta tocando na prova e na criatura, jogada tocando nas raias: 301 pontos tocando as raias em rodízio, sem mirar
+  (1º lugar — confirma que a Corrida é fácil); Safári: botões PEDRA/CUIA por toque, contador de cuias atualiza. Um toque curto
+  no direcional só vira o personagem (andar pede segurar: comportamento normal).
+
+## Pendências (não corrigidas — decisão de equilíbrio ou fora do meu escopo)
+1. Revanches de líder (fase 3, ás 57) fora do alcance do Campeão recém-saído da Liga (45–48); no site não há onde treinar
+   acima de ~45 fora das revanches de comuns. Níveis são decisão do autor.
+2. Pontos da Gincana sem limite diário: cada Corrida rende 30–50 pontos (fora o pódio, que é 1×/dia) → dá para trocar por
+   vitaminas, pedras de evolução e pergaminhos repetindo a Corrida (≈ 1 vitamina por minuto de jogo). Sugestão: só o recorde
+   do dia vale pontos, ou teto diário.
+3. Corrida da Vereda fácil demais (gente: 460–480; tocando à toa: 300; rivais ≤ 260). Força e Salto ok.
+4. Safári: PERTO e PEDRA pioram a captura por encontro (ver M7).
+5. Relógio: `diaSemana()` (src/core/estado.ts) vira à meia-noite do APARELHO (`new Date().getDay()` + `diaSemana0`), mas a
+   hora do jogo e o "dia corrido" (`diaCorrido`, flags de 1×/dia) usam `deslocamentoMin`. Com o relógio do jogo adiantado
+   (ex.: +18 h), o dia da semana muda às 18h do jogo: a agenda do rádio, os líderes e a Tainá trocam de dia no meio da tarde.
+   Correção sugerida (dono: UI/plataforma): calcular o dia da semana da data do jogo (`new Date(Date.now()+desloc)`) e gravar
+   `diaSemana0` relativo a ela em src/ui/telas/relogio.ts.
+6. A Agenda do dia anuncia a "Sexta da Tartaruga" no Recife Submerso, que no site (mapa B fechado, sem Mergulho) é inalcançável.
+7. "Posição no ranking de hoje: 1º lugar" aparece também depois de uma rodada pior que o recorde (fala do recorde, não da rodada).

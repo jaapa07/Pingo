@@ -27,17 +27,20 @@ const andar = (n, pare) => t.q(async ([n, pare]) => {
 }, [n, pare ?? null]);
 const ninhoXY = () => t.q(async () => { const V = await import('/src/world/vivo.ts'); const o = V.M.zv.def.objetos.find((x) => x.script === 'criadouro-aroeira'); return [o.x, o.y]; });
 const escolha = (re, i) => t.q(([re, i]) => { const Q = window.Q; Q.regrasEscolha.unshift([{ test: () => new RegExp(re).test(Q.textos[Q.textos.length - 1] ?? '') }, i]); }, [re, i]);
-const limparEscolhas = () => t.q(() => { window.Q.regrasEscolha = []; });
+const limparEscolhas = () => t.q(() => { window.Q.regrasEscolha = []; window.Q.escolhaFn = null; });
+/** roteiro de escolhas em ordem: cada pergunta nova que casa com o próximo [regex, índice] recebe esse índice; fora do roteiro = última opção (sair) */
+const roteiro = (seq) => t.q((seq) => {
+  // cada lista nova (elemento novo do DOM) consome o próximo índice do roteiro; acabou o roteiro = última opção (sair)
+  const Q = window.Q; let k = 0, ultima = null, cur = 99;
+  Q.escolhaFn = (el) => { if (el !== ultima) { ultima = el; cur = k < seq.length ? seq[k++] : 99; } return cur; };
+}, seq);
 try {
   await relogio(t, 2, 10 * 60);
   if (PARTES.includes('ninho')) {
     await irPara(t, 'A2-casa-aroeira', 7, 7, 'n');
     const [nx, ny] = await ninhoXY();
     // deixa Gaviãozão (F, voador, índice 0) e Vampirinha (M, voador, índice 5 → 4 depois de tirar a 1ª)
-    await limparEscolhas();
-    await escolha('^O ninho está vazio|sozinho no ninho', 0); await escolha('^Quem fica no ninho', 0);
-    await limparTextos(t); await t.usar(nx, ny);
-    await limparEscolhas(); await escolha('sozinho no ninho', 0); await escolha('^Quem fica no ninho', 4); await escolha('estão no ninho', 3);
+    await roteiro([0, 0, 0, 4, 99]);
     await limparTextos(t); await t.usar(nx, ny);
     await limparEscolhas();
     const cr = await t.q(() => { const c = window.__pingo.jogo.save.criadouro; return c ? c.casal.map((x) => `${x.especie}${x.sexo}`) : []; });
@@ -56,7 +59,7 @@ try {
     t.ok(radio.some((x) => /Trim, trim/.test(x)), 'aviso pelo Rádio Cipó', radio.join(' | ').slice(0, 200));
     // recolhe
     await irPara(t, 'A2-casa-aroeira', 7, 7, 'n');
-    await escolha('estão no ninho', 3); await limparTextos(t); await t.usar(nx, ny); await limparEscolhas();
+    await roteiro([]); await limparTextos(t); await t.usar(nx, ny); await limparEscolhas();
     const eqOvo = await t.q(() => window.__pingo.jogo.save.equipe.filter((c) => c.ovo).map((c) => `${c.especie}:${c.ovo}`));
     t.ok(eqOvo.length === 1, 'ovo recolhido para a equipe', eqOvo.join(','));
     // choca
@@ -69,7 +72,7 @@ try {
     // retira os pais (paga pela hospedagem)
     await irPara(t, 'A2-casa-aroeira', 7, 7, 'n');
     const d0 = (await t.resumo()).dinheiro;
-    await escolha('estão no ninho|sozinho no ninho', 1); await escolha('^Quem volta', 0); await escolha('^O ninho está vazio', 9);
+    await roteiro([0, 0, 1, 0, 99]);
     await limparTextos(t); await t.usar(nx, ny); await limparEscolhas();
     console.log('   retirar:', (await textos(t, 6)).filter((x) => /patacas|cresceu|descansou|cheia/.test(x)).join(' ⏎ '), '| $', d0, '→', (await t.resumo()).dinheiro);
     await t.checkpoint('pos-r8-ninho');
@@ -96,6 +99,7 @@ try {
     await t.checkpoint('pos-r8-troca');
   }
   if (PARTES.includes('lago')) {
+    await irPara(t, 'A-LG-posto', 7, 4, 'n'); await t.q(() => window.Q.curarNoPosto());
     await irPara(t, 'A-GB-2', 24, 8, 'l');
     const vis = (await t.npcs()).some((n) => n.id === 'cartel-lago');
     t.ok(vis, 'capanga do lago visível depois da Liga');

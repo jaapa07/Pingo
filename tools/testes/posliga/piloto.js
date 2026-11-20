@@ -208,7 +208,7 @@
       if (/dialogo/.test(s.topo)) {
         livres = 0;
         const l = $('.tela.dialogo .lista');
-        if (l) { const f = focoLista(l), quer = Math.min(f.n - 1, escolhaPara(ultimaPergunta())); if (f.i === quer) { await toque('a'); await quadros(2); } else await toque(f.i < quer ? 'baixo' : 'cima'); continue; }
+        if (l) { const f = focoLista(l), fn = Q.escolhaFn ? Q.escolhaFn(l, f.n) : null, quer = Math.min(f.n - 1, fn ?? escolhaPara(ultimaPergunta())); if (f.i === quer) { await toque('a'); await quadros(2); } else await toque(f.i < quer ? 'baixo' : 'cima'); continue; }
         await toque('a'); continue;
       }
       if (/creditos|cinematica|confirmacao/.test(s.topo)) { livres = 0; await toque('a'); await quadros(2); continue; }

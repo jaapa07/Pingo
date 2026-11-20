@@ -34,7 +34,7 @@ export const GINASIOS_B = {
     // volta (alvorada; busca em ilha × hora em qa4 scratch portais.py): P15 → P10, P11 → P5, P6 → P0 (entrada)
     volta: R(PI(13, 3), PI(24, 5), PI(15, 8), A(8, 17, 'o,'), [8, 17, 'porta do ginásio']) },
   // 16 Lenda (A9-ginasio): as quatro provas (fogo, terra, vento, água) e a porta de taquara
-  16: { zona: 'A9-ginasio', passos: [...R(A(12, 12, 'x'), [12, 12, 'entrada da ala do fogo']), ...SOL('o n s s s o o o o n n n l n o l o o o s s s s o n l s o o n n o'), ...R([2, 12, 'marca do fogo'],
+  16: { zona: 'A9-ginasio', passos: [{ pularSe: 'g16-fogo', n: 34 }, ...R(A(12, 12, 'x'), [12, 12, 'entrada da ala do fogo']), ...SOL('o n s s s o o o o n n n l n o l o o o s s s s o n l s o o n n o'), ...R(
     A(10, 6, 'xo'), [10, 6, 'entrada da ala da terra']), ...SOL('o o A-n l l n A-o o A-o l n n o o A-s l l s s o A-o o A-o o A-o s o o A-n n A-n n l n A-o o A-o o A-o o o n'), ...R(
     A(20, 8, 'xog'), [20, 8, 'entrada da ala do vento']), ...SOL('l l l l l l l o l o o o o l l l n l l n l l l'), ...R(
     A(20, 12, 'xog'), [20, 12, 'entrada da ala da água']), ...SOL('l s l l n l s s n o o o o l n o n n l o s s s l l l n s l n s s'), ...R(
@@ -53,3 +53,5 @@ export const GINASIOS_B = {
     A(9, 6, 'bx'), '!n', A(3, 6, 'bx'), '!n', A(12, 6, 'bx'), '!n', A(15, 6, 'bx'), '!n', A(6, 6, 'bx'), '!n',
     A(10, 2, 'b'), [10, 2, 'salão da líder'], CUIDAR, '!n') },
 };
+// ginásio 16: cada ala já vencida (flag g16-*) é pulada numa nova tentativa (a prova vencida fica marcada)
+{ const P16 = GINASIOS_B[16].passos; P16.splice(104, 0, { pularSe: 'g16-agua', n: 34 }); P16.splice(79, 0, { pularSe: 'g16-vento', n: 25 }); P16.splice(35, 0, { pularSe: 'g16-terra', n: 44 }); }

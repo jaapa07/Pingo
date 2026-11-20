@@ -104,6 +104,6 @@ export const REGRA = {
   bonusCuia: 1.5,
   pedraCaptura: 2, iscaCaptura: 0.5, pertoCaptura: [1, 1.35, 1.7],
   /** fuga por turno = clamp((vel + 30) / 512 × fatores) */
-  iscaFuga: 0.3, pedraFuga: 2, pertoFuga: [1, 1.3, 1.6],
+  iscaFuga: 0.3, pedraFuga: 1.5, pertoFuga: [1, 1.1, 1.2], // PERTO e PEDRA têm de compensar (QA do pós-Liga: com 2 e 1,3/1,6 pioravam a captura)
   fugaMin: 0.03, fugaMax: 0.6,
 };

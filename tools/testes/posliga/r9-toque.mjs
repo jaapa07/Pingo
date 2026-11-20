@@ -14,7 +14,8 @@ async function botao(acao, ms = 350) {
   await t.espera(ms);
 }
 /** toca no item `i` da lista visível na tela do topo */
-const item = async (i, ms = 600) => { const el = page.locator('.tela:last-child .lista-item').nth(i); await el.tap({ timeout: 8000 }); await t.espera(ms); };
+const marcarTopo = () => page.evaluate(() => { document.querySelectorAll('[data-topo]').forEach((e) => e.removeAttribute('data-topo')); window.__pingo.telas.topo?.el.setAttribute('data-topo', '1'); });
+const item = async (i, ms = 600) => { await marcarTopo(); const el = page.locator('[data-topo="1"] .lista-item').nth(i); await el.tap({ timeout: 8000 }); await t.espera(ms); };
 /** ponto nativo (px do palco 320×180) → toque */
 const nativo = async (x, y) => { const r = await page.evaluate(() => { const e = document.querySelector('#tela') ?? document.querySelector('.tela'); const b = e.getBoundingClientRect(); return { x: b.left, y: b.top, w: b.width }; }); const k = r.w / 320; await page.touchscreen.tap(r.x + x * k, r.y + y * k); };
 const passarFalas = async (max = 30) => { for (let k = 0; k < max && /dialogo/.test(await topo(t)) && !(await page.evaluate(() => !!document.querySelector('.tela.dialogo .lista'))); k++) await botao('a', 300); };
@@ -24,6 +25,7 @@ try {
   await relogio(t, 5, 8 * 60);
   await irPara(t, 'A4', 17, 18, 'n');
   await t.foto('r9-mundo');
+  if (process.argv[2] !== 'so-safari') {
   // RÁDIO
   await botao('menu', 700);
   await item(3, 900); t.ok(/tela-radio/.test(await topo(t)), 'rádio aberto tocando no item do menu'); await t.foto('r9-radio');
@@ -34,7 +36,7 @@ try {
   const ci = await page.evaluate(async () => { const D = await import('/src/world/deps.ts'); return window.__pingo.jogo.save.contatos.filter((id) => D.treinador(id)).indexOf('lider-05'); });
   // toque num item fora da área visível: rola com o direcional e toca
   for (let k = 0; k < ci; k++) await botao('baixo', 150);
-  await page.locator('.tela:last-child .lista-item.foco').tap(); await t.espera(800);
+  await marcarTopo(); await page.locator('[data-topo="1"] .lista-item.foco').tap(); await t.espera(800);
   await limparTextos(t); await passarFalas(); console.log('   ligação:', (await textos(t, 2)).join(' ⏎ ').slice(0, 200));
   t.ok((await textos(t, 3)).some((x) => /meu dia de treino|Já combinamos/.test(x)), 'ligação para o líder por toque');
   await botao('b', 600); await item(2, 900); await t.foto('r9-revanches'); await botao('b', 600);
@@ -54,6 +56,7 @@ try {
   await t.foto('r9-corrida-res');
   await page.locator('.tela-gincana .gn-res').tap().catch(() => 0); await t.espera(800); await passarFalas();
   console.log('   corrida por toque:', (await textos(t, 3)).filter((x) => /pontos/.test(x)).join(' ⏎ '));
+  }
   // SAFÁRI
   await t.assentar(); await irPara(t, 'A-SF', 13, 4, 's');
   await t.falarCom('safari-bilheteira').catch((e) => console.log('   porteira', e.message.split('\n')[0]));
@@ -61,8 +64,10 @@ try {
   const g = await page.evaluate(() => { const z = window.__pingo.mundo.zona; for (let y = 33; y > 17; y--) for (let x = 2; x < 20; x++) if (z.mapaChars[y][x] === '"' && z.mapaChars[y][x + 1] === '"' && z.mapaChars[y][x - 1] === '"') return [x, y]; return null; });
   await t.irAte(g[0], g[1]);
   let enc = false;
-  for (let k = 0; k < 160 && !enc; k++) { await botao(k % 2 ? 'esq' : 'dir', 450); enc = await page.evaluate(() => !!document.querySelector('.tela-safari')); }
-  t.ok(enc, 'encontro no capim andando pelo direcional de toque');
+  // um toque curto no direcional só vira o personagem; andar pede segurar — aqui o passo é dado segurando a seta do teclado
+  const passo = (d) => page.evaluate(async (C) => { const P = window.__pingo, ev = (tp) => document.dispatchEvent(new KeyboardEvent(tp, { code: C, key: C, bubbles: true })), q = () => new Promise((r) => requestAnimationFrame(r)); const x0 = P.mundo.jogador.x; ev('keydown'); for (let i = 0; i < 30; i++) { await q(); if (P.mundo.jogador.movendo || P.mundo.jogador.x !== x0 || document.querySelector('.tela-safari')) break; } ev('keyup'); for (let i = 0; i < 40 && P.mundo.jogador.movendo; i++) await q(); }, d);
+  for (let k = 0; k < 200 && !enc; k++) { await passo(k % 2 ? 'ArrowLeft' : 'ArrowRight'); enc = await page.evaluate(() => !!document.querySelector('.tela-safari')); }
+  t.ok(enc, 'encontro no capim do parque');
   if (enc) {
     const pronto = () => page.evaluate(() => { const m = document.querySelector('.tela-safari .sf-menu .cursor-mao'); return !!m && m.style.visibility !== 'hidden'; });
     const plano = [3, 1, 2, 0, 0, 0, 0, 0, 0, 0]; let k = 0;

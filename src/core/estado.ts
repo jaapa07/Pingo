@@ -47,7 +47,7 @@ export function receberCriatura(c: CriaturaInst): 'equipe' | 'viveiro' | 'cheio'
 export function minutosAgora(): number { const d = new Date(); return (((d.getHours() * 60 + d.getMinutes() + jogo.save.relogio.deslocamentoMin) % 1440) + 1440) % 1440; }
 export function periodoAgora(): Periodo { const m = minutosAgora(); return m < 300 ? 'noite' : m < 600 ? 'manha' : m < 1020 ? 'dia' : m < 1140 ? 'tarde' : 'noite'; }
 /** 0 = domingo */
-export function diaSemana(): number { return (new Date().getDay() + jogo.save.relogio.diaSemana0) % 7; }
+export function diaSemana(): number { return (new Date(Date.now() + jogo.save.relogio.deslocamentoMin * 60000).getDay() + jogo.save.relogio.diaSemana0) % 7; } // o dia vira junto com o relógio do jogo
 /** estação fria: junho a setembro do relógio do aparelho */
 export function estacaoFria(): boolean { const m = new Date().getMonth(); return m >= 5 && m <= 8; }
 let periodoForcado: Periodo | null = null;

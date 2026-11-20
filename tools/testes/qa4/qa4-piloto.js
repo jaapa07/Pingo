@@ -239,7 +239,9 @@
    * `evitar`: conjunto de "x,y" proibidos. Estados = (x, y, naÁgua).
    */
   Q.plano = (tx, ty, o = {}) => {
-    const z = M.zv, am = jogo.save.amuletos, j = P.mundo.jogador, oc = ocupados(), evitar = o.evitar ?? new Set();
+    const z = M.zv, am = jogo.save.amuletos, j = P.mundo.jogador, oc = ocupados(), evitar = new Set(o.evitar ?? []);
+    // gatilhos de chefe (Garrote, rival): o jogador que ainda não quer a luta contorna (Q.evitarGatilhos)
+    if (Q.evitarGatilhos) for (const gt of z.def.gatilhos ?? []) if (ES.cond(gt.se)) for (let yy = gt.y; yy < gt.y + (gt.h ?? 1); yy++) for (let xx = gt.x; xx < gt.x + (gt.w ?? 1); xx++) if (!(xx === tx && yy === ty)) evitar.add(xx + ',' + yy);
     const pode = (id) => am.includes(id) && !!V.ajudante(id);
     const alvo = (x, y) => (o.vizinho ? Math.abs(x - tx) + Math.abs(y - ty) === 1 : x === tx && y === ty);
     const pisavel = (x, y) => (z.chao(x, y) || (ehEntrada(z.warp(x, y)) && z.dentro(x, y) && !z.agua(x, y))) && !itemVisivel(x, y);
@@ -617,7 +619,7 @@
       const ant = new Map([[s.zona, null]]), fila = [s.zona];
       while (fila.length && !ant.has(dest)) {
         const zid = fila.shift(), def = ZN.zonaDef(zid); if (!def) continue;
-        for (const w of def.warps) { const para = w.para.zona; if (ant.has(para) || banidos.has(zid + '>' + para) || !ES.cond(w.requer) || !ZN.zonaDef(para) || !(Q.mapas ?? ['A', 'B']).includes(ZN.zonaDef(para).mapa) || w.tipo === 'trem' || w.tipo === 'saveiro') continue; if (/^[X_]/.test(para)) continue; if (!filtro(zid)(w)) continue; ant.set(para, zid); fila.push(para); }
+        for (const w of def.warps) { const para = w.para.zona; if (ant.has(para) || banidos.has(zid + '>' + para) || !ES.cond(w.requer) || !ZN.zonaDef(para) || !(Q.mapas ?? ['A', 'B', 'PP']).includes(ZN.zonaDef(para).mapa) || w.tipo === 'trem' || w.tipo === 'saveiro') continue; if (/^[X_]/.test(para)) continue; if (!filtro(zid)(w)) continue; ant.set(para, zid); fila.push(para); }
       }
       if (!ant.has(dest)) throw new Error(`sem rota de ${s.zona} para ${dest} (banidos: ${[...banidos].join(' ')} ${[...warpsRuins].join(' ')})`);
       let prox = dest; while (ant.get(prox) !== s.zona) prox = ant.get(prox);

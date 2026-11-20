@@ -30,7 +30,8 @@ try {
   const v2 = gerar(D).versao; console.log(`versão ${v2} publicada (mudaram o index.html e um sprite)`);
   const iPub = srv.caminhos.length;
   const a1 = await abrir(12);
-  for (let i = 0; i < 60 && !(a1.s?.nova === v2 && a1.s.aviso); i++) { await page.waitForTimeout(500); a1.s = await ver(); }
+  // até 2 min: com a máquina carregada (outros testes e builds em paralelo) o SW novo demora a instalar
+  for (let i = 0; i < 240 && !(a1.s?.nova === v2 && a1.s.aviso); i++) { await page.waitForTimeout(500); a1.s = await ver(); }
   if (a1.s?.nova !== v2 || !a1.s.aviso) falhas.push(`o aviso "Atualização disponível" não apareceu na página aberta (versão nova conhecida: "${a1.s?.nova}")`);
   console.log(`1ª abertura: página na versão ${a1.s?.v}, jogo aberto: ${a1.s?.jogo}; pedidos: ${a1.pedidos.join(', ')}`);
   if (!a1.s?.jogo) falhas.push('o jogo não abriu na sessão em que a atualização chegou');

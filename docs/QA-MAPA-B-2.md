@@ -70,3 +70,21 @@ Ferramentas em `tools/testes/qa4/` (cópia do QA 3 com nomes `qa4-*`):
 - Contagem de batalhas por trecho: ~metade dos selvagens termina em FUGA (o piloto foge com equipe gasta ou com o
   selvagem 4+ acima da da frente, como um jogador cuidadoso). O estimador conta 7 selvagens VENCIDOS por zona: é a
   principal diferença entre a chegada medida e a estimada do 13 em diante.
+- (20/11) gin15 3ª mão (do `b8`, mesmo treino): **vitória na 9ª** depois de 7 × 36 = 252 selvagens de treino (ás 72);
+  volta pelos portais OK. Checkpoint `passo-15`.
+- (20/11) **Voo B8 → A8 pelo mapa-múndi** (toque no marcador, confirmação) OK. Monte Tupã: Escalar, gruta escura, cascata
+  do lago (Cachoeira) e guardião Abaeté (15 insígnias) OK; 6 treinadores A-MT + 3 de A9, 0 derrotas. Checkpoint `a9`.
+- Ginásio 16: as quatro provas pela solução (o totem acende e o jogador volta à entrada da ala). Líder 16 Trovão-Velho
+  (ás 72): na frente 73/69/69/69/69/68 (**Δ +1**, média −2,5; o treino do 15 explica o salto) → 1ª mão **1/2**
+  (12 t com o ás desmaiado; vitória em 19 t). Na saída, g16-2 (que o roteiro não enfrenta na ida) pegou a equipe gasta e
+  venceu (o piloto agora segue em frente depois da derrota na saída).
+- (20/11) **pico, 1ª mão** (de `passo-16`): Portão (Tibiriçá e a oferenda), subida com 8 treinadores. O piloto ia catar
+  itens e cruzava os gatilhos do Cume: **Garrote 1/2** (a derrota com 4 desmaiadas; vitória em 19 t, ele usou 2 remédios) e
+  **rival 8 perdida** em 3 t (3 desmaiadas, logo depois do Garrote). Corrigido no piloto: contorna os gatilhos de chefe
+  enquanto limpa/cata e prepara a equipe ao lado antes de pisar.
+- **Conselho, 1ª tentativa** (equipe 74/70/70/70/70/69, mochila 12 Garrafadas, 4 Chás, 4 Elixires, $19 930): Iara 11 t,
+  Cauã 6 t, Jandaia 11 t, Moacir 13 t, **Arandu: derrota em 7 t** (entrou com 3 desmaiadas, mochila vazia). Volta ao
+  Portão (19, 41) com a equipe curada e `conselho-1..4` zerados (fala certa). O piloto não tratava essa derrota sem
+  exceção: agora recomeça.
+- Simulador (`passo-16`): Garrote 47% · rival 8 64% · Conselho em sequência com a mochila do save 0% (Iara 100 → Cauã 100 →
+  Jandaia 46 → Moacir 2 → Arandu 0); com +6 Elixires, +4 Chás, +6 Garrafadas: **47%** (100/100/91/89/47).
