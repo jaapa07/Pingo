@@ -129,3 +129,61 @@ Cópia dos sprites de antes desta rodada: scratchpad da sessão (`antes3/criatur
   causa do especial).
 - Pessoas: guardiã da floresta tem retrato escuro (pele castanha + cabelo azeviche + folhas escuras); guarda da névoa é
   correto mas genérico; os quatro pesquisadores dividem um sprite só (duas mulheres e dois homens no texto) — o capuz deixa neutro.
+
+## 3ª rodada (20/11) — fechando o que ficou fraco
+Cópia dos sprites de antes desta rodada: scratchpad da sessão (`antes4/`). Ferramentas novas no scratchpad: `todos.py` (todos os
+quadros de uma vista), `zoom.py` (um quadro a 6×), `keys.ts` (lista as faixas de uma animação já montada) e `conter.py`
+(insere no arquivo da criatura um laço que escala, numa animação e vista, a rotação/posição/escala de ossos escolhidos).
+Técnica nova que funcionou: **conter a animação do kit só naquela criatura**, mexendo em `anims.frente[...]`/`anims.costas[...]`
+depois de `animsXxx(...)` (sempre copiando `keys`, que é compartilhado entre vistas): asas a 50–60% no ataque, queda do desmaio
+dos voadores a 60% (o kit desce o corpo até abaixo do chão e o enquadre encolhia o bicho inteiro).
+
+### Criaturas retocadas
+- 036 guaiamuque: carapaça mais alta, patas mais altas e menos abertas, câmera um pouco mais alta (pitch 30) e a tenaz gigante
+  inclinada para cima em "C" — repouso 64×31 → 62×41 na célula 80 (agora lê como caranguejo em pé, não como bolacha). A `entrada`
+  e o `dano` do kit erguiam a garra na vertical (virava chifre): sobrescritas com `?pinca_d` só balançando.
+- 146 escorpião-rei: coroa refeita — aro de ferro escuro, três pontas altas e afastadas (a do meio maior) e uma brasa no meio; a
+  cauda desenrolada mais (gomo 3) tira o sino de cima da coroa, que agora recorta contra o fundo e lê as três pontas. Olhos com
+  carimbo novo âmbar com contorno e brilho (antes pupila escura sobre ferro escuro, sumiam).
+- 148 caranguejeirão: mancha do abdômen em salmão chapado (base) com borda em sombra, e o topete no tom base — antes caía na luz (creme).
+- 142 grilão-elétrico: o arco do especial crescia 2,4× e encolhia a vista de costas (65%); agora 1,8× → costas 70%.
+- 119 hipocampim: cabeça menos baixa (o canudo apontava para o chão, rente ao peito, e lia como bracinho), boquinha escura na
+  ponta e anel turquesa no canudo; bolhas mais acima.
+- 149 jataí (e 150 jataí-rainha, que usa o mesmo construtor): gola mel-clara no lugar da branca — a gola branca e as asas de véu
+  viravam uma mancha só sobre o tórax.
+- Avisos de ocupação do `checar.ts` que eram defeito (animação do kit encolhendo o sprite): 017 bruxaluz 64→69% (asas e queda),
+  028 vagalumim 63/67→69% (queda, asas, enquadre 1.03), 029 vagalampo 64→71%, 037 piabinha 63/67→69%, 052 araracanga 64→69% (asas e
+  raios da crista no especial), 155 lavadeirim costas 59→69% (pouso e asas de costas, enquadre 1.01), 117 arraiazinha costas 64→67%,
+  049 tucaninho costas 63→66%, 055 urubuzim, 105 tuiuiuzim costas 66→69%.
+- Revista e mantida: 107 garcinha (46 px de altura na célula 64, olho e bico bons; é filhote). 115 poraquim: testei conter o
+  desmaio (pescoço mais e menos dobrado) e piorou nos dois sentidos — revertido.
+
+### Pessoas
+- `guardia-floresta`: cabelo preto com reflexo violeta (rampa própria), faixa de taquara clara na testa, flor creme dos dois lados do
+  cabelo e os leques de folha descidos para fora dos ombros (antes subiam e emolduravam o queixo como barba). O retrato clareou sem
+  mexer no tom de pele.
+- `guarda-nevoa` ganhou identidade: capuz pontudo cor de névoa com borda clara, capa azul comprida até a canela com barra esfiapada
+  e fiapos de névoa enroscados, cachecol laranja com as pontas caindo pela frente e o LAMPIÃO aceso num cajado de gancho, erguido
+  à altura da cabeça (lê na batalha e no mapa l/o). Testes descartados: capa cor de névoa inteira (virava fantasma branco) e o
+  lampião acima da cabeça (flutuava solto).
+- Pesquisadores boreais em duas variações: `pesquisadora-boreal` (capuz de pelo levantado, duas tranças loiras caindo por fora com
+  ponteira verde-aurora, pele clara) e `pesquisador-boreal` (capuz baixado nas costas, gorro cinza de faixa aurora, cabelo e barba
+  ruivos, porte forte). Mesma parka, faixa refletiva, mochila e lanterna. Trocado só o campo `sprite`: Ingrid (B-EXP-1, `vis-exp-1`,
+  B7) e Sigrid (B-EXP-3, `vis-exp-3`, B-LG) usam `pesquisadora-boreal`; Halvard e Eirik seguem com `pesquisador-boreal`.
+
+### Conferido
+- Frente, costas, mapa nas 4 direções e todos os quadros (entrada/ataques/desmaio/status) de cada retocada; nenhum quadro encosta na
+  borda (`borda.py`). Pelagem rara regenerada para as 17 alteradas. Atlas: 260 entradas, todas as pastas de sprite presentes
+  (183 criaturas, 77 pessoas, incluindo `pesquisadora-boreal`). `tsc` limpo.
+- Folhas: `docs/capturas/retoques-4.png` (antes rosado × depois verde; criaturas: frente, costas, mapa; pessoas: batalha, retrato,
+  mapa s e l) e `docs/capturas/todas-frente.png` (as 182, frente, idle, 3×).
+
+### Continua fraco (pendências honestas)
+- 146 escorpião-rei: a coroa lê, mas o conjunto segue carregado (ferro, amarelo, verde e brasa no mesmo bloco).
+- 036 guaiamuque: as patas do lado de cá viram um bloco roxo; e no `status` o corpo achata (é do kit).
+- 149 jataí: ficou mais limpa, mas o corpo dourado com gola mel é uma massa única; falta um contraste forte entre cabeça e tórax.
+- Avisos de 66–68% que sobraram (043, 046, 049, 055, 065, 067, 068, 073, 075, 093, 095, 111, 113, 117, 159, 038, 175) são de ataques
+  e desmaios largos do kit e ficam a 1–2 pontos da régua; 115 poraquim (64%) é a investida longa de serpente. Olho grande em
+  noitim/noitão/urutau-fantasma é o traço deliberado.
+- Pequenos na folha geral (por serem filhotes): 103 seriemim, 107 garcinha, 129 sirizim, 141 grilinho, 147 caranguejeirinha, 161 tuquim.
+- `guarda-nevoa`: o lampião não aparece no retrato (o enquadre do busto corta o cajado); no mapa de frente ele cobre um pouco o rosto.

@@ -39,9 +39,9 @@ try {
         }
       }, MODO);
     }
-    const pts = await t.q(() => Number(/(\d+) pontos/.exec(document.querySelector('.tela-gincana .gn-res')?.textContent ?? '')?.[1] ?? -1));
-    await t.q(async () => { const I = await import('/src/core/input.ts'); document.dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyZ', key: 'z', bubbles: true })); await new Promise((r) => setTimeout(r, 120)); document.dispatchEvent(new KeyboardEvent('keyup', { code: 'KeyZ', key: 'z', bubbles: true })); void I; });
-    await t.page.waitForFunction(() => window.__fim, null, { timeout: 10000 }).catch(() => 0);
+    await t.page.waitForTimeout(300);
+    await t.q(async () => { for (let k = 0; k < 20 && !window.__fim; k++) { document.dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyZ', key: 'z', bubbles: true })); await new Promise((r) => setTimeout(r, 120)); document.dispatchEvent(new KeyboardEvent('keyup', { code: 'KeyZ', key: 'z', bubbles: true })); await new Promise((r) => setTimeout(r, 200)); } });
+    const pts = await t.q(() => window.__fim?.pontos ?? -1);
     res.push(pts);
     console.log(`corrida ${MODO} semente ${SEM + i}: ${pts} pontos (criatura ${info.especie}, vel ${info.vel}, def ${info.def}; suco ${SUCO}; rivais hoje ${info.rivais.join('/')})`);
   }

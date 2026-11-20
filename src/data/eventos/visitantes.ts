@@ -164,9 +164,9 @@ export const PONTOS_VISITANTES: { zona: string; npc?: NpcDef; gatilho?: Gatilho 
   { zona: 'A4', npc: { id: 'vis-taruma', sprite: 'seu-taruma', x: 32, y: 38, dir: 'o', script: 'vis-canoeiro' } },
   { zona: 'B9', npc: { id: 'vis-solveig', sprite: 'dra-solveig', x: 30, y: 24, dir: 's', se: 'flag:conselho-vencido', script: 'vis-solveig' } },
   // os quatro pesquisadores da expedição (só depois de falar com a Drª Solveig)
-  { zona: 'B7', npc: { id: 'vis-exp-1', sprite: 'pesquisador-boreal', x: 30, y: 6, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-1' } },
+  { zona: 'B7', npc: { id: 'vis-exp-1', sprite: 'pesquisadora-boreal', x: 30, y: 6, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-1' } },
   { zona: 'B-SG', npc: { id: 'vis-exp-2', sprite: 'pesquisador-boreal', x: 30, y: 16, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-2' } },
-  { zona: 'B-LG', npc: { id: 'vis-exp-3', sprite: 'pesquisador-boreal', x: 44, y: 19, dir: 'o', se: 'flag:boreal-missao', script: 'vis-lanterna-3' } },
+  { zona: 'B-LG', npc: { id: 'vis-exp-3', sprite: 'pesquisadora-boreal', x: 44, y: 19, dir: 'o', se: 'flag:boreal-missao', script: 'vis-lanterna-3' } },
   { zona: 'B-R5', npc: { id: 'vis-exp-4', sprite: 'pesquisador-boreal', x: 32, y: 6, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-4' } },
   // "Pedra das Lanternas" reservada pelo B2-norte no Cume do PP (tiles 8..11, 3..6; docs/ZONAS-B2-NORTE.md): gatilho noturno
   { zona: 'PP', gatilho: { x: 9, y: 4, w: 2, h: 2, script: 'vis-pico-aurora', se: 'flag:boreal-missao&periodo:noite' } },

@@ -194,30 +194,56 @@ const solveig = especial({
 });
 
 /* ---------------------------------------------------------------------------------------------- */
-/* Pesquisador(a) boreal — os quatro da expedição: parka azul com capuz de pelo, lanterna boreal      */
+/* Pesquisadores boreais — os quatro da expedição: parka azul, faixa refletiva verde-aurora, mochila */
+/* e a lanterna boreal acesa na mão. 3ª rodada: eram um sprite neutro só (capuz levantado); agora são */
+/* dois: a PESQUISADORA (Ingrid, Sigrid) de capuz de pelo levantado e duas tranças loiras caindo para */
+/* fora, e o PESQUISADOR (Halvard, Eirik) de capuz baixado nas costas, cabelo e barba ruivos e gorro.  */
 /* ---------------------------------------------------------------------------------------------- */
 const PARKA_AZUL: Rampa = ['#1c2c5a', '#2e4c8e', '#5a82c4'];
 const AURORA: Rampa = ['#1a7a72', '#3ad2a0', '#b8ffd8'];
-const pesquisador = especial({
-  id: 'pesquisador-boreal', pele: 'rosada', cabelo: 'ruivo', a: PARKA_AZUL, b: 'cinza', d: AURORA, iris: '#3a7a6a', ...M, zoomBatalha: 0.9,
-  v: { cabelo: 'careca', manga: 'longa', rTorso: R_A, baixo: 'calca', rBaixo: R_B, pes: 'bota', rPes: R_B, luvas: R_B, sobre: 'jaleco', rSobre: R_A, rSobreFaixa: R_B,
-    costas: 'mochila', rCostas: R_B, rCostasFaixa: R_D, propBraco: 30, propNoMapa: true },
-}, (r) => {
-  // capuz levantado com borda de pelo cinza-claro
-  r.add('cabeca', blob([0.32, 0.3, 0.345], tom(R_A), { pos: h(-0.07, 0.04, 0), deform: [taper('x', -0.3, 0.3, 1.04, 0.92)] }),
-    ring(0.27, 0.05, luz(R_B), { pos: h(0.13, -0.02, 0), rot: [0, 90, 0], scale: [1, 1.1, 1] }),
-    blob([0.05, 0.045, 0.17], tom(R_CAB), { pos: h(0.2, 0.17, 0) }));
-  // faixa refletiva verde-aurora no peito e nos braços
-  r.add('tronco', lathe([[0.226, 0.14], [0.23, 0.1], [0.222, 0.1], [0.218, 0.14]], chapa(R_D), { scale: [0.78, 1, 1.01], seg: 22 }));
-  for (const b of ['bracoD', 'bracoE']) r.add(b, ring(0.066, 0.016, chapa(R_D), { pos: [0, -0.1, 0], rot: [90, 0, 0] }));
-  // lanterna boreal pendurada na mão: alça, armação e luz de aurora
-  r.add('prop',
-    tube([[0, 0.02, 0], [0.0, -0.06, 0]], 0.014, som(R_B), { seg: 2, radial: 4 }),
-    ring(0.05, 0.016, tom(R_B), { pos: [0, -0.07, 0], rot: [0, 90, 0], arc: 180 }),
-    lathe([[0.001, -0.1], [0.075, -0.11], [0.095, -0.16], [0.095, -0.33], [0.075, -0.37], [0.001, -0.37]], chapa(R_D), { seg: 12 }),
-    blob([0.055, 0.08, 0.055], luz(R_D), { pos: [0.045, -0.235, 0] }),
-    ring(0.097, 0.02, tom(R_B), { pos: [0, -0.12, 0], rot: [90, 0, 0] }), ring(0.097, 0.02, tom(R_B), { pos: [0, -0.36, 0], rot: [90, 0, 0] }));
+function boreal(f: Ficha, capuz: boolean, extra?: (r: Rig) => void): PixModel {
+  return especial(f, (r) => {
+    if (capuz) {
+      // capuz levantado com borda de pelo cinza-claro
+      r.add('cabeca', blob([0.32, 0.3, 0.345], tom(R_A), { pos: h(-0.07, 0.04, 0), deform: [taper('x', -0.3, 0.3, 1.04, 0.92)] }),
+        ring(0.27, 0.05, luz(R_B), { pos: h(0.13, -0.02, 0), rot: [0, 90, 0], scale: [1, 1.1, 1] }),
+        blob([0.05, 0.045, 0.17], tom(R_CAB), { pos: h(0.2, 0.17, 0) }));
+    } else {
+      // capuz baixado: um rolo de parka com borda de pelo atrás da nuca
+      r.add('tronco', tube([[-0.12, 0.34, -0.2], [-0.24, 0.3, 0], [-0.12, 0.34, 0.2]], 0.075, tom(R_A), { seg: 10, radial: 8 }),
+        tube([[-0.1, 0.4, -0.18], [-0.2, 0.37, 0], [-0.1, 0.4, 0.18]], 0.035, luz(R_B), { seg: 10, radial: 6 }));
+    }
+    // faixa refletiva verde-aurora no peito e nos braços
+    r.add('tronco', lathe([[0.226, 0.14], [0.23, 0.1], [0.222, 0.1], [0.218, 0.14]], chapa(R_D), { scale: [0.78, 1, 1.01], seg: 22 }));
+    for (const b of ['bracoD', 'bracoE']) r.add(b, ring(0.066, 0.016, chapa(R_D), { pos: [0, -0.1, 0], rot: [90, 0, 0] }));
+    // lanterna boreal pendurada na mão: alça, armação e luz de aurora
+    r.add('prop',
+      tube([[0, 0.02, 0], [0.0, -0.06, 0]], 0.014, som(R_B), { seg: 2, radial: 4 }),
+      ring(0.05, 0.016, tom(R_B), { pos: [0, -0.07, 0], rot: [0, 90, 0], arc: 180 }),
+      lathe([[0.001, -0.1], [0.075, -0.11], [0.095, -0.16], [0.095, -0.33], [0.075, -0.37], [0.001, -0.37]], chapa(R_D), { seg: 12 }),
+      blob([0.055, 0.08, 0.055], luz(R_D), { pos: [0.045, -0.235, 0] }),
+      ring(0.097, 0.02, tom(R_B), { pos: [0, -0.12, 0], rot: [90, 0, 0] }), ring(0.097, 0.02, tom(R_B), { pos: [0, -0.36, 0], rot: [90, 0, 0] }));
+    extra?.(r);
+  });
+}
+const parkaBoreal = { manga: 'longa', rTorso: R_A, baixo: 'calca', rBaixo: R_B, pes: 'bota', rPes: R_B, luvas: R_B, sobre: 'jaleco', rSobre: R_A, rSobreFaixa: R_B,
+  costas: 'mochila', rCostas: R_B, rCostasFaixa: R_D, propBraco: 30, propNoMapa: true } as const;
+const TRANCA_NORTE: Rampa = ['#a07a3e', '#e0be6e', '#fff0b4'];
+const pesquisadora = boreal({
+  id: 'pesquisadora-boreal', pele: 'clara', cabelo: TRANCA_NORTE, a: PARKA_AZUL, b: 'cinza', d: AURORA, iris: '#3a6ab4', ...M, zoomBatalha: 0.9,
+  v: { porte: 'magro', cabelo: 'careca', sobrancelha: 'fina', ...parkaBoreal },
+}, true, (r) => {
+  // duas tranças loiras saindo do capuz e caindo por cima da parka, com ponteira de lã verde-aurora
+  for (const sz of [1, -1]) {
+    r.add('cabeca', tube([[0.08, HY - 0.12, sz * 0.24], [0.12, HY - 0.26, sz * 0.25], [0.15, HY - 0.42, sz * 0.22]], 0.05, tom(R_CAB), { seg: 10, radial: 8 }));
+    for (const t of [0.3, 0.55, 0.8]) r.add('cabeca', blob([0.05, 0.035, 0.05], luz(R_CAB), { pos: [0.08 + t * 0.07, HY - 0.12 - t * 0.3, sz * (0.24 + t * 0.0)] }));
+    r.add('cabeca', blob([0.04, 0.035, 0.04], chapa(R_D), { pos: [0.155, HY - 0.44, sz * 0.22] }));
+  }
 });
+const pesquisador = boreal({
+  id: 'pesquisador-boreal', pele: 'rosada', cabelo: 'ruivo', a: PARKA_AZUL, b: 'cinza', d: AURORA, iris: '#3a7a6a', ...M, zoomBatalha: 0.9,
+  v: { porte: 'forte', cabelo: 'curto', barba: 'barba', sobrancelha: 'grossa', chapeu: 'gorro', rChapeu: R_B, rChapeuFaixa: R_D, ...parkaBoreal },
+}, false);
 
 /* ---------------------------------------------------------------------------------------------- */
 /* Seu Tarumã — canoeiro de Manaus: chapéu de palha, camisa aberta, remo de pá larga, paneiro       */
@@ -244,4 +270,4 @@ function limbo(len: number, mat: ReturnType<typeof tom>, y: number) {
   return tube([[0, y + len / 2, 0], [0, y - len / 2, 0]], 0.075, mat, { seg: 2, radial: 10 });
 }
 
-export const sertao: PixModel[] = [tibirica, andarilho, guardaNevoa, guardiaFloresta, solveig, pesquisador, taruma];
+export const sertao: PixModel[] = [tibirica, andarilho, guardaNevoa, guardiaFloresta, solveig, pesquisadora, pesquisador, taruma];

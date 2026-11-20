@@ -11,7 +11,7 @@ const exp = (id: string, classe: string, nome: string, sprite: string, equipe: M
   ({ id, classe, nome, sprite, equipe, ia: 'conselho', premio: 60 * Math.max(...equipe.map((m) => m.nv)), desafio, derrota, depois, itens: ['garrafada'], contato: false });
 
 export const TREINADORES_VISITANTES: TreinadorDef[] = [
-  exp('B-EXP-1', 'Glacióloga', 'Ingrid', 'pesquisador-boreal',
+  exp('B-EXP-1', 'Glacióloga', 'Ingrid', 'pesquisadora-boreal',
     [{ e: 136, nv: 66 }, { e: 138, nv: 66 }, { e: 134, nv: 67 }],
     'Lanterna? Esta aqui? Eu a guardo desde que o navio encalhou. A Solveig disse para entregar só a quem aguentasse o frio do norte!',
     'Brrr. Você é mais quente do que parece.',
@@ -21,7 +21,7 @@ export const TREINADORES_VISITANTES: TreinadorDef[] = [
     'Pressão caindo, vento virando para o sul… e um desafiante subindo o morro. Previsão: batalha!',
     'Errei a previsão. Acontece até com satélite.',
     'O frio daqui vem do sul, com o minuano. O nosso vem do polo. Os dois cortam igual a orelha.'),
-  exp('B-EXP-3', 'Mergulhadora Polar', 'Sigrid', 'pesquisador-boreal',
+  exp('B-EXP-3', 'Mergulhadora Polar', 'Sigrid', 'pesquisadora-boreal',
     [{ e: 132, nv: 68 }, { e: 134, nv: 68 }, { e: 140, nv: 69 }],
     'A lagoa gelada é a coisa mais parecida com casa que eu achei por aqui. A lanterna fica comigo até alguém me tirar da água!',
     'Saí da água. Molhada e derrotada.',
