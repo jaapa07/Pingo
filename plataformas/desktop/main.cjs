@@ -3,7 +3,7 @@
  *
  * - Serve o `dist/` empacotado por um protocolo próprio (`pingo://jogo/`), com origem fixa: o
  *   Chromium trata a página como segura, `fetch` funciona e nada sai do pacote.
- * - Nenhuma rede: todo pedido que não seja `pingo:` (ou as ferramentas do próprio Chromium) é cancelado.
+ * - Nenhuma rede: qualquer pedido que não seja `pingo:` (ou as ferramentas do próprio Chromium) é cancelado.
  * - Renderer isolado: `contextIsolation`, sem Node, `sandbox`; a única ponte é o `preload.cjs`.
  * - Save: um arquivo JSON por chave em `<dados do usuário>/saves/`, gravado de forma atômica
  *   (arquivo temporário + rename) e com a cópia anterior em `.bak`.

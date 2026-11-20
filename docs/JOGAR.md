@@ -58,12 +58,15 @@ distribuir sem esses avisos é preciso um certificado de assinatura de código (
 desenvolvedor Apple (macOS) e os campos `win.signtoolOptions`/`mac.identity` do
 `plataformas/desktop/electron-builder.yml`.
 
-Gerar o pacote do Windows no Linux funciona (o electron-builder baixa o NSIS sozinho; o `wine` só é necessário
-para gravar o ícone e a versão dentro do .exe). O `.dmg` só sai num Mac.
+Gerar no Linux: o AppImage e o **.exe portátil** saem direto (com ícone e versão gravados no .exe). O
+**instalador NSIS** precisa do `wine` instalado (`sudo apt install wine64`, ou gere no próprio Windows com
+`npm run desktop:pacotes`); sem ele o comando para nesse alvo depois de gerar os outros dois. O `.dmg` só sai
+num Mac. Tamanhos da versão 1.0.0: AppImage ~152 MB, portátil ~121 MB (Electron + ~42 MB de jogo).
 
 ### Onde fica o save no PC
-Um arquivo JSON por jogo (`pingo.slot.0.json` a `pingo.slot.2.json`, mais `pingo.opcoes.json` e
-`pingo.retomada.json`), cada um com uma cópia da versão anterior (`.bak`):
+Um arquivo JSON por jogo (`pingo.slot.0.json` a `pingo.slot.2.json`, com a reserva do próprio jogo em
+`pingo.slot.N.bak.json`), mais `pingo.opcoes.json` e `pingo.retomada.json`. Cada arquivo guarda ainda a sua
+versão anterior em `<nome>.json.bak`, usada se o principal estiver danificado:
 
 - Windows: `%APPDATA%\Adventures of Pingo\saves\`
 - Linux: `~/.config/Adventures of Pingo/saves/`

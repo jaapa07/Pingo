@@ -44,3 +44,32 @@ por plugin — mesmo método do docs/ZONAS-B1.md; `run.sh <roteiro> <seg> [args]
 - O 16, o Garrote e o Conselho continuam na faixa com os checkpoints reais (equipe no nível que o fator 1,0 projeta):
   `a9 → lider-16` 54% · `passo-16 → garrote` 47% (rival 8 em seguida 24%) · `pico → Conselho` seguido: mochila do save
   2% · +4 Garrafadas Fortes +2 Chás 30% · +8 GF +4 Chás +2 Elixires 73% · +6 Elixires +4 Chás +6 Garrafadas 84%.
+- Medição (pedido do coordenador: uma do líder 15 e uma do Conselho) registrada acima: líder 15 35% (fator 1,0, mochila
+  que o dinheiro do b8 compra) e Conselho 30% (checkpoint `pico`, +4 Garrafadas Fortes +2 Chás) a 73–84% (mochila cheia).
+
+### 2. Economia do mapa B — CONCLUÍDO
+- `FATOR_PREMIO_MAPA_B = 1.5` e `fatorPremioDaZona(zona)` em src/battle/engine.ts; `premioDoTreinador` em
+  src/battle/index.ts, aplicado em `prepararBatalha` (a fala "Você ganhou N patacas" e o dinheiro já saem multiplicados).
+  Critério escolhido: a ZONA da batalha (ids `B…`, `PP…`, `A-R6`, `A-MT…`, `A9…` — as áreas do mapa A que só abrem na
+  jornada do B). Não usei `liga-vencida` porque inflaria as revanches, o rival semanal e a Torre do mapa A, que já têm
+  prêmio próprio (`premioDaFase`). Nenhum treinador editado.
+- Garrafada Forte (`garrafada-forte`, Remédios, 1500, cura 120, usável em batalha) no fim de src/data/itens.ts; à venda em
+  B1, B2, B3, B4, B5 (as duas listas), B6, B7, B8, B9 e PP (+ `ESTOQUE_BASE` do _b2-lib).
+- Teste unitário (npm test, "decisões finais"): zonas que pagam ×1,5 e que não pagam, `prepararBatalha(...).patacas` em
+  B3 (1500) e A3 (1000), item e as 10 Vendas.
+
+### 3. Ajustes menores — CONCLUÍDO
+- Rival 7 (`b2-rival-7`, src/data/eventos/b2-sul.ts): depois das falas, a Tainá oferece chimarrão e garrafada, `['curar']`
+  com fade, e só então a luta.
+- Laboratório (`b2-lab-final`): depois da Zinabre, o tenente Lata manda deitar a equipe na maca → `['curar']` → luta com
+  ele. Só na 1ª passagem (se o jogador perder para o Lata, volta pelo Posto e enfrenta só ele, como antes).
+- Ginásio 14: NPC `g14-peao` (Peão Tibúrcio, `cl-vaqueiro`, (13, 4) no salão, fora das pistas) com o script
+  `ginasio-14-peao` (src/data/eventos/ginasio-14.ts): antes da insígnia explica; depois pergunta (simnao →
+  `g14-peao-leva`) e leva à porta com `['warp', 'B7-ginasio', 8, 16, 's']`.
+
+### 4. Revanches de líder — CONCLUÍDO
+- `revancheLiderLiberada(insígnia do líder, insígnias do jogador, flags)` em src/data/revancha.ts: 1–8 com `liga-vencida`,
+  9–16 com 16 insígnias. Usada no Rádio (Contatos: fala nova `liderSertao`; descrição "Revanche depois das 16 insígnias";
+  `podeHoje`/Agenda do dia; a tabela Revanches lista só os liberados) e no Ginásio de Treino (`atualizarAgenda` não põe o
+  líder no salão, `agendaTreino` da recepção lista só os liberados, `revPreparar` recusa).
+- Teste unitário das três faixas.

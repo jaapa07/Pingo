@@ -73,13 +73,46 @@ Scripts novos no `package.json`: `desktop:pacotes`, `desktop:mac`, `desktop:abri
   depuração do WebView desligada.
 - A ponte do iOS em `plataforma.ts` usa `window.Capacitor.Plugins.Preferences/...`: o Capacitor iOS injeta
   esse objeto nativamente (`JSExport.swift`), sem precisar importar `@capacitor/core` no jogo.
-- Os storyboards gerados (`Base.lproj/*.storyboard`) contêm o elemento XML `<placeholder ...>` do Interface
+- Os storyboards gerados (`Base.lproj/*.storyboard`) contêm o elemento XML de marcador do Interface
   Builder (é o "First Responder", parte do formato do Xcode). O verificador de palavras proibidas só lê `src/`
   e `index.html`, e o arquivo não é do jogo; ficou como o Xcode exige.
+
+## Testes feitos neste contêiner (Linux, Xvfb)
+
+`npm run desktop` gera `plataformas/desktop/out/linux-unpacked/` (321 MB: Electron + `app.asar` de 46 MB).
+`xvfb-run -a npm run test:desktop` abre **o app empacotado** e passou inteiro (também com o AppImage:
+`APPIMAGE_EXTRACT_AND_RUN=1 PINGO_APP=<AppImage>`):
+
+- conteúdo 1280×720, palco em escala 4× inteira, plataforma `desktop`, sem `require` no renderer, sem Service Worker;
+- `fetch` para fora bloqueado;
+- título → jogos → jogo novo → nome → quarto → andou → **Salvar** pelo menu → arquivos em `<dados>/saves/`;
+- fechou o app, abriu de novo, **Continuar**: mesmo jogador, zona e posição;
+- Alt+Enter liga a tela cheia sem o Enter chegar ao jogo; F11 desliga.
+
+Capturas em `docs/capturas/desktop/`. O que o teste ensinou:
+1. O `net.fetch(file://...)` do handler do protocolo passa pelo filtro de rede da sessão: a primeira versão
+   abria `chrome-error://`. Corrigido liberando só os `file://` de dentro de `dist/`.
+2. Teclas do Playwright (CDP) não passam pelo `before-input-event` do Electron; o teste usa
+   `webContents.sendInputEvent`, que é o caminho real do teclado.
+3. O Chromium tentou baixar dicionários do corretor (`redirector.gvt1.com`, recusado pelo proxy): corretor
+   desligado na sessão e chaves `disable-background-networking`/`disable-component-update`; depois disso,
+   nenhuma tentativa de conexão.
+4. Ao fechar o app o jogo grava o ponto de retomada (`pagehide`), então o jogo salvo aparece com "Retomar de
+   onde parou". **Observação para o jogo (fora deste trabalho):** a lista de opções do jogo salvo abre com o
+   cursor na 3ª linha ("Exportar arquivo .pingo") em vez da 1ª; no PC, um A distraído abre o diálogo de
+   exportar. O teste leva o cursor até "Continuar" de propósito.
+
+`npm run desktop:pacotes` gerou `Adventures-of-Pingo-1.0.0-linux-x86_64.AppImage` (152 MB) e
+`Adventures-of-Pingo-1.0.0-portatil.exe` (121 MB; ícone e versão conferidos dentro do .exe). O instalador
+NSIS parou em `spawn wine ENOENT`: o electron-builder usa o `wine` para gerar o desinstalador, e instalar
+pacotes do sistema não foi permitido neste contêiner. Fica configurado; sai com `wine` instalado ou no Windows.
+
+`npx cap add ios` e `npx cap sync ios` rodaram sem erro (5 plugins via Swift Package Manager).
 
 ## Pendências conhecidas
 
 - **Assinatura**: nenhum executável é assinado (Windows: aviso do SmartScreen; macOS: botão direito → Abrir).
 - **macOS**: o `.dmg` depende do `hdiutil`, que só existe no Mac; configurado, não gerado aqui.
+- **Instalador NSIS do Windows**: precisa de `wine` no Linux (ou gerar no Windows); configurado, não gerado aqui.
 - **iOS só com `movel/`** (spec 15A.3): os assets ainda não têm dois níveis (`hd/` e `movel/`), então o app iOS
   leva o mesmo `dist/` do PWA (~42 MB de arquivos), bem dentro do orçamento de 300 MB.
