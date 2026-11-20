@@ -316,9 +316,16 @@ const etapas = {
       if ((await t.st()).zona !== 'B-R4' && (await t.st()).zona !== 'B7') { await cidade('B6', MANT); await viajar('B-R4'); }
       if ((await t.st()).zona === 'B-R4') {
         await t.foto('b-r4');
-        for (const [x, y] of [[12, 60], [12, 57], [36, 46], [36, 43], [20, 32], [20, 30], [8, 18], [8, 16]]) { await Qr(([x, y]) => window.Q.irAteForca(x, y), [x, y]); await recompor(); }
-        await limpar({ forca: true });
-        await Qr(() => window.Q.irAteForca(38, 1)); await t.ir('n');
+        // a Subida é de mão única (saliências e paredões): sem volta ao Posto no meio, só remédios
+        semVolta = true;
+        try {
+          const empurrar = async (x, y) => { await t.irAte(x, y + 1); for (let k = 0; k < 6 && (await t.st()).y >= y; k++) { await t.agir('n'); await t.ir('n'); } console.log('   empurrou o pedregulho de', x, y, '→ jogador em', JSON.stringify(await t.st())); };
+          await limpar(); await t.irAte(12, 58); await limpar();
+          await empurrar(36, 45); await limpar();
+          await t.irAte(20, 30); await limpar();
+          await empurrar(8, 17); await limpar();
+          await t.irAte(38, 1); await t.ir('n');
+        } finally { semVolta = false; }
       }
       await t.assentar(); await t.exige((await t.st()).zona === 'B7', 'chegou à Serra da Geada');
       await t.foto('b7-chegada');

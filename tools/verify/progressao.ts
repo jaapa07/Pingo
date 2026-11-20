@@ -29,9 +29,13 @@ const ZONAS_NO_PASSO: Record<string, number> = {
   'A-R4': 3, 'A-US-1': 3, 'A-BA': 3, A5: 3, 'A5-ginasio': 3, A6: 4, 'A6-ginasio': 4, 'A-GB-1': 5, A7: 5, 'A7-ginasio': 5, 'A-R5': 5, A8: 6, 'A8-ginasio': 6, 'A-R7': 7, A10: 7, 'A10-ginasio': 7, 'A-LG': 7,
 };
 const PERIODOS = ['manha', 'dia', 'tarde', 'noite'] as const;
+/** simulação com o mapa B aberto: o termo `mapa-b` das condições vale `true` mesmo com MAPA_B_ABERTO = false no jogo */
+let mapaBSimulado = false;
+const comMapaB = (c: string) => (mapaBSimulado ? c.replace(/(^|[&|!])\s*mapa-b(?=\s*($|[&|]))/g, '$1sempre') : c);
 /** a condição vale em algum período do dia (o jogador pode esperar) */
 function vale(c: string | undefined): boolean {
   if (!c) return true;
+  c = comMapaB(c);
   if (!c.includes('periodo')) { try { return cond(c); } catch { return false; } }
   try { return PERIODOS.some((p) => { forcarPeriodo(p); return cond(c); }); } catch { return false; } finally { forcarPeriodo(null); }
 }
@@ -39,9 +43,17 @@ class Retida extends Error {}
 const ehEnt = (t?: string) => !!t && t !== 'borda' && t !== 'buraco';
 
 export interface Passo { insignias: number; zonasNovas: string[]; amuletos: string[]; disponiveis: number[]; flags: string[] }
-export interface ResultadoProgressao extends Achado { passos: Passo[]; /** nº de insígnias com que cada treinador / zona fica alcançável pela primeira vez */ treinadorNoPasso: Map<string, number>; zonaNoPasso: Map<string, number> }
+export interface ResultadoProgressao extends Achado { passos: Passo[]; /** nº de insígnias com que cada treinador / zona fica alcançável pela primeira vez */ treinadorNoPasso: Map<string, number>; zonaNoPasso: Map<string, number>; /** continuação com o mapa B aberto (Liga → Conselho → pós-jogo) */ b?: ResultadoMapaB }
+export interface ResultadoMapaB extends Achado { passos: Passo[]; treinadorNoPasso: Map<string, number>; zonaNoPasso: Map<string, number> }
 
-class Sim {
+/** contrato do topo de docs/HISTORIA.md para o mapa B: Amuleto que chega com cada insígnia 9–16 */
+const AMULETO_DA_INSIGNIA: Record<number, AmuletoId> = { 9: 'mergulho', 10: 'escalar', 12: 'cachoeira', 14: 'voo' };
+/** marcos do mapa B → nº máximo de insígnias com que têm de estar feitos (HISTORIA.md: "antes da insígnia N") e mínimo com que podem acontecer */
+const MARCOS_B: Record<string, [number, number]> = {
+  'mina-ok': [9, 9], 'laboratorio-ok': [12, 12], 'rival-6': [9, 11], 'rival-7': [12, 14], 'garrote-vencido': [16, 16], 'rival-8': [16, 16], 'conselho-vencido': [16, 16],
+};
+
+export class Sim {
   alc = new Map<string, Set<number>>(); // zona → tiles alcançados (acumulado)
   inteiras = new Set<string>();
   teto = 0; // maior insígnia que pode ser recebida agora
@@ -128,6 +140,8 @@ class Sim {
         case 'temEspecie': case 'temDinheiro': this.flag(String(y)); break;
         case 'temItens': if (jogo.save.mochila[String(x)]) this.flag(String(z)); break;
         case 'a2-lenda-fim': this.flag(String(x)); break;
+        // visitantes (src/data/eventos/visitantes.ts): flags derivadas do estado
+        case 'vis-estado': if (jogo.save.mochila['frasco-agua-escura'] && jogo.save.mochila['frasco-agua-barrenta']) this.flag('vis-frascos'); break;
         default: break;
       }
     }
@@ -139,7 +153,7 @@ class Sim {
       for (const zid of [...this.alc.keys()]) {
         const z = this.d.zonas.get(zid)!; this.expandir(z);
         const s = this.alc.get(zid)!, w = z.mapaChars[0].length;
-        for (const wp of z.warps) { if (!s.has(wp.y * w + wp.x) || !vale(wp.requer) || !this.d.zonas.has(wp.para.zona)) continue; const destino = this.d.zonas.get(wp.para.zona)!; if (destino.mapa !== 'A' && !vale('mapa-b')) continue; this.semear(wp.para.zona, wp.para.x, wp.para.y); }
+        for (const wp of z.warps) { if (!s.has(wp.y * w + wp.x) || !vale(wp.requer) || !this.d.zonas.has(wp.para.zona)) continue; if ((z.mapaChars[wp.y]?.[wp.x] === 'd' || z.submerso) && !this.tem('mergulho')) continue; const destino = this.d.zonas.get(wp.para.zona)!; if (destino.mapa !== 'A' && !vale('mapa-b')) continue; this.semear(wp.para.zona, wp.para.x, wp.para.y); }
         for (const n of z.npcs ?? []) {
           if (!this.perto(z, n.x, n.y, n.treinador ? Math.max(1, n.visao ?? 4) : 1)) continue;
           // o passo do treinador vale mesmo que ele já tenha ido embora (NPCs do Cartel somem ao fim do evento)
@@ -151,6 +165,8 @@ class Sim {
         for (const o of z.objetos ?? []) if (typeof o.script === 'string' && this.perto(z, o.x, o.y, 2)) this.rodar(o.script);
         for (const g of z.gatilhos ?? []) { if (!vale(g.se)) continue; let pisa = false; for (let y = g.y; y < g.y + (g.h ?? 1) && !pisa; y++) for (let x = g.x; x < g.x + (g.w ?? 1); x++) if (s.has(y * w + x)) { pisa = true; break; } if (pisa) this.rodar(g.script); }
         for (const i of z.itens ?? []) if (this.perto(z, i.x, i.y) && !jogo.save.flags[i.flag]) { setFlag(i.flag); if (!jogo.save.mochila[i.item]) darItem(i.item, i.qtd ?? 1); this.mudou = true; }
+        // frascos do Encontro das Águas (x-ea.ts): só com a missão do Seu Tarumã; o Poço do Breu pede Mergulho
+        for (const c of this.d.colheitas) if (c.zona === zid && jogo.save.flags['ea-missao'] && !jogo.save.flags[c.flagOk] && (c.flagOk !== 'ea-frasco-escuro' || this.tem('mergulho')) && this.perto(z, c.x, c.y, 2)) { setFlag(c.flagOk); darItem(c.item, 1); this.mudou = true; }
       }
       if (!this.mudou) return;
     }
@@ -158,7 +174,7 @@ class Sim {
   }
 }
 
-export async function progressao(): Promise<ResultadoProgressao> {
+export async function progressao(opcoes: { mapaB?: boolean } = {}): Promise<ResultadoProgressao> {
   const a: ResultadoProgressao = { ...novoAchado(), passos: [], treinadorNoPasso: new Map(), zonaNoPasso: new Map() }, d = await carregar();
   const guardado = jogo.save;
   try {
@@ -201,11 +217,68 @@ export async function progressao(): Promise<ResultadoProgressao> {
     if (foraDoA.length) a.erros.push(`${ARQ}: zonas fora do mapa A alcançadas antes de o mapa B abrir: ${foraDoA.join(', ')}`);
     const nunca = [...d.zonas.values()].filter((z) => z.mapa === 'A' && !sim.alc.has(z.id)).map((z) => z.id);
     if (nunca.length) a.pendentes.push(`${nunca.length} zona(s) do mapa A só abrem com Amuletos/insígnias do mapa B (áreas de retorno): ${nunca.join(', ')}`);
-    a.pendentes.push('mapa B, ginásios 9–16, Conselho e pós-jogo: fora da simulação até o mapa B abrir (MAPA_B_ABERTO = false)');
-    a.treinadorNoPasso = sim.treinadorNoPasso; a.zonaNoPasso = primeiraVez;
+    a.treinadorNoPasso = new Map(sim.treinadorNoPasso); a.zonaNoPasso = new Map(primeiraVez);
     const tiles = [...sim.alc.values()].reduce((s, v) => s + v.size, 0);
     a.info.push(`${sim.alc.size} zonas e ${tiles} tiles alcançados do quarto até a Liga; ${Object.keys(jogo.save.flags).length} flags; Amuletos finais: ${jogo.save.amuletos.join(', ')}`);
+    if (opcoes.mapaB) a.b = continuarNoMapaB(sim, d, primeiraVez, nunca);
+    else a.pendentes.push('mapa B, ginásios 9–16, Conselho e pós-jogo: fora da simulação (rode com --mapa-b)');
   } catch (e) { a.erros.push('tools/verify/progressao.ts: a simulação parou — ' + String((e as Error).stack ?? e).slice(0, 400)); }
-  finally { jogo.save = guardado; }
+  finally { jogo.save = guardado; mapaBSimulado = false; }
   return a;
+}
+
+/**
+ * MAPA B ABERTO: continua a mesma simulação depois da Liga, como se MAPA_B_ABERTO fosse `true` (o termo `mapa-b` das
+ * condições vale verdadeiro). Insígnias 9–16 uma de cada vez, na ordem do topo de docs/HISTORIA.md, cada uma só com os
+ * Amuletos e flags dos passos anteriores; depois Garrote e Conselho (`conselho-vencido`) e, por fim, o pós-jogo.
+ */
+function continuarNoMapaB(sim: Sim, d: Dados, primeiraVezA: Map<string, number>, nuncaNoA: string[]): ResultadoMapaB {
+  const b: ResultadoMapaB = { ...novoAchado(), passos: [], treinadorNoPasso: new Map(), zonaNoPasso: new Map() };
+  const ARQ = 'src/data/zonas + src/data/eventos (mapa B)';
+  mapaBSimulado = true;
+  const antesB = new Set(sim.treinadorNoPasso.keys());
+  let vistas = new Set(sim.alc.keys());
+  const primeiraFlag = new Map<string, number>();
+  const amuletosEsperados = (k: number): string => [...AMULETOS_NO_PASSO[8], ...Object.entries(AMULETO_DA_INSIGNIA).filter(([n]) => Number(n) <= k).map(([, x]) => x)].sort().join(',');
+  // passo 17 = pós-jogo: mesmo teto (16), mas depois de `conselho-vencido`
+  for (let k = 8; k <= 17; k++) {
+    sim.teto = Math.min(k, 16); sim.disponiveis.clear();
+    sim.fechar();
+    const zonas = new Set(sim.alc.keys()), novas = [...zonas].filter((z) => !vistas.has(z)); vistas = zonas;
+    for (const z of novas) b.zonaNoPasso.set(z, k);
+    for (const f of Object.keys(MARCOS_B)) if (jogo.save.flags[f] && !primeiraFlag.has(f)) primeiraFlag.set(f, k);
+    const disp = [...sim.disponiveis].sort((x, y) => x - y);
+    b.passos.push({ insignias: k, zonasNovas: novas.filter((z) => !/-(casa|posto|venda)/.test(z)), amuletos: [...jogo.save.amuletos], disponiveis: disp, flags: Object.keys(MARCOS_B).filter((f) => jogo.save.flags[f]) });
+    const kk = Math.min(k, 16);
+    const tem = jogo.save.insignias.slice().sort((x, y) => x - y).join(','), quer = Array.from({ length: kk }, (_, i) => i + 1).join(',');
+    if (tem !== quer) b.erros.push(`${ARQ}: no passo ${k} o jogador deveria ter as insígnias [${quer}] e tem [${tem}]`);
+    if (k < 16) {
+      if (!disp.includes(k + 1)) b.erros.push(`${ARQ}: com ${k} insígnia(s), o líder ${k + 1} NÃO é alcançável (falta caminho, Amuleto ou flag)`);
+      for (const n of disp) if (n > k + 1) b.erros.push(`${ARQ}: quebra de sequência — com ${k} insígnia(s) já dá para ganhar a insígnia ${n}`);
+      if (jogo.save.flags['conselho-vencido']) b.erros.push(`${ARQ}: o Conselho pode ser vencido com só ${k} insígnia(s)`);
+    }
+    if (k === 16 && !jogo.save.flags['conselho-vencido']) b.erros.push(`${ARQ}: com as 16 insígnias, o Conselho (flag conselho-vencido) NÃO é alcançável`);
+    const am = [...jogo.save.amuletos].sort().join(','), amQuer = amuletosEsperados(kk);
+    if (am !== amQuer) b.erros.push(`${ARQ}: Amuletos com ${kk} insígnia(s): esperado [${amQuer}] (docs/HISTORIA.md), obtido [${am}]`);
+  }
+  for (const [f, [lo, hi]] of Object.entries(MARCOS_B)) {
+    const p = primeiraFlag.get(f);
+    if (p === undefined) b.erros.push(`${ARQ}: o marco "${f}" nunca é obtido (esperado com ${lo === hi ? lo : `${lo}–${hi}`} insígnia(s))`);
+    else if (p < lo || p > hi) b.erros.push(`${ARQ}: o marco "${f}" acontece com ${p} insígnia(s); o roteiro (docs/HISTORIA.md) manda com ${lo === hi ? lo : `${lo}–${hi}`}`);
+  }
+  // zona com passo declarado p (faixa de níveis "antes do líder p") alcançada muito antes: selvagens/treinadores fortes cedo demais
+  for (const [z, k] of b.zonaNoPasso) {
+    const zd = d.zonas.get(z)!, p = zd.passo; if (p === undefined || zd.tipo === 'interior') continue;
+    if (k < Math.min(p, 17) - 1) b.avisos.push(`${d.arquivoDaZona.get(z)}: ${z} (passo ${p}) já alcançável com ${k} insígnia(s)`);
+  }
+  // treinadores novos do mapa B: passo em que ficam alcançáveis
+  for (const [t, k] of sim.treinadorNoPasso) if (!antesB.has(t)) b.treinadorNoPasso.set(t, k);
+  const nunca = [...d.zonas.values()].filter((z) => !sim.alc.has(z.id) && !z.id.startsWith('_')).map((z) => z.id);
+  if (nunca.length) b.erros.push(`${ARQ}: ${nunca.length} zona(s) nunca alcançada(s) nem com o mapa B aberto e o Conselho vencido: ${nunca.join(', ')}`);
+  const retorno = nuncaNoA.filter((z) => sim.alc.has(z)).map((z) => `${z} (${b.zonaNoPasso.get(z)})`);
+  const semLuta = [...d.treinadores.values()].filter((t) => !sim.treinadorNoPasso.has(t.id)).map((t) => t.id);
+  b.info.push(`${sim.alc.size} zonas (${sim.alc.size - primeiraVezA.size} novas depois da Liga) e ${[...sim.alc.values()].reduce((s, v) => s + v.size, 0)} tiles alcançados até o pós-jogo; Amuletos finais: ${jogo.save.amuletos.join(', ')}`);
+  if (retorno.length) b.info.push(`áreas de retorno do mapa A abertas pelo mapa B (nº de insígnias): ${retorno.join(', ')}`);
+  if (semLuta.length) b.info.push(`${semLuta.length} treinador(es) sem NPC no mapa (revanches, Rádio, variantes da rival, chamados por evento): ${semLuta.slice(0, 40).join(', ')}${semLuta.length > 40 ? '…' : ''}`);
+  return b;
 }

@@ -59,7 +59,7 @@ export async function abrir(save, o = {}) {
     p.jogo.opcoes.velTexto = 3; p.jogo.opcoes.animBatalha = op.anim ?? false;
     await p.mundo.irPara(sv.jogador.zona, sv.jogador.x, sv.jogador.y, sv.jogador.dir, 'nenhuma');
   }, [save, { dificuldade: o.dificuldade, semente: o.semente, anim: o.anim }]);
-  await page.addScriptTag({ content: readFileSync(`${AQUI}piloto-pagina.js`, 'utf8'), type: 'module' });
+  await page.addScriptTag({ content: readFileSync(new URL('./piloto.js', import.meta.url), 'utf8'), type: 'module' });
   await page.waitForFunction(() => window.Q?.pronto || window.Q?.erro, null, { timeout: 60000 });
   const e0 = await page.evaluate(() => window.Q.erro);
   if (e0) throw new Error('piloto não carregou: ' + e0);
