@@ -68,17 +68,22 @@ na branch `main`. Para ligar:
 Observações:
 - Em conta gratuita, o Pages exige repositório **público** (privado só nos planos pagos).
 - Os assets (sprites, zonas, arenas) já estão versionados em `public/`; o CI não roda os renders.
-- O pacote publicado tem ~29 MB em ~9 mil arquivos pequenos (os mapas são fatiados em blocos). O `du` mostra
-  ~53 MB para a mesma pasta: é o espaço em blocos de 4 KB no disco, não o tamanho do que é enviado.
+- O pacote publicado tem ~42 MB em ~15,7 mil arquivos pequenos (os mapas são fatiados em blocos). O `du` mostra
+  ~80 MB para a mesma pasta: é o espaço em blocos de 4 KB no disco, não o tamanho do que é enviado.
+- Para jogar sem internet o aparelho guarda ~30 MB (núcleo 2,7 MB na instalação + ~27 MB em lotes logo depois).
+  Enquanto o mapa B estiver fechado (`MAPA_B_ABERTO = false`), as zonas do Sertão, do Pico e do Encontro das
+  Águas (~10 MB) ficam fora desse download; quando a chave virar `true`, a atualização as baixa sozinha.
 
 ## 4. Conferir antes de publicar
 
-    npm run check                # verificador único (~1 min): tsc, batalha, zonas, palavras proibidas, dados,
-                                 # progressão até a Liga, níveis, sprites, BUILD LIMPO, arquivos do pacote, dist
+    npm run check                # verificador único (~2 min): tsc, batalha, zonas, palavras proibidas, dados,
+                                 # progressão até a Liga e do mapa B aberto até o Conselho, níveis, sprites,
+                                 # BUILD LIMPO, arquivos do pacote, dist
+    npm run check -- --mapa-b    # só as duas progressões, passo a passo (quarto → Liga → Conselho → pós-jogo)
     npm run check -- --rapido    # sem o build limpo (~15 s), para o dia a dia
     npm run check -- --offline   # + Playwright sobre o build limpo: PC + iPhone em pé e deitado, rede cortada,
                                  # e a atualização de versão com o jogo aberto (capturas em docs/capturas/offline/)
-    npm run check -- --tudo      # lista todos os avisos e as referências quebradas do mapa B
+    npm run check -- --tudo      # lista todos os avisos
 
 O **build limpo** repete o que o GitHub faz: `git clone` do HEAD numa pasta temporária, mais os arquivos
 alterados/novos que um commit levaria, `node_modules` por link e `npm run build`. Ele falha se o jogo usa

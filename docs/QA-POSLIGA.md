@@ -29,3 +29,24 @@ Capturas em `/tmp/claude-0/-home-user/58474daf-1a50-5b1b-8bec-0786b708dc45/scrat
     O Campeão recém-saído da Liga está ~10 níveis abaixo e perde sempre. No site (mapa B fechado) o maior selvagem alcançável
     pós-Liga é nível 39 (A-R7); A-R6/A-MT/A9 (64–70) estão fechados. O único treino acima de 45 são as revanches de comuns
     (fase 3, ás 50) — dá, mas é longo. Os níveis-alvo são decisão do autor: não mexi.
+- (M2) Rival semanal — `r2-rival.mjs`. Segunda: Tainá ausente; terça (13h): na Gruta do Eco (47,6); luta NA TELA com o Campeão
+  como está: **vitória** 2 de 2 (24–30 turnos; equipe dela Gaviãozão 52 … Lobo-Fornalha 55, usou 2 Garrafadas); +5800 patacas;
+  some depois da luta; não reaparece no mesmo dia; quinta (2 dias corridos depois): de volta. Dificuldade boa (a rival é
+  vencível sem treino; os líderes não).
+- (M3) Quiz do Rádio — `r3-quiz.mjs`. 4 de 5 → Cartão do Rádio; mesmo dia: "já foi ao ar"; dia seguinte 5/5 sem 2º cartão.
+  Rádio com o Cartão: 10 programas (Cantiga das Lendas). As cantigas (8 linhas) também estouravam o papel: resolvido pela
+  paginação do M1 (2 páginas).
+- (M4) Torre de Desafios — `r4-torre.mjs`. Regras; 3 dias seguidos: 3 vitórias na tela (nível 50), +3 pontos cada,
+  sequência 1→3; equipe e mochila originais voltam intactas, sem experiência; recusa no mesmo dia; troca de 3 pontos por
+  Cuia de Ouro ok. Desafiantes no nível 50 são fáceis para o Campeão (que sobe de 45–48 para 50 na cópia).
+- (M5) Gincana — `r5-gincana.mjs` + `humano.js` (jogador "gente": tempo real, reação 0,25 s, erro de tempo 45 ms, 10% de
+  distração; só lê o que está na tela). Carreiro A-LG → A-GN ok; Seu Graviola dá 3 cajus e o suco (+15% agilidade).
+  Resultados (semente 1): Corrida da Vereda 479 (1º, pódio +30), Empurra-Tora 165 (2º, +15), Salto do Riacho 214 (2º, +15);
+  144 pontos da Gincana no 1º dia. Rivais fazem 90–290. Sem apertar nada a corrida ainda faz 144–203 (desvios automáticos
+  não existem; os obstáculos simplesmente não acertam sempre) → **a Corrida é fácil demais** (gente chega a ~1,8× o melhor rival);
+  Força e Salto estão no ponto (dá pódio sem robô, 1º lugar pede treino).
+  - **CORRIGIDO** (src/ui/telas/gincana.ts): "fez 214 pontos **na** Salto do Riacho" → "no Salto do Riacho".
+- (M6) **CORRIGIDO** `cartel-lago` (src/data/eventos/captura.ts): o evento usava `['batalha', 'cartel-lago', …]`, mas o
+  treinador é registrado em código (registrarTreinador) e os verificadores só conhecem os de src/data/treinadores/ → erro
+  "batalha com cartel-lago, que não existe". Agora o duelo é o comando `['lagoDuelo']` (mesma regra de `segue: true`: perder
+  cura e segue, `batalha-perdida` diz o resultado).

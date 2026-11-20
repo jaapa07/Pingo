@@ -103,6 +103,17 @@ export class Sim {
     for (let dy = -raio; dy <= raio; dy++) for (let dx = -raio; dx <= raio; dx++) { if (Math.abs(dx) + Math.abs(dy) > raio) continue; const nx = x + dx, ny = y + dy; if (nx >= 0 && ny >= 0 && nx < w && ny < h && s.has(ny * w + nx)) return true; }
     return false;
   }
+  /** o treinador vê o jogador: tile alcançado ao lado dele ou numa linha reta de até `visao` tiles, sem parede no meio */
+  aVista(z: ZonaDef, x: number, y: number, visao: number): boolean {
+    if (this.perto(z, x, y, 1)) return true;
+    const s = this.alc.get(z.id); if (!s) return false; const { w, h, b } = blocos(z);
+    for (const [dx, dy] of [[0, 1], [0, -1], [1, 0], [-1, 0]]) for (let i = 1; i <= visao; i++) {
+      const nx = x + dx * i, ny = y + dy * i; if (nx < 0 || ny < 0 || nx >= w || ny >= h) break;
+      const k = ny * w + nx; if (s.has(k)) return true;
+      if (b[k] || '#TtbfMC '.includes(z.mapaChars[ny][nx])) break;
+    }
+    return false;
+  }
   insignia(n: number) {
     if (jogo.save.insignias.includes(n)) return;
     if (n > this.teto) { this.disponiveis.add(n); throw new Retida(); }
@@ -141,6 +152,7 @@ export class Sim {
         case 'temItens': if (jogo.save.mochila[String(x)]) this.flag(String(z)); break;
         case 'a2-lenda-fim': this.flag(String(x)); break;
         // visitantes (src/data/eventos/visitantes.ts): flags derivadas do estado
+        case 'lagoDuelo': this.vencer('cartel-lago'); break; // duelo do capanga do Lago (src/data/eventos/captura.ts)
         case 'vis-estado': if (jogo.save.mochila['frasco-agua-escura'] && jogo.save.mochila['frasco-agua-barrenta']) this.flag('vis-frascos'); break;
         default: break;
       }
@@ -155,7 +167,7 @@ export class Sim {
         const s = this.alc.get(zid)!, w = z.mapaChars[0].length;
         for (const wp of z.warps) { if (!s.has(wp.y * w + wp.x) || !vale(wp.requer) || !this.d.zonas.has(wp.para.zona)) continue; if ((z.mapaChars[wp.y]?.[wp.x] === 'd' || z.submerso) && !this.tem('mergulho')) continue; const destino = this.d.zonas.get(wp.para.zona)!; if (destino.mapa !== 'A' && !vale('mapa-b')) continue; this.semear(wp.para.zona, wp.para.x, wp.para.y); }
         for (const n of z.npcs ?? []) {
-          if (!this.perto(z, n.x, n.y, n.treinador ? Math.max(1, n.visao ?? 4) : 1)) continue;
+          if (!(n.treinador ? this.aVista(z, n.x, n.y, Math.max(1, n.visao ?? 4)) : this.perto(z, n.x, n.y, 1))) continue;
           // o passo do treinador vale mesmo que ele já tenha ido embora (NPCs do Cartel somem ao fim do evento)
           if (n.treinador && this.d.treinadores.has(n.treinador) && !this.treinadorNoPasso.has(n.treinador)) this.treinadorNoPasso.set(n.treinador, this.teto);
           if (!vale(n.se)) continue;

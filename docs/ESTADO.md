@@ -144,3 +144,4 @@ Depois: zonas B1/B2 (+níveis novos do mapa B), ginásios 9–16 (9 Terra tem pr
 - DECISÃO DO USUÁRIO: Cuia Guardiã = 3 no total (A-RS, A9 e a 3ª dada pela Profª Ipê com 100 espécies capturadas no Diário; evento no script prof-ipe, flag guardia-100). Espaço para novos lendários no futuro (ideia do usuário, não implementar sem pedido).
 - DECISÕES DO USUÁRIO (começo do jogo, inicial de Mata): (1) líder 1 → 31–55% só para Mata; (2) criatura de Rio pescável antes do Remo; (3) tenente Lata +15% para Mata. Agente lançado (diário docs/AJUSTES-MATA.md). 5 rodando.
 - Acréscimo do usuário: além da pesca, uma TROCA com morador que dá criatura de Rio antes do Remo (duas formas de conseguir).
+- **REGRA ATUAL DO USUÁRIO: conforme forem encerrando, manter no máximo 3 agentes** (não lançar novo enquanto houver 3 ou mais; hoje há 5).

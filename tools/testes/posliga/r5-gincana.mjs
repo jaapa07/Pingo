@@ -37,7 +37,7 @@ try {
   await t.q(() => { window.Q.telaEsperada = null; }); await t.assentar();
   console.log('   graviola:', (await textos(t, 8)).map((x) => x.replace(/\n/g, ' ')).join(' ⏎ ').slice(0, 500));
   const res = {};
-  for (const [i, prova] of ['agilidade', 'forca', 'salto'].entries()) {
+  for (const [i, prova] of (process.argv[7] === 'sem-provas' ? [] : ['agilidade', 'forca', 'salto']).entries()) {
     const m = await melhor(prova);
     const dur = (0.55 + 0.2 * Math.max(0, Math.min(1, (m.vel - 30) / 220)));
     await t.q((i) => { const Q = window.Q; Q.regrasEscolha = Q.regrasEscolha.filter((r) => !r[0].prova); Q.regrasEscolha.unshift([{ prova: true, test: () => /^Qual prova/.test(Q.textos[Q.textos.length - 1] ?? '') }, i]); Q.telaEsperada = /tela-equipe/; }, i);
@@ -57,15 +57,14 @@ try {
     console.log(`   ${prova} (criatura ${m.nome}, vel ${m.vel} atq ${m.atq} def ${m.def}; ${log.teclas} teclas em ${log.seg.toFixed(0)} s):`, fs.map((x) => x.replace(/\n/g, ' ')).join(' ⏎ '));
     res[prova] = fs.join(' ');
   }
-  t.ok(Object.keys(res).length === 3, '3 provas jogadas');
+  if (process.argv[7] !== 'sem-provas') t.ok(Object.keys(res).length === 3, '3 provas jogadas');
   // ranking pelo quadro
   await t.q(async () => { const V = await import('/src/world/vivo.ts'); const o = V.M.zv.def.objetos.find((x) => x.script === 'gincana-quadro'); window.__quadro = [o.x, o.y]; });
   const [qx, qy] = await t.q(() => window.__quadro);
-  await t.q(() => { window.Q.telaEsperada = /tela-gincana-ranking/; });
-  await t.usar(qx, qy).catch(() => 0);
-  for (let g = 0; g < 40 && !/ranking/.test(await topo(t)); g++) await t.espera(100);
+  void t.usar(qx, qy).catch(() => 0);
+  for (let g = 0; g < 80 && !/ranking/.test(await topo(t)); g++) await t.espera(100);
   await t.foto('r5-ranking');
-  await t.q(() => { window.Q.telaEsperada = null; }); await tecla(t, 'a', 1, 10); await t.assentar();
+  await tecla(t, 'a', 1, 10); await t.assentar();
   // rivais
   await limparTextos(t); await t.falarCom('gn-lina').catch((e) => console.log('   lina', e.message.split('\n')[0]));
   console.log('   rival:', (await textos(t, 2)).join(' ⏎ '));

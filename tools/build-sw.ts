@@ -7,8 +7,10 @@
  *  - `n` núcleo: página, código, interface, tilesets, FX, ícones. Entra na instalação do SW (em lotes).
  *  - `r` resto: sprites, arenas e zonas. A página baixa em lotes logo depois (src/core/offline.ts),
  *    com retomada: o que já está no cache não é baixado de novo.
- *  - `d` demanda: zonas de demonstração e, se o pacote passar do orçamento, o que não é do mapa A.
- *    Só entra no cache quando é pedido (cache-first).
+ *  - `d` demanda: zonas de demonstração; enquanto o mapa B estiver fechado (`MAPA_B_ABERTO = false` em
+ *    src/core/progresso.ts), os bakes das zonas que só se alcançam por ele (B*, PP*, X-EA): ninguém chega lá, então
+ *    não ocupam o primeiro download do iPhone; quando a chave virar `true` voltam ao resto e a atualização os baixa.
+ *    Se o pacote passar do orçamento, também o que não é do mapa A. Só entra no cache quando é pedido (cache-first).
  * Caches: `pingo-n-<versão>` guarda o núcleo de cada versão; `pingo-dados` guarda o resto, com o hash do
  * arquivo na chave (`<url>?h=<hash>`). Atualização: o SW novo aproveita do núcleo antigo o que não mudou,
  * assume logo ao instalar, guarda os núcleos velhos enquanto houver página antiga aberta (a página nova pede a faxina) e os dados que não mudaram continuam valendo; o que
@@ -17,6 +19,7 @@
 import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync, statSync, writeFileSync, existsSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
+import { MAPA_B_ABERTO } from '../src/core/progresso';
 
 const RAIZ = new URL('..', import.meta.url).pathname;
 const DIST_PADRAO = join(RAIZ, 'dist');
@@ -39,12 +42,14 @@ const ehNucleo = (c: string) =>
   !c.includes('/') || c.startsWith('icones/') || /^assets\/[^/]+$/.test(c) || /^assets\/(ui|tiles|fx)\//.test(c);
 const ehDemo = (c: string) => /^assets\/zonas\/_/.test(c);
 const ehMapaA = (c: string) => !/^assets\/zonas\//.test(c) || /^assets\/zonas\/A/.test(c);
+/** bakes de zonas só alcançáveis pelo mapa B: Sertão (B*), Pico (PP*) e o Encontro das Águas (X-EA, 16 insígnias) */
+const soPeloMapaB = (c: string) => /^assets\/zonas\/(B|PP|X-)/.test(c);
 /** ordem do download do resto: gente, zonas na ordem da viagem, criaturas, arenas */
 function prioridade(c: string): number {
   if (c.startsWith('assets/sprites/pessoa/')) return 0;
   const z = /^assets\/zonas\/(A\d+|A-[A-Z0-9]+)/.exec(c)?.[1];
   if (z) { const n = /^A(\d+)/.exec(z); return n ? 1 + Number(n[1]) : 6; }
-  if (c.startsWith('assets/sprites/criatura/')) return 20;
+  if (c.startsWith('assets/sprites/criatura/')) return /-rara\.png$/.test(c) ? 22 : 20;
   if (c.startsWith('assets/arenas/')) return 21;
   return 30;
 }
@@ -56,7 +61,7 @@ export function gerar(DIST: string = DIST_PADRAO): { versao: string; total: numb
   const estourou = bytesTotal > ORCAMENTO_MB * 1024 * 1024;
   const arquivos: Entrada[] = brutos.map((c) => {
     const dados = readFileSync(join(DIST, c));
-    const g: Grupo = ehNucleo(c) ? 'n' : ehDemo(c) || (estourou && !ehMapaA(c)) ? 'd' : 'r';
+    const g: Grupo = ehNucleo(c) ? 'n' : ehDemo(c) || (!MAPA_B_ABERTO && soPeloMapaB(c)) || (estourou && !ehMapaA(c)) ? 'd' : 'r';
     return [c, createHash('sha256').update(dados).digest('hex').slice(0, 12), dados.length, g];
   });
   arquivos.sort((a, b) => prioridade(a[0]) - prioridade(b[0]) || (a[0] < b[0] ? -1 : 1));
@@ -209,5 +214,5 @@ if (direto) {
   console.log(`[sw] versão ${r.versao}: ${r.total} arquivos, ${mb(r.bytes)} no dist`);
   console.log(`[sw] núcleo (instalação): ${r.nucleo} arquivos, ${mb(r.bytesNucleo)}`);
   console.log(`[sw] resto (lotes após abrir): ${r.resto} arquivos, ${mb(r.bytesResto)}`);
-  console.log(`[sw] por demanda: ${r.demanda} arquivos, ${mb(r.bytesDemanda)}${r.bytes > ORCAMENTO_MB * 1048576 ? ` (pacote acima de ${ORCAMENTO_MB} MB: só o mapa A no pré-cache)` : ''}`);
+  console.log(`[sw] por demanda: ${r.demanda} arquivos, ${mb(r.bytesDemanda)}${MAPA_B_ABERTO ? '' : ' (inclui as zonas do mapa B, fechado: MAPA_B_ABERTO = false)'}${r.bytes > ORCAMENTO_MB * 1048576 ? ` (pacote acima de ${ORCAMENTO_MB} MB: só o mapa A no pré-cache)` : ''}`);
 }

@@ -38,7 +38,7 @@ async function tentar(rotulo, fn, o = {}) {
       if (n >= 1 && o.treino) { const antes = (await t.batalhas()).length; try { await o.treino(); } catch (e2) { if (!/DERROTA/.test(e2.message)) throw e2; estat.derrotas.push({ etapa: rotulo + ' (treino)' }); } const depois = (await t.batalhas()).length; estat.treinoExtra.push({ etapa: rotulo, batalhas: depois - antes }); marco(`treino extra antes de ${rotulo}: ${depois - antes} batalhas`); await relato('treino'); }
     }
   }
-  throw new Error('desisti de ' + rotulo + ' depois de 8 derrotas');
+  throw new Error('desisti de ' + rotulo + ' depois de ' + (process.env.MAXT ?? 8) + ' derrotas');
 }
 const cuidar = (o) => Qr((o) => window.Q.cuidar(o), o ?? { limiar: 0.5, reanimar: false, guardar: { garrafada: 2 } });
 let semVolta = false; // trecho sem caminho de volta ao Posto (leste do Túnel Alagado): segue em frente
@@ -119,7 +119,13 @@ async function gin(n, cid, as, zonaG) {
     await chegada(`líder ${n} (entrada)`, as);
     await ginasio(n);
     await t.exige((await t.resumo()).insignias.includes(n), `insígnia ${n}`);
-  }, { treino: async () => { await viajar(cid); await Qr(() => window.Q.passear(8)).catch((e) => { if (/DERROTA/.test(e.message)) throw e; console.log('   passear:', e.message); }); } });
+  }, { treino: async () => {
+    // treino de jogador: blocos de 6 selvagens perto da cidade, voltando ao Posto (grátis) entre um bloco e outro
+    for (let k = 0; k < Math.ceil(Number(process.env.TREINO ?? 8) / 6); k++) {
+      await viajar(process.env.ONDE_TREINO ?? cid); await Qr(() => window.Q.passear(6)).catch((e) => { if (/DERROTA/.test(e.message)) throw e; console.log('   passear:', e.message); });
+      await viajar(`${cid}-posto`); await Qr(() => window.Q.curarNoPosto()); estat.postos++;
+    }
+  } });
   await t.foto(`gin${n}-fim`); await viajar(cid);
 }
 
@@ -150,7 +156,7 @@ const etapas = {
       await querCapturar(1);
       await viajar('B-R1'); await t.foto('b-r1'); await limpar();
       await viajar('B-CE'); await t.foto('b-ce'); await limpar();
-    }, { treino: async () => { await viajar('B-R1'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B-R1'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await t.checkpoint('cerrado');
   },
   async 'pantanal-grande'() {
@@ -161,7 +167,7 @@ const etapas = {
       await cidade('B2', MANT); await limpar();
       await viajar('B2-centro'); await t.foto('b2-centro'); await t.falarCom('b2-veterinaria').catch((e) => console.log('   veterinária:', e.message)); console.log('   centro:', JSON.stringify(await t.falas(3)));
       await viajar('B2');
-    }, { treino: async () => { await viajar('B-PA'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B-PA'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await t.checkpoint('b2');
   },
   async gin9() { await naoCapturar(); await gin(9, 'B2', 55, 'B2-ginasio'); await t.checkpoint('passo-9'); },
@@ -180,7 +186,7 @@ const etapas = {
       await t.exige(await t.flag('pantanal-ok'), 'Arame vencido: pantanal-ok');
       await t.foto('ninhal-depois');
       await limpar();
-    }, { treino: async () => { await viajar('B-PA'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B-PA'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     // filhote do Centro de Reabilitação (um por dia)
     await viajar('B2-centro'); await t.falarCom('b2-veterinaria').catch((e) => console.log('   veterinária:', e.message));
     console.log('   centro depois do ninhal:', JSON.stringify(await t.falas(4)), JSON.stringify(await t.flags('orfao')));
@@ -199,7 +205,7 @@ const etapas = {
       await viajar('B-R2'); await t.foto('b-r2'); await limpar();
       await viajar('B3'); await t.foto('b3-chegada');
       await cidade('B3', MANT); await limpar();
-    }, { treino: async () => { await viajar('B-R2'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B-R2'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await t.checkpoint('b3');
   },
   async mina() {
@@ -215,7 +221,7 @@ const etapas = {
       }
       await t.exige(await t.flag('mina-ok'), 'Rebite vencido: mina-ok');
       await t.foto('mina-ok');
-    }, { treino: async () => { await viajar('B-R2'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B-R2'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await viajar('B3'); await t.checkpoint('mina-ok');
   },
   async gin10() { await naoCapturar(); await gin(10, 'B3', 58, 'B3-ginasio'); await t.checkpoint('passo-10'); },
@@ -240,7 +246,7 @@ const etapas = {
       // a Tainá espera na estrada que sobe da chapada (gatilho na fila 31): segue pela estrada para o norte
       if (!(await t.flag('rival-6'))) { await prontoParaChefe('rival-6 (Tainá)', 59); await t.ir('n'); await t.assentar(); }
       if (!(await t.flag('rival-6'))) { console.log('   rival-6 ainda não aconteceu; falas:', JSON.stringify(await t.falas(3))); }
-    }, { treino: async () => { await viajar('B-CH'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B-CH'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await t.exige(await t.flag('rival-6'), 'rival-6 feito');
     await cidade('B4', MANT); await limpar();
     await t.checkpoint('b4');
@@ -252,7 +258,7 @@ const etapas = {
       await viajar('B-R3'); await t.foto('b-r3'); await limpar();
       await viajar('B5'); await t.foto('b5-chegada');
       await cidade('B5', MANT); await limpar();
-    }, { treino: async () => { await viajar('B-R3'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B-R3'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await t.checkpoint('b5');
   },
   async gin12() {
@@ -277,7 +283,7 @@ const etapas = {
       await t.exige((await t.st()).zona === 'B6', 'chegou ao Brejo Roxo');
       await t.foto('b6-chegada');
       await cidade('B6', MANT); await limpar({ menos: ['porteiro-lab'] });
-    }, { treino: async () => { await viajar('B6'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B6'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await t.checkpoint('b6');
   },
   async lab() {
@@ -297,7 +303,7 @@ const etapas = {
       await t.irAte(11, 6); await t.assentar();
       await t.exige(await t.flag('laboratorio-ok'), 'laboratorio-ok');
       await t.foto('lab-ok');
-    }, { treino: async () => { await viajar('B6'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B6'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await viajar('B6'); await t.checkpoint('lab-ok');
   },
   async gin13() { await naoCapturar(); await gin(13, 'B6', 66, 'B6-ginasio'); await t.checkpoint('passo-13'); },
@@ -307,7 +313,7 @@ const etapas = {
       await cidade('B6', MANT);
       await viajar('B-VV'); await t.foto('b-vv'); await limpar();
       await viajar('B6'); await cidade('B6', MANT);
-    }, { treino: async () => { await viajar('B-VV'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B-VV'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await t.checkpoint('b-vv');
   },
   async serra() {
@@ -335,7 +341,7 @@ const etapas = {
         console.log('   rival-7:', JSON.stringify(await t.flags('rival-7|batalha-perdida')), JSON.stringify(await t.falas(2)));
       }
       await cidade('B7', MANT); await limpar();
-    }, { treino: async () => { await viajar('B7'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B7'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await t.checkpoint('b7');
   },
   async gin14() { await naoCapturar(); await gin(14, 'B7', 68, 'B7-ginasio'); await t.checkpoint('passo-14'); },
@@ -347,7 +353,7 @@ const etapas = {
       await t.exige((await t.st()).zona === 'B8', 'chegou ao Planalto Lume');
       await t.foto('b8-chegada');
       await cidade('B8', MANT); await limpar();
-    }, { treino: async () => { await viajar('B-R5'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('B-R5'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await t.checkpoint('b8');
   },
   async gin15() { await naoCapturar(); await gin(15, 'B8', 70, 'B8-ginasio'); await t.checkpoint('passo-15'); },
@@ -361,7 +367,7 @@ const etapas = {
       await viajar('A-MT'); await t.foto('a-mt'); await limpar();
       await viajar('A9'); await t.foto('a9-chegada');
       await cidade('A9', MANT); await limpar();
-    }, { treino: async () => { await viajar('A-MT'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('A-MT'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await t.checkpoint('a9');
   },
   async gin16() { await naoCapturar(); await gin(16, 'A9', 72, 'A9-ginasio'); await t.checkpoint('passo-16'); },
@@ -387,7 +393,7 @@ const etapas = {
         console.log('   rival-8:', JSON.stringify(await t.flags('rival-8|batalha-perdida')), JSON.stringify(await t.falas(3)));
       }
       await t.foto('pp-cume');
-    }, { treino: async () => { await viajar('PP'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('PP'); await Qr((n) => window.Q.passear(n), Number(process.env.TREINO ?? 8)); } });
     await viajar('PP-posto'); await Qr(() => window.Q.curarNoPosto()); await viajar('PP');
     await t.checkpoint('pico');
   },

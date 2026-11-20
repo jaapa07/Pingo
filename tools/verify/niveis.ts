@@ -73,7 +73,7 @@ export async function niveis(prog: ResultadoProgressao): Promise<Achado> {
     const k = prog.treinadorNoPasso.get(t.id);
     const doA = k !== undefined && (passoDaZona(zonaDe.get(t.id)) ?? 0) <= 8;
     if (k !== undefined && !doA) retorno++;
-    if (!doA) { if (k === undefined && !/^(B|b\d|g09|g1\d|lider-(09|1\d))/.test(t.id) && !(t.insignia && t.insignia > 8)) semPasso.push(t.id); }
+    if (!doA) { if (k === undefined && !prog.b?.treinadorNoPasso.has(t.id) && !/^(B|b\d|g09|g1\d|lider-(09|1\d))/.test(t.id) && !(t.insignia && t.insignia > 8)) semPasso.push(t.id); }
     for (const m of t.equipe) {
       const min = preEvo.get(m.e);
       if (min && m.nv < min) (doA ? a.erros : a.pendentes).push(`${arq(t.id)}: ${t.id} usa ${nome(m.e)} no nível ${m.nv}, antes do nível em que a forma anterior evolui (${min})`);
@@ -88,7 +88,22 @@ export async function niveis(prog: ResultadoProgressao): Promise<Achado> {
       else if (m.nv < piso) a.avisos.push(`${arq(t.id)}: ${t.id} (alcançável com ${k} insígnia(s)) tem ${nome(m.e)} no nível ${m.nv}, bem abaixo da faixa (${piso}–${teto})`);
     }
   }
-  if (retorno) a.pendentes.push(`${retorno} treinador(es) em áreas de retorno do mapa A (zonas com passo > 8): níveis do mapa B, conferir com a curva nova`);
+  /* depois da Liga (mapa B aberto na simulação): treinador de zona com passo p (antes do líder p) não passa o ás desse líder;
+     quem fica alcançável antes do que o passo da zona indica é enfrentado mais cedo e vira aviso (os verificadores das zonas B
+     conferem a faixa completa pelo passo declarado) */
+  let confB = 0;
+  const depois = new Map<string, number>([...prog.treinadorNoPasso].filter(([id]) => { const z = zonaDe.get(id); return !!z && (passoDaZona(z) ?? 0) > 8; }));
+  for (const [id, k] of prog.b?.treinadorNoPasso ?? []) depois.set(id, k);
+  for (const [id, k] of depois) {
+    const t = d.treinadores.get(id), zid = zonaDe.get(id); if (!t || !zid || t.insignia || /^(rival|conselho|garrote|liga-)/.test(id)) continue;
+    const pz = passoDaZona(zid) ?? 9; if (pz >= 17) continue; // Pico e pós-jogo: depois das 16 insígnias, curva do Conselho
+    confB++;
+    const teto = AS_LIDER_B[Math.max(9, pz)];
+    for (const m of t.equipe) if (m.nv > teto) a.erros.push(`${arq(id)}: ${id} (zona ${zid}, passo ${pz}) tem ${nome(m.e)} no nível ${m.nv}, acima do ás do líder ${Math.max(9, pz)} (nv ${teto})`);
+    const pAlc = Math.max(9, k + 1);
+    if (k <= 16 && pAlc < pz && as(t) > AS_LIDER_B[Math.min(16, pAlc)]) a.avisos.push(`${arq(id)}: ${id} (zona ${zid}, passo ${pz}) já é alcançável com ${k} insígnia(s) e tem ás no nível ${as(t)}, acima do ás do líder ${pAlc} (nv ${AS_LIDER_B[Math.min(16, pAlc)]})`);
+  }
+  if (retorno && !prog.b) a.pendentes.push(`${retorno} treinador(es) em áreas de retorno do mapa A (zonas com passo > 8): níveis do mapa B, conferir com a curva nova`);
   // a simulação escolhe o inicial de Mata: as outras duas versões da rival ficam de fora por construção
   const longe = semPasso.filter((id) => (passoDaZona(zonaDe.get(id)) ?? 0) > 8);
   if (longe.length) a.pendentes.push(`${longe.length} treinador(es) em áreas de retorno que só abrem depois do mapa B: ${longe.join(', ')}`);
@@ -115,20 +130,21 @@ export async function niveis(prog: ResultadoProgressao): Promise<Achado> {
       for (const e of base) { const min = preEvo.get(e.e); if (min && e.nv[0] < min) a.erros.push(`${d.arquivoDaZona.get(z.id)}: ${nome(e.e)} selvagem no nível ${e.nv[0]}, antes do nível em que a forma anterior evolui (${min})`); }
     }
   }
-  a.info.push(`ás dos líderes 1–8: ${topo.slice(1, 9).join(', ')} · Liga: ${liga.map((t) => (t ? as(t) : '?')).join(', ')} · líderes 9–16: ${Object.values(AS_LIDER_B).join(', ')} · Garrote ${AS_GARROTE} · Conselho ${AS_CONSELHO.join(', ')} · ${conferidos} treinadores e ${tabelas} tabelas de selvagens do mapa A dentro da faixa`);
+  a.info.push(`ás dos líderes 1–8: ${topo.slice(1, 9).join(', ')} · Liga: ${liga.map((t) => (t ? as(t) : '?')).join(', ')} · líderes 9–16: ${Object.values(AS_LIDER_B).join(', ')} · Garrote ${AS_GARROTE} · Conselho ${AS_CONSELHO.join(', ')} · ${conferidos} treinadores e ${tabelas} tabelas de selvagens do mapa A dentro da faixa · ${confB} treinadores do mapa B e de áreas de retorno abaixo do ás do líder do passo`);
   return a;
 }
 
-/** toda espécie de habitat, equipe ou evento do mapa A tem sprite de batalha (frente/costas) e de mapa */
+/** toda espécie de habitat, equipe ou evento (mapas A e B, Pico, pós-jogo, visitantes) tem sprite de batalha (frente/costas) e de mapa */
 export async function sprites(prog: ResultadoProgressao): Promise<Achado> {
   const a = novoAchado(), d = await carregar();
+  void prog;
   const usadas = new Map<number, string>();
   const usa = (n: number, onde: string) => { if (!usadas.has(n)) usadas.set(n, onde); };
-  for (const z of d.zonas.values()) if (z.mapa === 'A') for (const h of z.habitats ?? []) for (const e of encontrosDe(h)) usa(e.e, `habitat de ${z.id}`);
-  for (const t of d.treinadores.values()) if (prog.treinadorNoPasso.has(t.id)) for (const m of t.equipe) usa(m.e, `equipe de ${t.id}`);
-  for (const ev of d.eventos.values()) { const arq = d.arquivoDoEvento.get(ev.id) ?? ''; if (/\/(_|b\d|ginasio-(09|1\d))/.test(arq)) continue; cadaComando(ev.passos, (c: Comando) => { if (['darCriatura', 'selvagem', 'darOvo', 'errante', 'vitrine', 'grito'].includes(String(c[0])) && Number(c[1]) > 0) usa(Number(c[1]), `evento ${ev.id}`); }); }
-  // as evoluções por nível das espécies do mapa A também aparecem na mão do jogador antes da Liga
-  for (let mudou = true; mudou;) { mudou = false; for (const e of ESPECIES) if (usadas.has(e.num)) for (const v of e.evolui ?? []) if (v.nivel && v.nivel <= 46 && !usadas.has(v.para)) { usadas.set(v.para, `evolução de ${e.nome} no nível ${v.nivel}`); mudou = true; } }
+  for (const z of d.zonas.values()) for (const h of z.habitats ?? []) for (const e of encontrosDe(h)) usa(e.e, `habitat de ${z.id}`);
+  for (const t of d.treinadores.values()) for (const m of t.equipe) usa(m.e, `equipe de ${t.id}`);
+  for (const ev of d.eventos.values()) { const arq = d.arquivoDoEvento.get(ev.id) ?? ''; if (/\/_/.test(arq)) continue; cadaComando(ev.passos, (c: Comando) => { if (['darCriatura', 'selvagem', 'darOvo', 'errante', 'vitrine', 'grito', 'vis-lendario'].includes(String(c[0])) && Number(c[1]) > 0) usa(Number(c[1]), `evento ${ev.id}`); }); }
+  // as evoluções (por nível, item ou amizade) também aparecem na mão do jogador
+  for (let mudou = true; mudou;) { mudou = false; for (const e of [...ESPECIES, ...VISITANTES]) if (usadas.has(e.num)) for (const v of e.evolui ?? []) if (!usadas.has(v.para)) { usadas.set(v.para, `evolução de ${e.nome}${v.nivel ? ' no nível ' + v.nivel : ''}`); mudou = true; } }
   const faltam: string[] = [], quebrados: string[] = [];
   for (const [n, onde] of [...usadas].sort((x, y) => x[0] - y[0])) {
     const e = ESPECIES.find((q) => q.num === n) ?? VISITANTES.find((q) => q.num === n); if (!e) continue;
@@ -137,7 +153,9 @@ export async function sprites(prog: ResultadoProgressao): Promise<Achado> {
     for (const f of ['frente.png', 'costas.png', 'mapa.png', 'meta.json']) if (!existsSync(dir + f) || statSync(dir + f).size < (f.endsWith('.png') ? 600 : 50)) quebrados.push(`public/assets/sprites/criatura/${e.id}/${f}: ausente ou vazio`);
   }
   for (const q of quebrados) a.erros.push(q);
-  if (faltam.length) a.avisos.push(`${faltam.length} de ${usadas.size} espécie(s) do mapa A ainda sem sprite em public/assets/sprites/criatura/ (lotes em andamento): ${faltam.join('; ')}`);
-  a.info.push(`${usadas.size - faltam.length} de ${usadas.size} espécies do mapa A com sprite (frente, costas, mapa)`);
+  if (faltam.length) a.erros.push(`${faltam.length} de ${usadas.size} espécie(s) usadas no jogo sem sprite em public/assets/sprites/criatura/: ${faltam.join('; ')}`);
+  const nunca = [...ESPECIES, ...VISITANTES].filter((e) => !usadas.has(e.num) && !existsSync(`${RAIZ}public/assets/sprites/criatura/${e.id}/frente.png`)).map((e) => `${e.num} ${e.id}`);
+  if (nunca.length) a.avisos.push(`${nunca.length} espécie(s) que não aparecem em habitat, equipe nem evento e não têm sprite (só por troca/ovo?): ${nunca.join(', ')}`);
+  a.info.push(`${usadas.size - faltam.length} de ${usadas.size} espécies usadas no jogo (de ${ESPECIES.length + VISITANTES.length}) com sprite (frente, costas, mapa)`);
   return a;
 }

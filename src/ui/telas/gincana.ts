@@ -408,7 +408,7 @@ registrarComando('gincanaJuiza', async () => {
   const r = (await abrirTela('gincana', { prova: p, uid: c.uid })) as { pontos: number } | null | undefined;
   if (!r) { await falar('Desistiu? Sem problema. Respira, toma uma água e volta.', JUIZA); return; }
   const f = registrarProva(p, r.pontos);
-  await falar(`${nomeCri(c)} fez ${f.pontos} pontos na ${PROVA[p].nome}!${f.recorde ? ' É o seu melhor resultado de hoje.' : ''}`, JUIZA);
+  await falar(`${nomeCri(c)} fez ${f.pontos} pontos ${p === 'salto' ? 'no' : 'na'} ${PROVA[p].nome}!${f.recorde ? ' É o seu melhor resultado de hoje.' : ''}`, JUIZA);
   await falar(`Posição no ranking de hoje: ${f.pos}º lugar.${f.premio ? ` Prêmio de pódio: +${f.premio}!` : ''} Você ganhou ${f.ganhos} pontos da Gincana (total: ${pontosGincana()}).`, JUIZA);
 });
 registrarComando('gincanaSucos', async () => {

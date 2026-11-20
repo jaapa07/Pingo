@@ -27,7 +27,7 @@ export const GINASIOS_B = {
     A(28, 8, 'g'), [28, 8, 'boca da pista 3']), ...SOL('n l s o n l s A-s l l s o A-o o s o A-n l n l n o s o n o n o n'), ...R([19, 2, 'saída da pista 3'],
     A(8, 3, 'g'), CUIDAR, '!n')],
     // volta do salão da líder até a porta (só pelo gelo; busca com os blocos em qa4 scratch gelo2.py): pista 3 ao contrário, 2 e 1
-    volta: [...R([8, 3, 'diante da líder']), ...SOL('l n n l l l l l l l l l l s s l s l s l l l s s o o s s o s o n o n l s l A-l n l s o A-s s l s A-o o o s s o o o o n n n n n n n n o o o o s s l n o s o s o n o s l s s s l l l'), ...R([8, 17, 'porta do ginásio'])] },
+    volta: [...R([8, 3, 'diante da líder']), ...SOL('l n n l l l l l l l l l l s s l s l s l l l s s o o s s o s o n o n l s l A-l n l s o A-s s l s A-o o o s s o o o o n n n n n n n n o o o o s s l n o s o s o n o s l s s s l l l'), A(8, 17, 'g'), ...R([8, 17, 'porta do ginásio'])] },
   // 15 Mente (B8-ginasio): portais de constelação × quatro horas do céu (solução do comentário da zona)
   15: { zona: 'B8-ginasio', passos: R(PI(5, 15), PI(20, 3), PI(1, 5), PI(1, 5), PI(1, 5), PI(6, 3), PI(20, 10), PI(5, 15), PI(11, 8), PI(20, 3),
     A(13, 2, 'o,'), [13, 2, 'ilha da líder'], CUIDAR, '!n') },

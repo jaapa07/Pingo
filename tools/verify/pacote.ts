@@ -1,9 +1,8 @@
 /**
  * PACOTE PUBLICADO: confere, dentro de um `dist/` (de preferência o do build limpo), que tudo o que o jogo
- * carrega no mapa A está lá: zonas assadas (zona.json + todos os pedaços de todos os períodos), tilesets,
+ * carrega (mapas A e B, Pico, pós-jogo e visitantes) está lá: zonas assadas (zona.json + todos os pedaços de todos os períodos), tilesets,
  * decoração, FX, interface, arenas (todas as camadas), sprites de gente e de criaturas (pelo atlas) e os
  * arquivos citados pelo index.html e pelo manifest. O áudio é sintetizado em código (src/audio): não há arquivos.
- * Zonas do mapa B sem bake entram como "pendente".
  */
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
@@ -38,11 +37,10 @@ export async function pacote(dist: string, rotulo: string): Promise<Achado> {
   exige('assets/tiles/decoracao.png', 'decoração'); exige('assets/tiles/decoracao.json', 'decoração');
 
   /* zonas: bake completo */
-  let zonasA = 0, pedacos = 0; const tilesets = new Set<string>(), arenas = new Set<string>(), semBakeB: string[] = [];
+  let zonasA = 0, pedacos = 0; const tilesets = new Set<string>(), arenas = new Set<string>();
   for (const z of d.zonas.values()) {
-    const doA = z.mapa === 'A', arq = d.arquivoDaZona.get(z.id) ?? z.id, base = `assets/zonas/${z.id}/`;
-    if (doA) { zonasA++; tilesets.add(z.tileset); arenas.add(z.arena); }
-    if (!doA && !tem(base + 'zona.json')) { semBakeB.push(z.id); continue; }
+    const doA = true, arq = d.arquivoDaZona.get(z.id) ?? z.id, base = `assets/zonas/${z.id}/`;
+    zonasA++; tilesets.add(z.tileset); arenas.add(z.arena);
     if (!exige(base + 'zona.json', `bake da zona ${z.id}; rode npm run bake`)) continue;
     const j = json<{ largura?: number; altura?: number; w?: number; h?: number; tileset?: string; periodos?: string[]; chunks?: ({ cx: number; cy: number; alto?: boolean; anim?: boolean } | string)[] }>(base + 'zona.json');
     if (!j) { a.erros.push(`${rotulo}/${base}zona.json: JSON inválido`); continue; }
@@ -56,7 +54,6 @@ export async function pacote(dist: string, rotulo: string): Promise<Achado> {
     }
     if (faltam) (doA ? a.erros : a.pendentes).push(`${rotulo}/${base}: faltam ${faltam} pedaço(s) do bake (ex.: ${primeiro})`);
   }
-  if (semBakeB.length) a.pendentes.push(`${semBakeB.length} zona(s) do mapa B ainda sem bake no pacote: ${semBakeB.join(', ')}`);
   for (const t of tilesets) { exige(`assets/tiles/${t}.png`, 'tileset'); exige(`assets/tiles/${t}.json`, 'tileset'); }
 
   /* arenas: todas as camadas e animações citadas */
@@ -75,13 +72,16 @@ export async function pacote(dist: string, rotulo: string): Promise<Achado> {
     const idEsp = (num: number) => (ESPECIES.find((e) => e.num === num) ?? VISITANTES.find((e) => e.num === num))?.id;
     usa('kaue', 'jogador'); usa('ayra', 'jogadora');
     const treinadoresA = new Set<string>();
-    for (const z of d.zonas.values()) if (z.mapa === 'A') {
+    for (const z of d.zonas.values()) {
       for (const np of z.npcs ?? []) { usa(np.sprite.startsWith('c:') ? np.sprite.slice(2) : np.sprite, `NPC ${np.id} de ${z.id}`); if (np.treinador) treinadoresA.add(np.treinador); }
       for (const p of z.portoes ?? []) if (p.sprite) usa(p.sprite.startsWith('c:') ? p.sprite.slice(2) : p.sprite, `portão de ${z.id}`);
       for (const hb of z.habitats ?? []) for (const e of encontrosDe(hb)) usa(idEsp(e.e), `habitat de ${z.id}`);
     }
-    for (const ev of d.eventos.values()) { const arq = d.arquivoDoEvento.get(ev.id) ?? ''; if (/\/(_|b\d|ginasio-(09|1\d))/.test(arq)) continue; cadaComando(ev.passos, (c: Comando) => { if (c[0] === 'batalha') treinadoresA.add(String(c[1])); if (['darCriatura', 'selvagem', 'darOvo', 'errante'].includes(String(c[0])) && Number(c[1]) > 0) usa(idEsp(Number(c[1])), `evento ${ev.id}`); }); }
-    for (const id of treinadoresA) { const t = d.treinadores.get(id); if (!t || /ginasio-(09|1\d)|\/b\d/.test(d.arquivoDoTreinador.get(id) ?? '')) continue; usa(t.sprite.startsWith('c:') ? t.sprite.slice(2) : t.sprite, `treinador ${id}`); for (const m of t.equipe) usa(idEsp(m.e), `equipe de ${id}`); }
+    for (const ev of d.eventos.values()) { const arq = d.arquivoDoEvento.get(ev.id) ?? ''; if (/\/_/.test(arq)) continue; cadaComando(ev.passos, (c: Comando) => { if (c[0] === 'batalha') treinadoresA.add(String(c[1])); if (['darCriatura', 'selvagem', 'darOvo', 'errante', 'vis-lendario'].includes(String(c[0])) && Number(c[1]) > 0) usa(idEsp(Number(c[1])), `evento ${ev.id}`); }); }
+    // todo treinador (revanches do Rádio, rival semanal, Conselho) e toda espécie pode aparecer por evolução ou troca
+    for (const t of d.treinadores.values()) treinadoresA.add(t.id);
+    for (const e of [...ESPECIES, ...VISITANTES]) usa(e.id, `espécie ${e.num}`);
+    for (const id of treinadoresA) { const t = d.treinadores.get(id); if (!t) continue; usa(t.sprite.startsWith('c:') ? t.sprite.slice(2) : t.sprite, `treinador ${id}`); for (const m of t.equipe) usa(idEsp(m.e), `equipe de ${id}`); }
     for (const [id, onde] of usados) {
       const m = atlas[id]; n++;
       if (!m) { a.erros.push(`${rotulo}/assets/atlas.json: o sprite "${id}" (${onde}) não está no atlas`); continue; }
@@ -95,7 +95,7 @@ export async function pacote(dist: string, rotulo: string): Promise<Achado> {
   /* resumo por pasta */
   const soma = (dir: string): [number, number] => { let q = 0, b = 0; const anda = (p: string) => { for (const f of readdirSync(p)) { const c = join(p, f), s = statSync(c); if (s.isDirectory()) anda(c); else { q++; b += s.size; } } }; if (existsSync(join(dist, dir))) anda(join(dist, dir)); return [q, b]; };
   const partes = ['assets/zonas', 'assets/sprites', 'assets/arenas', 'assets/tiles', 'assets/ui', 'assets/fx'].map((p) => { const [q, b] = soma(p); return `${p.slice(7)} ${q} arq. ${mb(b)}`; });
-  a.info.push(`${n} arquivos exigidos pelo mapa A conferidos em ${rotulo} (${zonasA} zonas, ${pedacos} pedaços de bake, ${arenas.size} arenas, ${tilesets.size} tilesets)`);
+  a.info.push(`${n} arquivos exigidos pelo jogo conferidos em ${rotulo} (${zonasA} zonas dos mapas A e B, ${pedacos} pedaços de bake, ${arenas.size} arenas, ${tilesets.size} tilesets)`);
   a.info.push(partes.join(' · ') + ' · áudio: sintetizado em código, sem arquivos');
   return a;
 }

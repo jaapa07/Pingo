@@ -161,15 +161,15 @@ if (quer('palavras')) await medir('palavras', 'Palavras proibidas, acaso e canva
 if (quer('integridade')) await medir('integridade', 'Integridade de dados (ids referenciados)', integridade);
 let prog: ResultadoProgressao | undefined;
 if (quer('progressao') || quer('progressao-b') || quer('niveis') || quer('sprites')) {
-  const l = await medir('progressao', 'Progressão do mapa A (quarto → Liga)', async () => (prog = await progressao({ mapaB: quer('progressao-b') })));
+  const l = await medir('progressao', 'Progressão do mapa A (quarto → Liga)', async () => (prog = await progressao({ mapaB: true })));
   if (!quer('progressao')) linhas.splice(linhas.indexOf(l), 1);
   if (prog?.b && quer('progressao-b')) { const b = prog.b; await medir('progressao-b', 'Progressão do mapa B aberto (Liga → Conselho → pós-jogo; simula MAPA_B_ABERTO = true)', async () => b); }
 }
 if (prog && quer('niveis')) await medir('niveis', 'Curva de níveis (líderes, Liga, treinadores, selvagens)', () => niveis(prog!));
-if (prog && quer('sprites')) await medir('sprites', 'Sprites das espécies do mapa A', () => sprites(prog!));
+if (prog && quer('sprites')) await medir('sprites', 'Sprites das espécies (mapas A e B, visitantes)', () => sprites(prog!));
 await Promise.all(filhos);
 const pastaDist = limpo?.dist ? limpo.dist + '/' : RAIZ + 'dist/';
-if (quer('pacote')) await medir('pacote', 'Arquivos do mapa A no pacote publicado', async () => { if (existsSync(pastaDist + 'index.html')) return pacote(pastaDist, limpo?.dist ? 'dist limpo' : 'dist'); const a = novoAchado(); a.avisos.push('dist/: não existe — rode `npm run build` (ou o check sem --rapido) para conferir o pacote'); return a; });
+if (quer('pacote')) await medir('pacote', 'Arquivos do jogo no pacote publicado (mapas A e B)', async () => { if (existsSync(pastaDist + 'index.html')) return pacote(pastaDist, limpo?.dist ? 'dist limpo' : 'dist'); const a = novoAchado(); a.avisos.push('dist/: não existe — rode `npm run build` (ou o check sem --rapido) para conferir o pacote'); return a; });
 if (OFFLINE && quer('offline')) await medir('offline', 'Pacote offline e atualização no navegador (Playwright)', offline);
 if (quer('dist')) await medir('dist', 'Pacote dist/ e PWA', () => dist(pastaDist, !!limpo?.dist));
 

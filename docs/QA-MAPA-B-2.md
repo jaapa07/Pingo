@@ -45,3 +45,15 @@ Ferramentas em `tools/testes/qa4/` (cópia do QA 3 com nomes `qa4-*`):
   - Líder 13 Peçonha (ás 66): na frente 63/61/61/59/59/59 (Δ −3, média −5,7) → **1/3** (7 t entrando com 3 desmaiadas e
     sem Chá; 15 t; vitória em 23 t, ela usou 2 remédios). Dinheiro caiu a **$244** depois das duas derrotas.
   - B-VV: 8 treinadores 0 derrotas (2 voltas ao Posto). Queixada-Caipora (63) apareceu e o piloto fugiu.
+- (20/11) **serra** (B-R4 → B7): travessia de mão única (2 pedregulhos de Força, 2 paredões, saliências), 9 treinadores,
+  1 derrota (B-R4-5, equipe gasta sem Posto no meio). **Rival 7**: perdida em 1 turno com 5 desmaiadas — o gatilho
+  (24..25, 36) fica na estrada logo na chegada de B7, depois de uma subida de mão única sem Posto; o piloto foi direto ao
+  Posto e passou pelo gatilho (ver Propostas). Simulador com a equipe curada (save `b-vv`): 84%.
+- Ginásio 14: pistas 1–3 pela solução, sem tropeço. Líder 14 Pinhão (ás 68): na frente 64/64/62/60/60/60 (Δ −4, média
+  −6,3) → 1ª mão **1/2** (+ derrota para g14-5), 2ª mão **1/3** (11 t com o ás desmaiado; 17 t; vitória em 25 t).
+  **Volta do salão da líder:** o salão só se liga à porta pelas três pistas de gelo (row 7 é parede) e o Voo não funciona
+  dentro do ginásio; existe caminho de volta (busca com os blocos, ~90 movimentos: pista 3 ao contrário com 3 empurrões,
+  pista 2, pista 1) — o piloto fez a volta na tela até o saguão. Não é trava, mas é longo e sem aviso (ver Propostas).
+- Simulador com as equipes REAIS dos checkpoints (`qa4-sim-save.mts`, 200 lutas, equipe curada, remédios do save):
+  líder 9 91% · Arame 87% · líder 10 61% · rival 6 90% · líder 11 84% · líder 12 79% · Zinabre→Lata 99%→12% (seguidas) ·
+  líder 13 34% · rival 7 84% · líder 14 52%.

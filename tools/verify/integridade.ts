@@ -2,7 +2,7 @@
  * Integridade de dados: todo id referenciado existe (golpe, item, espécie, sprite, arena, tileset, música,
  * script, treinador, zona de warp), nos mapas A e B, no Pico e no pós-jogo.
  */
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import type { Comando, Encontro, Habitat } from '../../src/core/tipos';
 import { ESPECIES, VISITANTES } from '../../src/data/criaturas';
 import { temGolpe } from '../../src/data/golpes';
@@ -69,7 +69,16 @@ export async function integridade(): Promise<Achado> {
     if (!tiles.has(z.tileset + '.png')) E(arq, `tileset "${z.tileset}" sem public/assets/tiles/${z.tileset}.png`);
     if (!arenas.has(z.arena)) E(arq, `arena "${z.arena}" sem pasta em public/assets/arenas`);
     if (!FAIXAS[z.musica]) E(arq, `música "${z.musica}" não existe em src/data/music`);
-    if (!existsSync(`${RAIZ}public/assets/zonas/${z.id}/zona.json`)) E(arq, `zona sem bake em public/assets/zonas/${z.id}/ (rode npm run bake)`);
+    const bake = `${RAIZ}public/assets/zonas/${z.id}/zona.json`;
+    if (!existsSync(bake)) E(arq, `zona sem bake em public/assets/zonas/${z.id}/ (rode npx tsx tools/bake-maps.ts ${z.id})`);
+    else {
+      // bake antigo: tamanho, capim alto (`"`) e obstáculos dinâmicos (c/p/r) do zona.json têm de bater com o mapaChars atual
+      const j = JSON.parse(readFileSync(bake, 'utf8')) as { largura?: number; altura?: number; gramaAlta?: [number, number][]; dinamicos?: { c: string; x: number; y: number }[] };
+      const quer = new Set<string>(), tem = new Set([...(j.gramaAlta ?? []).map(([x, y]) => `"${x},${y}`), ...(j.dinamicos ?? []).map((q) => `${q.c}${q.x},${q.y}`)]);
+      z.mapaChars.forEach((l, y) => { for (let x = 0; x < l.length; x++) if ('"cpr'.includes(l[x])) quer.add(`${l[x]}${x},${y}`); });
+      const dif = [...quer].filter((k) => !tem.has(k)).length + [...tem].filter((k) => !quer.has(k)).length;
+      if (j.largura !== z.mapaChars[0].length || j.altura !== z.mapaChars.length || dif) E(arq, `bake antigo em public/assets/zonas/${z.id}/ (${j.largura}×${j.altura} no bake, ${z.mapaChars[0].length}×${z.mapaChars.length} na zona; ${dif} tile(s) de capim/obstáculo diferentes) — rode npx tsx tools/bake-maps.ts ${z.id}`);
+    }
     for (const o of z.objetos ?? []) { nRef++; if (!temObjeto(o.o)) E(arq, `objeto "${o.o}" fora dos catálogos`); if (typeof o.script === 'string' && !temScript(o.script)) E(arq, `objeto ${o.o}: script "${o.script}" não existe`); }
     for (const w of z.warps) {
       nRef++;
