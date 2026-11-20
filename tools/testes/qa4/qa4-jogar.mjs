@@ -5,8 +5,8 @@
 import { abrir, lerSave, temSave } from './qa4-lib.mjs';
 import { GINASIOS_B } from './qa4-ginasios.mjs';
 import { appendFileSync } from 'node:fs';
-const ETAPAS = ['trem', 'vila', 'pantanal-grande', 'gin9', 'ninhal', 'estrada', 'mina', 'gin10', 'chapada', 'gin11', 'roda', 'gin12'];
-const DE = { trem: 'campeao', vila: 'b1', 'pantanal-grande': 'cerrado', gin9: 'b2', ninhal: 'passo-9', estrada: 'b9', mina: 'b3', gin10: 'mina-ok', chapada: 'passo-10', gin11: 'b4', roda: 'passo-11', gin12: 'b5' };
+const ETAPAS = ['trem', 'vila', 'pantanal-grande', 'gin9', 'ninhal', 'estrada', 'mina', 'gin10', 'chapada', 'gin11', 'roda', 'gin12', 'tunel', 'lab', 'gin13', 'veredas', 'serra', 'gin14', 'nevoas', 'gin15', 'tupa', 'gin16', 'pico', 'conselho'];
+const DE = { trem: 'campeao', vila: 'b1', 'pantanal-grande': 'cerrado', gin9: 'b2', ninhal: 'passo-9', estrada: 'b9', mina: 'b3', gin10: 'mina-ok', chapada: 'passo-10', gin11: 'b4', roda: 'passo-11', gin12: 'b5', tunel: 'passo-12', lab: 'b6', gin13: 'lab-ok', veredas: 'passo-13', serra: 'b-vv', gin14: 'b7', nevoas: 'passo-14', gin15: 'b8', tupa: 'passo-15', gin16: 'a9', pico: 'passo-16', conselho: 'pico' };
 const ini = process.argv[2] ?? 'trem', fim = process.argv[3] ?? 'gin12';
 const t = await abrir(lerSave(process.env.SAVE ?? DE[ini]), { semente: Number(process.env.SEMENTE ?? 7) });
 const Qr = (fn, arg) => t.q(fn, arg);
@@ -69,6 +69,7 @@ const limpar = async (o) => {
 };
 /** nível da equipe e do ás ao chegar num chefe */
 const chegada = async (quem, as) => { const s = await t.save(); const nv = s.equipe.filter((c) => !c.ovo).map((c) => c.nivel).sort((a, b) => b - a); const med = +(nv.reduce((a, b) => a + b, 0) / nv.length).toFixed(1); const rem = Object.fromEntries(Object.entries(s.mochila).filter(([k]) => /garrafada|elixir|cha-|mel|unguento|pomada|garapa/.test(k))); estat.chefes.push({ quem, as, equipe: nv, media: med, dif: nv[0] - as, dinheiro: s.jogador.dinheiro, nb: (await t.st()).nb }); marco(`chegada em ${quem} (ás ${as}): equipe ${nv.join('/')} média ${med} (Δ ás ${nv[0] - as}, Δ média ${(med - as).toFixed(1)}) $${s.jogador.dinheiro} remédios ${JSON.stringify(rem)}`); };
+const ASL = { 9: 55, 10: 58, 11: 61, 12: 63, 13: 66, 14: 68, 15: 70, 16: 72 };
 async function ginasio(n) {
   const G = GINASIOS_B[n];
   const s = await t.st(); if (s.zona !== G.zona) throw new Error('não estou no ginásio ' + n);
@@ -80,9 +81,31 @@ async function ginasio(n) {
       if ((await t.st()).nb > nb0) { await cuidar({ limiar: 0.5, reanimar: true, guardar: { garrafada: 3 } }); await Qr(() => window.Q.rodizio('treino')); }
     }
     else if (p.agir) await t.agir(p.agir);
-    else if (p.cuidar) { await cuidar({ limiar: 0.8, reanimar: true }); await Qr(() => window.Q.rodizio('chefe')); }
+    else if (p.pisar) {
+      // portal/estrela (ginásio 15): chega a um vizinho sem pisar em portal nem estrela, e pisa no alvo
+      const [x, y] = p.pisar;
+      const viz = await Qr(([x, y]) => { const V = window.__pingo.mundo, z = V.zona, set = new Set(); for (let yy = 0; yy < z.mapaChars.length; yy++) for (let xx = 0; xx < z.mapaChars[yy].length; xx++) if ('o,'.includes(z.mapaChars[yy][xx])) set.add(xx + ',' + yy); return window.Q.irAte(x, y, { vizinho: true, evitar: set }); }, [x, y]);
+      const d = x > viz.x ? 'l' : x < viz.x ? 'o' : y > viz.y ? 's' : 'n';
+      await t.ir(d); await t.assentar(); await Qr(() => window.Q.quadros(20)); const q = await t.assentar();
+      console.log(`   pisou (${x},${y}) → (${q.x},${q.y}) ${JSON.stringify(await t.falas(1))}`);
+    }
+    else if (p.cuidar) { await cuidar({ limiar: 0.8, reanimar: true }); await Qr(() => window.Q.rodizio('chefe')); await chegada(`líder ${n} (na frente dele)`, ASL[n]); }
     else if (p.em) { const q = await t.assentar(); if (q.x !== p.em[0] || q.y !== p.em[1]) { await t.foto(`gin${n}-fora`); throw new Error(`ginásio ${n}: esperava (${p.em}) em "${p.r}", estou em (${q.x},${q.y}) · falas: ${JSON.stringify(await t.falas(3))}`); } }
   }
+}
+/** prepara a equipe já parada junto do chefe (cura com remédios, reanima, abre com a mais forte) e registra a chegada */
+async function prontoParaChefe(quem, as) {
+  await recompor(); await cuidar({ limiar: 0.85, reanimar: true }); await Qr(() => window.Q.rodizio('chefe'));
+  await chegada(quem, as);
+}
+/** mergulho/subida por poço (warp sem porta na água): vai até o poço e aperta A */
+async function mergulhar(x, y, dest) {
+  for (let k = 0; k < 4; k++) {
+    await t.irAte(x, y); await t.agir(); await t.assentar();
+    if ((await t.st()).zona === dest) return;
+    await t.agir(); await t.assentar(); if ((await t.st()).zona === dest) return;
+  }
+  throw new Error(`mergulho em (${x},${y}) não levou a ${dest}: ${JSON.stringify(await t.st())} ${JSON.stringify(await t.falas(2))}`);
 }
 const querCapturar = (n) => Qr((n) => { window.Q.capturar = (e, nv) => true; window.Q.maxCapturas = window.Q.capturadas.length + n; }, n);
 const naoCapturar = () => Qr(() => { window.Q.maxCapturas = 0; });
@@ -145,10 +168,10 @@ const etapas = {
       await cidade('B2', MANT);
       await viajar('B-PA'); await limpar();
       if (!(await t.flag('pantanal-ok'))) {
-        await cuidar({ limiar: 0.8, reanimar: true }); await Qr(() => window.Q.rodizio('chefe'));
-        await chegada('tenente Arame', 57);
         const npc = await Qr(() => window.Q.npc('arame'));
         console.log('   arame em', JSON.stringify(npc));
+        if (npc) await t.irAte(npc.x, npc.y, { vizinho: true });
+        await prontoParaChefe('tenente Arame', 57);
         if (npc) await t.falarCom('arame');
         await t.assentar();
       }
@@ -184,8 +207,8 @@ const etapas = {
       await viajar('B3-mina-1'); await t.foto('mina-1'); await limpar();
       await viajar('B3-mina-2'); await t.foto('mina-2'); await limpar({ menos: ['rebite'] });
       if (!(await t.flag('mina-ok'))) {
-        await cuidar({ limiar: 0.85, reanimar: true }); await Qr(() => window.Q.rodizio('chefe'));
-        await chegada('tenente Rebite (mina)', 56);
+        const npc = await Qr(() => window.Q.npc('rebite')); if (npc) await t.irAte(npc.x, npc.y, { vizinho: true });
+        await prontoParaChefe('tenente Rebite (mina)', 56);
         await t.falarCom('rebite'); await t.assentar();
       }
       await t.exige(await t.flag('mina-ok'), 'Rebite vencido: mina-ok');
@@ -213,7 +236,7 @@ const etapas = {
       }
       await viajar('B4'); await t.assentar(); await t.foto('b4-chegada');
       // a Tainá espera na estrada que sobe da chapada (gatilho na fila 31): segue pela estrada para o norte
-      if (!(await t.flag('rival-6'))) { await cuidar({ limiar: 0.8, reanimar: true }); await Qr(() => window.Q.rodizio('chefe')); await chegada('rival-6 (Tainá)', 59); await t.ir('n'); await t.assentar(); }
+      if (!(await t.flag('rival-6'))) { await prontoParaChefe('rival-6 (Tainá)', 59); await t.ir('n'); await t.assentar(); }
       if (!(await t.flag('rival-6'))) { console.log('   rival-6 ainda não aconteceu; falas:', JSON.stringify(await t.falas(3))); }
     }, { treino: async () => { await viajar('B-CH'); await Qr(() => window.Q.passear(8)); } });
     await t.exige(await t.flag('rival-6'), 'rival-6 feito');
@@ -234,6 +257,154 @@ const etapas = {
     const existe = await Qr(async () => { const Z = await import('/src/world/zonas.ts'); return !!Z.zonaDef('B5-ginasio'); });
     if (!existe) { marco('ginásio 12 (B5-ginasio) ainda não existe: registrado e parado aqui'); await chegada('líder 12 (ginásio ausente)', 55); return; }
     await naoCapturar(); await gin(12, 'B5', 63, 'B5-ginasio'); await t.checkpoint('passo-12');
+  },
+  async tunel() {
+    // Cidade Ginga → poço da Lagoa do Berimbau (Mergulho) → Túnel Alagado → Gruta do Fôlego → cascata (Cachoeira) → Brejo Roxo
+    await tentar('tunel', async () => {
+      await querCapturar(1);
+      await cidade('B5', MANT);
+      if ((await t.st()).zona === 'B5') await mergulhar(47, 14, 'B-TA');
+      if ((await t.st()).zona === 'B-TA') { await t.foto('b-ta'); await limpar(); await mergulhar(26, 22, 'B-TA-gruta'); }
+      if ((await t.st()).zona === 'B-TA-gruta') {
+        await t.foto('b-ta-gruta'); await limpar();
+        await t.irAte(32, 10); await t.irAte(33, 10); await t.agir('n'); await t.assentar();
+        marco('cascata da gruta: ' + JSON.stringify(await t.st()) + ' ' + JSON.stringify(await t.falas(2)));
+        await mergulhar(36, 4, 'B-TA');
+      }
+      if ((await t.st()).zona === 'B-TA') { await limpar(); await mergulhar(54, 24, 'B6'); }
+      await t.exige((await t.st()).zona === 'B6', 'chegou ao Brejo Roxo');
+      await t.foto('b6-chegada');
+      await cidade('B6', MANT); await limpar({ menos: ['porteiro-lab'] });
+    }, { treino: async () => { await viajar('B6'); await Qr(() => window.Q.passear(8)); } });
+    await t.checkpoint('b6');
+  },
+  async lab() {
+    await naoCapturar();
+    await tentar('lab', async () => {
+      await cidade('B6', MANT);
+      if (!(await t.flag('b2-lab-porteiro'))) { await chegada('capanga do curtume', 0); await t.usar(43, 9); await t.assentar(); }
+      await viajar('B6-lab-1'); await t.foto('lab-1'); await limpar();
+      if (!(await t.flag('b2-lab-alavanca'))) { await t.usar(26, 9); }
+      console.log('   lab-1:', JSON.stringify(await t.flags('b2-lab')), JSON.stringify(await t.falas(2)));
+      await viajar('B6-lab-2'); await t.foto('lab-2'); await limpar({ menos: ['peconha'] });
+      await t.falarCom('peconha').catch((e) => console.log('   peçonha:', e.message));
+      await t.usar(2, 19); await t.usar(28, 3);
+      console.log('   lab-2:', JSON.stringify(await t.flags('b2-lab|peconha')), JSON.stringify(await t.falas(2)));
+      await viajar('B6-lab-3');
+      await prontoParaChefe('tenentes Zinabre e Lata (laboratório)', 63);
+      await t.irAte(11, 6); await t.assentar();
+      await t.exige(await t.flag('laboratorio-ok'), 'laboratorio-ok');
+      await t.foto('lab-ok');
+    }, { treino: async () => { await viajar('B6'); await Qr(() => window.Q.passear(8)); } });
+    await viajar('B6'); await t.checkpoint('lab-ok');
+  },
+  async gin13() { await naoCapturar(); await gin(13, 'B6', 66, 'B6-ginasio'); await t.checkpoint('passo-13'); },
+  async veredas() {
+    await tentar('veredas', async () => {
+      await querCapturar(1);
+      await cidade('B6', MANT);
+      await viajar('B-VV'); await t.foto('b-vv'); await limpar();
+      await viajar('B6'); await cidade('B6', MANT);
+    }, { treino: async () => { await viajar('B-VV'); await Qr(() => window.Q.passear(8)); } });
+    await t.checkpoint('b-vv');
+  },
+  async serra() {
+    await tentar('serra', async () => {
+      await querCapturar(1);
+      if ((await t.st()).zona !== 'B-R4' && (await t.st()).zona !== 'B7') { await cidade('B6', MANT); await viajar('B-R4'); }
+      if ((await t.st()).zona === 'B-R4') {
+        await t.foto('b-r4');
+        for (const [x, y] of [[12, 60], [12, 57], [36, 46], [36, 43], [20, 32], [20, 30], [8, 18], [8, 16]]) { await Qr(([x, y]) => window.Q.irAteForca(x, y), [x, y]); await recompor(); }
+        await limpar({ forca: true });
+        await Qr(() => window.Q.irAteForca(38, 1)); await t.ir('n');
+      }
+      await t.assentar(); await t.exige((await t.st()).zona === 'B7', 'chegou à Serra da Geada');
+      await t.foto('b7-chegada');
+      if (!(await t.flag('rival-7'))) {
+        await prontoParaChefe('rival-7 (Tainá)', 66);
+        await t.irAte(24, 36); await t.assentar();
+        console.log('   rival-7:', JSON.stringify(await t.flags('rival-7|batalha-perdida')), JSON.stringify(await t.falas(2)));
+      }
+      await cidade('B7', MANT); await limpar();
+    }, { treino: async () => { await viajar('B7'); await Qr(() => window.Q.passear(8)); } });
+    await t.checkpoint('b7');
+  },
+  async gin14() { await naoCapturar(); await gin(14, 'B7', 68, 'B7-ginasio'); await t.checkpoint('passo-14'); },
+  async nevoas() {
+    await tentar('nevoas', async () => {
+      await querCapturar(1);
+      if ((await t.st()).zona !== 'B-R5' && (await t.st()).zona !== 'B8') { await cidade('B7', MANT); await viajar('B-R5'); }
+      if ((await t.st()).zona === 'B-R5') { await t.foto('b-r5'); await limpar(); await viajar('B8'); }
+      await t.exige((await t.st()).zona === 'B8', 'chegou ao Planalto Lume');
+      await t.foto('b8-chegada');
+      await cidade('B8', MANT); await limpar();
+    }, { treino: async () => { await viajar('B-R5'); await Qr(() => window.Q.passear(8)); } });
+    await t.checkpoint('b8');
+  },
+  async gin15() { await naoCapturar(); await gin(15, 'B8', 70, 'B8-ginasio'); await t.checkpoint('passo-15'); },
+  async tupa() {
+    // insígnia 15: Voo até Vila Ferrugem (A8) e a pé pelo Monte Tupã (A-MT) até a Aldeia Tupã (A9)
+    await tentar('tupa', async () => {
+      await querCapturar(1);
+      const z = (await t.st()).zona;
+      if (/^B/.test(z)) { if (/-/.test(z) && z !== 'B8') await viajar('B8'); await Qr(() => window.Q.voar('A8')); marco('voou: ' + JSON.stringify(await t.st())); }
+      await cidade('A8', MANT);
+      await viajar('A-MT'); await t.foto('a-mt'); await limpar();
+      await viajar('A9'); await t.foto('a9-chegada');
+      await cidade('A9', MANT); await limpar();
+    }, { treino: async () => { await viajar('A-MT'); await Qr(() => window.Q.passear(8)); } });
+    await t.checkpoint('a9');
+  },
+  async gin16() { await naoCapturar(); await gin(16, 'A9', 72, 'A9-ginasio'); await t.checkpoint('passo-16'); },
+  async pico() {
+    await tentar('pico', async () => {
+      await naoCapturar();
+      if ((await t.st()).zona !== 'PP') { await cidade('A9', MANT); await viajar('PP'); }
+      await t.foto('pp-acampamento');
+      await cidade('PP', MANT);
+      await t.falarCom('pp-tibirica').catch((e) => console.log('   tibiriçá:', e.message));
+      console.log('   portão:', JSON.stringify(await t.falas(3)));
+      await t.catar();
+      await limpar({ menos: ['pp-garrote', 'pp-taina'] });
+      if (!(await t.flag('garrote-vencido'))) {
+        await t.irAte(19, 15); await prontoParaChefe('Coronel Garrote', 74);
+        await t.irAte(19, 13); await t.assentar();
+        console.log('   garrote:', JSON.stringify(await t.flags('garrote')), JSON.stringify(await t.falas(3)));
+      }
+      await t.exige(await t.flag('garrote-vencido'), 'garrote-vencido');
+      if (!(await t.flag('rival-8'))) {
+        await t.irAte(19, 10); await prontoParaChefe('rival-8 (Tainá)', 75);
+        await t.irAte(19, 8); await t.assentar();
+        console.log('   rival-8:', JSON.stringify(await t.flags('rival-8|batalha-perdida')), JSON.stringify(await t.falas(3)));
+      }
+      await t.foto('pp-cume');
+    }, { treino: async () => { await viajar('PP'); await Qr(() => window.Q.passear(8)); } });
+    await viajar('PP-posto'); await Qr(() => window.Q.curarNoPosto()); await viajar('PP');
+    await t.checkpoint('pico');
+  },
+  async conselho() {
+    estat.conselho = [];
+    await tentar('conselho', async (n) => {
+      if ((await t.st()).zona !== 'PP-conselho') {
+        await viajar('PP-posto'); await Qr(() => window.Q.curarNoPosto()); await comprar('PP', { ...MANT, garrafada: 12, 'elixir-andiroba': 4, 'cha-guarana': 4 }); await viajar('PP');
+        await viajar('PP-conselho');
+      }
+      await t.irAte(15, 52).catch(() => 0); await t.assentar();
+      for (const [k, y] of [[1, 39], [2, 31], [3, 23], [4, 15], [5, 8]]) {
+        if (await t.flag(`conselho-${k}`)) continue;
+        await cuidar({ limiar: 0.85, reanimar: true }); await Qr(() => window.Q.rodizio('chefe'));
+        await chegada(`Guardião ${k} (tentativa ${n + 1})`, [73, 74, 75, 76, 77][k - 1]);
+        estat.conselho.push({ k, tentativa: n + 1 });
+        await t.usar(15, y); await t.assentar();
+        const s = await t.st(); marco(`sala ${k}: ${s.zona} (${s.x},${s.y}) ${JSON.stringify(await t.flags('conselho|pos-jogo'))}`);
+        if (await t.flag('conselho-vencido')) break;
+      }
+      await t.assentar();
+      await t.exige(await t.flag('conselho-vencido'), 'conselho-vencido');
+    }, {});
+    console.log('   depois do Conselho:', JSON.stringify(await t.st()), JSON.stringify(await t.flags('conselho|pos-jogo|misterioso|errante')), JSON.stringify(await t.falas(4)));
+    await t.foto('pos-conselho');
+    await t.checkpoint('campeao-b');
   },
 };
 

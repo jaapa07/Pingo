@@ -64,6 +64,7 @@ export async function abrir(save, o = {}) {
   const e0 = await page.evaluate(() => window.Q.erro);
   if (e0) throw new Error('piloto não carregou: ' + e0);
   const t = { page, browser, ctx, erros };
+  t.espera = (ms) => page.waitForTimeout(ms);
   /** roda uma função dentro da página com o piloto `Q` (pode demorar minutos) */
   t.q = (fn, arg) => page.evaluate(fn, arg);
   t.st = () => page.evaluate(() => window.Q.st());
