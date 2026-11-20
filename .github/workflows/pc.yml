@@ -23,11 +23,11 @@ jobs:
           cache: npm
       - name: Instalar dependências
         run: npm ci
-      - name: Gerar pacotes (AppImage + .exe portátil)
-        run: npm run build && npx electron-builder --config plataformas/desktop/electron-builder.yml --linux AppImage --win portable --x64
       - name: Ler versão
         id: v
         run: echo "versao=$(tr -d '[:space:]' < plataformas/desktop/VERSAO)" >> "$GITHUB_OUTPUT"
+      - name: Gerar pacotes (AppImage + .exe portátil)
+        run: npm run build && npx electron-builder --config plataformas/desktop/electron-builder.yml --linux AppImage --win portable --x64 -c.extraMetadata.version=${{ steps.v.outputs.versao }}
       - name: Publicar Release
         uses: softprops/action-gh-release@v2
         with:
