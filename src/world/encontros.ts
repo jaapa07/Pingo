@@ -6,6 +6,7 @@ import { bus } from '../core/events';
 import { M, ocupar, sfx, musica } from './vivo';
 import { iniciarBatalha, criarCriatura, curarEquipe, falar, avisar, nomeCriatura, especie, type PedidoBatalha, type ResultadoBatalha } from './deps';
 import { listaZonas, zonaDef } from './zonas';
+import { ajustesDeEncontro } from './registro';
 import { irPara, reavaliar } from './index';
 
 /** tabela em vigor para o método nesta zona (camada pós-insígnia → período → estação) */
@@ -16,7 +17,8 @@ export function tabela(z: ZonaDef, metodo: MetodoEncontro): { h: Habitat; t: Enc
   const camada = [...(h.camadas ?? [])].sort((a, b) => b.apos - a.apos).find((c) => temInsignia(c.apos));
   const bruta = camada?.[p] ?? camada?.todos ?? h[p] ?? h.todos ?? [];
   const fria = estacaoFria();
-  const t = bruta.filter((e) => !e.estacao || (e.estacao === 'fria') === fria);
+  let t = bruta.filter((e) => !e.estacao || (e.estacao === 'fria') === fria);
+  for (const f of ajustesDeEncontro) t = f(z, metodo, t);
   return t.length ? { h, t } : null;
 }
 export function sortear(z: ZonaDef, metodo: MetodoEncontro): { e: number; nv: number } | null {

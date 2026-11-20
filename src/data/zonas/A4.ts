@@ -1,4 +1,4 @@
-import type { ZonaDef } from '../../core/tipos';
+import type { ZonaDef, NpcDef } from '../../core/tipos';
 import { grade, obj, entrada, saidas, gente, duelista, item, placa } from './_a1-grade';
 
 /**
@@ -106,6 +106,8 @@ const zona: ZonaDef = {
     { x: 44, y: 8, requer: 'flag:usina-ok', sprite: 'npc-maquinista', fala: 'Estação fechada, freguesia. Sem energia da Usina Velha, a Maria-Fumaça não apita nem para espantar galinha.\fQuando a luz voltar eu abro a porta. Embarcar já é outra conversa: a linha da serra é só para Campeões da Liga.' },
   ],
   npcs: [
+    // Ginásio de Treino (revanches dos líderes, spec 10A item 25): o guia leva até o salão; eventos em src/data/eventos/regras.ts
+    { id: 'a4-guia-treino', sprite: 'npc-homem-2', x: 17, y: 17, dir: 'o', se: 'flag:liga-vencida', script: 'treino-guia', nome: 'Guia do Treino' } as NpcDef,
     gente(g, '1', 'a4-moca', 'npc-mulher-2', 'Moça do Guarda-sol', { mov: 'olhar', fala: ['Criatura do tipo Rio apaga Brasa, afoga Terra e desgasta Pedra.', 'Para enfrentar a Capitã Marola, leve Mata ou Trovão. E um casaco: lá dentro respinga.'] }),
     gente(g, '2', 'a4-menino', 'cl-crianca-m', 'Biu', { mov: 'vagar', fala: ['Quando eu crescer vou ser maquinista do Trem Serra-Sol!', 'Ou sorveteiro. O que tiver menos fila.'] }),
     gente(g, '3', 'a4-feirante', 'npc-vendedor', 'Feirante Deodato', { script: 'm-peixe' }),

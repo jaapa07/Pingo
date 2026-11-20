@@ -150,3 +150,11 @@ const mapa = new Map<string, ItemInfo>(ITENS.map((x) => [x.id, x]));
 export function item(id: string): ItemInfo { const x = mapa.get(id); if (!x) throw new Error('item desconhecido: ' + id); return x; }
 export const temItemDef = (id: string) => mapa.has(id);
 export const ehCuia = (id: string) => !!mapa.get(id)?.uso?.cuia;
+
+/* ------------------------------ Missões dos Visitantes (spec 6.5; src/data/eventos/visitantes.ts) ------------------------------ */
+for (const x of [
+  i('frasco-vazio', 'Frasco Vazio', 'chave', 0, 'Frasco de vidro grosso com rolha de cortiça, do canoeiro Seu Tarumã. Serve para colher água de rio.'),
+  i('frasco-agua-escura', 'Frasco de Água Escura', 'chave', 0, 'Água preta como café, colhida de noite no fundo do Poço do Breu, no Rio Cachoeira-Véu.'),
+  i('frasco-agua-barrenta', 'Frasco de Água Barrenta', 'chave', 0, 'Água cor de barro, colhida de dia no poço da cascata da Estrada Vermelha.'),
+  i('lanterna-boreal', 'Lanterna Boreal', 'chave', 0, 'Lanterna de vidro verde da expedição da Drª Solveig. Juntas e acesas no alto do Pico, de noite, chamam o céu do norte.'),
+]) { ITENS.push(x); mapa.set(x.id, x); }

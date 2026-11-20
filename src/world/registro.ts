@@ -2,7 +2,7 @@
  * Registros de extensão do motor de mundo. Módulo-folha (sem dependências de dados):
  * zonas, eventos e ginásios podem importar daqui sem criar ciclo de avaliação.
  */
-import type { TreinadorDef, EventoDef } from '../core/tipos';
+import type { TreinadorDef, EventoDef, ZonaDef, MetodoEncontro, Encontro } from '../core/tipos';
 
 export type FnComando = (args: unknown[]) => Promise<void> | void;
 export interface Mecanica {
@@ -18,6 +18,8 @@ export const mecanicas = new Map<string, Mecanica>();
 export const cinematicas = new Map<string, () => Promise<void> | void>();
 export const treinadoresExtras = new Map<string, TreinadorDef>();
 export const eventosExtras = new Map<string, EventoDef>();
+/** ajustes da tabela de encontros em vigor (ex.: enxame do dia, spec 10A item 4), aplicados em ordem por `tabela()` */
+export const ajustesDeEncontro: ((z: ZonaDef, metodo: MetodoEncontro, t: Encontro[]) => Encontro[])[] = [];
 
 /** comando novo de script (ou substituição de um comando padrão) */
 export function registrarComando(nome: string, fn: FnComando) { comandosExtras.set(nome, fn); }
