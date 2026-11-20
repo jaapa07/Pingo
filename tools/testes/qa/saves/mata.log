@@ -292,3 +292,13 @@ erros de console: []
   [batalha] A-R2-2 → vitoria · equipe 1:12,10:3,13:2,45:6 · A-R2 · $1809
   [batalha] selvagem 20:10 → captura · equipe 1:12,10:3,13:2,45:6,20:10 · A-R2 · $1809
   caça em A-R2: 3 batalhas, equipe ["Tamanduí 12","Pipirim 3","Cotiazinha 2","Quero-querinho 6","Gambazinho 10"]
+FALHA Error: resolver: tempo esgotado {"pronto":true,"oc":true,"mov":false,"zona":"A-R2","x":4,"y":20,"dir":"s","modo":"pe","telas":2,"topo":"tela batalha","ocupada":false,"nres":3,"bat":{"fase":"fim","terminou":true,"menu":false,"golpes":false,"focoGolpe":-1,"equipe":false,"focoEquipe":-1,"nEquipe":0,"mochila":false,"aba":-1,"esquecer":false,"lista":true,"pend":1}} |     at t.resolver (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:149:11) |     at async t.limpar (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:231:100) |     at async Object.fn (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:119:5) {"pronto":true,"oc":true,"mov":false,"zona":"A-R2","x":4,"y":20,"dir":"s","modo":"pe","telas":2,"topo":"tela batalha","ocupada":false,"nres":3,"bat":{"fase":"fim","terminou":true,"menu":false,"golpes":false,"focoGolpe":-1,"equipe":false,"focoEquipe":-1,"nEquipe":0,"mochila":false,"aba":-1,"esquecer":false,"lista":true,"pend":1}} ["Campos de Restinga","{JOGADOR} achou Chá de Erva-Cidreira!","Sem onda hoje, parceiro. Bora batalhar para não perder o costume."]
+resumo: {"zona":"A-R2","x":4,"y":20,"dinheiro":1809,"insignias":[1],"amuletos":[],"equipe":[{"e":1,"nome":"Tamanduí","nv":13,"vida":32,"max":40,"st":null,"golpes":["arranhao 29","cara-feia 30","chicote-de-cipo 24","sorver-seiva 20"]},{"e":10,"nome":"Pipirim","nv":3,"vida":16,"max":16,"st":null,"golpes":["bicada 35","berro 40"]},{"e":13,"nome":"Cotiazinha","nv":2,"vida":14,"max":14,"st":null,"golpes":["encontrao 35","cara-feia 30"]},{"e":45,"nome":"Quero-querinho","nv":6,"vida":22,"max":22,"st":null,"golpes":["bicada 35","berro 40","jogar-areia 15"]},{"e":20,"nome":"Gambazinho","nv":10,"vida":15,"max":31,"st":null,"golpes":["arranhao 35","fumaca-fedida 19","cara-feia 29","cuspe-acido 25"]}],"mochila":{"radio-cipo":1,"diario-de-campo":1,"cuia":3,"pt-31":1},"tempo":13717,"posto":"A2-posto","capturado":5}
+treino extra: [] derrotas: 3 curas: 10
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de mata-passo-4
+
+>> etapa 5: Faro, Campos de Restinga e Mata dos Sabiás até Bosque Alto  (0 s)
+  [batalha] A-R2-1 → vitoria · equipe 1:12,10:3,13:2,45:4 · A-R2 · $1665
+  [batalha] A-R2-2 → vitoria · equipe 1:12,10:3,13:2,45:6 · A-R2 · $1809

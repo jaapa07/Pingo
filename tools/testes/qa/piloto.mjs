@@ -96,9 +96,10 @@ export async function abrir(o = {}) {
     }
     if (b.esquecer) { const k = []; for (let i = 0; i < (t.plano?.slot ?? 0); i++) k.push('ArrowDown'); await toques([...k, A]); t.plano = null; return; }
     if (b.lista) {
-      // golpe novo pendente aparece ANTES da oferta de troca (a fase do motor já é 'oferta'): aprender primeiro
-      if (b.fase === 'oferta' && !b.pend && !t.plano?.desistir) { const para = await ev(() => window.__qa.responderOferta()); if (para === null || para === undefined) await t.toque(B); else { t.plano = { tipo: 'troca', para }; await t.toque(A); } return; }
-      if (b.terminou) { await t.toque(B); return; } // apelido da capturada: não
+      // golpe novo pendente aparece ANTES da oferta de troca e do fim (a fase do motor já é 'oferta'/'fim'): aprender primeiro
+      const aprendendo = b.pend > 0 || t.plano?.desistir;
+      if (b.fase === 'oferta' && !aprendendo) { const para = await ev(() => window.__qa.responderOferta()); if (para === null || para === undefined) await t.toque(B); else { t.plano = { tipo: 'troca', para }; await t.toque(A); } return; }
+      if (b.terminou && !aprendendo) { await t.toque(B); return; } // apelido da capturada: não
       if (t.plano?.desistir) { t.plano = null; await t.toque(A); return; }
       const slot = await ev(() => window.__qa.aprender());
       if (slot >= 0) { t.plano = { aprender: true, slot }; await t.toque(A); } else { t.plano = { desistir: true }; await t.toque(B); }
