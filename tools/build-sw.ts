@@ -11,7 +11,7 @@
  *    Só entra no cache quando é pedido (cache-first).
  * Caches: `pingo-n-<versão>` guarda o núcleo de cada versão; `pingo-dados` guarda o resto, com o hash do
  * arquivo na chave (`<url>?h=<hash>`). Atualização: o SW novo aproveita do núcleo antigo o que não mudou,
- * apaga os núcleos velhos ao ativar (troca rápida) e os dados que não mudaram continuam valendo; o que
+ * assume logo ao instalar, guarda os núcleos velhos enquanto houver página antiga aberta (a página nova pede a faxina) e os dados que não mudaram continuam valendo; o que
  * mudou é baixado pela página, que depois remove do cache as chaves sem uso.
  */
 import { createHash } from 'node:crypto';
@@ -125,26 +125,37 @@ self.addEventListener('install', (ev) => {
       }
       await baixar(cache, caminho);
     });
-    // primeira instalação: assume logo; atualização: espera a página pedir (mensagem 'ativar')
-    if (!self.registration.active) await self.skipWaiting();
+    // assume assim que instalar (padrão mais previsível nos navegadores). A página que já estava aberta segue
+    // funcionando: os núcleos antigos só são apagados quando uma página nova pedir a faxina.
+    if (!(await caches.has(CACHE_NUCLEO)) || !(await cache.match(abs('index.html')))) throw new Error('o núcleo foi apagado durante a instalação');
+    await self.skipWaiting();
   })());
 });
 
-self.addEventListener('activate', (ev) => {
-  ev.waitUntil((async () => {
-    // troca limpa e rápida: só os núcleos de outras versões saem; os dados (com hash na chave) continuam valendo
-    for (const nome of await caches.keys()) {
-      if (nome.startsWith(PREFIXO) && nome !== CACHE_NUCLEO && nome !== CACHE_DADOS) await caches.delete(nome);
-    }
-    await self.clients.claim();
-  })());
-});
+self.addEventListener('activate', (ev) => { ev.waitUntil(self.clients.claim()); });
 
+async function faxina() {
+  // nunca durante a instalação de outra versão (o núcleo dela ainda está sendo montado)
+  if (self.registration.installing || self.registration.waiting || self.registration.active !== self.serviceWorker && self.serviceWorker) return;
+  for (const nome of await caches.keys()) {
+    if (nome.startsWith(PREFIXO) && nome !== CACHE_NUCLEO && nome !== CACHE_DADOS) await caches.delete(nome);
+  }
+}
 self.addEventListener('message', (ev) => {
-  if (ev.data === 'ativar') void self.skipWaiting();
+  // enviada por src/core/offline.ts ao abrir o jogo: a página já é desta versão, os núcleos velhos podem sair
+  if (ev.data === 'faxina') ev.waitUntil(faxina());
   if (ev.data === 'versao' && ev.source) ev.source.postMessage({ pingoVersao: VERSAO });
 });
 
+/** página aberta antes da atualização pedindo um pedaço de código da versão anterior */
+async function doNucleoAntigo(url) {
+  for (const nome of await caches.keys()) {
+    if (!nome.startsWith(PREFIXO + 'n-') || nome === CACHE_NUCLEO) continue;
+    const r = await (await caches.open(nome)).match(url);
+    if (r) return r;
+  }
+  return null;
+}
 async function responder(req) {
   const nucleo = await caches.open(CACHE_NUCLEO);
   const pagina = () => nucleo.match(abs('index.html'));
@@ -152,6 +163,8 @@ async function responder(req) {
   const limpa = req.url.split('#')[0].split('?')[0];
   const doNucleo = await nucleo.match(limpa);
   if (doNucleo) return doNucleo;
+  const antigo = req.mode === 'navigate' ? null : await doNucleoAntigo(limpa);
+  if (antigo) return antigo;
   const h = (await mapa()).get(decodeURIComponent(limpa.slice(BASE.length)));
   const dados = h ? await caches.open(CACHE_DADOS) : null;
   if (dados) { const guardado = await dados.match(limpa + '?h=' + h); if (guardado) return guardado; }

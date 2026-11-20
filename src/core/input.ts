@@ -28,7 +28,7 @@ const apertou = new Set<Acao>(), soltou = new Set<Acao>(), repetiu = new Set<Aca
 let ordemDir: Acao[] = [];
 let mapa = new Map<string, Acao>();
 let capturando: ((codigo: string | null) => void) | null = null;
-let digitando: ((tecla: string) => boolean) | null = null;
+let digitando: ((tecla: string, codigo: string) => boolean) | null = null;
 const padAnterior = new Set<string>();
 
 function refazerMapa() {
@@ -48,8 +48,8 @@ function aoApertarTecla(e: KeyboardEvent) {
   if (e.metaKey || e.ctrlKey || e.altKey) return;
   input.modo = 'teclado';
   if (capturando) { e.preventDefault(); const f = capturando; capturando = null; f(e.code); return; }
-  if (digitando && !e.repeat && digitando(e.key)) { e.preventDefault(); return; }
-  if (digitando && e.repeat && (e.key.length === 1 || e.key === 'Backspace')) { digitando(e.key); e.preventDefault(); return; }
+  if (digitando && !e.repeat && digitando(e.key, e.code)) { e.preventDefault(); return; }
+  if (digitando && e.repeat && (e.key.length === 1 || e.key === 'Backspace')) { digitando(e.key, e.code); e.preventDefault(); return; }
   if (digitando && e.code.startsWith('Shift')) return; // Shift serve para digitar maiúsculas
   const a = mapa.get(e.code);
   if (!a) return;
@@ -127,8 +127,8 @@ export const input = {
   /** espera a próxima tecla física e devolve o `code` (null se desistir com `cancelarCaptura`) */
   capturarTecla(): Promise<string | null> { return new Promise((r) => { capturando = r; }); },
   cancelarCaptura() { const f = capturando; capturando = null; f?.(null); },
-  /** modo de digitação (tela de nome): recebe `KeyboardEvent.key`; devolver true consome a tecla */
-  digitar(fn: ((tecla: string) => boolean) | null) { digitando = fn; if (fn) soltarTudo('t:'); },
+  /** modo de digitação (tela de nome): recebe `KeyboardEvent.key` e `.code`; devolver true consome a tecla (false = segue como botão do jogo) */
+  digitar(fn: ((tecla: string, codigo: string) => boolean) | null) { digitando = fn; if (fn) soltarTudo('t:'); },
   /** nome legível de um `code` de teclado */
   nomeTecla(c: string) {
     const fixos: Record<string, string> = { ArrowUp: '↑', ArrowDown: '↓', ArrowLeft: '←', ArrowRight: '→', Enter: 'Enter', Escape: 'Esc', ShiftLeft: 'Shift', ShiftRight: 'Shift D', Space: 'Espaço', Backspace: 'Apagar', Tab: 'Tab', ControlLeft: 'Ctrl', ControlRight: 'Ctrl D', AltLeft: 'Alt', AltRight: 'Alt D' };

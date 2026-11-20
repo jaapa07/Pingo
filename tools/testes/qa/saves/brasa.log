@@ -1,0 +1,22 @@
+
+>> etapa 1: abertura: quarto, mãe, relógio, laboratório e a primeira parceira  (0 s)
+== checkpoint brasa-passo-1: ["Guaraxim 5"] $3000
+resumo: {"zona":"A1-lab","x":7,"y":6,"dinheiro":3000,"insignias":[],"amuletos":[],"equipe":[{"e":4,"nome":"Guaraxim","nv":5,"vida":19,"max":19,"st":null,"golpes":["encontrao 35","berro 40","fagulha 25"]}],"mochila":{"radio-cipo":1,"ovo-pintado":1},"tempo":106,"posto":"A1-casa-jogador","capturado":1}
+treino extra: [] derrotas: 0 curas: 0
+perguntas: ["Quem é você? → Kauê","Você vai escolher Guaraxim, do tipo Brasa? → Sim","Quer dar um apelido para Guaraxim? → Não"]
+erros de console: []
+
+>> etapa 1: abertura: quarto, mãe, relógio, laboratório e a primeira parceira  (0 s)
+== checkpoint brasa-passo-1: ["Guaraxim 5"] $3000
+
+>> etapa 2: Trilha do Ipê e o Ovo Pintado até o Seu Aroeira  (18 s)
+  [batalha] A-R1-1 → vitoria · equipe 4:5 · A-R1 · $3060
+  [batalha] selvagem 45:4 → derrota · equipe 4:5 · A-R1 · $3060
+  [batalha] A-R1-6 → derrota · equipe 4:5 · A-R1 · $1530
+  DERROTA para A-R1-6 (nv 8)
+  [batalha] A-R1-2 → vitoria · equipe 4:6 · A-R1 · $861
+  [batalha] A-R1-3 → vitoria · equipe 4:6 · A-R1 · $941
+  [batalha] A-R1-5 → derrota · equipe 4:6 · A-R1 · $941
+  DERROTA para A-R1-5 (nv 7)
+  [batalha] A-R1-5 → derrota · equipe 4:7 · A-R1 · $470
+  DERROTA para A-R1-5 (nv 7)

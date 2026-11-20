@@ -19,7 +19,9 @@ export interface ArgsNome { titulo: string; max: number; padrao?: string }
 export function criarTelaNome(args: ArgsNome): Tela {
   const el = elTela('ui', 'tela-nome', 'fundo-mata');
   const max = Math.max(1, Math.min(12, args.max || 8));
-  let nome = (args.padrao ?? '').slice(0, max), pagina = nome ? 1 : 0, lin = 0, col = 0;
+  let nome = (args.padrao ?? '').slice(0, max), pagina = nome ? 1 : 0;
+  // nome já sugerido: o cursor nasce em "Fim", para que Confirmar aceite a sugestão em vez de acrescentar letras
+  let lin = nome ? 4 : 0, col = nome ? 3 : 0;
   el.style.backgroundImage = 'repeating-linear-gradient(to bottom, #2f6b3a 0 8px, #2a6236 8px 16px)';
   const tit = texto(args.titulo, { tamanho: 12, cor: 'creme', sombra: true, largura: 300, alinhar: 'centro' });
   el.append(em(tit, 10, 3));
@@ -42,7 +44,7 @@ export function criarTelaNome(args: ArgsNome): Tela {
     quadro.append(c); teclas[4].push(c);
     tocavel(c, () => { mover(4, i, true); apertar(); }, () => mover(4, i, true));
   });
-  const dica = texto(input.modo === 'toque' ? 'Toque nas letras. B apaga.' : 'Digite ou use as setas. Enter confirma.', { cor: 'marrom', largura: 260, alinhar: 'centro' });
+  const dica = texto(input.modo === 'toque' ? 'Toque nas letras. B apaga.' : `Digite ou use as setas. ${input.nomeTecla(input.teclasDe('a')[0] ?? 'Enter')} escolhe, Enter confirma.`, { cor: 'marrom', largura: 260, alinhar: 'centro' });
   quadro.append(em(dica, 16, 107));
 
   function pintarLetras() {
@@ -78,7 +80,11 @@ export function criarTelaNome(args: ArgsNome): Tela {
     el,
     entrar() {
       pintarLetras(); pintarNome(); pintarFoco();
-      input.digitar((k) => {
+      // as teclas físicas de Confirmar e Voltar (Z e X no padrão) continuam sendo botões do jogo: escolhem a letra do
+      // cursor e apagam; essas duas letras entram pelo teclado da tela. O resto do teclado físico digita direto.
+      const botoes = new Set([...input.teclasDe('a'), ...input.teclasDe('b')]);
+      input.digitar((k, codigo) => {
+        if (botoes.has(codigo) && k !== 'Enter') return false;
         if (k === 'Backspace') { apagar(); return true; }
         if (k === 'Enter') { fim(); return true; } // "Enter confirma" onde quer que o cursor esteja
         if (k.length === 1 && k !== ' ' && PAGINAS.some((p) => p.some((l) => l.includes(k)))) { por(k); return true; }

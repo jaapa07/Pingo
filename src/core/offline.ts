@@ -98,22 +98,13 @@ export async function iniciarOffline(): Promise<void> {
   offline.estado = 'instalando';
   try {
     const sw = navigator.serviceWorker;
-    const tinhaControle = !!sw.controller;
     const reg = await sw.register('sw.js');
-    // versão nova já baixada numa sessão anterior: ativa agora, antes de o jogo começar, e recarrega uma vez
-    if (reg.waiting && tinhaControle) {
-      let recarregou = false;
-      sw.addEventListener('controllerchange', () => { if (!recarregou) { recarregou = true; location.reload(); } });
-      reg.waiting.postMessage('ativar');
-      // se a troca não vier em 10 s, segue com a versão atual (a nova fica para a próxima abertura)
-      await new Promise((ok) => setTimeout(ok, 10000));
-      if (recarregou) return;
-      recarregou = true;
-    }
     await sw.ready;
+    // esta página já foi servida pela versão ativa: os núcleos de versões anteriores podem ser apagados
+    if (!reg.installing && !reg.waiting) sw.controller?.postMessage('faxina');
     await baixarResto();
-    // procura versão nova já nesta sessão; se houver, ela instala em segundo plano e vale na próxima abertura
-    if (tinhaControle && navigator.onLine) void reg.update().catch(() => undefined);
+    // procura versão nova já nesta sessão; se houver, instala em segundo plano e vale na próxima abertura
+    if (navigator.onLine) void reg.update().catch(() => undefined);
   } catch (e) {
     offline.estado = 'falhou';
     console.warn('[pingo] modo sem internet indisponível:', e);
