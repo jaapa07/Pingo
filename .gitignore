@@ -5,3 +5,6 @@ verify-shots/
 *.zip
 plataformas/ios/ios/App/Pods/
 plataformas/desktop/out/
+
+# registros dos pilotos de teste
+tools/testes/**/*.log

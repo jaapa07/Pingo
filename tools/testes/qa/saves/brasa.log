@@ -42,3 +42,12 @@ erros de console: []
   [batalha] A-R1-2 → vitoria · equipe 4:6,10:3 · A-R1 · $3156
   [batalha] A-R1-3 → vitoria · equipe 4:6,10:3 · A-R1 · $3236
   [batalha] A-R1-5 → derrota · equipe 4:6,10:3 · A-R1 · $3236
+  [batalha] A-R1-5 → derrota · equipe 4:6,10:4 · A-R1 · $1618
+  DERROTA para A-R1-5 (nv 7)
+  [batalha] A-R1-5 → derrota · equipe 4:6,10:4 · A-R1 · $809
+  DERROTA para A-R1-5 (nv 7)
+FALHA page.waitForTimeout: Target page, context or browser has been closed |     at t.espera (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:38:27) |     at t.toque (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:47:234) |     at async passoBatalha (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:94:5) 0 0
+resumo: 0
+treino extra: [] derrotas: 3 curas: 2
+perguntas: ["Quem é você? → Kauê","Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco"]
+erros de console: ["Failed to load resource: net::ERR_CONNECTION_REFUSED"]

@@ -9,3 +9,10 @@
   DERROTA para A-R1-3 (nv 5)
   [batalha] A-R1-3 → vitoria · equipe 7:6 · A-R1 · $1658
   [batalha] A-R1-5 → vitoria · equipe 7:7 · A-R1 · $1850
+  [batalha] A-R1-4 → derrota · equipe 7:7 · A-R1 · $1850
+  DERROTA para A-R1-4 (nv 6)
+FALHA page.waitForTimeout: Target page, context or browser has been closed |     at t.espera (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:38:27) |     at t.toque (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:47:234) |     at async passoBatalha (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:94:5) 0 0
+resumo: 0
+treino extra: [] derrotas: 2 curas: 2
+perguntas: ["Quem é você? → Kauê","Você vai escolher Botinho, do tipo Rio? → Sim","Quer dar um apelido para Botinho? → Não","Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco"]
+erros de console: ["Failed to load resource: net::ERR_CONNECTION_REFUSED"]
