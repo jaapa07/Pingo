@@ -65,7 +65,7 @@ const JOCA = { nome: 'Pescador Joca' };
 const VEGA = { nome: 'Astrônoma-assistente Vega' };
 const PASTOR = { nome: 'Seu Lã-Grossa' };
 const FLOCO = { nome: 'Seu Floco-Velho' };
-const ANDARILHO = { nome: 'Andarilho do Cume' };
+const ANDARILHO = { nome: 'Andarilho do Cume', retrato: 'andarilho-cume' };
 
 /** Ninho Raro: uma visita por dia; de manhã, a forma final (rara); fora dela, o filhote da forma do meio */
 const ninho = (linha: string, meio: number, final: number, onde: string): EventoDef => ({

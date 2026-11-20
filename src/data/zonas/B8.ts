@@ -69,7 +69,7 @@ const zona: ZonaDef = {
     entrada(g, 'O', 'observatorio', 'B8-observatorio', 6, 10),
   ],
   portoes: [
-    { x: 44, y: 3, w: 2, h: 1, requer: 'pos-jogo', sprite: 'cl-mateira', fala: 'A Guardiã da Floresta cruza a lança de taquara na estrada:\n— A Floresta Ancestral é a casa mais velha do Sertão. Tem árvore que viu a serra nascer.\f— Ela só recebe quem já foi recebido pelo Conselho dos Guardiões, lá no Pico Pindorama. Vença o Conselho e eu mesma abro o caminho.' },
+    { x: 44, y: 3, w: 2, h: 1, requer: 'pos-jogo', sprite: 'guardia-floresta', fala: 'A Guardiã da Floresta cruza a lança de taquara na estrada:\n— A Floresta Ancestral é a casa mais velha do Sertão. Tem árvore que viu a serra nascer.\f— Ela só recebe quem já foi recebido pelo Conselho dos Guardiões, lá no Pico Pindorama. Vença o Conselho e eu mesma abro o caminho.' },
   ],
   npcs: [
     duelista(g, '1', 'B8-1', 'cl-observadora', 'l', 3),
@@ -80,7 +80,7 @@ const zona: ZonaDef = {
     gente(g, 'K', 'b8-menina', 'cl-crianca-f', 'Luzinha', { mov: 'vagar', fala: ['De noite o céu daqui tem mais estrela que a areia do Pantanal. Eu contei até mil e dormi.', 'A Astrônoma Jaci tem uma criatura que some e aparece em outro lugar do ginásio. Eu acho que é mágica. A Jaci diz que é Mente.'] }),
     gente(g, 'D', 'b8-tropeiro', 'npc-homem-3', 'Tropeiro Cerrito', { dir: 's', fala: ['Lá no Monte Tupã, do outro lado da serra, tem um guardião que não deixa ninguém subir. O Abaeté.', 'Ele só abre a trilha para quem traz quinze insígnias. Com a da Jaci, você chega lá. A Aldeia Tupã fica no topo, e o Ginásio da Lenda também.'] }),
     gente(g, 'G', 'b8-luneteiro', 'npc-homem-1', 'Seu Luneta', { dir: 'n', mov: 'olhar', fala: ['Bicho de Mente adora o Lume: Papagálio, Corujão-Orelha, Noitão. A Jaci joga com eles.', 'Contra a Mente vale Assombro e Inseto. E paciência: a Jaci troca de criatura como quem troca de estrela.'] }),
-    gente(g, 'F', 'b8-guardia-floresta', 'cl-mateira', 'Guardiã da Floresta', { dir: 's', se: 'pos-jogo', fala: ['O Conselho mandou avisar: o caminho está aberto. Pise de leve na Floresta Ancestral.', 'Lá dentro tem ninho raro de criatura que a gente só via em livro: Tamanduá-Copa, Guaraflama, Botorosa… e coisa maior. Muito maior.'] }),
+    gente(g, 'F', 'b8-guardia-floresta', 'guardia-floresta', 'Guardiã da Floresta', { dir: 's', se: 'pos-jogo', fala: ['O Conselho mandou avisar: o caminho está aberto. Pise de leve na Floresta Ancestral.', 'Lá dentro tem ninho raro de criatura que a gente só via em livro: Tamanduá-Copa, Guaraflama, Botorosa… e coisa maior. Muito maior.'] }),
     gente(g, 'J', 'b8-sanfoneiro', 'cl-repentista', 'Choro do Lume', { dir: 's', fala: ['Aqui a música da praça é choro: flauta, cavaquinho e pandeiro. O coreto foi feito para a lua ouvir.', 'Volte de noite: o observatório abre e a praça inteira apaga a luz para ver o céu.'] }),
   ],
   itens: [item(g, 'k', 'cuia-mel', 2), item(g, 'j', 'elixir-andiroba', 1, true), item(g, 'i', 'pedra-solar'), item(g, 'q', 'garrafada', 3)],
@@ -88,8 +88,8 @@ const zona: ZonaDef = {
     {
       // 6.4 (B-PL = Campos do Lume): Beija-Arco-Íris (G mr, dia), Papagálio (G r), Urubu-Rei (G r), Louva-Mestre (G r)
       metodo: 'grama', taxa: 0.1,
-      dia: [E(47, 55, 57, 20), E(136, 55, 57, 18), E(12, 55, 57, 16), E(64, 56, 58, 14), E(158, 57, 59, 10), E(54, 57, 59, 10), E(56, 57, 59, 8), E(48, 57, 59, 4)],
-      noite: [E(44, 55, 57, 20), E(172, 55, 57, 18), E(60, 55, 57, 16), E(54, 57, 59, 14), E(56, 57, 59, 12), E(158, 57, 59, 10), E(64, 56, 58, 10)],
+      dia: [E(47, 60, 62, 20), E(136, 60, 62, 18), E(12, 60, 62, 16), E(64, 61, 63, 14), E(158, 62, 64, 10), E(54, 62, 64, 10), E(56, 62, 64, 8), E(48, 62, 64, 4)],
+      noite: [E(44, 60, 62, 20), E(172, 60, 62, 18), E(60, 60, 62, 16), E(54, 62, 64, 14), E(56, 62, 64, 12), E(158, 62, 64, 10), E(64, 61, 63, 10)],
       camadas: [{
         apos: 16,
         dia: [E(47, 60, 62, 18), E(136, 60, 62, 18), E(12, 60, 62, 16), E(64, 60, 62, 14), E(158, 61, 63, 12), E(54, 61, 63, 10), E(56, 61, 63, 8), E(48, 61, 63, 4)],
@@ -99,8 +99,8 @@ const zona: ZonaDef = {
     {
       // 6.4 (B-PL, A): Jataí-Rainha (r, dia)
       metodo: 'arvore',
-      dia: [E(136, 55, 57, 35), E(138, 55, 57, 30), E(154, 55, 57, 20), E(150, 57, 59, 15)],
-      noite: [E(172, 55, 57, 40), E(44, 55, 57, 35), E(138, 55, 57, 25)],
+      dia: [E(136, 60, 62, 35), E(138, 60, 62, 30), E(154, 60, 62, 20), E(150, 62, 64, 15)],
+      noite: [E(172, 60, 62, 40), E(44, 60, 62, 35), E(138, 60, 62, 25)],
       camadas: [{ apos: 16, dia: [E(136, 60, 62, 35), E(138, 60, 62, 30), E(154, 60, 62, 15), E(150, 61, 63, 20)], noite: [E(172, 60, 62, 40), E(44, 60, 62, 35), E(138, 60, 62, 25)] }],
     },
   ],

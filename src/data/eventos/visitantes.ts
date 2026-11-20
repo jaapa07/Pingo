@@ -155,13 +155,13 @@ const NAVIO_B9: [number, number] = [32, 26];
  */
 export const PONTOS_VISITANTES: { zona: string; npc?: NpcDef; gatilho?: Gatilho }[] = [
   // canoeiro Seu Tarumã no cais de Porto Sereia (praia ao lado do píer) e a Drª Solveig no cais de Porto Pantaneiro
-  { zona: 'A4', npc: { id: 'vis-taruma', sprite: 'npc-idoso', x: 32, y: 38, dir: 'o', script: 'vis-canoeiro' } },
-  { zona: 'B9', npc: { id: 'vis-solveig', sprite: 'cl-biologa', x: 30, y: 24, dir: 's', se: 'flag:conselho-vencido', script: 'vis-solveig' } },
+  { zona: 'A4', npc: { id: 'vis-taruma', sprite: 'seu-taruma', x: 32, y: 38, dir: 'o', script: 'vis-canoeiro' } },
+  { zona: 'B9', npc: { id: 'vis-solveig', sprite: 'dra-solveig', x: 30, y: 24, dir: 's', se: 'flag:conselho-vencido', script: 'vis-solveig' } },
   // os quatro pesquisadores da expedição (só depois de falar com a Drª Solveig)
-  { zona: 'B7', npc: { id: 'vis-exp-1', sprite: 'cl-montanhista', x: 30, y: 6, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-1' } },
-  { zona: 'B-SG', npc: { id: 'vis-exp-2', sprite: 'cl-observadora', x: 30, y: 16, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-2' } },
-  { zona: 'B-LG', npc: { id: 'vis-exp-3', sprite: 'cl-mergulhador', x: 44, y: 19, dir: 'o', se: 'flag:boreal-missao', script: 'vis-lanterna-3' } },
-  { zona: 'B-R5', npc: { id: 'vis-exp-4', sprite: 'cl-pescador', x: 32, y: 6, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-4' } },
+  { zona: 'B7', npc: { id: 'vis-exp-1', sprite: 'pesquisador-boreal', x: 30, y: 6, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-1' } },
+  { zona: 'B-SG', npc: { id: 'vis-exp-2', sprite: 'pesquisador-boreal', x: 30, y: 16, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-2' } },
+  { zona: 'B-LG', npc: { id: 'vis-exp-3', sprite: 'pesquisador-boreal', x: 44, y: 19, dir: 'o', se: 'flag:boreal-missao', script: 'vis-lanterna-3' } },
+  { zona: 'B-R5', npc: { id: 'vis-exp-4', sprite: 'pesquisador-boreal', x: 32, y: 6, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-4' } },
   // "Pedra das Lanternas" reservada pelo B2-norte no Cume do PP (tiles 8..11, 3..6; docs/ZONAS-B2-NORTE.md): gatilho noturno
   { zona: 'PP', gatilho: { x: 9, y: 4, w: 2, h: 2, script: 'vis-pico-aurora', se: 'flag:boreal-missao&periodo:noite' } },
 ];
@@ -230,8 +230,8 @@ registrarComando('vis-acender', async () => {
 /* ------------------------------ roteiros ------------------------------ */
 const se = (c: string, entao: Comando[], senao?: Comando[]): Comando => (senao ? ['se', c, entao, senao] : ['se', c, entao]);
 const f = (quem: unknown, texto: string): Comando => ['falar', quem, texto];
-const TARUMA = { nome: 'Seu Tarumã', retrato: 'npc-idoso' };
-const SOLVEIG = { nome: 'Drª Solveig', retrato: 'cl-biologa' };
+const TARUMA = { nome: 'Seu Tarumã', retrato: 'seu-taruma' };
+const SOLVEIG = { nome: 'Drª Solveig', retrato: 'dra-solveig' };
 
 const lanterna = (n: number, onde: string): EventoDef => ({
   id: `vis-lanterna-${n}`,

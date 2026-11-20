@@ -70,7 +70,7 @@ const zona: ZonaDef = {
     ...saidas(g, 'L', 'B8', 1, 19, 'l'),
   ],
   portoes: [
-    { x: 5, y: 16, w: 1, h: 2, requer: 'insignia:14&amuleto:lampiao', sprite: 'cl-montanhista', fala: 'O Guarda da Névoa finca o cajado no meio da trilha:\n— Daqui para leste a névoa não tem fim, e o cânion não perdoa passo errado.\f— Só passa quem traz a Insígnia do Floco, da Gaúcha Pinhão, e um Lampião para abrir a névoa. Volte quando tiver os dois.' },
+    { x: 5, y: 16, w: 1, h: 2, requer: 'insignia:14&amuleto:lampiao', sprite: 'guarda-nevoa', fala: 'O Guarda da Névoa finca o cajado no meio da trilha:\n— Daqui para leste a névoa não tem fim, e o cânion não perdoa passo errado.\f— Só passa quem traz a Insígnia do Floco, da Gaúcha Pinhão, e um Lampião para abrir a névoa. Volte quando tiver os dois.' },
     { x: mx, y: my, requer: 'pos-jogo', sprite: 'npc-idoso', fala: 'Um velho vigia de poncho guarda a porteira do mirante:\n— Este é o Mirante do Guardião Velho. Só sobe quem já se sentou à mesa do Conselho no Pico.\f— Não é desfeita, criança. É costume: o mirante mostra coisas que só servem a quem terminou a viagem.' },
   ],
   npcs: [
@@ -82,7 +82,7 @@ const zona: ZonaDef = {
     duelista(g, '6', 'B-R5-6', 'cl-vaqueiro', 'l', 3),
     duelista(g, '7', 'B-R5-7', 'cl-mateira', 'n', 3),
     duelista(g, '8', 'B-R5-8', 'cl-capoeirista', 's', 3),
-    gente(g, 'G', 'b-r5-guarda', 'cl-montanhista', 'Guarda da Névoa', { dir: 's', se: 'insignia:14', fala: ['Insígnia do Floco e Lampião aceso: pode seguir. Mantenha a luz na trilha e o ouvido no vento.', 'Os bichos da névoa enxergam melhor que a gente. O Graxaim-da-Névoa, então, nem precisa de olho: ele É a névoa.'] }),
+    gente(g, 'G', 'b-r5-guarda', 'guarda-nevoa', 'Guarda da Névoa', { dir: 's', se: 'insignia:14', fala: ['Insígnia do Floco e Lampião aceso: pode seguir. Mantenha a luz na trilha e o ouvido no vento.', 'Os bichos da névoa enxergam melhor que a gente. O Graxaim-da-Névoa, então, nem precisa de olho: ele É a névoa.'] }),
     gente(g, 'H', 'b-r5-neblino', 'npc-idoso', 'Seu Neblino', { dir: 'l', mov: 'olhar', fala: ['A névoa daqui não é água no ar, menino. É o hálito do cânion. Ele respira de manhã e de noite.', 'Quem anda com Lampião vê a trilha. Quem anda sem, vê fantasma. Às vezes o fantasma é um Urutau-Fantasma mesmo, pousado no pinheiro.'] }),
     gente(g, 'P', 'b-r5-andarilha', 'npc-mulher-3', 'Andarilha Cerração', { dir: 's', fala: ['Lá do outro lado da ponte tem um campo de capim tão alto que a névoa fica presa nele. É onde a Jaguatiricão caça, de noite.', 'Do mirante cercado, lá no nordeste, dizem que dá para ver o Pico Pindorama inteiro. Mas o vigia não deixa ninguém subir.'] }),
     gente(g, 'Q', 'b-r5-menino', 'cl-crianca-m', 'Tiquinho', { mov: 'vagar', fala: ['Eu pulei o degrau de pedra e agora não consigo voltar por ele! Tenho que dar a volta toda.', 'Pelo menos o capim lá embaixo é macio.'] }),
@@ -95,9 +95,9 @@ const zona: ZonaDef = {
     {
       // 6.4 (B-R5): Jaguatiricão (G r, noite) e Graxaim-da-Névoa (G i); fauna de serra fria em volta, toda na forma crescida
       metodo: 'grama', taxa: 0.12,
-      manha: [E(94, 55, 57, 22), E(136, 55, 57, 18), E(12, 55, 57, 16), E(66, 56, 58, 14), E(162, 55, 57, 14), E(102, 56, 58, 10), E(56, 57, 59, 6)],
-      dia: [E(94, 55, 57, 20), E(136, 55, 57, 18), E(12, 55, 57, 15), E(66, 56, 58, 15), E(162, 55, 57, 14), E(102, 56, 58, 10), E(56, 57, 59, 8)],
-      noite: [E(94, 55, 57, 22), E(44, 55, 57, 18), E(60, 55, 57, 15), E(21, 55, 57, 15), E(140, 56, 58, 12), E(162, 55, 57, 10), E(70, 57, 59, 8)],
+      manha: [E(94, 60, 62, 22), E(136, 60, 62, 18), E(12, 60, 62, 16), E(66, 61, 63, 14), E(162, 60, 62, 14), E(102, 61, 63, 10), E(56, 62, 64, 6)],
+      dia: [E(94, 60, 62, 20), E(136, 60, 62, 18), E(12, 60, 62, 15), E(66, 61, 63, 15), E(162, 60, 62, 14), E(102, 61, 63, 10), E(56, 62, 64, 8)],
+      noite: [E(94, 60, 62, 22), E(44, 60, 62, 18), E(60, 60, 62, 15), E(21, 60, 62, 15), E(140, 61, 63, 12), E(162, 60, 62, 10), E(70, 62, 64, 8)],
       camadas: [{
         apos: 16,
         dia: [E(94, 60, 62, 22), E(136, 60, 62, 18), E(12, 60, 62, 15), E(66, 61, 63, 15), E(162, 60, 62, 12), E(102, 61, 63, 10), E(56, 61, 63, 8)],
@@ -107,13 +107,13 @@ const zona: ZonaDef = {
     {
       // 6.4 (B-R5, A): Urutau-Fantasma (r, noite) e Noitão (i, noite)
       metodo: 'arvore',
-      dia: [E(138, 55, 57, 40), E(136, 55, 57, 30), E(144, 56, 58, 20), E(154, 55, 57, 10)],
-      noite: [E(172, 55, 57, 40), E(44, 55, 57, 30), E(138, 55, 57, 18), E(170, 57, 59, 12)],
+      dia: [E(138, 60, 62, 40), E(136, 60, 62, 30), E(144, 61, 63, 20), E(154, 60, 62, 10)],
+      noite: [E(172, 60, 62, 40), E(44, 60, 62, 30), E(138, 60, 62, 18), E(170, 62, 64, 12)],
       camadas: [{ apos: 16, dia: [E(138, 60, 62, 40), E(136, 60, 62, 30), E(144, 61, 63, 30)], noite: [E(172, 60, 62, 40), E(44, 60, 62, 25), E(170, 61, 63, 20), E(138, 60, 62, 15)] }],
     },
-    { metodo: 'rocha', todos: [E(162, 55, 57, 60), E(166, 55, 57, 40)], camadas: [{ apos: 16, todos: [E(162, 60, 62, 60), E(166, 60, 62, 40)] }] },
+    { metodo: 'rocha', todos: [E(162, 60, 62, 60), E(166, 60, 62, 40)], camadas: [{ apos: 16, todos: [E(162, 60, 62, 60), E(166, 60, 62, 40)] }] },
     // a Loca do Nevoeiro (chão de gruta)
-    { metodo: 'caverna', taxa: 0.08, todos: [E(32, 55, 57, 22), E(172, 55, 57, 20), E(94, 55, 57, 18), E(31, 55, 57, 16), E(166, 55, 57, 14), E(162, 55, 57, 10)] },
+    { metodo: 'caverna', taxa: 0.08, todos: [E(32, 60, 62, 22), E(172, 60, 62, 20), E(94, 60, 62, 18), E(31, 60, 62, 16), E(166, 60, 62, 14), E(162, 60, 62, 10)] },
   ],
 };
 export default zona;

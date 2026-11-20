@@ -41,6 +41,6 @@ const zona: ZonaDef = {
     { ...g.p('m'), item: 'pt-49', flag: 'item:A-MT-gruta:sudoeste' },
     { x: 25, y: 13, item: 'pepita', oculto: true, flag: 'item:A-MT-gruta:sudeste' },
   ],
-  habitats: [{ metodo: 'caverna', taxa: 0.09, todos: [{ e: 166, nv: [57, 60], peso: 30 }, { e: 172, nv: [57, 60], peso: 25 }, { e: 164, nv: [57, 60], peso: 20 }, { e: 32, nv: [58, 61], peso: 15 }, { e: 162, nv: [57, 60], peso: 10 }] }],
+  habitats: [{ metodo: 'caverna', taxa: 0.09, todos: [{ e: 166, nv: [62, 65], peso: 30 }, { e: 172, nv: [62, 65], peso: 25 }, { e: 164, nv: [62, 65], peso: 20 }, { e: 32, nv: [63, 66], peso: 15 }, { e: 162, nv: [62, 65], peso: 10 }] }],
 };
 export default zona;

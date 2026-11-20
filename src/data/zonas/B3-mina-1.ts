@@ -57,10 +57,10 @@ const zona: ZonaDef = {
     {
       // a Mina Velha não está na tabela 6.4: recebe criaturas de caverna e de rocha das zonas vizinhas (B-CV, B-CH, B-R2)
       metodo: 'caverna', taxa: 0.09,
-      todos: [E(31, 46, 48, 22), E(166, 46, 48, 20), E(34, 46, 48, 16), E(42, 47, 49, 14), E(146, 47, 49, 14), E(164, 47, 49, 14)],
+      todos: [E(31, 50, 52, 22), E(166, 50, 52, 20), E(34, 50, 52, 16), E(42, 51, 53, 14), E(146, 51, 53, 14), E(164, 51, 53, 14)],
       camadas: [{ apos: 12, todos: [E(31, 52, 54, 20), E(166, 52, 54, 20), E(34, 52, 54, 16), E(42, 53, 55, 14), E(146, 53, 55, 16), E(164, 53, 55, 14)] }],
     },
-    { metodo: 'rocha', todos: [E(166, 46, 48, 50), E(160, 47, 49, 30), E(164, 47, 49, 20)] },
+    { metodo: 'rocha', todos: [E(166, 50, 52, 50), E(160, 51, 53, 30), E(164, 51, 53, 20)] },
   ],
 };
 export default zona;

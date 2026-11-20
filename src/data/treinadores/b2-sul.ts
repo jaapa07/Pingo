@@ -16,139 +16,139 @@ const capanga = (id: string, f: boolean, equipe: MembroEquipe[], desafio: string
 
 /* ------------------------------ B-R3 · Trilha da Roda (nv 49–53) ------------------------------ */
 const TRILHA: TreinadorDef[] = [
-  t('B-R3-1', 'Capoeirista', 'Mestre Cobrinha', 'cl-capoeirista', [{ e: 96, nv: 50 }, { e: 158, nv: 51 }],
+  t('B-R3-1', 'Capoeirista', 'Mestre Cobrinha', 'cl-capoeirista', [{ e: 96, nv: 58 }, { e: 158, nv: 59 }],
     'Ê, camará! Na Trilha da Roda ninguém passa sem jogar. Vem, que o berimbau já chamou!', 'Jogo bonito. Perdi, mas perdi com ginga.', 'Na roda o Mestre Gingado manda criatura em dupla. Treine trocar a sua no compasso certo.'),
-  t('B-R3-2', 'Vaqueiro', 'Tonho da Porteira', 'cl-vaqueiro', [{ e: 104, nv: 50 }, { e: 102, nv: 51 }, { e: 14, nv: 49 }],
+  t('B-R3-2', 'Vaqueiro', 'Tonho da Porteira', 'cl-vaqueiro', [{ e: 104, nv: 58 }, { e: 102, nv: 59 }, { e: 14, nv: 57 }],
     'Saí de Arraial Brasa tocando três bichos e você atravessou na frente da boiada!', 'A boiada parou para ver. Até a Seriemão aplaudiu.', 'Desça pelo degrau de terra do capinzal: é caminho de mão única, mas economiza a volta toda.'),
-  t('B-R3-3', 'Observadora de Aves', 'Dona Arara', 'cl-observadora', [{ e: 46, nv: 51 }, { e: 50, nv: 52 }],
+  t('B-R3-3', 'Observadora de Aves', 'Dona Arara', 'cl-observadora', [{ e: 46, nv: 59 }, { e: 50, nv: 60 }],
     'Psiu! Um Tucanuçu pousou no ipê. E agora ele vai pousar na sua equipe!', 'Voou. E levou a minha dignidade no bico.', 'O Quero-Guarda grita quando alguém chega perto do ninho. Ele gritou para você. Eu entendi o recado.'),
-  t('B-R3-4', 'Repentista', 'Zé Cordel', 'cl-repentista', [{ e: 53, nv: 50 }, { e: 54, nv: 52 }, { e: 154, nv: 51 }],
+  t('B-R3-4', 'Repentista', 'Zé Cordel', 'cl-repentista', [{ e: 53, nv: 58 }, { e: 54, nv: 60 }, { e: 154, nv: 59 }],
     'No alto do Tabuleiro a rima é mais fina: / quem sobe sem duelo desce na buzina!', 'Perdi o duelo e perdi a rima, / desço a ladeira e não olho para cima.', 'O Papagálio aprende tudo o que a gente fala. Por isso eu só falo em verso perto dele.'),
-  t('B-R3-5', 'Capoeirista', 'Contramestra Iúna', 'cl-capoeirista', [{ e: 66, nv: 52 }, { e: 64, nv: 51 }],
+  t('B-R3-5', 'Capoeirista', 'Contramestra Iúna', 'cl-capoeirista', [{ e: 66, nv: 60 }, { e: 64, nv: 59 }],
     'Meu Prego-Mestre quebra coco com pedra. Imagina o que ele faz com a sua defesa!', 'Quebrou foi a minha estratégia.', 'O Bugio-Trovão mora nas árvores grossas daqui. Sacuda e se prepare para o barulho.'),
-  t('B-R3-6', 'Mateira', 'Jurema do Cerrado', 'cl-mateira', [{ e: 144, nv: 51 }, { e: 19, nv: 52 }],
+  t('B-R3-6', 'Mateira', 'Jurema do Cerrado', 'cl-mateira', [{ e: 144, nv: 59 }, { e: 19, nv: 60 }],
     'Saúva-Rainha não perde formigueiro, e eu não perco batalha. Normalmente.', 'Normalmente não é sempre. Aprendi.', 'Atrás do cipó do oeste tem um bosque com canteiros. Fruto plantado lá cresce com sombra e com sossego.'),
-  t('B-R3-7', 'Escoteira', 'Escoteira Lili', 'cl-escoteira', [{ e: 14, nv: 49 }, { e: 96, nv: 50 }, { e: 46, nv: 50 }],
+  t('B-R3-7', 'Escoteira', 'Escoteira Lili', 'cl-escoteira', [{ e: 14, nv: 57 }, { e: 96, nv: 58 }, { e: 46, nv: 58 }],
     'Distintivo de Trilha: conquistado. Distintivo de Batalha contra Campeão: agora!', 'Ganhei o distintivo de Boa Perdedora. Também conta.', 'Escoteira sempre alerta: tem uma lagoa lá em cima da cascata. Ninguém sobe sem o Amuleto da Cachoeira.'),
-  t('B-R3-8', 'Ferreiro', 'Ferreiro Malho', 'cl-ferreiro', [{ e: 42, nv: 51 }, { e: 146, nv: 52 }],
+  t('B-R3-8', 'Ferreiro', 'Ferreiro Malho', 'cl-ferreiro', [{ e: 42, nv: 59 }, { e: 146, nv: 60 }],
     'Trouxe a forja nas costas até aqui. Agora você vai sentir o calor dela!', 'A brasa apagou. Volto para o Arraial reacender.', 'Cidade Ginga tem tudo, menos forja. Por isso eu levo a minha.'),
 ];
 
 /* ------------------------------ B5 · Cidade Ginga (nv 50–53; revanche nv 57–59) ------------------------------ */
 const GINGA: TreinadorDef[] = [
-  t('B5-1', 'Capoeirista', 'Capoeirista Ventania', 'cl-capoeirista', [{ e: 104, nv: 50 }, { e: 158, nv: 51 }, { e: 66, nv: 52 }],
+  t('B5-1', 'Capoeirista', 'Capoeirista Ventania', 'cl-capoeirista', [{ e: 104, nv: 58 }, { e: 158, nv: 59 }, { e: 66, nv: 60 }],
     'Na praça da roda o desafio é aberto. Quem pisou na areia, jogou!', 'Saí da roda pela tangente. Boa, camará.', 'O Mestre Gingado escuta o berimbau antes de mandar golpe. Escute também.'),
-  t('B5-2', 'Capoeirista', 'Capoeirista Siriema', 'cl-capoeirista', [{ e: 102, nv: 51 }, { e: 74, nv: 52 }],
+  t('B5-2', 'Capoeirista', 'Capoeirista Siriema', 'cl-capoeirista', [{ e: 102, nv: 59 }, { e: 74, nv: 60 }],
     'Vou te mostrar a meia-lua da minha Ariranhão. Ela aprendeu nadando!', 'Meia-lua, lua inteira, eclipse. Perdi.', 'Tipo Ginga perde força contra Vento, Mente, Veneno, Inseto e Encanto. Escolha bem quem entra na roda.'),
-  t('B5-mare', 'Contramestra', 'Contramestra Maré', 'cl-capoeirista', [{ e: 96, nv: 51 }, { e: 110, nv: 52 }, { e: 66, nv: 53 }],
+  t('B5-mare', 'Contramestra', 'Contramestra Maré', 'cl-capoeirista', [{ e: 96, nv: 59 }, { e: 110, nv: 60 }, { e: 66, nv: 61 }],
     'Quer entrar na Roda Grande? Primeiro passa por mim. O berimbau tocou São Bento Grande: é jogo duro!', 'O berimbau mudou o toque. Para você.', 'Sábado a Roda Grande é aberta. Volte quando o Mestre Gingado já tiver te batizado e a gente joga de novo, com equipe de gente grande.'),
-  t('B5-mare-2', 'Contramestra', 'Contramestra Maré', 'cl-capoeirista', [{ e: 96, nv: 57 }, { e: 110, nv: 58 }, { e: 66, nv: 58 }, { e: 72, nv: 59 }],
+  t('B5-mare-2', 'Contramestra', 'Contramestra Maré', 'cl-capoeirista', [{ e: 96, nv: 65 }, { e: 110, nv: 66 }, { e: 66, nv: 66 }, { e: 72, nv: 67 }],
     'Sábado de Roda Grande! A equipe treinou a semana inteira. Ê, volta do mundo, camará!', 'A volta do mundo deu a volta em mim.', 'Sábado que vem tem mais. A roda não acaba: só descansa.', { contato: true }),
 ];
 
 /* ------------------------------ B-TA · Túnel Alagado e Gruta do Fôlego (nv 52–54) ------------------------------ */
 const TUNEL: TreinadorDef[] = [
-  t('B-TA-1', 'Mergulhador', 'Mergulhador Bagre', 'cl-mergulhador', [{ e: 116, nv: 53 }, { e: 114, nv: 52 }],
+  t('B-TA-1', 'Mergulhador', 'Mergulhador Bagre', 'cl-mergulhador', [{ e: 116, nv: 62 }, { e: 114, nv: 61 }],
     'Blub! Batalha debaixo d’água: quem respira primeiro perde!', 'Blub… blub… perdi o fôlego e a luta.', 'Suba nas clareiras de luz do fundo. A da gruta tem ar e um eremita que adora visita.'),
-  t('B-TA-2', 'Mergulhadora', 'Mergulhadora Raia', 'cl-mergulhador', [{ e: 118, nv: 53 }, { e: 74, nv: 54 }],
+  t('B-TA-2', 'Mergulhadora', 'Mergulhadora Raia', 'cl-mergulhador', [{ e: 118, nv: 62 }, { e: 74, nv: 63 }],
     'A minha Arraião se esconde na areia do fundo. Você nem viu ela chegando!', 'Agora quem se esconde na areia sou eu.', 'Este trecho do túnel termina no charco do Brejo Roxo. Dizem que a água de lá anda roxa por causa de um curtume.'),
-  t('B-TA-3', 'Mergulhador', 'Mergulhador Cação', 'cl-mergulhador', [{ e: 130, nv: 53 }, { e: 122, nv: 53 }, { e: 116, nv: 54 }],
+  t('B-TA-3', 'Mergulhador', 'Mergulhador Cação', 'cl-mergulhador', [{ e: 130, nv: 62 }, { e: 122, nv: 62 }, { e: 116, nv: 63 }],
     'O Polvão muda de cor para enganar. Eu mudo de estratégia. Vamos ver quem engana quem!', 'Fui eu que fiquei com cara de polvo.', 'Pirarucão e Minhocão aparecem pouco aqui no fundo. Quem tem paciência e Cuia de Rede sai rindo.'),
-  t('B-TA-4', 'Pescador', 'Pescador Jundiá-Velho', 'cl-pescador', [{ e: 40, nv: 54 }, { e: 38, nv: 52 }],
+  t('B-TA-4', 'Pescador', 'Pescador Jundiá-Velho', 'cl-pescador', [{ e: 40, nv: 63 }, { e: 38, nv: 61 }],
     'Trinta anos pescando neste lago escuro! O Jaú-Gigante já é meu sócio.', 'O sócio me abandonou.', 'Com Vara Mestra o Jaú morde mais. Com Vara Velha só vem Mandizinho, mas Mandizinho cresce.'),
-  t('B-TA-5', 'Garimpeiro', 'Garimpeiro Estalagmite', 'cl-garimpeiro', [{ e: 36, nv: 53 }, { e: 166, nv: 54 }],
+  t('B-TA-5', 'Garimpeiro', 'Garimpeiro Estalagmite', 'cl-garimpeiro', [{ e: 36, nv: 62 }, { e: 166, nv: 63 }],
     'Subi a trepadeira para garimpar a prateleira. Ninguém sobe aqui sem levar um desafio!', 'Ganhou de mim e da altura.', 'Tem um nicho atrás da rocha rachada. Eu esqueci o Amuleto do Quebra-pedra em casa. Você não esqueceu, né?'),
 ];
 
 /* ------------------------------ B6 · Brejo Roxo (nv 53–54) ------------------------------ */
 const BREJO: TreinadorDef[] = [
-  t('B6-1', 'Bióloga', 'Bióloga Sapé', 'cl-biologa', [{ e: 26, nv: 53 }, { e: 90, nv: 54 }],
+  t('B6-1', 'Bióloga', 'Bióloga Sapé', 'cl-biologa', [{ e: 26, nv: 62 }, { e: 90, nv: 63 }],
     'Estou contando sapos para provar que o brejo está doente. Você vai entrar na estatística!', 'Estatística refeita: um a zero para você.', 'A Coralzinha tem anéis que brilham. Bonita, mas não chegue perto sem Mel Puro na mochila.'),
-  t('B6-2', 'Pescador', 'Pescador Muçum', 'cl-pescador', [{ e: 85, nv: 53 }, { e: 114, nv: 54 }],
+  t('B6-2', 'Pescador', 'Pescador Muçum', 'cl-pescador', [{ e: 85, nv: 62 }, { e: 114, nv: 63 }],
     'Pesco no charco desde que o charco era lagoa. Peixe roxo, mas pesco!', 'Fui pescado.', 'O Jacaruçu do charco é parente do Jacaretinga do Pantanal. Só que mais velho e mais rabugento.'),
 ];
 
 /* ------------------------------ laboratório do Cartel (capangas nv 52–55; chefes ás 55 e 56) ------------------------------ */
 const LAB: TreinadorDef[] = [
-  capanga('B6-porteiro', false, [{ e: 146, nv: 53 }, { e: 92, nv: 54 }],
+  capanga('B6-porteiro', false, [{ e: 146, nv: 62 }, { e: 92, nv: 63 }],
     'Ei, ei! O curtume está fechado. Para obras. Obras de… curtume. Circulando!', 'Tá bom, tá bom! Entra. Mas eu não deixei, ouviu?', 'Eu vou dizer que você me enganou com um disfarce.'),
-  capanga('B6-lab-1', false, [{ e: 60, nv: 52 }, { e: 146, nv: 53 }],
+  capanga('B6-lab-1', false, [{ e: 60, nv: 61 }, { e: 146, nv: 62 }],
     'Visita no depósito? A Doutora Zinabre não gosta de visita. Nem eu!', 'A Doutora vai descontar do meu salário.', 'Salário… que salário? O Cartel paga em promessa.'),
-  capanga('B6-lab-2', true, [{ e: 92, nv: 53 }, { e: 34, nv: 52 }],
+  capanga('B6-lab-2', true, [{ e: 92, nv: 62 }, { e: 34, nv: 61 }],
     'Encostou nas jaulas? Encostou no Cartel Ferrugem!', 'Encostei na derrota.', 'A alavanca da sala de máquinas abre a porta do corredor. Esqueça que eu disse isso.'),
-  capanga('B6-lab-3', false, [{ e: 118, nv: 53 }, { e: 130, nv: 54 }],
+  capanga('B6-lab-3', false, [{ e: 118, nv: 62 }, { e: 130, nv: 63 }],
     'Ninguém mexe na alavanca enquanto eu estiver de guarda!', 'Pode mexer. Eu vou tomar um café.', 'O café daqui tem gosto de peçonha. Tudo aqui tem gosto de peçonha.'),
-  capanga('B6-lab-4', true, [{ e: 148, nv: 54 }, { e: 60, nv: 53 }],
+  capanga('B6-lab-4', true, [{ e: 148, nv: 63 }, { e: 60, nv: 62 }],
     'O nível 2 é das jaulas. E você vai para uma delas!', 'Quem foi para a jaula foi o meu orgulho.', 'O Doutor Peçonha está numa cela lá no canto. Ele assobia o dia inteiro. Enlouquecedor.'),
-  capanga('B6-lab-5', false, [{ e: 152, nv: 54 }, { e: 162, nv: 53 }],
+  capanga('B6-lab-5', false, [{ e: 152, nv: 63 }, { e: 162, nv: 62 }],
     'Destilaria do Cartel! Aqui a gente transforma peçonha em dinheiro.', 'E eu transformei uma batalha em vergonha.', 'A alavanca B fica aqui atrás. A A fica na ala das jaulas. As duas abrem o núcleo.'),
-  capanga('B6-lab-6', false, [{ e: 89, nv: 54 }, { e: 146, nv: 54 }],
+  capanga('B6-lab-6', false, [{ e: 89, nv: 63 }, { e: 146, nv: 63 }],
     'Você soltou alguma criatura? Fala a verdade!', 'Agora solta eu.', 'O Projeto Caipora é ideia do Coronel Garrote. Uma criatura que faz brotar mato no concreto vale mais que mina de ouro.'),
-  capanga('B6-lab-7', true, [{ e: 126, nv: 53 }, { e: 92, nv: 54 }, { e: 32, nv: 54 }],
+  capanga('B6-lab-7', true, [{ e: 126, nv: 62 }, { e: 92, nv: 63 }, { e: 32, nv: 63 }],
     'Trio de peçonha! Medusão, Cascavelão e Vampirinha. Escolha de onde vem a dor.', 'A dor veio de mim mesma.', 'O tenente Lata veio da Usina para comandar o núcleo. Ele ainda conta a história de quando perdeu para você.'),
-  capanga('B6-lab-8', false, [{ e: 21, nv: 54 }, { e: 144, nv: 55 }],
+  capanga('B6-lab-8', false, [{ e: 21, nv: 63 }, { e: 144, nv: 64 }],
     'Ninguém passa da comporta! Eu sou a última linha de defesa!', 'Fui a última linha. Agora sou a primeira a correr.', 'Lá embaixo está a jaula reforçada. Eu nunca chego perto: a criatura me olha como se eu fosse mato para roçar.'),
 ];
 const ZINABRE: TreinadorDef = {
   id: 'B6-lab-zinabre', classe: 'Cientista do Cartel', nome: 'Doutora Zinabre', sprite: 'capanga-f', ia: 'lider', premio: 4400, musica: 'batalha-cartel', contato: false, itens: ['garrafada'],
-  equipe: [{ e: 126, nv: 53 }, { e: 118, nv: 54 }, { e: 90, nv: 54 }, { e: 26, nv: 55 }],
+  equipe: [{ e: 126, nv: 62 }, { e: 118, nv: 63 }, { e: 90, nv: 63 }, { e: 26, nv: 64 }],
   desafio: 'Uma criança da Costa no meu núcleo? Interessante. Vou usar você na próxima fase dos testes de peçonha!',
   derrota: 'Impossível… a curva de resistência dela estava nos meus gráficos!',
 };
 const LATA: TreinadorDef = {
   id: 'B6-lab-lata', classe: 'Tenente do Cartel', nome: 'Tenente Lata', sprite: 'tenente-lata', ia: 'lider', premio: 5600, musica: 'batalha-cartel', contato: false, itens: ['garrafada', 'garrafada'],
-  equipe: [{ e: 130, nv: 54 }, { e: 34, nv: 54 }, { e: 146, nv: 55 }, { e: 144, nv: 55 }, { e: 162, nv: 56 }],
+  equipe: [{ e: 130, nv: 63 }, { e: 34, nv: 63 }, { e: 146, nv: 64 }, { e: 144, nv: 64 }, { e: 162, nv: 65 }],
   desafio: 'Você de novo! Desde a Usina eu sonho com essa revanche. Lá era ferrugem velha; aqui é ferro novo!',
   derrota: 'Ferro novo… enferrujou do mesmo jeito. O Coronel vai me mandar varrer o Pico.',
 };
 
 /* ------------------------------ B-VV · Vale do Veneno (nv 52–54) ------------------------------ */
 const VALE: TreinadorDef[] = [
-  t('B-VV-1', 'Bióloga', 'Herpetóloga Surucucu', 'cl-biologa', [{ e: 89, nv: 54 }, { e: 90, nv: 53 }],
+  t('B-VV-1', 'Bióloga', 'Herpetóloga Surucucu', 'cl-biologa', [{ e: 89, nv: 63 }, { e: 90, nv: 62 }],
     'Estudo cobras há vinte anos. Agora vou estudar você!', 'Conclusão da pesquisa: fui picada pela derrota.', 'A Jararacuçu enxerga calor. A Coralzinha brilha de noite. A Herpetóloga aqui perde de dia e de noite.'),
-  t('B-VV-2', 'Mateira', 'Mateira Urtiga', 'cl-mateira', [{ e: 152, nv: 53 }, { e: 148, nv: 53 }],
+  t('B-VV-2', 'Mateira', 'Mateira Urtiga', 'cl-mateira', [{ e: 152, nv: 62 }, { e: 148, nv: 62 }],
     'A mata dos marimbondos fica atrás do cipó. Antes, você passa pela minha mata de desafios!', 'Fui picada pela minha própria Marimbondão.', 'Sacuda as árvores de tronco grosso devagar. O Marimbondão não gosta de pressa.'),
-  t('B-VV-3', 'Pescador', 'Pescador Traíra', 'cl-pescador', [{ e: 114, nv: 53 }, { e: 87, nv: 54 }],
+  t('B-VV-3', 'Pescador', 'Pescador Traíra', 'cl-pescador', [{ e: 114, nv: 62 }, { e: 87, nv: 63 }],
     'Vim de canoa e fiquei na ilha. A canoa foi embora sozinha. Batalha para passar o tempo?', 'O tempo passou e eu perdi.', 'Se você vir a minha canoa por aí, diga que eu a perdoo.'),
-  t('B-VV-4', 'Vaqueiro', 'Peão Lamaçal', 'cl-vaqueiro', [{ e: 85, nv: 54 }, { e: 21, nv: 52 }],
+  t('B-VV-4', 'Vaqueiro', 'Peão Lamaçal', 'cl-vaqueiro', [{ e: 85, nv: 63 }, { e: 21, nv: 61 }],
     'Toco boiada no brejo há anos. Jacaruçu é o meu boi de estimação!', 'O boi de estimação foi estimar outro dono.', 'A passarela atravessa a Lagoa Roxa. Quem cai na água vira jantar de Piranhão.'),
-  t('B-VV-5', 'Observadora de Aves', 'Dona Socó', 'cl-observadora', [{ e: 108, nv: 53 }, { e: 106, nv: 54 }],
+  t('B-VV-5', 'Observadora de Aves', 'Dona Socó', 'cl-observadora', [{ e: 108, nv: 62 }, { e: 106, nv: 63 }],
     'As garças do Vale voltaram depois que o curtume parou! Vou comemorar com uma batalha!', 'Comemorei a sua vitória, então.', 'Tuiuiú no brejo é sinal de água limpa voltando. Pelo menos no cantinho dele.'),
-  t('B-VV-6', 'Garimpeiro', 'Garimpeiro Tóxico', 'cl-garimpeiro', [{ e: 128, nv: 53 }, { e: 60, nv: 52 }, { e: 92, nv: 54 }],
+  t('B-VV-6', 'Garimpeiro', 'Garimpeiro Tóxico', 'cl-garimpeiro', [{ e: 128, nv: 62 }, { e: 60, nv: 61 }, { e: 92, nv: 63 }],
     'Garimpando no charco de lama! A pepita mais bonita está aqui embaixo. Ou não. Batalha!', 'Achei lama. Só lama.', 'O Covil das Cobras tem uma rocha rachada na entrada. Lá dentro, dizem, brilha uma pepita de verdade.'),
-  t('B-VV-7', 'Repentista', 'Cantador do Brejo', 'cl-repentista', [{ e: 26, nv: 53 }, { e: 21, nv: 53 }, { e: 148, nv: 54 }],
+  t('B-VV-7', 'Repentista', 'Cantador do Brejo', 'cl-repentista', [{ e: 26, nv: 62 }, { e: 21, nv: 62 }, { e: 148, nv: 63 }],
     'No Vale do Veneno quem canta é o sapo: / mas hoje quem canta sou eu, e eu te papo!', 'O sapo voltou a cantar sozinho, / e eu volto calado pelo caminho.', 'De noite o Gambarrão sai do mato com os filhotes nas costas. Respeite a família.'),
-  t('B-VV-8', 'Escoteira', 'Escoteira Pitanga-Roxa', 'cl-escoteira', [{ e: 87, nv: 53 }, { e: 128, nv: 54 }],
+  t('B-VV-8', 'Escoteira', 'Escoteira Pitanga-Roxa', 'cl-escoteira', [{ e: 87, nv: 62 }, { e: 128, nv: 63 }],
     'Acampamento na ilha do sul! A Sucurião é a guarda-costas da barraca.', 'A guarda-costas dormiu.', 'Distintivo de Sobrevivência no Brejo: conquistado. Distintivo de Vitória: fica para a próxima.'),
 ];
 
 /* ------------------------------ B-R4 · Subida da Serra (nv 54–57) ------------------------------ */
 const SERRA: TreinadorDef[] = [
-  t('B-R4-1', 'Montanhista', 'Alpinista Pirambeira', 'cl-montanhista', [{ e: 166, nv: 56 }, { e: 168, nv: 55 }],
+  t('B-R4-1', 'Montanhista', 'Alpinista Pirambeira', 'cl-montanhista', [{ e: 166, nv: 65 }, { e: 168, nv: 64 }],
     'Primeiro patamar! Daqui até a Serra da Geada são quatro paredões. E eu!', 'Fiquei no primeiro patamar.', 'Trepadeira se sobe com Escalar. Pedregulho na fenda se empurra com Força. Saliência se desce pulando.'),
-  t('B-R4-2', 'Vaqueiro', 'Tropeiro Coxilha', 'cl-vaqueiro', [{ e: 104, nv: 55 }, { e: 34, nv: 56 }],
+  t('B-R4-2', 'Vaqueiro', 'Tropeiro Coxilha', 'cl-vaqueiro', [{ e: 104, nv: 64 }, { e: 34, nv: 65 }],
     'Tropa de mula subindo e um Campeão descendo? Não: subindo também! Então disputa!', 'A tropa passa na frente. Você passa na frente da tropa.', 'Lá no alto tem um homem que fala de pinhão como quem fala de ouro. É o Seu Pinhão-Manso.'),
-  t('B-R4-3', 'Escoteira', 'Escoteira Gralha', 'cl-escoteira', [{ e: 136, nv: 55 }, { e: 138, nv: 55 }],
+  t('B-R4-3', 'Escoteira', 'Escoteira Gralha', 'cl-escoteira', [{ e: 136, nv: 64 }, { e: 138, nv: 64 }],
     'Distintivo de Araucária: plante uma, ganhe um. Distintivo de Batalha: ganhe de mim!', 'Plantei uma derrota.', 'O Serelepão guarda pinhão para o inverno. Sacuda as araucárias do topo e ele cai de susto.'),
-  t('B-R4-4', 'Observadora de Aves', 'Dona Carcará', 'cl-observadora', [{ e: 12, nv: 56 }, { e: 110, nv: 57 }],
+  t('B-R4-4', 'Observadora de Aves', 'Dona Carcará', 'cl-observadora', [{ e: 12, nv: 65 }, { e: 110, nv: 66 }],
     'A Harpia é a rainha do céu. E eu sou a rainha desta trilha!', 'A rainha caiu do trono.', 'Daqui do alto dá para ver a Lagoa Gelada brilhando. Ou é geada. Na serra tudo brilha.'),
-  t('B-R4-5', 'Garimpeiro', 'Garimpeiro Basalto', 'cl-garimpeiro', [{ e: 162, nv: 55 }, { e: 42, nv: 56 }, { e: 166, nv: 56 }],
+  t('B-R4-5', 'Garimpeiro', 'Garimpeiro Basalto', 'cl-garimpeiro', [{ e: 162, nv: 64 }, { e: 42, nv: 65 }, { e: 166, nv: 65 }],
     'Rocha rachada na serra é presente! Tem Mocó, tem Tuco e tem treinador bravo!', 'Fui garimpado.', 'A gruta do mocó, no patamar do meio, abre com Quebra-pedra. Lá dentro tem pepita que eu não alcancei.'),
-  t('B-R4-6', 'Montanhista', 'Montanhista Neblina', 'cl-montanhista', [{ e: 94, nv: 56 }, { e: 140, nv: 57 }],
+  t('B-R4-6', 'Montanhista', 'Montanhista Neblina', 'cl-montanhista', [{ e: 94, nv: 65 }, { e: 140, nv: 66 }],
     'A cerração sobe da serra de noite. Junto com ela, eu e o meu Graxaim-da-Névoa!', 'A névoa se dissipou. E eu junto.', 'O Caminho das Névoas, depois da Serra da Geada, é muito pior. Leve o Lampião.'),
-  t('B-R4-7', 'Mateira', 'Mateira Pinheira', 'cl-mateira', [{ e: 138, nv: 56 }, { e: 82, nv: 55 }],
+  t('B-R4-7', 'Mateira', 'Mateira Pinheira', 'cl-mateira', [{ e: 138, nv: 65 }, { e: 82, nv: 64 }],
     'A araucária leva duzentos anos para crescer. A minha paciência leva dois segundos!', 'Acabou a paciência e a batalha.', 'Pinhão que cai no chão e ninguém pega vira árvore. É a Gralha-Azul que planta a serra.'),
-  t('B-R4-8', 'Repentista', 'Payador Minuano', 'cl-repentista', [{ e: 136, nv: 55 }, { e: 104, nv: 56 }, { e: 54, nv: 56 }],
+  t('B-R4-8', 'Repentista', 'Payador Minuano', 'cl-repentista', [{ e: 136, nv: 64 }, { e: 104, nv: 65 }, { e: 54, nv: 65 }],
     'Buenas, vivente! Payada se responde com payada, / e batalha se responde com tapa na cara… do adversário!', 'O vivente venceu e a payada parou, / o Minuano levou o que me sobrou.', 'O vento Minuano sopra frio do sul. Quando ele chega, a Gaúcha Pinhão sorri.'),
-  t('B-R4-9', 'Bióloga', 'Bióloga Araucária', 'cl-biologa', [{ e: 164, nv: 55 }, { e: 156, nv: 57 }],
+  t('B-R4-9', 'Bióloga', 'Bióloga Araucária', 'cl-biologa', [{ e: 164, nv: 64 }, { e: 156, nv: 66 }],
     'Pesquisa de altitude: como as criaturas se viram no frio? Teste prático!', 'Resultado: elas se viram melhor do lado de lá.', 'A Lavadeira-Dragão apareceu aqui por causa da cascata seca. Ela gosta de lugares onde a água já passou.'),
 ];
 
 /* ------------------------------ B7 · Serra da Geada (nv 56–57) ------------------------------ */
 const GEADA: TreinadorDef[] = [
-  t('B7-1', 'Peão de Estância', 'Peão Galponeiro', 'cl-vaqueiro', [{ e: 104, nv: 56 }, { e: 140, nv: 56 }, { e: 34, nv: 57 }],
+  t('B7-1', 'Peão de Estância', 'Peão Galponeiro', 'cl-vaqueiro', [{ e: 104, nv: 65 }, { e: 140, nv: 65 }, { e: 34, nv: 66 }],
     'Buenas, tchê! Quem chega na serra, prova o chimarrão e a peleia. Começamos pela peleia!', 'Bah, que peleia! Agora sim, o chimarrão.', 'A Gaúcha Pinhão treina no gelo. O segredo é não ter medo de escorregar.'),
-  t('B7-2', 'Montanhista', 'Alpinista Geada', 'cl-montanhista', [{ e: 134, nv: 56 }, { e: 136, nv: 56 }],
+  t('B7-2', 'Montanhista', 'Alpinista Geada', 'cl-montanhista', [{ e: 134, nv: 65 }, { e: 136, nv: 65 }],
     'A minha Pinguimar surfa na geada! Vamos ver se a sua equipe aguenta o frio!', 'Congelei de vergonha.', 'Pinguim na serra parece mentira. Os da Lagoa Gelada vieram com uma frente fria e ficaram.'),
 ];
 
@@ -157,7 +157,7 @@ const inicialDela = (dela: 'brasa' | 'rio' | 'mata') => (dela === 'brasa' ? 6 : 
 const meioDela = (dela: 'brasa' | 'rio' | 'mata') => (dela === 'brasa' ? 26 : dela === 'rio' ? 17 : 42);
 const RIVAL7: TreinadorDef[] = (['brasa', 'rio', 'mata'] as const).map((dela): TreinadorDef => ({
   id: `rival-7-${dela}`, classe: 'Rival', nome: 'Tainá', sprite: 'taina', ia: 'lider', premio: 6400, musica: 'batalha-rival', flag: 'rival-7', itens: ['garrafada', 'elixir-andiroba'], contato: false,
-  equipe: [{ e: 12, nv: 55 }, { e: 29, nv: 55 }, { e: meioDela(dela), nv: 56 }, { e: 64, nv: 56 }, { e: 108, nv: 56 }, { e: inicialDela(dela), nv: 58 }],
+  equipe: [{ e: 12, nv: 64 }, { e: 29, nv: 64 }, { e: meioDela(dela), nv: 56 }, { e: 64, nv: 65 }, { e: 108, nv: 65 }, { e: inicialDela(dela), nv: 58 }],
   desafio: '{JOGADOR}! Subi a serra pela trilha dos tropeiros só para chegar antes de você. Cheguei!\fDesde o Arraial eu treinei na roda, no brejo e no gelo. A Gaúcha Pinhão é a próxima — mas primeiro, você!',
   derrota: 'Bah… até o sotaque daqui eu peguei, menos a vitória. Mas eu sinto: estou chegando perto.',
 }));

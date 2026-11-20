@@ -66,7 +66,7 @@ const zona: ZonaDef = {
   ],
   warps: [],
   npcs: [
-    { id: 'xea-taruma', sprite: 'npc-idoso', x: 20, y: 44, dir: 's', script: 'vis-taruma-volta' },
+    { id: 'xea-taruma', sprite: 'seu-taruma', x: 20, y: 44, dir: 's', script: 'vis-taruma-volta' },
   ],
 };
 export default zona;

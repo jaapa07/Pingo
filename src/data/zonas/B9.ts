@@ -64,7 +64,7 @@ const zona: ZonaDef = {
   itens: [item(g, 'k', 'pedra-solar'), item(g, 'j', 'cuia-rapida', 2, true), item(g, 'z', 'pt-34')],
   habitats: [
     { metodo: 'pesca-velha', todos: [{ e: 37, nv: [22, 28], peso: 60 }, { e: 113, nv: [22, 28], peso: 40 }] },
-    { metodo: 'pesca-boa', todos: [{ e: 114, nv: [45, 47], peso: 40 }, { e: 38, nv: [45, 47], peso: 40 }, { e: 118, nv: [45, 47], peso: 20 }] },
+    { metodo: 'pesca-boa', todos: [{ e: 114, nv: [49, 51], peso: 40 }, { e: 38, nv: [49, 51], peso: 40 }, { e: 118, nv: [49, 51], peso: 20 }] },
   ],
 };
 export default zona;

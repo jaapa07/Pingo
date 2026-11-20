@@ -78,7 +78,7 @@ const zona: ZonaDef = {
     { x: 37, y: 23, para: { zona: 'PP-gruta', x: 20, y: 3, dir: 's' }, tipo: 'caverna' },
   ],
   portoes: [
-    { x: 19, y: 42, w: 2, h: 1, requer: 'insignias:16', sprite: 'npc-homem-4', fala: 'O guardião Tibiriçá, de cocar de penas de gavião, ergue a mão aberta:\n— Este é o Portão dos Guardiões. Daqui para cima, só quem venceu os dezesseis ginásios de Pindorama.\f— Não há desonra em voltar. A serra espera. Quando o estojo estiver cheio, o portão se abre sozinho.' },
+    { x: 19, y: 42, w: 2, h: 1, requer: 'insignias:16', sprite: 'guardiao-tibirica', fala: 'O guardião Tibiriçá, de cocar de penas de gavião, ergue a mão aberta:\n— Este é o Portão dos Guardiões. Daqui para cima, só quem venceu os dezesseis ginásios de Pindorama.\f— Não há desonra em voltar. A serra espera. Quando o estojo estiver cheio, o portão se abre sozinho.' },
   ],
   npcs: [
     duelista(g, '1', 'PP-1', 'cl-montanhista', 's', 3),
@@ -89,13 +89,13 @@ const zona: ZonaDef = {
     duelista(g, '6', 'PP-6', 'cl-montanhista', 'o', 3),
     duelista(g, '7', 'PP-7', 'capanga-m', 's', 3),
     duelista(g, '8', 'PP-8', 'capanga-f', 'n', 3),
-    gente(g, 'G', 'pp-tibirica', 'npc-homem-4', 'Guardião Tibiriçá', { dir: 's', se: 'insignias:16', script: 'pp-tibirica' }),
+    gente(g, 'G', 'pp-tibirica', 'guardiao-tibirica', 'Guardião Tibiriçá', { dir: 's', se: 'insignias:16', script: 'pp-tibirica' }),
     gente(g, 'N', 'pp-tropeira', 'npc-mulher-3', 'Tropeira Neve-Mansa', { dir: 'n', mov: 'olhar', fala: ['Esta trilha liga a Costa do Sol ao Sertão desde antes das estradas. Os tropeiros subiam com mula e desciam com histórias.', 'Lá no Cume fica o Salão do Conselho. Cinco Guardiões, um atrás do outro. Ninguém que eu conheço passou do segundo.'] }),
     gente(g, 'L', 'pp-cozinheiro', 'npc-homem-2', 'Cozinheiro Pinhão', { dir: 'n', fala: ['Pinhão cozido na fogueira, quentão sem álcool e chá de guaraná. É o cardápio do acampamento.', 'Os capangas do Cartel subiram ontem com caixote e corrente. Não pagaram o pinhão. Isso eu não perdoo.'] }),
     gente(g, 'K', 'pp-medica', 'cl-biologa', 'Doutora Altitude', { dir: 'o', fala: ['No Pico o ar é fino. Respire fundo antes de cada luta e leve remédio na mochila: lá em cima ninguém cura de graça.', 'O Posto daqui é o último antes do Conselho. Se perder lá dentro, os Guardiões trazem você até o Portão — e o Posto está logo abaixo.'] }),
     gente(g, 'X', 'pp-garrote', 'coronel-garrote', 'Coronel Garrote', { dir: 's', se: '!flag:garrote-vencido', script: 'pp-garrote' }),
     gente(g, 'Z', 'pp-taina', 'taina', 'Tainá', { dir: 'o', se: 'flag:garrote-vencido&!flag:rival-8', script: 'pp-rival-8' }),
-    gente(g, 'W', 'pp-misterioso', 'cl-montanhista', 'Andarilho do Cume', { dir: 's', se: 'pos-jogo&flag:misterioso-pode', script: 'pp-misterioso' }),
+    gente(g, 'W', 'pp-misterioso', 'andarilho-cume', 'Andarilho do Cume', { dir: 's', se: 'pos-jogo&flag:misterioso-pode', script: 'pp-misterioso' }),
     gente(g, 'S', 'pp-vigia-neve', 'npc-idoso', 'Seu Floco-Velho', { dir: 'l', mov: 'olhar', script: 'pp-neve' }),
   ],
   gatilhos: [
@@ -113,8 +113,8 @@ const zona: ZonaDef = {
     {
       // 6.4 (PP, G): Gaviãozão (i), Araracanga (i), Prego-Mestre (i), Pintada (r), Harpia (r), Gralha-Azul (i), Maracajá-Nevado (r)
       metodo: 'grama', taxa: 0.1,
-      dia: [E(12, 62, 64, 20), E(136, 62, 64, 18), E(52, 62, 64, 17), E(66, 62, 64, 17), E(72, 63, 65, 10), E(110, 63, 65, 9), E(140, 63, 65, 9)],
-      noite: [E(140, 62, 64, 20), E(66, 62, 64, 18), E(12, 62, 64, 16), E(52, 62, 64, 16), E(72, 63, 65, 12), E(136, 62, 64, 10), E(110, 63, 65, 8)],
+      dia: [E(12, 67, 69, 20), E(136, 67, 69, 18), E(52, 67, 69, 17), E(66, 67, 69, 17), E(72, 68, 70, 10), E(110, 68, 70, 9), E(140, 68, 70, 9)],
+      noite: [E(140, 67, 69, 20), E(66, 67, 69, 18), E(12, 67, 69, 16), E(52, 67, 69, 16), E(72, 68, 70, 12), E(136, 67, 69, 10), E(110, 68, 70, 8)],
     },
   ],
 };

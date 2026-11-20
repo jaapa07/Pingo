@@ -103,7 +103,7 @@ const andarilho = especial({
 const LA: Rampa = ['#3a4466', '#64729a', '#a2b0cc'];
 const guardaNevoa = especial({
   id: 'guarda-nevoa', pele: 'oliva', cabelo: 'castanhoEscuro', a: LA, b: 'chumbo', d: 'laranja', iris: '#4a6a7a', ...M, zoomBatalha: 0.86, dxBatalha: 2,
-  v: { cabelo: 'curto', barba: 'bigode', sobrancelha: 'grossa', chapeu: 'couro', rChapeu: R_B, rChapeuFaixa: R_D, manga: 'longa', rTorso: R_B, baixo: 'calca', rBaixo: R_B,
+  v: { cabelo: 'curto', barba: 'bigode', sobrancelha: 'grossa', chapeu: 'pantaneiro', rChapeu: R_B, rChapeuFaixa: R_D, manga: 'longa', rTorso: R_B, baixo: 'calca', rBaixo: R_B,
     pes: 'bota', rPes: R_B, luvas: R_D, sobre: 'pala', rSobre: R_A, rSobreFaixa: R_D, pescoco: 'cachecol', rPescoco: R_D, rPescocoFaixa: R_D, cinto: R_D, propBraco: 26, propNoMapa: true },
 }, (r) => {
   // cajado ferrado com gancho e lampião pendurado
@@ -165,8 +165,6 @@ const solveig = especial({
   // gola de pelo baixa (não cobre o queixo), bolsos e punhos de pelo
   r.add('tronco', blob([0.03, 0.05, 0.07], som(R_A), { pos: [0.16, -0.06, 0.12] }), blob([0.03, 0.05, 0.07], som(R_A), { pos: [0.16, -0.06, -0.12] }));
   for (const b of ['bracoD', 'bracoE']) r.add(b, ring(0.066, 0.018, luz(R_B), { pos: [0, -0.17, 0], rot: [90, 0, 0] }));
-  // padrão de tricô no gorro: pontinhos claros na faixa
-  for (let i = 0; i < 8; i++) { const a = (i / 8) * Math.PI * 2; r.add('cabeca', blob([0.022, 0.022, 0.022], luz(R_D), { pos: h(-0.03 + Math.cos(a) * 0.3, 0.26, Math.sin(a) * 0.33) })); }
   // lápis preso no caderno
   r.add('prop', tube([[0.1, 0.13, 0.08], [0.1, -0.06, 0.1]], 0.012, luz(R_B), { seg: 2, radial: 5 }));
 });

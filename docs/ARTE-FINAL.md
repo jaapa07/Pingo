@@ -75,3 +75,25 @@ Ferramentas no scratchpad: folha de contato (`folha.py`), antes/depois por id (`
 - 129 sirizim / 130 siri-couraça, 141 grilinho, 143 besourim, 153 cigarrim: legíveis, mas chatos e baixos — não mexidos.
 - 119/120 hipocampo, 055 urubuzim (filhote de urubu é branco mesmo), 061 preguicim: revistos, aceitáveis — não mexidos.
 - Pequenos na célula por animação larga (desmaio/ataque do kit): 015 lagartim, 018 formigaço, 028 vagalumim, 093 graxaim, 115 poraquim, 107 garcinha — não mexidos.
+
+## 2ª rodada — Marco 1: pessoas novas (20/11)
+Arquivo novo `tools/models/pessoas/sertao.ts` (registrado em `pessoas/index.ts`), mesmo esquema da Liga: ficha do kit + peças
+esculpidas. Todas com `mapa`, `batalha` (idle/derrota) e `retrato` (neutro/feliz/bravo). Folha: `docs/capturas/pessoas-novas.png`.
+- `guardiao-tibirica`: cocar alto de penas de gavião (pardas e creme, pontas escuras), faixa de urucum, túnica creme com listra,
+  faixa trançada a tiracolo, braçadeiras, cajado de madeira com cabaça e penas. Sem pintura de "guerra", sem caricatura.
+- `andarilho-cume`: chapéu de aba larga, poncho de lã azul-noite até o quadril com listras e franja, cavanhaque grisalho, cajado
+  com tira de pano, trouxa nas costas. (Testei cachecol alto e barba cheia: lia como máscara de bandido — trocado.)
+- `guarda-nevoa`: chapéu de feltro escuro com fita laranja, cachecol laranja (visível na cerração), pala de lã, cajado ferrado
+  com lampião pendurado, fiapos de névoa nos pés (somem no mapa).
+- `guardia-floresta`: manto verde-escuro nas costas e leques de folhas novas nos ombros, folhas e flor no cabelo, pinturas de
+  jenipapo nos braços, lança de taquara com gomos e ponta de folha.
+- `dra-solveig`: parka azul-petróleo (a 1ª versão vermelha com gola branca lia como Papai Noel — trocada), gorro de tricô
+  vermelho, cachecol vermelho, trança loira, caderno vermelho com lápis, luvas e botas de pelo.
+- `pesquisador-boreal` (os quatro da expedição): parka azul com capuz levantado e borda de pelo, faixa refletiva verde-aurora,
+  mochila, lanterna boreal acesa na mão (a lanterna que cada um guarda na missão).
+- `seu-taruma`: idoso, chapéu de palha, camisa clara, calça arregaçada, descalço, bigode grisalho, remo de pá larga, paneiro nas costas.
+Trocas de `sprite` (só esse campo; nos diálogos dos visitantes e do Andarilho, também o `retrato`): PP.ts (portão e NPC do Tibiriçá,
+NPC do Andarilho), treinadores/b2-norte.ts (`PP-andarilho`), B-R5.ts (portão e NPC da Guarda), B8.ts (portão e NPC da Guardiã),
+eventos/visitantes.ts (Tarumã, Solveig, 4 pesquisadores, consts de retrato), X-EA.ts (Tarumã na volta), treinadores/visitantes.ts
+(B-EXP-1..4), eventos/b2-norte.ts (`ANDARILHO` ganhou retrato). Não troquei: "Guarda da Serra Minuano" (B7) e a Guardiã-Mirim
+Jurema (B-FA), que são outros personagens.
