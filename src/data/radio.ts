@@ -46,7 +46,38 @@ export const FALAS_CONTATO = {
   atende: ['Alô, alô! Aqui é {N}. Que bom ouvir você!', 'Opa, {N} na linha! Como vai essa equipe?', '{N} falando. Achei que tinha esquecido de mim!', 'Alô? Ah, é você! {N} às ordens.'],
   conversa: ['Minhas parceiras andam treinando sem parar.', 'Vi um bicho diferente hoje cedo, mas ele fugiu antes de eu chegar perto.', 'Ouviu o Rádio Cipó hoje? Sempre tem dica boa.', 'Não esqueça de dar cafuné na sua equipe, viu?'],
   propoe: 'Que tal uma revanche agora mesmo? Minha equipe está mais forte!',
-  lider: 'Uma revanche de líder é coisa séria. Volte a ligar quando o Conselho dos Guardiões reconhecer você.',
+  lider: 'Uma revanche de líder é coisa séria. Volte a ligar quando a Liga dos Guardiões reconhecer você como Campeão.',
+  foraDaAgenda: 'Hoje não vai dar, tenho outros compromissos. Revanche comigo é {Q}. Me liga nessa hora!',
+  treino: 'Hoje é o meu dia de treino! Às vezes você me encontra {L}, mas revanche de líder é no {G}. Te espero lá ainda hoje, no salão!',
+  treinoMarcado: 'Já combinamos: estou te esperando no {G}. Não demora!',
+  rival: 'É você, é? Eu sei que você quer revanche. Terça e quinta eu treino {L}. Uma batalha por dia. Não se atrase!',
+  rivalAntes: 'Tô ocupada treinando. A gente se esbarra na estrada, como sempre. E da próxima vez eu ganho!',
   venceu: 'Ufa! Você continua em forma. Me liga amanhã para outra!',
   perdeu: 'Viu só como eu treinei? Cuide da equipe e me ligue amanhã.',
 };
+
+/** CANTIGA DAS LENDAS — programa do Cartão do Rádio (spec 10A item 31): versos sobre as lendárias e uma dica de onde procurar */
+export const CANTIGAS_LENDAS: { titulo: string; dica: string; versos: string }[] = [
+  { titulo: 'O Boitatá da Caverna', dica: 'Fala da cobra de fogo que dorme na Caverna Vulcânica do Sertão.', versos: 'Lá no fundo da caverna, onde a pedra é de brasa,\numa cobra feita de fogo vigia a própria casa.\nQuem acorda o Boitatá leva fogo no olhar:\ncom respeito e coragem, ele deixa você passar.' },
+  { titulo: 'A Boiúna do Canal', dica: 'Fala da cobra grande do canal da Gruta do Recife, que só acorda para quem chega remando de longe.', versos: 'Rio abaixo, rio acima, a Boiúna vai nadando,\ncom os olhos de lanterna, os barqueiros vai guiando.\nQuem rema com paciência ouve o rio respirar:\né a cobra grande dormindo, esperando o seu lugar.' },
+  { titulo: 'Mapinguari, o Guardião', dica: 'Fala do gigante da mata funda, que anda onde a floresta é mais antiga.', versos: 'Tem um grito na mata que faz a onça calar,\né o velho Mapinguari andando devagar.\nNão derruba árvore nova, não maltrata quem é bom:\nsó aparece pra quem sabe escutar o próprio som.' },
+  { titulo: 'Queixada-Caipora', dica: 'Fala da guardiã dos bichos que passou a vagar depois que o laboratório do Cartel caiu.', versos: 'Montada no queixada, a Caipora vem ligeira,\npega o caçador sem dó e solta a bicharada inteira.\nQuem caça por maldade se perde no caminho;\nquem cuida da floresta nunca anda sozinho.' },
+  { titulo: 'O Canto do Uirapuru', dica: 'Fala do pássaro cujo canto faz a mata inteira parar para ouvir.', versos: 'Quando canta o Uirapuru, a mata para de falar,\no rio segura a água, o vento para de soprar.\nDizem que dá sorte ouvir um canto só:\nquem ouve duas vezes nunca mais fica sozinho.' },
+  { titulo: 'Gavião-Tupã', dica: 'Fala da ave do trovão que mora nas nuvens do alto da serra.', versos: 'Lá no alto da serra, onde o céu faz trovoada,\nmora o Gavião-Tupã de asa relampejada.\nCada pena é um raio, cada grito é um trovão:\nsó sobe até ele quem tem calma no coração.' },
+  { titulo: 'Lobo-Jaci e Onça-Guaraci', dica: 'Fala do lobo da lua e da onça do sol, que só andam soltos depois do Conselho dos Guardiões.', versos: 'Jaci é a lua cheia, Guaraci é o sol nascente,\num é lobo, a outra é onça, os dois andam pela gente.\nUm aparece de noite, a outra quando é manhã:\nquem vencer o Conselho vai ver a dança dos dois irmãos.' },
+];
+
+/** AGENDA DO DIA (spec 10A item 39): o que vale hoje, dito pelo locutor ao ligar o rádio */
+export function agendaDoDia(o: { dia: number; periodo: string; liga: boolean; contatos: string[]; enxame: { local: string; especie: string } | null; cartao: boolean }): { resumo: string; texto: string } {
+  const DIA = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'][o.dia];
+  const PER: Record<string, string> = { manha: 'manhã', dia: 'dia', tarde: 'tarde', noite: 'noite' };
+  const linhas: string[] = [];
+  if (o.enxame) linhas.push(`ENXAME: ${o.enxame.especie || 'uma criatura rara'} aparece aos montes em ${o.enxame.local} hoje.`);
+  if (o.dia === 5) linhas.push('SEXTA DA TARTARUGA: a Tartaruga-Gigante sobe para respirar no Recife Submerso, embaixo da Baía Azul. Só hoje!');
+  if (o.liga && (o.dia === 2 || o.dia === 4)) linhas.push('TREINO DA RIVAL: a Tainá está na Gruta do Eco, perto da saída para Porto Sereia. Uma batalha por dia.');
+  linhas.push(o.contatos.length ? `REVANCHES agora (${PER[o.periodo]}): ${o.contatos.join(', ')}.` : `REVANCHES: ninguém da sua lista treina nesta ${PER[o.periodo]}. Veja a tabela em Revanches.`);
+  if (o.liga) linhas.push('TORRE DE DESAFIOS: o Juiz da Torre espera no Platô da Liga. Uma batalha por dia, todos no nível 50.');
+  linhas.push(o.cartao ? 'QUIZ DA FAUNA: a Locutora Sabiá grava perguntas novas hoje na Rádio Farol.' : 'QUIZ DA FAUNA: acerte 4 de 5 perguntas na Rádio Farol, na Ilha do Farol, e ganhe o Cartão do Rádio!');
+  const resumo = `Hoje é ${DIA}, ${PER[o.periodo]}.\n${o.enxame ? `Enxame em ${o.enxame.local}. ` : ''}${o.contatos.length ? `${o.contatos.length} revanche(s) agora.` : 'Nenhuma revanche agora.'}`;
+  return { resumo, texto: `${o.periodo === 'noite' ? 'Boa noite' : o.periodo === 'tarde' ? 'Boa tarde' : 'Bom dia'}, Pindorama! Hoje é ${DIA}.\n\n${linhas.join('\n\n')}` };
+}

@@ -82,13 +82,15 @@ const brilha = (f: number) => ls([[1, 1, 1], [0.9, 1.2, 0.9], [1.08, 0.86, 1.08]
 const anims = animsQuadrupede({ u: 1.4, hPerna: 0.56, mole: 0.5, passo: 22, cauda: 1 }, {
   todas: Object.fromEntries(AURORA.map((a, i) => [a, brilha(i)])),
   idle: { sino: lz([0, 5, 0, -5]) },
-  fisico: { cabeca: qz([14, 28, -24, -8, 0]) },
+  // chifrada curta: a galhada é enorme, erguer a cabeça 28° encolhia o sprite inteiro na célula
+  fisico: { cabeca: qz([4, 9, -14, -5, 0]) },
   especial: { sino: qz([0, 10, 14, -18, -6, 0]), ...Object.fromEntries(AURORA.map((a) => [a, ls([1, 1.2, 1.5, [1.2, 2.1, 1.2], 1.4, 1])])) },
   desmaio: Object.fromEntries(AURORA.map((a) => [a, ls([1, 0.8, 0.5, 0.2, 0.2])])),
 });
 
 export const borealce = criatura({
   num: 182, id: 'borealce', nome: 'Borealce', porte: 'L', estagio: 'lendario', paleta, build, anims,
+  enquadre: { frente: { zoom: 1.1 }, costas: { zoom: 1.08 } },
   olho: {
     frente: ['.ppp.', 'ppwpp', 'papwp', '.ppp.'],
     fechado: ['fffff', 'pfffp', 'fpppf', 'fffff'],

@@ -18,16 +18,20 @@ export const TREINADORES_GINASIO_02: TreinadorDef[] = [
    * LÍDER — Lia Teia (Inseto). Fraquezas do Inseto: Brasa, Vento e Pedra.
    * Equipe e golpes definidos pelo simulador de equilíbrio (docs/EQUILIBRIO.md). O Cupinzim (Inseto/Pedra) abre e
    * apaga Brasa e Vento com Pedrada; o Vagalumim (Inseto/Trovão) derruba as aves com Choquinho, que ainda paralisa;
-   * o ás é a Caranguejeirinha (Inseto/Veneno) de nível 17: prende com Formigueiro, envenena com Espinho Peçonhento
+   * o ás é a Caranguejeirinha (Inseto/Veneno) de nível 17: prende com Formigueiro, baixa a Defesa com Cara Feia
    * e tira a velocidade com Teia Pegajosa.
+   * QA jogado (4ª mão, docs/QA-TRECHO-1.md): o Mata honesto chega aqui com o Tamanduá-Copa nv 19–20 e reserva fraca
+   * (nv 3–14) e precisou de 3 treinos extras (nv 23) e 4 tentativas; motor puro dava Mata 20–23% contra 96–100% de Brasa
+   * e Rio (Inseto e Veneno valem o dobro no Mata). O Cupinzim trocou a Mordida de Saúva por Cara Feia (fica a Pedrada,
+   * o papel dele) e o ás perdeu o Espinho Peçonhento: Mata nv 20–21 sobe para 32–36%; Brasa e Rio seguem ~97%.
    * Cura: 1 Garrafada definida, que o motor só libera a partir do 8º ginásio no Aventureiro.
    */
   { id: 'lider-02', classe: 'Líder', nome: 'Lia Teia', sprite: 'lider-02', ia: 'lider', premio: 1700, insignia: 2, musica: 'batalha-lider', flag: 'ginasio-02-vencido',
     itens: ['garrafada'],
     equipe: [
-      { e: 163, nv: 15, golpes: ['pedrada', 'mordida-de-sauva', 'casulo'] },
+      { e: 163, nv: 15, golpes: ['pedrada', 'casulo', 'cara-feia'] },
       { e: 28, nv: 16, golpes: ['choquinho', 'ferroada'] },
-      { e: 147, nv: 17, golpes: ['espinho-peconhento', 'formigueiro', 'teia-pegajosa', 'arranhao'] },
+      { e: 147, nv: 17, golpes: ['arranhao', 'teia-pegajosa', 'cara-feia', 'formigueiro'] },
     ],
     desafio: 'Passei três anos morando nesta copa para entender uma única aranha. Vamos ver quanto tempo você leva para entender a minha equipe!',
     derrota: 'Você desfez a minha teia fio por fio. Que beleza de se ver!', depois: 'Toda teia começa com um fio só. Continue tecendo a sua.' },

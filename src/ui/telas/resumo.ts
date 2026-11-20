@@ -18,7 +18,7 @@ import { texto, escrever, em } from '../fonte';
 import { moldura, barra, chipTipo, iconeTipo, iconeStatus, seta, som, NOME_TIPO } from '../kit';
 import { Abas } from '../componentes/abas';
 import { Lista } from '../componentes/lista';
-import { figura, nomeCri, sexoTxt, esp, n3, faixaDica, pix, caixa, rotulo, type Icone } from './comum';
+import { figura, nomeCri, sexoTxt, esp, n3, faixaDica, pix, caixa, rotulo, estrelaRara, type Icone } from './comum';
 import { nomeLocal } from './mapa-dados';
 import { T } from '../../data/textos-ui';
 
@@ -51,7 +51,8 @@ export function criarResumo(args: ArgsResumo = {}): Tela {
     const k = c(), e = esp(k.especie);
     [...esq.querySelectorAll('.dyn')].forEach((x) => x.remove());
     const d = caixa('dyn', 100, 140); esq.append(em(d, 4, 4));
-    fig = figura(k.especie, 96, 92, { misterio: !!k.ovo }); d.append(em(fig.el, 2, 0), maoEl);
+    fig = figura(k.especie, 96, 92, { misterio: !!k.ovo, rara: !!k.rara }); d.append(em(fig.el, 2, 0), maoEl);
+    if (k.rara && !k.ovo) d.append(em(estrelaRara(2), 4, 4), em(estrelaRara(), 13, 104)); // Pelagem Rara: no retrato e ao lado do nível
     rotulo(d, `${nomeCri(k)} ${sexoTxt(k)}`, 0, 92, 'creme', { largura: 100, alinhar: 'centro' });
     rotulo(d, k.ovo ? 'Ovo' : `Nv${k.nivel}`, 24, 103, 'amarelo');
     if (!k.ovo) { const s = k.vida <= 0 ? 'desmaiado' : k.status; if (s) d.append(em(iconeStatus(s), 62, 102)); }

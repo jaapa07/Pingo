@@ -6,7 +6,7 @@
  */
 import { criatura, animsArboricola, unirExtras, blob, ring, tufo, par, m, lz, qz, ls, lp, D2R, type V3 } from './kits';
 import { bracosCurtos } from './061-preguicim';
-import { paletaNoite, corpoNoite, fiapo, treme } from './171-noitim';
+import { paletaNoite, corpoNoite, fiapo, treme, cabecaRetaNoMapa } from './171-noitim';
 
 const paleta = { ...paletaNoite, extras: { ...paletaNoite.extras, a: '#ffd27c', l: '#ffffff' } };
 
@@ -35,13 +35,13 @@ function build() {
 }
 
 const paira = (f: number): V3[] => [[0, 0, 0], [0, 0.03, 0], [0, 0.05, 0], [0, 0.02, 0]].map((_, i, v) => v[(i + f) % 4] as V3);
-const anims = animsArboricola({ u: 1.1, hPerna: 0.17, mole: 0.8 }, unirExtras(bracosCurtos, {
+const anims = cabecaRetaNoMapa(animsArboricola({ u: 1.1, hPerna: 0.17, mole: 0.8 }, unirExtras(bracosCurtos, {
   todas: { fiapo: treme(0), fogo1: [...treme(1), ...lp(paira(0))], fogo2: [...treme(2), ...lp(paira(2))], fogo3: [...treme(3), ...lp(paira(1))] },
   idle: { topete: lz([0, 4, 7, 2]), braco_e: lz([0, 5, 9, 4]), antebraco_e: lz([0, -8, -14, -6]) },
   fisico: { braco_e: qz([10, 24, -76, -30, 0]), antebraco_e: qz([10, 20, -30, -10, 0]) },
   especial: { topete: qz([0, 12, 16, -22, -8, 0]), braco_e: qz([0, 6, 8, -14, -6, 0]), fiapo: ls([1, 1.15, 1.3, 1.6, 1.2, 1]) },
   desmaio: { braco_e: qz([0, -20, -60, -112, -110]) },
-}));
+})));
 
 export const noitao = criatura({
   num: 172, id: 'noitao', nome: 'Noitão', porte: 'M', estagio: 'final', paleta, build, anims,

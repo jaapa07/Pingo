@@ -34,6 +34,15 @@ export const T = {
     dicaLista: 'A: ficha   SELECT: medalhas   ←→: pular 10   B: voltar', dicaFicha: '←→: página   ↑↓: espécie   A: ouvir o grito   B: voltar',
     medalhas: ['Medalha Broto', 'Medalha Trilha', 'Medalha Lupa', 'Medalha Bússola', 'Medalha Jequitibá', 'Medalha Pindorama'],
     medalhaDesc: ['30 espécies registradas', '60 espécies registradas', '90 espécies registradas', '120 espécies registradas', '150 espécies registradas', 'As 180 espécies registradas!'],
+    // página extra dos Visitantes (spec 6.5): 181 e 182 não contam no total nem nas medalhas
+    abaDiario: 'DIÁRIO', abaVisitantes: 'VISITANTES',
+    dicaListaVis: 'A: ficha   SELECT: medalhas   MENU: visitantes   B: voltar', dicaPaginaVis: 'A: ficha   MENU: voltar às 180   B: sair',
+    visitanteCurto: 'Visitante: fora das 180 espécies',
+    ondeVisitante: {
+      181: 'Ilhota do Encontro das Águas, aonde só o canoeiro Seu Tarumã leva, a partir de Porto Sereia. Missão "O Encontro das Águas": com as 16 insígnias, leve a ele um frasco de água escura (de noite, Poço do Breu, Rio Cachoeira-Véu) e um de água barrenta (de dia, poço da cascata da Estrada Vermelha).',
+      182: 'Alto do Pico Pindorama, de noite, sob a aurora das quatro Lanternas Boreais. Missão "A Expedição Boreal": depois do Conselho, fale com a Drª Solveig no navio encalhado de Porto Pantaneiro.',
+    } as Record<number, string>,
+    notaSolveig: 'Nota da Drª Solveig: o Borealce é um visitante das montanhas do norte, trazido pela nossa expedição. Ele não pertence à fauna local.',
   },
   viveiro: {
     dica: 'A: opções   SELECT: próxima caixa   B: sair', dicaMover: 'A: soltar aqui   B: cancelar', dicaTopo: '←→: trocar de caixa   A: renomear   ↓: criaturas',

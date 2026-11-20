@@ -98,7 +98,7 @@ const zona: ZonaDef = {
     gente(g, '7', 'aprendiz', 'cl-biologa', 'Aprendiz Ofídio', { dir: 's', fala: ['O Doutor diz que veneno é só remédio na dose errada.', 'Tipo Terra e tipo Mente dão dor de cabeça nas cobras dele. Tipo Mata, coitado, vira salada.'], se: 'flag:laboratorio-ok' }),
     gente(g, '8', 'liberto', 'npc-mulher-1', 'Moradora Aliviada', { dir: 'o', fala: ['A fumaça parou! O brejo voltou a cheirar a… brejo.', 'Dizem que uma queixada enorme saiu correndo do curtume, com folhas nascendo onde pisava.'], se: 'flag:laboratorio-ok' }),
     gente(g, '9', 'tropeiro', 'npc-homem-2', 'Carroceiro Assustado', { dir: 'o', fala: ['Me pagaram para levar caixas até o curtume. Uma delas roncou.', 'Caixa não ronca, criatura. Larguei tudo e vim tomar um chá.'], se: '!flag:laboratorio-ok' }),
-    gente(g, 'O', 'guarda-serra', 'cl-montanhista', 'Guarda-serra Pinheiro', { dir: 's', se: 'insignia:13', fala: ['Insígnia Espinho! Pode subir. A Subida da Serra tem paredão de trepadeira e pedregulho no caminho.', 'Lá no alto, à esquerda, tem a trilha do Pico Pindorama. O Portão dos Guardiões só abre com as dezesseis insígnias, mas a vista já vale a subida.'] }),
+    gente(g, 'O', 'guarda-serra', 'cl-montanhista', 'Guarda-serra Pinheiro', { dir: 's', se: 'insignia:13', fala: ['Insígnia Espinho! Pode subir. A Subida da Serra tem paredão de trepadeira e pedregulho no caminho.', 'Lá no alto, à esquerda, tem a trilha do Pico Pindorama. O guia de lá só leva ao Pico quem tem as dezesseis insígnias: é onde ficam os Guardiões.'] }),
     duelista(g, 'R', 'B6-1', 'cl-biologa', 's', 3),
     duelista(g, 'S', 'B6-2', 'cl-pescador', 'n', 3),
     gente(g, 'U', 'b6-carteiro', 'npc-homem-3', 'Carteiro Sapé', { dir: 's', script: 'b2-carta' }),

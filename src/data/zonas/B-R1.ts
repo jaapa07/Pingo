@@ -93,6 +93,7 @@ const zona: ZonaDef = {
     'TTTTTTTTTT|TTTT::TTTT|TTTTTTTTTT',
   ].map((l) => l.replace(/\|/g, '')),
   objetos: [
+    { o: 'cuieira', x: 25, y: 12, cor: 'preta', script: 'cuieira' }, // cuieira (spec 10A-6, src/data/eventos/captura.ts)
     { o: 'placa', x: 16, y: 77, texto: 'VEREDA DOS BURITIS\nNorte: Cerrado Aberto. Sul: Vila Cascavel.\nOnde tem buriti, tem água. Onde tem água, tem bicho.' },
     { o: 'placa', x: 16, y: 62, texto: 'LAGOA DO CHAPÉU PERDIDO\nA ilhota só se alcança de canoa.' },
     { o: 'placa', x: 20, y: 41, texto: 'CERCADO DO SEU NICO\nNa ida, siga as porteiras. Na volta, pule as saliências.' },

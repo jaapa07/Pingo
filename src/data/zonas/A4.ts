@@ -115,6 +115,8 @@ const zona: ZonaDef = {
     gente(g, '5', 'a4-surfista', 'cl-surfista', 'Surfista Lua', { mov: 'vagar', fala: ['A Baía Azul liga tudo: a Cidade Coral, a Ilha do Farol, a Praia das Tartarugas.', 'Mas sem Remo e sem parceira do tipo Rio, você só liga para a sua mãe vir buscar.'] }),
     gente(g, '9', 'a4-marinheiro', 'npc-marinheiro', 'Marinheiro Bartô', { dir: 'o', script: 'm-carta-barto' }),
     { id: 'taina', sprite: 'taina', x: 31, y: 36, dir: 'o', se: 'flag:usina-ok&!flag:rival-3', script: 'rival-3' },
+    // missão "O Encontro das Águas" (Galo-Manaó, spec 6.5): roteiro em src/data/eventos/visitantes.ts
+    { id: 'vis-taruma', sprite: 'npc-idoso', x: 32, y: 38, dir: 'o', script: 'vis-canoeiro' },
     duelista(g, '6', 'A4-1', 'cl-surfista', 'l', 4),
     duelista(g, '7', 'A4-2', 'cl-rendeira', 'o', 4, { mov: 'olhar' }),
     duelista(g, '8', 'A4-3', 'cl-pescador', 'l', 2),

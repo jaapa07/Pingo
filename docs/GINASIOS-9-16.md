@@ -18,3 +18,10 @@ Arquivos meus: `src/data/zonas/{B2,B3,B4,B5}-ginasio.ts`, `src/world/mecanicas/g
 - Arquivos meus: `src/data/zonas/{B6,B7,B8,A9}-ginasio.ts`, `src/world/mecanicas/ginasio-13..16.ts`, `src/data/treinadores/ginasio-13..16.ts`, `src/data/eventos/ginasio-13..16.ts`.
 - Saídas: B6 (33, 12) (porta em (33, 11) em B6.ts) · A9 (25, 12) (PORTAS-GINASIO.md) · B7 e B8 ainda sem cidade: saída provisória pela convenção; reler PORTAS-GINASIO.md antes de terminar.
 - Baseline do `npm run check -- --rapido`: 1 erro alheio (líder 1, Garcinha nv 6).
+
+### Marco 1 — ginásio 13 pronto e jogado
+- `B6-ginasio` (29×19, g13): três tanques de piso tóxico; fôlego 3 (medidor sobre a cabeça), planta-antídoto devolve o fôlego e murcha (vira poça), sair do tanque faz rebrotar, desmaio devolve à boca. Soluções por busca no comentário da zona (A 4 plantas, B 7 plantas e combinação única, C 8 plantas).
+- Jogado no Vite 5200 (MAPA_B_ABERTO só no plugin): entrada → 3 tanques → 6 treinadores → líder → insígnia 13 + pt-26 no save.
+- Lição: treinador que avista anda até o jogador e FICA ao lado depois da luta; em corredor de 1 tile isso tranca o caminho (g13-3 virou visão 1).
+- Ferramentas (scratch, podem sumir): `s/jogar.mjs` (Playwright: passos, A, falas/batalhas automáticas; troca os golpes da equipe de teste por Força do Pensamento), `s/lago.mjs`/`gera2.mjs` (tanques), `s/gelo.mjs` (pistas de gelo), `s/ger15.mjs` (portais).
+- Em andamento: 14 (`B7-ginasio`, gelo do motor + blocos de gelo empurráveis com A; saída B7 (31, 11)), 15 (`B8-ginasio`, portais de constelação × 4 horas do céu; saída B8 (23, 9)).

@@ -110,3 +110,15 @@ const FLORESTA: TreinadorDef[] = [
 
 export const TREINADORES_B2_NORTE: TreinadorDef[] = [...CAMPOS, ...LAGOA, ...NEVOAS, ...LUME, ...PICO, ...FLORESTA];
 export default TREINADORES_B2_NORTE;
+
+/**
+ * O Andarilho do Cume (pós-jogo, spec 10A-22 e 10A-37): aparece na pedra do Cume depois de cada vitória contra o Conselho
+ * (`misterioso-pode`) e tem a equipe mais forte do jogo — seis estágios finais nos níveis 75–80, sem lendários. IA de
+ * Conselho e dois Elixires. Nunca passa o número para o Rádio Cipó.
+ */
+export const ANDARILHO_DO_CUME: TreinadorDef = {
+  id: 'PP-andarilho', classe: 'Andarilho', nome: 'do Cume', sprite: 'cl-montanhista', ia: 'conselho', premio: 20000, contato: false, musica: 'batalha-conselho',
+  itens: ['elixir-andiroba', 'elixir-andiroba'], flag: 'venceu:PP-andarilho',
+  equipe: [{ e: 110, nv: 75 }, { e: 72, nv: 76 }, { e: 100, nv: 76 }, { e: 160, nv: 77 }, { e: 85, nv: 78 }, { e: 156, nv: 80 }],
+  desafio: '…', derrota: '…Bom.',
+};

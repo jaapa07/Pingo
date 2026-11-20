@@ -644,6 +644,28 @@ function arvoreObjeto(especie: string): PintorObjeto {
 }
 for (const [nome, especie] of [['ipe-amarelo', 'ipe-amarelo'], ['ipe-roxo', 'ipe-roxo'], ['coqueiro', 'coqueiro'], ['araucaria', 'araucaria'], ['buriti', 'buriti'], ['cacto', 'mandacaru']]) P[nome] = arvoreObjeto(especie);
 
+/* cuieira (Crescentia cujete, a árvore da cuia): copa torta e baixa com cabaças redondas penduradas; a cor do fruto vem
+   do spawn (`cor`: amarela, preta, branca, verde, azul, vermelha, rosa) — cuias artesanais do spec 10A-6 */
+const COR_CABACA: Record<string, [string, string, string]> = {
+  amarela: ['#c98f1e', '#f9c22b', '#fff07a'], preta: ['#2a1f33', '#4a3a55', '#7a6a8a'], branca: ['#a8a8b8', '#e8e8f0', '#ffffff'],
+  verde: ['#2f7a3a', '#6cc04a', '#b8ec7a'], azul: ['#2f4f9c', '#4f8ae0', '#9cd0f4'], vermelha: ['#9c2a2a', '#e0483c', '#f7a07a'], rosa: ['#a8407e', '#e58ad0', '#f7c4e0'],
+};
+P.cuieira = (x) => {
+  const a = ARVORES.tortuosa(x.c, x.spawn.x + x.spawn.y);
+  const W = Math.max(x.info.w * 16, a.img.w), H = Math.max((x.info.h + x.info.alto) * 16, a.img.h);
+  const t = new Tela(W, H);
+  t.img.colar(a.img, (W - a.img.w) >> 1, H - a.img.h);
+  const r = (COR_CABACA[String(x.spawn.cor ?? 'verde')] ?? COR_CABACA.verde).map(hex) as Rampa, k = x.c('k');
+  // quatro cabaças pendendo da copa (um fiozinho de cabo e o fruto contornado)
+  const cx = W >> 1, base = H - a.img.h;
+  for (const [dx, dy] of [[-9, 22], [7, 19], [-2, 27], [11, 26]] as [number, number][]) {
+    const fx = cx + dx, fy = base + dy;
+    t.p(fx, fy - 4, x.c('M'));
+    t.elipse(fx, fy, 3.4, 3.2, k); t.esfera(fx, fy, 2.6, 2.4, r); t.p(fx - 1, fy - 1, r[2]);
+  }
+  return { img: t.img, sombra: 'elipse' };
+};
+
 export const PINTORES_EXTERIOR = P;
 /** registro extra (interiores): nome → pintor; preenchido por tools/bake-maps.ts */
 export const PINTORES_EXTRA: Record<string, PintorObjeto> = {};

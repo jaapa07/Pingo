@@ -13,7 +13,7 @@ import { texto, escrever, em } from '../fonte';
 import { moldura, seta, som, iconeTipo, iconeStatus } from '../kit';
 import { perguntar, informar, confirmar } from '../componentes/confirmacao';
 import { abrirTela, pedirNome } from '../dialogo';
-import { iconeCriatura, figura, nomeCri, sexoTxt, esp, vidaMaxDe, faixaDica, caixa, rotulo, pix, type Icone } from './comum';
+import { iconeCriatura, figura, nomeCri, sexoTxt, esp, vidaMaxDe, faixaDica, caixa, rotulo, pix, type Icone, estrelaRara } from './comum';
 import { T } from '../../data/textos-ui';
 
 type Area = 'topo' | 'caixa' | 'equipe';
@@ -48,7 +48,7 @@ export function criarViveiro(): Tela {
 
   function celula(p: Pos, c: CriaturaInst | null): HTMLElement {
     const d = caixa('cel-viv', CW, CH); d.style.background = p.area === 'caixa' ? '#e8c07a' : '#4a4a5e'; d.style.boxShadow = `inset -1px -1px 0 ${p.area === 'caixa' ? '#c98f4e' : '#3b2a35'}`;
-    if (c) { const ic = iconeCriatura(c.especie, !!c.ovo); d.append(em(ic.el, 3, 0)); icones.push(ic); if (!c.ovo && c.vida <= 0) ic.el.style.opacity = '0.5'; }
+    if (c) { const ic = iconeCriatura(c.especie, !!c.ovo, !!c.rara); d.append(em(ic.el, 3, 0)); icones.push(ic); if (!c.ovo && c.vida <= 0) ic.el.style.opacity = '0.5'; }
     if (pego && pego.area === p.area && pego.i === p.i && (p.area !== 'caixa' || pegoCx === cx)) d.classList.add('pega');
     tocavel(d, () => { cur = p; pintarCursor(); som('ui-ok'); void acao(); }, () => { cur = p; pintarCursor(); });
     return d;
@@ -69,14 +69,15 @@ export function criarViveiro(): Tela {
     infoDyn.replaceChildren(); figInfo = null;
     if (c) {
       const e = esp(c.especie);
-      figInfo = figura(c.especie, 100, 52, { misterio: !!c.ovo }); infoDyn.append(em(figInfo.el, 0, 0));
+      figInfo = figura(c.especie, 100, 52, { misterio: !!c.ovo, rara: !!c.rara }); infoDyn.append(em(figInfo.el, 0, 0));
+      if (c.rara && !c.ovo) infoDyn.append(em(estrelaRara(), 2, 2)); // Pelagem Rara
       rotulo(infoDyn, `${nomeCri(c)} ${sexoTxt(c)}`, 0, 54, 'creme');
       if (!c.ovo) { rotulo(infoDyn, `Nv${c.nivel}  ${c.vida}/${vidaMaxDe(c)}`, 0, 65, 'amarelo'); e?.tipos.forEach((t, i) => infoDyn.append(em(iconeTipo(t), 74 + i * 13, 63))); const st = c.vida <= 0 ? 'desmaiado' : c.status; if (st) infoDyn.append(em(iconeStatus(st, true), 90, 54)); }
     } else rotulo(infoDyn, cur.area === 'topo' ? `${nomeCaixa(cx)}: ${s.viveiro[cx].filter(Boolean).length} de 30 vagas ocupadas.` : 'Vaga livre.', 0, 30, 'cinza', { largura: 100, alinhar: 'centro' });
     dica(pego ? T.viveiro.dicaMover : cur.area === 'topo' ? T.viveiro.dicaTopo : T.viveiro.dica);
   }
   function trocarCaixa(d: number) { cx = (cx + d + 16) % 16; som('ui-mover'); montar(); }
-  function pegar(p: Pos) { const c = em_(p); if (!c) return; pego = p; pegoCx = cx; mao.replaceChildren(); icMao = iconeCriatura(c.especie, !!c.ovo); icMao.animar(true); mao.append(icMao.el); montar(); }
+  function pegar(p: Pos) { const c = em_(p); if (!c) return; pego = p; pegoCx = cx; mao.replaceChildren(); icMao = iconeCriatura(c.especie, !!c.ovo, !!c.rara); icMao.animar(true); mao.append(icMao.el); montar(); }
   function largarPego() { pego = null; icMao = null; mao.replaceChildren(); montar(); }
   /** troca o conteúdo de duas vagas (A = origem do que está na mão). Devolve o motivo se não puder. */
   function trocar(a: Pos, ca: number, b: Pos): string | null {

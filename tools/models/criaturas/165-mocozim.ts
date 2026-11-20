@@ -7,13 +7,13 @@ import { criatura, quadrupede, animsQuadrupede, blob, calota, roundBox, par, m, 
 
 export const paletaMoco = {
   rampas: [
-    ['#4a4458', '#8a8490', '#c4bfc0'], // 0 pelo cinza-pedra
+    ['#4d4356', '#968b8c', '#d6cbbe'], // 0 pelo cinza-pedra puxado ao pardo (luz quente: some menos na rocha azulada)
     ['#b8a89c', '#f6ecdc', '#ffffff'], // 1 garganta e bochechas brancas
     ['#8a3c2c', '#cf6e36', '#f4a85a'], // 2 garupa e patas ruivas
     ['#33384e', '#5c6680', '#9aa8c0'], // 3 rocha azulada
   ] as [string, string, string][],
   contorno: '#262234',
-  extras: { w: '#ffffff', p: '#262234', f: '#8a8490' },
+  extras: { w: '#ffffff', p: '#262234', f: '#968b8c' },
 };
 
 export interface MocoP { k: number; tronco: V3; cabeca: V3; pernas: number }
@@ -26,14 +26,15 @@ export function corpoMoco(p: MocoP) {
     cabeca: p.cabeca,
     focinho: { len: cx * 0.42, r0: cy * 0.56, r1: cy * 0.4, nariz: cy * 0.17, cai: 6 },
     orelha: { tipo: 'redonda', alt: cy * 0.46, larg: cy * 0.5, x: -0.2, z: 0.7 },
-    olho: { r: 0.03, pos: [cx * 0.9, cy * 0.22, cz * 0.62] },
+    olho: { r: 0.036, pos: [cx * 0.88, cy * 0.24, cz * 0.62] },
     rampas: { pelo: 0, barriga: 1, canelaF: 2, canelaT: 2, pe: 2, nariz: 2, orelha: 2, focinho: 0 },
   });
   const rig = kit.rig;
   // garupa ruiva, garganta e bochechas brancas
-  rig.add('corpo', calota([tr[0] * 0.8, tr[1] * 1.06, tr[2] * 1.06], m(2), { de: 0, ate: 76, pos: [-tr[0] * 0.3, 0, 0], rot: [0, 0, 62] }));
+  // (a garupa desce pelos flancos até a metade do corpo: de frente ela aparece como a mancha ruiva do mocó)
+  rig.add('corpo', calota([tr[0] * 0.92, tr[1] * 1.06, tr[2] * 1.07], m(2), { de: 0, ate: 96, pos: [-tr[0] * 0.18, 0, 0], rot: [0, 0, 70] }));
   rig.add('pescoco', blob([0.08 * k, 0.1 * k, 0.11 * k], m(1), { pos: [0.1 * k, -0.02, 0], seg: 12 }));
-  par((_, s) => rig.add('cabeca', blob([cx * 0.36, cy * 0.3, cz * 0.24], m(1), { pos: [cx * 0.62, -cy * 0.36, cz * 0.5 * s], seg: 10 })));
+  par((_, s) => rig.add('cabeca', blob([cx * 0.42, cy * 0.34, cz * 0.28], m(1), { pos: [cx * 0.6, -cy * 0.34, cz * 0.52 * s], seg: 10 })));
   return kit;
 }
 /** Pedra facetada. */

@@ -14,6 +14,7 @@ import { M, sfx } from './vivo';
 import { falar, avisar, especie, nomeCriatura, nomeItem, item as itemDef } from './deps';
 import { pixBrilho } from './pixel';
 import { TILE } from '../core/tipos';
+import { vista } from '../core/assets';
 
 const PASSOS_ACHADO = 1000;
 /** interiores com menos tiles que isto não têm espaço para a parceira */
@@ -45,7 +46,8 @@ export function sincronizarParceira(recriar = false) {
   a.solido = false; a.balaoDy = 7; a.visivel = visivel && !(x === M.jog.x && y === M.jog.y);
   // sem sprite: o boneco de reserva vira um vulto discreto
   if (a.boneco) { a.boneco.el.style.opacity = '0.45'; a.boneco.el.style.filter = 'grayscale(1) brightness(0.55)'; }
-  if (ehRara(c)) a.spr.el.style.filter = 'hue-rotate(150deg) saturate(1.35)';
+  // Pelagem Rara: a folha `mapa-rara.png` gerada no build (tools/build-raras.ts); sem ela, um giro de matiz em CSS
+  if (ehRara(c)) { const r = vista(especie(c.especie)?.id ?? '', 'mapa-rara'); if (r) a.spr.el.style.backgroundImage = `url(${r.src})`; else a.spr.el.style.filter = 'hue-rotate(150deg) saturate(1.35)'; }
   M.parceira = a; dona = chave; paradaT = 0; balaoT = 240 + Math.floor(cosmetico() * 300);
 }
 /** o jogador saiu de (ox, oy) num passo de `dur` quadros: a parceira ocupa o tile que ele deixou */

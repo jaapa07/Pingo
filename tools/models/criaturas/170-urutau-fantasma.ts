@@ -6,6 +6,7 @@
  */
 import { criatura, ave, animsAve, blob, tufo, chama, pena, segmento, par, m, lz, qz, ls, D2R, type V3 } from './kits';
 import { paletaUrutau, toco } from './169-urutauzim';
+import { cabecaRetaNoMapa } from './171-noitim';
 
 const NEV = ['nev_d1', 'nev_d2', 'nev_e1', 'nev_e2', 'fatuo'];
 
@@ -45,14 +46,15 @@ function build() {
   for (const [x, y, z, a] of [[0.2, 0.0, 0.07, -8], [0.19, -0.06, -0.08, 10], [0.12, -0.15, 0.03, 4], [0.24, 0.1, -0.03, 0]] as const) rig.add('tronco', blob([0.11, 0.02, 0.025], m.plano(2), { pos: [x, y, z], rot: [0, a, 0], seg: 6, castShadow: false }));
   rig.add('tronco', blob([0.035, 0.05, 0.13], m.luz(1), { pos: [0.3, 0.02, 0], rot: [0, 0, -14], seg: 10, castShadow: false }));
   rig.bones.cabeca.rotation.z = 8 * D2R;
+  rig.bones.cabeca.rotation.y = 30 * D2R; // olhos-lua encarando quem vê (no mapa a cabeça volta)
   return rig;
 }
 
-const anims = animsAve({ u: 1.1, hPerna: 0.08, mole: 0.7 }, {
+const anims = cabecaRetaNoMapa(animsAve({ u: 1.1, hPerna: 0.08, mole: 0.7 }, {
   todas: Object.fromEntries(NEV.map((v, i) => [v, ls([[1, 1, 1], [0.9, 1.18, 0.9], [1.06, 0.88, 1.06], [0.95, 1.08, 0.95]].map((_, k, a) => a[(k + i) % 4] as V3))])),
   idle: { chifre_d: lz([0, 3, 6, 2]), chifre_e: lz([0, 3, 6, 2]) },
   especial: { chifre_d: qz([0, 10, 14, -16, -5, 0]), chifre_e: qz([0, 10, 14, -16, -5, 0]) },
-});
+}), 30);
 
 export const urutauFantasma = criatura({
   num: 170, id: 'urutau-fantasma', nome: 'Urutau-Fantasma', porte: 'M', estagio: 'final', paleta: paletaUrutau, build, anims,

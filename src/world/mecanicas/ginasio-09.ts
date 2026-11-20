@@ -55,7 +55,7 @@ function alisar(c: Cercado) {
 }
 /** cercado vencido: a lama seca e vira chão firme, porteira aberta */
 function firmar(c: Cercado) {
-  for (const [x, y] of c.lama) { M.zv.bloquear(x, y, false); enf.tirar('b' + chave(x, y)); enf.tile('f' + chave(x, y), 'alternativo', x, y); }
+  for (const [x, y] of c.lama) { M.zv.bloquear(x, y, false); enf.tirar('b' + chave(x, y)); enf.tile('f' + chave(x, y), 'piso', x, y); }
   c.pisada.clear(); c.afundada.clear(); c.firme = true;
   abrirPorteira(c);
 }

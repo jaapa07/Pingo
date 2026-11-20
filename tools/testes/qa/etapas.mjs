@@ -182,7 +182,9 @@ export const ETAPAS = [
 /** compras de um jogador comum: remédio do melhor tipo à venda até ter 6, cuias até 5, guardando 30% do dinheiro */
 async function compras(t, venda) {
   const r = await t.resumo(), tem = (id) => r.mochila[id] ?? 0, din = r.dinheiro;
-  const forte = (await nivelMax(t)) >= 16 ? 'garrafada' : 'cha-cidreira', preco = forte === 'garrafada' ? 700 : 300;
+  // a Garrafada só entra na Venda de Bosque Alto depois da insígnia 2 (antes o piloto pedia Garrafada, não achava e não levava remédio nenhum)
+  const temGarrafada = venda !== 'A3-venda' || r.insignias.includes(2);
+  const forte = (await nivelMax(t)) >= 16 && temGarrafada ? 'garrafada' : 'cha-cidreira', preco = forte === 'garrafada' ? 700 : 300;
   const q = Math.max(0, Math.min(6 - tem(forte), Math.floor((din * 0.7) / preco)));
   await t.comprar(venda, [[forte, q], ['cha-cidreira', forte === 'garrafada' && q < 2 ? Math.max(0, 4 - tem('cha-cidreira')) : 0], ['cuia', Math.max(0, 4 - tem('cuia'))]]);
 }

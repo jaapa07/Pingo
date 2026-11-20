@@ -42,17 +42,20 @@ export function corpoEma(p: EmaP) {
 }
 
 function build() {
-  const { rig, ref } = corpoEma({ k: 0.84, pescoco: 0.46, perna: 0.42, cabeca: [0.125, 0.105, 0.105], corpo: 1, asa: 0.2, bicoLen: 0.8, rBico: 2, rPescoco: 0.05 });
+  // proporção de filhote: bola de penugem maior, cabeça grande, pernas e pescoço mais curtos (antes era um fiapo na célula)
+  const { rig, ref } = corpoEma({ k: 1.08, pescoco: 0.36, perna: 0.32, cabeca: [0.15, 0.13, 0.13], corpo: 1, asa: 0.24, bicoLen: 0.75, rBico: 2, rPescoco: 0.06 });
+  par((l) => rig.bones['olho_' + l].scale.setScalar(1.35));
   // riscas escuras ao longo do corpo e do pescoço
-  for (const z of [-0.1, 0, 0.1]) rig.add('tronco', blob([0.19, 0.035, 0.034], m.plano(2), { pos: [-0.02, 0.176 * Math.sqrt(1 - (z / 0.168) ** 2) * 0.96, z], seg: 8, castShadow: false }));
-  par((_, s) => rig.add('tronco', blob([0.17, 0.032, 0.02], m.plano(2), { pos: [-0.02, 0.02, 0.166 * s], seg: 8, castShadow: false })));
-  rig.add('pescoco', blob([0.024, 0.19, 0.024], m.plano(2), { pos: [-0.012, 0.24, 0], rot: [0, 0, 14], seg: 6 }));
+  const K = 1.08 / 0.84;
+  for (const z of [-0.1, 0, 0.1]) rig.add('tronco', blob([0.19 * K, 0.035 * K, 0.034 * K], m.plano(2), { pos: [-0.02, 0.176 * K * Math.sqrt(1 - (z / 0.168) ** 2) * 0.96, z * K], seg: 8, castShadow: false }));
+  par((_, s) => rig.add('tronco', blob([0.17 * K, 0.032 * K, 0.02 * K], m.plano(2), { pos: [-0.02, 0.02, 0.166 * K * s], seg: 8, castShadow: false })));
+  rig.add('pescoco', blob([0.03, 0.15, 0.03], m.plano(2), { pos: [-0.012, 0.19, 0], rot: [0, 0, 14], seg: 6 }));
   rig.bone('topete', 'cabeca', [ref.topo[0] - 0.03, ref.topo[1], 0], [0, 0, 24]);
-  rig.add('topete', tufo(3, 0.07, 0.03, m(1), { abre: 34 }));
+  rig.add('topete', tufo(3, 0.09, 0.035, m(1), { abre: 34 }));
   return rig;
 }
 
-const anims = animsAve({ u: 0.95, hPerna: 0.42, mole: 1.2 }, unirExtras(asasContidas, {
+const anims = animsAve({ u: 0.85, hPerna: 0.32, mole: 1.2 }, unirExtras(asasContidas, {
   idle: { topete: lz([0, 6, 12, -4]) },
   // coice para a frente
   fisico: { perna_e: qz([-14, -30, 60, 24, 0]), canela_e: qz([-20, -50, 20, 6, 0]) },

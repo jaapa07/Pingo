@@ -46,13 +46,15 @@ const p1 = placa(g, 's', 'TRILHA DOS CIPÓS\nOeste: Bosque Alto · Leste: Gruta 
 const zona: ZonaDef = {
   id: 'A-R3', nome: 'Trilha dos Cipós', mapa: 'A', tipo: 'rota', tileset: 'mata', musica: 'rota-dia-A', arena: 'mata', passo: 3,
   mapaChars: subBosque(g.mapa, false),
-  objetos: [obj(g, 'G', 'caverna-entrada'), p1.objeto],
+  objetos: [obj(g, 'G', 'caverna-entrada'), p1.objeto, { o: 'cuieira', x: 7, y: 7, cor: 'amarela', script: 'cuieira' }],
   placas: [p1.placa],
   warps: [
     ...saidas(g, 'W', 'A3', 41, 15, 'o'),
     entrada(g, 'G', 'caverna-entrada', 'A-GE', 4, 29, { tipo: 'caverna' }),
   ],
   npcs: [
+    // Parque Safári (spec 10A item 33): o pescador dá a Pedra de Rio depois da Liga (src/data/eventos/posliga.ts)
+    { id: 'safari-pescador-seixo', sprite: 'cl-pescador', x: 35, y: 6, dir: 'o', se: 'flag:liga-vencida', script: 'safari-da-pedra' },
     gente(g, 'H', 'a-r3-mateiro', 'cl-mateira', 'Mateira Ceci', { mov: 'olhar', fala: ['Esses cipós cresceram numa noite só. Mata fechada é assim: piscou, trançou.', 'O Facão corta, mas quem maneja é a criatura: tem de ser do tipo Mata, Inseto ou Ginga.'] }),
     gente(g, 'F', 'a-r3-pescador', 'cl-pescador', 'Pescador Tonho', { dir: 'o', fala: ['O Riacho da Piaba faz jus ao nome: é jogar a linha e vem Piabinha.', 'De noite a margem enche de Pererequinha e de Vagalumim. Parece festa junina.', 'Dizem que lá dentro da Gruta do Eco tem um bagre de bigode que mora no escuro. Mandizinho, o nome.'] }),
     duelista(g, '1', 'A-R3-1', 'cl-observadora', 's', 4),

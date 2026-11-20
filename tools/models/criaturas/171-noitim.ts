@@ -4,7 +4,7 @@
  * barriga alaranjada · cauda comprida e grossa de ponta escura, com um fiapo de assombro lilás ·
  * mãos juntas no peito, de quem acabou de acordar.
  */
-import { criatura, arboricola, animsArboricola, unirExtras, blob, chama, par, m, lz, qz, ls, D2R, type V3, type Rig } from './kits';
+import { criatura, arboricola, animsArboricola, unirExtras, blob, chama, par, m, lz, qz, ls, D2R, type V3, type Rig, type AnimsCriatura } from './kits';
 import { bracosCurtos } from './061-preguicim';
 
 export const paletaNoite = {
@@ -27,18 +27,34 @@ export function corpoNoite(p: NoiteP) {
     tronco: [0.17 * k, 0.2 * k, 0.18 * k], curva: 22,
     pernas: { alt: 0.12 * k, r: 0.06 * k, pe: 0.085 * k },
     bracos: { len: p.bracos, r: 0.05 * k, mao: 0.055 * k },
-    cabeca: p.cabeca, rosto: 0.7, focinho: { len: cx * 0.22, r: cy * 0.2 },
+    cabeca: p.cabeca, rosto: 0.5, focinho: { len: cx * 0.22, r: cy * 0.2 },
     orelha: { r: cy * 0.22, z: 0.92, y: 0.1 },
     cauda: { segs: 3, len: p.cauda, r0: 0.065 * k, r1: 0.055 * k, ang: 24, curva: 52 },
     olho: { r: p.olho, pos: [cx * 0.86, cy * 0.12, cz * 0.44] },
     rampas: { pelo: 0, barriga: 2, rosto: 1, maos: 3, cauda: 0, caudaPonta: 3, orelha: 0 },
   });
   const rig = kit.rig;
+  // cara virada para quem olha: os dois olhões aparecem na vista de batalha (lê "macaco-da-noite", não perfil de bicho)
+  rig.bones.cabeca.rotation.y = 34 * D2R;
+  // barriga laranja bem à mostra no peito
+  rig.add('tronco', blob([0.11 * k, 0.15 * k, 0.13 * k], m(2), { pos: [0.1 * k, -0.02 * k, 0], seg: 12 }));
+  // sobrancelhas brancas em crescente acima de cada olho (a marca do macaco-da-noite)
+  par((_, s) => rig.add('cabeca', blob([cx * 0.2, cy * 0.12, cz * 0.3], m.luz(1), { pos: [cx * 0.82, cy * 0.42, cz * 0.4 * s], rot: [0, 0, -20], seg: 10 })));
   // três riscas escuras: uma no meio da testa, duas pelos lados dos olhos
   rig.add('cabeca', blob([cx * 0.3, cy * 0.4, cz * 0.1], m.plano(3), { pos: [cx * 0.5, cy * 0.74, 0], rot: [0, 0, -38], seg: 10 }));
   par((_, s) => rig.add('cabeca', blob([cx * 0.26, cy * 0.4, cz * 0.1], m.plano(3), { pos: [cx * 0.3, cy * 0.6, cz * 0.78 * s], rot: [18 * s, 0, -30], seg: 10 })));
   rig.add('cabeca', blob([cx * 0.1, cy * 0.08, cz * 0.12], m.plano(3), { pos: [cx * 1.06, -cy * 0.26, 0], seg: 8 }));
   return kit;
+}
+
+/** A cabeça virada para a câmera só vale na batalha: no mapa ela volta a olhar para onde o bicho anda. */
+export function cabecaRetaNoMapa(a: AnimsCriatura, graus = 34) {
+  for (const an of Object.values(a.mapa)) {
+    const ks = an.keys.cabeca;
+    if (ks && ks.some((k) => k.r)) an.keys.cabeca = ks.map((k) => (k.r ? { ...k, r: [k.r[0], k.r[1] - graus, k.r[2]] as V3 } : k));
+    else an.keys.cabeca = [...(ks ?? []), { t: 0, r: [0, -graus, 0] }];
+  }
+  return a;
 }
 
 /** Fiapo de assombro na ponta da cauda. */
@@ -57,11 +73,11 @@ function build() {
   return rig;
 }
 
-const anims = animsArboricola({ u: 0.65, hPerna: 0.12, mole: 1.3 }, unirExtras(bracosCurtos, {
+const anims = cabecaRetaNoMapa(animsArboricola({ u: 0.65, hPerna: 0.12, mole: 1.3 }, unirExtras(bracosCurtos, {
   todas: { fiapo: treme(0) },
   idle: { cabeca: lz([0, 2, 4, 1]) },
   especial: { fiapo: ls([1, 1.2, 1.5, 1.9, 1.3, 1]) },
-}));
+})));
 
 export const noitim = criatura({
   num: 171, id: 'noitim', nome: 'Noitim', porte: 'P', estagio: 'basico', paleta: paletaNoite, build, anims,

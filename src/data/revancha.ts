@@ -39,8 +39,8 @@ export const faixaDoPeriodo = (p: Periodo): PeriodoAgenda => (p === 'tarde' ? 'd
  * Campeão (o mapa B começa em 44–48), fase 4 ≈ líder 16. Líderes ficam acima: fase 3 entre os líderes 10 e 11 e
  * fase 4 no nível do Conselho. Nunca abaixo do ás original + 2 (a revanche é sempre mais forte que a 1ª luta).
  */
-export const ALVO_COMUM: Record<Fase, number> = { 1: 0, 2: 28, 3: 46, 4: 62 };
-export const ALVO_LIDER: Record<Fase, number> = { 1: 0, 2: 0, 3: 52, 4: 68 };
+export const ALVO_COMUM: Record<Fase, number> = { 1: 0, 2: 28, 3: 48, 4: 64 };
+export const ALVO_LIDER: Record<Fase, number> = { 1: 0, 2: 0, 3: 54, 4: 68 };
 export const ALVO_RIVAL: Record<Fase, number> = { 1: 0, 2: 0, 3: 52, 4: 68 };
 
 /* ============================== líderes (item 25) ============================== */
@@ -53,14 +53,14 @@ export interface AgendaLider {
 }
 /** dois líderes por dia (no máximo três), espalhados pelos períodos */
 export const LIDERES_AGENDA: AgendaLider[] = [
-  { id: 'lider-01', insignia: 1, dia: 1, periodo: 'manha', lugar: 'no píer de Vila Caiçara', reforco3: [12, 106], reforco4: [110, 52] },
-  { id: 'lider-02', insignia: 2, dia: 2, periodo: 'dia', lugar: 'nas copas de Bosque Alto', reforco3: [144], reforco4: [156, 150] },
+  { id: 'lider-01', insignia: 1, dia: 1, periodo: 'manha', lugar: 'no píer de Vila Caiçara', reforco3: [12, 106, 52], reforco4: [110] },
+  { id: 'lider-02', insignia: 2, dia: 2, periodo: 'dia', lugar: 'nas copas de Bosque Alto', reforco3: [144, 150], reforco4: [156] },
   { id: 'lider-03', insignia: 3, dia: 3, periodo: 'noite', lugar: 'nas eclusas de Porto Sereia', reforco3: [40], reforco4: [132] },
   { id: 'lider-04', insignia: 4, dia: 4, periodo: 'noite', lugar: 'no mirante de Cidade Coral', reforco3: [150], reforco4: [9] },
   { id: 'lider-05', insignia: 5, dia: 5, periodo: 'manha', lugar: 'na Oficina do Volta', reforco3: [64], reforco4: [116] },
   { id: 'lider-06', insignia: 6, dia: 6, periodo: 'noite', lugar: 'no cemitério velho', reforco3: [94], reforco4: [] },
   { id: 'lider-07', insignia: 7, dia: 0, periodo: 'manha', lugar: 'na forja de Vila Ferrugem', reforco3: [144], reforco4: [146] },
-  { id: 'lider-08', insignia: 8, dia: 0, periodo: 'dia', lugar: 'no buritizal de Vila Buriti', reforco3: [], reforco4: [160] },
+  { id: 'lider-08', insignia: 8, dia: 0, periodo: 'dia', lugar: 'no buritizal de Vila Buriti', reforco3: [160], reforco4: [] },
   { id: 'lider-09', insignia: 9, dia: 1, periodo: 'dia', lugar: 'no barreiro do Sertão', reforco3: [], reforco4: [80] },
   { id: 'lider-10', insignia: 10, dia: 2, periodo: 'manha', lugar: 'na Chapada Rubra', reforco3: [], reforco4: [] },
   { id: 'lider-11', insignia: 11, dia: 3, periodo: 'dia', lugar: 'no Arraial Brasa', reforco3: [], reforco4: [] },
@@ -165,13 +165,13 @@ export function equipeDaFase(t: Pick<TreinadorDef, 'id' | 'equipe' | 'insignia' 
   return eq;
 }
 /** prêmio da revanche: cresce com a fase */
-export const premioDaFase = (t: Pick<TreinadorDef, 'premio' | 'insignia'>, fase: Fase) => Math.round(t.premio * (t.insignia !== undefined ? 1 + fase * 0.35 : 1 + (fase - 1) * 0.9));
+export const premioDaFase = (t: Pick<TreinadorDef, 'premio' | 'insignia'>, fase: Fase, as = 0) => Math.max(Math.round(t.premio * (t.insignia !== undefined ? 1 + fase * 0.35 : 1 + (fase - 1) * 0.9)), as * (t.insignia !== undefined ? 80 : 36));
 /** o treinador da revanche, pronto para o motor (id próprio para não marcar o original nem virar contato de novo) */
 export function treinadorDaFase(t: TreinadorDef, fase: Fase, esp: BuscaEspecie): TreinadorDef {
-  const forte = fase >= 3;
+  const forte = fase >= 3, equipe = equipeDaFase(t, fase, esp);
   return {
     ...t, id: 'revanche:' + t.id, insignia: undefined, contato: false, flag: 'revanche-venceu:' + t.id,
-    equipe: equipeDaFase(t, fase, esp), premio: premioDaFase(t, fase),
+    equipe, premio: premioDaFase(t, fase, Math.max(...equipe.map((m) => m.nv))),
     ia: t.ia === 'novato' && fase >= 2 ? 'treinador' : t.ia,
     itens: t.itens?.length ? t.itens : forte && t.insignia !== undefined ? ['elixir-andiroba', 'garrafada'] : t.itens,
   };

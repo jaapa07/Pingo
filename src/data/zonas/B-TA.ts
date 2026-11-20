@@ -37,7 +37,7 @@ const zona: ZonaDef = {
   npcs: [
     duelista(g, '1', 'B-TA-1', 'cl-mergulhador', 's', 5),
     duelista(g, '2', 'B-TA-2', 'cl-mergulhador', 'l', 5),
-    duelista(g, '3', 'B-TA-3', 'cl-mergulhador', 'n', 3),
+    duelista(g, '3', 'B-TA-3', 'cl-mergulhador', 'l', 3),
   ],
   itens: [
     item(g, 'a', 'concha-rara'), item(g, 'h', 'cuia-rede', 3), item(g, 'i', 'pedra-mare'), item(g, 'j', 'pt-15'),

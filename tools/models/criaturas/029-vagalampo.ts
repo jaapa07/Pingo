@@ -35,8 +35,9 @@ function build() {
     ring(0.205, 0.04, m(0), { pos: [0, 0.03, 0], rot: [90, 0, 0] }), ring(0.15, 0.04, m(0), { pos: [0, 0.17, 0], rot: [90, 0, 0] }), ring(0.16, 0.04, m(0), { pos: [0, -0.14, 0], rot: [90, 0, 0] }),
     blob([0.1, 0.06, 0.1], m(1), { pos: [0, -0.23, 0], seg: 12 }), blob([0.09, 0.05, 0.09], m(1), { pos: [0, 0.23, 0], seg: 12 }));
   // faíscas orbitando
-  const fa: [string, V3, number, number][] = [['faisca1', [0.34, 0.4, -0.3], 0.26, 20], ['faisca2', [-0.42, 0.4, 0.3], 0.24, -30], ['faisca3', [0.34, -0.3, 0.36], 0.22, 160]];
-  for (const [nome, pos, alt, rz] of fa) { rig.bone(nome, 'corpo', pos, [0, 0, rz]); rig.add(nome, raio(alt, m.plano(2), 0.05)); }
+  // (mais grossas e mais perto do corpo: finas e longe, viravam riscos soltos e encolhiam o sprite na célula)
+  const fa: [string, V3, number, number][] = [['faisca1', [0.28, 0.36, -0.24], 0.24, 20], ['faisca2', [-0.34, 0.36, 0.24], 0.22, -30], ['faisca3', [-0.06, 0.52, -0.22], 0.2, 160]];
+  for (const [nome, pos, alt, rz] of fa) { rig.bone(nome, 'corpo', pos, [0, 0, rz]); rig.add(nome, raio(alt, m.plano(2), 0.06)); rig.bones[nome].scale.set(1.8, 1, 1); }
   return rig;
 }
 

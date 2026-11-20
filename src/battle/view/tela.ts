@@ -111,8 +111,9 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
   function definirBase(a: Ator, s: StatusId | null) { a.base(s === 'dormindo' || s === 'congelado' ? 'status' : 'idle'); }
   async function entrar(p: Pos, r: ResumoCriatura, modo: 'cuia' | 'selvagem' | 'pronto') {
     const a = atorDe(p); [a.x, a.y] = palco.apoio(p.lado, p.pos);
-    await palco.precarregarCriatura(r.especie);
-    if (modo !== 'pronto') a.definirCriatura(r.especie);
+    const rara = !!inst.get(r.uid)?.rara;
+    await palco.precarregarCriatura(r.especie, rara);
+    if (modo !== 'pronto') a.definirCriatura(r.especie, rara);
     emCampo[p.lado][p.pos] = r.uid; vis.set(r.uid, { ...r });
     if (modo === 'cuia') {
       const t = palco.treinador[p.lado]; let de: [number, number];
@@ -122,10 +123,18 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
       a.visivel = true; a.branco = true; await rel.dormir(0.14); f.remover(); a.branco = false;
     } else { a.visivel = true; a.escuro = false; }
     definirBase(a, r.status);
+    if (rara) void brilhoRaro(a);
     som('entrada-criatura'); bus.emit('grito', r.especie);
     const cx = caixas[p.lado][p.pos]; cx.definir(r, tipoDe(r.especie), jaCapturadas.has(r.especie));
     pintarBolinhas();
     if (a.tem('entrada') && r.status !== 'dormindo' && r.status !== 'congelado') await a.tocar('entrada'); else await rel.dormir(0.3);
+  }
+  /** Pelagem Rara (spec 10A-5): chuva de estrelas em volta da criatura ao entrar */
+  async function brilhoRaro(a: Ator) {
+    som('cuia-estrelas');
+    const [cx, cy] = a.centro, pontos: [number, number][] = [[-14, -10], [12, -14], [-6, 8], [16, 4], [0, -20], [-18, 2]];
+    for (const [dx, dy] of pontos) { cena.fx('st-brilho', cx + dx, cy + dy); await rel.dormir(0.07); }
+    cena.fx('cap-estrelas', cx, cy - 4);
   }
   async function sair(p: Pos) {
     const a = atorDe(p); som('retorno-criatura');
@@ -486,13 +495,13 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
   async function abertura(evs: EventoBatalha[]): Promise<EventoBatalha[]> {
     const t = pedido.treinador, avatar = jogo.save.jogador.avatar;
     abrirCortina(0); palco.definirDolly(1);
-    await Promise.all([palco.carregar(pedido.arena), precarregarFx(), ...pedido.inimigos.map((c) => palco.precarregarCriatura(c.especie)), ...jogo.save.equipe.map((c) => palco.precarregarCriatura(c.especie))]);
+    await Promise.all([palco.carregar(pedido.arena), precarregarFx(), ...pedido.inimigos.map((c) => palco.precarregarCriatura(c.especie, !!c.rara)), ...jogo.save.equipe.map((c) => palco.precarregarCriatura(c.especie, !!c.rara))]);
     if (!pedido.musica && !t?.musica) bus.emit('musica', pedido.tipo === 'lendario' ? 'batalha-lendario' : pedido.tipo === 'treinador' ? (t?.insignia !== undefined ? 'batalha-lider' : 'batalha-treinador') : 'batalha-selvagem');
     if (vista(avatar, 'costas')) palco.criarTreinador(0, avatar);
     if (pedido.tipo === 'treinador' && t && vista(t.sprite, 'batalha')) palco.criarTreinador(1, t.sprite);
     // selvagens entram junto com a abertura, como vultos, e se revelam quando a cortina termina de abrir
     const selvagens = pedido.tipo === 'treinador' ? [] : evs.filter((e): e is Extract<EventoBatalha, { t: 'entra' }> => e.t === 'entra' && e.lado === 1 && !!e.inicial);
-    const vultos = selvagens.map((e) => { const a = atorDe(e); a.definirCriatura(e.criatura.especie); a.escuro = true; a.visivel = true; return a; });
+    const vultos = selvagens.map((e) => { const a = atorDe(e); a.definirCriatura(e.criatura.especie, !!inst.get(e.criatura.uid)?.rara); a.escuro = true; a.visivel = true; return a; });
     const bases = vultos.map((a) => a.x);
     if (pedido.tipo === 'lendario') som('lendario-aparece');
     await rel.entre(0.7, (k) => {

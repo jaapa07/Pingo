@@ -31,9 +31,9 @@ p.t(28, 34, '##').t(60, 15, '###', '_#').t(2, 27, '##', '#').t(64, 19, '##').t(2
 p.p(',', 3, 30, 4, 34, 11, 26, 29, 22, 35, 27, 45, 15, 47, 7, 15, 9, 31, 17, 19, 30, 27, 30, 49, 23);
 // marcas
 p.t(6, 39, 'SS').t(0, 8, 'W', 'W');
-p.t(4, 36, 'a').t(1, 10, 'n').t(51, 14, 'm').t(53, 30, 'h');
+p.t(4, 36, 'a').t(1, 10, 'n').t(51, 14, 'm').t(53, 32, 'h');
 p.t(20, 29, '1').t(42, 25, '2').t(30, 20, '3').t(12, 15, '4').t(26, 9, '5').t(38, 17, '6').t(46, 19, '7');
-p.t(8, 28, 'P').t(36, 29, 'G').t(60, 6, 'U').t(48, 13, 'K').t(53, 29, 'V');
+p.t(8, 28, 'P').t(36, 29, 'G').t(60, 6, 'U').t(48, 13, 'K').t(53, 28, 'V');
 p.t(46, 34, 'k').t(60, 3, 'j').t(65, 33, 'i').t(58, 28, 'q').t(3, 12, 'y').t(66, 8, 'z').t(33, 26, 'u');
 p.t(24, 31, 'F').t(36, 11, 'X').t(9, 2, 'X');
 const g = grade('B-SG', p.fim(), {
@@ -46,12 +46,12 @@ const placas = [
   placa(g, 'm', 'MIRANTE DO UIRAPURU\nSubida pela trepadeira. Os antigos dizem: "quem ouve o Uirapuru ao amanhecer, ouve a mata inteira calar".'),
   placa(g, 'h', 'TRILHA VELHA DOS GUARDIÕES\nCercada por ordem do Conselho. Só para quem já foi recebido no Pico.'),
 ];
-const [vx, vy] = g.p('h');
+const [vx, vy] = [53, 30];
 const zona: ZonaDef = {
   id: 'B-SG', nome: 'Campos de Altitude', mapa: 'B', tipo: 'rota', tileset: 'geada', musica: 'rota-dia-B', arena: 'geada', passo: 14, clima: 'garoa',
   mapaChars: g.mapa,
   objetos: [
-    obj(g, 'F', 'fogueira'), ...objs(g, 'X', 'araucaria'), obj(g, 'U', 'totem', { texto: ['Um totem de pinho com um pássaro pequeno entalhado no alto, de bico aberto. Alguém deixou pinhões na base, como oferenda.'] }),
+    obj(g, 'F', 'fogueira'), ...objs(g, 'X', 'araucaria'), obj(g, 'U', 'totem', { script: 'b2n-uirapuru' }),
     { o: 'pedra-grande', x: 22, y: 38 }, { o: 'pedra-grande', x: 49, y: 3 }, { o: 'tronco-caido', x: 31, y: 37 }, { o: 'banco', x: 7, y: 33 },
     ...placas.map((q) => q.objeto),
   ],
@@ -74,6 +74,7 @@ const zona: ZonaDef = {
     gente(g, 'P', 'b-sg-pastor', 'npc-idoso', 'Seu Lã-Grossa', { dir: 'l', script: 'b2n-troca' }),
     gente(g, 'G', 'b-sg-gaiteira', 'npc-mulher-4', 'Gaiteira Rosa-dos-Ventos', { dir: 'n', mov: 'olhar', fala: ['Aqui em cima a geada cai de madrugada e o sol derrete antes do almoço. O capim fica dourado de tanto apanhar de frio.', 'O beija-flor dos campos só sai de dia. De noite quem manda é o Maracajá-Nevado, que caça no capim.'] }),
     gente(g, 'K', 'b-sg-mirante', 'cl-crianca-m', 'Piá Tchico', { dir: 's', fala: ['Eu subi o paredão do mirante pela trepadeira! Lá em cima tem um totem de passarinho.', 'Meu avô diz que o Uirapuru canta lá ao amanhecer, mas só para quem conhece MUITO bicho. Tipo cento e cinquenta. Eu conheço onze.'] }),
+    { id: 'b-sg-uirapuru', sprite: 'c:uirapuru', x: g.p('U')[0] + 1, y: g.p('U')[1], dir: 's', se: 'periodo:manha&diario:150&!flag:uirapuru-ok', script: 'b2n-uirapuru' },
     gente(g, 'V', 'b-sg-guardiao', 'npc-homem-3', 'Guardião do Campo', { dir: 'l', se: 'pos-jogo', fala: ['Tchê! O Conselho mandou avisar: a Trilha Velha é sua. Lá dentro o capim é alto e a geada é antiga.', 'Diz que os pesquisadores do estrangeiro andam atrás de bicho do frio por estes campos. Não sei de bicho nenhum. Sei de chimarrão.'] }),
   ],
   itens: [

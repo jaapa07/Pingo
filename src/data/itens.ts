@@ -14,7 +14,7 @@ export interface UsoItem {
   /** restaura PG de um golpe (ou de todos, se `pgTodos`) */
   pg?: number; pgTodos?: boolean;
   /** cuia de captura */
-  cuia?: { bonus: number; contraTipos?: TipoId[]; bonusTipos?: number; noite?: number; primeiroTurno?: number; amizade?: boolean; garantida?: boolean };
+  cuia?: { bonus: number; contraTipos?: TipoId[]; bonusTipos?: number; noite?: number; primeiroTurno?: number; amizade?: boolean; garantida?: boolean; /** cuia artesanal (spec 10A-6): regra em src/battle/cuias.ts */ artesanal?: 'ligeira' | 'pesada' | 'lua' | 'amiga' | 'isca' | 'nivel' | 'amor' };
   /** pedra/objeto de evolução (usado fora de batalha) */
   evolui?: boolean;
   /** Pergaminho de Técnica: id do golpe ensinado (reutilizável) */
@@ -145,6 +145,21 @@ export const ITENS: ItemInfo[] = [
   ...Object.entries(PERGAMINHOS).map(([id, gid], n) => i(id, `PT${String(n + 1).padStart(2, '0')} ${NOME_PT[gid]}`, 'pergaminhos', 3000, `Pergaminho de Técnica reutilizável. Ensina ${NOME_PT[gid]} a uma criatura compatível.`, { golpe: gid })),
   /* ------------------------------ regras clássicas (spec 10A) ------------------------------ */
   i('cartao-radio', 'Cartão do Rádio', 'chave', 0, 'Prêmio do Quiz do Rádio. Libera os programas extras do Rádio Cipó: Cantiga das Lendas, músicas dos lugares visitados e dicas de captura no Bicho do Dia.'),
+  /* ------------------------------ cuieiras e cuias artesanais (spec 10A-6; src/battle/cuias.ts) ------------------------------ */
+  i('cabaca-amarela', 'Cabaça Amarela', 'itens', 100, 'Fruto de cuieira amarelo-ovo. O artesão faz dele uma Cuia Ligeira.'),
+  i('cabaca-preta', 'Cabaça Preta', 'itens', 100, 'Fruto de cuieira escuro e pesado. O artesão faz dele uma Cuia Pesada.'),
+  i('cabaca-branca', 'Cabaça Branca', 'itens', 100, 'Fruto de cuieira branco como a lua. O artesão faz dele uma Cuia da Lua.'),
+  i('cabaca-verde', 'Cabaça Verde', 'itens', 100, 'Fruto de cuieira verde-folha. O artesão faz dele uma Cuia Amiga.'),
+  i('cabaca-azul', 'Cabaça Azul', 'itens', 100, 'Fruto de cuieira azulado, cheiro de rio. O artesão faz dele uma Cuia de Isca.'),
+  i('cabaca-vermelha', 'Cabaça Vermelha', 'itens', 100, 'Fruto de cuieira vermelho-urucum. O artesão faz dele uma Cuia de Nível.'),
+  i('cabaca-rosa', 'Cabaça Rosa', 'itens', 100, 'Fruto de cuieira rosado. O artesão faz dele uma Cuia do Amor.'),
+  i('cuia-ligeira', 'Cuia Ligeira', 'cuias', 0, 'Cuia artesanal leve como pluma. Muito boa contra criaturas velozes, que vivem fugindo.', { cuia: { bonus: 1, artesanal: 'ligeira' }, emBatalha: B }),
+  i('cuia-pesada', 'Cuia Pesada', 'cuias', 0, 'Cuia artesanal de casca grossa. Quanto mais pesada a criatura, melhor ela segura.', { cuia: { bonus: 1, artesanal: 'pesada' }, emBatalha: B }),
+  i('cuia-lua', 'Cuia da Lua', 'cuias', 0, 'Cuia artesanal pintada de branco. Muito boa com criaturas que evoluem com pedras ou só à noite.', { cuia: { bonus: 1, artesanal: 'lua' }, emBatalha: B }),
+  i('cuia-amiga', 'Cuia Amiga', 'cuias', 0, 'Cuia artesanal forrada de paina. A criatura capturada chega muito amiga.', { cuia: { bonus: 1, amizade: true, artesanal: 'amiga' }, emBatalha: B }),
+  i('cuia-isca', 'Cuia de Isca', 'cuias', 0, 'Cuia artesanal com cheiro de isca. Ótima para criaturas fisgadas na pesca.', { cuia: { bonus: 1, artesanal: 'isca' }, emBatalha: B }),
+  i('cuia-nivel', 'Cuia de Nível', 'cuias', 0, 'Cuia artesanal de urucum. Quanto mais forte a sua criatura que a selvagem, melhor ela segura.', { cuia: { bonus: 1, artesanal: 'nivel' }, emBatalha: B }),
+  i('cuia-amor', 'Cuia do Amor', 'cuias', 0, 'Cuia artesanal enfeitada de fitas. Muito boa se a selvagem é da mesma espécie e do sexo oposto da sua.', { cuia: { bonus: 1, artesanal: 'amor' }, emBatalha: B }),
 ];
 
 const mapa = new Map<string, ItemInfo>(ITENS.map((x) => [x.id, x]));
@@ -160,3 +175,21 @@ for (const x of [
   i('frasco-agua-barrenta', 'Frasco de Água Barrenta', 'chave', 0, 'Água cor de barro, colhida de dia no poço da cascata da Estrada Vermelha.'),
   i('lanterna-boreal', 'Lanterna Boreal', 'chave', 0, 'Lanterna de vidro verde da expedição da Drª Solveig. Juntas e acesas no alto do Pico, de noite, chamam o céu do norte.'),
 ]) { ITENS.push(x); mapa.set(x.id, x); }
+
+/* ------------------------------ Gincana e Safári do pós-Liga (spec 10A 32/33; src/data/gincana.ts, src/data/safari.ts) ------------------------------ */
+export interface UsoItem {
+  /** vitamina: soma esforço no atributo (até `teto` por atributo só com vitaminas) */
+  esforco?: { stat: 'vida' | 'atq' | 'def' | 'atqEsp' | 'defEsp' | 'vel'; qtd: number; teto: number };
+}
+for (const x of [
+  i('cuia-safari', 'Cuia-Safári', 'cuias', 0, 'Cuia de palha de buriti do Parque Safári. Só funciona lá dentro e é devolvida na saída.', { cuia: { bonus: 1.5 } }),
+  i('pedra-de-rio', 'Pedra de Rio', 'chave', 0, 'Seixo liso e pesado, rolado pela correnteza. O dono do Safári quer calçar a margem da lagoa com ela.'),
+  i('muda-de-buriti', 'Muda de Buriti', 'chave', 0, 'Mudinha de buriti num saco de estopa molhado. Onde tem buriti, tem água.'),
+  i('tronco-oco', 'Tronco Oco', 'chave', 0, 'Pedaço de tronco ocado pelo tempo, leve e firme. Casa pronta para quem gosta de escuro.'),
+  i('vitamina-vida', 'Vitamina de Abacate', 'remedios', 2000, 'Batida grossa de abacate. Fortalece a Vida da criatura (esforço).', { esforco: { stat: 'vida', qtd: 10, teto: 100 } }),
+  i('vitamina-atq', 'Vitamina de Banana', 'remedios', 2000, 'Banana com leite e aveia. Fortalece o Ataque da criatura (esforço).', { esforco: { stat: 'atq', qtd: 10, teto: 100 } }),
+  i('vitamina-def', 'Vitamina de Mamão', 'remedios', 2000, 'Mamão batido bem gelado. Fortalece a Defesa da criatura (esforço).', { esforco: { stat: 'def', qtd: 10, teto: 100 } }),
+  i('vitamina-atqesp', 'Vitamina de Graviola', 'remedios', 2000, 'Graviola cremosa. Fortalece o Ataque Especial da criatura (esforço).', { esforco: { stat: 'atqEsp', qtd: 10, teto: 100 } }),
+  i('vitamina-defesp', 'Vitamina de Manga', 'remedios', 2000, 'Manga espada batida. Fortalece a Defesa Especial da criatura (esforço).', { esforco: { stat: 'defEsp', qtd: 10, teto: 100 } }),
+  i('vitamina-vel', 'Vitamina de Guaraná', 'remedios', 2000, 'Guaraná batido com fruta. Fortalece a Velocidade da criatura (esforço).', { esforco: { stat: 'vel', qtd: 10, teto: 100 } }),
+]) { if (!mapa.has(x.id)) { ITENS.push(x); mapa.set(x.id, x); } }

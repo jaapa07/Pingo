@@ -49,6 +49,7 @@ const zona: ZonaDef = {
   id: 'A-MG', nome: 'Manguezal', mapa: 'A', tipo: 'floresta', tileset: 'mata', musica: 'agua', arena: 'mangue', passo: 4,
   mapaChars: g.mapa,
   objetos: [
+    { o: 'cuieira', x: 38, y: 8, cor: 'azul', script: 'cuieira' }, // cuieira (spec 10A-6, src/data/eventos/captura.ts)
     { o: 'placa', ...g.p('s'), texto: 'MANGUEZAL — berçário da Baía Azul.\nDaqui para dentro, só de canoa. Na andada do caranguejo, não se cata: se admira.' },
     { o: 'canoa', x: 32, y: 9 }, { o: 'tronco-caido', x: 8, y: 6 }, { o: 'bromelia', x: 20, y: 7 }, { o: 'bromelia', x: 42, y: 8 },
   ],

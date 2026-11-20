@@ -3,7 +3,6 @@
  * Chega-se pela piscina do oeste; um pedregulho (Força) fecha o corredor para o salão. No salão: o lago do Jaú-Gigante
  * (pesca), a prateleira de cima (Escalar, com um nicho atrás de rocha rachada) e o poço da cascata: só com a
  * Cachoeira (insígnia 12) se sobe à piscina do leste, de onde se mergulha para o trecho que sai no Brejo Roxo.
- * Às terças e quintas, depois do encontro 7, a Tainá treina aqui e aceita um duelo por dia (spec 10A-27, `b2-rival-semanal`).
  */
 import type { ZonaDef } from '../../core/tipos';
 import { Pincel, grade, E, duelista, gente, item, placa, saidas, obj } from './_b2s-lib';
@@ -25,10 +24,10 @@ for (const [x, y] of [[4, 15], [5, 15], [6, 15], [7, 15], [4, 16], [5, 16], [7, 
 p.t(6, 16, 'V');
 for (const [x, y] of [[36, 3], [37, 3], [38, 3], [36, 4], [37, 4], [36, 5], [37, 5], [38, 5]]) p.t(x, y, 'Q');
 p.t(38, 4, 'Z');
-p.t(28, 15, '1').t(20, 4, '2').t(29, 12, 'A').t(31, 3, 'B').t(27, 16, 'R').t(16, 14, 'P').t(29, 10, 'F');
+p.t(28, 15, '1').t(20, 4, '2').t(29, 12, 'A').t(31, 3, 'B').t(16, 14, 'P').t(29, 10, 'F');
 p.t(19, 2, 'a').t(28, 3, 'h').t(11, 19, 'i').t(25, 2, 'j').t(42, 6, 'k').t(18, 17, 'm');
 const g = grade('B-TA-gruta', p.fim(), {
-  W: 'd', V: 'd', Q: 'd', Z: 'd', '1': '%', '2': '.', A: '.', B: ';', R: '.', P: '.', F: '.', a: '.', h: '.', i: ';', j: '.', k: ';', m: '.',
+  W: 'd', V: 'd', Q: 'd', Z: 'd', '1': '%', '2': '.', A: '.', B: ';', P: '.', F: '.', a: '.', h: '.', i: ';', j: '.', k: ';', m: '.',
 });
 const pl = placa(g, 'P', 'GRUTA DO FÔLEGO\nRespire. Conte até dez. Empurre o pedregulho.\n— Clube de Mergulho de Cidade Ginga');
 const zona: ZonaDef = {
@@ -49,7 +48,6 @@ const zona: ZonaDef = {
       'A cascata do canto sobe para a piscina do leste. Quem tem o Amuleto da Cachoeira sobe remando. Quem não tem, me faz companhia.',
     ] }),
     gente(g, 'B', 'mergulhadora', 'cl-mergulhador', 'Mergulhadora Anêmona', { dir: 's', fala: ['A piscina de cá desce para o trecho do leste do túnel.', 'Siga as clareiras de luz no fundo: é nelas que dá para subir. A última sai no charco do Brejo Roxo.', 'Se vir gente de macacão ferrugem do outro lado, não dê bom-dia. Eles levaram os sapos do brejo em jaulas.'] }),
-    gente(g, 'R', 'taina-semanal', 'taina', 'Tainá', { dir: 'o', script: 'b2-rival-semanal', se: 'flag:rival-7' }),
   ],
   itens: [item(g, 'a', 'pedra-lunar'), item(g, 'h', 'pt-36'), item(g, 'i', 'cha-guarana'), item(g, 'j', 'pepita', 1, true), item(g, 'k', 'garapa', 1, true), item(g, 'm', 'rapadura', 1, true)],
   habitats: [

@@ -122,6 +122,10 @@ const zona: ZonaDef = {
     porta('O', 'flag:liga-4', 'A porta só abre para quem vencer a Domadora Pampa. Do outro lado espera o Campeão.'),
   ],
   npcs: [
+    // Torre de Desafios (spec 10A item 35): 1 batalha por dia no nível 50, depois da Liga (src/data/eventos/regras.ts, src/data/torre.ts)
+    { id: 'a-lg-torre', sprite: 'npc-homem-4', x: 4, y: 53, dir: 's', se: 'flag:liga-vencida', script: 'torre-desafios' },
+    // Gincana e Safári (spec 10A itens 32 e 33): o carreiro leva ao Vale do Buriti-Alto (A-GN) depois da Liga (src/data/eventos/posliga.ts)
+    { id: 'carreiro-gincana', sprite: 'npc-idoso', x: 28, y: 55, dir: 'o', se: 'flag:liga-vencida', script: 'carreiro-ida' },
     gente(g, 'A', 'liga-recepcao', 'npc-atendente-posto', 'Guardiã da Sala de Espera', { script: 'liga-recepcao' }),
     gente(g, '1', 'liga-mare', 'liga-mare', 'Mestra Maré', { script: 'liga-1' }),
     gente(g, '2', 'liga-brasa-viva', 'liga-brasa-viva', 'Ferreiro Brasa-Viva', { script: 'liga-2' }),

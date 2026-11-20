@@ -34,3 +34,6 @@ registrarTela('cinematica', criarCinematica);
 registrarTela('radio', criarRadio);
 registrarTela('foto', criarFoto);
 iniciarHud();
+/** Gincana de Criaturas e Safári do pós-Liga (spec 10A itens 32 e 33): telas e comandos de roteiro */
+import './gincana';
+import './gincana-safari';

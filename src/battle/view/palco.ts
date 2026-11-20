@@ -3,7 +3,7 @@
  * sombras elípticas em pixel, atores (criaturas e treinadores) e camadas de clima.
  */
 import type { ClimaId } from '../../core/tipos';
-import { vista, precarregar, precarregarModelo } from '../../core/assets';
+import { vista, precarregar, precarregarModelo, vistaCriatura } from '../../core/assets';
 import { periodo } from '../../core/estado';
 import { Sprite } from '../../render/sprite';
 import { iconeTipo } from '../../ui/kit';
@@ -51,10 +51,12 @@ export class Ator {
     }
     if (comSombra) { const rx = Math.max(10, Math.round(this.larg * 0.95)); this.sombra = elipsePx(rx, Math.max(3, Math.round(rx / 3.4)), this.corSombra); this.camadaSombras.append(this.sombra); }
   }
-  definirCriatura(num: number) {
+  /** `rara`: usa a Pelagem Rara (vista `<frente|costas>-rara`, se existir) */
+  definirCriatura(num: number, rara = false) {
     this.especie = num;
     const e = temEspecie(num) ? especie(num) : null;
-    this.montar(e?.id ?? `especie-${num}`, this.lado === 1 ? 'frente' : 'costas', true);
+    const id = e?.id ?? `especie-${num}`;
+    this.montar(id, vistaCriatura(id, this.lado === 1 ? 'frente' : 'costas', rara), true);
     if (this.vulto && e) { this.selo = iconeTipo(e.tipos[0]); this.selo.classList.add('bt-selo'); this.camada.append(this.selo); }
   }
   definirPessoa(modelo: string) { this.especie = 0; this.montar(modelo, this.lado === 1 ? 'batalha' : 'costas', false); }
@@ -156,7 +158,12 @@ export class Palco {
     const ap = this.arena.apoios[lado ? 'inimigo' : 'jogador']; a.x = ap.x; a.y = ap.y; a.visivel = true;
     this.treinador[lado] = a; return a;
   }
-  precarregarCriatura(num: number) { return temEspecie(num) ? precarregarModelo(especie(num).id, ['frente', 'costas']) : Promise.resolve(); }
+  precarregarCriatura(num: number, rara = false) {
+    if (!temEspecie(num)) return Promise.resolve();
+    const id = especie(num).id;
+    if (!rara) return precarregarModelo(id, ['frente', 'costas']);
+    return Promise.all(['frente', 'costas'].map((v) => { const m = vista(id, vistaCriatura(id, v, true)); return m ? precarregar(m.src) : undefined; })).then(() => undefined);
+  }
 
   /** camadas de clima (sprites repetidos e tinta leve) */
   definirClima(c: ClimaId) {

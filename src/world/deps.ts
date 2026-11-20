@@ -48,7 +48,7 @@ export function abrirTela(id: string, args?: unknown): Promise<unknown> {
 }
 
 /* ------------------------------ batalha ------------------------------ */
-export interface PedidoBatalha { tipo: 'selvagem' | 'treinador' | 'lendario'; inimigos: CriaturaInst[]; treinador?: TreinadorDef; arena: string; clima?: ClimaId; dupla?: boolean; semFuga?: boolean; semCaptura?: boolean; tutorial?: boolean; /** derrota sem voltar ao Posto: a equipe é curada e o roteiro segue (duelos de história) */ semDerrota?: boolean; musica?: string; /** criatura errante: tenta fugir no primeiro turno */ errante?: boolean }
+export interface PedidoBatalha { tipo: 'selvagem' | 'treinador' | 'lendario'; inimigos: CriaturaInst[]; treinador?: TreinadorDef; arena: string; clima?: ClimaId; dupla?: boolean; semFuga?: boolean; semCaptura?: boolean; tutorial?: boolean; /** derrota sem voltar ao Posto: a equipe é curada e o roteiro segue (duelos de história) */ semDerrota?: boolean; musica?: string; /** criatura errante: tenta fugir no primeiro turno */ errante?: boolean; /** sem experiência para o jogador (Torre de Desafios) */ semExp?: boolean; /** fisgada na pesca (Cuia de Isca) */ pescada?: boolean }
 export interface ResultadoBatalha { resultado: 'vitoria' | 'derrota' | 'fuga' | 'captura'; capturada?: CriaturaInst }
 const bat = () => primeiro(gBatalha);
 export const temBatalha = () => typeof bat()?.iniciarBatalha === 'function';

@@ -43,6 +43,7 @@ const zona: ZonaDef = {
   id: 'A-R4', nome: 'Estrada da Usina', mapa: 'A', tipo: 'rota', tileset: 'costa', musica: 'rota-dia-A', arena: 'restinga', passo: 3,
   mapaChars: g.mapa,
   objetos: [
+    { o: 'cuieira', x: 18, y: 5, cor: 'vermelha', script: 'cuieira' }, // cuieira (spec 10A-6, src/data/eventos/captura.ts)
     { o: 'usina-fachada', ...g.p('U') },
     { o: 'placa', ...g.p('P'), texto: 'ESTRADA DA USINA\n← Porto Sereia · Usina Velha →\nRamal sul: Manguezal (leve o Facão).' },
     { o: 'placa', ...g.p('Q'), texto: 'USINA VELHA — Companhia de Luz da Costa do Sol.\nAlguém pichou por cima: "FECHADA PARA REFORMA. ASS.: NINGUÉM SUSPEITO."' },

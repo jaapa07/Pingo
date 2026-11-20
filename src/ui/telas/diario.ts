@@ -18,7 +18,9 @@ import { moldura, chipTipo, seta, som, CORES_TIPO } from '../kit';
 import { Abas } from '../componentes/abas';
 import { Lista } from '../componentes/lista';
 import { informar } from '../componentes/confirmacao';
-import { figura, iconeCriatura, esp, n3, nomeEsp, faixaDica, placaTitulo, pix, caixa, rotulo, TOTAL_DIARIO, type Icone } from './comum';
+import { figura, iconeCriatura, esp, n3, nomeEsp, faixaDica, placaTitulo, pix, caixa, rotulo, TOTAL_DIARIO, estrelaRara, type Icone } from './comum';
+/** Pelagem Rara registrada no Diário (flag `rara:<nº>`, marcada ao ver uma rara em batalha: src/data/eventos/captura.ts) */
+const temRara = (n: number) => !!jogo.save.flags['rara:' + n];
 import { criarMapaDuplo, local } from './mapa-dados';
 import { habitatsDe, NOME_MEIO, type PeriodoTabela } from './dados';
 import { ESPECIES } from '../../data/criaturas';
@@ -61,37 +63,49 @@ function familia(num: number): { n: number; estagio: number; como: string }[] {
 export function criarDiario(args: { especie?: number } = {}): Tela {
   const d = jogo.save.diario;
   const viu = (n: number) => d.visto.includes(n), tem = (n: number) => d.capturado.includes(n);
+  // Visitantes (spec 6.5): página extra que só aparece depois do primeiro encontro; não contam no total nem nas medalhas
+  const VIS = [181, 182].filter((n) => esp(n) && viu(n));
+  const nCap = d.capturado.filter((n) => n <= TOTAL_DIARIO).length, nVis = d.visto.filter((n) => n <= TOTAL_DIARIO).length;
+  let pagina = args.especie && args.especie > TOTAL_DIARIO && VIS.includes(args.especie) ? 1 : 0;
+  const conjunto = () => (pagina ? VIS : Array.from({ length: TOTAL_DIARIO }, (_, i) => i + 1));
+  const numDe = (i: number) => conjunto()[i] ?? 1, idxDe = (n: number) => Math.max(0, conjunto().indexOf(n));
   const el = elTela('ui', 'tela-diario', 'fundo-papel-trama');
   const dica = faixaDica(el);
   /* ---------------- lista ---------------- */
   const cLista = caixa('', 320, 164); el.append(em(cLista, 0, 0));
-  placaTitulo(cLista, 'DIÁRIO DE CAMPO', 2, 1, 158);
+  const abasPag = VIS.length ? new Abas({ rotulos: [T.diario.abaDiario, T.diario.abaVisitantes], x: 2, y: 1, largura: 78, inicial: pagina, aoTrocar: (i) => trocarPagina(i) }) : null;
+  if (abasPag) cLista.append(abasPag.el); else placaTitulo(cLista, 'DIÁRIO DE CAMPO', 2, 1, 158);
   const painel = moldura('madeira', 158, 148, 2, 17); cLista.append(painel);
   const marca = (n: number) => (tem(n) ? pix(CUIA, { k: '#1a1423', o: '#c98f4e', l: '#f6e6b8', d: '#9c6434' }) : viu(n) ? pix(OLHO, { k: '#1a1423', w: '#fff8e7' }) : undefined);
   const itens = Array.from({ length: TOTAL_DIARIO }, (_, i) => { const n = i + 1, m = marca(n); const ic = caixa('', 12, 12); if (m) ic.append(em(m, 2, 3)); return { rotulo: `${n3(n)} ${viu(n) ? nomeEsp(n) : '?????'}`, icone: ic, cor: viu(n) ? undefined : ('marrom' as const) }; });
-  const lista = new Lista({ itens, moldura: null, largura: 142, visiveis: 11, circular: true, inicial: Math.max(0, (args.especie ?? 1) - 1), aoMover: () => pintarLado(), aoEscolher: (i) => abrirFicha(i + 1), aoCancelar: () => fechar(tela) });
+  const itensVis = VIS.map((n) => { const m = marca(n), ic = caixa('', 12, 12); if (m) ic.append(em(m, 2, 3)); return { rotulo: `${n3(n)} ${nomeEsp(n)}`, icone: ic }; });
+  const lista = new Lista({ itens: pagina ? itensVis : itens, moldura: null, largura: 142, visiveis: 11, circular: true, inicial: idxDe(args.especie ?? 1), aoMover: () => pintarLado(), aoEscolher: (i) => abrirFicha(numDe(i)), aoCancelar: () => fechar(tela) });
+  function trocarPagina(i: number) { pagina = i; lista.definirItens(i ? itensVis : itens, 0); pintarLado(); dica(dicaDaLista()); }
+  const dicaDaLista = () => (pagina ? T.diario.dicaPaginaVis : VIS.length ? T.diario.dicaListaVis : T.diario.dicaLista);
   painel.append(em(lista.el, 8, 7));
   const lado = moldura('tinta', 156, 148, 162, 17); cLista.append(lado);
   const resumo = moldura('placa', 156, 15, 162, 1); cLista.append(resumo);
-  resumo.append(em(texto(`Vistas {c:amarelo}${d.visto.length}{/c}  Capturadas {c:amarelo}${d.capturado.length}{/c}`, { cor: 'creme' }), 6, 4));
+  resumo.append(em(texto(`Vistas {c:amarelo}${nVis}{/c}  Capturadas {c:amarelo}${nCap}{/c}`, { cor: 'creme' }), 6, 4));
   const ladoDyn = caixa('', 148, 106); lado.append(em(ladoDyn, 4, 4));
   let figLado: Icone | null = null;
-  const nMedalhas = Math.min(6, Math.floor(d.capturado.length / 30));
+  const nMedalhas = Math.min(6, Math.floor(nCap / 30));
   const linhaM = caixa('', 148, 24); lado.append(em(linhaM, 4, 120));
   linhaM.append(em(texto('MEDALHAS DE PESQUISADOR', { cor: 'cinza' }), 2, 0));
   for (let i = 0; i < 6; i++) { const [m, l, dd] = COR_MEDALHA[i]; const md = pix(MEDALHA, i < nMedalhas ? { k: '#1a1423', m, l, d: dd, r: '#e0483c' } : { k: '#1a1423', m: '#4a4a5e', l: '#4a4a5e', d: '#3b2a35', r: '#3b2a35' }); linhaM.append(em(md, 6 + i * 23, 12)); }
   tocavel(linhaM, () => void medalhas());
   function pintarLado() {
-    const n = lista.indice + 1, e = esp(n);
+    const n = numDe(lista.indice), e = esp(n);
     ladoDyn.replaceChildren();
     figLado = figura(n, 80, 76, { silhueta: viu(n) && !tem(n), misterio: !viu(n) }); ladoDyn.append(em(figLado.el, 34, 0));
+    if (temRara(n)) ladoDyn.append(em(estrelaRara(2), 4, 2)); // Pelagem Rara registrada
     rotulo(ladoDyn, viu(n) ? `Nº ${n3(n)} ${nomeEsp(n)}` : `Nº ${n3(n)} ?????`, 0, 80, 'amarelo', { largura: 148, alinhar: 'centro', sombra: true });
     rotulo(ladoDyn, tem(n) ? (e?.habitat ?? '') : viu(n) ? 'Só avistada' : 'Ainda não avistada', 0, 92, 'creme', { largura: 148, alinhar: 'centro' });
+    if (n > TOTAL_DIARIO) rotulo(ladoDyn, T.diario.visitanteCurto, 0, 104, 'cinza', { largura: 148, alinhar: 'centro' });
   }
   let ocupado = false;
   async function medalhas() {
     if (ocupado) return; ocupado = true;
-    const prox = nMedalhas < 6 ? `Faltam ${(nMedalhas + 1) * 30 - d.capturado.length} capturas para a ${T.diario.medalhas[nMedalhas]}.` : 'Diário completo. A Profª Ipê chorou de alegria!';
+    const prox = nMedalhas < 6 ? `Faltam ${(nMedalhas + 1) * 30 - nCap} capturas para a ${T.diario.medalhas[nMedalhas]}.` : 'Diário completo. A Profª Ipê chorou de alegria!';
     await informar(`${nMedalhas ? T.diario.medalhas.slice(0, nMedalhas).join(', ') + '. ' : 'Nenhuma medalha ainda. '}${prox}`);
     ocupado = false;
   }
@@ -105,19 +119,22 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
   const abas = new Abas({ rotulos: ['FICHA', 'PORTE', 'HABITAT', 'EVOL.'], x: 113, y: 2, largura: 50, aoTrocar: () => pintarFicha() }); cFicha.append(abas.el);
   const corpo = caixa('', 190, 132); dir.append(em(corpo, 9, 8));
   const esqDyn = caixa('', 100, 140); esq.append(em(esqDyn, 4, 4));
+  let verRara = true;
   let naFicha = false, atual = 1, figF: Icone | null = null, anim: Icone[] = [], pisca: HTMLElement[] = [], tPisca = 0, jog: Sprite | null = null;
 
   function abrirFicha(n: number) {
     if (!viu(n)) { som('ui-erro'); dica(T.diario.naoVisto); return; }
     atual = n; naFicha = true; cLista.style.display = 'none'; cFicha.style.display = ''; pintarFicha(); gritar(0.5);
   }
-  function fecharFicha() { naFicha = false; cFicha.style.display = 'none'; cLista.style.display = ''; lista.selecionar(atual - 1, true); pintarLado(); dica(T.diario.dicaLista); if (args.especie) fechar(tela); }
-  function trocar(dn: number) { let n = atual; for (let i = 0; i < TOTAL_DIARIO; i++) { n = ((n - 1 + dn + TOTAL_DIARIO) % TOTAL_DIARIO) + 1; if (viu(n)) break; } if (n !== atual) { atual = n; som('ui-mover'); pintarFicha(); } }
+  function fecharFicha() { naFicha = false; cFicha.style.display = 'none'; cLista.style.display = ''; lista.selecionar(idxDe(atual), true); pintarLado(); dica(dicaDaLista()); if (args.especie) fechar(tela); }
+  function trocar(dn: number) { const c = conjunto(), k = c.length; let i = idxDe(atual); for (let j = 0; j < k; j++) { i = (i + dn + k) % k; if (viu(c[i])) break; } const n = c[i]; if (n !== atual) { atual = n; som('ui-mover'); pintarFicha(); } }
   function gritar(vol = 0.9) { bus.emit('grito', { especie: atual, vol }); }
   function pintarFicha() {
     const e = esp(atual), cap = tem(atual);
     esqDyn.replaceChildren(); corpo.replaceChildren(); anim = []; pisca = []; jog = null;
-    figF = figura(atual, 96, 92, { silhueta: !cap }); esqDyn.append(em(figF.el, 2, 0));
+    figF = figura(atual, 96, 92, { silhueta: !cap, rara: verRara && temRara(atual) }); esqDyn.append(em(figF.el, 2, 0));
+    // Pelagem Rara registrada (vista ou capturada): a estrela alterna a figura entre a cor comum e a rara
+    if (temRara(atual)) { const est = em(estrelaRara(2), 2, 2); est.style.opacity = verRara ? '1' : '0.55'; esqDyn.append(est); tocavel(est, () => { verRara = !verRara; som('ui-ok'); pintarFicha(); }); }
     rotulo(esqDyn, nomeEsp(atual), 0, 92, 'creme', { largura: 100, alinhar: 'centro' });
     rotulo(esqDyn, cap ? '{c:verde}Capturada{/c}' : '{c:cinza}Avistada{/c}', 0, 102, 'creme', { largura: 100, alinhar: 'centro' });
     if (e) e.tipos.forEach((t, i) => esqDyn.append(em(chipTipo(t, 56), 24, e.tipos.length === 1 ? 120 : 114 + i * 13)));
@@ -150,6 +167,12 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
     rotulo(corpo, `${num1(e.peso)} kg`, 140, 34, 'chumbo', { largura: 46, alinhar: 'centro' });
   }
   function pgHabitat(e: EspecieDef) {
+    if (e.num > TOTAL_DIARIO) { // Visitante: onde encontrar (missão) e, no Borealce, a nota da Drª Solveig
+      rotulo(corpo, 'ONDE ENCONTRAR', 2, 2, 'marrom');
+      rotulo(corpo, T.diario.ondeVisitante[e.num] ?? T.diario.semHabitat, 2, 14, 'chumbo', { largura: 186 });
+      if (e.num === 182 && (jogo.save.flags['borealce-nota'] || tem(182))) rotulo(corpo, T.diario.notaSolveig, 2, 96, 'tinta', { largura: 186 });
+      return;
+    }
     const hs = habitatsDe(e.num);
     const mapa = criarMapaDuplo(2, 6, false); corpo.append(em(mapa.el, 20, 0));
     const borda = caixa('', mapa.w + 2, mapa.h + 2); borda.style.boxShadow = 'inset 0 0 0 1px #6b4226'; borda.style.pointerEvents = 'none'; corpo.append(em(borda, 19, -1));
@@ -178,13 +201,14 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
 
   const tela: Tela = {
     el,
-    entrar() { pintarLado(); dica(T.diario.dicaLista); if (args.especie && viu(args.especie)) abrirFicha(args.especie); },
+    entrar() { pintarLado(); dica(dicaDaLista()); if (args.especie && viu(args.especie)) abrirFicha(args.especie); },
     atualizar(dt) {
       if (ocupado) return;
       if (!naFicha) {
         figLado?.atualizar(dt);
+        if (abasPag && input.apertou('menu')) { input.consumir('menu'); abasPag.ir(1 - pagina); return; }
         if (input.apertou('select')) { void medalhas(); return; }
-        if (input.repetiu('dir')) { lista.selecionar(Math.min(TOTAL_DIARIO - 1, lista.indice + 10)); return; }
+        if (input.repetiu('dir')) { lista.selecionar(Math.min(lista.itens.length - 1, lista.indice + 10)); return; }
         if (input.repetiu('esq')) { lista.selecionar(Math.max(0, lista.indice - 10)); return; }
         lista.atualizar(dt); return;
       }

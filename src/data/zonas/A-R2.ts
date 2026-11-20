@@ -43,7 +43,7 @@ const [px, py] = g.p('P');
 const zona: ZonaDef = {
   id: 'A-R2', nome: 'Campos de Restinga', mapa: 'A', tipo: 'rota', tileset: 'costa', musica: 'rota-dia-A', arena: 'restinga', passo: 2,
   mapaChars: subBosque(g.mapa, false),
-  objetos: [p1.objeto],
+  objetos: [p1.objeto, { o: 'cuieira', x: 14, y: 9, cor: 'verde', script: 'cuieira' }],
   placas: [p1.placa],
   warps: [...saidas(g, 'W', 'A2', 42, 15, 'o'), ...saidas(g, 'E', 'A-MS', 2, 21, 'l')],
   npcs: [

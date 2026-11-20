@@ -72,6 +72,8 @@ export interface CriaturaInst {
   localCaptura?: string; nivelCaptura?: number;
   item?: string; // item segurado
   ovo?: number; // passos restantes, se for ovo
+  /** Pelagem Rara (spec 10A-5): paleta alternativa e brilho ao entrar em batalha */
+  rara?: boolean;
 }
 
 export interface GolpeDefBase {
@@ -208,4 +210,6 @@ export interface SaveData {
   contatos: string[];
   canteiros: Record<string, { fruto: string; plantado: number }>;
   repelente: number;
+  /** Viveiro do Seu Aroeira (ninhos e ovos, spec 10-9 e 10A-11): o casal deixado, passos desde o último sorteio e o ovo à espera */
+  criadouro?: { casal: CriaturaInst[]; passos: number; ovo?: CriaturaInst | null; avisado?: boolean };
 }

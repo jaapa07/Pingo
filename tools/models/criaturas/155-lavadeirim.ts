@@ -64,8 +64,8 @@ export const voaLib = (segs: number) => {
   return {
     idle: { ...a2(lr, [36, 0, 36, 0]), ...rabo(lz, [0, 3, 6, 2]) },
     andar: { ...a2(lr, [-10, 36, -10, 36]) }, parado: { ...a2(lr, [36, 0]) }, status: { ...a2(lr, [18, 0, 18, 0]) },
-    fisico: { ...a2(qr, [30, -10, 24, 6, 0]), asa_d: qr([20, 34, -10, 8, 0].map((a) => [-a, 0, 0] as [number, number, number])), asa_e: qr([20, 34, -10, 8, 0].map((a) => [a, 0, 0] as [number, number, number])), ...rabo(qz, [-3, -6, 9, 3, 0]) },
-    especial: { ...a2(qr, [-8, 30, -8, 30, 10, 0]), asa_d: qr([14, 34, -8, 34, -8, 0].map((a) => [-a, 0, 0] as [number, number, number])), asa_e: qr([14, 34, -8, 34, -8, 0].map((a) => [a, 0, 0] as [number, number, number])), ...rabo(qz, [2, 4, 5, -6, -2, 0]) },
+    fisico: { ...a2(qr, [30, -10, 24, 6, 0]), asa_d: qr([12, 20, -8, 6, 0].map((a) => [-a, 0, 0] as [number, number, number])), asa_e: qr([12, 20, -8, 6, 0].map((a) => [a, 0, 0] as [number, number, number])), ...rabo(qz, [-3, -6, 9, 3, 0]) },
+    especial: { ...a2(qr, [-6, 16, -6, 16, 6, 0]), asa_d: qr([8, 18, -6, 18, -6, 0].map((a) => [-a, 0, 0] as [number, number, number])), asa_e: qr([8, 18, -6, 18, -6, 0].map((a) => [a, 0, 0] as [number, number, number])), ...rabo(qz, [2, 4, 5, -6, -2, 0]) },
     entrada: { ...a2(qr, [-10, 30, -6, 20, 0]), asa_d: qr([30, -10, 24, -6, 0].map((a) => [-a, 0, 0] as [number, number, number])), asa_e: qr([30, -10, 24, -6, 0].map((a) => [a, 0, 0] as [number, number, number])) },
     // pousa de asas caídas, sem atravessar o chão
     desmaio: { ...a2(qr, [0, 10, 20, 30, 29]), asa_d: qr([[0, 0, 0], [10, 0, 0], [20, 0, 0], [30, 0, 0], [29, 0, 0]]), asa_e: qr([[0, 0, 0], [-10, 0, 0], [-20, 0, 0], [-30, 0, 0], [-29, 0, 0]]), ...rabo(qz, [0, -3, -6, -9, -8]) },

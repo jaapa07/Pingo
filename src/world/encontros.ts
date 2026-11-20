@@ -7,6 +7,8 @@ import { M, ocupar, sfx, musica } from './vivo';
 import { iniciarBatalha, criarCriatura, curarEquipe, falar, avisar, nomeCriatura, especie, type PedidoBatalha, type ResultadoBatalha } from './deps';
 import { listaZonas, zonaDef } from './zonas';
 import { ajustesDeEncontro } from './registro';
+import { prepararSelvagem } from '../battle/cuias';
+import { passoCriadouro } from './ninhos';
 import { irPara, reavaliar } from './index';
 
 /** tabela em vigor para o método nesta zona (camada pós-insígnia → período → estação) */
@@ -42,7 +44,8 @@ export async function lutar(p: PedidoBatalha): Promise<ResultadoBatalha> {
   return r;
 }
 export function batalhaSelvagem(e: number, nv: number, o: Partial<PedidoBatalha> = {}): Promise<ResultadoBatalha> {
-  return lutar({ tipo: 'selvagem', inimigos: [criarCriatura(e, nv)], arena: M.zv.def.arena, clima: M.zv.def.clima, ...o });
+  // Pelagem Rara (1/4096) e item segurado (5%/1%): src/battle/cuias.ts
+  return lutar({ tipo: 'selvagem', inimigos: [prepararSelvagem(criarCriatura(e, nv))], arena: M.zv.def.arena, clima: M.zv.def.clima, ...o });
 }
 /** derrota: volta ao último Posto com a equipe curada e metade do dinheiro */
 export async function derrota() {
@@ -91,7 +94,7 @@ export function moverErrantes(todos = false) {
   }
 }
 async function encontrarErrante(n: number) {
-  const c = criarCriatura(n, Number(flag(`errante-nv:${n}`) ?? 50));
+  const c = prepararSelvagem(criarCriatura(n, Number(flag(`errante-nv:${n}`) ?? 50)));
   const vida = flag(`errante-vida:${n}`);
   if (typeof vida === 'number' && vida > 0) c.vida = Math.min(c.vida, vida);
   const r = await lutar({ tipo: 'lendario', inimigos: [c], arena: M.zv.def.arena, clima: M.zv.def.clima, errante: true });
@@ -103,6 +106,7 @@ async function encontrarErrante(n: number) {
 export function passoDaEquipe() {
   const s = jogo.save;
   if (M.passos % 128 === 0) for (const c of s.equipe) if (!c.ovo) c.amizade = Math.min(255, c.amizade + 1);
+  passoCriadouro(); // Viveiro do Seu Aroeira: experiência e ovos (src/world/ninhos.ts)
   for (const c of s.equipe) {
     if (!c.ovo) continue;
     if (--c.ovo > 0) continue;

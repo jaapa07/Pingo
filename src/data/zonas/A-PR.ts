@@ -50,6 +50,7 @@ const zona: ZonaDef = {
   id: 'A-PR', nome: 'Praia das Tartarugas', mapa: 'A', tipo: 'rota', tileset: 'costa', musica: 'rota-dia-A', arena: 'praia', passo: 5,
   mapaChars: g.mapa,
   objetos: [
+    { o: 'cuieira', x: 20, y: 3, cor: 'rosa', script: 'cuieira' }, // cuieira (spec 10A-6, src/data/eventos/captura.ts)
     { o: 'casa-palafita', ...B },
     ...g.todos('N').map((p) => ({ o: 'ninho', ...p, script: 'a2-pr-ninho' })),
     { o: 'ninho', ...g.p('O'), script: 'a2-pr-ninho' },

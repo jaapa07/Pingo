@@ -4,9 +4,22 @@ export interface VistaMeta { src: string; cw: number; ch: number; cols: number; 
 export interface ModeloMeta { id: string; categoria: string; malhas: number; vistas: Record<string, VistaMeta> }
 
 let atlas: Record<string, ModeloMeta> = {};
-export async function carregarAtlas() { atlas = await fetch('assets/atlas.json').then((r) => r.json()).catch(() => ({})); }
+/** criaturas com Pelagem Rara gerada no build (tools/build-raras.ts → assets/raras.json) */
+let raras = new Set<string>();
+export async function carregarAtlas() {
+  const [a, r] = await Promise.all([fetch('assets/atlas.json').then((x) => x.json()).catch(() => ({})), fetch('assets/raras.json').then((x) => x.json()).catch(() => ({ ids: [] }))]);
+  atlas = a; raras = new Set((r as { ids?: string[] }).ids ?? []);
+}
 export const modelo = (id: string): ModeloMeta | undefined => atlas[id];
-export const vista = (id: string, v: string): VistaMeta | undefined => atlas[id]?.vistas[v];
+/** `<vista>-rara` (Pelagem Rara) = a mesma folha e o mesmo meta da vista normal, com a imagem `<vista>-rara.png` */
+export const vista = (id: string, v: string): VistaMeta | undefined => {
+  const m = atlas[id]?.vistas[v];
+  if (m || !v.endsWith('-rara') || !raras.has(id)) return m;
+  const b = atlas[id]?.vistas[v.slice(0, -5)];
+  return b && { ...b, src: b.src.replace(/\.png$/, '-rara.png') };
+};
+/** nome da vista a usar para uma criatura: a rara, se ela for rara e a variante existir */
+export const vistaCriatura = (id: string, v: string, rara?: boolean): string => (rara && vista(id, v + '-rara') ? v + '-rara' : v);
 
 const cache = new Map<string, Promise<void>>();
 export function precarregar(src: string): Promise<void> {

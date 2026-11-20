@@ -49,10 +49,12 @@ const placas = [
 const zona: ZonaDef = {
   id: 'A-R7', nome: 'Estrada do Buriti', mapa: 'A', tipo: 'rota', tileset: 'serra', musica: 'rota-dia-A', arena: 'mata', passo: 8,
   mapaChars: subBosque(g.mapa, false),
-  objetos: placas.map((p) => p.objeto),
+  objetos: [...placas.map((p) => p.objeto), { o: 'cuieira', x: 17, y: 12, cor: 'branca', script: 'cuieira' }],
   placas: placas.map((p) => p.placa),
   warps: [...saidas(g, 'W', 'A8', 58, 15, 'o'), ...saidas(g, 'E', 'A10', 1, 15, 'l')],
   npcs: [
+    // Parque Safári (spec 10A item 33): o lenhador dá o Tronco Oco depois da Liga (src/data/eventos/posliga.ts)
+    { id: 'safari-lenhador', sprite: 'npc-homem-3', x: 6, y: 11, dir: 's', se: 'flag:liga-vencida', script: 'safari-do-tronco' },
     duelista(g, '1', 'A-R7-1', 'cl-montanhista', 's', 4),
     duelista(g, '2', 'A-R7-2', 'cl-vaqueiro', 'o', 3),
     duelista(g, '3', 'A-R7-3', 'cl-garimpeiro', 's', 3),

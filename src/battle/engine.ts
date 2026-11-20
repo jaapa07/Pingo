@@ -14,6 +14,7 @@ import { rng } from '../core/rng';
 import { DESESPERO, golpe as defGolpe, type Efeito, type GolpeDef, type StatEst } from '../data/golpes';
 import { eficaciaContra } from '../data/tabela-tipos';
 import { item as defItem, temItemDef, type UsoItem } from '../data/itens';
+import { bonusArtesanal, chanceObedecer, deOutroTreinador, AMIZADE_CUIA_AMIGA } from './cuias';
 import { aprenderGolpe, atributos, especie, expDerrota, expParaNivel, ganharEsforco, mudarAmizade, NIVEL_MAX, nomeDe, podeEvoluir, subirNivel } from './criatura';
 
 /* ============================== tipos públicos ============================== */
@@ -49,6 +50,10 @@ export interface ConfigBatalha {
   expPartilhada?: boolean;
   /** com 4 golpes, um golpe novo substitui sozinho o mais fraco (IA/headless). Padrão: false → fica em `golpesPendentes`. */
   autoAprender?: boolean;
+  /** o encontro veio da pesca (Cuia de Isca) */
+  pescada?: boolean;
+  /** obediência (spec 10A-13): criaturas do lado 0 de outro treinador acima de `limite` podem desobedecer */
+  obediencia?: { limite: number; dono: string };
 }
 
 export interface ResumoCriatura { uid: string; especie: number; nome: string; nivel: number; vida: number; vidaMax: number; status: StatusId | null; sexo: 'F' | 'M' | null; expNivel: number; expProx: number; exp: number }
@@ -413,11 +418,14 @@ export class Batalha {
     this.msg(`Você arremessou a ${nomeCuia}!`);
     if (this.vol(q).some) { this.ev({ t: 'captura', cuia, ...q, balancos: 0, sucesso: false }); this.msg('A cuia não alcançou a criatura!'); return; }
     const garantida = !!defItem(cuia).uso?.cuia?.garantida;
-    const a = garantida ? 255 : valorCaptura(atributos(c).vida, c.vida, e.taxaCaptura, bonusCuia(cuia, e.tipos, this.cfg.periodo, this.turno), bonusStatusCaptura(c.status));
+    const art = defItem(cuia).uso?.cuia?.artesanal;
+    const bonus = art ? bonusArtesanal(art, { alvo: c, minha: this.criatura({ lado: 0, pos: 0 }), pescada: this.cfg.pescada }) : bonusCuia(cuia, e.tipos, this.cfg.periodo, this.turno);
+    const a = garantida ? 255 : valorCaptura(atributos(c).vida, c.vida, e.taxaCaptura, bonus, bonusStatusCaptura(c.status));
     const r = tentarCaptura(a);
     this.ev({ t: 'captura', cuia, ...q, balancos: r.balancos, sucesso: r.sucesso });
     if (!r.sucesso) { this.msg(['Ah, não! A criatura escapou!', 'Puxa! Parecia que ia dar certo!', 'Quase! Faltou tão pouco!', 'Aaah! Foi por um triz!'][r.balancos]); return; }
     c.cuia = cuia; if (cuia === 'cuia-mel') c.amizade = Math.max(c.amizade, 200);
+    if (art === 'amiga') c.amizade = Math.max(c.amizade, AMIZADE_CUIA_AMIGA);
     this.capturada = c;
     this.msg(`Parceria firmada! ${nomeDe(c)} agora anda com você.`);
     this.terminar('captura');
@@ -451,6 +459,13 @@ export class Batalha {
       }
     }
     if (c.status === 'paralisado' && rng.chance(0.25)) { this.ev({ t: 'anim', anim: 'status-paralisado', ...p }); this.msg(`${n} está paralisado e não consegue se mexer!`); cancelar(); return; }
+    // obediência (spec 10A-13): criatura recebida em troca acima do limite das insígnias pode ignorar a ordem
+    const ob = this.cfg.obediencia, pObedece = p.lado === 0 && ob && !v.carga && a.slot >= 0 ? chanceObedecer(c, ob.dono, ob.limite) : 1;
+    if (pObedece < 1 && !rng.chance(pObedece)) {
+      const outros = this.golpesValidos(p).filter((i) => i !== a.slot);
+      if (outros.length && rng.chance(0.4)) { this.msg(`${n} não obedeceu e fez o que quis!`); a = { ...a, slot: rng.escolha(outros) }; }
+      else { this.msg(rng.escolha([`${n} ignorou a ordem!`, `${n} está fazendo corpo mole…`, `${n} virou a cara e não obedeceu!`])); cancelar(); return; }
+    }
 
     // qual golpe?
     let g: GolpeDef, alvoEscolhido = a.alvo, carregado = false;
@@ -744,7 +759,9 @@ export class Batalha {
     const topo = Math.max(...this.lados[0].equipe.filter((c) => !c.ovo).map((c) => c.nivel));
     const reserva = this.cfg.expPartilhada ? this.lados[0].equipe.filter((c) => c.vida > 0 && !c.ovo && !quem.includes(c) && c.nivel <= topo - 2) : [];
     for (const c of [...quem, ...reserva]) {
-      const olhando = reserva.includes(c), cada = olhando ? Math.max(1, Math.floor(inteira / 2)) : inteira;
+      // criatura recebida em troca aprende mais depressa: ×1,5 (spec 10A-12 e 24)
+      const trocada = !!this.cfg.obediencia && deOutroTreinador(c, this.cfg.obediencia.dono);
+      const olhando = reserva.includes(c), cada0 = olhando ? Math.max(1, Math.floor(inteira / 2)) : inteira, cada = trocada ? Math.floor(cada0 * 1.5) : cada0;
       if (olhando) { if (c.nivel >= NIVEL_MAX) continue; }
       else {
       // o esforço pode aumentar a vida máxima na hora: a vida atual sobe junto (senão a criatura ficava "19/20" de vida cheia)
@@ -757,7 +774,7 @@ export class Batalha {
       const curva = especie(c.especie).crescimento, de = c.exp;
       c.exp = Math.min(c.exp + cada, expParaNivel(curva, NIVEL_MAX));
       this.ev({ t: 'exp', uid: c.uid, ganho: c.exp - de, de, para: c.exp });
-      this.msg(`${nomeDe(c)} ganhou ${c.exp - de} pontos de experiência!`);
+      this.msg(`${nomeDe(c)} ganhou ${c.exp - de} pontos de experiência${trocada ? ' com bônus de troca' : ''}!`);
       while (c.nivel < NIVEL_MAX && c.exp >= expParaNivel(curva, c.nivel + 1)) {
         const s = subirNivel(c);
         this.subiu.add(c.uid);

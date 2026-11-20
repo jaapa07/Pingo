@@ -15,10 +15,11 @@ function build() {
     // borda verde na ponta das asas e tímbalos-tambor maiores
     rig.add('asa_' + l, blob([0.12, 0.03, 0.14], m.luz(0), { pos: [-0.64, 0, 0.13 * s], seg: 10, castShadow: false }));
     rig.bones['timbalo_' + l].scale.setScalar(1.15);
-    // ONDAS SONORAS: três arcos crescentes de cada lado, saindo dos tímbalos
+    // ONDAS SONORAS: três arcos crescentes de cada lado, saindo dos tímbalos — laranja dos tímbalos e mais grossos,
+    // para lerem como som (brancos, pareciam costelas da asa)
     [0.1, 0.2, 0.3].forEach((d, i) => {
       rig.bone(`onda${i + 1}_${l}`, 'abdomen', [-0.12, 0.02, (0.26 + d) * s]);
-      rig.add(`onda${i + 1}_${l}`, ring(0.1 + i * 0.05, 0.02, m.luz(2), { arc: 140, rot: [0, 0, -70], pos: [0, 0, 0] }));
+      rig.add(`onda${i + 1}_${l}`, ring(0.1 + i * 0.05, 0.032, i === 1 ? m.luz(3) : m(3), { arc: 140, rot: [0, 0, -70], pos: [0, 0, 0] }));
     });
   });
   // crista de três espinhos no escudo

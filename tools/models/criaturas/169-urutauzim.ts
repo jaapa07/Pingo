@@ -4,16 +4,17 @@
  * orelha a orelha · empoleirado num toco seco de que parece continuação · penugem arrepiada no cocuruto.
  */
 import { criatura, ave, animsAve, blob, lathe, tufo, par, m, lz, qz, D2R } from './kits';
+import { cabecaRetaNoMapa } from './171-noitim';
 
 export const paletaUrutau = {
   rampas: [
-    ['#3c3044', '#74685e', '#b0a488'], // 0 plumagem de casca
+    ['#4a4254', '#8e846c', '#d2c49e'], // 0 plumagem de casca (mais clara que o toco: separa a ave do poleiro)
     ['#a89a8c', '#e6dcc4', '#fffaec'], // 1 manchas de líquen
     ['#2a1e30', '#4c3a40', '#786058'], // 2 toco seco, riscas e bico
     ['#5a3a9c', '#a888ec', '#e8d8ff'], // 3 névoa de assombro
   ] as [string, string, string][],
   contorno: '#20182a',
-  extras: { w: '#ffffff', p: '#20182a', f: '#74685e', a: '#ffd23c', o: '#e89a1c' },
+  extras: { w: '#ffffff', p: '#20182a', f: '#8e846c', a: '#ffd23c', o: '#e89a1c' },
 };
 
 /** Toco seco de ponta quebrada, no osso base. */
@@ -41,10 +42,16 @@ function build() {
   rig.bone('penugem', 'cabeca', [ref.topo[0], ref.topo[1] - 0.03, 0], [0, 0, 10]);
   rig.add('penugem', tufo(3, 0.12, 0.05, m.luz(0), { abre: 34 }));
   rig.bones.cabeca.rotation.z = 10 * D2R;
+  // olhar de frente para quem vê (os dois olhões de pires aparecem na batalha; no mapa a cabeça volta)
+  rig.bones.cabeca.rotation.y = 30 * D2R;
+  // casca rajada: riscas escuras e líquen claro no peito e nas asas, para o corpo não ser uma mancha lisa
+  for (const [x, y, z, a] of [[0.17, 0.02, 0.06, -8], [0.16, -0.06, -0.07, 10], [0.12, -0.13, 0.02, 4]] as const) rig.add('tronco', blob([0.09, 0.018, 0.022], m.plano(2), { pos: [x, y, z], rot: [0, a, 0], seg: 6, castShadow: false }));
+  rig.add('tronco', blob([0.03, 0.04, 0.1], m.luz(1), { pos: [0.22, 0.06, 0], rot: [0, 0, -14], seg: 10, castShadow: false }));
+  par((l, s) => rig.add('asa_' + l, blob([0.05, 0.03, 0.025], m.luz(1), { pos: [-0.1, 0.0, 0.05 * s], seg: 8 }), blob([0.08, 0.016, 0.02], m.plano(2), { pos: [-0.2, -0.05, 0.05 * s], seg: 6 })));
   return rig;
 }
 
-const anims = animsAve({ u: 0.7, hPerna: 0.07, mole: 1.1 }, { idle: { penugem: lz([0, 5, 9, 3]) }, especial: { penugem: qz([0, 12, 18, -20, -6, 0]) } });
+const anims = cabecaRetaNoMapa(animsAve({ u: 0.7, hPerna: 0.07, mole: 1.1 }, { idle: { penugem: lz([0, 5, 9, 3]) }, especial: { penugem: qz([0, 12, 18, -20, -6, 0]) } }), 30);
 
 export const urutauzim = criatura({
   num: 169, id: 'urutauzim', nome: 'Urutauzim', porte: 'P', estagio: 'basico', paleta: paletaUrutau, build, anims,

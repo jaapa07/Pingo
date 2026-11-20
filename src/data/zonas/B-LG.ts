@@ -17,7 +17,7 @@ p.r(7, 6, 36, 29, '~').r(9, 5, 30, 1, '~').r(10, 35, 28, 1, '~').r(6, 9, 1, 22, 
 // Ilha do Joca
 p.r(18, 15, 11, 8, '.').r(17, 17, 1, 4, '.').r(29, 17, 1, 4, '.').r(20, 16, 6, 2, ',').r(19, 22, 9, 1, ';').p('T', 18, 15, 28, 15, 28, 22).r(22, 23, 2, 3, '=');
 // trapiches da margem leste e o Trapiche Comprido (ponta: o canto do Jubartão)
-p.r(36, 26, 8, 1, '=').r(39, 12, 4, 1, '=');
+p.r(36, 26, 8, 1, '=').r(39, 12, 5, 1, '=');
 // praia dos juncos (norte) — só de canoa
 p.r(8, 1, 32, 4, ';').r(10, 2, 26, 2, '"').p('T', 8, 1, 39, 1, 22, 1);
 // cascata do noroeste e a Poça de Cima
@@ -32,13 +32,13 @@ p.p('b', 11, 40, 20, 40, 28, 40, 36, 40, 45, 33, 45, 16, 4, 16, 4, 28);
 p.r(5, 36, 4, 1, '"').r(40, 36, 4, 1, '"').r(45, 10, 1, 5, '"').r(4, 18, 1, 8, '"').r(26, 40, 6, 2, '"').r(12, 40, 6, 2, '"');
 // marcas
 p.t(24, 43, 'SS').t(49, 8, 'L', 'L');
-p.t(21, 20, 'C').t(27, 39, 'a').t(47, 11, 'n').t(40, 25, 'm');
+p.t(21, 20, 'Q').t(27, 39, 'a').t(47, 11, 'n').t(44, 25, 'm');
 p.t(45, 22, '1').t(35, 37, '2').t(10, 37, '3').t(3, 24, '4').t(30, 3, '5');
-p.t(43, 26, 'J').t(23, 18, 'K').t(38, 37, 'G').t(15, 3, 'H').t(16, 39, 'F');
+p.t(38, 37, 'G').t(15, 3, 'H').t(21, 41, 'F');
 p.t(3, 2, 'k').t(36, 2, 'j').t(27, 21, 'i').t(1, 40, 'q').t(47, 36, 'y').t(19, 16, 'z');
 p.t(42, 36, 'P').t(4, 33, 'U');
 const g = grade('B-LG', p.fim(), {
-  S: ':', L: '.', C: '.', a: '.', n: '.', m: '=', '1': ':', '2': '.', '3': '.', '4': '.', '5': '"', J: '=', K: ',', G: '.', H: ';', F: '.',
+  S: ':', L: '.', Q: '.', a: '.', n: '.', m: '.', '1': ':', '2': '.', '3': '.', '4': '.', '5': '"', G: '.', H: ';', F: '.',
   k: ',', j: '"', i: ';', q: '.', y: '.', z: '.', P: '.', U: '.',
 });
 const placas = [
@@ -50,7 +50,7 @@ const zona: ZonaDef = {
   id: 'B-LG', nome: 'Lagoa Gelada', mapa: 'B', tipo: 'agua', tileset: 'geada', musica: 'agua', arena: 'geada', passo: 14, clima: 'garoa',
   mapaChars: g.mapa,
   objetos: [
-    obj(g, 'C', 'casa-d'), obj(g, 'F', 'fogueira'), obj(g, 'P', 'canoa'), obj(g, 'U', 'pedra-grande'),
+    obj(g, 'Q', 'casa-d'), obj(g, 'F', 'fogueira'), obj(g, 'P', 'canoa'), obj(g, 'U', 'pedra-grande'),
     { o: 'araucaria', x: 33, y: 39 }, { o: 'araucaria', x: 7, y: 39 }, { o: 'araucaria', x: 46, y: 41 }, { o: 'banco', x: 20, y: 37 },
     ...placas.map((q) => q.objeto),
   ],
@@ -58,7 +58,7 @@ const zona: ZonaDef = {
   warps: [
     ...saidas(g, 'S', 'B7', B7_PARA_BLG[0], B7_PARA_BLG[1], 's'),
     ...bordas(g, 'L', 'B-SG', 1, 8, 'l', 0, 1),
-    entrada(g, 'C', 'casa-d', 'B-LG-cabana', 5, 7),
+    entrada(g, 'Q', 'casa-d', 'B-LG-cabana', 5, 7),
   ],
   npcs: [
     duelista(g, '1', 'B-LG-1', 'cl-pescador', 'o', 3),
@@ -88,7 +88,7 @@ const zona: ZonaDef = {
       }],
     },
     { metodo: 'pesca-velha', todos: [E(133, 25, 30, 50), E(75, 25, 29, 50)] },
-    { metodo: 'pesca-boa', todos: [E(134, 54, 56, 50), E(76, 54, 56, 50)] },
+    { metodo: 'pesca-boa', todos: [E(134, 55, 56, 50), E(76, 55, 56, 50)] },
     { metodo: 'pesca-mestra', todos: [E(134, 56, 57, 40), E(76, 56, 57, 30), E(58, 56, 57, 30)] },
   ],
 };

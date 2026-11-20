@@ -18,12 +18,14 @@ const paleta = {
   extras: { w: '#ffffff', p: '#150f1a', f: '#ff7a1e', a: '#ffc04a' },
 };
 
-/** A linha do encontro corre do bico à cauda, rolada para o alto do flanco: as duas águas aparecem lado a lado nas duas câmeras. */
-const ROLA = 38;
+/** A linha do encontro é um plano vertical girado GIRA graus em Y: contém a direção das câmeras de batalha (frente e costas),
+ *  então a divisão corre pelo MEIO do sprite, de cima a baixo — metade escura, metade areia, lado a lado e sem se misturar.
+ *  (Rolada só no flanco, como antes, a câmera de frente via quase só a areia.) */
+const GIRA = 50;
 
 /** Meia-casca: metade (+Z ou −Z) de um elipsoide, para pintar um lado só do corpo. */
 const metade = (r: V3, lado: number, mat: ReturnType<typeof m>, pos: V3 = [0, 0, 0]) =>
-  calota(r, mat, { de: 0, ate: 180, arco: 180, arco0: lado > 0 ? 0 : 180, pos, rot: [ROLA, 0, 0] });
+  calota(r, mat, { de: 0, ate: 180, arco: 180, arco0: (lado > 0 ? 0 : 180) + GIRA, pos }); // o corte gira em Y; o elipsoide segue alinhado ao corpo
 
 /** Leque da crista: meia-lua de pé no plano XY (o galo-da-serra esconde o bico atrás dela). */
 function leque(R: number, mat: ReturnType<typeof m>, esp: number) {
@@ -51,8 +53,9 @@ function build() {
   rig.add('cabeca', metade([ca[0] * 1.04, ca[1] * 1.04, ca[2] * 1.04], -1, m(1)));
   rig.add('pescoco', metade([0.17, 0.2, 0.17], -1, m(1), [0.02, 0.03, 0]));
   // linha nítida do encontro: filete claro no plano do meio, do bico à cauda
-  rig.add('tronco', ring(co[0] * 1.035, 0.024, m.luz(3), { scale: [1, co[1] / co[0], 1], rot: [ROLA, 0, 0] }));
-  rig.add('cabeca', ring(ca[0] * 1.045, 0.02, m.luz(3), { rot: [ROLA, 0, 0] }));
+  const rm = (co[0] + co[2]) / 2 * 1.03;
+  rig.add('tronco', ring(rm, 0.024, m.luz(3), { scale: [1, co[1] / rm, 1], rot: [0, GIRA, 0] }));
+  rig.add('cabeca', ring(ca[0] * 1.045, 0.02, m.luz(3), { rot: [0, GIRA, 0] }));
   // asa esquerda e perna esquerda de areia (o kit pintou tudo de escuro)
   for (const o of ['asa_e', 'asa2_e']) rig.bones[o].traverse((x) => { const mesh = x as { isMesh?: boolean; material?: unknown }; if (mesh.isMesh) mesh.material = m(1); });
   rig.add('perna_e', blob([0.1, 0.13, 0.09], m(1), { pos: [0, -0.04, 0], seg: 12 })); rig.add('perna_d', blob([0.1, 0.13, 0.09], m(0), { pos: [0, -0.04, 0], seg: 12 }));

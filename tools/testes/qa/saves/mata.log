@@ -370,3 +370,49 @@ erros de console: []
   perdeu no ginásio 2 (tentativa 2)
   TREINO EXTRA {"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":11,"de":21,"para":22}
   ginásio 2, tentativa 3: equipe ["Tamanduá-Copa 22","Pipirim 6","Cotiazinha 4","Quero-querinho 8","Gambazinho 8","Corujinha 14"]
+  [batalha] g02-4 → vitoria · equipe 2:22,10:6,13:4,45:8,20:8,43:15 · A3-ginasio · $1329
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] lider-02 → derrota · equipe 2:22,10:6,13:4,45:8,20:8,43:16 · A3-ginasio · $729
+    turnos: Tamanduá-Copa22 69/69 x Cupinzim15 41/41 → golpe chicote-de-cipo | Tamanduá-Copa22 50/69 x Cupinzim15 23/41 → golpe chicote-de-cipo | Tamanduá-Copa22 50/69 x Caranguejeirinha17 41/46 → golpe arranhao | Tamanduá-Copa22 33/69 x Caranguejeirinha17 28/46 → item cha-cidreira | Tamanduá-Copa22 36/69 x Caranguejeirinha17 28/46 → golpe arranhao | Tamanduá-Copa22 3/69 x Caranguejeirinha17 13/46 → item cha-cidreira | Tamanduá-Copa22 19/69 x Vagalumim16 40/40 → golpe arranhao | Tamanduá-Copa22 1/69 x Vagalumim16 23/40 → golpe arranhao | Corujinha15 40/40 x Vagalumim16 6/40 → golpe intuicao | Corujinha16 17/42 x Cupinzim15 23/41 → golpe intuicao | Gambazinho8 26/26 x Cupinzim15 23/41 → golpe arranhao | Gambazinho8 26/26 x Cupinzim15 22/41 → golpe arranhao | Gambazinho8 12/26 x Cupinzim15 21/41 → golpe arranhao | Pipirim6 22/22 x Cupinzim15 21/41 → golpe lufada | Quero-querinho8 26/26 x Cupinzim15 21/41 → golpe bicada | Cotiazinha4 18/18 x Cupinzim15 19/41 → golpe encontrao
+  perdeu no ginásio 2 (tentativa 3)
+  TREINO EXTRA {"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":14,"de":22,"para":23}
+  ginásio 2, tentativa 4: equipe ["Tamanduá-Copa 23","Pipirim 6","Cotiazinha 4","Quero-querinho 8","Gambazinho 8","Corujinha 16"]
+  [batalha] lider-02 → vitoria · equipe 2:23,10:6,13:4,45:8,20:8,43:16 · A3-ginasio · $2064
+  INSÍGNIA 2 na tentativa 4
+== checkpoint mata-passo-6: ["Tamanduá-Copa 23","Pipirim 6","Cotiazinha 4","Quero-querinho 8","Gambazinho 8","Corujinha 16"] $2064
+
+>> etapa 7: rival 2, Trilha dos Cipós e Gruta do Eco até Porto Sereia  (797 s)
+  [batalha] rival-2-brasa → vitoria · equipe 2:23,10:6,13:4,45:8,20:8,43:16 · A3 · $3024
+  caça em A-R3: 0 batalhas, equipe ["Tamanduá-Copa 23","Pipirim 6","Cotiazinha 4","Quero-querinho 8","Gambazinho 8","Corujinha 16"]
+  [batalha] A-R3-2 → vitoria · equipe 2:23,10:6,13:4,45:8,20:8,43:16 · A-R3 · $3624
+  [batalha] A-R3-1 → vitoria · equipe 2:23,10:6,13:4,45:8,20:8,43:17 · A-R3 · $4264
+  [batalha] A-R3-5 → vitoria · equipe 2:24,10:6,13:4,45:8,20:8,43:17 · A-R3 · $4904
+  [batalha] A-R3-4 → vitoria · equipe 2:24,10:6,13:4,45:8,20:8,43:17 · A-R3 · $5544
+  [batalha] A-R3-3 → vitoria · equipe 2:24,10:6,13:4,45:8,20:8,43:17 · A-R3 · $6248
+  [batalha] A-R3-7 → vitoria · equipe 2:24,10:6,13:4,45:8,20:8,43:17 · A-R3 · $6996
+  [batalha] A-R3-8 → vitoria · equipe 2:25,10:7,13:4,45:8,20:8,43:17 · A-R3 · $7296
+  [batalha] A-R3-6 → vitoria · equipe 2:25,10:7,13:4,45:8,20:8,43:17 · A-R3 · $8044
+  [batalha] A-GE-5 → vitoria · equipe 2:25,10:7,13:4,45:8,20:8,43:17 · A-GE · $8656
+  [batalha] A-GE-3 → vitoria · equipe 2:25,10:7,13:4,45:8,20:8,43:17 · A-GE · $8976
+  [batalha] A-GE-2 → vitoria · equipe 2:26,10:7,13:4,45:8,20:8,43:17 · A-GE · $9768
+  [batalha] A-GE-6 → vitoria · equipe 2:26,10:7,13:4,45:8,20:8,43:17 · A-GE · $10416
+  [batalha] A-GE-4 → vitoria · equipe 2:26,10:7,13:6,45:8,20:8,43:17 · A-GE · $11280
+  [batalha] A-GE-7 → vitoria · equipe 2:27,10:7,13:6,45:8,20:8,43:17 · A-GE · $12072
+  [batalha] A-GE-1 → vitoria · equipe 2:27,10:8,13:6,45:8,20:8,43:17 · A-GE · $12936
+== checkpoint mata-passo-7: ["Tamanduá-Copa 27","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 17"] $12936
+
+>> etapa 8: Porto Sereia: compras, treinadores e ginásio 3 (Rio)  (1541 s)
+  [batalha] A4-1 → vitoria · equipe 2:27,10:8,13:6,45:8,20:8,43:17 · A4 · $13696
+  [batalha] A4-3 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $14456
+  [batalha] A4-2 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $15292
+  compras em A4-venda: 6× garrafada · sobrou $11092
+== checkpoint mata-pre-lider-3: ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 17"] $11092
+  ginásio 3, tentativa 1: equipe ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 17"]
+  [batalha] g03-1 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $11732
+  [batalha] g03-2 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $12412
+  [batalha] g03-3 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $13132
+  [batalha] g03-4 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $13852
+  [batalha] g03-5 → vitoria · equipe 2:30,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $14652
+  remédios entre batalhas: garrafada
+  [batalha] lider-03 → vitoria · equipe 2:30,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $16852
+  INSÍGNIA 3 na tentativa 1

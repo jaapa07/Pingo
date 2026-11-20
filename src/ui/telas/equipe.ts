@@ -17,7 +17,7 @@ import { moldura, barra, iconeStatus, som, type Barra } from '../kit';
 import { Grade } from '../componentes/grade';
 import { perguntar, informar } from '../componentes/confirmacao';
 import { abrirTela } from '../dialogo';
-import { iconeCriatura, nomeCri, sexoTxt, vidaMaxDe, esp, faixaDica, placaTitulo, usarItemEm, type Icone } from './comum';
+import { iconeCriatura, nomeCri, sexoTxt, vidaMaxDe, esp, faixaDica, placaTitulo, usarItemEm, type Icone, estrelaRara } from './comum';
 import { T } from '../../data/textos-ui';
 
 export interface ArgsEquipe { modo?: 'menu' | 'escolher' | 'usar'; item?: string; titulo?: string; pode?(c: CriaturaInst, i: number): boolean | string }
@@ -41,7 +41,8 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
   }
   function cartao(c: CriaturaInst, i: number): Cartao {
     const cx = moldura('tinta', 156, 46); cx.classList.add('cartao-cri');
-    const ic = iconeCriatura(c.especie, !!c.ovo); cx.append(em(ic.el, 5, 11));
+    const ic = iconeCriatura(c.especie, !!c.ovo, !!c.rara); cx.append(em(ic.el, 5, 11));
+    if (c.rara && !c.ovo) cx.append(em(estrelaRara(), 3, 4)); // Pelagem Rara
     const nome = texto('', { cor: 'creme' }), nv = texto('', { cor: 'amarelo' }), num = texto('', { cor: 'creme' }), obs = texto('', { cor: 'creme' });
     cx.append(em(nome, 34, 6), em(nv, 118, 6), em(num, 34, 30), em(obs, 84, 30));
     const st = document.createElement('div'); cx.append(em(st, 122, 18));

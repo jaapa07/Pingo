@@ -52,6 +52,8 @@ const zona: ZonaDef = {
     ...saidas(g, 'X', 'A4', 6, 5, 's', 'caverna'),
   ],
   npcs: [
+    // rival semanal (spec 10A item 27): depois da Liga, às terças e quintas; flag mantida por src/data/eventos/regras.ts
+    { id: 'rival-semanal', sprite: 'taina', x: 47, y: 6, dir: 'o', se: 'flag:rival-semana-hoje', script: 'rival-semanal' },
     gente(g, 'S', 'a-ge-espeleologa', 'cl-montanhista', 'Espeleóloga Dalva', { script: 'm-eco' }),
     { id: 'eco', sprite: 'c:morceguim', x: g.p('B')[0], y: g.p('B')[1], dir: 'n', se: 'flag:m-eco&!flag:m-eco-achou', script: 'm-eco-morcego' },
     gente(g, 'N', 'a-ge-garimpeiro', 'cl-garimpeiro', 'Garimpeiro Zé Faísca', { mov: 'olhar', fala: ['Sentiu o cheiro de maresia? A saída para Porto Sereia é logo ali em cima.', 'Aquela rocha rachada no canto esconde uma galeria. Eu ia quebrar, mas minha picareta pediu demissão.'] }),

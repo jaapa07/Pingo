@@ -152,6 +152,8 @@ if (quer('batalha')) filhos.push(medir('batalha', 'Testes de batalha', batalha))
 if (quer('zonas-a1')) filhos.push(medir('zonas-a1', 'Zonas A1 (verifica-zonas-a1)', () => zonas('tools/verifica-zonas-a1.mts')));
 if (quer('zonas-a2')) filhos.push(medir('zonas-a2', 'Zonas A2 (verifica-zonas-a2)', () => zonas('tools/verifica-zonas-a2.mts')));
 if (quer('zonas-b1')) filhos.push(medir('zonas-b1', 'Zonas B1 (verifica-zonas-b1)', () => zonas('tools/verifica-zonas-b1.mts')));
+if (quer('zonas-b2-sul')) filhos.push(medir('zonas-b2-sul', 'Zonas B2-sul (verifica-zonas-b2-sul)', () => zonas('tools/verifica-zonas-b2-sul.mts')));
+if (quer('zonas-b2-norte')) filhos.push(medir('zonas-b2-norte', 'Zonas B2-norte e Conselho (verifica-zonas-b2-norte)', () => zonas('tools/verifica-zonas-b2-norte.mts')));
 if (!RAPIDO && quer('limpo')) filhos.push(medir('limpo', 'Build limpo (git clone do HEAD + npm run build, como no GitHub)', async () => (limpo = await buildLimpo(SO_HEAD))));
 if (quer('palavras')) await medir('palavras', 'Palavras proibidas, acaso e canvas', palavras);
 if (quer('integridade')) await medir('integridade', 'Integridade de dados (ids referenciados)', integridade);

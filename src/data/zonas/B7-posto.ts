@@ -4,7 +4,7 @@ import { postoGuardiao } from './_b2s-lib';
 export default postoGuardiao('B7', 'Serra da Geada', 14, 'geada', [14, 18], [
   'MURAL DE MISSÕES — SERRA DA GEADA',
   '• Seu Tchê Barbosa troca uma Gralha-Azul mansinha por um Tuco-Escavador.',
-  '• Rádio Serrana: quiz da fauna no Galpão do CTG, todo dia. Quem acerta quatro leva prêmio.',
+  '• Payada de adivinha no Galpão do CTG, todo dia. Quem acerta as três leva prenda.',
   '• A Prenda Dorinha espera carta do Brejo Roxo. O carteiro de lá não sobe a serra: tem medo de altura.',
 ], [
   { sprite: 'npc-mulher-2', nome: 'Dona Cuca', fala: ['Trouxe a minha Pinguimar para a máquina. Ela pegou friagem nadando na Lagoa Gelada.', 'Pinguim com friagem. Quem diria.'] },

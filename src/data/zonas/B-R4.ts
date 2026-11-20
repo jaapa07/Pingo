@@ -3,7 +3,7 @@
  * Montanha em cinco patamares separados por paredões: sobe-se alternando trepadeiras (Escalar) e fendas fechadas
  * por pedregulhos (Força); saliências de mão única descem de volta de cada patamar. No alto, as araucárias, a saída
  * para a Serra da Geada (borda norte) e a trilha de Escalar do Pico Pindorama (PP, outro time; chegada lá em
- * (34, 52); volta aqui em (24, 3)) — o Guia do Pico só leva quem tem 15 insígnias.
+ * (34, 52); volta aqui em (24, 3)) — o Guia do Pico e o próprio warp exigem as 16 insígnias (pedido do B2-norte).
  * Áreas de Amuleto: a gruta do mocó (Quebra-pedra) e o nicho da cascata seca (Escalar).
  */
 import type { ZonaDef } from '../../core/tipos';
@@ -46,7 +46,7 @@ const g = grade('B-R4', p.fim(), {
 });
 const placas = [
   placa(g, 'q', 'SUBIDA DA SERRA\nNorte: Serra da Geada. Paredões com trepadeira e fendas de pedregulho.\nSuba devagar; desça pelas saliências.'),
-  placa(g, 's', 'TRILHA DO PICO PINDORAMA ⇡\nA oeste, depois da trepadeira grande.\nO Guia do Pico leva só quem tem quinze insígnias.'),
+  placa(g, 's', 'TRILHA DO PICO PINDORAMA ⇡\nA oeste, depois da trepadeira grande.\nO Guia do Pico leva só quem tem as dezesseis insígnias.'),
 ];
 const zona: ZonaDef = {
   id: 'B-R4', nome: 'Subida da Serra', mapa: 'B', tipo: 'rota', tileset: 'serra', musica: 'rota-dia-B', arena: 'pico', passo: 14, clima: 'limpo',
@@ -56,9 +56,9 @@ const zona: ZonaDef = {
   warps: [
     ...saidas(g, 'S', 'B6', 24, 1, 's', 'borda'),
     ...saidas(g, 'N', 'B7', 24, 38, 'n', 'borda'),
-    ...saidas(g, 'K', 'PP', 34, 52, 'n', 'borda'),
+    ...saidas(g, 'K', 'PP', 34, 52, 'n', 'borda', { requer: 'insignias:16', recusa: 'Um vento gelado desce do Pico e empurra {JOGADOR} de volta. Lá em cima, o Portão dos Guardiões só se abre para quem tem as dezesseis insígnias.' }),
   ],
-  portoes: [{ x: g.p('G')[0], y: g.p('G')[1], requer: 'insignias:15', sprite: 'cl-montanhista', fala: 'Guia do Pico Carijó: "A trilha do Pico Pindorama começa nesta trepadeira. Lá em cima o vento derruba até Gavião."\f"Eu só levo quem já tem quinze insígnias. Antes disso, a serra é que leva você."' }],
+  portoes: [{ x: g.p('G')[0], y: g.p('G')[1], requer: 'insignias:16', sprite: 'cl-montanhista', fala: 'Guia do Pico Carijó: "A trilha do Pico Pindorama começa nesta trepadeira. Lá em cima o vento derruba até Gavião."\f"O Portão dos Guardiões só abre para quem tem as dezesseis insígnias. Antes disso, a serra é que leva você."' }],
   npcs: [
     duelista(g, '1', 'B-R4-1', 'cl-montanhista', 'o', 4),
     duelista(g, '2', 'B-R4-2', 'cl-vaqueiro', 'l', 4),

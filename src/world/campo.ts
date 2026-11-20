@@ -210,7 +210,7 @@ export async function pescar(vara: keyof typeof NOME_VARA): Promise<boolean> {
   if (!fisgou) { await falar('A criatura escapou com a isca!'); return false; }
   const s = sortear(M.zv.def, metodo)!;
   await falar('Fisgou! Tem alguma coisa na linha!');
-  await batalhaSelvagem(s.e, s.nv);
+  await batalhaSelvagem(s.e, s.nv, { pescada: true });
   return true;
 }
 

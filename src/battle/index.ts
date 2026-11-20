@@ -19,6 +19,7 @@ import { bus } from '../core/events';
 import { telas, criarTela, temTela } from '../ui/telas';
 import { Batalha, type Acao, type AcaoDe, type ConfigBatalha, type EventoBatalha, type Pedido, type ResultadoId } from './engine';
 import { escolherAcaoIA, escolherSubstitutoIA, iaUsaItens, nivelEfetivo, type NivelIA, type OpcoesIA } from './ia';
+import { limiteObediencia } from './cuias';
 import { amizadePor, curarCriatura, evoluir, nomeDe, registrarEspecies, totalEspecies } from './criatura';
 
 export { criarCriatura, criarDeMembro, atributos, registrarEspecies, especie, podeEvoluir, evoluir, expParaNivel, nomeDe, mudarAmizade, amizadePor, aprenderGolpe, ganharExp, curarCriatura } from './criatura';
@@ -39,6 +40,10 @@ export interface PedidoBatalha {
   dupla?: boolean; semFuga?: boolean; semCaptura?: boolean; tutorial?: boolean; musica?: string;
   /** criatura errante: tenta fugir no primeiro turno */
   errante?: boolean;
+  /** encontro fisgado na pesca (Cuia de Isca) */
+  pescada?: boolean;
+  /** o jogador não ganha experiência nem esforço (Torre de Desafios, spec 10A item 35) */
+  semExp?: boolean;
 }
 export interface ResultadoBatalha {
   resultado: 'vitoria' | 'derrota' | 'fuga' | 'captura'; capturada?: CriaturaInst;
@@ -106,7 +111,8 @@ export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } 
     tipo: p.tipo,
     lados: [{ equipe: s.equipe, itens: s.mochila, nome: s.jogador.nome }, { equipe: p.inimigos, itens, nome: t ? `${t.classe} ${t.nome}` : '' }],
     clima: p.clima, dupla: p.dupla ?? t?.dupla, semFuga: p.semFuga, semCaptura: p.semCaptura, periodo: periodo(),
-    trocaGratis: dif !== 'veterano', autoAprender: o.autoAprender, expPartilhada: (s.mochila['chocalho-mutirao'] ?? 0) > 0,
+    trocaGratis: dif !== 'veterano', autoAprender: o.autoAprender, ganhaExp: !p.semExp, expPartilhada: (s.mochila['chocalho-mutirao'] ?? 0) > 0,
+    pescada: p.pescada, obediencia: { limite: limiteObediencia(s.insignias.length), dono: s.jogador.nome },
   };
   return new ControleBatalha(p, cfg, nivel, { usaItens, foge: p.errante }, p.tipo === 'treinador' ? (t?.premio ?? 0) : 0);
 }

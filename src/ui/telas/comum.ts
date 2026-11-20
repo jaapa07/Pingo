@@ -6,9 +6,9 @@
 import type { CriaturaInst, EspecieDef, TipoId } from '../../core/tipos';
 import { jogo, marcarCapturado, periodo } from '../../core/estado';
 import { bus } from '../../core/events';
-import { vista } from '../../core/assets';
+import { vista, vistaCriatura } from '../../core/assets';
 import { Sprite } from '../../render/sprite';
-import { ESPECIES } from '../../data/criaturas';
+import { ESPECIES, VISITANTES } from '../../data/criaturas';
 import { item as itemDef, type ItemInfo } from '../../data/itens';
 import { golpe, temGolpe } from '../../data/golpes';
 import { atributos, podeEvoluir, evoluir, aprenderGolpe, ganharExp, expParaNivel, amizadePor, mudarAmizade } from '../../battle/index';
@@ -22,7 +22,8 @@ import { elTela, retirar } from '../base';
 import type { Tela } from '../telas';
 
 /* ------------------------------ espécies (tolerante a lotes ainda não entregues) ------------------------------ */
-const MAPA_ESP = new Map<number, EspecieDef>(ESPECIES.map((e) => [e.num, e]));
+// os Visitantes (181–182, spec 6.5) também têm nome, figura e ficha, fora do total de 180
+const MAPA_ESP = new Map<number, EspecieDef>([...ESPECIES, ...VISITANTES].map((e) => [e.num, e]));
 export const TOTAL_DIARIO = 180;
 export const esp = (n: number): EspecieDef | undefined => MAPA_ESP.get(n);
 export const nomeEsp = (n: number) => esp(n)?.nome ?? `Criatura nº ${n}`;
@@ -67,13 +68,16 @@ const OVO = ['................', '......kkkk......', '....kkllllkk....', '...kll
 const INTERROGA = ['................', '.....kkkkkk.....', '....kqqqqqqk....', '...kqqkkkkqqk...', '...kqqk..kqqk...', '....kk...kqqk...', '........kqqk....', '.......kqqk.....', '......kqqk......', '......kqqk......', '......kkkk......', '......kqqk......', '......kqqk......', '......kkkk......', '................', '................'];
 const palTipo = (t: TipoId) => { const [b, d, l] = CORES_TIPO[t]; return { k: '#1a1423', b, d, l, m: d }; };
 
+/** estrelinha da Pelagem Rara (spec 10A-5), 7×7 */
+const ESTRELA = ['...k...', '..kyk..', '.kkykk.', 'kyywyyk', '.kkykk.', '..kyk..', '...k...'];
+export const estrelaRara = (escala = 1): HTMLElement => pix(ESTRELA, { k: '#1a1423', y: '#ffd84a', w: '#fff8e7' }, escala);
 export interface Icone { el: HTMLElement; atualizar(dt: number): void; /** anda no lugar (em foco) ou fica parada */ animar(b: boolean): void; sprite?: Sprite }
 /** ícone 24×24 da criatura: sprite `mapa` olhando para baixo; sem sprite, um bichinho na cor do tipo */
-export function iconeCriatura(num: number, ovo = false): Icone {
+export function iconeCriatura(num: number, ovo = false, rara = false): Icone {
   const el = caixa('ic-cri', 24, 24);
-  const e = esp(num), m = e && !ovo ? vista(e.id, 'mapa') : undefined;
+  const e = esp(num), vm = e ? vistaCriatura(e.id, 'mapa', rara) : 'mapa', m = e && !ovo ? vista(e.id, vm) : undefined;
   if (m && e) {
-    const s = new Sprite(e.id, 'mapa', el); s.x = m.px + Math.floor((24 - m.cw) / 2); s.y = m.py + (24 - m.ch);
+    const s = new Sprite(e.id, vm, el); s.x = m.px + Math.floor((24 - m.cw) / 2); s.y = m.py + (24 - m.ch);
     const parada = s.tem('idle-s') ? 'idle-s' : 'andar-s';
     s.tocar(parada); s.desenhar();
     return { el, sprite: s, atualizar(dt) { s.atualizar(dt); s.desenhar(); }, animar(b) { s.tocar(b && s.tem('andar-s') ? 'andar-s' : parada); s.desenhar(); } };
@@ -84,11 +88,11 @@ export function iconeCriatura(num: number, ovo = false): Icone {
   return { el, atualizar(dt) { if (!anda) return; t += dt; p.style.top = (Math.floor(t * 4) % 2 ? 5 : 6) + 'px'; }, animar(b) { anda = b; if (!b) p.style.top = '6px'; } };
 }
 /** figura grande (vista `frente`) centrada numa caixa; `silhueta` escurece (vista mas não capturada); `misterio` = nunca vista */
-export function figura(num: number, w = 96, h = 96, o: { silhueta?: boolean; misterio?: boolean } = {}): Icone {
+export function figura(num: number, w = 96, h = 96, o: { silhueta?: boolean; misterio?: boolean; /** Pelagem Rara */ rara?: boolean } = {}): Icone {
   const el = caixa('fig-cri', w, h);
-  const e = esp(num), m = e && !o.misterio ? vista(e.id, 'frente') : undefined;
+  const e = esp(num), vf = e ? vistaCriatura(e.id, 'frente', o.rara && !o.silhueta) : 'frente', m = e && !o.misterio ? vista(e.id, vf) : undefined;
   if (m && e) {
-    const s = new Sprite(e.id, 'frente', el); s.x = m.px + Math.floor((w - m.cw) / 2); s.y = m.py + Math.floor((h - m.ch) / 2);
+    const s = new Sprite(e.id, vf, el); s.x = m.px + Math.floor((w - m.cw) / 2); s.y = m.py + Math.floor((h - m.ch) / 2);
     s.tocar(s.tem('idle') ? 'idle' : Object.keys(m.anims)[0]); s.desenhar();
     if (o.silhueta) s.el.classList.add('silhueta');
     return { el, sprite: s, atualizar(dt) { s.atualizar(dt); s.desenhar(); }, animar() { /* a figura sempre respira */ } };
@@ -205,6 +209,16 @@ export async function usarItemEm(id: string, c: CriaturaInst): Promise<Resultado
     if (ev) await evoluirCom(c, ev.para);
     return { ok: true, msg: '', gasta: true };
   }
+  if (u.esforco) {
+    // vitaminas da Gincana (src/data/itens.ts): esforço num atributo, até o teto só com vitaminas e o teto geral da batalha
+    const { stat, qtd, teto } = u.esforco, total = Object.values(c.esf).reduce((x, y) => x + y, 0);
+    const n = Math.min(qtd, teto - c.esf[stat], 252 - c.esf[stat], 510 - total);
+    if (n <= 0) return nada(`A vitamina não faz mais efeito em ${nome}.`);
+    const antes = atributos(c).vida; c.esf[stat] += n;
+    if (stat === 'vida' && c.vida > 0) c.vida = Math.min(atributos(c).vida, c.vida + atributos(c).vida - antes);
+    mudarAmizade(c, 2); som('cura-posto');
+    return { ok: true, msg: `${nome} tomou a vitamina e ficou mais forte!`, gasta: true };
+  }
   if (u.amizade) {
     if (c.amizade >= 255) return nada(`${nome} já é sua amiga do peito.`);
     mudarAmizade(c, u.amizade); return { ok: true, msg: `${nome} adorou! Ficou mais amiga.`, gasta: true };
@@ -235,7 +249,7 @@ export async function usarItemEm(id: string, c: CriaturaInst): Promise<Resultado
   return { ok: true, msg: partes.join(' '), gasta: true };
 }
 /** o item pede a escolha de uma criatura da equipe? */
-export const itemPedeCriatura = (it: ItemInfo) => { const u = it.uso; return !!u && !!(u.cura || u.curaStatus || u.reanima || u.pg || u.nivel || u.amizade || u.evolui || u.golpe); };
+export const itemPedeCriatura = (it: ItemInfo) => { const u = it.uso; return !!u && !!(u.cura || u.curaStatus || u.reanima || u.pg || u.nivel || u.amizade || u.evolui || u.golpe || u.esforco); };
 /** nome curto do local guardado no save */
 export const tempoRelogio = (min: number) => `${String(Math.floor(min / 60)).padStart(2, '0')}:${String(min % 60).padStart(2, '0')}`;
 export { jogo };

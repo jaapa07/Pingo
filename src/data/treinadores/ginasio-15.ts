@@ -1,0 +1,46 @@
+import type { TreinadorDef } from '../../core/tipos';
+
+/**
+ * Ginásio da Mente (nº 15, Planalto Lume): os estudantes do observatório e a líder Astrônoma Jaci. Ás nv 61 (tabela 4.5:
+ * 59–61); a turma fica entre 55 e 59 (ás − 2 a − 6). As linhas de Mente evoluem até o nível 36, então só aparecem
+ * formas finais. Do 8º ginásio em diante a líder usa remédios no Aventureiro (spec 7A).
+ */
+export const TREINADORES_GINASIO_15: TreinadorDef[] = [
+  { id: 'g15-1', classe: 'Observadora', nome: 'Lua', sprite: 'cl-observadora', ia: 'treinador', premio: 2240,
+    equipe: [{ e: 44, nv: 56 }, { e: 54, nv: 55 }],
+    desafio: 'Psiu! Estou medindo o brilho da Ema. Se for batalhar, batalhe baixinho!', derrota: 'Perdi a conta das estrelas.', depois: 'Daqui do oeste dá para girar o céu. Mas o céu certo depende de onde você quer chegar.' },
+  { id: 'g15-2', classe: 'Garoto', nome: 'Juca Cometa', sprite: 'cl-crianca-m', ia: 'treinador', premio: 2280,
+    equipe: [{ e: 62, nv: 56 }, { e: 124, nv: 56 }],
+    desafio: 'Eu já decorei todas as constelações! Quase todas. Algumas. Bom, a Ema eu sei!', derrota: 'Vou voltar a estudar…', depois: 'O portal da ilha da líder só acende na meia-noite e na alvorada. Na alvorada ele mostra a Anta.' },
+  { id: 'g15-3', classe: 'Observadora', nome: 'Drª Vega', sprite: 'cl-observadora', ia: 'treinador', premio: 2320,
+    equipe: [{ e: 122, nv: 57 }, { e: 172, nv: 56 }],
+    desafio: 'Teletransporte é física avançada. Batalha também. Vamos às duas!', derrota: 'Erro de cálculo meu.', depois: 'Três giros para frente é o mesmo que um para trás. O céu só anda num sentido.' },
+  { id: 'g15-4', classe: 'Repentista', nome: 'Seu Lunário', sprite: 'cl-repentista', ia: 'treinador', premio: 2360,
+    equipe: [{ e: 54, nv: 57 }, { e: 170, nv: 57 }],
+    desafio: 'Lá no céu tem uma anta, tem ema e tem veado; quem quiser chegar na Jaci tem que vir bem preparado!', derrota: 'A rima foi boa, a batalha nem tanto!', depois: 'Às vezes o caminho volta para a entrada antes de subir. Não tenha vergonha de voltar.' },
+  { id: 'g15-5', classe: 'Observadora', nome: 'Aurora', sprite: 'cl-observadora', ia: 'treinador', premio: 2400,
+    equipe: [{ e: 172, nv: 58 }, { e: 122, nv: 57 }, { e: 44, nv: 57 }],
+    desafio: 'Chegou ao noroeste? Daqui se gira o céu até a alvorada. Mas antes, uma batalha.', derrota: 'Amanheceu para mim.', depois: 'A Jaci abre com a Estrelaça e uma cortina de brilho. Golpe físico passa melhor por ela.' },
+  /*
+   * LÍDER — Astrônoma Jaci (Mente). Fraquezas da Mente: Inseto e Assombro.
+   * Estratégia: a Estrelaça (Rio/Mente) abre com a Cortina de Brilho (metade do dano especial por 5 turnos) e responde a
+   * Assombro com Clarão da Lua. O Corujão-Orelha (Vento/Mente) põe para dormir com Olho de Coruja e caça Inseto com Pé de
+   * Vento. O Polvão (Rio/Mente) ergue o Muro Invisível contra golpes físicos e bate com Força do Pensamento e Enxurrada.
+   * A Preguiçona (Comum/Mente) é imune a Assombro e acumula Matutar. O Noitão (Assombro/Mente) devolve Assombro com
+   * Sonho Ruim. O ás é o Urutau-Fantasma (Assombro/Mente) de nível 61: Sonho Ruim, Força do Pensamento, Rasante (contra
+   * Inseto) e Mau Agouro; segura um Caju.
+   * Cura: Elixir de Andiroba e Garrafada (spec 7A).
+   */
+  { id: 'lider-15', classe: 'Líder', nome: 'Astrônoma Jaci', sprite: 'lider-15', ia: 'lider', premio: 6100, insignia: 15, musica: 'batalha-lider', flag: 'ginasio-15-vencido',
+    itens: ['elixir-andiroba', 'garrafada'],
+    equipe: [
+      { e: 124, nv: 59, golpes: ['cortina-de-brilho', 'forca-do-pensamento', 'enxurrada', 'clarao-da-lua'] },
+      { e: 44, nv: 58, golpes: ['olho-de-coruja', 'dor-de-cabeca', 'pe-de-vento', 'rasga-mortalha'] },
+      { e: 122, nv: 59, golpes: ['muro-invisivel', 'forca-do-pensamento', 'enxurrada', 'sumico'] },
+      { e: 62, nv: 58, golpes: ['matutar', 'forca-do-pensamento', 'clarao-da-lua', 'soneca'] },
+      { e: 172, nv: 59, golpes: ['sonho-ruim', 'dor-de-cabeca', 'olho-de-coruja', 'matutar'] },
+      { e: 170, nv: 61, golpes: ['sonho-ruim', 'forca-do-pensamento', 'rasante', 'mau-agouro'], item: 'caju' },
+    ],
+    desafio: 'Boa noite, viajante das estrelas. Você atravessou o meu céu sem se perder: isso é ler o céu como os mais velhos ensinaram. Agora, leia a minha equipe!',
+    derrota: 'O céu nunca mente: você brilhou mais esta noite.', depois: 'Olhe para cima de vez em quando. As estrelas sabem o caminho de casa.' },
+];

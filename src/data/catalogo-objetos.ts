@@ -81,6 +81,7 @@ export const CATALOGO_EXTERIOR: Record<string, ObjetoCatalogo> = {
   bromelia: bloco(1, 1, 0, 'bromélia'),
   'tronco-caido': bloco(2, 1, 0, 'tronco caído com cogumelos'),
   'pedra-grande': bloco(2, 2, 0, 'matacão'),
+  cuieira: bloco(1, 1, 2, 'cuieira (árvore da cuia) com cabaças coloridas; a cor vem do spawn `cor` — colheita: src/data/eventos/captura.ts'),
 };
 
 /** Todos os nomes exteriores (o catálogo completo = este + o de interiores). */

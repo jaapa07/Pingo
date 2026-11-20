@@ -8,13 +8,13 @@ import { pedra } from './165-mocozim';
 
 export const paletaAndor = {
   rampas: [
-    ['#1f2238', '#3d4560', '#6e7c98'], // 0 plumagem fuligem-azulada
+    ['#232845', '#4a5679', '#8d9fc4'], // 0 plumagem fuligem-azulada (luz bem aberta: o volume aparece)
     ['#aab4c8', '#f2f5fa', '#ffffff'], // 1 coleira branca
     ['#3a3348', '#6c647c', '#a8a0b0'], // 2 pedra do paredão, bico e pés
     ['#2f7f9c', '#62c8dc', '#c6f4f6'], // 3 água da cachoeira
   ] as [string, string, string][],
   contorno: '#171a2c',
-  extras: { w: '#ffffff', p: '#171a2c', f: '#3d4560' },
+  extras: { w: '#ffffff', p: '#171a2c', f: '#4a5679' },
 };
 
 function build() {
@@ -32,14 +32,18 @@ function build() {
   // coleira branca inteira
   rig.add('pescoco', calota([0.2, 0.19, 0.21], m.luz(1), { de: 30, ate: 128, rot: [0, 0, 60], pos: [-0.01, -0.03, 0] }));
   rig.add('tronco', blob([0.09, 0.1, 0.13], m(1), { pos: [0.17, -0.04, 0], seg: 12 }));
-  // asas-foice cruzadas, apontando para cima e para trás
-  par((l, s) => { rig.bones['asa_' + l].rotation.set(0, 14 * s * D2R, -38 * D2R); rig.add('asa2_' + l, pena(0.26, 0.07, m.sombra(0), { esp: 0.04, pos: [-0.14, 0.02, 0], rot: [0, 0, -14] })); });
+  // asas-foice compridas, varridas para trás
+  par((l, s) => { rig.bones['asa_' + l].rotation.set(0, 34 * s * D2R, -12 * D2R);
+   rig.add('asa2_' + l, pena(0.26, 0.07, m.sombra(0), { esp: 0.04, pos: [-0.14, 0.02, 0], rot: [0, 0, -14] })); });
   // lasca de pedra onde se agarra
   rig.bones.corpo.position.y += 0.12;
   rig.add('base', pedra([0.3, 0.14, 0.28], m(2), [0.02, 0.06, 0], [0, 24, 6]), pedra([0.13, 0.1, 0.13], m.luz(2), [-0.18, 0.05, 0.12], [10, 50, 0]));
   // respingo da cachoeira na lasca
   rig.add('base', blob([0.07, 0.035, 0.09], m(3), { pos: [0.24, 0.1, -0.12], seg: 8 }), blob([0.035, 0.045, 0.035], m.luz(3), { pos: [0.3, 0.2, -0.16], seg: 6 }), blob([0.028, 0.035, 0.028], m.luz(3), { pos: [0.2, 0.26, -0.26], seg: 6 }));
   rig.add('cabeca', blob([0.07, 0.05, 0.1], m.luz(0), { pos: [0.1, 0.11, 0], seg: 10 }));
+  // sobrancelha clara sobre o olho e queixo branco ligado à coleira
+  par((_, s) => rig.add('cabeca', blob([0.07, 0.02, 0.03], m.luz(1), { pos: [0.12, 0.07, 0.15 * s], rot: [0, 0, -12], seg: 8 })));
+  rig.add('cabeca', blob([0.07, 0.05, 0.09], m(1), { pos: [0.12, -0.12, 0], seg: 10 }));
   return rig;
 }
 

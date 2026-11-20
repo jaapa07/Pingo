@@ -21,7 +21,7 @@ function build() {
     corpo: [0.2, 0.19, 0.18], ergue: 44,
     pescoco: { len: 0.1, ang: 70, r: 0.13 },
     cabeca: [0.19, 0.18, 0.18],
-    bico: { len: 0.13, r: 0.065, y: -0.12, achata: 0.8, gancho: 50, inferior: 0.55 },
+    bico: { len: 0.15, r: 0.07, y: -0.12, achata: 0.8, gancho: 58, inferior: 0.55 },
     asa: { len: 0.22, larg: 0.16, cai: 10, ponta: 0.4 },
     cauda: { len: 0.16, larg: 0.09, ang: -10, penas: 3, abre: 18 },
     pernas: { alt: 0.13, r: 0.034, z: 0.55, x: 0.0, dedo: 0.12 },
@@ -36,10 +36,11 @@ function build() {
   // penacho duplo em V (dois ossos, um para cada lado)
   par((l, s) => {
     rig.bone('penacho_' + l, 'cabeca', [ref.topo[0] - 0.04, ref.topo[1] - 0.04, 0.05 * s], [-46 * s, 0, 16]);
-    rig.add('penacho_' + l, tufo(2, 0.2, 0.05, m(1), { abre: 12 }), blob([0.03, 0.035, 0.03], m.sombra(2), { pos: [0, 0.19, 0], seg: 8 }));
+    rig.add('penacho_' + l, tufo(2, 0.27, 0.06, m(1), { abre: 12 }), blob([0.04, 0.045, 0.04], m.sombra(2), { pos: [0, 0.26, 0], seg: 8 }));
   });
-  // disco facial mais cinza em volta do olho + sobrancelha
-  par((_, s) => rig.add('cabeca', blob([0.085, 0.07, 0.03], m.luz(1), { pos: [0.07, 0.02, 0.155 * s], rot: [0, 14 * s, 0], seg: 12 })));
+  // disco facial cinza-claro em volta do olho + sobrancelha escura franzida por cima: cara de rapina
+  par((_, s) => rig.add('cabeca', blob([0.085, 0.07, 0.03], m.luz(1), { pos: [0.07, 0.02, 0.155 * s], rot: [0, 14 * s, 0], seg: 12 }),
+    blob([0.08, 0.022, 0.03], m.sombra(1), { pos: [0.09, 0.075, 0.15 * s], rot: [0, 12 * s, -18], seg: 10 })));
   // cera clara na base do bico
   rig.add('cabeca', blob([0.06, 0.05, 0.06], m.luz(3), { pos: [0.16, -0.01, 0], seg: 10 }));
   // garras escuras gordinhas nas pontas dos dedos

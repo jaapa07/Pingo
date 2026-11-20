@@ -717,6 +717,25 @@ teste('condições: nome de flag com dois-pontos é lido inteiro (`flag:venceu:A
   } finally { jogo.save = antes; }
 });
 
+/* ============================== 8b. Torre de Desafios (spec 10A item 35) ============================== */
+teste('pedido com semExp: a equipe do jogador vence sem ganhar experiência nem esforço (com o padrão, ganha)', () => {
+  const t: TreinadorDef = { id: 'torre', classe: 'Desafiante', nome: 'Teste', sprite: 'x', equipe: [{ e: 9005, nv: 5 }], ia: 'novato', desafio: '', derrota: '', premio: 0 };
+  // síncrono (prepararBatalha + piloto padrão): não emite 'batalha-fim', para não cruzar com o teste do iniciarBatalha
+  const rodar = (semExp: boolean) => {
+    jogo.save = novoSave(); rng.seed(77); jogo.save.equipe = [neutra(9001, 50)];
+    const exp0 = jogo.save.equipe[0].exp, esf0 = JSON.stringify(jogo.save.equipe[0].esf);
+    const c = prepararBatalha({ tipo: 'treinador', treinador: t, inimigos: [criarDeMembro(t.equipe[0], t.nome)], arena: 'teste', semExp });
+    pilotoPadrao(c);
+    return { r: c.resultado, ganhou: jogo.save.equipe[0].exp - exp0, esf: JSON.stringify(jogo.save.equipe[0].esf) !== esf0 };
+  };
+  const antes = jogo.save;
+  try {
+    const sem = rodar(true), com = rodar(false);
+    igual(sem.r, 'vitoria', 'vence a Torre'); igual(sem.ganhou, 0, 'sem experiência'); igual(sem.esf, false, 'sem esforço');
+    afirmar(com.ganhou > 0, 'sem a opção, a mesma vitória dá experiência');
+  } finally { jogo.save = antes; }
+});
+
 /* ============================== 9. regras do projeto ============================== */
 teste('regras do projeto: acaso só pelo rng e nenhuma palavra proibida nos arquivos de batalha', () => {
   const arquivos = [...readdirSync(join(RAIZ, 'src/battle')).filter((f) => f.endsWith('.ts')).map((f) => 'src/battle/' + f), 'src/data/golpes.ts', 'src/data/tabela-tipos.ts', 'src/data/itens.ts', 'src/data/personalidades.ts', 'tools/test-batalha.ts'];

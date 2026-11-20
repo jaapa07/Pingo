@@ -82,6 +82,8 @@ const zona: ZonaDef = {
     { id: 'a6-marinheiro-2', sprite: 'npc-marinheiro', ...g.p('a'), dir: 'o', se: 'flag:farol-ok', fala: ['O farol voltou a varrer a baía! Já dá para ver as pedras do canal de novo.', 'Ouvi dizer que você subiu lá e desceu com o Lampião. Com ele, a Gruta Breu de Cidade Coral deixa de ser breu.'] },
     { id: 'a6-senhora', sprite: 'npc-idosa', ...g.p('h'), fala: ['O Volta é um gênio, mas esquece a chave até do próprio ginásio.', 'Tipo Trovão morre de medo de Terra. O resto ele eletrocuta e pede desculpa depois.'] },
     { id: 'a6-radialista', sprite: 'npc-homem-3', ...g.p('j'), mov: 'olhar', script: 'a2-m-radio' },
+    // Quiz do Rádio (spec 10A item 31): a locutora do Rádio Cipó grava o quiz na Rádio Farol (src/data/eventos/regras.ts)
+    { id: 'a6-locutora', sprite: 'npc-mulher-3', x: 29, y: 26, dir: 'o', script: 'quiz-radio' },
     { id: 'A6-1', sprite: 'cl-crianca-f', ...g.p('1'), dir: 's', treinador: 'A6-1', visao: 3 },
     { id: 'A6-2', sprite: 'capanga-f', ...g.p('2'), dir: 'o', se: '!flag:farol-ok', treinador: 'A6-2', visao: 2 },
     { id: 'A6-3', sprite: 'capanga-m', ...g.p('3'), dir: 'o', se: '!flag:farol-ok', treinador: 'A6-3', visao: 2 },

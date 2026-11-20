@@ -43,6 +43,7 @@ const zona: ZonaDef = {
   id: 'A-R5', nome: 'Encosta da Fumaça', mapa: 'A', tipo: 'rota', tileset: 'serra', musica: 'rota-dia-A', arena: 'mata', passo: 7,
   mapaChars: g.mapa,
   objetos: [
+    { o: 'cuieira', x: 19, y: 11, cor: 'preta', script: 'cuieira' }, // cuieira (spec 10A-6, src/data/eventos/captura.ts)
     { o: 'placa', ...g.p('s'), texto: 'ENCOSTA DA FUMAÇA\n← Serra Fumaça · Vila Ferrugem →\nCuidado: rocha rachada na pista. Quem não quebra, não passa.' },
     { o: 'placa', ...g.p('q'), texto: 'VILA FERRUGEM a 50 passos.\n"Cidade operária: aqui até o galo canta em turno."' },
     { o: 'araucaria', x: 5, y: 6 }, { o: 'araucaria', x: 20, y: 3 }, { o: 'araucaria', x: 30, y: 16 }, { o: 'araucaria', x: 44, y: 25 }, { o: 'araucaria', x: 58, y: 21 }, { o: 'araucaria', x: 72, y: 20 }, { o: 'araucaria', x: 83, y: 12 },

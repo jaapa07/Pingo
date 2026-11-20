@@ -9,7 +9,7 @@ export const paletaUca = {
   rampas: [
     ['#873838', '#d96f38', '#f9ba62'], // 0 carapaça ferrugem
     ['#b79880', '#f4e2c0', '#fffaf0'], // 1 creme do ventre e da ponta das pinças
-    ['#38224e', '#6e498f', '#aa8aca'], // 2 patas roxas
+    ['#3a2152', '#7a4f9e', '#c3a2e0'], // 2 patas e pinças roxas
     ['#3a6a82', '#74bccb', '#dcf5f9'], // 3 espuma do mangue
   ] as [string, string, string][],
   contorno: '#2a1630',
@@ -27,12 +27,16 @@ export const tarsos = { desmaio: Object.fromEntries(['d', 'e'].flatMap((l) => [1
 function build() {
   const { rig } = aracnideo({
     corpo: [0.26, 0.23, 0.36], alt: 0.2, patas: { pares: 4, abre: 0.22, r: 0.055, joelho: 0.09 },
-    pincas: { braco: 0.16, r: 0.065, garra: [0.15, 0.125, 0.1], abre: 24 }, pedunculo: 0.13,
-    olho: { r: 0.045, pos: [0, 0, 0] },
-    rampas: { corpo: 0, barriga: 1, patas: 2, pontas: 2, pincas: 0 },
+    pincas: { braco: 0.2, r: 0.07, garra: [0.16, 0.13, 0.1], abre: 70 }, pedunculo: 0.19,
+    olho: { r: 0.05, pos: [0, 0, 0] },
+    rampas: { corpo: 0, barriga: 1, patas: 2, pontas: 2, pincas: 2 },
   });
   // pinça da frente (lado da câmera) maior, com ponta creme
-  rig.bones.garra_e.scale.setScalar(1.45); rig.bones.pinca_e.rotation.z = 0.62; rig.bones.pinca_d.rotation.z = 0.42;
+  rig.bones.garra_e.scale.setScalar(1.05); rig.bones.garra_d.scale.setScalar(1.4);
+  rig.bones.pinca_e.rotation.z = 0.2; rig.bones.pinca_d.rotation.z = 0.45;
+  rig.bones.garra_e.rotation.z = 0.9; rig.bones.garra_d.rotation.z = 0.8; // pinças erguidas: o "V" de caranguejo bravo
+  // carapaça mais alta e abaulada (lê como casco, não como tábua)
+  rig.add('corpo', blob([0.22, 0.12, 0.3], m(0), { pos: [0.0, 0.14, 0], seg: 14 }));
   par((l, s) => {
     rig.add('dedo_' + l, blob([0.05, 0.03, 0.04], m.plano(1), { pos: [0.09, -0.012, 0], seg: 8 }));
     rig.add('garra_' + l, blob([0.06, 0.035, 0.045], m.plano(1), { pos: [0.3, 0.02, 0], seg: 8 }));
@@ -51,12 +55,23 @@ function build() {
   return rig;
 }
 
-const anims = animsAracnideo({ u: 0.5, alt: 0.2, pares: 4, mole: 0.9 }, {
+/** Caranguejo anda de lado e é largo: na batalha a câmera fica quase de frente (o kit usa 3/4, que esconde as pinças). */
+export function deFrente(a: ReturnType<typeof animsAracnideo>, yaw = -34, pitch = 20) {
+  for (const an of Object.values(a.frente)) { an.yaw = yaw; an.pitch = pitch; }
+  for (const an of Object.values(a.costas)) { an.yaw = 180 + yaw * 0.6; an.pitch = 28; }
+  return a;
+}
+
+/** Desmaio: patas cedem e as pinças caem para a frente (o kit as abre para fora da célula). */
+export const desmaioUca = { ...tarsos.desmaio, pinca_d: qr([[0, 0, 0], [0, 6, 0], [0, 16, 0], [0, 30, 0], [0, 28, 0]]), pinca_e: qr([[0, 0, 0], [0, -6, 0], [0, -16, 0], [0, -30, 0], [0, -28, 0]]) };
+
+const anims = deFrente(animsAracnideo({ u: 0.5, alt: 0.2, pares: 4, mole: 0.9 }, {
   ...tarsos,
+  desmaio: desmaioUca,
   idle: bolhas(['espuma1', 'espuma2']),
   status: bolhas(['espuma1', 'espuma2']),
   especial: { espuma1: qs([1, 1.4, 1.8, 2.6, 1.5, 1]), espuma2: qs([1, 1.5, 2, 3, 1.6, 1]) },
-});
+}));
 
 export const caranguejim = criatura({
   num: 35, id: 'caranguejim', nome: 'Caranguejim', porte: 'P', estagio: 'basico', paleta: paletaUca, build, anims,

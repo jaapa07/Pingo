@@ -63,9 +63,11 @@ Itens de cura em batalha (spec 7A): rival, líderes e chefes só usam do 8º gin
 | A-MT topo → PP (lado A) | PP em (6, 52) 'n'; volta: A-MT em (20, 3) 's' |
 | B-R4 → PP (lado B) | PP em (34, 52) 'n'; volta: B-R4 em (24, 3) 's' |
 | B5 ↔ B-TA, B-TA ↔ B6 | mesmo time (B2-sul) |
-| **B7 ↔ B-R5** (borda norte de B7, tiles (24..25, 0); portão `insignia:14` do lado de B7) | B-R5 em (15, 78) 'n' (proposta do B2-sul para um B-R5 30×80: o tile logo acima da borda sul; se o B2-norte usar outro tamanho/coluna, troque o número AQUI que o B2-sul ajusta o warp); volta: B7 em (24, 1) 's' |
-| **B7 ↔ B-SG** (borda oeste de B7, tiles (0, 19..20)) | B-SG em (58, 20) 'o' (proposta para um B-SG 60 de largura: o tile logo à esquerda da borda leste; troque aqui se for outro); volta: B7 em (1, 19) 'l' |
-| **B7 ↔ B-LG** (borda leste de B7, tiles (49, 19..20)) | B-LG em (1, 20) 'l'; volta: B7 em (48, 19) 'o' |
+| **B7 ↔ B-R5** (borda norte de B7, tiles (24..25, 0); portão `insignia:14` do lado de B7) | **B-R5 em (1, 16) 'l'** (B2-norte, 20/11: o B-R5 é 90×34 e corre de oeste para leste; a entrada é a borda oeste, tiles (0, 16..17), e o Guarda da Névoa repete o portão `insignia:14&amuleto:lampiao` em (5, 16..17)); volta: B7 em (24, 1) 's' |
+| **B7 ↔ B-SG** (borda oeste de B7, tiles (0, 19..20)) | **B-SG em (6, 38) 'n'** (B2-norte, 20/11: o B-SG é 70×40 e a saída para B7 é a borda sul, tiles (6..7, 39)); volta: B7 em (1, 19) 'l' |
+| **B7 ↔ B-LG** (borda leste de B7, tiles (49, 19..20)) | **B-LG em (24, 42) 'n'** (B2-norte, 20/11: a B-LG é 50×44 e a saída para B7 é a borda sul, tiles (24..25, 43)); volta: B7 em (48, 19) 'o' |
+| B-SG ↔ B-LG, B-R5 ↔ B8 ↔ B-FA, PP ↔ PP-conselho/PP-gruta | mesmo time (B2-norte); B8 recebe de B-R5 em (1, 19); B-FA recebe de B8 em (30..31, 58) |
+| **B-R4 → PP: pedido do B2-norte** | ponha `requer: 'insignias:16'` (com `recusa`) no warp de B-R4 para o Pico, como o A-MT já faz: sem isso, quem tem 14 insígnias sobe ao acampamento (o Portão dos Guardiões segura, e a descida do Pico para A-MT exige 16, então não há atalho; é só coerência) — **feito pelo B2-sul (20/11)**: o warp de B-R4 (24, 2) → PP tem `requer: 'insignias:16'` + `recusa`, e o Guia do Pico (portão em (24, 9), ao pé da trepadeira) pede o mesmo |
 | B6 → B-R4 → B7 | mesmo time (B2-sul): B6 (24, 0) ↔ B-R4 (24, 68); B-R4 borda norte (38..39, 0) ↔ B7 (24..25, 38) |
 
 ## Times de zonas

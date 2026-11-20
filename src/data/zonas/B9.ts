@@ -60,6 +60,8 @@ const zona: ZonaDef = {
     gente(g, '6', 'b9-estivadora', 'npc-mulher-4', 'Estivadora Cida', { dir: 'n', mov: 'olhar', fala: ['Carreguei caixote do Cartel sem saber o que tinha dentro. Um caixote miou. Outro grasnou.', 'Larguei o serviço no mesmo dia. Agora só carrego peixe. Peixe não reclama.'] }),
     gente(g, '7', 'b9-guarda', 'npc-homem-2', 'Guarda Ambiental Sebastião', { dir: 'o', se: 'flag:pantanal-ok', fala: ['Porteira aberta! O tenente Arame saiu do ninhal correndo, e o Cartel com ele.', 'Mas ouvi no rádio que levaram as gaiolas para a Chapada Rubra, para a mina velha. Cuidado na estrada.'] }),
     gente(g, '8', 'b9-pescadora', 'cl-pescador', 'Pescadora Lambari', { dir: 's', fala: ['Do cais dá Piranhão e Dourado-Rei na Vara Boa. No canal, de noite, até Arraião.', 'Água boa de pesca é água calma. Água calma do Pantanal é aquela que tem jacaré dormindo em cima.'] }),
+    // missão "A Expedição Boreal" (Borealce, spec 6.5): navio encalhado e roteiro em src/data/eventos/visitantes.ts
+    { id: 'vis-solveig', sprite: 'cl-biologa', x: 30, y: 24, dir: 's', se: 'flag:conselho-vencido', script: 'vis-solveig' },
   ],
   itens: [item(g, 'k', 'pedra-solar'), item(g, 'j', 'cuia-rapida', 2, true), item(g, 'z', 'pt-34')],
   habitats: [

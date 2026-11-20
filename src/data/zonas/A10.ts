@@ -74,6 +74,8 @@ const zona: ZonaDef = {
     entrada(g, 'B', 'casa-palafita', 'A10-casa-2', 5, 7),
   ],
   npcs: [
+    // Parque Safári (spec 10A item 33): a viveirista dá a Muda de Buriti depois da Liga (src/data/eventos/posliga.ts)
+    { id: 'safari-viveirista', sprite: 'npc-mulher-2', x: 19, y: 21, dir: 'o', se: 'flag:liga-vencida', script: 'safari-da-muda' },
     gente(g, '1', 'a10-menina', 'cl-crianca-f', 'Juçara', { mov: 'vagar', fala: ['Quando eu crescer vou subir o Platô e ganhar do Cacique Aracê!', 'Minha mãe disse que primeiro eu tenho de ganhar da tabuada.'] }),
     gente(g, '2', 'a10-vaqueiro', 'cl-vaqueiro', 'Vaqueiro Aboio', { mov: 'olhar', fala: ['Na Liga são cinco lutas de enfiada: quatro Mestres e o Campeão. Entrou, não tem porteira de volta.', 'Lá dentro ninguém cura criatura de graça. Encha a mochila de Garrafada e Elixir aqui na Venda.'] }),
     gente(g, '3', 'a10-velha', 'npc-idosa', 'Dona Carandá', { fala: ['A líder do ginásio só luta com criatura do tipo Mata. Fogo, geada, bicada e veneno incomodam as plantas dela.', 'Mas ela deixa o chão crescer no meio da luta. Não se demore, que o cipó sobe.'] }),
