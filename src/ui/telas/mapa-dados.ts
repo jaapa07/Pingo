@@ -101,7 +101,7 @@ export const LOCAIS: Local[] = [
   L('A-RS', 'Recife Submerso', 13, 27, 'agua', 'Corais sob a Baía Azul.'),
   L('A-MT', 'Monte Tupã', 29, 5, 'serra', 'Paredões, grutas e cascatas.'),
   L('A9', 'Aldeia Tupã', 32, 2, 'cidade', 'Aldeia no topo do monte.', 16),
-  L('B1', 'Vila Buriti', 10, 23, 'cidade', 'Estação do trem e quintal da Drª Buriti.', 4),
+  L('B1', 'Vila Cascavel', 10, 23, 'cidade', 'Estação do trem e Salão da Raizeira.', 4),
   L('B-R1', 'Vereda dos Buritis', 13, 21, 'rota', 'Palmeiras em fila ao longo do brejo.'),
   L('B-CE', 'Cerrado Aberto', 17, 19, 'rota', 'Cupinzeiros, ipês e emas.'),
   L('B-PA', 'Pantanal Alagado', 21, 23, 'agua', 'Água rasa a perder de vista.'),

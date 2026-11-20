@@ -9,7 +9,7 @@
 > - **Usina (`usina-ok`, após a insígnia 3):** religa a energia do cais e da estação; **não dá mais o Passe do Trem**. A estação reabre, mas o maquinista só embarca quem tem `flag:liga-vencida` ("linha da serra só para Campeões").
 > - **Liga (`liga-vencida`):** dá `item:passe-trem` e `item:bilhete-saveiro`. Trem A4↔B1, Saveiro A5↔B9 e a trilha do Pico exigem `flag:liga-vencida`. O Farol dá só o Lampião.
 > - **Rival:** 1 lab · 2 A3 · 3 A4 (gatilho: `flag:usina-ok&!flag:rival-3`, antes de zarpar) · **4 Farol A6** · **5 Platô, logo depois da Liga** · 6 B4 · 7 B7 · 8 Pico.
-> - **Times:** A1 fica com A10 (+ginásio é do time de ginásios: `A10-ginasio`), A-R7 e A-LG (zona, 5 treinadores da Liga em `src/data/treinadores/liga.ts`, evento em `src/data/eventos/liga.ts`). Ligação **A8 ↔ A-R7**: A-R7 chega em (1, 15) vindo de A8; A8 recebe em (58, 15) (saída leste de A8, bloqueada por pedregulhos de Força). B1 não tem mais ginásio (o prédio vira o "Salão da Raizeira", sem insígnia) e `inicial-extra-1` passa para a Drª Buriti em A10 (após a insígnia 8).
+> - **Times:** A1 fica com A10 (+ginásio é do time de ginásios: `A10-ginasio`), A-R7 e A-LG (zona, 5 treinadores da Liga em `src/data/treinadores/liga.ts`, evento em `src/data/eventos/liga.ts`). Ligação **A8 ↔ A-R7**: A-R7 chega em (1, 15) vindo de A8; A8 recebe em (58, 15) (saída leste de A8, bloqueada por pedregulhos de Força). B1 passa a se chamar **Vila Cascavel** (decisão do usuário; "Vila Buriti" é a A10), não tem mais ginásio (o prédio vira o "Salão da Raizeira", sem insígnia) e `inicial-extra-1` passa para a Drª Buriti em A10 (após a insígnia 8).
 > - Arquivos de ginásio são numerados pela **insígnia nova** (`ginasio-04` = Encanto … `ginasio-08` = Mata).
 
 Base: spec seções 4.4, 4.5 (ordem), 5 (ginásios e Liga dos Guardiões), 7A, 9 (personagens e eventos), 10. Tom: aventura ensolarada, humor brasileiro, conservação.
@@ -56,7 +56,7 @@ Itens de cura em batalha (spec 7A): rival, líderes e chefes só usam do 8º gin
 | A-BA ↔ A4 (cais sul de A4; exige `amuleto:remo&flag:usina-ok`) | A-BA em (4, 20); A4 em (30, 43) |
 | A8 ↔ A-R7 (saída leste de A8, fechada por pedregulhos de Força) | A-R7 em (1, 15) olhando 'l'; volta: A8 em (58, 15) olhando 'o' |
 | A-R7 ↔ A10 ↔ A-LG | mesmo time (A1): A10 em (1, 15) vindo da estrada; A-LG em (15, 68) vindo de A10; A10 em (21, 1) descendo do Platô |
-| A4 estação ↔ B1 estação (trem; `flag:liga-vencida&item:passe-trem`) | zona `A4-estacao` (time A1) plataforma em (8, 6); `B1-estacao` (time B1) plataforma em (8, 6); o warp `trem` fica no vagão |
+| A4 estação ↔ B1 estação de Vila Cascavel (trem; `flag:liga-vencida&item:passe-trem`) | zona `A4-estacao` (time A1) plataforma em (8, 6); `B1-estacao` (time B1) plataforma em (8, 6); o warp `trem` fica no vagão |
 | A5 cais ↔ B9 cais (saveiro; `flag:liga-vencida&item:bilhete-saveiro`) | A5 em (30, 34) olhando 'n'; B9 em (10, 24) olhando 'n' |
 | B4 → B-R3 (borda leste) | B-R3 em (1, 14) 'l'; volta: B4 em (48, 16) 'o' |
 | A-MT topo → PP (lado A) | PP em (6, 52) 'n'; volta: A-MT em (20, 3) 's' |
@@ -66,5 +66,5 @@ Itens de cura em batalha (spec 7A): rival, líderes e chefes só usam do 8º gin
 ## Times de zonas
 - **A1**: A1 (+quarto, casa, lab, casas), A-R1, A2, A-R2, A-MS, A3, A-R3, A-GE, A4 (+estação, mercado), **A-R7, A10 (+posto, venda, lab da Drª Buriti, casas), A-LG (+posto, venda)**, a ABERTURA completa do jogo e a **Liga dos Guardiões** (`treinadores/liga.ts`, `eventos/liga.ts`).
 - **A2**: A-R4, A-US, A-BA, A5, A6 (+farol), A-PR, A-MG, A-GB, A7, A-R5, A-R6, A8, A-RS, A-MT, A9.
-- **B1**: B1 (+estação; sem ginásio — o prédio é o "Salão da Raizeira"), B-R1, B-CE, B-PA, B2, B9, B-R2, B3 (+mina), B-CH, B-CV, B4.
+- **B1**: B1 **Vila Cascavel** (+estação; sem ginásio — o prédio é o "Salão da Raizeira"), B-R1, B-CE, B-PA, B2, B9, B-R2, B3 (+mina), B-CH, B-CV, B4.
 - **B2**: B-R3, B5, B-TA, B6 (+laboratório do Cartel), B-VV, B-R4, B7, B-SG, B-LG, B-R5, B8, B-FA, PP (Pico Pindorama: Portão, Garrote, salas do Conselho, créditos).
