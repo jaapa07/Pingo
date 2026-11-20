@@ -245,6 +245,25 @@ export async function abrir(o = {}) {
     (t.treinoExtra ??= []).push(extra); t.log('  TREINO EXTRA', extra);
   };
 
+  /**
+   * Remédio fora de batalha (dentro de ginásio, entre um treinador e outro): gasta Chá/Garrafada da mochila na criatura
+   * mais forte abaixo de 60%. ATALHO DECLARADO: o efeito é aplicado direto no estado (vida += cura, item −1), igual ao
+   * que Menu → Mochila → Usar faz; o caminho pelo menu é coberto pelo roteiro de integração e pelo QA do trecho 2.
+   */
+  t.remedios = async () => {
+    const usados = await ev(async () => {
+      const { jogo } = await import('/src/core/estado.ts'); const { atributos } = await import('/src/battle/criatura.ts'); const { item } = await import('/src/data/itens.ts');
+      const s = jogo.save, u = [];
+      const eq = s.equipe.filter((c) => !c.ovo && c.vida > 0).sort((a, b) => b.nivel - a.nivel).slice(0, 2);
+      for (const c of eq) for (let k = 0; k < 4; k++) {
+        const max = atributos(c).vida; if (c.vida / max >= 0.6) break;
+        const id = ['cha-cidreira', 'garrafada', 'elixir-andiroba'].find((i) => (s.mochila[i] ?? 0) > 0 && (i !== 'elixir-andiroba' || c.vida / max < 0.3)); if (!id) break;
+        const cura = item(id).uso.cura; c.vida = cura === 'total' ? max : Math.min(max, c.vida + cura); s.mochila[id]--; if (!s.mochila[id]) delete s.mochila[id]; u.push(id);
+      }
+      return u;
+    });
+    if (usados.length) { t.remediosFora = (t.remediosFora ?? 0) + usados.length; t.log('  remédios entre batalhas: ' + usados.join(', ')); }
+  };
   t.curarSePreciso = async () => { const h = await t.saude(); if (h.caidos || h.frac < 0.999) await t.curar(); };
   /** anda pela grama alta da zona até a equipe ter `tamanho` criaturas (capturando espécies novas) ou `maxBatalhas` */
   t.cacar = async (zona, tamanho, maxBatalhas = 30) => {

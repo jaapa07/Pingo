@@ -205,7 +205,7 @@ const etapas = {
       await t.foto('buriti-estrada'); await limpar({ forca: true });
       { const s = await Qr(() => window.Q.irZonaForca('A10')); await t.exige(s.zona === 'A10', 'chegou a Vila Buriti'); } await t.foto('a10-chegada');
       await cidade('A10', MANT2); await limpar();
-    }, { treino: async () => { await viajar('A-R7'); await Qr(() => window.Q.passear(8)); } });
+    }, { treino: async () => { await viajar('A-R5'); await Qr(() => window.Q.passear(8)); await viajar('A8'); } });
     await t.checkpoint('vila-buriti');
   },
   async gin8() {

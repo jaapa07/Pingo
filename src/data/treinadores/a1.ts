@@ -3,7 +3,9 @@ import type { TreinadorDef, MembroEquipe } from '../../core/tipos';
 /**
  * Treinadores do time A1 (Costa do Sol, passos 1–3): Trilha do Ipê, Campos de Restinga, Mata dos Sabiás, Bosque Alto,
  * Trilha dos Cipós, Gruta do Eco e Porto Sereia — e os três primeiros duelos com a rival Tainá.
- * Curva (tabela 4.5, ás dos líderes 12 / 17 / 22; rotas = ás −2 a −6): líder 2 → nv 11–15 · líder 3 → nv 16–20.
+ * Curva (tabela 4.5; rotas = ás do PRÓXIMO líder −2 a −7): líder 2 → Campos de Restinga nv 8–10, Mata dos Sabiás 10–13,
+ * Bosque Alto 10–12 · líder 3 → nv 16–20. Os Campos e a Mata desceram 3 e 2 níveis no jogo honesto: quem sai do 1º ginásio
+ * tem o inicial no nv 11–12 e capturas de nv 3–7, e com a faixa 11–15 perdia para 5 dos 8 treinadores dos Campos.
  * Exceção assumida: a Trilha do Ipê vai de nv 2 a 6, porque o jogador a atravessa pela primeira vez só com o inicial no nv 5,
  * sem cuias nem remédios (jogo honesto: com 3–8, Mata perdia 94% para a 2ª treinadora e todos perdiam para a 5ª e o 6º).
  * Os três do caminho (1–3) dão ≥ 90% para qualquer inicial no nv 5; os três de fora do caminho (4–6) só chegam à trilha
@@ -20,9 +22,9 @@ const TRILHA_DO_IPE: TreinadorDef[] = [
     'Sempre alerta! E alerta vermelho: treinador novato na trilha!', 'Vou perder a medalha de vigia.', 'As saliências só se pulam para baixo. Para subir, dá a volta pelo caminho.'),
   t('A-R1-3', 'Pipeira', 'Naná', 'cl-crianca-f', [{ e: 13, nv: 4 }], 80,
     'A minha Cotiazinha rói até casca de coco. Quer ver?', 'Ela roeu foi a corda…', 'Dizem que no canteiro ali de cima o fruto cresce mais rápido se regar.'),
-  t('A-R1-4', 'Observadora de Aves', 'Dona Íris', 'cl-observadora', [{ e: 45, nv: 5 }, { e: 10, nv: 5 }, { e: 10, nv: 5 }], 160,
+  t('A-R1-4', 'Observadora de Aves', 'Dona Íris', 'cl-observadora', [{ e: 45, nv: 4 }, { e: 10, nv: 5 }], 160,
     'Psiu! Você espantou o Quero-querinho que eu estava anotando. Agora vai ter que batalhar com ele.', 'Anotado: "treinador promissor, 1 exemplar".', 'De noite a trilha muda: sai o Pipirim, entra o Gambazinho. E a Corujinha, se você tiver sorte.'),
-  t('A-R1-5', 'Mateira', 'Jacira', 'cl-mateira', [{ e: 13, nv: 5 }, { e: 20, nv: 6 }, { e: 13, nv: 6 }], 192,
+  t('A-R1-5', 'Mateira', 'Jacira', 'cl-mateira', [{ e: 13, nv: 5 }, { e: 20, nv: 6 }], 192,
     'Estou guardando o canteiro. E guardando umas batalhas para quem passa.', 'Pois é. Guardei mal.', 'Gambazinho finge de morto quando perde. Não se preocupe, ele levanta sozinho.'),
   t('A-R1-6', 'Pescador', 'Seu Lambari', 'cl-pescador', [{ e: 37, nv: 6 }], 144,
     'Peixe hoje não deu. Vai ter que dar batalha!', 'Nem peixe, nem vitória. Que dia.', 'Vila Caiçara é logo ali. O ginásio de lá é do tipo Vento: Trovão e Pedra resolvem.'),
@@ -30,49 +32,49 @@ const TRILHA_DO_IPE: TreinadorDef[] = [
 
 /* ------------------------------ A-R2 · Campos de Restinga ------------------------------ */
 const CAMPOS_DE_RESTINGA: TreinadorDef[] = [
-  t('A-R2-1', 'Escoteira', 'Violeta', 'cl-escoteira', [{ e: 16, nv: 11 }, { e: 13, nv: 11 }], 216,
+  t('A-R2-1', 'Escoteira', 'Violeta', 'cl-escoteira', [{ e: 16, nv: 8 }, { e: 13, nv: 8 }], 216,
     'Acampei aqui para ganhar a medalha de duna. Ganhar de você vale outra!', 'Fico só com a de duna, então.', 'Lagartim evolui cedo, no nível 7, e vira Casulim. O meu já está no casulo, treinando para borboleta.'),
-  t('A-R2-2', 'Pipeiro', 'Tatu-Bolinha', 'cl-crianca-m', [{ e: 33, nv: 11 }], 144,
+  t('A-R2-2', 'Pipeiro', 'Tatu-Bolinha', 'cl-crianca-m', [{ e: 33, nv: 8 }], 144,
     'Meu apelido é por causa do meu Tatuzim. Ele se enrola e eu também!', 'A gente se enrolou feio.', 'Tatuzim é do tipo Terra: choque de Trovão nem faz cócegas nele.'),
-  t('A-R2-3', 'Observadora de Aves', 'Dona Garça', 'cl-observadora', [{ e: 10, nv: 11 }, { e: 45, nv: 11 }, { e: 47, nv: 12 }], 320,
+  t('A-R2-3', 'Observadora de Aves', 'Dona Garça', 'cl-observadora', [{ e: 10, nv: 8 }, { e: 45, nv: 8 }, { e: 47, nv: 9 }], 320,
     'Avistei um Beija-florzim neste capim. Ele é meu — e você também vai ser, de freguês.', 'Voou tudo.', 'Beija-florzim só aparece de dia e é raro. Dizem que uma Pedra Solar faz ele mudar.'),
-  t('A-R2-4', 'Surfista', 'Maré-Mansa', 'cl-surfista', [{ e: 41, nv: 12 }, { e: 37, nv: 12 }], 280,
+  t('A-R2-4', 'Surfista', 'Maré-Mansa', 'cl-surfista', [{ e: 41, nv: 9 }, { e: 37, nv: 9 }], 280,
     'Sem onda hoje, parceiro. Bora batalhar para não perder o costume.', 'Tomei um caldo em terra firme.', 'Essas dunas escondem coisa. Quem tem o Faro acha concha, fruto e até pergaminho.'),
-  t('A-R2-5', 'Mateira', 'Araci', 'cl-mateira', [{ e: 81, nv: 12 }, { e: 20, nv: 12 }], 320,
+  t('A-R2-5', 'Mateira', 'Araci', 'cl-mateira', [{ e: 81, nv: 9 }, { e: 20, nv: 9 }], 320,
     'Meu Jabutim anda devagar, mas chega. E quando chega, você vai ver!', 'Chegou atrasado.', 'Jabutim é Mata e Pedra: aguenta muita pancada, mas golpe de Ginga racha o casco.'),
-  t('A-R2-6', 'Capoeirista', 'Mestre Pezinho', 'cl-capoeirista', [{ e: 13, nv: 12 }, { e: 41, nv: 13 }], 396,
+  t('A-R2-6', 'Capoeirista', 'Mestre Pezinho', 'cl-capoeirista', [{ e: 13, nv: 9 }, { e: 41, nv: 10 }], 396,
     'Na areia fofa o jogo é outro. Entra na roda, camará!', 'Caí no rolê.', 'Calanguinho gosta de sol a pino. De noite ele some e a restinga fica do Gambazinho.'),
-  t('A-R2-7', 'Bióloga', 'Drª Aroeirinha', 'cl-biologa', [{ e: 149, nv: 12 }, { e: 27, nv: 13 }], 440,
+  t('A-R2-7', 'Bióloga', 'Drª Aroeirinha', 'cl-biologa', [{ e: 149, nv: 9 }, { e: 27, nv: 10 }], 440,
     'Estou catalogando o que cai dos cajueiros. Você acabou de cair na minha amostra!', 'Dado descartado.', 'Jataí e Pintinhas só caem das árvores de dia. De noite, quem cai é coisa de focinho comprido.'),
-  t('A-R2-8', 'Pipeira', 'Sabiazinha', 'cl-crianca-f', [{ e: 15, nv: 11 }, { e: 16, nv: 12 }], 200,
+  t('A-R2-8', 'Pipeira', 'Sabiazinha', 'cl-crianca-f', [{ e: 15, nv: 8 }, { e: 16, nv: 9 }], 200,
     'A Mata dos Sabiás é logo ali, mas antes tem eu!', 'Tá, pode passar.', 'Lá dentro é um labirinto. Minha dica: vá pelo sul, depois leste, depois norte. Ou era o contrário?'),
 ];
 
 /* ------------------------------ A-MS · Mata dos Sabiás ------------------------------ */
 const MATA_DOS_SABIAS: TreinadorDef[] = [
-  t('A-MS-1', 'Mateira', 'Sumaúma', 'cl-mateira', [{ e: 95, nv: 14 }, { e: 22, nv: 14 }, { e: 16, nv: 14 }], 480,
+  t('A-MS-1', 'Mateira', 'Sumaúma', 'cl-mateira', [{ e: 95, nv: 12 }, { e: 22, nv: 12 }, { e: 16, nv: 12 }], 480,
     'Quase na saída, hein? Quase. Antes passa por mim.', 'Passou. E com folga.', 'Bosque Alto é subindo por aqui. A líder de lá, Dona Seda, tece armadilha com criatura do tipo Inseto.'),
-  t('A-MS-2', 'Pipeira', 'Flor-de-Maio', 'cl-crianca-f', [{ e: 13, nv: 12 }, { e: 15, nv: 12 }], 200,
+  t('A-MS-2', 'Pipeira', 'Flor-de-Maio', 'cl-crianca-f', [{ e: 13, nv: 10 }, { e: 15, nv: 10 }], 200,
     'Me perdi faz duas horas, mas não conta para ninguém. Batalha comigo?', 'Perdida e derrotada. Que tarde.', 'Se pular a saliência do capinzal lá de cima, cai bem aqui. É atalho só de vinda.'),
-  t('A-MS-3', 'Escoteira', 'Bromélia', 'cl-escoteira', [{ e: 95, nv: 13 }, { e: 59, nv: 13 }], 396,
+  t('A-MS-3', 'Escoteira', 'Bromélia', 'cl-escoteira', [{ e: 95, nv: 11 }, { e: 59, nv: 11 }], 396,
     'Este corredor é o único caminho para o leste. Pedágio: uma batalha!', 'Pedágio devolvido.', 'Ouriço-Mirim só sai de noite. De dia ele vira uma bola de espinho e ronca.'),
-  t('A-MS-4', 'Bióloga', 'Drª Imbaúba', 'cl-biologa', [{ e: 157, nv: 14 }, { e: 17, nv: 14 }], 528,
+  t('A-MS-4', 'Bióloga', 'Drª Imbaúba', 'cl-biologa', [{ e: 157, nv: 12 }, { e: 17, nv: 12 }], 528,
     'Achei um Louvadeuzim! Raro! Vou testar os reflexos dele em você.', 'Reflexos anotados: os seus são melhores.', 'Tem uma Coralzinha nesta mata. Muito, muito rara. Se vir anéis brilhando no capim, prepare a cuia.'),
-  t('A-MS-5', 'Pescador', 'Seu Traíra', 'cl-pescador', [{ e: 37, nv: 13 }, { e: 37, nv: 13 }, { e: 57, nv: 14 }], 432,
+  t('A-MS-5', 'Pescador', 'Seu Traíra', 'cl-pescador', [{ e: 37, nv: 11 }, { e: 37, nv: 11 }, { e: 57, nv: 12 }], 432,
     'O Lago Parado não dá peixe grande. Dá é raiva. Desconta comigo!', 'Hoje nem a raiva rendeu.', 'Tem uma ilhota no meio do lago com alguma coisa brilhando. Só de canoa.'),
-  t('A-MS-6', 'Capoeirista', 'Contramestre Cipó', 'cl-capoeirista', [{ e: 63, nv: 14 }, { e: 22, nv: 14 }], 468,
+  t('A-MS-6', 'Capoeirista', 'Contramestre Cipó', 'cl-capoeirista', [{ e: 63, nv: 12 }, { e: 22, nv: 12 }], 468,
     'Meu Bugiozinho treina ginga pendurado no galho. Vem pro jogo!', 'O galho quebrou.', 'Bugiozinho é do tipo Ginga. Com o Facão na mão, ele corta cipó que é uma beleza.'),
-  t('A-MS-7', 'Observadora de Aves', 'Dona Juriti', 'cl-observadora', [{ e: 49, nv: 14 }, { e: 43, nv: 14 }, { e: 10, nv: 15 }], 520,
+  t('A-MS-7', 'Observadora de Aves', 'Dona Juriti', 'cl-observadora', [{ e: 49, nv: 12 }, { e: 43, nv: 12 }, { e: 10, nv: 13 }], 520,
     'Tucaninho de dia, Corujinha de noite: eu não durmo, eu anoto. E batalho!', 'Preciso dormir.', 'Atrás desses cipós aqui embaixo tem um bosque fechado. Sem Facão, só olhando.'),
-  t('A-MS-8', 'Repentista', 'Zé Rima', 'cl-repentista', [{ e: 153, nv: 14 }, { e: 20, nv: 15 }], 572,
+  t('A-MS-8', 'Repentista', 'Zé Rima', 'cl-repentista', [{ e: 153, nv: 12 }, { e: 20, nv: 13 }], 572,
     'Neste beco sem saída / mora o verso e a peleja: / quem chegou perdido aqui / que vença ou que rasteje!', 'Fiquei sem rima / e sem criatura em cima.', 'Beco sem saída sempre tem tesouro. Regra de labirinto. Já olhou bem o chão?'),
 ];
 
 /* ------------------------------ A3 · Bosque Alto ------------------------------ */
 const BOSQUE_ALTO: TreinadorDef[] = [
-  t('A3-1', 'Capoeirista', 'Jogo-de-Dentro', 'cl-capoeirista', [{ e: 63, nv: 14 }, { e: 157, nv: 14 }], 520,
+  t('A3-1', 'Capoeirista', 'Jogo-de-Dentro', 'cl-capoeirista', [{ e: 63, nv: 12 }, { e: 157, nv: 12 }], 520,
     'Treino aqui no cantinho para não cair da passarela. Quer treinar junto?', 'Caí. Mas caí no chão firme.', 'Golpe de Ginga não funciona bem em Inseto. Contra a Dona Seda, eu só apanho.'),
-  t('A3-2', 'Pipeiro', 'Grilo', 'cl-crianca-m', [{ e: 15, nv: 12 }, { e: 16, nv: 13 }, { e: 153, nv: 13 }], 264,
+  t('A3-2', 'Pipeiro', 'Grilo', 'cl-crianca-m', [{ e: 15, nv: 10 }, { e: 16, nv: 11 }, { e: 153, nv: 11 }], 264,
     'Vou ser líder de ginásio de Inseto quando crescer! Começo por você!', 'Vou crescer mais um pouco.', 'Cigarrim canta tão alto que atordoa. Já o meu só canta de madrugada, na minha janela.'),
 ];
 

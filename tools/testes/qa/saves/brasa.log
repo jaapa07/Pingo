@@ -66,3 +66,95 @@ erros de console: []
 == checkpoint brasa-pre-lider-1: ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"] $2192
   ginásio 1, tentativa 1: equipe ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"]
   [batalha] g01-1 → vitoria · equipe 4:9,13:6,13:2,10:2 · A2-ginasio · $2472
+  [batalha] g01-2 → vitoria · equipe 4:9,13:7,13:2,10:2 · A2-ginasio · $2792
+  [batalha] g01-3 → vitoria · equipe 4:9,13:9,13:2,10:2 · A2-ginasio · $3152
+  [batalha] g01-4 → derrota · equipe 4:9,13:9,13:4,10:2 · A2-ginasio · $3152
+    turnos: Cotiazinha9 6/30 x Andorim7 24/24 → item cha-cidreira | Cotiazinha9 21/30 x Andorim7 24/24 → golpe encontrao | Cotiazinha9 16/30 x Andorim7 20/24 → golpe encontrao | Cotiazinha9 11/30 x Andorim7 16/24 → golpe encontrao | Cotiazinha9 6/30 x Andorim7 11/24 → golpe encontrao | Cotiazinha9 1/30 x Andorim7 7/24 → golpe encontrao | Cotiazinha2 14/14 x Andorim7 3/24 → golpe encontrao | Cotiazinha2 14/14 x Andorim7 2/24 → golpe encontrao | Cotiazinha4 10/19 x Ararinha8 26/26 → golpe encontrao
+  perdeu no ginásio 1 (tentativa 1)
+  [batalha] selvagem 45:3 → captura · equipe 4:9,13:9,13:4,10:2,45:3 · A-R1 · $1576
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.treinar (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:240:23) |     at async ginasio (/home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:51:21) 0 0
+resumo: 0
+treino extra: [] derrotas: 2 curas: 8
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de brasa-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: nada · sobrou $2192
+== checkpoint brasa-pre-lider-1: ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"] $2192
+  ginásio 1, tentativa 1: equipe ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"]
+  [batalha] g01-1 → vitoria · equipe 4:8,13:7,13:2,10:2 · A2-ginasio · $2472
+  saiu do ginásio para curar
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.irAte (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:167:23) |     at async t.viajar (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:190:17) 0 0
+resumo: 0
+treino extra: [] derrotas: 1 curas: 7
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de brasa-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (1 s)
+  compras em A2-venda: nada · sobrou $2192
+== checkpoint brasa-pre-lider-1: ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"] $2192
+  ginásio 1, tentativa 1: equipe ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"]
+  [batalha] g01-1 → vitoria · equipe 4:9,13:6,13:2,10:2 · A2-ginasio · $2472
+  [batalha] g01-2 → derrota · equipe 4:9,13:6,13:2,10:2 · A2-ginasio · $2472
+    turnos: Guaraxim9 21/29 x Garcinha6 22/22 → golpe encontrao | Guaraxim9 10/29 x Garcinha6 17/22 → golpe encontrao | Cotiazinha2 14/14 x Garcinha6 7/22 → golpe encontrao | Cotiazinha2 4/14 x Garcinha6 3/22 → golpe encontrao | Pipirim2 14/14 x Garcinha6 3/22 → golpe bicada
+  perdeu no ginásio 1 (tentativa 1)
+  [batalha] selvagem 45:3 → captura · equipe 4:9,13:6,13:2,10:2,45:3 · A-R1 · $1236
+FALHA page.waitForTimeout: Target page, context or browser has been closed |     at t.espera (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:50:27) |     at t.resolver (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:146:15) |     at async t.emZona (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:214:81) 0 0
+resumo: 0
+treino extra: [] derrotas: 2 curas: 7
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de brasa-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: nada · sobrou $2192
+== checkpoint brasa-pre-lider-1: ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"] $2192
+  ginásio 1, tentativa 1: equipe ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"]
+  [batalha] g01-1 → vitoria · equipe 4:8,13:7,13:2,10:2 · A2-ginasio · $2472
+  remédios entre batalhas: cha-cidreira
+  [batalha] g01-2 → vitoria · equipe 4:8,13:8,13:2,10:2 · A2-ginasio · $2792
+  remédios entre batalhas: cha-cidreira
+  [batalha] g01-3 → vitoria · equipe 4:8,13:9,13:2,10:2 · A2-ginasio · $3152
+  remédios entre batalhas: cha-cidreira
+  [batalha] g01-4 → vitoria · equipe 4:8,13:9,13:2,10:2 · A2-ginasio · $3552
+  [batalha] lider-01 → derrota · equipe 4:8,13:9,13:2,10:2 · A2-ginasio · $3552
+    turnos: Cotiazinha9 3/30 x Garcinha7 24/24 → golpe encontrao | Cotiazinha2 14/14 x Garcinha7 14/24 → golpe encontrao | Pipirim2 14/14 x Garcinha7 10/24 → golpe bicada | Pipirim2 3/14 x Garcinha7 8/24 → golpe bicada
+  perdeu no ginásio 1 (tentativa 1)
+  TREINO EXTRA {"zona":"A-R1","rotulo":"depois de perder no ginásio 1","niveis":1,"batalhas":17,"de":9,"para":10}
+  ginásio 1, tentativa 2: equipe ["Guaraxim 10","Cotiazinha 9","Cotiazinha 2","Pipirim 2"]
+  [batalha] lider-01 → vitoria · equipe 4:10,13:10,13:2,10:2 · A2-ginasio · $2976
+  INSÍGNIA 1 na tentativa 2
+FALHA Error: irAte: não chegou a (8,18) |     at t.irAte (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:170:11) |     at async t.viajar (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:190:17) |     at async Object.fn (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:97:5) {"pronto":true,"oc":false,"mov":false,"zona":"A2-ginasio","x":7,"y":4,"dir":"o","modo":"pe","telas":1,"topo":"mundo tela-mundo","ocupada":false,"nres":23} ["{JOGADOR} recebeu a Insígnia Pena!","{JOGADOR} recebeu PT31 Rasante!","Esse pergaminho ensina o Rasante: um voo baixo e certeiro, que quase nunca erra.\fAgora escute. O Seu Aroeira, aqui da vila, anda atrás de alguém de confiança para uma tarefa. Dizem que ele guarda um Amuleto que faz as criaturas farejarem coisas escondidas.\fDepois siga pela Rota 2 e atravesse a Mata do Sagui. No Bosque Alto, a Lia Teia espera os desafiantes no alto das copas."]
+resumo: {"zona":"A2-ginasio","x":7,"y":4,"dinheiro":2976,"insignias":[1],"amuletos":[],"equipe":[{"e":4,"nome":"Guaraxim","nv":10,"vida":12,"max":31,"st":null,"golpes":["encontrao 34","berro 40","fagulha 23","bote-ligeiro 30"]},{"e":13,"nome":"Cotiazinha","nv":10,"vida":0,"max":32,"st":null,"golpes":["encontrao 31","cara-feia 30","bote-ligeiro 30","jogar-areia 15"]},{"e":13,"nome":"Cotiazinha","nv":2,"vida":14,"max":14,"st":null,"golpes":["encontrao 35","cara-feia 30"]},{"e":10,"nome":"Pipirim","nv":2,"vida":14,"max":14,"st":null,"golpes":["bicada 35","berro 40"]}],"mochila":{"radio-cipo":1,"cuia":5,"diario-de-campo":1,"pt-31":1},"tempo":29197,"posto":"A2-posto","capturado":3}
+treino extra: [{"zona":"A-R1","rotulo":"depois de perder no ginásio 1","niveis":1,"batalhas":17,"de":9,"para":10}] derrotas: 2 curas: 9
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de brasa-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: nada · sobrou $2192
+== checkpoint brasa-pre-lider-1: ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"] $2192
+  ginásio 1, tentativa 1: equipe ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"]
+  [batalha] g01-1 → vitoria · equipe 4:9,13:6,13:2,10:2 · A2-ginasio · $2472
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.snap (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:52:18) |     at t.resolver (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:120:25) 0 0
+resumo: 0
+treino extra: [] derrotas: 1 curas: 7
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de brasa-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: nada · sobrou $2192
+== checkpoint brasa-pre-lider-1: ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"] $2192
+  ginásio 1, tentativa 1: equipe ["Guaraxim 8","Cotiazinha 6","Cotiazinha 2","Pipirim 2"]
+  [batalha] g01-1 → vitoria · equipe 4:9,13:6,13:2,10:2 · A2-ginasio · $2472
+  [batalha] g01-2 → vitoria · equipe 4:9,13:7,13:2,10:2 · A2-ginasio · $2792
+  remédios entre batalhas: cha-cidreira, cha-cidreira
+  [batalha] g01-3 → vitoria · equipe 4:10,13:7,13:2,10:2 · A2-ginasio · $3152
+  remédios entre batalhas: cha-cidreira
+  [batalha] g01-4 → vitoria · equipe 4:10,13:7,13:2,10:2 · A2-ginasio · $3552
+  [batalha] lider-01 → derrota · equipe 4:10,13:7,13:2,10:2 · A2-ginasio · $3552
+    turnos: Guaraxim10 16/31 x Garcinha7 23/23 → golpe encontrao | Guaraxim10 4/31 x Tucaninho10 28/32 → golpe fagulha | Cotiazinha7 25/25 x Tucaninho10 19/32 → golpe encontrao | Cotiazinha7 13/25 x Tucaninho10 14/32 → golpe encontrao | Cotiazinha7 8/25 x Tucaninho10 11/32 → golpe encontrao | Cotiazinha2 14/14 x Tucaninho10 11/32 → golpe encontrao | Pipirim2 14/14 x Tucaninho10 11/32 → golpe bicada
+  perdeu no ginásio 1 (tentativa 1)

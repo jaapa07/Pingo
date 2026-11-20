@@ -25,6 +25,12 @@ async function seq(t, zona, passos) {
   for (const p of passos) {
     const s = await t.resolver();
     if (s.zona !== zona) throw new Error('derrota');
+    // entre um treinador e outro, quem está machucado sai para curar no Posto (não conta como derrota)
+    if (p[0] === 'ir') await t.remedios();
+    // quem está com a mais forte caída ou abaixo da metade (e sem remédio) sai do ginásio, cura no Posto e volta.
+    // ATALHO DECLARADO: a ida e volta ao Posto da cidade é modelada como cura direta (o caminho de saída depende do
+    // quebra-cabeça de cada ginásio); cada uma é contada em t.idasAoPosto.
+    if (p[0] !== 'em') { const h = await t.saude(); if (h.liderCaido || h.lider < 0.5) { const tr = await t.ev(() => window.__qa.treinadores(true).length); if (tr > 0) { await t.ev(async () => { const { jogo } = await import('/src/core/estado.ts'); const { curarCriatura } = await import('/src/battle/criatura.ts'); for (const c of jogo.save.equipe) curarCriatura(c); }); (t.idasAoPosto ??= []).push(zona); t.log('  ida ao Posto no meio do ginásio (cura; atalho declarado)'); } } }
     if (p[0] === 'ir') await t.ir(p[1]);
     else if (p[0] === 'agir') await t.agir(p[1]);
     else if (p[0] === 'em') { if (s.x !== p[1] || s.y !== p[2]) { t.log(`  [ginásio] posição (${s.x},${s.y}), esperado (${p[1]},${p[2]}) — ${p[3] ?? ''}`); await t.foto('gin-desvio'); throw new Error('desvio'); } }
@@ -35,7 +41,12 @@ const R = (txt) => txt.trim().split(/\s+/).map((p) => { if (p.startsWith('@')) {
 
 const GINASIOS = {
   1: { cidade: 'A2', zona: 'A2-ginasio', rota: R('nnn @8,11 ooo @5,11 n @5,10 noo @3,9 llll s @11,10 n @11,9 ll n @13,5 n @13,4 l !n os s @13,9 oo s @11,10 s oooooo @5,11 n noo n @3,5 n @3,4 l l @7,4 nnl !n') },
-  2: { cidade: 'A3', zona: 'A3-ginasio', rota: R('nnnnnn @8,11 lll l @12,10 nll nnnn @14,5 lnnno') },
+  // 2: pontes na ordem 1→6; a 7 (atalho) derruba de volta à entrada, e é por ela que se volta ao centro depois da 3
+  2: { cidade: 'A3', zona: 'A3-ginasio', rota: R('nnnnnn @8,11 lll l @12,10 nll nnnn @14,5 lnnno oo @8,16 nnnnnn ooo o @4,10 noo nnnn @2,5 lnnn lll @6,2 ll !n') },
+  // 3: volantes e balsas (roteiro de tools/testes/ginasios/g3.mjs, com a ida e volta ao volante 2)
+  3: { cidade: 'A4', zona: 'A4-ginasio', rota: R('nnn @8,14 ooos !o nlll nnn @8,11 n ooooo n @3,9 !o s lllllll l ooooooo n !o s lllllll lll @13,10 nll !l oos ooo ooooooo n @3,9 !o l nnn @4,6 n llllllllll nnn @14,2 n oooo @10,1 !o') },
+  // 4: espelhos e raios (tools/testes/ginasios/e4.mjs)
+  4: { cidade: 'A5', zona: 'A5-ginasio', rota: R('lnn n oooooo @3,15 !n llllll nnn @9,12 nn o o @7,10 n o s !o no nn @6,7 n !n sl llll n @11,6 !l onn o n ssslll ss @12,9 ooooo s @7,10 !o nlllll nn ooo nnn nn @9,2 !n') },
 };
 
 /** tenta o ginásio `n` até vencer; entre derrotas, treina um nível na rota indicada e anota */
@@ -45,7 +56,9 @@ async function ginasio(t, n, op) {
     await t.curarSePreciso();
     await t.viajar(g.zona);
     t.log(`  ginásio ${n}, tentativa ${tent}: equipe ${JSON.stringify((await t.resumo()).equipe.map((c) => `${c.nome} ${c.nv}`))}`);
-    try { await seq(t, g.zona, op?.rota ?? g.rota); } catch (e) { if (e.message !== 'derrota') throw e; }
+    let saiu = false;
+    try { await seq(t, g.zona, op?.rota ?? g.rota); } catch (e) { if (e.message === 'curar') saiu = true; else if (e.message !== 'derrota') throw e; }
+    if (saiu) { t.log('  saiu do ginásio para curar'); (t.idasAoPosto ??= []).push(n); await t.curar(); tent--; if ((t.voltas = (t.voltas ?? 0) + 1) > 12) throw new Error('ginásio: voltas demais ao Posto'); continue; }
     if ((await t.resumo()).insignias.includes(n)) { t.log(`  INSÍGNIA ${n} na tentativa ${tent}`); (t.tentativasGinasio ??= {})[n] = tent; return; }
     t.log(`  perdeu no ginásio ${n} (tentativa ${tent})`);
     if (op?.treino) await t.treinar(op.treino, 1, `depois de perder no ginásio ${n}`);
@@ -91,5 +104,77 @@ export const ETAPAS = [
     await ginasio(t, 1, { treino: 'A-R1' });
     await t.viajar('A2'); await t.viajar('A2-posto'); await t.curar();
   } },
+  { nome: 'Faro, Campos de Restinga e Mata dos Sabiás até Bosque Alto', fn: async (t) => {
+    await t.viajar('A2-casa-aroeira'); await t.falarCom('aroeira').catch((e) => t.log('  (Faro: ' + e.message + ')'));
+    await t.cacar('A-R2', 5, 14);
+    await t.limpar('A-R2');
+    await t.cacar('A-MS', 6, 10);
+    await t.limpar('A-MS');
+    await t.viajar('A3'); await t.foto('a3'); await t.viajar('A3-posto'); await t.curar();
+  } },
+  { nome: 'Bosque Alto: compras, treinadores da vila e ginásio 2 (Inseto)', fn: async (t) => {
+    await t.limpar('A3');
+    await compras(t, 'A3-venda');
+    await t.viajar('A3-posto'); await t.curar();
+    await t.salvar(`${t.inicial}-pre-lider-2`);
+    await ginasio(t, 2, { treino: 'A-MS' });
+    await t.viajar('A3'); await t.viajar('A3-posto'); await t.curar();
+  } },
+  { nome: 'rival 2, Trilha dos Cipós e Gruta do Eco até Porto Sereia', fn: async (t) => {
+    await t.viajar('A-R3'); await t.resolver();
+    if (!(await t.flag('rival-2'))) t.log('  (rival-2 não disparou na saída de A3)');
+    await t.cacar('A-R3', 6, 8);
+    await t.limpar('A-R3');
+    await t.limpar('A-GE');
+    await t.viajar('A4'); await t.foto('a4'); await t.viajar('A4-posto'); await t.curar();
+  } },
+  { nome: 'Porto Sereia: compras, treinadores e ginásio 3 (Rio)', fn: async (t) => {
+    await t.limpar('A4');
+    await compras(t, 'A4-venda');
+    await t.viajar('A4-posto'); await t.curar();
+    await t.salvar(`${t.inicial}-pre-lider-3`);
+    await ginasio(t, 3, { treino: 'A-R3' });
+    await t.viajar('A4'); await t.viajar('A4-posto'); await t.curar();
+  } },
+  { nome: 'Estrada da Usina e Usina Velha (tenente Lata)', fn: async (t) => {
+    await t.limpar('A-R4');
+    await t.emZona('A-US-1'); await t.foto('usina-1');
+    await t.limpar('A-US-1');
+    await t.emZona('A-US-1'); await t.usar(5, 2);
+    if (!(await t.flag('usina-grade'))) throw new Error('a alavanca não soltou a grade');
+    await t.limpar('A-US-3'); await t.emZona('A-US-3'); await t.foto('usina-3');
+    await t.usar(24, 2); if (!(await t.flag('usina-energia'))) throw new Error('a chave geral não ligou');
+    await t.usar(2, 13);
+    await t.limpar('A-US-2'); await t.emZona('A-US-2'); await t.foto('usina-2');
+    for (let i = 0; i < 4 && !(await t.flag('usina-ok')); i++) { await t.emZona('A-US-2'); await t.irAte(14, 5, { tolerante: true }); await t.resolver(); }
+    if (!(await t.flag('usina-ok'))) throw new Error('usina-ok não marcou');
+    await t.foto('usina-fim');
+    await t.viajar('A4'); await t.viajar('A4-posto'); await t.curar();
+  } },
+  { nome: 'cais de Porto Sereia: rival 3, Baía Azul e Cidade Coral', fn: async (t) => {
+    await compras(t, 'A4-venda');
+    await t.viajar('A4-posto'); await t.curar();
+    await t.viajar('A4', [30, 36]); await t.resolver(); await t.foto('cais');
+    if (!(await t.flag('rival-3'))) t.log('  (rival-3 não disparou no cais)');
+    await t.curarSePreciso();
+    await t.viajar('A-BA'); await t.foto('baia');
+    await t.limpar('A-BA');
+    await t.viajar('A5'); await t.foto('a5'); await t.viajar('A5-posto'); await t.curar();
+  } },
+  { nome: 'Cidade Coral: compras, treinadores e ginásio 4 (Encanto)', fn: async (t) => {
+    await t.limpar('A5');
+    await compras(t, 'A5-venda');
+    await t.viajar('A5-posto'); await t.curar();
+    await t.salvar(`${t.inicial}-pre-lider-4`);
+    await ginasio(t, 4, { treino: 'A-BA' });
+    await t.viajar('A5'); await t.viajar('A5-posto'); await t.curar();
+  } },
 ];
+/** compras de um jogador comum: remédio do melhor tipo à venda até ter 6, cuias até 5, guardando 30% do dinheiro */
+async function compras(t, venda) {
+  const r = await t.resumo(), tem = (id) => r.mochila[id] ?? 0, din = r.dinheiro;
+  const forte = (await nivelMax(t)) >= 16 ? 'garrafada' : 'cha-cidreira', preco = forte === 'garrafada' ? 700 : 300;
+  const q = Math.max(0, Math.min(6 - tem(forte), Math.floor((din * 0.7) / preco)));
+  await t.comprar(venda, [[forte, q], ['cha-cidreira', forte === 'garrafada' && q < 2 ? Math.max(0, 4 - tem('cha-cidreira')) : 0], ['cuia', Math.max(0, 4 - tem('cuia'))]]);
+}
 export { ginasio, seq, R, GINASIOS, nivelMax, comecar };

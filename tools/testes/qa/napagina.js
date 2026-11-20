@@ -118,7 +118,7 @@ Q.saude = () => {
   const fr = eq.map((c) => c.vida / atributos(c).vida), caidos = fr.filter((f) => f <= 0).length, media = fr.reduce((a, x) => a + x, 0) / fr.length;
   const lider = eq.reduce((a, c) => (c.nivel > a.nivel ? c : a)), fl = lider.vida / atributos(lider).vida;
   const semPg = lider.golpes.filter((g) => defGolpe(g.id).cat !== 'status').every((g) => g.pg <= 2);
-  return { frac: media, caidos, lider: fl, semPg, n: eq.length };
+  return { frac: media, caidos, lider: fl, liderCaido: lider.vida <= 0, semPg, n: eq.length };
 };
 
 /* ------------------------------ caminho dentro da zona ------------------------------ */
@@ -209,7 +209,7 @@ Q.proximoWarp = (destino, proibidas = []) => {
 
 /* ------------------------------ o que há na zona ------------------------------ */
 const venceu = (t) => !!jogo.save.flags[t.flag ?? 'venceu:' + t.id];
-Q.treinadores = () => M.npcs.filter((n) => n.treinador && n.ator.visivel && !venceu(n.treinador)).map((n) => { const r = busca((x, y) => Math.abs(x - n.ator.x) + Math.abs(y - n.ator.y) === 1); return r ? { id: n.id, t: n.treinador.id, x: n.ator.x, y: n.ator.y, n: r.passos.length, nv: Math.max(...n.treinador.equipe.map((m) => m.nv)), lider: n.treinador.insignia !== undefined } : null; }).filter(Boolean).sort((a, b) => a.n - b.n);
+Q.treinadores = (todos) => M.npcs.filter((n) => n.treinador && n.ator.visivel && !venceu(n.treinador)).map((n) => { if (todos) return { id: n.id }; const r = busca((x, y) => Math.abs(x - n.ator.x) + Math.abs(y - n.ator.y) === 1); return r ? { id: n.id, t: n.treinador.id, x: n.ator.x, y: n.ator.y, n: r.passos.length, nv: Math.max(...n.treinador.equipe.map((m) => m.nv)), lider: n.treinador.insignia !== undefined } : null; }).filter(Boolean).sort((a, b) => a.n - b.n);
 Q.itens = () => (M.zv.def.itens ?? []).filter((i) => !i.oculto && !jogo.save.flags[i.flag]).map((i) => { const r = busca((x, y) => Math.abs(x - i.x) + Math.abs(y - i.y) === 1); return r ? { x: i.x, y: i.y, item: i.item, n: r.passos.length } : null; }).filter(Boolean).sort((a, b) => a.n - b.n);
 Q.npc = (id) => { const n = M.npcs.find((x) => x.id === id && x.ator.visivel); return n ? { x: n.ator.x, y: n.ator.y, dir: n.ator.dir } : null; };
 Q.npcPor = (campo, valor) => { const n = M.npcs.find((x) => x.ator.visivel && (valor === undefined ? x.def[campo] : x.def[campo] === valor)); return n ? { id: n.id, x: n.ator.x, y: n.ator.y } : null; };

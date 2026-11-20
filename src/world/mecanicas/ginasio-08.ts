@@ -8,6 +8,7 @@
 import type { Dir } from '../../core/tipos';
 import { TILE } from '../../core/tipos';
 import { flag } from '../../core/estado';
+import { bus } from '../../core/events';
 import { ajudante } from '../vivo';
 import { nomeCriatura } from '../deps';
 import { registrarMecanica } from '../registro';
@@ -60,6 +61,9 @@ async function cortar(c: Cipo) {
   murchar(c, cipos.indexOf(c));
   await falar(`${nomeCriatura(a)} cortou o cipó com o Facão! Ele murchou até a raiz… e já começa a brotar de novo.`);
 }
+
+// a insígnia chegou: os cipós murcham na hora (antes só murchavam no passo seguinte e podiam deixar o jogador cercado depois da luta)
+bus.on('insignia', (k: number) => { if (k === 8 && M.zv?.def.id === ZONA) cipos.forEach((c, i) => { if (c.n) murchar(c, i); }); });
 
 registrarMecanica(ZONA, {
   entrar() {

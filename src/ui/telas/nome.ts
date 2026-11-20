@@ -22,6 +22,9 @@ export function criarTelaNome(args: ArgsNome): Tela {
   let nome = (args.padrao ?? '').slice(0, max), pagina = nome ? 1 : 0;
   // nome já sugerido: o cursor nasce em "Fim", para que Confirmar aceite a sugestão em vez de acrescentar letras
   let lin = nome ? 4 : 0, col = nome ? 3 : 0;
+  // a sugestão é só sugestão: a primeira letra digitada (ou o primeiro Apagar) troca o nome inteiro, em vez de emendar
+  // nele ("Kauê" + letras virava "Kauêazaz")
+  let sugestao = !!nome;
   el.style.backgroundImage = 'repeating-linear-gradient(to bottom, #2f6b3a 0 8px, #2a6236 8px 16px)';
   const tit = texto(args.titulo, { tamanho: 12, cor: 'creme', sombra: true, largura: 300, alinhar: 'centro' });
   el.append(em(tit, 10, 3));
@@ -58,12 +61,13 @@ export function criarTelaNome(args: ArgsNome): Tela {
   function pintarFoco() { teclas.forEach((l, j) => l.forEach((c, i) => c.classList.toggle('foco', j === lin && i === col))); }
   function mover(j: number, i: number, quieto = false) { if (j === lin && i === col) return; lin = j; col = i; pintarFoco(); if (!quieto) som('ui-mover'); }
   function por(ch: string) {
+    if (sugestao) { sugestao = false; if (ch === ' ') return; nome = ''; if (pagina === 1) { pagina = 0; ch = ch.toUpperCase(); } }
     if (nome.length >= max) { som('ui-erro'); return; }
     nome += ch; som('ui-ok'); pintarNome();
     if (nome.length === 1 && pagina === 0) { pagina = 1; pintarLetras(); } // depois da inicial, minúsculas
     if (nome.length >= max) mover(4, 3, true);
   }
-  function apagar() { if (!nome) { som('ui-erro'); return; } nome = nome.slice(0, -1); som('ui-voltar'); pintarNome(); if (!nome && pagina === 1) { pagina = 0; pintarLetras(); } }
+  function apagar() { if (!nome) { som('ui-erro'); return; } nome = sugestao ? '' : nome.slice(0, -1); sugestao = false; som('ui-voltar'); pintarNome(); if (!nome && pagina === 1) { pagina = 0; pintarLetras(); } }
   function fim() {
     const final = nome.trim() || (args.padrao ?? '').trim();
     if (!final) { som('ui-erro'); return; }

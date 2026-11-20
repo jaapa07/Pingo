@@ -251,7 +251,7 @@ export const EVENTOS_A2: EventoDef[] = [
         f(null, 'O tenente Rebite e os capangas descem a escada aos tropeços.\fUma por uma, as jaulas se abrem. As criaturas de Trovão saem pela janela da lanterna, piscando de alívio.'),
         f(VOLTA, 'Ufa! Obrigado, obrigado! Três dias amarrado, e o pior: sem poder mexer em nada!\fEu sou o Volta, faroleiro, inventor e, nas horas vagas, líder do ginásio da ilha.'),
         f(VOLTA, 'Você merece mais que um aperto de mão. Tome o meu Lampião: fui eu que fiz. Com uma parceira de Brasa, Trovão ou Encanto na equipe, ele espanta qualquer breu. Até o da Gruta Breu!'),
-        ['amuleto', 'lampiao'], ['dar', 'amuleto-lampiao'],
+        ['amuleto', 'lampiao'], // o item-chave `amuleto-lampiao` entra na mochila junto com o Amuleto (garantirItensDeAmuleto)
         f(VOLTA, 'Agora, o ginásio… Eu adoraria um desafio, mas olhe a Faísca, a minha Poraquê. É ela que acende a lanterna do farol, e esses brutos sugaram a bateria dela.\fSem a Faísca eu não saio daqui. E líder preocupado luta mal.'),
         f(VOLTA, 'Só o Xarope de Algas da Moça Sargaço, a boticária de Cidade Coral, levanta peixe-elétrico. Você remaria até lá por mim?\fTraga o xarope e eu abro o ginásio na mesma hora. Palavra de inventor: quase nunca falha!'),
       ])]),
@@ -270,6 +270,8 @@ export const EVENTOS_A2: EventoDef[] = [
           f(VOLTA, 'Ela voltou! Olha esse brilho! Dá para ler jornal em Porto Sereia com essa luz!'),
           f(VOLTA, 'Promessa de inventor se cumpre: o ginásio está aberto. Eu desço na frente para ligar os circuitos. Traga borracha na sola do sapato!'),
           ['dar', 'cuia-rapida', 5],
+          f(VOLTA, 'E leve mais um invento meu: o Chocalho do Mutirão. Ele espalha o que uma criatura aprende na luta para a equipe inteira.\fQuem fica na reserva ganha metade da experiência só de escutar. Daqui para a serra os treinadores engrossam: ninguém sobe aquilo com uma criatura só.'),
+          ['dar', 'chocalho-mutirao'],
           ['fade', 'fora'], ['esconder', 'volta-2'], ['esperar', 300], ['fade', 'dentro'],
         ], [f(VOLTA, 'A Faísca continua apagadinha… O Xarope de Algas é com a Moça Sargaço, a boticária de Cidade Coral. Ela fica perto da Venda.\fVá remando pelo oeste e depois para o sul. Eu fico aqui cantando para a Faísca. Ela finge que gosta.')]),
       ]),

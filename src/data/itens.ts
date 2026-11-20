@@ -128,6 +128,7 @@ export const ITENS: ItemInfo[] = [
   i('chapeu-da-vo-zica', 'Chapéu da Vó Zica', 'chave', 0, 'Chapéu de palha da Vó Zica, que o vento levou até o píer.'),
   i('camera-de-bolso', 'Câmera de Bolso', 'chave', 0, 'Tira fotos de qualquer cena. As melhores vão para o álbum.'),
   i('regador', 'Regador', 'chave', 0, 'Para cuidar dos canteiros de frutos.'),
+  i('chocalho-mutirao', 'Chocalho do Mutirão', 'chave', 0, 'Invento do Faroleiro Volta: a equipe inteira aprende com a luta. Quem fica na reserva ganha metade da experiência.'),
   i('estojo-de-insignias', 'Estojo de Insígnias', 'chave', 0, 'Guarda as 16 insígnias de Pindorama.'),
   i('amuleto-facao', 'Amuleto do Facão', 'chave', 0, 'Com uma parceira de Mata, Inseto ou Ginga, corta cipós grossos.', { amuleto: 'facao' }),
   i('amuleto-remo', 'Amuleto do Remo', 'chave', 0, 'Com uma parceira de Rio, a canoa cruza as águas.', { amuleto: 'remo' }),

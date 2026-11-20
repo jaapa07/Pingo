@@ -49,3 +49,116 @@ erros de console: []
   [batalha] selvagem 45:2 → captura · equipe 7:7,13:2,10:2,45:2 · A-R1 · $3536
   caça em A-R1: 6 batalhas, equipe ["Botinho 7","Cotiazinha 2","Pipirim 2","Quero-querinho 2"]
   [batalha] A-R1-6 → vitoria · equipe 7:7,13:2,10:2,45:2 · A-R1 · $3680
+  [batalha] A-R1-5 → derrota · equipe 7:8,13:2,10:2,45:2 · A-R1 · $3680
+    turnos: Botinho7 26/26 x Cotiazinha5 20/20 → golpe esguicho | Botinho7 21/26 x Cotiazinha5 13/20 → golpe esguicho | Botinho7 16/26 x Cotiazinha5 2/20 → golpe esguicho | Botinho7 16/26 x Gambazinho6 22/22 → golpe esguicho | Botinho7 8/26 x Gambazinho6 14/22 → item cha-cidreira | Botinho7 26/26 x Gambazinho6 14/22 → golpe esguicho | Botinho8 10/28 x Cotiazinha6 22/22 → golpe esguicho | Botinho8 1/28 x Cotiazinha6 12/22 → golpe esguicho | Cotiazinha2 14/14 x Cotiazinha6 12/22 → golpe encontrao | Cotiazinha2 5/14 x Cotiazinha6 8/22 → golpe encontrao | Quero-querinho2 14/14 x Cotiazinha6 8/22 → golpe bicada | Quero-querinho2 5/14 x Cotiazinha6 6/22 → golpe bicada | Pipirim2 13/13 x Cotiazinha6 6/22 → golpe bicada | Pipirim2 2/13 x Cotiazinha6 4/22 → golpe bicada
+  DERROTA para A-R1-5 (nv 6)
+  [batalha] A-R1-5 → vitoria · equipe 7:9,13:3,10:2,45:2 · A-R1 · $2032
+  [batalha] A-R1-4 → vitoria · equipe 7:9,13:3,10:2,45:2 · A-R1 · $2192
+== checkpoint rio-passo-3: ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"] $2192
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (227 s)
+  compras em A2-venda: 3× cha-cidreira · sobrou $1292
+== checkpoint rio-pre-lider-1: ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"] $1292
+  ginásio 1, tentativa 1: equipe ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"]
+  [batalha] g01-1 → vitoria · equipe 7:10,13:4,10:2,45:2 · A2-ginasio · $1572
+  [batalha] g01-2 → vitoria · equipe 7:10,13:4,10:2,45:2 · A2-ginasio · $1892
+  [batalha] g01-3 → derrota · equipe 7:11,13:4,10:2,45:2 · A2-ginasio · $1892
+    turnos: Botinho10 16/33 x Corujinha6 22/22 → golpe esguicho | Botinho10 11/33 x Corujinha6 6/22 → golpe esguicho | Botinho11 13/35 x Tucaninho7 25/25 → golpe esguicho | Cotiazinha4 18/18 x Tucaninho7 14/25 → golpe encontrao | Cotiazinha4 10/18 x Tucaninho7 10/25 → golpe encontrao | Pipirim2 13/13 x Tucaninho7 10/25 → golpe bicada | Pipirim2 3/13 x Tucaninho7 8/25 → golpe bicada | Pipirim2 3/13 x Tucaninho7 6/25 → golpe bicada | Quero-querinho2 14/14 x Tucaninho7 6/25 → golpe bicada | Quero-querinho2 10/14 x Tucaninho7 4/25 → golpe bicada | Quero-querinho2 1/14 x Tucaninho7 2/25 → golpe bicada
+  perdeu no ginásio 1 (tentativa 1)
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.toque (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:59:46) |     at toques (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:60:68) 0 0
+resumo: 0
+treino extra: [] derrotas: 2 curas: 7
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de rio-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: 3× cha-cidreira · sobrou $1292
+== checkpoint rio-pre-lider-1: ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"] $1292
+  ginásio 1, tentativa 1: equipe ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"]
+  [batalha] g01-1 → vitoria · equipe 7:10,13:3,10:2,45:2 · A2-ginasio · $1572
+  [batalha] g01-2 → vitoria · equipe 7:10,13:4,10:2,45:2 · A2-ginasio · $1892
+  saiu do ginásio para curar
+FALHA page.waitForTimeout: Target page, context or browser has been closed |     at t.espera (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:50:27) |     at t.resolver (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:146:15) |     at async t.irAte (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:160:17) 0 0
+resumo: 0
+treino extra: [] derrotas: 1 curas: 7
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de rio-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: 3× cha-cidreira · sobrou $1292
+== checkpoint rio-pre-lider-1: ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"] $1292
+  ginásio 1, tentativa 1: equipe ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"]
+  [batalha] g01-1 → vitoria · equipe 7:10,13:3,10:2,45:2 · A2-ginasio · $1572
+  [batalha] g01-2 → vitoria · equipe 7:10,13:4,10:2,45:2 · A2-ginasio · $1892
+  [batalha] g01-3 → vitoria · equipe 7:10,13:4,10:2,45:2 · A2-ginasio · $2252
+  [batalha] g01-4 → vitoria · equipe 7:11,13:4,10:2,45:2 · A2-ginasio · $2652
+  [batalha] lider-01 → derrota · equipe 7:11,13:4,10:2,45:2 · A2-ginasio · $2652
+    turnos: Botinho11 10/35 x Garcinha7 23/23 → item cha-cidreira | Botinho11 28/35 x Garcinha7 23/23 → golpe piscadela | Botinho11 28/35 x Tucaninho10 22/30 → golpe esguicho | Cotiazinha4 18/18 x Tucaninho10 22/30 → golpe encontrao | Pipirim2 13/13 x Tucaninho10 22/30 → golpe bicada | Quero-querinho2 14/14 x Tucaninho10 22/30 → golpe bicada
+  perdeu no ginásio 1 (tentativa 1)
+FALHA page.waitForTimeout: Target page, context or browser has been closed |     at t.espera (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:50:27) |     at t.resolver (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:146:15) |     at async t.viajar (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:185:17) 0 0
+resumo: 0
+treino extra: [] derrotas: 2 curas: 7
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de rio-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: 3× cha-cidreira · sobrou $1292
+== checkpoint rio-pre-lider-1: ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"] $1292
+  ginásio 1, tentativa 1: equipe ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"]
+  [batalha] g01-1 → vitoria · equipe 7:10,13:3,10:2,45:2 · A2-ginasio · $1572
+  [batalha] g01-2 → vitoria · equipe 7:10,13:3,10:2,45:2 · A2-ginasio · $1892
+  remédios entre batalhas: cha-cidreira
+  [batalha] g01-3 → derrota · equipe 7:10,13:3,10:2,45:2 · A2-ginasio · $1892
+    turnos: Botinho10 33/33 x Corujinha6 22/22 → golpe esguicho | Cotiazinha3 16/16 x Tucaninho7 19/24 → golpe encontrao | Cotiazinha3 10/16 x Tucaninho7 11/24 → golpe encontrao | Quero-querinho2 14/14 x Tucaninho7 11/24 → golpe bicada | Quero-querinho2 6/14 x Tucaninho7 6/24 → golpe bicada | Pipirim2 13/13 x Tucaninho7 6/24 → golpe bicada | Pipirim2 4/13 x Tucaninho7 4/24 → golpe bicada
+  perdeu no ginásio 1 (tentativa 1)
+  TREINO EXTRA {"zona":"A-R1","rotulo":"depois de perder no ginásio 1","niveis":1,"batalhas":4,"de":10,"para":11}
+  ginásio 1, tentativa 2: equipe ["Botinho 11","Cotiazinha 3","Pipirim 2","Quero-querinho 2"]
+  [batalha] g01-3 → vitoria · equipe 7:11,13:3,10:2,45:2 · A2-ginasio · $1306
+  remédios entre batalhas: cha-cidreira
+  [batalha] g01-4 → vitoria · equipe 7:11,13:3,10:2,45:2 · A2-ginasio · $1706
+  [batalha] lider-01 → derrota · equipe 7:11,13:3,10:2,45:2 · A2-ginasio · $1706
+    turnos: Botinho11 25/35 x Tucaninho10 26/31 → golpe esguicho | Botinho11 11/35 x Tucaninho10 17/31 → item cha-cidreira | Botinho11 11/35 x Tucaninho10 17/31 → golpe esguicho | Cotiazinha3 16/16 x Tucaninho10 17/31 → golpe encontrao | Pipirim2 13/13 x Tucaninho10 17/31 → golpe bicada | Quero-querinho2 14/14 x Tucaninho10 17/31 → golpe bicada
+  perdeu no ginásio 1 (tentativa 2)
+  TREINO EXTRA {"zona":"A-R1","rotulo":"depois de perder no ginásio 1","niveis":1,"batalhas":2,"de":11,"para":12}
+  ginásio 1, tentativa 3: equipe ["Botinho 12","Cotiazinha 3","Pipirim 2","Quero-querinho 2"]
+  [batalha] lider-01 → derrota · equipe 7:12,13:3,10:2,45:2 · A2-ginasio · $853
+    turnos: Botinho12 37/37 x Garcinha7 23/23 → golpe piscadela | Botinho12 35/37 x Garcinha7 13/23 → golpe piscadela | Cotiazinha3 16/16 x Tucaninho10 30/30 → troca 0 | Botinho12 28/37 x Tucaninho10 30/30 → golpe esguicho | Cotiazinha3 16/16 x Tucaninho10 18/30 → golpe encontrao | Cotiazinha3 1/16 x Tucaninho10 14/30 → golpe encontrao | Pipirim2 13/13 x Tucaninho10 14/30 → golpe bicada | Quero-querinho2 14/14 x Tucaninho10 14/30 → golpe bicada
+  perdeu no ginásio 1 (tentativa 3)
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.treinar (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:240:23) |     at async ginasio (/home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:56:21) 0 0
+resumo: 0
+treino extra: [{"zona":"A-R1","rotulo":"depois de perder no ginásio 1","niveis":1,"batalhas":4,"de":10,"para":11},{"zona":"A-R1","rotulo":"depois de perder no ginásio 1","niveis":1,"batalhas":2,"de":11,"para":12}] derrotas: 4 curas: 9
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de rio-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: 3× cha-cidreira · sobrou $1292
+== checkpoint rio-pre-lider-1: ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"] $1292
+  ginásio 1, tentativa 1: equipe ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"]
+  [batalha] g01-1 → vitoria · equipe 7:10,13:3,10:2,45:2 · A2-ginasio · $1572
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.snap (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:52:18) |     at t.resolver (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:120:25) 0 0
+resumo: 0
+treino extra: [] derrotas: 1 curas: 7
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de rio-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (1 s)
+  compras em A2-venda: 3× cha-cidreira · sobrou $1292
+== checkpoint rio-pre-lider-1: ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"] $1292
+  ginásio 1, tentativa 1: equipe ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"]
+  [batalha] g01-1 → vitoria · equipe 7:10,13:3,10:2,45:2 · A2-ginasio · $1572
+  [batalha] g01-2 → vitoria · equipe 7:10,13:3,10:2,45:2 · A2-ginasio · $1892
+  remédios entre batalhas: cha-cidreira
+  [batalha] g01-3 → derrota · equipe 7:10,13:3,10:2,45:2 · A2-ginasio · $1892
+    turnos: Botinho10 26/33 x Corujinha6 22/22 → golpe esguicho | Botinho10 21/33 x Corujinha6 11/22 → golpe esguicho | Cotiazinha3 16/16 x Tucaninho7 24/24 → troca 0 | Cotiazinha3 8/16 x Tucaninho7 24/24 → golpe encontrao | Cotiazinha3 8/16 x Tucaninho7 20/24 → golpe encontrao | Quero-querinho2 14/14 x Tucaninho7 20/24 → golpe bicada
+  perdeu no ginásio 1 (tentativa 1)
+  TREINO EXTRA {"zona":"A-R1","rotulo":"depois de perder no ginásio 1","niveis":1,"batalhas":5,"de":10,"para":11}
+  ginásio 1, tentativa 2: equipe ["Botinho 11","Cotiazinha 3","Pipirim 2","Quero-querinho 2"]
+  [batalha] g01-3 → vitoria · equipe 7:11,13:3,10:2,45:2 · A2-ginasio · $1306
+  [batalha] g01-4 → vitoria · equipe 7:11,13:3,10:2,45:2 · A2-ginasio · $1706
+  [batalha] lider-01 → vitoria · equipe 7:12,13:3,10:2,45:2 · A2-ginasio · $2906
+  INSÍGNIA 1 na tentativa 2

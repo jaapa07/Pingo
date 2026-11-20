@@ -45,6 +45,8 @@ export interface ConfigBatalha {
   trocaGratis?: boolean;
   /** o lado 0 ganha experiência e esforço (padrão: true) */
   ganhaExp?: boolean;
+  /** Chocalho do Mutirão: quem ficou na reserva (e está de pé) recebe metade do que cada participante ganhou. Padrão: false. */
+  expPartilhada?: boolean;
   /** com 4 golpes, um golpe novo substitui sozinho o mais fraco (IA/headless). Padrão: false → fica em `golpesPendentes`. */
   autoAprender?: boolean;
 }
@@ -734,15 +736,21 @@ export class Batalha {
   private darExp(inimigo: CriaturaInst) {
     const quem = [...(this.participantes.get(inimigo.uid) ?? [])].map((uid) => this.lados[0].equipe.find((c) => c.uid === uid)!).filter((c) => c && c.vida > 0);
     if (!quem.length) return;
-    const cada = Math.max(1, Math.floor(expDerrota(inimigo, this.cfg.tipo === 'treinador') / quem.length));
+    const inteira = Math.max(1, Math.floor(expDerrota(inimigo, this.cfg.tipo === 'treinador') / quem.length));
     const esforco = especie(inimigo.especie).esforco;
-    for (const c of quem) {
+    // Chocalho do Mutirão: a reserva de pé aprende olhando — metade da experiência de um participante, sem esforço e sem tirar nada de quem lutou
+    const reserva = this.cfg.expPartilhada ? this.lados[0].equipe.filter((c) => c.vida > 0 && !c.ovo && !quem.includes(c)) : [];
+    for (const c of [...quem, ...reserva]) {
+      const olhando = reserva.includes(c), cada = olhando ? Math.max(1, Math.floor(inteira / 2)) : inteira;
+      if (olhando) { if (c.nivel >= NIVEL_MAX) continue; }
+      else {
       // o esforço pode aumentar a vida máxima na hora: a vida atual sobe junto (senão a criatura ficava "19/20" de vida cheia)
       const vidaAntes = atributos(c).vida;
       ganharEsforco(c, esforco);
       const ganhoVida = atributos(c).vida - vidaAntes;
       if (ganhoVida > 0 && c.vida > 0) c.vida += ganhoVida;
       if (c.nivel >= NIVEL_MAX) continue;
+      }
       const curva = especie(c.especie).crescimento, de = c.exp;
       c.exp = Math.min(c.exp + cada, expParaNivel(curva, NIVEL_MAX));
       this.ev({ t: 'exp', uid: c.uid, ganho: c.exp - de, de, para: c.exp });

@@ -106,7 +106,7 @@ export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } 
     tipo: p.tipo,
     lados: [{ equipe: s.equipe, itens: s.mochila, nome: s.jogador.nome }, { equipe: p.inimigos, itens, nome: t ? `${t.classe} ${t.nome}` : '' }],
     clima: p.clima, dupla: p.dupla ?? t?.dupla, semFuga: p.semFuga, semCaptura: p.semCaptura, periodo: periodo(),
-    trocaGratis: dif !== 'veterano', autoAprender: o.autoAprender,
+    trocaGratis: dif !== 'veterano', autoAprender: o.autoAprender, expPartilhada: (s.mochila['chocalho-mutirao'] ?? 0) > 0,
   };
   return new ControleBatalha(p, cfg, nivel, { usaItens, foge: p.errante }, p.tipo === 'treinador' ? (t?.premio ?? 0) : 0);
 }

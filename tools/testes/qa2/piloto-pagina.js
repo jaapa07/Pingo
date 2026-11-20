@@ -590,7 +590,7 @@
     if (modo === 'chefe') return Q.frente((c) => (c.vida > 0 ? c.nivel : -1));
     // núcleo = as 3 de maior nível (é o que o jogador comum de fato usa); abre a mais atrasada do núcleo que esteja inteira
     const nucleo = new Set(jogo.save.equipe.filter((c) => !c.ovo).slice().sort((x, y) => y.nivel - x.nivel).slice(0, Q.nucleo ?? 3).map((c) => c.uid));
-    return Q.frente((c) => (c.vida >= vidaMax(c) * 0.6 && nucleo.has(c.uid) ? 100 - c.nivel : c.vida > 0 ? c.nivel / 100 : -9));
+    return Q.frente((c) => (c.vida >= vidaMax(c) * 0.6 && nucleo.has(c.uid) && c.nivel >= max - 4 ? 100 - c.nivel : c.vida > 0 ? c.nivel / 100 : -9));
   };
 
   /* ------------------------------ viagem entre zonas ------------------------------ */
