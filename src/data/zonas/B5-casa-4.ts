@@ -1,11 +1,23 @@
-/** Casinha do pescador da lagoa: dá a dica do Túnel Alagado e guarda uma vara de pesca. */
-import { casa, npc } from './_b2-lib';
+import { casaLivre, obj, gente } from './_b2s-lib';
 
-export default casa({
-  id: 'B5-casa-4', nome: 'Casa do Pescador Lambari', saida: { zona: 'B5', x: 19, y: 13 }, passo: 11, tema: 'sertaneja',
-  objetos: [
-    { o: 'rede', x: 1, y: 2 }, { o: 'rede-pesca', x: 5, y: 1 }, { o: 'bau', x: 8, y: 2, texto: ['Anzóis, chumbadas e um bilhete: "Jaú-Gigante: só na gruta do Túnel, e só com vara de respeito."'] },
-    { o: 'mesa', x: 5, y: 4 }, { o: 'banquinho', x: 7, y: 4 }, { o: 'fogao-lenha', x: 3, y: 2 }, { o: 'pote-barro', x: 1, y: 6 }, { o: 'janela', x: 7, y: 1 },
+/** B5-casa-4 · Casa do Pescador Lambari (Cidade Ginga, passo 12): dá a dica do Jaú da Gruta do Fôlego e uma vara. */
+export default casaLivre({
+  id: 'B5-casa-4', nome: 'Casa do Pescador Lambari', cidade: 'B5', tema: 'sertaneja', musica: 'cidade-samba', arena: 'cerrado', passo: 12, volta: [19, 13],
+  linhas: [
+    '############',
+    '#####R#J####',
+    '#NN.FF...K.#',
+    '#..........#',
+    '#....HHb...#',
+    '#.......1..#',
+    '#.;;;......#',
+    '#P.........#',
+    '#####DD#####',
   ],
-  gente: [npc('lambari', 'Pescador Lambari', 'cl-pescador', 4, 5, 'l', null, { script: 'b2-lambari' })],
+  marcas: { R: '#', J: '#', N: '.', F: '.', K: '.', H: '.', b: '.', P: '.', '1': '.' },
+  objetos: (g) => [
+    obj(g, 'R', 'rede-pesca'), obj(g, 'J', 'janela'), { o: 'rede', x: g.todos('N')[0][0], y: g.todos('N')[0][1] }, { o: 'fogao-lenha', x: g.todos('F')[0][0], y: g.todos('F')[0][1] },
+    obj(g, 'K', 'bau', { texto: ['Anzóis, chumbadas e um bilhete: "Jaú-Gigante: só na gruta do Túnel, e só com vara de respeito."'] }), obj(g, 'H', 'mesa'), obj(g, 'b', 'banquinho'), obj(g, 'P', 'pote-barro'),
+  ],
+  gente: (g) => [gente(g, '1', 'lambari', 'cl-pescador', 'Pescador Lambari', { dir: 'l', script: 'b2-lambari' })],
 });

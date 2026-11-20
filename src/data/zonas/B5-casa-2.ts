@@ -1,15 +1,28 @@
-/** Ateliê da costureira de abadás. */
-import { casa, npc } from './_b2-lib';
+import { casaLivre, obj, gente } from './_b2s-lib';
 
-export default casa({
-  id: 'B5-casa-2', nome: 'Ateliê da Dona Linha', saida: { zona: 'B5', x: 40, y: 13 }, passo: 11, tema: 'colonial',
-  chao: (g) => g.r(1, 5, 3, 2, ':'),
-  objetos: [
-    { o: 'maquina-costura', x: 2, y: 2 }, { o: 'armario', x: 1, y: 2 }, { o: 'estante', x: 6, y: 2, texto: ['Moldes de abadá em todos os tamanhos, de Saguinho a Capivarona.'] },
-    { o: 'cesto', x: 8, y: 3 }, { o: 'banquinho', x: 3, y: 3 }, { o: 'tapete-b', x: 5, y: 6 }, { o: 'janela', x: 4, y: 1 }, { o: 'quadro-ex-voto', x: 8, y: 1 }, { o: 'planta-c', x: 8, y: 6 },
+/** B5-casa-2 · Ateliê da Dona Linha (Cidade Ginga, passo 12): abadás para gente e criatura. */
+export default casaLivre({
+  id: 'B5-casa-2', nome: 'Ateliê da Dona Linha', cidade: 'B5', tema: 'colonial', musica: 'cidade-samba', arena: 'cerrado', passo: 12, volta: [40, 13],
+  linhas: [
+    '############',
+    '###J###X####',
+    '#AM..EE..K.#',
+    '#..b.......#',
+    '#...1......#',
+    '#::.....2..#',
+    '#::...ttt.P#',
+    '#.....ttt..#',
+    '#####DD#####',
   ],
-  gente: [
-    npc('linha', 'Dona Linha', 'cl-rendeira', 4, 3, 's', ['Costuro abadá para gente e para criatura.', 'O mais difícil foi o da Sucurião do Doutor Peçonha, lá do Brejo Roxo. Oito metros de calça.', 'Aliás, ele sumiu faz dias e não veio buscar a encomenda. Estranho: aquele homem não perde prazo nem para tomar veneno.']),
-    npc('cliente', 'Rapaz do Abadá', 'npc-homem-3', 6, 5, 'o', ['Pedi a calça branca e ela veio com um bolso para Cuia. Genial!']),
+  marcas: { J: '#', X: '#', A: '.', M: '.', E: '.', K: '.', b: '.', t: '.', P: '.', '1': '.', '2': '.' },
+  objetos: (g) => [
+    obj(g, 'J', 'janela'), obj(g, 'X', 'quadro-ex-voto'), obj(g, 'A', 'armario'), obj(g, 'M', 'maquina-costura', { texto: ['A máquina de costura ainda está com um abadá enorme preso no pé: oito metros de calça branca.'] }),
+    obj(g, 'E', 'estante', { texto: ['Moldes de abadá em todos os tamanhos, de Saguinho a Capivarona.'] }), obj(g, 'K', 'cesto'), obj(g, 'b', 'banquinho'),
+    { o: 'tapete-b', x: g.todos('t')[3][0], y: g.todos('t')[3][1] }, obj(g, 'P', 'planta-c'),
+  ],
+  gente: (g) => [
+    gente(g, '1', 'linha', 'cl-rendeira', 'Dona Linha', { dir: 's', fala: ['Costuro abadá para gente e para criatura.', 'O mais difícil foi o da Sucurião do Doutor Peçonha, lá do Brejo Roxo. Oito metros de calça.', 'Ele sumiu faz dias e não veio buscar a encomenda. Estranho: aquele homem não perde prazo nem para tomar veneno.'], se: '!flag:laboratorio-ok' }),
+    gente(g, '1', 'linha-2', 'cl-rendeira', 'Dona Linha', { dir: 's', fala: ['O Doutor Peçonha veio buscar o abadá da Sucurião! Contou que ficou preso numa jaula do Cartel.', 'Pagou com uma cobra de pelúcia. Eu aceitei. Cobra de pelúcia não morde.'], se: 'flag:laboratorio-ok' }),
+    gente(g, '2', 'cliente', 'npc-homem-3', 'Rapaz do Abadá', { dir: 'o', fala: ['Pedi a calça branca e ela veio com um bolso para Cuia. Genial!'] }),
   ],
 });

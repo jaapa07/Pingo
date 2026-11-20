@@ -1,16 +1,27 @@
-/** Sobrado da família Sapateado: três gerações de capoeiristas e um rádio sempre ligado. */
-import { casa, npc } from './_b2-lib';
+import { casaLivre, obj, objs, gente } from './_b2s-lib';
 
-export default casa({
-  id: 'B5-casa-1', nome: 'Sobrado dos Sapateado', saida: { zona: 'B5', x: 6, y: 13 }, passo: 11, tema: 'colonial',
-  chao: (g) => g.r(3, 4, 3, 2, ','),
-  objetos: [
-    { o: 'fogao-lenha', x: 1, y: 2 }, { o: 'pia', x: 3, y: 2 }, { o: 'cristaleira', x: 8, y: 2 }, { o: 'mesa', x: 6, y: 4 }, { o: 'cadeira', x: 5, y: 4 },
-    { o: 'radio', x: 6, y: 2, texto: ['♪ …e atenção, ouvintes da Rádio Cipó: carregamento estranho de jaulas visto na estrada do Brejo Roxo… ♪'] },
-    { o: 'quadro', x: 5, y: 1 }, { o: 'janela', x: 2, y: 1 }, { o: 'planta', x: 1, y: 6 },
+/** B5-casa-1 · Sobrado dos Sapateado (Cidade Ginga, passo 12): a avó capoeirista e o neto. */
+export default casaLivre({
+  id: 'B5-casa-1', nome: 'Sobrado dos Sapateado', cidade: 'B5', tema: 'colonial', musica: 'cidade-samba', arena: 'cerrado', passo: 12, volta: [6, 13],
+  linhas: [
+    '############',
+    '##J##Q##R###',
+    '#FF.P.U..K.#',
+    '#..........#',
+    '#.1...HHh..#',
+    '#.,,,......#',
+    '#.,,,....2.#',
+    '#.....aa..L#',
+    '#####DD#####',
   ],
-  gente: [
-    npc('vo', 'Vó Sapateado', 'npc-idosa', 2, 4, 'l', ['No meu tempo a roda ia até o sol nascer.', 'Hoje eu durmo às oito. Mas sonho que estou dando rasteira.']),
-    npc('neto', 'Zezinho', 'cl-crianca-m', 7, 5, 'o', ['O Mestre Gingado tem uma Quero-Guarda que voa E chuta!', 'Tipo Vento e tipo Ginga ao mesmo tempo. Golpe de Geada nela!']),
+  marcas: { J: '#', Q: '#', R: '#', F: '.', P: '.', U: '.', K: '.', H: '.', h: '.', a: '.', L: '.', '1': '.', '2': '.' },
+  objetos: (g) => [
+    obj(g, 'J', 'janela'), obj(g, 'Q', 'quadro'), obj(g, 'R', 'relogio'),
+    obj(g, 'F', 'fogao-lenha'), obj(g, 'P', 'pia'), obj(g, 'U', 'radio', { texto: ['♪ …e atenção, ouvintes da Rádio Cipó: carregamento estranho de jaulas visto na estrada do Brejo Roxo… ♪'] }), obj(g, 'K', 'cristaleira'),
+    obj(g, 'H', 'mesa'), obj(g, 'h', 'cadeira'), { o: 'tapete-a', x: g.todos('a')[0][0], y: g.todos('a')[0][1] }, obj(g, 'L', 'planta'),
+  ],
+  gente: (g) => [
+    gente(g, '1', 'vo', 'npc-idosa', 'Vó Sapateado', { dir: 'l', fala: ['No meu tempo a roda ia até o sol nascer.', 'Hoje eu durmo às oito. Mas sonho que estou dando rasteira.'] }),
+    gente(g, '2', 'neto', 'cl-crianca-m', 'Zezinho', { dir: 'o', fala: ['O Mestre Gingado tem uma Quero-Guarda que voa E chuta!', 'Tipo Vento e tipo Ginga ao mesmo tempo. Golpe de Geada nela!'] }),
   ],
 });

@@ -1,80 +1,109 @@
 /**
- * B5 · Cidade Ginga — passo 11. Ginásio Ginga (Mestre Gingado), rodas de capoeira na praça e a Feira.
- * A leste fica a Lagoa do Berimbau: do píer se vê o poço fundo (Mergulho, insígnia 12) que leva ao Túnel Alagado.
+ * B5 · Cidade Ginga — passo 12 (líder 12, Mestre Gingado, ás 55). Ginásio da Ginga (zona `B5-ginasio`, time de
+ * ginásios; porta → (8, 17); saída em (26, 8), docs/PORTAS-GINASIO.md). Rodas de capoeira na praça, a Feira
+ * (mercado coberto; às quintas tem banca extra) e a Academia do Mestre Cabaça (missão dos alunos fujões).
+ * Leste: a Lagoa do Berimbau, com o poço fundo (Mergulho) que desce para o Túnel Alagado (B-TA).
+ * Visível e fora de alcance até a insígnia 12: o Mirante da Cascata, no alto do canto nordeste (Cachoeira).
+ * Escondido: o Quintal das Mangueiras atrás do cipó do sudoeste (Facão); a ilhota da lagoa (Remo).
  */
 import type { ZonaDef } from '../../core/tipos';
-import { Grade, npc } from './_b2-lib';
+import { Pincel, grade, obj, objs, entrada, saidas, gente, duelista, item, placa } from './_b2s-lib';
 
-const g = new Grade(52, 40, '.');
-g.q(0, 0, 52, 40, 'T').r(0, 1, 52, 1, 'T').r(0, 38, 52, 1, 'T');
-g.t(1, 2, 'TTT', 'TT', 'T').t(8, 2, 'TT_TTT', '_T__T').t(30, 2, 'TTTT_TTTT', '_TT___TT').t(1, 33, 'T', 'TT', 'TTT', 'TTTT', 'TTTTT').t(41, 36, 'TTTTTTTTTT', 'TTTTTTTTTT');
-// Lagoa do Berimbau, areia da margem, píer e ilhota
-g.r(42, 4, 9, 32, '~').r(41, 5, 1, 31, ';').r(40, 16, 1, 9, ';').r(42, 2, 9, 2, 'T').p('~', 41, 9, 41, 10, 41, 11, 41, 28, 41, 29);
-g.r(42, 20, 4, 2, '=').r(47, 12, 3, 3, 'd').r(45, 28, 4, 3, ';').p('T', 46, 28).p(',', 47, 29);
-// ruas: a principal (oeste-leste) e a avenida do ginásio
-g.r(0, 20, 42, 2, ':').r(25, 8, 2, 29, ':').p('T', 0, 21);
-g.via(':', 14, 18, 14, 19).via(':', 33, 18, 33, 19).via(':', 6, 13, 6, 19).via(':', 40, 13, 40, 19).via(':', 19, 13, 19, 19);
-g.via(':', 9, 31, 9, 32, 24, 32).via(':', 38, 31, 38, 32, 27, 32).r(26, 36, 15, 1, ':');
-// praça da roda: areia batida, roda grande e canteiros de flores
-g.r(15, 23, 21, 8, ';').r(25, 23, 2, 8, ':').t(17, 24, '_,,,,,_', ',:::::,', ',:::::,', ',:::::,', ',:::::,', '_,,,,,_');
-g.p(',', 15, 23, 35, 23, 15, 30, 35, 30, 28, 30, 33, 24).p('b', 16, 23, 34, 30);
-// barracas ao ar livre da feira (balcões) e cercas
-g.r(28, 34, 4, 1, 'M').r(34, 34, 4, 1, 'M').r(28, 33, 10, 1, '.').r(3, 24, 1, 6, 'f').r(13, 34, 8, 1, 'f');
+const p = new Pincel(52, 40, '.');
+p.r(0, 0, 52, 2, 'T').r(0, 38, 52, 2, 'T').r(0, 0, 1, 40, 'T').r(51, 0, 1, 40, 'T');
+p.t(1, 2, 'TTT.TT', 'TT..T', 'T').t(8, 2, 'TT_TTT', '_T__T').t(30, 2, 'TTTT_TTTT', '_TT___TT').t(1, 33, 'T', 'TT', 'TTT', 'TTTT', 'TTTTT');
+// Mirante da Cascata (nordeste): prateleira de pedra com um poço em cima; a cascata cai na lagoa
+p.r(42, 2, 9, 3, '#').r(43, 2, 7, 2, '.').p('~', 47, 2, 47, 3).p(',', 44, 2, 45, 3, 49, 2).p('w', 47, 4).p('T', 43, 2, 50, 3);
+// Lagoa do Berimbau, areia da margem, píer, poço fundo e ilhota
+p.r(42, 5, 9, 31, '~').r(41, 5, 1, 31, ';').r(40, 15, 1, 10, ';').p('~', 41, 9, 41, 10, 41, 11, 41, 28, 41, 29, 41, 30);
+p.r(42, 20, 4, 2, '=').r(47, 12, 3, 3, 'd').r(45, 27, 4, 4, ';').p('T', 47, 27).p(',', 46, 29).p('b', 48, 30, 41, 7, 41, 33, 40, 16, 40, 24);
+p.r(36, 36, 15, 2, 'T');
+// ruas: a principal (oeste-leste), a avenida do ginásio e as vielas
+p.r(0, 20, 42, 2, ':').r(25, 8, 2, 29, ':').p('T', 0, 21);
+p.via(':', 1, 14, 18, 14, 19).via(':', 1, 33, 18, 33, 19).via(':', 1, 6, 13, 6, 19).via(':', 1, 40, 13, 40, 19).via(':', 1, 19, 13, 19, 19);
+p.via(':', 1, 9, 31, 9, 32, 24, 32).via(':', 1, 38, 31, 38, 32, 27, 32).r(26, 36, 10, 1, ':');
+p.via(':', 1, 2, 8, 22, 8).via(':', 1, 29, 8, 39, 8).r(6, 8, 1, 5, ':').r(39, 8, 1, 5, ':');
+// praça da roda: areia batida, a roda grande, a roda das crianças e canteiros de flores
+p.r(15, 23, 21, 8, ';').r(25, 23, 2, 8, ':').t(17, 24, '_,,,,,_', ',:::::,', ',:::::,', ',:::::,', ',:::::,', '_,,,,,_');
+p.t(31, 27, ',,,', ',:,', ',,,');
+p.p(',', 15, 23, 35, 23, 15, 30, 35, 30, 28, 30, 33, 24, 16, 26, 16, 27).p('b', 16, 23, 34, 30, 35, 29);
+// Feira: barracas ao ar livre (balcões), cercas do quintal e a cerca do terreiro
+p.r(28, 34, 4, 1, 'M').r(33, 34, 3, 1, 'M').r(28, 33, 8, 1, '.').r(3, 24, 1, 6, 'f').r(13, 34, 8, 1, 'f').p(',', 15, 35, 17, 35, 19, 35);
 // jardim do ginásio e canteiros de frutos
-g.r(21, 8, 4, 2, ',').r(27, 8, 4, 2, ',').p('b', 21, 7, 22, 7, 29, 7, 30, 7).p('C', 10, 9, 11, 9, 44 - 34, 10);
-g.p('T', 4, 8, 16, 8, 22, 12, 30, 13, 36, 8, 37, 16, 10, 16, 3, 18, 22, 17, 29, 17, 5, 36, 12, 37, 22, 36, 39, 26, 39, 34).p('t', 9, 14, 36, 14, 14, 36);
-g.p(',', 8, 18, 17, 19, 23, 14, 31, 19, 36, 19, 6, 24, 8, 26, 11, 24, 37, 24, 38, 28, 20, 34, 17, 36).p('b', 4, 22, 12, 22, 38, 22, 23, 18, 28, 18);
-
+p.r(21, 8, 4, 2, ',').r(27, 8, 4, 2, ',').p('b', 21, 7, 22, 7, 29, 7, 30, 7).p('C', 10, 9, 11, 9, 10, 10);
+p.r(8, 9, 2, 2, ',').r(12, 9, 2, 2, ',');
+// Quintal das Mangueiras (sudoeste, Facão): mangueiras sacudíveis e um canteiro
+p.q(1, 24, 3, 9, 'T').r(1, 25, 2, 7, '.').p('f', 3, 24).p('c', 3, 28).p('t', 1, 25, 1, 31).p('C', 2, 26).p(',', 2, 29, 1, 28, 2, 30);
+p.r(36, 34, 3, 1, ',');
+// árvores, moitas e flores
+p.p('T', 4, 8, 16, 8, 22, 12, 30, 13, 36, 8, 37, 16, 10, 16, 3, 18, 22, 17, 29, 17, 5, 36, 12, 37, 22, 36, 39, 26, 8, 22).p('t', 9, 14, 36, 14, 14, 36, 2, 13);
+p.p(',', 8, 18, 17, 19, 23, 14, 31, 19, 36, 19, 6, 24, 8, 26, 11, 24, 37, 24, 38, 28, 20, 34, 17, 36, 3, 15, 4, 16, 11, 3, 18, 3, 24, 3, 36, 4).p('b', 4, 22, 12, 22, 38, 22, 23, 18, 28, 18, 10, 26, 35, 10, 2, 10);
+p.r(2, 4, 3, 3, '"').r(14, 3, 4, 2, '"').p(',', 3, 5);
+// marcas
+p.t(0, 20, 'W').t(47, 12, 'D').t(48, 12, 'D').t(49, 12, 'D').t(47, 13, 'D').t(48, 13, 'D').t(49, 13, 'D').t(47, 14, 'D').t(48, 14, 'D').t(49, 14, 'D');
+p.t(23, 7, 'G').t(12, 17, 'P').t(32, 17, 'V').t(6, 30, 'F').t(5, 12, 'H').t(38, 12, 'I').t(36, 30, 'J').t(18, 12, 'K').t(29, 29, 'R').t(31, 24, 'Q').t(23, 10, 'S');
+p.t(2, 19, 'a').t(27, 10, 'q').t(39, 19, 's').t(11, 31, 'u').t(44, 3, 'y');
+p.t(20, 23, '1').t(18, 26, '2').t(22, 27, '3').t(24, 11, '4').t(41, 19, '5').t(29, 25, '6').t(10, 22, '7').t(29, 32, '8').t(34, 32, '9').t(33, 36, 'A').t(40, 23, 'B').t(4, 30, 'X').t(37, 31, 'Y').t(14, 19, 'Z');
+p.t(30, 22, 'N').t(18, 29, 'O');
+p.t(47, 30, 'h').t(5, 26, 'i').t(16, 30, 'j').t(20, 37, 'k').t(37, 9, 'z').t(2, 27, 'm').t(2, 31, 'n').t(46, 2, '!');
+const g = grade('B5', p.fim(), {
+  W: ':', D: 'd', G: '.', P: '.', V: '.', F: '.', H: '.', I: '.', J: '.', K: '.', R: ';', Q: ';', S: ',',
+  a: '.', q: '.', s: ';', u: ':', y: '.',
+  '1': ',', '2': ':', '3': ':', '4': ':', '5': ';', '6': ';', '7': '.', '8': '.', '9': '.', A: '.', B: ';', X: '.', Y: ':', Z: ':', N: ':', O: ';',
+  h: ';', i: '.', j: ';', k: '.', z: '.', m: '.', n: '.', '!': '.',
+});
+const placas = [
+  placa(g, 'a', 'CIDADE GINGA\n"Quem não ginga, tropeça."\nOeste: Trilha da Roda, para Arraial Brasa.'),
+  placa(g, 'q', 'GINÁSIO DE CIDADE GINGA\nLíder: Mestre Gingado, o pé que canta.\nInsígnia Berimbau.'),
+  placa(g, 's', 'LAGOA DO BERIMBAU\nO poço fundo no meio é a boca do Túnel Alagado, que sai no Brejo Roxo.\nProibido mergulhar sem Amuleto. (O salva-vidas é uma capivara e ela está de folga.)'),
+  placa(g, 'u', 'FEIRA DA CIDADE GINGA\nFrutos, cuias de artesão e pergaminhos.\nÀs quintas: banca da Artesã Cabacinha com cuias de encomenda.'),
+  placa(g, 'y', 'MIRANTE DA CASCATA\n"Daqui de cima a cidade inteira parece uma roda." — gravado na pedra por um aluno do Mestre Cabaça'),
+];
 const zona: ZonaDef = {
-  id: 'B5', nome: 'Cidade Ginga', mapa: 'B', tipo: 'cidade', tileset: 'cerrado', musica: 'cidade-samba', arena: 'cerrado', passo: 11, pouso: [14, 18],
-  mapaChars: g.fim(),
+  id: 'B5', nome: 'Cidade Ginga', mapa: 'B', tipo: 'cidade', tileset: 'cerrado', musica: 'cidade-samba', arena: 'cerrado', passo: 12, pouso: [14, 18],
+  mapaChars: g.mapa,
   objetos: [
-    { o: 'ginasio', x: 23, y: 7, cor: '#7a3b12,#c9702a,#f2b25a' }, { o: 'posto', x: 12, y: 17 }, { o: 'venda', x: 32, y: 17 }, { o: 'mercado', x: 6, y: 30 },
-    { o: 'casa-colonial-a', x: 5, y: 12 }, { o: 'casa-colonial-b', x: 38, y: 12 }, { o: 'casa-colonial-c', x: 36, y: 30 }, { o: 'casa-e', x: 18, y: 12 },
-    { o: 'coreto', x: 29, y: 28 }, { o: 'fonte', x: 31, y: 24 }, { o: 'banco', x: 21, y: 30 }, { o: 'banco', x: 31, y: 30 }, { o: 'banco', x: 35, y: 19 },
+    obj(g, 'G', 'ginasio', { cor: '#7a3b12,#c9702a,#f2b25a' }), obj(g, 'P', 'posto'), obj(g, 'V', 'venda'), obj(g, 'F', 'mercado'),
+    obj(g, 'H', 'casa-colonial-a'), obj(g, 'I', 'casa-colonial-b'), obj(g, 'J', 'casa-colonial-c'), obj(g, 'K', 'casa-e'),
+    obj(g, 'R', 'coreto'), obj(g, 'Q', 'fonte'), obj(g, 'S', 'estatua', { texto: ['Estátua de bronze de um capoeirista no meio de um aú. Na base: "Mestre Gingado, campeão da Roda Grande".'] }),
+    ...placas.map((q) => q.objeto),
+    { o: 'banco', x: 21, y: 30 }, { o: 'banco', x: 31, y: 30 }, { o: 'banco', x: 35, y: 19 },
     { o: 'poste', x: 24, y: 19 }, { o: 'poste', x: 27, y: 22 }, { o: 'poste', x: 39, y: 22 }, { o: 'poste', x: 11, y: 19 }, { o: 'poste', x: 24, y: 31 },
-    { o: 'placa', x: 2, y: 19 }, { o: 'placa', x: 27, y: 10 }, { o: 'placa', x: 39, y: 19 }, { o: 'placa', x: 11, y: 31 },
-    { o: 'ipe-amarelo', x: 17, y: 22 }, { o: 'ipe-roxo', x: 34, y: 22 }, { o: 'estatua', x: 23, y: 10 }, { o: 'canoa', x: 42, y: 24 }, { o: 'coqueiro', x: 40, y: 8 }, { o: 'coqueiro', x: 40, y: 30 },
+    { o: 'ipe-amarelo', x: 17, y: 22 }, { o: 'ipe-roxo', x: 34, y: 22 }, { o: 'canoa', x: 42, y: 24 }, { o: 'coqueiro', x: 40, y: 8 }, { o: 'coqueiro', x: 40, y: 30 }, { o: 'coqueiro', x: 46, y: 28 },
+    { o: 'fogueira', x: 32, y: 28 },
   ],
-  placas: [
-    { x: 2, y: 19, texto: 'CIDADE GINGA\n"Quem não ginga, tropeça."' },
-    { x: 27, y: 10, texto: 'GINÁSIO DE CIDADE GINGA\nLíder: Mestre Gingado, o pé que canta.\nInsígnia Berimbau.' },
-    { x: 39, y: 19, texto: 'LAGOA DO BERIMBAU\nO poço fundo no meio é a boca do Túnel Alagado.\nProibido mergulhar sem Amuleto. (O salva-vidas é uma capivara e ela está de folga.)' },
-    { x: 11, y: 31, texto: 'FEIRA DA CIDADE GINGA\nFrutos, cuias de artesão e pergaminhos.\nÀs quintas tem prova grátis de cocada.' },
-  ],
+  placas: placas.map((q) => q.placa),
   warps: [
-    { x: 0, y: 20, para: { zona: 'B-R3', x: 98, y: 16, dir: 'o' }, tipo: 'borda' },
-    { x: 26, y: 7, para: { zona: 'B5-ginasio', x: 8, y: 17, dir: 'n' }, tipo: 'porta' },
-    { x: 14, y: 17, para: { zona: 'B5-posto', x: 6, y: 8, dir: 'n' }, tipo: 'porta' },
-    { x: 33, y: 17, para: { zona: 'B5-venda', x: 5, y: 7, dir: 'n' }, tipo: 'porta' },
-    { x: 9, y: 30, para: { zona: 'B5-feira', x: 8, y: 9, dir: 'n' }, tipo: 'porta' },
-    { x: 6, y: 12, para: { zona: 'B5-casa-1', x: 4, y: 6, dir: 'n' }, tipo: 'porta' },
-    { x: 40, y: 12, para: { zona: 'B5-casa-2', x: 4, y: 6, dir: 'n' }, tipo: 'porta' },
-    { x: 38, y: 30, para: { zona: 'B5-casa-3', x: 6, y: 8, dir: 'n' }, tipo: 'porta' },
-    { x: 19, y: 12, para: { zona: 'B5-casa-4', x: 4, y: 6, dir: 'n' }, tipo: 'porta' },
-    ...[47, 48, 49].flatMap((x) => [12, 13, 14].map((y) => ({ x, y, para: { zona: 'B-TA', x: 5, y: 5, dir: 's' as const } }))),
+    ...saidas(g, 'W', 'B-R3', 98, 16, 'o', 'borda'),
+    entrada(g, 'G', 'ginasio', 'B5-ginasio', 8, 17),
+    entrada(g, 'P', 'posto', 'B5-posto', 6, 8),
+    entrada(g, 'V', 'venda', 'B5-venda', 5, 7),
+    entrada(g, 'F', 'mercado', 'B5-feira', 8, 9),
+    entrada(g, 'H', 'casa-colonial-a', 'B5-casa-1', 5, 7),
+    entrada(g, 'I', 'casa-colonial-b', 'B5-casa-2', 5, 7),
+    entrada(g, 'J', 'casa-colonial-c', 'B5-casa-3', 6, 8),
+    entrada(g, 'K', 'casa-e', 'B5-casa-4', 5, 7),
+    ...saidas(g, 'D', 'B-TA', 5, 6, 's'),
   ],
   npcs: [
-    npc('berimbau', 'Tocador Caxixi', 'cl-repentista', 20, 23, 's', ['♪ Tim, tim, tim, dom, dom… ♪', 'Na roda só entra quem bate palma no tempo. Você bate palma igual a quem espanta mosquito, mas tudo bem.']),
-    npc('roda-a', 'Capoeirista Besouro', 'cl-capoeirista', 18, 26, 'l', ['Aqui a gente treina com as criaturas, não contra elas.', 'Criatura do tipo Ginga derruba Pedra, Ferro e Geada. Mas se aparecer um passarinho… a gente perde o rebolado.']),
-    npc('roda-b', 'Capoeirista Maré', 'cl-capoeirista', 22, 27, 'o', ['O Mestre Gingado luta em dupla: duas criaturas de cada lado, no compasso.', 'Se a sua equipe não conversa entre si, ele dança em cima de você.']),
-    npc('guia', 'Seu Dedé', 'npc-idoso', 24, 11, 'l', ['O ginásio é uma academia: cada duelo acontece no toque do berimbau.', 'Tipo Vento e tipo Mente fazem o povo do Mestre perder o passo. Tipo Encanto também.', 'Eu? Eu só guardo os chinelos da turma.'], { mov: 'olhar' }),
-    npc('pier', 'Pescador Tainha', 'cl-pescador', 41, 19, 'l', ['Tá vendo a água escura lá no meio? É fundo que não acaba mais.', 'O túnel por baixo sai lá no Brejo Roxo. Meu avô atravessava prendendo o fôlego. Meu avô mentia muito.', 'Sem o Amuleto do Mergulho da Engenheira Bigorna, de Vila Ferrugem, nem tente.']),
-    npc('menina', 'Ritinha', 'cl-crianca-f', 29, 25, 's', ['Eu sei dar estrela, ponte e bananeira!', 'A minha Quatizão só sabe dar trabalho.'], { mov: 'vagar' }),
-    npc('fofoqueira', 'Dona Marocas', 'npc-mulher-2', 10, 22, 'l', ['Menino, passou por aqui um povo de macacão cor de ferrugem comprando sacos e mais sacos de cal.', 'Disseram que iam "limpar" o Brejo Roxo. Desde quando brejo se limpa?', 'Eu não sou de falar da vida alheia. Mas que é esquisito, é.']),
-    npc('feirante-1', 'Seu Quiabo', 'npc-homem-1', 29, 33, 's', ['Olha a garrafada! Levanta até defunto de criatura!', 'Levanta nada. Mas cura que é uma beleza.'], { loja: ['garrafada', 'elixir-andiroba', 'cha-guarana', 'garapa', 'pomada-copaiba'] }),
-    npc('feirante-2', 'Dona Cocada', 'npc-mulher-3', 35, 33, 's', ['Biscoito de polvilho, rapadura e fumaça de andiroba!', 'A rapadura é dura. O preço também.'], { loja: ['biscoito-de-polvilho', 'rapadura', 'fumaca-andiroba', 'fumaca-andiroba-forte', 'corda-de-cipo'] }),
-    npc('turista', 'Turista Evaristo', 'npc-homem-4', 33, 36, 'n', ['Vim de Porto Sereia só para a feira.', 'Já comprei um berimbau, dois caxixis e uma dor nas costas tentando dar um aú.']),
-    npc('vigia-lagoa', 'Mergulhador Baiacu', 'cl-mergulhador', 40, 23, 'l', ['Eu treino apneia aqui. Meu recorde é dois minutos.', 'A minha Poraquê aguenta vinte. E ainda acende a luz lá embaixo.', 'No Túnel Alagado o caminho sobe para uma gruta com ar no meio. Guarde fôlego e remédio.']),
-    npc('espiao', 'Homem de Macacão', 'capanga-m', 3, 31, 'l', ['…', 'Tá olhando o quê? Estou só… contando caixotes.', 'Circulando, circulando.'], { se: '!flag:laboratorio-ok' }),
-    npc('porteiro-mestre', 'Contramestre Zumbi', 'cl-capoeirista', 39, 31, 'o', ['A casa de azulejo é a Academia do Mestre Cabaça, o mais velho da cidade.', 'Ele anda procurando três alunos fujões. Se quiser ajudar, entre.']),
+    duelista(g, 'N', 'B5-1', 'cl-capoeirista', 's', 3),
+    duelista(g, 'O', 'B5-2', 'cl-capoeirista', 'l', 3),
+    gente(g, '1', 'berimbau', 'cl-repentista', 'Tocador Caxixi', { dir: 's', fala: ['♪ Tim, tim, tim, dom, dom… ♪', 'Na roda só entra quem bate palma no tempo. Você bate palma igual a quem espanta mosquito, mas tudo bem.'] }),
+    gente(g, '2', 'roda-a', 'cl-capoeirista', 'Capoeirista Besouro', { dir: 'l', fala: ['Aqui a gente treina com as criaturas, não contra elas.', 'Criatura do tipo Ginga derruba Comum, Pedra, Ferro e Geada. Mas se aparecer um passarinho… a gente perde o rebolado.'] }),
+    gente(g, '3', 'roda-b', 'cl-capoeirista', 'Contramestra Maré', { dir: 'o', script: 'b2-roda-sabado' }),
+    gente(g, '4', 'guia', 'npc-idoso', 'Seu Dedé', { dir: 'l', mov: 'olhar', fala: ['O ginásio é uma academia: cada duelo acontece no toque do berimbau.', 'Tipo Vento, Mente e Encanto fazem o povo do Mestre perder o passo.', 'Eu? Eu só guardo os chinelos da turma.'] }),
+    gente(g, '5', 'pier', 'cl-pescador', 'Pescador Tainha', { dir: 'l', fala: ['Tá vendo a água escura lá no meio? É fundo que não acaba mais.', 'O túnel por baixo sai lá no Brejo Roxo. Meu avô atravessava prendendo o fôlego. Meu avô mentia muito.', 'No meio do túnel tem uma gruta com ar e uma cascata que sobe. Sem o Amuleto da Cachoeira, a gruta é o fim da linha.'] }),
+    gente(g, '6', 'menina', 'cl-crianca-f', 'Ritinha', { mov: 'vagar', fala: ['Eu sei dar estrela, ponte e bananeira!', 'A minha Quatizão só sabe dar trabalho.'] }),
+    gente(g, '7', 'fofoqueira', 'npc-mulher-2', 'Dona Marocas', { dir: 'l', fala: ['Menino, passou por aqui um povo de macacão cor de ferrugem comprando sacos e mais sacos de cal.', 'Disseram que iam "limpar" o Brejo Roxo. Desde quando brejo se limpa?', 'Eu não sou de falar da vida alheia. Mas que é esquisito, é.'], se: '!flag:laboratorio-ok' }),
+    gente(g, '7', 'fofoqueira-2', 'npc-mulher-2', 'Dona Marocas', { dir: 'l', fala: ['Soube? Derrubaram o esconderijo do Cartel no Brejo Roxo! Uma tal de Queixada saiu correndo de lá e brotou mato por onde passou.', 'Eu não sou de espalhar notícia. Mas já contei para a cidade inteira.'], se: 'flag:laboratorio-ok' }),
+    gente(g, '8', 'feirante-1', 'npc-homem-1', 'Seu Quiabo', { dir: 's', loja: ['garrafada', 'elixir-andiroba', 'cha-guarana', 'garapa', 'pomada-copaiba'], fala: ['Olha a garrafada! Levanta até defunto de criatura!', 'Levanta nada. Mas cura que é uma beleza.'] }),
+    gente(g, '9', 'feirante-2', 'npc-mulher-3', 'Dona Cocada', { dir: 's', loja: ['biscoito-de-polvilho', 'rapadura', 'fumaca-andiroba', 'fumaca-andiroba-forte', 'corda-de-cipo'], fala: ['Biscoito de polvilho, rapadura e fumaça de andiroba!', 'A rapadura é dura. O preço também.'] }),
+    gente(g, 'A', 'turista', 'npc-homem-4', 'Turista Evaristo', { dir: 'n', fala: ['Vim de Porto Sereia só para a feira.', 'Já comprei um berimbau, dois caxixis e uma dor nas costas tentando dar um aú.'] }),
+    gente(g, 'B', 'vigia-lagoa', 'cl-mergulhador', 'Mergulhador Baiacu', { dir: 'l', fala: ['Eu treino apneia aqui. Meu recorde é dois minutos.', 'A minha Poraquê aguenta vinte. E ainda acende a luz lá embaixo.', 'No Túnel Alagado, suba nas clareiras de luz: é por elas que se volta à tona.'] }),
+    gente(g, 'X', 'espiao', 'capanga-m', 'Homem de Macacão', { dir: 'l', se: '!flag:laboratorio-ok', fala: ['…', 'Tá olhando o quê? Estou só… contando mangas.', 'Circulando, circulando. Este quintal é particular. Do Cartel. Quer dizer, de ninguém.'] }),
+    gente(g, 'Y', 'porteiro-mestre', 'cl-capoeirista', 'Contramestre Zumbi', { dir: 'o', fala: ['A casa de azulejo é a Academia do Mestre Cabaça, o mais velho da cidade.', 'Ele anda procurando três alunos fujões. Se quiser ajudar, entre.'] }),
+    gente(g, 'Z', 'b5-irma', 'npc-mulher-1', 'Moça do Posto', { dir: 's', mov: 'olhar', fala: ['O Posto Guardião cura de graça e guarda as suas cuias no Viveiro.', 'Dica da casa: o Mestre Gingado luta com criaturas de Ginga. Vento, Mente e Encanto acertam em cheio.'] }),
   ],
-  itens: [
-    { x: 47, y: 30, item: 'pedra-mare', flag: 'B5-i1' },
-    { x: 5, y: 26, item: 'cuia-rapida', qtd: 2, flag: 'B5-i2' },
-    { x: 37, y: 9, item: 'garapa', oculto: true, flag: 'B5-o1' },
-    { x: 16, y: 30, item: 'pena-colorida', oculto: true, flag: 'B5-o2' },
-    { x: 20, y: 37, item: 'mel-puro', qtd: 2, oculto: true, flag: 'B5-o3' },
-  ],
+  itens: [item(g, 'h', 'pedra-mare'), item(g, 'i', 'cuia-rapida', 2), item(g, 'j', 'pena-colorida', 1, true), item(g, 'k', 'mel-puro', 2, true), item(g, 'z', 'garapa', 1, true), item(g, 'm', 'pt-41'), item(g, 'n', 'elixir-andiroba'), item(g, '!', 'pt-29')],
 };
 export default zona;

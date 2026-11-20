@@ -313,3 +313,15 @@ erros de console: []
   [batalha] A-R2-7 → derrota · equipe 1:14,10:3,13:4,45:6,20:8 · A-R2 · $1524
     turnos: Tamanduí14 43/43 x Jataí9 27/27 → golpe arranhao | Tamanduí14 19/43 x Jataí9 18/27 → golpe arranhao | Tamanduí14 14/43 x Pintinhas10 35/35 → golpe arranhao | Gambazinho8 26/26 x Pintinhas10 35/35 → golpe arranhao | Gambazinho8 20/26 x Pintinhas10 30/35 → golpe arranhao | Gambazinho8 13/26 x Pintinhas10 25/35 → golpe arranhao | Gambazinho8 7/26 x Pintinhas10 20/35 → golpe arranhao | Quero-querinho6 22/22 x Pintinhas10 20/35 → golpe bicada | Quero-querinho6 5/22 x Pintinhas10 12/35 → golpe bicada | Pipirim3 16/16 x Pintinhas10 12/35 → golpe bicada | Cotiazinha4 18/18 x Pintinhas10 12/35 → golpe encontrao
   DERROTA para A-R2-7 (nv 10)
+  [batalha] A-R2-7 → vitoria · equipe 1:14,10:3,13:4,45:8,20:8 · A-R2 · $1202
+  [batalha] A-R2-8 → vitoria · equipe 1:14,10:3,13:4,45:8,20:8 · A-R2 · $1402
+  [batalha] A-R2-6 → vitoria · equipe 1:15,10:3,13:4,45:8,20:8 · A-R2 · $1798
+  [batalha] selvagem 95:13 → derrota · equipe 1:15,10:3,13:4,45:8,20:8 · A-MS · $1798
+    turnos: Tamanduí15 26/45 x Quatinho13 38/38 → golpe chicote-de-cipo | Quero-querinho8 26/26 x Quatinho13 38/38 → golpe bicada | Quero-querinho8 26/26 x Quatinho13 32/38 → golpe bicada | Quero-querinho8 26/26 x Quatinho13 25/38 → golpe bicada | Gambazinho8 26/26 x Quatinho13 25/38 → item cuia | Gambazinho8 1/26 x Quatinho13 25/38 → item cuia | Cotiazinha4 18/18 x Quatinho13 25/38 → item cuia | Pipirim3 16/16 x Quatinho13 25/38 → golpe bicada | Pipirim3 16/16 x Quatinho13 23/38 → golpe bicada | Pipirim3 16/16 x Quatinho13 21/38 → golpe bicada
+  caça: acabaram as cuias
+  caça em A-MS: 1 batalhas, equipe ["Tamanduí 15","Pipirim 3","Cotiazinha 4","Quero-querinho 8","Gambazinho 8"]
+  [batalha] A-MS-2 → vitoria · equipe 1:15,10:3,13:4,45:8,20:8 · A-MS · $1099
+  [batalha] A-MS-6 → vitoria · equipe 2:16,10:3,13:4,45:8,20:8 · A-MS · $1567
+  [batalha] A-MS-7 → vitoria · equipe 2:16,10:3,13:4,45:8,20:8 · A-MS · $2087
+  [batalha] A-MS-3 → vitoria · equipe 2:16,10:3,13:4,45:8,20:8 · A-MS · $2483
+  [batalha] A-MS-4 → vitoria · equipe 2:17,10:3,13:4,45:8,20:8 · A-MS · $3011
