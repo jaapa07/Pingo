@@ -35,7 +35,7 @@ export const TREINADORES_GINASIO_01: TreinadorDef[] = [
     itens: ['cha-cidreira'],
     equipe: [
       { e: 107, nv: 7, golpes: ['bicada', 'esguicho'] },
-      { e: 49, nv: 9, golpes: ['bicada', 'sorver-seiva', 'cara-feia'] },
+      { e: 49, nv: 10, golpes: ['bicada', 'sorver-seiva', 'cara-feia'] },
     ],
     desafio: 'Sessenta anos soltando pipa neste píer. O vento me conta tudo… e ele disse que você vinha. Mostre o que sabe!',
     derrota: 'Eita! Você cortou a minha linha em pleno céu.', depois: 'Vento bom é o que empurra a gente para a frente.' },

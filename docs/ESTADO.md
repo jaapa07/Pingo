@@ -91,3 +91,4 @@ Depois: zonas B1/B2 (+níveis novos do mapa B), ginásios 9–16 (9 Terra tem pr
 
 ## PARADO a pedido do usuário (20/11): ele está testando o jogo no iPhone em https://jaapa07.github.io/Pingo/
 - QA trecho 1 (a746981962d864055) e QA trecho 2 (aac12c562b9a87702) caíram por cota; diários em docs/QA-TRECHO-1.md e docs/QA-TRECHO-2.md. NÃO retomar até o usuário mandar. Ao retomar: SendMessage para os dois (continuam dos diários e dos saves em tools/testes/qa e qa2).
+- Líder 1 (ginasio-01) ajustado para ás 10 (Tucaninho nv 10), por decisão do usuário; verificador 11/11. Chances no simulador podem ter subido: reconferir antes de ajustar mais.
