@@ -461,3 +461,13 @@ erros de console: []
 >> etapa 8: Porto Sereia: compras, treinadores e ginásio 3 (Rio)  (1 s)
   [batalha] A4-1 → vitoria · equipe 2:27,10:8,13:6,45:8,20:8,43:17 · A4 · $13696
   [batalha] A4-3 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $14456
+  [batalha] A4-2 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $15292
+  (foto loja-A4-venda falhou: Error: page.screenshot: Target page, context or browser has )
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.foto (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:54:293) |     at async t.comprar (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:311:5) 0 0
+resumo: 0
+treino extra: [{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":8,"de":20,"para":21},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":11,"de":21,"para":22},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":14,"de":22,"para":23}] derrotas: 10 curas: 45
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de mata-passo-7
+
+>> etapa 8: Porto Sereia: compras, treinadores e ginásio 3 (Rio)  (1 s)

@@ -39,3 +39,8 @@ Arquivos meus: `src/data/zonas/{B2,B3,B4,B5}-ginasio.ts`, `src/world/mecanicas/g
 - Ajustes que o simulador pediu: 14 perdeu o Serelepão e a Friagem (estava 37–57%); 16 perdeu a Araracanga, a Estrela Cadente e o Fogo de Coivara (estava 31–48% com conselho); membros dentro da faixa 4.5 (13: 55–57, 14: 57–59, 15: 59–61, 16: 61–63).
 - Lição: estátuas da entrada em (6, 17) e (10, 17) + treinador que se aproxima pela fila 16 = jogador preso no saguão (g16-1 foi para (12, 17) olhando para o norte, visão 1).
 - Aviso aos outros agentes: um `pkill -f jogar.mjs` meu pode ter derrubado uma rodada do QA (o roteiro deles tem o mesmo nome); o meu piloto agora se chama `s/piloto1316.mjs`.
+
+### Marco 4 — fechamento do lote 13–16
+- `npx tsc --noEmit -p .` limpo (repo inteiro). `npm run check -- --rapido`: nenhum erro nos meus arquivos; o único que cita um deles é `dist/assets/zonas/A9-ginasio/zona.json` ausente (o bake está em `public/assets/zonas/A9-ginasio`; entra no dist no próximo build). Os outros erros da rodada são de outros times (scripts `cuieira`/`troca-*`, `cartel-lago`, líder 1, tsc por tempo esgotado com a máquina cheia).
+- Bake refeito das quatro zonas (B6/B7/B8/A9-ginasio) depois dos últimos ajustes. Vite 5200 desligado.
+- Pendências: (1) reinício dos blocos da Geada ao sair da pista não foi visto no navegador (só a lógica); (2) no 15, g15-1/3/5 são opcionais e não foram enfrentados no navegador (só no simulador); (3) bobo 0–12% contra os quatro líderes, como nos líderes 1–8; (4) líder 13 com Δ 2 dá 85% (acima da meta; Δ 3–4 dá 55–57%).
