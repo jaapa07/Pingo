@@ -147,7 +147,9 @@ export function tocavel(el: HTMLElement, aoTocar: () => void, aoApontar?: () => 
   el.classList.add('tocavel');
   let armado = false;
   el.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') input.modo = 'toque'; else if (e.button !== 0) return; armado = true; e.stopPropagation(); if (vale()) aoApontar?.(); });
-  el.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse' && vale()) aoApontar?.(); });
+  // foco pelo mouse só com movimento de verdade: uma janela que surge debaixo do ponteiro parado (Chromium dispara
+  // pointerenter/pointermove sintéticos ao refazer o layout) não pode roubar o cursor do teclado
+  el.addEventListener('pointermove', (e) => { if (e.pointerType === 'mouse' && (e.movementX || e.movementY) && vale()) aoApontar?.(); });
   el.addEventListener('pointerleave', () => { armado = false; });
   el.addEventListener('pointercancel', () => { armado = false; });
   // pointerup (e não click): responde na hora e não depende do clique sintético do navegador
