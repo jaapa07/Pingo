@@ -14,7 +14,7 @@
  * para continuar importável fora do navegador.
  */
 import type { EventoDef, Comando, CriaturaInst } from '../../core/tipos';
-import { jogo, setFlag, diaSemana, periodo, darItem } from '../../core/estado';
+import { jogo, setFlag, diaSemana, darItem } from '../../core/estado';
 import { rng } from '../../core/rng';
 import { bus } from '../../core/events';
 import { MAPA_B_ABERTO } from '../../core/progresso';
@@ -205,4 +205,3 @@ export const EVENTOS_REGRAS: EventoDef[] = [
   { id: 'quiz-radio', passos: [['quizRadio']] },
   { id: 'torre-desafios', passos: [['torre']] },
 ];
-void periodo;
