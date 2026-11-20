@@ -98,3 +98,4 @@ Depois: zonas B1/B2 (+níveis novos do mapa B), ginásios 9–16 (9 Terra tem pr
 - QA trecho 2 (a7436e9db55fcf6bd): continua de docs/QA-TRECHO-2.md; taxa real da Liga, rival-5, portões de A-MT/A-RS.
 - Zonas B1 (a03c8309c36a8092b): mapa B na ordem nova (B1 sem ginásio e com nome novo; níveis 44+; diário em docs/ZONAS-B1.md).
 - Estimativa dada ao usuário: parte 1 (Liga + testes) 1–2 sessões; mapa B 3–4 sessões.
+- Nome da B1 decidido pelo usuário: **Vila Cascavel** (cidade de chegada do trem, sem ginásio).
