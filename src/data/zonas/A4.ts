@@ -114,6 +114,7 @@ const zona: ZonaDef = {
     gente(g, '4', 'a4-senhora', 'npc-idosa', 'Dona Maroca', { fala: ['No meu tempo, a luz da Usina Velha nunca piscava.', 'Agora pisca tanto que meu rádio aprendeu código Morse sozinho.'] }),
     gente(g, '5', 'a4-surfista', 'cl-surfista', 'Surfista Lua', { mov: 'vagar', fala: ['A Baía Azul liga tudo: a Cidade Coral, a Ilha do Farol, a Praia das Tartarugas.', 'Mas sem Remo e sem parceira do tipo Rio, você só liga para a sua mãe vir buscar.'] }),
     gente(g, '9', 'a4-marinheiro', 'npc-marinheiro', 'Marinheiro Bartô', { dir: 'o', script: 'm-carta-barto' }),
+    { id: 'a4-arraia', sprite: 'cl-pescador', x: 22, y: 37, dir: 's', script: 'troca-a4', nome: 'Seu Arraia' } as NpcDef, // troca com morador (src/data/trocas.ts): criatura de Rio antes do Remo
     { id: 'taina', sprite: 'taina', x: 31, y: 36, dir: 'o', se: 'flag:usina-ok&!flag:rival-3', script: 'rival-3' },
     duelista(g, '6', 'A4-1', 'cl-surfista', 'l', 4),
     duelista(g, '7', 'A4-2', 'cl-rendeira', 'o', 4, { mov: 'olhar' }),
@@ -128,5 +129,13 @@ const zona: ZonaDef = {
     { x: 55, y: 3, item: 'rapadura', oculto: true, flag: 'item:A4:55,3' },
   ],
   gatilhos: [{ x: 29, y: 35, w: 3, h: 4, script: 'rival-3', se: 'flag:usina-ok&!flag:rival-3' }],
+  /*
+   * Pesca na beira do cais (decisão do autor, 20/11): quem chega com o Remo e sem criatura de Rio pesca uma Piabinha aqui
+   * mesmo, sem voltar pela Gruta do Eco. Piabinha já é "P c" na Baía Azul, que é esta mesma água (tabela 6.4 atualizada).
+   */
+  habitats: [
+    { metodo: 'pesca-velha', todos: [{ e: 37, nv: [11, 15], peso: 100 }] },
+    { metodo: 'pesca-boa', todos: [{ e: 37, nv: [20, 24], peso: 100 }] },
+  ],
 };
 export default zona;

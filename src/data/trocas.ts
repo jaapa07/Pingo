@@ -1,9 +1,9 @@
 /**
- * TROCAS COM MORADORES (spec 10A item 12): seis moradores pelos dois mapas trocam uma criatura específica por outra,
+ * TROCAS COM MORADORES (spec 10A item 12): sete moradores pelos dois mapas trocam uma criatura específica por outra,
  * que chega com apelido, item segurado e o nome do morador como treinador original — por isso ganha experiência ×1,5 e
  * só obedece conforme as insígnias (src/battle/cuias.ts → `limiteObediencia`: 20 · 30 · 50 · 70 · todas).
  *
- * As três do mapa A são deste arquivo (roteiro único `troca` em src/data/eventos/captura.ts). As três do mapa B já
+ * As quatro do mapa A são deste arquivo (roteiro único `troca` em src/data/eventos/captura.ts; a de Porto Sereia, `troca-a4`, dá uma criatura de Rio antes do Remo). As três do mapa B já
  * existiam nos times de zona e seguem a mesma regra (estão listadas em `TROCAS_MAPA_B` só para consulta).
  */
 import type { Cond } from '../core/tipos';
@@ -28,6 +28,22 @@ export const TROCAS: TrocaDef[] = [
       recusa: 'Tudo bem… O Pipoca vai continuar roubando banana da fruteira.',
       feito: 'Que lindeza! Cuida bem do Pipoca: ele adora caju e grita quando vê gavião.',
       depois: 'A Cotiazinha já enterrou três coquinhos no meu quintal. Vai nascer coqueiro até na cozinha!',
+    },
+  },
+  {
+    /*
+     * Porto Sereia, antes do Remo (decisão do autor, 20/11): quem chega sem criatura de Rio tem duas saídas sem voltar pela
+     * Gruta do Eco — esta troca e a pesca na praia do cais (Piabinha, Vara Velha). Pipirim é comum na Trilha do Ipê e nos
+     * Campos de Restinga; nv 18 fica abaixo do limite de obediência de quem tem 2 insígnias (30).
+     */
+    id: 'troca-a4', morador: 'Seu Arraia', retrato: 'cl-pescador', zona: 'A4', local: 'Porto Sereia',
+    quer: 10, da: 39, nivel: 18, apelido: 'Bigode', item: 'caju', requer: 'insignias:2',
+    falas: {
+      pedido: 'Psiu! Pescador velho não grita, que espanta o peixe. Eu sinto falta de um Pipirim no ombro: avisava quando a boia mexia.\fTenho o Bigode, um Mandizinho que pesquei de anzol. Ele é do tipo Rio: puxa canoa que é uma beleza. Troca por um Pipirim?',
+      semCriatura: 'Pipirim, aquele passarinho de topete, vive no capim da Trilha do Ipê e dos Campos de Restinga. Traga um na equipe!\fE se tiver pressa: com a vara, aqui mesmo na beira do cais, sai Piabinha. Também é do tipo Rio.',
+      recusa: 'Tudo bem. Mas lembre: sem criatura de Rio na equipe, o Remo não sai do lugar.',
+      feito: 'Que topete bonito! O Bigode gosta de caju e de água parada. Com ele na equipe, o Remo leva você para a Baía Azul.',
+      depois: 'O Pipirim já avisou três fisgadas hoje. Duas eram minha bota. Ainda assim, é um bom ajudante.',
     },
   },
   {
