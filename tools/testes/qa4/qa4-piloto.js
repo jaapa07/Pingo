@@ -121,7 +121,7 @@
     const b = ctl.b;
     const mEsq = $('.bt-esquecer', raiz), mEq = $('.bt-equipe', raiz), mMo = $('.bt-mochila', raiz), mGo = $('.bt-golpes', raiz), mAc = $('.bt-menu', raiz);
     const lista = !mEsq && !mMo ? $('.bt-hud > .lista, .tela.batalha > .lista', raiz) ?? $$('.lista', raiz).find((l) => !l.closest('.bt-mochila') && !l.closest('.bt-esquecer')) : null;
-    if (++parado > 900) { anota('batalha parada: B'); parado = 0; plano = null; await toque('b'); return; }
+    if (++parado > 900) { anota('batalha parada: B', JSON.stringify({ fase: ctl.fase, turno: b.turno, plano, menus: [!!mEsq, !!mEq, !!mMo, !!mGo, !!mAc, !!lista], txt: Q.ultimoTexto, eu: b.criatura(P0)?.especie, ini: b.criatura({ lado: 1, pos: 0 })?.especie })); Q.paradas = (Q.paradas ?? 0) + 1; parado = 0; plano = null; await toque('b'); return; }
     if (mEsq) {
       const pd = pendentes[0], f = focoLista(mEsq);
       if (!pd || pd.slot == null || pd.slot < 0) { await toque('b'); return; }

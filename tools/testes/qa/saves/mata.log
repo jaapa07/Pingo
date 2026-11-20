@@ -711,3 +711,8 @@ erros de console: []
 >> etapa 9: Estrada da Usina e Usina Velha (tenente Lata)  (0 s)
   sem criatura de Rio para o Remo: guardou Cotiazinha 6 no Posto (atalho declarado) e vai capturar uma na A-R3
   caça em A-R3: 0 batalhas, equipe ["Tamanduá-Copa 30","Pipirim 8","Quero-querinho 8","Gambazinho 8","Corujinha 17"]
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.irAte (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:169:23) |     at async t.cacar (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:279:7) 0 0
+resumo: 0
+treino extra: [{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":8,"de":20,"para":21},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":11,"de":21,"para":22},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":14,"de":22,"para":23}] derrotas: 10 curas: 47
+perguntas: []
+erros de console: []

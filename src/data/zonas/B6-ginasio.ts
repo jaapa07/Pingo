@@ -50,7 +50,7 @@ const zona: ZonaDef = {
     { id: 'g13-2', sprite: 'cl-mateira', x: 15, y: 12, dir: 'n', treinador: 'g13-2', visao: 3 },
     { id: 'g13-3', sprite: 'cl-crianca-m', x: 19, y: 17, dir: 'o', treinador: 'g13-3', visao: 1 },
     { id: 'g13-4', sprite: 'cl-biologa', x: 22, y: 9, dir: 'l', treinador: 'g13-4', visao: 3 },
-    { id: 'g13-5', sprite: 'cl-vaqueiro', x: 27, y: 7, dir: 'o', treinador: 'g13-5', visao: 2 },
+    { id: 'g13-5', sprite: 'cl-vaqueiro', x: 27, y: 7, dir: 'o', treinador: 'g13-5', visao: 1 }, // visão 1: com 2 ele vinha até (26, 7) e tapava a boca do tanque C
     { id: 'g13-6', sprite: 'cl-observadora', x: 11, y: 3, dir: 'n', treinador: 'g13-6', visao: 1 },
     { id: 'lider', sprite: 'lider-13', x: 6, y: 1, dir: 's', script: 'ginasio-13-lider' },
   ],
