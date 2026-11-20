@@ -39,7 +39,9 @@ const zona: ZonaDef = {
     { o: 'gin-estatua', x: 11, y: 15, texto: ['Regra da casa: uma revanche por líder por dia. Quem perde volta para o Posto, como em qualquer ginásio.'] },
     { o: 'gin-pedestal', x: 9, y: 1 },
   ],
-  warps: [{ x: 9, y: 16, para: { zona: 'A4', x: 17, y: 18, dir: 's' }, tipo: 'porta' }],
+  // sem warp: a entrada é pelo Guia do Treino em A4 (o salão não tem porta no mapa da cidade); a porta de baixo leva de volta ao guia
+  warps: [],
+  gatilhos: [{ x: 9, y: 16, script: 'treino-saida' }],
   npcs: [
     { id: 'treino-recepcao', sprite: 'npc-atendente-posto', x: 9, y: 12, dir: 's', script: 'treino-recepcao' },
     ...lideres,

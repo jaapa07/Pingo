@@ -147,18 +147,23 @@ const NAVIO_B9: [number, number] = [32, 26];
 
 /* ------------------------------ NPCs e pontos por coordenada (zonas de outros times) ------------------------------ */
 /**
- * Entram em memória na zona quando ela existe (o arquivo da zona não muda). Se o tile proposto não for chão livre,
- * o NPC vai para o chão livre mais próximo (busca em anel, determinística). Coordenadas propostas para B7/B-SG/B-LG/PP
- * (zonas ainda em construção pelos times B2): o time dono pode trocar o número AQUI, ou pôr o NPC no próprio arquivo
- * com o mesmo id (aí este não é acrescentado).
+ * Entram em memória na zona quando ela existe (o arquivo da zona não muda; assim os verificadores de cada time, que só
+ * conhecem os próprios eventos, não acusam script de fora). Se o tile proposto não for chão livre,
+ * o NPC vai para o chão livre mais próximo (busca em anel, determinística). As zonas B7/B-SG/B-LG/B-R5/PP são dos
+ * times B2 (escolhidas nas grades de 20/11): o time dono pode trocar o número AQUI, ou pôr o NPC no próprio arquivo com
+ * o mesmo id (aí este não é acrescentado).
  */
 export const PONTOS_VISITANTES: { zona: string; npc?: NpcDef; gatilho?: Gatilho }[] = [
-  { zona: 'B7', npc: { id: 'vis-exp-1', sprite: 'cl-montanhista', x: 30, y: 24, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-1' } },
-  { zona: 'B-SG', npc: { id: 'vis-exp-2', sprite: 'cl-observadora', x: 30, y: 12, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-2' } },
-  { zona: 'B-LG', npc: { id: 'vis-exp-3', sprite: 'cl-mergulhador', x: 12, y: 20, dir: 'l', se: 'flag:boreal-missao', script: 'vis-lanterna-3' } },
+  // canoeiro Seu Tarumã no cais de Porto Sereia (praia ao lado do píer) e a Drª Solveig no cais de Porto Pantaneiro
+  { zona: 'A4', npc: { id: 'vis-taruma', sprite: 'npc-idoso', x: 32, y: 38, dir: 'o', script: 'vis-canoeiro' } },
+  { zona: 'B9', npc: { id: 'vis-solveig', sprite: 'cl-biologa', x: 30, y: 24, dir: 's', se: 'flag:conselho-vencido', script: 'vis-solveig' } },
+  // os quatro pesquisadores da expedição (só depois de falar com a Drª Solveig)
+  { zona: 'B7', npc: { id: 'vis-exp-1', sprite: 'cl-montanhista', x: 30, y: 6, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-1' } },
+  { zona: 'B-SG', npc: { id: 'vis-exp-2', sprite: 'cl-observadora', x: 30, y: 16, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-2' } },
+  { zona: 'B-LG', npc: { id: 'vis-exp-3', sprite: 'cl-mergulhador', x: 44, y: 19, dir: 'o', se: 'flag:boreal-missao', script: 'vis-lanterna-3' } },
   { zona: 'B-R5', npc: { id: 'vis-exp-4', sprite: 'cl-pescador', x: 32, y: 6, dir: 's', se: 'flag:boreal-missao', script: 'vis-lanterna-4' } },
-  // alto do Pico Pindorama: gatilho noturno do acendimento (o B2-norte pode mover para o ponto reservado no Pico)
-  { zona: 'PP', gatilho: { x: 20, y: 6, w: 3, h: 1, script: 'vis-pico-aurora', se: 'flag:boreal-missao&periodo:noite' } },
+  // "Pedra das Lanternas" reservada pelo B2-norte no Cume do PP (tiles 8..11, 3..6; docs/ZONAS-B2-NORTE.md): gatilho noturno
+  { zona: 'PP', gatilho: { x: 9, y: 4, w: 2, h: 2, script: 'vis-pico-aurora', se: 'flag:boreal-missao&periodo:noite' } },
 ];
 const LIVRE = new Set('.,:;"%=+');
 function chaoLivre(z: ZonaDef, x: number, y: number, ocupados: Set<string>): [number, number] | null {

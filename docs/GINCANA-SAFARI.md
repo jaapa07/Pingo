@@ -6,3 +6,4 @@
 - **Safári:** tela `safari-encontro` (sem golpes: cuia, isca, pedra, aproximar, fugir) em `src/ui/telas/gincana-safari.ts`; mecânica em `src/world/mecanicas/safari.ts` (passos, encontros por setor, fim do passeio); dados em `src/data/safari.ts`.
 
 ## Marcos
+- **M1 (código escrito, tsc limpo):** zonas `A-GN`, `A-SF`, `A-SF-casa`, `A-SF-parque` (assadas com prévia); dados `src/data/gincana.ts`, `src/data/safari.ts`; itens novos no fim de `itens.ts` (cuia-safari, pedra-de-rio, muda-de-buriti, tronco-oco, 6 vitaminas com `uso.esforco` por fusão de interface; efeito em `usarItemEm` de `src/ui/telas/comum.ts`); `loja` aceita `moeda` (pontos); telas `gincana`, `gincana-ranking`, `safari-encontro`; mecânica `src/world/mecanicas/safari.ts`; eventos `src/data/eventos/posliga.ts`. NPCs acrescentados: `carreiro-gincana` (A-LG 28,55), `safari-pescador-seixo` (A-R3 35,6), `safari-viveirista` (A10 19,21), `safari-lenhador` (A-R7 6,11), todos com `se: flag:liga-vencida`.

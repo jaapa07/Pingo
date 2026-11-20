@@ -22,7 +22,8 @@ const zona: ZonaDef = {
     { o: 'tema', x: 0, y: 0, tema: 'palafita' },
     ...g.todos('W').map(([x, y]) => ({ o: 'janela', x, y })), obj(g, 'K', 'quadro'),
     { o: 'fogao-lenha', x: g.todos('F')[0][0], y: g.todos('F')[0][1], texto: ['O fogão fica aceso dia e noite: ovo gosta de calor e Seu Aroeira gosta de café.'] },
-    ...g.todos('N').map(([x, y], i) => ({ o: 'cesto', x, y, texto: [['Um ninho com três ovos pintadinhos. Um deles deu um pulinho!', 'Um ninho forrado de paina. O ovo daqui é verde com listras.', 'Ninho vazio, ainda morno. Alguém nasceu faz pouco.'][i]] })),
+    // o ninho do meio é o dos casais de treinador (ninhos e ovos, spec 10-9: src/data/eventos/captura.ts → `criadouro-aroeira`)
+    ...g.todos('N').map(([x, y], i) => (i === 1 ? { o: 'cesto', x, y, script: 'criadouro-aroeira' } : { o: 'cesto', x, y, texto: [['Um ninho com três ovos pintadinhos. Um deles deu um pulinho!', 'Um ninho forrado de paina. O ovo daqui é verde com listras.', 'Ninho vazio, ainda morno. Alguém nasceu faz pouco.'][i]] })),
     { o: 'estante', x: g.todos('E')[0][0], y: g.todos('E')[0][1], texto: ['Cadernos de anotação: "Ovo nº 412 — chocou cantando." "Ovo nº 413 — era uma batata. Erro meu."'] },
     { o: 'cadeira', x: h[0][0], y: h[0][1] }, { o: 'mesa', x: h[0][0] + 1, y: h[0][1] }, { o: 'cadeira', x: h[1][0], y: h[1][1] },
     { o: 'rede', x: g.todos('r')[0][0], y: g.todos('r')[0][1], texto: ['A rede do Seu Aroeira. Ainda balança.'] },

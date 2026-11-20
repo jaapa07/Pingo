@@ -20,26 +20,26 @@ export const TREINADORES_GINASIO_14: TreinadorDef[] = [
     desafio: 'Eu deslizo nesta pista desde que aprendi a andar! Você só aprendeu agora!', derrota: 'Caí de bunda no gelo…', depois: 'Na última pista são três empurrões: um para o sul, um para o oeste e um para o norte. A ordem é tudo.' },
   { id: 'g14-5', classe: 'Montanhista', nome: 'Prenda Aurora', sprite: 'cl-montanhista', ia: 'treinador', premio: 2320,
     equipe: [{ e: 140, nv: 56 }, { e: 132, nv: 56 }, { e: 136, nv: 55 }],
-    desafio: 'Chegou ao salão da Pinhão! Mas o último degrau sou eu.', derrota: 'Que frio na barriga!', depois: 'A Pinhão abre chamando a garoa gelada. Na garoa, a Friagem dela não erra nunca.' },
+    desafio: 'Chegou ao salão da Pinhão! Mas o último degrau sou eu.', derrota: 'Que frio na barriga!', depois: 'A Pinhão abre chamando a garoa gelada: cinco turnos de frio. E o Jubartão dela guarda um Caju para quando a vida cair.' },
   /*
    * LÍDER — Gaúcha Pinhão (Geada). Fraquezas da Geada: Brasa, Ginga, Pedra e Ferro.
-   * Estratégia: a Gralha-Azul (Vento/Geada) abre chamando a Garoa Gelada (5 turnos), que torna a Friagem certeira,
-   * e bate com Friagem e Pé de Vento (contra Ginga). O Pinguimar (Geada/Rio) aguenta Brasa e devolve com Cachoeirada;
-   * Escorregão sai na frente. O Tatucanastra (Terra/Ferro) é a cobertura: resiste a Pedra e Ferro e castiga Brasa,
-   * Pedra e Ferro com Tremor de Terra e Marretada. O Serelepão (Geada/Mata) pega Rio e Pedra com Espinho de Mandacaru.
-   * O Maracajá-Nevado (Geada/Ginga) responde a Pedra e Ferro com Rabo-de-Arraia. O ás é o Jubartão (Rio/Geada) de
-   * nível 59: Friagem e Vento Minuano na garoa, Pororoca contra Brasa e Pedra, Estrondo; segura um Caju.
+   * Estratégia: a Gralha-Azul (Vento/Geada) abre chamando a Garoa Gelada (5 turnos) e bate com Vento Minuano e Pé de
+   * Vento (contra Ginga). O Pinguimar (Geada/Rio) aguenta Brasa e devolve com Cachoeirada; Escorregão sai na frente e o
+   * Manto de Geada engrossa a defesa. O Tatucanastra (Terra/Ferro) é a cobertura: resiste a Pedra e Ferro e castiga
+   * Brasa, Pedra e Ferro com Tremor de Terra e Marretada. O Maracajá-Nevado (Geada/Ginga) responde a Pedra e Ferro com
+   * Rabo-de-Arraia. O ás é o Jubartão (Rio/Geada) de nível 59: Vento Minuano, Geada Serrana, Pororoca contra Brasa e
+   * Pedra, Estrondo; segura um Caju. Ajuste pelo simulador: com Serelepão e Friagem a líder passava de 60% de derrota
+   * do jogador esperto; com cinco criaturas fica em 63–77% de vitória (Δ 2–4 níveis).
    * Cura: Elixir de Andiroba e Garrafada (spec 7A).
    */
   { id: 'lider-14', classe: 'Líder', nome: 'Gaúcha Pinhão', sprite: 'lider-14', ia: 'lider', premio: 5900, insignia: 14, musica: 'batalha-lider', flag: 'ginasio-14-vencido',
     itens: ['elixir-andiroba', 'garrafada'],
     equipe: [
-      { e: 136, nv: 56, golpes: ['garoa-gelada', 'friagem', 'pe-de-vento', 'pouso-no-galho'] },
-      { e: 134, nv: 57, golpes: ['estaca-de-gelo', 'cachoeirada', 'escorregao', 'manto-de-geada'] },
-      { e: 34, nv: 56, golpes: ['tremor-de-terra', 'marretada', 'blindagem', 'lasca-afiada'] },
-      { e: 138, nv: 57, golpes: ['estaca-de-gelo', 'espinho-de-mandacaru', 'manto-de-geada', 'escorregao'] },
+      { e: 136, nv: 57, golpes: ['garoa-gelada', 'vento-minuano', 'pe-de-vento', 'pouso-no-galho'] },
+      { e: 134, nv: 57, golpes: ['mordida-gelada', 'cachoeirada', 'escorregao', 'manto-de-geada'] },
+      { e: 34, nv: 57, golpes: ['tremor-de-terra', 'marretada', 'blindagem', 'lasca-afiada'] },
       { e: 140, nv: 57, golpes: ['rabo-de-arraia', 'estaca-de-gelo', 'escorregao', 'ginga'] },
-      { e: 132, nv: 59, golpes: ['friagem', 'vento-minuano', 'pororoca', 'estrondo'], item: 'caju' },
+      { e: 132, nv: 59, golpes: ['vento-minuano', 'pororoca', 'geada-serrana', 'estrondo'], item: 'caju' },
     ],
     desafio: 'Buenas, vivente! Atravessou o meu galpão sem quebrar o pescoço? Então já sabe que no gelo quem manda é a paciência. Mas aqui, quem manda sou eu!',
     derrota: 'Bah! Me pegou de jeito. Tu és dos bons, tchê.', depois: 'Pode voltar quando quiser para um chimarrão. Mas sem pisar no meu gelo de chinelo!' },

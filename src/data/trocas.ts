@@ -42,7 +42,7 @@ export const TROCAS: TrocaDef[] = [
     },
   },
   {
-    id: 'troca-a8', morador: 'Mestre Zé Bigorna', retrato: 'cl-ferreiro', zona: 'A8', local: 'Vila Ferrugem',
+    id: 'troca-a8', morador: 'Mestre Zé Malho', retrato: 'cl-ferreiro', zona: 'A8', local: 'Vila Ferrugem',
     quer: 163, da: 63, nivel: 30, apelido: 'Trovoada', item: 'pequi', requer: 'insignias:5',
     falas: {
       pedido: 'Os cupins comeram a perna da minha bancada… e eu quero um Cupinzim para estudar como eles fazem isso!\fDou em troca o Trovoada, um Bugiozinho que berra mais alto que o meu martelo.',

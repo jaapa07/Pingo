@@ -39,6 +39,7 @@ const zona: ZonaDef = {
     { ...g.p('X'), para: { zona: 'A7', x: 5, y: 4, dir: 's' }, tipo: 'caverna' },
   ],
   npcs: [
+    { id: 'cartel-lago', sprite: 'capanga-m', x: 26, y: 8, dir: 'o', se: 'flag:liga-vencida&!flag:lago-raro-ok', script: 'cartel-lago' }, // Pelagem Rara garantida (src/data/eventos/captura.ts)
     { id: 'A-GB-6', sprite: 'cl-ferreiro', ...g.p('6'), dir: 's', treinador: 'A-GB-6', visao: 3 },
     { id: 'A-GB-7', sprite: 'cl-repentista', ...g.p('7'), dir: 'o', treinador: 'A-GB-7', visao: 4 },
     { id: 'A-GB-8', sprite: 'cl-pescador', ...g.p('8'), dir: 'l', mov: 'olhar', treinador: 'A-GB-8', visao: 3 },

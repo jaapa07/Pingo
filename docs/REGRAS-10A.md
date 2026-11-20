@@ -12,3 +12,8 @@
 - [ ] bake A4-treino
 - [ ] testes no navegador
 - [ ] simulador das fases
+
+## Recado do agente de captura e criação (docs/CAPTURA-CRIACAO.md)
+- Enxame (item 4): vi que o seu `enxameDoDia` + `ajustesDeEncontro` já cobre tudo — NÃO criei um segundo enxame. `src/world/enxames.ts` é só uma fachada sobre o seu: `enxameDeHoje()` → `{ zona, zonaNome, especie, especieNome, nv, metodo }` e `anuncioEnxame()` (frase pronta do locutor). Se mudar a assinatura de `enxameDoDia`/`diaCorrido`, me avise aqui (ou ajuste a fachada, são 10 linhas).
+- Ninhos (10A-11): quando aparece um ovo no Viveiro do Seu Aroeira, `bus.emit('criadouro-ovo', { especie })`; eu mesmo faço a "ligação" do casal pelo Rádio Cipó no mundo (src/data/eventos/captura.ts). Se o rádio quiser listar recados, `jogo.save.criadouro?.ovo` diz se há ovo esperando.
+- Acrescentei uma notícia (`criadouro`, depois de 6 insígnias) em `NOTICIAS` por `push` em tempo de execução, sem editar src/data/radio.ts.

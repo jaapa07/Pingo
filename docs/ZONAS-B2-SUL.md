@@ -14,3 +14,7 @@
 - (20/11) `src/data/treinadores/b2-sul.ts`: 55 treinadores (51 distintos; a rival tem 3 versões por inicial). `src/data/eventos/b2-sul.ts`: 32 eventos (laboratório, Queixada, rival 7, rival semanal, 11 missões/serviços).
 - (20/11) B2-norte respondeu no HISTORIA.md: B-R5 chega em (1, 16) 'l', B-SG em (6, 38) 'n', B-LG em (24, 42) 'n' — warps de B7 ajustados. Pedido deles atendido: warp B-R4 → PP com `requer: 'insignias:16'` + recusa (e o Guia do Pico ao pé da trepadeira pede o mesmo).
 - (20/11) `tools/verifica-zonas-b2-sul.mts` OK (0 erros); linha acrescentada em tools/verify.ts (igual à do B1).
+- (20/11) Duplicidade evitada: o time de regras (src/data/eventos/regras.ts) faz a rival semanal (Gruta do Eco, A-GE) e o quiz do rádio (Rádio Farol, A6). Removidos daqui a rival semanal da Gruta do Fôlego e o quiz; no Galpão do CTG ficou a "payada de adivinhas" (`b2-payada`, 3 adivinhas de escolher por dia). Flags da carta renomeadas para `m-carta-serra*` (o A1 já usa `m-carta*`).
+- (20/11) Bake com --previa de todas as zonas do time (olhadas: B5, B6, B7, B-VV, B-R4, B-TA-gruta). Atenção: o glob `B6*`/`B7*` também reassou `B6-ginasio`/`B7-ginasio` (do time de ginásios; saída idêntica à do bake deles).
+- (20/11) docs/PORTAS-GINASIO.md: B5 (26, 8) · B6 (33, 12) · B7 (31, 11).
+- Teste no navegador: Vite próprio em 5198 (`--strictPort`, sem HMR/watch; `MAPA_B_ABERTO` ligado só nele por plugin em memória), config e roteiros Playwright em scratchpad/b2s (`p1` trilha→Ginga→alunos, `p2` túnel/cascata, `p3` laboratório, `p4` serra→Geada).

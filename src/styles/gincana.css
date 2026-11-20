@@ -3,8 +3,10 @@
 .gn-camada { position: absolute; left: 0; top: 0; width: 320px; height: 180px; background-repeat: no-repeat; image-rendering: pixelated; }
 .gn-toque, .gn-pista, .gn-fx { position: absolute; left: 0; top: 0; width: 320px; height: 180px; }
 .gn-fx { pointer-events: none; z-index: 20; }
-.gn-cri { position: absolute; transform-origin: 0 0; image-rendering: pixelated; pointer-events: none; }
-.gn-sombra, .gn-ob { position: absolute; pointer-events: none; }
+.gn-img { position: absolute; left: 0; top: 0; background-repeat: no-repeat; image-rendering: pixelated; pointer-events: none; }
+.gn-cri { position: absolute; left: 0; top: 0; transform-origin: 0 0; image-rendering: pixelated; pointer-events: none; }
+.gn-sombra, .gn-ob { position: absolute; left: 0; top: 0; pointer-events: none; }
+.gn-cri, .gn-sombra, .gn-ob, .gn-img { will-change: transform; }
 .gn-txt { z-index: 50; }
 .gn-aviso { z-index: 40; pointer-events: none; }
 .gn-raia-toque { position: absolute; width: 320px; height: 20px; z-index: 30; }

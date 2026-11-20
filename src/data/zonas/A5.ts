@@ -85,6 +85,7 @@ const zona: ZonaDef = {
     { ...g.p('L'), requer: 'amuleto:lampiao&insignia:5', sprite: 'cl-montanhista', fala: 'Guia da Gruta Breu: lá dentro não se enxerga o próprio nariz, e os raios do Farol apagado deixaram a rocha dando choque.\nVolte com o Lampião e com a insígnia Raio, do Faroleiro Volta, que eu abro a corda.' },
   ],
   npcs: [
+    { id: 'a5-mare-cheia', sprite: 'cl-pescador', x: 39, y: 27, dir: 'o', script: 'troca-a5' }, // troca com morador (src/data/trocas.ts)
     { id: 'peixeiro', sprite: 'npc-vendedor', ...g.d('Q', 3, 0), dir: 's', fala: ['Feira de Cidade Coral! Fruta fresca que veio de saveiro e peixe que veio nadando!'], loja: ['caju', 'pitanga', 'jabuticaba', 'acerola', 'acai', 'biscoito-de-polvilho', 'cuia-rede'] },
     { id: 'a5-boticaria', sprite: 'npc-mulher-4', x: 30, y: 11, dir: 's', script: 'a2-m-xarope-alga' },
     { id: 'bilheteiro', sprite: 'npc-marinheiro', x: 30, y: 33, dir: 's', script: 'a2-a5-bilheteiro' },

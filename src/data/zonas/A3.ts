@@ -77,6 +77,7 @@ const zona: ZonaDef = {
   ],
   portoes: [{ x: bx, y: by, requer: 'flag:m-ponte-ok', fala: 'A ponte de corda está arrebentada: sobraram duas tábuas e muita coragem.\fO Mestre Imbuia, logo ali, vive dizendo que conserta "assim que arrumar corda".' }],
   npcs: [
+    { id: 'a3-quiteria', sprite: 'npc-mulher-2', x: 8, y: 17, dir: 's', mov: 'olhar', script: 'troca-a3' }, // troca com morador (src/data/trocas.ts)
     gente(g, 'K', 'a3-imbuia', 'npc-homem-3', 'Mestre Imbuia', { dir: 'o', script: 'm-ponte' }),
     gente(g, '1', 'a3-menina', 'cl-crianca-f', 'Cecília', { mov: 'vagar', fala: ['Aqui ninguém pisa no chão depois que chove: é tudo passarela!', 'Minha vó diz que no tempo dela se ia de cipó. Minha vó conta muita história.'] }),
     gente(g, '2', 'a3-biologa', 'cl-biologa', 'Bióloga Marta', { mov: 'olhar', fala: ['Inseto não aguenta fogo, nem bicada, nem pedrada. Brasa, Vento e Pedra dão conta da Dona Seda.', 'Agora, se a sua parceira for de Mata ou de Mente… leve bastante chá.'] }),

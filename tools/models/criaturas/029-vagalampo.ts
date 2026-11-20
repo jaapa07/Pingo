@@ -5,7 +5,7 @@
  * dois "faróis" acesos no escudo (como o pirilampo de verdade) · élitros abertos em capa ·
  * três faíscas em raio orbitando · antenas-raio compridas.
  */
-import { criatura, inseto, animsInseto, blob, calota, ring, lathe, par, m, ls, qs, lz, qz, lp, type V3 } from './kits';
+import { criatura, inseto, animsInseto, blob, calota, lathe, par, m, ls, qs, lz, qz, lp, type V3 } from './kits';
 import { paletaVaga, raio } from './028-vagalumim';
 
 function build() {
@@ -26,13 +26,14 @@ function build() {
     rig.bone('antena_' + l, 'cabeca', [0.11, 0.11, 0.07 * s], [-22 * s, 0, -30]);
     rig.add('antena_' + l, raio(0.34, m.plano(2), 0.04));
   });
-  // LAMPIÃO: luz em gota dentro de três aros, tampa e fundo escuros, alça
+  // LAMPIÃO: luz em gota, tampa e fundo de cobre
   rig.bone('lanterna', 'abdomen', [-0.4, 0, 0], [0, 0, -44]);
   rig.add('lanterna',
     lathe([[0.001, -0.22], [0.13, -0.18], [0.2, -0.04], [0.19, 0.1], [0.11, 0.2], [0.001, 0.23]], m.plano(2), { seg: 20 }),
     blob([0.1, 0.12, 0.1], m.luz(2), { pos: [0, -0.02, 0], seg: 12 }));
   rig.add('lanterna',
-    ring(0.205, 0.04, m(0), { pos: [0, 0.03, 0], rot: [90, 0, 0] }), ring(0.15, 0.04, m(0), { pos: [0, 0.17, 0], rot: [90, 0, 0] }), ring(0.16, 0.04, m(0), { pos: [0, -0.14, 0], rot: [90, 0, 0] }),
+    // (sem aros: listravam o lampião como abdômen de abelha; a luz inteira lê como vaga-lume) — brilhos por dentro
+    blob([0.05, 0.07, 0.05], m.luz(2), { pos: [0.08, 0.06, -0.1], seg: 8, castShadow: false }), blob([0.035, 0.05, 0.035], m.luz(2), { pos: [0.1, -0.08, 0.08], seg: 8, castShadow: false }),
     blob([0.1, 0.06, 0.1], m(1), { pos: [0, -0.23, 0], seg: 12 }), blob([0.09, 0.05, 0.09], m(1), { pos: [0, 0.23, 0], seg: 12 }));
   // faíscas orbitando
   // (mais grossas e mais perto do corpo: finas e longe, viravam riscos soltos e encolhiam o sprite na célula)

@@ -35,9 +35,9 @@ export const TREINADORES_GINASIO_15: TreinadorDef[] = [
     itens: ['elixir-andiroba', 'garrafada'],
     equipe: [
       { e: 124, nv: 59, golpes: ['cortina-de-brilho', 'forca-do-pensamento', 'enxurrada', 'clarao-da-lua'] },
-      { e: 44, nv: 58, golpes: ['olho-de-coruja', 'dor-de-cabeca', 'pe-de-vento', 'rasga-mortalha'] },
+      { e: 44, nv: 59, golpes: ['olho-de-coruja', 'dor-de-cabeca', 'pe-de-vento', 'rasga-mortalha'] },
       { e: 122, nv: 59, golpes: ['muro-invisivel', 'forca-do-pensamento', 'enxurrada', 'sumico'] },
-      { e: 62, nv: 58, golpes: ['matutar', 'forca-do-pensamento', 'clarao-da-lua', 'soneca'] },
+      { e: 62, nv: 59, golpes: ['matutar', 'forca-do-pensamento', 'clarao-da-lua', 'soneca'] },
       { e: 172, nv: 59, golpes: ['sonho-ruim', 'dor-de-cabeca', 'olho-de-coruja', 'matutar'] },
       { e: 170, nv: 61, golpes: ['sonho-ruim', 'forca-do-pensamento', 'rasante', 'mau-agouro'], item: 'caju' },
     ],

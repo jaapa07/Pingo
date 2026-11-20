@@ -56,11 +56,11 @@ const alaEm = (x: number, y: number) => ALAS.find((a) => dentro(a, x, y)) ?? nul
 const k = (x: number, y: number) => x + ',' + y;
 
 /* ------------------------------ desenhos ------------------------------ */
-const CHAMA = [['....a....', '...aba...', '..abba...', '..abbba..', '.abbcbba.', '.abcccba.', '.abcccba.', '..abcba..', '...aaa...']];
-const PAL_ACESA = { a: '#b8241c', b: '#f0641c', c: '#fff48c' };
-const BRASA = [['.........', '.........', '.........', '.........', '...aaa...', '..abbba..', '..abbba..', '...aaa...', '.........']];
-const PAL_QUENTE = { a: '#5c1410', b: '#e83c1c' };
-const PAL_FRIA = { a: '#241820', b: '#4c2c2c' };
+/** brasa apagada (cinza com ponto de brasa) e brasa quente (vai queimar no próximo passo), cobrindo o tile todo */
+const cinza = (a: string, b: string) => Array.from({ length: 16 }, (_, y) => Array.from({ length: 16 }, (_, x) => ((x * 7 + y * 13) % 11 === 0 ? b : (x + y) % 5 === 0 ? 'c' : a)).join(''));
+const BRASA_FRIA = [cinza('a', 'b')], BRASA_QUENTE = [cinza('a', 'b')];
+const PAL_FRIA = { a: '#2c2430', b: '#7c3c24', c: '#3c3440' };
+const PAL_QUENTE = { a: '#8c1c14', b: '#fcb42c', c: '#b8241c' };
 const PORTA_TAQUARA = [['a.a.a.a.a.a.a.a.', 'abababababababab', 'abababababababab', 'cccccccccccccccc', 'abababababababab', 'abababababababab', 'abababababababab', 'cccccccccccccccc', 'abababababababab', 'abababababababab', 'abababababababab', 'cccccccccccccccc', 'abababababababab', 'abababababababab', 'abababababababab', 'abababababababab']];
 const PAL_TAQUARA = { a: '#8c6430', b: '#c8a058', c: '#5c3c1c' };
 const BRILHO = [['...a...', '..aba..', '.abcba.', 'abcccba', '.abcba.', '..aba..', '...a...']];
@@ -82,10 +82,10 @@ function pintarFogo() {
   for (let y = 10; y <= 14; y++) for (let x = 2; x <= 12; x++) {
     const f = fase(x, y); if (f < 0) continue;
     const ch = 'f' + k(x, y);
-    if (apagado) { enf.pix(ch, BRASA, PAL_FRIA, x, y, { dx: 3, dy: 3, z: 3 }); continue; }
-    if (f === passosFogo % 3) enf.pix(ch, CHAMA, PAL_ACESA, x, y, { dx: 3, dy: 1, z: y * TILE + 14 });
-    else if (f === (passosFogo + 1) % 3) enf.pix(ch, BRASA, PAL_QUENTE, x, y, { dx: 3, dy: 3, z: 3 });
-    else enf.pix(ch, BRASA, PAL_FRIA, x, y, { dx: 3, dy: 3, z: 3 });
+    // acesa = a lava assada aparece; quente = vermelha (queima no próximo passo); apagada = cinza
+    if (!apagado && f === passosFogo % 3) enf.tirar(ch);
+    else if (!apagado && f === (passosFogo + 1) % 3) enf.pix(ch, BRASA_QUENTE, PAL_QUENTE, x, y, { z: 2 });
+    else enf.pix(ch, BRASA_FRIA, PAL_FRIA, x, y, { z: 2 });
   }
 }
 

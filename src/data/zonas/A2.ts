@@ -76,6 +76,7 @@ const zona: ZonaDef = {
   ],
   portoes: [{ x: qx, y: qy, h: 2, requer: 'insignia:1', sprite: 'npc-homem-4', fala: 'Alto lá! O vento nos Campos de Restinga hoje arranca até chapéu colado.\fO Mestre Gaivota mandou segurar a porteira: só passa quem tiver a Insígnia da Pena e souber ler o vento.' }],
   npcs: [
+    { id: 'a2-cabaceiro', sprite: 'npc-idoso', x: 37, y: 7, dir: 's', script: 'artesao-cuias' }, // Mestre Cabaceiro, cuias artesanais (src/data/eventos/captura.ts)
     gente(g, '1', 'a2-pipeiro', 'cl-crianca-m', 'Pipeiro Zeca', { mov: 'vagar', fala: ['Minha pipa subiu tanto que um Pipirim fez ninho nela.', 'Agora eu não tenho coragem de puxar a linha.'] }),
     gente(g, '2', 'a2-moca', 'npc-mulher-1', 'Moça da Fonte', { mov: 'olhar', fala: ['Criaturas do tipo Vento voam por cima dos golpes de Terra. Nem sentem!', 'Mas um bom choque do tipo Trovão derruba qualquer passarinho metido.'] }),
     gente(g, '3', 'a2-pintinhas', 'cl-crianca-f', 'Bela', { script: 'm-pintinhas' }),

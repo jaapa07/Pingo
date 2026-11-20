@@ -23,7 +23,7 @@ function build() {
     torax: [0.15, 0.15, 0.19], abdomen: A, cabeca: [0.14, 0.14, 0.17], alt: 0.13, caiAbdomen: 0,
     patas: { abre: 0.17, r: 0.04, joelho: 0.02 }, antenas: { len: 0.17, r: 0.018, abre: 36, bola: 0.04 }, elitros: true,
     olho: { r: 0.038, pos: [0.15, 0.02, 0.115] },
-    rampas: { torax: 1, abdomen: 1, cabeca: 1, patas: 1, antenas: 3, elitros: 0 },
+    rampas: { torax: 1, abdomen: 0, cabeca: 1, patas: 1, antenas: 3, elitros: 0 }, // abdômen vermelho: a fresta entre os élitros não vira uma risca escura (lê como cúpula de joaninha)
   });
   // bochechas brancas no escudo e na cabeça
   par((_, s) => {

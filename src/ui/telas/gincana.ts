@@ -35,6 +35,24 @@ const div = (classe: string, pai?: HTMLElement): HTMLElement => { const d = docu
 /** faixa de marcas do chão que rola para dar a sensação de velocidade */
 const tracos = (pai: HTMLElement, classe: string, y: number): HTMLElement => em(div('gn-tracos ' + classe, pai), 0, y);
 const rolarEm = (els: HTMLElement[], px: number) => { for (const e of els) e.style.backgroundPosition = `${-Math.round(px)}px 0`; };
+/** posiciona por transform (o navegador só recompõe a camada, sem repintar) */
+const mover = (el: HTMLElement, x: number, y: number, extra = '') => { el.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px)${extra}`; };
+/** escreve só se o texto mudou (texto bitmap refaz o DOM) */
+const escreverSe = (el: HTMLElement, s: string) => { if (el.dataset.s !== s) { el.dataset.s = s; escrever(el, s); } };
+const cacheImg = new Map<string, string>();
+/** grade de pixels → imagem SVG (rasterizada uma vez pelo navegador; nada de canvas), 1 px nativo por caractere */
+function pixImg(grade: string[], pal: Record<string, string>): HTMLElement {
+  const chave = grade.join('|');
+  let url = cacheImg.get(chave);
+  if (!url) {
+    let r = '';
+    grade.forEach((l, y) => { let x = 0; while (x < l.length) { let f = x; while (f < l.length && l[f] === l[x]) f++; const c = pal[l[x]]; if (c) r += `<rect x="${x}" y="${y}" width="${f - x}" height="1" fill="${c}"/>`; x = f; } });
+    url = `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${grade[0].length}" height="${grade.length}" shape-rendering="crispEdges">${r}</svg>`)}")`;
+    cacheImg.set(chave, url);
+  }
+  const el = div('gn-img'); el.style.width = grade[0].length + 'px'; el.style.height = grade.length + 'px'; el.style.backgroundImage = url;
+  return el;
+}
 
 /* ------------------------------ peças desenhadas à mão ------------------------------ */
 const PAL = { k: '#2c1c2c', r: '#8c3c2c', R: '#b85c38', o: '#dc8850', c: '#a8823c', C: '#d0a848', s: '#745040', S: '#a07c58', g: '#3c7048', G: '#6c9c50', w: '#e8eef0', q: '#b0b8cc', Q: '#8c9cc0' };
@@ -55,7 +73,6 @@ class Corredor {
   constructor(pai: HTMLElement, num: number, readonly esc = 2) {
     this.sombra = elipsePx(11, 3, 'rgba(44,28,44,0.45)'); this.sombra.classList.add('gn-sombra'); pai.append(this.sombra, this.el);
     const e = esp(num), m = e ? vista(e.id, 'mapa') : undefined;
-    this.el.style.transform = `scale(${esc})`;
     if (e && m) { this.s = new Sprite(e.id, 'mapa', this.el); this.ax = m.px; this.ay = m.py; this.s.x = m.px; this.s.y = m.py; this.s.tocar(this.s.tem('andar-l') ? 'andar-l' : 'andar-s'); this.s.desenhar(); this.el.style.width = m.cw + 'px'; this.el.style.height = m.ch + 'px'; }
     else { this.ic = iconeCriatura(num); this.el.append(this.ic.el); this.ic.animar(true); this.el.style.width = this.el.style.height = '24px'; }
   }
@@ -63,8 +80,8 @@ class Corredor {
   andar(b: boolean, vel = 1) { if (this.s) { this.s.tocar(this.s.tem('andar-l') ? 'andar-l' : 'andar-s'); this.s.vel = b ? vel : 0; } this.ic?.animar(b); }
   atualizar(dt: number) { this.s?.atualizar(dt); this.s?.desenhar(); this.ic?.atualizar(dt); if (this.piscar > 0) this.piscar -= dt; }
   desenhar() {
-    em(this.el, this.x - this.ax * this.esc, this.y - this.alt - this.ay * this.esc);
-    em(this.sombra, this.x - 11, this.y - 3);
+    mover(this.el, this.x - this.ax * this.esc, this.y - this.alt - this.ay * this.esc, ` scale(${this.esc})`);
+    mover(this.sombra, this.x - 11, this.y - 3);
     this.el.style.visibility = this.piscar > 0 && Math.floor(this.piscar * 12) % 2 ? 'hidden' : '';
   }
 }
@@ -99,7 +116,7 @@ function provaAgilidade(raiz: HTMLElement, x: Ctx): Prova {
   const criar = (t: Ob['t'], r: number) => {
     let el: HTMLElement;
     if (t === 'estrela') { el = div('gn-ob'); try { const f = new Fx('comum-estrela', 0, 0, { loop: true }); el.append(f.el); obs.push({ el, x: 336, r, t, fx: f }); pista.append(el); return; } catch { el.append(pix(['..k..', '.kyk.', 'kyyyk', '.kyk.', '..k..'], { k: '#a86c14', y: '#fcd834' }, 2)); } }
-    else el = pix(t === 'pedra' ? PEDRA : CUPIM, PAL);
+    else el = pixImg(t === 'pedra' ? PEDRA : CUPIM, PAL);
     el.classList.add('gn-ob'); pista.append(el); obs.push({ el, x: 336, r, t });
   };
   return {
@@ -128,8 +145,8 @@ function provaAgilidade(raiz: HTMLElement, x: Ctx): Prova {
       for (const o of obs) {
         o.x -= passo;
         const w = parseInt(o.el.style.width) || 14, h = parseInt(o.el.style.height) || 10;
-        if (o.fx) { o.fx.atualizar(dt); o.fx.x = 0; o.fx.y = 0; o.fx.desenhar(); em(o.el, o.x, RAIAS[o.r] - 10); }
-        else em(o.el, Math.round(o.x - w / 2), RAIAS[o.r] - h + 2);
+        if (o.fx) { o.fx.atualizar(dt); o.fx.x = 0; o.fx.y = 0; o.fx.desenhar(); mover(o.el, o.x, RAIAS[o.r] - 10); }
+        else mover(o.el, o.x - w / 2, RAIAS[o.r] - h + 2);
         o.el.style.zIndex = String(RAIAS[o.r]);
         if (!o.feito && o.r === raia && Math.abs(o.x - CX) < 11 && Math.abs(cri.y - RAIAS[o.r]) < 8) {
           o.feito = true;
@@ -150,9 +167,9 @@ function provaForca(raiz: HTMLElement, x: Ctx): Prova {
   const CHAO = 150, CX = 112;
   const pedras = [tracos(pista, 'gn-pedrisco', 156), tracos(pista, 'gn-pedrisco', 162)];
   const estacas: HTMLElement[] = [];
-  for (let i = 0; i < 7; i++) { const e = pix(ESTACA, PAL); pista.append(e); estacas.push(e); }
-  const marcas = estacas.map(() => { const t = texto('', { cor: 'creme', sombra: true }); pista.append(t); return t; });
-  const tora = pix(TORA, PAL); pista.append(tora);
+  for (let i = 0; i < 7; i++) { const e = pixImg(ESTACA, PAL); pista.append(e); estacas.push(e); }
+  const marcas = estacas.map(() => { const t = texto('', { cor: 'creme', sombra: true }); pista.append(em(t, 0, 0)); return t; });
+  const tora = pixImg(TORA, PAL); pista.append(tora);
   const cri = new Corredor(pista, x.c.especie); cri.x = CX; cri.y = CHAO;
   // barra de ritmo
   const caixaR = moldura('tinta', 204, 24, 58, 22); raiz.append(caixaR);
@@ -190,15 +207,15 @@ function provaForca(raiz: HTMLElement, x: Ctx): Prova {
       }
       aperto = false;
       pos += (alvo - pos) * Math.min(1, dt * 8);
-      em(marca, Math.round(mx), -2);
+      mover(marca, mx, -2);
       if (flex > 0) flex -= dt;
       cri.andar(flex > 0, 1.6);
       cri.alt = 0; cri.x = CX + (flex > 0 ? 2 : 0);
-      em(tora, CX + 14 + (flex > 0 ? 2 : 0), CHAO - 22);
+      mover(tora, CX + 14 + (flex > 0 ? 2 : 0), CHAO - 22);
       // estacas do caminho a cada 16 m (64 px) andando para trás conforme a tora sobe
       estacas.forEach((e, i) => {
         const k = Math.floor(pos / 64) + i - 2, px = Math.round(CX + 30 + k * 64 - pos);
-        em(e, px, CHAO - 2); escrever(marcas[i], `${Math.max(0, k) * 16}m`); em(marcas[i], px - 4, CHAO + 8);
+        mover(e, px, CHAO - 2); escreverSe(marcas[i], `${Math.max(0, k) * 16}m`); mover(marcas[i], px - 4, CHAO + 8);
         e.style.visibility = marcas[i].style.visibility = k >= 0 ? '' : 'hidden';
       });
       rolarEm(pedras, pos % 32);
@@ -235,13 +252,13 @@ function provaSalto(raiz: HTMLElement, x: Ctx): Prova {
         prox -= passo;
         if (prox <= 0) {
           prox = rng.int(110, 200) * (1 + x.vel * 0.25);
-          const tronco = rng.chance(0.6), el = pix(tronco ? TRONCO : PEDRA, PAL);
+          const tronco = rng.chance(0.6), el = pixImg(tronco ? TRONCO : PEDRA, PAL);
           el.classList.add('gn-ob'); pista.append(el);
           obs.push({ el, x: 336, w: tronco ? 20 : 14, h: tronco ? 7 : 8 });
         }
       }
       for (const o of obs) {
-        o.x -= passo; em(o.el, Math.round(o.x - o.w / 2), CHAO - o.h + 1);
+        o.x -= passo; mover(o.el, o.x - o.w / 2, CHAO - o.h + 1);
         if (o.feito) continue;
         if (Math.abs(o.x - CX) < (o.w / 2 + 5) && cri.alt < o.h + 1) {
           o.feito = true; combo = 0; trope = tTrope; cri.piscar = tTrope; noAr = -1;
@@ -290,8 +307,8 @@ function criarGincana(args: ArgsGincana): Tela {
   const aviso = texto('', { tamanho: 12, cor: 'amarelo', sombra: true, largura: 320, alinhar: 'centro' }); el.append(em(aviso, 0, 60)); aviso.classList.add('gn-aviso');
   let fase: 'conta' | 'jogo' | 'fim' | 'res' = 'conta', t = 3.2, resto = def.duracao, pausado = false, res: HTMLElement | null = null;
   const pintarPlacar = () => {
-    escrever(tTempo, `Tempo ${Math.ceil(Math.max(0, resto))}s`); em(tTempo, 160 - Math.floor(parseInt(tTempo.style.width) / 2), 4);
-    escrever(tPts, `Pontos ${prova.pontos}`); em(tPts, 310 - parseInt(tPts.style.width), 4);
+    escreverSe(tTempo, `Tempo ${Math.ceil(Math.max(0, resto))}s`); em(tTempo, 160 - Math.floor(parseInt(tTempo.style.width) / 2), 4);
+    escreverSe(tPts, `Pontos ${prova.pontos}`); em(tPts, 310 - parseInt(tPts.style.width), 4);
   };
   const mostrarResultado = () => {
     fase = 'res';
@@ -314,15 +331,15 @@ function criarGincana(args: ArgsGincana): Tela {
       if (pausado) return;
       if (fase === 'res') { if (input.apertou('a') || input.apertou('b')) fechar(tela, { pontos: prova.pontos }); return; }
       if (fase === 'conta') {
-        const n = Math.ceil(t - 0.2); escrever(aviso, n > 0 ? String(n) : 'JÁ!');
+        const n = Math.ceil(t - 0.2); escreverSe(aviso, n > 0 ? String(n) : 'JÁ!');
         const antes = t; t -= dt; if (Math.ceil(antes - 0.2) !== Math.ceil(t - 0.2)) som(t < 0.2 ? 'ui-ok' : 'ui-mover');
-        if (t <= 0) { fase = 'jogo'; escrever(aviso, ''); }
+        if (t <= 0) { fase = 'jogo'; escreverSe(aviso, ''); }
         prova.atualizar(dt, 0);
       } else if (fase === 'jogo') {
         if (input.apertou('b')) { void desistir(); return; }
         resto -= dt; prova.atualizar(dt, def.duracao - resto);
-        if (resto <= 0) { fase = 'fim'; t = 1.4; escrever(aviso, 'FIM!'); som('insignia'); }
-      } else { prova.atualizar(dt, 0); t -= dt; if (t <= 0) { escrever(aviso, ''); mostrarResultado(); } }
+        if (resto <= 0) { fase = 'fim'; t = 1.4; escreverSe(aviso, 'FIM!'); som('insignia'); }
+      } else { prova.atualizar(dt, 0); t -= dt; if (t <= 0) { escreverSe(aviso, ''); mostrarResultado(); } }
       fx.atualizar(dt); pintarPlacar();
     },
   };

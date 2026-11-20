@@ -26,6 +26,8 @@ function build() {
   // cabeça cinza-clara e disco facial
   rig.add('cabeca', blob([0.185, 0.17, 0.17], m.luz(1), { pos: [0.005, 0, 0] }));
   rig.add('cabeca', blob([0.08, 0.07, 0.085], m.plano(2), { pos: [0.16, 0.0, 0], seg: 10 }));
+  // barriga BRANCA grande abaixo do colar negro: o contraste branco × ardósia × negro é o que lê "harpia" (antes tudo era cinza)
+  rig.add('tronco', blob([0.2, 0.2, 0.19], m(0), { pos: [0.13, -0.08, 0], rot: [0, 0, -30], seg: 16 }));
   // barras de ardósia no peito branco
   for (const [x, y, w] of [[0.3, -0.02, 0.17], [0.27, -0.12, 0.15]] as const) rig.add('tronco', blob([0.03, 0.028, w], m.plano(1), { pos: [x, y, 0], rot: [0, 0, -30], seg: 10, castShadow: false }));
   // sobrancelha escura franzida

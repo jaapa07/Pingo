@@ -8,6 +8,8 @@ import { EVENTOS_A1 } from '../src/data/eventos/a1';
 import { EVENTOS_COMUNS } from '../src/data/eventos/comuns';
 import { TREINADORES_LIGA } from '../src/data/treinadores/liga';
 import { EVENTOS_LIGA } from '../src/data/eventos/liga';
+import { EVENTOS_REGRAS } from '../src/data/eventos/regras'; // regras clássicas (spec 10A): Ginásio de Treino, rival semanal, Torre
+import { EVENTOS_POSLIGA } from '../src/data/eventos/posliga'; // Gincana e Safári (spec 10A 32/33): carreiro do Platô e doadores do Safári
 import { ESPECIES } from '../src/data/criaturas';
 const dir = new URL('../src/data/zonas/', import.meta.url).pathname;
 const MEUS = /^(A1|A2|A3|A4|A10|A-R1|A-R2|A-R3|A-R7|A-MS|A-GE|A-LG)(-|\.)/;
@@ -26,7 +28,7 @@ function blocos(z: ZonaDef) {
 }
 const ehEnt = (t?: string) => !!t && t !== 'borda' && t !== 'buraco';
 const meus = [...Z.values()].filter((z) => MEUS.test(z.id + '.') && !z.id.endsWith('-ginasio'));
-const TREINADORES = [...TREINADORES_A1, ...TREINADORES_LIGA], EVENTOS = [...EVENTOS_A1, ...EVENTOS_COMUNS, ...EVENTOS_LIGA];
+const TREINADORES = [...TREINADORES_A1, ...TREINADORES_LIGA], EVENTOS = [...EVENTOS_A1, ...EVENTOS_COMUNS, ...EVENTOS_LIGA, ...EVENTOS_REGRAS, ...EVENTOS_POSLIGA];
 const ids = new Set(TREINADORES.map((t) => t.id)), evs = new Set(EVENTOS.map((e) => e.id));
 for (const z of meus) {
   const { w, h, b } = blocos(z);

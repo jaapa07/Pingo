@@ -8,6 +8,7 @@ import { ESPECIES } from '../src/data/criaturas';
 import { TREINADORES_A2 } from '../src/data/treinadores/a2';
 import { EVENTOS_A2 } from '../src/data/eventos/a2';
 import { EVENTOS_COMUNS } from '../src/data/eventos/comuns';
+import { EVENTOS_REGRAS } from '../src/data/eventos/regras'; // regras clássicas (spec 10A): Quiz do Rádio
 
 const dir = new URL('../src/data/zonas/', import.meta.url).pathname;
 const MEUS = /^(A5|A6|A7|A8|A9|A-R4|A-R5|A-R6|A-US|A-BA|A-PR|A-MG|A-GB|A-RS|A-MT)(-|$)/;
@@ -29,7 +30,7 @@ function blocos(z: ZonaDef) {
   return { w, h, b };
 }
 const ehEnt = (t?: string) => !!t && t !== 'borda' && t !== 'buraco';
-const ids = new Map(TREINADORES_A2.map((t) => [t.id, t])), evs = new Set([...EVENTOS_A2, ...EVENTOS_COMUNS].map((e) => e.id));
+const ids = new Map(TREINADORES_A2.map((t) => [t.id, t])), evs = new Set([...EVENTOS_A2, ...EVENTOS_COMUNS, ...EVENTOS_REGRAS].map((e) => e.id));
 
 /* ---------- estrutura ---------- */
 const usados = new Set<string>();

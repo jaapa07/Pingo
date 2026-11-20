@@ -56,8 +56,9 @@ function build() {
   const rm = (co[0] + co[2]) / 2 * 1.03;
   rig.add('tronco', ring(rm, 0.024, m.luz(3), { scale: [1, co[1] / rm, 1], rot: [0, GIRA, 0] }));
   rig.add('cabeca', ring(ca[0] * 1.045, 0.02, m.luz(3), { rot: [0, GIRA, 0] }));
-  // asa esquerda e perna esquerda de areia (o kit pintou tudo de escuro)
-  for (const o of ['asa_e', 'asa2_e']) rig.bones[o].traverse((x) => { const mesh = x as { isMesh?: boolean; material?: unknown }; if (mesh.isMesh) mesh.material = m(1); });
+  // asa DIREITA de areia e a esquerda escura (a asa da frente cobre o flanco: escura, ela mostra a metade rio Negro
+  // ao lado do peito de areia — a divisão lê como metade/metade na câmera de batalha); perna esquerda de areia
+  for (const o of ['asa_d', 'asa2_d']) rig.bones[o].traverse((x) => { const mesh = x as { isMesh?: boolean; material?: unknown }; if (mesh.isMesh) mesh.material = m(1); });
   rig.add('perna_e', blob([0.1, 0.13, 0.09], m(1), { pos: [0, -0.04, 0], seg: 12 })); rig.add('perna_d', blob([0.1, 0.13, 0.09], m(0), { pos: [0, -0.04, 0], seg: 12 }));
   // peito laranja em escudo estreito e CRISTA em leque cobrindo o bico
   rig.add('tronco', blob([0.1, 0.17, 0.12], m(2), { pos: [0.25, 0.0, 0], rot: [0, 0, -20], seg: 14 }));

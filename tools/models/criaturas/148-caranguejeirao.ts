@@ -10,15 +10,16 @@ import { paletaAranha, aranha, tarsosAranha } from './147-caranguejeirinha';
 const paleta = { ...paletaAranha, rampas: [['#241628', '#50323e', '#8a6460'], paletaAranha.rampas[1], paletaAranha.rampas[2], paletaAranha.rampas[3]] as [string, string, string][], extras: { ...paletaAranha.extras, f: '#50323e' } };
 
 function build() {
-  const { rig, c } = aranha({ k: 1.45, alt: 0.3, r: 0.07, abre: 0.42, presa: 0.17 });
+  // patas mais finas e articuladas (grossas, viravam tocos e o bicho lia como um móvel)
+  const { rig, c } = aranha({ k: 1.45, alt: 0.3, r: 0.052, abre: 0.46, presa: 0.17 });
   // POSE DE AMEAÇA: primeiro par erguido e aberto
   par((l, s) => {
     const a = rig.bones['pata1_' + l], b = rig.bones['tarso1_' + l];
     a.clear(); b.clear(); a.add(b);
     const j: V3 = [0.16, 0.3, 0.16 * s], f: V3 = [0.2, 0.3, 0.1 * s];
     b.position.set(...j);
-    rig.add('pata1_' + l, segmento([0, 0, 0], j, 0.075, 0.08, m(0)), blob([0.1, 0.095, 0.1], m(1), { pos: j, seg: 10 }));
-    rig.add('tarso1_' + l, segmento([0, 0, 0], f, 0.08, 0.05, m(0)), blob([0.075, 0.05, 0.075], m(1), { pos: [f[0] * 0.55, f[1] * 0.55, f[2] * 0.55], seg: 8 }), blob([0.05, 0.05, 0.05], m.luz(0), { pos: f, seg: 8 }));
+    rig.add('pata1_' + l, segmento([0, 0, 0], j, 0.06, 0.065, m(0)), blob([0.1, 0.095, 0.1], m(1), { pos: j, seg: 10 }));
+    rig.add('tarso1_' + l, segmento([0, 0, 0], f, 0.065, 0.04, m(0)), blob([0.075, 0.05, 0.075], m(1), { pos: [f[0] * 0.55, f[1] * 0.55, f[2] * 0.55], seg: 8 }), blob([0.05, 0.05, 0.05], m.luz(0), { pos: f, seg: 8 }));
     // listras claras nas canelas
     for (const i of [2, 3, 4]) rig.add(`tarso${i}_${l}`, blob([0.085, 0.05, 0.085], m(1), { pos: [[0.04, -0.09, -0.19][i - 2] * 0.5, -0.24, [0.225, 0.21, 0.12][i - 2] * 0.5 * s], seg: 8 }));
     // gota de veneno na ponta das presas
@@ -46,6 +47,7 @@ const anims = animsAracnideo({ u: 0.85, alt: 0.3, pares: 4, mole: 0.6 }, {
 
 export const caranguejeirao = criatura({
   num: 148, id: 'caranguejeirao', nome: 'Caranguejeirão', porte: 'G', estagio: 'final', paleta, build, anims,
+  enquadre: { frente: { zoom: 0.92, dx: 2 }, costas: { zoom: 0.94, dy: -1 } },
   olho: {
     frente: ['pp...', 'pppp.', '.aapp', '.aapp', '..pp.'],
     fechado: ['fffff', 'fffff', 'ppppp', 'fffff', 'fffff'],

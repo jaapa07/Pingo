@@ -1,0 +1,22 @@
+# VISITANTES.md — diário das missões dos lendários visitantes (181 Galo-Manaó, 182 Borealce; spec 6.5)
+
+## Arquivos
+- `src/data/eventos/visitantes.ts` — roteiros (`vis-canoeiro`, `vis-taruma-volta`, `vis-galo-batalha`, `vis-solveig`, `vis-lanterna-1..4`, `vis-pico-aurora`, `vis-borealce-batalha`), comandos (`vis-estado`, `vis-lendario`, `vis-acender`), registro das espécies 181/182 no módulo de batalha (`registrarEspecies(VISITANTES)`: o `src/battle/index.ts` só registra as 180), navio encalhado de B9 e a camada da aurora (DOM/CSS + SVG em pixels, sem canvas), NPCs/gatilho por coordenada nas zonas de outros times (`PONTOS_VISITANTES`).
+- `src/data/treinadores/visitantes.ts` — B-EXP-1..4 (pesquisadores da expedição, só Geada, nv 66–70, IA `conselho`).
+- `src/data/zonas/X-EA.ts` — Encontro das Águas (36×50, tileset `mata`, passo 17). Grade gerada por regra escrita à mão; exporta `FAIXA`, `MARGEM_ESCURA`, `REMANSOS`, `ENTRADA_ARENA`, `PALCO_GALO`, `CHEGADA`.
+- `src/world/mecanicas/x-ea.ts` (import em `src/world/mecanicas/index.ts`) — pintura das duas águas e da espuma da linha, correnteza, dança de corte; pontos de colheita dos frascos em A-R6 e B-R2 (mecânica ANEXADA: se a zona tiver outra mecânica, ela roda antes).
+- `src/data/itens.ts` (fim): `frasco-vazio`, `frasco-agua-escura`, `frasco-agua-barrenta`, `lanterna-boreal`.
+- Pontos tocados em arquivos de outros: `A4.ts` (só `npcs`: `vis-taruma` em (32, 38)), `B9.ts` (só `npcs`: `vis-solveig` em (30, 24), `se: flag:conselho-vencido`), `src/ui/telas/diario.ts` (página Visitantes), `src/ui/telas/comum.ts` (1 linha: `esp()` conhece 181/182 → nome e figura na equipe/Diário), `src/data/textos-ui.ts` (textos), `docs/HISTORIA.md` (2 linhas de flags).
+
+## Decisões
+- Canoeiro **Seu Tarumã** (sprite `npc-idoso`, para não confundir com o pescador-treinador do píer). Só conversa sobre a missão com as 16 insígnias.
+- **Água escura**: A-R6 Rio Cachoeira-Véu, Poço do Breu (15, 53), de noite, com Mergulho (parceira de Rio). O mapa A não tem tile `d` em rio; a colheita é um ponto de parada da canoa (bolhas desenhadas pela mecânica). **Água barrenta**: B-R2 Estrada Vermelha, poço de cima da cascata seca (84, 22): só se chega subindo a cascata (Cachoeira); de dia. O poço ganha pintura de barro depois de `ea-missao`.
+- **X-EA**: a água do tileset é uma só; as duas cores são camadas translúcidas por cima do bake (`.xea-escura` / `.xea-barrenta`, na camada de chão da cena), e a linha do encontro é uma espuma que pisca. Correnteza: entre as linhas 12 e 40, só vale água barrenta encostada (8 vizinhos) na escura; errou → volta ao remanso (aguapés em (17, 41), (19, 32), (23, 21)). Margens da faixa são mata fechada (sem atalho a pé).
+- **Dança de corte**: entrar na arena em (18, 8) faz o Galo-Manaó descer; a batalha só começa se o jogador não andar nem virar até o fim (≈ 6 s). Mexeu → ele foge; sair da arena e voltar chama de novo. Batalha lendária nv 60 (arena `mata`). Reencontro: enquanto o jogador não tiver um 181 na equipe ou no Viveiro, ele volta (soltou, derrotou ou fugiu).
+- **Expedição Boreal**: navio desenhado em B9 por cima do mapa (Pix, só depois do Conselho; não é bake, então não existe antes). Lanternas guardadas por B-EXP-1..4; o NPC de cada um é script (batalha → lanterna). Acendimento: gatilho noturno no alto do PP → `vis-acender` (4 lanternas em volta do jogador, aurora nascendo, Borealce descendo) → batalha nv 65 (arena `geada`). Depois de `boreal-acesa`, toda noite no PP a aurora volta.
+- **Diário**: abas DIÁRIO/VISITANTES só depois de ver 181 ou 182 (MENU ou toque troca). Contagens de vistas/capturadas e medalhas usam só nº ≤ 180. Ficha completa; a aba HABITAT do visitante mostra "onde encontrar" e, no Borealce, a nota da Drª Solveig.
+
+## Marcos
+- (20/11) Leitura do spec e contratos; zonas B7, B-SG, B-LG e PP ainda NÃO existem (times B2 em andamento), B-R5 existe (B2-norte), sem docs/ZONAS-B2-NORTE.md.
+- (20/11) Dados, treinadores, itens, X-EA (assada com `--previa`), mecânica, eventos, A4/B9, Diário.
+- (20/11) Testado no jogo (Vite 5201 sem HMR, mapa B aberto só em memória): canoeiro dá os frascos; água escura em A-R6 (de dia recusa, de noite com Mergulho colhe); água barrenta em B-R2 (subindo a cascata com Cachoeira); entrega → canoa para X-EA; correnteza devolve ao remanso ao cruzar para a água escura; travessia completa até a ilhota.

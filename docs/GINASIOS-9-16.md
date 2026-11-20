@@ -25,3 +25,9 @@ Arquivos meus: `src/data/zonas/{B2,B3,B4,B5}-ginasio.ts`, `src/world/mecanicas/g
 - Lição: treinador que avista anda até o jogador e FICA ao lado depois da luta; em corredor de 1 tile isso tranca o caminho (g13-3 virou visão 1).
 - Ferramentas (scratch, podem sumir): `s/jogar.mjs` (Playwright: passos, A, falas/batalhas automáticas; troca os golpes da equipe de teste por Força do Pensamento), `s/lago.mjs`/`gera2.mjs` (tanques), `s/gelo.mjs` (pistas de gelo), `s/ger15.mjs` (portais).
 - Em andamento: 14 (`B7-ginasio`, gelo do motor + blocos de gelo empurráveis com A; saída B7 (31, 11)), 15 (`B8-ginasio`, portais de constelação × 4 horas do céu; saída B8 (23, 9)).
+
+### Marco 2 — 14 jogado, 15 e 16 escritos
+- 14 (`B7-ginasio`, 33×19): jogado inteiro no Vite 5200 — 3 pistas (16 deslizes; 24 com 2 empurrões; 29 com 3 empurrões), 5 treinadores, líder → insígnia 14 + `amuleto-voo` + pt-20 no save. Lição: enfeite de objeto (`gin-bloco-gelo`) bloqueia o tile; um deles prendia o jogador entre a parede e o treinador que se aproximou (movido).
+- 15 (`B8-ginasio`, 27×19): 16 portais em 7 ilhas, 4 horas do céu, 3 estrelas-guia; rótulos por hora gerados com pares e conferidos por busca (todo estado alcançável volta à entrada).
+- 16 (`A9-ginasio`, 32×19): quatro alas (fogo em ondas mod 3; terra = sokoban com buracos; vento = corrente na direção do vento, penas giram; água = reflexo espelhado) + porta de taquara em (15, 4) que abre com as flags `g16-fogo/terra/vento/agua`. Piso `.` do tema g16 é igual à parede: a zona usa `;` (grama) como chão.
+- Simulador: `s/sim16.mts` (mesmo molde do `sim-b.mts` do lote 9–12: `equipeReferencia(d, ini, PASSO_LIGA, ás − Δ)`, mochila 6 Garrafadas + 2 Elixires). Líder 13 antes do ajuste: esperto 89/71/70% (Δ 2/3/4).

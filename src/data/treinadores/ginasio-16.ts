@@ -24,22 +24,21 @@ export const TREINADORES_GINASIO_16: TreinadorDef[] = [
   /*
    * LÍDER — Pajé Trovão-Velho (Lenda). Fraquezas da Lenda: Geada, Lenda e Encanto.
    * Estratégia (IA 'conselho'): uma criatura para cada prova. A Lavadeira-Dragão (Inseto/Lenda, o vento) abre com
-   * Pulso das Eras e queima Geada com Labareda. O Hipocampo (Rio/Lenda, a água) acumula Chamado Antigo e solta Estrela
-   * Cadente; Cortina de Brilho segura golpes especiais. O Leão-Dourado (Brasa/Ginga, o fogo) é a resposta à Geada:
-   * Fogo de Coivara e Rabo-de-Arraia. O Minhocão (Terra/Lenda, a terra) bate com Garra Ancestral e Tremor de Terra e
-   * castiga Encanto com Borra de Timbó. A Araracanga (Vento/Trovão) é o trovão do nome do Pajé: Trovoada e Ventania.
-   * O ás é o Pirarucão (Rio/Lenda) de nível 63: Garra Ancestral, Cachoeirada, Tremor de Terra e Escama Sagrada;
-   * segura um Caju.
+   * Pulso das Eras e queima Geada com Labareda. O Hipocampo (Rio/Lenda, a água) acumula Chamado Antigo e ergue a
+   * Cortina de Brilho. O Leão-Dourado (Brasa/Ginga, o fogo) é a resposta à Geada: Labareda e Rabo-de-Arraia (contra
+   * Pedra e Ferro). O Minhocão (Terra/Lenda, a terra) bate com Garra Ancestral e Tremor de Terra e castiga Encanto com
+   * Borra de Timbó. O ás é o Pirarucão (Rio/Lenda) de nível 63: Garra Ancestral, Cachoeirada, Tremor de Terra e Escama
+   * Sagrada; segura um Caju. Ajuste pelo simulador: com seis criaturas, Estrela Cadente e Trovoada, o esperto vencia só
+   * 31–48%; assim fica em 59–75% (Δ 2–4 níveis).
    * Cura: Elixir de Andiroba e Garrafada (spec 7A).
    */
   { id: 'lider-16', classe: 'Pajé', nome: 'Trovão-Velho', sprite: 'lider-16', ia: 'conselho', premio: 6300, insignia: 16, musica: 'batalha-lider', flag: 'ginasio-16-vencido',
     itens: ['elixir-andiroba', 'garrafada'],
     equipe: [
-      { e: 156, nv: 60, golpes: ['pulso-das-eras', 'labareda', 'voo-de-mamangava', 'sopro-ancestral'] },
-      { e: 120, nv: 61, golpes: ['chamado-antigo', 'estrela-cadente', 'enxurrada', 'cortina-de-brilho'] },
-      { e: 68, nv: 60, golpes: ['fogo-de-coivara', 'rabo-de-arraia', 'sol-a-pino', 'labareda'] },
+      { e: 156, nv: 61, golpes: ['pulso-das-eras', 'labareda', 'voo-de-mamangava', 'sopro-ancestral'] },
+      { e: 120, nv: 61, golpes: ['chamado-antigo', 'pulso-das-eras', 'enxurrada', 'cortina-de-brilho'] },
+      { e: 68, nv: 61, golpes: ['labareda', 'rabo-de-arraia', 'sol-a-pino', 'armada'] },
       { e: 160, nv: 61, golpes: ['garra-ancestral', 'tremor-de-terra', 'borra-de-timbo', 'vocoroca'] },
-      { e: 52, nv: 61, golpes: ['trovoada', 'ventania', 'rasante', 'relampago'] },
       { e: 112, nv: 63, golpes: ['garra-ancestral', 'cachoeirada', 'tremor-de-terra', 'escama-sagrada'], item: 'caju' },
     ],
     desafio: 'Você acendeu os quatro totens. O fogo, a terra, o vento e a água conversaram com você. Agora é a minha vez de ouvir o que a sua equipe tem a dizer.',

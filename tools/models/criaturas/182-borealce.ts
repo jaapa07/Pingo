@@ -90,7 +90,6 @@ const anims = animsQuadrupede({ u: 1.4, hPerna: 0.56, mole: 0.5, passo: 22, caud
 
 export const borealce = criatura({
   num: 182, id: 'borealce', nome: 'Borealce', porte: 'L', estagio: 'lendario', paleta, build, anims,
-  enquadre: { frente: { zoom: 1.1 }, costas: { zoom: 1.08 } },
   olho: {
     frente: ['.ppp.', 'ppwpp', 'papwp', '.ppp.'],
     fechado: ['fffff', 'pfffp', 'fpppf', 'fffff'],

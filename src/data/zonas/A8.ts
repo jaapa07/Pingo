@@ -73,6 +73,7 @@ const zona: ZonaDef = {
     { x: 8, y: 1, w: 2, h: 1, requer: 'amuleto:cachoeira', sprite: 'cl-pescador', fala: 'Guarda-rios: daqui para baixo o rio despenca no Véu, três cascatas de uma vez.\nDescer é fácil. Voltar é que só com o Amuleto da Cachoeira. Sem ele, eu não deixo ninguém virar espuma.' },
   ],
   npcs: [
+    { id: 'a8-ze-malho', sprite: 'cl-ferreiro', x: 20, y: 9, dir: 's', mov: 'olhar', script: 'troca-a8' }, // troca com morador (src/data/trocas.ts)
     { id: 'a8-operario', sprite: 'npc-homem-1', x: 10, y: 16, mov: 'olhar', fala: ['Bem-vindo a Vila Ferrugem! Aqui o apito da fábrica toca às seis, ao meio-dia e quando o gato pisa no botão.', 'A Engenheira Bigorna transformou a fábrica velha em ginásio. As esteiras ainda andam. Para onde, só ela sabe.'] },
     { id: 'a8-soldadora', sprite: 'npc-mulher-2', x: 24, y: 14, mov: 'vagar', fala: ['Tipo Ferro aguenta quase tudo. Quase: Brasa derrete, Terra entorta e Ginga amassa.', 'Veneno em Ferro é igual xingar parede.'] },
     { id: 'a8-menino', sprite: 'cl-crianca-m', x: 38, y: 17, mov: 'vagar', fala: ['Meu pai disse que a Insígnia da Engrenagem vem com o Amuleto da Força.', 'Aí dá para empurrar o pedregulho da saída leste. Eu já tentei com a testa. Não recomendo.'] },

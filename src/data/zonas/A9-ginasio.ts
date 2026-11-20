@@ -51,7 +51,7 @@ const zona: ZonaDef = {
   ],
   warps: [{ x: 8, y: 18, para: { zona: 'A9', x: 25, y: 12, dir: 's' }, tipo: 'porta' }],
   npcs: [
-    { id: 'g16-1', sprite: 'cl-mateira', x: 12, y: 16, dir: 'o', treinador: 'g16-1', visao: 3 },
+    { id: 'g16-1', sprite: 'cl-mateira', x: 12, y: 17, dir: 'n', treinador: 'g16-1', visao: 1 },
     { id: 'g16-2', sprite: 'cl-pescador', x: 16, y: 13, dir: 'o', treinador: 'g16-2', visao: 1 },
     { id: 'g16-3', sprite: 'cl-escoteira', x: 14, y: 10, dir: 'l', treinador: 'g16-3', visao: 1 },
     { id: 'g16-4', sprite: 'cl-repentista', x: 16, y: 6, dir: 'o', treinador: 'g16-4', visao: 1 },

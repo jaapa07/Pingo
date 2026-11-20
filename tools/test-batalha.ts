@@ -19,6 +19,9 @@ import { Batalha, danoBase, valorCaptura, tentarCaptura, bonusCuia, bonusStatusC
 import { escolherAcaoIA, nivelEfetivo, resolverComIA, iaUsaItens, NIVEIS_IA, type NivelIA } from '../src/battle/ia';
 import { registrarEspecies, especie, criarCriatura, criarDeMembro, atributos, atributosDe, expParaNivel, nivelPorExp, podeEvoluir, evoluir, ganharEsforco, ganharExp, mudarAmizade, novoSlot, AMIZADE_EVOLUCAO, expDerrota, temEspecie } from '../src/battle/criatura';
 import { iniciarBatalha, prepararBatalha, definirPiloto, curarEquipe, pilotoPadrao } from '../src/battle/index';
+import { sortearRara, prepararSelvagem, bonusArtesanal, limiteObediencia, chanceObedecer, CHANCE_RARA, AMIZADE_CUIA_AMIGA } from '../src/battle/cuias';
+import { afinidade, gerarOvo, formaBase, passoCriadouro, criadouro, PASSOS_SORTEIO } from '../src/world/ninhos';
+import { GRUPOS_NINHO } from '../src/data/ninhos';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 let falhas = 0, feitos = 0;
@@ -135,7 +138,8 @@ teste('itens: cuias, remédios, pedras, frutos, itens-chave e 50 pergaminhos apo
     'pedra-solar', 'pedra-mare', 'pedra-lunar', 'folha-ancestral', 'engrenagem-velha', 'caju', 'pitanga', 'jabuticaba', 'cupuacu', 'pequi', 'buriti', 'acai', 'acerola', 'vara-velha', 'vara-boa', 'vara-mestra', 'fumaca-andiroba', 'bike-bambu', 'passe-trem', 'bilhete-saveiro', 'radio-cipo',
     ...['facao', 'remo', 'forca', 'lampiao', 'quebra-pedra', 'escalar', 'cachoeira', 'mergulho', 'voo', 'faro'].map((a) => 'amuleto-' + a)];
   for (const id of obrig) afirmar(temItemDef(id), 'falta o item ' + id);
-  igual(ITENS.filter((i) => i.uso?.cuia).length, 8, 'nº de cuias');
+  afirmar(ITENS.filter((i) => i.uso?.cuia && !i.uso.cuia.artesanal).length >= 8, 'as 8 cuias do spec 7 (mais as de serviços, como a do Safári)');
+  igual(ITENS.filter((i) => i.uso?.cuia?.artesanal).length, 7, 'nº de cuias artesanais (spec 10A-6)');
   igual(new Set(ITENS.map((i) => i.id)).size, ITENS.length, 'ids de itens únicos');
   igual(Object.keys(PERGAMINHOS).length, 50, 'nº de pergaminhos');
   for (let n = 1; n <= 50; n++) { const id = 'pt-' + String(n).padStart(2, '0'); afirmar(temItemDef(id), 'falta ' + id); const gid = item(id).uso?.golpe; afirmar(gid && temGolpe(gid), `${id} aponta para golpe inexistente`); igual(item(id).bolso, 'pergaminhos', 'bolso de ' + id); }
@@ -733,6 +737,96 @@ teste('pedido com semExp: a equipe do jogador vence sem ganhar experiência nem 
     const sem = rodar(true), com = rodar(false);
     igual(sem.r, 'vitoria', 'vence a Torre'); igual(sem.ganhou, 0, 'sem experiência'); igual(sem.esf, false, 'sem esforço');
     afirmar(com.ganhou > 0, 'sem a opção, a mesma vitória dá experiência');
+  } finally { jogo.save = antes; }
+});
+
+/* ============================== 8B. captura e criação (spec 10A-5, 6, 9, 11 e 13) ============================== */
+registrarEspecies([
+  ex(9101, 'Pesadao', ['pedra'], B(80, 80, 110, 40, 60, 30), [[1, 'encontrao'], [1, 'cara-feia']], { peso: 350 }),
+  ex(9102, 'Medio', ['pedra'], B(70, 70, 90, 40, 60, 40), [[1, 'encontrao'], [1, 'cara-feia']], { peso: 120 }),
+  ex(9103, 'Ligeirinho', ['vento'], B(40, 50, 40, 50, 40, 110), [[1, 'encontrao'], [1, 'cara-feia']]),
+]);
+teste('cuias artesanais: bônus de cada uma pela regra e captura em batalha conforme a fórmula', () => {
+  const al = (n: number, nv = 10, o: Partial<CriaturaInst> = {}) => neutra(n, nv, 'cara-feia') && Object.assign(neutra(n, nv, 'cara-feia'), o);
+  igual(bonusArtesanal('ligeira', { alvo: al(9103) }), 4, 'ligeira × Velocidade 110'); igual(bonusArtesanal('ligeira', { alvo: al(9005) }), 1, 'ligeira × lenta');
+  igual(bonusArtesanal('pesada', { alvo: al(9101) }), 4, 'pesada × 350 kg'); igual(bonusArtesanal('pesada', { alvo: al(9102) }), 2.5, 'pesada × 120 kg'); igual(bonusArtesanal('pesada', { alvo: al(9005) }), 1, 'pesada × 5 kg');
+  igual(bonusArtesanal('lua', { alvo: al(9007) }), 4, 'lua × evolui com pedra'); igual(bonusArtesanal('lua', { alvo: al(9011) }), 4, 'lua × evolui à noite'); igual(bonusArtesanal('lua', { alvo: al(9003) }), 1, 'lua × evolui por nível');
+  igual(bonusArtesanal('isca', { alvo: al(9005), pescada: true }), 3, 'isca pescada'); igual(bonusArtesanal('isca', { alvo: al(9005) }), 1, 'isca no capim');
+  const alvo10 = al(9005, 10);
+  igual(bonusArtesanal('nivel', { alvo: alvo10, minha: al(9001, 40) }), 8, 'nível ×4'); igual(bonusArtesanal('nivel', { alvo: alvo10, minha: al(9001, 20) }), 4, 'nível ×2');
+  igual(bonusArtesanal('nivel', { alvo: alvo10, minha: al(9001, 11) }), 2, 'nível maior'); igual(bonusArtesanal('nivel', { alvo: alvo10, minha: al(9001, 10) }), 1, 'nível igual');
+  igual(bonusArtesanal('amor', { alvo: al(9005, 10, { sexo: 'F' }), minha: al(9005, 10, { sexo: 'M' }) }), 8, 'amor: mesma espécie, sexo oposto');
+  igual(bonusArtesanal('amor', { alvo: al(9005, 10, { sexo: 'F' }), minha: al(9005, 10, { sexo: 'F' }) }), 1, 'amor: mesmo sexo');
+  igual(bonusArtesanal('amor', { alvo: al(9005, 10, { sexo: 'F' }), minha: al(9001, 10, { sexo: 'M' }) }), 1, 'amor: outra espécie');
+  igual(bonusArtesanal('amiga', { alvo: al(9005) }), 1, 'amiga');
+  // em batalha: 3 mil arremessos de cada cuia batem com a fórmula (a/255), com o bônus da regra
+  const medir = (cuia: string, bonus: number, o: { meuNv?: number; pescada?: boolean } = {}) => {
+    rng.seed(31); const N = 3000; let ok = 0, esp = 0;
+    for (let i = 0; i < N; i++) {
+      const meu = neutra(9016, o.meuNv ?? 15, 'cabeca-fria'), alvo = neutra(9005, 10, 'cara-feia');
+      const b = new Batalha({ tipo: 'selvagem', lados: [{ equipe: [meu], itens: { [cuia]: 1 } }, { equipe: [alvo] }], periodo: 'dia', pescada: o.pescada }); b.iniciar();
+      esp = Math.min(255, valorCaptura(atributos(alvo).vida, alvo.vida, 120, bonus, 1)) / 255;
+      turno(b, { tipo: 'item', item: cuia }, G(0)); if (b.resultado === 'captura') ok++;
+    }
+    perto(ok / N, esp, 0.03, `taxa da ${cuia}`);
+  };
+  medir('cuia-nivel', 1, { meuNv: 10 }); medir('cuia-nivel', 2, { meuNv: 15 }); medir('cuia-isca', 3, { pescada: true }); medir('cuia-isca', 1);
+  // Cuia Amiga: chega com amizade alta
+  const am = neutra(9014, 2); const ba = new Batalha({ tipo: 'selvagem', lados: [{ equipe: [neutra(9001, 20)], itens: { 'cuia-amiga': 60 } }, { equipe: [am] }] }); ba.iniciar();
+  while (!ba.resultado) turno(ba, { tipo: 'item', item: 'cuia-amiga' }, G(1));
+  igual(ba.resultado, 'captura', 'cuia amiga captura'); afirmar(am.amizade >= AMIZADE_CUIA_AMIGA && am.cuia === 'cuia-amiga', 'cuia amiga: amizade ' + am.amizade);
+});
+teste('Pelagem Rara: 1 em 4096 por encontro, sobrevive à captura; selvagens seguram item 5% (fruto) e 1% (achado)', () => {
+  rng.seed(4096); const N = 4096 * 300; let n = 0;
+  for (let i = 0; i < N; i++) if (sortearRara()) n++;
+  perto(n / N / CHANCE_RARA, 1, 0.2, 'frequência relativa da Pelagem Rara (300 esperadas)');
+  rng.seed(9); let raras = 0, frutos = 0, achados = 0; const M = 40000;
+  for (let i = 0; i < M; i++) { const c = prepararSelvagem(criarCriatura(9005, 10)); if (c.rara) raras++; if (c.item === 'acai') frutos++; else if (c.item) achados++; }
+  perto(frutos / M, 0.05, 0.006, 'fruto segurado'); perto(achados / M, 0.01, 0.003, 'achado raro segurado'); afirmar(raras < 40, 'raras demais: ' + raras);
+  const r = neutra(9014, 2); r.rara = true;
+  const b = new Batalha({ tipo: 'selvagem', lados: [{ equipe: [neutra(9001, 20)], itens: { 'cuia-ouro': 80 } }, { equipe: [r] }] }); b.iniciar();
+  while (!b.resultado) turno(b, { tipo: 'item', item: 'cuia-ouro' }, G(1));
+  afirmar(b.capturada?.rara === true, 'a rara capturada continua rara');
+});
+teste('obediência: limites 20/30/50/70/todas, só criaturas de troca, e a desobediência em batalha', () => {
+  igual(limiteObediencia(0), 20, '0'); igual(limiteObediencia(1), 20, '1'); igual(limiteObediencia(2), 30, '2'); igual(limiteObediencia(4), 50, '4'); igual(limiteObediencia(6), 70, '6');
+  igual(limiteObediencia(8), Infinity, '8'); igual(limiteObediencia(16), Infinity, '16');
+  const minha = neutra(9001, 60), trocada = Object.assign(neutra(9001, 60), { treinadorOriginal: 'Dona Quitéria' }), baixa = Object.assign(neutra(9001, 18), { treinadorOriginal: 'Dona Quitéria' });
+  minha.treinadorOriginal = 'Teste';
+  igual(chanceObedecer(minha, 'Teste', 20), 1, 'captura própria sempre obedece'); igual(chanceObedecer(baixa, 'Teste', 20), 1, 'troca dentro do limite obedece');
+  perto(chanceObedecer(trocada, 'Teste', 20), 1 / 3, 1e-9, 'troca acima do limite: limite ÷ nível');
+  const DESOBEDECE = /ignorou a ordem|corpo mole|não obedeceu/;
+  const conta = (c: CriaturaInst, limite: number) => {
+    rng.seed(13); let n = 0; const T = 600;
+    const b = duelo([c], [neutra(9001, 60, 'cara-feia')], { obediencia: { limite, dono: 'Teste' } });
+    for (let i = 0; i < T; i++) { for (const l of b.lados) for (const x of l.equipe) x.golpes[0].pg = x.golpes[0].pgMax; const evs = turno(b, G(0), G(0)); if (DESOBEDECE.test(textos(evs))) n++; }
+    return n / T;
+  };
+  perto(conta(comGolpes(Object.assign(neutra(9001, 60), { treinadorOriginal: 'Dona Quitéria' }), 'cara-feia'), 20), 2 / 3, 0.06, 'desobedece ≈ 1 − 20/60');
+  igual(conta(comGolpes(Object.assign(neutra(9001, 60), { treinadorOriginal: 'Teste' }), 'cara-feia'), 20), 0, 'a própria nunca desobedece');
+  igual(conta(comGolpes(Object.assign(neutra(9001, 60), { treinadorOriginal: 'Dona Quitéria' }), 'cara-feia'), Infinity), 0, 'com 8 insígnias todas obedecem');
+});
+teste('ninhos e ovos: grupos das 180, compatibilidade, ovo da forma base com genes e golpes do pai, ovo a cada sorteio', () => {
+  for (let n = 1; n <= 180; n++) afirmar(GRUPOS_NINHO[n]?.length, 'sem grupo de ninho: ' + n);
+  if (!temEspecie(2) || !temEspecie(1)) return;
+  const mae = Object.assign(criarCriatura(2, 30), { sexo: 'F' as const }), pai = Object.assign(criarCriatura(1, 30), { sexo: 'M' as const });
+  igual(afinidade(mae, pai), 0.25, 'mesma linha, espécies diferentes'); igual(afinidade(mae, Object.assign(criarCriatura(2, 30), { sexo: 'M' as const })), 0.5, 'mesma espécie');
+  igual(afinidade(mae, Object.assign(criarCriatura(1, 30), { sexo: 'F' as const })), 0, 'mesmo sexo'); igual(afinidade(mae, Object.assign(criarCriatura(37, 30), { sexo: 'M' as const })), 0, 'grupos diferentes');
+  if (temEspecie(173)) igual(afinidade(Object.assign(criarCriatura(173, 50), { sexo: 'F' as const }), pai), 0, 'lendário não deixa ovo');
+  igual(formaBase(3), 1, 'forma base da linha');
+  const golpeDoPai = especie(1).golpes.map(([, g]) => g).find((g) => !especie(1).golpes.some(([nv, x]) => x === g && nv <= 1)) ?? '';
+  pai.golpes = [novoSlot(golpeDoPai)]; pai.gen = B(15, 15, 15, 15, 15, 15); mae.gen = B(15, 15, 15, 15, 15, 15);
+  rng.seed(5); const o = gerarOvo(mae, pai);
+  igual(o.especie, 1, 'ovo da forma base da mãe'); afirmar(!!o.ovo && o.nivel === 1, 'é ovo de nível 1');
+  afirmar(o.golpes.some((g) => g.id === golpeDoPai), 'herdou o golpe do pai (' + golpeDoPai + ')');
+  afirmar(Object.values(o.gen).filter((v) => v === 15).length >= 3, 'herdou pelo menos 3 genes');
+  const antes = jogo.save; jogo.save = novoSave();
+  try {
+    const cr = criadouro(); cr.casal = [Object.assign(criarCriatura(2, 30), { sexo: 'F' as const }), Object.assign(criarCriatura(2, 30), { sexo: 'M' as const })];
+    rng.seed(8); let ovos = 0; const sorteios = 400;
+    for (let i = 0; i < sorteios * PASSOS_SORTEIO; i++) { passoCriadouro(); if (cr.ovo) { ovos++; cr.ovo = null; } }
+    perto(ovos / sorteios, 0.5, 0.08, 'ovo em metade dos sorteios (mesma espécie)');
+    afirmar(cr.casal[0].exp > expParaNivel(especie(2).crescimento, 30), 'quem fica no viveiro ganha experiência');
   } finally { jogo.save = antes; }
 });
 

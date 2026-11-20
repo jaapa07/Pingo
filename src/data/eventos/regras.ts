@@ -57,13 +57,13 @@ const GUIA = { nome: 'Guia do Treino', retrato: 'npc-homem-2' };
 
 registrarComando('agendaTreino', async () => {
   const d = await mundoDeps(), dia = diaSemana(), s = jogo.save;
-  const linha = (dd: number) => LIDERES_AGENDA.filter((l) => l.dia === dd && d.treinador(l.id)).map((l) => `${d.treinador(l.id)!.nome} (${NOME_PERIODO[l.periodo]})`).join(', ');
+  const ORDEM = ['manha', 'dia', 'noite'];
+  const linha = (dd: number) => LIDERES_AGENDA.filter((l) => l.dia === dd && d.treinador(l.id)).sort((a, b) => ORDEM.indexOf(a.periodo) - ORDEM.indexOf(b.periodo)).map((l) => `${d.treinador(l.id)!.nome} (${NOME_PERIODO[l.periodo]})`).join(', ');
   const marcados = LIDERES_AGENDA.filter((l) => s.flags['treino:' + l.id] === hoje() && s.flags['revanche:' + l.id] !== hoje()).map((l) => d.treinador(l.id)?.nome).filter(Boolean);
   await d.falar(`Bem-vindo ao ${TREINO.nome}! Hoje é ${NOME_DIA_LONGO[dia]}.\fQuem aceita revanche hoje: ${linha(dia) || 'ninguém'}.\f${marcados.length ? `Já confirmaram presença: ${marcados.join(', ')}. Estão no salão!` : 'Ninguém marcou hoje. Ligue pelo Rádio Cipó no dia e no período do líder: ele vem para cá.'}`, RECEPCAO);
   if (!(await d.simNao('Quer ouvir a agenda da semana inteira?'))) return;
-  const dias = [1, 2, 3, 4, 5, 6, 0].map((dd) => `${NOME_DIA_LONGO[dd]}: ${linha(dd) || '—'}`);
-  await d.falar(dias.slice(0, 4).join('\n'), RECEPCAO);
-  await d.falar(dias.slice(4).join('\n'), RECEPCAO);
+  // um dia por caixa: cabe nas duas linhas do diálogo
+  await d.falar([1, 2, 3, 4, 5, 6, 0].map((dd) => `${NOME_DIA_LONGO[dd].toUpperCase()}: ${linha(dd) || 'ninguém'}.`).join('\f'), RECEPCAO);
 });
 /** ['revPreparar', idLider] → `rev-ok` = pode lutar agora; registra o treinador `revanche:<id>` com a equipe da fase */
 registrarComando('revPreparar', async ([idArg]) => {
@@ -78,6 +78,16 @@ registrarComando('revPreparar', async ([idArg]) => {
   registrarTreinador(def);
   s.flags['revanche:' + id] = hoje();
   setFlag('rev-ok', true);
+});
+/**
+ * ['revLutar', idTreinador] → luta com um treinador registrado na hora (revanche, rival semanal); `rev-venceu` = resultado.
+ * A derrota segue a regra do mapa (último Posto, metade das patacas), como em qualquer batalha de treinador.
+ */
+registrarComando('revLutar', async ([idArg]) => {
+  const [d, { desafiar }] = await Promise.all([mundoDeps(), import('../../world/npcs')]), t = d.treinador(String(idArg));
+  setFlag('rev-venceu', false);
+  if (!t) return;
+  setFlag('rev-venceu', await desafiar(t));
 });
 registrarComando('revFim', async ([idArg]) => {
   const id = String(idArg), d = await mundoDeps(), t = d.treinador(id); if (!t) return;
@@ -188,8 +198,10 @@ export const EVENTOS_REGRAS: EventoDef[] = [
     ],
   },
   { id: 'treino-recepcao', passos: [['agendaTreino']] },
-  ...LIDERES_AGENDA.map((l): EventoDef => ({ id: 'treino-' + l.id, passos: [['revPreparar', l.id], se('flag:rev-ok', [['batalha', 'revanche:' + l.id], ['revFim', l.id]])] })),
-  { id: 'rival-semanal', passos: [['rivalPreparar'], se('flag:rev-ok', [['batalha', 'rival-semanal'], ['rivalFim']])] },
+  ...LIDERES_AGENDA.map((l): EventoDef => ({ id: 'treino-' + l.id, passos: [['revPreparar', l.id], se('flag:rev-ok', [['revLutar', 'revanche:' + l.id], se('flag:rev-venceu', [['revFim', l.id]])])] })),
+  { id: 'rival-semanal', passos: [['rivalPreparar'], se('flag:rev-ok', [['revLutar', 'rival-semanal'], se('flag:rev-venceu', [['rivalFim']])])] },
+  // a porta do salão devolve ao lado do guia, em A4 (por gatilho: o salão não tem porta própria no mapa da cidade)
+  { id: 'treino-saida', passos: [['sfx', 'porta'], ['warp', 'A4', 17, 18, 's']] },
   { id: 'quiz-radio', passos: [['quizRadio']] },
   { id: 'torre-desafios', passos: [['torre']] },
 ];

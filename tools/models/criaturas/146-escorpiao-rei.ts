@@ -11,6 +11,8 @@ const paleta = { ...paletaEscorpiao, rampas: [paletaEscorpiao.rampas[0], ['#201e
 
 function build() {
   const { rig, seg } = escorpiao({ k: 1.5, alt: 0.21, cauda: { len: 0.9, r: 0.085, ferrao: 0.07 } });
+  // cauda desenrolada para o alto (como no 1º quadro do ataque): o sino fica acima do lombo, fora do bolo de pinças
+  rig.bones.cauda3.rotation.z -= 0.22; rig.bones.cauda4.rotation.z -= 0.22;
   // COURAÇA: carapaça de ferro cobrindo o lombo, com frestas em brasa entre as placas
   rig.add('corpo', calota([0.43, 0.2, 0.275], m(1), { de: 0, ate: 76 }));
   for (const x of [-0.24, -0.06, 0.12]) rig.add('corpo', blob([0.022, 0.19, 0.25], m.plano(3), { pos: [x + 0.09, 0.02, 0], seg: 10, castShadow: false }));
