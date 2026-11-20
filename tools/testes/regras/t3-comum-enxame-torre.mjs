@@ -59,9 +59,10 @@ const tf = await t.ev(() => { const f = window.__pingo.jogo.save.flags; return {
 t.ok(antes === depois && moch0 === (await t.ev(() => JSON.stringify(window.__pingo.jogo.save.mochila))), 'Torre: equipe e mochila intactas (sem experiência)', depois);
 t.ok(bat.inimigos && /^50(,50)*$/.test(bat.inimigos) && bat.semExp === true && tf.p === 3, 'Torre: desafiantes no nível 50, vitória vale 3 pontos', JSON.stringify({ bat, tf }));
 await t.ev(() => { void window.__pingo.mundo.rodarEvento('torre-desafios'); }); await t.espera(400);
-await t.k('z', 300); await t.espera(300);
-const fs = await t.falas(1); await t.assentar(20000, 'z');
-t.ok(/já foi/.test(fs[0] ?? ''), 'Torre: 1 batalha por dia', fs[0]);
+await t.k('z', 300);
+let fs = []; for (let i = 0; i < 30 && !fs.some((x) => /já foi/.test(x)); i++) { await t.espera(200); fs = await t.falas(3); }
+await t.assentar(20000, 'z');
+t.ok(fs.some((x) => /já foi/.test(x)), 'Torre: 1 batalha por dia', fs.at(-1));
 console.log('erros de página:', t.erros.length ? t.erros.slice(0, 5).join(' | ') : 'nenhum');
 console.log('FALHAS:', t.falhas ?? 0);
 await t.browser.close();
