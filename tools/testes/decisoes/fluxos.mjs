@@ -22,7 +22,7 @@ async function cenario(save, prep, fn, arg) {
       /** roda passos e aperta A nas falas (e na 1ª opção das perguntas) até terminar */
       Q.rodarAte = async (passos) => {
         let fim = false; const p = window.__pingo.mundo.rodarPassos(passos).then(() => { fim = true; }, (e) => { fim = true; Q.erroEv = String(e); });
-        for (let k = 0; k < 4000 && !fim; k++) { if (k % 500 === 499) console.log('[rodarAte]', window.__pingo.telas.topo?.el.className, Q.textos.slice(-1)[0]); if (/dialogo/.test(window.__pingo.telas.topo?.el.className ?? '')) await Q.toque('a'); await Q.quadros(3); }
+        for (let k = 0; k < 40000 && !fim; k++) { if (k % 500 === 499) console.log('[rodarAte]', window.__pingo.telas.topo?.el.className, Q.textos.slice(-1)[0]); if (/dialogo/.test(window.__pingo.telas.topo?.el.className ?? '')) await Q.toque('a'); await Q.quadros(3); }
         await p; await Q.assentar?.();
       };
     });
