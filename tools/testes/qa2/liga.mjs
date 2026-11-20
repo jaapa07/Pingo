@@ -14,7 +14,7 @@ for (let k = 0; k < n; k++) {
       await Qr(() => window.Q.viajar('A-LG-venda'));
       const din = (await t.resumo()).dinheiro;
       const lista = {}; let resto = din; const m = (await t.resumo()).mochila;
-      for (const [id, preco, alvo] of [['cha-guarana', 1500, 4], ['rapadura', 4800, 0], ['elixir-andiroba', 2500, 4], ['garrafada', 700, 20], ['pomada-copaiba', 600, 2]]) { const q = Math.max(0, Math.min(alvo - (m[id] ?? 0), Math.floor(resto / preco))); if (q > 0) { lista[id] = q; resto -= q * preco; } }
+      for (const [id, preco, alvo] of [['cha-guarana', 1500, 4], ['elixir-andiroba', 2500, 3], ['garrafada', 700, 10], ['pomada-copaiba', 600, 2], ['elixir-andiroba', 2500, 6], ['garrafada', 700, 20]]) { const q = Math.max(0, Math.min(alvo - (m[id] ?? 0) - (lista[id] ?? 0), Math.floor(resto / preco))); if (q > 0) { lista[id] = (lista[id] ?? 0) + q; resto -= q * preco; } }
       r.compras = (await Qr((l) => window.Q.comprar(l), lista)).comprou;
       await Qr(() => window.Q.viajar('A-LG-posto')); await Qr(() => window.Q.curarNoPosto()); await Qr(() => window.Q.viajar('A-LG'));
     }
@@ -32,8 +32,8 @@ for (let k = 0; k < n; k++) {
       if (k === 0) await t.foto(`liga-${i + 1}-antes`);
       const nb = (await t.st()).nb;
       await t.falarCom(npc);
-      const b = (await t.batalhas(nb)).pop();
-      r['luta' + (i + 1)] = `${b?.resultado} t=${b?.turnos} usou ${JSON.stringify(b?.usados)} IA usou ${b?.iaUsou}`;
+      const b = (await t.batalhas(nb))[0]; // a sala 5 emenda na rival-5: a luta da sala é a primeira depois de `nb`
+      r['luta' + (i + 1)] = `${b?.resultado} t=${b?.turnos} usou ${JSON.stringify(b?.usados)} IA usou ${b?.iaUsou}`; { const e = (await t.resumo()).equipe.map((x) => x.match(/\((\d+)\/\d+\)/)[1]); r['vida' + (i + 1)] = e.join(' '); }
       if (b?.resultado !== 'vitoria') {
         s = await t.assentar();
         r.depoisDaDerrota = { zona: s.zona, x: s.x, y: s.y, flags: await t.flags('^liga-'), equipe: (await t.resumo()).equipe.map((e) => e.match(/\((\d+\/\d+)\)/)[1]).join(' '), dinheiro: (await t.resumo()).dinheiro, fala: (await t.falas(1))[0]?.slice(0, 90) };

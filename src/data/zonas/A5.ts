@@ -91,7 +91,7 @@ const zona: ZonaDef = {
     { id: 'rendeira-praca', sprite: 'cl-rendeira', ...g.p('h'), dir: 's', script: 'a2-missao-renda' },
     { id: 'idoso-fonte', sprite: 'npc-idoso', ...g.p('a'), dir: 'l', fala: ['Esta fonte nunca secou. Dizem que a água vem da Gruta Breu, por baixo do mar.', 'Meu compadre atravessou a gruta sem lampião. Saiu do outro lado três dias depois, em Serra Fumaça, jurando que tinha conversado com um macaco de olho de lua.'] },
     { id: 'menina', sprite: 'cl-crianca-f', ...g.p('n'), mov: 'vagar', fala: ['A Iracema Lua faz renda com raio de luz! No ginásio dela tem espelho para todo lado.', 'Criatura de Encanto não liga para golpe de Lenda. Mas de Ferro e de Veneno ela tem medo. Anota aí!'] },
-    { id: 'moca-cais', sprite: 'npc-mulher-2', x: 26, y: 30, mov: 'olhar', fala: ['O Saveiro sobe o rio até Porto Pantaneiro, lá no Sertão das Névoas.', 'Mas o mestre só leva quem venceu a Liga dos Guardiões. Diz que o Sertão não é passeio de domingo.'] },
+    { id: 'moca-cais', sprite: 'npc-mulher-2', x: 26, y: 30, mov: 'olhar', script: 'a2-a5-moca-cais' },
     { id: 'guarda-praia', sprite: 'npc-homem-1', x: 42, y: 15, mov: 'vagar', fala: ['No capinzal da ponta leste aparece siri, caranguejo e, de vez em quando, uma garça metida.', 'Na estação fria dá para ver jubarte pulando lá na baía. Parece ônibus caindo n’água.'] },
     { id: 't1', sprite: 'cl-rendeira', ...g.p('1'), dir: 's', mov: 'olhar', treinador: 'A5-1', visao: 3 },
     { id: 't2', sprite: 'cl-crianca-m', ...g.p('2'), dir: 'o', treinador: 'A5-2', visao: 3 },

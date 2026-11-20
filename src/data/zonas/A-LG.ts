@@ -2,8 +2,8 @@ import type { ZonaDef } from '../../core/tipos';
 import { grade, obj, entrada, saidas, gente, placa } from './_a1-grade';
 
 /**
- * A-LG · Platô da Liga — fim do mapa A. De baixo para cima: a subida, o Portão das Oito Insígnias, o terreiro (Posto e
- * Venda), a sala de espera e as cinco salas em fila: Mestra Maré, Ferreiro Brasa-Viva, Pajé Neblina, Domadora Pampa e
+ * A-LG · Platô da Liga — fim do mapa A. De baixo para cima: a subida, o Portão das Oito Insígnias, o terreiro (Posto,
+ * Venda e seis Desafiantes que treinam ali: níveis 40–42, a ponte entre o 8º ginásio e os Mestres), a sala de espera e as cinco salas em fila: Mestra Maré, Ferreiro Brasa-Viva, Pajé Neblina, Domadora Pampa e
  * o Campeão Cacique Aracê. Lá no alto, o Hall da Fama.
  * Regras (eventos em src/data/eventos/liga.ts): quem cruza a porta da sala de espera não volta (`liga-em-curso` fecha a
  * porta atrás); cada porta seguinte só abre com a vitória anterior (`liga-1`…`liga-4`); não há cura lá dentro, só itens;
@@ -130,7 +130,19 @@ const zona: ZonaDef = {
     gente(g, '5', 'liga-arace', 'liga-arace', 'Cacique Aracê', { script: 'liga-5' }),
     gente(g, '6', 'liga-veterana', 'cl-montanhista', 'Veterana Cumeeira', { mov: 'olhar', fala: ['Maré mistura Rio com Veneno; Brasa-Viva, Brasa com Ferro; Neblina, Mente com Assombro; Pampa, Comum com Ginga.', 'O Cacique Aracê usa de tudo um pouco, e guarda para o fim uma criatura do tipo Lenda. Encanto e Geada assustam Lenda.'] }),
     gente(g, '7', 'liga-menino', 'cl-crianca-m', 'Torcedor Pequi', { mov: 'vagar', fala: ['Eu venho todo dia ver quem entra. Sair pela porta da frente, vi poucos.', 'Você tem cara de quem sai. Ou de quem volta rápido. Uma das duas.'] }),
+    // Desafiantes do terreiro (src/data/treinadores/liga.ts): fora do caminho e das portas; só desafiam quem fala com eles ou passa a dois passos da frente deles (o verificador exige 2 tiles de visão)
+    { id: 'A-LG-1', sprite: 'cl-pescador', x: 9, y: 54, dir: 's', treinador: 'A-LG-1', visao: 2 },
+    { id: 'A-LG-2', sprite: 'cl-ferreiro', x: 18, y: 54, dir: 's', treinador: 'A-LG-2', visao: 2 },
+    { id: 'A-LG-3', sprite: 'cl-repentista', x: 27, y: 57, dir: 'o', treinador: 'A-LG-3', visao: 2 },
+    { id: 'A-LG-4', sprite: 'cl-vaqueiro', x: 11, y: 60, dir: 'o', treinador: 'A-LG-4', visao: 2 },
+    { id: 'A-LG-5', sprite: 'cl-mateira', x: 23, y: 60, dir: 'n', treinador: 'A-LG-5', visao: 2 },
+    { id: 'A-LG-6', sprite: 'cl-capoeirista', x: 26, y: 59, dir: 'o', treinador: 'A-LG-6', visao: 2 },
     { id: 'taina', sprite: 'taina', x: 15, y: 58, dir: 'n', se: 'flag:liga-vencida&!flag:rival-5', script: 'rival-5' },
+  ],
+  // oferenda dos Guardiões a quem chega: sem ela a mochila honesta não fecha as cinco lutas (docs/QA-TRECHO-2.md)
+  itens: [
+    { x: 1, y: 61, item: 'elixir-andiroba', qtd: 3, flag: 'item:A-LG:terreiro-oeste' },
+    { x: 28, y: 61, item: 'cha-guarana', flag: 'item:A-LG:terreiro-leste' },
   ],
   gatilhos: [{ x: 15, y: 52, script: 'liga-entrada', se: '!flag:liga-em-curso' }],
 };

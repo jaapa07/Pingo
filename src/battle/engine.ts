@@ -45,7 +45,7 @@ export interface ConfigBatalha {
   trocaGratis?: boolean;
   /** o lado 0 ganha experiência e esforço (padrão: true) */
   ganhaExp?: boolean;
-  /** Chocalho do Mutirão: quem ficou na reserva (e está de pé) recebe metade do que cada participante ganhou. Padrão: false. */
+  /** Chocalho do Mutirão: quem ficou na reserva, está de pé e 2 níveis ou mais abaixo da mais forte da equipe recebe metade do que cada participante ganhou. Padrão: false. */
   expPartilhada?: boolean;
   /** com 4 golpes, um golpe novo substitui sozinho o mais fraco (IA/headless). Padrão: false → fica em `golpesPendentes`. */
   autoAprender?: boolean;
@@ -739,7 +739,10 @@ export class Batalha {
     const inteira = Math.max(1, Math.floor(expDerrota(inimigo, this.cfg.tipo === 'treinador') / quem.length));
     const esforco = especie(inimigo.especie).esforco;
     // Chocalho do Mutirão: a reserva de pé aprende olhando — metade da experiência de um participante, sem esforço e sem tirar nada de quem lutou
-    const reserva = this.cfg.expPartilhada ? this.lados[0].equipe.filter((c) => c.vida > 0 && !c.ovo && !quem.includes(c)) : [];
+    // Só quem ficou para trás escuta: a reserva 2 níveis ou mais abaixo da mais forte da equipe (senão as três da frente
+    // subiam em dobro e o jogador chegava aos líderes 6–8 acima do ás deles; docs/QA-TRECHO-2.md).
+    const topo = Math.max(...this.lados[0].equipe.filter((c) => !c.ovo).map((c) => c.nivel));
+    const reserva = this.cfg.expPartilhada ? this.lados[0].equipe.filter((c) => c.vida > 0 && !c.ovo && !quem.includes(c) && c.nivel <= topo - 2) : [];
     for (const c of [...quem, ...reserva]) {
       const olhando = reserva.includes(c), cada = olhando ? Math.max(1, Math.floor(inteira / 2)) : inteira;
       if (olhando) { if (c.nivel >= NIVEL_MAX) continue; }

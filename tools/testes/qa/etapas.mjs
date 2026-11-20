@@ -30,7 +30,9 @@ async function seq(t, zona, passos) {
     // quem está com a mais forte caída ou abaixo da metade (e sem remédio) sai do ginásio, cura no Posto e volta.
     // ATALHO DECLARADO: a ida e volta ao Posto da cidade é modelada como cura direta (o caminho de saída depende do
     // quebra-cabeça de cada ginásio); cada uma é contada em t.idasAoPosto.
-    if (p[0] !== 'em') { const h = await t.saude(); if (h.liderCaido || h.lider < 0.5) { const tr = await t.ev(() => window.__qa.treinadores(true).length); if (tr > 0) { await t.ev(async () => { const { jogo } = await import('/src/core/estado.ts'); const { curarCriatura } = await import('/src/battle/criatura.ts'); for (const c of jogo.save.equipe) curarCriatura(c); }); (t.idasAoPosto ??= []).push(zona); t.log('  ida ao Posto no meio do ginásio (cura; atalho declarado)'); } } }
+    // (o líder é NPC de script e não entra em __qa.treinadores: a regra vale até a insígnia; antes do líder — último
+    // passo da rota — a exigência sobe: ninguém caído e média de vida ≥ 70%, como quem se prepara para o chefe)
+    if (p[0] !== 'em') { const h = await t.saude(), chefe = p === passos[passos.length - 1]; if (h.liderCaido || h.lider < 0.5 || (chefe && (h.caidos > 0 || h.frac < 0.7 || h.lider < 0.8))) { { await t.ev(async () => { const { jogo } = await import('/src/core/estado.ts'); const { curarCriatura } = await import('/src/battle/criatura.ts'); for (const c of jogo.save.equipe) curarCriatura(c); }); (t.idasAoPosto ??= []).push(zona); t.log('  ida ao Posto no meio do ginásio (cura; atalho declarado)'); } } }
     if (p[0] === 'ir') await t.ir(p[1]);
     else if (p[0] === 'agir') await t.agir(p[1]);
     else if (p[0] === 'em') { if (s.x !== p[1] || s.y !== p[2]) { t.log(`  [ginásio] posição (${s.x},${s.y}), esperado (${p[1]},${p[2]}) — ${p[3] ?? ''}`); await t.foto('gin-desvio'); throw new Error('desvio'); } }

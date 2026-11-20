@@ -93,10 +93,21 @@ export const EVENTOS_A2: EventoDef[] = [
 
   /* ============================== CIDADE CORAL ============================== */
   {
+    // a moça do cais não promete viagem enquanto o mapa B não abre (src/core/progresso.ts)
+    id: 'a2-a5-moca-cais',
+    passos: [
+      f('moca-cais', 'O Saveiro sobe o rio até Porto Pantaneiro, lá no Sertão das Névoas.'),
+      se('mapa-b', [f('moca-cais', 'Mas o mestre só leva quem venceu a Liga dos Guardiões. Diz que o Sertão não é passeio de domingo.')],
+        [f('moca-cais', 'Subia, quer dizer. O barco está no estaleiro, de casco para cima, e o mestre jura que volta para a água em breve.\fE mesmo depois da reforma ele só leva quem venceu a Liga dos Guardiões. Diz que o Sertão não é passeio de domingo.')]),
+    ],
+  },
+  {
     id: 'a2-a5-bilheteiro',
     passos: [
       se('flag:liga-vencida', [
-        se('item:bilhete-saveiro', [f('bilheteiro', 'Campeão a bordo! Bilhete conferido. O Saveiro está na ponta do cais: é só subir a prancha.\fPróxima parada: Porto Pantaneiro, Sertão das Névoas. Enjoo por conta do passageiro.')],
+        se('item:bilhete-saveiro', [se('mapa-b',
+          [f('bilheteiro', 'Campeão a bordo! Bilhete conferido. O Saveiro está na ponta do cais: é só subir a prancha.\fPróxima parada: Porto Pantaneiro, Sertão das Névoas. Enjoo por conta do passageiro.')],
+          [f('bilheteiro', 'Campeão da Liga no meu cais! Bilhete conferido, tudo certo… menos o barco.\fO Saveiro está no estaleiro, em reforma: tábua nova, vela nova. Guarde o bilhete: ele vale assim que o casco voltar para a água. Em breve, diz o mestre. O Rádio Cipó avisa.')])],
           [f('bilheteiro', 'Campeão da Liga e sem bilhete? O Cacique Aracê entrega um para cada Campeão, lá no Platô. Dá uma conferida na mochila.')]),
       ], [
         f('bilheteiro', 'Cais do Saveiro, linha Cidade Coral ⇄ Porto Pantaneiro. Bonito, né? Pois é só para olhar.\fO mestre só sobe o rio com Campeão da Liga dos Guardiões a bordo, e de bilhete na mão.'),
@@ -270,7 +281,7 @@ export const EVENTOS_A2: EventoDef[] = [
           f(VOLTA, 'Ela voltou! Olha esse brilho! Dá para ler jornal em Porto Sereia com essa luz!'),
           f(VOLTA, 'Promessa de inventor se cumpre: o ginásio está aberto. Eu desço na frente para ligar os circuitos. Traga borracha na sola do sapato!'),
           ['dar', 'cuia-rapida', 5],
-          f(VOLTA, 'E leve mais um invento meu: o Chocalho do Mutirão. Ele espalha o que uma criatura aprende na luta para a equipe inteira.\fQuem fica na reserva ganha metade da experiência só de escutar. Daqui para a serra os treinadores engrossam: ninguém sobe aquilo com uma criatura só.'),
+          f(VOLTA, 'E leve mais um invento meu: o Chocalho do Mutirão. Ele espalha o que uma criatura aprende na luta para quem ficou para trás.\fQuem está na reserva, dois níveis ou mais abaixo da sua mais forte, ganha metade da experiência só de escutar. Daqui para a serra os treinadores engrossam: ninguém sobe aquilo com uma criatura só.'),
           ['dar', 'chocalho-mutirao'],
           ['fade', 'fora'], ['esconder', 'volta-2'], ['esperar', 300], ['fade', 'dentro'],
         ], [f(VOLTA, 'A Faísca continua apagadinha… O Xarope de Algas é com a Moça Sargaço, a boticária de Cidade Coral. Ela fica perto da Venda.\fVá remando pelo oeste e depois para o sul. Eu fico aqui cantando para a Faísca. Ela finge que gosta.')]),

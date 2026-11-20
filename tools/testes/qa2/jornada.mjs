@@ -219,9 +219,20 @@ const etapas = {
     await t.checkpoint('passo-8');
   },
   async plato() {
-    await cidade('A10', MANT2);
-    await viajar('A-LG'); await t.foto('plato-chegada');
-    await limpar();
+    // os Desafiantes do terreiro (níveis 39–42) em ordem, do mais fraco ao mais forte, com o Posto ao lado entre uma luta e outra
+    await tentar('plato', async () => {
+      if ((await t.st()).zona !== 'A-LG' && !/^A-LG-/.test((await t.st()).zona)) { await cidade('A10', MANT2); await viajar('A-LG'); await t.foto('plato-chegada'); }
+      else await viajar('A-LG');
+      for (let n = 1; n <= 6; n++) {
+        if (await t.flag(`venceu:A-LG-${n}`)) continue;
+        await viajar('A-LG-posto'); await Qr(() => window.Q.curarNoPosto()); estat.postos++; await viajar('A-LG');
+        await Qr(() => window.Q.rodizio('treino'));
+        await t.falarCom(`A-LG-${n}`); await t.assentar();
+        await t.exige(await t.flag(`venceu:A-LG-${n}`), `Desafiante ${n} vencido`);
+      }
+      await t.foto('plato-terreiro');
+      await t.catar().catch(() => 0);
+    }, { treino: async () => { await viajar('A-R7'); await Qr(() => window.Q.passear(8)); } });
     await viajar('A-LG-posto'); await Qr(() => window.Q.curarNoPosto()); await viajar('A-LG');
     await t.checkpoint('plato');
   },

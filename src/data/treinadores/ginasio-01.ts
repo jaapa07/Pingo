@@ -4,7 +4,7 @@ import type { TreinadorDef } from '../../core/tipos';
  * Ginásio do Vento (Vila Caiçara): a turma do píer e o líder Mestre Gaivota.
  * Níveis medidos no jogo honesto (tools/testes/qa): quem chega aqui só passou pela Trilha do Ipê e tem o inicial no nv 8
  * e capturas de nv 2–5. A turma (nv 5–7, duas criaturas cada: com três, as equipes honestas dos três iniciais caíam no 2º ou 3º treinador)
- * leva o inicial ao nv 10–11; por isso o ás do líder é nv 10, e não 12 como na tabela 4.5 (com 12, a equipe honesta vencia 0–17% das vezes).
+ * leva o inicial ao nv 10–11; por isso o ás do líder é nv 9 (faixa 7–10 da tabela 4.5; com 12 a equipe honesta vencia 0–17% das vezes e com 10, 3–26%).
  */
 export const TREINADORES_GINASIO_01: TreinadorDef[] = [
   { id: 'g01-1', classe: 'Garoto', nome: 'Tico Pipa', sprite: 'cl-crianca-m', ia: 'novato', premio: 280,
@@ -26,13 +26,16 @@ export const TREINADORES_GINASIO_01: TreinadorDef[] = [
    * Rio 83% com a equipe de referência): a Garcinha (Vento/Rio) abre com Esguicho, que pesa no inicial de Brasa; o ás é
    * o Tucaninho, que bica (dói em Mata) e usa Sorver Seiva (dói em Rio). Chuva de Sementes ficou de fora: golpe de 2 a 5
    * acertos em nível baixo derrubava o Botinho nv 12 de uma vez só (cada acerto soma o mínimo de dano).
+   * 3ª mão do QA: o ás desceu de nv 10 para 9 e a Garcinha trocou Faro Fino por Bicada. Com as equipes HONESTAS que chegam
+   * ao líder (inicial nv 10–11 + capturas nv 2–7), o ás nv 10 dava Mata 3–26%, Brasa 23%, Rio 25%; com o nv 9 o motor dá
+   * Mata 65%, Brasa 58%, Rio 75% (cada nível vale ~30 pontos nesta faixa). Números em docs/QA-TRECHO-1.md.
    * Cura: 1 Chá de Erva-Cidreira definido, que o motor só libera a partir do 8º ginásio no Aventureiro.
    */
   { id: 'lider-01', classe: 'Líder', nome: 'Mestre Gaivota', sprite: 'lider-01', ia: 'lider', premio: 1200, insignia: 1, musica: 'batalha-lider', flag: 'ginasio-01-vencido',
     itens: ['cha-cidreira'],
     equipe: [
-      { e: 107, nv: 7, golpes: ['esguicho', 'faro-fino'] },
-      { e: 49, nv: 10, golpes: ['bicada', 'sorver-seiva', 'cara-feia'] },
+      { e: 107, nv: 7, golpes: ['bicada', 'esguicho'] },
+      { e: 49, nv: 9, golpes: ['bicada', 'sorver-seiva', 'cara-feia'] },
     ],
     desafio: 'Sessenta anos soltando pipa neste píer. O vento me conta tudo… e ele disse que você vinha. Mostre o que sabe!',
     derrota: 'Eita! Você cortou a minha linha em pleno céu.', depois: 'Vento bom é o que empurra a gente para a frente.' },

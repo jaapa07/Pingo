@@ -158,3 +158,23 @@ erros de console: []
   [batalha] lider-01 → derrota · equipe 1:11,10:5,13:2,45:5 · A2-ginasio · $1449
     turnos: Cotiazinha2 14/14 x Garcinha7 19/24 → golpe encontrao | Cotiazinha2 4/14 x Garcinha7 16/24 → golpe encontrao
   perdeu no ginásio 1 (tentativa 1)
+>> retomando de mata-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: 2× cha-cidreira, 1× cuia · sobrou $89
+== checkpoint mata-pre-lider-1: ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"] $89
+  ginásio 1, tentativa 1: equipe ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"]
+  [batalha] g01-1 → vitoria · equipe 1:10,10:3,13:2,45:4 · A2-ginasio · $369
+  remédios entre batalhas: cha-cidreira
+  [batalha] g01-2 → vitoria · equipe 1:10,10:3,13:2,45:4 · A2-ginasio · $689
+  [batalha] g01-3 → vitoria · equipe 1:10,10:3,13:2,45:5 · A2-ginasio · $1049
+  ida ao Posto no meio do ginásio (cura; atalho declarado)
+  [batalha] g01-4 → vitoria · equipe 1:11,10:5,13:2,45:5 · A2-ginasio · $1449
+  ida ao Posto no meio do ginásio (cura; atalho declarado)
+  [batalha] lider-01 → vitoria · equipe 1:11,10:6,13:2,45:5 · A2-ginasio · $2649
+  INSÍGNIA 1 na tentativa 1
+FALHA Error: irAte: não chegou a (8,18) |     at t.irAte (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:170:11) |     at async t.viajar (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:190:17) |     at async Object.fn (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:107:5) {"pronto":true,"oc":false,"mov":false,"zona":"A2-ginasio","x":7,"y":4,"dir":"o","modo":"pe","telas":1,"topo":"mundo tela-mundo","ocupada":false,"nres":5} ["{JOGADOR} recebeu a Insígnia Pena!","{JOGADOR} recebeu PT31 Rasante!","Esse pergaminho ensina o Rasante: um voo baixo e certeiro, que quase nunca erra.\fAgora escute. O Seu Aroeira, aqui da vila, anda atrás de alguém de confiança para uma tarefa. Dizem que ele guarda um Amuleto que faz as criaturas farejarem coisas escondidas.\fDepois siga pela Rota 2 e atravesse a Mata do Sagui. No Bosque Alto, a Lia Teia espera os desafiantes no alto das copas."]
+resumo: {"zona":"A2-ginasio","x":7,"y":4,"dinheiro":2649,"insignias":[1],"amuletos":[],"equipe":[{"e":1,"nome":"Tamanduí","nv":11,"vida":0,"max":35,"st":null,"golpes":["arranhao 32","cara-feia 30","chicote-de-cipo 23","sorver-seiva 20"]},{"e":10,"nome":"Pipirim","nv":6,"vida":6,"max":22,"st":null,"golpes":["bicada 33","berro 40","lufada 35"]},{"e":13,"nome":"Cotiazinha","nv":2,"vida":14,"max":14,"st":null,"golpes":["encontrao 35","cara-feia 30"]},{"e":45,"nome":"Quero-querinho","nv":5,"vida":20,"max":20,"st":null,"golpes":["bicada 35","berro 40","jogar-areia 15"]}],"mochila":{"radio-cipo":1,"diario-de-campo":1,"cuia":4,"pt-31":1},"tempo":10736,"posto":"A2-posto","capturado":4}
+treino extra: [] derrotas: 3 curas: 8
+perguntas: []
+erros de console: []

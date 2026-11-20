@@ -3,7 +3,8 @@ import { grade } from './_a2-grade';
 
 /**
  * A-MT Monte Tupã (área de retorno, passo 16): a trilha sai do norte de Vila Ferrugem. O guardião Abaeté só abre a
- * passagem com 15 insígnias. Depois, na ordem: o paredão da trepadeira (Escalar), a gruta escura por dentro do monte
+ * passagem com 15 insígnias. Antes do portão não há capim nem treinador (o Pico-Fino, nível 57–58, espera logo depois dele):
+ * quem chega com 6 insígnias só encontra a placa e o guardião. Depois, na ordem: o paredão da trepadeira (Escalar), a gruta escura por dentro do monte
  * (Lampião, zona `A-MT-gruta`) e o lago do platô, de onde só se sobe pela cascata (Cachoeira). No alto, a leste fica
  * a Aldeia Tupã; ao norte, a trilha do Pico Pindorama (16 insígnias).
  */
@@ -60,12 +61,12 @@ const g = grade('A-MT', 40, [
   '###...""""|....t.....|.......###|##########',
   '####......|..........|......####|##########',
   '#####.....|...2......|.....#####|##########',
-  '######....|..........|....######|##########',
+  '######....|....1.....|....######|##########',
   '########..|..........|:.########|##########',
   '##########|##########|X#########|##########',
   '########..|..........|:..#######|##########',
   '#######...|......a...|:...######|##########',
-  '#######...|....1.....|:...######|##########',
+  '#######...|..........|:...######|##########',
   '########..|..........|:..#######|##########',
   '##########|##########|S#########|##########',
 ], { P: ':', E: ':', X: ':', S: ':', G: '+', J: '+' });

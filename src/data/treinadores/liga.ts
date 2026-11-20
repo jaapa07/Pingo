@@ -3,14 +3,46 @@ import type { TreinadorDef, MembroEquipe } from '../../core/tipos';
 /**
  * LIGA DOS GUARDIÕES (Platô da Liga, A-LG) — fim do mapa A, depois da 8ª insígnia (spec 4.5 e 5). Cinco lutas seguidas.
  * Níveis: Mestres com ás 41–44, Campeão com ás 46 (acima do líder 8, ás 40; abaixo do líder 9, 47–49).
- * Todos usam cura (spec 7A: do 8º ginásio em diante). Só estágios finais (nível ≥ 36) e sem os iniciais nem lendários.
+ * Todos usam cura (spec 7A: do 8º ginásio em diante): 1 Garrafada os três primeiros Mestres, 2 a Pampa e o Campeão
+ * (eram 2 para todos e Elixir na Pampa: com a mochila do jogador honesto a sequência ficava em 19%; docs/QA-TRECHO-2.md). Só estágios finais (nível ≥ 36) e sem os iniciais nem lendários.
  * Cada Mestre junta dois tipos e leva uma ou duas criaturas que cobrem a fraqueza comum do tema.
  * EQUILÍBRIO (docs/EQUILIBRIO.md): golpes escolhidos à mão e tamanho das equipes (4, 4, 4, 4 e 4) definidos pelo simulador
  * para a sequência inteira — cinco lutas sem cura grátis — ficar em 35–55% de vitória para o jogador de referência.
  * Com 5–6 criaturas por Mestre a sequência não passava de 0–2%, mesmo com cada luta isolada em 80–95%.
  */
 const mestre = (id: string, classe: string, nome: string, sprite: string, equipe: MembroEquipe[], premio: number, desafio: string, derrota: string, extra: Partial<TreinadorDef> = {}): TreinadorDef =>
-  ({ id, classe, nome, sprite, equipe, ia: 'lider', premio, desafio, derrota, itens: ['garrafada', 'garrafada'], musica: 'batalha-lider', ...extra });
+  ({ id, classe, nome, sprite, equipe, ia: 'lider', premio, desafio, derrota, itens: ['garrafada'], musica: 'batalha-lider', ...extra });
+
+/**
+ * DESAFIANTES DO TERREIRO (A-LG, entre o Portão das Oito Insígnias e a porta da Liga). Seis treinadores que vieram tentar
+ * a Liga e treinam no terreiro, ao lado do Posto: só desafiam quem fala com eles ou passa a até dois passos da frente deles (`visao: 2` na zona; olham para longe dos caminhos).
+ * Para que existem (docs/QA-TRECHO-2.md): jogando honesto, o jogador vence o 8º ginásio com o ás no nível 39 e a Liga vai
+ * de 41 a 46 sem nada no meio — o primeiro Mestre já era quase invencível e a mochila chegava vazia. Os seis dão cerca de
+ * três níveis à equipe e o dinheiro dos remédios (prêmio 2500–2600 cada; no terreiro há ainda 3 Elixires e 1 Chá de Guaraná no chão), e cada um ensaia o tema de um Mestre (a fala de depois dá a dica).
+ * Cinco criaturas cada, níveis em escada de 39–40 (Lodo) a 42 (Alvorada): cada um prepara para o seguinte. IA comum, sem itens.
+ */
+const desafiante = (n: number, classe: string, nome: string, sprite: string, equipe: MembroEquipe[], desafio: string, derrota: string, depois: string): TreinadorDef =>
+  ({ id: `A-LG-${n}`, classe, nome, sprite, equipe, ia: 'treinador', premio: 2500 + 50 * Math.max(...equipe.map((m) => m.nv - 40)), desafio, derrota, depois });
+export const DESAFIANTES_DO_TERREIRO: TreinadorDef[] = [
+  desafiante(1, 'Desafiante', 'Lodo', 'cl-pescador', [{ e: 26, nv: 39 }, { e: 58, nv: 39 }, { e: 89, nv: 40 }, { e: 36, nv: 40 }, { e: 126, nv: 40 }],
+    'Cheguei ao terceiro Mestre mês passado. Estou juntando coragem para voltar. Me ajuda a esquentar?', 'Esquentei até demais.',
+    'A Mestra Maré envenena primeiro e alaga depois. Leve Mel Puro e alguém de Terra ou de Mente: Trovão sozinho não resolve as dela.'),
+  desafiante(2, 'Desafiante', 'Tição', 'cl-ferreiro', [{ e: 42, nv: 40 }, { e: 34, nv: 40 }, { e: 162, nv: 40 }, { e: 130, nv: 40 }, { e: 146, nv: 41 }],
+    'Treino aqui para o Brasa-Viva. Ferro com ferro: bate que eu quero ouvir o som!', 'Trincou.',
+    'O Brasa-Viva tem Brasa e tem Ferro. Terra pega os dois; Rio apaga metade. Só não mande Mata nem Inseto para a forja.'),
+  desafiante(3, 'Desafiante', 'Vulto', 'cl-repentista', [{ e: 44, nv: 40 }, { e: 56, nv: 40 }, { e: 94, nv: 41 }, { e: 70, nv: 41 }, { e: 122, nv: 41 }],
+    'Um verso antes da luta: quem entra na neblina / sem saber de onde veio / sai contando a própria sina / pela metade, pelo meio!', 'Perdi o fio do verso.',
+    'O Pajé Neblina faz dormir e confunde. Pomada de Copaíba cura tudo de uma vez, e golpe de Assombro acerta as dele em cheio.'),
+  desafiante(4, 'Desafiante', 'Laço', 'cl-vaqueiro', [{ e: 104, nv: 41 }, { e: 96, nv: 41 }, { e: 100, nv: 41 }, { e: 102, nv: 41 }, { e: 72, nv: 42 }],
+    'Eita! Campeão de oito insígnias no meu terreiro? Então aguenta um rodeio de aquecimento!', 'Caí do cavalo. De novo.',
+    'A Pampa bate de perto e bate forte. Vento, Mente e Encanto derrubam a Ginga dela; Assombro nem sente os golpes Comuns.'),
+  desafiante(5, 'Desafiante', 'Vereda', 'cl-mateira', [{ e: 82, nv: 41 }, { e: 98, nv: 41 }, { e: 138, nv: 42 }, { e: 150, nv: 42 }, { e: 154, nv: 42 }],
+    'Vim de Vila Buriti atrás de você. A Dona Buriti mandou dizer que raiz forte se prova é na seca!', 'Secou. A raiz era a sua.',
+    'São cinco lutas sem Posto. Chá de Guaraná levanta quem caiu; Elixir enche a vida de uma vez. Gaste o dinheiro na Venda ANTES de entrar.'),
+  desafiante(6, 'Desafiante', 'Alvorada', 'cl-capoeirista', [{ e: 12, nv: 42 }, { e: 116, nv: 42 }, { e: 66, nv: 42 }, { e: 108, nv: 42 }, { e: 68, nv: 42 }],
+    'Perdi para o Cacique três vezes. Aprendi o jeito dele de cor. Quer ver? Então luta!', 'Quatro vezes, contando com você.',
+    'O Cacique abre com o Gaviãozão, paralisa com o Poraquê e guarda o Pirarucão para o fim. Encanto e Geada pegam Lenda de jeito.'),
+];
 
 export const TREINADORES_LIGA: TreinadorDef[] = [
   /*
@@ -67,7 +99,7 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
       { e: 72, nv: 44, golpes: ['queixada', 'dentada', 'bote-ligeiro'] },
     ], 4400,
     'Eita, chegou longe! Sou a Pampa, última porteira antes do Campeão. Bicho meu não é domado no grito: é no compasso. Segura o tranco, que o rodeio vai começar!',
-    'Me derrubou da sela, e com classe! Atrás daquela porta está o Cacique Aracê. Tire o chapéu ao entrar.', { itens: ['garrafada', 'elixir-andiroba'] }),
+    'Me derrubou da sela, e com classe! Atrás daquela porta está o Cacique Aracê. Tire o chapéu ao entrar.', { itens: ['garrafada', 'garrafada'] }),
   /*
    * 5 · Campeão Cacique Aracê — equipe mista com uma criatura de tipo Lenda não lendária (Pirarucão, Rio/Lenda) como ás.
    * Cada membro cobre a fraqueza de outro: Gaviãozão (Comum/Vento) abre o jogo com velocidade; Poraquê (Rio/Trovão)
@@ -84,6 +116,8 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
     itens: ['garrafada', 'garrafada'],
     desafio: 'Aracê quer dizer "o nascer do dia". Há vinte anos eu vejo o sol nascer deste Platô, e há vinte anos ninguém me tira daqui.\fVocê trouxe oito insígnias e venceu quatro Mestres. Falta um amanhecer. Mostre-me a sua equipe inteira, {JOGADOR}!',
     derrota: 'O sol… nasceu do outro lado hoje. Vinte anos! E perdi sorrindo. Você e as suas criaturas lutam como quem conversa.' },
+
+  ...DESAFIANTES_DO_TERREIRO,
 
   /* Rival Tainá, encontro 5: no terreiro do Platô, logo depois da Liga. Sufixo = tipo do inicial DELA (o que vence o do jogador). */
   ...(['brasa', 'rio', 'mata'] as const).map((dela): TreinadorDef => ({

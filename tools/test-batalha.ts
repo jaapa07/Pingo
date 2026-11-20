@@ -265,12 +265,13 @@ teste('experiência em batalha: subir de nível, aprender golpe, golpe pendente 
   const alvo = neutra(9003, 10, 'cara-feia'); const b5 = duelo([a1, a2], [alvo]);
   turno(b5, { tipo: 'golpe', slot: 0, trocaPara: 1 }, G(0)); while (!b5.resultado) turno(b5, G(0), G(0));
   const total = expDerrota(alvo, true); igual(a1.exp - x1, Math.floor(total / 2), 'metade para quem saiu'); igual(a2.exp - x2, Math.floor(total / 2), 'metade para quem ficou');
-  // Chocalho do Mutirão (`expPartilhada`): a reserva de pé ganha metade; quem lutou não perde nada; desmaiada não ganha
-  { const l1 = neutra(9005, 20, 'esguicho'), r1 = neutra(9005, 20, 'esguicho'), caida = neutra(9005, 20, 'esguicho'); caida.vida = 0;
-    const y1 = l1.exp, y2 = r1.exp, y3 = caida.exp, alvo2 = neutra(9003, 10, 'cara-feia');
-    const b6 = new Batalha({ tipo: 'treinador', lados: [{ equipe: [l1, r1, caida], itens: {}, nome: 'A' }, { equipe: [alvo2], itens: {}, nome: 'B' }], expPartilhada: true }); b6.iniciar();
+  // Chocalho do Mutirão (`expPartilhada`): a reserva de pé e 2+ níveis atrás da mais forte ganha metade; quem lutou não perde nada;
+  // desmaiada não ganha; reserva a menos de 2 níveis da mais forte também não (senão as da frente subiam em dobro)
+  { const l1 = neutra(9005, 20, 'esguicho'), r1 = neutra(9005, 18, 'esguicho'), perto = neutra(9005, 19, 'esguicho'), caida = neutra(9005, 15, 'esguicho'); caida.vida = 0;
+    const y1 = l1.exp, y2 = r1.exp, y3 = caida.exp, y4 = perto.exp, alvo2 = neutra(9003, 10, 'cara-feia');
+    const b6 = new Batalha({ tipo: 'treinador', lados: [{ equipe: [l1, r1, caida, perto], itens: {}, nome: 'A' }, { equipe: [alvo2], itens: {}, nome: 'B' }], expPartilhada: true }); b6.iniciar();
     while (!b6.resultado) turno(b6, G(0), G(0));
-    const tot = expDerrota(alvo2, true); igual(l1.exp - y1, tot, 'quem lutou fica com tudo'); igual(r1.exp - y2, Math.floor(tot / 2), 'reserva ganha metade'); igual(caida.exp - y3, 0, 'desmaiada não ganha');
+    const tot = expDerrota(alvo2, true); igual(l1.exp - y1, tot, 'quem lutou fica com tudo'); igual(r1.exp - y2, Math.floor(tot / 2), 'reserva atrasada ganha metade'); igual(caida.exp - y3, 0, 'desmaiada não ganha'); igual(perto.exp - y4, 0, 'reserva a 1 nível da mais forte não ganha');
     igual(STATS.reduce((a, k) => a + r1.esf[k], 0), 0, 'reserva não ganha esforço'); }
   // fora de batalha
   const r = neutra(9001, 5); const subidas = ganharExp(r, expParaNivel('lento', 9) - r.exp); igual(r.nivel, 9, 'ganharExp'); igual(subidas.length, 4, 'subidas'); afirmar(r.golpes.some((g) => g.id === 'erva-de-passarinho'), 'aprendeu no caminho');

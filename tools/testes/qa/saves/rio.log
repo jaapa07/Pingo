@@ -162,3 +162,26 @@ erros de console: []
   [batalha] g01-4 → vitoria · equipe 7:11,13:3,10:2,45:2 · A2-ginasio · $1706
   [batalha] lider-01 → vitoria · equipe 7:12,13:3,10:2,45:2 · A2-ginasio · $2906
   INSÍGNIA 1 na tentativa 2
+>> retomando de rio-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: 3× cha-cidreira · sobrou $1292
+== checkpoint rio-pre-lider-1: ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"] $1292
+  ginásio 1, tentativa 1: equipe ["Botinho 9","Cotiazinha 3","Pipirim 2","Quero-querinho 2"]
+  [batalha] g01-1 → vitoria · equipe 7:10,13:3,10:2,45:2 · A2-ginasio · $1572
+  [batalha] g01-2 → vitoria · equipe 7:10,13:3,10:2,45:2 · A2-ginasio · $1892
+  [batalha] g01-3 → vitoria · equipe 7:11,13:3,10:2,45:2 · A2-ginasio · $2252
+  remédios entre batalhas: cha-cidreira
+  [batalha] g01-4 → vitoria · equipe 7:11,13:3,10:2,45:2 · A2-ginasio · $2652
+  [batalha] lider-01 → derrota · equipe 7:11,13:3,10:2,45:2 · A2-ginasio · $2652
+    turnos: Botinho11 28/35 x Garcinha7 22/22 → golpe piscadela | Botinho11 24/35 x Garcinha7 14/22 → golpe piscadela | Botinho11 20/35 x Garcinha7 6/22 → golpe piscadela | Botinho11 3/35 x Tucaninho9 27/29 → item cha-cidreira | Botinho11 12/35 x Tucaninho9 27/29 → golpe esguicho | Cotiazinha3 8/16 x Tucaninho9 22/29 → golpe encontrao | Pipirim2 13/13 x Tucaninho9 22/29 → golpe bicada | Pipirim2 9/13 x Tucaninho9 22/29 → golpe bicada | Quero-querinho2 10/14 x Tucaninho9 22/29 → golpe bicada
+  perdeu no ginásio 1 (tentativa 1)
+  TREINO EXTRA {"zona":"A-R1","rotulo":"depois de perder no ginásio 1","niveis":1,"batalhas":7,"de":11,"para":12}
+  ginásio 1, tentativa 2: equipe ["Botinho 12","Cotiazinha 3","Pipirim 2","Quero-querinho 2"]
+  [batalha] lider-01 → vitoria · equipe 7:12,13:3,10:2,45:2 · A2-ginasio · $2526
+  INSÍGNIA 1 na tentativa 2
+FALHA Error: irAte: não chegou a (8,18) |     at t.irAte (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:170:11) |     at async t.viajar (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:190:17) |     at async Object.fn (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:107:5) {"pronto":true,"oc":false,"mov":false,"zona":"A2-ginasio","x":7,"y":4,"dir":"o","modo":"pe","telas":1,"topo":"mundo tela-mundo","ocupada":false,"nres":13} ["{JOGADOR} recebeu a Insígnia Pena!","{JOGADOR} recebeu PT31 Rasante!","Esse pergaminho ensina o Rasante: um voo baixo e certeiro, que quase nunca erra.\fAgora escute. O Seu Aroeira, aqui da vila, anda atrás de alguém de confiança para uma tarefa. Dizem que ele guarda um Amuleto que faz as criaturas farejarem coisas escondidas.\fDepois siga pela Rota 2 e atravesse a Mata do Sagui. No Bosque Alto, a Lia Teia espera os desafiantes no alto das copas."]
+resumo: {"zona":"A2-ginasio","x":7,"y":4,"dinheiro":2526,"insignias":[1],"amuletos":[],"equipe":[{"e":7,"nome":"Botinho","nv":12,"vida":9,"max":37,"st":null,"golpes":["encontrao 34","charme-do-boto 20","esguicho 22","piscadela 27"]},{"e":13,"nome":"Cotiazinha","nv":3,"vida":16,"max":16,"st":null,"golpes":["encontrao 35","cara-feia 30"]},{"e":10,"nome":"Pipirim","nv":2,"vida":13,"max":13,"st":null,"golpes":["bicada 35","berro 40"]},{"e":45,"nome":"Quero-querinho","nv":2,"vida":14,"max":14,"st":null,"golpes":["bicada 35","berro 40"]}],"mochila":{"radio-cipo":1,"cuia":6,"diario-de-campo":1,"pt-31":1},"tempo":13581,"posto":"A2-posto","capturado":4}
+treino extra: [{"zona":"A-R1","rotulo":"depois de perder no ginásio 1","niveis":1,"batalhas":7,"de":11,"para":12}] derrotas: 2 curas: 8
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []

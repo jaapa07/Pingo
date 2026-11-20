@@ -138,7 +138,7 @@ Equipes espelhadas, sem itens (teste `escada da IA`, 200–300 batalhas): treina
 10. Mapa B, ginásio 9 em diante e duplas não foram simulados.
 
 <!-- sim:inicio -->
-_Gerado por `npx tsx tools/sim-equilibrio.ts` (N = 300 por confronto de chefe, 60 por treinador de rota; sementes fixas)._
+_Gerado por `npx tsx tools/sim-equilibrio.ts` (N = 300 por confronto de chefe, 80 por treinador de rota; sementes fixas)._
 
 ### 1. Equipe de referência do jogador por passo
 
@@ -146,7 +146,7 @@ Derivada das tabelas de habitat (grama, caverna e árvore das zonas do mapa A ab
 
 | Passo | Ás do chefe | Inicial Mata | Inicial Brasa | Inicial Rio | Remédios |
 |---|---|---|---|---|---|
-| 1 | 12 | Tamanduí 10, Cotiazinha 9, Pipirim 8, Cigarrim 8 | Guaraxim 10, Cotiazinha 9, Pipirim 8, Cigarrim 8 | Botinho 10, Cotiazinha 9, Pipirim 8, Cigarrim 8 | 3× cha-cidreira |
+| 1 | 10 | Tamanduí 8, Cotiazinha 7, Pipirim 6, Cigarrim 6 | Guaraxim 8, Cotiazinha 7, Pipirim 6, Cigarrim 6 | Botinho 8, Cotiazinha 7, Pipirim 6, Cigarrim 6 | 3× cha-cidreira |
 | 2 | 17 | Tamanduí 15, Cotiazinha 14, Pipirim 13, Cigarrim 13, Tatuzim 12 | Guaraxim 15, Cotiazinha 14, Pipirim 13, Cigarrim 13, Tatuzim 12 | Botinho 15, Cotiazinha 14, Pipirim 13, Cigarrim 13, Tatuzim 12 | 4× cha-cidreira |
 | 3 | 22 | Tamanduá-Copa 20, Cotiazinha 19, Bem-te-viço 18, Cigarrim 18, Tatuzim 17, Morceguim 17 | Guaraflama 20, Cotiazinha 19, Bem-te-viço 18, Cigarrim 18, Tatuzim 17, Morceguim 17 | Botorosa 20, Cotiazinha 19, Bem-te-viço 18, Cigarrim 18, Tatuzim 17, Morceguim 17 | 3× cha-cidreira, 2× garrafada |
 | 4 | 26 | Tamanduá-Copa 23, Cotiadã 22, Bem-te-viço 21, Pintinhas 21, Tatuzim 20, Morceguim 20 | Guaraflama 23, Cotiadã 22, Bem-te-viço 21, Pintinhas 21, Tatuzim 20, Morceguim 20 | Botorosa 23, Cotiadã 22, Bem-te-viço 21, Pintinhas 21, Tatuzim 20, Morceguim 20 | 4× garrafada |
@@ -160,7 +160,7 @@ Derivada das tabelas de habitat (grama, caverna e árvore das zonas do mapa A ab
 
 | Líder | Equipe do líder | Esperto | Bobo | IA do jogo | Meta |
 |---|---|---|---|---|---|
-| 1 Mestre Gaivota | Quero-querinho 10, Ararinha 12 | 56% | 57% | 53% | FORA |
+| 1 Mestre Gaivota | Garcinha 7, Tucaninho 10 | 12% | 16% | 10% | FORA |
 | 2 Lia Teia | Cupinzim 15, Vagalumim 16, Caranguejeirinha 17 | 72% | 17% | 62% | FORA |
 | 3 Marujo Netuno Silva | Medusim 20, Caranguejim 21, Poraquim 21, Botorosa 22 | 71% | 14% | 33% | FORA |
 | 4 Iracema Lua | Beija-florzim 24, Manatim 24, Catingueirinho 24, Coralzinha 26 | 66% | 38% | 35% | ok |
@@ -173,16 +173,16 @@ Derivada das tabelas de habitat (grama, caverna e árvore das zonas do mapa A ab
 
 | Zona | Treinadores | Esperto (média) | Pior caso | Bobo (média) | Abaixo de 90% |
 |---|---|---|---|---|---|
-| Trilha do Ipê | 6 | 100% | A-R1-1 100% | 100% | — |
-| Campos de Restinga | 8 | 99% | A-R2-3 95% | 94% | — |
-| Mata dos Sabiás | 8 | 98% | A-MS-4 93% | 97% | — |
-| Bosque Alto | 2 | 100% | A3-1 100% | 100% | — |
+| Trilha do Ipê | 6 | 100% | A-R1-4 99% | 100% | — |
+| Campos de Restinga | 8 | 79% | A-R2-3 5% | 73% | A-R2-3 5%, A-R2-4 86%, A-R2-5 41% |
+| Mata dos Sabiás | 8 | 100% | A-MS-4 98% | 100% | — |
+| Bosque Alto | 2 | 100% | A3-1 100% | 99% | — |
 | Trilha dos Cipós | 8 | 99% | A-R3-8 95% | 90% | — |
-| Gruta do Eco | 7 | 95% | A-GE-2 80% | 87% | A-GE-2 80% |
-| Porto Sereia | 3 | 99% | A4-2 97% | 98% | — |
+| Gruta do Eco | 7 | 95% | A-GE-2 80% | 88% | A-GE-2 80% |
+| Porto Sereia | 3 | 99% | A4-2 98% | 99% | — |
 | Estrada do Buriti | 7 | 100% | A-R7-1 100% | 99% | — |
-| Rival Tainá | 12 | 97% | rival-1-mata 82% | 83% | rival-1-mata 82% |
-| Estrada da Usina | 7 | 100% | A-R4-3 98% | 100% | — |
+| Rival Tainá | 12 | 96% | rival-1-mata 81% | 82% | rival-1-mata 81% |
+| Estrada da Usina | 7 | 100% | A-R4-3 99% | 99% | — |
 | Usina Velha — Salão dos Geradores | 4 | 100% | A-US-1 100% | 99% | — |
 | Usina Velha — Passarelas | 3 | 100% | A-US-5 100% | 100% | — |
 | Usina Velha — Porão das Turbinas | 3 | 100% | A-US-8 100% | 100% | — |
@@ -190,34 +190,34 @@ Derivada das tabelas de habitat (grama, caverna e árvore das zonas do mapa A ab
 | Cidade Coral | 2 | 100% | A5-1 100% | 100% | — |
 | Ilha do Farol | 6 | 100% | A6-1 100% | 100% | — |
 | Farol — Térreo | 2 | 100% | A6-FA-1 100% | 100% | — |
-| Farol — 2º andar | 3 | 100% | A6-FA-3 100% | 99% | — |
+| Farol — 2º andar | 3 | 100% | A6-FA-3 99% | 99% | — |
 | Farol — 3º andar | 2 | 100% | A6-FA-6 100% | 100% | — |
-| Farol — Sala da Lanterna | 2 | 99% | A6-FA-9 98% | 98% | — |
-| Gruta Breu | 5 | 96% | A-GB-3 82% | 95% | A-GB-3 82% |
+| Farol — Sala da Lanterna | 2 | 100% | A6-FA-8 100% | 100% | — |
+| Gruta Breu | 5 | 96% | A-GB-3 84% | 95% | A-GB-3 84% |
 | Gruta Breu — Lago do Fundo | 4 | 100% | A-GB-6 100% | 100% | — |
 | Serra Fumaça | 5 | 100% | A7-1 100% | 100% | — |
 | Encosta da Fumaça | 7 | 100% | A-R5-1 100% | 100% | — |
 | Vila Ferrugem | 5 | 100% | A8-1 100% | 100% | — |
 | Praia das Tartarugas | 4 | 100% | A-PR-1 100% | 100% | — |
-| Manguezal | 5 | 99% | A-MG-5 95% | 98% | — |
-| Ginásio de Vila Caiçara | 4 | 99% | g01-4 95% | 96% | — |
-| Ginásio de Bosque Alto | 4 | 98% | g02-4 93% | 83% | — |
-| Ginásio de Porto Sereia | 5 | 100% | g03-1 100% | 94% | — |
+| Manguezal | 5 | 99% | A-MG-5 96% | 98% | — |
+| Ginásio de Vila Caiçara | 4 | 98% | g01-4 94% | 98% | — |
+| Ginásio de Bosque Alto | 4 | 97% | g02-4 91% | 84% | — |
+| Ginásio de Porto Sereia | 5 | 100% | g03-1 100% | 95% | — |
 | Ginásio de Cidade Coral | 5 | 100% | g04-5 98% | 99% | — |
 | Ginásio da Ilha do Farol | 4 | 100% | g05-1 100% | 100% | — |
 | Ginásio de Serra Fumaça | 4 | 100% | g06-1 100% | 100% | — |
-| Ginásio de Vila Ferrugem | 5 | 100% | g07-1 100% | 99% | — |
+| Ginásio de Vila Ferrugem | 5 | 100% | g07-1 100% | 98% | — |
 | Ginásio de Vila Buriti | 5 | 100% | g08-1 100% | 97% | — |
 | Ginásio de Chapada Rubra | 4 | 100% | g09-1 100% | 90% | — |
 
-Total: 176 treinadores · média 99% · 3 abaixo de 90%.
+Total: 176 treinadores · média 98% · 6 abaixo de 90%.
 
 Chefes de história com IA de líder (sem meta própria; esperado entre treinador de rota e líder):
 
 | Chefe | Equipe | Esperto | Bobo |
 |---|---|---|---|
 | A-US-lata Lata | Grilinho 23, Poraquim 24, Besourim 24, Morcegão 25 | 59% | 25% |
-| A6-rebite Rebite | Besourim 27, Morcegão 28, Poraquim 28, Bem-te-viço 28, Jacaretinga 29 | 59% | 17% |
+| A6-rebite Rebite | Besourim 26, Morcegão 26, Poraquim 27, Jacaretinga 28 | 87% | 61% |
 | rival-5-brasa Tainá | Gaviãozão 42, Vagalampo 42, Sapo-Cururuí 42, Bugio-Trovão 43, Garça-Real 43, Lobo-Fornalha 45 | 15% | 0% |
 | rival-5-rio Tainá | Gaviãozão 42, Vagalampo 42, Bruxaluz 42, Bugio-Trovão 43, Garça-Real 43, Iaraboto 45 | 34% | 3% |
 | rival-5-mata Tainá | Gaviãozão 42, Vagalampo 42, Calangão 42, Bugio-Trovão 43, Garça-Real 43, Bandeirão 45 | 85% | 0% |
@@ -264,7 +264,7 @@ Cada luta da Liga isolada (equipe inteira e curada, mesmos remédios):
 
 | Equipe adversária | novato | treinador | lider | conselho |
 |---|---|---|---|---|
-| Líder Mestre Gaivota | 20% | 42% | 54% | 60% |
+| Líder Mestre Gaivota | 36% | 76% | 95% | 97% |
 | Líder Lia Teia | 9% | 29% | 52% | 51% |
 | Líder Marujo Netuno Silva | 16% | 49% | 62% | 65% |
 | Líder Iracema Lua | 13% | 27% | 43% | 40% |
@@ -277,6 +277,6 @@ Cada luta da Liga isolada (equipe inteira e curada, mesmos remédios):
 | Pajé Neblina | 0% | 0% | 5% | 6% |
 | Domadora Pampa | 0% | 1% | 0% | 2% |
 | Campeão Cacique Aracê | 2% | 8% | 28% | 26% |
-| **Média** | **9%** | **20%** | **33%** | **35%** |
+| **Média** | **10%** | **23%** | **37%** | **38%** |
 
 <!-- sim:fim -->
