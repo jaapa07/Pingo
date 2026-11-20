@@ -105,10 +105,10 @@ interface Ctx { c: CriaturaInst; bonus: number; vel: number; atq: number; def: n
 /**
  * Corrida da Vereda: 3 raias, obstáculos vêm da direita, estrelas valem ponto.
  * Pontuação (decisão do autor, docs/DECISOES-FINAIS.md: o 1º lugar pede um bom jogo e tocar sem mirar não vence):
- * 1 ponto a cada 40 px, estrela 10, tropeço −25 (e o tropeço dura mais). Antes era 1/32 px, estrela 15 e tropeço sem
+ * 1 ponto a cada 40 px, estrela 12, tropeço −20 (e o tropeço dura mais). Antes era 1/32 px, estrela 15 e tropeço sem
  * custo: gente fazia 430–490 e tocar as raias em rodízio fazia ~300, acima de todos os rivais (≤ 260).
  */
-const CORRIDA = { pxPorPonto: 40, estrela: 10, tropeco: 25 };
+const CORRIDA = { pxPorPonto: 40, estrela: 12, tropeco: 20 };
 function provaAgilidade(raiz: HTMLElement, x: Ctx): Prova {
   const pista = div('gn-pista gn-raias', raiz);
   const RAIAS = [112, 132, 152], CX = 64;
