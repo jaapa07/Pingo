@@ -14,7 +14,7 @@ export type ProvaId = 'agilidade' | 'forca' | 'salto';
 export const PROVAS: ProvaId[] = ['agilidade', 'forca', 'salto'];
 export interface ProvaDef { id: ProvaId; nome: string; duracao: number; regra: string; atributos: Stat[] }
 export const PROVA: Record<ProvaId, ProvaDef> = {
-  agilidade: { id: 'agilidade', nome: 'Corrida da Vereda', duracao: 40, atributos: ['vel', 'def'], regra: 'Troque de raia com CIMA e BAIXO (ou toque na raia). Desvie de pedras e cupinzeiros, pegue as estrelas.' },
+  agilidade: { id: 'agilidade', nome: 'Corrida da Vereda', duracao: 40, atributos: ['vel', 'def'], regra: 'Troque de raia com CIMA e BAIXO (ou toque na raia). Pegue as estrelas e desvie de pedras e cupinzeiros: cada tropeço custa pontos.' },
   forca: { id: 'forca', nome: 'Empurra-Tora', duracao: 30, atributos: ['atq', 'def'], regra: 'Aperte A (ou toque) quando a marca passar pela faixa verde. Ritmo certo empurra a tora morro acima.' },
   salto: { id: 'salto', nome: 'Salto do Riacho', duracao: 40, atributos: ['vel', 'def'], regra: 'Aperte A (ou toque) para pular os troncos. Pulo bem no limite vale salto perfeito.' },
 };

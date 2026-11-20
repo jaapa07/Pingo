@@ -1,0 +1,39 @@
+# Gera a versão para PC (Windows portátil + Linux AppImage) e publica como Release do GitHub.
+# Dispara ao enviar uma tag "pc-*" (ex.: pc-1.0.0) ou manualmente em Actions → "Versão para PC" → Run workflow.
+name: Versão para PC
+
+on:
+  push:
+    tags: ['pc-*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Instalar dependências
+        run: npm ci
+      - name: Gerar pacotes (AppImage + .exe portátil)
+        run: npm run build && npx electron-builder --config plataformas/desktop/electron-builder.yml --linux AppImage --win portable --x64
+      - name: Publicar Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_type == 'tag' && github.ref_name || format('pc-{0}', github.run_number) }}
+          name: Adventures of Pingo — versão para PC
+          prerelease: true
+          body: |
+            Versão para computador, 100% offline.
+            - **Windows:** baixe o `.exe` portátil e abra (não precisa instalar). Na 1ª vez o Windows pode avisar "O Windows protegeu o computador": clique em "Mais informações" → "Executar assim mesmo" (o app não é assinado).
+            - **Linux:** baixe o `.AppImage`, dê permissão de execução e abra.
+            O save fica na pasta do usuário (menu Jogo → Abrir pasta dos saves).
+          files: |
+            plataformas/desktop/out/*.exe
+            plataformas/desktop/out/*.AppImage
