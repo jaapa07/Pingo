@@ -22,6 +22,17 @@ export interface Dados {
   /** ids de eventos/comandos registrados em código (mecânicas) */
   eventosEmCodigo: Set<string>; comandosEmCodigo: Set<string>;
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function coletar<T>(m: Record<string, unknown>, ok: (v: any) => boolean): T[] {
+  const out: T[] = [];
+  const ver = (v: unknown, fundo: number) => {
+    if (!v || typeof v !== 'object') return;
+    if (ok(v)) { out.push(v as T); return; }
+    if (fundo > 0) for (const x of Array.isArray(v) ? v : Object.values(v)) ver(x, fundo - 1);
+  };
+  ver(m, 2);
+  return out;
+}
 let cache: Promise<Dados> | undefined;
 export function carregar(): Promise<Dados> { return (cache ??= carregarAgora()); }
 async function carregarAgora(): Promise<Dados> {
@@ -32,15 +43,32 @@ async function carregarAgora(): Promise<Dados> {
     try { const m = (await import(dirZ + f)) as Record<string, unknown>; for (const v of Object.values(m)) { const z = v as ZonaDef; if (z && typeof z === 'object' && Array.isArray(z.mapaChars)) { d.zonas.set(z.id, z); d.arquivoDaZona.set(z.id, 'src/data/zonas/' + f); } } }
     catch (e) { d.falhasDeCarga.push(`src/data/zonas/${f}: não carrega (${String(e).slice(0, 160)})`); }
   }
-  for (const [arq, m] of await modulos('src/data/treinadores/')) for (const v of Object.values(m)) if (Array.isArray(v)) for (const t of v as TreinadorDef[]) if (t?.id && Array.isArray(t.equipe)) { d.treinadores.set(t.id, t); d.arquivoDoTreinador.set(t.id, arq); }
-  for (const [arq, m] of await modulos('src/data/eventos/')) for (const v of Object.values(m)) if (Array.isArray(v)) for (const e of v as EventoDef[]) if (e?.id && Array.isArray(e.passos)) { d.eventos.set(e.id, e); d.arquivoDoEvento.set(e.id, arq); }
-  const dirM = RAIZ + 'src/world/mecanicas/';
-  if (existsSync(dirM)) for (const f of readdirSync(dirM)) {
-    const txt = readFileSync(dirM + f, 'utf8');
-    for (const m of txt.matchAll(/const ZONA = '([^']+)'/g)) d.zonasComMecanica.add(m[1]);
-    for (const m of txt.matchAll(/registrarMecanica\(\s*'([^']+)'/g)) d.zonasComMecanica.add(m[1]);
-    for (const m of txt.matchAll(/registrarEvento\(\s*\{\s*id:\s*[`']([^`']+)[`']/g)) d.eventosEmCodigo.add(m[1]);
-    for (const m of txt.matchAll(/registrarComando\(\s*[`']([^`']+)[`']/g)) d.comandosEmCodigo.add(m[1]);
+  // mesma coleta do jogo (src/world/deps.ts, `coletar`): export solto ou dentro de lista/objeto, até 2 níveis
+  for (const [arq, m] of await modulos('src/data/treinadores/')) for (const t of coletar<TreinadorDef>(m, (v) => typeof v.id === 'string' && Array.isArray(v.equipe))) if (!d.treinadores.has(t.id)) { d.treinadores.set(t.id, t); d.arquivoDoTreinador.set(t.id, arq); }
+  const fontesEv: [string, string][] = [];
+  for (const [arq, m] of await modulos('src/data/eventos/')) {
+    fontesEv.push([arq, readFileSync(RAIZ + arq, 'utf8')]);
+    for (const e of coletar<EventoDef>(m, (v) => typeof v.id === 'string' && Array.isArray(v.passos))) if (!d.eventos.has(e.id)) { d.eventos.set(e.id, e); d.arquivoDoEvento.set(e.id, arq); }
+  }
+  // treinadores e eventos registrados em código pelos arquivos de eventos (registrarTreinador / registrarEvento), como o jogo os acha
+  const { treinadoresExtras, eventosExtras } = await import('../../src/world/registro');
+  const donoDe = (id: string) => fontesEv.find(([, t]) => t.includes(`'${id}'`))?.[0] ?? 'src/data/eventos';
+  for (const t of treinadoresExtras.values()) if (!d.treinadores.has(t.id) && !t.id.startsWith('teste-')) { d.treinadores.set(t.id, t); d.arquivoDoTreinador.set(t.id, donoDe(t.id)); }
+  for (const e of eventosExtras.values()) if (!d.eventos.has(e.id)) { d.eventos.set(e.id, e); d.arquivoDoEvento.set(e.id, donoDe(e.id)); }
+  // mecânicas de zona (src/world/mecanicas) e telas que registram comandos de evento (Gincana, Safári): lidas como texto,
+  // porque dependem do DOM e não carregam em Node
+  for (const dir of ['src/world/mecanicas/', 'src/ui/telas/']) {
+    const dirM = RAIZ + dir; if (!existsSync(dirM)) continue;
+    for (const f of readdirSync(dirM)) {
+      if (!/\.ts$/.test(f)) continue;
+      const txt = readFileSync(dirM + f, 'utf8');
+      if (dir.includes('mecanicas')) {
+        for (const m of txt.matchAll(/const ZONA = '([^']+)'/g)) d.zonasComMecanica.add(m[1]);
+        for (const m of txt.matchAll(/registrarMecanica\(\s*'([^']+)'/g)) d.zonasComMecanica.add(m[1]);
+      }
+      for (const m of txt.matchAll(/registrarEvento\(\s*\{\s*id:\s*[`']([^`']+)[`']/g)) d.eventosEmCodigo.add(m[1]);
+      for (const m of txt.matchAll(/registrarComando\(\s*[`']([^`']+)[`']/g)) d.comandosEmCodigo.add(m[1]);
+    }
   }
   return d;
 }

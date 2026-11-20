@@ -41,10 +41,15 @@ function conferirImports(pasta: string, a: Achado) {
   const declarados = new Set([...Object.keys(pk.dependencies ?? {}), ...Object.keys(pk.devDependencies ?? {})]);
   const nativos = new Set(builtinModules);
   const re = /(?:\bfrom\s*|\bimport\s*\(\s*|\brequire\s*\(\s*|\bimport\s+)(['"])([^'"\n]+)\1/g;
+  // pastas que o tsconfig exclui (roteiros de teste locais dos QAs, cache): nem o tsc nem o build do CI as tocam
+  let fora: string[] = [];
+  try { fora = ((JSON.parse(readFileSync(join(pasta, 'tsconfig.json'), 'utf8')) as { exclude?: string[] }).exclude ?? []).map((x) => x.replace(/\/+$/, '') + '/'); } catch { fora = []; }
   let n = 0;
   for (const base of ['src', 'tools']) for (const f of arquivosDe(join(pasta, base))) {
-    if (!/\.(ts|mts|tsx)$/.test(f)) continue; n++;
+    if (!/\.(ts|mts|tsx)$/.test(f)) continue;
     const txt = readFileSync(f, 'utf8'), rel = f.slice(pasta.length + 1);
+    if (fora.some((x) => rel.startsWith(x))) continue;
+    n++;
     for (const m of txt.matchAll(re)) {
       const alvo = m[2];
       if (alvo.startsWith('.') || alvo.startsWith('node:') || alvo.startsWith('virtual:')) continue;

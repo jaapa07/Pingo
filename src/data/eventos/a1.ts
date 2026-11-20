@@ -112,6 +112,14 @@ export const EVENTOS_A1: EventoDef[] = [
     id: 'prof-ipe',
     passos: [
       ['cuiaDaFrente'],
+      // prêmio do Diário: com 100 espécies capturadas, a Profª Ipê entrega a 3ª Cuia Guardiã (decisão do autor)
+      se('diario:100&!flag:guardia-100', [
+        ['emote', 'prof', '!'],
+        f('prof', 'Cem espécies diferentes no Diário de Campo?! {JOGADOR}, nem eu cheguei nisso na sua idade!\fGuardei uma coisa por anos esperando alguém merecer.'),
+        f('prof', 'É uma Cuia Guardiã, obra dos antigos Guardiões. Nunca falha.\fSó existem três no mundo inteiro. Use com sabedoria: há criaturas que só aparecem uma vez.'),
+        ['dar', 'cuia-guardia'],
+        ['flag', 'guardia-100'],
+      ]),
       se('!flag:prof-conheceu', [
         ['emote', 'prof', '!'],
         f('prof', '{JOGADOR}! Bem na hora. Quer dizer, atrasado, mas na hora do atraso de sempre.\fPreciso de um favor que só dá para pedir a alguém de confiança.'),

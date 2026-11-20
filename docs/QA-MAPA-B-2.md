@@ -36,3 +36,12 @@ Ferramentas em `tools/testes/qa4/` (cópia do QA 3 com nomes `qa4-*`):
   - Ginásio 12: **roda de capoeira jogada na tela pelo piloto (3 rodas, sem tropeço)**; g12-5 derrotou a equipe uma vez
     (entrou com 3 desmaiadas). Líder 12 Gingado (ás 63): na frente 62/58/58/57/57/57 (Δ −1, média −4,8) → 1/1 (16 turnos).
   - Dinheiro oscilando entre $246 e $14 k (derrota corta metade); remédios comprados sempre que dá.
+- (20/11) **túnel → lab → gin13 → veredas**. Piloto: subir/descer poço de mergulho (A em cima do poço), Força na Gruta do
+  Fôlego, trecho leste do túnel sem volta ao Posto (segue em frente). Captura 112.
+  - Laboratório: 8 capangas 0 derrotas; Zinabre 1/1 (11 t); **Lata (ás 65) 1/2** com a equipe 62/60/60/58/58/58 (derrota
+    em 11 t entrando com 2 desmaiadas depois do Zinabre — a sequência é seguida; vitória em 19 t).
+  - **BUG CORRIGIDO** `src/data/zonas/B6-ginasio.ts`: g13-5 (27, 7) com visão 2 vinha até (26, 7) e ficava ali, TAPANDO a
+    única passagem para a boca do tanque C (26, 6): jogador preso no ginásio. Visão 1 (ele só enxerga (26, 7), ao lado).
+  - Líder 13 Peçonha (ás 66): na frente 63/61/61/59/59/59 (Δ −3, média −5,7) → **1/3** (7 t entrando com 3 desmaiadas e
+    sem Chá; 15 t; vitória em 23 t, ela usou 2 remédios). Dinheiro caiu a **$244** depois das duas derrotas.
+  - B-VV: 8 treinadores 0 derrotas (2 voltas ao Posto). Queixada-Caipora (63) apareceu e o piloto fugiu.

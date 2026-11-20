@@ -75,7 +75,7 @@ export const ITENS: ItemInfo[] = [
   i('cuia-noturna', 'Cuia Noturna', 'cuias', 1000, 'Pintada com jenipapo. Excelente durante a noite.', { cuia: { bonus: 1, noite: 3 }, emBatalha: B }),
   i('cuia-rapida', 'Cuia Rápida', 'cuias', 1000, 'Leve como pena. Excelente se arremessada logo no primeiro turno.', { cuia: { bonus: 1, primeiroTurno: 4 }, emBatalha: B }),
   i('cuia-mel', 'Cuia de Mel', 'cuias', 1000, 'Untada com mel de jataí. A criatura capturada já chega amiga e se apega mais depressa.', { cuia: { bonus: 1, amizade: true }, emBatalha: B }),
-  i('cuia-guardia', 'Cuia Guardiã', 'cuias', 0, 'Obra dos antigos Guardiões. Nunca falha. Só existe uma.', { cuia: { bonus: 255, garantida: true }, emBatalha: B }),
+  i('cuia-guardia', 'Cuia Guardiã', 'cuias', 0, 'Obra dos antigos Guardiões. Nunca falha. Só existem três no mundo.', { cuia: { bonus: 255, garantida: true }, emBatalha: B }),
 
   /* ------------------------------ Remédios ------------------------------ */
   i('cha-cidreira', 'Chá de Erva-Cidreira', 'remedios', 300, 'Chazinho morno. Recupera 20 de vida.', { cura: 20, emBatalha: B }),

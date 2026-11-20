@@ -820,6 +820,8 @@ Regras de jogabilidade herdadas dos RPGs de captura de portátil, reescritas par
 43. *(removido a pedido do autor: sem modo Nuzlocke; a dificuldade fica nos 3 modos Explorador/Aventureiro/Veterano, com equipes em 4 fases no Veterano, item 26)*
 44. **Nostalgia e identidade visual/musical:** fãs citam arte e música como parte do charme. Em Pingo isso se traduz em uma música marcante por cidade e por período do dia (já em docs/AUDIO.md) e uma "assinatura" visual por região.
 45. **Detalhes que o jogador esquece mas adora:** itens segurados, ovos, apitos e frutos (já nos itens 6, 9 e 11); criaturas errantes lendárias que se movem pelo mapa (já previstas para as 3 lendárias das feras e para o 179/180).
+46. **Cuia Guardiã (decisão do autor):** captura garantida. Existem só **três**: uma no fundo do Recife Submerso (A-RS, Mergulho), uma na Aldeia Tupã (A9) e a terceira dada pela Profª Ipê quando o Diário tem **100 espécies capturadas**. Como cada lendário só aparece uma vez (derrotado sem captura some para sempre), escolher onde usar as três é parte da estratégia, e há espaço para novos lendários no futuro.
+
 **O que NÃO entra (perderia a essência ou é específico demais da franquia):** cassino e qualquer substituto dele, caça-níqueis, troca/batalha por cabo, criaturas de evento de distribuição, variantes por letra e qualquer nome, texto, mapa ou enigma copiado.
 
 ## 11. Interface (identidade própria)

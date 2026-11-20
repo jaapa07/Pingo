@@ -46,9 +46,9 @@ try {
     await escolherCard(m.k);
     await t.q(() => { window.Q.telaEsperada = null; });
     for (let g = 0; g < 400 && !/tela-gincana/.test(await topo(t)); g++) { if (/dialogo/.test(await topo(t))) await tecla(t, 'a', 1, 6); else await t.espera(50); }
-    await t.espera(1500); await t.foto(`r5-${prova}-conta`);
+    await t.espera(1500);
     const jog = t.q(([p, o]) => window.H.jogar(p, o), [prova, { reacao: REA, sigma: SIG, distrai: DIS, semente: SEM + i, dur }]);
-    await t.espera(prova === 'forca' ? 18000 : 22000); await t.foto(`r5-${prova}-meio`);
+    if (i === 1) { await t.espera(15000); await t.foto('r5-forca-meio'); }
     const log = await jog;
     await t.foto(`r5-${prova}-res`);
     await tecla(t, 'a', 1, 10);

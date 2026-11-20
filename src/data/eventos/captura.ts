@@ -168,6 +168,16 @@ const CAPANGA_LAGO: TreinadorDef = {
 };
 registrarTreinador(CAPANGA_LAGO);
 export const TREINADORES_CAPTURA: TreinadorDef[] = [CAPANGA_LAGO];
+/**
+ * ['lagoDuelo']: o duelo com o capanga (como `['batalha', id, { segue: true }]`: perder cura e segue, `batalha-perdida`
+ * diz o resultado). Comando próprio porque o treinador nasce aqui (registrarTreinador) e não em src/data/treinadores/,
+ * onde os verificadores procuram o alvo de `['batalha', id]`.
+ */
+registrarComando('lagoDuelo', async () => {
+  const [{ desafiar }, { M }] = await Promise.all([import('../../world/npcs'), import('../../world/vivo')]);
+  const venceu = await desafiar(CAPANGA_LAGO, M.npcs.find((n) => n.def.id === 'cartel-lago'), { semDerrota: true });
+  setFlag('batalha-perdida', !venceu);
+});
 /** ['lagoRaro']: o Mandizinho de Pelagem Rara salta do lago (batalha selvagem com a variante garantida). Capturado ou vencido → `lago-raro-ok`; se fugir, volta ao fundo e o capanga ensina a chamá-lo de novo. */
 registrarComando('lagoRaro', async () => {
   const { criarCriatura, falar } = await deps(), { lutar } = await import('../../world/encontros'), { M } = await import('../../world/vivo');
@@ -200,7 +210,7 @@ export const EVENTOS_CAPTURA: EventoDef[] = [
       ], [
         ['emote', 'cartel-lago', '!'],
         f(FERROLHO, 'Psiu! Não faz barulho! Tem um Mandizinho de uma cor que ninguém nunca viu nesse lago…\fO chefe foi preso, mas eu ainda sei para quem vender. Rede no lago e lucro no bolso!'),
-        ['batalha', 'cartel-lago', { segue: true }],
+        ['lagoDuelo'],
         se('flag:batalha-perdida', [f(FERROLHO, 'Rá! Volta pra casa, criança. O bicho é meu.')], [
           f(FERROLHO, 'Tá bom, tá bom! Desisto do bicho. Mas olha lá: ele vai pular na sua cara!'),
           ['flag', 'lago-ferrolho-fugiu'],
