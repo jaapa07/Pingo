@@ -125,7 +125,8 @@ async function arrastado(paraEscura: boolean, d: Dir) {
   avisar('Reme sempre colado à linha onde as duas águas se encontram.');
 }
 
-function galoDisponivel() { return !!flag('ea-rota') && !possui(GALO); }
+/** o Galo-Manaó aparece uma vez só (decisão do autor; spec 6.5): capturado (`galo-manao-ok`) ou vencido (`galo-manao-sumiu`) não volta */
+function galoDisponivel() { return !!flag('ea-rota') && !flag('galo-manao-ok') && !flag('galo-manao-sumiu'); }
 function tirarGalo() { if (galo) { galo.remover(); M.extras = M.extras.filter((a) => a !== galo); galo = null; } }
 function porGalo() {
   tirarGalo();

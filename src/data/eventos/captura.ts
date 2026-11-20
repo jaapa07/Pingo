@@ -176,6 +176,8 @@ registrarComando('lagoRaro', async () => {
   const r = await lutar({ tipo: 'selvagem', inimigos: [c], arena: M.zv.def.arena, clima: M.zv.def.clima });
   setFlag('ultima-batalha', r.resultado);
   if (r.resultado === 'derrota') return;
+  // aparece uma vez só, como os lendários (decisão do autor; spec 6.4): vencido sem captura, some para sempre
+  if (r.resultado === 'vitoria') await falar('O Mandizinho furta-cor afunda no lago escuro e não foi mais visto.');
   if (r.resultado === 'captura' || r.resultado === 'vitoria') { setFlag('lago-raro-ok'); await falar('O lago volta a ficar quieto. Ninguém mais vai caçar bicho por aqui.'); }
   else await falar('O Mandizinho mergulhou de volta no lago escuro. Ele ainda está por aí…');
 });

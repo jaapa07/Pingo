@@ -98,7 +98,9 @@ async function encontrarErrante(n: number) {
   const vida = flag(`errante-vida:${n}`);
   if (typeof vida === 'number' && vida > 0) c.vida = Math.min(c.vida, vida);
   const r = await lutar({ tipo: 'lendario', inimigos: [c], arena: M.zv.def.arena, clima: M.zv.def.clima, errante: true });
+  // lendário aparece uma vez só (decisão do autor; spec 6.4): capturado ou vencido sem captura, não volta mais
   if (r.resultado === 'captura' || r.resultado === 'vitoria') setFlag(`errante:${n}`, 'fim');
+  if (r.resultado === 'vitoria') avisar(`${especie(n)?.nome ?? 'A criatura'} fugiu ferida e não foi mais vista.`);
   else if (r.resultado === 'fuga') { setFlag(`errante-vida:${n}`, Math.max(1, c.vida)); moverErrantes(true); avisar(`${especie(n)?.nome ?? 'A criatura'} sumiu na mata…`); }
 }
 

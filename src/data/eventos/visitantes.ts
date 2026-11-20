@@ -7,13 +7,15 @@
  *   cascata seca da Estrada Vermelha (B-R2, só se chega com Cachoeira) (`ea-frasco-barrento`) — pontos de colheita em
  *   src/world/mecanicas/x-ea.ts → entrega dos frascos (`ea-rota`) → canoa até a zona X-EA (exige Remo) → quebra-cabeça
  *   de correnteza e dança de corte (mecânica) → `vis-galo-batalha` (nv 60, taxa de captura 3). Capturado: `galo-manao-ok`.
- *   Enquanto o jogador não tiver um Galo-Manaó (soltou, derrotou, fugiu), ele volta a dançar na ilhota.
+ *   Aparece uma vez só (decisão do autor): se o jogador fugir, ele volta a dançar na ilhota; vencido sem captura
+ *   (`galo-manao-sumiu`) ou capturado (`galo-manao-ok`), não volta.
  *
  * 182 BOREALCE — "A Expedição Boreal" (depois de `conselho-vencido`):
  *   navio de pesquisa encalhado no cais de Porto Pantaneiro (B9, desenhado aqui por cima do mapa) e a Drª Solveig
  *   (`boreal-missao`) → 4 Lanternas Boreais, cada uma com um pesquisador da expedição (treinadores B-EXP-1..4, Geada
  *   nv 66–70; `boreal-lanterna-1..4`) em B7, B-SG, B-LG e B-R5 → acender no alto do Pico Pindorama, de noite
- *   (`vis-pico-aurora`, aurora em camada própria) → Borealce nv 65 (`boreal-acesa`, `borealce-ok`). Reencontro igual ao 181.
+ *   (`vis-pico-aurora`, aurora em camada própria) → Borealce nv 65 (`boreal-acesa`, `borealce-ok`). Mesma regra do 181
+ *   (fuga: volta debaixo da aurora; vencido: `borealce-sumiu`, não volta).
  *   As zonas geladas e o Pico são de outros times e podem ainda não existir: os NPCs e o ponto do Pico ficam definidos
  *   AQUI por coordenada (`PONTOS_VISITANTES`) e entram na zona em memória quando ela existir (o arquivo da zona não muda).
  *
@@ -318,7 +320,8 @@ export const EVENTOS_VISITANTES: EventoDef[] = [
         ['flag', 'galo-manao-ok'],
         f(null, 'O Galo-Manaó se aquietou na cuia. Por um instante, a água escura e a barrenta brilharam juntas em volta da ilhota.'),
       ]),
-      se('flag:vis-venceu', [f(null, 'O Galo-Manaó bate as asas e some sobre a mata. Ele vai voltar a dançar na ilhota outra vez.')]),
+      // aparece uma vez só (decisão do autor; spec 6.5): vencido sem captura, não volta
+      se('flag:vis-venceu', [['flag', 'galo-manao-sumiu'], f(null, 'O Galo-Manaó bate as asas e some sobre a mata, rio abaixo. Ele não voltou mais a dançar na ilhota.')]),
       se('flag:vis-fugiu', [f(null, 'Você se afastou. O Galo-Manaó sacode as penas e volta para o alto da pedra.')]),
     ],
   },
@@ -339,7 +342,7 @@ export const EVENTOS_VISITANTES: EventoDef[] = [
           f(SOLVEIG, 'Ele está com você, e calmo! Eu escrevi uma nota no seu Diário de Campo, na página dos Visitantes: o Borealce não é da fauna daqui, é um visitante do norte.\fCuide dele com frio, sombra e água gelada. E, de vez em quando, olhe para o céu com ele.'),
           ['flag', 'borealce-nota'],
         ], [
-          se('flag:boreal-acesa', [f(SOLVEIG, 'Você acendeu as lanternas no Pico! Se ele fugiu, volte lá de noite: debaixo da aurora ele sempre reaparece.')], [
+          se('flag:borealce-sumiu', [f(SOLVEIG, 'O Borealce sumiu nas nuvens e não voltou mais… Pelo menos ele está livre, no frio que tanto queria. Obrigada por tentar.')], [se('flag:boreal-acesa', [f(SOLVEIG, 'Você acendeu as lanternas no Pico! Se você só se afastou dele, volte lá de noite: debaixo da aurora ele continua por perto.')], [
             se('flag:vis-lanternas', [f(SOLVEIG, 'As quatro lanternas! Agora suba ao alto do Pico Pindorama, de noite, e acenda todas juntas. Eu fico aqui, tentando desencalhar o navio.')], [
               f(SOLVEIG, 'Ainda faltam lanternas. Os meus pesquisadores só entregam a quem vence uma batalha com eles.'),
               se('!flag:boreal-lanterna-1', [f(SOLVEIG, 'A da Ingrid, em Serra da Geada.')]),
@@ -347,7 +350,7 @@ export const EVENTOS_VISITANTES: EventoDef[] = [
               se('!flag:boreal-lanterna-3', [f(SOLVEIG, 'A da Sigrid, na Lagoa Gelada.')]),
               se('!flag:boreal-lanterna-4', [f(SOLVEIG, 'A do Eirik, no Caminho das Névoas.')]),
             ]),
-          ]),
+          ])]),
         ]),
       ]),
     ],
@@ -362,10 +365,10 @@ export const EVENTOS_VISITANTES: EventoDef[] = [
       ['vis-estado'],
       se('!flag:vis-noite', [f(null, 'O alto do Pico Pindorama. Daqui se vê o mar da Costa do Sol de um lado e o Sertão das Névoas do outro.\fA Drª Solveig disse que as lanternas só fazem efeito de noite.')], [
         se('flag:boreal-acesa', [
-          se('!flag:vis-tem-borealce', [
+          se('!flag:borealce-ok&!flag:borealce-sumiu', [
             f(null, 'Debaixo da aurora, uma galhada acende entre as nuvens. O Borealce voltou!'),
             ['vis-acender'], ['chamar', 'vis-borealce-batalha'],
-          ], [f(null, 'A aurora dança sobre o Pico. O Borealce, na cuia, parece sonhar com ela.')]),
+          ], [se('flag:borealce-sumiu', [f(null, 'A aurora dança sobre o Pico, mas nenhuma galhada acende entre as nuvens. O Borealce não voltou.')], [f(null, 'A aurora dança sobre o Pico. O Borealce, na cuia, parece sonhar com ela.')])]),
         ], [
           se('!flag:vis-lanternas', [f(null, 'Um platô de pedra fria, varrido pelo vento. Seria o lugar certo para as Lanternas Boreais da Drª Solveig, mas ainda não há quatro na mochila.')], [
             f(null, 'Lá no alto, o vento de serra assobia frio. {JOGADOR} põe as quatro Lanternas Boreais sobre a pedra, uma em cada canto.\fUma a uma, elas acendem em verde.'),
@@ -387,7 +390,8 @@ export const EVENTOS_VISITANTES: EventoDef[] = [
         ['flag', 'borealce-ok'],
         f(null, 'O Borealce entrou na cuia. Lá no alto, a aurora ainda brilhou um pouco, como quem se despede.\fA Drª Solveig vai querer saber disso, lá em Porto Pantaneiro.'),
       ]),
-      se('flag:vis-venceu', [f(null, 'O Borealce recua para dentro das nuvens. Debaixo da aurora, ele vai voltar.')]),
+      // aparece uma vez só (decisão do autor; spec 6.5): vencido sem captura, não volta
+      se('flag:vis-venceu', [['flag', 'borealce-sumiu'], f(null, 'O Borealce recua para dentro das nuvens e a galhada apaga devagar. Ele não foi mais visto em Pindorama.')]),
       se('flag:vis-fugiu', [f(null, 'O Borealce sacode a galhada e fica olhando o céu. Ele continua por perto.')]),
     ],
   },

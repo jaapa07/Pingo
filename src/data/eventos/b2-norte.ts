@@ -15,7 +15,6 @@
 import type { EventoDef, Comando, CriaturaInst } from '../../core/tipos';
 import { jogo, setFlag } from '../../core/estado';
 import { registrarComando } from '../../world/registro';
-import { bus } from '../../core/events';
 import { ESPECIES } from '../criaturas';
 import './comuns';
 
@@ -32,21 +31,6 @@ registrarComando('b2n-data', () => {
   setFlag('b2n-neve-ja', jogo.save.flags['b2n-neve-ano'] === d.getFullYear());
 });
 registrarComando('b2n-neve-visto', () => { setFlag('b2n-neve-ano', new Date(Date.now() + jogo.save.relogio.deslocamentoMin * 60000).getFullYear()); });
-/**
- * Lendário derrotado volta ao mesmo lugar depois do Conselho (spec 6.4), no dia seguinte ao da derrota: `<x>-dormiu`
- * guarda o dia; ao entrar na zona com `conselho-vencido`, ele reaparece (Uirapuru no totem, Mapinguari no Coração).
- */
-const VOLTAM: [zona: string, ok: string, dormiu: string, npc: string][] = [['B-SG', 'uirapuru-ok', 'uirapuru-dormiu', 'b-sg-uirapuru'], ['B-FA', 'mapinguari-ok', 'mapinguari-dormiu', 'b-fa-mapinguari']];
-bus.on('zona', async (e?: { id?: string }) => {
-  const fl = jogo.save.flags;
-  let mudou = false;
-  for (const [zona, ok, dormiu, npc] of VOLTAM) {
-    const d = fl[dormiu];
-    if (e?.id !== zona || !fl['conselho-vencido'] || !d || (typeof d === 'number' && hoje() <= d)) continue;
-    setFlag(ok, false); setFlag(dormiu, false); setFlag(`oculto:${zona}:${npc}`, false); mudou = true;
-  }
-  if (mudou) (await import('../../world/index')).reavaliar();
-});
 /** resultado da última batalha selvagem em flags booleanas */
 registrarComando('b2n-resultado', () => { const r = jogo.save.flags['ultima-batalha']; setFlag('b2n-capturou', r === 'captura'); setFlag('b2n-venceu', r === 'vitoria'); });
 /** a escrivã lê o registro de cada criatura da equipe (localCaptura e nivelCaptura) */
@@ -210,7 +194,8 @@ export const EVENTOS_B2_NORTE: EventoDef[] = [
           ['selvagem', 177, 67, { lendario: true }],
           ['b2n-resultado'],
           se('flag:b2n-capturou', [['flag', 'uirapuru-ok'], ['esconder', 'b-sg-uirapuru'], f(null, 'O Uirapuru se aninhou na cuia. A mata volta a cantar, aos poucos.')]),
-          se('flag:b2n-venceu', [['flag', 'uirapuru-ok'], ['b2n-marcar', 'uirapuru-dormiu'], ['esconder', 'b-sg-uirapuru'], f(null, 'O Uirapuru voou para dentro da mata. Os antigos dizem que, solto ou perdido, ele volta ao mirante depois do Conselho.')]),
+          // derrotado sem captura: some para sempre (decisão do autor; spec 6.4)
+          se('flag:b2n-venceu', [['flag', 'uirapuru-ok'], ['flag', 'uirapuru-dormiu'], ['esconder', 'b-sg-uirapuru'], f(null, 'O Uirapuru cai do totem, se recompõe e voa para longe, mata adentro. O canto dele nunca mais foi ouvido no mirante.')]),
           se('!flag:b2n-capturou&!flag:b2n-venceu', [f(null, 'O Uirapuru pousa de novo no totem e continua cantando, como se nada tivesse acontecido.')]),
         ], [f(null, 'Um totem de pinho com um passarinho entalhado. O silêncio aqui em cima é de quem espera alguém.')]),
       ]),
@@ -246,7 +231,8 @@ export const EVENTOS_B2_NORTE: EventoDef[] = [
         ['selvagem', 175, 70, { lendario: true }],
         ['b2n-resultado'],
         se('flag:b2n-capturou', [['flag', 'mapinguari-ok'], ['esconder', 'b-fa-mapinguari'], f(null, 'O Mapinguari aceitou a parceria. A floresta inteira solta um suspiro.')]),
-        se('flag:b2n-venceu', [['flag', 'mapinguari-ok'], ['b2n-marcar', 'mapinguari-dormiu'], ['esconder', 'b-fa-mapinguari'], f(null, 'O Mapinguari recua para o fundo da mata. Os antigos dizem que ele volta ao Coração da Floresta quando a lua troca.')]),
+        // derrotado sem captura: some para sempre (decisão do autor; spec 6.4)
+        se('flag:b2n-venceu', [['flag', 'mapinguari-ok'], ['flag', 'mapinguari-dormiu'], ['esconder', 'b-fa-mapinguari'], f(null, 'O Mapinguari tomba, levanta devagar e some no fundo da mata, abrindo caminho entre os troncos. A Floresta Ancestral nunca mais o viu.')]),
         se('!flag:b2n-capturou&!flag:b2n-venceu', [f(null, 'O Mapinguari continua de pé na frente do tronco, respirando fundo. Ele não vai a lugar nenhum.')]),
       ]),
     ],

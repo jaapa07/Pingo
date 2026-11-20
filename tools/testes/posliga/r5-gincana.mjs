@@ -40,7 +40,7 @@ try {
   for (const [i, prova] of ['agilidade', 'forca', 'salto'].entries()) {
     const m = await melhor(prova);
     const dur = (0.55 + 0.2 * Math.max(0, Math.min(1, (m.vel - 30) / 220)));
-    await t.q((i) => { window.Q.regrasEscolha = window.Q.regrasEscolha.filter((r) => String(r[0]) !== String(/^Qual prova/)); window.Q.regrasEscolha.unshift([/^Qual prova/, i]); window.Q.telaEsperada = /tela-equipe/; }, i);
+    await t.q((i) => { const Q = window.Q; Q.regrasEscolha = Q.regrasEscolha.filter((r) => !r[0].prova); Q.regrasEscolha.unshift([{ prova: true, test: () => /^Qual prova/.test(Q.textos[Q.textos.length - 1] ?? '') }, i]); Q.telaEsperada = /tela-equipe/; }, i);
     await limparTextos(t); await t.falarCom('gincana-juiza');
     if (!/tela-equipe/.test(await topo(t))) { t.ok(false, prova + ': escolha da criatura não abriu', await topo(t)); continue; }
     await escolherCard(m.k);

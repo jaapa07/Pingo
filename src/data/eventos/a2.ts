@@ -428,6 +428,7 @@ export const EVENTOS_A2: EventoDef[] = [
           f(null, 'A BOIÚNA, a cobra-grande das águas, desenrola o corpo e ergue a cabeça!'),
           ['selvagem', 174, 52, { lendario: true }],
           ['a2-lenda-fim', 'boiuna-ok'],
+          se('flag:a2-lenda-vencida', [f(null, 'A Boiúna afunda no redemoinho e a água do recife para de girar. A cobra-grande não foi mais vista.')]),
         ], [
           f(null, 'Algo imenso dorme enrolado no fundo da gruta. Cada respiração dele empurra você um palmo para trás.\fNão acorda com barulho, nem com luz. Parece esperar um ritmo… um toque de berimbau que você ainda não conhece.'),
         ]),
@@ -462,13 +463,17 @@ export const EVENTOS_A2: EventoDef[] = [
           f(null, 'O GAVIÃO-TUPÃ desce do céu e pousa na pedra! Cada batida de asa é um relâmpago.'),
           ['selvagem', 178, 60, { lendario: true }],
           ['a2-lenda-fim', 'gaviao-ok'],
+          se('flag:a2-lenda-vencida', [f(null, 'O Gavião-Tupã cai, se ergue num estalo de trovão e some acima das nuvens. Ele não foi mais visto no Monte Tupã.')]),
         ], [f(null, 'A pedra mais alta do Monte Tupã. Está riscada de raio de cima a baixo.\fO céu aqui parece esperar alguém. Ainda não é você: falta a insígnia do Pajé.')]),
       ]),
     ],
   },
 ];
 
-/** lendário de evento: some depois de capturado ou vencido; fuga e derrota deixam o encontro para outra vez */
-registrarComando('a2-lenda-fim', ([flagOk]) => { const r = jogo.save.flags['ultima-batalha']; if (r === 'captura' || r === 'vitoria') setFlag(String(flagOk)); });
+/**
+ * lendário de evento: aparece uma vez só (decisão do autor; spec 6.4). Capturado ou vencido sem captura, some para sempre
+ * (`a2-lenda-vencida` = foi vencido, para a fala de despedida); fuga e derrota do jogador deixam o encontro para outra vez.
+ */
+registrarComando('a2-lenda-fim', ([flagOk]) => { const r = jogo.save.flags['ultima-batalha']; setFlag('a2-lenda-vencida', r === 'vitoria'); if (r === 'captura' || r === 'vitoria') setFlag(String(flagOk)); });
 /** tartaruga das sextas: capturada ou vencida, só volta na outra semana (a flag guarda a sexta em que saiu) */
 registrarComando('a2-sexta-fim', () => { const r = jogo.save.flags['ultima-batalha']; if (r === 'captura' || r === 'vitoria') { setFlag('sexta-semana', semana()); setFlag('sexta-capturada'); } });

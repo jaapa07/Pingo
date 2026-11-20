@@ -646,7 +646,7 @@ Multiplicadores: ×2 (forte), ×0,5 (fraco) e ×0 (nulo). Nas criaturas de dois 
 **Exigências da tabela:**
 - Cada zona lista nos dados de **6 a 16 espécies** por período, com faixa de nível e peso.
 - Toda criatura da tabela aparece em **pelo menos um habitat** ou evento acessível.
-- Se o jogador **soltar ou perder um lendário**, ele reaparece no mesmo lugar depois do Conselho.
+- **Cada lendário aparece UMA vez** (decisão do autor, 20/11; substitui a regra antiga de reaparecer depois do Conselho): se for **derrotado sem ser capturado, some para sempre**, com uma fala curta avisando ("…não foi mais visto"); se o jogador **fugir** (ou perder a batalha), ele continua no lugar (os errantes continuam vagando) e pode tentar de novo; capturado, não volta. Vale para os lendários de evento (Boitatá, Boiúna, Mapinguari, Uirapuru, Gavião-Tupã), os errantes (Queixada-Caipora, Lobo-Jaci, Onça-Guaraci), os visitantes 181/182 e a Pelagem Rara garantida do lago (Mandizinho).
 
 ### 6.5 Lendários extras do pós-jogo (pedido do autor: fora do esquema da fauna brasileira)
 Duas criaturas **secretas**, numeradas 181 e 182. Não contam para os 180 do Diário (o Diário continua "completo" com 180); aparecem numa página extra, "Visitantes", que só surge depois do primeiro encontro. Cada uma é o prêmio de uma **missão extra** liberada com as **16 insígnias**.
@@ -660,7 +660,7 @@ Duas criaturas **secretas**, numeradas 181 e 182. Não contam para os 180 do Di�
 
 **Missão "A Expedição Boreal" (182):** depois de vencer o Conselho, um navio de pesquisa de bandeira estrangeira encalha no cais de B9. A pesquisadora-chefe, a **Drª Solveig**, perdeu o animal que estudava: ele subiu a serra atrás de frio. O jogador recolhe 4 **Lanternas Boreais** espalhadas pelas zonas geladas (cada uma guardada por um treinador da expedição, com criaturas de Geada) e as acende no alto do Pico Pindorama, de noite. O céu da zona ganha a aurora (camada de fundo animada exclusiva) e o Borealce aparece. É o único encontro do jogo com música e arena próprias de fora do Brasil; a Drª Solveig explica no Diário que ele é um visitante e não pertence à fauna local.
 
-**Regras:** atributos de lendário (soma 580–620), `taxaCaptura` 3, sem sexo, sem evolução; modelo, sprite, grito e animação próprios como os demais; se o jogador soltar ou perder, a missão permite reencontro. A verificação da progressão (`npm run check`) confere as duas missões além das 180.
+**Regras:** atributos de lendário (soma 580–620), `taxaCaptura` 3, sem sexo, sem evolução; modelo, sprite, grito e animação próprios como os demais; aparecem **uma vez só**, como os lendários (6.4): fuga → continuam lá; derrotados sem captura → somem para sempre (`galo-manao-sumiu`, `borealce-sumiu`). A verificação da progressão (`npm run check`) confere as duas missões além das 180.
 
 ---
 

@@ -41,6 +41,7 @@ async function tentar(rotulo, fn, o = {}) {
   throw new Error('desisti de ' + rotulo + ' depois de 8 derrotas');
 }
 const cuidar = (o) => Qr((o) => window.Q.cuidar(o), o ?? { limiar: 0.5, reanimar: false, guardar: { garrafada: 2 } });
+let semVolta = false; // trecho sem caminho de volta ao Posto (leste do Túnel Alagado): segue em frente
 async function recompor() {
   const sn = await Qr(() => window.Q.saudeNucleo(3));
   if (sn.caidas === 0 && sn.pior >= 0.55 && !sn.pgBaixo) return;
@@ -48,6 +49,7 @@ async function recompor() {
   const temPosto = await Qr((z) => !!window.__pingo.mundo.zona.warps.some((w) => w.para.zona === z + '-posto'), z);
   if (temPosto) { await viajar(`${z}-posto`); await Qr(() => window.Q.curarNoPosto()); estat.postos++; await viajar(z); return; }
   await cuidar({ limiar: 0.6, reanimar: true, nucleo: 3 });
+  if (semVolta) return;
   const d2 = await Qr(() => window.Q.saudeNucleo(3));
   if (d2.caidas >= 1 || d2.pior < 0.4 || d2.pgBaixo) {
     const posto = await Qr(() => window.__pingo.jogo.save.ultimoPosto?.zona);
@@ -271,7 +273,7 @@ const etapas = {
         marco('cascata da gruta: ' + JSON.stringify(await t.st()) + ' ' + JSON.stringify(await t.falas(2)));
         await mergulhar(36, 4, 'B-TA');
       }
-      if ((await t.st()).zona === 'B-TA') { await limpar(); await mergulhar(54, 24, 'B6'); }
+      if ((await t.st()).zona === 'B-TA') { semVolta = true; try { await limpar(); } finally { semVolta = false; } await mergulhar(54, 24, 'B6'); }
       await t.exige((await t.st()).zona === 'B6', 'chegou ao Brejo Roxo');
       await t.foto('b6-chegada');
       await cidade('B6', MANT); await limpar({ menos: ['porteiro-lab'] });

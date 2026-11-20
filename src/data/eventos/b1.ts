@@ -20,7 +20,6 @@
 import type { EventoDef, Comando } from '../../core/tipos';
 import { jogo, setFlag, diaSemana } from '../../core/estado';
 import { registrarComando } from '../../world/registro';
-import { bus } from '../../core/events';
 import { ESPECIES } from '../criaturas';
 import './comuns'; // comandos extras: temItens, temEspecie, grito, vitrine…
 
@@ -47,16 +46,6 @@ registrarComando('b1-trocar', async ([dar, receber, nivel, apelido, it, ok]) => 
   const nova = criarCriatura(Number(receber), Number(nivel), { apelido: String(apelido), item: String(it), treinadorOriginal: 'Aroeirinha', localCaptura: 'Vila Cascavel', nivelCaptura: Number(nivel) });
   eq.splice(i, 1, nova);
   const v = jogo.save.diario; for (const n of [Number(receber)]) { if (!v.visto.includes(n)) v.visto.push(n); if (!v.capturado.includes(n)) v.capturado.push(n); }
-});
-/**
- * Lendário derrotado volta ao mesmo lugar depois do Conselho (spec 6.4), no dia seguinte ao da derrota: `boitata-dormiu`
- * guarda o dia; ao entrar na Caverna Vulcânica com `conselho-vencido`, o Boitatá desperta de novo (limpa o `esconder`).
- */
-bus.on('zona', async (e?: { id?: string }) => {
-  const fl = jogo.save.flags, d = fl['boitata-dormiu'];
-  if (e?.id !== 'B-CV' || !fl['conselho-vencido'] || !d || (typeof d === 'number' && hoje() <= d)) return;
-  setFlag('boitata-ok', false); setFlag('boitata-dormiu', false); setFlag('oculto:B-CV:boitata', false);
-  (await import('../../world/index')).reavaliar();
 });
 /** filhotes do Centro de Reabilitação: os do ninhal (depois de `pantanal-ok`) e os da mina (depois de `mina-ok`) */
 const ORFAOS_NINHAL = [105, 101, 103, 51, 71, 73, 86, 91, 97];
@@ -393,8 +382,9 @@ export const EVENTOS_B1: EventoDef[] = [
           ['b1-resultado'],
           se('flag:b1-capturou', [['flag', 'boitata-ok'], ['esconder', 'boitata'], f(null, 'O Boitatá se acomodou na cuia, morno como brasa de fogão.')]),
           se('flag:b1-venceu', [
-            ['flag', 'boitata-ok'], ['b1-marcar-dia', 'boitata-dormiu'], ['esconder', 'boitata'],
-            f(null, 'O Boitatá mergulhou na lava e sumiu. Os antigos dizem que serpente de fogo derrotada dorme até o Conselho dos Guardiões cair.'),
+            // lendário derrotado sem captura some para sempre (decisão do autor; spec 6.4): `boitata-dormiu` = derrotado
+            ['flag', 'boitata-ok'], ['flag', 'boitata-dormiu'], ['esconder', 'boitata'],
+            f(null, 'O Boitatá se desfez em brasas e afundou na lava. A caverna esfriou de vez: ele não foi mais visto.'),
           ]),
           se('!flag:b1-capturou&!flag:b1-venceu', [f(null, 'O Boitatá se enrola de novo sobre a pedra, de olhos semiabertos. Ele continua ali, esperando.')]),
         ]),
