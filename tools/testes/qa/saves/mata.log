@@ -517,3 +517,26 @@ erros de console: []
   [batalha] A4-1 → vitoria · equipe 2:27,10:8,13:6,45:8,20:8,43:17 · A4 · $13696
   [batalha] A4-3 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $14456
   [batalha] A4-2 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:18 · A4 · $15292
+  compras em A4-venda: 6× garrafada · sobrou $11092
+== checkpoint mata-pre-lider-3: ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 18"] $11092
+  ginásio 3, tentativa 1: equipe ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 18"]
+  [batalha] g03-1 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:18 · A4-ginasio · $11732
+  [batalha] g03-2 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:18 · A4-ginasio · $12412
+  [ginásio] posição (10,10), esperado (13,10) — 
+  (foto gin-desvio falhou: TimeoutError: page.screenshot: Timeout 60000ms exceeded.
+Cal)
+FALHA Error: desvio |     at seq (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:39:191) |     at async ginasio (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:65:11) |     at async Object.fn (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:145:5) {"pronto":true,"oc":false,"mov":false,"zona":"A4-ginasio","x":10,"y":10,"dir":"l","modo":"pe","telas":1,"topo":"mundo tela-mundo","ocupada":false,"nres":5} ["O volante range e a água corre pelas comportas.\nO canal do meio encheu. O braço que divide o salão esvaziou.","canal do meio: VAZIO · braço que divide o salão: CHEIO","O volante range e a água corre pelas comportas.\nO canal do meio esvaziou. O braço que divide o salão encheu."]
+resumo: {"zona":"A4-ginasio","x":10,"y":10,"dinheiro":12412,"insignias":[1,2],"amuletos":["facao"],"equipe":[{"e":2,"nome":"Tamanduá-Copa","nv":29,"vida":81,"max":88,"st":null,"golpes":["patada 24","laco-de-cipo 15","chicote-de-cipo 18","sorver-seiva 20"]},{"e":10,"nome":"Pipirim","nv":8,"vida":26,"max":26,"st":null,"golpes":["bicada 35","berro 40","lufada 35"]},{"e":13,"nome":"Cotiazinha","nv":6,"vida":22,"max":22,"st":null,"golpes":["encontrao 35","cara-feia 30","bote-ligeiro 30"]},{"e":45,"nome":"Quero-querinho","nv":8,"vida":26,"max":26,"st":null,"golpes":["bicada 35","berro 40","jogar-areia 15"]},{"e":20,"nome":"Gambazinho","nv":8,"vida":26,"max":26,"st":null,"golpes":["arranhao 35","fumaca-fedida 20","cara-feia 30"]},{"e":43,"nome":"Corujinha","nv":18,"vida":46,"max":46,"st":null,"golpes":["golpe-de-asa 30","lufada 35","intuicao 25","cisma 10"]}],"mochila":{"radio-cipo":1,"diario-de-campo":1,"pt-31":1,"fumaca-andiroba":1,"cuia-noturna":1,"unguento":2,"cuia":7,"amuleto-facao":1,"pt-38":1,"cuia-rapida":2,"pt-08":1,"pt-15":1,"garrafada":6},"tempo":25602,"posto":"A4-posto","capturado":7}
+treino extra: [{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":8,"de":20,"para":21},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":11,"de":21,"para":22},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":14,"de":22,"para":23}] derrotas: 10 curas: 46
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim","Usar o Facão? → Sim"]
+erros de console: []
+>> retomando de mata-passo-7
+
+>> etapa 8: Porto Sereia: compras, treinadores e ginásio 3 (Rio)  (1 s)
+  [batalha] A4-1 → vitoria · equipe 2:27,10:8,13:6,45:8,20:8,43:17 · A4 · $13696
+  [batalha] A4-3 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $14456
+  [batalha] A4-2 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $15292
+  (foto loja-A4-venda falhou: TimeoutError: page.screenshot: Timeout 60000ms exceeded.
+Cal)
+  compras em A4-venda: 6× garrafada · sobrou $11092
+== checkpoint mata-pre-lider-3: ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 17"] $11092

@@ -30,7 +30,7 @@ const zona: ZonaDef = {
   mapaChars: g.mapa,
   warps: [
     ...saidas(g, 'A', 'B5', 46, 13, 's'),
-    ...saidas(g, 'G', 'B-TA-gruta', 8, 17, 'n'),
+    ...saidas(g, 'G', 'B-TA-gruta', 7, 16, 'n'),
     ...saidas(g, 'H', 'B-TA-gruta', 39, 4, 's'),
     ...saidas(g, 'B', 'B6', 10, 30, 's'),
   ],

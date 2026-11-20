@@ -226,7 +226,8 @@ function provaForca(raiz: HTMLElement, x: Ctx): Prova {
 
 /** Salto do Riacho: troncos e pedras vêm pelo chão; A pula. Pular bem no meio vale salto perfeito */
 function provaSalto(raiz: HTMLElement, x: Ctx): Prova {
-  const pista = div('gn-pista gn-chao gn-riacho', raiz);
+  const pista = div('gn-pista gn-chao', raiz);
+  em(div('gn-agua', pista), 0, 130);
   const CHAO = 148, CX = 72, ALT = 44;
   const agua = [tracos(pista, 'gn-brilho', 134)], chao = [tracos(pista, 'gn-pedrisco', 154), tracos(pista, 'gn-pedrisco', 160)];
   const cri = new Corredor(pista, x.c.especie); cri.x = CX; cri.y = CHAO;
@@ -264,10 +265,10 @@ function provaSalto(raiz: HTMLElement, x: Ctx): Prova {
           o.feito = true; combo = 0; trope = tTrope; cri.piscar = tTrope; noAr = -1;
           som('batida'); x.fx.fx('fis-impacto', CX + 6, CHAO - 10); x.fx.txt('Tropeçou!', CX, CHAO - 60, 'vermelho'); input.vibrar(30);
         } else if (o.x < CX - o.w / 2 - 6) {
-          o.feito = true; combo = Math.min(5, combo + 1);
+          o.feito = true; combo = Math.min(4, combo + 1);
           // perfeito: passou por baixo bem no topo do pulo
           const perfeito = (o as Ob & { meio?: boolean }).meio === true;
-          const ganho = 10 + 2 * (combo - 1) + (perfeito ? 10 : 0); pts += ganho;
+          const ganho = 4 + combo + (perfeito ? 4 : 0); pts += ganho;
           x.fx.txt(perfeito ? `PERFEITO +${ganho}` : `+${ganho}`, CX, CHAO - 60, perfeito ? 'amarelo' : 'verde');
           if (perfeito) { som('ui-ok'); x.fx.fx('comum-estrela', CX, CHAO - ALT - 12); }
         }

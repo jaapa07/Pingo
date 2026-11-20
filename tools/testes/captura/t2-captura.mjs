@@ -8,19 +8,24 @@ await t.ev(() => { void window.__pingo.mundo.batalhaSelvagem(1, 6); });
 const topo = () => t.ev(() => window.__pingo.telas.topo?.el.className ?? '');
 // espera o menu de ações
 const menu = async () => { for (let i = 0; i < 120; i++) { if (await t.ev(() => !!document.querySelector('.bt-menu'))) return true; await t.k('z', 200); } return false; };
+await t.ev(() => { window.__fim = null; window.__pingo.bus.on('batalha-fim', (d) => { window.__fim = d.resultado; }); });
 let capturou = false;
 for (let tent = 0; tent < 6 && !capturou; tent++) {
   if (!(await menu())) break;
   await t.k('ArrowDown', 250); await t.k('z', 500); // MOCHILA
   if (tent === 0) await t.k('ArrowRight', 400); // bolso Cuias (a escolha fica lembrada)
-  if (tent === 0) await t.foto('mochila-batalha');
-  // procura a Cuia de Nível na lista
-  if (tent === 0) await t.k('ArrowDown', 250); // a 2ª da lista: Cuia de Nível (o cursor volta ao topo a cada abertura)
-  else await t.k('ArrowDown', 250);
+  await t.k('ArrowDown', 250); // a 2ª da lista: Cuia de Nível
   await t.k('z', 300);
-  for (let i = 0; i < 60; i++) { await t.espera(150); const r = await t.ev(() => window.__pingo.jogo.save.equipe.length); if (r > 1) { capturou = true; break; } if (await t.ev(() => !!document.querySelector('.bt-menu'))) break; if (i % 6 === 5) await t.k('z', 50); }
+  for (let i = 0; i < 200; i++) {
+    await t.espera(150);
+    const fim = await t.ev(() => window.__fim);
+    if (fim) { capturou = fim === 'captura'; break; }
+    if (await t.ev(() => !!document.querySelector('.bt-menu'))) break;
+    if (i % 5 === 4) await t.k('x', 50); // avança o texto e recusa o apelido
+  }
+  if (tent === 0) await t.foto('depois-arremesso');
 }
-for (let i = 0; i < 40 && (await t.ev(() => window.__pingo.telas.pilha.length > 1)); i++) { await t.k('x', 250); await t.k('z', 250); }
+for (let i = 0; i < 60 && (await t.ev(() => window.__pingo.telas.pilha.length > 1)); i++) await t.k('x', 250);
 const eq = await t.ev(() => window.__pingo.jogo.save.equipe.map((c) => ({ e: c.especie, rara: !!c.rara, cuia: c.cuia, nv: c.nivel })));
 t.ok(capturou && eq.some((c) => c.rara && c.cuia === 'cuia-nivel'), 'rara capturada com a Cuia de Nível', JSON.stringify(eq));
 t.ok(await t.ev(() => !!window.__pingo.jogo.save.flags['rara:1']), 'Diário marcou a Pelagem Rara do nº 1');

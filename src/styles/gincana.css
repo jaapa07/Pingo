@@ -17,7 +17,7 @@
 .gn-pedrisco { height: 2px; background: repeating-linear-gradient(90deg, #8c5a2c 0 2px, transparent 2px 11px, #a8823c 11px 13px, transparent 13px 32px); }
 /* chão de terra (força e salto) */
 .gn-chao::before { content: ''; position: absolute; left: 0; top: 146px; width: 320px; height: 20px; background: #b07a40; box-shadow: inset 0 2px 0 #7c5a30, 0 -2px 0 #6c9c50; }
-.gn-riacho::after { content: ''; position: absolute; left: 0; top: 130px; width: 320px; height: 12px; background: #4a9cdc; box-shadow: inset 0 2px 0 #78bce8, inset 0 -2px 0 #28443c, 0 -2px 0 #6c9c50; }
+.gn-agua { position: absolute; left: 0; top: 130px; width: 320px; height: 12px; background: #4a9cdc; box-shadow: inset 0 2px 0 #78bce8, inset 0 -2px 0 #28443c, 0 -2px 0 #6c9c50; }
 .gn-brilho { height: 2px; z-index: 1; background: repeating-linear-gradient(90deg, #e8eef0 0 6px, transparent 6px 22px, #b0d8e8 22px 26px, transparent 26px 40px); }
 /* barra de ritmo (força) */
 .gn-ritmo { position: absolute; height: 8px; background: #3b2a35; box-shadow: 0 0 0 1px #1a1423; }

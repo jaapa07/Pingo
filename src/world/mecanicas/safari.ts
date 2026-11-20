@@ -9,6 +9,7 @@ import { registrarMecanica } from '../registro';
 import { jogo, flag, setFlag, qtdItem, tirarItem, periodo } from '../../core/estado';
 import { rng } from '../../core/rng';
 import { telas } from '../../ui/telas';
+import { bus } from '../../core/events';
 import { texto, escrever, em } from '../../ui/fonte';
 import { moldura } from '../../ui/kit';
 import { SAFARI, setorEm, tabelaSetor } from '../../data/safari';
@@ -89,8 +90,11 @@ registrarMecanica(ZONA, {
     }
     return false;
   },
-  sair() {
-    tirarHud();
-    if (flag('safari-ativo') && !encerrando) { const n = encerrar(); avisar(n ? `Passeio encerrado: ${n} Cuias-Safári ficaram na porteira.` : 'Passeio encerrado.'); }
-  },
+  sair() { tirarHud(); },
+});
+// saiu do parque para outra zona (porteira, Voo, corda): o passeio acaba e as cuias ficam na portaria.
+// Recarregar o próprio parque (mundo.recarregar) não encerra nada.
+bus.on('zona', (e: { id: string; de?: string }) => {
+  if (e.de !== ZONA || e.id === ZONA || encerrando || !flag('safari-ativo')) return;
+  const n = encerrar(); avisar(n ? `Passeio encerrado: ${n} Cuias-Safári ficaram na porteira.` : 'Passeio encerrado.');
 });

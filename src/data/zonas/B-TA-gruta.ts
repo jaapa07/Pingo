@@ -9,7 +9,7 @@ import { Pincel, grade, E, duelista, gente, item, placa, saidas, obj } from './_
 
 const p = new Pincel(44, 26, '#');
 // piscina do oeste (com o poço que desce ao túnel) e a prainha
-p.r(2, 13, 8, 9, '~').r(4, 15, 4, 4, 'd').r(10, 13, 3, 8, ';').p('.', 10, 12, 11, 12).p(',', 11, 14, 12, 18);
+p.r(2, 13, 8, 9, '~').r(4, 15, 3, 3, 'd').r(10, 13, 3, 8, ';').p('.', 10, 12, 11, 12).p(',', 11, 14, 12, 18);
 // corredor do pedregulho
 p.r(13, 15, 5, 1, '.').p('p', 15, 15);
 // salão, com chão de encontro e o lago do Jaú
@@ -20,14 +20,13 @@ p.r(32, 10, 3, 3, '~').p('w', 33, 8, 33, 9).r(32, 2, 10, 6, '~').r(36, 3, 3, 3, 
 // prateleira de cima (Escalar) e o nicho da rocha rachada
 p.r(19, 2, 9, 4, '.').p('e', 22, 6, 22, 7).p('r', 27, 3).p('.', 28, 3).p(',', 20, 3, 24, 2).p('T', 19, 5, 26, 2);
 // marcas
-for (const [x, y] of [[4, 15], [5, 15], [6, 15], [7, 15], [4, 16], [5, 16], [7, 16], [4, 17], [5, 17], [6, 17], [7, 17], [4, 18], [5, 18], [6, 18], [7, 18]]) p.t(x, y, 'W');
-p.t(6, 16, 'V');
+for (const [x, y] of [[4, 15], [5, 15], [6, 15], [4, 16], [5, 16], [6, 16], [4, 17], [5, 17], [6, 17]]) p.t(x, y, 'W');
 for (const [x, y] of [[36, 3], [37, 3], [38, 3], [36, 4], [37, 4], [36, 5], [37, 5], [38, 5]]) p.t(x, y, 'Q');
 p.t(38, 4, 'Z');
 p.t(28, 15, '1').t(20, 4, '2').t(29, 12, 'A').t(31, 3, 'B').t(16, 14, 'P').t(29, 10, 'F');
 p.t(19, 2, 'a').t(28, 3, 'h').t(11, 19, 'i').t(25, 2, 'j').t(42, 6, 'k').t(18, 17, 'm');
 const g = grade('B-TA-gruta', p.fim(), {
-  W: 'd', V: 'd', Q: 'd', Z: 'd', '1': '%', '2': '.', A: '.', B: ';', P: '.', F: '.', a: '.', h: '.', i: ';', j: '.', k: ';', m: '.',
+  W: 'd', Q: 'd', Z: 'd', '1': '%', '2': '.', A: '.', B: ';', P: '.', F: '.', a: '.', h: '.', i: ';', j: '.', k: ';', m: '.',
 });
 const pl = placa(g, 'P', 'GRUTA DO FÔLEGO\nRespire. Conte até dez. Empurre o pedregulho.\n— Clube de Mergulho de Cidade Ginga');
 const zona: ZonaDef = {
@@ -36,7 +35,7 @@ const zona: ZonaDef = {
   objetos: [pl.objeto, obj(g, 'F', 'fogueira'), { o: 'canoa', x: 30, y: 17 }],
   placas: [pl.placa],
   warps: [
-    ...saidas(g, 'W', 'B-TA', 26, 23, 'n'), ...saidas(g, 'V', 'B-TA', 26, 23, 'n'),
+    ...saidas(g, 'W', 'B-TA', 26, 23, 'n'),
     ...saidas(g, 'Q', 'B-TA', 36, 9, 's'), ...saidas(g, 'Z', 'B-TA', 36, 9, 's'),
   ],
   npcs: [
