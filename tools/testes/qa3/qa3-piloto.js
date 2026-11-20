@@ -258,6 +258,7 @@
           else if (pisavel(nx, ny) || (destino && w)) passo = d;
           else if (ch === 'c' && pode('facao')) passo = 'A' + d;
           else if (ch === 'r' && pode('quebra-pedra')) passo = 'A' + d;
+          else if (ch === 'e' && pode('escalar') && (d === 'n' || d === 's')) { let k = 0; while (z.ch(x, y + D[d][1] * (k + 1)) === 'e') k++; const fy = y + D[d][1] * (k + 1); if (!pisavel(x, fy) || oc.has(x + ',' + fy)) continue; ny = fy; passo = 'A' + d; } // paredão (Escalar): sobe/desce a coluna inteira
           else if (ch === 'p' && o.fantasmaP && !z.warp(nx, ny)) passo = 'P' + d;
           else continue;
           if ((ch === 'g' || ch === 'o') && !destino) continue; // gelo e buracos: só por roteiro
@@ -691,7 +692,7 @@
     if (s.zona === s0.zona) for (const d of 'nslo') if (!M.zv.dentro(w.x + D[d][0], w.y + D[d][1])) { s = await Q.passo(d); if (s.zona !== s0.zona) break; }
     return s;
   };
-  Q.ajudantes = () => Object.fromEntries(['facao', 'remo', 'forca', 'lampiao', 'quebra-pedra', 'faro'].map((a) => [a, jogo.save.amuletos.includes(a) ? (V.ajudante(a) ? CR.especie(V.ajudante(a).especie).nome : 'SEM CRIATURA') : '-']));
+  Q.ajudantes = () => Object.fromEntries(['facao', 'remo', 'forca', 'lampiao', 'quebra-pedra', 'faro', 'mergulho', 'escalar'].map((a) => [a, jogo.save.amuletos.includes(a) ? (V.ajudante(a) ? CR.especie(V.ajudante(a).especie).nome : 'SEM CRIATURA') : '-']));
   /** saúde só do núcleo (as `k` de maior nível): pior fração de vida e quantas caíram */
   Q.saudeNucleo = (k = 3) => { const e = jogo.save.equipe.filter((c) => !c.ovo).slice().sort((x, y) => y.nivel - x.nivel).slice(0, k); return { pior: Math.min(...e.map((c) => c.vida / vidaMax(c))), caidas: e.filter((c) => c.vida <= 0).length, pgBaixo: e.filter((c) => c.vida > 0 && c.golpes.filter((g) => GO.golpe(g.id).cat !== 'status').every((g) => g.pg <= 3)).length }; };
   Q.saude = () => { const e = jogo.save.equipe.filter((c) => !c.ovo); const tot = e.reduce((a, c) => a + vidaMax(c), 0), cur = e.reduce((a, c) => a + c.vida, 0); return { frac: cur / tot, caidas: e.filter((c) => c.vida <= 0).length, vivas: e.filter((c) => c.vida > 0).length, pgBaixo: e.filter((c) => c.vida > 0 && c.golpes.filter((g) => GO.golpe(g.id).cat !== 'status').every((g) => g.pg <= 3)).length }; };

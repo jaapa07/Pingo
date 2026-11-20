@@ -98,7 +98,7 @@ function estilo() {
   const s = document.createElement('style');
   s.textContent = `
 .vis-aurora{position:absolute;left:0;top:0;width:320px;height:180px;pointer-events:none;overflow:hidden}
-.vis-aurora .ceu{position:absolute;inset:0;background:linear-gradient(#06102a 0 18%,#0b1a3c 18% 40%,transparent 40%);mix-blend-mode:multiply;opacity:.75}
+.vis-aurora .ceu{position:absolute;inset:0;background:linear-gradient(#06102a 0 14%,#0a1838 14% 24%,#0e1f44 24% 31%,rgba(14,31,68,.55) 31% 36%,rgba(14,31,68,.25) 36% 40%,transparent 40%);opacity:.7}
 .vis-aurora .faixa{position:absolute;left:0;width:320px;height:72px;background-repeat:repeat-x;mix-blend-mode:screen;image-rendering:pixelated}
 .vis-aurora .f1{top:2px;animation:vis-a1 9s steps(40) infinite,vis-pulso 3.2s steps(4) infinite alternate}
 .vis-aurora .f2{top:14px;animation:vis-a2 14s steps(40) infinite reverse,vis-pulso 4.4s steps(4) infinite alternate-reverse}

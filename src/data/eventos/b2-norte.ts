@@ -105,7 +105,7 @@ export const EVENTOS_B2_NORTE: EventoDef[] = [
           ], [
             f(ALVA, 'Você vai passar pela Serra da Geada? Meu pai, o Joca, pesca na Lagoa Gelada e mora numa ilha no meio da água.\fEle não sobe nem desce a serra, e eu não saio do observatório. Pode levar esta carta para ele?'),
             ['simnao', 'Levar a carta ao pescador Joca?', 'b2n-sim'],
-            se('flag:b2n-sim', [['flag', 'm-carta-lume'], ['sfx', 'item-obtido'], f(null, '{JOGADOR} guardou a carta da Estrela-d’Alva na mochila.'), f(ALVA, 'Obrigada! A Lagoa Gelada fica a noroeste da Serra da Geada. Leve o Remo: a ilha é no meio da água.')], [f(ALVA, 'Tudo bem. Se mudar de ideia, eu estou sempre aqui, olhando para cima.')]),
+            se('flag:b2n-sim', [['flag', 'm-carta-lume'], ['sfx', 'item-obtido'], f(null, '{JOGADOR} guardou a carta da Estrela-d’Alva na mochila.'), f(ALVA, 'Obrigada! A Lagoa Gelada fica a leste da Serra da Geada. Leve o Remo: a ilha é no meio da água.')], [f(ALVA, 'Tudo bem. Se mudar de ideia, eu estou sempre aqui, olhando para cima.')]),
           ]),
         ]),
       ]),

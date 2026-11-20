@@ -51,7 +51,8 @@ const GINASIOS = {
   // 2: pontes na ordem 1→6; a 7 (atalho) derruba de volta à entrada, e é por ela que se volta ao centro depois da 3
   2: { cidade: 'A3', zona: 'A3-ginasio', rota: R('nnnnnnn @8,10 lll l @12,10 nll nnnn @14,5 lnnno oo @8,16 nnnnnn ooo o @4,10 noo nnnn @2,5 lnnn lll @6,2 ll !n') },
   // 3: volantes e balsas (roteiro de tools/testes/ginasios/g3.mjs, com a ida e volta ao volante 2)
-  3: { cidade: 'A4', zona: 'A4-ginasio', rota: R('nnn @8,14 ooos !o nlll nnn @8,11 n ooooo n @3,9 !o s lllllll l ooooooo n !o s lllllll lll @13,10 nll !l oos ooo ooooooo n @3,9 !o l nnn @4,6 n llllllllll nnn @14,2 n oooo @10,1 !o') },
+  // saída do 3: as balsas cheias e a passarela do canal B seguem valendo; a fila 6 tem a g03-4, então volta pela 5
+  3: { cidade: 'A4', zona: 'A4-ginasio', saida: R('@10,1 llll ssss @14,5 oooooooooo @4,5 ssss @4,9 llll ssssssss @8,17'), rota: R('nnn @8,14 ooos !o nlll nnn @8,11 n ooooo n @3,9 !o s lllllll l ooooooo n !o s lllllll lll @13,10 nll !l oos ooo ooooooo n @3,9 !o l nnn @4,6 n llllllllll nnn @14,2 n oooo @10,1 !o') },
   // 4: espelhos e raios (tools/testes/ginasios/e4.mjs)
   4: { cidade: 'A5', zona: 'A5-ginasio', rota: R('lnn n oooooo @3,15 !n llllll nnn @9,12 nn o o @7,10 n o s !o no nn @6,7 n !n sl llll n @11,6 !l onn o n ssslll ss @12,9 ooooo s @7,10 !o nlllll nn ooo nnn nn @9,2 !n') },
 };

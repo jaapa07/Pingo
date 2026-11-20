@@ -25,3 +25,12 @@ Ferramentas em `tools/testes/qa3/` (cópias adaptadas do QA 2, nomes únicos `qa
   Equipe AO CHEGAR: 55/53/52/51/50/50 contra ás 49 (**Δ +6**). Checkpoint `passo-9` ($33 572).
 - Capturas de tela: `page.screenshot` estourava 60 s com a máquina cheia (load ~60); `qa3-lib.mjs` agora usa
   `Page.captureScreenshot` do CDP (4 s).
+- (20/11) **ninhal** (B-PA sul): 4 capangas + tenente Arame (ás 50) → `pantanal-ok`, 0 derrotas (3 voltas ao Posto de B2
+  por desgaste no Pantanal). Centro de Reabilitação: Tuiuiuzim (105) adotado no **nível 12** (vai ao Viveiro: equipe cheia).
+  Canal sul → Porto Pantaneiro. Checkpoint `b9` (equipe 58/57/57/57/56/55, $29 972).
+- (20/11) **estrada** (B-R2, B3): 9 treinadores, 0 derrotas. Captura: 89. Checkpoint `b3` ($39 192).
+- (20/11) **mina** (B3-mina-1/2): 5 capangas + tenente Rebite (ás 50) → `mina-ok`, 0 derrotas. Checkpoint `mina-ok`
+  (equipe 60/60/59/59/58/58, $46 252).
+- (20/11) **gin10** (1ª mão): vagonetes e desvios pela solução, g10-1..4, Topázio → insígnia 10, 0 derrotas, mas a luta
+  com o líder durou 30 turnos e deixou 4 de 6 desmaiadas mesmo com **Δ +9** (ás 51 contra 60). O piloto não sabia voltar
+  de vagonete (não é defeito do jogo: os dois vagonetes descem pelo mesmo trilho); roteiro `volta` acrescentado e 2ª mão.

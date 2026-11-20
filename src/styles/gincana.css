@@ -2,7 +2,9 @@
 .tela-gincana { background: #78bce8; overflow: hidden; }
 .gn-camada { position: absolute; left: 0; top: 0; width: 320px; height: 180px; background-repeat: no-repeat; image-rendering: pixelated; }
 .gn-toque, .gn-pista, .gn-fx { position: absolute; left: 0; top: 0; width: 320px; height: 180px; }
+.gn-toque { z-index: 0; }
 .gn-fx { pointer-events: none; z-index: 20; }
+.gn-res { z-index: 60; }
 .gn-img { position: absolute; left: 0; top: 0; background-repeat: no-repeat; image-rendering: pixelated; pointer-events: none; }
 .gn-cri { position: absolute; left: 0; top: 0; transform-origin: 0 0; image-rendering: pixelated; pointer-events: none; }
 .gn-sombra, .gn-ob { position: absolute; left: 0; top: 0; pointer-events: none; }

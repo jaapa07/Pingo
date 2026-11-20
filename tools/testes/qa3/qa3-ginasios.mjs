@@ -13,7 +13,9 @@ export const GINASIOS_B = {
   // 10 Pedra (B3-ginasio): vagonetes e chaves de desvio
   10: { zona: 'B3-ginasio', passos: R(A(10, 15, ':o'), '!n', A(3, 8, ':o'), '!n', A(5, 9, ':o'), '!s',
     A(12, 15, ':o'), '!n', A(10, 15, ':o'), '!n', A(18, 8, ':o'), '!n', A(15, 9, ':o'), '!s',
-    A(12, 15, ':o'), '!n', A(10, 15, ':o'), '!n', A(3, 8, ':o'), '!n', A(10, 2, ':o'), CUIDAR, '!n') },
+    A(12, 15, ':o'), '!n', A(10, 15, ':o'), '!n', A(3, 8, ':o'), '!n', A(10, 2, ':o'), CUIDAR, '!n'),
+    // volta: os vagonetes descem pelo mesmo trilho (o de cima para a galeria oeste, o da galeria oeste para a entrada)
+    volta: R(A(3, 2, ':o'), '!s', [3, 8, 'galeria oeste'], A(5, 9, ':o'), '!s', [10, 15, 'pé do trilho da entrada']) },
   // 11 Brasa (B4-ginasio): fogueiras na ordem da música de cada sanfoneiro
   11: { zona: 'B4-ginasio', passos: R(A(2, 13, 'bx'), '!n', A(15, 14, 'bx'), '!n', A(5, 14, 'bx'), '!n', A(10, 14, 'bx'), '!n',
     A(12, 10, 'b'), [12, 10, 'passou as brasas 1'], A(18, 9, 'b'), '!n',

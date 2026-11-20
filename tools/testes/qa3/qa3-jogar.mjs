@@ -10,7 +10,7 @@ const DE = { trem: 'campeao', vila: 'b1', 'pantanal-grande': 'cerrado', gin9: 'b
 const ini = process.argv[2] ?? 'trem', fim = process.argv[3] ?? 'gin12';
 const t = await abrir(lerSave(process.env.SAVE ?? DE[ini]), { semente: Number(process.env.SEMENTE ?? 7) });
 const Qr = (fn, arg) => t.q(fn, arg);
-const MANT = { garrafada: 10, 'elixir-andiroba': 2, 'mel-puro': 1, unguento: 2 };
+const MANT = { garrafada: 10, 'elixir-andiroba': 2, 'cha-guarana': 2, 'mel-puro': 1, unguento: 2 };
 const estat = { derrotas: [], treinoExtra: [], postos: 0, chefes: [] };
 let nbRel = 0;
 const REG = '/tmp/claude-0/-home-user/58474daf-1a50-5b1b-8bec-0786b708dc45/scratchpad/qa3/marcos.log';
@@ -72,7 +72,7 @@ const chegada = async (quem, as) => { const s = await t.save(); const nv = s.equ
 async function ginasio(n) {
   const G = GINASIOS_B[n];
   const s = await t.st(); if (s.zona !== G.zona) throw new Error('não estou no ginásio ' + n);
-  for (const p of G.passos) {
+  for (const p of [...G.passos, ...(G.volta ?? [])]) {
     if (p.ir) { const nb0 = (await t.st()).nb; await t.ir(p.ir); if ((await t.st()).nb > nb0) { await cuidar({ limiar: 0.5, reanimar: true, guardar: { garrafada: 3 } }); await Qr(() => window.Q.rodizio('treino')); } }
     else if (p.ate) {
       const nb0 = (await t.st()).nb;

@@ -305,7 +305,10 @@ function criarGincana(args: ArgsGincana): Tela {
   if (ctx.bonus > 0) { const s = sucoDe(c); const tb = texto(`${s?.nome ?? 'Suco'} +${Math.round(ctx.bonus * 100)}%`, { cor: 'verde', sombra: true }); el.append(em(tb, 4, 19)); }
   const dica = faixaDica(el);
   dica(prova.dica);
-  const aviso = texto('', { tamanho: 12, cor: 'amarelo', sombra: true, largura: 320, alinhar: 'centro' }); el.append(em(aviso, 0, 60)); aviso.classList.add('gn-aviso');
+  // placa da contagem / FIM (só aparece com texto)
+  const cxAviso = moldura('placa', 96, 24, 112, 54); cxAviso.classList.add('gn-aviso'); el.append(cxAviso);
+  const aviso = texto('', { tamanho: 12, cor: 'amarelo', sombra: true, largura: 88, alinhar: 'centro' }); cxAviso.append(em(aviso, 4, 6));
+  const mostrarAviso = (str: string) => { escreverSe(aviso, str); cxAviso.style.visibility = str ? '' : 'hidden'; };
   let fase: 'conta' | 'jogo' | 'fim' | 'res' = 'conta', t = 3.2, resto = def.duracao, pausado = false, res: HTMLElement | null = null;
   const pintarPlacar = () => {
     escreverSe(tTempo, `Tempo ${Math.ceil(Math.max(0, resto))}s`); em(tTempo, 160 - Math.floor(parseInt(tTempo.style.width) / 2), 4);
@@ -314,7 +317,7 @@ function criarGincana(args: ArgsGincana): Tela {
   const mostrarResultado = () => {
     fase = 'res';
     const rec = recordeHoje(args.prova), pts = prova.pontos;
-    res = moldura('madeira', 200, 92, 60, 40); el.append(res);
+    res = moldura('madeira', 200, 92, 60, 40); res.classList.add('gn-res'); el.append(res);
     const linhas = [`${nomeCri(c)} fez`, `{c:vermelho}${pts} pontos{/c}`, pts > rec ? 'Recorde do dia!' : `Recorde do dia: ${rec}`];
     res.append(em(texto(linhas.join('\n'), { tamanho: 12, cor: 'tinta', largura: 184, alinhar: 'centro' }), 8, 12));
     const ok = texto('A: continuar', { cor: 'marrom' }); res.append(em(ok, 100 - Math.floor(parseInt(ok.style.width) / 2), 72));
@@ -332,15 +335,15 @@ function criarGincana(args: ArgsGincana): Tela {
       if (pausado) return;
       if (fase === 'res') { if (input.apertou('a') || input.apertou('b')) fechar(tela, { pontos: prova.pontos }); return; }
       if (fase === 'conta') {
-        const n = Math.ceil(t - 0.2); escreverSe(aviso, n > 0 ? String(n) : 'JÁ!');
+        const n = Math.ceil(t - 0.2); mostrarAviso(n > 0 ? String(n) : 'JÁ!');
         const antes = t; t -= dt; if (Math.ceil(antes - 0.2) !== Math.ceil(t - 0.2)) som(t < 0.2 ? 'ui-ok' : 'ui-mover');
-        if (t <= 0) { fase = 'jogo'; escreverSe(aviso, ''); }
+        if (t <= 0) { fase = 'jogo'; mostrarAviso(''); }
         prova.atualizar(dt, 0);
       } else if (fase === 'jogo') {
         if (input.apertou('b')) { void desistir(); return; }
         resto -= dt; prova.atualizar(dt, def.duracao - resto);
-        if (resto <= 0) { fase = 'fim'; t = 1.4; escreverSe(aviso, 'FIM!'); som('insignia'); }
-      } else { prova.atualizar(dt, 0); t -= dt; if (t <= 0) { escreverSe(aviso, ''); mostrarResultado(); } }
+        if (resto <= 0) { fase = 'fim'; t = 1.4; mostrarAviso('FIM!'); som('insignia'); }
+      } else { prova.atualizar(dt, 0); t -= dt; if (t <= 0) { mostrarAviso(''); mostrarResultado(); } }
       fx.atualizar(dt); pintarPlacar();
     },
   };
@@ -366,7 +369,7 @@ function criarRanking(): Tela {
     quadro.append(em(texto(l.n, { cor: l.jog ? 'vermelho' : 'tinta', tamanho: 12 }), COL[0], y));
     l.pts.forEach((pt, i) => {
       const pos = posDe(i, l.n);
-      quadro.append(em(texto(`${pos}º {c:${pos === 1 ? 'vermelho' : 'tinta'}}${pt}{/c}`, { cor: 'marrom', tamanho: 12 }), COL[i + 1], y));
+      quadro.append(em(texto(l.jog && !pt ? '—' : `${pos}º {c:${pos === 1 ? 'vermelho' : 'tinta'}}${pt}{/c}`, { cor: 'marrom', tamanho: 12 }), COL[i + 1], y));
     });
   });
   quadro.append(em(texto('Pódio de cada prova vale pontos extras uma vez por dia: 1º 30, 2º 15, 3º 5. Os rivais treinam de novo amanhã.', { cor: 'marrom', largura: 296 }), 8, 118));
