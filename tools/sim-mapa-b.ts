@@ -12,6 +12,7 @@
  */
 import { carregarDados, equipeReferencia, instanciar, itensDoTreinador, inimigosDe, lutarContra, cuidarEntreLutas, itensReferencia, INICIAIS, PASSO_LIGA, PILOTOS, rng, asDe } from './equilibrio-referencia';
 import type { CriaturaInst, TreinadorDef } from '../src/core/tipos';
+import { LIMIAR_CHOCALHO, FATOR_EXP_POS_LIGA } from '../src/battle/engine';
 
 const arg = (k: string) => { const i = process.argv.indexOf('--' + k); return i >= 0 ? process.argv[i + 1] : undefined; };
 const N = Number(arg('n') ?? 150), DELTAS = (arg('d') ?? '2,3,4').split(',').map(Number), SO = arg('so')?.split(','), EQUIPE = arg('equipe') ?? 'ambas';
@@ -36,7 +37,7 @@ function taxa(seq: TreinadorDef[], tipo: 'ref' | 'qa', dl: number, itens: () => 
     const eq = equipe(tipo, ini, as), it = itens();
     for (const [k, x] of seq.entries()) {
       if (k > 0) cuidarEntreLutas(eq, it);
-      const r = lutarContra(eq, it, inimigosDe(x), x.nome, PILOTOS.esperto, x.ia ?? 'treinador', { itensIA: itensDoTreinador(x, 15), ganhaExp: seq.length > 1, expPartilhada: seq.length > 1, limiarPartilha: 5 });
+      const r = lutarContra(eq, it, inimigosDe(x), x.nome, PILOTOS.esperto, x.ia ?? 'treinador', { itensIA: itensDoTreinador(x, 15), ganhaExp: seq.length > 1, expPartilhada: seq.length > 1, limiarPartilha: LIMIAR_CHOCALHO.depoisDaLiga, fatorExp: FATOR_EXP_POS_LIGA });
       if (!r.vitoria) break;
       passou[k]++;
     }

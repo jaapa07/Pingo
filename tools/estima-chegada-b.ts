@@ -16,6 +16,7 @@
  *      [--delta-selvagem 9:3]  idem para os selvagens das zonas do passo
  *      [--ajustar 3]           procura a curva autoconsistente: ás de cada chefe = chegada + 3, turma e rotas do
  *                              passo sobem junto com o líder (e os selvagens na fração --selvagem-acompanha, 0–1)
+ *      [--fator-exp 0.75]      experiência × fator (FATOR_EXP_POS_LIGA do motor depois da Liga)
  *      [--mult-treinador 1.5] [--div 7] [--frac 1]  "e se": bônus de treinador, divisor da fórmula, fração dos
  *                              treinadores de rota enfrentados (os de ginásio, chefes e líderes sempre)
  */
@@ -29,7 +30,7 @@ const arg = (k: string) => { const i = process.argv.indexOf('--' + k); return i 
  *  atrás ganha metade (regra do Chocalho no motor: L = 2 até a Liga, 5 depois de `liga-vencida`) */
 const LIMIAR = arg('limiar') !== undefined ? Number(arg('limiar')) : undefined, FRENTE = Number(arg('frente') ?? 0.2);
 const N_SELV = Number(arg('selvagens') ?? 7), FATOR = Number(arg('fator') ?? 2.1), SEMENTES = Number(arg('sementes') ?? 40), OPCIONAIS = process.argv.includes('--opcionais');
-const MULT_T = Number(arg('mult-treinador') ?? 1.5), DIV = Number(arg('div') ?? 7), FRAC = Number(arg('frac') ?? 1);
+const MULT_T = Number(arg('mult-treinador') ?? 1.5), FATOR_EXP = Number(arg('fator-exp') ?? 1), DIV = Number(arg('div') ?? 7), FRAC = Number(arg('frac') ?? 1);
 const AJUSTAR = arg('ajustar') !== undefined ? Number(arg('ajustar')) : undefined, SEL_ACOMP = Number(arg('selvagem-acompanha') ?? 0);
 const lerDelta = (s?: string) => new Map((s ?? '').split(',').filter(Boolean).map((p) => { const [a, b] = p.split(':'); return [Number(a), Number(b)] as [number, number]; }));
 const DELTA0 = lerDelta(arg('delta')), DELTA_S0 = lerDelta(arg('delta-selvagem'));
@@ -75,7 +76,7 @@ const daEquipe = (t: TreinadorDef, dt: number): Inimigo[] => t.equipe.map((m) =>
  */
 function derrotar(eq: CriaturaInst[], inim: Inimigo) {
   const nv = Math.min(NIVEL_MAX, Math.max(1, inim.nv)), b = Math.floor((especie(inim.e).expBase * nv) / DIV);
-  const ganho = Math.max(1, inim.treinador ? Math.floor(b * MULT_T) : b);
+  const ganho = Math.max(1, Math.floor((inim.treinador ? Math.floor(b * MULT_T) : b) * FATOR_EXP));
   if (LIMIAR !== undefined) {
     const topo = Math.max(...eq.map((c) => c.nivel)), forte = eq.find((c) => c.nivel === topo)!;
     const quem = rng.f() < FRENTE ? forte : rng.escolha(eq);
@@ -113,8 +114,8 @@ function simular(delta: Map<number, number>, deltaS: Map<number, number>, ate = 
       // ordem: zonas do caminho e chefes de evento; a turma do ginásio por último (marca a chegada à cidade)
       for (const zid of [...zonas.filter((z) => !z.endsWith('-ginasio')), '#chefes', ...zonas.filter((z) => z.endsWith('-ginasio'))]) {
         if (zid === '#chefes') {
-          for (const id of p.chefes) { const t = d.treinadores.get(id); if (t) { lutar(daEquipe(t, dt)); nt++; } }
           const [a0, m0] = nivelDe(eq); r.asAntes += a0 / SEMENTES; r.mediaAntes += m0 / SEMENTES;
+          for (const id of p.chefes) { const t = d.treinadores.get(id); if (t) { lutar(daEquipe(t, dt)); nt++; } }
           continue;
         }
         const z = zona.get(zid); if (!z) { console.error('zona ausente: ' + zid); continue; }
@@ -144,9 +145,9 @@ if (AJUSTAR !== undefined) {
   }
 }
 const soma = simular(delta, deltaS);
-console.log(`selvagens por zona: ${N_SELV} · ${LIMIAR !== undefined ? `modelo mecânico: Chocalho a ${LIMIAR}+ níveis, a mais forte derruba ${FRENTE * 100}% + sorteio` : 'fator ' + FATOR} · treinador ×${MULT_T} · divisor ${DIV} · fração de treinadores de rota ${FRAC}${OPCIONAIS ? ' · com zonas/treinadores opcionais' : ''} · ${SEMENTES} sementes`);
+console.log(`fator de experiência ${FATOR_EXP} · selvagens por zona: ${N_SELV} · ${LIMIAR !== undefined ? `modelo mecânico: Chocalho a ${LIMIAR}+ níveis, a mais forte derruba ${FRENTE * 100}% + sorteio` : 'fator ' + FATOR} · treinador ×${MULT_T} · divisor ${DIV} · fração de treinadores de rota ${FRAC}${OPCIONAIS ? ' · com zonas/treinadores opcionais' : ''} · ${SEMENTES} sementes`);
 if (delta.size) console.log('delta dos treinadores por passo: ' + [...delta].map(([k, v]) => `${k}:${v}`).join(',') + (deltaS.size ? ' · selvagens: ' + [...deltaS].map(([k, v]) => `${k}:${v}`).join(',') : ''));
-console.log('| Passo | Treinadores no caminho | Selvagens | Ás do chefe | Na cidade, antes da turma (ás / média) | Chegada ao chefe (ás da equipe) | Média da equipe | Δ (chegada − ás) |');
+console.log('| Passo | Treinadores no caminho | Selvagens | Ás do chefe | Antes dos chefes de evento e da turma (ás / média) | Chegada ao chefe (ás da equipe) | Média da equipe | Δ (chegada − ás) |');
 console.log('|---|---|---|---|---|---|---|---|');
 for (const p of CAMINHO) {
   const r = soma[p.passo], a = asChefe(p) + (delta.get(p.passo) ?? 0);

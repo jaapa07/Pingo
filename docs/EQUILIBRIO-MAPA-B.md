@@ -195,3 +195,34 @@ com esta curva é preciso cortar a experiência do mapa B pela metade (modelo: d
 → Δ −2…−4, Conselho −5) ou combinar bônus de treinador ×1,0 com 40% dos treinadores de rota opcionais (Δ −3…+3). Isso
 mexe na fórmula de experiência (src/battle/criatura.ts `expDerrota`, valendo só depois de `liga-vencida`) e é decisão
 do autor: NÃO aplicado.
+
+## Marco 7 (20/11) — DECISÃO DO AUTOR: experiência × 0,75 depois da Liga (aplicado; níveis NÃO mudaram)
+- Motor: `FATOR_EXP_POS_LIGA = 0.75` (src/battle/engine.ts, campo `fatorExp` da batalha, aplicado sobre `expDerrota`
+  antes de dividir entre participantes e da metade do Chocalho); `fatorExpDoProgresso(flags)` em src/battle/index.ts
+  (1 sem `liga-vencida`, 0,75 com). Teste novo em tools/test-batalha.ts (padrão, save sem a Liga e save com a Liga).
+  Simuladores (`lutarContra`, tools/sim-mapa-b.ts) passam o fator na sequência do Conselho. Spec 4.5 e bloco do topo
+  do HISTORIA.md atualizados.
+- Chegada esperada (`npx tsx tools/estima-chegada-b.ts --limiar 5 --fator-exp F --sementes 20`; Garrote/rival 8 = equipe
+  ao chegar ao Pico, antes do Garrote; a rival vem logo depois):
+
+| Chefe (ás) | ×1,0 (sem corte) | **×0,75 (aplicado)** | ×0,6 | ×0,5 |
+|---|---|---|---|---|
+| Líder 9 (55) | 55,7 (+0,7) | **54,0 (−1,0)** | 52,7 (−2,3) | 52,1 (−2,9) |
+| Líder 10 (58) | 62,7 (+4,7) | **59,5 (+1,5)** | 57,5 (−0,5) | 56,2 (−1,8) |
+| Líder 11 (61) | 67,6 (+6,6) | **63,7 (+2,7)** | 61,1 (+0,1) | 59,2 (−1,8) |
+| Líder 12 (63) | 70,7 (+7,7) | **66,3 (+3,3)** | 63,5 (+0,5) | 61,4 (−1,6) |
+| Líder 13 (66) | 76,9 (+10,9) | **71,8 (+5,8)** | 68,2 (+2,2) | 65,6 (−0,4) |
+| Líder 14 (68) | 80,1 (+12,1) | **74,5 (+6,5)** | 70,6 (+2,6) | 67,8 (−0,3) |
+| Líder 15 (70) | 82,8 (+12,8) | **76,8 (+6,8)** | 72,8 (+2,8) | 69,7 (−0,3) |
+| Líder 16 (72) | 86,2 (+14,2) | **79,6 (+7,6)** | 75,4 (+3,4) | 72,1 (+0,1) |
+| Garrote (74) | 88,3 (+14,3) | **81,4 (+7,4)** | 76,8 (+2,8) | 73,5 (−0,5) |
+| Rival 8 (75) | ~88,5 (+13,5) | **~81,6 (+6,6)** | ~77,0 (+2,0) | ~73,7 (−1,3) |
+| Conselho (77) | 88,8 (+11,8) | **82,0 (+5,0)** | 77,5 (+0,5) | 73,9 (−3,1) |
+
+  Média da equipe ao chegar ao Conselho: 85,1 · **78,3** · 73,6 · 70,2.
+- Leitura: com 0,75 o Δ fica dentro da meta só no líder 9; do 10 ao 12 fica +1,5 a +3,3 e do 13 em diante +6 a +8
+  (acima da meta: só reportado, sem mexer nos níveis). 0,6 deixa 9–12 entre −2 e 0 e 13–16 em +2 a +3; 0,5 é o único
+  que põe todos em −3…0.
+- Conselho no simulador com a equipe de chegada (sequência, mochila da Liga): com 0,75 a equipe chega ~5 acima
+  (ás 82): referência 97%, equipe do QA 99% — fácil demais. Com 0,6 (~1 acima, ás 78): 77% / 94%. Com 0,5 (~3 abaixo):
+  referência 43%, QA 63% (meta 35–55%).

@@ -280,12 +280,12 @@ export const pilotoIA = (nivel: NivelIA = 'treinador'): Piloto => ({
 export const PILOTOS: Record<PilotoId, Piloto> = { bobo: pilotoBobo, esperto: pilotoEsperto, ia: pilotoIA() };
 
 /* ============================== batalha headless ============================== */
-export interface OpcoesLuta { ia?: NivelIA; itensIA?: Record<string, number>; maxTurnos?: number; /** o jogador ganha experiência e sobe de nível durante a luta (sequência da Liga) */ ganhaExp?: boolean; /** Chocalho do Mutirão na mochila: a reserva de pé ganha metade */ expPartilhada?: boolean; /** limiar do Chocalho (2 até a Liga, 5 depois) */ limiarPartilha?: number }
+export interface OpcoesLuta { ia?: NivelIA; itensIA?: Record<string, number>; maxTurnos?: number; /** o jogador ganha experiência e sobe de nível durante a luta (sequência da Liga) */ ganhaExp?: boolean; /** Chocalho do Mutirão na mochila: a reserva de pé ganha metade */ expPartilhada?: boolean; /** limiar do Chocalho (2 até a Liga, 5 depois) */ limiarPartilha?: number; /** fator da experiência (FATOR_EXP_POS_LIGA depois da Liga) */ fatorExp?: number }
 export interface ResultadoLuta { vitoria: boolean; turnos: number; empacou: boolean }
 /** uma batalha jogador × treinador no motor puro. Altera as criaturas e os itens recebidos (vida, PG, status). */
 export function lutarContra(equipe: CriaturaInst[], itens: Record<string, number>, inimigos: CriaturaInst[], nome: string, piloto: Piloto, ia: NivelIA, o: OpcoesLuta = {}): ResultadoLuta {
   const itensIA = o.itensIA ?? {};
-  const b = new Batalha({ tipo: 'treinador', lados: [{ equipe, itens, nome: 'Ref' }, { equipe: inimigos, itens: itensIA, nome }], trocaGratis: true, ganhaExp: !!o.ganhaExp, expPartilhada: !!o.expPartilhada, limiarPartilha: o.limiarPartilha, autoAprender: true });
+  const b = new Batalha({ tipo: 'treinador', lados: [{ equipe, itens, nome: 'Ref' }, { equipe: inimigos, itens: itensIA, nome }], trocaGratis: true, ganhaExp: !!o.ganhaExp, expPartilhada: !!o.expPartilhada, limiarPartilha: o.limiarPartilha, fatorExp: o.fatorExp, autoAprender: true });
   const mem: Memoria = { ultimaTroca: -9, curas: new Map() }, max = o.maxTurnos ?? 300, usaItens = Object.keys(itensIA).length > 0;
   b.iniciar();
   while (b.fase !== 'fim') {
