@@ -108,6 +108,8 @@ export async function iniciarSave(): Promise<void> {
 }
 const registro = (i: number) => desembrulhar(cache.get(CH_SLOT(i))) ?? desembrulhar(cache.get(CH_SLOT(i) + '.bak'));
 
+/** o slot tem dados gravados, mas nem o principal nem a cópia puderam ser lidos */
+export const slotDanificado = (i: number) => !registro(i) && (cache.has(CH_SLOT(i)) || cache.has(CH_SLOT(i) + '.bak'));
 /** resumo de cada slot (null = vazio) */
 export function listarSlots(): (ResumoSlot | null)[] { return Array.from({ length: N_SLOTS }, (_, i) => registro(i)?.resumo ?? null); }
 /** carrega o slot para `jogo` (com a semente do acaso). Devolve false se estiver vazio ou corrompido. */
@@ -157,14 +159,20 @@ export function exportar(slot?: number): string {
 }
 /** confere e abre um texto exportado, sem gravar nada. Lança Error com mensagem em português. */
 export function lerExportado(txt: string): SaveData {
-  const m = /^PINGO1:([0-9a-f]{8}):([A-Za-z0-9_-]+)$/.exec(txt.trim());
-  if (!m) throw new Error('Isto não é um arquivo de Adventures of Pingo.');
+  // código colado de mensageiros e e-mail chega com espaços, quebras de linha, caracteres invisíveis,
+  // aspas ou texto em volta (e às vezes como link #pingo=): tudo isso é descartado antes de conferir
+  const limpo = String(txt ?? '').replace(/%3A/gi, ':').replace(/[\s\u00ad\u200b-\u200f\u2060\ufeff]+/g, '');
+  const outra = /PINGO(\d+):/.exec(limpo);
+  if (outra && outra[1] !== '1') throw new Error('Este código é de uma versão mais nova do jogo. Atualize o jogo neste aparelho e tente de novo.');
+  const m = /PINGO1:([0-9a-fA-F]{8}):([A-Za-z0-9_-]+)/.exec(limpo);
+  if (!m) throw new Error(/PINGO1:?$/.test(limpo) || /^PINGO1:[0-9a-fA-F]{0,8}:?$/.test(limpo) ? 'O código está incompleto: copie o código inteiro de novo.' : 'Isto não é um código de Adventures of Pingo.');
+  const incompleto = 'O código está incompleto ou foi alterado: copie o código inteiro de novo (ou use o arquivo .pingo).';
   let bytes: Uint8Array;
-  try { bytes = descompactar(deB64(m[2])); } catch { throw new Error('O arquivo está danificado.'); }
-  if (crc32(bytes) !== m[1]) throw new Error('O arquivo está danificado (a soma não confere).');
+  try { bytes = descompactar(deB64(m[2])); } catch { throw new Error(incompleto); }
+  if (crc32(bytes) !== m[1].toLowerCase()) throw new Error(incompleto);
   let d: unknown;
   try { d = JSON.parse(deUtf8(bytes)); } catch { throw new Error('O arquivo está danificado.'); }
-  if (!saveValido(d)) throw new Error('O arquivo é de uma versão que este jogo não conhece.');
+  if (!saveValido(d)) throw new Error((d as { versao?: number } | null)?.versao && (d as { versao: number }).versao > 1 ? 'Este código é de uma versão mais nova do jogo. Atualize o jogo neste aparelho e tente de novo.' : 'O código é de uma versão que este jogo não conhece.');
   return completar(d);
 }
 /** importa para um slot (padrão: o primeiro vazio; se não houver, lança erro pedindo para escolher) */

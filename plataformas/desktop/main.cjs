@@ -11,7 +11,7 @@
  *   F11 ou Alt+Enter alternam a tela cheia.
  */
 'use strict';
-const { app, BrowserWindow, Menu, dialog, ipcMain, net, protocol, session, shell } = require('electron');
+const { app, BrowserWindow, Menu, clipboard, dialog, ipcMain, net, protocol, session, shell } = require('electron');
 const fs = require('node:fs');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
@@ -170,6 +170,9 @@ if (!app.requestSingleInstanceLock()) {
       if (fs.statSync(f).size > 8 * 1024 * 1024) return null;
       return fs.readFileSync(f, 'utf8');
     });
+    // código de transferência do save ("Copiar código" / "Colar código"): só texto, com limite de tamanho
+    ipcMain.handle('pingo:copiar', (_e, txt) => { if (typeof txt !== 'string' || txt.length > 4 * 1024 * 1024) return false; clipboard.writeText(txt); return true; });
+    ipcMain.handle('pingo:colar', () => { const t = clipboard.readText(); return t.length > 4 * 1024 * 1024 ? null : t; });
     ipcMain.on('pingo:telaCheia', (_e, ligar) => alternarTelaCheia(!!ligar));
     ipcMain.on('pingo:sair', () => app.quit());
 

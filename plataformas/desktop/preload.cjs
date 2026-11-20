@@ -11,6 +11,8 @@ contextBridge.exposeInMainWorld('pingoDesktop', {
   apagarSave: (chave) => ipcRenderer.invoke('pingo:apagarSave', String(chave)),
   salvarArquivo: (nome, conteudo) => ipcRenderer.invoke('pingo:salvarArquivo', String(nome), String(conteudo)),
   abrirArquivo: () => ipcRenderer.invoke('pingo:abrirArquivo'),
+  copiar: (txt) => ipcRenderer.invoke('pingo:copiar', String(txt)),
+  colar: () => ipcRenderer.invoke('pingo:colar'),
   telaCheia: (ligar) => ipcRenderer.send('pingo:telaCheia', !!ligar),
   sair: () => ipcRenderer.send('pingo:sair'),
 });

@@ -19,6 +19,9 @@ export interface PonteDesktop {
   apagarSave(chave: string): Promise<void>;
   salvarArquivo(nome: string, conteudo: string): Promise<boolean>;
   abrirArquivo(): Promise<string | null>;
+  /** área de transferência do sistema pelo processo principal (o Chromium do app nega a leitura direta) */
+  copiar?(txt: string): Promise<boolean>;
+  colar?(): Promise<string | null>;
   telaCheia(ligar: boolean): void;
   sair(): void;
 }
@@ -155,8 +158,23 @@ export const plataforma = {
       window.addEventListener('focus', () => setTimeout(() => { if (!inp.files?.length) fim(null); }, 1500), { once: true });
     });
   },
-  async copiar(txt: string): Promise<boolean> { try { await navigator.clipboard.writeText(txt); return true; } catch { return false; } },
-  async colar(): Promise<string | null> { try { return await navigator.clipboard.readText(); } catch { return null; } },
+  /** copia para a área de transferência do sistema; false se o aparelho/navegador negou (aí a tela oferece o campo de texto) */
+  async copiar(txt: string): Promise<boolean> {
+    if (jan.pingoDesktop?.copiar) { try { return await jan.pingoDesktop.copiar(txt); } catch { /* segue para o navegador */ } }
+    try { await navigator.clipboard.writeText(txt); return true; } catch { /* sem permissão ou sem contexto seguro */ }
+    // recurso antigo (Safari sem gesto recente, http local): seleciona um campo escondido e pede "copiar"
+    try {
+      const ta = document.createElement('textarea'); ta.value = txt; ta.readOnly = true;
+      ta.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:1px;opacity:0;font-size:16px';
+      document.body.append(ta); ta.select(); ta.setSelectionRange(0, txt.length);
+      const ok = document.execCommand('copy'); ta.remove(); return ok;
+    } catch { return false; }
+  },
+  /** lê a área de transferência; null se negou ou não há suporte (aí a tela oferece o campo para colar) */
+  async colar(): Promise<string | null> {
+    if (jan.pingoDesktop?.colar) { try { return await jan.pingoDesktop.colar(); } catch { /* segue para o navegador */ } }
+    try { return await navigator.clipboard.readText(); } catch { return null; }
+  },
   /** avisa quando o app vai para segundo plano ou volta (visibilitychange + Capacitor App) */
   aoMudarVisibilidade(fn: (visivel: boolean) => void) {
     document.addEventListener('visibilitychange', () => fn(document.visibilityState === 'visible'));
