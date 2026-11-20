@@ -25,6 +25,9 @@ import { carregarDados, rng } from './equilibrio-referencia';
 import { especie, expParaNivel, NIVEL_MAX } from '../src/battle/criatura';
 
 const arg = (k: string) => { const i = process.argv.indexOf('--' + k); return i >= 0 ? process.argv[i + 1] : undefined; };
+/** modelo mecânico (--limiar L): quem derruba é a mais forte com chance --frente, senão uma ao acaso; a reserva L+ níveis
+ *  atrás ganha metade (regra do Chocalho no motor: L = 2 até a Liga, 5 depois de `liga-vencida`) */
+const LIMIAR = arg('limiar') !== undefined ? Number(arg('limiar')) : undefined, FRENTE = Number(arg('frente') ?? 0.2);
 const N_SELV = Number(arg('selvagens') ?? 7), FATOR = Number(arg('fator') ?? 2.1), SEMENTES = Number(arg('sementes') ?? 40), OPCIONAIS = process.argv.includes('--opcionais');
 const MULT_T = Number(arg('mult-treinador') ?? 1.5), DIV = Number(arg('div') ?? 7), FRAC = Number(arg('frac') ?? 1);
 const AJUSTAR = arg('ajustar') !== undefined ? Number(arg('ajustar')) : undefined, SEL_ACOMP = Number(arg('selvagem-acompanha') ?? 0);
@@ -73,6 +76,17 @@ const daEquipe = (t: TreinadorDef, dt: number): Inimigo[] => t.equipe.map((m) =>
 function derrotar(eq: CriaturaInst[], inim: Inimigo) {
   const nv = Math.min(NIVEL_MAX, Math.max(1, inim.nv)), b = Math.floor((especie(inim.e).expBase * nv) / DIV);
   const ganho = Math.max(1, inim.treinador ? Math.floor(b * MULT_T) : b);
+  if (LIMIAR !== undefined) {
+    const topo = Math.max(...eq.map((c) => c.nivel)), forte = eq.find((c) => c.nivel === topo)!;
+    const quem = rng.f() < FRENTE ? forte : rng.escolha(eq);
+    const reserva = eq.filter((c) => c !== quem && c.nivel <= topo - LIMIAR);
+    for (const c of [quem, ...reserva]) {
+      const q = c === quem ? ganho : Math.max(1, Math.floor(ganho / 2)), curva = especie(c.especie).crescimento;
+      c.exp = Math.min(c.exp + q, expParaNivel(curva, NIVEL_MAX));
+      while (c.nivel < NIVEL_MAX && c.exp >= expParaNivel(curva, c.nivel + 1)) c.nivel++;
+    }
+    return;
+  }
   const cada = Math.floor((ganho * FATOR) / eq.length);
   for (const c of eq) {
     const curva = especie(c.especie).crescimento;
@@ -130,7 +144,7 @@ if (AJUSTAR !== undefined) {
   }
 }
 const soma = simular(delta, deltaS);
-console.log(`selvagens por zona: ${N_SELV} · fator ${FATOR} · treinador ×${MULT_T} · divisor ${DIV} · fração de treinadores de rota ${FRAC}${OPCIONAIS ? ' · com zonas/treinadores opcionais' : ''} · ${SEMENTES} sementes`);
+console.log(`selvagens por zona: ${N_SELV} · ${LIMIAR !== undefined ? `modelo mecânico: Chocalho a ${LIMIAR}+ níveis, a mais forte derruba ${FRENTE * 100}% + sorteio` : 'fator ' + FATOR} · treinador ×${MULT_T} · divisor ${DIV} · fração de treinadores de rota ${FRAC}${OPCIONAIS ? ' · com zonas/treinadores opcionais' : ''} · ${SEMENTES} sementes`);
 if (delta.size) console.log('delta dos treinadores por passo: ' + [...delta].map(([k, v]) => `${k}:${v}`).join(',') + (deltaS.size ? ' · selvagens: ' + [...deltaS].map(([k, v]) => `${k}:${v}`).join(',') : ''));
 console.log('| Passo | Treinadores no caminho | Selvagens | Ás do chefe | Na cidade, antes da turma (ás / média) | Chegada ao chefe (ás da equipe) | Média da equipe | Δ (chegada − ás) |');
 console.log('|---|---|---|---|---|---|---|---|');
