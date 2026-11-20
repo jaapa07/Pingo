@@ -77,15 +77,16 @@
     // captura: espécie desejada, ainda há vaga na cota e cuia na mochila
     if (ctl.pedido.tipo === 'lendario' && alvo) anota('lendário: ' + JSON.stringify({ esp: alvo.especie, pode: b.podeCapturar(), quer: !!Q.capturar, n: Q.capturadas.length, max: Q.maxCapturas, ja: jogo.save.diario.capturado.includes(alvo.especie), cuia: cuiaBoa(b) }));
     if (selvagem && alvo && b.podeCapturar() && Q.capturar && Q.capturadas.length < Q.maxCapturas && Q.capturar(alvo.especie, alvo.nivel) && !jogo.save.diario.capturado.includes(alvo.especie)) {
-      const cuia = cuiaBoa(b);
+      // jogador comum desiste de capturar depois de ~6 cuias ou com a equipe pela metade (QA 3)
+      const cuia = (mem.lancou ?? 0) < 6 && Q.saude().frac >= 0.5 ? cuiaBoa(b) : null;
       if (cuia) {
         const frac = alvo.vida / vidaMax(alvo);
-        if (frac <= 0.4 || (b.turno <= 0 && cuia === 'cuia-rapida')) return { tipo: 'item', item: cuia };
+        if (frac <= 0.4 || (b.turno <= 0 && cuia === 'cuia-rapida')) { mem.lancou = (mem.lancou ?? 0) + 1; return { tipo: 'item', item: cuia }; }
         const i = golpeBrando(b, p);
         // só bate se o golpe brando não derruba (estimativa pela conta do piloto: usa o dano do melhor golpe como teto)
         const eu = b.criatura(p);
         if (i >= 0 && alvo.nivel + 6 >= eu.nivel) return { tipo: 'golpe', slot: i };
-        return { tipo: 'item', item: cuia };
+        mem.lancou = (mem.lancou ?? 0) + 1; return { tipo: 'item', item: cuia };
       }
     }
     // selvagem que não interessa, com a equipe gasta: um jogador comum foge

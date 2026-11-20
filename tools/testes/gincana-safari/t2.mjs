@@ -1,0 +1,14 @@
+import { abrir } from './lib.mjs';
+const prova = process.argv[2] ?? 'agilidade';
+const t = await abrir('?zona=A-GN&x=16&y=9&dir=n&flags=liga-vencida&equipe=23:45,102:45,98:45');
+const { page } = t;
+await t.pronto(); await t.espera(500);
+const fps = () => page.evaluate(() => new Promise((ok) => { let n = 0; const t0 = performance.now(); const f = () => { n++; if (performance.now() - t0 < 1000) requestAnimationFrame(f); else ok(n); }; requestAnimationFrame(f); }));
+console.log('fps mundo', await fps());
+const t0 = Date.now(); await t.foto('t2-mundo'); console.log('foto mundo ms', Date.now() - t0);
+await page.evaluate((p) => { const m = window.__pingo.mundo; void m.rodarPassos([['tela', 'gincana', { prova: p, uid: window.__pingo.jogo.save.equipe[0].uid }]]); }, prova);
+await t.espera(1000);
+console.log('fps gincana', await fps());
+console.log('n elems', await page.evaluate(() => document.querySelectorAll('.tela-gincana *').length));
+const t1 = Date.now(); try { await page.screenshot({ path: `${'/tmp/claude-0/-home-user/58474daf-1a50-5b1b-8bec-0786b708dc45/scratchpad/gs'}/t2-g.png`, timeout: 60000 }); } catch (e) { console.log('foto falhou'); } console.log('foto gincana ms', Date.now() - t1);
+await t.browser.close();
