@@ -479,3 +479,40 @@ erros de console: []
   ginásio 3, tentativa 1: equipe ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 17"]
   [batalha] g03-1 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $11732
   [batalha] g03-2 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $12412
+  [batalha] g03-3 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $13132
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.snap (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:52:18) |     at t.resolver (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:122:25) 0 0
+resumo: 0
+treino extra: [{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":8,"de":20,"para":21},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":11,"de":21,"para":22},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":14,"de":22,"para":23}] derrotas: 10 curas: 46
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim","Usar o Facão? → Sim"]
+erros de console: []
+>> retomando de mata-passo-7
+
+>> etapa 8: Porto Sereia: compras, treinadores e ginásio 3 (Rio)  (1 s)
+  [batalha] A4-1 → vitoria · equipe 2:27,10:8,13:6,45:8,20:8,43:17 · A4 · $13696
+  [batalha] A4-3 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $14456
+  [batalha] A4-2 → derrota · equipe 2:28,10:8,13:6,45:8,20:8,43:18 · A4 · $14456
+    turnos: Tamanduá-Copa28 52/85 x Bruxaluz19 58/58 → golpe patada | Tamanduá-Copa28 20/85 x Pintinhas19 59/59 → golpe patada | Tamanduá-Copa28 2/85 x Pintinhas19 42/59 → golpe patada | Corujinha17 44/44 x Pintinhas19 4/59 → golpe golpe-de-asa | Corujinha18 23/46 x Jataí20 49/49 → golpe golpe-de-asa | Gambazinho8 5/26 x Jataí20 44/49 → golpe arranhao | Pipirim8 26/26 x Jataí20 44/49 → golpe bicada | Quero-querinho8 26/26 x Jataí20 44/49 → golpe bicada
+  DERROTA para A4-2 (nv 20)
+  [batalha] A4-2 → vitoria · equipe 2:29,10:9,13:6,45:8,20:8,43:18 · A4 · $8064
+  compras em A4-venda: 6× garrafada · sobrou $3864
+== checkpoint mata-pre-lider-3: ["Tamanduá-Copa 29","Pipirim 9","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 18"] $3864
+  ginásio 3, tentativa 1: equipe ["Tamanduá-Copa 29","Pipirim 9","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 18"]
+  [batalha] g03-1 → vitoria · equipe 2:29,10:10,13:6,45:8,20:8,43:18 · A4-ginasio · $4504
+  [batalha] g03-2 → vitoria · equipe 2:29,10:10,13:6,45:8,20:8,43:18 · A4-ginasio · $5184
+  [batalha] g03-3 → vitoria · equipe 2:29,10:10,13:6,45:8,20:8,43:18 · A4-ginasio · $5904
+  remédios entre batalhas: garrafada
+  [batalha] g03-4 → vitoria · equipe 2:29,10:10,13:6,45:8,20:8,43:18 · A4-ginasio · $6624
+  [batalha] g03-5 → vitoria · equipe 2:30,10:10,13:6,45:8,20:8,43:18 · A4-ginasio · $7424
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] lider-03 → vitoria · equipe 2:30,10:10,13:6,45:8,20:8,43:18 · A4-ginasio · $9024
+  INSÍGNIA 3 na tentativa 1
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.ir (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:157:99) |     at async t.irAte (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:168:121) 0 0
+resumo: 0
+treino extra: [{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":8,"de":20,"para":21},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":11,"de":21,"para":22},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":14,"de":22,"para":23}] derrotas: 11 curas: 46
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim","Usar o Facão? → Sim"]
+erros de console: []
+>> retomando de mata-passo-7
+
+>> etapa 8: Porto Sereia: compras, treinadores e ginásio 3 (Rio)  (2 s)
+  [batalha] A4-1 → vitoria · equipe 2:27,10:8,13:6,45:8,20:8,43:17 · A4 · $13696
+  [batalha] A4-3 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $14456

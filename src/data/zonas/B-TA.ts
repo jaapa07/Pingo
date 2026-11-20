@@ -29,10 +29,10 @@ const zona: ZonaDef = {
   id: 'B-TA', nome: 'Túnel Alagado', mapa: 'B', tipo: 'agua', tileset: 'submerso', musica: 'mergulho', arena: 'recife', passo: 13, submerso: true,
   mapaChars: g.mapa,
   warps: [
-    ...saidas(g, 'A', 'B5', 48, 13, 's'),
-    ...saidas(g, 'G', 'B-TA-gruta', 6, 17, 'n'),
-    ...saidas(g, 'H', 'B-TA-gruta', 38, 4, 's'),
-    ...saidas(g, 'B', 'B6', 8, 30, 's'),
+    ...saidas(g, 'A', 'B5', 46, 13, 's'),
+    ...saidas(g, 'G', 'B-TA-gruta', 8, 17, 'n'),
+    ...saidas(g, 'H', 'B-TA-gruta', 39, 4, 's'),
+    ...saidas(g, 'B', 'B6', 10, 30, 's'),
   ],
   npcs: [
     duelista(g, '1', 'B-TA-1', 'cl-mergulhador', 's', 5),

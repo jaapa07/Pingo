@@ -197,7 +197,7 @@ function provaForca(raiz: HTMLElement, x: Ctx): Prova {
   tocavel(raiz, empurrar);
   return {
     pista, get pontos() { return Math.floor(pos / 4); },
-    dica: 'A ou toque: empurrar quando a marca passar na faixa verde   B: desistir',
+    dica: 'A ou toque: empurrar na faixa verde   B: desistir',
     atualizar(dt, t) {
       if (t > 0) {
         const sp = (120 + 5 * Math.min(30, t)) * (1 - 0.15 * x.bonus);

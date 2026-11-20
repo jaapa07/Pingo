@@ -39,9 +39,9 @@ export const faixaDoPeriodo = (p: Periodo): PeriodoAgenda => (p === 'tarde' ? 'd
  * Campeão (o mapa B começa em 44–48), fase 4 ≈ líder 16. Líderes ficam acima: fase 3 entre os líderes 10 e 11 e
  * fase 4 no nível do Conselho. Nunca abaixo do ás original + 2 (a revanche é sempre mais forte que a 1ª luta).
  */
-export const ALVO_COMUM: Record<Fase, number> = { 1: 0, 2: 28, 3: 48, 4: 64 };
-export const ALVO_LIDER: Record<Fase, number> = { 1: 0, 2: 0, 3: 54, 4: 68 };
-export const ALVO_RIVAL: Record<Fase, number> = { 1: 0, 2: 0, 3: 52, 4: 68 };
+export const ALVO_COMUM: Record<Fase, number> = { 1: 0, 2: 28, 3: 50, 4: 67 };
+export const ALVO_LIDER: Record<Fase, number> = { 1: 0, 2: 0, 3: 57, 4: 73 };
+export const ALVO_RIVAL: Record<Fase, number> = { 1: 0, 2: 0, 3: 55, 4: 73 };
 
 /* ============================== líderes (item 25) ============================== */
 export interface AgendaLider {

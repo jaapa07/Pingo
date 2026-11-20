@@ -12,9 +12,11 @@ let capturou = false;
 for (let tent = 0; tent < 6 && !capturou; tent++) {
   if (!(await menu())) break;
   await t.k('ArrowDown', 250); await t.k('z', 500); // MOCHILA
+  if (tent === 0) await t.k('ArrowRight', 400); // bolso Cuias (a escolha fica lembrada)
   if (tent === 0) await t.foto('mochila-batalha');
   // procura a Cuia de Nível na lista
-  for (let j = 0; j < 8; j++) { const sel = await t.ev(() => document.querySelector('.bt-mochila .bt-desc')?.textContent ?? ''); if (/urucum/.test(sel)) break; await t.k('ArrowDown', 150); }
+  if (tent === 0) await t.k('ArrowDown', 250); // a 2ª da lista: Cuia de Nível (o cursor volta ao topo a cada abertura)
+  else await t.k('ArrowDown', 250);
   await t.k('z', 300);
   for (let i = 0; i < 60; i++) { await t.espera(150); const r = await t.ev(() => window.__pingo.jogo.save.equipe.length); if (r > 1) { capturou = true; break; } if (await t.ev(() => !!document.querySelector('.bt-menu'))) break; if (i % 6 === 5) await t.k('z', 50); }
 }

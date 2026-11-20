@@ -39,7 +39,7 @@ export const TREINADORES_CONSELHO: TreinadorDef[] = [
    * Cobertura: Jubartão (Rio/Geada) castiga Mata e Vento; Estrelaça (Rio/Mente) responde ao Veneno; ás Cervo-do-Pantanal.
    */
   guardiao('conselho-1', 'Guardiã do Mar', 'Iara Costa', 'guardia-iara',
-    [{ e: 124, nv: 64 }, { e: 132, nv: 64 }, { e: 78, nv: 64 }, { e: 100, nv: 65 }], 13000,
+    [{ e: 124, nv: 64 }, { e: 132, nv: 64 }, { e: 100, nv: 64 }], 13000,
     'Eu sou Iara Costa, Guardiã do Mar. Guardo os rios que descem da serra e o mar que os recebe.\fA água não tem pressa, {JOGADOR}: ela contorna, ela espera e, quando chega a enchente, leva tudo. Vamos ver se você sabe nadar.',
     'A maré virou, e virou bonita. Siga: o Cauã já ouviu os seus passos na mata.', ['garrafada']),
   /*
@@ -48,7 +48,7 @@ export const TREINADORES_CONSELHO: TreinadorDef[] = [
    * ás Lavadeira-Dragão (Inseto/Lenda).
    */
   guardiao('conselho-2', 'Guardião da Mata', 'Cauã', 'guardiao-caua',
-    [{ e: 98, nv: 65 }, { e: 144, nv: 65 }, { e: 82, nv: 65 }, { e: 156, nv: 66 }], 13200,
+    [{ e: 98, nv: 64 }, { e: 144, nv: 64 }, { e: 156, nv: 65 }], 13200,
     'Cauã, Guardião da Mata. Cada árvore desta serra me conhece pelo nome.\fNa mata ninguém luta sozinho: a formiga, a anta e o jabuti trabalham juntos. Mostre que a sua equipe também é uma floresta!',
     'A mata abriu caminho para você. Isso ela não faz para qualquer um. A Jandaia espera no céu.', ['garrafada']),
   /*
@@ -56,7 +56,7 @@ export const TREINADORES_CONSELHO: TreinadorDef[] = [
    * Cobertura: Poraquê (Rio/Trovão) segura Pedra; Bugio-Trovão (Ginga/Trovão) bate em Pedra e Geada; ás Araracanga.
    */
   guardiao('conselho-3', 'Guardiã do Céu', 'Jandaia', 'guardia-jandaia',
-    [{ e: 110, nv: 66 }, { e: 116, nv: 66 }, { e: 64, nv: 66 }, { e: 52, nv: 67 }], 13400,
+    [{ e: 110, nv: 64 }, { e: 116, nv: 65 }, { e: 52, nv: 66 }], 13400,
     'Jandaia, Guardiã do Céu! Daqui de cima eu vejo as nuvens nascerem.\fDuas vitórias e você ainda está de pé? Então segure o chapéu, porque aqui venta, troveja e cai raio!',
     'Que tempestade foi essa? Foi a sua. Passe: o Moacir é paciente como pedra, mas não gosta de esperar.', ['garrafada', 'garrafada']),
   /*
@@ -65,7 +65,7 @@ export const TREINADORES_CONSELHO: TreinadorDef[] = [
    * castiga Vento; ás Minhocão (Terra/Lenda).
    */
   guardiao('conselho-4', 'Guardião da Terra', 'Moacir', 'guardiao-moacir',
-    [{ e: 162, nv: 67 }, { e: 80, nv: 67 }, { e: 164, nv: 67 }, { e: 66, nv: 67 }, { e: 160, nv: 68 }], 13600,
+    [{ e: 162, nv: 65 }, { e: 80, nv: 65 }, { e: 66, nv: 66 }, { e: 160, nv: 67 }], 13600,
     'Moacir. Guardião da Terra. Sou o chão onde você pisa desde que saiu de casa.\fUm… dois… três… eu conto devagar porque a pedra não tem pressa. Vamos ver quanto tempo você aguenta debaixo da montanha.',
     'A montanha tremeu. Faz tempo que isso não acontecia. Vá, o Guardião-Mor sabe o seu nome desde que você nasceu.', ['elixir-andiroba', 'garrafada']),
   /*
@@ -75,10 +75,10 @@ export const TREINADORES_CONSELHO: TreinadorDef[] = [
    */
   guardiao('conselho-5', 'Guardião-Mor', 'Arandu', 'guardiao-arandu',
     [
-      { e: 72, nv: 68 }, { e: 170, nv: 68 }, { e: 68, nv: 69 }, { e: 112, nv: 69 },
+      { e: 72, nv: 67 }, { e: 68, nv: 68 }, { e: 112, nv: 68 },
       { e: 178, nv: 70, golpes: ['trovoada', 'relampago', 'rasante', 'pulso-das-eras'] },
     ], 18000,
     'Arandu quer dizer "o que guarda a memória". Eu guardo a de Pindorama inteira: o mar da Iara, a mata do Cauã, o céu da Jandaia, a terra do Moacir.\fVocê veio da Vila Jacarandá até o topo do mundo, {JOGADOR}. Agora mostre-me o que aprendeu no caminho — com tudo o que tem.',
-    'Eis a memória nova de Pindorama. Você e as suas criaturas lutam como quem cuida. Era isso que o Conselho esperava.', ['elixir-andiroba', 'elixir-andiroba']),
+    'Eis a memória nova de Pindorama. Você e as suas criaturas lutam como quem cuida. Era isso que o Conselho esperava.', ['elixir-andiroba', 'garrafada']),
 ];
 export default TREINADORES_CONSELHO;

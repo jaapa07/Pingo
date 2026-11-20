@@ -11,6 +11,9 @@ Arquivos meus: `src/data/zonas/{B2,B3,B4,B5}-ginasio.ts`, `src/world/mecanicas/g
 
 ### Marcos
 - (20/11) Pedra renumerada para o ginásio 10: os antigos `ginasio-09.*` (Pedra, ás 43) viraram `treinadores/ginasio-10.ts`, `eventos/ginasio-10.ts`, `mecanicas/ginasio-10.ts`; `B3-ginasio` com passo 10, ids `g10-*`, `lider-10`, flag `ginasio-10-vencido`, insígnia 10, Escalar. Equipe nova do Topázio com ás 51.
+- (20/11) Ginásio 9 (Terra) escrito: `B2-ginasio` 19×19 (tema g05, arena ginasio-05), três cercados de lama (5×2; 7×3 com 1 fardo; 11×3 com 2 fardos), soluções por busca no comentário da zona; `mecanicas/ginasio-09.ts` (afunda ao sair, porteira abre com toda a lama pisada, firma ao passar, atolar/sair/sino = peões alisam). 5 treinadores (43–47) + Zefa (ás 49, Tatucanastra). Jogado no Vite 5197: atolar testado, 3 cercados pela solução, g09-3/4/5 + líder → insígnia 9, `amuleto-mergulho`, pt-28 no save.
+- (20/11) Ginásio 10 (Pedra) jogado no Vite 5197 com a numeração nova: vagonete 1 a oeste, vagonete 2 bate no para-choque, desvio 1 a leste, desvio 2 ao norte, volta, desvio 1 a oeste, vagonete 2 sobe; g10-1..4 + líder → insígnia 10, `amuleto-escalar`, pt-40 no save. `B3-ginasio` assado (estava sem bake).
+- Lição (igual à do lote 13–16): treinador que avista anda até o jogador e fica ao lado; g09-3 ficou com visão 2 para não fechar a entrada (5, 11) do cercado 2.
 
 ## 13–16
 
