@@ -21,3 +21,9 @@
 - [x] simulador das fases (tools/sim-revancha.ts)
 - [x] `npm test`: 32/33 (a falha restante é "nº de cuias 16 ≠ 8", das cuias artesanais de outro agente)
 - [x] `npm run check -- --rapido`: nenhum erro novo das regras (só "dist/assets/zonas/A4-treino ausente", que some no build, como A-GN/A-SF de outros agentes)
+
+## Simulador (tools/sim-revancha.ts --n 60, motor puro, equipe de referência)
+- Comuns com contato (amostra 1 em 4): fase 2 (jogador 27): esperto 96%, bobo 77% · fase 3 (jogador 48): 100% / 89% · fase 4 (jogador 64): 99% / 84%.
+- Líderes, fase 3 (ás 54; jogador máx(50, ás do líder − 1)): esperto 38–90% (média ≈ 62%), bobo 0–12%. Fase 4 (ás 68, 6 criaturas; jogador 66): esperto 35–98%, bobo 0–45%. Mais fáceis: 6 (Assombro) e 8 (Mata); mais duros: 1 (Vento) e 3 (Rio).
+- Rival semanal: fase 3 (ás 52, 6 criaturas) 73% / 18% · fase 4 (ás 68) 75% / 0%.
+- Ajuste possível se o autor quiser revanche de líder mais dura no pós-jogo: `ALVO_LIDER[4]` de 68 para 70 (topo do Conselho).

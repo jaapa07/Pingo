@@ -474,3 +474,8 @@ erros de console: []
   [batalha] A4-1 → vitoria · equipe 2:27,10:8,13:6,45:8,20:8,43:17 · A4 · $13696
   [batalha] A4-3 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $14456
   [batalha] A4-2 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $15292
+  compras em A4-venda: 6× garrafada · sobrou $11092
+== checkpoint mata-pre-lider-3: ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 17"] $11092
+  ginásio 3, tentativa 1: equipe ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 17"]
+  [batalha] g03-1 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $11732
+  [batalha] g03-2 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $12412

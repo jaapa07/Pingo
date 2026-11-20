@@ -40,8 +40,8 @@ const mover = (el: HTMLElement, x: number, y: number, extra = '') => { el.style.
 /** escreve só se o texto mudou (texto bitmap refaz o DOM) */
 const escreverSe = (el: HTMLElement, s: string) => { if (el.dataset.s !== s) { el.dataset.s = s; escrever(el, s); } };
 const cacheImg = new Map<string, string>();
-/** grade de pixels → imagem SVG (rasterizada uma vez pelo navegador; nada de canvas), 1 px nativo por caractere */
-function pixImg(grade: string[], pal: Record<string, string>): HTMLElement {
+/** grade de pixels → imagem SVG (rasterizada uma vez pelo navegador; nada de canvas), ampliada ×`esc` (inteiro) como a criatura */
+function pixImg(grade: string[], pal: Record<string, string>, esc = 2): HTMLElement {
   const chave = grade.join('|');
   let url = cacheImg.get(chave);
   if (!url) {
@@ -50,7 +50,7 @@ function pixImg(grade: string[], pal: Record<string, string>): HTMLElement {
     url = `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${grade[0].length}" height="${grade.length}" shape-rendering="crispEdges">${r}</svg>`)}")`;
     cacheImg.set(chave, url);
   }
-  const el = div('gn-img'); el.style.width = grade[0].length + 'px'; el.style.height = grade.length + 'px'; el.style.backgroundImage = url;
+  const el = div('gn-img'); el.style.width = grade[0].length * esc + 'px'; el.style.height = grade.length * esc + 'px'; el.style.backgroundImage = url; el.style.backgroundSize = '100% 100%';
   return el;
 }
 
@@ -148,7 +148,7 @@ function provaAgilidade(raiz: HTMLElement, x: Ctx): Prova {
         if (o.fx) { o.fx.atualizar(dt); o.fx.x = 0; o.fx.y = 0; o.fx.desenhar(); mover(o.el, o.x, RAIAS[o.r] - 10); }
         else mover(o.el, o.x - w / 2, RAIAS[o.r] - h + 2);
         o.el.style.zIndex = String(RAIAS[o.r]);
-        if (!o.feito && o.r === raia && Math.abs(o.x - CX) < 11 && Math.abs(cri.y - RAIAS[o.r]) < 8) {
+        if (!o.feito && o.r === raia && Math.abs(o.x - CX) < (o.t === 'estrela' ? 12 : w / 2 + 4) && Math.abs(cri.y - RAIAS[o.r]) < 8) {
           o.feito = true;
           if (o.t === 'estrela') { estrelas++; som('ui-ok'); x.fx.fx('comum-estrela', CX, cri.y - 30); x.fx.txt('+15', CX, cri.y - 44); o.el.remove(); }
           else if (trope <= 0) { trope = tTrope; cri.piscar = tTrope; som('batida'); x.fx.fx('fis-poeira', CX + 8, cri.y - 8); x.fx.txt('Opa!', CX, cri.y - 44, 'vermelho'); input.vibrar(30); }
@@ -211,11 +211,11 @@ function provaForca(raiz: HTMLElement, x: Ctx): Prova {
       if (flex > 0) flex -= dt;
       cri.andar(flex > 0, 1.6);
       cri.alt = 0; cri.x = CX + (flex > 0 ? 2 : 0);
-      mover(tora, CX + 14 + (flex > 0 ? 2 : 0), CHAO - 22);
+      mover(tora, CX + 18 + (flex > 0 ? 2 : 0), CHAO - 20);
       // estacas do caminho a cada 16 m (64 px) andando para trás conforme a tora sobe
       estacas.forEach((e, i) => {
         const k = Math.floor(pos / 64) + i - 2, px = Math.round(CX + 30 + k * 64 - pos);
-        mover(e, px, CHAO - 2); escreverSe(marcas[i], `${Math.max(0, k) * 16}m`); mover(marcas[i], px - 4, CHAO + 8);
+        mover(e, px - 4, CHAO - 10); escreverSe(marcas[i], `${Math.max(0, k) * 16}m`); mover(marcas[i], px - 4, CHAO + 8);
         e.style.visibility = marcas[i].style.visibility = k >= 0 ? '' : 'hidden';
       });
       rolarEm(pedras, pos % 32);
@@ -227,7 +227,7 @@ function provaForca(raiz: HTMLElement, x: Ctx): Prova {
 /** Salto do Riacho: troncos e pedras vêm pelo chão; A pula. Pular bem no meio vale salto perfeito */
 function provaSalto(raiz: HTMLElement, x: Ctx): Prova {
   const pista = div('gn-pista gn-chao gn-riacho', raiz);
-  const CHAO = 148, CX = 72, ALT = 34;
+  const CHAO = 148, CX = 72, ALT = 44;
   const agua = [tracos(pista, 'gn-brilho', 134)], chao = [tracos(pista, 'gn-pedrisco', 154), tracos(pista, 'gn-pedrisco', 160)];
   const cri = new Corredor(pista, x.c.especie); cri.x = CX; cri.y = CHAO;
   const vel = (105 + 55 * x.vel) * (1 + x.bonus * 0.5), dur = (0.55 + 0.2 * x.vel) * (1 + x.bonus * 0.5), tTrope = 0.85 * (1 - 0.5 * x.def);
@@ -254,13 +254,13 @@ function provaSalto(raiz: HTMLElement, x: Ctx): Prova {
           prox = rng.int(110, 200) * (1 + x.vel * 0.25);
           const tronco = rng.chance(0.6), el = pixImg(tronco ? TRONCO : PEDRA, PAL);
           el.classList.add('gn-ob'); pista.append(el);
-          obs.push({ el, x: 336, w: tronco ? 20 : 14, h: tronco ? 7 : 8 });
+          obs.push({ el, x: 340, w: tronco ? 40 : 28, h: tronco ? 14 : 16 });
         }
       }
       for (const o of obs) {
-        o.x -= passo; mover(o.el, o.x - o.w / 2, CHAO - o.h + 1);
+        o.x -= passo; mover(o.el, o.x - o.w / 2, CHAO - o.h + 2);
         if (o.feito) continue;
-        if (Math.abs(o.x - CX) < (o.w / 2 + 5) && cri.alt < o.h + 1) {
+        if (Math.abs(o.x - CX) < (o.w / 2 + 4) && cri.alt < o.h) {
           o.feito = true; combo = 0; trope = tTrope; cri.piscar = tTrope; noAr = -1;
           som('batida'); x.fx.fx('fis-impacto', CX + 6, CHAO - 10); x.fx.txt('Tropeçou!', CX, CHAO - 60, 'vermelho'); input.vibrar(30);
         } else if (o.x < CX - o.w / 2 - 6) {
