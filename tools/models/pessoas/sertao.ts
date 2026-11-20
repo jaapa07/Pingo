@@ -6,7 +6,7 @@
  */
 import { pessoa } from './kit/pessoa';
 import type { Ficha } from './kit/pessoa';
-import { R_A, R_B, R_D } from './kit/paletas';
+import { R_CAB, R_A, R_B, R_D } from './kit/paletas';
 import type { Rampa } from './kit/paletas';
 import { HY } from './kit/pecas';
 import { blob, lathe, tube, slab, ring, taper, wobble, tom } from '../../render/sculpt';
@@ -76,14 +76,14 @@ const tibirica = especial({
 const PONCHO: Rampa = ['#262a44', '#3e4868', '#6a7896'];
 const andarilho = especial({
   id: 'andarilho-cume', pele: 'canela', cabelo: 'grisalho', a: 'carvao', b: PONCHO, d: 'couro', iris: '#4a5a8a', ...M, zoomBatalha: 0.86, dyRetrato: 1,
-  v: { cabelo: 'curto', barba: 'barba', sobrancelha: 'grossa', chapeu: 'aba-larga', rChapeu: R_D, rChapeuFaixa: R_A, manga: 'longa', rTorso: R_A, baixo: 'calca', rBaixo: R_A,
+  v: { cabelo: 'curto', barba: 'cavanhaque', sobrancelha: 'grossa', chapeu: 'aba-larga', rChapeu: R_D, rChapeuFaixa: R_A, manga: 'longa', rTorso: R_A, baixo: 'calca', rBaixo: R_A,
     pes: 'bota', rPes: R_D, luvas: R_D, propBraco: 30, propNoMapa: true },
 }, (r) => {
   // poncho até os joelhos, franja clara na barra e gola alta
   // poncho de lã até o quadril, com duas listras (clara e couro) e franja; gola baixa
   r.add('tronco', lathe([[0.001, 0.35], [0.16, 0.345], [0.25, 0.22], [0.31, -0.02], [0.32, -0.1], [0.3, -0.115], [0.001, -0.1]], tom(R_B), { scale: [0.74, 1, 1], seg: 24 }),
-    lathe([[0.285, 0.06], [0.3, 0.0], [0.29, -0.0], [0.278, 0.055]], luz(R_B), { scale: [0.75, 1, 1.01], seg: 24 }),
-    lathe([[0.3, -0.03], [0.31, -0.06], [0.3, -0.065], [0.29, -0.035]], tom(R_D), { scale: [0.75, 1, 1.01], seg: 24 }),
+    lathe([[0.3, 0.08], [0.322, 0.01], [0.31, 0.005], [0.29, 0.075]], luz(R_B), { scale: [0.75, 1, 1.01], seg: 24 }),
+    lathe([[0.318, -0.02], [0.33, -0.06], [0.318, -0.065], [0.305, -0.025]], tom(R_D), { scale: [0.75, 1, 1.01], seg: 24 }),
     blob([0.16, 0.05, 0.21], som(R_B), { pos: [0.0, 0.31, 0] }));
   for (let i = 0; i < 11; i++) { const a = -150 + i * 30, c = Math.cos((a * Math.PI) / 180), s = Math.sin((a * Math.PI) / 180); r.add('tronco', blob([0.02, 0.035, 0.02], luz(R_B), { pos: [c * 0.31 * 0.74, -0.14, s * 0.31] })); }
   // trouxa pequena enrolada nas costas
@@ -132,13 +132,12 @@ const guardiaFloresta = especial({
   v: { porte: 'magro', cabelo: 'longo', chapeu: 'faixa', rChapeu: R_B, manga: 'sem', rTorso: R_A, baixo: 'saia-longa', rBaixo: R_A, rBarra: R_B, cinto: R_D,
     pes: 'descalco', pescoco: 'colar', rPescoco: R_D, rPescocoFaixa: R_B, brinco: R_B, propBraco: 32, propNoMapa: true },
 }, (r) => {
-  // manto de folhas sobre os ombros: camadas de folhas largas que descem pelas costas
-  for (let i = 0; i < 7; i++) {
-    const a = -75 + i * 25, s = Math.sin((a * Math.PI) / 180), c = Math.cos((a * Math.PI) / 180);
-    r.add('tronco', folha(0.26, 0.085, i % 2 ? tom(R_B) : tom(R_A, { vies: 1 }), [-0.1 + c * 0.0 - Math.abs(c) * 0.06, 0.38, s * 0.2], [180 + s * 14, 90 + a * 0.2, -14 - Math.abs(c) * 10]));
+  // manto de folhas: capa verde-escura nas costas e, em cada ombro, um leque de folhas novas caindo para fora
+  r.add('tronco', blob([0.05, 0.32, 0.25], tom(R_A, { vies: -1 }), { pos: [-0.15, 0.04, 0], deform: [taper('y', -0.32, 0.32, 1.25, 0.8), wobble(0.012, 14)] }));
+  for (const sz of [1, -1]) for (let i = 0; i < 4; i++) {
+    const ang = -30 + i * 22;
+    r.add('tronco', folha(0.2 - i * 0.012, 0.07, i % 2 ? tom(R_B) : luz(R_B), [0.07 - i * 0.07, 0.36, sz * 0.2], [180 + sz * (38 + i * 4), 90 + ang * 0.0, ang * 0.4]));
   }
-  for (const z of [0.2, -0.2]) r.add('tronco', folha(0.2, 0.08, tom(R_B), [0.02, 0.37, z], [180 + Math.sign(z) * 30, 90, 0]));
-  r.add('tronco', blob([0.05, 0.32, 0.25], tom(R_A), { pos: [-0.15, 0.04, 0], deform: [taper('y', -0.32, 0.32, 1.25, 0.8), wobble(0.012, 14)] }));
   // folhas e flor de maracujá no cabelo
   r.add('cabeca', folha(0.2, 0.06, tom(R_B), h(-0.12, 0.2, 0.22), [-40, 90, 20]), folha(0.17, 0.055, tom(R_A, { vies: 1 }), h(-0.18, 0.17, 0.12), [-15, 90, 40]));
   r.add('cabeca', blob([0.04, 0.04, 0.035], tom(R_D, { vies: 1 }), { pos: h(0.04, 0.19, 0.275) }));
@@ -146,30 +145,30 @@ const guardiaFloresta = especial({
   // pinturas de jenipapo nos braços
   for (const b of ['bracoD', 'bracoE']) r.add(b, ring(0.06, 0.014, som(R_A), { pos: [0, -0.06, 0], rot: [90, 0, 0] }), ring(0.058, 0.014, som(R_A), { pos: [0, -0.11, 0], rot: [90, 0, 0] }));
   // lança de taquara: gomos marcados e ponta de folha
-  r.add('prop', tube([[0, -0.42, 0], [0, 0.62, 0]], 0.025, tom(R_D), { seg: 4, radial: 8 }));
+  r.add('prop', tube([[0, -0.42, 0], [0, 0.62, 0]], 0.03, tom(R_D), { seg: 4, radial: 8 }));
   for (const y of [-0.2, 0.05, 0.3, 0.52]) r.add('prop', ring(0.028, 0.01, som(R_D), { pos: [0, y, 0], rot: [90, 0, 0] }));
-  r.add('prop', folha(0.2, 0.05, luz(R_B), [0, 0.6, 0], [0, 90, 0]), tube([[0.0, 0.58, 0.02], [0.05, 0.5, 0.05], [0.06, 0.4, 0.04]], 0.012, tom(R_B), { seg: 6, radial: 5 }));
+  r.add('prop', folha(0.26, 0.075, luz(R_B), [0, 0.6, 0], [0, 90, 0]), folha(0.26, 0.075, luz(R_B), [0, 0.6, 0], [0, 0, 0]), tube([[0.0, 0.58, 0.02], [0.05, 0.5, 0.05], [0.06, 0.4, 0.04]], 0.012, tom(R_B), { seg: 6, radial: 5 }));
 });
 
 /* ---------------------------------------------------------------------------------------------- */
 /* Drª Solveig — pesquisadora-chefe da Expedição Boreal: parka vermelha, gorro de tricô, caderno    */
 /* ---------------------------------------------------------------------------------------------- */
-const PARKA: Rampa = ['#8a2232', '#d23a3c', '#f6785a'];
+const PARKA: Rampa = ['#143a48', '#1f6a76', '#48a6a2'];
+const PELO: Rampa = ['#6a4a3a', '#a07a5a', '#d8b48a'];
 const LOIRO_NORTE: Rampa = ['#a08250', '#e2cc8e', '#fff6d0'];
-const LA_CRU: Rampa = ['#a8a0a2', '#ece6dc', '#ffffff'];
+const LA_VERMELHA: Rampa = ['#8a2232', '#cf3a3e', '#f47a5c'];
 const solveig = especial({
-  id: 'dra-solveig', pele: 'clara', cabelo: LOIRO_NORTE, a: PARKA, b: 'chumbo', d: LA_CRU, iris: '#3a6ab4', ...M, zoomBatalha: 0.9,
-  v: { porte: 'magro', cabelo: 'tranca', laco: R_A, chapeu: 'gorro', rChapeu: R_D, rChapeuFaixa: R_A, manga: 'longa', rTorso: R_A, baixo: 'calca', rBaixo: R_B,
-    pes: 'bota', rPes: R_B, luvas: R_B, sobre: 'jaleco', rSobre: R_A, rSobreFaixa: R_D, prop: 'livro', rProp: R_B, rPropFaixa: R_D, propBraco: 48 },
+  id: 'dra-solveig', pele: 'clara', cabelo: LOIRO_NORTE, a: PARKA, b: PELO, d: LA_VERMELHA, iris: '#3a6ab4', ...M, zoomBatalha: 0.9,
+  v: { porte: 'magro', cabelo: 'tranca', laco: R_A, chapeu: 'gorro', rChapeu: R_D, rChapeuFaixa: R_B, manga: 'longa', rTorso: R_A, baixo: 'calca', rBaixo: R_B,
+    pes: 'bota', rPes: R_B, luvas: R_B, sobre: 'jaleco', rSobre: R_A, rSobreFaixa: R_B, pescoco: 'cachecol', rPescoco: R_D, rPescocoFaixa: R_B, prop: 'livro', rProp: R_D, rPropFaixa: R_B, propBraco: 48 },
 }, (r) => {
-  // gola de pelo e capuz caído, bolsos e faixa refletiva
-  r.add('tronco', blob([0.17, 0.075, 0.235], tom(R_D), { pos: [0.0, 0.34, 0], deform: [wobble(0.012, 18)] }),
-    blob([0.1, 0.14, 0.2], tom(R_A, { vies: -1 }), { pos: [-0.19, 0.3, 0] }),
-    blob([0.03, 0.05, 0.07], som(R_A), { pos: [0.16, -0.06, 0.12] }), blob([0.03, 0.05, 0.07], som(R_A), { pos: [0.16, -0.06, -0.12] }),
-    lathe([[0.226, 0.06], [0.23, 0.02], [0.222, 0.02], [0.218, 0.06]], chapa(R_D), { scale: [0.78, 1, 1.01], seg: 22 }));
-  for (const b of ['bracoD', 'bracoE']) r.add(b, ring(0.066, 0.016, chapa(R_D), { pos: [0, -0.12, 0], rot: [90, 0, 0] }));
+  // gola de pelo baixa (não cobre o queixo), bolsos e punhos de pelo
+  r.add('tronco', blob([0.03, 0.05, 0.07], som(R_A), { pos: [0.16, -0.06, 0.12] }), blob([0.03, 0.05, 0.07], som(R_A), { pos: [0.16, -0.06, -0.12] }));
+  for (const b of ['bracoD', 'bracoE']) r.add(b, ring(0.066, 0.018, luz(R_B), { pos: [0, -0.17, 0], rot: [90, 0, 0] }));
+  // padrão de tricô no gorro: pontinhos claros na faixa
+  for (let i = 0; i < 8; i++) { const a = (i / 8) * Math.PI * 2; r.add('cabeca', blob([0.022, 0.022, 0.022], luz(R_D), { pos: h(-0.03 + Math.cos(a) * 0.3, 0.26, Math.sin(a) * 0.33) })); }
   // lápis preso no caderno
-  r.add('prop', tube([[0.1, 0.13, 0.08], [0.1, -0.06, 0.1]], 0.012, tom(R_A), { seg: 2, radial: 5 }));
+  r.add('prop', tube([[0.1, 0.13, 0.08], [0.1, -0.06, 0.1]], 0.012, luz(R_B), { seg: 2, radial: 5 }));
 });
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -179,22 +178,23 @@ const PARKA_AZUL: Rampa = ['#1c2c5a', '#2e4c8e', '#5a82c4'];
 const AURORA: Rampa = ['#1a7a72', '#3ad2a0', '#b8ffd8'];
 const pesquisador = especial({
   id: 'pesquisador-boreal', pele: 'rosada', cabelo: 'ruivo', a: PARKA_AZUL, b: 'cinza', d: AURORA, iris: '#3a7a6a', ...M, zoomBatalha: 0.9,
-  v: { cabelo: 'curto', manga: 'longa', rTorso: R_A, baixo: 'calca', rBaixo: R_B, pes: 'bota', rPes: R_B, luvas: R_B, sobre: 'jaleco', rSobre: R_A, rSobreFaixa: R_D,
-    costas: 'mochila', rCostas: R_B, rCostasFaixa: R_D, propBraco: 12, propNoMapa: true },
+  v: { cabelo: 'careca', manga: 'longa', rTorso: R_A, baixo: 'calca', rBaixo: R_B, pes: 'bota', rPes: R_B, luvas: R_B, sobre: 'jaleco', rSobre: R_A, rSobreFaixa: R_B,
+    costas: 'mochila', rCostas: R_B, rCostasFaixa: R_D, propBraco: 30, propNoMapa: true },
 }, (r) => {
   // capuz levantado com borda de pelo cinza-claro
   r.add('cabeca', blob([0.32, 0.3, 0.345], tom(R_A), { pos: h(-0.07, 0.04, 0), deform: [taper('x', -0.3, 0.3, 1.04, 0.92)] }),
-    ring(0.27, 0.05, luz(R_B), { pos: h(0.13, -0.02, 0), rot: [0, 90, 0], scale: [1, 1.1, 1] }));
+    ring(0.27, 0.05, luz(R_B), { pos: h(0.13, -0.02, 0), rot: [0, 90, 0], scale: [1, 1.1, 1] }),
+    blob([0.05, 0.045, 0.17], tom(R_CAB), { pos: h(0.2, 0.17, 0) }));
   // faixa refletiva verde-aurora no peito e nos braços
   r.add('tronco', lathe([[0.226, 0.14], [0.23, 0.1], [0.222, 0.1], [0.218, 0.14]], chapa(R_D), { scale: [0.78, 1, 1.01], seg: 22 }));
   for (const b of ['bracoD', 'bracoE']) r.add(b, ring(0.066, 0.016, chapa(R_D), { pos: [0, -0.1, 0], rot: [90, 0, 0] }));
   // lanterna boreal pendurada na mão: alça, armação e luz de aurora
   r.add('prop',
-    tube([[0, 0.02, 0], [0.0, -0.06, 0]], 0.012, som(R_B), { seg: 2, radial: 4 }),
-    ring(0.04, 0.012, tom(R_B), { pos: [0, -0.06, 0], rot: [0, 90, 0], arc: 180 }),
-    lathe([[0.001, -0.08], [0.055, -0.09], [0.07, -0.13], [0.07, -0.25], [0.055, -0.28], [0.001, -0.28]], chapa(R_D), { seg: 12 }),
-    blob([0.04, 0.06, 0.04], luz(R_D), { pos: [0.03, -0.18, 0] }),
-    ring(0.072, 0.016, tom(R_B), { pos: [0, -0.1, 0], rot: [90, 0, 0] }), ring(0.072, 0.016, tom(R_B), { pos: [0, -0.27, 0], rot: [90, 0, 0] }));
+    tube([[0, 0.02, 0], [0.0, -0.06, 0]], 0.014, som(R_B), { seg: 2, radial: 4 }),
+    ring(0.05, 0.016, tom(R_B), { pos: [0, -0.07, 0], rot: [0, 90, 0], arc: 180 }),
+    lathe([[0.001, -0.1], [0.075, -0.11], [0.095, -0.16], [0.095, -0.33], [0.075, -0.37], [0.001, -0.37]], chapa(R_D), { seg: 12 }),
+    blob([0.055, 0.08, 0.055], luz(R_D), { pos: [0.045, -0.235, 0] }),
+    ring(0.097, 0.02, tom(R_B), { pos: [0, -0.12, 0], rot: [90, 0, 0] }), ring(0.097, 0.02, tom(R_B), { pos: [0, -0.36, 0], rot: [90, 0, 0] }));
 });
 
 /* ---------------------------------------------------------------------------------------------- */

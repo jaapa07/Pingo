@@ -18,6 +18,12 @@ import { bonusArtesanal, chanceObedecer, deOutroTreinador, AMIZADE_CUIA_AMIGA } 
 import { aprenderGolpe, atributos, especie, expDerrota, expParaNivel, ganharEsforco, mudarAmizade, NIVEL_MAX, nomeDe, podeEvoluir, subirNivel } from './criatura';
 
 /* ============================== tipos públicos ============================== */
+/**
+ * Chocalho do Mutirão: a reserva só aprende olhando quando está ESTES níveis (ou mais) atrás da mais forte.
+ * Depois da Liga (`liga-vencida`) o limiar sobe para 5 (decisão do autor, docs/EQUILIBRIO-MAPA-B.md): o Chocalho continua
+ * pondo uma captura nova em dia, mas deixa de levar a equipe nivelada inteira junto pelo mapa B.
+ */
+export const LIMIAR_CHOCALHO = { antesDaLiga: 2, depoisDaLiga: 5 } as const;
 export interface Pos { lado: 0 | 1; pos: number }
 export type Acao =
   /** slot do golpe (−1 = Desespero, quando não há PG). `alvo`: adversário visado (duplas). `trocaPara`: quem entra depois de um golpe de bater-e-voltar. */
@@ -46,8 +52,10 @@ export interface ConfigBatalha {
   trocaGratis?: boolean;
   /** o lado 0 ganha experiência e esforço (padrão: true) */
   ganhaExp?: boolean;
-  /** Chocalho do Mutirão: quem ficou na reserva, está de pé e 2 níveis ou mais abaixo da mais forte da equipe recebe metade do que cada participante ganhou. Padrão: false. */
+  /** Chocalho do Mutirão: quem ficou na reserva, está de pé e `limiarPartilha` níveis ou mais abaixo da mais forte da equipe recebe metade do que cada participante ganhou. Padrão: false. */
   expPartilhada?: boolean;
+  /** quantos níveis atrás da mais forte a reserva tem de estar para o Chocalho valer (padrão 2; 5 depois da Liga: `LIMIAR_CHOCALHO`) */
+  limiarPartilha?: number;
   /** com 4 golpes, um golpe novo substitui sozinho o mais fraco (IA/headless). Padrão: false → fica em `golpesPendentes`. */
   autoAprender?: boolean;
   /** o encontro veio da pesca (Cuia de Isca) */
@@ -755,9 +763,10 @@ export class Batalha {
     const esforco = especie(inimigo.especie).esforco;
     // Chocalho do Mutirão: a reserva de pé aprende olhando — metade da experiência de um participante, sem esforço e sem tirar nada de quem lutou
     // Só quem ficou para trás escuta: a reserva 2 níveis ou mais abaixo da mais forte da equipe (senão as três da frente
-    // subiam em dobro e o jogador chegava aos líderes 6–8 acima do ás deles; docs/QA-TRECHO-2.md).
+    // subiam em dobro e o jogador chegava aos líderes 6–8 acima do ás deles; docs/QA-TRECHO-2.md); 5 depois da Liga
+    // (`limiarPartilha`, docs/EQUILIBRIO-MAPA-B.md).
     const topo = Math.max(...this.lados[0].equipe.filter((c) => !c.ovo).map((c) => c.nivel));
-    const reserva = this.cfg.expPartilhada ? this.lados[0].equipe.filter((c) => c.vida > 0 && !c.ovo && !quem.includes(c) && c.nivel <= topo - 2) : [];
+    const reserva = this.cfg.expPartilhada ? this.lados[0].equipe.filter((c) => c.vida > 0 && !c.ovo && !quem.includes(c) && c.nivel <= topo - (this.cfg.limiarPartilha ?? LIMIAR_CHOCALHO.antesDaLiga)) : [];
     for (const c of [...quem, ...reserva]) {
       // criatura recebida em troca aprende mais depressa: ×1,5 (spec 10A-12 e 24)
       const trocada = !!this.cfg.obediencia && deOutroTreinador(c, this.cfg.obediencia.dono);

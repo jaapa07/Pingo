@@ -15,10 +15,10 @@ import { TABELA, eficaciaContra } from '../src/data/tabela-tipos';
 import { ITENS, PERGAMINHOS, item, temItemDef } from '../src/data/itens';
 import { PERSONALIDADES } from '../src/data/personalidades';
 import { ANIMS_USADAS } from '../src/battle/anims-usadas';
-import { Batalha, danoBase, valorCaptura, tentarCaptura, bonusCuia, bonusStatusCaptura, multClima, chanceFuga, type Acao, type ConfigBatalha, type EventoBatalha } from '../src/battle/engine';
+import { Batalha, LIMIAR_CHOCALHO, danoBase, valorCaptura, tentarCaptura, bonusCuia, bonusStatusCaptura, multClima, chanceFuga, type Acao, type ConfigBatalha, type EventoBatalha } from '../src/battle/engine';
 import { escolherAcaoIA, nivelEfetivo, resolverComIA, iaUsaItens, NIVEIS_IA, type NivelIA } from '../src/battle/ia';
 import { registrarEspecies, especie, criarCriatura, criarDeMembro, atributos, atributosDe, expParaNivel, nivelPorExp, podeEvoluir, evoluir, ganharEsforco, ganharExp, mudarAmizade, novoSlot, AMIZADE_EVOLUCAO, expDerrota, temEspecie } from '../src/battle/criatura';
-import { iniciarBatalha, prepararBatalha, definirPiloto, curarEquipe, pilotoPadrao } from '../src/battle/index';
+import { iniciarBatalha, limiarChocalho, prepararBatalha, definirPiloto, curarEquipe, pilotoPadrao } from '../src/battle/index';
 import { sortearRara, prepararSelvagem, bonusArtesanal, limiteObediencia, chanceObedecer, CHANCE_RARA, AMIZADE_CUIA_AMIGA } from '../src/battle/cuias';
 import { afinidade, gerarOvo, formaBase, passoCriadouro, criadouro, PASSOS_SORTEIO } from '../src/world/ninhos';
 import { GRUPOS_NINHO } from '../src/data/ninhos';
@@ -277,6 +277,19 @@ teste('experiência em batalha: subir de nível, aprender golpe, golpe pendente 
     while (!b6.resultado) turno(b6, G(0), G(0));
     const tot = expDerrota(alvo2, true); igual(l1.exp - y1, tot, 'quem lutou fica com tudo'); igual(r1.exp - y2, Math.floor(tot / 2), 'reserva atrasada ganha metade'); igual(caida.exp - y3, 0, 'desmaiada não ganha'); igual(perto.exp - y4, 0, 'reserva a 1 nível da mais forte não ganha');
     igual(STATS.reduce((a, k) => a + r1.esf[k], 0), 0, 'reserva não ganha esforço'); }
+  // Chocalho depois da Liga (`limiarPartilha` 5, src/battle/index.ts com `liga-vencida`): a reserva 2–4 níveis atrás deixa de
+  // ganhar; 5+ atrás continua ganhando metade. Antes da Liga (padrão 2) a mesma reserva a 3 níveis ganha.
+  for (const [limiar, quer3] of [[undefined, true], [LIMIAR_CHOCALHO.antesDaLiga, true], [LIMIAR_CHOCALHO.depoisDaLiga, false]] as const) {
+    const l1 = neutra(9005, 30, 'esguicho'), tres = neutra(9005, 27, 'esguicho'), cinco = neutra(9005, 25, 'esguicho'), alvo3 = neutra(9003, 10, 'cara-feia');
+    const z1 = tres.exp, z2 = cinco.exp;
+    const b7 = new Batalha({ tipo: 'treinador', lados: [{ equipe: [l1, tres, cinco], itens: {}, nome: 'A' }, { equipe: [alvo3], itens: {}, nome: 'B' }], expPartilhada: true, limiarPartilha: limiar }); b7.iniciar();
+    while (!b7.resultado) turno(b7, G(0), G(0));
+    const tot = expDerrota(alvo3, true);
+    igual(tres.exp - z1, quer3 ? Math.floor(tot / 2) : 0, `reserva 3 níveis atrás com limiar ${limiar ?? 'padrão'}`);
+    igual(cinco.exp - z2, Math.floor(tot / 2), `reserva 5 níveis atrás com limiar ${limiar ?? 'padrão'}`);
+  }
+  igual(LIMIAR_CHOCALHO.antesDaLiga, 2, 'limiar antes da Liga'); igual(LIMIAR_CHOCALHO.depoisDaLiga, 5, 'limiar depois da Liga');
+  igual(limiarChocalho({}), 2, 'save sem a Liga: limiar 2'); igual(limiarChocalho({ 'liga-vencida': true, 'ginasio-09-vencido': true }), 5, 'save com `liga-vencida`: limiar 5');
   // fora de batalha
   const r = neutra(9001, 5); const subidas = ganharExp(r, expParaNivel('lento', 9) - r.exp); igual(r.nivel, 9, 'ganharExp'); igual(subidas.length, 4, 'subidas'); afirmar(r.golpes.some((g) => g.id === 'erva-de-passarinho'), 'aprendeu no caminho');
 });

@@ -17,7 +17,7 @@ import type { ClimaId, CriaturaInst, TreinadorDef } from '../core/tipos';
 import { jogo, marcarCapturado, marcarVisto, periodo, receberCriatura, darItem } from '../core/estado';
 import { bus } from '../core/events';
 import { telas, criarTela, temTela } from '../ui/telas';
-import { Batalha, type Acao, type AcaoDe, type ConfigBatalha, type EventoBatalha, type Pedido, type ResultadoId } from './engine';
+import { Batalha, LIMIAR_CHOCALHO, type Acao, type AcaoDe, type ConfigBatalha, type EventoBatalha, type Pedido, type ResultadoId } from './engine';
 import { escolherAcaoIA, escolherSubstitutoIA, iaUsaItens, nivelEfetivo, type NivelIA, type OpcoesIA } from './ia';
 import { limiteObediencia } from './cuias';
 import { amizadePor, curarCriatura, evoluir, nomeDe, registrarEspecies, totalEspecies } from './criatura';
@@ -97,6 +97,8 @@ export class ControleBatalha {
 }
 
 /** monta o controle de uma batalha a partir do pedido e do save atual */
+/** limiar do Chocalho do Mutirão pelo progresso: 2 até a Liga, 5 depois de `liga-vencida` (só o mapa B em diante muda) */
+export function limiarChocalho(flags: Record<string, unknown>): number { return flags['liga-vencida'] ? LIMIAR_CHOCALHO.depoisDaLiga : LIMIAR_CHOCALHO.antesDaLiga; }
 export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } = {}): ControleBatalha {
   const s = jogo.save, dif = jogo.opcoes.dificuldade, t = p.treinador;
   const nivel: NivelIA = p.tipo === 'treinador' ? nivelEfetivo(t?.ia ?? 'treinador', dif) : p.tipo === 'lendario' ? nivelEfetivo('treinador', dif) : 'novato';
@@ -112,6 +114,7 @@ export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } 
     lados: [{ equipe: s.equipe, itens: s.mochila, nome: s.jogador.nome }, { equipe: p.inimigos, itens, nome: t ? `${t.classe} ${t.nome}` : '' }],
     clima: p.clima, dupla: p.dupla ?? t?.dupla, semFuga: p.semFuga, semCaptura: p.semCaptura, periodo: periodo(),
     trocaGratis: dif !== 'veterano', autoAprender: o.autoAprender, ganhaExp: !p.semExp, expPartilhada: (s.mochila['chocalho-mutirao'] ?? 0) > 0,
+    limiarPartilha: limiarChocalho(s.flags),
     pescada: p.pescada, obediencia: { limite: limiteObediencia(s.insignias.length), dono: s.jogador.nome },
   };
   return new ControleBatalha(p, cfg, nivel, { usaItens, foge: p.errante }, p.tipo === 'treinador' ? (t?.premio ?? 0) : 0);

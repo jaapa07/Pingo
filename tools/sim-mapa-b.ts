@@ -36,7 +36,7 @@ function taxa(seq: TreinadorDef[], tipo: 'ref' | 'qa', dl: number, itens: () => 
     const eq = equipe(tipo, ini, as), it = itens();
     for (const [k, x] of seq.entries()) {
       if (k > 0) cuidarEntreLutas(eq, it);
-      const r = lutarContra(eq, it, inimigosDe(x), x.nome, PILOTOS.esperto, x.ia ?? 'treinador', { itensIA: itensDoTreinador(x, 15), ganhaExp: seq.length > 1, expPartilhada: seq.length > 1 });
+      const r = lutarContra(eq, it, inimigosDe(x), x.nome, PILOTOS.esperto, x.ia ?? 'treinador', { itensIA: itensDoTreinador(x, 15), ganhaExp: seq.length > 1, expPartilhada: seq.length > 1, limiarPartilha: 5 });
       if (!r.vitoria) break;
       passou[k]++;
     }
