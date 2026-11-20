@@ -92,7 +92,7 @@ níveis 39–42 (4 criaturas cada, IA comum, sem itens, prêmio 2 400–2 500), 
 Mestre e dá a dica dele na fala de depois. No chão do terreiro, 2 Elixires e 1 Chá de Guaraná. Jogando: 0–1 derrota
 (Desafiante Tição), equipe 41/41/40/40/40/40 e $15 380 antes das compras.
 
-## 2. Liga dos Guardiões — taxa real (em andamento)
+## 2. Liga dos Guardiões — taxa real (CONCLUÍDO na 4ª mão)
 
 ### 2.1 Rodadas jogadas (4ª mão, 20/11) — checkpoint `plato` (depois dos Desafiantes: 42/44/42/41/42/42, $8 432)
 
@@ -115,5 +115,44 @@ Bugs achados jogando:
 - **rival-5 era luta perdida**: a Tainá desafia logo depois do Hall, e a equipe saía do Campeão sem cura (na rodada A,
   5 de 6 duelos perdidos em 2–22 turnos, com 1–2 criaturas de pé). Corrigido: o Hall da Fama cura a equipe
   (`['curar']` + fala em `liga-vitoria`).
-- rival-5 com a equipe curada ficava em 96–100% para os três iniciais (simulador com o save de Campeão). Ajuste: níveis
-  42–45 → 46/46/46/47/47/48 e 2 garrafadas → 75–94% conforme o inicial (antes, com a equipe de referência: 15–85%).
+- rival-5 com a equipe curada ficava em 96–100% para os três iniciais (simulador com o save de Campeão). Tentei 46–48,
+  mas o verificador barra rival acima do ás do Campeão (46). Ficou 45/45/45/46/46/46 e 2 garrafadas → **91–100%** conforme
+  o inicial (antes, com a equipe de referência e nível 42–45: 15–85%). No jogo, com a cura do Hall: 7 de 7 vitórias (Rio).
+- Hall da Fama cortava os nomes em 7 letras ("Gaviãoz", "Tatucan"): painel refeito em 3×2 com vagas de 155 px (cabe o
+  maior nome do jogo, 122 px), nome e nível em duas linhas, sem encostar no nome de quem fala.
+
+| Rodada | Equipe da Liga | Tentativas | Campeão | Onde caiu |
+|---|---|---|---|---|
+| C (escolta do Campeão +1 nível e Relâmpago) | 43/44/45/46 | 9 (71–73, 81–83, 91–93) | 6/9 | Brasa-Viva, Neblina, Campeão |
+
+Simulador para decidir (`sim-save.mts plato`, Rio / Mata / Brasa · `sim-equilibrio.ts` referência):
+
+| Campeão | Rio | Mata | Brasa | Média | Referência |
+|---|---|---|---|---|---|
+| original (42/43/44/46, Zunido) | 70% | 51% | 23% | 48% | **46%** |
+| +1 nível, Zunido | 66% | 47% | 21% | 45% | 34% |
+| +1 nível, Relâmpago | 62% | 42% | 18% | 41% | 33% |
+| **final: original + Relâmpago no Poraquê** | 67% | 48% | 21% | 45% | **45%** |
+
+Decisão: o excesso do jogador honesto (Rio, 15/19 = 79% antes; 6/9 = 67% com a escolta +1) vem do INICIAL, não do nível
+da Liga: a média dos três iniciais e a referência ficam na meta, e subir a Liga derrubava a referência para 33% e o inicial
+de Brasa para 18%. Ficou só o Relâmpago (pergaminho pt-17) no Poraquê. **Pendência para o autor**: o inicial de Brasa
+chega à Liga em ~20% no simulador (Pampa e Campeão cheios de água; Brasa-Viva resiste); o de Rio passa de 65%. Igualar exige
+mexer nas equipes por tema (ex.: tirar a água da Capivarona da Pampa), o que muda o desenho dos Mestres.
+
+### 2.2 Conferido no jogo (4ª mão)
+- Cura dos adversários: líderes 5–7 não usaram item nenhum (`jornada-5-a-plato.log`); líder 8 usou 1–2; Mestres 1–2
+  cada; Campeão (IA conselho) tem 2 garrafadas mas quase nunca usa (a regra do conselho só cura se render mais que bater).
+- Derrota na Liga: volta a A-LG (15,55), equipe curada, `liga-1…4` e `liga-em-curso` zerados, dinheiro mantido.
+- Vitória: Hall da Fama (agora cura a equipe), créditos curtos, `liga-vencida`, Passe do Trem, Bilhete do Saveiro, pedra à
+  escolha, Rádio Cipó com "fica para em breve", rival-5 com a equipe cheia, Tainá sai de cena; a porta da Liga fica fechada.
+- `pos-liga.mjs` (save `campeao`): 17/17 — Posto e Venda abertos, captura depois da Liga, moça do cais "em breve",
+  bilheteiro e Saveiro em reforma, maquinista e vagão "em obras" (`MAPA_B_ABERTO=false`).
+- Avisos do verificador: **A-MT** tem o guardião Abaeté (portão `insignias:15`) logo na entrada; ao sul dele só a placa,
+  sem capim nem treinador (conferido: nenhuma batalha, nenhum treinador antes do portão). **A-RS** só se entra pelo
+  Mergulho (amuleto do mapa B): remar por cima dos pontos de mergulho e apertar A não abre. Nenhum portão novo foi preciso.
+- Capturas lidas (`capturas.mjs`, em scratchpad/qa2/cap-*.png): as 5 salas com o Mestre em cena (sprites `liga-*`), a
+  batalha do Campeão, o Hall, a escolha da pedra, o Rádio e a rival-5. Sem texto cortado depois do ajuste do Hall.
+- Toque no iPhone 13 emulado (`toque.mjs`): menu, Equipe, Mochila, batalha da Maré inteira por toque (golpe, item, troca),
+  Salvar e Continuar pela tela de título — tudo ok. O roteiro antigo procurava texto no DOM (a fonte é de glifos, não há
+  texto) e o jogo aberto por `?zona=` não tem slot ("jogo de teste"): navegação agora por posição e slot 1 antes de salvar.
