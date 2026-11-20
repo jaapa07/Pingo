@@ -498,9 +498,9 @@ Multiplicadores: ×2 (forte), ×0,5 (fraco) e ×0 (nulo). Nas criaturas de dois 
 | 34 | Tatucanastra | Terra/Ferro | tatu-canastra de placas metálicas | — | B-CH G i · B-R2 G c |
 | 35 | Caranguejim | Rio | caranguejo-uçá | →36 nv28 | A-MG G c · A-BA G c (praia) |
 | 36 | Guaiamuque | Rio/Pedra | guaiamum de garra azul gigante | — | A-MG G i · A-PR G c |
-| 37 | Piabinha | Rio | piaba prateada | →38 nv30 | A-R3 P c · A-BA P c · B-PA P c |
+| 37 | Piabinha | Rio | piaba prateada | →38 nv30 | A-R3 P c · A-BA P c · A4 P c (beira do cais) · B-PA P c |
 | 38 | Dourado-Rei | Rio/Brasa | peixe dourado com escamas de brasa | — | B-PA P r · A-R6 P i |
-| 39 | Mandizinho | Rio | bagre-mandi de bigodes | →40 nv35 | A-GE P c · B-PA P c |
+| 39 | Mandizinho | Rio | bagre-mandi de bigodes | →40 nv35 | A-GE P c · B-PA P c · troca em A4 (Seu Arraia, nv 18, por um Pipirim) |
 | 40 | Jaú-Gigante | Rio/Terra | bagre jaú colossal | — | B-PA P mr · B-TA P r |
 | 41 | Calanguinho | Brasa | calango da restinga | →42 nv30 | A-R2 G c (D) · B-CE G c (D) |
 | 42 | Calangão | Brasa/Pedra | teiú de escamas vulcânicas | — | B-CV C c · B-CH G i |
@@ -542,7 +542,7 @@ Multiplicadores: ×2 (forte), ×0,5 (fraco) e ×0 (nulo). Nas criaturas de dois 
 | 78 | Manatão | Rio/Encanto | peixe-boi gentil com algas | — | A-RS M r |
 | 79 | Tartaruí | Rio | tartaruga-verde filhote | →80 nv38 | A-PR S c (N) · A-BA S c |
 | 80 | Tartaruga-Gigante | Rio/Pedra | tartaruga-de-couro com casco de recife | — | A-PR S r (N) · A-RS M i |
-| 81 | Jabutim | Mata/Pedra | jabuti-piranga filhote | →82 nv34 | A-R2 G i · B-CE G i |
+| 81 | Jabutim | Mata/Pedra | jabuti-piranga filhote | →82 nv34 | A-R2 G i · B-CE G i · presente do Seu Aroeira (A2, nv 6, só para o inicial de Mata) |
 | 82 | Jabutipiranga | Mata/Pedra | jabuti com jardim de pedras no casco | — | B-R2 G r · B-CH G i |
 | 83 | Jacarezinho | Rio | jacaré-de-papo-amarelo filhote | →84 nv28 | A-MG G c · B-PA G c |
 | 84 | Jacaretinga | Rio/Terra | jacaretinga do pantanal | →85 nv45 | B-PA G i · B-VV G c |

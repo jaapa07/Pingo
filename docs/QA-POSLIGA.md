@@ -50,3 +50,18 @@ Capturas em `/tmp/claude-0/-home-user/58474daf-1a50-5b1b-8bec-0786b708dc45/scrat
   treinador é registrado em código (registrarTreinador) e os verificadores só conhecem os de src/data/treinadores/ → erro
   "batalha com cartel-lago, que não existe". Agora o duelo é o comando `['lagoDuelo']` (mesma regra de `segue: true`: perder
   cura e segue, `batalha-perdida` diz o resultado).
+- (M5b) Gincana, 2ª pessoa (semente 2): Corrida 464 (1º), Empurra-Tora 164 (3º), Salto 65 (4º — muitos tropeços seguidos);
+  ranking pelo quadro ok (foto r5-ranking: "1º 464 / 3º 164 / 4º 65"); Tesouraria: 30 pontos → Vitamina de Vida ok (103 → 73).
+  O Salto varia muito de pessoa para pessoa (65–214): o tempo do pulo depende da Velocidade da criatura e a janela é curta.
+- (M7) Safári — `r6-safari.mjs`. Doadores (Pescador Seixo A-R3, Viveirista A10, Lenhador A-R7) dão o objeto uma vez só;
+  Seu Jatobá abre os setores 2–4 na mesma conversa; porteira cobra 500 e dá 30 Cuias-Safári; 4 encontros no capim
+  (setores 1 e 2) jogados pelo teclado com PERTO/PEDRA/ISCA/CUIA; saída pela porteira recolhe as cuias e desliga o passeio.
+  Nenhuma captura em 4 encontros (12 cuias). Medida das regras (simulação das REGRAs com as tabelas dos setores, 400
+  encontros por setor): só CUIA captura 31–43% dos encontros (~10 cuias por captura → ~3 capturas por entrada);
+  PERTO,PERTO,CUIA cai para 20–27% e PEDRA,CUIA para 20–29% → **PERTO e PEDRA pioram a captura por encontro** (a fuga
+  sobe mais que a chance da cuia): o jogador que segue a dica da guia ("a Pedra deixa o bicho mais fácil de pegar") se
+  dá pior. Sugestão (não aplicada, é equilíbrio): `pertoFuga` [1, 1.1, 1.2] e `pedraFuga` 1.5.
+- (M8) Cuieiras e Mestre Cabaceiro — `r7-cuias.mjs`. As 7 cuieiras do mapa A dão 1 cabaça e recusam no mesmo dia; o artesão
+  recebe a cor, diz "secando" no mesmo dia e entrega no dia seguinte — as 7 cuias artesanais obtidas em 7 dias.
+  Cada uma foi ARREMESSADA numa batalha selvagem na tela (A-R7, nv 34–37): todas saem da mochila e rodam a animação; nenhuma
+  pegou (chances calculadas 12–35% com o bicho no amarelo, ×2 da Cuia de Nível = 23–70%): coerente.

@@ -38,7 +38,7 @@ try {
 export interface PedidoBatalha {
   tipo: 'selvagem' | 'treinador' | 'lendario'; inimigos: CriaturaInst[]; treinador?: TreinadorDef; arena: string; clima?: ClimaId;
   dupla?: boolean; semFuga?: boolean; semCaptura?: boolean; tutorial?: boolean; musica?: string;
-  /** criatura errante: tenta fugir no primeiro turno */
+  /** criatura errante: age no 1º turno e tenta fugir a partir do 2º */
   errante?: boolean;
   /** encontro fisgado na pesca (Cuia de Isca) */
   pescada?: boolean;

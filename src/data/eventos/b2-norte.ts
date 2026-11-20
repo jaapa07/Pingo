@@ -80,7 +80,7 @@ const ninho = (linha: string, meio: number, final: number, onde: string): Evento
         ['grito', final], ['selvagem', final, 66],
       ], [
         f(null, `No ${onde}, um filhote crescido pula para fora do ninho, eriçado, pronto para defender os ovos.`),
-        ['grito', meio], ['selvagem', meio, 34],
+        ['grito', meio], ['selvagem', meio, 52],
       ]),
       ['b2n-resultado'],
       se('flag:b2n-capturou', [f(null, 'A parceria foi firmada. O ninho fica quieto, e os ovos continuam quentinhos.')]),

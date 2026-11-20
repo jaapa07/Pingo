@@ -323,7 +323,8 @@ export function interagir(): Promise<void> {
       const vara = melhorVara();
       if (modo === 'pe' || modo === 'bike') {
         if (temAmuleto('remo') && ajudante('remo')) { if (await embarcar(d)) return; }
-        else if (!vara) { await pedirAmuleto('remo'); return; }
+        // com o Remo e sem criatura de Rio, o aviso vem antes da pergunta da vara: quem pesca uma Piabinha ali mesmo já pode remar
+        else if (!vara || temAmuleto('remo')) { await pedirAmuleto('remo'); if (!vara) return; }
       }
       if (vara && (await simNao(`Pescar com a ${NOME_VARA[vara]}?`))) await pescar(vara);
     }

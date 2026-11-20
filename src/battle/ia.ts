@@ -47,7 +47,7 @@ export function iaUsaItens(nivelBase: NivelIA, dificuldade: Opcoes['dificuldade'
 export interface OpcoesIA {
   /** pode usar os itens do próprio lado */
   usaItens?: boolean;
-  /** criatura errante: tenta fugir no primeiro turno */
+  /** criatura errante: age no 1º turno e tenta fugir a partir do 2º (decisão do autor) */
   foge?: boolean;
 }
 
@@ -555,7 +555,7 @@ function melhorReservaDuelo(b: Batalha, p: Pos, q: Pos, nivel: NivelIA): { para:
  * Escolhe a ação da posição `p` no nível dado. Não recebe (nem consulta) a ação do outro lado.
  */
 export function escolherAcaoIA(b: Batalha, p: Pos, nivel: NivelIA, o: OpcoesIA = {}): Acao {
-  if (o.foge && b.turno === 0 && p.lado === 1 && b.selvagem) return { tipo: 'fuga' };
+  if (o.foge && b.turno >= 1 && p.lado === 1 && b.selvagem) return { tipo: 'fuga' };
   const ok = b.golpesValidos(p);
   if (!ok.length) return { tipo: 'golpe', slot: -1 };
   const c = b.criatura(p)!, adv = b.adversarios(p);

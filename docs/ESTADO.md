@@ -146,3 +146,4 @@ Depois: zonas B1/B2 (+níveis novos do mapa B), ginásios 9–16 (9 Terra tem pr
 - Acréscimo do usuário: além da pesca, uma TROCA com morador que dá criatura de Rio antes do Remo (duas formas de conseguir).
 - **REGRA ATUAL DO USUÁRIO: conforme forem encerrando, manter no máximo 3 agentes** (não lançar novo enquanto houver 3 ou mais; hoje há 5).
 - QA MISSÕES MAPA B CONCLUÍDO: todas as missões jogadas; Andarilho do Cume corrigido; regra dos lendários (uma chance) aplicada em todos, incluindo visitantes e Mandizinho raro. Coordenador corrigiu nome dobrado e fala da Contramestra Maré. DECISÃO PENDENTE: Ninhos Raros da Floresta Ancestral dão forma do meio no nível 34 numa zona de nível 65–75.
+- DECISÕES DO USUÁRIO: lendário errante age no 1º turno e só tenta fugir a partir do 2º (src/battle/ia.ts); Ninhos Raros: forma do meio no nível 52 (era 34).

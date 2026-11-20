@@ -404,7 +404,7 @@ export const EVENTOS_A1: EventoDef[] = [
   {
     id: 'pescador-vara',
     passos: [
-      se('flag:vara-velha-ok', [f('a2-pescador', 'Fique de frente para a água e use a vara. Quando a boia afundar, puxe sem dó!\fCom Vara Velha só vem peixe miúdo. Mas peixe miúdo também cresce.')], [
+      se('flag:vara-velha-ok', [f('a2-pescador', 'Fique de frente para a água e use a vara. Quando a boia afundar, puxe sem dó!\fCom Vara Velha só vem peixe miúdo. Mas peixe miúdo também cresce.\fE guarde um conselho de pescador: lá em Porto Sereia, canoa só sai do cais puxada por criatura do tipo Rio. Uma Piabinha da beira d\'água já dá conta.')], [
         f('a2-pescador', 'Gosta de pescar? Não? É porque nunca pescou. Toma: esta vara me acompanhou a vida toda, mas meu braço cansou antes dela.'),
         ['dar', 'vara-velha'],
         ['flag', 'vara-velha-ok'],
