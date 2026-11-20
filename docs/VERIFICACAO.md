@@ -57,3 +57,19 @@ não dá para buscar), mas descem para o fim da fila do download. DEPOIS: núcle
 Verificador: `integridade` passa a conferir se o bake está velho (tamanho, capim alto e obstáculos c/p/r do
 `zona.json` contra o `mapaChars` atual): 0 de 193 zonas com bake velho. Nenhuma zona sem bake em public/.
 `docs/JOGAR.md` atualizado (tamanho do pacote, `--mapa-b`).
+
+## Marco 3 — teste offline e de atualização; check final
+1ª rodada de `npm run check -- --offline` (build limpo, servido em /Pingo/): PC e iPhone 13 (em pé e deitado)
+OK; só `tools/verify/atualizacao.ts` falhou ("aviso de atualização não apareceu"). Rodado sozinho passou duas
+vezes: a espera pelo aviso (30 s) era curta com a máquina carregada (load ~18, outros agentes). Espera ampliada
+para 2 min (só o teste; o jogo não mudou).
+
+**Check final `npm run check -- --offline`: 17 de 17 checagens, 0 erros, 5 avisos, 1 pendente (624 s).**
+- Offline (rede cortada, jogo novo, batalha, salvar, recarregar): PC OK (pré-cache 66 s) · iPhone em pé OK
+  (34 s) · iPhone deitado OK (34 s); atualização com o jogo aberto em 1–1,5 s (3 arquivos), aviso só fora da
+  batalha, save intacto, núcleo antigo apagado, abre sem rede na versão nova.
+- Avisos que ficam (decisão de desenho, não de integração): B9 (passo 10) alcançável com 8 insígnias pelo
+  Saveiro; B-TA/B-TA-gruta (passo 13) com 11; A-GE água com média 24,5 (limite 24); A-MT (área de retorno)
+  alcançável com 6 insígnias — só a placa e o guardião antes do portão (`insignias:15`), aviso por zona.
+- Pendente: 10 zonas do mapa A que só abrem com Amuletos do mapa B (A9, A-R6, A-RS, A-MT-gruta, X-EA…) — todas
+  alcançadas na simulação do mapa B aberto.

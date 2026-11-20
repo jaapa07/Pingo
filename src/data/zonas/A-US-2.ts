@@ -51,7 +51,9 @@ const zona: ZonaDef = {
     { id: 'c7', sprite: 'capanga-m', ...g.p('4'), dir: 'l', se: '!flag:usina-ok', treinador: 'A-US-7', visao: 1 },
     { id: 'engenheira', sprite: 'npc-mulher-4', ...g.p('z'), dir: 'o', se: 'flag:usina-ok', fala: ['Sou a engenheira-chefe. Passei três dias trancada no almoxarifado comendo biscoito de polvilho.', 'A Usina está de volta: o guindaste do cais já sobe e desce. O trem? Esse só leva Campeão da Liga, ordem da linha da serra.'] },
   ],
-  itens: [{ ...g.p('i'), item: 'garrafada', flag: 'item:A-US-2:passarela' }],
+  // antessala da tenente Lata: 2 Garrafadas à vista (decisão do autor, 20/11 — o jogador honesto chegava à Lata sem remédio nenhum;
+  // motor puro, inicial de Mata: 3% sem remédio → 27% com estas duas e o Besourim sem Mordida de Saúva; docs/AJUSTES-MATA.md)
+  itens: [{ ...g.p('i'), item: 'garrafada', flag: 'item:A-US-2:passarela' }, { x: 17, y: 3, item: 'garrafada', qtd: 2, flag: 'item:A-US-2:antessala' }],
   habitats: [{ metodo: 'caverna', taxa: 0.1, todos: [{ e: 28, nv: [21, 24], peso: 45 }, { e: 141, nv: [20, 23], peso: 40 }, { e: 63, nv: [21, 24], peso: 15 }], camadas: [{ apos: 7, todos: [{ e: 29, nv: [36, 38], peso: 45 }, { e: 142, nv: [36, 38], peso: 35 }, { e: 64, nv: [37, 39], peso: 20 }] }] }],
 };
 export default zona;
