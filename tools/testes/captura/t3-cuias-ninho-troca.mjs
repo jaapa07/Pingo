@@ -43,7 +43,7 @@ await t.k('z', 500); for (let i = 0; i < 6; i++) await t.k('z', 350);
 await t.assentar(30000, 'x');
 s = await save();
 t.ok(s.equipe.some((c) => c.ovo && c.especie === 1), 'recolheu o ovo (Tamanduí, forma base)', JSON.stringify(s.equipe.map((c) => [c.especie, c.ovo])));
-await t.ev(() => import('/src/ui/dialogo.ts').then((d) => d.abrirTela('equipe'))); await t.espera(1500); await t.foto('equipe-ovo'); await t.k('x', 600);
+await t.ev(() => { void import('/src/ui/dialogo.ts').then((d) => d.abrirTela('equipe')); }); await t.espera(1500); await t.foto('equipe-ovo'); await t.k('x', 600);
 await t.assentar(30000, 'x');
 /* ---------- troca em A3 (Dona Quitéria, 8,17) ---------- */
 await t.ev(() => window.__pingo.mundo.irPara('A3', 8, 18, 'n', 'nenhuma')); await t.assentar();

@@ -31,11 +31,11 @@ t.ok(capturou && eq.some((c) => c.rara && c.cuia === 'cuia-nivel'), 'rara captur
 t.ok(await t.ev(() => !!window.__pingo.jogo.save.flags['rara:1']), 'Diário marcou a Pelagem Rara do nº 1');
 await t.assentar(20000, 'x');
 // telas: Equipe e Resumo
-await t.ev(() => { const p = window.__pingo; void p.telas && import('/src/ui/dialogo.ts').then((d) => d.abrirTela('equipe')); });
-await t.espera(1500); await t.foto('equipe-rara');
-await t.ev(() => import('/src/ui/dialogo.ts').then((d) => d.abrirTela('resumo', { lista: window.__pingo.jogo.save.equipe, indice: 1 })));
-await t.espera(1500); await t.foto('resumo-rara');
-await t.ev(() => import('/src/ui/dialogo.ts').then((d) => d.abrirTela('diario', { especie: 1 })));
+await t.ev(() => { void import('/src/ui/dialogo.ts').then((d) => d.abrirTela('equipe')); });
+await t.espera(1500); await t.foto('equipe-rara'); await t.k('x', 800);
+await t.ev(() => { void import('/src/ui/dialogo.ts').then((d) => d.abrirTela('resumo', { lista: window.__pingo.jogo.save.equipe, indice: 1 })); });
+await t.espera(1500); await t.foto('resumo-rara'); await t.k('x', 800);
+await t.ev(() => { void import('/src/ui/dialogo.ts').then((d) => d.abrirTela('diario', { especie: 1 })); });
 await t.espera(1500); await t.foto('diario-rara');
 console.log('topo', await topo());
 console.log('erros', t.erros.slice(0, 5));
