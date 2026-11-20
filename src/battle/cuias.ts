@@ -1,6 +1,6 @@
 /**
  * CAPTURA E CRIAÇÃO — regras puras (sem DOM; roda em Node e nos testes):
- *  - Pelagem Rara (spec 10A-5): 1 chance em 4096 por encontro selvagem.
+ *  - Pelagem Rara (spec 10A-5): 1 chance em 3000 por encontro selvagem.
  *  - Item segurado de selvagens (spec 10A-9): 5% um fruto do tipo, 1% um achado raro.
  *  - Cuias artesanais (spec 10A-6): o bônus de cada uma na fórmula de captura (docs/BATALHA.md).
  *  - Obediência (spec 10A-12/13): criatura de outro treinador acima do limite das insígnias pode desobedecer.
@@ -11,9 +11,9 @@ import { rng } from '../core/rng';
 import { especie, temEspecie } from './criatura';
 
 /* ------------------------------ Pelagem Rara ------------------------------ */
-export const CHANCE_RARA = 1 / 4096;
-/** sorteia a Pelagem Rara (1 em 4096) */
-export const sortearRara = (): boolean => rng.int(0, 4095) === 0;
+export const CHANCE_RARA = 1 / 3000;
+/** sorteia a Pelagem Rara (1 em 3000) */
+export const sortearRara = (): boolean => rng.chance(CHANCE_RARA);
 
 /* ------------------------------ item segurado de selvagens ------------------------------ */
 /** fruto que a espécie costuma carregar (5%), pelo tipo principal */

@@ -776,8 +776,8 @@ teste('cuias artesanais: bônus de cada uma pela regra e captura em batalha conf
   while (!ba.resultado) turno(ba, { tipo: 'item', item: 'cuia-amiga' }, G(1));
   igual(ba.resultado, 'captura', 'cuia amiga captura'); afirmar(am.amizade >= AMIZADE_CUIA_AMIGA && am.cuia === 'cuia-amiga', 'cuia amiga: amizade ' + am.amizade);
 });
-teste('Pelagem Rara: 1 em 4096 por encontro, sobrevive à captura; selvagens seguram item 5% (fruto) e 1% (achado)', () => {
-  rng.seed(4096); const N = 4096 * 300; let n = 0;
+teste('Pelagem Rara: 1 em 3000 por encontro, sobrevive à captura; selvagens seguram item 5% (fruto) e 1% (achado)', () => {
+  rng.seed(4096); const N = 3000 * 300; let n = 0;
   for (let i = 0; i < N; i++) if (sortearRara()) n++;
   perto(n / N / CHANCE_RARA, 1, 0.2, 'frequência relativa da Pelagem Rara (300 esperadas)');
   rng.seed(9); let raras = 0, frutos = 0, achados = 0; const M = 40000;

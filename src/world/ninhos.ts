@@ -5,7 +5,7 @@
  *  - a cada 256 passos, um casal compatível (sexos opostos e um grupo de ninho em comum, src/data/ninhos.ts) pode deixar
  *    um ovo: 50% se forem da mesma espécie, 25% se forem de espécies diferentes;
  *  - o ovo é da forma mais nova da linha da mãe; o filhote herda 3 genes (cada um de um dos pais, ao acaso) e os golpes
- *    do pai que a espécie dele aprende por nível ou por Pergaminho; choca com passos (`PASSOS_OVO`); 1 em 4096 nasce rara.
+ *    do pai que a espécie dele aprende por nível ou por Pergaminho; choca com passos (`PASSOS_OVO`); 1 em 3000 nasce rara.
  * Todo acaso passa por `rng`. Avisa `bus 'criadouro-ovo'` quando aparece um ovo.
  */
 import { STATS, type CriaturaInst, type Stat } from '../core/tipos';
@@ -52,7 +52,7 @@ function aprende(num: number, golpe: string): boolean {
   const e = especie(num);
   return e.golpes.some(([, g]) => g === golpe) || Object.entries(PERGAMINHOS).some(([pt, g]) => g === golpe && e.pergaminhos.includes(pt));
 }
-/** cria o ovo do casal (mãe = a fêmea): espécie base da mãe, 3 genes herdados, golpes do pai e Pelagem Rara 1/4096 */
+/** cria o ovo do casal (mãe = a fêmea): espécie base da mãe, 3 genes herdados, golpes do pai e Pelagem Rara 1/3000 */
 export function gerarOvo(a: CriaturaInst, b: CriaturaInst): CriaturaInst {
   const mae = a.sexo === 'F' ? a : b, pai = mae === a ? b : a;
   const num = formaBase(mae.especie), e = especie(num);

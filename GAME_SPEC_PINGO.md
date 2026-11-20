@@ -770,7 +770,7 @@ Regras de jogabilidade herdadas dos RPGs de captura de portátil, reescritas par
 4. **Enxames:** o Rádio Cipó anuncia um enxame do dia: numa zona, uma espécie rara passa a ter 40% de chance.
 
 **Captura e criaturas**
-5. **Variante rara de cor ("Pelagem Rara"):** 1 chance em 4096 em qualquer encontro, com brilho ao entrar em batalha e paleta alternativa por criatura; uma é garantida na história (a do Lago, evento do Cartel).
+5. **Variante rara de cor ("Pelagem Rara"):** 1 chance em 3000 em qualquer encontro (decisão do autor; era 4096), com brilho ao entrar em batalha e paleta alternativa por criatura; uma é garantida na história (a do Lago, evento do Cartel).
 6. **Cuias artesanais:** frutos de cuieira coloridos colhidos em árvores (voltam a cada dia) viram cuias especiais com o artesão — um dia de espera: cuia rápida (para as que fogem), cuia pesada (para as grandes), cuia da lua (para as que evoluem com pedra lunar), cuia amiga (amizade inicial alta), cuia de isca (para pescadas), cuia de nível (se o seu nível for maior), cuia do amor (sexo oposto da mesma espécie).
 7. **Sacudir árvores e quebrar rochas** revelam criaturas e itens (já previsto); **pesca em 3 varas**; **criaturas errantes** que mudam de zona a cada troca de rota e aparecem no mapa-múndi depois de vistas.
 8. **Febre da Mata:** condição raríssima e benéfica (1 em ~20 000 após batalha) que dobra o esforço ganho por 1–4 dias e passa para vizinhos da equipe; a enfermeira do Posto comenta.

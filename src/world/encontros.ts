@@ -44,7 +44,7 @@ export async function lutar(p: PedidoBatalha): Promise<ResultadoBatalha> {
   return r;
 }
 export function batalhaSelvagem(e: number, nv: number, o: Partial<PedidoBatalha> = {}): Promise<ResultadoBatalha> {
-  // Pelagem Rara (1/4096) e item segurado (5%/1%): src/battle/cuias.ts
+  // Pelagem Rara (1/3000) e item segurado (5%/1%): src/battle/cuias.ts
   return lutar({ tipo: 'selvagem', inimigos: [prepararSelvagem(criarCriatura(e, nv))], arena: M.zv.def.arena, clima: M.zv.def.clima, ...o });
 }
 /** derrota: volta ao último Posto com a equipe curada e metade do dinheiro */
