@@ -85,3 +85,4 @@ Depois: zonas B1/B2 (+níveis novos do mapa B), ginásios 9–16 (9 Terra tem pr
 ## PUBLICADO: https://jaapa07.github.io/Pingo/ (GitHub Pages, workflow .github/workflows/pages.yml; cada push em main republica; build QUEBRADO = site fica na última versão boa)
 - CUIDADO: só enviar ao GitHub com `npx tsc --noEmit` limpo (o CI roda `npm run build`).
 - Agentes interrompidos pelo usuário em 19/11 ~23:45: QA trecho 1 (a91c49d0476da208d, pilotos e saves em tools/testes/qa), QA trecho 2 (a651575df4ab6374e, tools/testes/qa2), verificador/offline (ac665776e2f1a5d29: build + SW + manifest + workflow prontos; `npm run check`/tools/verify em andamento). NÃO retomar sem o usuário mandar.
+- Relançados (usuário mandou continuar; os antigos não podiam ser retomados): QA trecho 1 (ad6881a58f1ca993a), QA trecho 2 (aff279a8d06849ab1), verificador/publicação (a04f0a1382ac8e736). Regra para todos: repo sempre compilando, pois cada push republica.
