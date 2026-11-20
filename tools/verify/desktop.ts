@@ -130,7 +130,7 @@ async function principal() {
     let s = await avancar((q) => livre(q) && q.zona === 'A1-quarto' && !/tela-nome/.test(topo(q)), 180000, 'acordar no quarto');
     passo(`jogo novo: ${s.nome} acordou em ${s.zona} (${s.x},${s.y})`);
     let dados0 = 0;
-    for (const d of ['esq', 'esq', 'baixo', 'dir', 'dir', 'dir', 'cima', 'esq'] as Acao[]) { if (!livre(await st())) await avancar(livre, 20000, 'ficar livre'); if (await andar(d)) dados0++; }
+    for (const d of ['esq', 'esq', 'baixo', 'dir', 'baixo'] as Acao[]) { if (!livre(await st())) await avancar(livre, 20000, 'ficar livre'); if (await andar(d)) dados0++; }
     s = await st(); await foto('4-quarto');
     passo(`andou ${dados0} passos com as setas → (${s.x},${s.y})`);
     if (dados0 < 3) falhas.push('o jogador quase não andou');
@@ -157,6 +157,15 @@ async function principal() {
     await app.close(); atual = null;
     ({ app, page } = await abrir(dados)); atual = app;
     await avancar((k) => /tela-saves/.test(topo(k)) && !k.cortina, 30000, 'a tela de jogos na volta'); await dormir(300); await foto('6-continuar');
+    // abre o jogo 1 e escolhe "Continuar" com o direcional (o cursor da lista pode abrir em outra linha, e
+    // "Exportar arquivo .pingo" abriria o diálogo nativo do sistema, que o teste não enxerga)
+    await apertar('a');
+    await page.waitForSelector('.confirmacao .lista-item.foco', { state: 'attached', timeout: 10000 }); await dormir(300);
+    const linhas = () => page.evaluate(() => { const it = [...document.querySelectorAll('.confirmacao .lista-item')]; return { n: it.length, foco: it.findIndex((e) => e.classList.contains('foco')) }; });
+    const l0 = await linhas(); const alvoLinha = l0.n === 7 ? 1 : 0; // com ponto de retomada, a 1ª linha é "Retomar de onde parou"
+    for (let i = 0; i < 10 && (await linhas()).foco !== alvoLinha; i++) { await apertar((await linhas()).foco > alvoLinha ? 'cima' : 'baixo'); await dormir(120); }
+    passo(`menu do jogo salvo: ${l0.n} opções (${l0.n === 7 ? 'com' : 'sem'} ponto de retomada gravado ao fechar), escolhido "Continuar"`);
+    await apertar('a');
     s = await avancar((k) => livre(k) && k.zona !== '', 60000, 'continuar o jogo salvo');
     const voltou = { zona: s.zona, x: s.x, y: s.y, equipe: s.equipe.join(' '), nome: s.nome };
     passo(`fechou, abriu de novo e continuou: ${voltou.nome} em ${voltou.zona} (${voltou.x},${voltou.y})`);
@@ -166,15 +175,24 @@ async function principal() {
     /* 6. tela cheia */
     const cheia = () => app.evaluate(({ BrowserWindow }: any) => BrowserWindow.getAllWindows()[0].isFullScreen());
     const esperarCheia = async (v: boolean) => { for (let i = 0; i < 30 && (await cheia()) !== v; i++) await dormir(100); return cheia(); };
-    await page.keyboard.press('Alt+Enter');
+    // teclas pelo caminho de entrada do próprio Electron (sendInputEvent): as do CDP não passam pelo before-input-event
+    const tecla = (keyCode: string, modifiers: string[] = []) => app.evaluate(({ BrowserWindow }: any, a: { keyCode: string; modifiers: string[] }) => {
+      const wc = BrowserWindow.getAllWindows()[0].webContents;
+      wc.sendInputEvent({ type: 'keyDown', keyCode: a.keyCode, modifiers: a.modifiers }); wc.sendInputEvent({ type: 'keyUp', keyCode: a.keyCode, modifiers: a.modifiers });
+    }, { keyCode, modifiers });
+    const zonaAntes = (await st()).telas.length;
+    await tecla('Enter', ['alt']);
     const ligou = await esperarCheia(true);
     if (ligou) { await dormir(500); await foto('8-tela-cheia'); }
     const escCheia = await page.evaluate(() => { const p = (window as any).__pingo.palco; return { w: innerWidth, h: innerHeight, e: p.escala * devicePixelRatio }; });
-    await page.keyboard.press('Alt+Enter');
-    const desligou = !(await esperarCheia(false));
+    const vazouEnter = (await st()).telas.length !== zonaAntes;
+    await tecla('F11');
+    let desligou = !(await esperarCheia(false)), como = 'F11';
+    if (!desligou) { await tecla('Enter', ['alt']); desligou = !(await esperarCheia(false)); como = 'Alt+Enter (o F11 do menu não recebe teclas simuladas)'; }
     const menuF11 = await app.evaluate(({ Menu }: any) => Menu.getApplicationMenu()?.items.flatMap((i: any) => i.submenu?.items ?? []).find((i: any) => i.accelerator === 'F11')?.label ?? '');
-    passo(`Alt+Enter: tela cheia ${ligou ? 'ligou' : 'não ligou'} (${escCheia.w}×${escCheia.h}, escala ${escCheia.e}×) e ${desligou ? 'desligou' : 'não desligou'}; F11 no menu: "${menuF11}"`);
-    if (!ligou || !desligou) falhas.push('Alt+Enter não alternou a tela cheia');
+    passo(`Alt+Enter: tela cheia ${ligou ? 'ligou' : 'não ligou'} (${escCheia.w}×${escCheia.h}, escala ${escCheia.e}×; o Enter ${vazouEnter ? 'CHEGOU' : 'não chegou'} ao jogo); ${como}: ${desligou ? 'desligou' : 'não desligou'}; menu Jogo → "${menuF11}" com F11`);
+    if (!ligou || !desligou) falhas.push('a tela cheia não alternou');
+    if (vazouEnter) falhas.push('o Enter do Alt+Enter chegou ao jogo');
     if (!menuF11) falhas.push('o menu não tem o atalho F11');
     await app.close(); atual = null;
   } catch (e) {

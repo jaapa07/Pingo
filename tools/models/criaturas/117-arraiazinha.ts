@@ -79,6 +79,9 @@ const anims = animsArraia({ u: 0.45, flutua: 0.2, mole: 1.2 }, {
   fisico: { ferrao: qz([0, 20, -30, -10, 0]) },
 });
 
+// 3ª rodada: de costas o desmaio abria as asas e erguia a cauda até atravessar a célula (64%); agora ela assenta com metade do movimento
+for (const v of [anims.costas]) { const a = v['desmaio']; v['desmaio'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^(asa|cauda)|^base$/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((x) => x * 0.45) as [number, number, number] } : q)) : ks])) }; }
+
 export const arraiazinha = criatura({
   num: 117, id: 'arraiazinha', nome: 'Arraiazinha', porte: 'P', estagio: 'basico', paleta: paletaArraia, build, anims,
   olho: {

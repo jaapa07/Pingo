@@ -68,6 +68,9 @@ const anims = animsAve({ u: 0.6, hPerna: 0.17, mole: 1.4 }, unirExtras(asasConti
 for (const v of [anims.frente, anims.costas]) { const a = v['ataque-especial']; v['ataque-especial'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^asa/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((x) => x * 0.6) as [number, number, number] } : q)) : ks])) }; }
 for (const v of [anims.frente, anims.costas]) { const a = v['desmaio']; v['desmaio'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^asa/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((x) => x * 0.55) as [number, number, number] } : q)) : ks])) }; }
 
+// 3ª rodada: de costas o desmaio tomba com metade do giro de pescoço, cauda e asas
+for (const v of [anims.costas]) { const a = v['desmaio']; v['desmaio'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^(asa|pescoco|cauda|perna)|^base$/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((x) => x * 0.5) as [number, number, number] } : q)) : ks])) }; }
+
 export const urubuzim = criatura({
   num: 55, id: 'urubuzim', nome: 'Urubuzim', porte: 'P', estagio: 'basico', paleta: paletaUrubu, build, anims,
   olho: {

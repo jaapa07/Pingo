@@ -35,6 +35,10 @@ app.setName(NOME);
 if (process.env.PINGO_DADOS) app.setPath('userData', path.resolve(process.env.PINGO_DADOS));
 const PASTA_SAVES = () => path.join(app.getPath('userData'), 'saves');
 
+// sem tarefas de rede do próprio Chromium (atualização de componentes, sondagens, métricas)
+for (const chave of ['disable-background-networking', 'disable-component-update', 'disable-domain-reliability', 'no-pings']) app.commandLine.appendSwitch(chave);
+app.commandLine.appendSwitch('disable-features', 'SpareRendererForSitePerProcess,MediaRouter,OptimizationHints,AutofillServerCommunication');
+
 protocol.registerSchemesAsPrivileged([
   { scheme: ESQUEMA, privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true, stream: true } },
 ]);
@@ -122,6 +126,9 @@ if (!app.requestSingleInstanceLock()) {
 
   app.whenReady().then(() => {
     const ses = session.defaultSession;
+    // o corretor ortográfico do Chromium baixaria dicionários (redirector.gvt1.com): desligado e sem endereço
+    ses.setSpellCheckerEnabled(false);
+    ses.setSpellCheckerDictionaryDownloadURL(ORIGEM + '/');
     // protocolo do jogo: só arquivos de dentro de dist/
     protocol.handle(ESQUEMA, (req) => {
       const u = new URL(req.url);

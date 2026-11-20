@@ -17,7 +17,7 @@ import type { ClimaId, CriaturaInst, TreinadorDef } from '../core/tipos';
 import { jogo, marcarCapturado, marcarVisto, periodo, receberCriatura, darItem } from '../core/estado';
 import { bus } from '../core/events';
 import { telas, criarTela, temTela } from '../ui/telas';
-import { Batalha, LIMIAR_CHOCALHO, FATOR_EXP_POS_LIGA, fatorPremioDaZona, type Acao, type AcaoDe, type ConfigBatalha, type EventoBatalha, type Pedido, type ResultadoId } from './engine';
+import { Batalha, LIMIAR_CHOCALHO, FATOR_EXP_POS_LIGA, FATOR_EXP_INSIGNIA_12, fatorPremioDaZona, type Acao, type AcaoDe, type ConfigBatalha, type EventoBatalha, type Pedido, type ResultadoId } from './engine';
 import { escolherAcaoIA, escolherSubstitutoIA, iaUsaItens, nivelEfetivo, type NivelIA, type OpcoesIA } from './ia';
 import { limiteObediencia } from './cuias';
 import { amizadePor, curarCriatura, evoluir, nomeDe, registrarEspecies, totalEspecies } from './criatura';
@@ -99,8 +99,14 @@ export class ControleBatalha {
 /** monta o controle de uma batalha a partir do pedido e do save atual */
 /** limiar do Chocalho do Mutirão pelo progresso: 2 até a Liga, 5 depois de `liga-vencida` (só o mapa B em diante muda) */
 export function limiarChocalho(flags: Record<string, unknown>): number { return flags['liga-vencida'] ? LIMIAR_CHOCALHO.depoisDaLiga : LIMIAR_CHOCALHO.antesDaLiga; }
-/** fator da experiência pelo progresso: 1 até a Liga, `FATOR_EXP_POS_LIGA` depois de `liga-vencida` */
-export function fatorExpDoProgresso(flags: Record<string, unknown>): number { return flags['liga-vencida'] ? FATOR_EXP_POS_LIGA : 1; }
+/**
+ * fator da experiência pelo progresso: 1 até a Liga, `FATOR_EXP_POS_LIGA` depois de `liga-vencida` e
+ * `FATOR_EXP_INSIGNIA_12` a partir de 12 insígnias conquistadas (decisão do autor, docs/DECISOES-FINAIS.md)
+ */
+export function fatorExpDoProgresso(flags: Record<string, unknown>, insignias = 0): number {
+  if (!flags['liga-vencida']) return 1;
+  return insignias >= 12 ? FATOR_EXP_INSIGNIA_12 : FATOR_EXP_POS_LIGA;
+}
 /** prêmio que o treinador paga, com o ×1,5 das zonas da jornada do mapa B (`fatorPremioDaZona`) */
 export function premioDoTreinador(premio: number, zonaId: string): number { return Math.round(premio * fatorPremioDaZona(zonaId)); }
 export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } = {}): ControleBatalha {
@@ -118,7 +124,7 @@ export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } 
     lados: [{ equipe: s.equipe, itens: s.mochila, nome: s.jogador.nome }, { equipe: p.inimigos, itens, nome: t ? `${t.classe} ${t.nome}` : '' }],
     clima: p.clima, dupla: p.dupla ?? t?.dupla, semFuga: p.semFuga, semCaptura: p.semCaptura, periodo: periodo(),
     trocaGratis: dif !== 'veterano', autoAprender: o.autoAprender, ganhaExp: !p.semExp, expPartilhada: (s.mochila['chocalho-mutirao'] ?? 0) > 0,
-    limiarPartilha: limiarChocalho(s.flags), fatorExp: fatorExpDoProgresso(s.flags),
+    limiarPartilha: limiarChocalho(s.flags), fatorExp: fatorExpDoProgresso(s.flags, s.insignias.length),
     pescada: p.pescada, obediencia: { limite: limiteObediencia(s.insignias.length), dono: s.jogador.nome },
   };
   return new ControleBatalha(p, cfg, nivel, { usaItens, foge: p.errante }, p.tipo === 'treinador' ? premioDoTreinador(t?.premio ?? 0, s.jogador.zona) : 0);

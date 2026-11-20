@@ -98,27 +98,45 @@ const andarilho = especial({
 });
 
 /* ---------------------------------------------------------------------------------------------- */
-/* Guarda da Névoa (B-R5) — pala de lã, gorro laranja para ser visto na cerração, cajado com lampião */
+/* Guarda da Névoa (B-R5) — quem guia os viajantes na cerração: CAPUZ e capa compridos cor de névoa,  */
+/* LAMPIÃO aceso erguido à altura da cabeça num cajado de gancho, cachecol laranja e fiapos de névoa */
+/* enroscados na capa. (3ª rodada: a 1ª versão, de chapéu e pala, era correta mas genérica.)          */
 /* ---------------------------------------------------------------------------------------------- */
 const LA: Rampa = ['#3a4466', '#64729a', '#a2b0cc'];
+const NEBLINA: Rampa = ['#525e7c', '#8692ae', '#c4cede'];
 const guardaNevoa = especial({
-  id: 'guarda-nevoa', pele: 'oliva', cabelo: 'castanhoEscuro', a: LA, b: 'chumbo', d: 'laranja', iris: '#4a6a7a', ...M, zoomBatalha: 0.86, dxBatalha: 2,
-  v: { cabelo: 'curto', barba: 'bigode', sobrancelha: 'grossa', chapeu: 'pantaneiro', rChapeu: R_B, rChapeuFaixa: R_D, manga: 'longa', rTorso: R_B, baixo: 'calca', rBaixo: R_B,
-    pes: 'bota', rPes: R_B, luvas: R_D, sobre: 'pala', rSobre: R_A, rSobreFaixa: R_D, pescoco: 'cachecol', rPescoco: R_D, rPescocoFaixa: R_D, cinto: R_D, propBraco: 26, propNoMapa: true },
+  id: 'guarda-nevoa', pele: 'oliva', cabelo: 'castanhoEscuro', a: NEBLINA, b: LA, d: 'laranja', iris: '#4a6a7a', ...M, zoomBatalha: 0.82, dxBatalha: 2,
+  v: { cabelo: 'curto', barba: 'bigode', sobrancelha: 'grossa', manga: 'longa', rTorso: R_B, baixo: 'calca', rBaixo: R_B,
+    pes: 'bota', rPes: R_B, luvas: R_D, pescoco: 'cachecol', rPescoco: R_D, rPescocoFaixa: R_D, cinto: R_D, propBraco: 14, propNoMapa: true },
 }, (r) => {
-  // cajado ferrado com gancho e lampião pendurado
+  // capuz de névoa: pontudo, caindo para trás, com a borda clara emoldurando o rosto
+  r.add('cabeca', blob([0.31, 0.31, 0.335], tom(R_A), { pos: h(-0.07, 0.05, 0), deform: [taper('x', -0.3, 0.3, 1.04, 0.9)] }),
+    ring(0.265, 0.04, luz(R_A), { pos: h(0.12, -0.01, 0), rot: [0, 90, 0], scale: [1, 1.12, 1] }),
+    tube([[-0.18, h(0, 0.22, 0)[1], 0], [-0.32, h(0, 0.16, 0)[1], 0], [-0.4, h(0, 0.02, 0)[1], 0]], 0.09, tom(R_A), { seg: 10, radial: 8, deform: [taper('x', -0.4, -0.18, 0.35, 1)] }),
+    blob([0.05, 0.045, 0.17], tom(R_CAB), { pos: h(0.2, 0.17, 0) }));
+  // capa comprida até a canela, cor de névoa, com barra esfiapada
+  r.add('tronco', lathe([[0.001, 0.36], [0.17, 0.355], [0.24, 0.2], [0.26, -0.2], [0.27, -0.46], [0.25, -0.48], [0.001, -0.46]], tom(R_B), { scale: [0.72, 1, 0.84], seg: 24, pos: [-0.03, 0, 0] }));
+  for (let i = 0; i < 9; i++) { const a = -200 + i * 25, c = Math.cos((a * Math.PI) / 180), sn = Math.sin((a * Math.PI) / 180); r.add('tronco', blob([0.03, 0.05, 0.03], tom(R_A), { pos: [c * 0.27 * 0.72 - 0.03, -0.49, sn * 0.27 * 0.84] })); }
+  // a capa abre na frente (forro azul-escuro) e as pontas compridas do cachecol laranja caem por cima
+  r.add('tronco', slab([[-0.07, 0.3], [0.07, 0.3], [0.11, -0.46], [-0.11, -0.46]], 0.03, som(R_B), { pos: [0.18, 0, 0], rot: [0, 90, 0] }),
+    tube([[0.2, 0.3, 0.05], [0.22, 0.1, 0.06], [0.22, -0.12, 0.05]], 0.032, tom(R_D), { seg: 8, radial: 6 }), blob([0.03, 0.035, 0.04], luz(R_D), { pos: [0.22, -0.15, 0.05] }));
+  // fiapos de névoa enroscados na capa (claros, chapados)
+  r.add('tronco', tube([[-0.2, 0.1, 0.26], [-0.05, -0.05, 0.3], [0.1, -0.15, 0.25], [0.18, -0.3, 0.12]], 0.035, luz(R_A), { seg: 12, radial: 6 }),
+    tube([[-0.22, -0.2, -0.24], [-0.05, -0.32, -0.28], [0.12, -0.4, -0.2]], 0.03, luz(R_A), { seg: 10, radial: 6 }));
+  // cajado alto de gancho com o LAMPIÃO erguido à altura da cabeça: vidro aceso grande e um halo de luz em volta
   r.add('prop',
-    tube([[0, -0.42, 0], [0, 0.62, 0]], 0.026, tom(R_B, { vies: 1 }), { seg: 4, radial: 8 }),
-    tube([[0, 0.6, 0], [0.04, 0.68, 0], [0.13, 0.68, 0], [0.16, 0.6, 0]], 0.018, tom(R_B), { seg: 10, radial: 6 }),
-    tube([[0.16, 0.6, 0], [0.16, 0.52, 0]], 0.01, som(R_B), { seg: 2, radial: 4 }),
-    lathe([[0.001, 0.52], [0.045, 0.5], [0.06, 0.46], [0.06, 0.38], [0.045, 0.35], [0.001, 0.35]], chapa(R_D), { pos: [0.16, 0, 0], seg: 12 }),
-    blob([0.035, 0.045, 0.035], luz(R_D), { pos: [0.19, 0.42, 0] }),
-    ring(0.062, 0.014, tom(R_B), { pos: [0.16, 0.51, 0], rot: [90, 0, 0] }), ring(0.062, 0.014, tom(R_B), { pos: [0.16, 0.36, 0], rot: [90, 0, 0] }));
-  // bornal de lona do lado esquerdo e fiapos de névoa nos pés
-  r.add('corpo', blob([0.08, 0.1, 0.05], tom(R_A, { vies: -1 }), { pos: [0.0, -0.04, -0.23] }), blob([0.05, 0.02, 0.055], tom(R_D), { pos: [0.02, 0.03, -0.25] }));
+    tube([[0, -0.42, 0], [0, 0.78, 0]], 0.032, tom(R_B), { seg: 4, radial: 8 }),
+    tube([[0, 0.76, 0], [0.06, 0.86, 0], [0.24, 0.86, 0], [0.28, 0.77, 0]], 0.022, tom(R_B), { seg: 10, radial: 6 }),
+    tube([[0.28, 0.77, 0], [0.28, 0.7, 0]], 0.012, som(R_B), { seg: 2, radial: 4 }),
+    lathe([[0.001, 0.7], [0.075, 0.68], [0.1, 0.62], [0.1, 0.49], [0.075, 0.45], [0.001, 0.45]], chapa(R_D), { pos: [0.28, 0, 0], seg: 12 }),
+    blob([0.07, 0.085, 0.07], luz(R_D), { pos: [0.32, 0.565, 0] }),
+    ring(0.1, 0.016, som(R_B), { pos: [0.28, 0.69, 0], rot: [90, 0, 0] }), ring(0.1, 0.016, som(R_B), { pos: [0.28, 0.46, 0], rot: [90, 0, 0] }),
+    blob([0.11, 0.022, 0.11], som(R_B), { pos: [0.28, 0.72, 0] }));
+  // bornal de lona e fiapos de névoa rente ao chão
+  r.add('corpo', blob([0.08, 0.1, 0.05], som(R_B), { pos: [0.0, -0.04, -0.27] }), blob([0.05, 0.02, 0.055], tom(R_D), { pos: [0.02, 0.03, -0.29] }));
   r.bone('nevoa', 'root', [0, 0, 0]);
-  for (const [x, z, e] of [[0.22, 0.18, 1], [-0.2, 0.14, 0.8], [0.1, -0.26, 1], [-0.18, -0.2, 0.8]] as const)
-    r.add('nevoa', blob([0.14 * e, 0.04 * e, 0.11 * e], chapa(R_A), { pos: [x, 0.03, z] }), blob([0.07 * e, 0.035 * e, 0.06 * e], luz(R_A), { pos: [x + 0.05, 0.05, z + 0.02] }));
+  for (const [x, z, e] of [[0.24, 0.2, 1.1], [-0.22, 0.16, 0.9], [0.12, -0.28, 1], [-0.2, -0.22, 0.9]] as const)
+    r.add('nevoa', blob([0.11 * e, 0.035 * e, 0.09 * e], chapa(R_A), { pos: [x, 0.03, z] }), blob([0.06 * e, 0.03 * e, 0.05 * e], luz(R_A), { pos: [x + 0.05, 0.06, z + 0.02] }));
 }, ['nevoa']);
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -127,21 +145,27 @@ const guardaNevoa = especial({
 const MATA_FUNDA: Rampa = ['#17402e', '#26704a', '#4ea65a'];
 const FOLHA_NOVA: Rampa = ['#4a7a22', '#86b834', '#cce86a'];
 const TAQUARA: Rampa = ['#8a7a34', '#c8b45a', '#f0e49a'];
+// 3ª rodada: o retrato saía escuro (pele castanha + cabelo azeviche + folhas escuras + leques de folha emoldurando o
+// queixo como barba). Cabelo preto com reflexo violeta, faixa de taquara clara na testa, flor creme no cabelo e os leques
+// de folhas descidos para fora dos ombros: o rosto fica emoldurado por cores claras.
+const CABELO_NOITE: Rampa = ['#221a28', '#3c2e40', '#6a5272'];
 const guardiaFloresta = especial({
-  id: 'guardia-floresta', pele: 'castanha', cabelo: 'azeviche', a: MATA_FUNDA, b: FOLHA_NOVA, d: TAQUARA, iris: '#3a8a3a', ...M, zoomBatalha: 0.84, dxBatalha: 2,
-  v: { porte: 'magro', cabelo: 'longo', chapeu: 'faixa', rChapeu: R_B, manga: 'sem', rTorso: R_A, baixo: 'saia-longa', rBaixo: R_A, rBarra: R_B, cinto: R_D,
+  id: 'guardia-floresta', pele: 'castanha', cabelo: CABELO_NOITE, a: MATA_FUNDA, b: FOLHA_NOVA, d: TAQUARA, iris: '#3a8a3a', ...M, zoomBatalha: 0.84, dxBatalha: 2,
+  v: { porte: 'magro', cabelo: 'longo', chapeu: 'faixa', rChapeu: R_D, manga: 'sem', rTorso: R_A, baixo: 'saia-longa', rBaixo: R_A, rBarra: R_B, cinto: R_D,
     pes: 'descalco', pescoco: 'colar', rPescoco: R_D, rPescocoFaixa: R_B, brinco: R_B, propBraco: 32, propNoMapa: true },
 }, (r) => {
   // manto de folhas: capa verde-escura nas costas e, em cada ombro, um leque de folhas novas caindo para fora
   r.add('tronco', blob([0.05, 0.32, 0.25], tom(R_A, { vies: -1 }), { pos: [-0.15, 0.04, 0], deform: [taper('y', -0.32, 0.32, 1.25, 0.8), wobble(0.012, 14)] }));
   for (const sz of [1, -1]) for (let i = 0; i < 4; i++) {
     const ang = -30 + i * 22;
-    r.add('tronco', folha(0.2 - i * 0.012, 0.07, i % 2 ? tom(R_B) : luz(R_B), [0.07 - i * 0.07, 0.36, sz * 0.2], [180 + sz * (38 + i * 4), 90 + ang * 0.0, ang * 0.4]));
+    r.add('tronco', folha(0.18 - i * 0.012, 0.065, i % 2 ? tom(R_B) : luz(R_B), [0.03 - i * 0.07, 0.3, sz * 0.22], [180 + sz * (62 + i * 4), 90 + ang * 0.0, ang * 0.4]));
   }
   // folhas e flor de maracujá no cabelo
   r.add('cabeca', folha(0.2, 0.06, tom(R_B), h(-0.12, 0.2, 0.22), [-40, 90, 20]), folha(0.17, 0.055, tom(R_A, { vies: 1 }), h(-0.18, 0.17, 0.12), [-15, 90, 40]));
-  r.add('cabeca', blob([0.04, 0.04, 0.035], tom(R_D, { vies: 1 }), { pos: h(0.04, 0.19, 0.275) }));
-  for (let i = 0; i < 5; i++) { const a = (i / 5) * Math.PI * 2; r.add('cabeca', blob([0.045, 0.045, 0.025], chapa(R_B), { pos: h(0.04 + Math.cos(a) * 0.06, 0.19 + Math.sin(a) * 0.06, 0.262) })); }
+  for (const sz of [1, -1]) {
+    r.add('cabeca', blob([0.04, 0.04, 0.035], tom(R_B), { pos: h(0.04, 0.19, sz * 0.275) }));
+    for (let i = 0; i < 5; i++) { const a = (i / 5) * Math.PI * 2; r.add('cabeca', blob([0.05, 0.05, 0.025], luz(R_D), { pos: h(0.04 + Math.cos(a) * 0.065, 0.19 + Math.sin(a) * 0.065, sz * 0.262) })); }
+  }
   // pinturas de jenipapo nos braços
   for (const b of ['bracoD', 'bracoE']) r.add(b, ring(0.06, 0.014, som(R_A), { pos: [0, -0.06, 0], rot: [90, 0, 0] }), ring(0.058, 0.014, som(R_A), { pos: [0, -0.11, 0], rot: [90, 0, 0] }));
   // lança de taquara: gomos marcados e ponta de folha

@@ -65,6 +65,9 @@ const anims = animsAve({ u: 1.0, hPerna: 0.13, mole: 0.8 }, unirExtras(asasConti
 // 3ª rodada: as asas do especial abriam até 44° e apertavam o enquadre (64% da célula); na batalha abrem 60% disso
 for (const v of [anims.frente, anims.costas]) { const a = v['ataque-especial']; v['ataque-especial'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^asa/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((x) => x * 0.6) as [number, number, number] } : q)) : ks])) }; }
 
+// 3ª rodada: e os raios da crista crescem menos no especial
+for (const v of [anims.frente, anims.costas]) { const a = v['ataque-especial']; v['ataque-especial'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^(raio|faisca)/.test(o) ? ks.map((q) => (typeof q.s === 'number' ? { ...q, s: 1 + (q.s - 1) * 0.4 } : q)) : ks])) }; }
+
 export const araracanga = criatura({
   num: 52, id: 'araracanga', nome: 'Araracanga', porte: 'G', estagio: 'final', paleta, build, anims,
   olho: {

@@ -30,6 +30,16 @@ export const LIMIAR_CHOCALHO = { antesDaLiga: 2, depoisDaLiga: 5 } as const;
  */
 export const FATOR_EXP_POS_LIGA = 0.55;
 /**
+ * Fator da experiência a partir de 12 insígnias (passos 13 em diante: Tanque, laboratório, ginásios 13–16, Pico e
+ * Conselho). O QA do mapa B (docs/QA-MAPA-B-2.md) mediu a equipe honesta chegando 3–5 níveis abaixo do ás do 13 em
+ * diante (líder 15: 0/8); decisão do autor: subir a equipe do jogador em vez de baixar os líderes (docs/DECISOES-FINAIS.md).
+ * 1,0 = sem corte daqui em diante. Calibrado com a experiência REAL que a equipe do QA ganhou em cada trecho (checkpoints
+ * passo-12 → b8 → a9 → pico): com 1,0 ela chegaria ao líder 15 com o ás 70 (Δ 0, média 66,5) e ao 16 e ao Conselho no
+ * mesmo nível que o QA só alcançou depois de ~250 selvagens de treino no 15. O estimador (tools/estima-chegada-b.ts)
+ * superestima a chegada do 13 em diante em 4–6 níveis (metade dos selvagens termina em fuga), por isso não serviu de régua.
+ */
+export const FATOR_EXP_INSIGNIA_12 = 1.0;
+/**
  * Prêmio em patacas dos treinadores da jornada do mapa B (decisão do autor, docs/DECISOES-FINAIS.md): ×1,5. Vale para as
  * batalhas travadas nas zonas do mapa B (ids `B…`), do Pico Pindorama (`PP…`) e nas áreas do mapa A que só se abrem
  * nessa jornada (Rio Cachoeira-Véu `A-R6`, Monte Tupã `A-MT…`, Cidade `A9…` do ginásio 16). Revanches, rival semanal e Torre

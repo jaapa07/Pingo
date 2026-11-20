@@ -22,7 +22,7 @@ import { iniciarBatalha, limiarChocalho, fatorExpDoProgresso, prepararBatalha, d
 import { sortearRara, prepararSelvagem, bonusArtesanal, limiteObediencia, chanceObedecer, CHANCE_RARA, AMIZADE_CUIA_AMIGA } from '../src/battle/cuias';
 import { afinidade, gerarOvo, formaBase, passoCriadouro, criadouro, PASSOS_SORTEIO } from '../src/world/ninhos';
 import { GRUPOS_NINHO } from '../src/data/ninhos';
-import { fatorPremioDaZona, FATOR_PREMIO_MAPA_B } from '../src/battle/engine';
+import { fatorPremioDaZona, FATOR_PREMIO_MAPA_B, FATOR_EXP_INSIGNIA_12 } from '../src/battle/engine';
 import { premioDoTreinador } from '../src/battle/index';
 import { revancheLiderLiberada } from '../src/data/revancha';
 import { registrarProva, recordeHoje, pontosGincana, posicaoDaMarca, valorDaMarca, RIVAIS, pontosRival } from '../src/data/gincana';
@@ -861,6 +861,24 @@ teste('ninhos e ovos: grupos das 180, compatibilidade, ovo da forma base com gen
 /* ============================== 8b. decisões finais do mapa B (docs/DECISOES-FINAIS.md) ============================== */
 teste('decisões finais: prêmio ×1,5 no mapa B, Garrafada Forte, revanches 9–16 com 16 insígnias, Gincana pelo recorde do dia, agenda da tartaruga', () => {
   // prêmio: zonas do mapa B, Pico e áreas da jornada B no mapa A pagam ×1,5; o resto do mapa A não muda
+  // experiência: 1 até a Liga, 0,55 depois dela até 11 insígnias, FATOR_EXP_INSIGNIA_12 com 12 ou mais
+  igual(fatorExpDoProgresso({}, 14), 1, 'antes da Liga: experiência inteira');
+  igual(fatorExpDoProgresso({ 'liga-vencida': true }, 8), FATOR_EXP_POS_LIGA, 'Liga com 8 insígnias: corte');
+  igual(fatorExpDoProgresso({ 'liga-vencida': true }, 11), FATOR_EXP_POS_LIGA, '11 insígnias: corte');
+  igual(fatorExpDoProgresso({ 'liga-vencida': true }, 12), FATOR_EXP_INSIGNIA_12, '12 insígnias: fator novo');
+  igual(fatorExpDoProgresso({ 'liga-vencida': true }, 16), FATOR_EXP_INSIGNIA_12, '16 insígnias: fator novo');
+  afirmar(FATOR_EXP_INSIGNIA_12 > FATOR_EXP_POS_LIGA && FATOR_EXP_INSIGNIA_12 <= 1, 'fator com 12 insígnias entre o corte e a experiência inteira');
+  {
+    // na batalha: a mesma derrubada rende mais com 12 insígnias
+    const antes0 = jogo.save; jogo.save = novoSave();
+    try {
+      const ganho = (ins: number) => { jogo.save = novoSave(); jogo.save.flags['liga-vencida'] = true; jogo.save.insignias = Array.from({ length: ins }, (_, i) => i + 1); rng.seed(5); jogo.save.equipe = [criarCriatura(9001, 60)];
+        const tt: TreinadorDef = { id: 'teste-exp', classe: 'Peão', nome: 'Teste', sprite: 'x', ia: 'treinador', premio: 0, equipe: [{ e: 9001, nv: 2 }], desafio: '', derrota: '' };
+        const e0 = jogo.save.equipe[0].exp; const c = prepararBatalha({ tipo: 'treinador', treinador: tt, inimigos: [criarDeMembro(tt.equipe[0], tt.nome)], arena: 'teste' }); pilotoPadrao(c); return jogo.save.equipe[0].exp - e0; };
+      const g11 = ganho(11), g12 = ganho(12);
+      afirmar(g11 > 0 && Math.abs(g12 / g11 - FATOR_EXP_INSIGNIA_12 / FATOR_EXP_POS_LIGA) < 0.2, `exp com 12 insígnias ${g12} vs 11 insígnias ${g11}`);
+    } finally { jogo.save = antes0; }
+  }
   afirmar(FATOR_PREMIO_MAPA_B === 1.5, 'fator 1,5');
   for (const z of ['B1', 'B-R4', 'B7-ginasio', 'B6-lab', 'PP', 'PP-conselho', 'A-R6', 'A-MT', 'A-MT-gruta', 'A9', 'A9-ginasio']) afirmar(fatorPremioDaZona(z) === 1.5, 'zona do mapa B paga ×1,5: ' + z);
   for (const z of ['A1', 'A4-treino', 'A-GE', 'A-LG', 'A-R7', 'A-RS', 'A-GN', 'X-EA', 'A10']) afirmar(fatorPremioDaZona(z) === 1, 'zona do mapa A paga normal: ' + z);
