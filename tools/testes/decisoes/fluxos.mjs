@@ -4,6 +4,8 @@
 // Uso: run.sh fluxos.mjs <seg>
 import { abrir, lerSave } from './lib.mjs';
 let falhas = 0;
+const SO = process.argv[2]; // rival|lab|peao|revanche|premio (sem argumento: todos)
+const quer = (k) => !SO || SO === k;
 const ok = (c, r, x = '') => { console.log(`${c ? 'ok  ' : 'ERRO'} ${r} ${x}`); if (!c) falhas++; };
 
 async function cenario(save, prep, fn, arg) {
@@ -20,7 +22,7 @@ async function cenario(save, prep, fn, arg) {
       /** roda passos e aperta A nas falas (e na 1ª opção das perguntas) até terminar */
       Q.rodarAte = async (passos) => {
         let fim = false; const p = window.__pingo.mundo.rodarPassos(passos).then(() => { fim = true; }, (e) => { fim = true; Q.erroEv = String(e); });
-        for (let k = 0; k < 4000 && !fim; k++) { if (/dialogo/.test(window.__pingo.telas.topo?.el.className ?? '')) await Q.toque('a'); await Q.quadros(3); }
+        for (let k = 0; k < 4000 && !fim; k++) { if (k % 500 === 499) console.log('[rodarAte]', window.__pingo.telas.topo?.el.className, Q.textos.slice(-1)[0]); if (/dialogo/.test(window.__pingo.telas.topo?.el.className ?? '')) await Q.toque('a'); await Q.quadros(3); }
         await p; await Q.assentar?.();
       };
     });
@@ -31,7 +33,7 @@ async function cenario(save, prep, fn, arg) {
 const textos = (t) => t.q(() => window.Q.textos.join(' ⏎ '));
 
 // 1. rival 7: chega com a equipe gasta e a Tainá cura antes da luta
-await cenario('b-vv', async () => {
+if (quer('rival')) await cenario('b-vv', async () => {
   const s = window.__pingo.jogo.save; for (const c of s.equipe) c.vida = 1;
   await window.__pingo.mundo.irPara('B7', 24, 37, 'n', 'nenhuma');
 }, async (t) => {
@@ -43,7 +45,7 @@ await cenario('b-vv', async () => {
 });
 
 // 2. laboratório: maca entre a Zinabre e o Lata
-await cenario('passo-12', async () => {
+if (quer('lab')) await cenario('passo-12', async () => {
   // o piloto do modo sem tela é simples: a Zinabre do teste fica com uma criatura fraca (só nesta página) e a equipe entra
   // gasta pela metade; a maca tem de curar antes da 2ª luta
   const s = window.__pingo.jogo.save, D = await import('/src/world/deps.ts'); D.treinador('B6-lab-zinabre').equipe = [{ e: 1, nv: 20 }]; D.treinador('B6-lab-lata').equipe = [{ e: 1, nv: 20 }];
@@ -58,7 +60,7 @@ await cenario('passo-12', async () => {
 });
 
 // 3. peão do ginásio 14 leva à porta
-await cenario('passo-14', async () => { await window.__pingo.mundo.irPara('B7-ginasio', 12, 4, 'l', 'nenhuma'); }, async (t) => {
+if (quer('peao')) await cenario('passo-14', async () => { await window.__pingo.mundo.irPara('B7-ginasio', 12, 4, 'l', 'nenhuma'); }, async (t) => {
   await t.q(() => window.Q.rodarAte([['chamar', 'ginasio-14-peao']]));
   const st = await t.q(() => { const s = window.__pingo.jogo.save.jogador; return [s.zona, s.x, s.y]; });
   ok(st[0] === 'B7-ginasio' && st[1] === 8 && st[2] === 16, 'peão: levou à porta do ginásio 14', JSON.stringify(st));
@@ -67,7 +69,7 @@ await cenario('passo-14', async () => { await window.__pingo.mundo.irPara('B7-gi
 });
 
 // 4. revanches: com 14 insígnias a recepção só fala dos líderes 1–8; com 16, os 9–16 entram
-for (const [n, quer] of [[14, false], [16, true]]) {
+for (const [n, liberado] of quer('revanche') ? [[14, false], [16, true]] : []) {
   await cenario('passo-14', async (n) => {
     const s = window.__pingo.jogo.save; s.insignias = Array.from({ length: n }, (_, i) => i + 1);
     await window.__pingo.mundo.irPara('A4-treino', 9, 14, 'n', 'nenhuma');
@@ -76,17 +78,17 @@ for (const [n, quer] of [[14, false], [16, true]]) {
     await t.q(() => window.Q.rodarAte([['agendaTreino']]));
     const tx = await textos(t);
     const nomes = ['Topázio', 'Labareda', 'Gingado', 'Peçonha', 'Pinhão', 'Jaci', 'Trovão'];
-    ok(nomes.some((x) => tx.includes(x)) === quer, `recepção com ${n} insígnias ${quer ? 'lista' : 'não lista'} os líderes 9–16`);
+    ok(nomes.some((x) => tx.includes(x)) === liberado, `recepção com ${n} insígnias ${liberado ? 'lista' : 'não lista'} os líderes 9–16`);
     // revPreparar do líder 10 com o treino marcado hoje
     await t.q(async () => { const R = await import('/src/data/revancha.ts'); const s = window.__pingo.jogo.save; s.flags['treino:lider-10'] = R.diaCorrido(s.relogio.deslocamentoMin); window.Q.textos.length = 0; });
     await t.q(() => window.Q.rodarAte([['revPreparar', 'lider-10']]));
     const ro = await t.q(() => !!window.__pingo.jogo.save.flags['rev-ok']);
-    ok(ro === quer, `revanche do líder 10 com ${n} insígnias: ${quer ? 'libera' : 'recusa'}`, (await textos(t)).slice(0, 120));
+    ok(ro === liberado, `revanche do líder 10 com ${n} insígnias: ${liberado ? 'libera' : 'recusa'}`, (await textos(t)).slice(0, 120));
   }, n);
 }
 
 // 5. prêmio ×1,5 numa luta de rota do mapa B (B-R5-1 em B-R5) e agenda sem/com Mergulho
-await cenario('passo-14', async () => { const s = window.__pingo.jogo.save, D = await import('/src/world/deps.ts'); D.treinador('B-R5-1').equipe = [{ e: 1, nv: 20 }]; await window.__pingo.mundo.irPara('B-R5', 10, 10, 's', 'nenhuma'); delete s.flags['venceu:B-R5-1']; }, async (t) => {
+if (quer('premio')) await cenario('passo-14', async () => { const s = window.__pingo.jogo.save, D = await import('/src/world/deps.ts'); D.treinador('B-R5-1').equipe = [{ e: 1, nv: 20 }]; await window.__pingo.mundo.irPara('B-R5', 10, 10, 's', 'nenhuma'); delete s.flags['venceu:B-R5-1']; }, async (t) => {
   const r = await t.q(async () => {
     const s = window.__pingo.jogo.save, d0 = s.jogador.dinheiro; const D = await import('/src/world/deps.ts'); const tr = D.treinador('B-R5-1');
     await window.Q.rodarAte([['batalha', 'B-R5-1']]);
