@@ -168,7 +168,7 @@ const ARRAIAL: TreinadorDef[] = [
 /* ------------------------------ rival Tainá, encontro 6 (B4; sufixo = inicial DELA) ------------------------------ */
 const RIVAL6: TreinadorDef[] = (['brasa', 'rio', 'mata'] as const).map((dela): TreinadorDef => ({
   id: `rival-6-${dela}`, classe: 'Rival', nome: 'Tainá', sprite: 'taina', ia: 'lider', premio: 5600, musica: 'batalha-rival', flag: 'rival-6', itens: ['garrafada', 'garrafada'], contato: false,
-  equipe: [{ e: 12, nv: 57 }, { e: 29, nv: 57 }, { e: dela === 'brasa' ? 26 : dela === 'rio' ? 17 : 42, nv: 50 }, { e: 64, nv: 58 }, { e: 108, nv: 58 }, { e: dela === 'brasa' ? 6 : dela === 'rio' ? 9 : 3, nv: 52 }],
+  equipe: [{ e: 12, nv: 56 }, { e: 29, nv: 56 }, { e: dela === 'brasa' ? 26 : dela === 'rio' ? 17 : 42, nv: 57 }, { e: 64, nv: 57 }, { e: 108, nv: 57 }, { e: dela === 'brasa' ? 6 : dela === 'rio' ? 9 : 3, nv: 59 }],
   desafio: '{JOGADOR}! Eu peguei o trem uma semana depois de você e já ganhei da Boiadeira Zefa!\fVocê tem duas insígnias do Sertão e eu uma? Então estamos quase empatadas. Quase não é empate. Equipe completa, agora!',
   derrota: 'De novo… Mas viu como a minha equipe cresceu? Eu vi a sua crescer também. Que raiva boa.',
 }));

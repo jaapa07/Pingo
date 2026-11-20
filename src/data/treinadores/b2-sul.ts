@@ -157,7 +157,7 @@ const inicialDela = (dela: 'brasa' | 'rio' | 'mata') => (dela === 'brasa' ? 6 : 
 const meioDela = (dela: 'brasa' | 'rio' | 'mata') => (dela === 'brasa' ? 26 : dela === 'rio' ? 17 : 42);
 const RIVAL7: TreinadorDef[] = (['brasa', 'rio', 'mata'] as const).map((dela): TreinadorDef => ({
   id: `rival-7-${dela}`, classe: 'Rival', nome: 'Tainá', sprite: 'taina', ia: 'lider', premio: 6400, musica: 'batalha-rival', flag: 'rival-7', itens: ['garrafada', 'elixir-andiroba'], contato: false,
-  equipe: [{ e: 12, nv: 64 }, { e: 29, nv: 64 }, { e: meioDela(dela), nv: 56 }, { e: 64, nv: 65 }, { e: 108, nv: 65 }, { e: inicialDela(dela), nv: 58 }],
+  equipe: [{ e: 12, nv: 63 }, { e: 29, nv: 63 }, { e: meioDela(dela), nv: 64 }, { e: 64, nv: 64 }, { e: 108, nv: 64 }, { e: inicialDela(dela), nv: 66 }],
   desafio: '{JOGADOR}! Subi a serra pela trilha dos tropeiros só para chegar antes de você. Cheguei!\fDesde o Arraial eu treinei na roda, no brejo e no gelo. A Gaúcha Pinhão é a próxima — mas primeiro, você!',
   derrota: 'Bah… até o sotaque daqui eu peguei, menos a vitória. Mas eu sinto: estou chegando perto.',
 }));

@@ -378,7 +378,7 @@ export const EVENTOS_B1: EventoDef[] = [
           ['grito', 173], ['tremor', 600],
           f(null, 'A serpente de fogo abre os olhos. O salão inteiro clareia como se o sol tivesse entrado na caverna.'),
           f(null, 'O BOITATÁ desperta, sentindo a Insígnia do Cristal!'),
-          ['selvagem', 173, 50, { lendario: true }],
+          ['selvagem', 173, 57, { lendario: true }],
           ['b1-resultado'],
           se('flag:b1-capturou', [['flag', 'boitata-ok'], ['esconder', 'boitata'], f(null, 'O Boitatá se acomodou na cuia, morno como brasa de fogão.')]),
           se('flag:b1-venceu', [

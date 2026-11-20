@@ -332,7 +332,7 @@ export const EVENTOS_B2S: EventoDef[] = [
       f(null, 'Um bater de queixo ecoa do lado da serra. Por um instante, a garoa cheira a mato novo.'),
       f(PECONHA, 'Ouviu isso? É ela, a Queixada-Caipora! Saiu do esconderijo agora que o brejo sarou.'),
       f(PECONHA, 'De agora em diante ela anda pelas rotas do Sertão, cada dia num lugar. Se encontrar, tenha Cuia boa e paciência: guardiã não se entrega fácil.'),
-      ['errante', 176, 55],
+      ['errante', 176, 63],
       f(RADIO, 'Rádio Cipó avisa: tropeiros relatam uma queixada enorme cruzando as estradas do Sertão, com capim brotando atrás dela. Quem encontrar, respeite!'),
     ],
   },
