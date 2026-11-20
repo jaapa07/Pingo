@@ -24,7 +24,7 @@ const PASTA = join(RAIZ, 'public/assets/sprites/criatura');
 const VISTAS = ['frente', 'costas', 'mapa'] as const;
 
 /** h = giro de matiz em graus · s = fator de saturação · l = soma na luminosidade (−0,2..0,2) · alvo = pinta tudo numa matiz só (graus) */
-interface Receita { h?: number; s?: number; l?: number; alvo?: number; mistura?: number; /** só gira as matizes dentro desta faixa [de, até] (graus) */ faixa?: [number, number]; /** matiz para tingir os cinzas e brancos (usada quando a criatura é quase sem cor) */ tingir?: number }
+interface Receita { h?: number; s?: number; l?: number; alvo?: number; mistura?: number; /** só gira as matizes dentro desta faixa [de, até] (graus) */ faixa?: [number, number]; /** matiz para tingir os cinzas e brancos (usada quando a criatura é quase sem cor) */ tingir?: number; /** receita para as cores que ficaram fora da `faixa` */ extra?: Receita }
 
 /** padrão por tipo principal: a cor "rara" de cada família */
 const POR_TIPO: Record<TipoId, Receita> = {
@@ -50,7 +50,8 @@ const POR_TIPO: Record<TipoId, Receita> = {
 /** receitas escritas à mão (iniciais, aves vistosas, peixes e as que o padrão deixava sem graça) */
 const RECEITAS: Record<string, Receita> = {
   // iniciais: Mata → outono dourado; Brasa → fogo azul; Rio → boto lilás
-  tamandui: { h: -80, s: 1.2, faixa: [60, 200] }, 'tamandua-copa': { h: -80, s: 1.2, faixa: [60, 200] }, bandeirao: { h: -80, s: 1.2, faixa: [60, 200] },
+  // iniciais da Mata: folhas de ouro e pelo prateado
+  tamandui: { h: -80, s: 1.2, faixa: [60, 200], extra: { alvo: 215, s: 0.55, l: 0.04 } }, 'tamandua-copa': { h: -80, s: 1.2, faixa: [60, 200], extra: { alvo: 215, s: 0.55, l: 0.04 } }, bandeirao: { h: -80, s: 1.2, faixa: [60, 200], extra: { alvo: 215, s: 0.55, l: 0.04 } },
   guaraxim: { h: 200, s: 1.0 }, guaraflama: { h: 200, s: 1.0 }, 'lobo-fornalha': { h: 200, s: 1.0 },
   botinho: { h: 85, s: 1.05 }, botorosa: { h: -100, s: 1.15 }, iaraboto: { h: 85, s: 1.05 },
   // aves e pássaros
@@ -95,7 +96,7 @@ const lim = (x: number, a = 0, b = 1) => Math.max(a, Math.min(b, x));
 export function trocarCor(r: number, g: number, b: number, rc: Receita): [number, number, number] {
   const [h, s, l] = rgbParaHsl(r, g, b);
   if (s < 0.12 || l < 0.08 || l > 0.94) return [r, g, b];
-  if (rc.faixa && !(h >= rc.faixa[0] && h <= rc.faixa[1])) return [r, g, b];
+  if (rc.faixa && !(h >= rc.faixa[0] && h <= rc.faixa[1])) return rc.extra ? trocarCor(r, g, b, rc.extra) : [r, g, b];
   let nh = h + (rc.h ?? 0);
   if (rc.alvo !== undefined) { const m = rc.mistura ?? 1; let d = ((rc.alvo - h + 540) % 360) - 180; nh = h + d * m; }
   // peso pela saturação: cores quase cinzas giram menos (transição suave)

@@ -46,6 +46,14 @@ const CUIAS: Record<string, CoresCuia> = {
   'cuia-rapida': cuiaCores(['#a32638', '#e0483c', '#f58a4b'], ['#c4c6d4', '#fff8e7', '#ffffff'], ['#fff07a', '#e0483c'], '#2f86c4', '#4a1020'),
   'cuia-mel': cuiaCores(['#c8662a', '#f9c22b', '#fff07a'], ['#7a3a18', '#c8662a', '#f0a060'], ['#fff8e7', '#f58a4b'], '#6b4226', '#4a2010'),
   'cuia-guardia': cuiaCores(['#1f7a6c', '#3fbfa0', '#8fe8b0'], ['#c98f4e', '#f9c22b', '#fff07a'], ['#fff8e7', '#3a5ad0'], '#e58ad0', '#0e3a34'),
+  // cuias artesanais do Mestre Cabaceiro (spec 10A-6): a cabaça tem a cor do fruto da cuieira
+  'cuia-ligeira': cuiaCores(['#c98f1e', '#f9c22b', '#fff07a'], ['#c4c6d4', '#fff8e7', '#ffffff'], ['#fff8e7', '#6fc7e8'], '#2f86c4', '#5a3a08'),
+  'cuia-pesada': cuiaCores(['#2a1f33', '#4a3a55', '#7a6a8a'], ['#5a5a6e', '#8a8aa0', '#c4c6d4'], ['#c4c6d4', '#2a1f33'], '#e0483c', '#120c18'),
+  'cuia-lua': cuiaCores(['#a8a8b8', '#e8e8f0', '#ffffff'], ['#2e2452', '#5a4a8c', '#9a8ad0'], ['#fff07a', '#5a4a8c'], '#fff07a', '#3b3550'),
+  'cuia-amiga': cuiaCores(['#2f7a3a', '#6cc04a', '#b8ec7a'], ['#c8662a', '#f0a060', '#ffd0a0'], ['#fff8e7', '#e58ad0'], '#e58ad0', '#16401c'),
+  'cuia-isca': cuiaCores(['#2f4f9c', '#4f8ae0', '#9cd0f4'], ['#6b4226', '#9c6434', '#c98f4e'], ['#e8c07a', '#2f4f9c'], '#e0483c', '#14284e'),
+  'cuia-nivel': cuiaCores(['#9c2a2a', '#e0483c', '#f7a07a'], ['#1a1423', '#3b2a35', '#6a5a6e'], ['#f9c22b', '#9c2a2a'], '#f9c22b', '#4a1010'),
+  'cuia-amor': cuiaCores(['#a8407e', '#e58ad0', '#f7c4e0'], ['#fff8e7', '#ffffff', '#ffffff'], ['#e0483c', '#f7c4e0'], '#e0483c', '#4a1a38'),
 };
 /** quadros: 0 fechada · 1 inclina à esquerda · 2 inclina à direita · 3 aberta · 4–7 girando no ar */
 function quadroCuia(q: Quadro, i: number, cores: CoresCuia) {

@@ -48,3 +48,30 @@ Ferramentas no scratchpad: folha de contato (`folha.py`), antes/depois por id (`
   aparecem; barriga laranja grande no peito; sobrancelhas brancas.
 - 169 urutauzim / 170 urutau-fantasma: cabeça para a câmera (dois olhos de pires), riscas de casca e líquen, plumagem mais clara que o toco.
 - 167 andorim (e a paleta do 168): asas-foice varridas para trás (antes pareciam orelhas), fuligem mais clara com volume, sobrancelha e queixo brancos.
+- 150 jataí-rainha: coroa de cera ROSA de três pontas (branca sumia nas asas; mel sumia no corpo), cinta rosa limpa no lugar dos babados.
+- 154 cigarrão: ondas sonoras laranja e mais grossas (brancas pareciam costelas da asa).
+- 101 ema-mirim / 105 tuiuiuzim: proporção de filhote (corpo e cabeça maiores, pernas e pescoço mais curtos, olho maior): antes eram fiapos na célula.
+- 109 harpinha: bico maior e mais curvo, sobrancelha escura franzida, penacho maior. 110 harpia: barriga branca grande sob o colar negro.
+- 181 galo-manaó: o corte das duas águas virou um plano vertical que contém as câmeras de batalha (fase da calota girada 50°) e a asa da frente
+  ficou escura: na batalha o corpo lê metade areia / metade rio Negro, lado a lado.
+- 182 borealce: chifrada do ataque físico mais curta (o zoom manual cortava a galhada; o tamanho é limitado pela própria galhada — fica assim).
+- 165 mocozim (e paleta do 166): cinza puxado ao pardo, garupa ruiva descendo pelos flancos, bochechas maiores.
+- 029 vagalampo: lampião sem aros (os aros escuros listravam como abelha), faíscas mais largas e perto do corpo (+3 pts de célula).
+- 155 lavadeirim (e 156 pela animação compartilhada `voaLib`): bater de asas do especial/físico mais curto; 156 com enquadre de costas 0.96.
+- 027 pintinhas: abdômen vermelho — a fresta entre os élitros deixou de ser uma risca escura; lê como cúpula de joaninha.
+- 148 caranguejeirão: patas mais finas e articuladas; enquadre 0.92/0.94 para nenhum quadro encostar na borda.
+- 146 escorpião-rei: cauda um pouco desenrolada para cima (pouca diferença). 145 escorpim: testei cauda erguida, piorou (enrolava sobre o corpo) — revertido.
+
+## Marco 3 — fechamento (20/11)
+- 25 sprites mudaram (lista no aviso em docs/CAPTURA-CRIACAO.md). `npx tsc --noEmit` limpo; `checar.ts` nos retocados: só restam
+  olho grande em noitim/noitão (6 px, é o traço "olhos de coruja"), urutau-fantasma (4,6 px), e repouso < 68% em vagalampo (64%),
+  tuiuiuzim costas (66%), lavadeirim costas (59%). Nenhum quadro novo encosta na borda (cigarrão físico#1 e escorpião-rei desmaio#3 já encostavam antes).
+- Atlas: 252 entradas, as 182 criaturas presentes, meta dos retocados coerente.
+- Folhas: docs/capturas/todas-frente.png, docs/capturas/todas-mapa.png (finais) e docs/capturas/retoques-2.png (antes rosado × depois verde: frente, costas, mapa).
+
+### Continua fraco (pendências honestas)
+- 036 guaiamuque e 146 escorpião-rei: melhoraram pouco; pedem remodelagem da pose (garra/cauda) com mais tempo.
+- 148 caranguejeirão: ainda embolado (tufos salmão + perna erguida que parece chifre).
+- 129 sirizim / 130 siri-couraça, 141 grilinho, 143 besourim, 153 cigarrim: legíveis, mas chatos e baixos — não mexidos.
+- 119/120 hipocampo, 055 urubuzim (filhote de urubu é branco mesmo), 061 preguicim: revistos, aceitáveis — não mexidos.
+- Pequenos na célula por animação larga (desmaio/ataque do kit): 015 lagartim, 018 formigaço, 028 vagalumim, 093 graxaim, 115 poraquim, 107 garcinha — não mexidos.

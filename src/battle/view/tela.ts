@@ -132,8 +132,9 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
   /** Pelagem Rara (spec 10A-5): chuva de estrelas em volta da criatura ao entrar */
   async function brilhoRaro(a: Ator) {
     som('cuia-estrelas');
-    const [cx, cy] = a.centro, pontos: [number, number][] = [[-14, -10], [12, -14], [-6, 8], [16, 4], [0, -20], [-18, 2]];
-    for (const [dx, dy] of pontos) { cena.fx('st-brilho', cx + dx, cy + dy); await rel.dormir(0.07); }
+    const [cx, cy] = a.centro, r = Math.max(14, Math.round(a.alt * 0.55)), pontos: [number, number][] = [[-1, -0.7], [0.9, -1], [-0.4, 0.6], [1.1, 0.3], [0, -1.3], [-1.2, 0.1], [0.5, 0.9], [-0.8, -1.1]];
+    cena.fx('cap-estrelas', cx, cy - 4);
+    for (let volta = 0; volta < 2; volta++) for (const [dx, dy] of pontos) { cena.fx('st-brilho', cx + Math.round(dx * r * (volta ? 0.7 : 1)), cy + Math.round(dy * r * (volta ? 0.7 : 1))); await rel.dormir(0.05); }
     cena.fx('cap-estrelas', cx, cy - 4);
   }
   async function sair(p: Pos) {

@@ -27,3 +27,13 @@ src/core/tipos.ts (`rara?`, `criadouro?`) · src/core/assets.ts (vistas `-rara`,
 3. Ovos e ninhos no Viveiro do Seu Aroeira (pós-insígnia 6).
 4. Enxames do dia: `enxameDeHoje()` em `src/world/enxames.ts`.
 5. Trocas com 6 moradores + obediência (20/30/50/70/todas).
+
+## Aviso da arte final (agente de retoque das criaturas, 20/11) — REGENERAR AS RARAS destes
+Os PNG `frente/costas/mapa` destas 25 criaturas mudaram (diário em docs/ARTE-FINAL.md); as `*-rara.png` delas estão
+desatualizadas e precisam ser geradas de novo com `tools/build-raras.ts`:
+andorim, andorinhao-da-cachoeira, borealce, caranguejeirao, caranguejim, cigarrao, ema-mirim, escorpiao-rei, escorpim,
+galo-manao, guaiamuque, harpia, harpinha, jatai-rainha, lavadeira-dragao, lavadeirim, moco-da-rocha, mocozim, noitao,
+noitim, pintinhas, tuiuiuzim, urutau-fantasma, urutauzim, vagalampo.
+Atenção: algumas paletas mudaram (andorim/andorinhão, urutauzim/urutau-fantasma, mocozim/mocó-da-rocha, caranguejim:
+rampa 2) e os sprites de frente de caranguejim/guaiamuque/noitim/noitão/urutaus usam câmera/pose novas — se a troca de
+paleta das raras for por cor exata, confira esses ids. Ids, nomes de animação e número de quadros NÃO mudaram.

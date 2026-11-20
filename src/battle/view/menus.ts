@@ -14,7 +14,7 @@ import { Abas } from '../../ui/componentes/abas';
 import { golpe as defGolpe } from '../../data/golpes';
 import { ITENS, item as defItem, temItemDef } from '../../data/itens';
 import { atributos, especie, nomeDe, temEspecie } from '../criatura';
-import { fxUi } from './cena';
+import { fxUi, temFx } from './cena';
 import { div, type Ator } from './palco';
 import { painel } from './hud';
 
@@ -152,7 +152,7 @@ export function menuMochila(o: { mochila: Record<string, number>; podeCuia: bool
   const montar = (bi: number) => {
     ultimoBolso = bi; lista?.el.remove();
     const b = BOLSOS_BATALHA[bi], its = itensDe(b);
-    const mini = (id: string) => (b === 'cuias' ? (() => { const f = fxUi(id, 0); f.el.style.marginTop = '-2px'; return f.el; })() : undefined);
+    const mini = (id: string) => (b === 'cuias' ? (() => { const f = fxUi(temFx(id) ? id : 'cuia', 0); f.el.style.marginTop = '-2px'; return f.el; })() : undefined);
     lista = new Lista({
       itens: its.length ? its.map((it) => ({ rotulo: it.nome, valor: '×' + o.mochila[it.id], icone: mini(it.id), desabilitado: b === 'cuias' && !o.podeCuia })) : [{ rotulo: 'Nada neste bolso.', desabilitado: true }],
       x: 10, y: 30, largura: 212, visiveis: 4, moldura: null, tamanho: 12,
