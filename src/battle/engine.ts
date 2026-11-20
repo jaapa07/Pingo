@@ -24,6 +24,11 @@ import { aprenderGolpe, atributos, especie, expDerrota, expParaNivel, ganharEsfo
  * pondo uma captura nova em dia, mas deixa de levar a equipe nivelada inteira junto pelo mapa B.
  */
 export const LIMIAR_CHOCALHO = { antesDaLiga: 2, depoisDaLiga: 5 } as const;
+/**
+ * Experiência das batalhas depois da Liga (`liga-vencida`): 75% da fórmula (corte de 25%, decisão do autor "para ver como
+ * fica", docs/EQUILIBRIO-MAPA-B.md). O mapa A (antes da Liga) recebe a experiência inteira.
+ */
+export const FATOR_EXP_POS_LIGA = 0.75;
 export interface Pos { lado: 0 | 1; pos: number }
 export type Acao =
   /** slot do golpe (−1 = Desespero, quando não há PG). `alvo`: adversário visado (duplas). `trocaPara`: quem entra depois de um golpe de bater-e-voltar. */
@@ -56,6 +61,8 @@ export interface ConfigBatalha {
   expPartilhada?: boolean;
   /** quantos níveis atrás da mais forte a reserva tem de estar para o Chocalho valer (padrão 2; 5 depois da Liga: `LIMIAR_CHOCALHO`) */
   limiarPartilha?: number;
+  /** multiplica a experiência de cada derrubada (padrão 1; `FATOR_EXP_POS_LIGA` depois de `liga-vencida`) */
+  fatorExp?: number;
   /** com 4 golpes, um golpe novo substitui sozinho o mais fraco (IA/headless). Padrão: false → fica em `golpesPendentes`. */
   autoAprender?: boolean;
   /** o encontro veio da pesca (Cuia de Isca) */
@@ -759,7 +766,7 @@ export class Batalha {
   private darExp(inimigo: CriaturaInst) {
     const quem = [...(this.participantes.get(inimigo.uid) ?? [])].map((uid) => this.lados[0].equipe.find((c) => c.uid === uid)!).filter((c) => c && c.vida > 0);
     if (!quem.length) return;
-    const inteira = Math.max(1, Math.floor(expDerrota(inimigo, this.cfg.tipo === 'treinador') / quem.length));
+    const inteira = Math.max(1, Math.floor((expDerrota(inimigo, this.cfg.tipo === 'treinador') * (this.cfg.fatorExp ?? 1)) / quem.length));
     const esforco = especie(inimigo.especie).esforco;
     // Chocalho do Mutirão: a reserva de pé aprende olhando — metade da experiência de um participante, sem esforço e sem tirar nada de quem lutou
     // Só quem ficou para trás escuta: a reserva 2 níveis ou mais abaixo da mais forte da equipe (senão as três da frente
