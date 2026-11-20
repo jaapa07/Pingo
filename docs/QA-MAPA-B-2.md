@@ -88,3 +88,61 @@ Ferramentas em `tools/testes/qa4/` (cópia do QA 3 com nomes `qa4-*`):
   exceção: agora recomeça.
 - Simulador (`passo-16`): Garrote 47% · rival 8 64% · Conselho em sequência com a mochila do save 0% (Iara 100 → Cauã 100 →
   Jandaia 46 → Moacir 2 → Arandu 0); com +6 Elixires, +4 Chás, +6 Garrafadas: **47%** (100/100/91/89/47).
+- (20/11) **pico, 2ª mão** (de `passo-16`, piloto contornando os gatilhos): Garrote (ás 74) com 74/70/70/70/70/69 (Δ 0,
+  média −3,5) → 1/1, 17 t (ele usou 2 remédios); rival 8 (ás 75) com 74/71/70/70/70/70 (Δ −1) → 1/1, 9 t.
+  **Conselho**: 1ª sequência perdida no Arandu (8 t; entrou com 3 desmaiadas e só 1 Garrafada); 2ª sequência VENCIDA
+  (Iara 9 t, Cauã 5 t, Jandaia 11 t, Moacir 13 t, Arandu 9 t), na frente do Arandu 76/72/71/71/71/71 (Δ −1).
+  Créditos, `conselho-vencido`, `pos-jogo`, `misterioso-pode`, errantes 179/180, Rádio Cipó, volta ao Cume (20, 7).
+  Checkpoint `campeao-b`. Contando a 1ª mão, o Conselho foi vencido em **1 de 3 sequências**. Sem erro de console em
+  nenhum trecho.
+
+## Resumo (jogo honesto, Aventureiro, piloto esperto na tela; "na frente" = depois da turma do ginásio)
+| Chefe (ás) | Estimativa ás/média | Medido ás/média (Δ ás) | Resultado | Turnos (derrota/vitória) | Simulador equipe real |
+|---|---|---|---|---|---|
+| Líder 9 (55) | 52,5/48,9 | 54/48,8 (−1) | 1/2 | 26 / 12 | 91% |
+| Tenente Arame (57) | — | 55/50,5 (−2) | 1/3 | 19, 15 / ? | 87% |
+| Tenente Rebite (56) | — | 58/53 (+2) | 1/1 | 33 | — |
+| Líder 10 (58) | 57,0/53,2 | 58/54,7 (0) | 1/2 | 16 / 13 | 61% |
+| Rival 6 (59) | — | 59/55,7 (0) | derrota (história segue) | 12 | 90% |
+| Líder 11 (61) | 60,2/56,5 | 59/56,2 (−2) | 1/1 | 15 | 84% |
+| Líder 12 (63) | 62,3/58,7 | 62/58,2 (−1) | 1/1 | 16 | 79% |
+| Zinabre → Lata (63/65) | — | 62/59,3 (−1/−3) | 2/2 → 1/2 | 11 / 19 | 99% → 12% (seguidas) |
+| Líder 13 (66) | 66,8/63,1 | 63/60,3 (−3) | 1/3 | 7, 15 / 23 | 34% |
+| Rival 7 (66) | — | 64/61,7 (−2) | derrota (5 desmaiadas) | 1 | 84% |
+| Líder 14 (68) | 69,3/65,5 | 64/61,7 (−4) | 1/2 · 1/3 · 1/2 (3 mãos) | 5–19 / 25–26 | 47–52% |
+| Líder 15 (70) | 71,1/67,5 | 65/62,8 (−5) | **0/8**; com treino 1/8 e 1/9 (216 e 252 selvagens) | 15–26 / 21–22 | **3%** (ás 68: 37%, 70: 70%) |
+| Líder 16 (72) | 73,6/70,0 | 73/69,7 (+1, depois do treino) | 1/2 (duas mãos) | 7–15 / 19–24 | 51% |
+| Garrote (74) | — | 74/70,5 (0) | 1/2 · 1/1 | 7 / 17–19 | 47% |
+| Rival 8 (75) | — | 74/70,8 (−1) | 0/1 (cansada) · 1/1 | 3 / 9 | 64% |
+| Conselho (73–77) | 75,8/71,9 | 75/71,2 → Arandu 76/72 (−1) | **1 de 3 sequências** | Arandu 7–8 / 9 | 0% (mochila do save) · 47% (+6 Elixir, +4 Chá, +6 Garrafada) |
+
+## Achados
+1. **9–12 na meta** (chegada −2…0, como a estimativa; líderes vencidos em 1–2 tentativas). **Do 13 em diante a chegada
+   cai 4–6 níveis abaixo da estimativa** (13 −3, 14 −4, 15 −5 contra +1 estimado). Causas medidas: metade dos selvagens
+   termina em fuga (o estimador conta 7 selvagens VENCIDOS por zona), o corte de 45% e o Chocalho a 5+ (a reserva fica
+   4–5 abaixo do ás). Sem as zonas opcionais (B-SG, B-LG).
+2. **Líder 15 é um muro**: 0/8 entrando curada (simulador 3%), seis criaturas todas 68–70. Passar exigiu ~200–250
+   selvagens de treino (moagem que o spec 7A diz que não deve ser necessária). Depois do treino, 16, Garrote, rival 8 e
+   Conselho ficaram na faixa (Conselho 1 em 3 ≈ 33%, simulador 47% com mochila cheia).
+3. **Dinheiro em espiral**: cada derrota corta metade; Garrafada (700) cura 50 de ~200; o jogador chegou a líderes com
+   $132, $244, $15 e sem Chá para reanimar — e a falta de remédio causou várias derrotas seguintes. No fim do jogo sobra
+   ($133 k depois do Conselho).
+4. **Corrigido:** `src/data/zonas/B6-ginasio.ts` g13-5 visão 2 → 1 (vinha a (26, 7) e TRANCAVA a boca do tanque C).
+5. Fluxo conferido na tela: trem, ninhal, Centro, mina, vagonetes, escalada, fogueiras, roda de capoeira, Mergulho,
+   Força na gruta, Cachoeira, laboratório inteiro, tanques, B-R4 de mão única, gelo (ida e volta), névoa com Lampião,
+   portais (ida e volta), Voo pelo mapa-múndi, Monte Tupã, quatro provas, Portão, Garrote, rival 8, Conselho, créditos.
+
+## Propostas (NÃO aplicadas — decisão do autor)
+- **Líder 15:** tirar a 6ª criatura ou descer os cinco membros de 68 para 65–67 (o ás 70 fica); ou, em vez de mexer em
+  níveis, `FATOR_EXP_POS_LIGA` ~0,65 a partir da insígnia 13 (a chegada medida está 4–6 abaixo da estimativa ali).
+- **Economia pós-Liga:** prêmio dos treinadores do mapa B ×1,5, ou derrota tirando 1/4 em vez de metade, ou uma
+  Garrafada Forte (cura 120) na Venda do mapa B — hoje a falta de dinheiro gera derrota em cadeia.
+- **Rival 7:** o gatilho (24..25, 36) fica na estrada logo na chegada de B7, depois da Subida de mão única (9 treinadores,
+  sem Posto). Sugestão: a Tainá curar a equipe antes da luta ("bebe um chimarrão antes") ou o gatilho depois do Posto.
+- **Zinabre → Lata** seguidos (simulador 12% na sequência): dar um respiro (curar ou uma fala que permita usar itens).
+- **Ginásio 14:** a volta do salão até a porta só existe pelas três pistas ao contrário (~90 movimentos, 3 empurrões) e o
+  Voo não funciona lá dentro; um peão que leve o vencedor à porta evitaria a sensação de "preso".
+
+## Não coberto
+Zonas opcionais (B-SG, B-LG, B-FA), missões paralelas (outro QA), outros iniciais (só a equipe de Rio do QA 2),
+Explorador/Veterano, toque/iPhone, a tela de créditos não foi fotografada (passou pelo piloto; flags e falas conferidas).
