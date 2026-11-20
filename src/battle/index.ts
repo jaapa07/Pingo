@@ -17,7 +17,7 @@ import type { ClimaId, CriaturaInst, TreinadorDef } from '../core/tipos';
 import { jogo, marcarCapturado, marcarVisto, periodo, receberCriatura, darItem } from '../core/estado';
 import { bus } from '../core/events';
 import { telas, criarTela, temTela } from '../ui/telas';
-import { Batalha, LIMIAR_CHOCALHO, FATOR_EXP_POS_LIGA, type Acao, type AcaoDe, type ConfigBatalha, type EventoBatalha, type Pedido, type ResultadoId } from './engine';
+import { Batalha, LIMIAR_CHOCALHO, FATOR_EXP_POS_LIGA, fatorPremioDaZona, type Acao, type AcaoDe, type ConfigBatalha, type EventoBatalha, type Pedido, type ResultadoId } from './engine';
 import { escolherAcaoIA, escolherSubstitutoIA, iaUsaItens, nivelEfetivo, type NivelIA, type OpcoesIA } from './ia';
 import { limiteObediencia } from './cuias';
 import { amizadePor, curarCriatura, evoluir, nomeDe, registrarEspecies, totalEspecies } from './criatura';
@@ -101,6 +101,8 @@ export class ControleBatalha {
 export function limiarChocalho(flags: Record<string, unknown>): number { return flags['liga-vencida'] ? LIMIAR_CHOCALHO.depoisDaLiga : LIMIAR_CHOCALHO.antesDaLiga; }
 /** fator da experiência pelo progresso: 1 até a Liga, `FATOR_EXP_POS_LIGA` depois de `liga-vencida` */
 export function fatorExpDoProgresso(flags: Record<string, unknown>): number { return flags['liga-vencida'] ? FATOR_EXP_POS_LIGA : 1; }
+/** prêmio que o treinador paga, com o ×1,5 das zonas da jornada do mapa B (`fatorPremioDaZona`) */
+export function premioDoTreinador(premio: number, zonaId: string): number { return Math.round(premio * fatorPremioDaZona(zonaId)); }
 export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } = {}): ControleBatalha {
   const s = jogo.save, dif = jogo.opcoes.dificuldade, t = p.treinador;
   const nivel: NivelIA = p.tipo === 'treinador' ? nivelEfetivo(t?.ia ?? 'treinador', dif) : p.tipo === 'lendario' ? nivelEfetivo('treinador', dif) : 'novato';
@@ -119,7 +121,7 @@ export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } 
     limiarPartilha: limiarChocalho(s.flags), fatorExp: fatorExpDoProgresso(s.flags),
     pescada: p.pescada, obediencia: { limite: limiteObediencia(s.insignias.length), dono: s.jogador.nome },
   };
-  return new ControleBatalha(p, cfg, nivel, { usaItens, foge: p.errante }, p.tipo === 'treinador' ? (t?.premio ?? 0) : 0);
+  return new ControleBatalha(p, cfg, nivel, { usaItens, foge: p.errante }, p.tipo === 'treinador' ? premioDoTreinador(t?.premio ?? 0, s.jogador.zona) : 0);
 }
 
 /* ------------------------------ headless ------------------------------ */

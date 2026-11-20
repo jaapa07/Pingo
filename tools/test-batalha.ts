@@ -22,6 +22,11 @@ import { iniciarBatalha, limiarChocalho, fatorExpDoProgresso, prepararBatalha, d
 import { sortearRara, prepararSelvagem, bonusArtesanal, limiteObediencia, chanceObedecer, CHANCE_RARA, AMIZADE_CUIA_AMIGA } from '../src/battle/cuias';
 import { afinidade, gerarOvo, formaBase, passoCriadouro, criadouro, PASSOS_SORTEIO } from '../src/world/ninhos';
 import { GRUPOS_NINHO } from '../src/data/ninhos';
+import { fatorPremioDaZona, FATOR_PREMIO_MAPA_B } from '../src/battle/engine';
+import { premioDoTreinador } from '../src/battle/index';
+import { revancheLiderLiberada } from '../src/data/revancha';
+import { registrarProva, recordeHoje, pontosGincana, posicaoDaMarca, valorDaMarca, RIVAIS, pontosRival } from '../src/data/gincana';
+import { agendaDoDia } from '../src/data/radio';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 let falhas = 0, feitos = 0;
@@ -850,6 +855,46 @@ teste('ninhos e ovos: grupos das 180, compatibilidade, ovo da forma base com gen
     for (let i = 0; i < sorteios * PASSOS_SORTEIO; i++) { passoCriadouro(); if (cr.ovo) { ovos++; cr.ovo = null; } }
     perto(ovos / sorteios, 0.5, 0.08, 'ovo em metade dos sorteios (mesma espécie)');
     afirmar(cr.casal[0].exp > expParaNivel(especie(2).crescimento, 30), 'quem fica no viveiro ganha experiência');
+  } finally { jogo.save = antes; }
+});
+
+/* ============================== 8b. decisões finais do mapa B (docs/DECISOES-FINAIS.md) ============================== */
+teste('decisões finais: prêmio ×1,5 no mapa B, Garrafada Forte, revanches 9–16 com 16 insígnias, Gincana pelo recorde do dia, agenda da tartaruga', () => {
+  // prêmio: zonas do mapa B, Pico e áreas da jornada B no mapa A pagam ×1,5; o resto do mapa A não muda
+  afirmar(FATOR_PREMIO_MAPA_B === 1.5, 'fator 1,5');
+  for (const z of ['B1', 'B-R4', 'B7-ginasio', 'B6-lab', 'PP', 'PP-conselho', 'A-R6', 'A-MT', 'A-MT-gruta', 'A9', 'A9-ginasio']) afirmar(fatorPremioDaZona(z) === 1.5, 'zona do mapa B paga ×1,5: ' + z);
+  for (const z of ['A1', 'A4-treino', 'A-GE', 'A-LG', 'A-R7', 'A-RS', 'A-GN', 'X-EA', 'A10']) afirmar(fatorPremioDaZona(z) === 1, 'zona do mapa A paga normal: ' + z);
+  afirmar(premioDoTreinador(2240, 'B8-ginasio') === 3360 && premioDoTreinador(2240, 'A4') === 2240, 'premioDoTreinador');
+  const antes = jogo.save; jogo.save = novoSave();
+  try {
+    const t: TreinadorDef = { id: 'teste-premio', classe: 'Peão', nome: 'Teste', sprite: 'x', ia: 'treinador', premio: 1000, equipe: [{ e: 9001, nv: 5 }], desafio: '', derrota: '' };
+    jogo.save.equipe = [criarCriatura(9001, 5)];
+    jogo.save.jogador.zona = 'B3';
+    afirmar(prepararBatalha({ tipo: 'treinador', treinador: t, inimigos: [criarDeMembro(t.equipe[0], t.nome)], arena: 'teste' }).patacas === 1500, 'batalha em B3 paga 1500');
+    jogo.save.jogador.zona = 'A3';
+    afirmar(prepararBatalha({ tipo: 'treinador', treinador: t, inimigos: [criarDeMembro(t.equipe[0], t.nome)], arena: 'teste' }).patacas === 1000, 'batalha em A3 paga 1000');
+    // Garrafada Forte
+    const gf = item('garrafada-forte');
+    afirmar(gf.uso?.cura === 120 && gf.preco === 1500 && gf.bolso === 'remedios' && !!gf.uso?.emBatalha, 'Garrafada Forte: cura 120, 1500, remédio de batalha');
+    for (const v of ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'PP']) afirmar(readFileSync(join(RAIZ, `src/data/zonas/${v}-venda.ts`), 'utf8').includes("'garrafada-forte'"), 'Garrafada Forte na Venda ' + v);
+    // revanches: 1–8 depois da Liga, 9–16 só com as 16 insígnias
+    afirmar(!revancheLiderLiberada(5, 8, {}) && revancheLiderLiberada(5, 8, { 'liga-vencida': true }), 'líder 5 abre com a Liga');
+    afirmar(!revancheLiderLiberada(9, 15, { 'liga-vencida': true }) && !revancheLiderLiberada(16, 15, { 'liga-vencida': true }), 'líderes 9–16 fechados com 15 insígnias');
+    afirmar(revancheLiderLiberada(9, 16, { 'liga-vencida': true }) && revancheLiderLiberada(16, 16, { 'liga-vencida': true }), 'líderes 9–16 abertos com 16');
+    // Gincana: só o recorde do dia vale pontos (a melhora paga a diferença) e a fala mostra a posição da rodada
+    const r1 = registrarProva('agilidade', 300);
+    afirmar(r1.recorde && r1.ganhos === valorDaMarca(300) + r1.premio, '1ª rodada paga o valor da marca + pódio');
+    const p1 = pontosGincana();
+    const r2 = registrarProva('agilidade', 120);
+    afirmar(!r2.recorde && r2.ganhos === 0 && pontosGincana() === p1 && recordeHoje('agilidade') === 300, 'rodada pior não rende pontos');
+    afirmar(r2.posRodada === posicaoDaMarca('agilidade', 120) && r2.posRodada === 1 + RIVAIS.filter((r) => pontosRival(r, 'agilidade') > 120).length, 'posição da rodada jogada');
+    const r3 = registrarProva('agilidade', 300);
+    afirmar(r3.ganhos === 0, 'repetir a mesma marca não rende');
+    const r4 = registrarProva('agilidade', 455);
+    afirmar(r4.recorde && r4.ganhos === valorDaMarca(455) - valorDaMarca(300) + r4.premio, 'novo recorde paga só a diferença');
+    // agenda: a tartaruga das sextas só com o Mergulho
+    const ag = (mergulho: boolean) => agendaDoDia({ dia: 5, periodo: 'dia', liga: true, contatos: [], enxame: null, cartao: false, mergulho }).texto;
+    afirmar(!/TARTARUGA/.test(ag(false)) && /TARTARUGA/.test(ag(true)), 'Sexta da Tartaruga só com o Mergulho');
   } finally { jogo.save = antes; }
 });
 

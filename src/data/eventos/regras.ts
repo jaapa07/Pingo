@@ -20,7 +20,7 @@ import { bus } from '../../core/events';
 import { MAPA_B_ABERTO } from '../../core/progresso';
 import { registrarComando, registrarTreinador, ajustesDeEncontro } from '../../world/registro';
 import {
-  LIDERES_AGENDA, RIVAL_SEMANAL, NOME_DIA_LONGO, NOME_PERIODO, TREINO, buscaSpriteLider, agendaLider, diaCorrido, faseDoProgresso,
+  LIDERES_AGENDA, RIVAL_SEMANAL, NOME_DIA_LONGO, NOME_PERIODO, TREINO, buscaSpriteLider, agendaLider, diaCorrido, faseDoProgresso, revancheLiderLiberada,
   treinadorDaFase, rivalSemanalDef, inicialDaRival, enxameDoDia, aplicarEnxame, type Fase,
 } from '../revancha';
 import { QUIZ_FAUNA, QUIZ_RODADA, QUIZ_META, LOCUTORA } from '../quiz';
@@ -30,6 +30,8 @@ const mundoDeps = () => import('../../world/deps');
 const hoje = () => diaCorrido(jogo.save.relogio.deslocamentoMin);
 export const faseAtual = (): Fase => faseDoProgresso(jogo.save.insignias.length, jogo.save.flags);
 const flags = () => jogo.save.flags;
+/** revanche deste líder já liberada (1–8 depois da Liga; 9–16 com as 16 insígnias) */
+const liberada = (l: { insignia: number }) => revancheLiderLiberada(l.insignia, jogo.save.insignias.length, jogo.save.flags);
 function limpar(k: string, v: boolean) { if (v) setFlag(k); else delete flags()[k]; }
 
 /* ------------------------------ agenda: NPCs que aparecem hoje ------------------------------ */
@@ -37,7 +39,7 @@ let enxameHoje: ReturnType<typeof enxameDoDia> = null, enxameDia = -1;
 /** recalcula quem aparece hoje (líderes no Ginásio de Treino, rival na gruta) e o enxame do dia */
 export async function atualizarAgenda() {
   const s = jogo.save, d = hoje(), dia = diaSemana();
-  for (const l of LIDERES_AGENDA) limpar('treino-hoje:' + l.id, s.flags['treino:' + l.id] === d && s.flags['revanche:' + l.id] !== d);
+  for (const l of LIDERES_AGENDA) limpar('treino-hoje:' + l.id, liberada(l) && s.flags['treino:' + l.id] === d && s.flags['revanche:' + l.id] !== d);
   limpar('rival-semana-hoje', !!s.flags['liga-vencida'] && RIVAL_SEMANAL.dias.includes(dia) && s.flags['rival-semanal-dia'] !== d);
   if (enxameDia !== d) {
     try { const { listaZonas } = await import('../../world/zonas'); enxameHoje = enxameDoDia(listaZonas(), d, MAPA_B_ABERTO); enxameDia = d; } catch { enxameHoje = null; }
@@ -58,8 +60,8 @@ const GUIA = { nome: 'Guia do Treino', retrato: 'npc-homem-2' };
 registrarComando('agendaTreino', async () => {
   const d = await mundoDeps(), dia = diaSemana(), s = jogo.save;
   const ORDEM = ['manha', 'dia', 'noite'];
-  const linha = (dd: number) => LIDERES_AGENDA.filter((l) => l.dia === dd && d.treinador(l.id)).sort((a, b) => ORDEM.indexOf(a.periodo) - ORDEM.indexOf(b.periodo)).map((l) => `${d.treinador(l.id)!.nome} (${NOME_PERIODO[l.periodo]})`).join(', ');
-  const marcados = LIDERES_AGENDA.filter((l) => s.flags['treino:' + l.id] === hoje() && s.flags['revanche:' + l.id] !== hoje()).map((l) => d.treinador(l.id)?.nome).filter(Boolean);
+  const linha = (dd: number) => LIDERES_AGENDA.filter((l) => l.dia === dd && liberada(l) && d.treinador(l.id)).sort((a, b) => ORDEM.indexOf(a.periodo) - ORDEM.indexOf(b.periodo)).map((l) => `${d.treinador(l.id)!.nome} (${NOME_PERIODO[l.periodo]})`).join(', ');
+  const marcados = LIDERES_AGENDA.filter((l) => liberada(l) && s.flags['treino:' + l.id] === hoje() && s.flags['revanche:' + l.id] !== hoje()).map((l) => d.treinador(l.id)?.nome).filter(Boolean);
   await d.falar(`Bem-vindo ao ${TREINO.nome}! Hoje é ${NOME_DIA_LONGO[dia]}.\fQuem aceita revanche hoje: ${linha(dia) || 'ninguém'}.\f${marcados.length ? `Já confirmaram presença: ${marcados.join(', ')}. Estão no salão!` : 'Ninguém marcou hoje. Ligue pelo Rádio Cipó no dia e no período do líder: ele vem para cá.'}`, RECEPCAO);
   if (!(await d.simNao('Quer ouvir a agenda da semana inteira?'))) return;
   // um dia por caixa: cabe nas duas linhas do diálogo
@@ -71,6 +73,8 @@ registrarComando('revPreparar', async ([idArg]) => {
   setFlag('rev-ok', false);
   if (!t) return;
   const quem = { nome: `${t.classe} ${t.nome}`, retrato: t.sprite };
+  const ag = agendaLider(id);
+  if (ag && !liberada(ag)) { await d.falar('Revanche comigo só depois que você vencer os dezesseis ginásios. Termine a jornada pelo Sertão!', quem); return; }
   if (s.flags['revanche:' + id] === hoje()) { await d.falar('Já tivemos a nossa revanche hoje. Ligue na próxima semana, no mesmo dia!', quem); return; }
   if (s.flags['treino:' + id] !== hoje()) { const a = agendaLider(id)!; await d.falar(`Só treino aqui nas ${NOME_DIA_LONGO[a.dia]}s, ${NOME_PERIODO[a.periodo]}. Ligue antes pelo Rádio Cipó!`, quem); return; }
   const def = treinadorDaFase(t, faseAtual(), (n) => d.especie(n));

@@ -1,0 +1,70 @@
+# Adventures of Pingo — empacotamento do PC (electron-builder).
+# Rodar da raiz do projeto:
+#   npm run desktop            -> pasta pronta para o sistema atual (plataformas/desktop/out/<sistema>-unpacked)
+#   npm run desktop:pacotes    -> Linux AppImage + Windows portátil e instalador NSIS
+#   npm run desktop:mac        -> macOS (dmg + zip), só num Mac
+appId: com.pingo.adventures
+productName: Adventures of Pingo
+copyright: Adventures of Pingo
+directories:
+  output: plataformas/desktop/out
+  buildResources: plataformas/desktop
+extraMetadata:
+  main: plataformas/desktop/main.cjs
+  description: RPG de captura em pixel art. Funciona sem internet.
+# só o jogo compilado e o processo principal; nenhuma dependência do Node vai para o pacote
+files:
+  - package.json
+  - dist/**/*
+  - plataformas/desktop/main.cjs
+  - plataformas/desktop/preload.cjs
+  - plataformas/desktop/icone.png
+  - "!node_modules/**/*"
+  - "!dist/sw.js"
+  - "!dist/pingo-arquivos.json"
+asar: true
+publish: null
+compression: normal
+npmRebuild: false
+nodeGypRebuild: false
+buildDependenciesFromSource: false
+electronLanguages: [pt-BR, en-US]
+icon: plataformas/desktop/icone.png
+artifactName: Adventures-of-Pingo-${version}-${os}-${arch}.${ext}
+
+linux:
+  target: [AppImage]
+  category: Game
+  executableName: adventures-of-pingo
+  synopsis: RPG de captura em pixel art
+  icon: plataformas/desktop/icone.png
+
+win:
+  target:
+    - target: portable
+      arch: [x64]
+    - target: nsis
+      arch: [x64]
+  icon: plataformas/desktop/icone.png
+  # sem certificado de assinatura: o Windows mostra o aviso do SmartScreen na primeira abertura
+  signAndEditExecutable: true
+portable:
+  artifactName: Adventures-of-Pingo-${version}-portatil.${ext}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  shortcutName: Adventures of Pingo
+  language: "1046"
+  artifactName: Adventures-of-Pingo-${version}-instalador.${ext}
+
+mac:
+  target: [dmg, zip]
+  category: public.app-category.role-playing-games
+  icon: plataformas/desktop/icone.png
+  # sem conta de desenvolvedor Apple: app não assinado (abrir com botão direito -> Abrir na primeira vez)
+  identity: null
+  hardenedRuntime: false
+dmg:
+  artifactName: Adventures-of-Pingo-${version}-mac.${ext}

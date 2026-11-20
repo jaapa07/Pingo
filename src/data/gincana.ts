@@ -55,22 +55,37 @@ export function ranking(p: ProvaId): LinhaRanking[] {
 export const posicao = (p: ProvaId) => ranking(p).findIndex((x) => x.jogador) + 1;
 /** prêmio do pódio, pago uma vez por dia por posição melhorada: 1º 30, 2º 15, 3º 5 */
 const PREMIO_POS = [0, 30, 15, 5, 0];
-export interface FimDeProva { pontos: number; recorde: boolean; posAntes: number; pos: number; ganhos: number; premio: number }
-/** registra uma prova jogada: soma os pontos da Gincana e paga o pódio */
+export interface FimDeProva {
+  pontos: number; recorde: boolean; posAntes: number;
+  /** posição no ranking do dia (com o recorde do jogador) */
+  pos: number;
+  /** posição que ESTA rodada teria entre os rivais do dia (a fala do fim mostra esta) */
+  posRodada: number;
+  ganhos: number; premio: number;
+}
+/** pontos da Gincana que uma marca vale: 1 a cada 10 pontos da prova, no mínimo 1 */
+export const valorDaMarca = (pts: number) => (pts > 0 ? Math.max(1, Math.floor(pts / 10)) : 0);
+/** posição de uma marca entre os rivais do dia (empate fica com o jogador, como no ranking) */
+export const posicaoDaMarca = (p: ProvaId, pts: number) => 1 + RIVAIS.filter((r) => pontosRival(r, p) > pts).length;
+/**
+ * Registra uma prova jogada: soma os pontos da Gincana e paga o pódio.
+ * Só o recorde do dia vale (decisão do autor, docs/DECISOES-FINAIS.md): repetir a prova não rende nada, a não ser que a
+ * rodada bata o próprio recorde do dia — aí paga só a diferença entre o valor da marca nova e o da antiga.
+ */
 export function registrarProva(p: ProvaId, pontos: number): FimDeProva {
-  const dia = diaDoJogo(), posAntes = recordeHoje(p) > 0 ? posicao(p) : 5;
-  const recorde = pontos > recordeHoje(p);
+  const dia = diaDoJogo(), antes = recordeHoje(p), posAntes = antes > 0 ? posicao(p) : 5;
+  const recorde = pontos > antes;
   if (recorde) setFlag(chaveRec(p), `${dia}:${pontos}`);
-  const pos = posicao(p);
+  const pos = posicao(p), posRodada = posicaoDaMarca(p, pontos);
   // melhor posição já premiada hoje
   const v = String(flag(`gincana-podio:${p}`) ?? ''); const [dp, pp] = v.split(':').map(Number);
   const jaPago = dp === dia ? pp : 5;
   let premio = 0;
   if (pos < jaPago) { premio = PREMIO_POS[pos] - (jaPago <= 4 ? PREMIO_POS[jaPago] : 0); setFlag(`gincana-podio:${p}`, `${dia}:${pos}`); }
-  const ganhos = Math.max(1, Math.floor(pontos / 10)) + Math.max(0, premio);
+  const ganhos = (recorde ? valorDaMarca(pontos) - valorDaMarca(antes) : 0) + Math.max(0, premio);
   setFlag('gincana-pontos', pontosGincana() + ganhos);
   setFlag('gincana-provas', Number(flag('gincana-provas') ?? 0) + 1);
-  return { pontos, recorde, posAntes, pos, ganhos, premio: Math.max(0, premio) };
+  return { pontos, recorde, posAntes, pos, posRodada, ganhos, premio: Math.max(0, premio) };
 }
 export const pontosGincana = () => Number(flag('gincana-pontos') ?? 0);
 export function gastarPontos(n: number) { setFlag('gincana-pontos', Math.max(0, pontosGincana() - n)); }

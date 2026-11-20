@@ -27,6 +27,52 @@ Controles: setas ou WASD andam · **Z** ou Enter = A (confirmar) · **X** ou Shi
 O `dist/` usa caminhos relativos (`base: './'`): pode ser copiado para qualquer pasta de qualquer servidor
 estático. Só não abre direto do disco (`file://`), porque módulos e Service Worker exigem http(s).
 
+## 1A. Versão PC instalável (Electron): Windows, Linux e macOS
+
+O mesmo jogo, empacotado num aplicativo que abre sem navegador e **nunca usa a rede** (todo pedido para fora
+é bloqueado; os arquivos do jogo vão dentro do pacote). Janela de 1280×720 (escala 4× da tela do jogo),
+redimensionável: o jogo sempre escolhe a maior escala inteira que cabe. **F11** ou **Alt+Enter** alternam a
+tela cheia (também em Opções → Tela cheia e no menu **Jogo**). No título aparece a opção **Sair**.
+
+### Gerar
+    npm ci
+    npm run desktop            # build + pasta pronta para o sistema atual: plataformas/desktop/out/linux-unpacked/
+                               # (no Windows: out/win-unpacked/, no Mac: out/mac*/)
+    npm run desktop:pacotes    # build + Linux AppImage + Windows portátil (.exe) + instalador NSIS (.exe)
+    npm run desktop:mac        # build + macOS .dmg e .zip (rode num Mac)
+    npm run desktop:abrir      # abre o jogo pelo Electron direto do código (usa o dist/ atual)
+    xvfb-run -a npm run test:desktop   # teste do app empacotado (num PC com tela, sem o xvfb-run)
+
+Os pacotes ficam em `plataformas/desktop/out/` (fora do Git):
+
+| Arquivo | Para quê |
+|---|---|
+| `Adventures-of-Pingo-1.0.0-linux-x86_64.AppImage` | Linux: `chmod +x` e dois cliques (sem instalar) |
+| `Adventures-of-Pingo-1.0.0-portatil.exe` | Windows: roda direto, de pendrive inclusive |
+| `Adventures-of-Pingo-1.0.0-instalador.exe` | Windows: instala no menu Iniciar, com atalho na área de trabalho |
+| `Adventures-of-Pingo-1.0.0-mac.dmg` | macOS (gerado num Mac) |
+
+Os executáveis **não são assinados**: no Windows o SmartScreen mostra "O Windows protegeu o computador" na
+primeira vez (**Mais informações → Executar assim mesmo**); no macOS, abra com **botão direito → Abrir**. Para
+distribuir sem esses avisos é preciso um certificado de assinatura de código (Windows) ou uma conta de
+desenvolvedor Apple (macOS) e os campos `win.signtoolOptions`/`mac.identity` do
+`plataformas/desktop/electron-builder.yml`.
+
+Gerar o pacote do Windows no Linux funciona (o electron-builder baixa o NSIS sozinho; o `wine` só é necessário
+para gravar o ícone e a versão dentro do .exe). O `.dmg` só sai num Mac.
+
+### Onde fica o save no PC
+Um arquivo JSON por jogo (`pingo.slot.0.json` a `pingo.slot.2.json`, mais `pingo.opcoes.json` e
+`pingo.retomada.json`), cada um com uma cópia da versão anterior (`.bak`):
+
+- Windows: `%APPDATA%\Adventures of Pingo\saves\`
+- Linux: `~/.config/Adventures of Pingo/saves/`
+- macOS: `~/Library/Application Support/Adventures of Pingo/saves/`
+
+Menu **Jogo → Abrir pasta dos saves** abre essa pasta. Copiar a pasta para outro PC leva os jogos junto. Para
+levar o jogo do PC ao iPhone (e vice-versa), use **Exportar arquivo .pingo** / **Importar** na tela de jogos.
+O save do aplicativo é separado do save do navegador.
+
 ## 2. No iPhone (Safari → Tela de Início)
 
 1. No iPhone, abra o endereço do GitHub Pages **no Safari** (tem de ser https).
@@ -96,3 +142,59 @@ erros que nesta máquina não aparecem e no GitHub param a publicação. Rode an
 
 Do quarto em Vila Jacarandá até a **Liga dos Guardiões** (8 insígnias, mapa A — Costa do Sol). O Trem
 Serra-Sol e o Saveiro para o mapa B aparecem como "em obras" depois da Liga.
+
+## 6. Publicar na App Store (app iOS nativo, Capacitor)
+
+O projeto Xcode já está no repositório em `plataformas/ios/ios/App` (Capacitor 8, appId
+`com.pingo.adventures`, nome "Adventures of Pingo", paisagem e retrato, tela cheia sem barra de status, sem
+rede: o jogo é servido de dentro do app). Ele usa **Swift Package Manager** (não precisa de CocoaPods). O que
+não dá para fazer fora de um Mac: compilar, assinar e enviar. Passo a passo no Mac:
+
+### Requisitos
+- Um Mac com macOS recente e o **Xcode** da Mac App Store (abra uma vez para instalar os componentes).
+- **Node.js 22** (`brew install node@22` ou o instalador do nodejs.org) e Git.
+- Uma conta no **Apple Developer Program** (US$ 99/ano) para TestFlight e App Store. Sem ela, dá para
+  instalar só no seu próprio iPhone pela conta gratuita (o app expira em 7 dias).
+
+### Gerar e abrir o projeto
+    git clone <repositório> && cd adventures-of-pingo
+    npm ci
+    npm run ios              # build do jogo + npx cap sync ios (copia o dist/ para dentro do app)
+    npx cap open ios         # abre plataformas/ios/ios/App/App.xcodeproj no Xcode
+
+Rode `npm run ios` de novo sempre que o jogo mudar (o `dist/` copiado para o app não é versionado).
+
+### Assinar
+1. No Xcode, selecione o projeto **App** → alvo **App** → aba **Signing & Capabilities**.
+2. Marque **Automatically manage signing** e escolha o seu **Team** (entre com o Apple ID em
+   Xcode → Settings → Accounts, se ainda não entrou).
+3. Confira o **Bundle Identifier** `com.pingo.adventures` (se já estiver em uso por outra conta, troque aqui e
+   em `capacitor.config.ts` pelo seu, ex. `com.seunome.pingo`).
+4. Em **General**, ajuste **Version** (ex. 1.0.0) e **Build** (1, 2, 3… — cada envio precisa de um número novo).
+
+### Testar
+- Conecte o iPhone por cabo (ou na mesma rede Wi-Fi), escolha-o no topo do Xcode e aperte **Run** (⌘R).
+  No iPhone, autorize o desenvolvedor em Ajustes → Geral → VPN e Gerenciamento de Dispositivos e ative o
+  **Modo de Desenvolvedor** (Ajustes → Privacidade e Segurança) se o iOS pedir.
+- Também roda no Simulador (escolha um iPhone na lista).
+
+### TestFlight e App Store
+1. Em https://appstoreconnect.apple.com → **Apps** → **+** → Novo app: plataforma iOS, nome
+   "Adventures of Pingo", idioma principal Português (Brasil), o Bundle ID acima, um SKU qualquer (ex. pingo-ios).
+2. No Xcode, escolha o destino **Any iOS Device (arm64)** → menu **Product → Archive**.
+3. Na janela Organizer: **Distribute App** → **App Store Connect** → **Upload**. O `Info.plist` já declara que o app
+   não usa criptografia própria (`ITSAppUsesNonExemptEncryption = NO`), então não há pergunta de exportação.
+4. Depois de 10 a 30 minutos o build aparece no App Store Connect, aba **TestFlight**. Adicione testadores
+   internos (até 100, sem revisão) ou crie um grupo externo (passa por uma revisão rápida da Apple).
+5. Para publicar: aba **Distribuição** (App Store) → preencha descrição, palavras-chave, categoria **Jogos →
+   RPG**, classificação etária, URL de suporte, **política de privacidade** (o jogo não coleta nada: diga isso),
+   capturas de tela (iPhone 6,9" e 6,5"; dá para tirar no Simulador com ⌘S) → escolha o build → **Enviar
+   para revisão**. A revisão costuma levar de 1 a 3 dias.
+
+### Observações
+- Ícone (1024×1024) e tela de abertura ficam em `plataformas/ios/ios/App/App/Assets.xcassets/`.
+- O save do app iOS usa Capacitor Preferences (não é apagado pela limpeza do Safari) e é separado do save do
+  PWA da Tela de Início. Para levar o jogo do PWA para o app: Exportar arquivo .pingo → Importar.
+- `npx cap add ios` já foi feito; não rode de novo (apagaria os ajustes do `Info.plist` e do ícone). Para
+  recriar do zero: apague `plataformas/ios/ios` e rode `npx cap add ios`, depois refaça os ajustes listados
+  em `docs/PLATAFORMAS.md`.

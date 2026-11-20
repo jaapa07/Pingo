@@ -52,6 +52,9 @@ const anims = animsInseto({ u: 0.9, alt: 0.2, flutua: 0.4, asas: true, mole: 0.8
   desmaio: { lanterna: qs([1, 0.9, 0.75, 0.6, 0.6]), farol_d: qs([1, 0.8, 0.5, 0.3, 0.3]), farol_e: qs([1, 0.8, 0.5, 0.3, 0.3]) },
 });
 
+// 3ª rodada: no desmaio o kit descia o corpo até o chão e o voo alto + chão apertava o enquadre (64%); agora ele cai só até meia altura
+for (const v of [anims.frente, anims.costas]) { const a = v['desmaio']; v['desmaio'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^corpo$/.test(o) ? ks.map((q) => (q.p ? { ...q, p: q.p.map((x) => x * 0.6) as [number, number, number] } : q)) : ks])) }; }
+
 export const vagalampo = criatura({
   num: 29, id: 'vagalampo', nome: 'Vagalampo', porte: 'M', estagio: 'final', paleta: paletaVaga, build, anims,
   olho: {

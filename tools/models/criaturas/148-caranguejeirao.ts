@@ -29,9 +29,12 @@ function build() {
   });
   // abdômen (2ª rodada): uma MANCHA salmão grande e limpa no alto (em vez de seis tufos soltos, que liam como bolhas),
   // um só topete salmão no cume (o traço do filhote) e uma franja de pelo castanho-claro em volta
-  rig.add('abdomen', calota([0.35, 0.305, 0.32], m(1), { de: 0, ate: 42, pos: [-0.3, 0.0, 0], rot: [0, 0, 18] }));
+  // 3ª rodada: a mancha em m(1) caía quase toda no tom de luz (creme) com a luz de cima; agora é salmão chapado (base),
+  // com a borda de baixo em sombra, e o topete no tom base — o salmão volta a ser salmão
+  rig.add('abdomen', calota([0.355, 0.31, 0.325], m.sombra(1), { de: 0, ate: 46, pos: [-0.3, 0.0, 0], rot: [0, 0, 18] }));
+  rig.add('abdomen', calota([0.36, 0.312, 0.33], m.plano(1), { de: 0, ate: 38, pos: [-0.3, 0.0, 0], rot: [0, 0, 18] }));
   const tf: [V3, number, number, boolean][] = [[[-0.3, 0.3, 0], 0.2, 14, true], [[-0.5, 0.17, 0.17], 0.12, 60, false], [[-0.5, 0.17, -0.17], 0.12, 60, false], [[-0.12, 0.2, 0.22], 0.1, -10, false], [[-0.12, 0.2, -0.22], 0.1, -10, false], [[-0.6, 0.02, 0], 0.12, 80, false]];
-  tf.forEach(([pos, alt, g, sal], i) => { rig.bone('tufo' + (i + 1), 'abdomen', pos, [0, 0, g]); rig.add('tufo' + (i + 1), tufo(3, alt, sal ? 0.07 : 0.05, sal ? m.luz(1) : m.luz(0), { abre: 30 })); });
+  tf.forEach(([pos, alt, g, sal], i) => { rig.bone('tufo' + (i + 1), 'abdomen', pos, [0, 0, g]); rig.add('tufo' + (i + 1), tufo(3, alt, sal ? 0.07 : 0.05, sal ? m.plano(1) : m.luz(0), { abre: 30 })); });
   for (const x of [-0.08, 0.04, 0.14]) rig.add('corpo', spike(0.12, 0.045, m.luz(0), { pos: [x, 0.22, 0], rot: [0, 0, 20] }));
   // nuvem de pelos urticantes
   const nu: V3[] = [[-0.5, 0.62, 0.2], [-0.72, 0.5, -0.16], [-0.3, 0.7, -0.24]];

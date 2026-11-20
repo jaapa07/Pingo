@@ -43,7 +43,7 @@ export function npc(id: string, nome: string, sprite: string, x: number, y: numb
 export const tr = (id: string, sprite: string, x: number, y: number, dir: Dir, extra: ExtraNpc = {}): NpcDef => ({ id, sprite, x, y, dir, treinador: id, ...extra }) as NpcDef;
 
 /** estoque das Vendas do leste do sertão (passos 11–15) */
-export const ESTOQUE_BASE = ['cuia-trancada', 'cuia-ouro', 'garrafada', 'elixir-andiroba', 'mel-puro', 'unguento', 'pomada-copaiba', 'cha-guarana', 'fumaca-andiroba-forte', 'corda-de-cipo'];
+export const ESTOQUE_BASE = ['cuia-trancada', 'cuia-ouro', 'garrafada', 'garrafada-forte', 'elixir-andiroba', 'mel-puro', 'unguento', 'pomada-copaiba', 'cha-guarana', 'fumaca-andiroba-forte', 'corda-de-cipo'];
 
 interface Interior { id: string; nome: string; mapa?: 'B' | 'PP'; saida: { zona: string; x: number; y: number }; passo: number }
 

@@ -72,6 +72,16 @@ export const LIDERES_AGENDA: AgendaLider[] = [
   { id: 'lider-16', insignia: 16, dia: 0, periodo: 'noite', lugar: 'no Monte Tupã', reforco3: [], reforco4: [] },
 ];
 export const agendaLider = (id: string) => LIDERES_AGENDA.find((l) => l.id === id);
+/**
+ * Revanche de líder liberada? Líderes 1–8: depois da Liga (`liga-vencida`). Líderes 9–16: só depois de vencer TODOS eles
+ * (16 insígnias) — decisão do autor (docs/DECISOES-FINAIS.md): o Campeão recém-saído do mapa B não deve topar, no meio da
+ * jornada, com revanches mais fortes que os próprios ginásios. Rádio, Revanches, recepção e salão do treino usam esta regra.
+ */
+export function revancheLiderLiberada(insigniaDoLider: number, insigniasDoJogador: number, flags: Record<string, unknown>): boolean {
+  return insigniaDoLider <= 8 ? !!flags['liga-vencida'] : insigniasDoJogador >= 16;
+}
+/** quando a revanche do líder abre (texto curto para o rádio) */
+export const quandoAbreRevanche = (insigniaDoLider: number) => (insigniaDoLider <= 8 ? 'depois da Liga' : 'depois das 16 insígnias');
 /** Ginásio de Treino (interior criado para as revanches dos líderes) */
 export const TREINO = { zona: 'A4-treino', nome: 'Ginásio de Treino de Porto Sereia' };
 /** posição de cada líder no salão do Ginásio de Treino (x, y), na ordem da insígnia */

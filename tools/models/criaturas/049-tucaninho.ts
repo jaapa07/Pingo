@@ -51,6 +51,9 @@ const anims = animsAve({ u: 0.6, hPerna: 0.1, mole: 1.3 }, {
   dano: { topete: qz([28, 10, 0]) },
 });
 
+// 3ª rodada: no desmaio as asas abriam 62° e de costas o tucano encolhia (63%); agora caem mais junto do corpo
+for (const v of [anims.frente, anims.costas]) { const a = v['desmaio']; v['desmaio'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^asa/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((x) => x * 0.55) as [number, number, number] } : q)) : ks])) }; }
+
 export const tucaninho = criatura({
   num: 49, id: 'tucaninho', nome: 'Tucaninho', porte: 'P', estagio: 'basico', paleta: paletaTucano, build, anims,
   olho: {

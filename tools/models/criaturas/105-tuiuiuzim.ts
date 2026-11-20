@@ -59,6 +59,9 @@ const anims = animsAve({ u: 0.85, hPerna: 0.3, mole: 1.3 }, unirExtras(asasConti
   dano: { peixe: qz([-30, -10, 0]) },
 }));
 
+// 3ª rodada: as asas do desmaio abertas apertavam o enquadre de costas (66%)
+for (const v of [anims.frente, anims.costas]) { const a = v['desmaio']; v['desmaio'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^asa/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((x) => x * 0.55) as [number, number, number] } : q)) : ks])) }; }
+
 export const tuiuiuzim = criatura({
   num: 105, id: 'tuiuiuzim', nome: 'Tuiuiuzim', porte: 'P', estagio: 'basico', paleta: paletaTuiuiu, build, anims,
   olho: { frente: ['.ww.', 'wppw', 'wpww', '.ww.'], fechado: ['ffff', 'wffw', 'fwwf', 'ffff'], mapa: ['w', 'p'] },

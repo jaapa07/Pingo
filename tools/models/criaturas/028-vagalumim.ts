@@ -54,8 +54,14 @@ const anims = animsInseto({ u: 0.55, alt: 0.16, flutua: 0.2, asas: true, mole: 1
   idle: { abdomen: lz([0, 3, 6, 2]) },
 });
 
+// 3ª rodada: o desmaio descia até o chão e as asas do físico abriam ±60°: os dois apertavam o enquadre (63–67%)
+for (const v of [anims.frente, anims.costas]) { const a = v['desmaio']; v['desmaio'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^corpo$/.test(o) ? ks.map((q) => (q.p ? { ...q, p: q.p.map((x) => x * 0.6) as [number, number, number] } : q)) : ks])) }; }
+for (const v of [anims.frente, anims.costas]) { const a = v['ataque-fisico']; v['ataque-fisico'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /asa|elitro/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((x) => x * 0.5) as [number, number, number] } : q)) : ks])) }; }
+for (const v of [anims.frente, anims.costas]) { const a = v['ataque-fisico']; v['ataque-fisico'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^(base|lanterna)$/.test(o) ? ks.map((q) => (q.p ? { ...q, p: q.p.map((x) => x * 0.4) as [number, number, number] } : typeof q.s === 'number' ? { ...q, s: 1 + (q.s - 1) * 0.4 } : q)) : ks])) }; }
+
 export const vagalumim = criatura({
   num: 28, id: 'vagalumim', nome: 'Vagalumim', porte: 'P', estagio: 'basico', paleta: paletaVaga, build, anims,
+  enquadre: { frente: { zoom: 1.03 } },
   olho: {
     frente: ['.ww.', 'wwpw', 'wppw', '.ww.'],
     fechado: ['ffff', 'wffw', '.ww.', 'ffff'],

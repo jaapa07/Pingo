@@ -14,7 +14,7 @@ const paleta = {
 
 function build() {
   const { rig } = aracnideo({
-    corpo: [0.29, 0.23, 0.4], alt: 0.17, patas: { pares: 4, abre: 0.36, r: 0.065, joelho: 0.1 },
+    corpo: [0.29, 0.27, 0.38], alt: 0.23, patas: { pares: 4, abre: 0.22, r: 0.065, joelho: 0.13 },
     pincas: { braco: 0.2, r: 0.075, garra: [0.13, 0.11, 0.09], abre: 62 }, pedunculo: 0.17,
     olho: { r: 0.042, pos: [0, 0, 0] },
     rampas: { corpo: 0, barriga: 1, patas: 2, pontas: 2, pincas: 3 },
@@ -24,7 +24,7 @@ function build() {
   // POSE (2ª rodada): o braço sai para o LADO (do lado de lá, que na câmera quase frontal fica à esquerda da tela) e a tenaz
   // fica de perfil para a câmera — os dois dedos abertos em "C" aparecem inteiros ao lado do corpo, sem tapar a cara.
   rig.bones.garra_d.scale.setScalar(1.55);
-  rig.bones.pinca_d.rotation.set(0, -0.95, 1.15); rig.bones.garra_d.rotation.set(0, 0.1, -0.5);
+  rig.bones.pinca_d.rotation.set(0, -0.95, 1.15); rig.bones.garra_d.rotation.set(0, 0.1, -0.15);
   rig.bones.dedo_d.rotation.z = -1.05;
   rig.bones.pinca_e.rotation.z = 0.15; rig.bones.garra_e.rotation.z = 0.6;
   // palma em pedra, pequena; os dois DEDOS da tenaz são grossos, compridos e abertos em "C" (azul em cima, creme embaixo)
@@ -50,15 +50,18 @@ function build() {
   return rig;
 }
 
-const anims = deFrente(animsAracnideo({ u: 0.6, alt: 0.17, pares: 4, mole: 0.55 }, {
+const anims = deFrente(animsAracnideo({ u: 0.6, alt: 0.23, pares: 4, mole: 0.55 }, {
   ...tarsos,
+  // 3ª rodada: a entrada e o dano do kit erguiam a garra gigante na vertical (lia como chifre); aqui ela só balança
+  entrada: { '?pinca_d': qr([[0, -4, 0], [0, -6, -6], [0, 4, -4], [0, 0, 0], [0, 0, 0]]) },
+  dano: { '?pinca_d': qr([[0, 6, 10], [0, 2, 4], [0, 0, 0]]) },
   desmaio: desmaioUca,
   idle: { ...bolhas(['espuma1', 'espuma2']), garra_d: lz([0, 3, 6, 2]) },
   status: bolhas(['espuma1', 'espuma2']),
   // marretada com a garra de pedra
   fisico: { pinca_d: qr([[0, -6, 8], [0, -10, 16], [0, 6, -26], [0, 2, -10], [0, 0, 0]]) },
   especial: { espuma1: qs([1, 1.4, 1.8, 2.6, 1.5, 1]), espuma2: qs([1, 1.5, 2, 3, 1.6, 1]), pinca_d: qr([[0, -6, 6], [0, -10, 12], [0, -10, 16], [0, 20, -20], [0, 8, -8], [0, 0, 0]]) },
-}), -16, 24);
+}), -16, 30);
 
 export const guaiamuque = criatura({
   num: 36, id: 'guaiamuque', nome: 'Guaiamuque', porte: 'M', estagio: 'final', paleta, build, anims,

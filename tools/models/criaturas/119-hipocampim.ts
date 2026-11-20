@@ -85,8 +85,13 @@ function build() {
   const { rig } = cavaloMarinho({ barriga: [0.17, 0.2, 0.15], flutua: 0.5, cabeca: [0.17, 0.15, 0.14], canudo: 0.24, cauda: { segs: 5, len: 0.62, r: 0.095, curva: -58 }, olho: 0.036 });
   // coroinha de três pontas
   rig.add('cabeca', tufo(3, 0.15, 0.05, m(2), { pos: [-0.02, 0.15, 0], rot: [0, 0, 20], abre: 36 }));
-  rig.bone('bolha1', 'corpo', [0.5, 0.36, 0.06]); rig.add('bolha1', blob([0.04, 0.04, 0.04], m.luz(2), { seg: 10 }));
-  rig.bone('bolha2', 'corpo', [0.46, 0.52, -0.06]); rig.add('bolha2', blob([0.028, 0.028, 0.028], m.luz(2), { seg: 8 }));
+  // 3ª rodada: cabeça menos baixa (o canudo saía apontando para o chão, rente ao peito)
+  rig.bones.cabeca.rotation.z += 0.3;
+  // 3ª rodada: a ponta do canudo era clara como a bochecha e o focinho lia como um bracinho; agora a boquinha é escura
+  // e o canudo ganha um anel turquesa — lê como focinho de cavalo-marinho
+  rig.add('cabeca', blob([0.05, 0.07, 0.07], m.sombra(0), { pos: [0.395, -0.045, 0], seg: 10 }), blob([0.03, 0.062, 0.062], m.plano(2), { pos: [0.27, -0.03, 0], rot: [0, 0, 10], seg: 10 }));
+  rig.bone('bolha1', 'corpo', [0.56, 0.5, 0.06]); rig.add('bolha1', blob([0.04, 0.04, 0.04], m.luz(2), { seg: 10 }));
+  rig.bone('bolha2', 'corpo', [0.44, 0.64, -0.06]); rig.add('bolha2', blob([0.028, 0.028, 0.028], m.luz(2), { seg: 8 }));
   return rig;
 }
 

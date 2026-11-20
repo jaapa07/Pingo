@@ -69,6 +69,17 @@ const anims = animsInseto({ u: 0.9, alt: 0.2, flutua: 0.24, asas: true, mole: 0.
   idle: { po1: [...pisca(0), ...lp(sobe(0.04))], po2: [...pisca(1), ...lp(sobe(-0.03))], po3: [...pisca(2), ...lp(sobe(0.03))], abdomen: lz([0, 4, 8, 3]) },
   especial: { abdomen: qz([4, 10, 12, -22, -8, 0]) },
 });
+// 3ª rodada: o bater de asas do kit (±60°) no especial e no físico apertava o enquadre e a mariposa ficava a 64% da célula;
+// na batalha as asas batem com metade da abertura
+for (const v of [anims.frente, anims.costas]) for (const n of ['ataque-especial', 'ataque-fisico'] as const) {
+  const a = v[n];
+  v[n] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /asa|elitro/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((g) => g * 0.5) as [number, number, number] } : q)) : ks])) };
+}
+// e no desmaio ela pousa no chão em vez de afundar abaixo dele (a queda do kit passava da altura do voo)
+for (const v of [anims.frente, anims.costas]) {
+  const a = v.desmaio;
+  v.desmaio = { ...a, keys: { ...a.keys, corpo: a.keys.corpo.map((q) => (q.p ? { ...q, p: q.p.map((x) => x * 0.6) as [number, number, number] } : q)) } };
+}
 
 export const bruxaluz = criatura({
   num: 17, id: 'bruxaluz', nome: 'Bruxaluz', porte: 'M', estagio: 'final', paleta, build, anims,

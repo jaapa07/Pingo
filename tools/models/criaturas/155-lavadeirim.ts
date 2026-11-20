@@ -91,9 +91,17 @@ const anims = animsInseto({ u: 0.5, alt: 0.13, flutua: 0.32, asas: true, mole: 1
   idle: { ...v.idle, rabo3: lz([0, 10, 22, 6]), rabo4: lz([0, 14, 30, 8]), gota1: ls([1, 0.4, 1.3, 0.8]), gota2: ls([0.8, 1.3, 0.4, 1]) },
   desmaio: { ...v.desmaio, corpo: pousaLib(0.32, 0.13) },
 });
+// 3ª rodada: de costas o pouso do desmaio descia demais e o sprite inteiro encolhia (59% da célula); de costas ela pousa mais alto
+anims.costas.desmaio = { ...anims.costas.desmaio, keys: { ...anims.costas.desmaio.keys, corpo: pousaLib(0.12, 0.13) } };
+// e o bater de asas do especial de costas fica com 60% da abertura
+{
+  const k = anims.costas['ataque-especial'].keys;
+  anims.costas['ataque-especial'] = { ...anims.costas['ataque-especial'], keys: Object.fromEntries(Object.entries(k).map(([o, ks]) => [o, /asa/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((a) => a * 0.6) as [number, number, number] } : q)) : ks])) };
+}
 
 export const lavadeirim = criatura({
   num: 155, id: 'lavadeirim', nome: 'Lavadeirim', porte: 'P', estagio: 'basico', paleta: paletaLibelula, build, anims,
+  enquadre: { costas: { zoom: 1.01 } },
   olho: {
     frente: ['.pp.', 'pwpp', 'pppp', '.pp.'],
     fechado: ['ffff', 'pffp', '.pp.', 'ffff'],

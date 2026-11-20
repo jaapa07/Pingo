@@ -193,3 +193,10 @@ for (const x of [
   i('vitamina-defesp', 'Vitamina de Manga', 'remedios', 2000, 'Manga espada batida. Fortalece a Defesa Especial da criatura (esforço).', { esforco: { stat: 'defEsp', qtd: 10, teto: 100 } }),
   i('vitamina-vel', 'Vitamina de Guaraná', 'remedios', 2000, 'Guaraná batido com fruta. Fortalece a Velocidade da criatura (esforço).', { esforco: { stat: 'vel', qtd: 10, teto: 100 } }),
 ]) { if (!mapa.has(x.id)) { ITENS.push(x); mapa.set(x.id, x); } }
+
+/* ------------------------------ Decisões finais do mapa B (docs/DECISOES-FINAIS.md) ------------------------------ */
+// Garrafada Forte: remédio intermediário das Vendas do mapa B (B1–B9 e Pico) — a Garrafada (50) cura pouco perto da vida
+// das criaturas de nível 60–75 (~200), e o Elixir (2500) pesa no bolso depois de uma derrota.
+for (const x of [
+  i('garrafada-forte', 'Garrafada Forte', 'remedios', 1500, 'Garrafada curtida com casca de jatobá e mel. Recupera 120 de vida.', { cura: 120, emBatalha: B }),
+]) { if (!mapa.has(x.id)) { ITENS.push(x); mapa.set(x.id, x); } }

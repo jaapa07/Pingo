@@ -64,6 +64,10 @@ const anims = animsAve({ u: 0.6, hPerna: 0.17, mole: 1.4 }, unirExtras(asasConti
   dano: { topete: qz([28, 10, 0]) },
 }));
 
+// 3ª rodada: asas do especial e do desmaio abertas demais apertavam o enquadre (64–66%)
+for (const v of [anims.frente, anims.costas]) { const a = v['ataque-especial']; v['ataque-especial'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^asa/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((x) => x * 0.6) as [number, number, number] } : q)) : ks])) }; }
+for (const v of [anims.frente, anims.costas]) { const a = v['desmaio']; v['desmaio'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^asa/.test(o) ? ks.map((q) => (q.r ? { ...q, r: q.r.map((x) => x * 0.55) as [number, number, number] } : q)) : ks])) }; }
+
 export const urubuzim = criatura({
   num: 55, id: 'urubuzim', nome: 'Urubuzim', porte: 'P', estagio: 'basico', paleta: paletaUrubu, build, anims,
   olho: {

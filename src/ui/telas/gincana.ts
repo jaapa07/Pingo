@@ -393,7 +393,7 @@ registrarComando('gincanaJuiza', async () => {
   if (!flag('gincana-visitou')) {
     setFlag('gincana-visitou');
     await falar('Bem-vindo à Gincana de Criaturas do Buriti-Alto! Aqui ninguém briga: as criaturas correm, empurram e pulam.', JUIZA);
-    await falar('Três provas: AGILIDADE (Velocidade), FORÇA (Ataque) e SALTO (Velocidade e Defesa). Cada prova rende pontos da Gincana, e o pódio do dia rende mais.', JUIZA);
+    await falar('Três provas: AGILIDADE (Velocidade), FORÇA (Ataque) e SALTO (Velocidade e Defesa). O recorde do dia em cada prova rende pontos da Gincana, e o pódio do dia rende mais.', JUIZA);
     await falar('O Seu Graviola bate suco de fruto que deixa a criatura mais disposta até o fim do dia. Os pontos a Tesoureira Pataca troca por vitamina, pedra e pergaminho.', JUIZA);
   }
   const op = await escolher('Qual prova vai ser?', ['Agilidade', 'Força', 'Salto', 'Ver o ranking', 'Agora não']);
@@ -409,7 +409,10 @@ registrarComando('gincanaJuiza', async () => {
   if (!r) { await falar('Desistiu? Sem problema. Respira, toma uma água e volta.', JUIZA); return; }
   const f = registrarProva(p, r.pontos);
   await falar(`${nomeCri(c)} fez ${f.pontos} pontos ${p === 'salto' ? 'no' : 'na'} ${PROVA[p].nome}!${f.recorde ? ' É o seu melhor resultado de hoje.' : ''}`, JUIZA);
-  await falar(`Posição no ranking de hoje: ${f.pos}º lugar.${f.premio ? ` Prêmio de pódio: +${f.premio}!` : ''} Você ganhou ${f.ganhos} pontos da Gincana (total: ${pontosGincana()}).`, JUIZA);
+  // a posição é a desta rodada; se ela não bateu o recorde, a Juíza lembra a posição que vale no ranking (a do recorde)
+  const posTxt = `Posição desta rodada no ranking de hoje: ${f.posRodada}º lugar.${!f.recorde && f.pos !== f.posRodada ? ` No quadro vale o seu recorde: ${f.pos}º.` : ''}`;
+  const ganhoTxt = f.ganhos ? `Você ganhou ${f.ganhos} pontos da Gincana (total: ${pontosGincana()}).` : `Sem pontos novos: só o recorde do dia vale pontos (total: ${pontosGincana()}).`;
+  await falar(`${posTxt}${f.premio ? ` Prêmio de pódio: +${f.premio}!` : ''}\f${ganhoTxt}`, JUIZA);
 });
 registrarComando('gincanaSucos', async () => {
   if (!flag('gincana-sucos-presente')) {

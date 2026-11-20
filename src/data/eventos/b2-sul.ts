@@ -299,6 +299,11 @@ export const EVENTOS_B2S: EventoDef[] = [
         ['batalha', 'B6-lab-zinabre'],
         ['flag', 'b2-zinabre-ok'],
         f(ZINABRE, 'Os gráficos mentiram… Tenente, é com você. E não deixe a 176 sair!'),
+        // intervalo entre as duas lutas (decisão do autor, docs/DECISOES-FINAIS.md): com elas coladas o jogador honesto
+        // vencia o Lata 12% das vezes no simulador; o tenente quer revanche "limpa" e deixa a equipe descansar na maca
+        f(LATA, 'Calma aí, Doutora. Da última vez ela disse que eu só ganhava de equipe cansada. Hoje não!\fCriança, deita esses bichos na maca da enfermaria. Quando eu te derrotar, quero que seja no ferro, sem desculpa.'),
+        ['fade', 'fora'], ['curar'], ['fade', 'dentro'],
+        f(null, 'A maca do laboratório zumbe por um instante. A equipe de {JOGADOR} recuperou as forças!'),
       ]),
       f(LATA, 'Desde a Usina eu treino para este dia. Ferro novo, criança! Nada de ferrugem desta vez!'),
       ['batalha', 'B6-lab-lata'],
@@ -370,6 +375,11 @@ export const EVENTOS_B2S: EventoDef[] = [
         ['emote', 'taina-b7', '!'],
         f(TAINA, '{JOGADOR}! Subi a serra pela trilha dos tropeiros só para chegar antes de você. E cheguei!'),
         f(TAINA, 'Desde o Arraial eu treinei na roda, no brejo e no gelo. A Gaúcha Pinhão é a próxima. Mas primeiro, você!'),
+        // decisão do autor (docs/DECISOES-FINAIS.md): a Subida da Serra (B-R4) é de mão única e sem Posto, então a Tainá
+        // cura a equipe do jogador antes da luta — ninguém chega aqui inteiro
+        f(TAINA, 'Bah, mas olha essa equipe… subiu a serra no osso! Assim não vale.\fToma: chimarrão bem quente e uma garrafada para cada um. Agora sim, de igual para igual!'),
+        ['fade', 'fora'], ['curar'], ['fade', 'dentro'],
+        f(null, 'A equipe de {JOGADOR} recuperou as forças!'),
         ...contraInicial('rival-7'),
         se('flag:batalha-perdida', [f(TAINA, 'GANHEI! No frio, no alto, na frente da serra inteira! Bah!\fVá ao Posto. Uma Campeã que se preza não ganha de equipe cansada duas vezes.')], [
           f(TAINA, 'Bah… até o sotaque daqui eu peguei, menos a vitória.'),

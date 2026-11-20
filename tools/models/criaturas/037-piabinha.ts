@@ -59,6 +59,9 @@ const anims = animsPeixe({ u: 0.5, flutua: 0.34, mole: 1.3 }, {
   parado: { bolha: ls([0.01, 0.01]) },
 });
 
+// 3ª rodada: o desmaio afundava até o chão e o físico chicoteava largo: os dois apertavam o enquadre (63–67%)
+for (const v of [anims.frente, anims.costas]) { const a = v['desmaio']; v['desmaio'] = { ...a, keys: Object.fromEntries(Object.entries(a.keys).map(([o, ks]) => [o, /^corpo$/.test(o) ? ks.map((q) => (q.p ? { ...q, p: q.p.map((x) => x * 0.6) as [number, number, number] } : q)) : ks])) }; }
+
 export const piabinha = criatura({
   num: 37, id: 'piabinha', nome: 'Piabinha', porte: 'P', estagio: 'basico', paleta: paletaPiaba, build, anims,
   olho: {

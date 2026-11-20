@@ -3,5 +3,5 @@ import { venda } from './_b1-lib';
 /** Venda de Arraial Brasa (porta em (37, 12) na cidade). */
 export default venda('B4', 'Arraial Brasa', 11, 'vulcao', [37, 13],
   { nome: 'Seu Pé-de-Moleque', fala: 'Venda da Festa! Cuia, remédio e doce de amendoim. O doce não cura, mas ninguém reclama.' },
-  [['', ['cuia', 'cuia-trancada', 'cuia-ouro', 'cuia-rapida', 'cuia-noturna', 'cuia-rede', 'garrafada', 'elixir-andiroba', 'cha-guarana', 'mel-puro', 'unguento', 'pomada-copaiba', 'fumaca-andiroba-forte', 'corda-de-cipo', 'rapadura']]],
+  [['', ['cuia', 'cuia-trancada', 'cuia-ouro', 'cuia-rapida', 'cuia-noturna', 'cuia-rede', 'garrafada', 'garrafada-forte', 'elixir-andiroba', 'cha-guarana', 'mel-puro', 'unguento', 'pomada-copaiba', 'fumaca-andiroba-forte', 'corda-de-cipo', 'rapadura']]],
   { sprite: 'cl-crianca-m', nome: 'Toninho Busca-Pé', fala: ['Comprei Rapadura para o meu Calangão subir de nível. Ele subiu um nível e desceu da mesa com a rapadura inteira.', 'Mesmo assim valeu. Rapadura é rapadura.'] });

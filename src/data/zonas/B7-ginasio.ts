@@ -50,6 +50,8 @@ const zona: ZonaDef = {
     { id: 'g14-4', sprite: 'cl-crianca-f', x: 31, y: 9, dir: 'o', treinador: 'g14-4', visao: 3 },
     { id: 'g14-5', sprite: 'cl-montanhista', x: 15, y: 3, dir: 'n', treinador: 'g14-5', visao: 2 },
     { id: 'lider', sprite: 'lider-14', x: 8, y: 2, dir: 's', script: 'ginasio-14-lider' },
+    // peão do salão: depois da insígnia leva o jogador à porta (docs/DECISOES-FINAIS.md)
+    { id: 'g14-peao', sprite: 'cl-vaqueiro', x: 13, y: 4, dir: 'o', script: 'ginasio-14-peao' },
   ],
   pouso: [8, 17],
 };

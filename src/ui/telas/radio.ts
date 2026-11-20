@@ -8,7 +8,7 @@ import type { TreinadorDef } from '../../core/tipos';
 import { jogo, cond, periodo, diaSemana, flag } from '../../core/estado';
 import { bus } from '../../core/events';
 import { iniciarBatalha, criarDeMembro, especie } from '../../battle/index';
-import { agendaDe, naAgenda, faseDoProgresso, treinadorDaFase, equipeDaFase, agendaLider, enxameDoDia, NOME_DIA_CURTO, NOME_DIA_LONGO, NOME_PERIODO, NOME_FASE, TREINO, RIVAL_SEMANAL, type Fase } from '../../data/revancha';
+import { agendaDe, naAgenda, faseDoProgresso, treinadorDaFase, equipeDaFase, agendaLider, enxameDoDia, revancheLiderLiberada, quandoAbreRevanche, NOME_DIA_CURTO, NOME_DIA_LONGO, NOME_PERIODO, NOME_FASE, TREINO, RIVAL_SEMANAL, type Fase } from '../../data/revancha';
 import { MAPA_B_ABERTO } from '../../core/progresso';
 import { CANTIGAS_LENDAS, agendaDoDia } from '../../data/radio';
 import type { Tela } from '../telas';
@@ -56,11 +56,12 @@ export function criarRadio(): Tela {
   const cartao = (s.mochila['cartao-radio'] ?? 0) > 0;
   const ops = ['Agenda do dia', 'Contatos', 'Revanches', 'Bicho do Dia', 'Hora da Música', 'Notícias', 'Recado do dia', ...(cartao ? ['Cantiga das Lendas'] : []), 'Mapa', 'Desligar'];
   const fase = (): Fase => faseDoProgresso(s.insignias.length, s.flags);
-  const agendaHoje = () => agendaDoDia({ dia: diaSemana(), periodo: periodo(), liga: !!flag('liga-vencida'), contatos: contatos().filter((t) => podeHoje(t)).map((t) => `${t.classe} ${t.nome}`), enxame: enxameHoje(), cartao });
+  const agendaHoje = () => agendaDoDia({ dia: diaSemana(), periodo: periodo(), liga: !!flag('liga-vencida'), contatos: contatos().filter((t) => podeHoje(t)).map((t) => `${t.classe} ${t.nome}`), enxame: enxameHoje(), cartao, mergulho: s.amuletos.includes('mergulho') });
   const enxameHoje = () => { const e = enxameDoDia(todasZonas(), diaDoAno(), MAPA_B_ABERTO); return e ? { local: e.zona.nome, especie: s.diario.visto.includes(e.e) ? nomeEsp(e.e) : '' } : null; };
   const ehRival = (t: TreinadorDef) => /^rival-/.test(t.id);
   /** pode lutar hoje: no dia e período da agenda, sem revanche hoje; líder só depois da Liga */
-  const podeHoje = (t: TreinadorDef) => !ehRival(t) && (!t.insignia || !!flag('liga-vencida')) && naAgenda(agendaDe(t), diaSemana(), periodo()) && Number(s.flags['revanche:' + t.id] ?? -1) !== diaDoAno();
+  const liberado = (t: TreinadorDef) => !t.insignia || revancheLiderLiberada(t.insignia, s.insignias.length, s.flags);
+  const podeHoje = (t: TreinadorDef) => !ehRival(t) && liberado(t) && naAgenda(agendaDe(t), diaSemana(), periodo()) && Number(s.flags['revanche:' + t.id] ?? -1) !== diaDoAno();
   let ocupado = false, viva = true, tocando = '', onda = 0;
   const lista = new Lista({ itens: ops, x: 2, y: 18, largura: 150, tamanho: 12, visiveis: 7, aoMover: pintar, aoEscolher: (i) => void escolher(i), aoCancelar: () => fechar(tela) });
   el.append(lista.el);
@@ -92,7 +93,7 @@ export function criarRadio(): Tela {
     await falar(`${F.atende[k].replace('{N}', t.nome)}\f${t.depois ?? F.conversa[(k + t.nome.length) % 4]}`, quem);
     // rival: não luta pelo rádio; conta onde treina (item 27)
     if (ehRival(t)) { await falar(flag('liga-vencida') ? F.rival.replace('{L}', RIVAL_SEMANAL.lugar) : F.rivalAntes, quem); return; }
-    if (t.insignia && !flag('liga-vencida')) { await falar(F.lider, quem); return; }
+    if (t.insignia && !liberado(t)) { await falar(t.insignia <= 8 ? F.lider : F.liderSertao, quem); return; }
     const ag = agendaDe(t), quando = `${NOME_DIA_LONGO[ag.dia]}, ${NOME_PERIODO[ag.periodo]}`;
     if (Number(s.flags['revanche:' + t.id] ?? -1) === diaDoAno()) { await falar(T.radio.revancheHoje, quem); return; }
     if (!naAgenda(ag, diaSemana(), periodo())) { await falar(F.foraDaAgenda.replace('{Q}', quando), quem); return; }
@@ -130,13 +131,14 @@ export function criarRadio(): Tela {
   function descAgenda(t: TreinadorDef): string {
     if (ehRival(t)) return flag('liga-vencida') ? 'Treina na Gruta do Eco às terças e quintas.' : 'Sua rival. Ainda anda pela estrada.';
     const ag = agendaDe(t), q = `${NOME_DIA_LONGO[ag.dia]}, ${NOME_PERIODO[ag.periodo]}`;
-    if (t.insignia && !flag('liga-vencida')) return `Líder de ginásio. Revanche depois da Liga: ${q}.`;
+    if (t.insignia && !liberado(t)) return `Líder de ginásio. Revanche ${quandoAbreRevanche(t.insignia)}: ${q}.`;
     if (Number(s.flags['revanche:' + t.id] ?? -1) === diaDoAno()) return 'Já batalhou com você hoje.';
     return `${t.insignia && !/l[ií]der/i.test(t.classe) ? 'Líder de ginásio. ' : ''}Revanche: ${q}.${podeHoje(t) ? ' {c:verde}Hoje!{/c}' : ''}`;
   }
   /** tabela da semana (itens 25/26): cada contato com dia, período, lugar e a equipe da fase atual */
   async function verRevanches() {
-    const cs = contatos().filter((t) => !ehRival(t)).sort((a, b) => ((agendaDe(a).dia + 6) % 7) - ((agendaDe(b).dia + 6) % 7) || ['manha', 'dia', 'noite'].indexOf(agendaDe(a).periodo) - ['manha', 'dia', 'noite'].indexOf(agendaDe(b).periodo));
+    // só o que está liberado (líderes 9–16 só com as 16 insígnias; docs/DECISOES-FINAIS.md)
+    const cs = contatos().filter((t) => !ehRival(t) && liberado(t)).sort((a, b) => ((agendaDe(a).dia + 6) % 7) - ((agendaDe(b).dia + 6) % 7) || ['manha', 'dia', 'noite'].indexOf(agendaDe(a).periodo) - ['manha', 'dia', 'noite'].indexOf(agendaDe(b).periodo));
     if (!cs.length) { await informar(T.radio.semContatos); return; }
     const PER = { manha: 'manhã', dia: 'dia', noite: 'noite' } as const;
     let ind = 0;

@@ -29,6 +29,16 @@ export const LIMIAR_CHOCALHO = { antesDaLiga: 2, depoisDaLiga: 5 } as const;
  * docs/EQUILIBRIO-MAPA-B.md). O mapa A (antes da Liga) recebe a experiência inteira.
  */
 export const FATOR_EXP_POS_LIGA = 0.55;
+/**
+ * Prêmio em patacas dos treinadores da jornada do mapa B (decisão do autor, docs/DECISOES-FINAIS.md): ×1,5. Vale para as
+ * batalhas travadas nas zonas do mapa B (ids `B…`), do Pico Pindorama (`PP…`) e nas áreas do mapa A que só se abrem
+ * nessa jornada (Rio Cachoeira-Véu `A-R6`, Monte Tupã `A-MT…`, Cidade `A9…` do ginásio 16). Revanches, rival semanal e Torre
+ * (mapa A) ficam como estão. Fica no prêmio que o treinador PAGA (a mensagem "Você ganhou N patacas" já mostra o valor final).
+ */
+export const FATOR_PREMIO_MAPA_B = 1.5;
+const ZONAS_PREMIO_MAPA_B = /^(B|PP|A-R6$|A-MT|A9)/;
+/** fator do prêmio em patacas pela zona onde a batalha acontece */
+export function fatorPremioDaZona(zonaId: string): number { return ZONAS_PREMIO_MAPA_B.test(zonaId) ? FATOR_PREMIO_MAPA_B : 1; }
 export interface Pos { lado: 0 | 1; pos: number }
 export type Acao =
   /** slot do golpe (−1 = Desespero, quando não há PG). `alvo`: adversário visado (duplas). `trocaPara`: quem entra depois de um golpe de bater-e-voltar. */

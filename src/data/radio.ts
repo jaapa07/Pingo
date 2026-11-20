@@ -47,6 +47,7 @@ export const FALAS_CONTATO = {
   conversa: ['Minhas parceiras andam treinando sem parar.', 'Vi um bicho diferente hoje cedo, mas ele fugiu antes de eu chegar perto.', 'Ouviu o Rádio Cipó hoje? Sempre tem dica boa.', 'Não esqueça de dar cafuné na sua equipe, viu?'],
   propoe: 'Que tal uma revanche agora mesmo? Minha equipe está mais forte!',
   lider: 'Uma revanche de líder é coisa séria. Volte a ligar quando a Liga dos Guardiões reconhecer você como Campeão.',
+  liderSertao: 'Revanche comigo? Primeiro termine a sua jornada pelo Sertão: vença os dezesseis ginásios. Aí a gente conversa, no Ginásio de Treino.',
   foraDaAgenda: 'Hoje não vai dar, tenho outros compromissos. Revanche comigo é {Q}. Me liga nessa hora!',
   treino: 'Hoje é o meu dia de treino! Às vezes você me encontra {L}, mas revanche de líder é no {G}. Te espero lá ainda hoje, no salão!',
   treinoMarcado: 'Já combinamos: estou te esperando no {G}. Não demora!',
@@ -68,12 +69,13 @@ export const CANTIGAS_LENDAS: { titulo: string; dica: string; versos: string }[]
 ];
 
 /** AGENDA DO DIA (spec 10A item 39): o que vale hoje, dito pelo locutor ao ligar o rádio */
-export function agendaDoDia(o: { dia: number; periodo: string; liga: boolean; contatos: string[]; enxame: { local: string; especie: string } | null; cartao: boolean }): { resumo: string; texto: string } {
+/** `mergulho`: o jogador tem o Amuleto do Mergulho — sem ele o Recife Submerso é inalcançável e a tartaruga não é anunciada */
+export function agendaDoDia(o: { dia: number; periodo: string; liga: boolean; contatos: string[]; enxame: { local: string; especie: string } | null; cartao: boolean; mergulho?: boolean }): { resumo: string; texto: string } {
   const DIA = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'][o.dia];
   const PER: Record<string, string> = { manha: 'manhã', dia: 'dia', tarde: 'tarde', noite: 'noite' };
   const linhas: string[] = [];
   if (o.enxame) linhas.push(`ENXAME: ${o.enxame.especie || 'uma criatura rara'} aparece aos montes em ${o.enxame.local} hoje.`);
-  if (o.dia === 5) linhas.push('SEXTA DA TARTARUGA: a Tartaruga-Gigante sobe para respirar no Recife Submerso, embaixo da Baía Azul. Só hoje!');
+  if (o.dia === 5 && o.mergulho) linhas.push('SEXTA DA TARTARUGA: a Tartaruga-Gigante sobe para respirar no Recife Submerso, embaixo da Baía Azul. Só hoje!');
   if (o.liga && (o.dia === 2 || o.dia === 4)) linhas.push('TREINO DA RIVAL: a Tainá está na Gruta do Eco, perto da saída para Porto Sereia. Uma batalha por dia.');
   linhas.push(o.contatos.length ? `REVANCHES agora (${PER[o.periodo]}): ${o.contatos.join(', ')}.` : `REVANCHES: ninguém da sua lista treina nesta ${PER[o.periodo]}. Veja a tabela em Revanches.`);
   if (o.liga) linhas.push('TORRE DE DESAFIOS: o Juiz da Torre espera no Platô da Liga. Uma batalha por dia, todos no nível 50.');

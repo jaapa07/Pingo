@@ -40,7 +40,7 @@ const anims = animsInseto({ u: 0.75, alt: 0.24, mole: 0.9 }, {
   todas: { ...piscaGrilo(['faisca1', 'faisca2']), arco: ls([1, [1, 1.3, 0.8], [1, 0.7, 1.1], [1, 1.2, 1]]) },
   // canta raspando uma asa na outra
   idle: { elitro_d: lz([0, -5, 0, -5]), elitro_e: lz([-5, 0, -5, 0]) },
-  especial: { elitro_d: qz([0, -8, 6, -12, -4, 0]), elitro_e: qz([0, 6, -8, -12, -4, 0]), arco: qs([1, 1.3, 1.6, 2.4, 1.5, 1]), faisca1: qs([1, 1.4, 0.4, 2.2, 1.4, 1]), faisca2: qs([1, 0.4, 1.6, 2.2, 1.4, 1]) },
+  especial: { elitro_d: qz([0, -8, 6, -12, -4, 0]), elitro_e: qz([0, 6, -8, -12, -4, 0]), arco: qs([1, 1.25, 1.5, 1.8, 1.4, 1]), faisca1: qs([1, 1.4, 0.4, 1.7, 1.3, 1]), faisca2: qs([1, 0.4, 1.5, 1.7, 1.3, 1]) },
   desmaio: { arco: qs([1, 0.7, 0.4, 0.1, 0.1]), elitro_d: qz([0, 10, 24, 40, 38]), elitro_e: qz([0, 10, 24, 40, 38]) },
 });
 

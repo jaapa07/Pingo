@@ -29,8 +29,9 @@ export function abelha(p: AbelhaP): Rig {
     olho: { r: 0.034 * Math.min(k, 1.15), pos: [0.16 * k, 0.02 * k, 0.115 * k] },
     rampas: { torax: 0, abdomen: 0, cabeca: 1, patas: 1, antenas: 1, asas: 2 },
   });
-  // gola felpuda creme entre a cabeça e o tórax (cinco pompons)
-  for (const [y, z] of [[0.13, 0], [0.07, 0.12], [0.07, -0.12], [-0.06, 0.13], [-0.06, -0.13]] as const) rig.add('corpo', blob([0.07 * k, 0.07 * k, 0.07 * k], m.luz(2), { pos: [0.1 * k, y * k, z * k], seg: 10 }));
+  // gola felpuda entre a cabeça e o tórax (cinco pompons). 3ª rodada: era branca como as asas e as duas viravam uma
+  // mancha só sobre o tórax; agora é mel-claro, separada das asas de véu por valor e matiz
+  for (const [y, z] of [[0.13, 0], [0.07, 0.12], [0.07, -0.12], [-0.06, 0.13], [-0.06, -0.13]] as const) rig.add('corpo', blob([0.07 * k, 0.07 * k, 0.07 * k], m.luz(0), { pos: [0.1 * k, y * k, z * k], seg: 10 }));
   // cintas castanhas e a pontinha arredondada (sem ferrão)
   for (const x of [-0.5, -1.05]) rig.add('abdomen', blob([ax * 0.14, ay * (x < -1 ? 0.9 : 1.03), az * (x < -1 ? 0.9 : 1.03)], m(1), { pos: [ax * x, 0, 0], seg: 14, castShadow: false }));
   rig.add('abdomen', blob([ax * 0.3, ay * 0.4, az * 0.4], m.luz(0), { pos: [-ax * 1.62, 0, 0], seg: 10 }));
