@@ -1,5 +1,5 @@
 /**
- * Ginásio 9 (Pedra, B3) — vagonetes e desvios.
+ * Ginásio 10 (Pedra, B3) — vagonetes e desvios.
  * Os trilhos (`:`) cruzam o abismo (`o`); só o vagonete passa. Cada entroncamento obedece a uma chave de desvio
  * (`gin-desvio`), que pode estar longe dele. No fim da linha o jogador salta para a plataforma; se o trilho acaba
  * num para-choque sobre o abismo, o vagonete volta sozinho. Tudo recomeça ao sair (o estado vive só na visita).

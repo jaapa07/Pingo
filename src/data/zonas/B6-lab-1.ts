@@ -10,18 +10,18 @@ const p = new Pincel(30, 22, '#');
 p.r(11, 15, 8, 6, '.').p('+', 15, 21).r(14, 6, 2, 9, ':').r(2, 8, 9, 6, '.').r(11, 10, 3, 1, ':').r(19, 8, 9, 6, '.').r(16, 10, 3, 1, ':').r(8, 3, 14, 3, '.');
 p.p('x', 3, 12, 4, 12, 4, 13, 8, 9, 9, 9, 23, 12, 24, 12, 12, 17, 17, 18).r(21, 9, 5, 1, ':').r(10, 4, 9, 1, ',').r(12, 19, 6, 1, ',').r(3, 10, 6, 1, ':').r(20, 11, 6, 1, ',');
 p.t(15, 21, 'D').t(20, 4, 'S');
-p.t(2, 8, 'A').t(3, 8, 'A').t(10, 8, 'B').t(10, 9, 'B').t(2, 13, 'C').t(6, 8, 'J').t(19, 8, 'G').t(22, 8, 'P').t(26, 9, 'L').t(27, 13, 'A').t(9, 3, 'K').t(14, 3, 'Q').t(16, 3, 'Q').t(11, 19, 'B').t(18, 19, 'A').t(18, 15, 'B').t(2, 11, 'B');
+p.t(2, 8, 'A').t(3, 8, 'A').t(10, 8, 'B').t(10, 9, 'B').t(2, 13, 'E').t(6, 8, 'J').t(19, 8, 'G').t(22, 8, 'P').t(26, 9, 'L').t(27, 13, 'A').t(9, 3, 'K').t(14, 3, 'Q').t(16, 3, 'Q').t(11, 19, 'B').t(18, 19, 'A').t(18, 15, 'B').t(2, 11, 'B');
 p.t(13, 17, '1').t(5, 10, '2').t(24, 10, '3').t(17, 16, '4');
 p.t(3, 10, 'a').t(9, 13, 'h').t(21, 13, 'i').t(7, 12, 'j').t(27, 10, 'k');
 const g = grade('B6-lab-1', p.fim(), {
-  D: '+', S: '.', A: '.', B: '.', C: '.', J: '.', G: '.', P: '.', L: '.', K: '.', Q: '.', '1': '.', '2': ':', '3': ':', '4': '.', a: ':', h: '.', i: '.', j: '.', k: '.',
+  D: '+', S: '.', A: '.', B: '.', E: '.', J: '.', G: '.', P: '.', L: '.', K: '.', Q: '.', '1': '.', '2': ':', '3': ':', '4': '.', a: ':', h: '.', i: '.', j: '.', k: '.',
 });
 const zona: ZonaDef = {
   id: 'B6-lab-1', nome: 'Laboratório do Cartel — Depósito', mapa: 'B', tipo: 'dungeon', tileset: 'industrial', musica: 'cartel-tema', arena: 'usina', passo: 13,
   mapaChars: g.mapa,
   objetos: [
     { o: 'tema', x: 0, y: 0, tema: 'cartel' },
-    ...objs(g, 'A', 'tambor'), ...objs(g, 'B', 'caixote'), obj(g, 'C', 'barril'),
+    ...objs(g, 'A', 'tambor'), ...objs(g, 'B', 'caixote'), obj(g, 'E', 'barril'),
     obj(g, 'J', 'jaula', { texto: ['Uma jaula vazia. Na plaqueta: "Lote 12 — sapos-cururu — ENVIADO AO NÍVEL 2".'] }),
     obj(g, 'G', 'gerador'), obj(g, 'P', 'painel', { texto: ['PRESSÃO DAS CALDEIRAS DE PEÇONHA: ALTA.\nAlguém colou um bilhete: "não encostar, isso é com a Doutora Zinabre".'] }),
     obj(g, 'L', 'alavanca', { script: 'b2-lab-alavanca-1' }), obj(g, 'S', 'escada-desce'),
