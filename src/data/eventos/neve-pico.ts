@@ -28,7 +28,7 @@ function estilo() {
 .neve-pico i{position:absolute;width:1px;height:1px}
 .neve-pico .fa{animation:np-pisca 2.4s steps(1) infinite}
 .neve-pico .fl{animation:np-cai 6s steps(36) infinite}
-@keyframes np-pisca{0%{opacity:.2;box-shadow:none}40%{opacity:1;box-shadow:-1px 0 0 currentColor,1px 0 0 currentColor,0 -1px 0 currentColor,0 1px 0 currentColor}55%{opacity:.7;box-shadow:none}100%{opacity:.2;box-shadow:none}}
+@keyframes np-pisca{0%{opacity:.45;box-shadow:none}35%{opacity:1;box-shadow:-1px 0 0 currentColor,1px 0 0 currentColor,0 -1px 0 currentColor,0 1px 0 currentColor}50%{opacity:1;box-shadow:none}70%{opacity:.45;box-shadow:none}100%{opacity:.45;box-shadow:none}}
 @keyframes np-cai{0%{transform:translateY(0);opacity:0}12%{opacity:1}80%{opacity:1}100%{transform:translateY(36px);opacity:0}}`;
   document.head.append(s);
 }
@@ -44,8 +44,8 @@ async function mostrar() {
   // faíscas paradas na neve (fora das rochas e da muralha)
   for (let i = 0, n = 0; i < 400 && n < 90; i++) {
     const a = hash(i, 1), px = CUME.x * 16 + (a % (CUME.w * 16)), py = CUME.y * 16 + ((a >>> 11) % (CUME.h * 16));
-    const ch = M.zv.ch(Math.floor(px / 16), Math.floor(py / 16));
-    if (ch === '#' || ch === ' ') continue;
+    const tx = Math.floor(px / 16), ty = Math.floor(py / 16), ch = M.zv.ch(tx, ty);
+    if (ch === '#' || ch === ' ' || M.zv.temObjeto(tx, ty)) continue;
     const cor = CORES[(a >>> 5) % CORES.length], atraso = ((a >>> 3) % 24) / 10;
     html += `<i class="fa" style="left:${px}px;top:${py}px;background:${cor};color:${cor};animation-delay:-${atraso}s"></i>`;
     n++;
