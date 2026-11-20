@@ -32,3 +32,10 @@ resumo: {"zona":"A2-casa-aroeira","x":4,"y":4,"dinheiro":146,"insignias":[],"amu
 treino extra: [] derrotas: 6 curas: 3
 perguntas: ["Quem é você? → Kauê","Você vai escolher Guaraxim, do tipo Brasa? → Sim","Quer dar um apelido para Guaraxim? → Não","Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco","Quer que eu cuide das suas criaturas? → Sim"]
 erros de console: []
+
+>> etapa 1: abertura: quarto, mãe, relógio, laboratório e a primeira parceira  (0 s)
+== checkpoint brasa-passo-1: ["Guaraxim 5"] $3000
+
+>> etapa 2: Trilha do Ipê e o Ovo Pintado até o Seu Aroeira  (126 s)
+  [batalha] A-R1-1 → vitoria · equipe 4:5 · A-R1 · $3060
+  [batalha] selvagem 10:3 → captura · equipe 4:5,10:3 · A-R1 · $3060

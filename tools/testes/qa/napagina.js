@@ -64,6 +64,8 @@ Q.decidir = () => {
       if (ops.length) return { tipo: 'golpe', slot: ops[0].i };
     }
   }
+  // selvagem que não interessa, com a criatura em campo machucada: um jogador prudente foge
+  if (ele && ped.tipo === 'selvagem' && b.podeFugir() && eu.vida / atributos(eu).vida < 0.4 && ele.nivel >= eu.nivel - 3) return { tipo: 'fuga' };
   const a = pilotoEsperto.acao(b, p, Q.mem);
   if (a.tipo === 'item') return comoItem(a.item, a.alvo);
   return a;

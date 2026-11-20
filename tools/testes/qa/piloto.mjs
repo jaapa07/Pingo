@@ -206,10 +206,13 @@ export async function abrir(o = {}) {
     const perdas = new Map();
     for (let i = 0; i < 80; i++) {
       await t.emZona(zona);
-      const it = (await ev(() => window.__qa.itens()))[0];
-      if (it && !op.semItens) { const n = t.diario.length; await t.usar(it.x, it.y); if (t.diario.length === n) continue; else continue; }
+      const it = op.semItens ? undefined : (await ev(() => window.__qa.itens()))[0];
       const lista = (await ev(() => window.__qa.treinadores())).filter((x) => !x.lider && (perdas.get(x.t) ?? 0) < (op.tentativas ?? 3) && !(op.menos ?? []).includes(x.t));
+      // o que estiver mais perto primeiro, como quem segue a trilha
+      if (it && (!lista.length || it.n <= lista[0].n)) { await t.usar(it.x, it.y); continue; }
       if (!lista.length) return;
+      // antes de desafiar alguém, um jogador comum volta para curar se a mais forte estiver abaixo de 60%
+      const h = await t.saude(); if (h.lider < 0.6 || h.frac < 0.6) { await t.curar(); continue; }
       const alvo = lista[0], d0 = t.derrotas, n0 = t.diario.length;
       const s = await t.irAte(alvo.x, alvo.y, { vizinho: true, tolerante: true });
       if (s && t.diario.length === n0 && s.zona === zona) { const m = await t.npc(alvo.id); if (m) await t.usar(m.x, m.y); }

@@ -22,6 +22,7 @@ const RELOGIO = (o) => {
     const canal = new MessageChannel();
     let n = 0;
     canal.port1.onmessage = () => {
+      if (window.__pausaRelogio) { st0(() => canal.port2.postMessage(0), 30); return; }
       agora += 1000 / 12;
       const cbs = fila.splice(0);
       for (const cb of cbs) { try { cb(agora); } catch (e) { console.error(e); } }
@@ -79,7 +80,13 @@ export async function abrir(save, o = {}) {
   t.flags = (re) => page.evaluate((r) => { const s = window.__pingo.jogo.save, x = new RegExp(r); return Object.keys(s.flags).filter((f) => x.test(f) && s.flags[f]); }, re);
   t.flag = (f) => page.evaluate((f) => !!window.__pingo.jogo.save.flags[f], f);
   t.npcs = () => page.evaluate(() => window.__pingo.mundo.npcs.map((q) => ({ id: q.id, x: q.ator.x, y: q.ator.y, sprite: q.def.sprite, tr: q.treinador?.id })));
-  t.foto = async (nome) => { await page.screenshot({ path: `${S}/${nome}.png` }); return `${S}/${nome}.png`; };
+  t.foto = async (nome) => {
+    // o relógio virtual para durante a captura (a página fica ociosa para o compositor)
+    await page.evaluate(() => { window.__pausaRelogio = true; });
+    try { await page.screenshot({ path: `${S}/${nome}.png`, timeout: 20000 }); } catch (e) { console.log(`   (captura ${nome} falhou: ${String(e.message).split('\n')[0]})`); }
+    await page.evaluate(() => { window.__pausaRelogio = false; });
+    return `${S}/${nome}.png`;
+  };
   t.save = () => page.evaluate(() => JSON.parse(JSON.stringify(window.__pingo.jogo.save)));
   /** grava o checkpoint (só chame com o jogo livre no mapa) */
   t.checkpoint = async (nome) => { await t.assentar(); const sv = await t.save(); writeFileSync(`${AQUI}saves/${nome}.json`, JSON.stringify(sv)); console.log(`   [checkpoint ${nome}] ${sv.jogador.zona} (${sv.jogador.x},${sv.jogador.y}) $${sv.jogador.dinheiro} · ${sv.equipe.map((c) => c.especie + ':' + c.nivel).join(' ')}`); return sv; };
