@@ -73,7 +73,8 @@ export function iniciarPalco(): HTMLElement {
   window.addEventListener('orientationchange', () => setTimeout(ajustarPalco, 60));
   window.visualViewport?.addEventListener('resize', ajustarPalco);
   // sem zoom, sem rolagem elástica, sem menu de contexto
-  const barrar = (e: Event) => e.preventDefault();
+  // (o campo de texto do código de transferência fica livre: o menu Colar/Copiar do iOS depende dele)
+  const barrar = (e: Event) => { if ((e.target as Element | null)?.closest?.('textarea')) return; e.preventDefault(); };
   for (const ev of ['gesturestart', 'gesturechange', 'gestureend', 'contextmenu', 'dragstart', 'selectstart']) document.addEventListener(ev, barrar);
   document.addEventListener('touchmove', barrar, { passive: false });
   document.addEventListener('wheel', (e) => { if (e.ctrlKey) e.preventDefault(); }, { passive: false });

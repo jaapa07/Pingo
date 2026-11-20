@@ -88,10 +88,8 @@ async function salvarPeloMenu() {
   const zonaAoSalvar = (await st()).zona;
   await apertar('menu'); await dormir(500);
   if (!/menu/.test(topo(await st()))) throw new Error('o menu não abriu');
-  // procura a linha "Salvar" pelo texto (o menu muda conforme o progresso)
-  const linhas = await page.evaluate(() => { const f = document.querySelector('.tela-menu .foco'); return f?.parentElement ? [...f.parentElement.children].map((e) => (e.textContent ?? '').trim()) : []; });
-  const idx = linhas.findIndex((t) => /^salvar/i.test(t));
-  if (idx < 0) throw new Error('menu sem "Salvar": ' + JSON.stringify(linhas));
+  // mesma conta do tools/verify/offline.ts: Diário?, Equipe?, Mochila, Rádio?, Perfil → Salvar
+  const idx = await page.evaluate(() => { const v = (window as any).__pingo.jogo.save; let n = 0; if (v.mochila['diario-de-campo'] || v.flags['ovo-entregue'] || v.diario.visto.length) n++; if (v.equipe.length) n++; n++; if (v.mochila['radio-cipo'] || v.flags['intro-ok']) n++; return n + 1; });
   for (let i = 0; i < 16 && (await focoMenu()) !== idx; i++) { await apertar('baixo'); await dormir(150); }
   if ((await focoMenu()) !== idx) throw new Error('cursor não chegou ao Salvar');
   await foto('menu-salvar');
