@@ -92,3 +92,9 @@ Depois: zonas B1/B2 (+níveis novos do mapa B), ginásios 9–16 (9 Terra tem pr
 ## PARADO a pedido do usuário (20/11): ele está testando o jogo no iPhone em https://jaapa07.github.io/Pingo/
 - QA trecho 1 (a746981962d864055) e QA trecho 2 (aac12c562b9a87702) caíram por cota; diários em docs/QA-TRECHO-1.md e docs/QA-TRECHO-2.md. NÃO retomar até o usuário mandar. Ao retomar: SendMessage para os dois (continuam dos diários e dos saves em tools/testes/qa e qa2).
 - Líder 1 (ginasio-01) ajustado para ás 10 (Tucaninho nv 10), por decisão do usuário; verificador 11/11. Chances no simulador podem ter subido: reconferir antes de ajustar mais.
+
+## RETOMADO em Opus (20/11, a pedido do usuário) — 3 agentes
+- QA trecho 1 (a39560b3310ca8285): continua de docs/QA-TRECHO-1.md; líder 1 com ás 10 (decisão do usuário).
+- QA trecho 2 (a7436e9db55fcf6bd): continua de docs/QA-TRECHO-2.md; taxa real da Liga, rival-5, portões de A-MT/A-RS.
+- Zonas B1 (a03c8309c36a8092b): mapa B na ordem nova (B1 sem ginásio e com nome novo; níveis 44+; diário em docs/ZONAS-B1.md).
+- Estimativa dada ao usuário: parte 1 (Liga + testes) 1–2 sessões; mapa B 3–4 sessões.
