@@ -75,6 +75,7 @@
     const selvagem = ctl.pedido.tipo !== 'treinador';
     const alvo = b.adversarios(p)[0] && b.criatura(b.adversarios(p)[0]);
     // captura: espécie desejada, ainda há vaga na cota e cuia na mochila
+    if (ctl.pedido.tipo === 'lendario' && alvo) anota('lendário: ' + JSON.stringify({ esp: alvo.especie, pode: b.podeCapturar(), quer: !!Q.capturar, n: Q.capturadas.length, max: Q.maxCapturas, ja: jogo.save.diario.capturado.includes(alvo.especie), cuia: cuiaBoa(b) }));
     if (selvagem && alvo && b.podeCapturar() && Q.capturar && Q.capturadas.length < Q.maxCapturas && Q.capturar(alvo.especie, alvo.nivel) && !jogo.save.diario.capturado.includes(alvo.especie)) {
       const cuia = cuiaBoa(b);
       if (cuia) {

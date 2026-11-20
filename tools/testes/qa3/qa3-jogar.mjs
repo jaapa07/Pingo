@@ -207,10 +207,13 @@ const etapas = {
         await cuidar({ limiar: 0.9, reanimar: true }); await Qr(() => window.Q.rodizio('chefe'));
         const b = await Qr(() => window.Q.npc('boitata')); console.log('   boitatá em', JSON.stringify(b));
         if (b) await t.falarCom('boitata'); await t.assentar();
+        console.log('   log do piloto:', JSON.stringify(await Qr(() => window.Q.log.filter((l) => /lendário/.test(l)).slice(-3))));
         console.log('   boitatá:', JSON.stringify(await t.flags('boitata|b1-')), JSON.stringify(await t.falas(3)));
         await t.foto('boitata-depois');
       }
       await viajar('B4'); await t.assentar(); await t.foto('b4-chegada');
+      // a Tainá espera na estrada que sobe da chapada (gatilho na fila 31): segue pela estrada para o norte
+      if (!(await t.flag('rival-6'))) { await cuidar({ limiar: 0.8, reanimar: true }); await Qr(() => window.Q.rodizio('chefe')); await chegada('rival-6 (Tainá)', 52); await t.ir('n'); await t.assentar(); }
       if (!(await t.flag('rival-6'))) { console.log('   rival-6 ainda não aconteceu; falas:', JSON.stringify(await t.falas(3))); }
     }, { treino: async () => { await viajar('B-CH'); await Qr(() => window.Q.passear(8)); } });
     await t.exige(await t.flag('rival-6'), 'rival-6 feito');
