@@ -1,35 +1,7 @@
-import type { ZonaDef } from '../../core/tipos';
+import { venda } from './_b1-lib';
 
-/** Venda de Vila Buriti. */
-const zona: ZonaDef = {
-  id: 'B1-venda', nome: 'Venda de Vila Buriti', mapa: 'B', tipo: 'interior', tileset: 'predio', musica: 'venda', arena: 'cerrado', passo: 4,
-  mapaChars: [
-    '############',
-    '############',
-    '#..........#',
-    '#..........#',
-    '#..........#',
-    '#..........#',
-    '#..........#',
-    '#....++....#',
-    '#####++#####',
-  ],
-  objetos: [
-    { o: 'balcao', x: 2, y: 3 },
-    { o: 'balanca', x: 5, y: 3 },
-    { o: 'prateleira', x: 7, y: 2, texto: 'Doce de buriti, paçoca de pilão e rapadura. A rapadura está presa com corrente.' },
-    { o: 'prateleira', x: 9, y: 2, texto: 'Cuias de todo tamanho. Uma delas tem um bilhete: "amostra, não arremessar".' },
-    { o: 'saco-graos', x: 1, y: 6 }, { o: 'caixote', x: 10, y: 6 }, { o: 'barril', x: 10, y: 5 },
-    { o: 'prateleira', x: 7, y: 5, texto: 'Fumaça de Andiroba: espanta bicho fraco e visita demorada.' },
-  ],
-  warps: [
-    { x: 5, y: 8, para: { zona: 'B1', x: 24, y: 15, dir: 's' }, tipo: 'porta' },
-    { x: 6, y: 8, para: { zona: 'B1', x: 24, y: 15, dir: 's' }, tipo: 'porta' },
-  ],
-  npcs: [
-    { id: 'vendedor', sprite: 'npc-vendedor', x: 3, y: 2, dir: 's', se: '!insignia:8', fala: ['Chegue mais! Tudo fresquinho, menos o vendedor.'], loja: ['cuia', 'cuia-trancada', 'cha-cidreira', 'garrafada', 'mel-puro', 'unguento', 'fumaca-andiroba', 'corda-de-cipo'] },
-    { id: 'vendedor-2', sprite: 'npc-vendedor', x: 3, y: 2, dir: 's', se: 'insignia:8', fala: ['Oito insígnias? Para você eu abro o estoque de trás!'], loja: ['cuia', 'cuia-trancada', 'cuia-ouro', 'garrafada', 'elixir-andiroba', 'mel-puro', 'unguento', 'pomada-copaiba', 'cha-guarana', 'fumaca-andiroba-forte', 'corda-de-cipo'] },
-    { id: 'freguesa', sprite: 'npc-idosa', x: 8, y: 6, dir: 'n', fala: ['No meu tempo a gente pegava criatura com balaio e conversa.', 'Hoje é tudo cuia disso, cuia daquilo. Mas a Trançada é boa mesmo, viu?'] },
-  ],
-};
-export default zona;
+/** Venda de Vila Cascavel (porta em (26, 15) na cidade). Estoque de Campeão: o mapa B só abre depois da Liga. */
+export default venda('B1', 'Vila Cascavel', 9, 'cerrado', [26, 16],
+  { nome: 'Seu Bento Pequi', fala: 'Venda do Pequi, às ordens! Cuia de palha de buriti, chá de raiz e repelente de andiroba. O resto é conversa, e conversa é de graça.' },
+  [['', ['cuia', 'cuia-trancada', 'cuia-ouro', 'cuia-rede', 'cuia-noturna', 'cha-cidreira', 'garrafada', 'elixir-andiroba', 'mel-puro', 'unguento', 'pomada-copaiba', 'fumaca-andiroba-forte', 'corda-de-cipo']]],
+  { sprite: 'npc-mulher-2', nome: 'Dona Lia', fala: ['Cuia de Rede é a melhor para o Pantanal: bicho de Rio escorrega da cuia comum que nem sabão.', 'E a Cuia Noturna para o cerrado de noite, que o bicho de lá só sai depois do pôr do sol.'] });

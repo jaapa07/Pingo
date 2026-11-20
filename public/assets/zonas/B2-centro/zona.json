@@ -1,0 +1,1 @@
+{"id":"B2-centro","tileset":"predio","largura":16,"altura":10,"w":16,"h":10,"tile":16,"chunk":160,"chunkTiles":10,"colunas":2,"linhas":1,"periodos":["dia"],"quadros":4,"animQuadros":4,"animMs":250,"chunks":[{"cx":0,"cy":0,"alto":true,"anim":false},{"cx":1,"cy":0,"alto":true,"anim":true}],"gramaAlta":[],"dinamicos":[],"luzes":[[152,24,20],[216,24,20]]}

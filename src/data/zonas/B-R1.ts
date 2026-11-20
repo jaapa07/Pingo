@@ -1,13 +1,15 @@
 import type { ZonaDef } from '../../core/tipos';
+import { E } from './_b1-lib';
 
 /**
- * B-R1 — Vereda dos Buritis (B1 → B-CE). Passo 4. De sul para norte: campina da entrada, travessia do córrego,
- * buritizal com bosque escondido atrás do cipó, o cercado em zigue-zague (com saliências de atalho na volta),
- * o capinzal grande e a subida para o cerrado. Visível e fora de alcance: ilha da lagoa (Remo),
- * recanto da rocha rachada (Quebra-pedra) e o tabuleiro de pedra (Escalar).
+ * B-R1 — Vereda dos Buritis (Vila Cascavel → Cerrado Aberto). Passo 9: primeira rota do Sertão, logo depois da Liga.
+ * De sul para norte: campina da entrada, lagoa do Chapéu Perdido (ilhota de Remo), buritizal com bosque atrás do cipó
+ * (Facão), o cercado em zigue-zague do Seu Nico (saliências de atalho na volta), o capinzal grande, o recanto da rocha
+ * rachada (Quebra-pedra) e a subida para o cerrado. Visível e fora de alcance: o Tabuleiro de Pedra (Escalar, insígnia 10).
+ * Selvagens 44–47 (camada pós-insígnia 11: 50–53); treinadores 43–46 (ás do líder 9 = 49).
  */
 const zona: ZonaDef = {
-  id: 'B-R1', nome: 'Vereda dos Buritis', mapa: 'B', tipo: 'rota', tileset: 'cerrado', musica: 'rota-dia-B', arena: 'cerrado', passo: 4,
+  id: 'B-R1', nome: 'Vereda dos Buritis', mapa: 'B', tipo: 'rota', tileset: 'cerrado', musica: 'rota-dia-B', arena: 'cerrado', passo: 9,
   mapaChars: [
     'TTTTTTTTTT|TTTT::TTTT|TTTTTTTTTT',
     'T....,....|...b::b...|......,..T',
@@ -61,7 +63,7 @@ const zona: ZonaDef = {
     'T........T|...""""...|..:::....T',
     'T..,.t...T|..""""""..|...::....T',
     'T........T|..""""""..|...::....T',
-    'T.t....t.T|...""""...|...::....T',
+    'T.t......T|...""""...|...::....T',
     'TTTTTTTcTT|TTTTTTTTTT|TTT::TTTTT',
     'T..""""...|.........T|...::....T',
     'T.""""""..|...:::::::|:::::....T',
@@ -91,10 +93,10 @@ const zona: ZonaDef = {
     'TTTTTTTTTT|TTTT::TTTT|TTTTTTTTTT',
   ].map((l) => l.replace(/\|/g, '')),
   objetos: [
-    { o: 'placa', x: 16, y: 77, texto: 'VEREDA DOS BURITIS\nNorte: Cerrado Aberto. Sul: Vila Buriti.\nOnde tem buriti, tem água. Onde tem água, tem bicho.' },
+    { o: 'placa', x: 16, y: 77, texto: 'VEREDA DOS BURITIS\nNorte: Cerrado Aberto. Sul: Vila Cascavel.\nOnde tem buriti, tem água. Onde tem água, tem bicho.' },
     { o: 'placa', x: 16, y: 62, texto: 'LAGOA DO CHAPÉU PERDIDO\nA ilhota só se alcança de canoa.' },
     { o: 'placa', x: 20, y: 41, texto: 'CERCADO DO SEU NICO\nNa ida, siga as porteiras. Na volta, pule as saliências.' },
-    { o: 'placa', x: 21, y: 31, texto: 'Rocha rachada. Dá para ouvir o vento passando pelas frestas.' },
+    { o: 'placa', x: 20, y: 31, texto: 'Rocha rachada. Dá para ouvir o vento passando pelas frestas.' },
     { o: 'placa', x: 5, y: 11, texto: 'TABULEIRO DE PEDRA\nSó sobe quem escala.' },
     { o: 'placa', x: 17, y: 2, texto: 'CERRADO ABERTO logo ao norte.\nCuidado com os cupinzeiros: alguns andam.' },
     { o: 'buriti', x: 11, y: 65 }, { o: 'buriti', x: 17, y: 65 }, { o: 'buriti', x: 9, y: 62 }, { o: 'buriti', x: 12, y: 58 }, { o: 'buriti', x: 27, y: 58 },
@@ -107,8 +109,8 @@ const zona: ZonaDef = {
     { o: 'canoa', x: 20, y: 59 },
   ],
   warps: [
-    { x: 14, y: 79, para: { zona: 'B1', x: 19, y: 1, dir: 's' }, tipo: 'borda' },
-    { x: 15, y: 79, para: { zona: 'B1', x: 20, y: 1, dir: 's' }, tipo: 'borda' },
+    { x: 14, y: 79, para: { zona: 'B1', x: 21, y: 1, dir: 's' }, tipo: 'borda' },
+    { x: 15, y: 79, para: { zona: 'B1', x: 22, y: 1, dir: 's' }, tipo: 'borda' },
     { x: 14, y: 0, para: { zona: 'B-CE', x: 29, y: 38, dir: 'n' }, tipo: 'borda' },
     { x: 15, y: 0, para: { zona: 'B-CE', x: 30, y: 38, dir: 'n' }, tipo: 'borda' },
   ],
@@ -116,15 +118,14 @@ const zona: ZonaDef = {
     { id: 'B-R1-1', sprite: 'cl-escoteira', x: 18, y: 74, dir: 'o', treinador: 'B-R1-1', visao: 3 },
     { id: 'B-R1-2', sprite: 'cl-pescador', x: 16, y: 60, dir: 'o', treinador: 'B-R1-2', visao: 3 },
     { id: 'B-R1-3', sprite: 'cl-mateira', x: 20, y: 47, dir: 'l', treinador: 'B-R1-3', visao: 3 },
-    { id: 'B-R1-4', sprite: 'cl-vaqueiro', x: 14, y: 37, dir: 's', treinador: 'B-R1-4', visao: 2 },
+    { id: 'B-R1-4', sprite: 'cl-vaqueiro', x: 14, y: 37, dir: 'n', treinador: 'B-R1-4', visao: 2 },
     { id: 'B-R1-5', sprite: 'cl-observadora', x: 14, y: 23, dir: 'n', treinador: 'B-R1-5', visao: 2 },
     { id: 'B-R1-6', sprite: 'cl-capoeirista', x: 20, y: 8, dir: 'o', treinador: 'B-R1-6', visao: 4 },
-    { id: 'pescador-lagoa', sprite: 'npc-idoso', x: 19, y: 65, dir: 'l', fala: ['Vento levou o chapéu de um moço de Vila Buriti para aquela ilhota.', 'Eu ia buscar, mas minha canoa só anda com criatura de Rio puxando. E a minha tirou folga.'] },
+    { id: 'pescador-lagoa', sprite: 'npc-idoso', x: 19, y: 65, dir: 'l', fala: ['Vento levou o chapéu de um moço de Vila Cascavel para aquela ilhota.', 'Eu ia buscar, mas minha canoa só anda com criatura de Rio puxando. E a minha tirou folga.'] },
     { id: 'seu-nico', sprite: 'npc-homem-4', x: 25, y: 43, dir: 'o', fala: ['Fiz o cercado em zigue-zague para as emas não fugirem.', 'As emas pulam por cima. Quem fica dando volta sou eu.'] },
     { id: 'menina-canteiro', sprite: 'cl-crianca-f', x: 8, y: 33, dir: 's', mov: 'olhar', fala: ['Plantei pitanga nos canteiros. Se você plantar um fruto, ele cresce com o relógio.', 'Tem que regar? Tem. Eu rego? Às vezes.'] },
-    { id: 'biologa-grama', sprite: 'cl-biologa', x: 7, y: 23, dir: 'l', fala: ['De noite o Graxaim sai para caçar por aqui, e o Tucaninho vai dormir.', 'Já a Onçinha… essa aparece quando quer. Vi uma vez. Chorei de emoção e ela foi embora.'] },
-    { id: 'andarilho-norte', sprite: 'npc-homem-2', x: 12, y: 3, mov: 'vagar', fala: ['As árvores de tronco grosso escondem Jataís. É só sacudir.', 'Sacudi uma e caiu uma manga na minha cabeça. Também vale.'] },
-    { id: 'capivarinha-2', sprite: 'c:capivarinha', x: 3, y: 62, se: 'flag:filhotes-aceita&!flag:filhote-2', script: 'b1-filhote-2' },
+    { id: 'biologa-grama', sprite: 'cl-biologa', x: 7, y: 23, dir: 'l', fala: ['De noite o Graxaim-da-Névoa sai para caçar por aqui, e os Tucanuçus vão dormir.', 'Já a Pintada… essa aparece quando quer. Vi uma vez. Chorei de emoção e ela foi embora sem olhar para trás.'] },
+    { id: 'andarilho-norte', sprite: 'npc-homem-2', x: 12, y: 3, mov: 'vagar', fala: ['As árvores de tronco grosso escondem Jataí-Rainha. É só sacudir.', 'Sacudi uma e caiu uma manga na minha cabeça. Também vale.'] },
   ],
   itens: [
     { x: 23, y: 60, item: 'pena-colorida', flag: 'B-R1-item-ilha' },
@@ -140,16 +141,21 @@ const zona: ZonaDef = {
   ],
   habitats: [
     {
+      // 6.4: Quero-querinho (c) e Quero-Guarda (r), Tucaninho (c), Ararinha (c, dia), Graxaim (c, noite), Tapirinho (i),
+      // Seriemim (i), Onçinha (mr). Nos níveis do Sertão (44+) todas já passaram da evolução e aparecem na forma seguinte;
+      // os filhotes dessas linhas chegam ao jogador pelo Centro de Reabilitação de Pantanal Grande (b1-orfaos).
       metodo: 'grama', taxa: 0.1,
-      todos: [{ e: 45, nv: [18, 21], peso: 26 }, { e: 49, nv: [18, 21], peso: 24 }, { e: 51, nv: [19, 22], peso: 22 }, { e: 103, nv: [19, 22], peso: 12 }, { e: 97, nv: [20, 22], peso: 10 }, { e: 46, nv: [23, 24], peso: 4 }, { e: 71, nv: [22, 23], peso: 2 }],
-      noite: [{ e: 93, nv: [19, 22], peso: 30 }, { e: 45, nv: [18, 21], peso: 24 }, { e: 49, nv: [18, 21], peso: 18 }, { e: 103, nv: [19, 22], peso: 12 }, { e: 97, nv: [20, 22], peso: 10 }, { e: 46, nv: [23, 24], peso: 4 }, { e: 71, nv: [22, 23], peso: 2 }],
+      dia: [E(46, 44, 46, 26), E(50, 44, 46, 22), E(52, 45, 47, 18), E(104, 45, 47, 14), E(98, 45, 47, 14), E(72, 46, 47, 6)],
+      noite: [E(94, 44, 46, 28), E(46, 44, 46, 20), E(50, 44, 46, 16), E(104, 45, 47, 14), E(98, 45, 47, 16), E(72, 46, 47, 6)],
       camadas: [{
-        apos: 8,
-        todos: [{ e: 45, nv: [33, 36], peso: 18 }, { e: 49, nv: [33, 36], peso: 20 }, { e: 51, nv: [34, 37], peso: 20 }, { e: 103, nv: [34, 37], peso: 12 }, { e: 97, nv: [35, 38], peso: 12 }, { e: 46, nv: [36, 39], peso: 13 }, { e: 71, nv: [36, 38], peso: 5 }],
-        noite: [{ e: 93, nv: [34, 37], peso: 30 }, { e: 45, nv: [33, 36], peso: 14 }, { e: 49, nv: [33, 36], peso: 14 }, { e: 103, nv: [34, 37], peso: 12 }, { e: 97, nv: [35, 38], peso: 12 }, { e: 46, nv: [36, 39], peso: 13 }, { e: 71, nv: [36, 38], peso: 5 }],
+        apos: 11,
+        dia: [E(46, 50, 52, 22), E(50, 50, 52, 20), E(52, 51, 53, 20), E(104, 51, 53, 14), E(98, 51, 53, 16), E(72, 52, 53, 8)],
+        noite: [E(94, 50, 52, 26), E(46, 50, 52, 18), E(50, 50, 52, 14), E(104, 51, 53, 14), E(98, 51, 53, 18), E(72, 52, 53, 10)],
       }],
     },
-    { metodo: 'arvore', todos: [{ e: 149, nv: [18, 21], peso: 100 }], camadas: [{ apos: 8, todos: [{ e: 149, nv: [33, 36], peso: 100 }] }] },
+    { metodo: 'arvore', todos: [E(150, 44, 46, 100)], camadas: [{ apos: 11, todos: [E(150, 50, 52, 100)] }] },
+    { metodo: 'pesca-velha', todos: [E(37, 20, 26, 70), E(39, 20, 26, 30)] },
+    { metodo: 'pesca-boa', todos: [E(38, 44, 46, 50), E(40, 44, 46, 30), E(114, 44, 46, 20)] },
   ],
 };
 export default zona;

@@ -1,0 +1,14 @@
+import { casa } from './_b1-lib';
+
+/** Casa de esquina do criador Seu Aroeirinha (porta em (34, 22) na cidade): troca de criaturas com NPC (spec 10A, item 12). */
+export default casa({
+  id: 'B1-casa-3', nome: 'Casa do Criador', tema: 'sertaneja', musica: 'cidade-catira', arena: 'cerrado', passo: 9, volta: [34, 23],
+  canto: 'oratorio', parede: 'mapa-linhas',
+  estante: ['Cadernos de criação: "Quero-Guarda: come de tudo, guarda tudo, reclama de tudo." Ao lado, fitas de exposição.'],
+  bau: ['Coleiras de couro com plaquinha de nome, uma escova de pelo e um apito que não faz barulho nenhum.'],
+  cantoTexto: ['Um oratório com vela acesa e uma pena de seriema presa na moldura.'],
+  moradores: [
+    { id: 'b1-criador', sprite: 'npc-homem-4', nome: 'Seu Aroeirinha', dir: 's', script: 'b1-troca' },
+    { id: 'b1-criadora', sprite: 'npc-mulher-1', nome: 'Dona Laia', dir: 'o', fala: ['Meu marido é primo do Seu Aroeira, lá da Costa. Na família todo mundo cria bicho e ninguém cria juízo.', 'Ele vive trocando criatura com viajante. Diz que bicho que viaja aprende mais.'] },
+  ],
+});

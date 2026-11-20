@@ -35,6 +35,7 @@ Dono deste arquivo: time A1. O bloco acima é o resumo da reestrutura; as tabela
 | `garrote-vencido` | Coronel Garrote derrotado no Pico (antes do Conselho) |
 | `conselho-vencido` | créditos; libera pós-jogo (`pos-jogo`), B-FA, Lobo-Jaci e Onça-Guaraci errantes |
 | `venceu:<idTreinador>` | marcada pelo motor ao vencer um treinador |
+| missões e marcos do time B1 | `b1-chegou`, `rival-6`, `boitata-ok` (`boitata-dormiu` se derrotado), `m-raizes(-ok)`, `m-doce-ok`, `m-carta-b1(-resposta/-ok)`, `m-ninho(-dia/-ok)`, `m-orfaos(-dia)`, `orfao-<nº>`, `m-fotos(-ok)`, `m-foto-1..5`, `m-sao-joao-ok`, `m-troca-b1-ok`, `m-pepitas-ok`, `m-forja-ok` (detalhes em docs/ZONAS-B1.md) |
 | missões paralelas do time A1 | `m-chapeu(-achou/-ok)`, `m-pintinhas(-ok)`, `m-carta(-resposta/-ok)`, `m-perdido(-ok)`, `m-ponte(-ok)`, `m-eco(-achou/-ok)`, `m-peixe(-ok)`, `vara-velha-ok` |
 
 Amuletos: dados pelo líder junto com a insígnia (tabela 4.4): facao=2, **remo=3**, **quebra-pedra=6**, **forca=7**, **mergulho=9**, escalar=10, cachoeira=12, voo=14; `faro` (missão do Seu Aroeira, após a 1) e `lampiao` (evento do Farol, antes da 5) vêm de eventos.

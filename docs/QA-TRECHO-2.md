@@ -93,3 +93,27 @@ Mestre e dá a dica dele na fala de depois. No chão do terreiro, 2 Elixires e 1
 (Desafiante Tição), equipe 41/41/40/40/40/40 e $15 380 antes das compras.
 
 ## 2. Liga dos Guardiões — taxa real (em andamento)
+
+### 2.1 Rodadas jogadas (4ª mão, 20/11) — checkpoint `plato` (depois dos Desafiantes: 42/44/42/41/42/42, $8 432)
+
+Política: piloto esperto (`liga.mjs`), compra na Venda do Platô o que o dinheiro deixa (3 chás de guaraná + 5 garrafadas;
+fica com $432), cura no Posto, entra; entre as salas usa remédios até 75% e reanima. Mochila ao entrar: 5 garrafadas,
+3 elixires, 4 chás, 1 pomada, 2 mel, 3 unguentos.
+
+| Rodada | Equipe da Liga | Tentativas | Campeão | Onde caiu |
+|---|---|---|---|---|
+| A (antes de mexer) | como estava (Campeão 42/43/44/46, Poraquê com Zunido) | 10 (sementes 1, 11–13, 21–23, 31–33) | **6/10** | 3× Campeão, 1× Brasa-Viva |
+| B (Hall cura + rival-5 nova; Liga igual) | idem | 9 (41–43, 51–53, 61–63) | **9/9** | — |
+| A+B | | 19 | **15/19 (79%)** | 3× Campeão, 1× Brasa-Viva |
+
+Simulador com o MESMO save (`sim-save.mts plato liga-1,…,liga-5`, com as compras; `INICIAL=` troca o inicial de Rio do
+save pela forma da outra linha no mesmo nível): Rio 70%, Mata 51%, Brasa 23% (antes). O jogador honesto jogado é de Rio,
+o mais favorecido (Iaraboto Rio/Encanto: imune ao tipo Lenda do Pirarucão, resiste à água do Campeão e afoga o Brasa-Viva).
+`sim-equilibrio.ts` (equipe de referência, mochila cheia) antes: Liga esperto **46%**, Campeão isolado 66%.
+
+Bugs achados jogando:
+- **rival-5 era luta perdida**: a Tainá desafia logo depois do Hall, e a equipe saía do Campeão sem cura (na rodada A,
+  5 de 6 duelos perdidos em 2–22 turnos, com 1–2 criaturas de pé). Corrigido: o Hall da Fama cura a equipe
+  (`['curar']` + fala em `liga-vitoria`).
+- rival-5 com a equipe curada ficava em 96–100% para os três iniciais (simulador com o save de Campeão). Ajuste: níveis
+  42–45 → 46/46/46/47/47/48 e 2 garrafadas → 75–94% conforme o inicial (antes, com a equipe de referência: 15–85%).

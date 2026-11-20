@@ -1,0 +1,11 @@
+import { postoGuardiao } from './_b1-lib';
+
+/** Posto Guardião de Chapada Rubra (porta em (8, 14) na cidade). */
+export default postoGuardiao('B3', 'Chapada Rubra', 10, 'chapada', [8, 15], [
+  'MURAL DE MISSÕES — CHAPADA RUBRA',
+  '• Seu Cascalho, da casa amarela, troca pergaminho por pepitas. Garimpe nas rochas rachadas!',
+  '• URGENTE: a Mina Velha foi tomada pelo Cartel Ferrugem. O Garimpeiro Topázio desceu sozinho.',
+], [
+  { sprite: 'cl-montanhista', nome: 'Montanhista Opala', fala: ['Os paredões ao norte só se sobem com o Amuleto de Escalar. Lá em cima fica a Chapada dos Paredões e, depois, Arraial Brasa.', 'Lá no alto tem também a boca da Caverna Vulcânica. Escura que só: Lampião obrigatório.'] },
+  { sprite: 'npc-mulher-3', nome: 'Professora Mica', mov: 'vagar', fala: ['A Chapada Rubra é vermelha por causa do ferro na rocha. A sua bota também vai ficar vermelha. Para sempre.', 'Bicho de Pedra apanha de Rio, Mata, Ginga, Terra e Ferro. O Topázio sabe disso e treina para não deixar você chegar perto.'] },
+]);

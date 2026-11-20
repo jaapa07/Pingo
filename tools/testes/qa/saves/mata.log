@@ -178,3 +178,117 @@ resumo: {"zona":"A2-ginasio","x":7,"y":4,"dinheiro":2649,"insignias":[1],"amulet
 treino extra: [] derrotas: 3 curas: 8
 perguntas: []
 erros de console: []
+>> retomando de mata-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (1 s)
+  compras em A2-venda: 2× cha-cidreira, 1× cuia · sobrou $89
+== checkpoint mata-pre-lider-1: ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"] $89
+  ginásio 1, tentativa 1: equipe ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"]
+  [batalha] g01-1 → vitoria · equipe 1:10,10:3,13:2,45:4 · A2-ginasio · $369
+  [batalha] g01-2 → vitoria · equipe 1:10,10:3,13:2,45:4 · A2-ginasio · $689
+  ida ao Posto no meio do ginásio (cura; atalho declarado)
+  [batalha] g01-3 → derrota · equipe 1:10,10:3,13:2,45:4 · A2-ginasio · $689
+    turnos: Tamanduí10 33/33 x Corujinha6 23/23 → golpe arranhao | Tamanduí10 23/33 x Corujinha6 15/23 → golpe arranhao | Tamanduí10 12/33 x Corujinha6 7/23 → golpe arranhao | Pipirim3 16/16 x Tucaninho7 25/25 → troca 0 | Quero-querinho4 10/18 x Tucaninho7 25/25 → golpe bicada | Quero-querinho4 10/18 x Tucaninho7 21/25 → troca 0 | Quero-querinho4 10/18 x Tucaninho7 21/25 → golpe bicada | Pipirim3 4/16 x Tucaninho7 18/25 → golpe bicada | Pipirim3 4/16 x Tucaninho7 14/25 → golpe bicada | Cotiazinha2 14/14 x Tucaninho7 14/25 → golpe encontrao | Cotiazinha2 4/14 x Tucaninho7 12/25 → golpe encontrao
+  perdeu no ginásio 1 (tentativa 1)
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.irAte (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:162:24) |     at async t.treinar (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:242:7) 0 0
+resumo: 0
+treino extra: [] derrotas: 4 curas: 8
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: ["[zonas B1] B-R2: marca \"w\" aparece 3 vezes (esperado 1)"]
+>> retomando de mata-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (1 s)
+  compras em A2-venda: 2× cha-cidreira, 1× cuia · sobrou $89
+== checkpoint mata-pre-lider-1: ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"] $89
+  ginásio 1, tentativa 1: equipe ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"]
+  [batalha] g01-1 → vitoria · equipe 1:10,10:4,13:2,45:5 · A2-ginasio · $369
+  [batalha] g01-2 → vitoria · equipe 1:10,10:4,13:2,45:5 · A2-ginasio · $689
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] g01-3 → vitoria · equipe 1:11,10:4,13:2,45:5 · A2-ginasio · $449
+  [batalha] g01-4 → vitoria · equipe 1:11,10:4,13:2,45:6 · A2-ginasio · $849
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] lider-01 → vitoria · equipe 1:11,10:4,13:2,45:7 · A2-ginasio · $1449
+  INSÍGNIA 1 na tentativa 1
+  [ginásio] posição (11,4), esperado (12,4) — 
+FALHA Error: desvio |     at seq (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:39:191) |     at async ginasio (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:69:55) |     at async Object.fn (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:113:5) {"pronto":true,"oc":false,"mov":false,"zona":"A2-ginasio","x":11,"y":4,"dir":"l","modo":"pe","telas":1,"topo":"mundo tela-mundo","ocupada":false,"nres":5} ["{JOGADOR} recebeu a Insígnia Pena!","{JOGADOR} recebeu PT31 Rasante!","Esse pergaminho ensina o Rasante: um voo baixo e certeiro, que quase nunca erra.\fAgora escute. O Seu Aroeira, aqui da vila, anda atrás de alguém de confiança para uma tarefa. Dizem que ele guarda um Amuleto que faz as criaturas farejarem coisas escondidas.\fDepois siga pelos Campos de Restinga e atravesse a Mata dos Sabiás. No Bosque Alto, a Lia Teia espera os desafiantes no alto das copas.\fAh, para descer do píer não tem prancha: deixe a corrente da direita levar você e pule na rajada depois do segundo mastro. O mar devolve todo mundo na entrada!"]
+resumo: {"zona":"A2-ginasio","x":11,"y":4,"dinheiro":1449,"insignias":[1],"amuletos":[],"equipe":[{"e":1,"nome":"Tamanduí","nv":11,"vida":0,"max":35,"st":null,"golpes":["arranhao 32","cara-feia 30","chicote-de-cipo 23","sorver-seiva 20"]},{"e":10,"nome":"Pipirim","nv":4,"vida":18,"max":18,"st":null,"golpes":["bicada 35","berro 40"]},{"e":13,"nome":"Cotiazinha","nv":2,"vida":14,"max":14,"st":null,"golpes":["encontrao 35","cara-feia 30"]},{"e":45,"nome":"Quero-querinho","nv":7,"vida":12,"max":24,"st":null,"golpes":["bicada 33","berro 40","jogar-areia 15"]}],"mochila":{"radio-cipo":1,"diario-de-campo":1,"cuia":4,"pt-31":1},"tempo":9315,"posto":"A2-posto","capturado":4}
+treino extra: [] derrotas: 3 curas: 8
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de mata-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: 2× cha-cidreira, 1× cuia · sobrou $89
+== checkpoint mata-pre-lider-1: ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"] $89
+  ginásio 1, tentativa 1: equipe ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"]
+  [batalha] g01-1 → vitoria · equipe 1:10,10:3,13:2,45:4 · A2-ginasio · $369
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] g01-2 → vitoria · equipe 1:10,10:3,13:2,45:4 · A2-ginasio · $389
+  [batalha] g01-3 → vitoria · equipe 1:10,10:3,13:2,45:5 · A2-ginasio · $749
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] g01-4 → vitoria · equipe 1:11,10:3,13:2,45:5 · A2-ginasio · $549
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] lider-01 → vitoria · equipe 1:11,10:3,13:2,45:5 · A2-ginasio · $1449
+  INSÍGNIA 1 na tentativa 1
+  [ginásio] posição (13,5), esperado (13,9) — 
+FALHA Error: desvio |     at seq (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:39:191) |     at async ginasio (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:69:55) |     at async Object.fn (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:113:5) {"pronto":true,"oc":false,"mov":false,"zona":"A2-ginasio","x":13,"y":5,"dir":"s","modo":"pe","telas":1,"topo":"mundo tela-mundo","ocupada":false,"nres":5} ["{JOGADOR} recebeu a Insígnia Pena!","{JOGADOR} recebeu PT31 Rasante!","Esse pergaminho ensina o Rasante: um voo baixo e certeiro, que quase nunca erra.\fAgora escute. O Seu Aroeira, aqui da vila, anda atrás de alguém de confiança para uma tarefa. Dizem que ele guarda um Amuleto que faz as criaturas farejarem coisas escondidas.\fDepois siga pelos Campos de Restinga e atravesse a Mata dos Sabiás. No Bosque Alto, a Lia Teia espera os desafiantes no alto das copas.\fAh, para descer do píer não tem prancha: deixe a corrente da direita levar você e pule na rajada depois do segundo mastro. O mar devolve todo mundo na entrada!"]
+resumo: {"zona":"A2-ginasio","x":13,"y":5,"dinheiro":1449,"insignias":[1],"amuletos":[],"equipe":[{"e":1,"nome":"Tamanduí","nv":11,"vida":2,"max":35,"st":null,"golpes":["arranhao 32","cara-feia 30","chicote-de-cipo 22","sorver-seiva 20"]},{"e":10,"nome":"Pipirim","nv":3,"vida":16,"max":16,"st":null,"golpes":["bicada 35","berro 40"]},{"e":13,"nome":"Cotiazinha","nv":2,"vida":14,"max":14,"st":null,"golpes":["encontrao 35","cara-feia 30"]},{"e":45,"nome":"Quero-querinho","nv":5,"vida":20,"max":20,"st":null,"golpes":["bicada 35","berro 40","jogar-areia 15"]}],"mochila":{"radio-cipo":1,"diario-de-campo":1,"cuia":4,"pt-31":1},"tempo":8697,"posto":"A2-posto","capturado":4}
+treino extra: [] derrotas: 3 curas: 8
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de mata-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: 2× cha-cidreira, 1× cuia · sobrou $89
+== checkpoint mata-pre-lider-1: ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"] $89
+  ginásio 1, tentativa 1: equipe ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"]
+  [batalha] g01-1 → vitoria · equipe 1:10,10:3,13:2,45:4 · A2-ginasio · $369
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] g01-2 → vitoria · equipe 1:10,10:3,13:2,45:4 · A2-ginasio · $389
+  [batalha] g01-3 → vitoria · equipe 1:10,10:3,13:2,45:5 · A2-ginasio · $749
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] g01-4 → vitoria · equipe 1:11,10:3,13:2,45:5 · A2-ginasio · $549
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] lider-01 → vitoria · equipe 1:11,10:3,13:2,45:5 · A2-ginasio · $1449
+  INSÍGNIA 1 na tentativa 1
+  (os cata-ventos voltaram depois da batalha: vira a alavanca de novo)
+  [ginásio] posição (13,5), esperado (13,9) — 
+FALHA Error: desvio |     at seq (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:39:191) |     at async Object.saida (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:48:292) |     at async ginasio (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:69:90) {"pronto":true,"oc":false,"mov":false,"zona":"A2-ginasio","x":13,"y":5,"dir":"s","modo":"pe","telas":1,"topo":"mundo tela-mundo","ocupada":false,"nres":5} ["Esse pergaminho ensina o Rasante: um voo baixo e certeiro, que quase nunca erra.\fAgora escute. O Seu Aroeira, aqui da vila, anda atrás de alguém de confiança para uma tarefa. Dizem que ele guarda um Amuleto que faz as criaturas farejarem coisas escondidas.\fDepois siga pelos Campos de Restinga e atravesse a Mata dos Sabiás. No Bosque Alto, a Lia Teia espera os desafiantes no alto das copas.\fAh, para descer do píer não tem prancha: deixe a corrente da direita levar você e pule na rajada depois do segundo mastro. O mar devolve todo mundo na entrada!","Os cata-ventos das pranchas do norte viraram!","A prancha da direita voltou a soprar para o norte, e a da esquerda para o sul."]
+resumo: {"zona":"A2-ginasio","x":13,"y":5,"dinheiro":1449,"insignias":[1],"amuletos":[],"equipe":[{"e":1,"nome":"Tamanduí","nv":11,"vida":2,"max":35,"st":null,"golpes":["arranhao 32","cara-feia 30","chicote-de-cipo 22","sorver-seiva 20"]},{"e":10,"nome":"Pipirim","nv":3,"vida":16,"max":16,"st":null,"golpes":["bicada 35","berro 40"]},{"e":13,"nome":"Cotiazinha","nv":2,"vida":14,"max":14,"st":null,"golpes":["encontrao 35","cara-feia 30"]},{"e":45,"nome":"Quero-querinho","nv":5,"vida":20,"max":20,"st":null,"golpes":["bicada 35","berro 40","jogar-areia 15"]}],"mochila":{"radio-cipo":1,"diario-de-campo":1,"cuia":4,"pt-31":1},"tempo":8698,"posto":"A2-posto","capturado":4}
+treino extra: [] derrotas: 3 curas: 8
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de mata-passo-3
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (0 s)
+  compras em A2-venda: 2× cha-cidreira, 1× cuia · sobrou $89
+== checkpoint mata-pre-lider-1: ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"] $89
+  ginásio 1, tentativa 1: equipe ["Tamanduí 9","Pipirim 3","Cotiazinha 2","Quero-querinho 4"]
+  [batalha] g01-1 → vitoria · equipe 1:10,10:3,13:2,45:4 · A2-ginasio · $369
+  [batalha] g01-2 → vitoria · equipe 1:10,10:3,13:2,45:4 · A2-ginasio · $689
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] g01-3 → vitoria · equipe 1:11,10:3,13:2,45:4 · A2-ginasio · $449
+  [batalha] g01-4 → vitoria · equipe 1:11,10:3,13:2,45:4 · A2-ginasio · $849
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] lider-01 → vitoria · equipe 1:12,10:3,13:2,45:4 · A2-ginasio · $1449
+  INSÍGNIA 1 na tentativa 1
+  saiu do ginásio 1 pela rota de saída
+== checkpoint mata-passo-4: ["Tamanduí 12","Pipirim 3","Cotiazinha 2","Quero-querinho 4"] $1449
+
+>> etapa 5: Faro, Campos de Restinga e Mata dos Sabiás até Bosque Alto  (171 s)
+  [batalha] A-R2-1 → vitoria · equipe 1:12,10:3,13:2,45:4 · A-R2 · $1665
+  [batalha] selvagem 20:10 → captura · equipe 1:12,10:3,13:2,45:4,20:10 · A-R2 · $1665
+  caça em A-R2: 2 batalhas, equipe ["Tamanduí 12","Pipirim 3","Cotiazinha 2","Quero-querinho 4","Gambazinho 10"]
+  [batalha] A-R2-2 → vitoria · equipe 1:12,10:3,13:2,45:4,20:10 · A-R2 · $1809
+FALHA Error: resolver: tempo esgotado {"pronto":true,"oc":true,"mov":false,"zona":"A-R2","x":7,"y":21,"dir":"o","modo":"pe","telas":2,"topo":"tela batalha","ocupada":false,"nres":8,"bat":{"fase":"oferta","terminou":false,"menu":false,"golpes":false,"focoGolpe":-1,"equipe":false,"focoEquipe":-1,"nEquipe":0,"mochila":false,"aba":-1,"esquecer":false,"lista":true,"pend":1}} |     at t.resolver (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:148:11) |     at async t.irAte (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:160:17) |     at async t.limpar (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:229:17) {"pronto":true,"oc":true,"mov":false,"zona":"A-R2","x":7,"y":21,"dir":"o","modo":"pe","telas":2,"topo":"tela batalha","ocupada":false,"nres":8,"bat":{"fase":"oferta","terminou":false,"menu":false,"golpes":false,"focoGolpe":-1,"equipe":false,"focoEquipe":-1,"nEquipe":0,"mochila":false,"aba":-1,"esquecer":false,"lista":true,"pend":1}} ["Meu apelido é por causa do meu Tatuzim. Ele se enrola e eu também!","{JOGADOR} achou Fumaça de Andiroba!","Sem onda hoje, parceiro. Bora batalhar para não perder o costume."]
+resumo: {"zona":"A-R2","x":7,"y":21,"dinheiro":1809,"insignias":[1],"amuletos":[],"equipe":[{"e":1,"nome":"Tamanduí","nv":13,"vida":10,"max":40,"st":null,"golpes":["arranhao 25","cara-feia 30","chicote-de-cipo 21","sorver-seiva 20"]},{"e":10,"nome":"Pipirim","nv":3,"vida":16,"max":16,"st":null,"golpes":["bicada 35","berro 40"]},{"e":13,"nome":"Cotiazinha","nv":2,"vida":14,"max":14,"st":null,"golpes":["encontrao 35","cara-feia 30"]},{"e":45,"nome":"Quero-querinho","nv":4,"vida":18,"max":18,"st":null,"golpes":["bicada 35","berro 40"]},{"e":20,"nome":"Gambazinho","nv":10,"vida":15,"max":31,"st":null,"golpes":["arranhao 35","fumaca-fedida 19","cara-feia 29","cuspe-acido 25"]}],"mochila":{"radio-cipo":1,"diario-de-campo":1,"cuia":3,"pt-31":1,"fumaca-andiroba":1},"tempo":13891,"posto":"A2-posto","capturado":5}
+treino extra: [] derrotas: 3 curas: 9
+perguntas: ["Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de mata-passo-4
+
+>> etapa 5: Faro, Campos de Restinga e Mata dos Sabiás até Bosque Alto  (0 s)
+  [batalha] A-R2-1 → vitoria · equipe 1:12,10:3,13:2,45:4 · A-R2 · $1665
+  [batalha] A-R2-2 → vitoria · equipe 1:12,10:3,13:2,45:6 · A-R2 · $1809
+  [batalha] selvagem 20:10 → captura · equipe 1:12,10:3,13:2,45:6,20:10 · A-R2 · $1809
+  caça em A-R2: 3 batalhas, equipe ["Tamanduí 12","Pipirim 3","Cotiazinha 2","Quero-querinho 6","Gambazinho 10"]

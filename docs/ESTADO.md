@@ -99,3 +99,6 @@ Depois: zonas B1/B2 (+níveis novos do mapa B), ginásios 9–16 (9 Terra tem pr
 - Zonas B1 (a03c8309c36a8092b): mapa B na ordem nova (B1 sem ginásio e com nome novo; níveis 44+; diário em docs/ZONAS-B1.md).
 - Estimativa dada ao usuário: parte 1 (Liga + testes) 1–2 sessões; mapa B 3–4 sessões.
 - Nome da B1 decidido pelo usuário: **Vila Cascavel** (cidade de chegada do trem, sem ginásio).
+- ZONAS B1 CONCLUÍDAS (diário docs/ZONAS-B1.md): Vila Cascavel (sem ginásio, Salão da Raizeira), B-R1, B-CE, B-PA, B2, B9, B-R2, B3 + Mina, B-CH, B-CV; 56 treinadores, 22 eventos, 10 missões; níveis 44–51; caminho trem → Arraial Brasa JOGADO (equipe nv 70). Faltam B2-ginasio/B3-ginasio(renumerar)/B4-ginasio (ginásios 9–11). Verificador B1 entrou no `npm run check`.
+- Coordenador: mapa-múndi com a numeração nova dos ginásios + A-R7, A10, A-LG; estojo de insígnias na ordem nova (Dona Buriti em A10); spec 4.2 com Vila Cascavel.
+- Erro atual do check: Garcinha nv 6 no líder 1 (ajuste em andamento do QA 1).

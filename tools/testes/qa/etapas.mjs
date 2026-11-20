@@ -21,18 +21,19 @@ async function comecar(t) {
 }
 
 /** sequência literal dentro de um ginásio; lança 'derrota' se a zona mudar (voltou ao Posto) */
-async function seq(t, zona, passos) {
+async function seq(t, zona, passos, semCura = false) {
   for (const p of passos) {
     const s = await t.resolver();
     if (s.zona !== zona) throw new Error('derrota');
     // entre um treinador e outro, quem está machucado sai para curar no Posto (não conta como derrota)
-    if (p[0] === 'ir') await t.remedios();
+    // (remédio fora de batalha só com sobra: os dois últimos ficam guardados para o líder)
+    if (p[0] === 'ir' && !semCura) await t.remedios(2);
     // quem está com a mais forte caída ou abaixo da metade (e sem remédio) sai do ginásio, cura no Posto e volta.
     // ATALHO DECLARADO: a ida e volta ao Posto da cidade é modelada como cura direta (o caminho de saída depende do
     // quebra-cabeça de cada ginásio); cada uma é contada em t.idasAoPosto.
     // (o líder é NPC de script e não entra em __qa.treinadores: a regra vale até a insígnia; antes do líder — último
     // passo da rota — a exigência sobe: ninguém caído e média de vida ≥ 70%, como quem se prepara para o chefe)
-    if (p[0] !== 'em') { const h = await t.saude(), chefe = p === passos[passos.length - 1]; if (h.liderCaido || h.lider < 0.5 || (chefe && (h.caidos > 0 || h.frac < 0.7 || h.lider < 0.8))) { { await t.ev(async () => { const { jogo } = await import('/src/core/estado.ts'); const { curarCriatura } = await import('/src/battle/criatura.ts'); for (const c of jogo.save.equipe) curarCriatura(c); }); (t.idasAoPosto ??= []).push(zona); t.log('  ida ao Posto no meio do ginásio (cura; atalho declarado)'); } } }
+    if (p[0] !== 'em' && !semCura) { const h = await t.saude(), chefe = p === passos[passos.length - 1]; if (h.liderCaido || h.lider < 0.5 || (chefe && (h.caidos > 0 || h.frac < 0.7 || h.lider < 0.8))) { { await t.ev(async () => { const { jogo } = await import('/src/core/estado.ts'); const { curarCriatura } = await import('/src/battle/criatura.ts'); for (const c of jogo.save.equipe) curarCriatura(c); const s = jogo.save, j = s.jogador; while ((s.mochila['cha-cidreira'] ?? 0) < 2 && j.dinheiro >= 300) { j.dinheiro -= 300; s.mochila['cha-cidreira'] = (s.mochila['cha-cidreira'] ?? 0) + 1; } }); (t.idasAoPosto ??= []).push(zona); t.log('  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)'); } } }
     if (p[0] === 'ir') await t.ir(p[1]);
     else if (p[0] === 'agir') await t.agir(p[1]);
     else if (p[0] === 'em') { if (s.x !== p[1] || s.y !== p[2]) { t.log(`  [ginásio] posição (${s.x},${s.y}), esperado (${p[1]},${p[2]}) — ${p[3] ?? ''}`); await t.foto('gin-desvio'); throw new Error('desvio'); } }
@@ -42,7 +43,9 @@ async function seq(t, zona, passos) {
 const R = (txt) => txt.trim().split(/\s+/).map((p) => { if (p.startsWith('@')) { const [x, y] = p.slice(1).split(',').map(Number); return ['em', x, y]; } if (p.startsWith('!')) return ['agir', p[1]]; return ['ir', p]; });
 
 const GINASIOS = {
-  1: { cidade: 'A2', zona: 'A2-ginasio', rota: R('nnn @8,11 ooo @5,11 n @5,10 noo @3,9 llll s @11,10 n @11,9 ll n @13,5 n @13,4 l !n os s @13,9 oo s @11,10 s oooooo @5,11 n noo n @3,5 n @3,4 l l @7,4 nnl !n') },
+  // saída depois do líder: o deque dele só tem corrente para o leste ((12,5) é um cata-vento); a prancha direita (já virada) desce e a rajada depois
+  // do 2º mastro joga no mar, que devolve o jogador à entrada — é a única volta (não há caminho a pé)
+  1: { cidade: 'A2', zona: 'A2-ginasio', saida: async (t) => { await seq(t, 'A2-ginasio', R('@8,2 ss ll @12,4 l s @13,5 s'), true); if ((await t.snap()).y === 5) { t.log('  (a prancha direita sopra para o norte: vira a alavanca de novo)'); await seq(t, 'A2-ginasio', R('nl !n os s'), true); } await seq(t, 'A2-ginasio', R('@13,9 s @8,16'), true); }, rota: R('nnn @8,11 ooo @5,11 n @5,10 noo @3,9 llll s @11,10 n @11,9 ll n @13,5 n @13,4 l !n os s @13,9 oo s @11,10 s oooooo @5,11 n noo n @3,5 n @3,4 l l @7,4 nnl !n') },
   // 2: pontes na ordem 1→6; a 7 (atalho) derruba de volta à entrada, e é por ela que se volta ao centro depois da 3
   2: { cidade: 'A3', zona: 'A3-ginasio', rota: R('nnnnnn @8,11 lll l @12,10 nll nnnn @14,5 lnnno oo @8,16 nnnnnn ooo o @4,10 noo nnnn @2,5 lnnn lll @6,2 ll !n') },
   // 3: volantes e balsas (roteiro de tools/testes/ginasios/g3.mjs, com a ida e volta ao volante 2)
@@ -61,7 +64,11 @@ async function ginasio(t, n, op) {
     let saiu = false;
     try { await seq(t, g.zona, op?.rota ?? g.rota); } catch (e) { if (e.message === 'curar') saiu = true; else if (e.message !== 'derrota') throw e; }
     if (saiu) { t.log('  saiu do ginásio para curar'); (t.idasAoPosto ??= []).push(n); await t.curar(); tent--; if ((t.voltas = (t.voltas ?? 0) + 1) > 12) throw new Error('ginásio: voltas demais ao Posto'); continue; }
-    if ((await t.resumo()).insignias.includes(n)) { t.log(`  INSÍGNIA ${n} na tentativa ${tent}`); (t.tentativasGinasio ??= {})[n] = tent; return; }
+    if ((await t.resumo()).insignias.includes(n)) {
+      t.log(`  INSÍGNIA ${n} na tentativa ${tent}`); (t.tentativasGinasio ??= {})[n] = tent;
+      if (g.saida) { await t.foto(`gin${n}-vitoria`); if (typeof g.saida === 'function') await g.saida(t); else await seq(t, g.zona, g.saida, true); t.log(`  saiu do ginásio ${n} pela rota de saída`); }
+      return;
+    }
     t.log(`  perdeu no ginásio ${n} (tentativa ${tent})`);
     if (op?.treino) await t.treinar(op.treino, 1, `depois de perder no ginásio ${n}`);
   }

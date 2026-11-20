@@ -45,7 +45,9 @@ const zona: ZonaDef = {
   npcs: [
     { id: 'g01-1', sprite: 'cl-crianca-m', x: 2, y: 11, dir: 'l', treinador: 'g01-1', visao: 3 },
     { id: 'g01-2', sprite: 'cl-pescador', x: 10, y: 9, dir: 'l', treinador: 'g01-2', visao: 3 },
-    { id: 'g01-3', sprite: 'cl-observadora', x: 12, y: 4, dir: 'l', treinador: 'g01-3', visao: 2 },
+    // g01-3 fica no canto sudeste do deque: em (12,4) ela era o "deque ocupado" onde a corrente leste do deque do líder
+    // parava o jogador — depois da insígnia ele ficava preso no tile de vento (11,4), sem caminho para lugar nenhum
+    { id: 'g01-3', sprite: 'cl-observadora', x: 14, y: 5, dir: 'o', treinador: 'g01-3', visao: 2 },
     { id: 'g01-4', sprite: 'cl-surfista', x: 2, y: 4, dir: 'l', treinador: 'g01-4', visao: 2 },
     { id: 'lider', sprite: 'lider-01', x: 8, y: 1, dir: 's', script: 'ginasio-01-lider' },
   ],

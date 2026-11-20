@@ -72,6 +72,11 @@ const decidir0 = () => {
   }
   // selvagem que não interessa, com a criatura em campo machucada: um jogador prudente foge
   if (ele && ped.tipo === 'selvagem' && b.podeFugir() && eu.vida / atributos(eu).vida < 0.4 && ele.nivel >= eu.nivel - 3) return { tipo: 'fuga' };
+  // contra treinador, o jogador esperto bebe o remédio quando a criatura fica abaixo da metade (até 3 por criatura)
+  if (ele && ped.tipo === 'treinador' && eu.vida > 0 && eu.vida < atributos(eu).vida * 0.5) {
+    const n = Q.mem.curas.get(eu.uid) ?? 0, rem = ['garrafada', 'cha-cidreira'].find((id) => (s.mochila[id] ?? 0) > 0);
+    if (rem && n < 3) { Q.mem.curas.set(eu.uid, n + 1); return comoItem(rem, b.lados[0].ativos[p.pos]); }
+  }
   const a = pilotoEsperto.acao(b, p, Q.mem);
   if (a.tipo === 'item') return comoItem(a.item, a.alvo);
   return a;

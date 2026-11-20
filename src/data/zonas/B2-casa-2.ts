@@ -1,0 +1,14 @@
+import { casa } from './_b1-lib';
+
+/** Segunda palafita (porta em (15, 25) na cidade): a família do berranteiro. */
+export default casa({
+  id: 'B2-casa-2', nome: 'Palafita do Berranteiro', tema: 'palafita', musica: 'cidade-catira', arena: 'pantanal', passo: 9, volta: [15, 26],
+  canto: 'oratorio', parede: 'quadro',
+  estante: ['Berrantes de chifre de todos os tamanhos. O menor toca uma nota tão aguda que só cachorro e Ariranhão escutam.'],
+  bau: ['Um laço de couro trançado, uma sela velha e o retrato de uma comitiva atravessando a cheia com água no peito dos bois.'],
+  cantoTexto: ['O oratório tem uma vela, um raminho de cambará e uma ferradura pendurada de cabeça para cima, "para segurar a sorte".'],
+  moradores: [
+    { id: 'b2-berranteiro', sprite: 'npc-homem-4', nome: 'Seu Aboio', dir: 's', fala: ['O berrante chama a boiada de longe. Na cheia, ele chama também os peões que se perderam.', 'A Zefa aprendeu a tocar comigo. Hoje toca melhor. Não conte que eu disse.'] },
+    { id: 'b2-berranteira', sprite: 'npc-mulher-1', nome: 'Dona Laguna', dir: 'o', fala: ['O Cartel Ferrugem anda no ninhal, no sul. Leva ovo de tuiuiú para vender em gaiola de ouro na cidade grande.', 'Ovo de tuiuiú vale mais que boi. Bicho vivo vale mais que tudo, mas eles não sabem fazer essa conta.'] },
+  ],
+});

@@ -1,9 +1,9 @@
 /**
  * Simula uma sequência de lutas a partir de um checkpoint REAL do QA 2 (equipe e mochila do save), no motor puro, com o
- * piloto esperto. Uso: npx tsx tools/testes/qa2/sim-save.mts <save> <treinador,treinador,...> [n=300] [cuidar|semcuidar] [curado|como-esta]
+ * piloto esperto (INICIAL=mata|brasa troca o inicial de Rio do save). Uso: npx tsx tools/testes/qa2/sim-save.mts <save> <treinador,treinador,...> [n=300] [cuidar|semcuidar] [curado|como-esta]
  */
 import { readFileSync } from 'node:fs';
-import { carregarDados, lutarContra, inimigosDe, itensDoTreinador, cuidarEntreLutas, pilotoEsperto, rng } from '../../equilibrio-referencia';
+import { carregarDados, lutarContra, inimigosDe, itensDoTreinador, cuidarEntreLutas, pilotoEsperto, rng, instanciar, formaNoNivel } from '../../equilibrio-referencia';
 import { atributos, ganharExp, expParaNivel, especie } from '../../../src/battle/criatura';
 const [nome, ids, nArg, cuidarArg, estadoArg] = process.argv.slice(2);
 const n = Number(nArg ?? 300), cuida = cuidarArg !== 'semcuidar', curado = estadoArg !== 'como-esta';
@@ -16,6 +16,9 @@ for (let i = 0; i < n; i++) {
   const eq = JSON.parse(JSON.stringify(sv.equipe.filter((c: { ovo?: boolean }) => !c.ovo)));
   // NIVEL_MAIS=k: experimento de sensibilidade (a equipe k níveis acima do save)
   for (let k = 0; k < Number(process.env.NIVEL_MAIS ?? 0); k++) for (const c of eq) ganharExp(c, expParaNivel(especie(c.especie).crescimento, c.nivel + 1) - c.exp);
+  // INICIAL=mata|brasa: troca o inicial de Rio do save pela forma da outra linha no mesmo nível (como sim-rival5.mts)
+  const ini = process.env.INICIAL, k0 = eq.findIndex((c: { especie: number }) => [7, 8, 9].includes(c.especie));
+  if (ini && ini !== 'rio' && k0 >= 0) { const [novo] = instanciar([{ e: formaNoNivel(ini === 'mata' ? 1 : 4, eq[k0].nivel), nv: eq[k0].nivel }]); eq[k0] = novo; }
   if (curado) for (const c of eq) { c.vida = atributos(c).vida; c.status = null; for (const g of c.golpes) g.pg = g.pgMax; }
   if (process.env.ORDEM === 'rodizio') { eq.sort((a: { nivel: number }, b: { nivel: number }) => b.nivel - a.nivel); const [x] = eq.splice(2, 1); eq.unshift(x); } else if (process.env.ORDEM !== 'save') eq.sort((a: { nivel: number }, b: { nivel: number }) => b.nivel - a.nivel);
   const itens: Record<string, number> = {}; for (const [k, v] of Object.entries(sv.mochila)) if (/garrafada|elixir|cha-|pomada|garapa|mel-puro|unguento/.test(k)) itens[k] = v as number;

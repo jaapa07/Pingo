@@ -12,7 +12,8 @@ const PAGINAS = [
   ['ABCDEFGHIJKLM', 'NOPQRSTUVWXYZ', 'ÁÀÂÃÉÊÍÓÔÕÚÜÇ', "0123456789-'."],
   ['abcdefghijklm', 'nopqrstuvwxyz', 'áàâãéêíóôõúüç', "0123456789-'."],
 ];
-const COLS = 13, LW = 20, LH = 16;
+// cada tecla ocupa a célula inteira da grade (alvo de toque de ~23×20 px no iPhone em pé; antes 21×18, com vão entre elas)
+const COLS = 13, LW = 20, LH = 17;
 const COMANDOS = ['abc', 'Espaço', 'Apagar', 'Fim'];
 
 export interface ArgsNome { titulo: string; max: number; padrao?: string }
@@ -35,9 +36,9 @@ export function criarTelaNome(args: ArgsNome): Tela {
   const teclas: HTMLElement[][] = [[], [], [], [], []];
   const letrasEl: HTMLElement[][] = [[], [], [], []];
   for (let j = 0; j < 4; j++) for (let i = 0; i < COLS; i++) {
-    const c = document.createElement('div'); c.className = 'tecla'; c.style.width = LW - 2 + 'px'; c.style.height = LH - 1 + 'px';
+    const c = document.createElement('div'); c.className = 'tecla'; c.style.width = LW + 'px'; c.style.height = LH + 'px';
     const t = texto('', { tamanho: 12, cor: 'tinta' }); c.append(t); letrasEl[j].push(t);
-    em(c, 17 + i * LW, 13 + j * LH); quadro.append(c); teclas[j].push(c);
+    em(c, 16 + i * LW, 12 + j * LH); quadro.append(c); teclas[j].push(c);
     tocavel(c, () => { mover(j, i, true); apertar(); }, () => mover(j, i, true));
   }
   const rotCmd: HTMLElement[] = [];
@@ -51,7 +52,7 @@ export function criarTelaNome(args: ArgsNome): Tela {
   quadro.append(em(dica, 16, 107));
 
   function pintarLetras() {
-    for (let j = 0; j < 4; j++) for (let i = 0; i < COLS; i++) { const t = letrasEl[j][i], ch = PAGINAS[pagina][j][i]; escrever(t, ch); em(t, Math.floor((LW - 2 - parseInt(t.style.width)) / 2), 1); }
+    for (let j = 0; j < 4; j++) for (let i = 0; i < COLS; i++) { const t = letrasEl[j][i], ch = PAGINAS[pagina][j][i]; escrever(t, ch); em(t, Math.floor((LW - parseInt(t.style.width)) / 2), 2); }
     escrever(rotCmd[0], pagina === 0 ? 'abc' : 'ABC'); rotCmd[0].style.left = Math.floor((60 - parseInt(rotCmd[0].style.width)) / 2) + 'px';
   }
   function pintarNome() {

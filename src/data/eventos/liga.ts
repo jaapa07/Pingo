@@ -1,7 +1,7 @@
 /**
  * LIGA DOS GUARDIÕES (Platô da Liga, A-LG) e Vila Buriti — eventos do time A1 (spec 4.5 e 5; docs/HISTORIA.md).
  * Sequência: `liga-entrada` (porta sem volta) → `liga-1`…`liga-4` (Mestres) → `liga-5` (Campeão) → `liga-vitoria`
- * (Hall da Fama, `liga-vencida`, Passe do Trem, Bilhete do Saveiro, pedra de evolução, aviso do Rádio Cipó) → `rival-5`.
+ * (Hall da Fama, que cura a equipe, `liga-vencida`, Passe do Trem, Bilhete do Saveiro, pedra de evolução, aviso do Rádio Cipó) → `rival-5`.
  * Derrota em qualquer sala: `liga-derrota` devolve ao terreiro e zera `liga-1`…`liga-4` (a Liga recomeça do 1º Mestre).
  * Comandos extras: ['hallDaFama'] / ['hallFim'] — painel com a equipe campeã no alto da tela.
  */
@@ -21,21 +21,22 @@ registrarComando('hallDaFama', async () => {
   if (!telas.raiz) return;
   const el = document.createElement('div');
   el.className = 'hall-da-fama';
-  el.style.cssText = 'position:absolute;left:10px;top:6px;width:300px;height:104px;z-index:60;background:#141026;box-shadow:0 0 0 2px #f2c230,0 0 0 4px #141026;overflow:hidden';
+  // 3 linhas × 2 colunas: cada vaga tem 155 px, que cabem o nome inteiro de qualquer espécie (o maior tem 122 px)
+  el.style.cssText = 'position:absolute;left:5px;top:6px;width:310px;height:106px;z-index:60;background:#141026;box-shadow:0 0 0 2px #f2c230,0 0 0 4px #141026;overflow:hidden';
   const pos = (e: HTMLElement, x: number, y: number) => { e.style.position = 'absolute'; e.style.left = x + 'px'; e.style.top = y + 'px'; return e; };
-  el.append(pos(texto('HALL DA FAMA', { tamanho: 12, cor: 'creme', largura: 300, alinhar: 'centro' }), 0, 6));
-  el.append(pos(texto(`Campeão da Costa do Sol: ${jogo.save.jogador.nome}`, { cor: 'creme', largura: 300, alinhar: 'centro' }), 0, 22));
-  const equipe = jogo.save.equipe.filter((c) => !c.ovo).slice(0, 6), passo = 48, x0 = 150 - ((equipe.length - 1) * passo) / 2;
+  el.append(pos(texto('HALL DA FAMA', { tamanho: 12, cor: 'creme', largura: 310, alinhar: 'centro' }), 0, 4));
+  el.append(pos(texto(`Campeão da Costa do Sol: ${jogo.save.jogador.nome}`, { cor: 'creme', largura: 310, alinhar: 'centro' }), 0, 19));
+  const equipe = jogo.save.equipe.filter((c) => !c.ovo).slice(0, 6);
   const sprites = equipe.map((c, i) => {
     const esp = ESPECIES.find((e) => e.num === c.especie);
-    const cx = Math.round(x0 + i * passo);
+    const x0 = 6 + (i % 2) * 155, y0 = 31 + Math.floor(i / 2) * 24, cx = x0 + 16;
     const pedestal = document.createElement('div');
-    pedestal.style.cssText = `position:absolute;left:${cx - 16}px;top:74px;width:32px;height:6px;background:#f2c230;box-shadow:0 2px 0 #a0522d`;
+    pedestal.style.cssText = `position:absolute;left:${cx - 12}px;top:${y0 + 22}px;width:24px;height:3px;background:#f2c230;box-shadow:0 1px 0 #a0522d`;
     el.append(pedestal);
-    el.append(pos(texto(`${(c.apelido ?? esp?.nome ?? '').slice(0, 7)}`, { cor: 'creme', largura: 46, alinhar: 'centro' }), cx - 23, 84));
-    el.append(pos(texto(`Nv${c.nivel}`, { cor: 'creme', largura: 46, alinhar: 'centro' }), cx - 23, 93));
+    el.append(pos(texto(c.apelido ?? esp?.nome ?? '', { cor: 'creme' }), x0 + 34, y0 + 3));
+    el.append(pos(texto(`Nv ${c.nivel}`, { cor: 'creme' }), x0 + 34, y0 + 13));
     const s = new Sprite(esp?.id ?? '', 'mapa', el);
-    s.x = cx; s.y = 72; s.tocar(s.tem('idle-s') ? 'idle-s' : 'andar-s');
+    s.x = cx; s.y = y0 + 22; s.tocar(s.tem('idle-s') ? 'idle-s' : 'andar-s');
     return s;
   });
   telas.raiz.append(el);
@@ -150,6 +151,9 @@ export const EVENTOS_LIGA: EventoDef[] = [
       f({ nome: 'Cacique Aracê' }, 'Este é o Hall da Fama. Hoje o Marco ganha um nome novo: {JOGADOR}, Campeão da Costa do Sol!\fE ao lado do seu nome ficam os delas — porque ninguém sobe este Platô sozinho.'),
       ['tela', 'creditos', { curto: true, titulo: 'Hall da Fama' }],
       ['flag', 'liga-vencida'],
+      // o Hall cuida da equipe campeã: a Tainá desafia logo na saída e a luta tem de ser de igual para igual (docs/QA-TRECHO-2.md)
+      ['curar'],
+      f(null, 'Os Guardiões do Hall cuidaram da sua equipe: todas de pé e descansadas.'),
       ...zerar,
       f({ nome: 'Cacique Aracê' }, 'O título abre o que estava fechado. A linha da serra e o rio grande são perigosos demais para quem não provou o que você provou hoje.'),
       ['dar', 'passe-trem'],

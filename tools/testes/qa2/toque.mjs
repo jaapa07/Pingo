@@ -1,6 +1,6 @@
 // QA 2 — passada por TOQUE no iPhone emulado (relógio real): menu de pausa, uma batalha da Liga inteira pelos botões
 // de toque (golpe, item da mochila, troca), salvar pelo menu e "Continuar" na tela de título.
-// Uso: run.sh toque.mjs <seg> [aparelho="iPhone 13"] [save=plato]
+// Uso: run.sh toque.mjs <seg> [aparelho="iPhone 13"] [save=plato]   (PULAR_LUTA=1: só menus, salvar e continuar)
 import { abrir, lerSave, pw, BASE } from './lib.mjs';
 const aparelho = process.argv[2] ?? 'iPhone 13', nome = aparelho.replace(/\s+/g, '-').toLowerCase();
 const t = await abrir(lerSave(process.argv[3] ?? 'plato'), { contexto: { ...pw.devices[aparelho] }, rapido: false, anim: true });
@@ -19,9 +19,15 @@ const tela = () => page.evaluate(() => {
   const P = window.__pingo, topo = P.telas.topo?.el.className ?? '', $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
   const foco = (raiz) => { const ls = [...(raiz?.querySelectorAll('.lista-item') ?? [])]; const i = ls.findIndex((l) => l.classList.contains('foco')); return { i, n: ls.length, txt: ls[i]?.textContent ?? '', todos: ls.map((l) => l.textContent) }; };
   const bt = $('.tela.batalha');
-  return { topo, menu: /tela-menu/.test(topo) ? foco($('.tela-menu')) : null, lista: foco(document), bt: bt ? { acoes: !!$('.bt-menu'), golpes: !!$('.bt-golpes'), mochila: !!$('.bt-mochila'), equipe: !!$('.bt-equipe'), esquecer: !!$('.bt-esquecer'), lutar: !!$('.bt-lutar')?.classList.contains('foco'), botao: $$('.bt-menu .bt-botao').findIndex((x) => /mol-botao-foco/.test(x.className)), botoes: $$('.bt-menu .bt-botao').map((x) => x.textContent) } : null,
+  return { topo, menu: /tela-menu/.test(topo) ? foco($('.tela-menu')) : null, lista: foco(document.querySelector('.tela.confirmacao') ?? document.querySelector('.tela.dialogo') ?? document), bt: bt ? { acoes: !!$('.bt-menu'), golpes: !!$('.bt-golpes'), mochila: !!$('.bt-mochila'), equipe: !!$('.bt-equipe'), esquecer: !!$('.bt-esquecer'), lutar: !!$('.bt-lutar')?.classList.contains('foco'), botao: $$('.bt-menu .bt-botao').findIndex((x) => /mol-botao-foco/.test(x.className)), botoes: $$('.bt-menu .bt-botao').map((x) => x.textContent) } : null,
     texto: ($('.dialogo') ?? $('.bt-caixa') ?? { textContent: '' }).textContent.slice(0, 80), mochila: { ...P.jogo.save.mochila }, equipe: P.jogo.save.equipe.map((c) => c.vida) };
 });
+// a fonte do jogo é desenhada em glifos (<i> com background-position): o texto NÃO está no DOM. Os menus são navegados
+// pela posição, na ordem de src/ui/telas/menu.ts (Diário, Equipe, Mochila, Rádio, Perfil, Salvar, Opções, Sair) e dos
+// botões da batalha (Mochila, Equipe, Fugir ao lado do LUTAR).
+const ordemMenu = () => page.evaluate(() => { const s = window.__pingo.jogo.save, o = []; if (s.mochila['diario-de-campo'] || s.flags['ovo-entregue'] || s.diario.visto.length) o.push('Diário'); if (s.equipe.length) o.push('Equipe'); o.push('Mochila'); if (s.mochila['radio-cipo']) o.push('Rádio'); o.push('Perfil', 'Salvar', 'Opções', 'Sair'); return o; });
+async function menuIr(rotulo) { const o = await ordemMenu(), alvo = o.indexOf(rotulo); let s; for (let k = 0; k < 12 && (s = await tela()).menu && s.menu.i !== alvo; k++) await tap(s.menu.i < alvo ? 'baixo' : 'cima'); return alvo; }
+const BOTOES_BT = ['Mochila', 'Equipe', 'Fugir'];
 const fora = async (rot) => { // controles de toque não podem cobrir o palco em pé; textos dentro da tela
   const i = await page.evaluate(async () => { const p = window.__pingo.palco; const m = await import('/src/ui/toque.ts'); const r = m.retangulosToque(); const cobre = []; for (const k in r) { const q = r[k]; if (q.left < p.x + p.w && q.left + q.width > p.x && q.top < p.y + p.h && q.top + q.height > p.y) cobre.push(k); if (q.left < 0 || q.top < 0 || q.left + q.width > innerWidth + 0.5 || q.top + q.height > innerHeight + 0.5) cobre.push(k + ' fora da janela'); } return { modo: p.modo, ctrl: p.controles, cobre }; });
   t.ok(i.cobre.length === 0 || i.ctrl === 'sobre', `${rot}: controles de toque fora do palco e dentro da janela`, JSON.stringify(i));
@@ -32,14 +38,15 @@ try {
   await tap('menu', 500); let s = await tela();
   t.ok(/tela-menu/.test(s.topo), 'botão Menu por toque abre o menu de pausa', s.menu?.todos.join(' · ')); await t.foto(`toque-${nome}-2-menu`);
   // equipe: abre e fecha
-  for (let k = 0; k < 8 && !/Equipe/.test((s = await tela()).menu?.txt ?? ''); k++) await tap('baixo');
+  await menuIr('Equipe');
   await tap('a', 600); s = await tela(); t.ok(/tela-equipe/.test(s.topo), 'Equipe pelo toque', s.topo); await t.foto(`toque-${nome}-3-equipe`);
   await tap('b', 500);
-  for (let k = 0; k < 8 && !/Mochila/.test((s = await tela()).menu?.txt ?? ''); k++) await tap('baixo');
+  await menuIr('Mochila');
   await tap('a', 600); s = await tela(); t.ok(/mochila/.test(s.topo), 'Mochila pelo toque', s.topo); await t.foto(`toque-${nome}-4-mochila`);
   await tap('b', 500); await tap('b', 500); s = await tela(); t.ok(/mundo/.test(s.topo), 'B fecha os menus', s.topo);
+  if (process.env.PULAR_LUTA !== '1') {
   // 2. entra na Liga (o piloto anda; a conversa e a luta são por toque)
-  await t.irAte(15, 54); await tap('cima', 400);
+  await t.irAte(15, 53); await tap('cima', 400);
   for (let k = 0; k < 40; k++) { s = await tela(); if (await t.flag('liga-em-curso') && /mundo/.test(s.topo) && !(await t.st()).oc) break; if (/confirmacao|simnao|escolha/.test(s.topo) && s.lista.i > 0) await tap('cima'); else await tap('a', 350); }
   t.ok(await t.flag('liga-em-curso'), 'entrou na Liga respondendo Sim por toque'); await t.foto(`toque-${nome}-5-sala-de-espera`);
   const mare = await page.evaluate(() => window.Q.npc('liga-mare'));
@@ -72,7 +79,7 @@ try {
       if (!m0) m0 = s.mochila;
       const querBotao = !usouItem && turnos >= 1 ? /Mochila|Item/ : !trocou && turnos >= 3 ? /Equipe|Trocar|Criaturas/ : null;
       if (querBotao) {
-        const alvo = s.bt.botoes.findIndex((x) => querBotao.test(x));
+        const alvo = BOTOES_BT.findIndex((x) => querBotao.test(x));
         if (alvo < 0) { console.log('   botões da batalha:', s.bt.botoes.join(' | ')); usouItem = trocou = true; continue; }
         if (s.bt.lutar) { await tap('dir', 250); continue; }
         if (s.bt.botao !== alvo) { await tap(s.bt.botao < alvo ? 'baixo' : 'cima', 250); continue; }
@@ -88,9 +95,12 @@ try {
   t.ok(usouItem, 'item da mochila usado por toque na batalha'); t.ok(trocou, 'troca de criatura por toque na batalha');
   for (let k = 0; k < 30; k++) { s = await tela(); if (/mundo/.test(s.topo) && !(await t.st()).oc) break; await tap('a', 350); }
   await t.foto(`toque-${nome}-11-depois-da-luta`);
+  }
   // 4. salvar pelo menu, por toque
   await tap('menu', 500);
-  for (let k = 0; k < 10 && !/Salvar/.test((s = await tela()).menu?.txt ?? ''); k++) await tap('baixo');
+  // o harness abre o jogo por ?zona= (jogo de teste, slot −1): dá ao save o slot 1 para o menu poder gravar de verdade
+  await page.evaluate(() => { window.__pingo.jogo.slot = 0; });
+  await menuIr('Salvar');
   await tap('a', 700); await t.foto(`toque-${nome}-12-salvar`);
   for (let k = 0; k < 12; k++) { s = await tela(); if (/mundo/.test(s.topo)) break; if (/confirmacao/.test(s.topo) && s.lista.i > 0) await tap('cima'); else await tap(/tela-menu/.test(s.topo) && k > 3 ? 'b' : 'a', 600); }
   const salvo = await page.evaluate(() => Object.keys(localStorage).filter((k) => /pingo/.test(k)).map((k) => `${k}:${localStorage.getItem(k).length}`));

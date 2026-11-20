@@ -1,13 +1,15 @@
 import type { ZonaDef } from '../../core/tipos';
+import { E } from './_b1-lib';
 
 /**
- * B-CE — Cerrado Aberto (savana ao norte da Vereda). Passo 4; volta-se aqui no passo 9 com o Quebra-pedra
- * (cupinzeiros e rochas rachadas = método `rocha`) e com o Escalar (mesa de pedra do nordeste).
- * Um anel de estrada cerca o capinzal central; ao redor: lagoa com ilhota (Remo), clareira do cipó (Facão),
- * grotão do pedregulho (Força) e os poleiros que a observadora de aves quer fotografados.
+ * B-CE — Cerrado Aberto (savana ao norte da Vereda). Passo 9. Um anel de estrada cerca o capinzal central; a saída leste
+ * desce para as passarelas do Pantanal Alagado (caminho por terra até Pantanal Grande). Ao redor: lagoa com ilhota (Remo),
+ * clareira do cipó (Facão), grotão do pedregulho (Força), cupinzeiros e rochas rachadas (Quebra-pedra, método `rocha`) e os
+ * ninhos que a observadora quer fotografados. Visível e fora de alcance: a Mesa de Pedra do nordeste (Escalar, insígnia 10).
+ * Selvagens 44–47 (camada pós-insígnia 11: 50–53); treinadores 44–46.
  */
 const zona: ZonaDef = {
-  id: 'B-CE', nome: 'Cerrado Aberto', mapa: 'B', tipo: 'rota', tileset: 'cerrado', musica: 'rota-dia-B', arena: 'cerrado', passo: 4, clima: 'sol',
+  id: 'B-CE', nome: 'Cerrado Aberto', mapa: 'B', tipo: 'rota', tileset: 'cerrado', musica: 'rota-dia-B', arena: 'cerrado', passo: 9, clima: 'sol',
   mapaChars: [
     'TTTTTTTTTT|TTTTTTTTTT|TTTTTTTTTT|TTTTTTTTTT|TTTTTTTTTT|TTTTTTTTTT',
     'T...,.....|.t........|...;;;;;;;|;;;;;;....|.#########|#######..T',
@@ -21,9 +23,9 @@ const zona: ZonaDef = {
     'T.........|...:::::::|::::::::::|::::::::::|::::::....|..""""...T',
     'T..,......|...:......|..........|..........|.....:....|.""""""..T',
     'T.........|...:..""""|""........|....r.....|.....:....|.""""""..T',
-    'T...r.....|...:."""""|""........|..........|.....:....|..""""...T',
-    'T.........|...:."""""|"".....t..|..........|.....:....|.........T',
-    'T..""""...|...:..""""|..........|...""""...|.....:....|....r....T',
+    'T...r.....|...:."""""|""........|..........|.....:....|..""""....',
+    'T.........|...:."""""|"".....t..|..........|.....:....|..........',
+    'T..""""...|...:..""""|..........|...""""...|.....:....|....r.....',
     'T.""""""..|...:......|..........|..""""""..|.....:....|.........T',
     'T.""""""..|...:......|....r.....|..""""""..|.....:....|..""""...T',
     'T..""""...|...:......|..........|...""""...|.....:....|.""""""..T',
@@ -69,6 +71,9 @@ const zona: ZonaDef = {
   warps: [
     { x: 29, y: 39, para: { zona: 'B-R1', x: 14, y: 1, dir: 's' }, tipo: 'borda' },
     { x: 30, y: 39, para: { zona: 'B-R1', x: 15, y: 1, dir: 's' }, tipo: 'borda' },
+    { x: 59, y: 12, para: { zona: 'B-PA', x: 1, y: 6, dir: 'l' }, tipo: 'borda' },
+    { x: 59, y: 13, para: { zona: 'B-PA', x: 1, y: 7, dir: 'l' }, tipo: 'borda' },
+    { x: 59, y: 14, para: { zona: 'B-PA', x: 1, y: 8, dir: 'l' }, tipo: 'borda' },
   ],
   npcs: [
     { id: 'B-CE-1', sprite: 'cl-escoteira', x: 26, y: 32, dir: 'l', treinador: 'B-CE-1', visao: 4 },
@@ -78,11 +83,11 @@ const zona: ZonaDef = {
     { id: 'B-CE-5', sprite: 'cl-biologa', x: 36, y: 19, dir: 'n', treinador: 'B-CE-5', visao: 2 },
     { id: 'B-CE-6', sprite: 'cl-repentista', x: 51, y: 13, dir: 's', mov: 'olhar', treinador: 'B-CE-6', visao: 3 },
     { id: 'observadora', sprite: 'cl-observadora', x: 33, y: 24, dir: 'o', script: 'b1-observadora' },
-    { id: 'menino-ema', sprite: 'cl-crianca-m', x: 24, y: 9, mov: 'vagar', fala: ['A Ema-Mirim corre mais que o trem!', 'Eu apostei corrida com uma. Ela nem percebeu que era corrida.'] },
-    { id: 'garimpeiro-cupim', sprite: 'cl-garimpeiro', x: 9, y: 13, dir: 'o', fala: ['Tá vendo essas rochas rachadas e os cupinzeiros velhos? Tem bicho morando dentro.', 'Só com o Amuleto Quebra-pedra para abrir. Dizem que a líder de Serra Fumaça, lá na Costa, entrega um.'] },
-    { id: 'mateira-noite', sprite: 'cl-mateira', x: 12, y: 19, dir: 'l', mov: 'olhar', fala: ['De noite o cerrado acende: Vagalumim, Grilão-Elétrico, Bruxaluz…', 'E o Urutauzim finge que é galho. Sacuda as árvores de tronco grosso depois do pôr do sol.'] },
+    { id: 'menino-ema', sprite: 'cl-crianca-m', x: 24, y: 9, mov: 'vagar', fala: ['O Emaçu corre mais que o trem!', 'Eu apostei corrida com um. Ele nem percebeu que era corrida. A leste fica a descida para o Pantanal.'] },
+    { id: 'garimpeiro-cupim', sprite: 'cl-garimpeiro', x: 9, y: 13, dir: 'o', fala: ['Tá vendo essas rochas rachadas e os cupinzeiros velhos? Tem bicho morando dentro.', 'Com o Amuleto Quebra-pedra da Dona Benta Sombra você abre. Lá dentro mora Cupinzeiro-Vivo, Saúva-Rainha e, se der sorte, um Minhocão.'] },
+    { id: 'mateira-noite', sprite: 'cl-mateira', x: 12, y: 19, dir: 'l', mov: 'olhar', fala: ['De noite o cerrado acende: Vagalampo, Grilão-Elétrico, Bruxaluz…', 'E o Urutau-Fantasma finge que é galho. Sacuda as árvores de tronco grosso depois do pôr do sol.'] },
     { id: 'idosa-lagoa', sprite: 'npc-idosa', x: 37, y: 6, dir: 'o', fala: ['Naquela ilhota tem coisa brilhando. Brilha desde que eu era moça.', 'Nunca fui ver. Cada um tem o mistério que merece.'] },
-    { id: 'ema-solta', sprite: 'c:ema-mirim', x: 34, y: 12, mov: 'vagar', fala: ['(A Ema-Mirim encara você, pisca devagar e volta a ciscar.)'] },
+    { id: 'ema-solta', sprite: 'c:emacu', x: 34, y: 12, mov: 'vagar', fala: ['(O Emaçu encara você, pisca devagar e volta a ciscar o capim.)'] },
   ],
   itens: [
     { x: 27, y: 4, item: 'pedra-lunar', flag: 'B-CE-item-ilhota' },
@@ -100,17 +105,22 @@ const zona: ZonaDef = {
   ],
   habitats: [
     {
+      // 6.4 (B-CE): Bem-te-viço, Bruxaluz (N), Formigaço, Vagalumim/Vagalampo (N), Tatuzim, Calanguinho (D), Corujão-Orelha (N),
+      // Jaguatirim (N), Jabutim, Cascavelzim, Catingueirinho (D), Ema-Mirim (D), Seriemim, Grilão-Elétrico (N). No nível 44+
+      // as linhas que já evoluíram aparecem na forma seguinte (Gaviãozão, Saúva-Rainha, Tatucanastra, Calangão, Jaguatiricão,
+      // Jabutipiranga, Cascavelão, Cervo-do-Pantanal, Emaçu, Seriemão).
       metodo: 'grama', taxa: 0.12,
-      todos: [{ e: 11, nv: [19, 22], peso: 12 }, { e: 101, nv: [19, 22], peso: 14 }, { e: 41, nv: [19, 22], peso: 12 }, { e: 99, nv: [19, 22], peso: 12 }, { e: 18, nv: [19, 22], peso: 12 }, { e: 33, nv: [19, 22], peso: 12 }, { e: 91, nv: [20, 23], peso: 10 }, { e: 103, nv: [19, 22], peso: 10 }, { e: 81, nv: [20, 23], peso: 6 }],
-      noite: [{ e: 28, nv: [19, 22], peso: 16 }, { e: 18, nv: [19, 22], peso: 12 }, { e: 33, nv: [19, 22], peso: 12 }, { e: 91, nv: [20, 23], peso: 14 }, { e: 81, nv: [20, 23], peso: 12 }, { e: 17, nv: [20, 23], peso: 8 }, { e: 44, nv: [24, 25], peso: 7 }, { e: 69, nv: [20, 23], peso: 8 }, { e: 142, nv: [24, 26], peso: 8 }, { e: 29, nv: [25, 27], peso: 3 }],
+      dia: [E(12, 45, 47, 8), E(102, 44, 46, 16), E(42, 44, 46, 12), E(100, 45, 47, 6), E(19, 44, 46, 12), E(34, 44, 46, 12), E(92, 44, 46, 12), E(104, 44, 46, 12), E(82, 45, 47, 10)],
+      noite: [E(29, 44, 46, 18), E(17, 44, 46, 10), E(44, 44, 46, 12), E(70, 45, 47, 10), E(142, 44, 46, 14), E(19, 44, 46, 10), E(34, 44, 46, 10), E(92, 44, 46, 10), E(82, 45, 47, 6)],
       camadas: [{
-        apos: 8,
-        todos: [{ e: 11, nv: [34, 37], peso: 12 }, { e: 101, nv: [34, 37], peso: 14 }, { e: 41, nv: [33, 36], peso: 12 }, { e: 99, nv: [34, 37], peso: 12 }, { e: 18, nv: [33, 36], peso: 12 }, { e: 33, nv: [33, 36], peso: 12 }, { e: 91, nv: [34, 37], peso: 10 }, { e: 103, nv: [34, 37], peso: 10 }, { e: 81, nv: [34, 37], peso: 6 }],
-        noite: [{ e: 28, nv: [33, 36], peso: 12 }, { e: 18, nv: [33, 36], peso: 10 }, { e: 33, nv: [33, 36], peso: 10 }, { e: 91, nv: [34, 37], peso: 12 }, { e: 81, nv: [34, 37], peso: 12 }, { e: 17, nv: [34, 37], peso: 10 }, { e: 44, nv: [35, 38], peso: 10 }, { e: 69, nv: [34, 37], peso: 8 }, { e: 142, nv: [35, 38], peso: 10 }, { e: 29, nv: [35, 38], peso: 6 }],
+        apos: 11,
+        dia: [E(12, 51, 53, 10), E(102, 50, 52, 16), E(42, 50, 52, 12), E(100, 51, 53, 8), E(19, 50, 52, 10), E(34, 50, 52, 12), E(92, 50, 52, 12), E(104, 50, 52, 10), E(82, 51, 53, 10)],
+        noite: [E(29, 50, 52, 16), E(17, 50, 52, 10), E(44, 50, 52, 14), E(70, 51, 53, 12), E(142, 50, 52, 14), E(19, 50, 52, 10), E(34, 50, 52, 8), E(92, 50, 52, 10), E(82, 51, 53, 6)],
       }],
     },
-    { metodo: 'arvore', todos: [{ e: 153, nv: [18, 22], peso: 100 }], noite: [{ e: 153, nv: [18, 22], peso: 70 }, { e: 169, nv: [20, 23], peso: 30 }], camadas: [{ apos: 8, todos: [{ e: 153, nv: [32, 36], peso: 100 }], noite: [{ e: 153, nv: [32, 36], peso: 60 }, { e: 169, nv: [34, 37], peso: 40 }] }] },
-    { metodo: 'rocha', todos: [{ e: 163, nv: [33, 36], peso: 50 }, { e: 159, nv: [34, 37], peso: 22 }, { e: 19, nv: [34, 37], peso: 20 }, { e: 164, nv: [36, 38], peso: 8 }] },
+    { metodo: 'arvore', todos: [E(154, 44, 46, 100)], noite: [E(154, 44, 46, 65), E(170, 45, 47, 35)], camadas: [{ apos: 11, todos: [E(154, 50, 52, 100)], noite: [E(154, 50, 52, 55), E(170, 51, 53, 45)] }] },
+    { metodo: 'rocha', todos: [E(164, 44, 46, 50), E(19, 44, 46, 30), E(160, 45, 47, 20)] },
+    { metodo: 'pesca-velha', todos: [E(37, 20, 26, 100)] },
   ],
 };
 export default zona;

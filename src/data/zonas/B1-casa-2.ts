@@ -1,33 +1,14 @@
-import type { ZonaDef } from '../../core/tipos';
+import { casa } from './_b1-lib';
 
-/** Casa do violeiro de Vila Buriti. */
-const zona: ZonaDef = {
-  id: 'B1-casa-2', nome: 'Casa do Violeiro', mapa: 'B', tipo: 'interior', tileset: 'casa', musica: 'cidade-catira', arena: 'cerrado', passo: 4,
-  mapaChars: [
-    '##########',
-    '##########',
-    '#........#',
-    '#........#',
-    '#........#',
-    '#...,,...#',
-    '#...++...#',
-    '####++####',
+/** Casa de madeira do violeiro Seu Zabelê (porta em (5, 22) na cidade): missão da carta na asa (`b1-violeiro`). */
+export default casa({
+  id: 'B1-casa-2', nome: 'Casa do Violeiro', tema: 'sertaneja', musica: 'cidade-catira', arena: 'cerrado', passo: 9, volta: [5, 23],
+  canto: 'rede', parede: 'quadro',
+  estante: ['Uma viola de dez cordas pendurada e um caderno de modas. A última página tem só um título: "Saudade de Porto Pantaneiro".'],
+  bau: ['Cordas de viola, palhetas de chifre e um retrato de uma moça na beira do rio, com dedicatória borrada de tanto ser lida.'],
+  cantoTexto: ['A rede listrada balança sozinha. O violeiro jura que é o vento. Não tem janela aberta.'],
+  moradores: [
+    { id: 'b1-violeiro', sprite: 'cl-repentista', nome: 'Seu Zabelê', dir: 's', script: 'b1-violeiro' },
+    { id: 'b1-sabia', sprite: 'c:bem-te-vico', nome: 'Bem-te-viço', mov: 'vagar', fala: ['(O Bem-te-viço do violeiro canta três notas e fica esperando você completar a moda.)'] },
   ],
-  objetos: [
-    { o: 'rede', x: 1, y: 2 },
-    { o: 'radio', x: 4, y: 2, texto: 'O rádio toca uma moda de viola. O locutor avisa: "névoa forte na serra, gente".' },
-    { o: 'estante', x: 6, y: 2, texto: 'Cadernos de modas de viola. Uma se chama "Saudade do Trem das Sete (que Chegou às Nove)".' },
-    { o: 'tapete-a', x: 4, y: 5 },
-    { o: 'bau', x: 8, y: 4, texto: 'Um baú cheio de cordas de viola arrebentadas. Cada uma tem data.' },
-    { o: 'quadro', x: 3, y: 1 },
-    { o: 'cesto', x: 1, y: 6 },
-  ],
-  warps: [
-    { x: 4, y: 7, para: { zona: 'B1', x: 5, y: 23, dir: 's' }, tipo: 'porta' },
-    { x: 5, y: 7, para: { zona: 'B1', x: 5, y: 23, dir: 's' }, tipo: 'porta' },
-  ],
-  npcs: [
-    { id: 'violeiro', sprite: 'cl-repentista', x: 6, y: 4, dir: 'o', fala: ['Quem quer chegar ao Arraial Brasa\ntem chão para caminhar:', 'passa o Pantanal, a Estrada Vermelha\ne um paredão de escalar!', '…Gostou? Fiz agora. O repente é assim, de improviso e de graça.'] },
-  ],
-};
-export default zona;
+});

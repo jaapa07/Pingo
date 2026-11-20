@@ -96,7 +96,8 @@ export async function abrir(o = {}) {
     }
     if (b.esquecer) { const k = []; for (let i = 0; i < (t.plano?.slot ?? 0); i++) k.push('ArrowDown'); await toques([...k, A]); t.plano = null; return; }
     if (b.lista) {
-      if (b.fase === 'oferta') { const para = await ev(() => window.__qa.responderOferta()); if (para === null || para === undefined) await t.toque(B); else { t.plano = { tipo: 'troca', para }; await t.toque(A); } return; }
+      // golpe novo pendente aparece ANTES da oferta de troca (a fase do motor já é 'oferta'): aprender primeiro
+      if (b.fase === 'oferta' && !b.pend && !t.plano?.desistir) { const para = await ev(() => window.__qa.responderOferta()); if (para === null || para === undefined) await t.toque(B); else { t.plano = { tipo: 'troca', para }; await t.toque(A); } return; }
       if (b.terminou) { await t.toque(B); return; } // apelido da capturada: não
       if (t.plano?.desistir) { t.plano = null; await t.toque(A); return; }
       const slot = await ev(() => window.__qa.aprender());
@@ -250,18 +251,18 @@ export async function abrir(o = {}) {
    * mais forte abaixo de 60%. ATALHO DECLARADO: o efeito é aplicado direto no estado (vida += cura, item −1), igual ao
    * que Menu → Mochila → Usar faz; o caminho pelo menu é coberto pelo roteiro de integração e pelo QA do trecho 2.
    */
-  t.remedios = async () => {
-    const usados = await ev(async () => {
+  t.remedios = async (guardar = 0) => {
+    const usados = await ev(async (guardar) => {
       const { jogo } = await import('/src/core/estado.ts'); const { atributos } = await import('/src/battle/criatura.ts'); const { item } = await import('/src/data/itens.ts');
       const s = jogo.save, u = [];
       const eq = s.equipe.filter((c) => !c.ovo && c.vida > 0).sort((a, b) => b.nivel - a.nivel).slice(0, 2);
       for (const c of eq) for (let k = 0; k < 4; k++) {
         const max = atributos(c).vida; if (c.vida / max >= 0.6) break;
-        const id = ['cha-cidreira', 'garrafada', 'elixir-andiroba'].find((i) => (s.mochila[i] ?? 0) > 0 && (i !== 'elixir-andiroba' || c.vida / max < 0.3)); if (!id) break;
+        const id = ['cha-cidreira', 'garrafada', 'elixir-andiroba'].find((i) => (s.mochila[i] ?? 0) > guardar && (i !== 'elixir-andiroba' || c.vida / max < 0.3)); if (!id) break;
         const cura = item(id).uso.cura; c.vida = cura === 'total' ? max : Math.min(max, c.vida + cura); s.mochila[id]--; if (!s.mochila[id]) delete s.mochila[id]; u.push(id);
       }
       return u;
-    });
+    }, guardar);
     if (usados.length) { t.remediosFora = (t.remediosFora ?? 0) + usados.length; t.log('  remédios entre batalhas: ' + usados.join(', ')); }
   };
   t.curarSePreciso = async () => { const h = await t.saude(); if (h.caidos || h.frac < 0.999) await t.curar(); };

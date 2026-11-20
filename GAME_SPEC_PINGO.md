@@ -257,7 +257,7 @@ Uma arena 3D pré-renderizada por bioma:
 ### 4.2 Mapa B — SERTÃO DAS NÉVOAS
 | Id | Local | Tipo | Observação |
 |---|---|---|---|
-| B1 | **Vila Buriti** | cidade · **Ginásio Mata** | estação de trem; Drª Buriti (inicial extra) |
+| B1 | **Vila Cascavel** | cidade (sem ginásio; Salão da Raizeira) | estação de trem; chegada ao Sertão depois da Liga |
 | B-R1 | Vereda dos Buritis | rota | B1→B-CE |
 | B-CE | Cerrado Aberto | savana | cupinzeiros, ipês, emas |
 | B-PA | Pantanal Alagado | água rasa/funda (Remar) | B1↔B2↔B9; 3º evento do Cartel (ninhos) |
@@ -284,7 +284,7 @@ Uma arena 3D pré-renderizada por bioma:
 **Fronteira:** **PP Pico Pindorama** fica no topo da serra entre os dois mapas, com trilha de Escalar a partir de A-MT e de B-R4. O **Portão dos Guardiões** só abre com as 16 insígnias. O Conselho dos Guardiões fica no Pico.
 
 ### 4.3 Ligações entre os mapas (transições com animação)
-1. **Trem Serra-Sol:** A4 Porto Sereia ↔ B1 Vila Buriti.
+1. **Trem Serra-Sol:** A4 Porto Sereia ↔ B1 Vila Cascavel (só depois da Liga).
    - Liberado depois da insígnia 3 **e** do evento da Usina, quando a energia é restaurada e o jogador ganha o *Passe do Trem*.
    - A viagem mostra uma cinemática curta com a paisagem passando em parallax CSS 3D.
 2. **Saveiro (barco fluvial):** A5 Cidade Coral ↔ B9 Porto Pantaneiro.

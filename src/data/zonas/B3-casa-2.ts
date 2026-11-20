@@ -1,0 +1,13 @@
+import { casa } from './_b1-lib';
+
+/** Sobrado azul (porta em (36, 30) na cidade): a família de mineiros que perdeu o emprego para o Cartel. */
+export default casa({
+  id: 'B3-casa-2', nome: 'Sobrado dos Mineiros', tema: 'colonial', musica: 'cidade-catira', arena: 'chapada', passo: 10, volta: [36, 31],
+  canto: 'oratorio', parede: 'quadro-ex-voto',
+  estante: ['Capacetes de mineiro enfileirados, um para cada filho. O menor tem uma lanterninha de brinquedo.'],
+  bau: ['A carteira de trabalho da mina, guardada com cuidado. Última anotação: "Mina fechada por ordem de gente estranha".'],
+  moradores: [
+    { id: 'b3-mineiro', sprite: 'npc-homem-4', nome: 'Seu Granito', dir: 's', fala: ['Trabalhei na Mina Velha a vida inteira. Um dia apareceu gente de macacão ferrugem e disse que a mina era deles agora.', 'O Topázio ficou uma fera. Desceu sozinho. Se você descer também, leve criatura de Rio ou de Mata: o Cartel lá embaixo só tem bicho de pedra e veneno.'] },
+    { id: 'b3-mineira-filha', sprite: 'cl-crianca-f', nome: 'Safira', dir: 'o', mov: 'olhar', fala: ['Quando eu crescer vou ser garimpeira de fóssil. Fóssil não foge.', 'O meu irmão diz que fóssil também não brinca. Ele não entende nada.'] },
+  ],
+});

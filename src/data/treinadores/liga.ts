@@ -105,11 +105,15 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
    * Cada membro cobre a fraqueza de outro: Gaviãozão (Comum/Vento) abre o jogo com velocidade; Poraquê (Rio/Trovão)
    * derruba Vento e Rio e paralisa; Leão-Dourado (Brasa/Ginga) queima Mata, Geada e Inseto que ameaçam o ás.
    * É a única IA de nível "conselho" do mapa A: troca na hora certa e guarda o Pirarucão para o fim.
+   * QA jogando (docs/QA-TRECHO-2.md, seção 2): o jogador honesto de inicial de Rio foi Campeão em 15 de 19 tentativas, mas
+   * a média dos três iniciais fica na meta (simulador: Rio 70%, Mata 51%, Brasa 23%) — o Iaraboto (Rio/Encanto) anula o
+   * Pirarucão. Subir a escolta um nível derrubava a referência para 33% e a Brasa para 18%; ficou só o Relâmpago
+   * (pergaminho pt-17) no Poraquê no lugar do Zunido, que pesa mais contra Rio e Vento.
    */
   { id: 'liga-5', classe: 'Campeão', nome: 'Cacique Aracê', sprite: 'liga-arace', ia: 'conselho', premio: 9200, musica: 'batalha-conselho',
     equipe: [
       { e: 12, nv: 42, golpes: ['bico-furador', 'rasante', 'chuva-de-penas'] },
-      { e: 116, nv: 43, golpes: ['zunido-de-alta-tensao', 'jato-de-igarape', 'choque-de-poraque'] },
+      { e: 116, nv: 43, golpes: ['relampago', 'jato-de-igarape', 'choque-de-poraque'] },
       { e: 68, nv: 44, golpes: ['patada-ardente', 'meia-lua'] },
       { e: 112, nv: 46, golpes: ['rabanada', 'cabecada', 'rabada'] },
     ],
@@ -119,10 +123,12 @@ export const TREINADORES_LIGA: TreinadorDef[] = [
 
   ...DESAFIANTES_DO_TERREIRO,
 
-  /* Rival Tainá, encontro 5: no terreiro do Platô, logo depois da Liga. Sufixo = tipo do inicial DELA (o que vence o do jogador). */
+  /* Rival Tainá, encontro 5: no terreiro do Platô, logo depois da Liga (o Hall cura a equipe antes). Sufixo = tipo do inicial DELA.
+   * Níveis 45–46 (o teto é o ás do Campeão) e 2 garrafadas: com a equipe real de um Campeão (sim-rival5.mts) o jogador vence
+   * 91–100% conforme o inicial; antes (42–45, 1 garrafada, equipe sem cura depois do Campeão) perdia quase sempre no jogo. */
   ...(['brasa', 'rio', 'mata'] as const).map((dela): TreinadorDef => ({
-    id: `rival-5-${dela}`, classe: 'Rival', nome: 'Tainá', sprite: 'taina', ia: 'lider', premio: 4500, musica: 'batalha-rival', flag: 'rival-5', itens: ['garrafada'],
-    equipe: [{ e: 12, nv: 42 }, { e: 29, nv: 42 }, { e: dela === 'brasa' ? 26 : dela === 'rio' ? 17 : 42, nv: 42 }, { e: 64, nv: 43 }, { e: 108, nv: 43 }, { e: dela === 'brasa' ? 6 : dela === 'rio' ? 9 : 3, nv: 45 }],
+    id: `rival-5-${dela}`, classe: 'Rival', nome: 'Tainá', sprite: 'taina', ia: 'lider', premio: 4500, musica: 'batalha-rival', flag: 'rival-5', itens: ['garrafada', 'garrafada'],
+    equipe: [{ e: 12, nv: 45 }, { e: 29, nv: 45 }, { e: dela === 'brasa' ? 26 : dela === 'rio' ? 17 : 42, nv: 45 }, { e: 64, nv: 46 }, { e: 108, nv: 46 }, { e: dela === 'brasa' ? 6 : dela === 'rio' ? 9 : 3, nv: 46 }],
     desafio: 'CAMPEÃO?! Você?! Eu estava presa no terceiro Mestre e ouvi o sino do Platô tocar para VOCÊ!\fNão, não, não. Antes de qualquer festa, {JOGADOR}: eu e você, aqui, agora. Equipe completa!',
     derrota: 'Tá. Tá bom! Você é o Campeão e eu sou… a próxima. Anota: a PRÓXIMA.',
   })),

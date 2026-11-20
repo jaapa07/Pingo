@@ -1,38 +1,39 @@
 import type { ZonaDef } from '../../core/tipos';
+import { grade, obj, objs, saidas, gente } from './_b1-lib';
 
-/** Laboratório de Campo da Drª Buriti: inicial extra depois da insígnia 4 (spec 6.2). */
+/** Estação de Pesquisa do Sertão (porta em (35, 15) na cidade): a equipe da Drª Buriti mede as cheias e cuida da pesquisa de campo. */
+const g = grade('B1-lab', [
+  '##############',
+  '####K####W####',
+  '#GG.EE..GG..V#',
+  '#............#',
+  '#....,,,,....#',
+  '#.1..,,,,..2.#',
+  '#EE.......Q..#',
+  '#..........3R#',
+  '#............#',
+  '######DD######',
+], { K: '#', W: '#', G: '.', E: '.', V: '.', Q: '.', R: '.', D: '+', '1': '.', '2': '.', '3': '.' });
 const zona: ZonaDef = {
-  id: 'B1-lab', nome: 'Laboratório da Drª Buriti', mapa: 'B', tipo: 'interior', tileset: 'predio', musica: 'laboratorio', arena: 'cerrado', passo: 4,
-  mapaChars: [
-    '##############',
-    '##############',
-    '#............#',
-    '#............#',
-    '#....,,,,....#',
-    '#....,,,,....#',
-    '#............#',
-    '#............#',
-    '#.....++.....#',
-    '######++######',
-  ],
+  id: 'B1-lab', nome: 'Estação de Pesquisa do Sertão', mapa: 'B', tipo: 'interior', tileset: 'predio', musica: 'laboratorio', arena: 'cerrado', passo: 9,
+  mapaChars: g.mapa,
   objetos: [
-    { o: 'mesa-lab', x: 1, y: 2, texto: 'Sementes de buriti em potinhos numerados. O número 37 germinou e ganhou um laço.' },
-    { o: 'estante-lab', x: 4, y: 2 },
-    { o: 'mesa-lab', x: 9, y: 2, texto: 'Um microscópio aponta para uma asa de Lavadeirim. Parece um vitral.' },
-    { o: 'viveiro', x: 12, y: 2, script: 'viveiro' },
-    { o: 'estante-lab', x: 1, y: 6, texto: 'Pastas: "Cheias do Pantanal", "Criaturas traficadas — denúncias", "Receitas de pequi".' },
-    { o: 'tanque', x: 11, y: 5 },
-    { o: 'planta-b', x: 12, y: 8 }, { o: 'planta', x: 1, y: 8 },
-    { o: 'poster-c', x: 7, y: 1, texto: 'Mapa do Sertão das Névoas, com alfinetes vermelhos no Pantanal e na Chapada Rubra.' },
+    { o: 'tema', x: 0, y: 0, tema: 'laboratorio' },
+    obj(g, 'K', 'poster-c', { texto: ['Mapa do Sertão das Névoas com alfinetes: vermelhos no Pantanal Alagado, pretos na Chapada Rubra, e um amarelo escrito "BOITATÁ?" na Caverna Vulcânica.'] }),
+    obj(g, 'W', 'janela'),
+    { o: 'mesa-lab', x: g.todos('G')[0]?.[0] ?? 1, y: 2, texto: ['Réguas de cheia, cadernos encharcados e um pato de borracha com a etiqueta "boia oficial".'] },
+    { o: 'estante-lab', x: g.todos('E')[0]?.[0] ?? 4, y: 2 },
+    { o: 'mesa-lab', x: g.todos('G')[2]?.[0] ?? 8, y: 2, texto: ['Um microscópio aponta para uma asa de Lavadeira-Dragão. Parece vitral de igreja.'] },
+    obj(g, 'V', 'viveiro', { script: 'viveiro' }),
+    { o: 'estante-lab', x: g.todos('E')[2]?.[0] ?? 1, y: 6, texto: ['Pastas: "Ninhal do Pantanal — contagem de ovos", "Cartel Ferrugem — denúncias", "Receitas de pequi (não científicas)".'] },
+    obj(g, 'Q', 'tanque', { texto: ['Um tanque de observação com um Aruazão dormindo. Ou meditando. Com caramujo não dá para saber.'] }),
+    obj(g, 'R', 'planta-b'),
   ],
-  warps: [
-    { x: 6, y: 9, para: { zona: 'B1', x: 32, y: 22, dir: 's' }, tipo: 'porta' },
-    { x: 7, y: 9, para: { zona: 'B1', x: 32, y: 22, dir: 's' }, tipo: 'porta' },
-  ],
+  warps: saidas(g, 'D', 'B1', 35, 16, 's', 'porta'),
   npcs: [
-    { id: 'dra-buriti', sprite: 'dra-buriti', x: 7, y: 3, dir: 's', script: 'b1-dra-buriti' },
-    { id: 'estagiario', sprite: 'npc-homem-1', x: 10, y: 6, dir: 'n', mov: 'olhar', fala: ['A doutora descobriu que o Pererecão canta em dó maior.', 'Eu descobri que ele canta às três da manhã. Do lado da minha rede.'] },
-    { id: 'criatura-lab', sprite: 'c:tatuzim', x: 3, y: 5, mov: 'vagar', fala: ['(O Tatuzim se enrola feito bola e rola até o seu pé.)'] },
+    gente(g, '1', 'b1-pesquisador', 'npc-homem-1', 'Pesquisador Baru', { dir: 's', fala: ['A Drª Buriti montou esta estação antes de ir para Vila Buriti, na Costa do Sol. Ela liga todo domingo pelo Rádio Cipó.', 'No Sertão, as criaturas já nascem para o nível de Campeão. Quem chega da Liga com equipe de 42 sente o tranco: treine na Vereda antes do Pantanal.'] }),
+    gente(g, '2', 'b1-pesquisadora', 'cl-biologa', 'Bióloga Ingá', { dir: 's', fala: ['As cheias do Pantanal deixam os ninhos do ninhal expostos. E o Cartel Ferrugem sabe disso.', 'A Boiadeira Zefa interditou o ninhal. Ela só deixa passar quem provar que sabe lidar com bicho grande: quem tiver a Insígnia do Barro.'] }),
+    gente(g, '3', 'b1-estagiario', 'cl-crianca-m', 'Estagiário Tico', { mov: 'olhar', fala: ['Descobri que o Sapo-Cururuí canta em dó maior.', 'Descobri também que ele canta às três da manhã. Do lado da minha rede.'] }),
   ],
 };
 export default zona;

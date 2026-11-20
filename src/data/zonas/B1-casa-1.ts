@@ -1,35 +1,14 @@
-import type { ZonaDef } from '../../core/tipos';
+import { casa } from './_b1-lib';
 
-/** Casa da doceira de Vila Buriti. */
-const zona: ZonaDef = {
-  id: 'B1-casa-1', nome: 'Casa da Doceira', mapa: 'B', tipo: 'interior', tileset: 'casa', musica: 'cidade-catira', arena: 'cerrado', passo: 4,
-  mapaChars: [
-    '##########',
-    '##########',
-    '#........#',
-    '#........#',
-    '#..,,,...#',
-    '#..,,,...#',
-    '#...++...#',
-    '####++####',
+/** Casa rosa da doceira Dona Mangaba (porta em (5, 15) na cidade): missão da receita de doce de buriti (`b1-doceira`). */
+export default casa({
+  id: 'B1-casa-1', nome: 'Casa da Dona Mangaba', tema: 'sertaneja', musica: 'cidade-catira', arena: 'cerrado', passo: 9, volta: [5, 16],
+  parede: 'quadro-ex-voto',
+  estante: ['Potes de doce em fila: buriti, mangaba, cagaita, pequi. Cada um com uma etiqueta escrita à mão e um coração desenhado.'],
+  bau: ['Um baú de receitas. A de cima diz: "Doce de buriti: paciência, açúcar e mais paciência."'],
+  cantoTexto: ['O tacho de cobre borbulha no fogão a lenha. O cheiro de buriti enche a casa inteira.'],
+  moradores: [
+    { id: 'b1-doceira', sprite: 'npc-idosa', nome: 'Dona Mangaba', dir: 's', script: 'b1-doceira' },
+    { id: 'b1-neto', sprite: 'cl-crianca-m', nome: 'Bentinho', dir: 'o', fala: ['A vó diz que doce de buriti cura tristeza.', 'Eu fico triste três vezes por dia, só por garantia.'] },
   ],
-  objetos: [
-    { o: 'fogao-lenha', x: 1, y: 2 },
-    { o: 'pia', x: 3, y: 2 },
-    { o: 'filtro-barro', x: 8, y: 2 },
-    { o: 'mesa', x: 6, y: 4 },
-    { o: 'cadeira', x: 6, y: 5 },
-    { o: 'cristaleira', x: 5, y: 2 },
-    { o: 'janela', x: 7, y: 1 },
-    { o: 'pote-barro', x: 1, y: 6 },
-  ],
-  warps: [
-    { x: 4, y: 7, para: { zona: 'B1', x: 5, y: 15, dir: 's' }, tipo: 'porta' },
-    { x: 5, y: 7, para: { zona: 'B1', x: 5, y: 15, dir: 's' }, tipo: 'porta' },
-  ],
-  npcs: [
-    { id: 'doceira', sprite: 'npc-idosa', x: 2, y: 3, dir: 's', script: 'b1-doceira' },
-    { id: 'neto', sprite: 'cl-crianca-m', x: 7, y: 6, dir: 'o', fala: ['A vó diz que doce de buriti cura tristeza.', 'Eu fico triste três vezes por dia, só por garantia.'] },
-  ],
-};
-export default zona;
+});
