@@ -28,16 +28,16 @@ export const TREINADORES_GINASIO_09: TreinadorDef[] = [
    * ligeiro, responde a Geada com Armada; o Antão (Terra/Mata) é a cobertura contra Rio, com Espinho de Mandacaru e
    * Barro Curativo. O ás Tatucanastra (Terra/Ferro) levanta a Couraça de Pedra e bate com Tremor de Terra e Marretada
    * (Ferro contra Geada); segura um Buriti contra congelamento.
-   * Cura: Elixir de Andiroba e Garrafada (depois do 8º ginásio o líder usa remédios — spec 7A).
+   * Cura: 2 Garrafadas (depois do 8º ginásio o líder usa remédios — spec 7A).
    */
   { id: 'lider-09', classe: 'Líder', nome: 'Boiadeira Zefa', sprite: 'lider-05', ia: 'lider', premio: 4900, insignia: 9, musica: 'batalha-lider', flag: 'ginasio-09-vencido',
-    itens: ['elixir-andiroba', 'garrafada'],
+    itens: ['garrafada', 'garrafada'],
     equipe: [
-      { e: 19, nv: 46, golpes: ['tremor-de-terra', 'sanguessuga', 'golpe-de-asa', 'terra-batida'] },
-      { e: 89, nv: 46, golpes: ['bote-de-jararaca', 'vocoroca', 'atoleiro', 'curare'] },
-      { e: 87, nv: 47, golpes: ['cachoeirada', 'tremor-de-terra', 'canoa-virada', 'fincar-pe'] },
-      { e: 102, nv: 47, golpes: ['tremor-de-terra', 'armada', 'pisao-de-anta', 'esquiva'] },
-      { e: 98, nv: 48, golpes: ['casco-pesado', 'espinho-de-mandacaru', 'barro-curativo', 'pisao-de-anta'] },
+      { e: 19, nv: 45, golpes: ['tremor-de-terra', 'sanguessuga', 'golpe-de-asa', 'terra-batida'] },
+      { e: 89, nv: 45, golpes: ['bote-de-jararaca', 'vocoroca', 'atoleiro', 'curare'] },
+      { e: 87, nv: 46, golpes: ['cachoeirada', 'tremor-de-terra', 'canoa-virada', 'fincar-pe'] },
+      { e: 102, nv: 46, golpes: ['tremor-de-terra', 'armada', 'pisao-de-anta', 'esquiva'] },
+      { e: 98, nv: 47, golpes: ['casco-pesado', 'espinho-de-mandacaru', 'barro-curativo', 'pisao-de-anta'] },
       { e: 34, nv: 49, golpes: ['tremor-de-terra', 'marretada', 'couraca-de-pedra', 'soterrar'], item: 'buriti' },
     ],
     desafio: 'Eita, chegou com as botas limpas? Pois aqui no curral se aprende de baixo para cima: pé no barro primeiro!',

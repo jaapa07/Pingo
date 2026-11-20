@@ -6,7 +6,7 @@
  * Tudo recomeça vazio ao sair.
  */
 import { registrarMecanica } from '../registro';
-import { M, Enfeites, Ladrilho, laco, cena, falar, avisar, sfx, quadros, naZona } from './_pecas';
+import { M, Enfeites, recolocar, Ladrilho, laco, cena, falar, avisar, sfx, quadros, naZona } from './_pecas';
 
 const ZONA = 'A4-ginasio';
 type Canal = 'A' | 'B' | 'C' | 'D';
@@ -56,6 +56,9 @@ async function girar(v: (typeof VOLANTES)[number]) {
 
 registrarMecanica(ZONA, {
   entrar() {
+    // jogo retomado (Continuar ou app que voltou do segundo plano) lá dentro: os eclusas recomeçam do zero e
+    // quem estava além da entrada podia ficar sem caminho nenhum (ex.: no salão do líder depois da insígnia)
+    if (M.jog.y <= 11) { recolocar(8, 16, 'n'); cena(() => falar('As comportas voltaram ao começo enquanto você estava fora.\nUm marujo levou você de volta à entrada do ginásio.')); }
     enf.esquecer();
     cheio = { A: false, B: false, C: false, D: false };
     (Object.keys(AREA) as Canal[]).forEach(aplicar);

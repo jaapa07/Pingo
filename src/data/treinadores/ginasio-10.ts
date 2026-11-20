@@ -21,7 +21,7 @@ export const TREINADORES_GINASIO_10: TreinadorDef[] = [
   /*
    * LÍDER — Garimpeiro Topázio (Pedra). Quem bate forte na Pedra: Rio, Mata, Ginga, Terra e Ferro.
    * Estratégia: abre com o Aruazão (Rio/Pedra), que aguenta Brasa e Terra e joga Atoleiro para tirar a velocidade de
-   * quem vem bater primeiro. A Tartaruga-Gigante devolve Rio contra Terra e Brasa; o Jabutipiranga (Mata/Pedra) é a
+   * quem vem bater primeiro. O Jabutipiranga (Mata/Pedra) é a
    * cobertura contra Rio e Terra, as duas ameaças mais comuns; o Calangão (Brasa/Pedra) queima Mata e Ferro; o
    * Cupinzeiro-Vivo segura pancada e responde Mata com Enxame. O ás Mocó-da-Rocha levanta a Couraça de Pedra, bate
    * com Lasca Afiada (crítico fácil) e Pedra Preciosa (especial, pega quem só investiu em Defesa).
@@ -33,7 +33,6 @@ export const TREINADORES_GINASIO_10: TreinadorDef[] = [
       { e: 128, nv: 48, golpes: ['cachoeirada', 'deslizamento', 'atoleiro', 'couraca-de-pedra'] },
       { e: 164, nv: 49, golpes: ['pedregulho-rolante', 'enxame', 'soterrar', 'couraca-de-pedra'] },
       { e: 42, nv: 49, golpes: ['patada-ardente', 'lasca-afiada', 'cinzas-quentes', 'couraca-de-pedra'] },
-      { e: 80, nv: 50, golpes: ['enxurrada', 'deslizamento', 'mergulho-fundo', 'agua-de-cacimba'] },
       { e: 82, nv: 50, golpes: ['espinho-de-mandacaru', 'deslizamento', 'folhas-ao-vento', 'couraca-de-pedra'] },
       { e: 166, nv: 51, golpes: ['couraca-de-pedra', 'lasca-afiada', 'pedra-preciosa', 'cabeca-dura'], item: 'pequi' },
     ],

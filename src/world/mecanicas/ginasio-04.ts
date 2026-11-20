@@ -7,7 +7,7 @@
  */
 import type { Dir } from '../../core/tipos';
 import { registrarMecanica } from '../registro';
-import { M, Enfeites, Ladrilho, DX, DY, laco, cena, falar, avisar, sfx, quadros, naZona, chave } from './_pecas';
+import { M, Enfeites, recolocar, Ladrilho, DX, DY, laco, cena, falar, avisar, sfx, quadros, naZona, chave } from './_pecas';
 
 const ZONA = 'A5-ginasio';
 type Giro = '/' | '\\';
@@ -68,6 +68,9 @@ async function girar(e: Espelho) {
 
 registrarMecanica(ZONA, {
   entrar() {
+    // jogo retomado (Continuar ou app que voltou do segundo plano) lá dentro: os espelhos recomeçam do zero e
+    // quem estava além da entrada podia ficar sem caminho nenhum (ex.: no salão do líder depois da insígnia)
+    if (M.jog.y <= 12) { recolocar(8, 16, 'n'); cena(() => falar('Os espelhos voltaram ao lugar enquanto você estava fora.\nA Iracema mandou você recomeçar pela entrada do salão.')); }
     enf.esquecer(); raio = new Set(); acesas = [false, false]; aberta = false;
     espelhos = INICIAL.map((e) => ({ ...e }));
     espelhos.forEach(pintarEspelho);

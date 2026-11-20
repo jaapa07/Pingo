@@ -60,7 +60,7 @@ function criarSafari(args: ArgsSafari): Tela {
   };
   const pintarEstado = () => {
     const est = comendo > 0 ? '{c:verde}Comendo{/c}' : raiva > 0 ? '{c:vermelho}Brava{/c}' : 'Atenta';
-    escrever(tEst, `${est}   Perto ${'●'.repeat(perto)}${'·'.repeat(2 - perto)}`);
+    escrever(tEst, `${est}   Perto ${perto}/2`);
   };
   /** mostra uma mensagem; espera A/toque (ou some sozinha em `auto` s) */
   const msg = (s: string, auto = 0): Promise<void> => {
@@ -175,7 +175,7 @@ function criarSafari(args: ArgsSafari): Tela {
       bus.emit('grito', { especie: c.especie });
       if (al.tem('entrada')) void al.tocar('entrada');
       pintarEstado(); pintarMenu();
-      await msg(`Um ${e.nome} selvagem apareceu no capim!`);
+      await msg(`Apareceu no capim: ${e.nome} selvagem!`);
       pedirAcao();
     },
     atualizar(dt) {

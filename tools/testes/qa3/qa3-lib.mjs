@@ -83,7 +83,8 @@ export async function abrir(save, o = {}) {
   t.foto = async (nome) => {
     // o relógio virtual para durante a captura (a página fica ociosa para o compositor)
     await page.evaluate(() => { window.__pausaRelogio = true; });
-    try { await page.screenshot({ path: `${S}/${nome}.png`, timeout: 20000 }); } catch (e) { console.log(`   (captura ${nome} falhou: ${String(e.message).split('\n')[0]})`); }
+    // CDP direto: page.screenshot espera um quadro novo do compositor e estoura o prazo com a máquina cheia
+    try { t.cdp ??= await ctx.newCDPSession(page); const r = await t.cdp.send('Page.captureScreenshot', { format: 'png' }); writeFileSync(`${S}/${nome}.png`, Buffer.from(r.data, 'base64')); } catch (e) { console.log(`   (captura ${nome} falhou: ${String(e.message).split('\n')[0]})`); }
     await page.evaluate(() => { window.__pausaRelogio = false; });
     return `${S}/${nome}.png`;
   };

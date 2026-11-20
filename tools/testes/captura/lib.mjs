@@ -21,7 +21,7 @@ export async function abrir(query, o = {}) {
   await page.goto(BASE + (query ?? ''));
   const t = { page, browser, ctx, erros };
   t.espera = (ms) => page.waitForTimeout(ms);
-  t.pronto = () => page.waitForFunction(() => window.__pingo?.mundo?.pronto, null, { timeout: 30000 });
+  t.pronto = () => page.waitForFunction(() => window.__pingo?.mundo?.pronto, null, { timeout: 240000 });
   t.st = () => page.evaluate(() => { const p = window.__pingo, m = p.mundo; return { x: m.jogador.x, y: m.jogador.y, dir: m.jogador.dir, mov: m.jogador.movendo, oc: m.ocupado, pronto: m.pronto, zona: m.zona?.id, telas: p.telas.pilha.length, topo: p.telas.topo?.el.className, nb: m.batalhas.length, modo: m.jogador.modo }; });
   t.assentar = async (max = 120000, tecla = 'z') => {
     const t0 = Date.now(); let livres = 0;

@@ -120,7 +120,7 @@ const etapas = {
   async vila() {
     await tentar('vila', async () => {
       await cidade('B1', MANT);
-      await viajar('B1-salao'); await t.foto('b1-salao'); await t.falarCom('raizeira').catch((e) => console.log('   raizeira:', e.message)); console.log('   salão:', JSON.stringify(await t.falas(3)));
+      await viajar('B1-salao'); await t.foto('b1-salao'); await t.falarCom('b1-sucupira').catch((e) => console.log('   raizeira:', e.message)); console.log('   salão:', JSON.stringify(await t.falas(3)));
       await viajar('B1'); await limpar();
       await querCapturar(1);
       await viajar('B-R1'); await t.foto('b-r1'); await limpar();

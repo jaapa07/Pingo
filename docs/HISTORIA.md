@@ -36,6 +36,7 @@ Dono deste arquivo: time A1. O bloco acima é o resumo da reestrutura; as tabela
 | `conselho-vencido` | créditos; libera pós-jogo (`pos-jogo`), B-FA, Lobo-Jaci e Onça-Guaraci errantes |
 | `venceu:<idTreinador>` | marcada pelo motor ao vencer um treinador |
 | missões e marcos do time B1 | `b1-chegou`, `rival-6`, `boitata-ok` (`boitata-dormiu` se derrotado), `m-raizes(-ok)`, `m-doce-ok`, `m-carta-b1(-resposta/-ok)`, `m-ninho(-dia/-ok)`, `m-orfaos(-dia)`, `orfao-<nº>`, `m-fotos(-ok)`, `m-foto-1..5`, `m-sao-joao-ok`, `m-troca-b1-ok`, `m-pepitas-ok`, `m-forja-ok` (detalhes em docs/ZONAS-B1.md) |
+| marcos e missões do time B2-norte | `garrote-vencido`, `rival-8`, `conselho-em-curso`, `conselho-1`…`conselho-4`, `conselho-memoria`, `conselho-vencido` + `pos-jogo` (marcado junto; a condição `pos-jogo` continua lendo `conselho-vencido`), `misterioso-pode` (Andarilho do Cume volta a cada vitória no Conselho), `uirapuru-ok`, `mapinguari-ok` (`mapinguari-dormiu`), `m-carta-lume(-resposta/-ok)`, `m-constelacoes(-ok)`, `m-troca-sg-ok`, `b2n-neve-ano`, `b2n-ninho-<linha>-dia`, `b2n-jubarte-dia` (detalhes em docs/ZONAS-B2-NORTE.md) |
 | missões paralelas do time A1 | `m-chapeu(-achou/-ok)`, `m-pintinhas(-ok)`, `m-carta(-resposta/-ok)`, `m-perdido(-ok)`, `m-ponte(-ok)`, `m-eco(-achou/-ok)`, `m-peixe(-ok)`, `vara-velha-ok` |
 | missões dos visitantes 181 (spec 6.5) | `ea-missao` (Seu Tarumã, A4, com 16 insígnias: 2 frascos vazios) → `ea-frasco-escuro` (A-R6, Poço do Breu, de noite, Mergulho) e `ea-frasco-barrento` (B-R2, poço da cascata seca, de dia) → `ea-rota` (frascos entregues; canoa para a zona `X-EA`) → `galo-manao-ok` (Galo-Manaó capturado). Reencontro enquanto o jogador não tiver um 181 (detalhes em docs/VISITANTES.md) |
 | missões dos visitantes 182 (spec 6.5) | `boreal-missao` (Drª Solveig em B9, depois de `conselho-vencido`) → `boreal-lanterna-1..4` (pesquisadores B-EXP-1..4 em B7, B-SG, B-LG, B-R5) → `boreal-acesa` (lanternas acesas no alto do PP, de noite) → `borealce-ok` (capturado) → `borealce-nota` (nota da Drª Solveig no Diário). Auxiliares de roteiro: `vis-*` (derivadas, recalculadas a cada evento) |
@@ -77,3 +78,23 @@ Itens de cura em batalha (spec 7A): rival, líderes e chefes só usam do 8º gin
 - **A2**: A-R4, A-US, A-BA, A5, A6 (+farol), A-PR, A-MG, A-GB, A7, A-R5, A-R6, A8, A-RS, A-MT, A9.
 - **B1**: B1 **Vila Cascavel** (+estação; sem ginásio — o prédio é o "Salão da Raizeira"), B-R1, B-CE, B-PA, B2, B9, B-R2, B3 (+mina), B-CH, B-CV, B4.
 - **B2**: B-R3, B5, B-TA, B6 (+laboratório do Cartel), B-VV, B-R4, B7, B-SG, B-LG, B-R5, B8, B-FA, PP (Pico Pindorama: Portão, Garrote, salas do Conselho, créditos).
+
+## Gincana e Safári do pós-Liga (spec 10A itens 32 e 33; diário em docs/GINCANA-SAFARI.md)
+| Ligação | Chegada |
+|---|---|
+| A-LG terreiro ↔ A-GN Vale do Buriti-Alto (carro de boi: NPC `carreiro-gincana` em A-LG (28, 55), `se: flag:liga-vencida`; evento `carreiro-ida`) | A-GN em (3, 11) 'l'; volta (`carreiro-volta`, NPC em A-GN (2, 11)): A-LG em (27, 55) 'o' |
+| A-GN borda leste (31, 10..11) ↔ A-SF Portaria do Safári (borda oeste (0, 9..10)) | A-SF em (1, 9) 'l'; A-GN em (30, 10) 'o' |
+| A-SF casa-c (porta 19, 8) ↔ A-SF-casa (Seu Jatobá) | A-SF-casa em (5, 7) 'n'; volta A-SF (19, 9) 's' |
+| A-SF porteira → A-SF-parque (só pelo evento `safari-porteira`, pago) | parque em (10, 32) 'n'; saída pela borda sul (10..11, 33) → A-SF (13, 3) 's' |
+
+| Flag | Quando |
+|---|---|
+| `gincana-aberta`, `carreiro-sim` | conversou com o carreiro do Platô / resposta do sim-ou-não do carreiro |
+| `gincana-visitou`, `gincana-sucos-presente` | ouviu as regras da Juíza Bia / ganhou os 3 cajus do Seu Graviola |
+| `gincana-pontos` (nº), `gincana-provas` (nº) | saldo de pontos da Gincana (troca na Tesouraria) / provas jogadas |
+| `gincana-recorde:<prova>`, `gincana-podio:<prova>` = `"<dia>:<valor>"` | melhor pontuação do dia e melhor pódio já premiado no dia (`agilidade`, `forca`, `salto`) |
+| `gincana-suco:<uid da criatura>` = `"<dia>:<fruto>"` | suco tomado hoje (vale até o fim do dia do relógio do jogo) |
+| `safari-visitou`, `safari-tem-dinheiro`, `safari-op(-0..2)` | auxiliares da porteira |
+| `safari-ativo`, `safari-passos` (nº), `safari-visitas` (nº), `safari-capturas` (nº) | passeio em curso e passos que restam / contadores |
+| `safari-dono-conheceu`, `safari-setor-2`, `safari-setor-3`, `safari-setor-4` | setores do parque montados (Lagoa, Mata, Toca); o dono pede na ordem: Pedra de Rio → Muda de Buriti → Tronco Oco |
+| `safari-pedra-dada`, `safari-muda-dada`, `safari-tronco-dado`, `safari-<item>-entregue` | doadores dos objetos de ambiente (A-R3 (35, 6) Pescador Seixo; A10 (19, 21) Viveirista Carnaúba; A-R7 (6, 11) Lenhador Seu Angico, todos com `se: flag:liga-vencida`) / objeto entregue ao dono |

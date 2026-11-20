@@ -36,7 +36,9 @@ async function seq(t, zona, passos, semCura = false) {
     if (p[0] !== 'em' && !semCura) { const h = await t.saude(), chefe = p === passos[passos.length - 1]; if (h.liderCaido || h.lider < 0.5 || (chefe && (h.caidos > 0 || h.frac < 0.7 || h.lider < 0.8))) { { await t.ev(async () => { const { jogo } = await import('/src/core/estado.ts'); const { curarCriatura } = await import('/src/battle/criatura.ts'); for (const c of jogo.save.equipe) curarCriatura(c); const s = jogo.save, j = s.jogador; while ((s.mochila['cha-cidreira'] ?? 0) < 2 && j.dinheiro >= 300) { j.dinheiro -= 300; s.mochila['cha-cidreira'] = (s.mochila['cha-cidreira'] ?? 0) + 1; } }); (t.idasAoPosto ??= []).push(zona); t.log('  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)'); } } }
     if (p[0] === 'ir') await t.ir(p[1]);
     else if (p[0] === 'agir') await t.agir(p[1]);
-    else if (p[0] === 'em') { if (s.x !== p[1] || s.y !== p[2]) { t.log(`  [ginásio] posição (${s.x},${s.y}), esperado (${p[1]},${p[2]}) — ${p[3] ?? ''}`); await t.foto('gin-desvio'); throw new Error('desvio'); } }
+    else if (p[0] === 'em') { if (s.x !== p[1] || s.y !== p[2]) { // com a máquina sobrecarregada um passo às vezes se perde: tenta chegar andando ao ponto esperado
+      await t.irAte(p[1], p[2]).catch(() => 0); const s2 = await t.resolver(); if (s2.zona === zona && s2.x === p[1] && s2.y === p[2]) { t.log(`  [ginásio] passo perdido em (${s.x},${s.y}); refeito até (${p[1]},${p[2]})`); continue; } }
+      if (s.x !== p[1] || s.y !== p[2]) { t.log(`  [ginásio] posição (${s.x},${s.y}), esperado (${p[1]},${p[2]}) — ${p[3] ?? ''}`); await t.foto('gin-desvio'); throw new Error('desvio'); } }
   }
   const s = await t.resolver(); if (s.zona !== zona) throw new Error('derrota');
 }

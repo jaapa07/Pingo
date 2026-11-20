@@ -540,3 +540,38 @@ erros de console: []
 Cal)
   compras em A4-venda: 6× garrafada · sobrou $11092
 == checkpoint mata-pre-lider-3: ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 17"] $11092
+  ginásio 3, tentativa 1: equipe ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 17"]
+  [batalha] g03-1 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $11732
+  [batalha] g03-2 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $12412
+  [batalha] g03-3 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $13132
+  [batalha] g03-4 → vitoria · equipe 2:29,10:8,13:7,45:8,20:8,43:17 · A4-ginasio · $13852
+  remédios entre batalhas: garrafada
+  [ginásio] posição (14,5), esperado (14,2) — 
+  (foto gin-desvio falhou: TimeoutError: page.screenshot: Timeout 60000ms exceeded.
+Cal)
+FALHA Error: desvio |     at seq (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:39:191) |     at async ginasio (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:65:11) |     at async Object.fn (file:///home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:145:5) {"pronto":true,"oc":false,"mov":false,"zona":"A4-ginasio","x":14,"y":5,"dir":"n","modo":"pe","telas":1,"topo":"mundo tela-mundo","ocupada":false,"nres":7} ["O volante range e a água corre pelas comportas.\nO canal do meio esvaziou. O braço que divide o salão encheu.","Meu pai cuida das comportas. Eu cuido de quem passa por elas!","Se a balsa do líder está no fundo, faltou girar o volante do salão leste."]
+  (foto erro falhou: Error: page.screenshot: Target page, context or browser has )
+resumo: 0
+treino extra: [{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":8,"de":20,"para":21},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":11,"de":21,"para":22},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":14,"de":22,"para":23}] derrotas: 10 curas: 46
+perguntas: ["Usar o Facão? → Sim","Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de mata-passo-7
+
+>> etapa 8: Porto Sereia: compras, treinadores e ginásio 3 (Rio)  (2 s)
+  [batalha] A4-1 → vitoria · equipe 2:27,10:8,13:6,45:8,20:8,43:17 · A4 · $13696
+  [batalha] A4-3 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $14456
+  [batalha] A4-2 → vitoria · equipe 2:28,10:8,13:6,45:8,20:8,43:17 · A4 · $15292
+  (foto loja-A4-venda falhou: TimeoutError: page.screenshot: Timeout 60000ms exceeded.
+Cal)
+  compras em A4-venda: 6× garrafada · sobrou $11092
+== checkpoint mata-pre-lider-3: ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 17"] $11092
+  ginásio 3, tentativa 1: equipe ["Tamanduá-Copa 28","Pipirim 8","Cotiazinha 6","Quero-querinho 8","Gambazinho 8","Corujinha 17"]
+  [batalha] g03-1 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $11732
+  [batalha] g03-2 → vitoria · equipe 2:29,10:8,13:6,45:8,20:8,43:17 · A4-ginasio · $12412
+  [batalha] g03-3 → vitoria · equipe 2:29,10:9,13:6,45:8,20:8,43:17 · A4-ginasio · $13132
+  [batalha] g03-4 → vitoria · equipe 2:29,10:9,13:6,45:8,20:8,43:17 · A4-ginasio · $13852
+  [batalha] g03-5 → vitoria · equipe 2:30,10:9,13:6,45:8,20:8,43:17 · A4-ginasio · $14652
+  ida ao Posto no meio do ginásio (cura e chás até 2 na Venda; atalho declarado)
+  [batalha] lider-03 → vitoria · equipe 2:30,10:9,13:6,45:8,20:8,43:17 · A4-ginasio · $16252
+  INSÍGNIA 3 na tentativa 1
+FALHA page.evaluate: Execution context was destroyed, most likely because of a navigation |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:49:36) |     at t.snap (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:52:18) |     at t.resolver (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:122:25) 0 0

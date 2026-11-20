@@ -167,6 +167,7 @@ const CAPANGA_LAGO: TreinadorDef = {
   desafio: 'Xi, um treinador! Vai embora: esse bicho de cor esquisita vale uma fortuna no porto!', derrota: 'Ferrou! O Cartel nem existe mais e eu ainda apanho…',
 };
 registrarTreinador(CAPANGA_LAGO);
+export const TREINADORES_CAPTURA: TreinadorDef[] = [CAPANGA_LAGO];
 /** ['lagoRaro']: o Mandizinho de Pelagem Rara salta do lago (batalha selvagem com a variante garantida). Capturado ou vencido → `lago-raro-ok`; se fugir, volta ao fundo e o capanga ensina a chamá-lo de novo. */
 registrarComando('lagoRaro', async () => {
   const { criarCriatura, falar } = await deps(), { lutar } = await import('../../world/encontros'), { M } = await import('../../world/vivo');

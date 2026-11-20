@@ -11,6 +11,7 @@ import { ERROS_B1 } from '../src/data/zonas/_b1-lib';
 import { TREINADORES_B1 } from '../src/data/treinadores/b1';
 import { EVENTOS_B1 } from '../src/data/eventos/b1';
 import { EVENTOS_COMUNS } from '../src/data/eventos/comuns';
+import { EVENTOS_CAPTURA } from '../src/data/eventos/captura'; // captura e criação: cuieiras, artesão, ninho, trocas, lago (docs/CAPTURA-CRIACAO.md)
 
 const dir = new URL('../src/data/zonas/', import.meta.url).pathname;
 const MEUS = /^(B1|B2|B3|B4|B9|B-R1|B-CE|B-PA|B-R2|B-CH|B-CV)(-|$)/;
@@ -34,7 +35,7 @@ function blocos(z: ZonaDef) {
   return { w, h, b };
 }
 const ehEnt = (t?: string) => !!t && t !== 'borda' && t !== 'buraco';
-const ids = new Map(TREINADORES_B1.map((t) => [t.id, t])), evs = new Set([...EVENTOS_B1, ...EVENTOS_COMUNS].map((e) => e.id));
+const ids = new Map(TREINADORES_B1.map((t) => [t.id, t])), evs = new Set([...EVENTOS_B1, ...EVENTOS_COMUNS, ...EVENTOS_CAPTURA].map((e) => e.id));
 if (ids.size !== TREINADORES_B1.length) E('treinadores com id repetido');
 if (new Set(EVENTOS_B1.map((e) => e.id)).size !== EVENTOS_B1.length) E('eventos com id repetido');
 
