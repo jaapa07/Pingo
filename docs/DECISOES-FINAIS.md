@@ -73,3 +73,40 @@ por plugin — mesmo método do docs/ZONAS-B1.md; `run.sh <roteiro> <seg> [args]
   `podeHoje`/Agenda do dia; a tabela Revanches lista só os liberados) e no Ginásio de Treino (`atualizarAgenda` não põe o
   líder no salão, `agendaTreino` da recepção lista só os liberados, `revPreparar` recusa).
 - Teste unitário das três faixas.
+
+### 5. Gincana — CONCLUÍDO
+- Só o recorde do dia vale (src/data/gincana.ts `registrarProva`): ganho = valor da marca nova − valor do recorde anterior
+  (valor = 1 a cada 10 pontos, mínimo 1), só quando a rodada bate o recorde; rodada pior ou igual rende 0 (o pódio segue
+  pago uma vez por posição melhorada). A Juíza diz "Sem pontos novos: só o recorde do dia vale pontos" e a introdução
+  avisa a regra.
+- Ranking da rodada: `FimDeProva.posRodada` (posição da marca desta rodada entre os rivais do dia, `posicaoDaMarca`); a fala
+  diz "Posição desta rodada no ranking de hoje: Nº lugar." e, se a rodada não bateu o recorde, "No quadro vale o seu
+  recorde: Mº."
+- Corrida da Vereda (src/ui/telas/gincana.ts, `CORRIDA`): 1 ponto a cada 40 px (era 32), estrela 12 (era 15), cada tropeço
+  −20 (era 0) e dura 0,2 s a mais; o placar nunca fica negativo; texto da regra avisa que tropeço custa pontos.
+  Medido no navegador em tempo real (tools/testes/decisoes/corrida.mjs, `humano.js` do QA pós-Liga, Vampirinha vel 140 com
+  Suco de Caju; rivais do dia 217/97/194, a Lina varia 200–260):
+  | | gente (sementes 1–3) | tocar as raias em rodízio a cada 350 ms | parado |
+  |---|---|---|---|
+  | antes | 432, 489 (QA: 464–479) | 317 (QA no iPhone: 301) | (QA: 144–203) |
+  | 1ª tentativa (estrela 10, tropeço −25) | 262, 302, 204 | 0, 0 | 0 |
+  | **aplicado (estrela 12, tropeço −20)** | **304, 352, 245** | **0, 0** | — |
+  O 1º lugar pede um bom jogo (a rodada de 245, com mais tropeços, perde para uma Lina de 250–260); tocar sem mirar não
+  pontua.
+- Agenda do rádio: `agendaDoDia({..., mergulho})` só anuncia a Sexta da Tartaruga com o Amuleto do Mergulho.
+- Testes unitários (npm test): recorde que paga a diferença, rodada pior sem pontos, posição da rodada, agenda com e sem
+  Mergulho.
+
+### Testes de fluxo no navegador (tools/testes/decisoes/fluxos.mjs <rival|lab|peao|revanche|premio>) — todos OK
+- rival 7 (de `b-vv`, equipe com 1 de vida): a luta começa com a equipe cheia, fala do chimarrão, `rival-7` marcada.
+- laboratório (de `passo-12`, equipe pela metade; equipes de Zinabre/Lata trocadas por uma criatura fraca SÓ na página,
+  porque as lutas rodam no modo sem tela): Zinabre → maca → Lata com a equipe cheia.
+- peão (de `passo-14`): leva a (8, 16) do B7-ginasio.
+- revanches (de `passo-14` com 14 e com 16 insígnias): a recepção não/sim lista os líderes 9–16; `revPreparar lider-10`
+  recusa/libera.
+- prêmio: B-R5-1 (prêmio 2600) pagou 3900 em B-R5; agenda sem/com Mergulho.
+
+### Verificação final
+- `npx tsc --noEmit` limpo · `npm test` 38/38 · `npm run check` (completo, com build limpo) 16/16, 0 erros, 5 avisos
+  (os de antes: B9/B-TA alcançáveis cedo, A-GE água 24,5, A-MT) · `npx tsx tools/verify.ts --mapa-b` 2/2, 0 erros.
+- `MAPA_B_ABERTO` continua `false`. Vite 5211 desligado pelo `run.sh parar`.

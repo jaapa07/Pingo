@@ -31,7 +31,8 @@ const ZONAS_NO_PASSO: Record<string, number> = {
 const PERIODOS = ['manha', 'dia', 'tarde', 'noite'] as const;
 /** simulação com o mapa B aberto: o termo `mapa-b` das condições vale `true` mesmo com MAPA_B_ABERTO = false no jogo */
 let mapaBSimulado = false;
-const comMapaB = (c: string) => (mapaBSimulado ? c.replace(/(^|[&|!])\s*mapa-b(?=\s*($|[&|]))/g, '$1sempre') : c);
+// a simulação do mapa A trata o mapa B como fechado mesmo com MAPA_B_ABERTO = true no jogo (assim ela mede só o caminho quarto → Liga)
+const comMapaB = (c: string) => c.replace(/(^|[&|!])\s*mapa-b(?=\s*($|[&|]))/g, mapaBSimulado ? '$1sempre' : '$1nunca');
 /** a condição vale em algum período do dia (o jogador pode esperar) */
 function vale(c: string | undefined): boolean {
   if (!c) return true;

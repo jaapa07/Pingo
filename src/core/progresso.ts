@@ -5,7 +5,7 @@
  * O save não muda: passe, bilhete e a flag `liga-vencida` continuam valendo quando a chave virar `true`.
  * Em condições (`Cond`) a chave é o termo `mapa-b` (ex.: `se: 'flag:liga-vencida&!mapa-b'`).
  */
-export const MAPA_B_ABERTO = false;
+export const MAPA_B_ABERTO = true;
 /** falas de recusa enquanto a linha para o mapa B está fechada */
 export const EM_OBRAS: Record<'trem' | 'saveiro', string> = {
   trem: 'O maquinista tira o boné e coça a cabeça:\n"Campeão, a linha da serra está em obras! Caiu barreira no túnel e a turma ainda está assentando trilho."\f"Guarde bem o seu Passe. Quando a Maria-Fumaça voltar a subir, o Rádio Cipó avisa."',
