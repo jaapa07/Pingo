@@ -102,15 +102,21 @@ class Efeitos {
 interface Prova { pista: HTMLElement; pontos: number; dica: string; atualizar(dt: number, t: number): void }
 interface Ctx { c: CriaturaInst; bonus: number; vel: number; atq: number; def: number; fx: Efeitos }
 
-/** Corrida da Vereda: 3 raias, obstáculos vêm da direita, estrelas valem ponto */
+/**
+ * Corrida da Vereda: 3 raias, obstáculos vêm da direita, estrelas valem ponto.
+ * Pontuação (decisão do autor, docs/DECISOES-FINAIS.md: o 1º lugar pede um bom jogo e tocar sem mirar não vence):
+ * 1 ponto a cada 40 px, estrela 10, tropeço −25 (e o tropeço dura mais). Antes era 1/32 px, estrela 15 e tropeço sem
+ * custo: gente fazia 430–490 e tocar as raias em rodízio fazia ~300, acima de todos os rivais (≤ 260).
+ */
+const CORRIDA = { pxPorPonto: 40, estrela: 10, tropeco: 25 };
 function provaAgilidade(raiz: HTMLElement, x: Ctx): Prova {
   const pista = div('gn-pista gn-raias', raiz);
   const RAIAS = [112, 132, 152], CX = 64;
   const marcas = [tracos(pista, 'gn-faixa', 117), tracos(pista, 'gn-faixa', 137), tracos(pista, 'gn-pedrisco', 100), tracos(pista, 'gn-pedrisco', 156)];
   RAIAS.forEach((y, i) => { const z = div('gn-raia-toque', raiz); em(z, 0, y - 16); tocavel(z, () => { raia = i; }); });
   const cri = new Corredor(pista, x.c.especie); cri.x = CX; cri.y = RAIAS[1];
-  let raia = 1, dist = 0, prox = 120, estrelas = 0, trope = 0, rolar = 0;
-  const vel = (95 + 85 * x.vel) * (1 + x.bonus), tTrope = 0.9 - 0.5 * x.def;
+  let raia = 1, dist = 0, prox = 120, estrelas = 0, tropecos = 0, trope = 0, rolar = 0;
+  const vel = (95 + 85 * x.vel) * (1 + x.bonus), tTrope = 1.1 - 0.5 * x.def;
   interface Ob { el: HTMLElement; x: number; r: number; t: 'pedra' | 'cupim' | 'estrela'; feito?: boolean; fx?: Fx }
   let obs: Ob[] = [];
   const criar = (t: Ob['t'], r: number) => {
@@ -120,7 +126,7 @@ function provaAgilidade(raiz: HTMLElement, x: Ctx): Prova {
     el.classList.add('gn-ob'); pista.append(el); obs.push({ el, x: 336, r, t });
   };
   return {
-    pista, get pontos() { return Math.floor(dist / 32) + estrelas * 15; },
+    pista, get pontos() { return Math.max(0, Math.floor(dist / CORRIDA.pxPorPonto) + estrelas * CORRIDA.estrela - tropecos * CORRIDA.tropeco); },
     dica: 'CIMA/BAIXO ou toque na raia: trocar de raia   B: desistir',
     atualizar(dt, t) {
       if (t > 0) {
@@ -150,8 +156,8 @@ function provaAgilidade(raiz: HTMLElement, x: Ctx): Prova {
         o.el.style.zIndex = String(RAIAS[o.r]);
         if (!o.feito && o.r === raia && Math.abs(o.x - CX) < (o.t === 'estrela' ? 12 : w / 2 + 4) && Math.abs(cri.y - RAIAS[o.r]) < 8) {
           o.feito = true;
-          if (o.t === 'estrela') { estrelas++; som('ui-ok'); x.fx.fx('comum-estrela', CX, cri.y - 30); x.fx.txt('+15', CX, cri.y - 44); o.el.remove(); }
-          else if (trope <= 0) { trope = tTrope; cri.piscar = tTrope; som('batida'); x.fx.fx('fis-poeira', CX + 8, cri.y - 8); x.fx.txt('Opa!', CX, cri.y - 44, 'vermelho'); input.vibrar(30); }
+          if (o.t === 'estrela') { estrelas++; som('ui-ok'); x.fx.fx('comum-estrela', CX, cri.y - 30); x.fx.txt('+' + CORRIDA.estrela, CX, cri.y - 44); o.el.remove(); }
+          else if (trope <= 0) { trope = tTrope; tropecos++; cri.piscar = tTrope; som('batida'); x.fx.fx('fis-poeira', CX + 8, cri.y - 8); x.fx.txt('-' + CORRIDA.tropeco, CX, cri.y - 44, 'vermelho'); input.vibrar(30); }
         }
       }
       obs = obs.filter((o) => { if (o.x < -24 || (o.t === 'estrela' && o.feito)) { o.el.remove(); return false; } return true; });
