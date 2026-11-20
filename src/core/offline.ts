@@ -3,10 +3,13 @@
  *  - registra o Service Worker gerado no build (`sw.js`, ao lado do index.html, em qualquer subpasta);
  *  - baixa em lotes o resto do pacote (sprites, arenas, zonas) para o cache, com retomada;
  *  - pede ao navegador para não apagar o save (`navigator.storage.persist()`);
- *  - mostra um aviso discreto com o andamento e some quando termina.
+ *  - mostra um aviso discreto com o andamento e some quando termina;
+ *  - quando o site publica uma versão nova: baixa o que mudou em segundo plano e mostra
+ *    "Atualização disponível: toque para recarregar" (nunca recarrega sozinho nem aparece durante uma batalha).
  * Nos empacotamentos nativos (iOS/desktop) e no `vite dev` este módulo não faz nada.
  */
 import { plataforma } from './plataforma';
+import { gravarRetomada } from './save';
 
 type Entrada = [caminho: string, hash: string, bytes: number, grupo: 'n' | 'r' | 'd'];
 interface Lista { v: string; arquivos: Entrada[] }
@@ -14,7 +17,10 @@ interface Lista { v: string; arquivos: Entrada[] }
 export const offline = {
   /** 'desligado' (dev/nativo), 'instalando', 'baixando', 'pronto' ou 'falhou' (tenta de novo na próxima abertura) */
   estado: 'desligado' as 'desligado' | 'instalando' | 'baixando' | 'pronto' | 'falhou',
+  /** versão do pacote com que esta página abriu */
   versao: '',
+  /** versão mais nova já baixada e pronta para valer no próximo recarregamento ('' se não há) */
+  versaoNova: '',
   feitos: 0, total: 0,
   /** ms gastos no download do pacote nesta sessão (0 se já estava completo) */
   tempoMs: 0,
@@ -47,11 +53,14 @@ async function pedirPersistencia() {
   } catch { /* navegador sem a API: o save segue em localStorage + IndexedDB */ }
 }
 
-async function baixarResto() {
+async function lerLista(): Promise<Lista> {
   const r = await fetch('pingo-arquivos.json');
   if (!r.ok) throw new Error('lista de arquivos indisponível');
-  const lista = (await r.json()) as Lista;
-  offline.versao = lista.v;
+  return (await r.json()) as Lista;
+}
+
+/** guarda no cache o resto do pacote da lista dada; `atualizacao`: download de uma versão nova com o jogo aberto */
+async function baixarResto(lista: Lista, atualizacao = false): Promise<boolean> {
   // sprites, arenas e zonas ficam num cache só, com o hash na chave: o que não muda entre versões não é baixado de novo
   const chave = (a: Entrada) => new URL(a[0], location.href).href + '?h=' + a[1];
   const alvo = lista.arquivos.filter((a) => a[3] === 'r');
@@ -61,7 +70,7 @@ async function baixarResto() {
   const ja = new Set((await cache.keys()).map((q) => q.url));
   const falta = alvo.filter((a) => !ja.has(chave(a)));
   offline.feitos = offline.total - falta.length;
-  if (falta.length) offline.estado = 'baixando';
+  if (falta.length && !atualizacao) offline.estado = 'baixando';
   const t0 = performance.now();
   let falhas = 0;
   for (let i = 0; i < falta.length; i += LOTE) {
@@ -76,16 +85,57 @@ async function baixarResto() {
       }
       falhas++;
     }));
-    avisar(`Guardando o jogo para jogar sem internet: ${Math.floor((offline.feitos / offline.total) * 100)}%`);
+    if (!atualizacao) avisar(`Guardando o jogo para jogar sem internet: ${Math.floor((offline.feitos / offline.total) * 100)}%`);
     if (falhas > 20) break; // a rede caiu: continua na próxima abertura
   }
+  // a página aberta continua na versão antiga: os arquivos dela ficam no cache até o recarregamento
+  if (atualizacao) return falhas === 0;
   if (falta.length) offline.tempoMs = Math.round(performance.now() - t0);
-  if (falhas) { offline.estado = 'falhou'; avisar('Sem rede: o download continua na próxima abertura.', 5000); return; }
+  if (falhas) { offline.estado = 'falhou'; avisar('Sem rede: o download continua na próxima abertura.', 5000); return false; }
   // faxina: chaves de versões antigas (hash que não está mais na lista) saem do cache
   const validas = new Set(lista.arquivos.map(chave));
   for (const q of ja) if (!validas.has(q)) void cache.delete(q).catch(() => undefined);
   offline.estado = 'pronto';
   if (falta.length) avisar('Pronto: o jogo já funciona sem internet.', 5000);
+  return true;
+}
+
+/* ------------------------------ versão nova com o jogo aberto ------------------------------ */
+let botao: HTMLElement | null = null, conferindo = false, ultimaBusca = 0;
+const emBatalha = () => !!document.querySelector('.tela.batalha');
+
+function mostrarAtualizacao() {
+  if (botao || typeof document === 'undefined') return;
+  const b = botao = document.createElement('div'); b.id = 'aviso-atualizacao';
+  b.setAttribute('role', 'button');
+  b.textContent = 'Atualização disponível: toque para recarregar';
+  b.style.cssText = 'position:fixed;left:50%;top:calc(env(safe-area-inset-top, 0px) + 6px);transform:translateX(-50%);z-index:1100;'
+    + 'padding:4px 12px;background:#1a1423;color:#ffe9a8;border:2px solid #ffc94d;font:bold 11px/16px ui-monospace,Menlo,Consolas,monospace;'
+    + 'white-space:nowrap;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;display:none';
+  // o toque é do aviso: não chega aos controles do jogo
+  for (const ev of ['pointerdown', 'touchstart', 'mousedown'] as const) b.addEventListener(ev, (e) => e.stopPropagation());
+  b.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (emBatalha()) return;
+    b.textContent = 'Recarregando...';
+    try { gravarRetomada(); } catch { /* fora de um jogo não há o que guardar */ }
+    location.reload();
+  });
+  document.body.append(b);
+  // some durante as batalhas e volta quando elas terminam
+  const acertar = () => { b.style.display = emBatalha() ? 'none' : 'block'; };
+  acertar(); window.setInterval(acertar, 1000);
+}
+
+/** confere se o Service Worker já serve uma versão diferente da desta página; se sim, baixa o que mudou e avisa */
+async function conferirVersao() {
+  if (conferindo || offline.versaoNova || !offline.versao) return;
+  conferindo = true;
+  try {
+    const lista = await lerLista();
+    if (lista.v !== offline.versao && (await baixarResto(lista, true))) { offline.versaoNova = lista.v; mostrarAtualizacao(); }
+  } catch { /* sem rede: tenta de novo na próxima conferência */ }
+  conferindo = false;
 }
 
 export async function iniciarOffline(): Promise<void> {
@@ -102,9 +152,23 @@ export async function iniciarOffline(): Promise<void> {
     await sw.ready;
     // esta página já foi servida pela versão ativa: os núcleos de versões anteriores podem ser apagados
     if (!reg.installing && !reg.waiting) sw.controller?.postMessage('faxina');
-    await baixarResto();
-    // procura versão nova já nesta sessão; se houver, instala em segundo plano e vale na próxima abertura
-    if (navigator.onLine) void reg.update().catch(() => undefined);
+    // o Service Worker de uma versão nova assume o controle assim que instala: é o sinal de que há atualização
+    sw.addEventListener('controllerchange', () => void conferirVersao());
+    const lista = await lerLista();
+    // se a lista já não cita o código desta página, o Service Worker trocou de versão enquanto ela abria
+    const eu = decodeURIComponent(new URL(import.meta.url).href.slice(new URL('./', location.href).href.length));
+    const antiga = !lista.arquivos.some((q) => q[0] === eu);
+    offline.versao = antiga ? 'anterior a ' + lista.v : lista.v;
+    if ((await baixarResto(lista)) && antiga) { offline.versaoNova = lista.v; mostrarAtualizacao(); }
+    // procura versão nova nesta sessão e sempre que o jogo volta ao primeiro plano (o PWA do iPhone fica dias aberto)
+    const buscar = () => {
+      if (!navigator.onLine || performance.now() - ultimaBusca < 60000 && ultimaBusca) return;
+      ultimaBusca = performance.now();
+      void reg.update().then(() => conferirVersao()).catch(() => undefined);
+    };
+    buscar();
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') buscar(); });
+    void conferirVersao();
   } catch (e) {
     offline.estado = 'falhou';
     console.warn('[pingo] modo sem internet indisponível:', e);

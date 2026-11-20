@@ -4,25 +4,27 @@ import type { TreinadorDef, MembroEquipe } from '../../core/tipos';
  * Treinadores do time A1 (Costa do Sol, passos 1–3): Trilha do Ipê, Campos de Restinga, Mata dos Sabiás, Bosque Alto,
  * Trilha dos Cipós, Gruta do Eco e Porto Sereia — e os três primeiros duelos com a rival Tainá.
  * Curva (tabela 4.5, ás dos líderes 12 / 17 / 22; rotas = ás −2 a −6): líder 2 → nv 11–15 · líder 3 → nv 16–20.
- * Exceção assumida: a Trilha do Ipê começa em nv 3 e sobe até 8, porque o jogador sai do laboratório com o inicial no nv 5
- * (com a faixa 6–10 desde o primeiro passo, o inicial perdia para o primeiro treinador).
+ * Exceção assumida: a Trilha do Ipê vai de nv 2 a 6, porque o jogador a atravessa pela primeira vez só com o inicial no nv 5,
+ * sem cuias nem remédios (jogo honesto: com 3–8, Mata perdia 94% para a 2ª treinadora e todos perdiam para a 5ª e o 6º).
+ * Os três do caminho (1–3) dão ≥ 90% para qualquer inicial no nv 5; os três de fora do caminho (4–6) só chegam à trilha
+ * depois do Diário de Campo (`se: flag:ovo-entregue` na zona), quando já dá para capturar e montar equipe.
  */
 const t = (id: string, classe: string, nome: string, sprite: string, equipe: MembroEquipe[], premio: number, desafio: string, derrota: string, depois: string, extra: Partial<TreinadorDef> = {}): TreinadorDef =>
   ({ id, classe, nome, sprite, equipe, ia: 'novato', premio, desafio, derrota, depois, ...extra });
 
 /* ------------------------------ A-R1 · Trilha do Ipê ------------------------------ */
 const TRILHA_DO_IPE: TreinadorDef[] = [
-  t('A-R1-1', 'Pipeiro', 'Juquinha', 'cl-crianca-m', [{ e: 10, nv: 3 }], 60,
+  t('A-R1-1', 'Pipeiro', 'Juquinha', 'cl-crianca-m', [{ e: 10, nv: 2 }], 60,
     'Ei! Você pisou na sombra da minha pipa! Isso dá batalha!', 'Minha pipa murchou…', 'Pipirim é fraquinho, mas é o primeiro a acordar. Bom para treinar cedo.'),
-  t('A-R1-2', 'Escoteira', 'Margarida', 'cl-escoteira', [{ e: 13, nv: 3 }, { e: 10, nv: 4 }], 96,
+  t('A-R1-2', 'Escoteira', 'Margarida', 'cl-escoteira', [{ e: 13, nv: 2 }, { e: 13, nv: 3 }], 96,
     'Sempre alerta! E alerta vermelho: treinador novato na trilha!', 'Vou perder a medalha de vigia.', 'As saliências só se pulam para baixo. Para subir, dá a volta pelo caminho.'),
-  t('A-R1-3', 'Pipeira', 'Naná', 'cl-crianca-f', [{ e: 13, nv: 5 }], 80,
+  t('A-R1-3', 'Pipeira', 'Naná', 'cl-crianca-f', [{ e: 13, nv: 4 }], 80,
     'A minha Cotiazinha rói até casca de coco. Quer ver?', 'Ela roeu foi a corda…', 'Dizem que no canteiro ali de cima o fruto cresce mais rápido se regar.'),
-  t('A-R1-4', 'Observadora de Aves', 'Dona Íris', 'cl-observadora', [{ e: 45, nv: 5 }, { e: 10, nv: 6 }], 160,
+  t('A-R1-4', 'Observadora de Aves', 'Dona Íris', 'cl-observadora', [{ e: 45, nv: 5 }, { e: 10, nv: 5 }, { e: 10, nv: 5 }], 160,
     'Psiu! Você espantou o Quero-querinho que eu estava anotando. Agora vai ter que batalhar com ele.', 'Anotado: "treinador promissor, 1 exemplar".', 'De noite a trilha muda: sai o Pipirim, entra o Gambazinho. E a Corujinha, se você tiver sorte.'),
-  t('A-R1-5', 'Mateira', 'Jacira', 'cl-mateira', [{ e: 13, nv: 6 }, { e: 20, nv: 7 }], 192,
+  t('A-R1-5', 'Mateira', 'Jacira', 'cl-mateira', [{ e: 13, nv: 5 }, { e: 20, nv: 6 }, { e: 13, nv: 6 }], 192,
     'Estou guardando o canteiro. E guardando umas batalhas para quem passa.', 'Pois é. Guardei mal.', 'Gambazinho finge de morto quando perde. Não se preocupe, ele levanta sozinho.'),
-  t('A-R1-6', 'Pescador', 'Seu Lambari', 'cl-pescador', [{ e: 37, nv: 8 }], 144,
+  t('A-R1-6', 'Pescador', 'Seu Lambari', 'cl-pescador', [{ e: 37, nv: 6 }], 144,
     'Peixe hoje não deu. Vai ter que dar batalha!', 'Nem peixe, nem vitória. Que dia.', 'Vila Caiçara é logo ali. O ginásio de lá é do tipo Vento: Trovão e Pedra resolvem.'),
 ];
 

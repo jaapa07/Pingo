@@ -48,8 +48,11 @@ Sobre o save no iPhone:
   **Exportar arquivo .pingo** / **Importar** (ou o código QR).
 - Apagar o ícone da Tela de Início apaga o save dele. Exporte antes.
 
-Atualizações: ao abrir com internet, o jogo baixa a versão nova em segundo plano e passa a usá-la na
-abertura seguinte. O save não é tocado.
+Atualizações: ao abrir com internet (e sempre que o app volta ao primeiro plano), o jogo procura versão
+nova, baixa só o que mudou em segundo plano e mostra no alto da tela o aviso **"Atualização disponível:
+toque para recarregar"**. O aviso nunca aparece durante uma batalha e o jogo nunca recarrega sozinho: quem
+não tocar segue jogando na versão antiga e recebe a nova na abertura seguinte. O save não é tocado (o toque
+no aviso ainda guarda um ponto de retomada antes de recarregar).
 
 ## 3. Ativar o GitHub Pages (uma vez)
 
@@ -65,14 +68,22 @@ na branch `main`. Para ligar:
 Observações:
 - Em conta gratuita, o Pages exige repositório **público** (privado só nos planos pagos).
 - Os assets (sprites, zonas, arenas) já estão versionados em `public/`; o CI não roda os renders.
-- O pacote publicado tem ~27 MB em ~9 mil arquivos pequenos (os mapas são fatiados em blocos).
+- O pacote publicado tem ~29 MB em ~9 mil arquivos pequenos (os mapas são fatiados em blocos). O `du` mostra
+  ~53 MB para a mesma pasta: é o espaço em blocos de 4 KB no disco, não o tamanho do que é enviado.
 
 ## 4. Conferir antes de publicar
 
-    npm run check            # verificador único: tsc, batalha, zonas, dados, progressão até a Liga, níveis, sprites, dist
-    npm run build && npm run test:offline
-                             # Playwright: PC + iPhone em pé e deitado, com a rede cortada (capturas em docs/capturas/offline/)
-    npm run check -- --offline   # as duas coisas juntas
+    npm run check                # verificador único (~1 min): tsc, batalha, zonas, palavras proibidas, dados,
+                                 # progressão até a Liga, níveis, sprites, BUILD LIMPO, arquivos do pacote, dist
+    npm run check -- --rapido    # sem o build limpo (~15 s), para o dia a dia
+    npm run check -- --offline   # + Playwright sobre o build limpo: PC + iPhone em pé e deitado, rede cortada,
+                                 # e a atualização de versão com o jogo aberto (capturas em docs/capturas/offline/)
+    npm run check -- --tudo      # lista todos os avisos e as referências quebradas do mapa B
+
+O **build limpo** repete o que o GitHub faz: `git clone` do HEAD numa pasta temporária, mais os arquivos
+alterados/novos que um commit levaria, `node_modules` por link e `npm run build`. Ele falha se o jogo usa
+arquivo ignorado pelo `.gitignore`, pacote fora do `package.json` ou `package-lock.json` fora de sincronia —
+erros que nesta máquina não aparecem e no GitHub param a publicação. Rode antes de cada push.
 
 `npm run icones` refaz os ícones do aplicativo (`public/icones/`) a partir da arte do jogo.
 

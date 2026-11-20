@@ -79,9 +79,9 @@ const ILHA_DO_FAROL: TreinadorDef[] = [
   capanga('A6-FA-5', false, [{ e: 88, nv: 26 }, { e: 93, nv: 27 }], 1080, 'A alavanca é minha. Eu durmo abraçado com ela!', 'Acordei.', 'Puxou? Então a grade do térreo subiu. O Rebite vai me rebitar.'),
   capanga('A6-FA-6', true, [{ e: 31, nv: 27 }, { e: 143, nv: 27 }], 1080, 'Último lance antes da lanterna. Daqui só passa quem o tenente chamar.', 'Ele chamou você, pelo visto.', 'Lá em cima estão as jaulas. E um faroleiro amarrado que não para de dar palpite.'),
   capanga('A6-FA-7', false, [{ e: 115, nv: 27 }, { e: 55, nv: 28 }], 1120, 'Terceiro andar! Eu contei os degraus: são muitos. Você não vai contar o resto.', 'Perdi a conta.', 'A menina de trança disse que ia "resolver sozinha". Ninguém resolve o Rebite sozinho.'),
-  capanga('A6-FA-8', false, [{ e: 143, nv: 27 }, { e: 141, nv: 25 }, { e: 28, nv: 26 }], 1120, 'Às ordens, tenente! Vou parafusar este intruso no chão!', 'Espanou a rosca…', ''),
-  capanga('A6-FA-9', true, [{ e: 31, nv: 28 }, { e: 93, nv: 28 }], 1120, 'Minha vez! Ninguém encosta nas jaulas do tenente!', 'Encostou. E como.', ''),
-  t('A6-rebite', 'Tenente do Cartel', 'Rebite', 'tenente-rebite', [{ e: 143, nv: 27 }, { e: 31, nv: 28 }, { e: 115, nv: 28 }, { e: 11, nv: 28 }, { e: 84, nv: 29, item: 'acerola' }], 2900,
+  capanga('A6-FA-8', false, [{ e: 141, nv: 25 }, { e: 28, nv: 26 }], 1120, 'Às ordens, tenente! Vou parafusar este intruso no chão!', 'Espanou a rosca…', ''),
+  capanga('A6-FA-9', true, [{ e: 93, nv: 26 }, { e: 31, nv: 27 }], 1120, 'Minha vez! Ninguém encosta nas jaulas do tenente!', 'Encostou. E como.', ''),
+  t('A6-rebite', 'Tenente do Cartel', 'Rebite', 'tenente-rebite', [{ e: 143, nv: 26 }, { e: 31, nv: 26 }, { e: 115, nv: 27 }, { e: 84, nv: 28, item: 'acerola' }], 2900,
     'Tenente Rebite, Cartel Ferrugem. Eu prendo as coisas no lugar. Você está fora do lugar.', 'Soltou… tudo soltou. Odeio quando solta.', '',
     { ia: 'lider', musica: 'batalha-cartel', itens: ['garrafada', 'garrafada'], flag: 'venceu:A6-rebite' }),
 ];

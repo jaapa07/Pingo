@@ -1,53 +1,60 @@
+>> retomando de brasa-passo-1
 
->> etapa 1: abertura: quarto, mãe, relógio, laboratório e a primeira parceira  (0 s)
-== checkpoint brasa-passo-1: ["Guaraxim 5"] $3000
-resumo: {"zona":"A1-lab","x":7,"y":6,"dinheiro":3000,"insignias":[],"amuletos":[],"equipe":[{"e":4,"nome":"Guaraxim","nv":5,"vida":19,"max":19,"st":null,"golpes":["encontrao 35","berro 40","fagulha 25"]}],"mochila":{"radio-cipo":1,"ovo-pintado":1},"tempo":106,"posto":"A1-casa-jogador","capturado":1}
-treino extra: [] derrotas: 0 curas: 0
-perguntas: ["Quem é você? → Kauê","Você vai escolher Guaraxim, do tipo Brasa? → Sim","Quer dar um apelido para Guaraxim? → Não"]
-erros de console: []
-
->> etapa 1: abertura: quarto, mãe, relógio, laboratório e a primeira parceira  (0 s)
-== checkpoint brasa-passo-1: ["Guaraxim 5"] $3000
-
->> etapa 2: Trilha do Ipê e o Ovo Pintado até o Seu Aroeira  (18 s)
+>> etapa 2: Trilha do Ipê e o Ovo Pintado até o Seu Aroeira  (0 s)
   [batalha] A-R1-1 → vitoria · equipe 4:5 · A-R1 · $3060
-  [batalha] selvagem 45:4 → derrota · equipe 4:5 · A-R1 · $3060
-  [batalha] A-R1-6 → derrota · equipe 4:5 · A-R1 · $1530
-  DERROTA para A-R1-6 (nv 8)
-  [batalha] A-R1-2 → vitoria · equipe 4:6 · A-R1 · $861
-  [batalha] A-R1-3 → vitoria · equipe 4:6 · A-R1 · $941
-  [batalha] A-R1-5 → derrota · equipe 4:6 · A-R1 · $941
-  DERROTA para A-R1-5 (nv 7)
-  [batalha] A-R1-5 → derrota · equipe 4:7 · A-R1 · $470
-  DERROTA para A-R1-5 (nv 7)
-  [batalha] A-R1-5 → vitoria · equipe 4:8 · A-R1 · $427
-  [batalha] A-R1-4 → vitoria · equipe 4:8 · A-R1 · $587
-  [batalha] A-R1-6 → derrota · equipe 4:8 · A-R1 · $587
-  DERROTA para A-R1-6 (nv 8)
-  [batalha] A-R1-6 → derrota · equipe 4:8 · A-R1 · $293
-  DERROTA para A-R1-6 (nv 8)
-  [batalha] selvagem 10:3 → captura · equipe 4:8,10:3 · A-R1 · $146
-== checkpoint brasa-passo-2: ["Guaraxim 8","Pipirim 3"] $146
-resumo: {"zona":"A2-casa-aroeira","x":4,"y":4,"dinheiro":146,"insignias":[],"amuletos":[],"equipe":[{"e":4,"nome":"Guaraxim","nv":8,"vida":26,"max":26,"st":null,"golpes":["encontrao 35","berro 40","fagulha 25"]},{"e":10,"nome":"Pipirim","nv":3,"vida":15,"max":15,"st":null,"golpes":["bicada 35","berro 40"]}],"mochila":{"radio-cipo":1,"cha-cidreira":3},"tempo":1421,"posto":"A2-posto","capturado":2}
-treino extra: [] derrotas: 6 curas: 3
-perguntas: ["Quem é você? → Kauê","Você vai escolher Guaraxim, do tipo Brasa? → Sim","Quer dar um apelido para Guaraxim? → Não","Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco","Quer que eu cuide das suas criaturas? → Sim"]
-erros de console: []
+  [batalha] A-R1-2 → vitoria · equipe 4:5 · A-R1 · $3156
+  [batalha] A-R1-3 → vitoria · equipe 4:6 · A-R1 · $3236
+  [batalha] selvagem 13:2 → captura · equipe 4:6,13:2 · A-R1 · $3236
+  (foto a2 falhou: TimeoutError: page.screenshot: Timeout 15000ms exceeded.
+Cal)
+== checkpoint brasa-passo-2: ["Guaraxim 6","Cotiazinha 2"] $3236
+  (foto passo-2 falhou: TimeoutError: page.screenshot: Timeout 15000ms exceeded.
+Cal)
 
->> etapa 1: abertura: quarto, mãe, relógio, laboratório e a primeira parceira  (0 s)
-== checkpoint brasa-passo-1: ["Guaraxim 5"] $3000
+>> etapa 3: volta ao laboratório: rival 1, Diário, cuias, tutorial e capturas na Trilha  (89 s)
+  [batalha] rival-1-rio → vitoria · equipe 4:6,13:2 · A1-lab · $3536
+  [batalha] selvagem 13:2 → captura · equipe 4:6,13:2,13:2 · A-R1 · $3536
+  [batalha] selvagem 10:2 → captura · equipe 4:6,13:2,13:2,10:2 · A-R1 · $3536
+  caça em A-R1: 1 batalhas, equipe ["Guaraxim 6","Cotiazinha 2","Aaaaaaaaaa 2","Pipirim 2"]
+  [batalha] A-R1-6 → derrota · equipe 4:6,13:2,13:2,10:2 · A-R1 · $3536
+    turnos: 
+  DERROTA para A-R1-6 (nv 6)
+  [batalha] A-R1-6 → vitoria · equipe 4:6,13:4,13:2,10:2 · A-R1 · $1912
+  [batalha] A-R1-5 → vitoria · equipe 4:7,13:4,13:2,10:2 · A-R1 · $2104
+  [batalha] A-R1-4 → vitoria · equipe 4:8,13:4,13:2,10:2 · A-R1 · $2264
+== checkpoint brasa-passo-3: ["Guaraxim 8","Cotiazinha 4","Aaaaaaaaaa 2","Pipirim 2"] $2264
+  (foto passo-3 falhou: TimeoutError: page.screenshot: Timeout 15000ms exceeded.
+Cal)
 
->> etapa 2: Trilha do Ipê e o Ovo Pintado até o Seu Aroeira  (126 s)
-  [batalha] A-R1-1 → vitoria · equipe 4:5 · A-R1 · $3060
-  [batalha] selvagem 10:3 → captura · equipe 4:5,10:3 · A-R1 · $3060
-  [batalha] A-R1-2 → vitoria · equipe 4:6,10:3 · A-R1 · $3156
-  [batalha] A-R1-3 → vitoria · equipe 4:6,10:3 · A-R1 · $3236
-  [batalha] A-R1-5 → derrota · equipe 4:6,10:3 · A-R1 · $3236
-  [batalha] A-R1-5 → derrota · equipe 4:6,10:4 · A-R1 · $1618
-  DERROTA para A-R1-5 (nv 7)
-  [batalha] A-R1-5 → derrota · equipe 4:6,10:4 · A-R1 · $809
-  DERROTA para A-R1-5 (nv 7)
-FALHA page.waitForTimeout: Target page, context or browser has been closed |     at t.espera (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:38:27) |     at t.toque (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:47:234) |     at async passoBatalha (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:94:5) 0 0
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (228 s)
+  (foto loja-A2-venda falhou: TimeoutError: page.screenshot: Timeout 15000ms exceeded.
+Cal)
+  compras em A2-venda: 1× cuia · sobrou $2064
+== checkpoint brasa-pre-lider-1: ["Guaraxim 8","Cotiazinha 4","Aaaaaaaaaa 2","Pipirim 2"] $2064
+  ginásio 1, tentativa 1: equipe ["Guaraxim 8","Cotiazinha 4","Aaaaaaaaaa 2","Pipirim 2"]
+  [batalha] g01-1 → vitoria · equipe 4:8,13:4,13:2,10:2 · A2-ginasio · $2344
+  [batalha] g01-2 → derrota · equipe 4:8,13:4,13:2,10:2 · A2-ginasio · $2344
+    turnos: 
+  perdeu no ginásio 1 (tentativa 1)
+  TREINO EXTRA {"zona":"A-R1","rotulo":"depois de perder no ginásio 1","niveis":1,"batalhas":3,"de":8,"para":9}
+  ginásio 1, tentativa 2: equipe ["Guaraxim 9","Cotiazinha 4","Aaaaaaaaaa 2","Pipirim 2"]
+  [batalha] g01-2 → derrota · equipe 4:9,13:4,13:2,10:5 · A2-ginasio · $1172
+    turnos: 
+  perdeu no ginásio 1 (tentativa 2)
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:50:36) |     at t.treinar (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:241:23) |     at async ginasio (/home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:51:21) 0 0
 resumo: 0
-treino extra: [] derrotas: 3 curas: 2
-perguntas: ["Quem é você? → Kauê","Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco"]
-erros de console: ["Failed to load resource: net::ERR_CONNECTION_REFUSED"]
+treino extra: [{"zona":"A-R1","rotulo":"depois de perder no ginásio 1","niveis":1,"batalhas":3,"de":8,"para":9}] derrotas: 3 curas: 7
+perguntas: ["Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco","Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de brasa-passo-2
+
+>> etapa 3: volta ao laboratório: rival 1, Diário, cuias, tutorial e capturas na Trilha  (0 s)
+  [batalha] rival-1-rio → vitoria · equipe 4:6,13:4 · A1-lab · $3536
+  [batalha] selvagem 13:2 → captura · equipe 4:6,13:4,13:2 · A-R1 · $3536
+  [batalha] selvagem 10:2 → captura · equipe 4:6,13:4,13:2,10:2 · A-R1 · $3536
+  caça em A-R1: 1 batalhas, equipe ["Guaraxim 6","Cotiazinha 4","Cotiazinha 2","Pipirim 2"]
+  [batalha] A-R1-6 → vitoria · equipe 4:6,13:5,13:2,10:2 · A-R1 · $3680
+  [batalha] A-R1-5 → derrota · equipe 4:6,13:6,13:2,10:2 · A-R1 · $3680
+    turnos: Guaraxim6 22/22 x Cotiazinha5 20/20 → golpe fagulha | Guaraxim6 16/22 x Cotiazinha5 12/20 → golpe fagulha | Guaraxim6 10/22 x Cotiazinha5 5/20 → golpe fagulha | Cotiazinha5 21/21 x Gambazinho6 22/22 → golpe encontrao | Cotiazinha5 21/21 x Gambazinho6 15/22 → golpe encontrao | Cotiazinha5 10/21 x Gambazinho6 3/22 → golpe encontrao | Cotiazinha6 12/23 x Cotiazinha6 22/22 → golpe encontrao | Guaraxim6 3/22 x Cotiazinha6 16/22 → golpe fagulha | Guaraxim6 3/22 x Cotiazinha6 10/22 → golpe fagulha | Cotiazinha2 14/14 x Cotiazinha6 10/22 → golpe encontrao | Cotiazinha2 3/14 x Cotiazinha6 7/22 → golpe encontrao | Pipirim2 14/14 x Cotiazinha6 7/22 → golpe bicada | Pipirim2 4/14 x Cotiazinha6 5/22 → golpe bicada
+  DERROTA para A-R1-5 (nv 6)
+  [batalha] A-R1-5 → vitoria · equipe 4:7,13:6,13:2,10:2 · A-R1 · $2032

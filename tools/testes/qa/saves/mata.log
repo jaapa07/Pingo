@@ -1,18 +1,48 @@
+>> retomando de mata-passo-1
 
->> etapa 1: abertura: quarto, mãe, relógio, laboratório e a primeira parceira  (0 s)
-== checkpoint mata-passo-1: ["Tamanduí 5"] $3000
-
->> etapa 2: Trilha do Ipê e o Ovo Pintado até o Seu Aroeira  (113 s)
+>> etapa 2: Trilha do Ipê e o Ovo Pintado até o Seu Aroeira  (1 s)
   [batalha] A-R1-1 → vitoria · equipe 1:5 · A-R1 · $3060
-  [batalha] A-R1-2 → derrota · equipe 1:5 · A-R1 · $3060
-  DERROTA para A-R1-2 (nv 4)
-  [batalha] A-R1-2 → derrota · equipe 1:6 · A-R1 · $1530
-  DERROTA para A-R1-2 (nv 4)
-  [batalha] A-R1-2 → derrota · equipe 1:6 · A-R1 · $765
-  DERROTA para A-R1-2 (nv 4)
-  [batalha] A-R1-3 → derrota · equipe 1:6 · A-R1 · $382
-FALHA Error: sem caminho em A1-casa-jogador de (4,4) até (7,42) |     at t.irAte (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:151:63) |     at async t.usar (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:162:15) |     at async t.limpar (file:///home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:218:100) {"pronto":true,"oc":false,"mov":false,"zona":"A1-casa-jogador","x":4,"y":4,"dir":"s","modo":"pe","telas":1,"topo":"mundo tela-mundo","ocupada":false,"nres":6} ["A minha Cotiazinha rói até casca de coco. Quer ver?","{JOGADOR} ficou sem criaturas para lutar!\nVocê corre até o último Posto Guardião…","Sua equipe foi curada. Cuide bem dela!"]
-resumo: {"zona":"A1-casa-jogador","x":4,"y":4,"dinheiro":191,"insignias":[],"amuletos":[],"equipe":[{"e":1,"nome":"Tamanduí","nv":6,"vida":24,"max":24,"st":null,"golpes":["arranhao 35","cara-feia 30","chicote-de-cipo 25"]}],"mochila":{"radio-cipo":1,"ovo-pintado":1,"cuia":2},"tempo":1245,"posto":"A1-casa-jogador","capturado":1}
-treino extra: [] derrotas: 4 curas: 2
-perguntas: ["Você vai escolher Tamanduí, do tipo Mata? → Sim","Quer dar um apelido para Tamanduí? → Não","Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco"]
+  [batalha] selvagem 45:3 → derrota · equipe 1:5 · A-R1 · $3060
+    turnos: 
+  [batalha] selvagem 10:2 → captura · equipe 1:5,10:2 · A-R1 · $1530
+  [batalha] A-R1-2 → vitoria · equipe 1:5,10:2 · A-R1 · $1626
+  [batalha] A-R1-3 → vitoria · equipe 1:6,10:2 · A-R1 · $1706
+  (foto a2 falhou: TimeoutError: page.screenshot: Timeout 15000ms exceeded.
+Cal)
+== checkpoint mata-passo-2: ["Tamanduí 6","Pipirim 2"] $1706
+
+>> etapa 3: volta ao laboratório: rival 1, Diário, cuias, tutorial e capturas na Trilha  (103 s)
+  [batalha] rival-1-brasa → vitoria · equipe 1:7,10:2 · A1-lab · $2006
+  [batalha] selvagem 13:2 → captura · equipe 1:7,10:2,13:2 · A-R1 · $2006
+  [batalha] selvagem 45:2 → captura · equipe 1:7,10:2,13:2,45:2 · A-R1 · $2006
+  caça em A-R1: 6 batalhas, equipe ["Tamanduí 7","Pipirim 2","Aaaaaaaaaa 2","Quero-querinho 2"]
+  [batalha] A-R1-6 → vitoria · equipe 1:7,10:2,13:2,45:2 · A-R1 · $2150
+  [batalha] A-R1-5 → vitoria · equipe 1:8,10:4,13:2,45:2 · A-R1 · $2342
+  [batalha] A-R1-4 → vitoria · equipe 1:8,10:5,13:2,45:2 · A-R1 · $2502
+== checkpoint mata-passo-3: ["Tamanduí 8","Pipirim 5","Aaaaaaaaaa 2","Quero-querinho 2"] $2502
+  (foto passo-3 falhou: TimeoutError: page.screenshot: Timeout 15000ms exceeded.
+Cal)
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (312 s)
+  (foto loja-A2-venda falhou: TimeoutError: page.screenshot: Timeout 15000ms exceeded.
+Cal)
+  compras em A2-venda: 1× cuia · sobrou $2302
+== checkpoint mata-pre-lider-1: ["Tamanduí 8","Pipirim 5","Aaaaaaaaaa 2","Quero-querinho 2"] $2302
+  ginásio 1, tentativa 1: equipe ["Tamanduí 8","Pipirim 5","Aaaaaaaaaa 2","Quero-querinho 2"]
+  [batalha] g01-1 → vitoria · equipe 1:8,10:6,13:4,45:2 · A2-ginasio · $2582
+  [batalha] g01-2 → derrota · equipe 1:8,10:6,13:4,45:2 · A2-ginasio · $2582
+    turnos: 
+  perdeu no ginásio 1 (tentativa 1)
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:50:36) |     at t.treinar (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:241:23) |     at async ginasio (/home/user/adventures-of-pingo/tools/testes/qa/etapas.mjs:51:21) 0 0
+resumo: 0
+treino extra: [] derrotas: 2 curas: 8
+perguntas: ["Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco","Quer que eu cuide das suas criaturas? → Sim"]
 erros de console: []
+>> retomando de mata-passo-2
+
+>> etapa 3: volta ao laboratório: rival 1, Diário, cuias, tutorial e capturas na Trilha  (0 s)
+  [batalha] rival-1-brasa → vitoria · equipe 1:7,10:2 · A1-lab · $2006
+  [batalha] selvagem 13:2 → captura · equipe 1:7,10:2,13:2 · A-R1 · $2006
+  [batalha] selvagem 45:3 → captura · equipe 1:7,10:2,13:2,45:3 · A-R1 · $2006
+  caça em A-R1: 3 batalhas, equipe ["Tamanduí 7","Pipirim 2","Cotiazinha 2","Quero-querinho 3"]
+  [batalha] A-R1-6 → vitoria · equipe 1:7,10:2,13:2,45:3 · A-R1 · $2150

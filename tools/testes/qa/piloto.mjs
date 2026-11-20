@@ -23,10 +23,22 @@ export async function abrir(o = {}) {
   const erros = [];
   page.on('pageerror', (e) => erros.push(String(e)));
   page.on('console', (m) => { if (m.type() === 'error') erros.push(m.text()); });
+  // turbo: o relógio do jogo é virtual. Cada chamada de quadro avança 5 passos de 60 Hz (o máximo que o laço aceita) e
+  // os quadros são pedidos por temporizador, sem esperar a tela pintar: a máquina é partilhada e pintar 60×/s custa caro.
   if (turbo !== 1) await page.addInitScript((k) => {
-    const raf = window.requestAnimationFrame.bind(window);
-    window.requestAnimationFrame = (cb) => raf((t) => cb(t * k));
     const st = window.setTimeout.bind(window);
+    let virtual = 0, fila = [], agendado = false, id = 0;
+    const canal = new MessageChannel();
+    let n = 0;
+    const t0 = performance.now();
+    // nunca mais depressa que k× o tempo real (os temporizadores do jogo andam em k× também)
+    // __qaFoto: o jogo fica parado (página quieta) enquanto se tira uma captura de tela
+    const roda = () => { if (window.__qaFoto) { st(roda, 30); return; } if (virtual > (performance.now() - t0) * k) { st(roda, 1); return; } agendado = false; const f = fila; fila = []; virtual += 1000 / 12; for (const [, cb] of f) { try { cb(virtual); } catch (e) { console.error(e); } } };
+    canal.port1.onmessage = roda;
+    // a cada 4 quadros cede a vez ao navegador (pintura, eventos de entrada) com um temporizador de verdade
+    const agenda = () => { if (agendado) return; agendado = true; if (++n % 4 === 0) st(roda, 0); else canal.port2.postMessage(0); };
+    window.requestAnimationFrame = (cb) => { fila.push([++id, cb]); agenda(); return id; };
+    window.cancelAnimationFrame = (i) => { fila = fila.filter(([j]) => j !== i); };
     window.setTimeout = (f, ms, ...a) => st(f, (ms || 0) / k, ...a);
   }, turbo);
   await page.goto(BASE + (o.query ?? ''));
@@ -39,7 +51,7 @@ export async function abrir(o = {}) {
   t.log = (...a) => { const l = a.map((x) => (typeof x === 'string' ? x : JSON.stringify(x))).join(' '); console.log(l); if (o.arquivoLog) appendFileSync(o.arquivoLog, l + '\n'); };
   t.snap = () => ev(() => window.__qa.snap());
   t.resumo = () => ev(() => window.__qa.resumo());
-  t.foto = (nome) => page.screenshot({ path: `${AQUI}fotos/${t.nome}-${nome}.png` });
+  t.foto = async (nome) => { await ev(() => { window.__qaFoto = true; }); await page.waitForTimeout(120); try { await page.screenshot({ path: `${AQUI}fotos/${t.nome}-${nome}.png`, timeout: 60000 }); } catch (e) { t.log('  (foto ' + nome + ' falhou: ' + String(e).slice(0, 60) + ')'); } await ev(() => { window.__qaFoto = false; }); };
   t.falas = (n = 6) => ev((k) => window.__pingo.mundo.falas.slice(-k).map((f) => f.texto), n);
   t.flag = (f) => ev((f) => window.__pingo.jogo.save.flags[f], f);
   t.cond = (c) => ev(async (c) => (await import('/src/core/estado.ts')).cond(c), c);
@@ -98,7 +110,7 @@ export async function abrir(o = {}) {
   let nresVisto = 0;
   async function anotarBatalhas() {
     const novos = await ev((n) => window.__qa.resultados.slice(n), nresVisto);
-    for (const r of novos) { nresVisto++; t.diario.push(r); if (r.tipo === 'treinador' || r.resultado !== 'vitoria') t.log(`  [batalha] ${r.treinador ?? 'selvagem ' + r.inimigos} → ${r.resultado} · equipe ${r.equipe} · ${r.zona} · $${r.dinheiro}`); if (r.resultado === 'derrota') t.derrotas++; }
+    for (const r of novos) { nresVisto++; t.diario.push(r); if (r.tipo === 'treinador' || r.resultado !== 'vitoria') t.log(`  [batalha] ${r.treinador ?? 'selvagem ' + r.inimigos} → ${r.resultado} · equipe ${r.equipe} · ${r.zona} · $${r.dinheiro}`); if (r.resultado === 'derrota') { t.derrotas++; t.log('    turnos: ' + (r.turnos ?? []).join(' | ')); } }
     return novos;
   }
   t.batalhasNovas = anotarBatalhas;
@@ -124,7 +136,7 @@ export async function abrir(o = {}) {
           const h = await ev(() => new Date().getHours()), k = [A]; for (let i = 0; i < (10 - h + 24) % 24; i++) k.push('ArrowUp');
           await toques([...k, A, A, A]); await t.espera(200);
         }
-        else if (/tela-nome/.test(s.topo)) await t.toque(A, 150);
+        else if (/tela-nome/.test(s.topo)) { await t.toque('Enter', 150); if (/tela-nome/.test((await t.snap()).topo)) { await t.toque(A, 100); await t.toque('Enter', 150); } } // Enter aceita o nome sugerido; sem sugestão, uma letra e Enter
         else if (/tela-menu/.test(s.topo)) await t.toque(B, 100);
         else await t.toque(A, 45);
         continue;

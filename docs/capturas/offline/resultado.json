@@ -1,44 +1,77 @@
 [
  {
+  "perfil": "PC (1280×720, teclado)",
+  "ok": true,
+  "passos": [
+   "SW instalado e pacote no cache: 8279 arquivos em 106.8 s (8461 pedidos, 28.9 MB); página controlada: true; armazenamento persistente: false",
+   "manifest: \"Adventures of Pingo\", display fullscreen, 4 ícones + apple-touch-icon",
+   "rede cortada; recarregou e o jogo abriu do cache",
+   "jogo novo começado pela interface; Kauê acordou em A1-quarto (5,5)",
+   "andou 8 passos no quarto com as setas → (5,5)",
+   "recebeu o inicial pelo evento da cuia: equipe 1:5:125",
+   "encontro selvagem no capim depois de 5 passos",
+   "batalha jogada até o fim com a tecla A: equipe 1:5:125 → 1:5:141; depois dela, A-R1 (23,2) {\"tipo\":\"selvagem\",\"inimigos\":[{\"uid\":\"c3hiib1\",\"especie\":20",
+   "salvou pelo menu (jogo 1, A-R1); gravado em localStorage: true, IndexedDB: true",
+   "recarregou sem rede e continuou: Kauê em A-R1 (23,2), equipe 1:5:141; voltou a andar: true",
+   "versão bd132ddbbb → a033a714c6 publicada com uma batalha aberta: pronta em 1.4 s, 3 arquivo(s) baixado(s) (pingo-arquivos.json, index.html, assets/sprites/pessoa/ayra/retrato.png); aviso escondido durante a batalha",
+   "aviso \"Atualização disponível: toque para recarregar\" apareceu depois da batalha; clique nele recarregou na versão a033a714c6; save igual, Kauê continuou em A1-casa-jogador (4,4) com equipe 1:5:141; núcleo antigo apagado; abre sem rede na versão nova"
+  ],
+  "falhas": [],
+  "precacheMs": 106824,
+  "arquivos": 8461,
+  "bytes": 30344911,
+  "pedidosSemRede": 0,
+  "atualizacaoMs": 1400,
+  "atualizacaoArquivos": 3
+ },
+ {
   "perfil": "iPhone 13 em pé (toque)",
   "ok": true,
   "passos": [
-   "SW instalado e pacote no cache: 8183 arquivos em 46.5 s (8363 pedidos, 27.3 MB); página controlada: true; armazenamento persistente: false",
+   "SW instalado e pacote no cache: 8279 arquivos em 36.5 s (8470 pedidos, 29.0 MB); página controlada: true; armazenamento persistente: false",
    "manifest: \"Adventures of Pingo\", display fullscreen, 4 ícones + apple-touch-icon",
    "rede cortada; recarregou e o jogo abriu do cache",
-   "jogo novo começado pela interface; Kauêbo acordou em A1-quarto (5,5)",
+   "jogo novo começado pela interface; KauêC acordou em A1-quarto (5,5)",
    "andou 8 passos no quarto com o direcional de toque → (5,5)",
    "recebeu o inicial pelo evento da cuia: equipe 1:5:125",
-   "encontro selvagem no capim depois de 12 passos",
-   "batalha jogada até o fim com o botão A de toque: equipe 1:5:125 → 1:5:154; depois dela, A-R1 (24,2) {\"tipo\":\"selvagem\",\"inimigos\":[{\"uid\":\"c1v9fp1\",\"especie\":13",
+   "encontro selvagem no capim depois de 18 passos",
+   "batalha jogada até o fim com o botão A de toque: equipe 1:5:125 → 1:5:141; depois dela, A-R1 (22,2) {\"tipo\":\"selvagem\",\"inimigos\":[{\"uid\":\"c7ktbo1\",\"especie\":20",
    "salvou pelo menu (jogo 1, A-R1); gravado em localStorage: true, IndexedDB: true",
-   "recarregou sem rede e continuou: Kauêbo em A-R1 (24,2), equipe 1:5:154; voltou a andar: true"
+   "recarregou sem rede e continuou: KauêC em A-R1 (22,2), equipe 1:5:141; voltou a andar: true",
+   "versão a033a714c6 → 2d8ee7eb83 publicada com uma batalha aberta: pronta em 1.6 s, 3 arquivo(s) baixado(s) (pingo-arquivos.json, index.html, assets/sprites/pessoa/ayra/retrato.png); aviso escondido durante a batalha",
+   "aviso \"Atualização disponível: toque para recarregar\" apareceu depois da batalha; toque nele recarregou na versão 2d8ee7eb83; save igual, KauêC continuou em A1-casa-jogador (4,4) com equipe 1:5:141; núcleo antigo apagado; abre sem rede na versão nova"
   ],
   "falhas": [],
-  "precacheMs": 46479,
-  "arquivos": 8363,
-  "bytes": 28657480,
-  "pedidosSemRede": 0
+  "precacheMs": 36463,
+  "arquivos": 8470,
+  "bytes": 30383936,
+  "pedidosSemRede": 0,
+  "atualizacaoMs": 1598,
+  "atualizacaoArquivos": 3
  },
  {
   "perfil": "iPhone 13 deitado (toque)",
   "ok": true,
   "passos": [
-   "SW instalado e pacote no cache: 8183 arquivos em 14.3 s (8373 pedidos, 27.4 MB); página controlada: true; armazenamento persistente: false",
+   "SW instalado e pacote no cache: 8279 arquivos em 37.7 s (8470 pedidos, 29.0 MB); página controlada: true; armazenamento persistente: false",
    "manifest: \"Adventures of Pingo\", display fullscreen, 4 ícones + apple-touch-icon",
    "rede cortada; recarregou e o jogo abriu do cache",
-   "jogo novo começado pela interface; Kauêbo acordou em A1-quarto (5,5)",
+   "jogo novo começado pela interface; KauêC acordou em A1-quarto (5,5)",
    "andou 8 passos no quarto com o direcional de toque → (5,5)",
    "recebeu o inicial pelo evento da cuia: equipe 1:5:125",
-   "encontro selvagem no capim depois de 12 passos",
-   "batalha jogada até o fim com o botão A de toque: equipe 1:5:125 → 1:5:149; depois dela, A-R1 (22,2) {\"tipo\":\"selvagem\",\"inimigos\":[{\"uid\":\"c6wkhd1\",\"especie\":20",
+   "encontro selvagem no capim depois de 5 passos",
+   "batalha jogada até o fim com o botão A de toque: equipe 1:5:125 → 1:5:157; depois dela, A-R1 (23,2) {\"tipo\":\"selvagem\",\"inimigos\":[{\"uid\":\"c9uh0y1\",\"especie\":20",
    "salvou pelo menu (jogo 1, A-R1); gravado em localStorage: true, IndexedDB: true",
-   "recarregou sem rede e continuou: Kauêbo em A-R1 (22,2), equipe 1:5:149; voltou a andar: true"
+   "recarregou sem rede e continuou: KauêC em A-R1 (23,2), equipe 1:5:157; voltou a andar: true",
+   "versão 2d8ee7eb83 → 652a2c75ad publicada com uma batalha aberta: pronta em 0.8 s, 3 arquivo(s) baixado(s) (pingo-arquivos.json, index.html, assets/sprites/pessoa/ayra/retrato.png); aviso escondido durante a batalha",
+   "aviso \"Atualização disponível: toque para recarregar\" apareceu depois da batalha; toque nele recarregou na versão 652a2c75ad; save igual, KauêC continuou em A1-casa-jogador (4,4) com equipe 1:5:157; núcleo antigo apagado; abre sem rede na versão nova"
   ],
   "falhas": [],
-  "precacheMs": 14322,
-  "arquivos": 8373,
-  "bytes": 28702733,
-  "pedidosSemRede": 0
+  "precacheMs": 37745,
+  "arquivos": 8470,
+  "bytes": 30384049,
+  "pedidosSemRede": 0,
+  "atualizacaoMs": 819,
+  "atualizacaoArquivos": 3
  }
 ]

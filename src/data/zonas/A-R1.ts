@@ -5,6 +5,8 @@ import { grade, saidas, gente, duelista, item, placa, subBosque } from './_a1-gr
  * A-R1 · Trilha do Ipê (A1 ao sul → A2 ao norte). Primeira rota: grama alta, saliências que encurtam a volta,
  * o riacho com a ponte, o Recanto do Cigarrim (árvores sacudíveis) e dois segredos para depois:
  * o bosque do cipó (Facão) e a ilhota do poço (Remo).
+ * Aves selvagens ficam no nv 2–3: a Bicada (Vento, mesmo tipo) de um Pipirim nv 3 derrubava o inicial de Mata nv 5
+ * em 36% das lutas (jogo honesto), e a derrota para selvagem custa metade das patacas.
  */
 const g = grade('A-R1', [
   'TTTTTTTTTTTTTTNNTTTTTTTTTTTTTT',
@@ -100,9 +102,9 @@ const zona: ZonaDef = {
     duelista(g, '1', 'A-R1-1', 'cl-crianca-m', 'o', 5),
     duelista(g, '2', 'A-R1-2', 'cl-escoteira', 'o', 4),
     duelista(g, '3', 'A-R1-3', 'cl-crianca-f', 'l', 5),
-    duelista(g, '4', 'A-R1-4', 'cl-observadora', 'o', 4, { mov: 'olhar' }),
-    duelista(g, '5', 'A-R1-5', 'cl-mateira', 'o', 3),
-    duelista(g, '6', 'A-R1-6', 'cl-pescador', 'l', 3),
+    duelista(g, '4', 'A-R1-4', 'cl-observadora', 'o', 4, { mov: 'olhar', se: 'flag:ovo-entregue' }),
+    duelista(g, '5', 'A-R1-5', 'cl-mateira', 'o', 3, { se: 'flag:ovo-entregue' }),
+    duelista(g, '6', 'A-R1-6', 'cl-pescador', 'l', 3, { se: 'flag:ovo-entregue' }),
   ],
   itens: [
     item(g, 'a', 'A-R1', 'cha-cidreira'),
@@ -114,9 +116,9 @@ const zona: ZonaDef = {
   habitats: [
     {
       metodo: 'grama', taxa: 0.1,
-      manha: [{ e: 10, nv: [2, 4], peso: 40 }, { e: 13, nv: [2, 4], peso: 35 }, { e: 45, nv: [3, 5], peso: 25 }],
-      dia: [{ e: 10, nv: [2, 4], peso: 45 }, { e: 13, nv: [2, 4], peso: 40 }, { e: 45, nv: [3, 5], peso: 15 }],
-      noite: [{ e: 20, nv: [2, 4], peso: 45 }, { e: 13, nv: [2, 4], peso: 30 }, { e: 43, nv: [3, 5], peso: 13 }, { e: 45, nv: [3, 5], peso: 12 }],
+      manha: [{ e: 10, nv: [2, 2], peso: 40 }, { e: 13, nv: [2, 4], peso: 45 }, { e: 45, nv: [2, 3], peso: 15 }],
+      dia: [{ e: 10, nv: [2, 2], peso: 40 }, { e: 13, nv: [2, 4], peso: 50 }, { e: 45, nv: [2, 3], peso: 10 }],
+      noite: [{ e: 20, nv: [2, 4], peso: 45 }, { e: 13, nv: [2, 4], peso: 30 }, { e: 43, nv: [2, 3], peso: 13 }, { e: 45, nv: [2, 3], peso: 12 }],
       camadas: [
         { apos: 4, dia: [{ e: 10, nv: [14, 17], peso: 35 }, { e: 13, nv: [14, 17], peso: 30 }, { e: 45, nv: [15, 18], peso: 20 }, { e: 11, nv: [18, 20], peso: 10 }, { e: 14, nv: [20, 21], peso: 5 }], noite: [{ e: 20, nv: [14, 17], peso: 40 }, { e: 13, nv: [14, 17], peso: 25 }, { e: 43, nv: [15, 18], peso: 20 }, { e: 45, nv: [15, 18], peso: 10 }, { e: 21, nv: [24, 25], peso: 5 }] },
         { apos: 10, dia: [{ e: 10, nv: [30, 33], peso: 25 }, { e: 11, nv: [32, 36], peso: 30 }, { e: 14, nv: [32, 36], peso: 25 }, { e: 45, nv: [30, 33], peso: 10 }, { e: 46, nv: [34, 37], peso: 10 }], noite: [{ e: 20, nv: [30, 33], peso: 20 }, { e: 21, nv: [32, 36], peso: 30 }, { e: 13, nv: [30, 33], peso: 15 }, { e: 43, nv: [30, 33], peso: 10 }, { e: 44, nv: [33, 37], peso: 15 }, { e: 45, nv: [30, 33], peso: 10 }] },

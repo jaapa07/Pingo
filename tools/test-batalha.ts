@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
 import { TIPOS, STATS, type CriaturaInst, type EspecieDef, type TipoId, type TreinadorDef, type ClimaId, type MembroEquipe } from '../src/core/tipos';
 import { rng } from '../src/core/rng';
-import { jogo, novoSave, forcarPeriodo } from '../src/core/estado';
+import { jogo, novoSave, forcarPeriodo, cond } from '../src/core/estado';
 import { bus } from '../src/core/events';
 import { GOLPES, DESESPERO, golpe, temGolpe, type Efeito } from '../src/data/golpes';
 import { TABELA, eficaciaContra } from '../src/data/tabela-tipos';
@@ -695,6 +695,18 @@ teste('escada da IA: com as mesmas equipes, líder vence mais que treinador e tr
   const tn = duelar('treinador', 'novato', 200), lt = duelar('lider', 'treinador', 300), cl = duelar('conselho', 'lider', 300), ct = duelar('conselho', 'treinador', 300);
   console.log(`      treinador×novato ${(100 * tn).toFixed(0)}% · líder×treinador ${(100 * lt).toFixed(0)}% · conselho×líder ${(100 * cl).toFixed(0)}% · conselho×treinador ${(100 * ct).toFixed(0)}%`);
   afirmar(tn > 0.55, `treinador vence o novato (${tn})`); afirmar(lt > 0.5, `líder vence o treinador (${lt})`); afirmar(ct > 0.5, `conselho vence o treinador (${ct})`); afirmar(cl >= 0.47, `conselho não fica atrás do líder (${cl})`);
+});
+
+teste('condições: nome de flag com dois-pontos é lido inteiro (`flag:venceu:A6-FA-9`, `flag:visitou:A5`)', () => {
+  const antes = jogo.save; jogo.save = novoSave();
+  try {
+    afirmar(!cond('flag:venceu:A6-FA-9') && cond('!flag:venceu:A6-FA-9'), 'flag ausente é falsa');
+    jogo.save.flags['venceu:A6-FA-8'] = true;
+    afirmar(!cond('flag:venceu:A6-FA-9'), 'outra flag com o mesmo prefixo não conta');
+    jogo.save.flags['venceu:A6-FA-9'] = true; jogo.save.flags['visitou:A5'] = true;
+    afirmar(cond('flag:venceu:A6-FA-9') && cond('flag:visitou:A5') && !cond('!flag:venceu:A6-FA-9&flag:visitou:A5'), 'flag com dois-pontos presente é verdadeira');
+    afirmar(cond('sempre') && !cond('nunca') && cond('insignias:0'), 'termos sem valor e com valor simples seguem valendo');
+  } finally { jogo.save = antes; }
 });
 
 /* ============================== 9. regras do projeto ============================== */

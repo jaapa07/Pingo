@@ -20,7 +20,7 @@ const quadro = () => new Promise((r) => requestAnimationFrame(r));
 
 /* ------------------------------ batalha: observa o controle ------------------------------ */
 registrarTela('batalha', (args) => {
-  Q.bt = args; Q.mem = { ultimaTroca: -9, curas: new Map() }; Q.pend = []; Q.oferta = null; Q.enfraquecer = 0;
+  Q.bt = args; Q.mem = { ultimaTroca: -9, curas: new Map() }; Q.pend = []; Q.oferta = null; Q.enfraquecer = 0; Q.turnos = [];
   const c = args.controle;
   for (const m of ['iniciar', 'agir', 'substituir', 'responderOferta', 'aprender']) {
     const o = c[m].bind(c);
@@ -30,7 +30,7 @@ registrarTela('batalha', (args) => {
 });
 bus.on('batalha-fim', (e) => {
   const s = jogo.save;
-  Q.resultados.push({ tipo: e.tipo, resultado: e.resultado, treinador: e.pedido?.treinador?.id ?? null, inimigos: (e.pedido?.inimigos ?? []).map((c) => c.especie + ':' + c.nivel).join(','), equipe: s.equipe.map((c) => c.especie + ':' + c.nivel).join(','), zona: s.jogador.zona, dinheiro: s.jogador.dinheiro });
+  Q.resultados.push({ turnos: Q.turnos, tipo: e.tipo, resultado: e.resultado, treinador: e.pedido?.treinador?.id ?? null, inimigos: (e.pedido?.inimigos ?? []).map((c) => c.especie + ':' + c.nivel).join(','), equipe: s.equipe.map((c) => c.especie + ':' + c.nivel).join(','), zona: s.jogador.zona, dinheiro: s.jogador.dinheiro });
 });
 
 const valorGolpe = (id, e) => { const g = defGolpe(id); if (g.cat === 'status') return 18; return (g.poder * (g.precisao || 100)) / 100 * (g.efeitos.some((x) => x.t === 'carga' || x.t === 'recarga') ? 0.6 : 1) * (e.tipos.includes(g.tipo) ? 1.5 : 1); };
@@ -41,6 +41,12 @@ function comoItem(id, alvo) { const it = defItem(id), bi = BOLSOS.indexOf(it.bol
 
 /** decisão do turno (menu de ações aberto) */
 Q.decidir = () => {
+  const r = decidir0();
+  try { const c = Q.bt.controle, b = c.b, p = c.pedidosJogador()[0], eu = p && b.criatura(p), q = p && b.adversarios(p)[0], ele = q && b.criatura(q);
+    if (eu) Q.turnos.push(`${especie(eu.especie).nome}${eu.nivel} ${eu.vida}/${atributos(eu).vida} x ${ele ? especie(ele.especie).nome + ele.nivel + ' ' + ele.vida + '/' + atributos(ele).vida : '-'} → ${r.tipo}${r.tipo === 'golpe' ? ' ' + eu.golpes[r.slot]?.id : r.tipo === 'item' ? ' ' + r.item : r.tipo === 'troca' ? ' ' + r.para : ''}`); } catch (e) { /* só registro */ }
+  return r;
+};
+const decidir0 = () => {
   const c = Q.bt.controle, b = c.b, ped = Q.bt.pedido, p = c.pedidosJogador()[0], s = jogo.save;
   if (!p) return { tipo: 'nada' };
   const eu = b.criatura(p), q = b.adversarios(p)[0], ele = q && b.criatura(q);

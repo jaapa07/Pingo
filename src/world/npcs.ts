@@ -37,6 +37,8 @@ export function limparNpcs() { for (const n of M.npcs) n.ator.remover(); for (co
 export function ocultarNpc(id: string, oculto: boolean) { setFlag(chaveOculto(id), oculto); sincronizarNpcs(); }
 
 const podePisar = (x: number, y: number, a: Ator) => M.zv.chao(x, y) && !M.zv.warp(x, y) && !atorEm(x, y, a);
+/** quem passeia não para colado a uma porta, escada ou saída: o tile em frente fica livre para o jogador entrar e sair */
+const diantedePorta = (x: number, y: number) => DIRS.some((d) => !!M.zv.warp(x + DX[d], y + DY[d]));
 export function atualizarNpcs() {
   if (M.ocupado) return;
   for (const n of M.npcs) {
@@ -46,7 +48,7 @@ export function atualizarNpcs() {
     if (mov === 'vagar') {
       n.espera = rng.int(50, 170);
       const d = rng.escolha(DIRS), x = a.x + DX[d], y = a.y + DY[d];
-      if (Math.abs(x - n.ox) <= 2 && Math.abs(y - n.oy) <= 2 && podePisar(x, y, a)) void a.mover(d, 20); else a.virar(d);
+      if (Math.abs(x - n.ox) <= 2 && Math.abs(y - n.oy) <= 2 && podePisar(x, y, a) && !diantedePorta(x, y)) void a.mover(d, 20); else a.virar(d);
     } else if (mov === 'olhar') {
       n.espera = rng.int(80, 200);
       a.virar(rng.escolha(DIRS));

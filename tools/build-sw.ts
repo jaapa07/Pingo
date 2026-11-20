@@ -85,9 +85,15 @@ const abs = (c) => new URL(c, BASE).href;
 async function emLotes(lista, tamanho, f) {
   for (let i = 0; i < lista.length; i += tamanho) await Promise.all(lista.slice(i, i + tamanho).map(f));
 }
-async function baixar(cache, caminho) {
+/** baixa da rede para o cache; com o hash da lista, recusa conteúdo que não confere (publicação pela metade ou cache intermediário velho) */
+async function baixar(cache, caminho, h) {
   const r = await fetch(new Request(abs(caminho), { cache: 'reload' }));
   if (!r.ok) throw new Error('falha ao baixar ' + caminho + ' (' + r.status + ')');
+  if (h && self.crypto && self.crypto.subtle) {
+    const d = new Uint8Array(await self.crypto.subtle.digest('SHA-256', await r.clone().arrayBuffer()));
+    let hex = ''; for (let i = 0; i < 6; i++) hex += d[i].toString(16).padStart(2, '0');
+    if (hex !== h) throw new Error('o conteúdo de ' + caminho + ' não é o desta versão');
+  }
   await cache.put(abs(caminho), r);
 }
 async function listaDe(cache) {
@@ -110,6 +116,9 @@ self.addEventListener('install', (ev) => {
     // a lista nova primeiro: com ela dá para aproveitar do núcleo antigo o que não mudou
     await baixar(cache, 'pingo-arquivos.json');
     const nova = await listaDe(cache);
+    // a lista tem de ser a desta versão: se o site entregar sw.js novo com lista velha, a instalação é refeita depois
+    const jl = await (await cache.match(abs('pingo-arquivos.json'))).json();
+    if (jl.v !== VERSAO) { await caches.delete(CACHE_NUCLEO); throw new Error('lista de arquivos de outra versão (' + jl.v + ')'); }
     const antigos = [];
     for (const nome of await caches.keys()) {
       if (!nome.startsWith(PREFIXO + 'n-') || nome === CACHE_NUCLEO) continue;
@@ -123,7 +132,7 @@ self.addEventListener('install', (ev) => {
       for (const [c, l] of antigos) {
         if (h && l.get(caminho) === h) { const r = await c.match(abs(caminho)); if (r) { await cache.put(abs(caminho), r); return; } }
       }
-      await baixar(cache, caminho);
+      await baixar(cache, caminho, h);
     });
     // assume assim que instalar (padrão mais previsível nos navegadores). A página que já estava aberta segue
     // funcionando: os núcleos antigos só são apagados quando uma página nova pedir a faxina.
@@ -168,13 +177,17 @@ async function responder(req) {
   const h = (await mapa()).get(decodeURIComponent(limpa.slice(BASE.length)));
   const dados = h ? await caches.open(CACHE_DADOS) : null;
   if (dados) { const guardado = await dados.match(limpa + '?h=' + h); if (guardado) return guardado; }
+  // página aberta antes da atualização, sem rede: vale a cópia guardada de qualquer versão do arquivo
+  const deOutraVersao = async () => (await caches.open(CACHE_DADOS)).match(limpa, { ignoreSearch: true });
   try {
     const r = await fetch(req);
     // por demanda: o que é do pacote e ainda não estava guardado entra no cache ao ser usado
     if (dados && r.ok && r.type === 'basic') void dados.put(limpa + '?h=' + h, r.clone()).catch(() => undefined);
+    if (!r.ok) { const v = await deOutraVersao(); if (v) return v; }
     return r;
   } catch (e) {
     if (req.mode === 'navigate') { const p = await pagina(); if (p) return p; }
+    const v = await deOutraVersao(); if (v) return v;
     return new Response('', { status: 504, statusText: 'sem rede e fora do cache' });
   }
 }

@@ -58,7 +58,8 @@ export function periodo(): Periodo { return periodoForcado ?? periodoAgora(); }
 function termo(t: string): boolean {
   t = t.trim();
   if (t.startsWith('!')) return !termo(t.slice(1));
-  const [k, v] = t.split(':');
+  // o valor é tudo depois do PRIMEIRO dois-pontos: nomes de flag podem ter dois-pontos (`venceu:A6-FA-9`, `visitou:A5`)
+  const corte = t.indexOf(':'), k = corte < 0 ? t : t.slice(0, corte), v = corte < 0 ? '' : t.slice(corte + 1);
   switch (k) {
     case 'insignia': return temInsignia(Number(v));
     case 'insignias': return jogo.save.insignias.length >= Number(v);

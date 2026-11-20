@@ -231,15 +231,19 @@ export const EVENTOS_A2: EventoDef[] = [
   {
     id: 'a2-farol-rebite',
     passos: [
-      se('!flag:farol-ok', [
+      // em dois tempos: primeiro os dois capangas; o tenente espera o jogador se arrumar (menu, remédios) e só então luta.
+      // Quem já caiu não volta a lutar: perdendo para o tenente, a revanche começa direto nele.
+      se('!flag:farol-ok&!flag:venceu:A6-FA-9', [
         ['emote', 'rebite', '!'],
         f(REBITE, 'Parado aí. Mais um passo e você pisa no meu chão limpo.'),
         f(REBITE, 'Tenente Rebite, Cartel Ferrugem. Este farol agora é uma antena: com a força dessas criaturas, o Coronel Garrote vai falar com a costa inteira. E a costa inteira vai obedecer.'),
         f(VOLTA, 'Mmmf! Mmmmf mmf MMF!'),
         f(REBITE, 'O faroleiro discorda. O faroleiro está amarrado. Capangas: parafusem a visita!'),
-        ['batalha', 'A6-FA-8'],
+        se('!flag:venceu:A6-FA-8', [['batalha', 'A6-FA-8']]),
         ['batalha', 'A6-FA-9'],
-        f(REBITE, 'Incompetentes. Tudo eu, tudo eu. Venha, então. Eu aperto você pessoalmente.'),
+        f(REBITE, 'Incompetentes. Tudo eu, tudo eu.\fArrume as suas criaturas, se quiser: eu gosto de apertar parafuso inteiro. Quando chegar perto, eu aperto você pessoalmente.'),
+      ], [se('!flag:farol-ok', [
+        f(REBITE, 'Pronto? Venha, então. Eu aperto você pessoalmente.'),
         ['batalha', 'A6-rebite'],
         f(REBITE, 'Soltou… Tudo o que eu prendo, solta. A Lata tinha razão: esta costa dá azar.'),
         f(REBITE, 'Fique com o seu farol. O Coronel tem planos maiores no Sertão, e lá não tem criança com canoa.\fCartel Ferrugem: recolher!'),
@@ -250,7 +254,7 @@ export const EVENTOS_A2: EventoDef[] = [
         ['amuleto', 'lampiao'], ['dar', 'amuleto-lampiao'],
         f(VOLTA, 'Agora, o ginásio… Eu adoraria um desafio, mas olhe a Faísca, a minha Poraquê. É ela que acende a lanterna do farol, e esses brutos sugaram a bateria dela.\fSem a Faísca eu não saio daqui. E líder preocupado luta mal.'),
         f(VOLTA, 'Só o Xarope de Algas da Moça Sargaço, a boticária de Cidade Coral, levanta peixe-elétrico. Você remaria até lá por mim?\fTraga o xarope e eu abro o ginásio na mesma hora. Palavra de inventor: quase nunca falha!'),
-      ]),
+      ])]),
     ],
   },
   {

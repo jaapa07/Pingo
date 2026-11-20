@@ -1,18 +1,48 @@
+>> retomando de rio-passo-1
 
->> etapa 1: abertura: quarto, mãe, relógio, laboratório e a primeira parceira  (0 s)
-== checkpoint rio-passo-1: ["Botinho 5"] $3000
-
->> etapa 2: Trilha do Ipê e o Ovo Pintado até o Seu Aroeira  (117 s)
+>> etapa 2: Trilha do Ipê e o Ovo Pintado até o Seu Aroeira  (1 s)
   [batalha] A-R1-1 → vitoria · equipe 7:5 · A-R1 · $3060
   [batalha] A-R1-2 → vitoria · equipe 7:6 · A-R1 · $3156
-  [batalha] A-R1-3 → derrota · equipe 7:6 · A-R1 · $3156
-  DERROTA para A-R1-3 (nv 5)
-  [batalha] A-R1-3 → vitoria · equipe 7:6 · A-R1 · $1658
-  [batalha] A-R1-5 → vitoria · equipe 7:7 · A-R1 · $1850
-  [batalha] A-R1-4 → derrota · equipe 7:7 · A-R1 · $1850
-  DERROTA para A-R1-4 (nv 6)
-FALHA page.waitForTimeout: Target page, context or browser has been closed |     at t.espera (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:38:27) |     at t.toque (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:47:234) |     at async passoBatalha (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:94:5) 0 0
+  [batalha] A-R1-3 → vitoria · equipe 7:6 · A-R1 · $3236
+  (foto a2 falhou: TimeoutError: page.screenshot: Timeout 15000ms exceeded.
+Cal)
+== checkpoint rio-passo-2: ["Botinho 6"] $3236
+  (foto passo-2 falhou: TimeoutError: page.screenshot: Timeout 15000ms exceeded.
+Cal)
+
+>> etapa 3: volta ao laboratório: rival 1, Diário, cuias, tutorial e capturas na Trilha  (90 s)
+  [batalha] selvagem 45:3 → captura · equipe 7:6,45:3 · A-R1 · $3236
+  [batalha] rival-1-mata → vitoria · equipe 7:6,45:3 · A1-lab · $3536
+  [batalha] selvagem 13:2 → captura · equipe 7:6,45:3,13:2 · A-R1 · $3536
+  [batalha] selvagem 13:3 → fuga · equipe 7:6,45:3,13:2 · A-R1 · $3536
+  [batalha] selvagem 13:4 → fuga · equipe 7:6,45:3,13:2 · A-R1 · $3536
+  [batalha] selvagem 10:2 → captura · equipe 7:7,45:3,13:2,10:2 · A-R1 · $3536
+  caça em A-R1: 9 batalhas, equipe ["Botinho 7","Quero-querinho 3","Cotiazinha 2","Pipirim 2"]
+  [batalha] A-R1-6 → vitoria · equipe 7:7,45:3,13:2,10:2 · A-R1 · $3680
+  [batalha] A-R1-5 → vitoria · equipe 7:8,45:3,13:2,10:2 · A-R1 · $3872
+  [batalha] A-R1-4 → vitoria · equipe 7:8,45:3,13:2,10:2 · A-R1 · $4032
+== checkpoint rio-passo-3: ["Botinho 8","Quero-querinho 3","Cotiazinha 2","Pipirim 2"] $4032
+  (foto passo-3 falhou: TimeoutError: page.screenshot: Timeout 15000ms exceeded.
+Cal)
+
+>> etapa 4: Vila Caiçara: compras e ginásio 1 (Vento)  (339 s)
+  (foto loja-A2-venda falhou: TimeoutError: page.screenshot: Timeout 15000ms exceeded.
+Cal)
+  compras em A2-venda: 2× cha-cidreira · sobrou $3432
+== checkpoint rio-pre-lider-1: ["Botinho 8","Quero-querinho 3","Cotiazinha 2","Pipirim 2"] $3432
+  ginásio 1, tentativa 1: equipe ["Botinho 8","Quero-querinho 3","Cotiazinha 2","Pipirim 2"]
+  [batalha] g01-1 → vitoria · equipe 7:9,45:3,13:2,10:2 · A2-ginasio · $3712
+  [batalha] g01-2 → vitoria · equipe 7:10,45:3,13:2,10:2 · A2-ginasio · $4032
+  [batalha] g01-3 → vitoria · equipe 7:10,45:5,13:2,10:2 · A2-ginasio · $4392
+FALHA page.evaluate: Target page, context or browser has been closed |     at t.ev (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:50:36) |     at anotarBatalhas (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:113:25) |     at t.resolver (/home/user/adventures-of-pingo/tools/testes/qa/piloto.mjs:146:34) 0 0
 resumo: 0
-treino extra: [] derrotas: 2 curas: 2
-perguntas: ["Quem é você? → Kauê","Você vai escolher Botinho, do tipo Rio? → Sim","Quer dar um apelido para Botinho? → Não","Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco"]
-erros de console: ["Failed to load resource: net::ERR_CONNECTION_REFUSED"]
+treino extra: [] derrotas: 0 curas: 8
+perguntas: ["Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco","Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []
+>> retomando de rio-passo-2
+
+>> etapa 3: volta ao laboratório: rival 1, Diário, cuias, tutorial e capturas na Trilha  (0 s)
+  [batalha] rival-1-mata → vitoria · equipe 7:6 · A1-lab · $3536
+  [batalha] selvagem 13:2 → captura · equipe 7:6,13:2 · A-R1 · $3536
+  [batalha] selvagem 13:4 → fuga · equipe 7:6,13:2 · A-R1 · $3536
+  [batalha] selvagem 10:2 → captura · equipe 7:6,13:2,10:2 · A-R1 · $3536

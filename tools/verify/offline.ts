@@ -7,13 +7,19 @@
  *  4. anda pelo quarto; recebe o inicial pelo evento real da cuia; vai à Rota 1 e anda no capim até um
  *     encontro; luta até o fim; salva pelo menu;
  *  5. recarrega (ainda sem rede), continua o jogo salvo e confere lugar e equipe.
+ *  6. ATUALIZAÇÃO: a rede volta, uma versão nova é publicada (index.html e um sprite mudam) com uma batalha
+ *     aberta: o aviso "Atualização disponível" não aparece durante a batalha, aparece depois, o toque nele
+ *     recarrega na versão nova, o save é o mesmo, o núcleo antigo sai do cache e o jogo abre sem rede de novo.
  * Nenhuma requisição pode falhar sem rede. Atalhos assumidos (para o teste caber em minutos): relógio
  * acelerado 3×, o evento da cuia é chamado direto (em vez de andar até o laboratório) e a ida à Rota 1 usa
  * `mundo.irPara`. Capturas em docs/capturas/offline/.
  */
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { appendFileSync, cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { servir } from './servidor';
+import { gerar } from '../build-sw';
 
 const RAIZ = new URL('../..', import.meta.url).pathname;
 const CAPTURAS = RAIZ + 'docs/capturas/offline/';
@@ -31,13 +37,13 @@ const PERFIS: Perfil[] = [
   { id: 'iphone-pe', nome: 'iPhone 13 em pé (toque)', toque: true, opcoes: { ...iphone } },
   { id: 'iphone-deitado', nome: 'iPhone 13 deitado (toque)', toque: true, opcoes: { ...iphone, viewport: { width: iphone.viewport.height, height: iphone.viewport.width }, screen: { width: iphone.viewport.height, height: iphone.viewport.width } } },
 ];
-export interface ResultadoOffline { perfil: string; ok: boolean; passos: string[]; falhas: string[]; precacheMs: number; arquivos: number; bytes: number; pedidosSemRede: number }
+export interface ResultadoOffline { perfil: string; ok: boolean; passos: string[]; falhas: string[]; precacheMs: number; arquivos: number; bytes: number; pedidosSemRede: number; /** atualização: ms até o aviso ficar pronto e arquivos baixados */ atualizacaoMs: number; atualizacaoArquivos: number }
 
 type Acao = 'a' | 'b' | 'menu' | 'select' | 'cima' | 'baixo' | 'esq' | 'dir';
 const TECLA: Record<Acao, string> = { a: 'KeyZ', b: 'KeyX', menu: 'Escape', select: 'KeyV', cima: 'ArrowUp', baixo: 'ArrowDown', esq: 'ArrowLeft', dir: 'ArrowRight' };
 
-async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { pedidos: number; bytes: number; caminhos: string[] }): Promise<ResultadoOffline> {
-  const r: ResultadoOffline = { perfil: perfil.nome, ok: false, passos: [], falhas: [], precacheMs: 0, arquivos: 0, bytes: 0, pedidosSemRede: 0 };
+async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { pedidos: number; bytes: number; caminhos: string[] }, servido: string): Promise<ResultadoOffline> {
+  const r: ResultadoOffline = { perfil: perfil.nome, ok: false, passos: [], falhas: [], precacheMs: 0, arquivos: 0, bytes: 0, pedidosSemRede: 0, atualizacaoMs: 0, atualizacaoArquivos: 0 };
   const ctx = await browser.newContext({ ...perfil.opcoes, serviceWorkers: 'allow' });
   const page = await ctx.newPage();
   const cdp = perfil.toque ? await ctx.newCDPSession(page) : null;
@@ -134,7 +140,7 @@ async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { ped
     await ctx.setOffline(true); semRede = true;
     const pedidosAntes = srv.pedidos;
     await page.reload();
-    await page.waitForFunction(() => (window as any).__pingo?.telas?.pilha?.length > 0, null, { timeout: 30000 });
+    await page.waitForFunction(() => (window as any).__pingo?.telas?.pilha?.length > 0, null, { timeout: 120000 });
     passo('rede cortada; recarregou e o jogo abriu do cache');
     await page.evaluate(() => { (window as any).__pingo.jogo.opcoes.velTexto = 3; });
     await avancar((s) => /titulo/.test(topo(s)) && !s.cortina, 30000, 'o título'); await dormir(400); await foto('1-titulo');
@@ -186,7 +192,7 @@ async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { ped
       const q = await st(); if (emBatalha(q) || q.oc || q.cortina) { for (let i = 0; i < 60 && !encontro; i++) { encontro = emBatalha(await st()); if (!encontro) await dormir(50); } }
     }
     let forcado = false;
-    if (!encontro) { forcado = true; void page.evaluate(() => { void (window as any).__pingo.mundo.batalhaSelvagem(10, 3); }); await page.waitForFunction(() => (window as any).__pingo.telas.pilha.some((t: any) => /batalha/.test(t.el.className)), null, { timeout: 20000 }); }
+    if (!encontro) { forcado = true; void page.evaluate(() => { void (window as any).__pingo.mundo.batalhaSelvagem(10, 3); }); await page.waitForFunction(() => (window as any).__pingo.telas.pilha.some((t: any) => /batalha/.test(t.el.className)), null, { timeout: 60000 }); }
     passo(forcado ? `sem encontro em ${tentativas} passos no capim: batalha selvagem chamada direto` : `encontro selvagem no capim depois de ${tentativas} passos`);
     await dormir(2500 / TURBO + 600); await foto('6-batalha');
     const antes = (await st()).equipe.join(' ');
@@ -210,7 +216,10 @@ async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { ped
     const zonaAoSalvar = (await st()).zona;
     await apertar('menu'); await dormir(500);
     let q = await st(); if (!/menu/.test(topo(q))) throw new Error('o menu não abriu: ' + JSON.stringify(q.telas));
-    for (let i = 0; i < idx; i++) { await apertar('baixo'); await dormir(120); }
+    // desce até o cursor estar em "Salvar" (confere a linha em foco: um toque pode não ser lido se o menu ainda abre)
+    const focoMenu = () => page.evaluate(() => { const f = document.querySelector('.tela-menu .foco'); return f?.parentElement ? [...f.parentElement.children].indexOf(f) : -1; });
+    for (let i = 0; i < 16 && (await focoMenu()) !== idx; i++) { await apertar('baixo'); await dormir(150); }
+    if ((await focoMenu()) !== idx) throw new Error(`o cursor do menu não chegou a "Salvar" (linha ${await focoMenu()}, esperada ${idx})`);
     await foto('8-menu-salvar');
     await apertar('a'); await dormir(500); await apertar('a'); await dormir(600);
     const salvo = await page.evaluate(() => { const p = (window as any).__pingo; const l = p.save.listarSlots()[p.jogo.slot]; return l ? { zona: l.zona, equipe: l.equipe, idade: Date.now() - l.quando, slot: p.jogo.slot } : null; });
@@ -225,7 +234,7 @@ async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { ped
     /* 5. recarrega sem rede e continua */
     const esperado = { zona: s.zona, x: s.x, y: s.y, equipe: s.equipe.join(' '), nome: s.nome };
     await page.reload();
-    await page.waitForFunction(() => (window as any).__pingo?.telas?.pilha?.length > 0, null, { timeout: 30000 });
+    await page.waitForFunction(() => (window as any).__pingo?.telas?.pilha?.length > 0, null, { timeout: 120000 });
     await page.evaluate(() => { (window as any).__pingo.jogo.opcoes.velTexto = 3; });
     await avancar((k) => /tela-saves/.test(topo(k)) && !k.cortina, 30000, 'a tela de jogos na volta'); await dormir(300); await foto('10-continuar');
     s = await avancar((k) => livre(k) && k.zona !== '', 60000, 'continuar o jogo salvo');
@@ -242,6 +251,58 @@ async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { ped
     // nada atrás do entalhe: a tela do jogo fica dentro da área segura
     const dentro = await page.evaluate(() => { const p = (window as any).__pingo.palco; return p.x >= p.seguro.l - 0.5 && p.y >= p.seguro.t - 0.5 && p.x + p.w <= window.innerWidth - p.seguro.r + 0.5 && p.y + p.h <= window.innerHeight - p.seguro.b + 0.5 && document.documentElement.scrollHeight <= window.innerHeight && document.documentElement.scrollWidth <= window.innerWidth; });
     if (!dentro) r.falhas.push('a tela do jogo sai da área segura ou a página rola');
+
+    /* 6. atualização: a rede volta e o site publica uma versão nova com uma batalha aberta */
+    await ctx.setOffline(false); semRede = false;
+    const of = () => page.evaluate(async () => { const o = (window as any).__pingoOffline, b = document.getElementById('aviso-atualizacao'); return { v: o?.versao as string, nova: o?.versaoNova as string, e: o?.estado as string, aviso: b ? getComputedStyle(b).display : 'sem', caches: await caches.keys(), slot: localStorage.getItem('pingo.slot.0') }; });
+    const antesAt = await of();
+    appendFileSync(join(servido, 'index.html'), `\n<!-- versão de teste da atualização (${perfil.id}) -->\n`);
+    appendFileSync(join(servido, 'assets/sprites/pessoa/ayra/retrato.png'), Buffer.from([0]));
+    const v2 = gerar(servido).versao;
+    void page.evaluate(() => { void (window as any).__pingo.mundo.batalhaSelvagem(10, 3); });
+    await page.waitForFunction(() => (window as any).__pingo.telas.pilha.some((t: any) => /batalha/.test(t.el.className)), null, { timeout: 60000 });
+    const iPub = srv.caminhos.length, tPub = Date.now();
+    await page.evaluate(async () => { await (await navigator.serviceWorker.getRegistration())?.update(); });
+    let at = await of();
+    for (let i = 0; i < 240 && at.nova !== v2; i++) { await dormir(250); at = await of(); }
+    r.atualizacaoMs = Date.now() - tPub;
+    const baixados = srv.caminhos.slice(iPub).filter((c) => c !== 'sw.js'); r.atualizacaoArquivos = baixados.length;
+    if (at.nova !== v2) throw new Error(`a versão nova (${v2}) não ficou pronta com o jogo aberto: ${JSON.stringify({ ...at, slot: undefined })}`);
+    if (baixados.length > 12) r.falhas.push(`a atualização baixou ${baixados.length} arquivos; só o que mudou deveria vir (${baixados.slice(0, 8).join(', ')}…)`);
+    await dormir(1300); at = await of();
+    if (!emBatalha(await st())) r.falhas.push('a batalha fechou sozinha quando a atualização chegou');
+    if (at.aviso !== 'none') r.falhas.push(`durante a batalha o aviso de atualização deveria estar escondido (display: ${at.aviso})`);
+    await foto('12-batalha-sem-aviso');
+    passo(`versão ${antesAt.v} → ${v2} publicada com uma batalha aberta: pronta em ${(r.atualizacaoMs / 1000).toFixed(1)} s, ${baixados.length} arquivo(s) baixado(s) (${baixados.join(', ')}); aviso escondido durante a batalha`);
+    const tb2 = Date.now();
+    for (;;) { const q2 = await st(); if (!emBatalha(q2) && livre(q2)) break; if (Date.now() - tb2 > 240000) throw new Error('a 2ª batalha não terminou: ' + JSON.stringify(q2)); if (!q2.cortina) await apertar('a'); await dormir(120); }
+    for (let i = 0; i < 30 && (await of()).aviso !== 'block'; i++) await dormir(200);
+    at = await of();
+    if (at.aviso !== 'block') throw new Error('o aviso "Atualização disponível" não apareceu depois da batalha');
+    const caixa = await page.evaluate(() => { const b = document.getElementById('aviso-atualizacao')!.getBoundingClientRect(); const sobre = [...document.querySelectorAll('#toque > .tq')].some((t) => { const q = (t as HTMLElement).getBoundingClientRect(); return q.width > 0 && getComputedStyle(t as HTMLElement).display !== 'none' && b.left < q.right && b.right > q.left && b.top < q.bottom && b.bottom > q.top; }); return { texto: document.getElementById('aviso-atualizacao')!.textContent, x: b.left, y: b.top, w: b.width, h: b.height, dentro: b.left >= 0 && b.top >= 0 && b.right <= window.innerWidth && b.bottom <= window.innerHeight, sobre }; });
+    if (!caixa.dentro) r.falhas.push(`o aviso de atualização sai da tela: ${JSON.stringify(caixa)}`);
+    if (caixa.sobre) r.falhas.push('o aviso de atualização fica em cima de um controle de toque');
+    await dormir(200); await foto('13-aviso-atualizacao');
+    // (a batalha pode ter mudado o save: perder leva para casa e o jogo salva sozinho; vale o save do instante do toque)
+    const antesDoToque = await st(), slotAntes = (await of()).slot;
+    if (perfil.toque) await page.tap('#aviso-atualizacao'); else await page.click('#aviso-atualizacao');
+    await page.waitForFunction((v: string) => (window as any).__pingoOffline?.versao === v && (window as any).__pingo?.telas?.pilha?.length > 0, v2, { timeout: 40000, polling: 250 });
+    for (let i = 0; i < 40; i++) { at = await of(); if (at.e === 'pronto' && !at.caches.includes('pingo-n-' + antesAt.v)) break; await dormir(250); }
+    if (at.caches.includes('pingo-n-' + antesAt.v)) r.falhas.push('o núcleo da versão antiga continua no cache depois de recarregar');
+    if (at.aviso !== 'sem') r.falhas.push('o aviso de atualização continua na tela na versão nova');
+    if (at.slot !== slotAntes || !at.slot) r.falhas.push('o save mudou ou sumiu com a atualização');
+    await page.evaluate(() => { (window as any).__pingo.jogo.opcoes.velTexto = 3; });
+    s = await avancar((k) => livre(k) && k.zona !== '', 60000, 'continuar o jogo depois da atualização');
+    if (s.nome !== antesDoToque.nome || s.zona !== antesDoToque.zona || !s.equipe.length) r.falhas.push(`depois da atualização o jogo não voltou ao mesmo lugar: ${s.nome} em ${s.zona} com ${s.equipe.length} criatura(s); antes: ${antesDoToque.nome} em ${antesDoToque.zona}`);
+    await dormir(300); await foto('14-versao-nova');
+    await ctx.setOffline(true); semRede = true;
+    const iOff = srv.caminhos.length;
+    await page.reload();
+    await page.waitForFunction(() => (window as any).__pingo?.telas?.pilha?.length > 0, null, { timeout: 120000 });
+    await dormir(1500);
+    const vazou2 = srv.caminhos.slice(iOff).filter((c) => c !== 'sw.js');
+    if (vazou2.length) r.falhas.push(`na versão nova, ${vazou2.length} pedido(s) chegaram ao servidor com a rede cortada: ${vazou2.slice(0, 5).join(', ')}`);
+    passo(`aviso "${caixa.texto}" apareceu depois da batalha; ${perfil.toque ? 'toque' : 'clique'} nele recarregou na versão ${v2}; save igual, ${s.nome} continuou em ${s.zona} (${s.x},${s.y}) com equipe ${s.equipe.join(' ')}; núcleo antigo apagado; abre sem rede na versão nova`);
   } catch (e) {
     r.falhas.push(String((e as Error).message ?? e).slice(0, 600));
     try { await foto('erro'); } catch { /* página fechada */ }
@@ -251,22 +312,28 @@ async function rodarPerfil(browser: any, url: string, perfil: Perfil, srv: { ped
   return r;
 }
 
-export async function testarOffline(so?: string[]): Promise<ResultadoOffline[]> {
-  if (!existsSync(RAIZ + 'dist/sw.js')) throw new Error('dist/sw.js não existe: rode `npm run build` antes.');
+/** `pastaDist`: o dist a servir (o do build limpo, de preferência); padrão: o dist/ local */
+export async function testarOffline(so?: string[], pastaDist: string = RAIZ + 'dist'): Promise<ResultadoOffline[]> {
+  if (!existsSync(pastaDist + '/sw.js')) throw new Error(pastaDist + '/sw.js não existe: rode `npm run build` antes.');
   mkdirSync(CAPTURAS, { recursive: true });
-  const srv = await servir(RAIZ + 'dist', PORTA, '/Pingo/');
+  // serve uma cópia: o teste de atualização publica versões novas por cima dela
+  const servido = join(process.env.PINGO_SERVIDO ?? tmpdir(), 'pingo-dist-servido');
+  rmSync(servido, { recursive: true, force: true }); cpSync(pastaDist, servido, { recursive: true });
+  const srv = await servir(servido, PORTA, '/Pingo/');
   const browser = await pw.chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
   const res: ResultadoOffline[] = [];
   try {
-    for (const p of PERFIS) { if (so?.length && !so.includes(p.id)) continue; console.log(`▶ ${p.nome} em ${srv.url}`); res.push(await rodarPerfil(browser, srv.url, p, srv)); }
-  } finally { await browser.close(); await srv.fechar(); }
+    for (const p of PERFIS) { if (so?.length && !so.includes(p.id)) continue; console.log(`▶ ${p.nome} em ${srv.url}`); res.push(await rodarPerfil(browser, srv.url, p, srv, servido)); }
+  } finally { await browser.close(); await srv.fechar(); rmSync(servido, { recursive: true, force: true }); }
   writeFileSync(CAPTURAS + 'resultado.json', JSON.stringify(res, null, 1));
   return res;
 }
 
 if (process.argv[1]?.endsWith('offline.ts')) {
-  const res = await testarOffline(process.argv.slice(2));
+  // argumentos: ids de perfil (pc, iphone-pe, iphone-deitado) e, opcionalmente, a pasta do dist a servir
+  const argv = process.argv.slice(2), pasta = argv.find((x) => x.includes('/'));
+  const res = await testarOffline(argv.filter((x) => !x.includes('/')), pasta);
   console.log('\n===== teste offline =====');
-  for (const r of res) { console.log(`${r.ok ? 'OK   ' : 'FALHA'} ${r.perfil}: pré-cache ${(r.precacheMs / 1000).toFixed(1)} s, ${r.arquivos} arquivos, ${(r.bytes / 1048576).toFixed(1)} MB`); for (const f of r.falhas) console.log('   ✗ ' + f); }
+  for (const r of res) { console.log(`${r.ok ? 'OK   ' : 'FALHA'} ${r.perfil}: pré-cache ${(r.precacheMs / 1000).toFixed(1)} s, ${r.arquivos} arquivos, ${(r.bytes / 1048576).toFixed(1)} MB; atualização pronta em ${(r.atualizacaoMs / 1000).toFixed(1)} s com ${r.atualizacaoArquivos} arquivo(s)`); for (const f of r.falhas) console.log('   ✗ ' + f); }
   process.exit(res.every((r) => r.ok) && res.length ? 0 : 1);
 }

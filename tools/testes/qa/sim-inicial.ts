@@ -1,13 +1,14 @@
 /**
  * Vitórias POR INICIAL contra um treinador (motor puro, piloto "esperto"), com a equipe de referência do passo ou com
- * uma equipe dada. `npx tsx tools/testes/qa/sim-inicial.ts <idTreinador|passo> [--n 400] [--equipe 4:10,10:6] [--itens cha-cidreira:3] [--insignias 0]`
+ * uma equipe dada (`--contra 10:2,13:3:encontrao` = adversário livre, com golpes à mão opcionais). `npx tsx tools/testes/qa/sim-inicial.ts <idTreinador|passo> [--n 400] [--equipe 4:10,10:6] [--itens cha-cidreira:3] [--insignias 0]`
  */
 import { carregarDados, equipeReferencia, instanciar, itensReferencia, inimigosDe, lutarContra, lider, INICIAIS, NOME_INICIAL, pilotoEsperto, pilotoBobo, rng, itensDoTreinador } from '../../equilibrio-referencia';
 import { especie } from '../../../src/battle/criatura';
 const arg = (k: string) => { const i = process.argv.indexOf('--' + k); return i > 0 ? process.argv[i + 1] : undefined; };
 const d = await carregarDados(), alvo = process.argv[2] ?? '1', N = Number(arg('n') ?? 400);
 const passo = /^\d+$/.test(alvo) ? Number(alvo) : Number(arg('passo') ?? 1);
-const t = /^\d+$/.test(alvo) ? lider(d, passo)! : d.treinadores.get(alvo)!;
+const contra = arg('contra');
+const t = contra ? { id: 'livre', nome: 'Livre', ia: (arg('ia') ?? 'novato') as never, equipe: contra.split(',').map((x) => { const [e, nv, ...g] = x.split(':'); return { e: Number(e), nv: Number(nv), ...(g.length ? { golpes: g } : {}) }; }) } as never as NonNullable<ReturnType<typeof lider>> : /^\d+$/.test(alvo) ? lider(d, passo)! : d.treinadores.get(alvo)!;
 if (!t) throw new Error('treinador desconhecido: ' + alvo);
 const itens = arg('itens') ? Object.fromEntries(arg('itens')!.split(',').map((x) => { const [id, q] = x.split(':'); return [id, Number(q) || 1]; })) : itensReferencia(passo);
 const insignias = Number(arg('insignias') ?? passo - 1);

@@ -258,6 +258,7 @@
           else if (pisavel(nx, ny) || (destino && w)) passo = d;
           else if (ch === 'c' && pode('facao')) passo = 'A' + d;
           else if (ch === 'r' && pode('quebra-pedra')) passo = 'A' + d;
+          else if (ch === 'p' && o.fantasmaP && !z.warp(nx, ny)) passo = 'P' + d;
           else continue;
           if ((ch === 'g' || ch === 'o') && !destino) continue; // gelo e buracos: só por roteiro
         }
@@ -318,8 +319,8 @@
     throw new Error(`irAte: não chegou a (${tx},${ty}) em ${z0}: ${JSON.stringify(Q.st())}`);
   };
   /** interage com o que está em (tx, ty): vai a um vizinho, vira e aperta A */
-  Q.usar = async (tx, ty) => {
-    let s = await Q.irAte(tx, ty, { vizinho: true });
+  Q.usar = async (tx, ty, o = {}) => {
+    let s = o.forca ? await Q.irAteForca(tx, ty, { vizinho: true }) : await Q.irAte(tx, ty, { vizinho: true });
     const d = tx > s.x ? 'l' : tx < s.x ? 'o' : ty > s.y ? 's' : 'n';
     return Q.agir(d);
   };
@@ -330,6 +331,8 @@
     if (!ws.length) throw new Error(`sem warp de ${s0.zona} para ${dest}`);
     let melhor = null;
     for (const w of ws) { const pl = Q.plano(w.x, w.y, o); if (pl && (!melhor || pl.length < melhor.pl.length)) melhor = { w, pl }; }
+    // gente passeando pode tapar a passagem por uns segundos: espera um pouco antes de desistir
+    for (let i = 0; i < 8 && !melhor; i++) { await quadros(25); for (const w of ws) { const pl = Q.plano(w.x, w.y, o); if (pl && (!melhor || pl.length < melhor.pl.length)) melhor = { w, pl }; } if (melhor) anota('esperei a passagem abrir em', s0.zona); }
     if (!melhor) throw new Error(`warp de ${s0.zona} para ${dest} inalcançável de (${s0.x},${s0.y})`);
     let s = await Q.irAte(melhor.w.x, melhor.w.y, o);
     if (s.zona === s0.zona) {
@@ -350,9 +353,10 @@
       const livres = M.npcs.filter((q) => q.treinador && !jogo.save.flags[q.treinador.flag ?? 'venceu:' + q.treinador.id] && q.ator.visivel && !(o.menos ?? []).includes(q.id) && !q.def.script);
       let feito = false;
       for (const q of livres) {
-        const pl = Q.plano(q.ator.x, q.ator.y, { vizinho: true }); if (!pl) continue;
+        const pl = Q.plano(q.ator.x, q.ator.y, { vizinho: true }); if (!pl && !o.forca) continue;
         const nb = Q.batalhas.length;
-        await Q.usar(q.ator.x, q.ator.y); feito = true; if (Q.batalhas.length > nb) n++;
+        try { await Q.usar(q.ator.x, q.ator.y, { forca: o.forca && !pl }); } catch (e) { if (o.forca && /pedregulho|empurrei/.test(e.message)) { anota('treinador fora de alcance', q.id, e.message); (o.menos ??= []).push(q.id); feito = true; break; } throw e; }
+        feito = true; if (Q.batalhas.length > nb) n++;
         break;
       }
       if (!feito) break;
@@ -511,8 +515,9 @@
     const usados = [];
     for (let volta = 0; volta < 60; volta++) {
       let acao = null;
+      const nuc = o.nucleo ? new Set(jogo.save.equipe.filter((c) => !c.ovo).slice().sort((x, y) => y.nivel - x.nivel).slice(0, o.nucleo).map((c) => c.uid)) : null;
       for (const [i, c] of jogo.save.equipe.entries()) {
-        if (c.ovo) continue; const max = vidaMax(c);
+        if (c.ovo || (nuc && !nuc.has(c.uid))) continue; const max = vidaMax(c);
         if (c.vida <= 0) { if (o.reanimar !== false && tem('cha-guarana')) { acao = ['cha-guarana', i]; break; } continue; }
         if (c.status && tem('pomada-copaiba')) { acao = ['pomada-copaiba', i]; break; }
         if (c.status && ['envenenado', 'dormindo', 'encantado'].includes(c.status) && tem('mel-puro')) { acao = ['mel-puro', i]; break; }
@@ -534,20 +539,94 @@
     return usados;
   };
 
+  /* ------------------------------ ordem da equipe (Menu → Equipe → Mover) ------------------------------ */
+  /** troca de lugar as criaturas `a` e `b` da equipe pelo menu de pausa */
+  Q.mover = async (a, b) => {
+    await Q.assentar(); if (a === b) return true;
+    const ua = jogo.save.equipe[a].uid, ub = jogo.save.equipe[b].uid;
+    const feito = () => jogo.save.equipe[b]?.uid === ua && jogo.save.equipe[a]?.uid === ub;
+    let guarda = 0, fase = 0; // 0 = escolher a, 1 = pediu Mover, 2 = escolher b
+    Q.telaEsperada = /tela-menu|tela-equipe/;
+    try {
+      while (guarda++ < 1500) {
+        const topo = P.telas.topo?.el.className ?? '';
+        if (/confirmacao/.test(topo)) {
+          const l = $('.tela.confirmacao .lista'), f = focoLista(l);
+          if (f.i === 1) { await toque('a'); await quadros(2); fase = 2; } else await toque(f.i < 1 ? 'baixo' : 'cima');
+          continue;
+        }
+        if (/dialogo/.test(topo)) { await toque('a'); continue; }
+        if (/tela-equipe/.test(topo)) {
+          if (feito()) { await toque('b'); await quadros(2); continue; }
+          const sel = $('.tela-equipe .grade .mol-selecao'), cur = sel ? Math.round((parseInt(sel.style.top) + 2) / 48) * 2 + Math.round((parseInt(sel.style.left) + 2) / 158) : 0;
+          const alvo = fase === 2 ? b : a, t = passoGrade(cur, alvo);
+          if (!t) { await toque('a'); await quadros(3); } else await toque(t);
+          continue;
+        }
+        if (/tela-menu/.test(topo)) {
+          if (feito()) { await toque('b'); await quadros(2); continue; }
+          const f = focoLista($('.tela-menu')), al = (jogo.save.mochila['diario-de-campo'] || jogo.save.flags['ovo-entregue'] || jogo.save.diario.visto.length ? 1 : 0);
+          if (f.i === al) { await toque('a'); await quadros(2); } else await toque(f.i < al ? 'baixo' : 'cima');
+          continue;
+        }
+        if (/mundo/.test(topo)) { const s = Q.st(); if (feito() && !s.oc) break; if (!s.oc && !s.mov && s.pronto) { await toque('menu'); await quadros(2); } else await quadro(); continue; }
+        await quadro();
+      }
+    } finally { Q.telaEsperada = null; }
+    await Q.assentar();
+    if (!feito()) anota('mover: não consegui', a, b);
+    return feito();
+  };
+  /** põe na frente a criatura escolhida por `nota` (maior nota = primeira) */
+  Q.frente = async (nota) => {
+    const e = jogo.save.equipe; let m = 0;
+    for (let i = 1; i < e.length; i++) if (!e[i].ovo && nota(e[i], i) > nota(e[m], m)) m = i;
+    if (m !== 0) return Q.mover(0, m);
+    return true;
+  };
+  /** rodízio de jogador comum: contra treinador de rota abre a mais atrasada que esteja inteira; contra chefe abre a mais forte */
+  Q.rodizio = async (modo = 'treino') => {
+    const max = Math.max(...jogo.save.equipe.map((c) => c.nivel));
+    if (modo === 'chefe') return Q.frente((c) => (c.vida > 0 ? c.nivel : -1));
+    // núcleo = as 3 de maior nível (é o que o jogador comum de fato usa); abre a mais atrasada do núcleo que esteja inteira
+    const nucleo = new Set(jogo.save.equipe.filter((c) => !c.ovo).slice().sort((x, y) => y.nivel - x.nivel).slice(0, Q.nucleo ?? 3).map((c) => c.uid));
+    return Q.frente((c) => (c.vida >= vidaMax(c) * 0.6 && nucleo.has(c.uid) ? 100 - c.nivel : c.vida > 0 ? c.nivel / 100 : -9));
+  };
+
   /* ------------------------------ viagem entre zonas ------------------------------ */
   /** vai até a zona `dest` pelo grafo de warps (só passagens abertas agora); tenta outro caminho se um trecho não fecha */
   Q.viajar = async (dest, o = {}) => {
-    const banidos = new Set(o.banir ?? []);
-    for (let volta = 0; volta < 60; volta++) {
+    const banidos = new Set(o.banir ?? []), warpsRuins = new Set();
+    let veio = null; // { de, chave } = por qual warp entrei na zona atual
+    const filtro = (zid) => (w) => !warpsRuins.has(zid + ':' + w.x + ',' + w.y);
+    for (let volta = 0; volta < 80; volta++) {
       const s = await Q.assentar(); if (s.zona === dest) return s;
       const ant = new Map([[s.zona, null]]), fila = [s.zona];
       while (fila.length && !ant.has(dest)) {
         const zid = fila.shift(), def = ZN.zonaDef(zid); if (!def) continue;
-        for (const w of def.warps) { const para = w.para.zona; if (ant.has(para) || banidos.has(zid + '>' + para) || !ES.cond(w.requer) || !ZN.zonaDef(para) || ZN.zonaDef(para).mapa !== 'A' || w.tipo === 'trem' || w.tipo === 'saveiro') continue; if (/^[BX_]/.test(para)) continue; ant.set(para, zid); fila.push(para); }
+        for (const w of def.warps) { const para = w.para.zona; if (ant.has(para) || banidos.has(zid + '>' + para) || !ES.cond(w.requer) || !ZN.zonaDef(para) || ZN.zonaDef(para).mapa !== 'A' || w.tipo === 'trem' || w.tipo === 'saveiro') continue; if (/^[BX_]/.test(para)) continue; if (!filtro(zid)(w)) continue; ant.set(para, zid); fila.push(para); }
       }
-      if (!ant.has(dest)) throw new Error(`sem rota de ${s.zona} para ${dest} (banidos: ${[...banidos].join(' ')})`);
+      if (!ant.has(dest)) throw new Error(`sem rota de ${s.zona} para ${dest} (banidos: ${[...banidos].join(' ')} ${[...warpsRuins].join(' ')})`);
       let prox = dest; while (ant.get(prox) !== s.zona) prox = ant.get(prox);
-      try { await Q.irZona(prox); } catch (e) { if (/DERROTA|abortado/.test(e.message)) throw e; if (/inalcançável|sem warp|sem caminho/.test(e.message)) { banidos.add(s.zona + '>' + prox); anota('viajar: trecho fechado', s.zona, '>', prox, e.message); continue; } throw e; }
+      try {
+        // registra por qual warp saí (o mais perto alcançável, como irZona escolhe)
+        const ws = M.zv.def.warps.filter((w) => w.para.zona === prox && ES.cond(w.requer) && filtro(s.zona)(w));
+        let melhor = null; for (const w of ws) { const pl = Q.plano(w.x, w.y); if (pl && (!melhor || pl.length < melhor.n)) melhor = { w, n: pl.length }; }
+        await Q.irZona(prox, { filtro: filtro(s.zona) });
+        veio = melhor ? { de: s.zona, chave: s.zona + ':' + melhor.w.x + ',' + melhor.w.y } : null;
+      } catch (e) {
+        if (/DERROTA|abortado/.test(e.message)) throw e;
+        if (/inalcançável|sem caminho/.test(e.message) && jogo.save.amuletos.includes('forca') && V.ajudante('forca') && [...Array(M.zv.h)].some((_, y) => [...Array(M.zv.w)].some((__, x) => M.zv.ch(x, y) === 'p'))) {
+          // pedregulho no caminho: empurra (Força)
+          try { const r = await Q.irZonaForca(prox); if (r.zona === prox) { veio = null; continue; } } catch (e2) { if (/DERROTA|abortado/.test(e2.message)) throw e2; anota('viajar: Força não abriu', e2.message); }
+        }
+        if (/inalcançável|sem warp|sem caminho/.test(e.message)) {
+          // entrei por uma porta que não leva adiante (escada do lado errado): volto e tento outra entrada
+          if (veio && veio.de !== prox && !warpsRuins.has(veio.chave)) { warpsRuins.add(veio.chave); anota('viajar: entrada sem saída', veio.chave, '→ volto a', veio.de); const de = veio.de; veio = null; try { await Q.irZona(de); continue; } catch (e2) { if (/DERROTA|abortado/.test(e2.message)) throw e2; } }
+          banidos.add(s.zona + '>' + prox); anota('viajar: trecho fechado', s.zona, '>', prox, e.message); continue;
+        }
+        throw e;
+      }
     }
     throw new Error('viajar: não cheguei a ' + dest);
   };
@@ -561,7 +640,28 @@
       const s = await Q.assentar(); if (s.zona !== z0) return s;
       if (Q.plano(tx, ty, o)) return Q.irAte(tx, ty, o);
       const z = M.zv, oc = ocupados(); let melhor = null;
-      for (let y = 0; y < z.h; y++) for (let x = 0; x < z.w; x++) {
+      // caminho ideal fazendo de conta que os pedregulhos não existem: o 1º pedregulho dele é o que tem de sair
+      const ideal = Q.plano(tx, ty, { ...o, fantasmaP: true });
+      if (ideal) {
+        let x = s.x, y = s.y;
+        for (const p of ideal) {
+          const d = p.length > 1 ? p[1] : p;
+          if (p[0] === 'P') {
+            const px = x + D[d][0], py = y + D[d][1];
+            // empurra na direção da marcha; se não der, de lado
+            for (const e of [d, ...'nslo'.split('').filter((q) => q !== d)]) {
+              const sx = px - D[e][0], sy = py - D[e][1], bx = px + D[e][0], by = py + D[e][1];
+              if (!z.chao(bx, by) || oc.has(bx + ',' + by) || z.warp(bx, by) || itemVisivel(bx, by)) continue;
+              if (!(sx === s.x && sy === s.y) && !Q.plano(sx, sy)) continue;
+              melhor = { x: px, y: py, d: e, sx, sy, nota: 0 }; break;
+            }
+            break;
+          }
+          x += D[d][0]; y += D[d][1];
+          if (ZN.SALIENCIA[z.ch(x, y)]) { x += D[d][0]; y += D[d][1]; }
+        }
+      }
+      if (!melhor) for (let y = 0; y < z.h; y++) for (let x = 0; x < z.w; x++) {
         if (z.ch(x, y) !== 'p') continue;
         for (const d of 'nslo') {
           const sx = x - D[d][0], sy = y - D[d][1], bx = x + D[d][0], by = y + D[d][1];
@@ -592,6 +692,8 @@
     return s;
   };
   Q.ajudantes = () => Object.fromEntries(['facao', 'remo', 'forca', 'lampiao', 'quebra-pedra', 'faro'].map((a) => [a, jogo.save.amuletos.includes(a) ? (V.ajudante(a) ? CR.especie(V.ajudante(a).especie).nome : 'SEM CRIATURA') : '-']));
+  /** saúde só do núcleo (as `k` de maior nível): pior fração de vida e quantas caíram */
+  Q.saudeNucleo = (k = 3) => { const e = jogo.save.equipe.filter((c) => !c.ovo).slice().sort((x, y) => y.nivel - x.nivel).slice(0, k); return { pior: Math.min(...e.map((c) => c.vida / vidaMax(c))), caidas: e.filter((c) => c.vida <= 0).length, pgBaixo: e.filter((c) => c.vida > 0 && c.golpes.filter((g) => GO.golpe(g.id).cat !== 'status').every((g) => g.pg <= 3)).length }; };
   Q.saude = () => { const e = jogo.save.equipe.filter((c) => !c.ovo); const tot = e.reduce((a, c) => a + vidaMax(c), 0), cur = e.reduce((a, c) => a + c.vida, 0); return { frac: cur / tot, caidas: e.filter((c) => c.vida <= 0).length, vivas: e.filter((c) => c.vida > 0).length, pgBaixo: e.filter((c) => c.vida > 0 && c.golpes.filter((g) => GO.golpe(g.id).cat !== 'status').every((g) => g.pg <= 3)).length }; };
 
   /* ------------------------------ resumo ------------------------------ */

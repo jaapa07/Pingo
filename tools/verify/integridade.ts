@@ -17,14 +17,18 @@ export const EM_OBRAS = /^(B\d|B-|PP|X-|A9-ginasio$)/;
 const pasta = (p: string) => (existsSync(RAIZ + p) ? new Set(readdirSync(RAIZ + p)) : new Set<string>());
 export const encontrosDe = (h: Habitat): Encontro[] => [...(h.todos ?? []), ...(h.manha ?? []), ...(h.dia ?? []), ...(h.noite ?? []), ...(h.camadas ?? []).flatMap((c) => [...(c.todos ?? []), ...(c.manha ?? []), ...(c.dia ?? []), ...(c.noite ?? [])])];
 
+/** referências quebradas em dados do mapa B (não derrubam o resultado); `npm run check -- --tudo` lista todas */
+export const detalhesMapaB: string[] = [];
+
 export async function integridade(): Promise<Achado> {
+  detalhesMapaB.length = 0;
   const a = novoAchado(), d = await carregar();
   const especies = new Map([...ESPECIES, ...VISITANTES].map((e) => [e.num, e]));
   const pessoas = pasta('public/assets/sprites/pessoa'), criaturas = pasta('public/assets/sprites/criatura'), arenas = pasta('public/assets/arenas'), tiles = pasta('public/assets/tiles');
   // dados do mapa B (zonas, treinadores e eventos de B*/PP) ainda estão em construção: contam como pendentes
   const doMapaB = (arq: string | undefined, m: string) => /\/(zonas\/(B|PP|X-)|treinadores\/b\d|eventos\/b\d|(treinadores|eventos)\/ginasio-(09|1\d))/.test(arq ?? '') || /^(treinador|evento) (B\d|B-|b\d)/.test(m);
   let nB = 0;
-  const E = (arq: string | undefined, m: string) => { if (doMapaB(arq, m)) nB++; else a.erros.push(`${arq ?? '?'}: ${m}`); };
+  const E = (arq: string | undefined, m: string) => { if (doMapaB(arq, m)) { nB++; detalhesMapaB.push(`${arq ?? '?'}: ${m}`); } else a.erros.push(`${arq ?? '?'}: ${m}`); };
   for (const f of d.falhasDeCarga) a.erros.push(f);
   const temScript = (id: string) => d.eventos.has(id) || d.eventosEmCodigo.has(id);
   const spriteOk = (s: string) => (s.startsWith('c:') ? criaturas.has(s.slice(2)) : pessoas.has(s));
