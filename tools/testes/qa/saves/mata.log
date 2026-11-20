@@ -302,3 +302,14 @@ erros de console: []
 >> etapa 5: Faro, Campos de Restinga e Mata dos Sabiás até Bosque Alto  (0 s)
   [batalha] A-R2-1 → vitoria · equipe 1:12,10:3,13:2,45:4 · A-R2 · $1665
   [batalha] A-R2-2 → vitoria · equipe 1:12,10:3,13:2,45:6 · A-R2 · $1809
+  [batalha] selvagem 20:8 → captura · equipe 1:12,10:3,13:2,45:6,20:8 · A-R2 · $1809
+  caça em A-R2: 3 batalhas, equipe ["Tamanduí 12","Pipirim 3","Cotiazinha 2","Quero-querinho 6","Gambazinho 8"]
+  [batalha] A-R2-4 → vitoria · equipe 1:13,10:3,13:2,45:6,20:8 · A-R2 · $2089
+  [batalha] A-R2-5 → vitoria · equipe 1:13,10:3,13:2,45:6,20:8 · A-R2 · $2409
+  [batalha] A-R2-3 → derrota · equipe 1:13,10:3,13:2,45:6,20:8 · A-R2 · $2409
+    turnos: Tamanduí13 40/40 x Pipirim8 26/26 → golpe arranhao | Tamanduí13 32/40 x Pipirim8 15/26 → golpe arranhao | Tamanduí13 24/40 x Pipirim8 4/26 → golpe arranhao | Tamanduí13 24/40 x Quero-querinho8 25/25 → golpe arranhao | Tamanduí13 13/40 x Quero-querinho8 15/25 → golpe arranhao | Tamanduí13 3/40 x Quero-querinho8 5/25 → golpe arranhao | Tamanduí13 3/40 x Beija-florzim9 26/26 → golpe arranhao | Gambazinho8 26/26 x Beija-florzim9 26/26 → golpe arranhao | Gambazinho8 17/26 x Beija-florzim9 18/26 → golpe arranhao | Gambazinho8 13/26 x Beija-florzim9 10/26 → golpe arranhao | Gambazinho8 4/26 x Beija-florzim9 2/26 → golpe arranhao | Quero-querinho6 22/22 x Beija-florzim9 2/26 → golpe bicada | Pipirim3 16/16 x Beija-florzim9 18/26 → golpe bicada | Cotiazinha2 14/14 x Beija-florzim9 18/26 → golpe encontrao
+  DERROTA para A-R2-3 (nv 9)
+  [batalha] A-R2-3 → vitoria · equipe 1:14,10:3,13:4,45:6,20:8 · A-R2 · $1524
+  [batalha] A-R2-7 → derrota · equipe 1:14,10:3,13:4,45:6,20:8 · A-R2 · $1524
+    turnos: Tamanduí14 43/43 x Jataí9 27/27 → golpe arranhao | Tamanduí14 19/43 x Jataí9 18/27 → golpe arranhao | Tamanduí14 14/43 x Pintinhas10 35/35 → golpe arranhao | Gambazinho8 26/26 x Pintinhas10 35/35 → golpe arranhao | Gambazinho8 20/26 x Pintinhas10 30/35 → golpe arranhao | Gambazinho8 13/26 x Pintinhas10 25/35 → golpe arranhao | Gambazinho8 7/26 x Pintinhas10 20/35 → golpe arranhao | Quero-querinho6 22/22 x Pintinhas10 20/35 → golpe bicada | Quero-querinho6 5/22 x Pintinhas10 12/35 → golpe bicada | Pipirim3 16/16 x Pintinhas10 12/35 → golpe bicada | Cotiazinha4 18/18 x Pintinhas10 12/35 → golpe encontrao
+  DERROTA para A-R2-7 (nv 10)

@@ -62,7 +62,11 @@ Itens de cura em batalha (spec 7A): rival, líderes e chefes só usam do 8º gin
 | B4 → B-R3 (borda leste) | B-R3 em (1, 14) 'l'; volta: B4 em (48, 16) 'o' |
 | A-MT topo → PP (lado A) | PP em (6, 52) 'n'; volta: A-MT em (20, 3) 's' |
 | B-R4 → PP (lado B) | PP em (34, 52) 'n'; volta: B-R4 em (24, 3) 's' |
-| B5 ↔ B-TA, B-TA ↔ B6 | mesmo time (B2) |
+| B5 ↔ B-TA, B-TA ↔ B6 | mesmo time (B2-sul) |
+| **B7 ↔ B-R5** (borda norte de B7, tiles (24..25, 0); portão `insignia:14` do lado de B7) | B-R5 em (15, 78) 'n' (proposta do B2-sul para um B-R5 30×80: o tile logo acima da borda sul; se o B2-norte usar outro tamanho/coluna, troque o número AQUI que o B2-sul ajusta o warp); volta: B7 em (24, 1) 's' |
+| **B7 ↔ B-SG** (borda oeste de B7, tiles (0, 19..20)) | B-SG em (58, 20) 'o' (proposta para um B-SG 60 de largura: o tile logo à esquerda da borda leste; troque aqui se for outro); volta: B7 em (1, 19) 'l' |
+| **B7 ↔ B-LG** (borda leste de B7, tiles (49, 19..20)) | B-LG em (1, 20) 'l'; volta: B7 em (48, 19) 'o' |
+| B6 → B-R4 → B7 | mesmo time (B2-sul): B6 (24, 0) ↔ B-R4 (24, 68); B-R4 borda norte (38..39, 0) ↔ B7 (24..25, 38) |
 
 ## Times de zonas
 - **A1**: A1 (+quarto, casa, lab, casas), A-R1, A2, A-R2, A-MS, A3, A-R3, A-GE, A4 (+estação, mercado), **A-R7, A10 (+posto, venda, lab da Drª Buriti, casas), A-LG (+posto, venda)**, a ABERTURA completa do jogo e a **Liga dos Guardiões** (`treinadores/liga.ts`, `eventos/liga.ts`).
