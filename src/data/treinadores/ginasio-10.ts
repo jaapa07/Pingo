@@ -25,15 +25,17 @@ export const TREINADORES_GINASIO_10: TreinadorDef[] = [
    * cobertura contra Rio e Terra, as duas ameaças mais comuns; o Calangão (Brasa/Pedra) queima Mata e Ferro; o
    * Cupinzeiro-Vivo segura pancada e responde Mata com Enxame. O ás Mocó-da-Rocha levanta a Couraça de Pedra, bate
    * com Lasca Afiada (crítico fácil) e Pedra Preciosa (especial, pega quem só investiu em Defesa).
+   * Couraça de Pedra só no escudeiro (Cupinzeiro) e no ás: com ela nos cinco a luta durava 30+ turnos e derrubava a
+   * equipe do QA mesmo 9 níveis acima (docs/QA-MAPA-B-1.md, docs/EQUILIBRIO-MAPA-B.md).
    * Cura: Elixir de Andiroba e Garrafada (depois do 8º ginásio o líder usa remédios — spec 7A).
    */
   { id: 'lider-10', classe: 'Líder', nome: 'Garimpeiro Topázio', sprite: 'lider-09', ia: 'lider', premio: 5100, insignia: 10, musica: 'batalha-lider', flag: 'ginasio-10-vencido',
     itens: ['elixir-andiroba', 'garrafada'],
     equipe: [
-      { e: 128, nv: 48, golpes: ['cachoeirada', 'deslizamento', 'atoleiro', 'couraca-de-pedra'] },
+      { e: 128, nv: 48, golpes: ['cachoeirada', 'deslizamento', 'atoleiro', 'soterrar'] },
       { e: 164, nv: 49, golpes: ['pedregulho-rolante', 'enxame', 'soterrar', 'couraca-de-pedra'] },
-      { e: 42, nv: 49, golpes: ['patada-ardente', 'lasca-afiada', 'cinzas-quentes', 'couraca-de-pedra'] },
-      { e: 82, nv: 50, golpes: ['espinho-de-mandacaru', 'deslizamento', 'folhas-ao-vento', 'couraca-de-pedra'] },
+      { e: 42, nv: 49, golpes: ['patada-ardente', 'lasca-afiada', 'cinzas-quentes', 'dentada'] },
+      { e: 82, nv: 50, golpes: ['espinho-de-mandacaru', 'deslizamento', 'folhas-ao-vento', 'soterrar'] },
       { e: 166, nv: 51, golpes: ['couraca-de-pedra', 'lasca-afiada', 'pedra-preciosa', 'cabeca-dura'], item: 'pequi' },
     ],
     desafio: 'Trinta anos cavando me ensinaram: pressão é o que faz o cristal. Vamos ver o que a pressão faz com você!',
