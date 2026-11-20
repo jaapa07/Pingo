@@ -6,7 +6,7 @@ import { abrir, lerSave } from './lib.mjs';
 let falhas = 0;
 const ok = (c, r, x = '') => { console.log(`${c ? 'ok  ' : 'ERRO'} ${r} ${x}`); if (!c) falhas++; };
 
-async function cenario(save, prep, fn) {
+async function cenario(save, prep, fn, arg) {
   const t = await abrir(lerSave(save));
   try {
     await t.q(async () => {
@@ -24,7 +24,7 @@ async function cenario(save, prep, fn) {
         await p; await Q.assentar?.();
       };
     });
-    if (prep) await t.q(prep);
+    if (prep) await t.q(prep, arg);
     await fn(t);
   } finally { await t.fim(); }
 }
@@ -44,8 +44,8 @@ await cenario('b-vv', async () => {
 
 // 2. laboratório: maca entre a Zinabre e o Lata
 await cenario('passo-12', async () => {
-  const s = window.__pingo.jogo.save; for (const c of s.equipe) c.vida = Math.max(1, Math.floor(c.vida / 2));
-  for (let i = 0; i < 40; i++) for (const c of s.equipe) { const B = await import('/src/battle/index.ts'); B.ganharExp(c, 0); }
+  // equipe forte (o piloto do modo sem tela é simples): a 1ª luta a desgasta, a maca tem de curar antes da 2ª
+  const s = window.__pingo.jogo.save, B = await import('/src/battle/index.ts'); for (const c of s.equipe) { B.ganharExp(c, 3000000); c.vida = B.atributos(c).vida; }
   await window.__pingo.mundo.irPara('B6-lab-3', 3, 3, 's', 'nenhuma');
 }, async (t) => {
   await t.q(() => window.Q.rodarAte([['chamar', 'b2-lab-final']]));
@@ -80,11 +80,11 @@ for (const [n, quer] of [[14, false], [16, true]]) {
     await t.q(() => window.Q.rodarAte([['revPreparar', 'lider-10']]));
     const ro = await t.q(() => !!window.__pingo.jogo.save.flags['rev-ok']);
     ok(ro === quer, `revanche do líder 10 com ${n} insígnias: ${quer ? 'libera' : 'recusa'}`, (await textos(t)).slice(0, 120));
-  });
+  }, n);
 }
 
 // 5. prêmio ×1,5 numa luta de rota do mapa B (B-R5-1 em B-R5) e agenda sem/com Mergulho
-await cenario('passo-14', async () => { await window.__pingo.mundo.irPara('B-R5', 10, 10, 's', 'nenhuma'); delete window.__pingo.jogo.save.flags['venceu:B-R5-1']; }, async (t) => {
+await cenario('passo-14', async () => { const s = window.__pingo.jogo.save, B = await import('/src/battle/index.ts'); for (const c of s.equipe) { B.ganharExp(c, 3000000); c.vida = B.atributos(c).vida; } await window.__pingo.mundo.irPara('B-R5', 10, 10, 's', 'nenhuma'); delete s.flags['venceu:B-R5-1']; }, async (t) => {
   const r = await t.q(async () => {
     const s = window.__pingo.jogo.save, d0 = s.jogador.dinheiro; const D = await import('/src/world/deps.ts'); const tr = D.treinador('B-R5-1');
     await window.Q.rodarAte([['batalha', 'B-R5-1']]);
