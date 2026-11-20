@@ -57,8 +57,8 @@ export class CaixaStatus {
     this.faixa.style.background = base; this.faixa.style.boxShadow = `inset 0 -1px 0 ${escura}`;
     const sexo = r.sexo === 'F' ? ' {c:rosa}♀{/c}' : r.sexo === 'M' ? ' {c:agua}♂{/c}' : '';
     const estrela = rara ? ' {c:ouro}★{/c}' : '', wEstrela = rara ? medir(' ★') : 0;
-    // o nome encolhe até caber, com sexo, estrela e cuia, antes do nível (5 px de margem e 2 de folga)
-    const cuia = capturada && this.lado === 1 ? 11 : 0, livre = this.w - 8 - medir(`Nv${r.nivel}`) - 7;
+    // o nome encolhe até caber, com sexo, estrela e cuia, antes do nível (5 px de margem e 4 de folga)
+    const cuia = capturada && this.lado === 1 ? 11 : 0, livre = this.w - 8 - medir(`Nv${r.nivel}`) - 9;
     const extra = (r.sexo ? medir(' ♀') : 0) + wEstrela + cuia;
     let nome = r.nome; while ((medir(nome) > this.w - 42 || medir(nome) + extra > livre) && nome.length > 3) nome = nome.slice(0, -1);
     escrever(this.nome, nome + sexo + estrela);

@@ -7,7 +7,7 @@ export default casaSimples({
   tv: ['Passa a previsão do tempo: "Mar calmo, com possibilidade de baleia".'],
   bau: ['Um quepe de mestre de saveiro e um apito que só toca desafinado.'],
   moradores: [
-    { id: 'a5-timao', sprite: 'npc-marinheiro', nome: 'Mestre Timão', fala: ['O meu Saveiro sobe o rio até Porto Pantaneiro, no Sertão das Névoas. Mas só levo Campeão.', 'Regra da Liga dos Guardiões: oito insígnias, cinco lutas seguidas no Platô, e aí sim eu carimbo o bilhete.', 'Até lá, a Baía Azul é toda sua. E olhe que não é pouca água.'] },
+    { id: 'a5-timao', sprite: 'npc-marinheiro', nome: 'Mestre Timão', fala: ['O meu Saveiro sobe o rio até Porto Pantaneiro, no Sertão das Névoas, quando não está no estaleiro tomando tábua nova. E só levo Campeão.', 'Regra da Liga dos Guardiões: oito insígnias, cinco lutas seguidas no Platô, e aí sim eu carimbo o bilhete.', 'Até lá, a Baía Azul é toda sua. E olhe que não é pouca água.'] },
     { id: 'a5-gata', sprite: 'npc-mulher-3', nome: 'Marina', mov: 'olhar', fala: ['Meu pai jura que viu uma sombra comprida passar por baixo do Saveiro, bem no fundo da baía.', 'Para ver de perto só mergulhando. E Amuleto do Mergulho é coisa lá do Sertão.'] },
   ],
 });

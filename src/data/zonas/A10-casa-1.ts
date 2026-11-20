@@ -8,6 +8,6 @@ export default casaSimples({
   bau: ['Formas de doce, colheres de pau e um caderno de receitas trancado a cadeado.'],
   moradores: [
     { id: 'a10-neto', sprite: 'cl-crianca-m', nome: 'Buritizinho', mov: 'vagar', fala: ['A vó diz que o fruto de buriti deixa a criatura mais amiga.', 'Eu comi seis e continuo brigando com a minha irmã.'] },
-    { id: 'a10-comadre', sprite: 'npc-mulher-3', nome: 'Comadre Vereda', mov: 'olhar', fala: ['Depois da Liga, dizem que o trem de Porto Sereia finalmente aceita passageiro.', 'Campeão viaja de graça para o Sertão das Névoas. O resto de nós fica com o apito.'] },
+    { id: 'a10-comadre', sprite: 'npc-mulher-3', nome: 'Comadre Vereda', mov: 'olhar', fala: ['Dizem que o trem de Porto Sereia só aceita passageiro que venceu a Liga.', 'Campeão viaja de graça para o Sertão das Névoas, quando a linha da serra deixa. O resto de nós fica com o apito.'] },
   ],
 });

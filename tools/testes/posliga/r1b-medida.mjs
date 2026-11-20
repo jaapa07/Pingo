@@ -7,8 +7,8 @@ const t = await abrir(lerSave('campeao'), { semente: SEM });
 await preparar(t);
 await relogio(t, DIA, MIN);
 await t.q(async ([lider, k]) => {
-  const C = await import('/src/battle/criatura.ts'); const s = window.__pingo.jogo.save;
-  for (const c of s.equipe) { c.nivel += k; c.exp = C.expParaNivel(C.especie(c.especie).curva, c.nivel); c.vida = C.atributos(c).vida; for (const g of c.golpes) g.pg = g.pgMax; c.status = null; }
+  const C = await import('/src/battle/criatura.ts'); const REF = await import('/tools/equilibrio-referencia.ts'); const GO = await import('/src/data/golpes.ts'); const s = window.__pingo.jogo.save;
+  for (const c of s.equipe) { c.nivel += k; c.exp = C.expParaNivel(C.especie(c.especie).curva, c.nivel); c.vida = C.atributos(c).vida; if (k > 0) { const ids = REF.golpesDeJogador(c.especie, c.nivel); c.golpes = ids.map((id) => ({ id, pg: GO.golpe(id).pg, pgMax: GO.golpe(id).pg })); } for (const g of c.golpes) g.pg = g.pgMax; c.status = null; }
   const D = await import('/src/world/deps.ts'); const R = await import('/src/data/revancha.ts'); const d = Math.floor((Date.now() + s.relogio.deslocamentoMin * 60000 - new Date().getTimezoneOffset() * 60000) / 86400000);
   s.flags['treino:' + lider] = R.diaCorrido(s.relogio.deslocamentoMin); s.flags['treino-hoje:' + lider] = true;
   await window.__pingo.mundo.irPara('A4-treino', 9, 13, 'n');

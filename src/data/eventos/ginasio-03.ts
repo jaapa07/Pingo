@@ -16,7 +16,7 @@ export const EVENTOS_GINASIO_03: EventoDef[] = [
         ['falar', NETUNO, 'Naufraguei no meu próprio cais! Você merece: a Insígnia Concha é sua!'],
         ['insignia', 3],
         ['falar', null, '{JOGADOR} recebeu a Insígnia Concha!'],
-        ['falar', NETUNO, 'E leve o Amuleto do Remo. Com uma criatura do tipo Rio na equipe, ela puxa a sua canoa por qualquer água mansa.'],
+        ['falar', NETUNO, 'E leve o Amuleto do Remo. Com uma criatura do tipo Rio na equipe, ela puxa a sua canoa por qualquer água mansa.\fNão tem nenhuma? Na grama da Trilha dos Cipós vivem a Capivarinha e a Garcinha, e de noite a Pererequinha. Sem uma delas, ninguém atravessa a Baía Azul.'],
         ['amuleto', 'remo'],
         ['dar', 'pt-14'],
         ['falar', NETUNO, 'Esse pergaminho ensina a Enxurrada: uma parede de água que arrasta o que estiver na frente.\fAgora preste atenção. Faz dias que sai uma fumaça esquisita da Usina Velha, no fim da Rota 4, a leste daqui. Desde então o cais sul está sem energia e a estação do trem, às escuras.\fDizem que é coisa de um tal Cartel. Resolva isso e o cais volta a funcionar: com o Remo você desce pela Baía Azul até a Cidade Coral, onde a rendeira Iracema Lua guarda o ginásio de Encanto.'],

@@ -9,3 +9,9 @@
 
 ## Marcos
 - (20/11) leitura dos diários B1, B2-sul, B2-norte, MOTOR, HISTORIA e eventos b1/b2-sul/b2-norte; infraestrutura montada.
+- (20/11) B1 jogado (roteiro `b1.mjs`): carta, ninho (dia seguinte), órfãos, 5 fotos, São João (sábado; erro e acerto), troca, pepitas, doce, raízes, forja — todos dão a recompensa e marcam as flags; repetir é recusado.
+  Corrigido: fala do violeiro ("Bem-te-viço está na sua mochila" × "desce do seu ombro") e da raizeira (Dona Buriti "lutava aqui" → antes de abrir o ginásio na Vila Buriti).
+- (20/11) Órfãos (`orfaos.mjs`): um por dia confere; `b1-orfao-crescer` leva o filhote a média−4 (teto 60) com golpes do nível novo e `localCaptura` do Centro.
+- (20/11) ANDARILHO DO CUME (`andarilho.mjs`): CAUSA achada. `pp-misterioso` terminava com `['esconder', 'pp-misterioso']`, que grava `oculto:PP:pp-misterioso` para sempre; na 2ª vitória no Conselho `misterioso-pode` volta a true mas o NPC continua oculto. Corrigido em b2-norte.ts (some pela condição; `mostrar` limpa o oculto).
+- (20/11) B2-sul jogado (`b2sul.mjs`): alunos, Dendê, banca de quinta, Roda de Sábado (revanche só no sábado; 2ª no mesmo sábado recusada; sábado seguinte volta), Dona Rã (ovo de Pererequinha), carta B6↔B7, troca Azulina, pinhões, payada (erro → volta amanhã; acerto → prenda; repetição → Cuia de Ouro), chimarrão (causo só de noite). Corrigido: fala duplicada no início da Roda de Sábado.
+- (20/11) B2-norte jogado (`b2norte.mjs`): carta do Lume, constelações (só de noite), escrivã, troca do pastor, neve 20/11 (1×/ano), Jubartão (1×/dia), 3 ninhos (forma certa por período; 1 visita/dia).

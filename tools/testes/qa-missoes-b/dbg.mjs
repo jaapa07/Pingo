@@ -1,0 +1,11 @@
+import { abrir, montar, FORTE, mostra, junto, nFalas, falasDesde } from './lib.mjs';
+const sv = montar('B-FA', 30, 50, { insignias: 16, flags: { 'conselho-vencido': true, 'pos-jogo': true }, mochila: { 'cuia-ouro': 30 } });
+const t = await abrir(sv, { equipe: [...FORTE], hora: 13 });
+await t.page.evaluate(() => { window.Q.capturar = (x) => x === 175; window.Q.maxCapturas = 9; });
+await t.page.evaluate(() => { window.__msgs = []; window.__pingo.bus.on('batalha-fim', (e) => window.__msgs.push(JSON.stringify(e).slice(0, 300))); });
+await junto(t, 'B-FA', 'b-fa-mapinguari');
+await t.falarCom('b-fa-mapinguari');
+console.log(await t.page.evaluate(() => window.Q.log.slice(-30).join('\n')));
+console.log(await t.page.evaluate(() => window.__msgs.join('\n')));
+console.log(JSON.stringify(await t.batalhas()));
+await t.fim();
