@@ -141,7 +141,11 @@ async function desenharNavio() {
   p.pos(NAVIO_B9[0] * 16 - 4, NAVIO_B9[1] * 16 - 18, NAVIO_B9[1] * 16 + 8);
   p.el.style.transform += ' rotate(-3deg)';
   navio = p.el;
+  // o casco ocupa a água à frente do cais: sólido para quem rema (a grade da zona é refeita a cada visita)
+  if (M.zv?.def.id === 'B9') for (const [dx, dy] of NAVIO_SOLIDO) M.zv.bloquear(NAVIO_B9[0] + dx, NAVIO_B9[1] + dy, true);
 }
+/** tiles do casco a partir de `NAVIO_B9` (o mastro e a ponte ficam por cima da linha do cais e não bloqueiam) */
+const NAVIO_SOLIDO: [number, number][] = [[0, -1], [1, -1], [2, -1], [3, -1], [0, 0], [1, 0], [2, 0], [3, 0]];
 /** canto superior esquerdo (tile) do navio encalhado em B9: na ponta do cais leste, sobre a água */
 const NAVIO_B9: [number, number] = [32, 26];
 
