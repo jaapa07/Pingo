@@ -30,7 +30,9 @@ export const GINASIOS_B = {
     volta: [...R([8, 3, 'diante da líder']), ...SOL('l n n l l l l l l l l l l s s l s l s l l l s s o o s s o s o n o n l s l A-l n l s o A-s s l s A-o o o s s o o o o n n n n n n n n o o o o s s l n o s o s o n o s l s s s l l l'), A(8, 17, 'g'), ...R([8, 17, 'porta do ginásio'])] },
   // 15 Mente (B8-ginasio): portais de constelação × quatro horas do céu (solução do comentário da zona)
   15: { zona: 'B8-ginasio', passos: R(PI(5, 15), PI(20, 3), PI(1, 5), PI(1, 5), PI(1, 5), PI(6, 3), PI(20, 10), PI(5, 15), PI(11, 8), PI(20, 3),
-    A(13, 2, 'o,'), [13, 2, 'ilha da líder'], CUIDAR, '!n') },
+    A(13, 2, 'o,'), [13, 2, 'ilha da líder'], CUIDAR, '!n'),
+    // volta (alvorada; busca em ilha × hora em qa4 scratch portais.py): P15 → P10, P11 → P5, P6 → P0 (entrada)
+    volta: R(PI(13, 3), PI(24, 5), PI(15, 8), A(8, 17, 'o,'), [8, 17, 'porta do ginásio']) },
   // 16 Lenda (A9-ginasio): as quatro provas (fogo, terra, vento, água) e a porta de taquara
   16: { zona: 'A9-ginasio', passos: [...R(A(12, 12, 'x'), [12, 12, 'entrada da ala do fogo']), ...SOL('o n s s s o o o o n n n l n o l o o o s s s s o n l s o o n n o'), ...R([2, 12, 'marca do fogo'],
     A(10, 6, 'xo'), [10, 6, 'entrada da ala da terra']), ...SOL('o o A-n l l n A-o o A-o l n n o o A-s l l s s o A-o o A-o o A-o s o o A-n n A-n n l n A-o o A-o o A-o o o n'), ...R(

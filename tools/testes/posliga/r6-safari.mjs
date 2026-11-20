@@ -22,6 +22,18 @@ async function encontro(plano, rot) {
   }
   for (let g = 0; g < 30 && /dialogo|nome/.test(await topo(t)); g++) await tecla(t, /nome/.test(await topo(t)) ? 'b' : 'a', 1, 8);
 }
+const passoSeguro = (d) => t.q(async (d) => {
+  const P = window.__pingo, C = { l: 'ArrowRight', o: 'ArrowLeft', n: 'ArrowUp', s: 'ArrowDown' }[d];
+  const ev = (tp) => document.dispatchEvent(new KeyboardEvent(tp, { code: C, key: C, bubbles: true }));
+  const q = () => new Promise((r) => requestAnimationFrame(r)); const x0 = P.mundo.jogador.x, y0 = P.mundo.jogador.y;
+  ev('keydown'); for (let i = 0; i < 20; i++) { await q(); if (P.mundo.jogador.movendo || P.mundo.jogador.x !== x0 || P.mundo.jogador.y !== y0 || document.querySelector('.tela-safari')) break; } ev('keyup');
+  for (let i = 0; i < 30 && P.mundo.jogador.movendo; i++) await q();
+}, d);
+async function irAteSeguro(x, y, rot) {
+  for (let k = 0; k < 6; k++) {
+    try { await t.irAte(x, y); return; } catch (e) { if (await sf()) await encontro([0], rot + '-caminho'); else throw e; }
+  }
+}
 try {
   await relogio(t, 3, 11 * 60);
   // doadores (viagem por irPara: o caminho até eles não é o foco)
@@ -56,12 +68,17 @@ try {
   let enc = 0, cap0 = Number((await flags(t, 'safari-capturas'))['safari-capturas'] ?? 0);
   for (const [area, alvo] of [[capim, 2], [capim2, 2]]) {
     const [cx, cy] = area[Math.floor(area.length / 2)];
-    await t.irAte(cx, cy).catch((e) => console.log('   irAte', e.message.split('\n')[0]));
+    await irAteSeguro(cx, cy, 'r6-area').catch((e) => console.log('   irAte', e.message.split('\n')[0]));
     let n = 0;
     for (let passo = 0; passo < 120 && n < alvo; passo++) {
-      await t.q((d) => window.Q.toque(d), passo % 2 ? 'o' : 'l').catch(() => 0);
-      await t.q(() => window.Q.quadros(14));
-      if (await sf()) { n++; enc++; await encontro(planos[(enc - 1) % planos.length], `r6-enc${enc}`); console.log(`   encontro ${enc}:`, (await textos(t, 3)).join(' ⏎ ').slice(0, 200)); }
+      await passoSeguro(passo % 2 ? 'o' : 'l');
+      if (await sf()) {
+        n++; enc++; const c0 = (await t.resumo()).mochila['cuia-safari'] ?? 0, k0 = Number((await flags(t, 'safari-capturas'))['safari-capturas'] ?? 0);
+        const esp = await t.q(() => window.__pingo.jogo.save.diario.visto.slice(-1)[0]);
+        await encontro(planos[(enc - 1) % planos.length], `r6-enc${enc}`);
+        const c1 = (await t.resumo()).mochila['cuia-safari'] ?? 0, k1 = Number((await flags(t, 'safari-capturas'))['safari-capturas'] ?? 0);
+        console.log(`   encontro ${enc} (plano ${planos[(enc - 1) % planos.length]}): ${c0 - c1} cuia(s), ${k1 > k0 ? 'CAPTUROU' : 'não capturou'}`);
+      }
       if ((await t.st()).zona !== 'A-SF-parque') break;
     }
   }

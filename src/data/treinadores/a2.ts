@@ -43,7 +43,13 @@ const USINA_VELHA: TreinadorDef[] = [
   capanga('A-US-8', true, [{ e: 115, nv: 22 }, { e: 143, nv: 23 }], 920, 'O porão é úmido, escuro e cheio de bicho que dá choque. Adoro. Você não vai adorar.', 'Deu curto.', 'As criaturas nas jaulas são daqui mesmo. O Cartel vende como "bateria viva". Feio, né?'),
   capanga('A-US-9', false, [{ e: 141, nv: 23 }, { e: 141, nv: 23 }, { e: 28, nv: 23 }], 920, 'Tire a mão da chave geral! Essa chave é do Cartel desde anteontem!', 'Tá bom, a chave é sua.', 'Ligou a chave? Então a porta de cima destravou. A tenente vai me matar.'),
   capanga('A-US-10', false, [{ e: 63, nv: 23 }, { e: 93, nv: 24 }], 960, 'Guarda das jaulas! Ninguém solta bicho no meu turno!', 'Meu turno acabou agora.', 'Quando a Usina voltar a funcionar, esses bichos vão embora cantando. Eu até acho bom.'),
-  t('A-US-lata', 'Tenente do Cartel', 'Lata', 'tenente-lata', [{ e: 141, nv: 23 }, { e: 115, nv: 24 }, { e: 143, nv: 24 }, { e: 31, nv: 25, item: 'acerola' }], 2500,
+  /*
+   * Tenente Lata — o Besourim (Inseto/Ferro) não traz a Mordida de Saúva (Inseto, ×2 no inicial de Mata): Cara Feia no lugar
+   * (decisão do autor, 20/11: +15 pontos para quem joga com Mata). Motor puro, IA de líder, equipe honesta de mata-passo-8
+   * (inicial nv 32–34 + Pipirim/Quero-querinho/Gambazinho 8, Corujinha 17–18, Capivarinha 15), 2 Garrafadas:
+   * Mata 5% → 20%, Brasa 74% → 74%, Rio 63% → 65% (docs/AJUSTES-MATA.md).
+   */
+  t('A-US-lata', 'Tenente do Cartel', 'Lata', 'tenente-lata', [{ e: 141, nv: 23 }, { e: 115, nv: 24 }, { e: 143, nv: 24, golpes: ['unha-de-aco', 'cabecada', 'piao-de-ferro', 'cara-feia'] }, { e: 31, nv: 25, item: 'acerola' }], 2500,
     'Então é você que anda amassando os meus capangas. Eu sou a tenente Lata, do Cartel Ferrugem, e não amasso fácil!', 'Amassou… Lata velha é assim: faz barulho e entorta.', '',
     { ia: 'lider', musica: 'batalha-cartel', itens: ['garrafada'], flag: 'venceu:A-US-lata' }),
 ];

@@ -40,9 +40,9 @@ const GINGA: TreinadorDef[] = [
     'Na praça da roda o desafio é aberto. Quem pisou na areia, jogou!', 'Saí da roda pela tangente. Boa, camará.', 'O Mestre Gingado escuta o berimbau antes de mandar golpe. Escute também.'),
   t('B5-2', 'Capoeirista', 'Capoeirista Siriema', 'cl-capoeirista', [{ e: 102, nv: 59 }, { e: 74, nv: 60 }],
     'Vou te mostrar a meia-lua da minha Ariranhão. Ela aprendeu nadando!', 'Meia-lua, lua inteira, eclipse. Perdi.', 'Tipo Ginga perde força contra Vento, Mente, Veneno, Inseto e Encanto. Escolha bem quem entra na roda.'),
-  t('B5-mare', 'Contramestra', 'Contramestra Maré', 'cl-capoeirista', [{ e: 96, nv: 59 }, { e: 110, nv: 60 }, { e: 66, nv: 61 }],
-    'Quer entrar na Roda Grande? Primeiro passa por mim. O berimbau tocou São Bento Grande: é jogo duro!', 'O berimbau mudou o toque. Para você.', 'Sábado a Roda Grande é aberta. Volte quando o Mestre Gingado já tiver te batizado e a gente joga de novo, com equipe de gente grande.'),
-  t('B5-mare-2', 'Contramestra', 'Contramestra Maré', 'cl-capoeirista', [{ e: 96, nv: 65 }, { e: 110, nv: 66 }, { e: 66, nv: 66 }, { e: 72, nv: 67 }],
+  t('B5-mare', 'Contramestra', 'Maré', 'cl-capoeirista', [{ e: 96, nv: 59 }, { e: 110, nv: 60 }, { e: 66, nv: 61 }],
+    'Quer entrar na Roda Grande? Primeiro passa por mim. O berimbau tocou São Bento Grande: é jogo duro!', 'O berimbau mudou o toque. Para você.', 'Sábado a Roda Grande é aberta. Volte quando a Gaúcha Pinhão já tiver te dado a Insígnia Floco e a gente joga de novo, com equipe de gente grande.'),
+  t('B5-mare-2', 'Contramestra', 'Maré', 'cl-capoeirista', [{ e: 96, nv: 65 }, { e: 110, nv: 66 }, { e: 66, nv: 66 }, { e: 72, nv: 67 }],
     'Sábado de Roda Grande! A equipe treinou a semana inteira. Ê, volta do mundo, camará!', 'A volta do mundo deu a volta em mim.', 'Sábado que vem tem mais. A roda não acaba: só descansa.', { contato: true }),
 ];
 

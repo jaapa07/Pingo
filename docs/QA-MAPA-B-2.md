@@ -57,3 +57,16 @@ Ferramentas em `tools/testes/qa4/` (cópia do QA 3 com nomes `qa4-*`):
 - Simulador com as equipes REAIS dos checkpoints (`qa4-sim-save.mts`, 200 lutas, equipe curada, remédios do save):
   líder 9 91% · Arame 87% · líder 10 61% · rival 6 90% · líder 11 84% · líder 12 79% · Zinabre→Lata 99%→12% (seguidas) ·
   líder 13 34% · rival 7 84% · líder 14 52%.
+- (20/11) **gin14 (3ª mão) → névoas → gin15**: líder 14 **1/2** (5 t com 3 desmaiadas; vitória em 26 t) e a volta pelo
+  gelo feita na tela até a porta (checkpoint `passo-14`). B-R5: 8 treinadores, 0 derrotas, 4 voltas ao Posto de B7.
+  Portais do ginásio 15 pela solução (7 saltos + 3 giros) sem erro.
+  - **Líder 15 Jaci (ás 70, seis criaturas 68–70): 0/8** com a equipe 65/65/64/61/61/61 (Δ −5 na entrada, média −7),
+    sempre entrando CURADA (15–26 turnos, ela usa 1–3 remédios). Entre as derrotas o piloto treinou 8 selvagens (+1 nível
+    no ás em 7 derrotas). Dinheiro: $8 401 → **$15** (cada derrota corta metade; sem dinheiro para Chá/Elixir).
+  - Simulador com a equipe real (`b8`): **3%**; a mesma equipe com o ás 68: 37%; com o ás 70: 70%; 72: 85%.
+  - 2ª mão com treino de jogador (blocos de 6 selvagens + Posto, 36 por derrota): vitória na **8ª** tentativa, depois de
+    **216 selvagens** de treino, com a equipe 70/67/65/65/65/65 (Δ 0), 21 turnos. Volta da ilha da líder por portais
+    (P15 → P10, P11 → P5, P6 → P0; busca em ilha × hora).
+- Contagem de batalhas por trecho: ~metade dos selvagens termina em FUGA (o piloto foge com equipe gasta ou com o
+  selvagem 4+ acima da da frente, como um jogador cuidadoso). O estimador conta 7 selvagens VENCIDOS por zona: é a
+  principal diferença entre a chegada medida e a estimada do 13 em diante.

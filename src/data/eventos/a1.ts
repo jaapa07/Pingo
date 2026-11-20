@@ -198,6 +198,19 @@ export const EVENTOS_A1: EventoDef[] = [
           ]),
         ]),
       ]),
+      /*
+       * Só para quem saiu do laboratório com o Tamanduí (decisão do autor, 20/11): o Mestre Gaivota é de Vento e nada
+       * que o Tamanduí sabe passa da plumagem do Tucaninho. O Jabutim (Mata/Pedra, nv 6, crescimento lento) aguenta
+       * Bicada e aprende Estilingue no nv 9. Motor puro contra as equipes honestas: números em docs/AJUSTES-MATA.md.
+       */
+      se('flag:ovo-no-aroeira&flag:inicial-mata&!flag:jabutim-aroeira', [
+        ['emote', 'aroeira', '!'],
+        f('aroeira', 'Espere aí. Esse seu Tamanduí… é bicho de folha, não é? E você vai encarar o Mestre Gaivota com ele?\fO vento do píer derruba folha que é uma beleza. E o Tucaninho do Gaivota bica feito pica-pau.'),
+        f('aroeira', 'Tenho aqui um Jabutim que nasceu no viveiro e já está grande para o quintal. Casco de pedra não liga para bicada.\fEle é devagar em tudo, até para crescer. Mas quando aprender a atirar pedrinha, passarinho nenhum chega perto.'),
+        ['darCriatura', 81, 6, { apelidar: true }],
+        ['flag', 'jabutim-aroeira'],
+        f('aroeira', 'Cuide bem dele. Jabuti vive mais que a gente: ele ainda vai contar a sua história para os seus netos.'),
+      ]),
     ],
   },
 
