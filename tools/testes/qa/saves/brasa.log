@@ -27,3 +27,8 @@ erros de console: []
   [batalha] A-R1-6 → derrota · equipe 4:8 · A-R1 · $293
   DERROTA para A-R1-6 (nv 8)
   [batalha] selvagem 10:3 → captura · equipe 4:8,10:3 · A-R1 · $146
+== checkpoint brasa-passo-2: ["Guaraxim 8","Pipirim 3"] $146
+resumo: {"zona":"A2-casa-aroeira","x":4,"y":4,"dinheiro":146,"insignias":[],"amuletos":[],"equipe":[{"e":4,"nome":"Guaraxim","nv":8,"vida":26,"max":26,"st":null,"golpes":["encontrao 35","berro 40","fagulha 25"]},{"e":10,"nome":"Pipirim","nv":3,"vida":15,"max":15,"st":null,"golpes":["bicada 35","berro 40"]}],"mochila":{"radio-cipo":1,"cha-cidreira":3},"tempo":1421,"posto":"A2-posto","capturado":2}
+treino extra: [] derrotas: 6 curas: 3
+perguntas: ["Quem é você? → Kauê","Você vai escolher Guaraxim, do tipo Brasa? → Sim","Quer dar um apelido para Guaraxim? → Não","Mãe: \"Oi, meu bem! Precisa de alguma coisa?\" → Descansar um pouco","Quer que eu cuide das suas criaturas? → Sim"]
+erros de console: []

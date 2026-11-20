@@ -33,8 +33,23 @@ async function tentar(rotulo, fn, o = {}) {
 }
 /** entre lutas no caminho: usa remédio se alguém está fraco; devolve a saúde */
 const cuidar = (o) => Qr((o) => window.Q.cuidar(o), o ?? { limiar: 0.5, reanimar: false, guardar: { garrafada: 2 } });
-/** todos os treinadores e itens da zona atual */
-const limpar = async (o) => { const n = await t.treinadores(o); await t.catar().catch((e) => { if (/DERROTA/.test(e.message)) throw e; console.log('   catar:', e.message); }); await cuidar(); return n; };
+/** equipe gasta? numa cidade passa no Posto; no caminho usa os remédios (reanima se caíram duas ou mais) */
+async function recompor() {
+  const sd = await Qr(() => window.Q.saude());
+  if (sd.caidas === 0 && sd.frac >= 0.6 && !sd.pgBaixo) return;
+  const z = (await t.st()).zona;
+  const temPosto = await Qr((z) => !!window.__pingo.mundo.zona.warps.some((w) => w.para.zona === z + '-posto'), z);
+  if (temPosto) { await viajar(`${z}-posto`); await Qr(() => window.Q.curarNoPosto()); estat.postos++; await viajar(z); return; }
+  await cuidar({ limiar: 0.5, reanimar: sd.caidas >= 2, guardar: { garrafada: 1 } });
+}
+/** todos os treinadores e itens da zona atual, recompondo a equipe entre uma luta e outra */
+const limpar = async (o) => {
+  let n = 0;
+  for (let i = 0; i < 20; i++) { await recompor(); const k = await t.treinadores({ ...(o ?? {}), max: 1 }); if (!k) break; n += k; }
+  await t.catar().catch((e) => { if (/DERROTA/.test(e.message)) throw e; console.log('   catar:', e.message); });
+  await recompor();
+  return n;
+};
 /** percorre um ginásio pelo roteiro (teclas + conferências de posição); `lider` = passo final */
 async function ginasio(n) {
   const G = GINASIOS[n];

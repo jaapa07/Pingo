@@ -30,7 +30,7 @@ try {
   const a2 = await abrir(6);
   console.log(`2ª abertura: página na versão ${a2.s?.v}; caches: ${a2.s?.caches.join(', ')}; pedidos: ${a2.pedidos.join(', ')}`);
   if (a2.s?.v !== v2) falhas.push(`a 2ª abertura deveria estar na versão ${v2}, está na ${a2.s?.v}`);
-  if (a2.s?.caches.some((c) => c === 'pingo-n-' + v1)) falhas.push('o núcleo da versão antiga não foi apagado');
+  if (a2.s?.caches.some((c: string) => c === 'pingo-n-' + v1)) falhas.push('o núcleo da versão antiga não foi apagado');
   if (a2.s?.dados !== a0.s?.dados) falhas.push(`o cache de dados mudou de ${a0.s?.dados} para ${a2.s?.dados} arquivos`);
   const baixados = [...a1.pedidos, ...a2.pedidos].filter((c) => c !== 'sw.js');
   if (baixados.length > 20) falhas.push(`a atualização baixou ${baixados.length} arquivos; só o que mudou deveria vir`);

@@ -8,8 +8,12 @@
     import('/src/battle/criatura.ts'), import('/src/data/golpes.ts'), import('/src/data/itens.ts'), import('/src/world/zonas.ts'), import('/src/core/estado.ts'),
   ]);
   const M = V.M, jogo = P.jogo;
+  const DLG = await import('/src/ui/dialogo.ts');
   const Q = (window.Q = { log: [], batalhas: [], capturar: null, maxCapturas: 0, capturadas: [], semItensSelvagem: true, falhas: [], regrasEscolha: [], abortar: false, derrotas: [], derrotaPendente: false, curasPosto: 0, compras: {}, itensCampo: {} });
   const anota = (...a) => { Q.log.push(a.join(' ')); if (Q.log.length > 4000) Q.log.shift(); };
+
+  // texto atual das caixas (fonte bitmap não se lê do DOM): anota o que cada CaixaTexto recebe
+  { const def = DLG.CaixaTexto.prototype.definir; DLG.CaixaTexto.prototype.definir = function (str, ...r) { Q.ultimoTexto = String(str); return def.call(this, str, ...r); }; }
 
   /* ------------------------------ tempo e teclas ------------------------------ */
   const quadro = () => new Promise((r) => requestAnimationFrame(r));
@@ -160,23 +164,23 @@
       await toque(cur < alvo ? 'baixo' : 'cima'); return;
     }
     if (lista) {
-      // sim/não da batalha: oferta de troca, golpe pendente ou apelido da capturada
-      const f = focoLista(lista);
-      let quer; // 0 = Sim, 1 = Não
-      if (ctl.fase === 'oferta') {
+      // sim/não da batalha: oferta de troca, golpe pendente ou apelido da capturada (decide pelo texto da caixa)
+      const f = focoLista(lista), txt = Q.ultimoTexto ?? '';
+      let quer = 1; // 0 = Sim, 1 = Não
+      if (/trocar de criatura/.test(txt)) {
         if (!plano || plano.oferta === undefined) {
           const prox = b.eventos.slice().reverse().find((e) => e.t === 'oferta-troca');
           const idx = prox ? b.lados[1].equipe.findIndex((c) => c.uid === prox.proxima.uid) : -1;
-          const para = idx >= 0 ? REF.pilotoEsperto.oferta(b, idx, mem) : null;
+          const para = idx >= 0 && ctl.fase === 'oferta' ? REF.pilotoEsperto.oferta(b, idx, mem) : null;
           plano = { oferta: para, para: para ?? undefined };
         }
         quer = plano.oferta == null ? 1 : 0;
-      } else if (pendentes.length) {
+      } else if (/^Esquecer um golpe/.test(txt)) {
         const pd = pendentes[0];
-        if (pd.slot === undefined) pd.slot = slotParaEsquecer(pd.uid, pd.golpe);
-        if (pd.fase === 0) quer = pd.slot >= 0 ? 0 : 1; else quer = 0; // fase 1 = "Desistir de aprender?" → Sim
-        if (f.i === quer) { if (pd.slot < 0) pd.fase = pd.fase === 0 ? 1 : 0; await toque('a'); await quadros(3); return; }
-      } else quer = 1; // apelido: Não
+        if (pd && pd.slot === undefined) pd.slot = slotParaEsquecer(pd.uid, pd.golpe);
+        quer = pd && pd.slot >= 0 ? 0 : 1;
+      } else if (/^Desistir de aprender/.test(txt)) quer = 0;
+      else if (/apelido/.test(txt)) quer = 1;
       if (f.i === quer) { await toque('a'); await quadros(3); return; }
       await toque(f.i < quer ? 'baixo' : 'cima'); return;
     }
@@ -352,6 +356,7 @@
         break;
       }
       if (!feito) break;
+      if (o.max && n >= o.max) break;
     }
     return n;
   };
