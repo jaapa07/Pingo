@@ -149,3 +149,49 @@ QA com inicial de Rio); do 13 em diante é só estimativa (ninguém jogou B6→P
   66 → 73, Lobo-Jaci e Onça-Guaraci (errantes pós-jogo) 70 → 77. Andarilho do Cume (75–80) não mudou.
 - Verificadores: tools/verify/niveis.ts (líderes 9–16 com ás exato e faixa ás−4…ás, Garrote/rival 8/Conselho acima
   do 16), tools/verifica-zonas-b1/-b2-sul/-b2-norte.mts e a faixa das áreas de retorno em tools/verifica-zonas-a2.mts.
+
+## Marco 5 (20/11) — medido depois da curva nova (`npx tsx tools/sim-mapa-b.ts --n 150`)
+Antes = níveis antigos (Marco 3); depois = curva nova + ajustes. `ref` = equipe de referência; `qa` = equipe real do QA.
+
+| Chefe | Ás antes → depois | ref Δ2/Δ3/Δ4 antes | ref Δ2/Δ3/Δ4 depois | qa Δ2/Δ3/Δ4 antes | qa Δ2/Δ3/Δ4 depois |
+|---|---|---|---|---|---|
+| 9 Zefa | 49 → 55 | 67/55/40 | 75/83/70 | 40/23/17 | 80/72/59 |
+| 10 Topázio | 51 → 58 | 82/75/54 | 70/63/63 | 43/34/27 | 62/53/37 |
+| 11 Labareda | 53 → 61 | 65/57/39 | 77/67/59 | 45/32/34 | 64/57/59 |
+| 12 Gingado | 55 → 63 | 82/59/48 | 85/77/64 | 90/84/69 | 93/91/80 |
+| 13 Peçonha | 57 → 66 | 80/63/51 | 83/80/65 | 14/7/4 | 35/21/15 |
+| 14 Pinhão | 59 → 68 | 86/67/64 | 80/74/73 | 89/79/68 | 86/83/77 |
+| 15 Jaci | 61 → 70 | 78/61/55 | 79/70/68 | 67/65/37 | 68/63/49 |
+| 16 Trovão-Velho | 63 → 72 | 77/73/61 | 67/57/53 | 97/96/91 | 87/79/83 |
+| Garrote | 64 → 74 | 89/86/76 | 93/93/84 | 21/21/12 | 23/20/20 |
+| Rival 8 (Rio) | 65 → 75 | 59/54/40 | 65/64/53 | 83/81/74 | 91/85/84 |
+| **Conselho (sequência)** | 70 → 77 | 74/57/51 | **58/44/38** | 86/82/74 | 77/63/49 |
+
+- Líder 16: 6ª criatura (Jacaruçu nv 69, Marretada e Bote de Jararaca contra Encanto), Carreira em Chamas no Leão,
+  Voo do Guardião na Lavadeira, Marretada no Pirarucão. Com cinco a equipe do QA vencia 91–99%.
+- Líder 13 e Garrote: a equipe do QA (Iaraboto e Pintinhas são Encanto; Veneno bate Encanto 2×) perde muito, a de
+  referência ganha muito: a diferença é de tipo, não de nível. Testei tirar o Chorume do sapo do Peçonha: não muda nada
+  (30/18/18%); desfeito. Ficam como estão: na média das duas equipes o 13 dá ~50% no Δ3 e o Garrote ~56%; o jogador
+  que leva Terra/Mente contra o Veneno passa (estratégia de tipo, como o autor decidiu para a Liga e o inicial de Brasa).
+- Líder 12 fica fácil para as duas equipes (64–93%); uma troca de golpe no ás (Bote de Jararaca) não mudou nada e foi desfeita.
+- O Conselho ficou na meta 35–55% com a equipe de referência (38–58%); a do QA, 49–77%.
+
+## Marco 6 — chegada esperada com a regra nova do Chocalho (`--limiar 5`) e o que falta decidir
+| Chefe | Ás novo | Chegada (ás da equipe) | Média | Δ |
+|---|---|---|---|---|
+| Líder 9 | 55 | 55,7 | 52,2 | +0,7 |
+| Líder 10 | 58 | 62,7 | 59,0 | +4,7 |
+| Líder 11 | 61 | 67,6 | 63,8 | +6,6 |
+| Líder 12 | 63 | 70,7 | 67,1 | +7,7 |
+| Líder 13 | 66 | 76,9 | 73,3 | +10,9 |
+| Líder 14 | 68 | 80,1 | 76,4 | +12,1 |
+| Líder 15 | 70 | 82,8 | 79,0 | +12,8 |
+| Líder 16 | 72 | 86,2 | 82,5 | +14,2 |
+| Conselho | 77 | 88,9 | 85,1 | +11,9 |
+
+Com o teto pedido (Conselho ~77) e a opção A, o jogador honesto ainda chega ACIMA do ás (o ás da equipe vem da
+criatura da frente, que o Chocalho nunca alimenta; e as rotas mais altas dão mais experiência). Para chegar 2–4 abaixo
+com esta curva é preciso cortar a experiência do mapa B pela metade (modelo: divisor 14 em vez de 7 → Δ −3…0; divisor 16
+→ Δ −2…−4, Conselho −5) ou combinar bônus de treinador ×1,0 com 40% dos treinadores de rota opcionais (Δ −3…+3). Isso
+mexe na fórmula de experiência (src/battle/criatura.ts `expDerrota`, valendo só depois de `liga-vencida`) e é decisão
+do autor: NÃO aplicado.
