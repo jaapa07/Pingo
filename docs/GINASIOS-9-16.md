@@ -51,3 +51,33 @@ Arquivos meus: `src/data/zonas/{B2,B3,B4,B5}-ginasio.ts`, `src/world/mecanicas/g
 - `npx tsc --noEmit -p .` limpo (repo inteiro). `npm run check -- --rapido`: nenhum erro nos meus arquivos; o único que cita um deles é `dist/assets/zonas/A9-ginasio/zona.json` ausente (o bake está em `public/assets/zonas/A9-ginasio`; entra no dist no próximo build). Os outros erros da rodada são de outros times (scripts `cuieira`/`troca-*`, `cartel-lago`, líder 1, tsc por tempo esgotado com a máquina cheia).
 - Bake refeito das quatro zonas (B6/B7/B8/A9-ginasio) depois dos últimos ajustes. Vite 5200 desligado.
 - Pendências: (1) reinício dos blocos da Geada ao sair da pista não foi visto no navegador (só a lógica); (2) no 15, g15-1/3/5 são opcionais e não foram enfrentados no navegador (só no simulador); (3) bobo 0–12% contra os quatro líderes, como nos líderes 1–8; (4) líder 13 com Δ 2 dá 85% (acima da meta; Δ 3–4 dá 55–57%).
+
+## Achados do QA (QA do mapa B trecho 1 — diário completo em docs/QA-MAPA-B-1.md)
+Jogo honesto no Aventureiro a partir do Campeão do QA 2 (equipe Rio: Iaraboto, Gaviãozão, Cotiadã, Pintinhas,
+Tatucanastra, Vampirinha; Chocalho do Mutirão), piloto "esperto" pelo teclado, Vite próprio 5205. Os três
+quebra-cabeças (9 lama, 10 vagonetes, 11 fogueiras) foram resolvidos pela solução do comentário da zona, sem tropeço;
+volta do 10 de vagonete funciona; nenhuma passagem tapada por treinador que se aproxima.
+- **Nível de chegada muito acima da meta:** a equipe chegou ao líder 9 com ás 55 (Δ **+6**), ao 10 com 60 (Δ **+9**) e ao
+  11 com 65 (Δ **+12**), lutando só com os treinadores do caminho e os selvagens que apareceram (nenhum treino extra).
+  Com isso nenhum dos três pôde ser medido no intervalo Δ −2…−4 jogando. Isto é da curva das rotas/Chocalho, não do
+  ginásio (registrado também para o coordenador).
+- **Resultados jogados:** líder 9 1/1 (8 turnos, Zefa usou 1 remédio) · **líder 10 1/2 mesmo com Δ +9**: a 1ª luta durou
+  34 turnos e derrubou a equipe inteira (todos com Couraça de Pedra + Elixir/Garrafada; a 1ª mão anterior ganhou em 30
+  turnos com 4 de 6 desmaiadas); a 2ª durou 8 turnos · líder 11 1/1 (11 turnos, Labareda usou 3 remédios).
+- **Simulador com a EQUIPE REAL do QA** (`tools/testes/qa3/qa3-sim-save.mts <save> lider-XX`, `NIVEL_ALVO=n` refaz a
+  mesma equipe com o ás no nível n; 200 lutas, esperto, remédios do save):
+
+  | Líder (ás) | ás +2 | ás 0 | ás −2 | ás −4 |
+  |---|---|---|---|---|
+  | 9 Zefa (49) | 62% | 41% | 22% | 13% (−4 = 45) |
+  | 10 Topázio (51) | 70% | 45% | 19% | — |
+  | 11 Labareda (53) | 75% | 65% | 39% | 33% |
+
+  Simulador de referência (`sim-b.mts`, equipe de referência, Δ 2/3/4): 9 → 61/47/21% · 10 → 49/41/22% · 11 → 71/55/43%.
+  **Leitura:** na faixa pedida (Δ −2…−4, alvo 55–75%) os líderes 9 e 10 ficam abaixo (9: 13–22%; 10: ~19% e 22–49% na
+  referência); o 11 fica perto (33–55%). O líder 10 é o mais duro: as 6 criaturas com Couraça de Pedra viram luta longa
+  contra equipe sem golpe especial forte, e no jogo real ele foi bem mais duro que no simulador (perdeu 1 de 2 com Δ +9).
+  Sugestão ao lote 9–12: tirar a Couraça de Pedra de 2–3 membros do Topázio (fica no ás e em um escudeiro) e baixar 1
+  nível dos membros da Zefa; o 11 está bom. Como o jogador real chega MUITO acima, convém decidir junto com o
+  coordenador antes de mexer (se a curva das rotas for corrigida, os números de Δ −2…−4 passam a valer).
+- Ginásio 12 (`B5-ginasio`) ainda não existe: a porta de Cidade Ginga leva a uma zona ausente (registrado; o QA parou ali).

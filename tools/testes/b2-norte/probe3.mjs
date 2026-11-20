@@ -1,0 +1,17 @@
+import { abrir } from './lib.mjs';
+const H = async (t) => t.pagina(async () => { (await import('/src/battle/index.ts')).definirHeadless(true); });
+let t = await abrir('B8', 12, 14, '&dir=n&insignias=15&flags=inicial-mata'); await H(t);
+await t.usar(12, 12); console.log('escrivã', (await t.falas(3)).map((x) => x.slice(0, 80))); await t.fim();
+t = await abrir('B-LG-cabana', 5, 7, '&dir=n&insignias=15&amuletos=todos&flags=inicial-mata,m-carta-lume'); await H(t);
+const j = await t.pagina(() => window.__a2.M.npcs.map((n) => [n.def?.id, n.ator.x, n.ator.y])); console.log(JSON.stringify(j));
+const [jx, jy] = j.find((n) => n[0] === 'b-lg-joca').slice(1); await t.usar(jx, jy); console.log('joca', (await t.falas(4)).map((x) => x.slice(0, 80)), JSON.stringify((await t.flags('m-carta')).flags)); await t.fim();
+t = await abrir('B-SG', 7, 30, '&dir=l&insignias=15&amuletos=todos&flags=inicial-mata&equipe=136:56,6:80'); await H(t);
+await t.usar(8, 28); console.log('pastor', (await t.falas(3)).map((x) => x.slice(0, 80)), JSON.stringify((await t.flags('troca')).flags), JSON.stringify((await t.flags('x')).equipe)); await t.fim();
+t = await abrir('B-SG', 60, 8, '&dir=n&insignias=15&amuletos=todos&flags=inicial-mata&periodo=manha'); await H(t);
+await t.usar(60, 6); console.log('totem uirapuru', (await t.falas(2)).map((x) => x.slice(0, 80))); await t.fim();
+t = await abrir('B-FA', 9, 13, '&dir=n&insignias=16&amuletos=todos&flags=inicial-mata,conselho-vencido&periodo=manha'); await H(t);
+await t.usar(9, 11); console.log('ninho manhã', (await t.falas(3)).map((x) => x.slice(0, 80)), JSON.stringify((await t.flags('ninho')).flags));
+await t.usar(9, 11); console.log('ninho de novo', (await t.falas(1)).map((x) => x.slice(0, 80)));
+await t.usar(31, 6); console.log('mapinguari', (await t.falas(3)).map((x) => x.slice(0, 80)), JSON.stringify((await t.flags('mapinguari')).flags)); await t.fim();
+t = await abrir('B-LG', 37, 26, '&dir=o&insignias=16&amuletos=todos&flags=inicial-mata,conselho-vencido'); await H(t);
+await t.ir('o'); console.log('jubarte', (await t.falas(3)).map((x) => x.slice(0, 80))); await t.fim();
