@@ -266,8 +266,8 @@ const etapas = {
       if ((await t.st()).zona === 'B5') await mergulhar(47, 14, 'B-TA');
       if ((await t.st()).zona === 'B-TA') { await t.foto('b-ta'); await limpar(); await mergulhar(26, 22, 'B-TA-gruta'); }
       if ((await t.st()).zona === 'B-TA-gruta') {
-        await t.foto('b-ta-gruta'); await limpar();
-        await t.irAte(32, 10); await t.irAte(33, 10); await t.agir('n'); await t.assentar();
+        await t.foto('b-ta-gruta'); await limpar({ forca: true });
+        await Qr(() => window.Q.irAteForca(32, 10)); await t.irAte(33, 10); await t.agir('n'); await t.assentar();
         marco('cascata da gruta: ' + JSON.stringify(await t.st()) + ' ' + JSON.stringify(await t.falas(2)));
         await mergulhar(36, 4, 'B-TA');
       }

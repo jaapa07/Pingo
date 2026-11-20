@@ -344,6 +344,10 @@
     for (let i = 0; i < 8 && !melhor; i++) { await quadros(25); for (const w of ws) { const pl = Q.plano(w.x, w.y, o); if (pl && (!melhor || pl.length < melhor.pl.length)) melhor = { w, pl }; } if (melhor) anota('esperei a passagem abrir em', s0.zona); }
     if (!melhor) throw new Error(`warp de ${s0.zona} para ${dest} inalcançável de (${s0.x},${s0.y})`);
     let s = await Q.irAte(melhor.w.x, melhor.w.y, o);
+    if (s.zona === s0.zona && !melhor.w.tipo) {
+      // poço de mergulho (subir/descer): parado em cima dele, o jogador aperta A e confirma
+      for (let k = 0; k < 3 && s.zona === s0.zona; k++) s = await Q.agir();
+    }
     if (s.zona === s0.zona) {
       // warp de borda sob os pés (chegou por correnteza ou já estava em cima): empurra para fora do mapa
       const z = M.zv, w = melhor.w;

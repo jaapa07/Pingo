@@ -25,3 +25,14 @@ Ferramentas em `tools/testes/qa4/` (cópia do QA 3 com nomes `qa4-*`):
   Posto por desgaste. Capturas 46, 128. Na entrada do ginásio 9: equipe 54/49/48/48/47/47 (ás −1, média 48,8 = −6,2);
   **$132** (o dinheiro acabou em remédios). **Líder 9: DERROTA na 1ª** (26 turnos; entrou com 2 desmaiadas, sem Chá),
   vitória na 2ª (12 turnos; Zefa usou 2 remédios). Checkpoint `passo-9` ($5 326).
+- (20/11) **ninhal → gin12** (de `passo-9`), 0 treino extra exceto 8 selvagens depois da 2ª derrota no Arame:
+  - Tenente Arame (ás 57): equipe 55/51/50/49/49/49 → **1/3** (derrotas em 19 e 15 turnos; nas duas o ás entrou desmaiado:
+    o piloto andava pela grama do ninhal entre a cura e o Arame — corrigido no piloto: agora prepara a equipe já ao lado do chefe).
+  - Tenente Rebite (ás 56): 1/1, 33 turnos, 1 Elixir.
+  - Líder 10 Topázio (ás 58): na frente dele 58/54/54/54/54/54 (Δ 0, média −3,3) → **1/2** (derrota em 16 turnos, vitória em 13; ele usou 2 remédios).
+  - B-CH-4 (treinador de rota, 57–58) derrotou a equipe uma vez (entrou com 1 desmaiada). Boitatá vencido (não capturado).
+  - Rival 6 (ás 59): 59/57/55/55/54/54 (Δ 0) → **derrota** (12 turnos; a história segue, flag marcada).
+  - Líder 11 Labareda (ás 61): na frente 59/57/56/55/55/55 (Δ −2, média −4,8) → 1/1 (15 turnos, ela usou 3 remédios).
+  - Ginásio 12: **roda de capoeira jogada na tela pelo piloto (3 rodas, sem tropeço)**; g12-5 derrotou a equipe uma vez
+    (entrou com 3 desmaiadas). Líder 12 Gingado (ás 63): na frente 62/58/58/57/57/57 (Δ −1, média −4,8) → 1/1 (16 turnos).
+  - Dinheiro oscilando entre $246 e $14 k (derrota corta metade); remédios comprados sempre que dá.
