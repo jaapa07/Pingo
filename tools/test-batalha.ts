@@ -642,8 +642,9 @@ teste('iniciarBatalha (headless): aplica experiência, prêmio, Diário, evoluç
   jogo.save.equipe = [neutra(9014, 2, 'teia-pegajosa')]; const r3 = await iniciarBatalha({ tipo: 'lendario', inimigos: [neutra(9016, 60)], arena: 'pico', semFuga: true }); igual(r3.resultado, 'derrota', 'derrota');
   igual((await iniciarBatalha({ tipo: 'selvagem', inimigos: [neutra(9014, 2)], arena: 'grama' })).resultado, 'derrota', 'equipe desmaiada perde direto');
   curarEquipe(); igual(jogo.save.equipe[0].vida, atributos(jogo.save.equipe[0]).vida, 'curarEquipe');
-  // errante foge no 1º turno; dupla de selvagens
-  jogo.save.equipe = [neutra(9013, 30)]; igual((await iniciarBatalha({ tipo: 'selvagem', inimigos: [neutra(9007, 30)], arena: 'grama', errante: true })).resultado, 'fuga', 'errante foge');
+  // errante age no 1º turno e só foge a partir do 2º (decisão do autor); dupla de selvagens
+  jogo.save.equipe = [neutra(9013, 40, 'cara-feia')]; igual((await iniciarBatalha({ tipo: 'selvagem', inimigos: [neutra(9007, 40)], arena: 'grama', errante: true })).resultado, 'fuga', 'errante foge no 2º turno');
+  jogo.save.equipe = [neutra(9013, 60)]; igual((await iniciarBatalha({ tipo: 'selvagem', inimigos: [neutra(9007, 20)], arena: 'grama', errante: true })).resultado, 'vitoria', 'errante pode ser vencido no 1º turno');
   jogo.save.equipe = [neutra(9004, 40), neutra(9006, 40)]; igual((await iniciarBatalha({ tipo: 'selvagem', inimigos: [neutra(9014, 6), neutra(9001, 6)], arena: 'pantanal', dupla: true })).resultado, 'vitoria', 'dupla de selvagens');
   forcarPeriodo(null);
 });
