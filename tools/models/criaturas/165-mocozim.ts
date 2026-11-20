@@ -26,7 +26,7 @@ export function corpoMoco(p: MocoP) {
     cabeca: p.cabeca,
     focinho: { len: cx * 0.42, r0: cy * 0.56, r1: cy * 0.4, nariz: cy * 0.17, cai: 6 },
     orelha: { tipo: 'redonda', alt: cy * 0.46, larg: cy * 0.5, x: -0.2, z: 0.7 },
-    olho: { r: 0.036, pos: [cx * 0.88, cy * 0.24, cz * 0.62] },
+    olho: { r: 0.032, pos: [cx * 0.88, cy * 0.24, cz * 0.62] },
     rampas: { pelo: 0, barriga: 1, canelaF: 2, canelaT: 2, pe: 2, nariz: 2, orelha: 2, focinho: 0 },
   });
   const rig = kit.rig;

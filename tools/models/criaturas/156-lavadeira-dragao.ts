@@ -53,7 +53,7 @@ const anims = animsInseto({ u: 0.9, alt: 0.2, flutua: 0.56, asas: true, mole: 0.
 
 export const lavadeiraDragao = criatura({
   num: 156, id: 'lavadeira-dragao', nome: 'Lavadeira-Dragão', porte: 'G', estagio: 'final', paleta, build, anims,
-  enquadre: { costas: { zoom: 0.94 } }, // o especial de costas encostava no topo da célula
+  enquadre: { costas: { zoom: 0.96 } }, // o especial de costas encostava no topo da célula
   olho: {
     frente: ['pp...', 'pppp.', '.pwpp', '.pppp', '..pp.'],
     fechado: ['fffff', 'fffff', 'pfffp', '.ppp.', 'fffff'],

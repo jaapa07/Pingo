@@ -5,7 +5,7 @@ export const S = '/tmp/claude-0/-home-user/58474daf-1a50-5b1b-8bec-0786b708dc45/
 export const BASE = 'http://127.0.0.1:5203/';
 const CODE = { n: 'ArrowUp', s: 'ArrowDown', l: 'ArrowRight', o: 'ArrowLeft' };
 export async function abrir(query, o = {}) {
-  const browser = await pw.chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+  const browser = await pw.chromium.launch({ args: ['--disable-gpu'] });
   const ctx = await browser.newContext(o.contexto ?? { viewport: { width: 1280, height: 720 } });
   const page = await ctx.newPage();
   const erros = [];
@@ -48,7 +48,7 @@ export async function abrir(query, o = {}) {
   t.ir = async (seq) => { let s; for (const d of seq) s = await t.passo(d); return s; };
   t.virar = async (d) => { const s = await t.assentar(); if (s.dir !== d) { await page.evaluate((d) => window.__pingo.mundo.jogador.virar(d), d); await t.espera(60); } };
   t.k = async (tecla, ms = 150) => { await page.keyboard.press(tecla, { delay: 40 }); await t.espera(ms); };
-  t.foto = (nome) => page.screenshot({ path: `${S}/${nome}.png` });
+  t.foto = (nome) => page.screenshot({ path: `${S}/${nome}.png`, timeout: 150000 });
   t.falas = (n = 6) => page.evaluate((k) => window.__pingo.mundo.falas.slice(-k).map((f) => f.texto), n);
   t.ev = (f, a) => page.evaluate(f, a);
   t.ok = (cond, rotulo, extra = '') => { console.log(`${cond ? 'ok  ' : 'ERRO'} ${rotulo} ${extra}`); if (!cond) t.falhas = (t.falhas ?? 0) + 1; };
