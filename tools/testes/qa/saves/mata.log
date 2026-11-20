@@ -695,3 +695,9 @@ resumo: {"zona":"A4-posto","x":8,"y":2,"dinheiro":985,"insignias":[1,2,3],"amule
 treino extra: [{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":8,"de":20,"para":21},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":11,"de":21,"para":22},{"zona":"A-MS","rotulo":"depois de perder no ginásio 2","niveis":1,"batalhas":14,"de":22,"para":23}] derrotas: 16 curas: 59
 perguntas: ["A água está calma. Usar o Remo? → Sim","Quer que eu cuide das suas criaturas? → Sim","Puxar a alavanca? → Sim","Ligar a chave geral? → Sim"]
 erros de console: []
+>> retomando de mata-passo-8
+
+>> etapa 9: Estrada da Usina e Usina Velha (tenente Lata)  (0 s)
+  sem criatura de Rio para o Remo: guardou Cotiazinha 6 no Posto (atalho declarado) e vai capturar uma na A-R3
+  [batalha] selvagem 57:17 → captura · equipe 2:30,10:8,45:8,20:8,43:17,57:17 · A-R3 · $16252
+  caça em A-R3: 1 batalhas, equipe ["Tamanduá-Copa 30","Pipirim 8","Quero-querinho 8","Gambazinho 8","Corujinha 17","Capivarinha 17"]

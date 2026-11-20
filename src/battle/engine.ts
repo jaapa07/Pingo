@@ -25,10 +25,10 @@ import { aprenderGolpe, atributos, especie, expDerrota, expParaNivel, ganharEsfo
  */
 export const LIMIAR_CHOCALHO = { antesDaLiga: 2, depoisDaLiga: 5 } as const;
 /**
- * Experiência das batalhas depois da Liga (`liga-vencida`): 75% da fórmula (corte de 25%, decisão do autor "para ver como
- * fica", docs/EQUILIBRIO-MAPA-B.md). O mapa A (antes da Liga) recebe a experiência inteira.
+ * Experiência das batalhas depois da Liga (`liga-vencida`): 55% da fórmula (corte de 45%, decisão do autor depois de ver 25%, 40% e 50%;
+ * docs/EQUILIBRIO-MAPA-B.md). O mapa A (antes da Liga) recebe a experiência inteira.
  */
-export const FATOR_EXP_POS_LIGA = 0.75;
+export const FATOR_EXP_POS_LIGA = 0.55;
 export interface Pos { lado: 0 | 1; pos: number }
 export type Acao =
   /** slot do golpe (−1 = Desespero, quando não há PG). `alvo`: adversário visado (duplas). `trocaPara`: quem entra depois de um golpe de bater-e-voltar. */

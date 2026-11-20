@@ -140,7 +140,7 @@ export const EVENTOS_B1: EventoDef[] = [
           se('flag:b1-tem-pequi&flag:b1-tem-buriti&flag:b1-tem-acerola', [
             f(SUCUPIRA, 'Pequi do cerrado, buriti da vereda e acerola do quintal! Era isso mesmo. Vou fazer o meu xarope das três raízes.'),
             ['tirar', 'pequi', 1], ['tirar', 'buriti', 1], ['tirar', 'acerola', 1],
-            f(SUCUPIRA, 'Em troca, leve isto. Era da Dona Buriti, minha aluna, quando ela ainda lutava aqui. Ensina a criatura a bater com a força das eras.'),
+            f(SUCUPIRA, 'Em troca, leve isto. Era da Dona Buriti, minha aluna, de antes de ela abrir o ginásio dela lá na Vila Buriti. Ensina a criatura a bater com a força das eras.'),
             ['dar', 'pt-45'], ['flag', 'm-raizes-ok'],
           ], [f(SUCUPIRA, 'Ainda faltam frutos: um pequi, um buriti e uma acerola. Tem pequi no cerrado e no Pantanal, buriti na Vereda e acerola por aí, escondida em moita.')]),
         ], [
@@ -181,7 +181,7 @@ export const EVENTOS_B1: EventoDef[] = [
           f('b1-violeiro', 'Vinte anos esperando essa moda. Tome, é o pergaminho que o meu pai ganhou numa cantoria. Ensina a sumir que nem saudade.'),
           ['dar', 'pt-44'], ['flag', 'm-carta-b1-ok'],
         ], [
-          se('flag:m-carta-b1', [f('b1-violeiro', 'O meu Bem-te-viço está na sua mochila, com a carta no pé. Leve até Porto Pantaneiro, na casa larga ao lado do Posto. Ele só desce do seu ombro quando vir a Açucena.')], [
+          se('flag:m-carta-b1', [f('b1-violeiro', 'O meu Bem-te-viço está no seu ombro, com a carta no pé. Leve até Porto Pantaneiro, na casa larga ao lado do Posto. Ele só desce do seu ombro quando vir a Açucena.')], [
             f('b1-violeiro', 'Você vai para os lados de Porto Pantaneiro, Campeão? Eu tenho uma carta para a Dona Açucena. Escrevi faz vinte anos e nunca tive coragem de mandar.'),
             f('b1-violeiro', 'O correio do Sertão é por ave: o meu Bem-te-viço leva a carta presa no pé e vai no seu ombro até lá. Ele não luta, não come muito e canta de manhã.'),
             ['simnao', 'Levar a carta do violeiro para Porto Pantaneiro?', 'b1-sim'],

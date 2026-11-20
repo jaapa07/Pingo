@@ -290,7 +290,7 @@ teste('experiência em batalha: subir de nível, aprender golpe, golpe pendente 
   }
   igual(LIMIAR_CHOCALHO.antesDaLiga, 2, 'limiar antes da Liga'); igual(LIMIAR_CHOCALHO.depoisDaLiga, 5, 'limiar depois da Liga');
   igual(limiarChocalho({}), 2, 'save sem a Liga: limiar 2'); igual(limiarChocalho({ 'liga-vencida': true, 'ginasio-09-vencido': true }), 5, 'save com `liga-vencida`: limiar 5');
-  // experiência depois da Liga (`fatorExp` = FATOR_EXP_POS_LIGA com `liga-vencida`, src/battle/index.ts): 75% da fórmula;
+  // experiência depois da Liga (`fatorExp` = FATOR_EXP_POS_LIGA com `liga-vencida`, src/battle/index.ts): 55% da fórmula;
   // antes da Liga (padrão) a experiência é inteira — o mapa A não muda
   for (const [fator, quer] of [[undefined, 1], [fatorExpDoProgresso({}), 1], [fatorExpDoProgresso({ 'liga-vencida': true }), FATOR_EXP_POS_LIGA]] as const) {
     const eu = neutra(9005, 30, 'esguicho'), alvo4 = neutra(9003, 10, 'cara-feia'), x0 = eu.exp;
@@ -298,7 +298,7 @@ teste('experiência em batalha: subir de nível, aprender golpe, golpe pendente 
     while (!b8.resultado) turno(b8, G(0), G(0));
     igual(eu.exp - x0, Math.max(1, Math.floor(expDerrota(alvo4, true) * quer)), `experiência com fator ${fator ?? 'padrão'}`);
   }
-  igual(FATOR_EXP_POS_LIGA, 0.75, 'corte de 25% depois da Liga');
+  igual(FATOR_EXP_POS_LIGA, 0.55, 'corte de 45% depois da Liga');
   // fora de batalha
   const r = neutra(9001, 5); const subidas = ganharExp(r, expParaNivel('lento', 9) - r.exp); igual(r.nivel, 9, 'ganharExp'); igual(subidas.length, 4, 'subidas'); afirmar(r.golpes.some((g) => g.id === 'erva-de-passarinho'), 'aprendeu no caminho');
 });

@@ -9,7 +9,7 @@ parar() { if [ -f $G/vite.pid ]; then kill -- -$(cat $G/vite.pid) 2>/dev/null; k
 if [ "$1" = "parar" ]; then parar; exit 0; fi
 if [ "$VITE" != "manter" ] || ! curl -s -o /dev/null http://127.0.0.1:5207/; then
   parar
-  cd /home/user/adventures-of-pingo && setsid nohup sh -c "echo \$\$ > $G/vite.pid; exec node node_modules/.bin/vite --config $D/vite.mjs --port 5207 --strictPort" > $G/vite.log 2>&1 &
+  cd /home/user/adventures-of-pingo && { setsid nohup sh -c "echo \$\$ > $G/vite.pid; exec node node_modules/.bin/vite --config $D/vite.mjs --port 5207 --strictPort"; } > $G/vite.log 2>&1 < /dev/null &
   for i in $(seq 1 30); do curl -s -o /dev/null http://127.0.0.1:5207/ && break; sleep 1; done
 fi
 R=$1; T=${2:-900}; shift; shift

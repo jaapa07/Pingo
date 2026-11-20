@@ -21,10 +21,26 @@ import { abrirTela, falar, simNao } from '../dialogo';
 import { faixaDica, placaTitulo, escolherEm, caixa, rotulo, nomeEsp, pix } from './comum';
 import { local } from './mapa-dados';
 import { treinador, zona, todasZonas, rarasDoDia, diaDoAno, musicasDisponiveis, dadosProntos, NOME_MEIO, hoje, moduloMundo } from './dados';
-import { lerCarta } from './pc-quarto';
+import { lerCarta as lerCartaInteira } from './pc-quarto';
+import { quebrar, texto as txtFonte } from '../fonte';
 import { caber } from './mochila';
 import { NOTICIAS, FAIXAS_RADIO, RECADOS_SEMANA, FALAS_CONTATO } from '../../data/radio';
 import { T } from '../../data/textos-ui';
+
+/**
+ * o papel de `lerCarta` (pc-quarto.ts) tem espaço para poucas linhas: textos longos do rádio (agenda do dia, cantigas)
+ * passavam da borda de baixo. Aqui o texto é quebrado na largura do papel e mostrado em páginas (A passa a página).
+ */
+async function lerCarta(c: { de: string; assunto: string; texto: string }) {
+  const h1 = parseInt(txtFonte('A', { tamanho: 12 }).style.height, 10), entre = parseInt(txtFonte('A\nA', { tamanho: 12 }).style.height, 10) - h1;
+  const cabe = Math.max(1, Math.floor((134 - 3 - 42 - h1) / Math.max(1, entre)) + 1);
+  const linhas = c.texto.split('\n').flatMap((p) => (p ? quebrar(p, 236, 12) : ['']));
+  const paginas: string[][] = [[]];
+  for (const l of linhas) { const pg = paginas[paginas.length - 1]; if (pg.length >= cabe) { if (l) paginas.push([l]); continue; } if (l || pg.length) pg.push(l); }
+  const ps = paginas.map((pg) => { while (pg.length && !pg[pg.length - 1]) pg.pop(); return pg.join('\n'); }).filter(Boolean);
+  if (ps.length <= 1) { await lerCartaInteira(c); return; }
+  for (let i = 0; i < ps.length; i++) await lerCartaInteira({ de: c.de, assunto: `${c.assunto} (${i + 1}/${ps.length})`, texto: ps[i] });
+}
 
 const ANTENA = ['......k.....', '.....k......', '....k.......', '.kkkkkkkkkk.', 'kaaaaaaaaaak', 'kakkkkakkbak', 'kakwwkakkaak', 'kakkkkakkbak', 'kaaaaaaaaaak', '.kkkkkkkkkk.'];
 const NOME_PER = { manha: 'manhã', dia: 'dia', tarde: 'tarde', noite: 'noite' };

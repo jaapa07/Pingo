@@ -263,7 +263,9 @@ export const EVENTOS_B2_NORTE: EventoDef[] = [
         f(ANDARILHO, '…É verdade.'),
         f(null, 'O andarilho ajeita o chapéu, vira as costas e desce a trilha da Costa do Sol sem olhar para trás. Na pedra, onde ele estava, a neve tem a marca de duas botas — e mais nada.'),
       ]),
-      ['esconder', 'pp-misterioso'],
+      // some pela condição do NPC (`misterioso-pode`), não por `esconder`: o oculto ficaria gravado para sempre e ele não
+      // voltaria depois da próxima vitória no Conselho. `mostrar` limpa o oculto e reavalia o `se` (agora falso) na hora.
+      ['fade', 'fora'], ['mostrar', 'pp-misterioso'], ['fade', 'dentro'],
     ],
   },
 ];

@@ -163,6 +163,8 @@ export const ETAPAS = [
       if (!(await temTipo(t, 'rio'))) throw new Error('não capturou criatura de Rio');
       await t.viajar('A4-posto'); await t.curar();
     }
+    // antes da Usina, remédio de novo (a mochila chegava vazia: os 6 da Venda iam embora no ginásio 3 e na A-R4)
+    await compras(t, 'A4-venda'); await t.viajar('A4-posto'); await t.curar();
     await t.limpar('A-R4');
     await t.emZona('A-US-1'); await t.foto('usina-1');
     await t.limpar('A-US-1');
