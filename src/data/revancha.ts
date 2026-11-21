@@ -15,6 +15,7 @@
  * tools/sim-revancha.ts (medição das fases).
  */
 import type { EspecieDef, MembroEquipe, Periodo, TreinadorDef, ZonaDef, Encontro } from '../core/tipos';
+import { zonaNaDemo } from '../core/demo';
 
 export type Fase = 1 | 2 | 3 | 4;
 export type PeriodoAgenda = 'manha' | 'dia' | 'noite';
@@ -191,7 +192,7 @@ export function treinadorDaFase(t: TreinadorDef, fase: Fase, esp: BuscaEspecie):
 /* ============================== enxame do dia (item 4, anunciado na agenda do item 39) ============================== */
 /** zonas candidatas: rotas e matas do mapa A (e do B, quando aberto) com capim alto */
 export function zonasDeEnxame(zonas: readonly ZonaDef[], mapaB: boolean): ZonaDef[] {
-  return zonas.filter((z) => !z.id.startsWith('_') && (z.mapa === 'A' || (mapaB && z.mapa === 'B')) && (z.tipo === 'rota' || z.tipo === 'floresta') && z.habitats?.some((h) => h.metodo === 'grama' && (h.todos ?? h.dia)?.length)).sort((a, b) => (a.id < b.id ? -1 : 1));
+  return zonas.filter((z) => !z.id.startsWith('_') && zonaNaDemo(z.id) && (z.mapa === 'A' || (mapaB && z.mapa === 'B')) && (z.tipo === 'rota' || z.tipo === 'floresta') && z.habitats?.some((h) => h.metodo === 'grama' && (h.todos ?? h.dia)?.length)).sort((a, b) => (a.id < b.id ? -1 : 1));
 }
 /**
  * Enxame do dia: uma zona por dia corrido (rodízio fixo) e, nela, a espécie mais rara da tabela base de capim

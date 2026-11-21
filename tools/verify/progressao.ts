@@ -13,6 +13,7 @@
 import type { AmuletoId, Comando, ZonaDef } from '../../src/core/tipos';
 import { jogo, novoSave, cond, forcarPeriodo, setFlag, darItem } from '../../src/core/estado';
 import { carregar, blocos, LIVRE, novoAchado, type Achado, type Dados } from './dados';
+import { ZONAS_DEMO, INSIGNIAS_DA_DEMO } from '../../src/core/demo';
 
 export const COMANDOS_CONHECIDOS = ['falar', 'escolha', 'simnao', 'mover', 'virar', 'esperar', 'emote', 'dar', 'tirar', 'dinheiro', 'darCriatura', 'darOvo', 'batalha', 'selvagem', 'flag', 'insignia', 'amuleto', 'se', 'musica', 'sfx', 'tela', 'fade', 'warp', 'camera', 'tremor', 'curar', 'loja', 'mostrar', 'esconder', 'cinematica', 'salvar', 'chamar', 'pedirNome', 'errante', 'repelente', 'amizade', 'opcao', 'avatar', 'grito', 'contato', 'temItens', 'temEspecie', 'temDinheiro', 'poupar', 'sacar', 'vitrine'];
 
@@ -32,7 +33,10 @@ const PERIODOS = ['manha', 'dia', 'tarde', 'noite'] as const;
 /** simulação com o mapa B aberto: o termo `mapa-b` das condições vale `true` mesmo com MAPA_B_ABERTO = false no jogo */
 let mapaBSimulado = false;
 // a simulação do mapa A trata o mapa B como fechado mesmo com MAPA_B_ABERTO = true no jogo (assim ela mede só o caminho quarto → Liga)
-const comMapaB = (c: string) => c.replace(/(^|[&|!])\s*mapa-b(?=\s*($|[&|]))/g, mapaBSimulado ? '$1sempre' : '$1nunca');
+/** simulação do pacote da demo: o termo `demo` das condições vale `true` (no jogo completo, e fora do Vite, vale `false`) */
+let demoSimulada = false;
+const comMapaB = (c: string) => c.replace(/(^|[&|!])\s*mapa-b(?=\s*($|[&|]))/g, mapaBSimulado ? '$1sempre' : '$1nunca')
+  .replace(/(^|[&|!])\s*demo(?=\s*($|[&|]))/g, demoSimulada ? '$1sempre' : '$1nunca');
 /** a condição vale em algum período do dia (o jogador pode esperar) */
 function vale(c: string | undefined): boolean {
   if (!c) return true;
@@ -294,4 +298,35 @@ function continuarNoMapaB(sim: Sim, d: Dados, primeiraVezA: Map<string, number>,
   if (retorno.length) b.info.push(`áreas de retorno do mapa A abertas pelo mapa B (nº de insígnias): ${retorno.join(', ')}`);
   if (semLuta.length) b.info.push(`${semLuta.length} treinador(es) sem NPC no mapa (revanches, Rádio, variantes da rival, chamados por evento): ${semLuta.slice(0, 40).join(', ')}${semLuta.length > 40 ? '…' : ''}`);
   return b;
+}
+
+/**
+ * DEMO (`npm run build:demo`, src/core/demo.ts): a mesma simulação, com o termo `demo` verdadeiro, do quarto até onde
+ * der com teto de 16 insígnias. Comprova que: as insígnias 1 e 2 continuam alcançáveis; nenhuma outra insígnia é;
+ * as zonas alcançadas são exatamente `ZONAS_DEMO` (nenhum warp, evento ou atalho leva além do guarda da Gruta do Eco).
+ */
+export async function progressaoDemo(): Promise<Achado> {
+  const a = novoAchado(), d = await carregar(), guardado = jogo.save, ARQ = 'src/core/demo.ts + src/data/zonas/A-R3.ts';
+  demoSimulada = true;
+  try {
+    jogo.save = novoSave();
+    const sim = new Sim(d), ini = jogo.save.jogador;
+    sim.semear(ini.zona, ini.x, ini.y);
+    sim.rodar('abertura');
+    for (let k = 0; k <= 16; k++) { sim.teto = k; sim.disponiveis.clear(); sim.fechar(); }
+    const ins = [...jogo.save.insignias].sort((x, y) => x - y);
+    const quer = Array.from({ length: INSIGNIAS_DA_DEMO }, (_, i) => i + 1);
+    if (ins.join(',') !== quer.join(',')) a.erros.push(`${ARQ}: na demo o jogador chega às insígnias [${ins.join(',')}]; o limite é [${quer.join(',')}]`);
+    if (sim.disponiveis.size) a.erros.push(`${ARQ}: na demo o líder da insígnia ${[...sim.disponiveis].join(', ')} fica alcançável`);
+    const zonas = [...sim.alc.keys()];
+    const alem = zonas.filter((z) => !ZONAS_DEMO.includes(z));
+    if (alem.length) a.erros.push(`${ARQ}: zona(s) além do limite alcançável(is) na demo: ${alem.join(', ')}`);
+    const nunca = ZONAS_DEMO.filter((z) => !sim.alc.has(z));
+    if (nunca.length) a.avisos.push(`${ARQ}: zona(s) de ZONAS_DEMO que a simulação não alcança (a lista pode encolher): ${nunca.join(', ')}`);
+    for (const f of ['liga-vencida', 'usina-ok']) if (jogo.save.flags[f]) a.erros.push(`${ARQ}: a flag "${f}" é obtida na demo`);
+    const tiles = [...sim.alc.values()].reduce((s, v) => s + v.size, 0);
+    a.info.push(`demo: ${zonas.length} zonas e ${tiles} tiles alcançados com teto de 16 insígnias; insígnias [${ins.join(',')}]; Amuletos [${jogo.save.amuletos.join(', ')}]`);
+  } catch (e) { a.erros.push('tools/verify/progressao.ts: a simulação da demo parou — ' + String((e as Error).stack ?? e).slice(0, 400)); }
+  finally { jogo.save = guardado; demoSimulada = false; }
+  return a;
 }

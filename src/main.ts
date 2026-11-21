@@ -27,6 +27,7 @@ import { criarTelaNome } from './ui/telas/nome';
 import { criarRelogio } from './ui/telas/relogio';
 import { criarOpcoes, aplicarVolumes } from './ui/telas/opcoes';
 import { criarVitrine } from './ui/telas/vitrine';
+import { DEMO } from './core/demo';
 
 type Modulo = Record<string, unknown>;
 // módulos de outros times: carregados com tolerância (podem não existir ou falhar durante o desenvolvimento)
@@ -81,7 +82,7 @@ async function novoJogo(slot: number) {
 }
 async function continuar(slot: number, retomada: boolean) {
   const ok = retomada ? save.carregarRetomada() : save.carregarSlot(slot);
-  if (!ok) { await dialogo.falar('Este jogo não pôde ser aberto.'); return; }
+  if (!ok) { await dialogo.falar(save.motivoRecusa || 'Este jogo não pôde ser aberto.'); return; }
   save.limparRetomada();
   await entrarNoMundo();
 }
@@ -130,12 +131,13 @@ async function iniciar() {
 
   startLoop();
   const q = new URLSearchParams(location.search);
-  if (q.get('tela') && temTela(q.get('tela')!)) {
+  // atalhos de teste por URL: fora da demo (lá eles abririam zonas e telas além do limite)
+  if (!DEMO && q.get('tela') && temTela(q.get('tela')!)) {
     const id = q.get('tela')!;
     const args: Record<string, unknown> = { titulo: 'Qual é o seu nome?', max: 8, aoJogar: irAosSaves, aoOpcoes: () => void dialogo.abrirTela('opcoes'), aoNovo: novoJogo, aoContinuar: continuar, aoVoltar: irAoTitulo, aoFim: irAoTitulo };
     telas.empilhar(criarTela(id, args)); return;
   }
-  if (q.has('zona') || q.has('batalha')) {
+  if (!DEMO && (q.has('zona') || q.has('batalha'))) {
     const porUrl = mundo?.iniciarPorUrl as ((p: URLSearchParams) => Promise<boolean>) | undefined;
     try { if (porUrl && (await porUrl(q))) { save.marcarEmJogo(true); jogo.slot = -1; return; } } catch (e) { console.error('[pingo] atalho de URL falhou', e); }
   }

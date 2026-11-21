@@ -15,7 +15,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { RAIZ, carregar, novoAchado, type Achado } from './verify/dados';
 import { integridade } from './verify/integridade';
-import { progressao, type ResultadoProgressao } from './verify/progressao';
+import { progressao, progressaoDemo, type ResultadoProgressao } from './verify/progressao';
 import { niveis, sprites } from './verify/niveis';
 import { buildLimpo, type ResultadoLimpo } from './verify/build-limpo';
 import { pacote } from './verify/pacote';
@@ -165,6 +165,7 @@ if (quer('progressao') || quer('progressao-b') || quer('niveis') || quer('sprite
   if (!quer('progressao')) linhas.splice(linhas.indexOf(l), 1);
   if (prog?.b && quer('progressao-b')) { const b = prog.b; await medir('progressao-b', 'Progressão do mapa B aberto (Liga → Conselho → pós-jogo; simula MAPA_B_ABERTO = true)', async () => b); }
 }
+if (quer('demo')) await medir('demo', 'Demo: nada além da 2ª insígnia é alcançável (simula npm run build:demo)', progressaoDemo);
 if (prog && quer('niveis')) await medir('niveis', 'Curva de níveis (líderes, Liga, treinadores, selvagens)', () => niveis(prog!));
 if (prog && quer('sprites')) await medir('sprites', 'Sprites das espécies (mapas A e B, visitantes)', () => sprites(prog!));
 await Promise.all(filhos);
@@ -173,7 +174,7 @@ if (quer('pacote')) await medir('pacote', 'Arquivos do jogo no pacote publicado 
 if (OFFLINE && quer('offline')) await medir('offline', 'Pacote offline e atualização no navegador (Playwright)', offline);
 if (quer('dist')) await medir('dist', 'Pacote dist/ e PWA', () => dist(pastaDist, !!limpo?.dist));
 
-const ORDEM = ['tsc', 'batalha', 'zonas-a1', 'zonas-a2', 'zonas-b1', 'zonas-b2-sul', 'zonas-b2-norte', 'palavras', 'integridade', 'progressao', 'progressao-b', 'niveis', 'sprites', 'limpo', 'pacote', 'offline', 'dist'];
+const ORDEM = ['tsc', 'batalha', 'zonas-a1', 'zonas-a2', 'zonas-b1', 'zonas-b2-sul', 'zonas-b2-norte', 'palavras', 'integridade', 'progressao', 'progressao-b', 'demo', 'niveis', 'sprites', 'limpo', 'pacote', 'offline', 'dist'];
 linhas.sort((x, y) => ORDEM.indexOf(x.id) - ORDEM.indexOf(y.id));
 for (const l of linhas) {
   const marca = l.erros.length ? '✗ FALHOU' : l.avisos.length ? '✓ ok (com avisos)' : '✓ ok';

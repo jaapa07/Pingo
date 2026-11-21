@@ -55,7 +55,7 @@ const zona: ZonaDef = {
     gruta,
   ],
   // DEMO (src/core/demo.ts): o guarda fica no único tile de acesso à Gruta do Eco; no jogo completo o portão não existe
-  portoes: [{ x: gruta.x, y: gruta.y + 1, requer: '!demo', sprite: 'cl-montanhista', fala: TEXTOS_DEMO.guarda }],
+  portoes: [{ x: gruta.x, y: gruta.y + 1, requer: 'sempre', sprite: 'cl-montanhista', fala: TEXTOS_DEMO.guarda }],
   npcs: [
     // Parque Safári (spec 10A item 33): o pescador dá a Pedra de Rio depois da Liga (src/data/eventos/posliga.ts)
     { id: 'safari-pescador-seixo', sprite: 'cl-pescador', x: 35, y: 6, dir: 'o', se: 'flag:liga-vencida', script: 'safari-da-pedra' },
