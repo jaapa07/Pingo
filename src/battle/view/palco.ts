@@ -20,6 +20,13 @@ export interface ArenaDef {
 const RESERVA: ArenaDef = { id: '', periodos: ['dia'], camadas: [], apoios: { inimigo: { x: 232, y: 84, rx: 30, ry: 8 }, jogador: { x: 84, y: 136, rx: 40, ry: 11 } }, sombra: { dia: '#14463a' } };
 const cacheArena = new Map<string, Promise<ArenaDef | null>>();
 const lerArena = (id: string) => { let p = cacheArena.get(id); if (!p) { p = fetch(`assets/arenas/${id}/arena.json`).then((r) => (r.ok ? (r.json() as Promise<ArenaDef>) : null)).catch(() => null); cacheArena.set(id, p); } return p; };
+/** baixa antes as imagens de uma arena (período atual), para a 1ª batalha da zona abrir sem esperar (src/world/precarga.ts) */
+export async function precarregarArena(id: string): Promise<void> {
+  const def = await lerArena(id); if (!def) return;
+  const per = periodo() === 'noite' && def.periodos.includes('noite') ? 'noite' : 'dia';
+  const arqs = [...def.camadas.map((c) => c.arquivos[per] ?? c.arquivos.dia), ...(def.anims ?? []).map((a) => a.arquivos[per])];
+  await Promise.all(arqs.filter((a): a is string => !!a).map((a) => precarregar(`assets/arenas/${def.id}/${a}`)));
+}
 export const div = (classe: string, pai?: HTMLElement): HTMLElement => { const d = document.createElement('div'); d.className = classe; pai?.append(d); return d; };
 
 /** elipse em pixel art: uma faixa por linha (sem suavização) */
@@ -158,11 +165,13 @@ export class Palco {
     const ap = this.arena.apoios[lado ? 'inimigo' : 'jogador']; a.x = ap.x; a.y = ap.y; a.visivel = true;
     this.treinador[lado] = a; return a;
   }
-  precarregarCriatura(num: number, rara = false) {
+  /** `vistas`: só as que a cena vai mostrar (o adversário de frente, a do jogador de costas) — com rede lenta, cada
+   *  imagem a mais atrasa a abertura da batalha */
+  precarregarCriatura(num: number, rara = false, vistas: string[] = ['frente', 'costas']) {
     if (!temEspecie(num)) return Promise.resolve();
     const id = especie(num).id;
-    if (!rara) return precarregarModelo(id, ['frente', 'costas']);
-    return Promise.all(['frente', 'costas'].map((v) => { const m = vista(id, vistaCriatura(id, v, true)); return m ? precarregar(m.src) : undefined; })).then(() => undefined);
+    if (!rara) return precarregarModelo(id, vistas);
+    return Promise.all(vistas.map((v) => { const m = vista(id, vistaCriatura(id, v, true)); return m ? precarregar(m.src) : undefined; })).then(() => undefined);
   }
 
   /** camadas de clima (sprites repetidos e tinta leve) */

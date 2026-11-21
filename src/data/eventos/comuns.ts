@@ -18,6 +18,7 @@ import type { EventoDef, Comando } from '../../core/tipos';
 import { jogo, setFlag, qtdItem } from '../../core/estado';
 import { bus } from '../../core/events';
 import { registrarComando } from '../../world/registro';
+import { precarregarModelo } from '../../core/assets';
 
 registrarComando('opcao', ([f]) => { const v = jogo.save.flags[String(f)]; for (let i = 0; i < 8; i++) setFlag(`${String(f)}-${i}`, v === i); });
 registrarComando('temEspecie', ([n, f]) => { setFlag(String(f), jogo.save.equipe.some((c) => c.especie === Number(n) && !c.ovo)); });
@@ -38,6 +39,9 @@ registrarComando('vitrine', async ([n]) => {
   const [{ Sprite }, { telas }, { ESPECIES }] = await Promise.all([import('../../render/sprite'), import('../../ui/telas'), import('../criaturas')]);
   const esp = ESPECIES.find((e) => e.num === Number(n));
   if (!esp || !telas.raiz) return;
+  // a imagem chega junto com o quadro (src/world/precarga.ts já a pede ao entrar na zona; aqui só falta esperar o que
+  // ainda estiver a caminho — no máximo 4 s, para uma rede ruim não prender o evento)
+  await Promise.race([precarregarModelo(esp.id, ['frente']), new Promise((r) => setTimeout(r, 4000))]);
   const el = document.createElement('div');
   el.className = 'vitrine-criatura';
   el.style.cssText = 'position:absolute;left:116px;top:8px;width:88px;height:88px;z-index:60;background:#fff6e0;box-shadow:0 0 0 2px #141026,0 0 0 4px #f2c230,0 0 0 6px #141026;overflow:hidden';

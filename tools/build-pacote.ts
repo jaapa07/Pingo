@@ -67,6 +67,8 @@ if (modo === 'demo') {
   console.log(`[pacote] sw: versão ${s.versao}, ${s.total} arquivos, ${mb(s.bytes)} (núcleo ${s.nucleo}, resto ${s.resto}, demanda ${s.demanda})`);
 }
 
+/** pastas dos sprites dos três iniciais (src/data/eventos/a1.ts: nº 1, 4 e 7) */
+const INICIAIS = ['tamandui', 'guaraxim', 'botinho'];
 // 4. itch.io: junta zonas/arenas/sprites em pacotes e fecha o .zip
 if (c.zip) {
   for (const f of ['sw.js', 'pingo-arquivos.json']) rmSync(join(DIST, f), { force: true });
@@ -79,6 +81,9 @@ if (c.zip) {
     if ((m = /^assets\/zonas\/([^/]+)\//.exec(k))) por('z-' + m[1], k);
     else if (k.startsWith('assets/arenas/')) por('arenas', k);
     else if (k.startsWith('assets/sprites/pessoa/')) por('pessoas', k);
+    // os três iniciais (sem a Pelagem Rara) num pacote pequeno só deles: o jogo os pede logo no começo, para a mesa da
+    // Profª Ipê mostrar a criatura na hora (src/world/precarga.ts; feedback de jogador em docs/UI-CORRECOES.md)
+    else if ((m = /^assets\/sprites\/criatura\/([^/]+)\/[^/]+$/.exec(k)) && INICIAIS.includes(m[1]) && !/-rara\.png$/.test(k)) por('criaturas-iniciais', k);
     else if ((m = /^assets\/sprites\/criatura\/([^/]+)\//.exec(k))) por('criaturas-' + String(Math.floor(criaturas.indexOf(m[1]) / 4)).padStart(2, '0'), k);
     else if (k.startsWith('assets/sprites/')) por('sprites', k);
   }

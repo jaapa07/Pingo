@@ -114,3 +114,69 @@ src/ui/telas/saves.ts, src/ui/telas/menu.ts, src/ui/telas/mapa-mundi.ts, src/bat
 plataformas/desktop/main.cjs, plataformas/desktop/preload.cjs, tools/verify/save.ts (novo), package.json (`test`,
 `test:save`). O app de PC empacotado (`plataformas/desktop/out/`) precisa ser refeito (`npm run desktop`) para levar a
 ponte nova de copiar/colar.
+
+## Feedback de jogador (21/11) — demo no celular
+
+Testado com Vite próprio (5233) e, para comparar, o código anterior (82bfdd3f) em outra porta; roteiros Playwright no
+scratchpad e `tools/testes/feedback/itch-lab.mts` (pacote do itch). iPhone 13 emulado em pé e deitado por toque e PC
+1280×720. Rede lenta simulada pelo CDP: 400 ms de latência e 40 KB/s (≈ "3G lento").
+
+### 1. A criatura demorava a aparecer no quadro da escolha do inicial
+- **Causa**: o sprite só era pedido quando o quadro abria (`['vitrine', n]`, src/data/eventos/comuns.ts). No site, o
+  quadro ficava vazio até o `frente.png` chegar (1,2 s medidos com a rede lenta); no pacote do itch.io é pior: cada
+  criatura vem num `pacotes/criaturas-NN.bin` com mais 3 criaturas (~400 KB), e os três iniciais caíam em 3 pacotes
+  diferentes (~1,2 MB para ver as três).
+- **Correção**:
+  - `src/world/precarga.ts` (novo): ao entrar em qualquer zona, enquanto o jogador não tem inicial, pede `frente` e
+    `costas` dos três iniciais (desde o quarto, minutos antes de chegar ao laboratório); sempre pede a `costas` do
+    avatar e da equipe e, 1,2 s depois de a zona assentar, a `frente` das 6 criaturas mais comuns da grama/caverna/água
+    dela, a arena e a folha de efeitos.
+  - O quadro (`vitrine`) espera a imagem (no máximo 4 s) antes de abrir: aparece junto com a criatura.
+  - Pacote do itch (`tools/build-pacote.ts`): os três iniciais (sem a Pelagem Rara) num pacote só deles,
+    `criaturas-iniciais.bin` (165 KB).
+  - Batalha: a abertura espera só as vistas que mostra (adversário de frente, equipe de costas) e também a `costas` do
+    treinador e a pose do treinador inimigo, que antes surgiam depois (`precarregarCriatura(…, vistas)` em palco.ts).
+  - Diário: ao mover o cursor, as 3 vizinhas já vistas de cada lado começam a baixar.
+- **Medido** (rede lenta): mesa da Profª Ipê — site: quadro sem imagem 1174 ms antes → 0 ms (PC, iPhone em pé e
+  deitado); pacote do itch, chegando da rua 10 s depois de continuar: 0 ms (em pé, deitado e PC); entrando direto, o
+  quadro espera o pacote dos iniciais e abre já com a criatura (2,4 s depois do toque, 0 ms sem imagem).
+  1º encontro selvagem na Trilha (8 s depois de entrar): até as criaturas na tela 5,6 s antes → 1,3 s (o que sobra é o
+  carregamento do módulo no servidor de desenvolvimento). Diário: ao abrir em 001, já pede 002, 003 e as vizinhas vistas.
+  `tools/testes/demo/itch.mts demo` continua passando.
+
+### 2. A Cuia aparecia em cima do protagonista no começo da batalha
+- **Causa** (src/battle/view/tela.ts, `entrar`): o treinador ficava parado exatamente no lugar da criatura
+  (`apoios.jogador.x`) e a cuia saía de `t.x + 12, t.y − 40` (a cabeça dele, 0,22 s depois de começar o gesto) e caía de
+  volta em `a.x`, o mesmo x do treinador: voava por cima da cabeça e o clarão e a criatura surgiam sobre ele, que só saía
+  de cena depois.
+- **Correção**: o treinador do jogador fica 36 px atrás (à esquerda) do lugar da criatura (`xTreinador`); a cuia sai da
+  mão no quadro em que o braço solta (0,28 s, `t.x + 16, t.y − 30`), voa para a frente até o lugar da criatura e o
+  treinador desliza para fora enquanto ela voa (nas duplas ele fica para o 2º arremesso e sai depois). O arremesso de
+  captura não mudou.
+- **Testado**: sequência de quadros com o tempo 3× mais lento (PC e iPhone): a cuia nasce na mão, à frente do corpo, e
+  a criatura aparece no lugar vazio.
+
+### 3. Menu de golpes sem saída visível
+- **Causa**: só o B (tecla ou botão de toque) voltava; nada na tela dizia isso no menu de golpes, na escolha de alvo,
+  no menu de ações da 2ª criatura das duplas e em "Recuperar PG / Qual golpe esquecer?". Nos menus do mapa, a dica
+  "B: voltar" do rodapé não era tocável.
+- **Correção**: `botaoVoltar` (src/ui/componentes/voltar.ts): botão do kit "◀ Voltar" com alvo de toque invisível maior.
+  - Batalha (src/battle/view/menus.ts, classe `bt-voltar`): golpes e escolha de alvo (canto esquerdo, logo acima do
+    painel), ações da 2ª criatura nas duplas (volta à 1ª), golpe de (PG/esquecer), Equipe (no lugar do "Voltar" antigo)
+    e Mochila (no lugar de "Sair"; a janela ficou 48 px mais larga para o botão não cobrir as abas dos bolsos).
+    A ficha do golpe fica dentro do menu de golpes. Sim/Não já tinham "Não".
+  - Mapa (`faixaDica`, src/ui/telas/comum.ts): o trecho "B: voltar" (ou desligar, sair, cancelar, desistir…) do rodapé
+    vira um botão "◀ Voltar" tocável na ponta direita, que vale um aperto de B. Vale para Diário (lista e ficha),
+    Equipe, Resumo, Mochila, Rádio Cipó ("◀ Desligar"), mapa-múndi, Estojo de insígnias, Cartão de treinador, PC do
+    quarto, Viveiro, loja, câmera e as janelas de escolha. O menu de pausa já tinha "Sair" e o toque fora dele; Opções,
+    "Voltar" na lista.
+- **Alvos de toque** (px CSS): golpes/alvo/ações 69×26 em pé, 93×31 deitado; rodapé do mapa 64×21 em pé (a faixa fica
+  na borda de baixo da tela do jogo; o alvo sobe 5 px sem cobrir as medalhas do Diário), 92×30 deitado, 220×72 no PC.
+- **Testado** por toque (iPhone em pé e deitado) e mouse (PC): golpes → ◀ Voltar → ações; Mochila e Equipe → ◀ Voltar;
+  duplas: alvo → ◀ Voltar, 2ª criatura → ◀ Voltar volta à 1ª, Garapa → Recuperar PG → ◀ Voltar; Diário, Equipe,
+  Mochila, Rádio, mapa-múndi, Estojo e Cartão fechados pelo botão do rodapé. Teclado (B) segue igual.
+
+`npx tsc --noEmit` limpo; `npm test` 38 + 7; `npm run check -- --rapido` 16/16. Arquivos: src/world/precarga.ts (novo),
+src/world/index.ts, src/data/eventos/comuns.ts, src/ui/telas/diario.ts, src/ui/telas/comum.ts, src/ui/componentes/voltar.ts
+(novo), src/battle/view/tela.ts, src/battle/view/menus.ts, src/battle/view/palco.ts, tools/build-pacote.ts,
+tools/testes/feedback/itch-lab.mts (novo).

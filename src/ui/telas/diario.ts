@@ -8,7 +8,7 @@ import type { EspecieDef, Evolucao, TipoId } from '../../core/tipos';
 import { jogo } from '../../core/estado';
 import { input, tocavel } from '../../core/input';
 import { bus } from '../../core/events';
-import { vista } from '../../core/assets';
+import { vista, precarregarModelo } from '../../core/assets';
 import { Sprite } from '../../render/sprite';
 import { item as itemDef, temItemDef } from '../../data/itens';
 import type { Tela } from '../telas';
@@ -97,6 +97,9 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
     const n = numDe(lista.indice), e = esp(n);
     ladoDyn.replaceChildren();
     figLado = figura(n, 80, 76, { silhueta: viu(n) && !tem(n), misterio: !viu(n) }); ladoDyn.append(em(figLado.el, 34, 0));
+    // as vizinhas da lista (já vistas) começam a baixar antes de o cursor chegar nelas (rede lenta / pacotes do itch)
+    const c = conjunto(), k = c.length;
+    for (const d of [1, -1, 2, -2, 3, -3]) { const v = c[(lista.indice + d + k) % k]; const ev = v !== undefined && viu(v) ? esp(v) : undefined; if (ev) void precarregarModelo(ev.id, ['frente']); }
     if (temRara(n)) ladoDyn.append(em(estrelaRara(2), 4, 2)); // Pelagem Rara registrada
     rotulo(ladoDyn, viu(n) ? `Nº ${n3(n)} ${nomeEsp(n)}` : `Nº ${n3(n)} ?????`, 0, 80, 'amarelo', { largura: 148, alinhar: 'centro', sombra: true });
     rotulo(ladoDyn, tem(n) ? (e?.habitat ?? '') : viu(n) ? 'Só avistada' : 'Ainda não avistada', 0, 92, 'creme', { largura: 148, alinhar: 'centro' });

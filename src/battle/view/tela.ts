@@ -7,7 +7,7 @@ import { jogo } from '../../core/estado';
 import { bus } from '../../core/events';
 import { input, tocavel } from '../../core/input';
 import { hitStop } from '../../core/loop';
-import { vista } from '../../core/assets';
+import { vista, precarregarModelo } from '../../core/assets';
 import type { Tela } from '../../ui/telas';
 import { CaixaTexto, pedirNome } from '../../ui/dialogo';
 import { em, texto } from '../../ui/fonte';
@@ -118,7 +118,7 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
   async function entrar(p: Pos, r: ResumoCriatura, modo: 'cuia' | 'selvagem' | 'pronto', saiTreinador = true) {
     const a = atorDe(p); [a.x, a.y] = palco.apoio(p.lado, p.pos);
     const rara = !!inst.get(r.uid)?.rara;
-    await palco.precarregarCriatura(r.especie, rara);
+    await palco.precarregarCriatura(r.especie, rara, [p.lado ? 'frente' : 'costas']);
     if (modo !== 'pronto') a.definirCriatura(r.especie, rara);
     emCampo[p.lado][p.pos] = r.uid; vis.set(r.uid, { ...r });
     if (modo === 'cuia') {
@@ -509,7 +509,7 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
   async function abertura(evs: EventoBatalha[]): Promise<EventoBatalha[]> {
     const t = pedido.treinador, avatar = jogo.save.jogador.avatar;
     abrirCortina(0); palco.definirDolly(1);
-    await Promise.all([palco.carregar(pedido.arena), precarregarFx(), ...pedido.inimigos.map((c) => palco.precarregarCriatura(c.especie, !!c.rara)), ...jogo.save.equipe.map((c) => palco.precarregarCriatura(c.especie, !!c.rara))]);
+    await Promise.all([palco.carregar(pedido.arena), precarregarFx(), ...pedido.inimigos.map((c) => palco.precarregarCriatura(c.especie, !!c.rara, ['frente'])), ...jogo.save.equipe.map((c) => palco.precarregarCriatura(c.especie, !!c.rara, ['costas'])), precarregarModelo(avatar, ['costas']), ...(t && pedido.tipo === 'treinador' ? [precarregarModelo(t.sprite, ['batalha'])] : [])]);
     if (!pedido.musica && !t?.musica) bus.emit('musica', pedido.tipo === 'lendario' ? 'batalha-lendario' : pedido.tipo === 'treinador' ? (t?.insignia !== undefined ? 'batalha-lider' : 'batalha-treinador') : 'batalha-selvagem');
     if (vista(avatar, 'costas')) palco.criarTreinador(0, avatar);
     if (pedido.tipo === 'treinador' && t && vista(t.sprite, 'batalha')) palco.criarTreinador(1, t.sprite);

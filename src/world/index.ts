@@ -24,6 +24,7 @@ import { rodarEvento, rodarPassos, COMANDOS_PADRAO } from './eventos';
 import { sincronizarParceira, atualizarParceira } from './parceira';
 import { montarDecoracao } from './decoracao';
 import { vigiarObstaculo, derrotaNoCampo } from './integracao';
+import './precarga'; // sprites dos iniciais e das criaturas da zona, em segundo plano
 
 export { registrarComando, registrarMecanica, registrarCinematica, registrarTreinador, registrarEvento, type Mecanica } from './registro';
 export { rodarEvento, rodarPassos } from './eventos';
