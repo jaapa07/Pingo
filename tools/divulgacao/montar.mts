@@ -10,7 +10,8 @@
  *    (desenhada a partir de dist/assets/ui/fonte12.png + src/ui/gerado/kit.json, ampliada por vizinho mais próximo);
  *  - GIFs curtos de 640 px de largura (≤ 8 MB) para X e Reddit.
  *
- * Uso: npx tsx tools/divulgacao/montar.mts [base|clipes|montagem|gifs ...]   (sem argumentos: tudo)
+ * Uso: npx tsx tools/divulgacao/montar.mts [base|clipes|montagem|gifs|lendarios|mundo ...]
+ *   (lendarios / mundo: vídeos A e B de 45–50 s, vertical e horizontal, com legendas)   (sem argumentos: tudo)
  * Entrada: $PINGO_BRUTOS (o mesmo do gravar.mts). Saída: docs/divulgacao/clipes/ (fora do git: ver .gitignore).
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync, statSync, readdirSync, rmSync } from 'node:fs';
@@ -176,23 +177,67 @@ const ROTEIRO: { trechos: Trecho[]; texto: string[] }[] = [
   { trechos: [{ tomada: 'titulo', de: ['titulo', 3.2], ate: ['titulo', 6.2] }], texto: ['{c:amarelo}Demo grátis{/c}', 'Link na bio'] },
 ];
 
-async function montagem() {
-  const partes: string[] = [];
-  for (const [i, sec] of ROTEIRO.entries()) {
-    const nat = nativo(`roteiro-${i}`, sec.trechos);
-    const png = join(TMP, `legenda-${i}.png`); await legenda(sec.texto, png);
-    const d = duracao(nat);
-    const p = join(TMP, `roteiro-${i}-v.mkv`);
-    // legenda ×5 (pixel inteiro), centrada na faixa de cima; entra com o corte e fica até o fim do trecho
-    ff(['-i', nat, '-i', png, '-filter_complex', `[0:v]${VERTICAL}[base];[1:v]scale=iw*5:ih*5:flags=neighbor[t];[base][t]overlay=(W-w)/2:430-h/2,format=rgb24[v]`,
-      '-map', '[v]', '-map', '0:a', '-af', `afade=t=in:d=0.05,afade=t=out:st=${(d - 0.12).toFixed(3)}:d=0.12`, '-c:v', 'ffv1', '-c:a', 'flac', p]);
-    partes.push(p);
+type Secao = { trechos: Trecho[]; texto: string[] };
+/**
+ * Junta as seções de um roteiro com a legenda de cada uma (fonte do jogo). Sai em vertical (legenda ×5 na faixa de cima,
+ * fora da imagem do jogo) e, se pedido, em horizontal (legenda ×4 por cima do jogo, no alto e centrada).
+ */
+async function montarRoteiro(nome: string, secoes: Secao[], horizontal: boolean) {
+  const formatos: [string, string][] = [['vertical', `[0:v]${VERTICAL}[base];[1:v]scale=iw*5:ih*5:flags=neighbor[t];[base][t]overlay=(W-w)/2:430-h/2,format=rgb24[v]`]];
+  if (horizontal) formatos.push(['horizontal', `[0:v]scale=1920:1080:flags=neighbor[base];[1:v]scale=iw*4:ih*4:flags=neighbor[t];[base][t]overlay=(W-w)/2:56,format=rgb24[v]`]);
+  for (const [fmt, filtro] of formatos) {
+    const partes: string[] = [];
+    for (const [i, sec] of secoes.entries()) {
+      const nat = nativo(`${nome}-${i}`, sec.trechos);
+      const png = join(TMP, `${nome}-legenda-${i}.png`); await legenda(sec.texto, png);
+      const d = duracao(nat);
+      const p = join(TMP, `${nome}-${i}-${fmt}.mkv`);
+      ff(['-i', nat, '-i', png, '-filter_complex', filtro,
+        '-map', '[v]', '-map', '0:a', '-af', `afade=t=in:d=0.05,afade=t=out:st=${(d - 0.12).toFixed(3)}:d=0.12`, '-c:v', 'ffv1', '-c:a', 'flac', p]);
+      partes.push(p);
+    }
+    const saida = join(SAIDA, `${nome}-${fmt}.mp4`);
+    ff([...partes.flatMap((p) => ['-i', p]), '-filter_complex', partes.map((_, i) => `[${i}:v][${i}:a]`).join('') + `concat=n=${partes.length}:v=1:a=1[v0][a];[v0]${YUV}[v]`,
+      '-map', '[v]', '-map', '[a]', ...X264, saida]);
+    console.log(`${nome}-${fmt}: ${duracao(saida).toFixed(1)} s · ${mb(saida)}`);
   }
-  const saida = join(SAIDA, 'montagem-roteiro-vertical.mp4');
-  ff([...partes.flatMap((p) => ['-i', p]), '-filter_complex', partes.map((_, i) => `[${i}:v][${i}:a]`).join('') + `concat=n=${partes.length}:v=1:a=1[v0][a];[v0]${YUV}[v]`,
-    '-map', '[v]', '-map', '[a]', ...X264, saida]);
-  console.log(`montagem: ${duracao(saida).toFixed(1)} s · ${mb(saida)}`);
 }
+async function montagem() {
+  for (const f of readdirSync(TMP)) if (/legenda/.test(f)) rmSync(join(TMP, f));
+  await montarRoteiro('montagem-roteiro', ROTEIRO, false);
+}
+
+const FIM: Secao = { trechos: [{ tomada: 'titulo', de: ['titulo', 3.2], ate: ['titulo', 6.6] }], texto: ['{c:amarelo}Demo grátis{/c}', 'Link na bio'] };
+/** vídeo A: lendários (tomadas lenda-*) */
+const LENDARIOS: Secao[] = [
+  { trechos: [{ tomada: 'lenda-gaviao', de: ['inicio', 0.2], ate: ['batalha', 1.2] }], texto: ['{c:amarelo}Lendários{/c} do', 'folclore brasileiro'] },
+  { trechos: [{ tomada: 'lenda-gaviao', de: ['golpe', -0.8], ate: ['antes-cuia', -0.2] }], texto: ['Lendários aparecem', '{c:amarelo}UMA vez só{/c}'] },
+  { trechos: [{ tomada: 'lenda-gaviao', de: ['cuia', -0.3], ate: ['cuia', 6.0] }], texto: ['Cuia Guardiã:', '{c:amarelo}nunca falha{/c}'] },
+  { trechos: [{ tomada: 'lenda-boitata', de: ['evento', -0.6], ate: ['batalha', 1.6] }], texto: ['O {c:laranja}Boitatá{/c} dorme', 'na Caverna Vulcânica'] },
+  { trechos: [
+    { tomada: 'lenda-boitata', de: ['golpe-final', 0.9], ate: ['venceu', -0.8] },
+    { tomada: 'lenda-boitata', de: ['venceu', 0.9], ate: ['fim', 0.5] },
+  ], texto: ['Derrotou sem capturar?', '{c:amarelo}Sumiu pra sempre{/c}'] },
+  { trechos: [
+    { tomada: 'lenda-borealce', de: ['evento', 6.3], ate: ['evento', 13.8] },
+    { tomada: 'lenda-borealce', de: ['batalha', -0.2], ate: ['batalha', 2.8] },
+  ], texto: ['Alguns só aparecem', '{c:agua}sob a aurora{/c}'] },
+  FIM,
+];
+/** vídeo B: mais do mundo (tomadas mundo-*) */
+const MUNDO: Secao[] = [
+  { trechos: [{ tomada: 'mundo-bike', de: ['inicio', 0], ate: ['fim', 0] }], texto: ['Cidades grandes', 'pra explorar'] },
+  { trechos: [
+    { tomada: 'mundo-lider', de: ['fala', -0.3], ate: ['fala', 3.0] },
+    { tomada: 'mundo-lider', de: ['batalha', -0.4], ate: ['batalha', 4.0] },
+    { tomada: 'mundo-lider', de: ['golpe', 0.3], ate: ['golpe', 3.0] },
+  ], texto: ['{c:amarelo}16 líderes{/c}', 'de ginásio'] },
+  { trechos: [{ tomada: 'mundo-pesca', de: ['inicio', 0.4], ate: ['batalha', 3.0] }], texto: ['Pesque no rio'] },
+  { trechos: [{ tomada: 'mundo-remo', de: ['inicio', 0], ate: ['fim', 0] }], texto: ['Reme pelo mar'] },
+  { trechos: [{ tomada: 'mundo-noite', de: ['dia', 0.2], ate: ['noite', 3.5] }], texto: ['{c:amarelo}Dia e noite{/c}', 'de verdade'] },
+  { trechos: [{ tomada: 'mundo-trem', de: ['inicio', 0.1], ate: ['inicio', 3.5] }], texto: ['Pegue o trem', 'pro Sertão'] },
+  FIM,
+];
 
 /* ------------------------------ 5. GIFs ------------------------------ */
 const GIFS: Record<string, { trechos: Trecho[]; fps: number }> = {
@@ -210,9 +255,11 @@ function gif(nome: string, def: { trechos: Trecho[]; fps: number }) {
   console.log(`${nome}: ${duracao(nat).toFixed(1)} s · ${mb(saida)}`);
 }
 
-const etapas = process.argv.slice(2).length ? process.argv.slice(2) : ['base', 'clipes', 'montagem', 'gifs'];
+const etapas = process.argv.slice(2).length ? process.argv.slice(2) : ['base', 'clipes', 'montagem', 'gifs', 'lendarios', 'mundo'];
 if (etapas.includes('base')) for (const t of readdirSync(BRUTOS)) if (existsSync(join(BRUTOS, t, 'quadros.json'))) base(t);
 if (etapas.includes('clipes')) for (const [nome, tr] of Object.entries(CLIPES)) { try { exportar(nome, nativo(nome, tr)); } catch (e) { console.log(`${nome}: não montado (${String(e).slice(0, 160)})`); } }
 if (etapas.includes('montagem')) await montagem();
+if (etapas.includes('lendarios')) await montarRoteiro('video-a-lendarios', LENDARIOS, true);
+if (etapas.includes('mundo')) await montarRoteiro('video-b-mais-do-mundo', MUNDO, true);
 if (etapas.includes('gifs')) for (const [nome, d] of Object.entries(GIFS)) gif(nome, d);
 if (process.env.PINGO_LIMPAR) rmSync(TMP, { recursive: true, force: true });

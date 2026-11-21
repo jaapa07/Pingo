@@ -9,7 +9,8 @@
  * O relógio do jogo é fixado de manhã (10h20) para o HUD não mostrar a hora real da gravação.
  *
  * Uso:  npm run build && npx tsx tools/divulgacao/gravar.mts [tomada ...]
- *       (sem argumentos grava todas; tomadas: titulo cidade grama evolucao lab mapa-b diario)
+ *       (sem argumentos grava todas; tomadas: titulo cidade grama evolucao lab mapa-b diario,
+ *        lenda-gaviao lenda-boitata lenda-borealce, mundo-bike mundo-lider mundo-pesca mundo-remo mundo-noite mundo-trem)
  * Saída: $PINGO_BRUTOS (padrão: <tmp>/pingo-divulgacao/brutos)/<tomada>/
  * Depois: npx tsx tools/divulgacao/montar.mts
  */
@@ -33,8 +34,11 @@ const TECLA: Record<Tecla, string> = { a: 'KeyZ', b: 'KeyX', menu: 'Escape', cim
 /** roda antes do jogo: relógio de manhã e captura do som (todo nó ligado ao destino também vai para o gravador) */
 function preparo() {
   const W = window as any;
-  // relógio: mesma data, 10h20 + o tempo decorrido (só o horário mostrado no jogo muda)
-  const Real = Date; const agora = Real.now(); const alvo = new Real(agora); alvo.setHours(10, 20, 0, 0); const DESVIO = alvo.getTime() - agora;
+  // relógio: mesma data, 10h20 (ou `?hora=HH:MM`) + o tempo decorrido (só o horário mostrado no jogo muda);
+  // `__hora(h, m)` adianta o relógio no meio da tomada (dia virando noite)
+  const Real = Date; let DESVIO = 0;
+  W.__hora = (h: number, m: number) => { const agora = Real.now(); const alvo = new Real(agora); alvo.setHours(h, m, 0, 0); DESVIO = alvo.getTime() - agora; };
+  const [hh, mm] = (new URLSearchParams(location.search).get('hora') ?? '10:20').split(':').map(Number); W.__hora(hh, mm);
   class Relogio extends Real {
     constructor(...a: any[]) { if (a.length) super(...(a as [])); else super(Real.now() + DESVIO); }
     static now() { return Real.now() + DESVIO; }
@@ -102,6 +106,8 @@ class Tomada {
     for (let i = 0; i < 60 && (await this.st()).mov; i++) await this.dormir(15);
     return feitos;
   }
+  /** segura a direção por `ms` (bicicleta e remo, que andam mais de uma casa por vez) */
+  async segurar(d: Tecla, ms: number) { await this.page.keyboard.down(TECLA[d]); await this.dormir(ms); await this.page.keyboard.up(TECLA[d]); for (let i = 0; i < 60 && (await this.st()).mov; i++) await this.dormir(15); }
   async iniciar() {
     this.quadros = []; this.marcas = {};
     this.cdp.on('Page.screencastFrame', (f: any) => {
@@ -158,6 +164,43 @@ async function menuDeComandos(g: Tomada, max = 20000) {
   throw new Error('o menu de comandos não voltou');
 }
 const naBatalha = (s: Estado) => /batalha/.test(topo(s));
+
+
+/* ------------------------------ apoio das tomadas dos vídeos A (lendários) e B (mais do mundo) ------------------------------ */
+const menuVisivel = (g: Tomada) => g.page.evaluate(() => [...document.querySelectorAll('.bt-botao')].some((e) => (e as HTMLElement).offsetParent !== null));
+/** o golpe mais forte (da lista de preferência) que a criatura da frente conhece */
+const golpeDe = (g: Tomada, pref: string[]) => g.page.evaluate((p: string[]) => {
+  const gs: string[] = (window as any).__pingo.jogo.save.equipe[0].golpes.map((k: any) => k.id ?? k);
+  return p.find((x) => gs.includes(x)) ?? gs[gs.length - 1];
+}, pref);
+/** escolhe golpes até a batalha acabar (vitória); devolve o instante de cada golpe */
+async function lutarAteVencer(g: Tomada, pref: string[], max = 60000) {
+  const t = Date.now();
+  while (Date.now() - t < max) {
+    const s = await g.st();
+    if (!naBatalha(s)) return;
+    if (await menuVisivel(g)) { g.marca('golpe-final'); /* fica a marca do último golpe */ await golpe(g, await golpeDe(g, pref)); await g.dormir(1500); continue; }
+    await g.dormir(700); if (!(await menuVisivel(g)) && naBatalha(await g.st())) await g.apertar('a');
+  }
+  throw new Error('a batalha não acabou');
+}
+/** Mochila → bolso de cuias → a 1ª cuia (o bolso fica lembrado nas vezes seguintes) */
+async function jogarCuia(g: Tomada, primeira = true) {
+  await menuDeComandos(g);
+  await g.apertar('dir', 350); await g.apertar('a', 700);
+  if (primeira) await g.apertar('dir', 600);
+  await g.apertar('a', 300);
+}
+/** passa falas (A) até o mundo ficar livre; recusa apelido ("Não") se perguntarem */
+async function ateLivre(g: Tomada, max = 30000) {
+  const t = Date.now();
+  while (Date.now() - t < max) {
+    const s = await g.st(); if (livre(s)) return;
+    if (/tela-nome/.test(topo(s))) { await g.apertar('b', 400); continue; }
+    await g.dormir(600); await g.apertar('a');
+  }
+}
+const EQUIPE_FORTE = 'equipe=3:72,9:76,6:74,12:72,34:71,14:72&insignias=16&amuletos=todos';
 
 const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; rodar(g: Tomada): Promise<boolean | void> }> = {
   /** tela de abertura → título com a música */
@@ -311,6 +354,130 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; 
       g.marca('fim');
     },
   },
+  /* ============ vídeo A: lendários ============ */
+  /** Aldeia Tupã: subida até a Pedra do Trovão → o Gavião-Tupã desce → golpe forte → Cuia Guardiã (nunca falha) */
+  'lenda-gaviao': {
+    url: FAIXA(`zona=A9&x=20&y=12&dir=n&${EQUIPE_FORTE}&itens=cuia-guardia:1&parceira=1`),
+    async rodar(g) {
+      await repelente(g.page); await g.dormir(1500);
+      g.marca('inicio'); await g.andar('cima', 7); await g.dormir(300);
+      await g.apertar('cima', 300);
+      g.marca('evento'); await g.apertar('a');
+      // falas do evento (trovão, tremor, grito) até a batalha
+      for (let i = 0; i < 20 && !naBatalha(await g.st()); i++) { await g.dormir(1300); if (!naBatalha(await g.st())) await g.apertar('a'); }
+      await g.esperar(naBatalha, 15000, 'batalha'); g.marca('batalha');
+      await menuDeComandos(g); g.marca('menu');
+      await golpe(g, await golpeDe(g, ['terremoto', 'pisao-de-anta', 'avalanche', 'terra-viva'])); g.marca('golpe');
+      await menuDeComandos(g, 30000); g.marca('antes-cuia');
+      await jogarCuia(g); g.marca('cuia');
+      await g.dormir(9000); g.marca('fim');
+      await ateLivre(g);
+    },
+  },
+  /** Caverna Vulcânica: o Boitatá desperta → vencido sem captura → some para sempre */
+  'lenda-boitata': {
+    url: FAIXA(`zona=B-CV&x=20&y=12&dir=n&equipe=9:80,3:72&insignias=16&amuletos=todos`),
+    async rodar(g) {
+      await repelente(g.page); await g.dormir(1500);
+      g.marca('inicio'); await g.andar('cima', 7);
+      for (let i = 0; i < 20 && !naBatalha(await g.st()); i++) { if (i === 0) g.marca('evento'); await g.dormir(1300); if (!naBatalha(await g.st())) await g.apertar('a'); }
+      await g.esperar(naBatalha, 15000, 'batalha'); g.marca('batalha');
+      await lutarAteVencer(g, ['pororoca', 'enxurrada', 'chuva-de-verao', 'mergulho-fundo']);
+      g.marca('venceu');
+      await g.dormir(1200); g.marca('sumiu');
+      await ateLivre(g); g.marca('fim'); await g.dormir(600);
+    },
+  },
+  /** Pico Pindorama de noite: quatro Lanternas Boreais, a aurora e o Borealce descendo das nuvens */
+  'lenda-borealce': {
+    url: FAIXA(`zona=PP&x=9&y=9&dir=n&hora=21:40&periodo=noite&${EQUIPE_FORTE}&flags=boreal-missao,boreal-lanterna-1,boreal-lanterna-2,boreal-lanterna-3,boreal-lanterna-4&itens=lanterna-boreal:4`).replace('periodo=dia&', ''),
+    async rodar(g) {
+      await repelente(g.page); await g.dormir(1500);
+      g.marca('inicio'); await g.andar('cima', 4);
+      g.marca('evento');
+      for (let i = 0; i < 25 && !naBatalha(await g.st()); i++) { await g.dormir(1500); if (!naBatalha(await g.st())) await g.apertar('a'); }
+      await g.esperar(naBatalha, 20000, 'batalha'); g.marca('batalha');
+      await menuDeComandos(g); g.marca('menu'); await g.dormir(800); g.marca('fim');
+    },
+  },
+
+  /* ============ vídeo B: mais do mundo ============ */
+  /** de bicicleta pelas ruas de Porto Sereia */
+  'mundo-bike': {
+    url: FAIXA('zona=A4&x=4&y=20&dir=l&modo=bike&equipe=4:30'),
+    async rodar(g) {
+      await repelente(g.page); await g.dormir(1500);
+      g.marca('inicio'); await g.segurar('dir', 3200); await g.segurar('cima', 700); await g.segurar('dir', 2600); g.marca('fim'); await g.dormir(400);
+    },
+  },
+  /** ginásio de Pantanal Grande: a fala da Boiadeira Zefa e a batalha */
+  'mundo-lider': {
+    url: FAIXA(`zona=B2-ginasio&x=7&y=2&dir=l&${EQUIPE_FORTE}`),
+    async rodar(g) {
+      await g.dormir(1200);
+      g.marca('inicio'); await g.andar('dir', 2); await g.apertar('cima', 300);
+      g.marca('fala'); await g.apertar('a');
+      for (let i = 0; i < 20 && !naBatalha(await g.st()); i++) { await g.dormir(1500); if (!naBatalha(await g.st())) await g.apertar('a'); }
+      await g.esperar(naBatalha, 15000, 'batalha'); g.marca('batalha');
+      await menuDeComandos(g); g.marca('menu');
+      await golpe(g, await golpeDe(g, ['terremoto', 'pisao-de-anta'])); g.marca('golpe');
+      await g.dormir(6000); g.marca('fim');
+    },
+  },
+  /** pesca no Rio Cachoeira-Véu: espera, fisga no "!" e a batalha começa */
+  'mundo-pesca': {
+    url: FAIXA('zona=A-R6&x=6&y=13&dir=l&equipe=9:40&itens=vara-boa'),
+    async rodar(g) {
+      await repelente(g.page);
+      await g.page.evaluate(() => { const w = window as any; w.__pingo.bus.on('sfx', (d: any) => { if (d?.id === 'ui-erro') w.__morde = 1; }); });
+      await g.dormir(1200);
+      g.marca('inicio'); await g.andar('dir', 4); await g.apertar('dir', 300);
+      for (let n = 0; n < 6; n++) {
+        // como o jogador: A de frente para a água → "Pescar com a Vara Boa?" → Sim
+        await g.page.evaluate(() => { (window as any).__morde = 0; });
+        g.marca(n ? `isca-${n}` : 'isca');
+        await g.apertar('a', 700); await g.apertar('a');
+        const t = Date.now(); let mordeu = false;
+        while (Date.now() - t < 6000) { await g.dormir(30); if (await g.page.evaluate(() => (window as any).__morde)) { mordeu = true; break; } }
+        if (mordeu) { await g.dormir(150); await g.apertar('a'); g.marca('fisgou'); break; }
+        await g.dormir(800); await ateLivre(g, 6000); await g.dormir(500);
+      }
+      for (let i = 0; i < 8 && !naBatalha(await g.st()); i++) { await g.dormir(900); if (!naBatalha(await g.st())) await g.apertar('a'); }
+      await g.esperar(naBatalha, 15000, 'batalha'); g.marca('batalha');
+      await g.dormir(3500); g.marca('fim');
+    },
+  },
+  /** de remo pela Baía Azul */
+  'mundo-remo': {
+    url: FAIXA('zona=A-BA&x=3&y=13&dir=l&modo=remo&equipe=9:40'),
+    async rodar(g) {
+      await repelente(g.page); await g.dormir(1500);
+      g.marca('inicio'); await g.segurar('dir', 3500); await g.segurar('baixo', 1000); await g.segurar('dir', 2500); g.marca('fim'); await g.dormir(400);
+    },
+  },
+  /** Cidade Coral: a tarde cai e a noite acende os postes (relógio e período mudando) */
+  'mundo-noite': {
+    url: FAIXA('zona=A5&x=9&y=17&dir=l&hora=11:05&equipe=4:30&parceira=1'),
+    async rodar(g) {
+      await repelente(g.page); await g.dormir(1500);
+      g.marca('dia'); await g.andar('dir', 6); await g.dormir(300);
+      await g.page.evaluate(() => { const w = window as any; w.__hora(17, 40); w.__pingo.mundo.relogio.forcarPeriodo('tarde'); });
+      g.marca('tarde'); await g.andar('dir', 6); await g.dormir(300);
+      await g.page.evaluate(() => { const w = window as any; w.__hora(21, 15); w.__pingo.mundo.relogio.forcarPeriodo('noite'); });
+      g.marca('noite'); await g.andar('dir', 7); g.marca('fim'); await g.dormir(400);
+    },
+  },
+  /** a viagem de trem da Estação de Porto Sereia */
+  'mundo-trem': {
+    url: FAIXA('zona=A4-estacao&equipe=4:30&flags=campeao&insignias=16'),
+    async rodar(g) {
+      await g.dormir(1200);
+      g.marca('inicio');
+      void g.page.evaluate(() => (window as any).__pingo.mundo.rodarPassos([['cinematica', 'trem']]));
+      await g.dormir(9000); g.marca('fim');
+    },
+  },
+
 };
 
 async function main() {
