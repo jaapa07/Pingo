@@ -60,13 +60,13 @@ interface Trecho { tomada: string; de: Ponto; ate: Ponto }
 const CLIPES: Record<string, Trecho[]> = {
   '1-titulo': [{ tomada: 'titulo', de: ['titulo', -0.3], ate: ['titulo', 5.7] }],
   '2-cidade-vila-caicara': [{ tomada: 'cidade', de: ['inicio', 0], ate: ['fim', 0.3] }],
-  '3-grama-encontro': [{ tomada: 'grama', de: ['encontro', -3.4], ate: ['menu', -0.2] }],
-  '4-batalha-super-eficaz': [{ tomada: 'grama', de: ['menu', -0.4], ate: ['pos-golpe', 0.6] }],
-  '5-captura-cuia': [{ tomada: 'grama', de: ['antes-cuia', -0.2], ate: ['fim', -0.6] }],
+  '3-grama-encontro': [{ tomada: 'grama', de: ['encontro', -3.0], ate: ['menu', -0.2] }],
+  '4-batalha-super-eficaz': [{ tomada: 'grama', de: ['menu', 0.2], ate: ['pos-golpe', 1.3] }],
+  '5-captura-cuia': [{ tomada: 'grama', de: ['cuia', -1.6], ate: ['cuia', 6.4] }],
   '6-iniciais-lab': [
-    { tomada: 'lab', de: ['antes-mata', -0.6], ate: ['mata', 2.3] },
-    { tomada: 'lab', de: ['antes-brasa', -0.9], ate: ['brasa', 2.3] },
-    { tomada: 'lab', de: ['antes-rio', -0.9], ate: ['rio', 2.5] },
+    { tomada: 'lab', de: ['antes-mata', -0.5], ate: ['mata', 2.2] },
+    { tomada: 'lab', de: ['antes-brasa', -0.5], ate: ['brasa', 2.2] },
+    { tomada: 'lab', de: ['antes-rio', -0.5], ate: ['rio', 2.3] },
   ],
   '7-mapa-b': [
     { tomada: 'mapa-b', de: ['pantanal', 0], ate: ['pantanal', 2.8] },
@@ -77,10 +77,11 @@ const CLIPES: Record<string, Trecho[]> = {
   '7b-vila-cascavel': [{ tomada: 'mapa-b', de: ['cascavel', 0], ate: ['fim-cascavel', 0.2] }],
   '7c-pico-pindorama': [{ tomada: 'mapa-b', de: ['pico', 0], ate: ['fim-pico', 0.2] }],
   '8-diario-equipe': [
-    { tomada: 'diario', de: ['inicio', 0.1], ate: ['fim-diario', 0] },
-    { tomada: 'diario', de: ['equipe', -0.9], ate: ['ficha', 1.4] },
+    { tomada: 'diario', de: ['diario', -0.3], ate: ['diario', 3.2] },
+    { tomada: 'diario', de: ['equipe', -0.5], ate: ['equipe', 1.2] },
+    { tomada: 'diario', de: ['ficha', 0.1], ate: ['ficha', 3.1] },
   ],
-  '9-evolucao': [{ tomada: 'evolucao', de: ['evolucao', -0.2], ate: ['evolucao', 7.8] }],
+  '9-evolucao': [{ tomada: 'evolucao', de: ['evolucao', 1.4], ate: ['evolucao', 9.4] }],
 };
 const marcas = (t: string): Record<string, number> => JSON.parse(readFileSync(join(BRUTOS, t, 'marcas.json'), 'utf8'));
 const instante = (t: string, [m, d]: Ponto) => { const v = marcas(t)[m]; if (v === undefined) throw new Error(`marca ${m} ausente em ${t}`); return Math.max(0, v + d); };
@@ -105,8 +106,8 @@ const X264 = ['-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-tune', 'anim
   '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-color_range', 'tv', '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-movflags', '+faststart'];
 /** conversão RGB → YUV 4:2:0 BT.709 depois da ampliação */
 const YUV = 'scale=out_color_matrix=bt709:out_range=tv:flags=neighbor,format=yuv420p';
-/** filtro vertical 1080×1920: fundo desfocado e escurecido + jogo ×3 (960×540) no centro */
-const VERTICAL = `split[f][j];[f]scale=-2:1920:flags=neighbor,crop=1080:1920,gblur=sigma=28,eq=brightness=-0.22:saturation=0.75[fd];` +
+/** filtro vertical 1080×1920: fundo = a imagem reduzida a 18×32, desfocada e escurecida (só manchas de cor) + jogo ×3 (960×540) no centro */
+const VERTICAL = `split[f][j];[f]scale=-2:32:flags=area,crop=18:32,scale=1080:1920:flags=bicubic,gblur=sigma=36,eq=brightness=-0.28:saturation=0.8[fd];` +
   `[j]scale=960:540:flags=neighbor[jg];[fd][jg]overlay=60:690`;
 
 function exportar(nome: string, origem: string) {
@@ -128,6 +129,7 @@ async function legenda(linhas: string[], arq: string) {
   const browser = await pw.chromium.launch();
   try {
     const page = await browser.newPage();
+    await page.evaluate('window.__name = (f) => f'); // tsx/esbuild injeta __name nas funções
     const b64: string = await page.evaluate(async ({ f, folha, linhas }: { f: Fonte; folha: string; linhas: string[] }) => {
       const img = new Image(); img.src = folha; await img.decode();
       type L = { ch: string; cor: number };
@@ -157,21 +159,21 @@ async function legenda(linhas: string[], arq: string) {
 
 /* ------------------------------ 4. montagem vertical (roteiro §5) ------------------------------ */
 const ROTEIRO: { trechos: Trecho[]; texto: string[] }[] = [
-  { trechos: [{ tomada: 'titulo', de: ['titulo', 0.2], ate: ['titulo', 3.2] }], texto: ['Fiz um Pokémon Gold…', 'só que {c:amarelo}brasileiro{/c}'] },
-  { trechos: [{ tomada: 'grama', de: ['encontro', -2.2], ate: ['encontro', 2.8] }], texto: ['Com {c:amarelo}182 criaturas{/c}', 'da nossa fauna'] },
-  { trechos: [{ tomada: 'grama', de: ['menu', 0.2], ate: ['menu', 6.2] }], texto: ['Batalha por turnos,', 'tipos, clima…'] },
-  { trechos: [{ tomada: 'grama', de: ['cuia', -0.3], ate: ['cuia', 3.9] }], texto: ['Você captura', 'com uma {c:amarelo}CUIA{/c}'] },
+  { trechos: [{ tomada: 'titulo', de: ['titulo', 0.2], ate: ['titulo', 3.0] }], texto: ['Fiz um Pokémon Gold…', 'só que {c:amarelo}brasileiro{/c}'] },
+  { trechos: [{ tomada: 'grama', de: ['encontro', -1.9], ate: ['encontro', 2.6] }], texto: ['Com {c:amarelo}182 criaturas{/c}', 'da nossa fauna'] },
+  { trechos: [{ tomada: 'grama', de: ['golpe', -1.0], ate: ['pos-golpe', 0.9] }], texto: ['Batalha por turnos,', 'tipos, clima…'] },
+  { trechos: [{ tomada: 'grama', de: ['cuia', 1.0], ate: ['cuia', 6.3] }], texto: ['Você captura', 'com uma {c:amarelo}CUIA{/c}'] },
   { trechos: [
-    { tomada: 'mapa-b', de: ['pantanal', 0.1], ate: ['pantanal', 2.1] },
-    { tomada: 'mapa-b', de: ['pico', 0.1], ate: ['pico', 2.1] },
-    { tomada: 'mapa-b', de: ['cascavel', 0.1], ate: ['cascavel', 2.1] },
+    { tomada: 'mapa-b', de: ['pantanal', 1.6], ate: ['pantanal', 3.5] },
+    { tomada: 'mapa-b', de: ['pico', 0.1], ate: ['pico', 2.0] },
+    { tomada: 'mapa-b', de: ['cascavel', 0.1], ate: ['cascavel', 2.0] },
   ], texto: ['Dois mapas inteiros', 'pra explorar'] },
   { trechos: [
     { tomada: 'lab', de: ['mata', 0.0], ate: ['mata', 1.0] },
     { tomada: 'lab', de: ['brasa', 0.0], ate: ['brasa', 1.0] },
     { tomada: 'lab', de: ['rio', 0.0], ate: ['rio', 1.0] },
   ], texto: ['Qual seria', 'o seu {c:amarelo}inicial{/c}?'] },
-  { trechos: [{ tomada: 'titulo', de: ['titulo', 0.4], ate: ['titulo', 3.6] }], texto: ['{c:amarelo}Demo grátis{/c}', 'Link na bio'] },
+  { trechos: [{ tomada: 'titulo', de: ['titulo', 3.2], ate: ['titulo', 6.2] }], texto: ['{c:amarelo}Demo grátis{/c}', 'Link na bio'] },
 ];
 
 async function montagem() {
@@ -194,8 +196,8 @@ async function montagem() {
 
 /* ------------------------------ 5. GIFs ------------------------------ */
 const GIFS: Record<string, { trechos: Trecho[]; fps: number }> = {
-  'gif-batalha-super-eficaz': { trechos: [{ tomada: 'grama', de: ['menu', 0.1], ate: ['pos-golpe', 0.4] }], fps: 20 },
-  'gif-captura-cuia': { trechos: [{ tomada: 'grama', de: ['cuia', -0.3], ate: ['fim', -1.2] }], fps: 20 },
+  'gif-batalha-super-eficaz': { trechos: [{ tomada: 'grama', de: ['golpe', -0.9], ate: ['pos-golpe', 0.9] }], fps: 20 },
+  'gif-captura-cuia': { trechos: [{ tomada: 'grama', de: ['cuia', -0.2], ate: ['cuia', 6.3] }], fps: 20 },
   'gif-mapa-b': { trechos: [
     { tomada: 'mapa-b', de: ['pantanal', 0], ate: ['pantanal', 2.4] },
     { tomada: 'mapa-b', de: ['pico', 0], ate: ['pico', 2.4] },

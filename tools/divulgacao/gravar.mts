@@ -144,14 +144,22 @@ const repelente = (page: any) => page.evaluate(() => { (window as any).__pingo.j
 async function golpe(g: Tomada, id: string) {
   const i = await g.page.evaluate((x: string) => (window as any).__pingo.jogo.save.equipe[0].golpes.findIndex((k: any) => (k.id ?? k) === x), id);
   if (i < 0) throw new Error('golpe ausente: ' + id);
-  await g.apertar('a', 450);
+  await menuDeComandos(g);
+  await g.apertar('esq', 200); await g.apertar('a', 450);
   if (i % 2) await g.apertar('dir', 250);
   if (i >= 2) await g.apertar('baixo', 250);
   await g.dormir(250); await g.apertar('a');
 }
+/** avança as mensagens (A) até a batalha voltar ao menu de comandos (Lutar/Mochila/Equipe/Fugir) */
+async function menuDeComandos(g: Tomada, max = 20000) {
+  const t = Date.now();
+  const temMenu = () => g.page.evaluate(() => [...document.querySelectorAll('.bt-botao')].some((e) => (e as HTMLElement).offsetParent !== null && getComputedStyle(e).visibility !== 'hidden'));
+  while (Date.now() - t < max) { if (await temMenu()) return; await g.dormir(700); if (await temMenu()) return; await g.apertar('a'); }
+  throw new Error('o menu de comandos não voltou');
+}
 const naBatalha = (s: Estado) => /batalha/.test(topo(s));
 
-const TOMADAS: Record<string, { url: string; mundo?: boolean; rodar(g: Tomada): Promise<boolean | void> }> = {
+const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; rodar(g: Tomada): Promise<boolean | void> }> = {
   /** tela de abertura → título com a música */
   titulo: {
     url: '', mundo: false,
@@ -187,26 +195,34 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; rodar(g: Tomada): 
       await g.andar('baixo', 2); await g.dormir(120);
       await g.andar('dir', 2);
       g.marca('encontro');
-      void g.page.evaluate(() => { void (window as any).__pingo.mundo.batalhaSelvagem(33, 13); });
+      void g.page.evaluate(() => { void (window as any).__pingo.mundo.batalhaSelvagem(41, 13); });
       await g.esperar(naBatalha, 10000, 'batalha');
       await g.dormir(3300);
-      await g.apertar('a', 900);
+      await menuDeComandos(g);
       g.marca('menu');
       await g.dormir(600);
       await golpe(g, 'esguicho'); g.marca('golpe');
-      await g.dormir(2600); g.marca('pos-golpe');
-      // passa as mensagens até o menu voltar
-      for (let i = 0; i < 6; i++) { await g.dormir(900); await g.apertar('a'); }
+      await g.dormir(4300); g.marca('pos-golpe'); await g.dormir(1500);
+      // passa as mensagens até o menu de comandos voltar
+      await menuDeComandos(g);
       await g.dormir(800);
-      g.marca('antes-cuia');
-      await g.apertar('dir', 350); await g.apertar('a', 700); await g.apertar('dir', 600); await g.apertar('a', 500);
-      g.marca('cuia');
-      await g.dormir(9000);
-      const s = await g.st();
+      // a cuia: se a criatura escapar, joga outra (a mochila lembra o bolso e o menu lembra a Mochila)
+      for (let n = 0; n < 5; n++) {
+        g.marca(n ? `antes-cuia-${n}` : 'antes-cuia');
+        if (n === 0) { await g.apertar('dir', 350); await g.apertar('a', 700); await g.apertar('dir', 600); await g.apertar('a', 500); }
+        else { await g.apertar('a', 700); await g.apertar('a', 500); }
+        g.marca('cuia');
+        // escapou: o menu de comandos volta; capturou: vêm "Parceria firmada!" e a pergunta do apelido (o menu não volta)
+        const t = Date.now(); let voltou = false;
+        while (Date.now() - t < 10000 && !voltou) {
+          await g.dormir(250);
+          voltou = await g.page.evaluate(() => [...document.querySelectorAll('.bt-botao')].some((e) => (e as HTMLElement).offsetParent !== null));
+        }
+        if (!voltou) { g.marca('fim'); await g.apertar('baixo', 300); await g.apertar('a', 1500); return true; }
+        await g.dormir(500);
+      }
       g.marca('fim');
-      const ok = s.equipe.length > 1 || /Tatuzim/.test(await g.page.evaluate(() => JSON.stringify((window as any).__pingo.jogo.save.viveiro ?? '')));
-      const cap = await g.page.evaluate(() => (window as any).__pingo.jogo.save.diario.capturado.includes(33));
-      return ok || cap;
+      return false;
     },
   },
   /** vitória → sobe de nível → Botinho evolui para Botorosa */
@@ -217,7 +233,7 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; rodar(g: Tomada): 
       await g.page.evaluate(() => { (window as any).__pingo.jogo.save.equipe[0].exp = 4090; });
       void g.page.evaluate(() => { void (window as any).__pingo.mundo.batalhaSelvagem(41, 5); });
       await g.esperar(naBatalha, 10000, 'batalha'); await g.dormir(2400);
-      await g.apertar('a', 900); await golpe(g, 'esguicho');
+      await golpe(g, 'esguicho');
       g.marca('golpe');
       for (let i = 0; i < 12; i++) { await g.dormir(1100); if (/evolucao/.test(topo(await g.st()))) break; await g.apertar('a'); }
       await g.esperar((s) => /evolucao/.test(topo(s)), 15000, 'evolução');
@@ -238,7 +254,7 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; rodar(g: Tomada): 
         await g.apertar('a');
         await g.page.waitForFunction(() => /dialogo/.test(String((window as any).__pingo.telas.pilha.at(-1)?.el.className)), null, { timeout: 8000 });
         g.marca(n);
-        await g.dormir(2600); await g.apertar('a', 1500); await g.apertar('a', 1600);
+        await g.dormir(2600); await g.apertar('a', 1500); await g.apertar('a', 1500); await g.apertar('a', 1000);
         // "Você vai escolher…?" → Não
         await g.apertar('baixo', 300); await g.apertar('a', 900);
         g.marca('fim-' + n);
@@ -249,7 +265,7 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; rodar(g: Tomada): 
   },
   /** mapa B: Pantanal Grande, Vila Cascavel e o Pico Pindorama nevado */
   'mapa-b': {
-    url: FAIXA('zona=B2&x=8&y=15&dir=l&equipe=6:50&parceira=1&insignias=16&flags=campeao'),
+    url: FAIXA('zona=B2&x=21&y=15&dir=l&equipe=6:50&parceira=1&insignias=16&flags=campeao'),
     async rodar(g) {
       await repelente(g.page); await g.dormir(1500);
       g.marca('pantanal'); await g.andar('dir', 17); g.marca('fim-pantanal');
@@ -311,7 +327,10 @@ async function main() {
         const page = await ctx.newPage();
         page.on('pageerror', (e: unknown) => console.log('    erro na página:', String(e).slice(0, 200)));
         const cdp = await ctx.newCDPSession(page);
-        await abrir(page, srv.url + def.url, def.mundo !== false);
+        // a semente do RNG muda a cada tentativa (o resultado de uma tomada com a mesma semente tende a se repetir)
+        const semente = (def.semente ?? 1) + (tentativa - 1) * 7919;
+        await abrir(page, srv.url + def.url + (def.url.includes('zona=') ? `&semente=${semente}` : ''), def.mundo !== false);
+        if (tentativa > 1 || def.semente) console.log(`    semente ${semente}`);
         const g = new Tomada(nome, page, cdp);
         await g.iniciar();
         let ok: boolean | void = true;
