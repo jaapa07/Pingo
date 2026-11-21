@@ -10,8 +10,8 @@
  *    (desenhada a partir de dist/assets/ui/fonte12.png + src/ui/gerado/kit.json, ampliada por vizinho mais próximo);
  *  - GIFs curtos de 640 px de largura (≤ 8 MB) para X e Reddit.
  *
- * Uso: npx tsx tools/divulgacao/montar.mts [base|clipes|montagem|gifs|lendarios|mundo|extras ...]
- *   (lendarios / mundo / extras: vídeos A, B e C de 45–55 s, vertical e horizontal, com legendas)   (sem argumentos: tudo)
+ * Uso: npx tsx tools/divulgacao/montar.mts [base|clipes|montagem|gifs|lendarios|mundo|extras|fortes ...]
+ *   (lendarios / mundo / extras / fortes: vídeos A, B, C e D de 45–60 s, vertical e horizontal, com legendas)   (sem argumentos: tudo)
  * Entrada: $PINGO_BRUTOS (o mesmo do gravar.mts). Saída: docs/divulgacao/clipes/ (fora do git: ver .gitignore).
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync, statSync, readdirSync, rmSync } from 'node:fs';
@@ -224,6 +224,29 @@ const LENDARIOS: Secao[] = [
   ], texto: ['Alguns só aparecem', '{c:agua}sob a aurora{/c}'] },
   FIM,
 ];
+/** vídeo D: as mais fortes (tomadas forte-*): entrada animada + a cuia (com um corte no meio dos balanços) */
+const forte = (t: string, nome: string, tipos: string): Secao => ({
+  trechos: [
+    { tomada: t, de: ['batalha', 0.3], ate: ['batalha', 2.0] },
+    { tomada: t, de: ['cuia', 0.6], ate: ['cuia', 2.8] },
+    { tomada: t, de: ['capturou', -0.4], ate: ['capturou', 0.9] },
+  ],
+  texto: [`{c:amarelo}${nome}{/c}`, tipos],
+});
+const FORTES: Secao[] = [
+  { trechos: [{ tomada: 'forte-onca-guaraci', de: ['inicio', 0.0], ate: ['batalha', 0.3] }, { tomada: 'forte-onca-guaraci', de: ['batalha', 0.3], ate: ['batalha', 1.4] }], texto: ['As mais fortes', 'de {c:amarelo}Pingo{/c}'] },
+  forte('forte-onca-guaraci', 'Onça-Guaraci', 'Brasa · Lenda'),
+  forte('forte-lobo-jaci', 'Lobo-Jaci', 'Mente · Assombro'),
+  forte('forte-harpia', 'Harpia', 'Vento · Ginga'),
+  forte('forte-jacarucu', 'Jacaruçu', 'Rio · Lenda'),
+  forte('forte-lavadeira-dragao', 'Lavadeira-Dragão', 'Inseto · Lenda'),
+  forte('forte-jubartao', 'Jubartão', 'Rio · Geada'),
+  forte('forte-bandeirao', 'Bandeirão', 'Mata · Terra'),
+  forte('forte-lobo-fornalha', 'Lobo-Fornalha', 'Brasa · Ginga'),
+  forte('forte-iaraboto', 'Iaraboto', 'Rio · Encanto'),
+  { trechos: [{ tomada: 'forte-time', de: ['equipe', 0.3], ate: ['equipe', 2.3] }, { tomada: 'forte-time', de: ['ficha', 0.1], ate: ['ficha', 3.4] }], texto: ['Monte o', 'seu {c:amarelo}time{/c}'] },
+  FIM,
+];
 /** vídeo C: atividades extras (tomadas extra-*) */
 const EXTRAS: Secao[] = [
   { trechos: [{ tomada: 'extra-bike', de: ['inicio', 0], ate: ['fim', 0] }], texto: ['Pedale pela cidade'] },
@@ -273,12 +296,13 @@ function gif(nome: string, def: { trechos: Trecho[]; fps: number }) {
   console.log(`${nome}: ${duracao(nat).toFixed(1)} s · ${mb(saida)}`);
 }
 
-const etapas = process.argv.slice(2).length ? process.argv.slice(2) : ['base', 'clipes', 'montagem', 'gifs', 'lendarios', 'mundo', 'extras'];
+const etapas = process.argv.slice(2).length ? process.argv.slice(2) : ['base', 'clipes', 'montagem', 'gifs', 'lendarios', 'mundo', 'extras', 'fortes'];
 if (etapas.includes('base')) for (const t of readdirSync(BRUTOS)) if (existsSync(join(BRUTOS, t, 'quadros.json'))) base(t);
 if (etapas.includes('clipes')) for (const [nome, tr] of Object.entries(CLIPES)) { try { exportar(nome, nativo(nome, tr)); } catch (e) { console.log(`${nome}: não montado (${String(e).slice(0, 160)})`); } }
 if (etapas.includes('montagem')) await montagem();
 if (etapas.includes('lendarios')) await montarRoteiro('video-a-lendarios', LENDARIOS, true);
 if (etapas.includes('mundo')) await montarRoteiro('video-b-mais-do-mundo', MUNDO, true);
 if (etapas.includes('extras')) await montarRoteiro('video-c-atividades-extras', EXTRAS, true);
+if (etapas.includes('fortes')) await montarRoteiro('video-d-as-mais-fortes', FORTES, true);
 if (etapas.includes('gifs')) for (const [nome, d] of Object.entries(GIFS)) gif(nome, d);
 if (process.env.PINGO_LIMPAR) rmSync(TMP, { recursive: true, force: true });

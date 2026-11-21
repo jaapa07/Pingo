@@ -11,7 +11,9 @@
  * Uso:  npm run build && npx tsx tools/divulgacao/gravar.mts [tomada ...]
  *       (sem argumentos grava todas; tomadas: titulo cidade grama evolucao lab mapa-b diario,
  *        lenda-gaviao lenda-boitata lenda-borealce, mundo-bike mundo-lider mundo-pesca mundo-remo mundo-noite mundo-trem,
- *        extra-bike extra-gincana extra-safari extra-ninho extra-quiz extra-rara extra-radio)
+ *        extra-bike extra-gincana extra-safari extra-ninho extra-quiz extra-rara extra-radio,
+ *        forte-onca-guaraci forte-lobo-jaci forte-jacarucu forte-harpia forte-lavadeira-dragao forte-jubartao
+ *        forte-bandeirao forte-lobo-fornalha forte-iaraboto forte-time)
  * Saída: $PINGO_BRUTOS (padrão: <tmp>/pingo-divulgacao/brutos)/<tomada>/
  * Depois: npx tsx tools/divulgacao/montar.mts
  */
@@ -221,6 +223,37 @@ const lerTela = (g: Tomada): Promise<string> => g.page.evaluate((fontes: Record<
   }).join('');
 }, KIT.fontes);
 const semEspaco = (t: string) => t.replace(/\s+/g, '');
+
+/**
+ * vídeo D: uma das criaturas mais fortes encontrada no habitat e capturada. A selvagem é criada pela própria URL (último
+ * membro de `equipe=`), tirada da equipe e mandada para a batalha selvagem do lugar. Lendários: Cuia Guardiã (nunca falha).
+ * Os demais chegam já cansados da luta (20% da vida) e dormindo, e a Cuia de Ouro é arremessada até a parceria.
+ */
+function forte(zona: string, especie: number, nivel: number, o: { lider?: string; lendario?: boolean; extra?: string } = {}) {
+  const cuia = o.lendario ? 'cuia-guardia:1' : 'cuia-ouro:30';
+  return {
+    url: FAIXA(`zona=${zona}&equipe=${o.lider ?? '9:70'},${especie}:${nivel}&itens=${cuia}&insignias=16${o.extra ?? ''}`),
+    async rodar(g: Tomada) {
+      await repelente(g.page); await g.dormir(1300);
+      g.marca('inicio');
+      void g.page.evaluate((lend: boolean) => {
+        const p = (window as any).__pingo, s = p.jogo.save, c = s.equipe.pop();
+        if (!lend) { c.vida = Math.max(1, Math.round(c.vida * 0.2)); c.status = 'dormindo'; c.sonoTurnos = 6; }
+        void p.mundo.batalhaSelvagem(c.especie, c.nivel, { inimigos: [c], ...(lend ? { tipo: 'lendario' } : {}) });
+      }, !!o.lendario);
+      await g.esperar(naBatalha, 10000, 'batalha'); g.marca('batalha');
+      for (let n = 0; n < 10; n++) {
+        await jogarCuia(g, n === 0); g.marca('cuia');
+        let txt = '';
+        for (let i = 0; i < 50; i++) { await g.dormir(150); txt = await lerTela(g); if (/escapou|certo|pouco|triz|Parceria/i.test(txt) || !naBatalha(await g.st())) break; }
+        if (/Parceria/.test(txt)) { g.marca('capturou'); await g.dormir(2000); g.marca('fim'); return true; }
+        if (!naBatalha(await g.st())) break;
+        await g.dormir(600);
+      }
+      g.marca('fim'); return false;
+    },
+  };
+}
 const EQUIPE_FORTE = 'equipe=3:72,9:76,6:74,12:72,34:71,14:72&insignias=16&amuletos=todos';
 
 const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; /** CSS só da gravação (ex.: esconder a faixa de dica dos controles) */ css?: string; rodar(g: Tomada): Promise<boolean | void> }> = {
@@ -625,6 +658,30 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; 
       await g.apertar('a', 1600); g.marca('radio');
       await g.apertar('a', 3200); await g.apertar('a', 3000); await g.apertar('a', 3000);
       g.marca('fim'); await g.apertar('a', 600);
+    },
+  },
+
+  /* ============ vídeo D: as mais fortes ============ */
+  'forte-onca-guaraci': forte('B-CE', 180, 60, { lendario: true, extra: '&hora=12:10' }),
+  'forte-lobo-jaci': forte('B-R5', 179, 60, { lendario: true, extra: '&hora=23:30' }),
+  'forte-jacarucu': forte('B-PA', 85, 50),
+  'forte-harpia': forte('PP&x=19&y=29', 110, 50),
+  'forte-lavadeira-dragao': forte('B-LG', 156, 50),
+  'forte-jubartao': forte('A-BA&x=3&y=13&modo=remo', 132, 50),
+  'forte-bandeirao': forte('B-FA&x=53&y=12', 3, 50),
+  'forte-lobo-fornalha': forte('B-CV&x=20&y=12', 6, 50),
+  'forte-iaraboto': forte('A-R6&x=6&y=13', 9, 50, { lider: '3:70' }),
+  /** a equipe dos sonhos: tela da Equipe e as fichas das seis */
+  'forte-time': {
+    css: '.faixa-dica, .mol-botao-foco[style*="top: 116px"] { visibility: hidden !important; }', // sem dicas de controle nem o botão do cafuné
+    url: FAIXA('zona=B2&x=12&y=14&equipe=180:60,179:60,110:55,156:55,132:55,85:55&insignias=16'),
+    async rodar(g) {
+      await g.dormir(1200); g.marca('inicio');
+      void g.page.evaluate(() => (window as any).__pingo.mundo.rodarPassos([['tela', 'equipe']]));
+      await g.esperar((s) => /tela-equipe/.test(topo(s)), 8000, 'equipe'); g.marca('equipe'); await g.dormir(2200);
+      await g.apertar('a', 900); await g.apertar('a', 1300); g.marca('ficha');
+      for (let i = 0; i < 5; i++) await g.apertar('baixo', 1100);
+      g.marca('fim');
     },
   },
 
