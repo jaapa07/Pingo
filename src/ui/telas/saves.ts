@@ -209,9 +209,10 @@ export function criarSaves(args: ArgsSaves): Tela {
         if (partes.length > 12 && !(await confirmar(`Este jogo precisa de ${partes.length} códigos. O arquivo .pingo é mais prático. Mostrar mesmo assim?`, false))) return;
         await mostrarQr(partes);
       } else if (r === 'Copiar código') {
-        const cod = exportar(i);
-        if (await plataforma.copiar(cod)) await informar('Código copiado. No outro aparelho, use "Colar código" num jogo vazio.');
-        else await campoCodigo('copiar', cod);
+        // sempre pelo quadro de copiar: o toque no botão "Copiar" é um gesto novo, e o Safari do iPhone só copia de
+        // verdade assim (depois do menu, o recurso antigo dizia "copiado" sem copiar nada e o outro aparelho recebia
+        // outro texto que estava na área de transferência)
+        await campoCodigo('copiar', exportar(i));
       }
       else if (r === 'Apagar') {
         if ((await confirmar(`Apagar o Jogo ${i + 1} de ${s.nome}?`, false)) && (await confirmar('Tem certeza? Isso não tem volta.', false))) { apagarSlot(i); som('ui-voltar'); desenhar(); }

@@ -172,7 +172,7 @@ export const plataforma = {
     if (clip) { try { await clip.write({ string: txt }); return true; } catch { /* segue para o recurso antigo */ } }
     // recurso antigo (Safari sem gesto recente, http local): seleciona um campo escondido e pede "copiar"
     try {
-      const ta = document.createElement('textarea'); ta.value = txt; ta.readOnly = true;
+      const ta = document.createElement('textarea'); ta.value = txt; ta.contentEditable = 'true'; // iOS só seleciona campo editável
       ta.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:1px;opacity:0;font-size:16px';
       document.body.append(ta); ta.select(); ta.setSelectionRange(0, txt.length);
       const ok = document.execCommand('copy'); ta.remove(); return ok;

@@ -171,7 +171,11 @@ export function lerExportado(txt: string): SaveData {
   const limpo = bruto.replace(/\s+/g, '');
   const outra = /PINGO(\d+):/.exec(limpo);
   if (outra && outra[1] !== '1') throw new Error('Este código é de uma versão mais nova do jogo. Atualize o jogo neste aparelho e tente de novo.');
-  if (!/PINGO1:([0-9a-fA-F]{8}):([A-Za-z0-9_-]+)/.test(limpo)) throw new Error(/PINGO1:/.test(limpo) ? 'O código está incompleto: copie o código inteiro de novo.' : 'Isto não é um código de Adventures of Pingo.');
+  if (!/PINGO1:([0-9a-fA-F]{8}):([A-Za-z0-9_-]+)/.test(limpo)) {
+    if (/PINGO1:/.test(limpo)) throw new Error('O código está incompleto: copie o código inteiro de novo.');
+    const ini = bruto.trim().replace(/\s+/g, ' ').slice(0, 14);
+    throw new Error(`Isto não é um código do jogo${ini ? ` (começa com "${ini}…")` : ''}. Copie de novo pelo menu do jogo: Copiar código → Copiar.`);
+  }
   // o texto depois do código numa linha nova ("Abraço!") se gruda nele quando os espaços somem: tenta cortar
   // nas quebras, do fim para o começo, até a soma conferir
   const pedacos = bruto.slice(bruto.indexOf('PINGO1')).split(/\s+/).filter(Boolean);
