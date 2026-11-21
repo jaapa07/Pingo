@@ -142,6 +142,7 @@ const FAIXA = (q: string) => `?periodo=dia&${q}`;
 async function abrir(page: any, url: string, mundo = true) {
   await page.goto(url);
   await page.waitForFunction(() => (window as any).__pingo?.telas?.pilha?.length > 0, null, { timeout: 90000 });
+  await page.evaluate('window.__name = (f) => f'); // tsx/esbuild injeta __name nas funções passadas ao navegador
   await page.evaluate(() => { window.dispatchEvent(new Event('pointerdown')); const p = (window as any).__pingo; p.jogo.opcoes.velTexto = 3; });
   if (mundo) await page.waitForFunction(() => { const p = (window as any).__pingo; return p?.mundo?.pronto && !p.telas.ocupada; }, null, { timeout: 90000 });
 }
