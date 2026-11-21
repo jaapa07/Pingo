@@ -4,7 +4,7 @@ Imagens prontas em `docs/divulgacao/` (960 × 540): `1-titulo`, `2-mundo`, `3-ba
 
 Links:
 - Demo grátis (navegador/celular): https://jaapa07.github.io/Pingo-demo1/
-- Página do itch.io: **[colocar o link quando criar]**
+- Página do itch.io: https://advpingo.itch.io/adventures-of-pingo-demo
 
 ---
 
@@ -114,7 +114,7 @@ Links:
 >
 > Hi! Adventures of Pingo is a pixel-art creature-catching RPG with 182 creatures based on Brazilian animals and folklore (anteaters, river dolphins, maned wolves, the Iara…). Turn-based battles, 16 badges, a second map after the League, legendaries that only appear once, and it runs in the browser, on phones and on PC.
 >
-> The demo goes up to the 2nd badge: [link]. The game text is in Brazilian Portuguese for now. I'd love feedback on the battles and the art!
+> The demo goes up to the 2nd badge: https://advpingo.itch.io/adventures-of-pingo-demo. The game text is in Brazilian Portuguese for now. I'd love feedback on the battles and the art!
 >
 > *(Independent fan-inspired project, not affiliated with Nintendo / The Pokémon Company.)*
 
@@ -123,7 +123,7 @@ Links:
 >
 > Fala, pessoal! Fiz o Adventures of Pingo: um RPG de captura de criaturas em pixel art com 182 bichos da nossa fauna e do nosso folclore. Tem tamanduá, boto, lobo-guará, sagui, perereca, gavião… Você captura com Cuias, enfrenta 16 líderes e a Liga dos Guardiões, e depois abre um segundo mapa.
 >
-> Roda no navegador, no celular e no PC. A demo vai até a 2ª insígnia: [link]
+> Roda no navegador, no celular e no PC. A demo vai até a 2ª insígnia: https://advpingo.itch.io/adventures-of-pingo-demo
 >
 > Qualquer feedback é muito bem-vindo!
 
@@ -175,7 +175,7 @@ Links:
 >
 > O desenvolvedor independente por trás de *Adventures of Pingo* lançou a demo gratuita do jogo, um RPG de captura de criaturas em pixel art com 182 criaturas inspiradas na fauna e no folclore brasileiro. O jogo homenageia os clássicos portáteis do início dos anos 2000 e traz batalhas por turnos, 16 insígnias, dois mapas completos e lendários que aparecem uma única vez.
 >
-> A demo roda no navegador, no celular e no PC e pode ser jogada em [link]. O progresso continua na versão completa, prevista para PC, iOS e Android.
+> A demo roda no navegador, no celular e no PC e pode ser jogada em https://advpingo.itch.io/adventures-of-pingo-demo. O progresso continua na versão completa, prevista para PC, iOS e Android.
 >
 > *Adventures of Pingo é um jogo independente, sem ligação com Nintendo, Game Freak ou The Pokémon Company.*
 >
