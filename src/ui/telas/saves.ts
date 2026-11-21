@@ -58,7 +58,7 @@ export function mostrarQr(partes: string[]): Promise<void> {
 export function campoCodigo(modo: 'colar' | 'copiar', codigo = ''): Promise<string | null> {
   return new Promise((fim) => {
     const el = elTela('ui', 'tela-codigo');
-    const cx = moldura('madeira', 296, 156, 12, 12); el.append(cx);
+    const cx = moldura('madeira', 296, 160, 12, 10); el.append(cx);
     cx.append(em(texto(modo === 'colar' ? 'COLAR CÓDIGO' : 'COPIAR CÓDIGO', { tamanho: 12, cor: 'tinta', largura: 280, alinhar: 'centro' }), 8, 9));
     cx.append(em(texto(modo === 'colar' ? 'Toque e segure no quadro abaixo e escolha Colar.\nNo PC: clique no quadro e aperte Ctrl+V.' : 'Toque e segure no quadro abaixo e escolha Copiar.\nNo PC: clique no quadro e aperte Ctrl+C.', { cor: 'chumbo', largura: 272, alinhar: 'centro' }), 12, 27));
     const quadro = moldura('bisel', 256, 44, 20, 50); cx.append(quadro);
@@ -71,25 +71,41 @@ export function campoCodigo(modo: 'colar' | 'copiar', codigo = ''): Promise<stri
     ta.style.cssText = 'left:6px;top:6px;width:244px;height:32px';
     const estado = texto('', { cor: 'tinta', largura: 236, alinhar: 'centro' }); estado.style.pointerEvents = 'none';
     quadro.append(ta, em(estado, 10, 12));
-    const aviso = texto('', { cor: 'vermelho', largura: 272, alinhar: 'centro' }); cx.append(em(aviso, 12, 98));
+    const aviso = texto('', { cor: 'vermelho', largura: 272, alinhar: 'centro' }); aviso.style.pointerEvents = 'none'; cx.append(em(aviso, 12, 96)); // até 3 linhas, acima dos botões
     const rot = modo === 'colar' ? ['Colar', 'Usar código', 'Voltar'] : ['Copiar', 'Voltar'];
     const wb = modo === 'colar' ? 80 : 100, passo = wb + 8;
     const bts = rot.map((r) => botao(r, wb));
     const x0 = Math.floor((296 - (passo * (bts.length - 1) + wb)) / 2);
-    bts.forEach((b, i) => cx.append(em(b.el, x0 + i * passo, 122)));
-    let foco = modo === 'colar' ? 1 : 0, feito = false;
+    bts.forEach((b, i) => cx.append(em(b.el, x0 + i * passo, 126)));
+    let foco = modo === 'colar' ? 1 : 0, feito = false, visto = ta.value, abrir = 0;
     const pintarFoco = () => bts.forEach((b, i) => b.definirFoco(i === foco));
-    const pintar = () => {
+    /** devolve true se o texto do campo é um código completo */
+    const pintar = (): boolean => {
       const v = ta.value.trim();
-      if (modo === 'copiar') { escrever(estado, `Código do jogo: ${codigo.length} letras.`); return; }
-      if (!v) { escrever(estado, '— vazio —  Cole o código aqui.'); escrever(aviso, ''); return; }
-      try { const d = lerExportado(v); escrever(estado, `{c:verde}Jogo de ${d.jogador.nome}: código completo.{/c}`); escrever(aviso, ''); }
-      catch (e) { escrever(estado, `Recebido: ${v.length} letras.`); escrever(aviso, e instanceof Error ? e.message : 'Código inválido.'); }
+      if (modo === 'copiar') { escrever(estado, `Código do jogo: ${codigo.length} letras.`); return false; }
+      if (!v) { escrever(estado, '— vazio —  Cole o código aqui.'); escrever(aviso, ''); return false; }
+      try { const d = lerExportado(v); escrever(estado, `{c:verde}Jogo de ${d.jogador.nome}: código completo.{/c}`); escrever(aviso, ''); return true; }
+      catch (e) { escrever(estado, `Recebido: ${v.length} letras.`); escrever(aviso, e instanceof Error ? e.message : 'Código inválido.'); return false; }
     };
-    const sair = (r: string | null) => { if (feito) return; feito = true; ta.blur(); retirar(tela); fim(r); };
+    const sair = (r: string | null) => { if (feito) return; feito = true; clearInterval(vigia); clearTimeout(abrir); document.removeEventListener('selectionchange', tudo); ta.blur(); retirar(tela); fim(r); };
     const usar = () => {
       try { lerExportado(ta.value); som('ui-ok'); sair(ta.value); }
       catch (e) { som('ui-erro'); escrever(aviso, ta.value.trim() ? (e instanceof Error ? e.message : 'Código inválido.') : 'Cole o código no quadro primeiro.'); }
+    };
+    /**
+     * O texto do campo mudou (colar pelo menu do sistema, Ctrl+V, botão "Colar"). O campo perde o foco na hora:
+     * no iPhone, com o campo focado e o menu de colar aberto, o 1º toque fora dele só fecha o menu e não chega aos
+     * botões — o jogador achava que nada tinha acontecido, colava de novo (o código ficava duplicado) e "Usar código"
+     * passava a recusar. Código completo: "Usar código" fica em destaque e o jogo segue sozinho logo depois.
+     */
+    /** copiar: a seleção do campo é sempre o código inteiro */
+    const tudo = () => { if (modo === 'copiar' && document.activeElement === ta && (ta.selectionStart !== 0 || ta.selectionEnd !== codigo.length)) ta.setSelectionRange(0, codigo.length); };
+    const mudou = () => {
+      if (feito || modo !== 'colar' || ta.value === visto) return;
+      visto = ta.value; clearTimeout(abrir);
+      const valido = pintar();
+      if (valido || ta.value.trim()) ta.blur();
+      if (valido) { foco = 1; pintarFoco(); som('ui-mover'); abrir = window.setTimeout(() => { if (!feito && pintar()) usar(); }, 700); }
     };
     const apertar = async (i: number) => {
       foco = i; pintarFoco();
@@ -99,7 +115,8 @@ export function campoCodigo(modo: 'colar' | 'copiar', codigo = ''): Promise<stri
       else if (r === 'Colar') {
         // este toque é um gesto novo: o navegador pode liberar a leitura que antes negou
         const t = await plataforma.colar();
-        if (t) { ta.value = t; som('ui-mover'); pintar(); try { lerExportado(t); foco = 1; } catch { /* o aviso já explica */ } pintarFoco(); }
+        if (feito) return;
+        if (t) { ta.value = t; visto = ''; mudou(); }
         else { som('ui-erro'); escrever(aviso, 'O aparelho não deixou ler. Toque e segure no quadro e escolha Colar.'); }
       } else if (r === 'Copiar') {
         const ok = await plataforma.copiar(codigo);
@@ -109,8 +126,23 @@ export function campoCodigo(modo: 'colar' | 'copiar', codigo = ''): Promise<stri
       }
     };
     bts.forEach((b, i) => tocavel(b.el, () => void apertar(i), () => { foco = i; pintarFoco(); }));
-    ta.addEventListener('input', pintar);
-    ta.addEventListener('focus', () => { if (modo === 'copiar') ta.setSelectionRange(0, codigo.length); });
+    if (modo === 'colar') {
+      // colar troca o texto inteiro do campo (não insere no meio do que já havia: colar duas vezes duplicava o código)
+      ta.addEventListener('paste', (e) => {
+        const t = e.clipboardData?.getData('text/plain') ?? e.clipboardData?.getData('text');
+        if (!t) return; // sem dados no evento: deixa o navegador colar e o `input` (ou a vigia) pega
+        e.preventDefault(); ta.value = t; mudou();
+      });
+      for (const ev of ['input', 'change', 'keyup', 'blur']) ta.addEventListener(ev, mudou);
+    } else {
+      // copiar: toque e segure no iPhone seleciona só uma "palavra" do código; a seleção volta a ser o código inteiro
+      // copiou pelo menu do sistema: o campo solta o foco (no iPhone o 1º toque seguinte não chegaria a "Voltar")
+      ta.addEventListener('copy', () => setTimeout(() => { if (feito) return; ta.blur(); som('ui-ok'); escrever(aviso, '{c:verde}Copiado! No outro aparelho, use "Colar código".{/c}'); }, 0));
+      ta.addEventListener('focus', tudo); ta.addEventListener('select', tudo); ta.addEventListener('pointerup', () => setTimeout(tudo, 0));
+      document.addEventListener('selectionchange', tudo);
+    }
+    // nem todo navegador avisa a mudança do mesmo jeito (o menu do iOS, extensões de teclado): confere o texto 4× por segundo
+    const vigia = window.setInterval(mudou, 250);
     // enquanto o campo tem o foco, as teclas são dele (o jogo não as lê), menos Esc e Enter; o soltar (keyup)
     // segue para o jogo, senão a tecla que abriu este quadro ficaria presa como apertada
     ta.addEventListener('keydown', (e) => {
@@ -123,10 +155,12 @@ export function campoCodigo(modo: 'colar' | 'copiar', codigo = ''): Promise<stri
       el, sobreposta: true,
       entrar() { pintar(); pintarFoco(); if (modo === 'colar' && input.modo !== 'toque' && !plataforma.toque) ta.focus(); },
       atualizar() {
-        if (feito || document.activeElement === ta) return;
+        // as teclas digitadas no campo não chegam aqui (o keydown para nele); o que chega são os botões de toque
+        // (A/B/setas da tela, que não tiram o foco do campo) e o controle: valem mesmo com o campo focado
+        if (feito) return;
         if (input.apertou('esq') && foco > 0) { foco--; som('ui-mover'); pintarFoco(); }
         else if (input.apertou('dir') && foco < bts.length - 1) { foco++; som('ui-mover'); pintarFoco(); }
-        else if (input.apertou('a')) { input.consumir('a'); void apertar(foco); }
+        else if (input.apertou('a')) { input.consumir('a'); ta.blur(); void apertar(foco); }
         else if (input.apertou('b')) { input.consumir('b'); som('ui-voltar'); sair(null); }
       },
     };

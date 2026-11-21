@@ -178,12 +178,16 @@ export function lerExportado(txt: string): SaveData {
   }
   // o texto depois do código numa linha nova ("Abraço!") se gruda nele quando os espaços somem: tenta cortar
   // nas quebras, do fim para o começo, até a soma conferir
-  const pedacos = bruto.slice(bruto.indexOf('PINGO1')).split(/\s+/).filter(Boolean);
+  // o código colado duas vezes (grudado ou em linhas) também vale: cada "PINGO1" começa uma tentativa
+  const inicios = [...bruto.matchAll(/PINGO1/g)].map((m) => m.index ?? 0);
   let bytes: Uint8Array | null = null;
-  for (let k = pedacos.length; k >= Math.max(1, pedacos.length - 8) && !bytes; k--) {
-    const m = /^PINGO1:([0-9a-fA-F]{8}):([A-Za-z0-9_-]+)/.exec(pedacos.slice(0, k).join(''));
-    if (!m) continue;
-    try { const b = descompactar(deB64(m[2])); if (crc32(b) === m[1].toLowerCase()) bytes = b; } catch { /* tenta um corte menor */ }
+  for (let j = 0; j < inicios.length && !bytes; j++) {
+    const pedacos = bruto.slice(inicios[j], inicios[j + 1] ?? bruto.length).split(/\s+/).filter(Boolean);
+    for (let k = pedacos.length; k >= Math.max(1, pedacos.length - 8) && !bytes; k--) {
+      const m = /^PINGO1:([0-9a-fA-F]{8}):([A-Za-z0-9_-]+)/.exec(pedacos.slice(0, k).join(''));
+      if (!m) continue;
+      try { const b = descompactar(deB64(m[2])); if (crc32(b) === m[1].toLowerCase()) bytes = b; } catch { /* tenta um corte menor */ }
+    }
   }
   if (!bytes) throw new Error('O código está incompleto ou foi alterado: copie o código inteiro de novo (ou use o arquivo .pingo).');
   let d: unknown;

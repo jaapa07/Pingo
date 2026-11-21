@@ -72,6 +72,11 @@ await teste('código de transferência: ida e volta idêntica, com espaços/queb
     `Meu jogo do Pingo:\n${cod}\nAbraço!`,
     `"${cod}"`,
     `https://exemplo.invalid/#pingo=${cod.replace(/:/g, '%3A')}`,
+    // colado duas vezes (o 1º toque em "Usar código" do iPhone não respondia e o jogador colava de novo)
+    cod + cod,
+    `${cod}\n${cod}`,
+    // pedaço velho antes do código inteiro
+    cod.slice(0, 50) + cod,
   ];
   for (const s of sujos) afirmar(semTempo(save.lerExportado(s)) === ref, 'aceita: ' + JSON.stringify(s.slice(0, 30)));
 });

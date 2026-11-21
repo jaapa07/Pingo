@@ -180,3 +180,37 @@ scratchpad e `tools/testes/feedback/itch-lab.mts` (pacote do itch). iPhone 13 em
 src/world/index.ts, src/data/eventos/comuns.ts, src/ui/telas/diario.ts, src/ui/telas/comum.ts, src/ui/componentes/voltar.ts
 (novo), src/battle/view/tela.ts, src/battle/view/menus.ts, src/battle/view/palco.ts, tools/build-pacote.ts,
 tools/testes/feedback/itch-lab.mts (novo).
+
+## "Usar código" não respondia depois de colar no iPhone (21/11)
+
+Relato: iPhone (Safari, site e itch.io), jogo vazio → "Colar código" → toque e segure → Colar; o quadro mostrava
+"Recebido: N letras" e "Usar código" não funcionava.
+
+- **Causa** (reproduzida por toque no iPhone 13 emulado, Chromium com `hasTouch`, área de transferência e menu Colar do
+  iOS simulados): depois de colar, o campo (`textarea`) continuava focado com o menu do iOS aberto. No iOS o 1º toque
+  fora do campo só tira o foco e fecha o menu, sem chegar ao botão: "Usar código" parecia morto. O jogador colava de
+  novo e o texto entrava no cursor, **somado ao que já estava lá**: o código ficava duplicado (1936 letras em vez de
+  968), `lerExportado` recusava ("incompleto ou alterado") e daí em diante "Usar código" só dava erro. Além disso, com
+  o campo focado, `atualizar` ignorava o A/B da tela de toque (os botões virtuais não tiram o foco do campo), e a
+  mensagem de erro de 3 linhas ficava debaixo dos botões.
+- **Correção** (src/ui/telas/saves.ts, `campoCodigo`):
+  - colar troca o texto inteiro do campo (evento `paste`); o texto também é conferido em `input`, `change`, `keyup`,
+    `blur` e a cada 250 ms (se o aparelho não avisar a mudança);
+  - assim que o texto muda, o campo solta o foco: "Usar código", "Colar" e "Voltar" respondem no 1º toque;
+  - código completo: "Usar código" fica em destaque e o jogo segue sozinho 0,7 s depois (ou na hora, tocando);
+  - A/B/setas da tela e do controle valem com o campo focado (as teclas digitadas nele continuam só dele);
+  - quadro 4 px mais alto: o aviso de até 3 linhas fica acima dos botões e não intercepta toques;
+  - COPIAR: toque e segure que selecionava só um pedaço do código volta a selecionar o código inteiro, e depois do
+    Copiar do menu do sistema o campo solta o foco ("Copiado!").
+  - `lerExportado` (src/core/save.ts) aceita o código colado duas vezes ou com um pedaço velho antes (3 casos novos em
+    tools/verify/save.ts).
+- **Testado**: iPhone 13 em pé e deitado por toque, com o 1º toque engolido: Copiar → colar → 1º toque em "Usar
+  código" (200 ms depois de colar), "Voltar" no 1º toque, abertura sozinha, A da tela, colar sem dados no evento e sem
+  evento nenhum, botão "Colar" do quadro, Importar arquivo .pingo. PC (Chromium, teclado): Ctrl+V. App de PC (Electron
+  44 com `main.cjs` e um `dist/` novo): Copiar → área do sistema; quadro com outro texto + Ctrl+V; ponte `colar`;
+  Exportar/Importar .pingo (diálogos substituídos); fechar, abrir e continuar o jogo importado; `test:desktop` (jogo
+  novo, salvar, fechar, reabrir). Android (Capacitor simulado no Chromium, Pixel 5): Clipboard.write/read, quadro
+  quando o plugin não lê nada, Preferences guardando os saves (reabrindo sem localStorage/IndexedDB), arquivo .pingo.
+  Demo ↔ completo (Vite com `VITE_DEMO=1`): save da demo (2 insígnias) abre no completo; save do completo com 2
+  insígnias numa zona da demo abre na demo; save pós-Liga é recusado na demo com o aviso e nada gravado.
+- **Não deu para testar aqui**: Safari/WKWebView de verdade (sem WebKit no contêiner) e o APK num Android real.
