@@ -1,12 +1,14 @@
 # Gera o jogo completo para Windows, Linux, Mac e Android e publica tudo numa só Release do GitHub (`pc-<VERSAO>`).
 # Dispara quando o arquivo plataformas/desktop/VERSAO muda em main (mude o número para publicar uma versão nova).
+# Num branch `teste-release/...` (com a VERSAO mudada) roda tudo sem publicar: os arquivos ficam nos Artifacts.
 # Também roda à mão em Actions → "Versões para PC, Mac e Android" → Run workflow: por padrão só gera os arquivos
 # (ficam em "Artifacts" da execução); marque "publicar" para criar/atualizar a Release.
 name: Versões para PC, Mac e Android
 
 on:
   push:
-    branches: [main]
+    # `teste-release/*`: ensaio do workflow inteiro sem publicar (só os artifacts)
+    branches: [main, 'teste-release/**']
     paths: ['plataformas/desktop/VERSAO']
   workflow_dispatch:
     inputs:
@@ -134,7 +136,7 @@ jobs:
 
   publicar:
     needs: [versao, pc, mac, android]
-    if: github.event_name == 'push' || inputs.publicar
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || inputs.publicar
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
