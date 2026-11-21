@@ -15,6 +15,7 @@ import { ZonaViva, zonaDef, listaZonas, AVISO_EM_OBRAS } from './zonas';
 import { M, ajudante, musica, rodarVigias, quadros, type NpcVivo } from './vivo';
 import { pollEntrada, avisar, falar, criarCriatura, iniciarBatalha, diarioBatalhas, diarioFalas, especie, nomeCriatura, temBatalha } from './deps';
 import { mecanicas } from './registro';
+import { zonaNaDemo, TEXTOS_DEMO } from '../core/demo';
 import { sincronizarNpcs, limparNpcs, atualizarNpcs } from './npcs';
 import { atualizarJogador, baseDoModo } from './jogador';
 import { montarProps, atualizarCanteiros, farejar, usarAmuleto, usarItemNoCampo, pintarTile, pescar } from './campo';
@@ -101,6 +102,8 @@ export function irPara(zona: string, x: number, y: number, dir?: Dir, transicao 
   const r = filaIr.then(async () => {
     // destino ausente (zona não escrita ou ignorada por defeito): o jogador fica onde está e vê o aviso
     if (!zonaDef(zona)) { console.error(`[mundo] irPara: zona "${zona}" não existe; viagem cancelada.`); if (M.zv) avisar(AVISO_EM_OBRAS); return; }
+    // demo (src/core/demo.ts): nenhuma viagem sai das zonas liberadas, venha de warp, evento, voo ou atalho
+    if (!zonaNaDemo(zona)) { console.warn(`[mundo] irPara: "${zona}" fica fora da demo; viagem cancelada.`); if (M.zv) avisar(TEXTOS_DEMO.zonaFechada); return; }
     M.ocupado++; M.carregando = true;
     try {
       garantirTela();

@@ -8,13 +8,18 @@ import { jogo, novoSave, opcoesPadrao } from './estado';
 import { rng } from './rng';
 import { bus } from './events';
 import { plataforma } from './plataforma';
+import { DEMO, motivoForaDaDemo } from './demo';
 
 export const N_SLOTS = 3;
 export interface ResumoSlot { nome: string; avatar: 'kaue' | 'ayra'; insignias: number[]; diario: number; vistos: number; tempo: number; zona: string; quando: number; equipe: number[] }
 interface Registro { v: 1; soma: string; quando: number; resumo: ResumoSlot; dados: SaveData }
 
-const CH_SLOT = (i: number) => 'pingo.slot.' + i;
-const CH_OPCOES = 'pingo.opcoes', CH_RETOMADA = 'pingo.retomada';
+// a demo (src/core/demo.ts) guarda tudo em chaves próprias: hospedada no mesmo domínio do jogo completo, um não vê os saves do outro
+const PFX = DEMO ? 'pingo-demo.' : 'pingo.';
+const CH_SLOT = (i: number) => PFX + 'slot.' + i;
+const CH_OPCOES = PFX + 'opcoes', CH_RETOMADA = PFX + 'retomada', CH_QR = PFX + 'qr';
+/** por que o último `carregarSlot`/`carregarRetomada` recusou o save ('' = vazio ou danificado) */
+export let motivoRecusa = '';
 const cache = new Map<string, string>();
 let pronto = false;
 
@@ -114,7 +119,8 @@ export const slotDanificado = (i: number) => !registro(i) && (cache.has(CH_SLOT(
 export function listarSlots(): (ResumoSlot | null)[] { return Array.from({ length: N_SLOTS }, (_, i) => registro(i)?.resumo ?? null); }
 /** carrega o slot para `jogo` (com a semente do acaso). Devolve false se estiver vazio ou corrompido. */
 export function carregarSlot(i: number): boolean {
-  const r = registro(i); if (!r) return false;
+  const r = registro(i); motivoRecusa = ''; if (!r) return false;
+  motivoRecusa = motivoForaDaDemo(r.dados) ?? ''; if (motivoRecusa) return false;
   jogo.slot = i; jogo.carregar(completar(r.dados));
   return true;
 }
@@ -144,7 +150,7 @@ export function lerRetomada(): { slot: number; resumo: ResumoSlot } | null {
   try { const o = JSON.parse(cache.get(CH_RETOMADA) ?? 'null') as { slot: number; reg: string } | null; const r = desembrulhar(o?.reg); return o && r ? { slot: o.slot, resumo: r.resumo } : null; } catch { return null; }
 }
 export function carregarRetomada(): boolean {
-  try { const o = JSON.parse(cache.get(CH_RETOMADA) ?? 'null') as { slot: number; reg: string } | null; const r = desembrulhar(o?.reg); if (!o || !r) return false; jogo.slot = o.slot; jogo.carregar(completar(r.dados)); return true; } catch { return false; }
+  try { const o = JSON.parse(cache.get(CH_RETOMADA) ?? 'null') as { slot: number; reg: string } | null; const r = desembrulhar(o?.reg); motivoRecusa = ''; if (!o || !r) return false; motivoRecusa = motivoForaDaDemo(r.dados) ?? ''; if (motivoRecusa) return false; jogo.slot = o.slot; jogo.carregar(completar(r.dados)); return true; } catch { return false; }
 }
 export function limparRetomada() { if (cache.has(CH_RETOMADA)) tirar(CH_RETOMADA); }
 
@@ -179,6 +185,8 @@ export function lerExportado(txt: string): SaveData {
   let d: unknown;
   try { d = JSON.parse(deUtf8(bytes)); } catch { throw new Error('O arquivo está danificado.'); }
   if (!saveValido(d)) throw new Error((d as { versao?: number } | null)?.versao && (d as { versao: number }).versao > 1 ? 'Este código é de uma versão mais nova do jogo. Atualize o jogo neste aparelho e tente de novo.' : 'O código é de uma versão que este jogo não conhece.');
+  // demo: um save que já passou do limite (jogo completo) não entra; nada é gravado
+  const fora = motivoForaDaDemo(d); if (fora) throw new Error(fora);
   return completar(d);
 }
 /** importa para um slot (padrão: o primeiro vazio; se não houver, lança erro pedindo para escolher) */
@@ -205,11 +213,11 @@ export function receberParteQr(parte: string): { completo?: string; tem: number;
   const m = /^(\d+)\.(\d+)\.([0-9a-f]{8})\.(.+)$/.exec(parte); if (!m) return null;
   const i = Number(m[1]), n = Number(m[2]), id = m[3];
   let guardado: { id: string; p: Record<number, string> } = { id, p: {} };
-  try { const g = JSON.parse(cache.get('pingo.qr') ?? localStorage.getItem('pingo.qr') ?? 'null') as typeof guardado | null; if (g?.id === id) guardado = g; } catch { /* começa de novo */ }
+  try { const g = JSON.parse(cache.get(CH_QR) ?? localStorage.getItem(CH_QR) ?? 'null') as typeof guardado | null; if (g?.id === id) guardado = g; } catch { /* começa de novo */ }
   guardado.p[i] = m[4];
   const tem = Object.keys(guardado.p).length;
-  if (tem >= n) { cache.delete('pingo.qr'); try { localStorage.removeItem('pingo.qr'); } catch { /* sem localStorage */ } return { completo: Array.from({ length: n }, (_, k) => guardado.p[k + 1] ?? '').join(''), tem, total: n }; }
-  cache.set('pingo.qr', JSON.stringify(guardado)); try { localStorage.setItem('pingo.qr', JSON.stringify(guardado)); } catch { /* só nesta sessão */ }
+  if (tem >= n) { cache.delete(CH_QR); try { localStorage.removeItem(CH_QR); } catch { /* sem localStorage */ } return { completo: Array.from({ length: n }, (_, k) => guardado.p[k + 1] ?? '').join(''), tem, total: n }; }
+  cache.set(CH_QR, JSON.stringify(guardado)); try { localStorage.setItem(CH_QR, JSON.stringify(guardado)); } catch { /* só nesta sessão */ }
   return { tem, total: n };
 }
 /** save de teste para os atalhos de URL (`?zona=`, `?batalha=`) */

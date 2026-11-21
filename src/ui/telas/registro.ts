@@ -26,6 +26,8 @@ import { criarMapaMundi } from './mapa-mundi';
 import { criarCreditos } from './creditos';
 registrarTela('mapa-mundi', criarMapaMundi);
 registrarTela('creditos', criarCreditos);
+import { criarFimDemo } from './fim-demo';
+registrarTela('fim-demo', criarFimDemo); // só aparece no pacote da demo (src/core/demo.ts)
 import { criarRadio } from './radio';
 import { criarFoto } from './foto';
 import { criarCinematica } from './cinematica';

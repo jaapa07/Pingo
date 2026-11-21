@@ -21,6 +21,7 @@ export type AmuletoId = 'facao' | 'remo' | 'forca' | 'lampiao' | 'quebra-pedra' 
  * Condição textual usada em portões, warps, NPCs e eventos. Termos unidos por '&' (e) ou '|' (ou, sem misturar):
  *  'insignia:3' (tem a insígnia nº 3) · 'insignias:15' (tem ≥ 15) · 'flag:usina-ok' · '!flag:x' · 'amuleto:remo'
  *  'item:passe-trem' · 'diario:150' (≥ 150 capturadas) · 'periodo:noite' · 'pos-jogo' · 'mapa-b' (mapa B aberto neste pacote)
+ *  'demo' (pacote de demonstração, `npm run build:demo`; src/core/demo.ts)
  */
 export type Cond = string;
 

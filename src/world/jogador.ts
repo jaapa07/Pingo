@@ -2,7 +2,8 @@
 import type { Dir, Warp, Gatilho } from '../core/tipos';
 import { jogo, cond, flag, setFlag } from '../core/estado';
 import { rng } from '../core/rng';
-import { M, ocupar, sfx, atorEm, quadros } from './vivo';
+import { M, ocupar, sfx, atorEm, quadros, musica } from './vivo';
+import { DEMO, INSIGNIAS_DA_DEMO } from '../core/demo';
 import { DX, DY, SALIENCIA, zonaDef, zonaExiste, AVISO_EM_OBRAS } from './zonas';
 import { entrada, falar, abrirTela } from './deps';
 import type { OpMover } from './ator';
@@ -139,6 +140,8 @@ export function usarWarp(w: Warp): Promise<void> {
 export function atualizarJogador() {
   const j = M.jog, e = entrada();
   if (M.ocupado || j.movendo) return;
+  // demo (src/core/demo.ts): ao ganhar a 2ª insígnia, assim que o jogador fica livre, a tela de fim da demo (uma vez)
+  if (DEMO && !flag('demo-fim') && jogo.save.insignias.includes(INSIGNIAS_DA_DEMO)) { setFlag('demo-fim'); void ocupar(async () => { await abrirTela('fim-demo'); musica(M.zv.def.musica, true); }); return; }
   if (e.apertou('a')) { void interagir(); return; }
   if (e.apertou('menu')) { void ocupar(async () => { await abrirTela('menu'); }); return; }
   if (e.apertou('select')) { void atalho(); return; }

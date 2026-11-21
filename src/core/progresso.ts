@@ -11,3 +11,12 @@ export const EM_OBRAS: Record<'trem' | 'saveiro', string> = {
   trem: 'O maquinista tira o boné e coça a cabeça:\n"Campeão, a linha da serra está em obras! Caiu barreira no túnel e a turma ainda está assentando trilho."\f"Guarde bem o seu Passe. Quando a Maria-Fumaça voltar a subir, o Rádio Cipó avisa."',
   saveiro: 'O mestre do Saveiro aponta o casco virado no estaleiro:\n— Rio acima, só depois da reforma, Campeão. O barco está em obras: tábua nova, vela nova, tudo.\f— Guarde o bilhete. Quando o Saveiro voltar para a água, o Rádio Cipó avisa.',
 };
+
+/**
+ * `DEMO`: pacote de DEMONSTRAÇÃO gratuita (`npm run build:demo` → `dist-demo/`, docs/DEMO.md). Vem da variável de build
+ * `VITE_DEMO=1`; o `npm run build` normal (site, PC, iOS) não a define e continua o jogo completo, sem mudança nenhuma.
+ * Na demo o jogo vai até a 2ª insígnia: textos, zonas liberadas e regras de save ficam em `src/core/demo.ts`.
+ * Em condições (`Cond`) a chave é o termo `demo` (ex.: o portão da Gruta do Eco em A-R3 tem `requer: '!demo'`).
+ * Fora do Vite (tsx, ferramentas) `import.meta.env` não existe: vale `false`.
+ */
+export const DEMO: boolean = (import.meta.env?.VITE_DEMO ?? '') === '1';

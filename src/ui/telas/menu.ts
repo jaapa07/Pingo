@@ -16,6 +16,7 @@ import { patacas, tempoRelogio } from './comum';
 import { nomeLocal } from './mapa-dados';
 import { moduloMundo } from './dados';
 import { T } from '../../data/textos-ui';
+import { DEMO, TEXTOS_DEMO } from '../../core/demo';
 
 const NOME_PERIODO = { manha: 'manhã', dia: 'dia', tarde: 'tarde', noite: 'noite' };
 let ultimo = '';
@@ -53,6 +54,7 @@ export function criarMenu(): Tela {
   const cx = moldura('tinta', 132, 46, 26, 118); el.append(cx);
   const l1 = texto(nomeLocal(s.jogador.zona), { cor: 'amarelo', sombra: true }), l2 = texto('', { cor: 'creme' }), l3 = texto(`${patacas(s.jogador.dinheiro)} patacas`, { cor: 'creme' });
   cx.append(em(l1, 6, 5), em(spr(periodo() === 'noite' ? 'lua' : 'sol'), 5, 15), em(l2, 22, 18), em(l3, 6, 32));
+  if (DEMO) el.append(em(texto(TEXTOS_DEMO.selo, { cor: 'cinza', sombra: true }), 30, 166));
   const hora = () => `${tempoRelogio(minutosAgora())} · ${NOME_PERIODO[periodo()]}${s.repelente > 0 ? ` · fumaça ${s.repelente}` : ''}`;
   let relogio = '';
 

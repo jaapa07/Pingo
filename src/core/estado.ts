@@ -1,7 +1,7 @@
 /** Estado global da sessão: o save em memória + opções. Persistência em core/save.ts. */
 import type { SaveData, Opcoes, CriaturaInst, AmuletoId, Cond, Periodo } from './tipos';
 import { rng } from './rng';
-import { MAPA_B_ABERTO } from './progresso';
+import { MAPA_B_ABERTO, DEMO } from './progresso';
 
 export const opcoesPadrao = (): Opcoes => ({ musica: 0.7, sfx: 0.85, velTexto: 2, dificuldade: 'aventureiro', animBatalha: true, numerosDano: false, vibrar: true, parceiraSegue: false, teclas: {}, qualidade: 'pc' });
 
@@ -70,6 +70,7 @@ function termo(t: string): boolean {
     case 'periodo': return periodo() === v;
     case 'pos-jogo': return !!flag('conselho-vencido');
     case 'mapa-b': return MAPA_B_ABERTO;
+    case 'demo': return DEMO;
     case 'sempre': return true;
     case 'nunca': return false;
     default: throw new Error('condição desconhecida: ' + t);

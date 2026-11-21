@@ -1,5 +1,6 @@
 import type { ZonaDef } from '../../core/tipos';
 import { grade, obj, entrada, saidas, gente, duelista, item, placa, subBosque } from './_a1-grade';
+import { TEXTOS_DEMO } from '../../core/demo';
 
 /**
  * A-R3 · Trilha dos Cipós (Bosque Alto a oeste → Gruta do Eco a leste). Os cipós grossos fecham a trilha logo na
@@ -43,6 +44,7 @@ const g = grade('A-R3', [
   '1': '.', '2': '.', '3': '.', '4': '.', '5': '.', '6': '.', '7': '.', '8': '.',
 });
 const p1 = placa(g, 's', 'TRILHA DOS CIPÓS\nOeste: Bosque Alto · Leste: Gruta do Eco → Porto Sereia\nCipó grosso não se desata: corta-se. Traga o Facão e uma parceira que saiba usar.');
+const gruta = entrada(g, 'G', 'caverna-entrada', 'A-GE', 4, 29, { tipo: 'caverna' });
 const zona: ZonaDef = {
   id: 'A-R3', nome: 'Trilha dos Cipós', mapa: 'A', tipo: 'rota', tileset: 'mata', musica: 'rota-dia-A', arena: 'mata', passo: 3,
   mapaChars: subBosque(g.mapa, false),
@@ -50,8 +52,10 @@ const zona: ZonaDef = {
   placas: [p1.placa],
   warps: [
     ...saidas(g, 'W', 'A3', 41, 15, 'o'),
-    entrada(g, 'G', 'caverna-entrada', 'A-GE', 4, 29, { tipo: 'caverna' }),
+    gruta,
   ],
+  // DEMO (src/core/demo.ts): o guarda fica no único tile de acesso à Gruta do Eco; no jogo completo o portão não existe
+  portoes: [{ x: gruta.x, y: gruta.y + 1, requer: '!demo', sprite: 'cl-montanhista', fala: TEXTOS_DEMO.guarda }],
   npcs: [
     // Parque Safári (spec 10A item 33): o pescador dá a Pedra de Rio depois da Liga (src/data/eventos/posliga.ts)
     { id: 'safari-pescador-seixo', sprite: 'cl-pescador', x: 35, y: 6, dir: 'o', se: 'flag:liga-vencida', script: 'safari-da-pedra' },

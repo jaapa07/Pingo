@@ -8,6 +8,7 @@ import { texto, em } from '../fonte';
 import { camada } from '../kit';
 import { Lista } from '../componentes/lista';
 import { plataforma } from '../../core/plataforma';
+import { DEMO, TEXTOS_DEMO } from '../../core/demo';
 
 function faixa(nome: string, y: number, pai: HTMLElement, altura?: number): HTMLElement {
   const c = camada(nome), d = div('', pai);
@@ -38,7 +39,8 @@ export function criarTitulo(args: { aoJogar(): void; aoOpcoes(): void }): Tela {
   const menu = new Lista({ itens, tamanho: 12, circular: true, aoEscolher: (i) => { if (i === 0) args.aoJogar(); else if (i === 1) args.aoOpcoes(); else plataforma.sair(); } });
   em(menu.el, Math.floor((320 - menu.largura) / 2), 176 - parseInt(menu.el.style.height) - 2);
   el.append(menu.el);
-  el.append(em(texto('v1.0', { cor: 'creme', sombra: true }), 296, 170));
+  if (DEMO) { const v = texto(`${TEXTOS_DEMO.selo} · v1.0`, { cor: 'creme', sombra: true }); el.append(em(v, 316 - (parseInt(v.style.width) || 60), 170)); }
+  else el.append(em(texto('v1.0', { cor: 'creme', sombra: true }), 296, 170));
   let t = 0;
   const BASE_NUVEM = [60, 210, 300];
   const BALANCO = [0, 0, 1, 1, 2, 1, 1, 0];
