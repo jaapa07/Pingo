@@ -1,5 +1,5 @@
 /**
- * Apoio das zonas do time B2-norte (Campos de Altitude, Lagoa Gelada, Caminho das Névoas, Planalto Lume, Floresta Ancestral e Pico Pindorama, passos 14–17). Não é zona.
+ * Apoio das zonas do time B2-norte (Campos de Altitude, Lagoa Gelada, Caminho das Névoas, Planalto Lume, Floresta Ancestral e Pico Pingorama, passos 14–17). Não é zona.
  * Cópia da régua do time B1 (`_b1-lib.ts`, mesmo método), com a lista de defeitos própria e o mapa (`B` ou `PP`) nos serviços.
  * As grades são escritas à mão em linhas de texto; prédios, pessoas, itens e passagens são MARCADOS na própria grade
  * com caracteres fora da legenda de docs/ZONAS.md, e `grade()` troca cada marca pelo chão indicado e devolve as

@@ -1,5 +1,5 @@
 /**
- * A SEQUÊNCIA FINAL do Pico Pindorama (time B2-norte; spec 4.5, 5, 7A e 9.3; docs/HISTORIA.md).
+ * A SEQUÊNCIA FINAL do Pico Pingorama (time B2-norte; spec 4.5, 5, 7A e 9.3; docs/HISTORIA.md).
  *  - `pp-tibirica`: o guardião do Portão dos Guardiões (o portão em si é `insignias:16` na zona PP).
  *  - `pp-garrote`: o Coronel Garrote acorrentou a porta do Salão; vencê-lo marca `garrote-vencido` (derrota = Posto).
  *  - `pp-rival-8`: a Tainá na porta do Salão (`rival-8`, vença ou perca).
@@ -66,7 +66,7 @@ export const EVENTOS_CONSELHO: EventoDef[] = [
       se('!flag:garrote-vencido', [
         ['musica', 'cartel-tema'],
         ['emote', 'pp-garrote', '!'],
-        f(GARROTE, 'Ora, ora. O herói das dezesseis insígnias. A Usina, o Farol, o Pantanal, a Mina, o Laboratório… sempre você.\fSabe por que eu subi até aqui? Porque o Salão do Conselho guarda as criaturas mais antigas de Pindorama. Com uma delas numa gaiola, o Cartel Ferrugem nunca mais precisa de usina nenhuma.'),
+        f(GARROTE, 'Ora, ora. O herói das dezesseis insígnias. A Usina, o Farol, o Pantanal, a Mina, o Laboratório… sempre você.\fSabe por que eu subi até aqui? Porque o Salão do Conselho guarda as criaturas mais antigas de Pingorama. Com uma delas numa gaiola, o Cartel Ferrugem nunca mais precisa de usina nenhuma.'),
         f(GARROTE, 'Acorrentei as argolas da porta. Os velhos lá dentro vão negociar comigo ou não saem mais.\fE você? Vai sair do meu caminho ou vai ser o último bicho da minha coleção?'),
         ['batalha', 'garrote'],
         ['flag', 'garrote-vencido'],
@@ -82,7 +82,7 @@ export const EVENTOS_CONSELHO: EventoDef[] = [
         ['fade', 'dentro'],
         f({ nome: 'Guardiã Jandaia', retrato: 'guardia-jandaia' }, 'Os Guardiões da planície levaram o Coronel. As correntes ficaram no chão, onde é o lugar delas.\fNós voltamos para as nossas salas, {JOGADOR}. Quando estiver pronto, a porta está aberta. Lá dentro não se volta atrás.'),
         ['sfx', 'radio'],
-        f(RADIO, '"Edição extraordinária do Rádio Cipó! O Coronel Garrote, chefe do Cartel Ferrugem, foi preso no Pico Pindorama! Os Guardiões confirmam: o Cartel acabou. Os pesquisadores dos dois mapas comemoram — e a Drª Buriti mandou dizer que vai dormir oito horas seguidas pela primeira vez em anos!"'),
+        f(RADIO, '"Edição extraordinária do Rádio Cipó! O Coronel Garrote, chefe do Cartel Ferrugem, foi preso no Pico Pingorama! Os Guardiões confirmam: o Cartel acabou. Os pesquisadores dos dois mapas comemoram — e a Drª Buriti mandou dizer que vai dormir oito horas seguidas pela primeira vez em anos!"'),
         ['salvar'],
       ]),
     ],
@@ -130,7 +130,7 @@ export const EVENTOS_CONSELHO: EventoDef[] = [
     id: 'conselho-recepcao',
     passos: [
       f('conselho-recepcao', 'Esta é a sala de espera. Olhe a equipe e a mochila com calma: daqui para cima, cada sala é uma luta.\fPrimeira sala: Iara Costa, Rio e Encanto. Segunda: Cauã, Mata e Inseto. Terceira: Jandaia, Vento e Trovão. Quarta: Moacir, Terra, Pedra e Ferro.'),
-      f('conselho-recepcao', 'Na quinta sala está o Guardião-Mor Arandu. Ele luta com um pouco de tudo, e guarda para o fim uma criatura que só se vê nas histórias.\fBoa sorte. Pindorama inteira está ouvindo os seus passos.'),
+      f('conselho-recepcao', 'Na quinta sala está o Guardião-Mor Arandu. Ele luta com um pouco de tudo, e guarda para o fim uma criatura que só se vê nas histórias.\fBoa sorte. Pingorama inteira está ouvindo os seus passos.'),
     ],
   },
   sala(1, 'guardia-iara',
@@ -152,7 +152,7 @@ export const EVENTOS_CONSELHO: EventoDef[] = [
   {
     id: 'conselho-5',
     passos: [
-      f('guardiao-arandu', 'Entre, {JOGADOR}. Sente no chão um instante: aqui o chão é a coisa mais alta de Pindorama.\fQuatro Guardiões abriram as portas para você. Eu sou a última porta. E a última porta é sempre a que mais pesa.'),
+      f('guardiao-arandu', 'Entre, {JOGADOR}. Sente no chão um instante: aqui o chão é a coisa mais alta de Pingorama.\fQuatro Guardiões abriram as portas para você. Eu sou a última porta. E a última porta é sempre a que mais pesa.'),
       ['batalha', 'conselho-5', { segue: true, semMarca: true }],
       se('flag:batalha-perdida', [
         f('guardiao-arandu', 'Ainda não. Mas eu vi a sua equipe se colocar na sua frente, uma depois da outra. Isso é o que o Conselho procura.\fDesça, descanse e volte. A montanha não sai daqui.'),
@@ -198,7 +198,7 @@ export const EVENTOS_CONSELHO: EventoDef[] = [
         ['errante', 179, 77],
         ['errante', 180, 77],
         ['sfx', 'radio'],
-        f(RADIO, '"Atenção, Pindorama! O Rádio Cipó interrompe tudo — até a moda de viola — para anunciar: {JOGADOR}, de Vila Jacarandá, venceu o Conselho dos Guardiões no Pico Pindorama!\fA Profª Ipê chorou no microfone, a mãe já está fazendo bolo e a Tainá mandou dizer que vem buscar o título semana que vem. Parabéns, Guardião!"'),
+        f(RADIO, '"Atenção, Pingorama! O Rádio Cipó interrompe tudo — até a moda de viola — para anunciar: {JOGADOR}, de Vila Jacarandá, venceu o Conselho dos Guardiões no Pico Pingorama!\fA Profª Ipê chorou no microfone, a mãe já está fazendo bolo e a Tainá mandou dizer que vem buscar o título semana que vem. Parabéns, Guardião!"'),
       ]),
       ...zerar,
       ['flag', 'conselho-memoria', false],

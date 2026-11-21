@@ -26,8 +26,8 @@ const zona: ZonaDef = {
   objetos: [
     { o: 'tema', x: 0, y: 0, tema: 'quarto' },
     obj(g, 'P', 'pc', { script: 'pc-quarto' }),
-    obj(g, 'E', 'estante', { texto: ['Gibis do Capitão Jangada, um atlas de Pindorama e o álbum de figurinhas das criaturas.', 'Falta só a figurinha do Uirapuru. Sempre falta a do Uirapuru.'] }),
-    obj(g, 'Q', 'tv', { texto: ['Passa a reprise do Torneio do Pico Pindorama.', '"…e a Guardiã Iara Costa vence mais uma vez sem molhar o cabelo!"'] }),
+    obj(g, 'E', 'estante', { texto: ['Gibis do Capitão Jangada, um atlas de Pingorama e o álbum de figurinhas das criaturas.', 'Falta só a figurinha do Uirapuru. Sempre falta a do Uirapuru.'] }),
+    obj(g, 'Q', 'tv', { texto: ['Passa a reprise do Torneio do Pico Pingorama.', '"…e a Guardiã Iara Costa vence mais uma vez sem molhar o cabelo!"'] }),
     obj(g, 'N', 'bau', { texto: ['Roupas de frio que nunca saem do baú. Aqui é a Costa do Sol, afinal.'] }),
     obj(g, 'D', 'escada-desce'),
     obj(g, 'W', 'janela'),

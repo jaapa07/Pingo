@@ -8,6 +8,6 @@ export default casaSimples({
   bau: ['Novelos de seda crua. Macios que só.'],
   moradores: [
     { id: 'a3-casuleira', sprite: 'cl-rendeira', nome: 'Casuleira Filó', fala: ['No ginásio da Dona Seda as pontes de teia arrebentam se você pisar fora da ordem.', 'Olhe os nós antes de pisar: um nó, dois nós, três nós. Teia é matemática.'] },
-    { id: 'a3-casuleira-2', sprite: 'npc-idosa', nome: 'Casuleira Zizi', mov: 'olhar', fala: ['Lagartim vira Casulim no nível 7, e Casulim vira Bruxaluz no 10.', 'É a evolução mais rápida de Pindorama. Pena que a gente não é assim com dívida.'] },
+    { id: 'a3-casuleira-2', sprite: 'npc-idosa', nome: 'Casuleira Zizi', mov: 'olhar', fala: ['Lagartim vira Casulim no nível 7, e Casulim vira Bruxaluz no 10.', 'É a evolução mais rápida de Pingorama. Pena que a gente não é assim com dívida.'] },
   ],
 });

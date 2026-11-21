@@ -189,7 +189,7 @@ const MONTE_TUPA: TreinadorDef[] = [
   t('A-MT-3', 'Capoeirista', 'Mestre Ventania', 'cl-capoeirista', [{ e: 68, nv: 67 }, { e: 140, nv: 68 }, { e: 66, nv: 68 }], 2950, 'No alto do monte o vento joga capoeira com a gente. Aprendi com ele!', 'O vento virou.', 'De noite, com sorte, um Maracajim cruza a trilha. De dia, só o rastro.'),
   t('A-MT-4', 'Bióloga', 'Drª Bromélia', 'cl-biologa', [{ e: 62, nv: 67 }, { e: 156, nv: 68 }, { e: 172, nv: 68 }], 2950, 'Cada bromélia daqui é um condomínio de criaturas. Eu sou a síndica!', 'A síndica renunciou.', 'Lavadeira-Dragão de asa de vitral voa sobre as poças do alto. Rara. Linda. Brava.'),
   t('A-MT-5', 'Garimpeiro', 'Cristalino', 'cl-garimpeiro', [{ e: 164, nv: 68 }, { e: 162, nv: 68 }, { e: 34, nv: 69 }], 3000, 'A gruta do monte tem cristal que canta. Eu canto junto. Mal. Batalha para abafar!', 'Desafinei de vez.', 'Sem Lampião a gruta não tem saída. Com Lampião, tem uma: para cima.'),
-  t('A-MT-6', 'Guardiã da Trilha', 'Yara-do-Alto', 'cl-mateira', [{ e: 98, nv: 68 }, { e: 110, nv: 69 }, { e: 72, nv: 69 }, { e: 3, nv: 70 }], 3660, 'Última curva antes da Aldeia Tupã. Quem passa por mim, o Pajé recebe de pé!', 'Ele vai receber você de pé.', 'A Aldeia fica logo acima. A trilha da esquerda sobe ainda mais: é a do Pico Pindorama.'),
+  t('A-MT-6', 'Guardiã da Trilha', 'Yara-do-Alto', 'cl-mateira', [{ e: 98, nv: 68 }, { e: 110, nv: 69 }, { e: 72, nv: 69 }, { e: 3, nv: 70 }], 3660, 'Última curva antes da Aldeia Tupã. Quem passa por mim, o Pajé recebe de pé!', 'Ele vai receber você de pé.', 'A Aldeia fica logo acima. A trilha da esquerda sobe ainda mais: é a do Pico Pingorama.'),
 ];
 
 /* ------------------------------ A9 · Aldeia Tupã (retorno, nv 58–61) ------------------------------ */

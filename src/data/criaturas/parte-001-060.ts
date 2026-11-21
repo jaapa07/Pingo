@@ -328,7 +328,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-06', 'pt-20', 'pt-26', 'pt-27', 'pt-32', 'pt-33', 'pt-42', 'pt-43', 'pt-44', 'pt-49'],
     taxaCaptura: 30, expBase: 222, esforco: { vel: 3 }, crescimento: 'medio', femeas: 0.5,
     diario: 'Morcegos-vampiros dividem a refeição com as companheiras de abrigo que voltaram com fome, e lembram por anos de quem já os ajudou. Vampirinha se enrola na capa membranosa para dormir e só a abre inteira diante de quem considera amigo.',
-    altura: 1.4, peso: 19.0, habitat: 'Cavernas vulcânicas e Pico Pindorama', porte: 'G',
+    altura: 1.4, peso: 19.0, habitat: 'Cavernas vulcânicas e Pico Pingorama', porte: 'G',
   },
 
   /* ============================== terra, mangue e rio ============================== */
@@ -524,7 +524,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-06', 'pt-12', 'pt-16', 'pt-17', 'pt-18', 'pt-19', 'pt-20', 'pt-32', 'pt-41'],
     taxaCaptura: 35, expBase: 214, esforco: { atqEsp: 2, vel: 1 }, crescimento: 'medio', femeas: 0.5,
     diario: 'Araras-vermelhas se reúnem em barrancos para comer argila, que ajuda a neutralizar as toxinas das sementes verdes de sua dieta. As penas de Araracanga estalam de eletricidade quando ela abre as asas, e seu grito chega antes do trovão.',
-    altura: 1.1, peso: 12.0, habitat: 'Paredões das chapadas e Pico Pindorama', porte: 'G',
+    altura: 1.1, peso: 12.0, habitat: 'Paredões das chapadas e Pico Pingorama', porte: 'G',
   },
   {
     num: 53, id: 'papagaiozim', nome: 'Papagaiozim', tipos: ['comum', 'vento'],

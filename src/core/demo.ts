@@ -51,7 +51,7 @@ export const TEXTOS_DEMO = {
   seguir: 'Até lá, dá para continuar explorando, capturando e treinando por aqui.',
   rodape: 'A: continuar explorando',
   /** fala do guarda na entrada da Gruta do Eco (A-R3) */
-  guarda: 'Fim da demo!\fA Gruta do Eco, Porto Sereia e o resto de Pindorama estão no jogo completo, em breve na App Store, no Google Play e no PC.\fSeu jogo vai junto: no menu de jogos, use "Copiar código" ou "Exportar arquivo .pingo".\fAté lá, a Trilha dos Cipós e o Bosque Alto são todos seus!',
+  guarda: 'Fim da demo!\fA Gruta do Eco, Porto Sereia e o resto de Pingorama estão no jogo completo, em breve na App Store, no Google Play e no PC.\fSeu jogo vai junto: no menu de jogos, use "Copiar código" ou "Exportar arquivo .pingo".\fAté lá, a Trilha dos Cipós e o Bosque Alto são todos seus!',
   /** recusa de troca de zona fora da demo (rede de segurança; o caminho normal para no guarda) */
   zonaFechada: 'Fim da demo! Este caminho fica para o jogo completo.',
   /** save que já passou do limite da demo (importado do jogo completo) */

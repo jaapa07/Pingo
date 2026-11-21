@@ -17,7 +17,7 @@ const paleta: PaletaBioma = {
 const pico: TilesetExterior = {
   nome: 'pico',
   periodos: true,
-  descricao: 'Pico Pindorama: cume nevado, rocha nua e gelo',
+  descricao: 'Pico Pingorama: cume nevado, rocha nua e gelo',
   paleta,
   base: { chao: 'G', caminho: 'T', alt: 'S', encontro: 'S', piso: 'q', gelo: 'E', lama: 't', paredeTopo: 'R', agua: 'A', perigo: 'G' },
   arte: {

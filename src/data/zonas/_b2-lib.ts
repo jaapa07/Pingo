@@ -1,5 +1,5 @@
 /**
- * Ferramentas de desenho do time B2 (zonas do leste do Sertão das Névoas e Pico Pindorama).
+ * Ferramentas de desenho do time B2 (zonas do leste do Sertão das Névoas e Pico Pingorama).
  * Tudo aqui é régua e compasso: retângulos, linhas e carimbos em coordenadas escritas à mão. Nada é sorteado.
  */
 import type { ZonaDef, NpcDef, Encontro, Dir, ObjetoSpawn, Warp } from '../../core/tipos';

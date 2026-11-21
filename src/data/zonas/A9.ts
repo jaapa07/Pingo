@@ -63,7 +63,7 @@ const zona: ZonaDef = {
   npcs: [
     { id: 'gaviao', sprite: 'c:gaviao-tupa', ...g.p('y'), dir: 's', se: 'insignia:16&!flag:gaviao-ok', script: 'a2-a9-gaviao' },
     { id: 'a9-anciao', sprite: 'npc-idoso', x: 15, y: 22, dir: 'o', script: 'a2-a9-paje-fora' },
-    { id: 'a9-tecela', sprite: 'npc-mulher-2', x: 30, y: 16, mov: 'olhar', fala: ['Cada insígnia que você traz é um fio. Dezesseis fios fazem a rede que segura Pindorama no lugar.', 'A última o Pajé só entrega para quem passa nas quatro provas. Não tenha pressa: ele não tem.'] },
+    { id: 'a9-tecela', sprite: 'npc-mulher-2', x: 30, y: 16, mov: 'olhar', fala: ['Cada insígnia que você traz é um fio. Dezesseis fios fazem a rede que segura Pingorama no lugar.', 'A última o Pajé só entrega para quem passa nas quatro provas. Não tenha pressa: ele não tem.'] },
     { id: 'a9-curumim', sprite: 'cl-crianca-f', x: 21, y: 24, mov: 'vagar', fala: ['Você subiu o monte todinho? Eu subo todo dia para buscar água. Duas vezes!', 'Quando troveja sem nuvem, é o Gavião-Tupã passando. A gente dá tchau.'] },
     { id: 'A9-1', sprite: 'cl-vaqueiro', ...g.p('1'), dir: 'l', treinador: 'A9-1', visao: 4 },
     { id: 'A9-2', sprite: 'cl-rendeira', ...g.p('2'), dir: 's', mov: 'olhar', treinador: 'A9-2', visao: 3 },

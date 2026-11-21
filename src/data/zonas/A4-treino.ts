@@ -35,7 +35,7 @@ const zona: ZonaDef = {
   ],
   objetos: [
     { o: 'tema', x: 0, y: 0, tema: 'g03' },
-    { o: 'gin-estatua', x: 7, y: 15, texto: ['GINÁSIO DE TREINO\nRevanches dos líderes de Pindorama.\nLigue pelo Rádio Cipó no dia e no período de cada um.'] },
+    { o: 'gin-estatua', x: 7, y: 15, texto: ['GINÁSIO DE TREINO\nRevanches dos líderes de Pingorama.\nLigue pelo Rádio Cipó no dia e no período de cada um.'] },
     { o: 'gin-estatua', x: 11, y: 15, texto: ['Regra da casa: uma revanche por líder por dia. Quem perde volta para o Posto, como em qualquer ginásio.'] },
     { o: 'gin-pedestal', x: 9, y: 1 },
   ],

@@ -16,8 +16,8 @@ export const NOTICIAS: Noticia[] = [
   { id: 'farol', titulo: 'Farol aceso de novo', se: 'flag:farol-ok', texto: 'A Ilha do Farol voltou a guiar os saveiros. O tenente Rebite deixou o posto às pressas. As criaturas presas foram soltas na baía.' },
   { id: 'mina', titulo: 'Mina libertada', se: 'flag:mina-ok', texto: 'Os garimpeiros da Chapada Rubra retomaram a mina. As criaturas de pedra voltaram às galerias e, dizem, até o eco ficou mais alegre.' },
   { id: 'laboratorio', titulo: 'Laboratório secreto cai', se: 'flag:laboratorio-ok', texto: 'O esconderijo do Cartel no Brejo Roxo foi desmontado. Cuidado nas estradas: algo grande escapou de lá e anda sem rumo pelo sertão.' },
-  { id: 'garrote', titulo: 'Coronel Garrote derrotado', se: 'flag:garrote-vencido', texto: 'Acabou! O chefe do Cartel Ferrugem perdeu no alto do Pico Pindorama. O Conselho dos Guardiões decide agora o que fazer com ele.' },
-  { id: 'conselho', titulo: 'Pindorama tem nova guardiã', se: 'pos-jogo', texto: 'O Conselho dos Guardiões foi vencido em batalha limpa. Festa nas duas regiões! E a Floresta Ancestral, enfim, abriu suas trilhas.' },
+  { id: 'garrote', titulo: 'Coronel Garrote derrotado', se: 'flag:garrote-vencido', texto: 'Acabou! O chefe do Cartel Ferrugem perdeu no alto do Pico Pingorama. O Conselho dos Guardiões decide agora o que fazer com ele.' },
+  { id: 'conselho', titulo: 'Pingorama tem nova guardiã', se: 'pos-jogo', texto: 'O Conselho dos Guardiões foi vencido em batalha limpa. Festa nas duas regiões! E a Floresta Ancestral, enfim, abriu suas trilhas.' },
 ];
 
 /** faixas que o programa de música pode tocar (ids do motor de áudio; as que não existirem ficam de fora) */
@@ -81,5 +81,5 @@ export function agendaDoDia(o: { dia: number; periodo: string; liga: boolean; co
   if (o.liga) linhas.push('TORRE DE DESAFIOS: o Juiz da Torre espera no Platô da Liga. Uma batalha por dia, todos no nível 50.');
   linhas.push(o.cartao ? 'QUIZ DA FAUNA: a Locutora Sabiá grava perguntas novas hoje na Rádio Farol.' : 'QUIZ DA FAUNA: acerte 4 de 5 perguntas na Rádio Farol, na Ilha do Farol, e ganhe o Cartão do Rádio!');
   const resumo = `Hoje é ${DIA}, ${PER[o.periodo]}.\n${o.enxame ? `Enxame em ${o.enxame.local}. ` : ''}${o.contatos.length ? `${o.contatos.length} revanche(s) agora.` : 'Nenhuma revanche agora.'}`;
-  return { resumo, texto: `${o.periodo === 'noite' ? 'Boa noite' : o.periodo === 'tarde' ? 'Boa tarde' : 'Bom dia'}, Pindorama! Hoje é ${DIA}.\n\n${linhas.join('\n\n')}` };
+  return { resumo, texto: `${o.periodo === 'noite' ? 'Boa noite' : o.periodo === 'tarde' ? 'Boa tarde' : 'Bom dia'}, Pingorama! Hoje é ${DIA}.\n\n${linhas.join('\n\n')}` };
 }

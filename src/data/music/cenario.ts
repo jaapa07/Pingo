@@ -1,4 +1,4 @@
-/** Músicas de cenário: título, vila natal, rotas (dia/noite dos dois mapas), caverna, água, mergulho e Pico Pindorama. */
+/** Músicas de cenário: título, vila natal, rotas (dia/noite dos dois mapas), caverna, água, mergulho e Pico Pingorama. */
 import type { Faixa } from './types';
 
 const V8 = '- | - | - | - | - | - | - | -';
@@ -310,7 +310,7 @@ export const mergulho: Faixa = {
 };
 
 export const pico: Faixa = {
-  id: 'pico', titulo: 'Pico Pindorama', bpm: 80, loop: true, envio: 0.5,
+  id: 'pico', titulo: 'Pico Pingorama', bpm: 80, loop: true, envio: 0.5,
   inst: { melodia: 'flauta', contra: 'metais', baixo: 'baixoSub', harmonia: 'cordas' },
   estilo: { tipo: 'pad', oitava: 4 },
   vol: { melodia: 0.95, contra: 0.5, harmonia: 0.7, bateria: 0.6 },

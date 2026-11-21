@@ -383,7 +383,7 @@ export const EVENTOS_B2S: EventoDef[] = [
         ...contraInicial('rival-7'),
         se('flag:batalha-perdida', [f(TAINA, 'GANHEI! No frio, no alto, na frente da serra inteira! Bah!\fVá ao Posto. Uma Campeã que se preza não ganha de equipe cansada duas vezes.')], [
           f(TAINA, 'Bah… até o sotaque daqui eu peguei, menos a vitória.'),
-          f(TAINA, 'Sabe o que eu aprendi lá embaixo? Que o Cartel quer as lendárias. A Queixada, o Boitatá… e dizem que o Coronel Garrote está no Pico Pindorama.\fTerças e quintas eu treino na Gruta do Eco, lá na Costa. Passe lá quando quiser apanhar… quer dizer, quando quiser revanche!'),
+          f(TAINA, 'Sabe o que eu aprendi lá embaixo? Que o Cartel quer as lendárias. A Queixada, o Boitatá… e dizem que o Coronel Garrote está no Pico Pingorama.\fTerças e quintas eu treino na Gruta do Eco, lá na Costa. Passe lá quando quiser apanhar… quer dizer, quando quiser revanche!'),
         ]),
         ['fade', 'fora'], ['esconder', 'taina-b7'], ['flag', 'rival-7'], ['fade', 'dentro'],
       ]),

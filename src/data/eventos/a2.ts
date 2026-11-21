@@ -441,7 +441,7 @@ export const EVENTOS_A2: EventoDef[] = [
     id: 'a2-mt-guardiao',
     passos: [
       se('insignias:15', [f('mt-guardiao', 'Quinze insígnias, contei uma por uma. O monte reconhece você.\fSuba com respeito: paredão, breu e cascata, nessa ordem. Lá no alto, o Pajé Trovão-Velho espera há muito tempo por alguém assim.')], [
-        f('mt-guardiao', 'Alto. Eu sou Abaeté, guardião do Monte Tupã. Esta trilha leva à Aldeia e ao último ginásio de Pindorama.'),
+        f('mt-guardiao', 'Alto. Eu sou Abaeté, guardião do Monte Tupã. Esta trilha leva à Aldeia e ao último ginásio de Pingorama.'),
         f('mt-guardiao', 'O monte só se abre para quem carrega quinze insígnias. Deixe-me contar as suas… uma… duas…\fNão dá quinze. Volte quando o Sertão das Névoas inteiro conhecer o seu nome.'),
       ]),
     ],
@@ -450,7 +450,7 @@ export const EVENTOS_A2: EventoDef[] = [
     id: 'a2-a9-paje-fora',
     passos: [
       se('insignia:16', [f('a9-anciao', 'A Escama está com você. O céu sobre a Aldeia mudou: escute.\fNa pedra mais alta, ao norte, o Gavião-Tupã pousa para ver de perto quem o trovão escolheu.')],
-        [f('a9-anciao', 'Bem-vindo à Aldeia Tupã, o lugar mais perto do céu em toda Pindorama.\fO Pajé Trovão-Velho guarda a insígnia da Escama. As quatro provas do ginásio pedem o que você aprendeu nos dois mapas: mata, fogo, água e vento.')]),
+        [f('a9-anciao', 'Bem-vindo à Aldeia Tupã, o lugar mais perto do céu em toda Pingorama.\fO Pajé Trovão-Velho guarda a insígnia da Escama. As quatro provas do ginásio pedem o que você aprendeu nos dois mapas: mata, fogo, água e vento.')]),
     ],
   },
   {

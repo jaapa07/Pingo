@@ -2,7 +2,7 @@ import type { TreinadorDef, MembroEquipe } from '../../core/tipos';
 
 /**
  * Treinadores do time B2-norte: Campos de Altitude (B-SG), Lagoa Gelada (B-LG), Caminho das Névoas (B-R5), Planalto Lume
- * (B8), a Subida do Pico Pindorama (PP, com dois capangas do Cartel) e a Floresta Ancestral (B-FA, pós-jogo).
+ * (B8), a Subida do Pico Pingorama (PP, com dois capangas do Cartel) e a Floresta Ancestral (B-FA, pós-jogo).
  * Curva (spec 4.5 e docs/EQUILIBRIO-MAPA-B.md): líder 14 ás 68 → B-SG e B-LG nv 64–66 · líder 15 ás 70 → B-R5 e B8 nv
  * 64–68 · Pico depois do líder 16 (ás 72) nv 69–71 · Floresta Ancestral (pós-jogo) nv 73–79. Só estágios finais (todas as linhas por nível
  * já evoluíram abaixo de 46). Itens de cura só no Veterano (regra do motor; nenhum treinador comum tem `itens`).
@@ -74,7 +74,7 @@ const LUME: TreinadorDef[] = [
     'Serenata no coreto para a lua e para você: / se eu perder, eu canto; se ganhar, canto também!', 'Canto a derrota: tem mais rima.', 'O Papagálio aprende qualquer golpe que escuta. Não fale estratégia perto dele.'),
 ];
 
-/* ------------------------------ PP · a Subida do Pico Pindorama (nv 69–71) ------------------------------ */
+/* ------------------------------ PP · a Subida do Pico Pingorama (nv 69–71) ------------------------------ */
 const PICO: TreinadorDef[] = [
   t('PP-1', 'Montanhista', 'Alpinista Cume-Raso', 'cl-montanhista', m([12, 69], [166, 69], [140, 70]),
     'Dezesseis insígnias? Bonito. Aqui em cima elas pesam o dobro. Vamos ver se você aguenta o peso!', 'Aguentou com folga.', 'A trilha sobe em zigue-zague. Cada curva tem um montanhista querendo provar alguma coisa. Inclusive eu.'),
@@ -89,7 +89,7 @@ const PICO: TreinadorDef[] = [
   t('PP-6', 'Montanhista', 'Escalador Vento-Norte', 'cl-montanhista', m([52, 70], [110, 70], [136, 71]),
     'Já subi o Pico quarenta vezes. Nunca entrei no Salão. Hoje vou ao menos ganhar de quem vai entrar!', 'Quarenta e uma subidas, nenhuma vitória hoje.', 'O Guardião Tibiriçá deixou dois Elixires e dois Chás de Guaraná na saída do Portão. É a oferenda para quem sobe.'),
   t('PP-7', 'Capanga do Cartel', 'Ferrolho', 'capanga-m', m([152, 69], [89, 70]),
-    'O Coronel mandou ninguém subir! Principalmente VOCÊ!', 'O Coronel vai me demitir de novo.', 'Ele está lá em cima, na porta do Salão. Diz que lá dentro tem as criaturas mais raras de Pindorama.', { musica: 'batalha-cartel', contato: false }),
+    'O Coronel mandou ninguém subir! Principalmente VOCÊ!', 'O Coronel vai me demitir de novo.', 'Ele está lá em cima, na porta do Salão. Diz que lá dentro tem as criaturas mais raras de Pingorama.', { musica: 'batalha-cartel', contato: false }),
   t('PP-8', 'Capanga do Cartel', 'Ferrolha', 'capanga-f', m([146, 70], [26, 70]),
     'Última capanga antes do Coronel! Corrente nova, cuia nova, raiva velha!', 'Corrente arrebentada. Raiva também.', 'Eu só queria um emprego com vista para a serra. Arrumei um com vista para a derrota.', { musica: 'batalha-cartel', contato: false }),
 ];

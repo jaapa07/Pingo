@@ -1,7 +1,7 @@
 import type { TreinadorDef, MembroEquipe } from '../../core/tipos';
 
 /**
- * A SEQUÊNCIA FINAL do Pico Pindorama (spec 4.5, 5 e 7A; docs/HISTORIA.md): Coronel Garrote do Cartel Ferrugem, a rival
+ * A SEQUÊNCIA FINAL do Pico Pingorama (spec 4.5, 5 e 7A; docs/HISTORIA.md): Coronel Garrote do Cartel Ferrugem, a rival
  * Tainá no encontro 8 e o CONSELHO DOS GUARDIÕES — cinco lutas seguidas, sem sair do Salão e sem cura grátis.
  * Curva (spec 4.5 e docs/EQUILIBRIO-MAPA-B.md): líder 16 com ás 72 < Garrote (72–74) < rival 8 (73–75) < Conselho 73–77,
  * com o Guardião-Mor no topo e o lendário dele no nível 77. Todos usam remédios (spec 7A: do 8º ginásio em diante), IA `conselho` no Salão.
@@ -23,7 +23,7 @@ export const TREINADORES_CONSELHO: TreinadorDef[] = [
     id: 'garrote', classe: 'Coronel do Cartel', nome: 'Garrote', sprite: 'coronel-garrote', ia: 'lider', premio: 12800, musica: 'batalha-cartel', contato: false,
     flag: 'garrote-vencido', itens: ['elixir-andiroba', 'garrafada'],
     equipe: [{ e: 152, nv: 72 }, { e: 146, nv: 72 }, { e: 34, nv: 73 }, { e: 89, nv: 73 }, { e: 87, nv: 74 }],
-    desafio: 'Dezesseis insígnias… Então é você que fecha as minhas usinas, solta os meus ninhos e explode os meus laboratórios.\fSabe o que tem dentro desse Salão? Cinco velhos e a maior coleção de criaturas raras de Pindorama. Eu vim buscar. E você veio me atrapalhar pela última vez!',
+    desafio: 'Dezesseis insígnias… Então é você que fecha as minhas usinas, solta os meus ninhos e explode os meus laboratórios.\fSabe o que tem dentro desse Salão? Cinco velhos e a maior coleção de criaturas raras de Pingorama. Eu vim buscar. E você veio me atrapalhar pela última vez!',
     derrota: 'Impossível… Uma criança e um punhado de bichos de mato.\fO Cartel Ferrugem… acabou aqui. Mas lembre: enquanto houver gente querendo gaiola, vai haver gente querendo vender.',
   },
 
@@ -79,7 +79,7 @@ export const TREINADORES_CONSELHO: TreinadorDef[] = [
       { e: 72, nv: 74 }, { e: 68, nv: 75 }, { e: 112, nv: 75 },
       { e: 178, nv: 77, golpes: ['trovoada', 'relampago', 'rasante', 'pulso-das-eras'] },
     ], 18000,
-    'Arandu quer dizer "o que guarda a memória". Eu guardo a de Pindorama inteira: o mar da Iara, a mata do Cauã, o céu da Jandaia, a terra do Moacir.\fVocê veio da Vila Jacarandá até o topo do mundo, {JOGADOR}. Agora mostre-me o que aprendeu no caminho — com tudo o que tem.',
-    'Eis a memória nova de Pindorama. Você e as suas criaturas lutam como quem cuida. Era isso que o Conselho esperava.', ['elixir-andiroba', 'garrafada']),
+    'Arandu quer dizer "o que guarda a memória". Eu guardo a de Pingorama inteira: o mar da Iara, a mata do Cauã, o céu da Jandaia, a terra do Moacir.\fVocê veio da Vila Jacarandá até o topo do mundo, {JOGADOR}. Agora mostre-me o que aprendeu no caminho — com tudo o que tem.',
+    'Eis a memória nova de Pingorama. Você e as suas criaturas lutam como quem cuida. Era isso que o Conselho esperava.', ['elixir-andiroba', 'garrafada']),
 ];
 export default TREINADORES_CONSELHO;

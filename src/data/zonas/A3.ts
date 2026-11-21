@@ -82,7 +82,7 @@ const zona: ZonaDef = {
     gente(g, '1', 'a3-menina', 'cl-crianca-f', 'Cecília', { mov: 'vagar', fala: ['Aqui ninguém pisa no chão depois que chove: é tudo passarela!', 'Minha vó diz que no tempo dela se ia de cipó. Minha vó conta muita história.'] }),
     gente(g, '2', 'a3-biologa', 'cl-biologa', 'Bióloga Marta', { mov: 'olhar', fala: ['Inseto não aguenta fogo, nem bicada, nem pedrada. Brasa, Vento e Pedra dão conta da Dona Seda.', 'Agora, se a sua parceira for de Mata ou de Mente… leve bastante chá.'] }),
     gente(g, '3', 'a3-velho', 'npc-idoso', 'Seu Jatobá', { fala: ['A Trilha dos Cipós, a leste, fechou de vez depois das chuvas.', 'Só passa quem tem o Amuleto do Facão — e a Dona Seda só entrega o dela para quem leva a Insígnia do Casulo.'] }),
-    gente(g, '5', 'a3-moco', 'npc-homem-1', 'Moço do Regador', { mov: 'vagar', fala: ['Canteiro de terra fofa é banco: você deposita um fruto e saca um punhado.', 'Juros de pitanga. Melhor investimento de Pindorama.'] }),
+    gente(g, '5', 'a3-moco', 'npc-homem-1', 'Moço do Regador', { mov: 'vagar', fala: ['Canteiro de terra fofa é banco: você deposita um fruto e saca um punhado.', 'Juros de pitanga. Melhor investimento de Pingorama.'] }),
     { id: 'taina', sprite: 'taina', x: 41, y: 15, dir: 'o', se: 'insignia:2&!flag:rival-2', script: 'rival-2' },
     duelista(g, '4', 'A3-1', 'cl-capoeirista', 'o', 4),
     duelista(g, '6', 'A3-2', 'cl-crianca-m', 'l', 4),

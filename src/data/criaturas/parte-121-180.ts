@@ -160,7 +160,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-06', 'pt-07', 'pt-09', 'pt-20', 'pt-21', 'pt-22', 'pt-31', 'pt-32', 'pt-33'],
     taxaCaptura: 45, expBase: 190, esforco: { atqEsp: 1, vel: 1 }, crescimento: 'medio', femeas: 0.5,
     diario: 'A gralha-azul enterra pinhões para comer depois e esquece boa parte deles, que brotam: foi assim que ela ganhou fama de plantadora das araucárias e virou ave-símbolo do Paraná. Onde a Gralha-Azul pousa, a geada da manhã seguinte desenha um pinheirinho no chão.',
-    altura: 0.9, peso: 6, habitat: 'Copas de araucária na Serra Gelada e no Pico Pindorama', porte: 'M',
+    altura: 0.9, peso: 6, habitat: 'Copas de araucária na Serra Gelada e no Pico Pingorama', porte: 'M',
   },
   {
     num: 137, id: 'serelepim', nome: 'Serelepim', tipos: ['comum', 'geada'],
@@ -198,7 +198,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-20', 'pt-21', 'pt-22', 'pt-23', 'pt-24', 'pt-25', 'pt-31', 'pt-41', 'pt-44'],
     taxaCaptura: 35, expBase: 215, esforco: { atq: 1, vel: 1 }, crescimento: 'medio', femeas: 0.5,
     diario: 'O maracajá passa quase a vida toda nas árvores, e há registro na Amazônia de um deles imitando o chamado de filhotes de sauim para atrair os adultos. O Maracajá-Nevado caça em silêncio sobre a geada, e o único rastro que deixa é um floco no formato de pata.',
-    altura: 1.0, peso: 19, habitat: 'Cristas nevadas da Serra Gelada e do Pico Pindorama, à noite', porte: 'M',
+    altura: 1.0, peso: 19, habitat: 'Cristas nevadas da Serra Gelada e do Pico Pingorama, à noite', porte: 'M',
   },
 
   /* ============================== insetos e aracnídeos ============================== */
@@ -479,7 +479,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-02', 'pt-03', 'pt-04', 'pt-31', 'pt-32', 'pt-33', 'pt-42', 'pt-43', 'pt-44', 'pt-49'],
     evolui: [{ para: 170, nivel: 36 }],
     taxaCaptura: 100, expBase: 66, esforco: { atqEsp: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'O urutau passa o dia imóvel na ponta de um tronco quebrado, de bico para cima, e fica idêntico a um pedaço de galho; põe um único ovo, equilibrado ali mesmo, sem ninho. O Urutauzim já nasce sabendo ficar parado, e é o filhote mais difícil de achar de Pindorama.',
+    diario: 'O urutau passa o dia imóvel na ponta de um tronco quebrado, de bico para cima, e fica idêntico a um pedaço de galho; põe um único ovo, equilibrado ali mesmo, sem ninho. O Urutauzim já nasce sabendo ficar parado, e é o filhote mais difícil de achar de Pingorama.',
     altura: 0.3, peso: 0.2, habitat: 'Tocos secos à beira da mata, à noite', porte: 'P',
   },
   {
@@ -518,7 +518,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'fagulha'], [1, 'ira-antiga'], [10, 'bote-duplo'], [20, 'lume-errante'], [30, 'brasa-viva'], [40, 'sopro-ancestral'], [50, 'queimada'], [55, 'escama-sagrada'], [60, 'pulso-das-eras'], [66, 'labareda'], [72, 'chamado-antigo'], [78, 'fogo-de-coivara'], [85, 'estrela-cadente'], [92, 'fornalha']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-10', 'pt-11', 'pt-12', 'pt-13', 'pt-28', 'pt-30', 'pt-37', 'pt-42', 'pt-43', 'pt-45', 'pt-46'],
     taxaCaptura: 3, expBase: 270, esforco: { atqEsp: 3 }, crescimento: 'lento', femeas: null,
-    diario: 'Boitatá vem do tupi mboi tatá, cobra de fogo: a serpente que sobreviveu a uma grande noite sem fim comendo os olhos dos bichos e ficou cheia de luz. Em 1560 o padre Anchieta já escrevia sobre esse facho que corre pelos campos; em Pindorama, ele ainda queima quem põe fogo na mata e poupa quem a protege.',
+    diario: 'Boitatá vem do tupi mboi tatá, cobra de fogo: a serpente que sobreviveu a uma grande noite sem fim comendo os olhos dos bichos e ficou cheia de luz. Em 1560 o padre Anchieta já escrevia sobre esse facho que corre pelos campos; em Pingorama, ele ainda queima quem põe fogo na mata e poupa quem a protege.',
     altura: 7.5, peso: 210, habitat: 'Câmara mais funda da Caverna do Vulcão', porte: 'L', lendario: true,
   },
   {
@@ -536,7 +536,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'ira-antiga'], [10, 'fumaca-fedida'], [20, 'pisao-de-anta'], [30, 'esturro'], [40, 'terra-batida'], [50, 'garra-ancestral'], [58, 'vocoroca'], [65, 'espreguicar'], [70, 'tremor-de-terra'], [76, 'danca-ancestral'], [82, 'desbarrancar'], [88, 'furia-lendaria'], [95, 'mutirao']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-07', 'pt-09', 'pt-24', 'pt-26', 'pt-28', 'pt-29', 'pt-30', 'pt-40', 'pt-41', 'pt-45', 'pt-46', 'pt-47'],
     taxaCaptura: 3, expBase: 290, esforco: { atq: 3 }, crescimento: 'lento', femeas: null,
-    diario: 'O Mapinguari das histórias amazônicas é um gigante peludo, de fedor insuportável e pele que flecha não fura; alguns pesquisadores acham que a lenda guarda a memória das preguiças-gigantes, extintas há cerca de dez mil anos. O de Pindorama dorme de pé entre as sumaúmas, e a floresta inteira prende a respiração quando ele boceja.',
+    diario: 'O Mapinguari das histórias amazônicas é um gigante peludo, de fedor insuportável e pele que flecha não fura; alguns pesquisadores acham que a lenda guarda a memória das preguiças-gigantes, extintas há cerca de dez mil anos. O de Pingorama dorme de pé entre as sumaúmas, e a floresta inteira prende a respiração quando ele boceja.',
     altura: 4.2, peso: 1900, habitat: 'Coração da Floresta Ancestral', porte: 'L', lendario: true,
   },
   {
@@ -554,7 +554,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'piscadela'], [10, 'lufada'], [20, 'cantiga-de-ninar'], [30, 'estrela-guia'], [40, 'brisa-da-serra'], [50, 'canto-da-iara'], [56, 'pouso-no-galho'], [62, 'canto-do-uirapuru'], [68, 'pe-de-vento'], [74, 'serenata'], [80, 'clarao-da-lua'], [87, 'ventania'], [95, 'arraial-encantado']],
     pergaminhos: ['pt-02', 'pt-03', 'pt-04', 'pt-06', 'pt-08', 'pt-12', 'pt-20', 'pt-31', 'pt-32', 'pt-33', 'pt-34', 'pt-35', 'pt-36', 'pt-37', 'pt-49', 'pt-50'],
     taxaCaptura: 3, expBase: 260, esforco: { atqEsp: 1, defEsp: 2 }, crescimento: 'lento', femeas: null,
-    diario: 'O uirapuru-verdadeiro é um passarinho pardo da Amazônia que canta poucos minutos ao amanhecer, em poucos dias do ano, enquanto constrói o ninho; diz a lenda que a mata inteira se cala para ouvir. Em Pindorama ele só aparece a quem já conhece quase todas as criaturas, e quem o escuta carrega sorte pelo resto da jornada.',
+    diario: 'O uirapuru-verdadeiro é um passarinho pardo da Amazônia que canta poucos minutos ao amanhecer, em poucos dias do ano, enquanto constrói o ninho; diz a lenda que a mata inteira se cala para ouvir. Em Pingorama ele só aparece a quem já conhece quase todas as criaturas, e quem o escuta carrega sorte pelo resto da jornada.',
     altura: 0.4, peso: 0.3, habitat: 'Clareira da Serra Gelada, ao amanhecer', porte: 'L', lendario: true,
   },
   {

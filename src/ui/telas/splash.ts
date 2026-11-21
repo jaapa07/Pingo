@@ -9,7 +9,7 @@ export function criarSplash(args: { aoFim(): void }): Tela {
   const el = elTela('ui', 'splash', 'fundo-noite');
   const cuia = spr('bolso-cuias'); el.append(cuia);
   const nome = texto('ADVENTURES OF PINGO', { tamanho: 12, cor: 'ouro', sombra: true, largura: 320, alinhar: 'centro' });
-  const sub = texto('Uma aventura pelas terras de Pindorama', { cor: 'creme', largura: 320, alinhar: 'centro' });
+  const sub = texto('Uma aventura pelas terras de Pingorama', { cor: 'creme', largura: 320, alinhar: 'centro' });
   const dica = texto(input.modo === 'toque' ? 'Toque para começar' : 'Aperte Z ou Enter', { cor: 'cinza', largura: 320, alinhar: 'centro' });
   dica.classList.add('pisca');
   el.append(em(nome, 0, 92), em(sub, 0, 110), em(dica, 0, 150));

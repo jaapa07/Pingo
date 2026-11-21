@@ -196,7 +196,7 @@ export const EVENTOS_REGRAS: EventoDef[] = [
   {
     id: 'treino-guia',
     passos: [
-      ['falar', GUIA, 'Campeão da Liga! Nos fundos do ginásio do porto funciona o Ginásio de Treino: lá os líderes de Pindorama aceitam revanche.\fCada líder treina num dia e num período da semana. Ligue pelo Rádio Cipó na hora certa e ele vem para cá.'],
+      ['falar', GUIA, 'Campeão da Liga! Nos fundos do ginásio do porto funciona o Ginásio de Treino: lá os líderes de Pingorama aceitam revanche.\fCada líder treina num dia e num período da semana. Ligue pelo Rádio Cipó na hora certa e ele vem para cá.'],
       ['simnao', 'Entrar no Ginásio de Treino?', 'treino-entrar'],
       se('flag:treino-entrar', [['sfx', 'porta'], ['warp', TREINO.zona, 9, 15, 'n']]),
     ],

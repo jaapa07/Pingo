@@ -69,7 +69,7 @@ const zona: ZonaDef = {
     entrada(g, 'O', 'observatorio', 'B8-observatorio', 6, 10),
   ],
   portoes: [
-    { x: 44, y: 3, w: 2, h: 1, requer: 'pos-jogo', sprite: 'guardia-floresta', fala: 'A Guardiã da Floresta cruza a lança de taquara na estrada:\n— A Floresta Ancestral é a casa mais velha do Sertão. Tem árvore que viu a serra nascer.\f— Ela só recebe quem já foi recebido pelo Conselho dos Guardiões, lá no Pico Pindorama. Vença o Conselho e eu mesma abro o caminho.' },
+    { x: 44, y: 3, w: 2, h: 1, requer: 'pos-jogo', sprite: 'guardia-floresta', fala: 'A Guardiã da Floresta cruza a lança de taquara na estrada:\n— A Floresta Ancestral é a casa mais velha do Sertão. Tem árvore que viu a serra nascer.\f— Ela só recebe quem já foi recebido pelo Conselho dos Guardiões, lá no Pico Pingorama. Vença o Conselho e eu mesma abro o caminho.' },
   ],
   npcs: [
     duelista(g, '1', 'B8-1', 'cl-observadora', 'l', 3),

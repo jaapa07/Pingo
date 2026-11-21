@@ -32,7 +32,7 @@ export const T = {
     naoVisto: 'Criatura ainda não avistada. Procure por pegadas novas!', soVisto: 'Avistada, mas ainda não capturada. Capture-a para a Profª Ipê completar a ficha.',
     semHabitat: 'Não aparece solta nos mapas: chega por evolução, ovo ou acontecimento especial.',
     dicaLista: 'A: ficha   SELECT: medalhas   ←→: pular 10   B: voltar', dicaFicha: '←→: página   ↑↓: espécie   A: ouvir o grito   B: voltar',
-    medalhas: ['Medalha Broto', 'Medalha Trilha', 'Medalha Lupa', 'Medalha Bússola', 'Medalha Jequitibá', 'Medalha Pindorama'],
+    medalhas: ['Medalha Broto', 'Medalha Trilha', 'Medalha Lupa', 'Medalha Bússola', 'Medalha Jequitibá', 'Medalha Pingorama'],
     medalhaDesc: ['30 espécies registradas', '60 espécies registradas', '90 espécies registradas', '120 espécies registradas', '150 espécies registradas', 'As 180 espécies registradas!'],
     // página extra dos Visitantes (spec 6.5): 181 e 182 não contam no total nem nas medalhas
     abaDiario: 'DIÁRIO', abaVisitantes: 'VISITANTES',
@@ -40,7 +40,7 @@ export const T = {
     visitanteCurto: 'Visitante, fora das 180',
     ondeVisitante: {
       181: 'Ilhota do Encontro das Águas, aonde só o canoeiro Seu Tarumã leva, a partir de Porto Sereia. Missão "O Encontro das Águas": com as 16 insígnias, leve a ele um frasco de água escura (de noite, Poço do Breu, Rio Cachoeira-Véu) e um de água barrenta (de dia, poço da cascata da Estrada Vermelha).',
-      182: 'Alto do Pico Pindorama, de noite, sob a aurora das quatro Lanternas Boreais. Missão "A Expedição Boreal": depois do Conselho, fale com a Drª Solveig no navio encalhado de Porto Pantaneiro.',
+      182: 'Alto do Pico Pingorama, de noite, sob a aurora das quatro Lanternas Boreais. Missão "A Expedição Boreal": depois do Conselho, fale com a Drª Solveig no navio encalhado de Porto Pantaneiro.',
     } as Record<number, string>,
     notaSolveig: 'Nota da Drª Solveig: o Borealce é um visitante das montanhas do norte, trazido pela nossa expedição. Ele não pertence à fauna local.',
   },
@@ -100,12 +100,12 @@ export const CARTAS: { id: string; de: string; assunto: string; se?: string; tex
   { id: 'taina-2', de: 'Tainá', assunto: 'Obrigada (não espalha)', se: 'flag:farol-ok', texto: 'Tá, você ajudou lá no Farol. Fiquei devendo uma. Só uma! Na próxima batalha eu desconto.' },
   { id: 'ipe-2', de: 'Profª Ipê', assunto: 'Criaturas resgatadas', se: 'flag:mina-ok', texto: 'As criaturas tiradas das jaulas da Mina já foram soltas na Chapada. Passe por lá um dia desses: a paisagem agradece.' },
   { id: 'garrote', de: 'Coronel Garrote', assunto: 'Sem assunto', se: 'flag:garrote-vencido', texto: 'Perdi. Vendi o que não era meu e paguei o preço. Vou plantar árvore até o fim da vida, por ordem do Conselho. Não me escreva.' },
-  { id: 'conselho', de: 'Guardião-Mor Arandu', assunto: 'À nova guardiã de Pindorama', se: 'pos-jogo', texto: 'O Pico Pindorama guarda o seu nome na pedra. Mas a trilha não acaba: a Floresta Ancestral abriu, e há lendas andando soltas por aí.' },
+  { id: 'conselho', de: 'Guardião-Mor Arandu', assunto: 'À nova guardiã de Pingorama', se: 'pos-jogo', texto: 'O Pico Pingorama guarda o seu nome na pedra. Mas a trilha não acaba: a Floresta Ancestral abriu, e há lendas andando soltas por aí.' },
 ];
 
 /** medalhas e papéis dos créditos (rolagem da tela `creditos`) */
 export const CREDITOS: (string | [string, string])[] = [
-  ['titulo', 'ADVENTURES OF PINGO'], 'Uma aventura por Pindorama', '',
+  ['titulo', 'ADVENTURES OF PINGO'], 'Uma aventura por Pingorama', '',
   ['secao', 'HISTÓRIA E MUNDO'], 'Costa do Sol e Sertão das Névoas', '32 cidades, rotas, grutas e matas', '',
   ['secao', 'AS 180 CRIATURAS'], 'Inspiradas na fauna do Brasil', 'do tamanduá ao boto-cor-de-rosa', '',
   ['secao', 'ARTE EM PIXEL'], 'Modelos, cenários e interface', 'desenhados à mão, ponto por ponto', '',

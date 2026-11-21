@@ -1,5 +1,5 @@
 /**
- * Mapa de Pindorama para o mapa-múndi e para o minimapa de habitat do Diário: as duas regiões (A Costa do Sol,
+ * Mapa de Pingorama para o mapa-múndi e para o minimapa de habitat do Diário: as duas regiões (A Costa do Sol,
  * B Sertão das Névoas) em grades de caracteres (1 caractere = 1 célula de terreno), os locais das tabelas 4.1/4.2
  * do spec com a posição na grade, as ligações a pé e as duas linhas de transporte (trem e Saveiro).
  */
@@ -127,7 +127,7 @@ export const LOCAIS: Local[] = [
   L('B-R5', 'Caminho das Névoas', 22, 6, 'rota', 'Só o Lampião abre a névoa.'),
   L('B8', 'Planalto Lume', 27, 6, 'cidade', 'Observatório à beira dos cânions.', 15),
   L('B-FA', 'Floresta Ancestral', 32, 4, 'mata', 'Árvores mais velhas que as cidades.'),
-  L('PP', 'Pico Pindorama', 0, 4, 'serra', 'Portão dos Guardiões e salão do Conselho.'),
+  L('PP', 'Pico Pingorama', 0, 4, 'serra', 'Portão dos Guardiões e salão do Conselho.'),
 ];
 const POR_ID = new Map(LOCAIS.map((l) => [l.id, l]));
 export const local = (id: string) => POR_ID.get(id);
@@ -160,7 +160,7 @@ function fundos(cel: number): Record<string, string> {
   };
 }
 export interface MapaDuplo { el: HTMLElement; w: number; h: number; /** centro do local em px, relativo ao elemento */ pos(id: string): [number, number] }
-/** desenha as duas regiões lado a lado (`cel` px por célula) com o Pico Pindorama no vão entre elas */
+/** desenha as duas regiões lado a lado (`cel` px por célula) com o Pico Pingorama no vão entre elas */
 export function criarMapaDuplo(cel: number, vao: number, ligacoes = true): MapaDuplo {
   const wm = MAPA_W * cel, h = MAPA_H * cel, w = wm * 2 + vao;
   const el = caixa('mapa-duplo', w, h);

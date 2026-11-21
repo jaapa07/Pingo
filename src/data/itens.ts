@@ -115,7 +115,7 @@ export const ITENS: ItemInfo[] = [
 
   /* ------------------------------ Itens-chave ------------------------------ */
   i('radio-cipo', 'Rádio Cipó', 'chave', 0, 'Rádio e telefone de bolso: contatos, programas e o relógio.'),
-  i('diario-de-campo', 'Diário de Campo', 'chave', 0, 'Caderno da Profª Ipê para registrar as criaturas de Pindorama.'),
+  i('diario-de-campo', 'Diário de Campo', 'chave', 0, 'Caderno da Profª Ipê para registrar as criaturas de Pingorama.'),
   i('bike-bambu', 'Bicicleta de Bambu', 'chave', 0, 'Leve e resistente. Anda bem mais rápido que a pé.'),
   i('vara-velha', 'Vara Velha', 'chave', 0, 'Vara de bambu remendada. Pesca o que dá.', { pesca: 'pesca-velha' }),
   i('vara-boa', 'Vara Boa', 'chave', 0, 'Vara firme, de bom anzol. Pesca criaturas melhores.', { pesca: 'pesca-boa' }),
@@ -129,7 +129,7 @@ export const ITENS: ItemInfo[] = [
   i('camera-de-bolso', 'Câmera de Bolso', 'chave', 0, 'Tira fotos de qualquer cena. As melhores vão para o álbum.'),
   i('regador', 'Regador', 'chave', 0, 'Para cuidar dos canteiros de frutos.'),
   i('chocalho-mutirao', 'Chocalho do Mutirão', 'chave', 0, 'Invento do Faroleiro Volta. Quem fica na reserva, 2 níveis ou mais atrás da mais forte da equipe (5 depois da Liga), ganha metade da experiência da luta.'),
-  i('estojo-de-insignias', 'Estojo de Insígnias', 'chave', 0, 'Guarda as 16 insígnias de Pindorama.'),
+  i('estojo-de-insignias', 'Estojo de Insígnias', 'chave', 0, 'Guarda as 16 insígnias de Pingorama.'),
   i('amuleto-facao', 'Amuleto do Facão', 'chave', 0, 'Com uma parceira de Mata, Inseto ou Ginga, corta cipós grossos.', { amuleto: 'facao' }),
   i('amuleto-remo', 'Amuleto do Remo', 'chave', 0, 'Com uma parceira de Rio, a canoa cruza as águas.', { amuleto: 'remo' }),
   i('amuleto-forca', 'Amuleto da Força', 'chave', 0, 'Com uma parceira de Terra, Pedra ou Ginga, empurra pedregulhos.', { amuleto: 'forca' }),

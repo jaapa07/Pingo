@@ -21,7 +21,7 @@ const zona: ZonaDef = {
     { o: 'tema', x: 0, y: 0, tema: 'sertaneja' },
     ...g.todos('W').map(([x, y]) => ({ o: 'janela', x, y })), obj(g, 'K', 'quadro-ex-voto'),
     { o: 'fogao-lenha', x: g.todos('F')[0][0], y: g.todos('F')[0][1], texto: ['Um tacho de cocada borbulha devagar. Melhor não meter o dedo.'] },
-    obj(g, 'G', 'filtro-barro', { texto: ['Água de filtro de barro: a mais gelada de Pindorama, garante a Vó Zica.'] }),
+    obj(g, 'G', 'filtro-barro', { texto: ['Água de filtro de barro: a mais gelada de Pingorama, garante a Vó Zica.'] }),
     obj(g, 'Q', 'maquina-costura', { texto: ['Na máquina de costura, uma colcha de retalhos pela metade. Tem um retalho com estampa de Tamanduí.'] }),
     obj(g, 'S', 'radio', { script: 'radio' }), obj(g, 'R', 'planta-b'),
     { o: 'cadeira', x: h[0][0], y: h[0][1] }, { o: 'mesa', x: h[0][0] + 1, y: h[0][1] }, { o: 'cadeira', x: h[1][0], y: h[1][1] },

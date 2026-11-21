@@ -22,6 +22,6 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-20', 'pt-21', 'pt-22', 'pt-28', 'pt-36', 'pt-37', 'pt-43', 'pt-49'],
     taxaCaptura: 3, expBase: 290, esforco: { vida: 1, atqEsp: 1, defEsp: 1 }, crescimento: 'lento', femeas: null,
     diario: 'O alce é o maior dos cervos: o macho passa de dois metros no ombro e troca a cada ano a galhada em forma de pá. O Borealce veio do norte com uma expedição de pesquisa, e nas noites frias do Pico a galhada dele acende em verde e violeta, como a aurora boreal.',
-    altura: 2.3, peso: 520, habitat: 'Alto do Pico Pindorama, sob a aurora', porte: 'L', lendario: true,
+    altura: 2.3, peso: 520, habitat: 'Alto do Pico Pingorama, sob a aurora', porte: 'L', lendario: true,
   },
 ];

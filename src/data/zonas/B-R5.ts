@@ -61,7 +61,7 @@ const zona: ZonaDef = {
   clima: 'nevoa', nevoa: true,
   mapaChars: g.mapa,
   objetos: [
-    ...objs(g, 'U', 'pedra-grande'), obj(g, 'K', 'tronco-caido'), obj(g, 'S', 'fogueira'), obj(g, 'X', 'totem', { texto: ['Um totem antigo de madeira de lei, coberto de líquen. Olha para o Pico Pindorama como quem espera alguém.'] }),
+    ...objs(g, 'U', 'pedra-grande'), obj(g, 'K', 'tronco-caido'), obj(g, 'S', 'fogueira'), obj(g, 'X', 'totem', { texto: ['Um totem antigo de madeira de lei, coberto de líquen. Olha para o Pico Pingorama como quem espera alguém.'] }),
     ...placas.map((q) => q.objeto),
   ],
   placas: placas.map((q) => q.placa),
@@ -84,7 +84,7 @@ const zona: ZonaDef = {
     duelista(g, '8', 'B-R5-8', 'cl-capoeirista', 's', 3),
     gente(g, 'G', 'b-r5-guarda', 'guarda-nevoa', 'Guarda da Névoa', { dir: 's', se: 'insignia:14', fala: ['Insígnia do Floco e Lampião aceso: pode seguir. Mantenha a luz na trilha e o ouvido no vento.', 'Os bichos da névoa enxergam melhor que a gente. O Graxaim-da-Névoa, então, nem precisa de olho: ele É a névoa.'] }),
     gente(g, 'H', 'b-r5-neblino', 'npc-idoso', 'Seu Neblino', { dir: 'l', mov: 'olhar', fala: ['A névoa daqui não é água no ar, menino. É o hálito do cânion. Ele respira de manhã e de noite.', 'Quem anda com Lampião vê a trilha. Quem anda sem, vê fantasma. Às vezes o fantasma é um Urutau-Fantasma mesmo, pousado no pinheiro.'] }),
-    gente(g, 'P', 'b-r5-andarilha', 'npc-mulher-3', 'Andarilha Cerração', { dir: 's', fala: ['Lá do outro lado da ponte tem um campo de capim tão alto que a névoa fica presa nele. É onde a Jaguatiricão caça, de noite.', 'Do mirante cercado, lá no nordeste, dizem que dá para ver o Pico Pindorama inteiro. Mas o vigia não deixa ninguém subir.'] }),
+    gente(g, 'P', 'b-r5-andarilha', 'npc-mulher-3', 'Andarilha Cerração', { dir: 's', fala: ['Lá do outro lado da ponte tem um campo de capim tão alto que a névoa fica presa nele. É onde a Jaguatiricão caça, de noite.', 'Do mirante cercado, lá no nordeste, dizem que dá para ver o Pico Pingorama inteiro. Mas o vigia não deixa ninguém subir.'] }),
     gente(g, 'Q', 'b-r5-menino', 'cl-crianca-m', 'Tiquinho', { mov: 'vagar', fala: ['Eu pulei o degrau de pedra e agora não consigo voltar por ele! Tenho que dar a volta toda.', 'Pelo menos o capim lá embaixo é macio.'] }),
   ],
   itens: [

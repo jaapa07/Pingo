@@ -1,6 +1,6 @@
 /**
  * Eventos do time B2-norte (Campos de Altitude, Lagoa Gelada, Caminho das Névoas, Planalto Lume, Floresta Ancestral e o
- * Cume do Pico Pindorama). A sequência final (Garrote, rival 8, Conselho, créditos) fica em src/data/eventos/conselho.ts.
+ * Cume do Pico Pingorama). A sequência final (Garrote, rival 8, Conselho, créditos) fica em src/data/eventos/conselho.ts.
  * Missões paralelas (regras aprovadas do spec 10A):
  *   m-carta-lume    carta da aprendiz Estrela-d'Alva (B8) para o pai, o pescador Joca (Ilha do Joca, B-LG), e a resposta (10A-29)
  *   m-constelacoes  constelações vivas: registrar Urutau-Fantasma, Noitão e Corujão-Orelha no Diário; só de noite (10A-39)

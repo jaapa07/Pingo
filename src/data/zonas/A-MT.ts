@@ -6,7 +6,7 @@ import { grade } from './_a2-grade';
  * passagem com 15 insígnias. Antes do portão não há capim nem treinador (o Pico-Fino, nível 57–58, espera logo depois dele):
  * quem chega com 6 insígnias só encontra a placa e o guardião. Depois, na ordem: o paredão da trepadeira (Escalar), a gruta escura por dentro do monte
  * (Lampião, zona `A-MT-gruta`) e o lago do platô, de onde só se sobe pela cascata (Cachoeira). No alto, a leste fica
- * a Aldeia Tupã; ao norte, a trilha do Pico Pindorama (16 insígnias).
+ * a Aldeia Tupã; ao norte, a trilha do Pico Pingorama (16 insígnias).
  */
 const g = grade('A-MT', 40, [
   '##########|##########|##########|##########',
@@ -84,13 +84,13 @@ const zona: ZonaDef = {
     { ...g.p('J'), para: { zona: 'A-MT-gruta', x: 14, y: 15, dir: 'n' }, tipo: 'caverna' },
     { ...g.p('G'), para: { zona: 'A-MT-gruta', x: 14, y: 2, dir: 's' }, tipo: 'caverna' },
     { ...g.p('E'), para: { zona: 'A9', x: 1, y: 15, dir: 'l' }, tipo: 'borda' },
-    { ...g.p('P'), para: { zona: 'PP', x: 6, y: 52, dir: 'n' }, tipo: 'borda', requer: 'insignias:16', recusa: 'A trilha do Pico Pindorama some dentro de uma nuvem parada.\nDizem que ela só se abre para quem carrega as dezesseis insígnias.' },
+    { ...g.p('P'), para: { zona: 'PP', x: 6, y: 52, dir: 'n' }, tipo: 'borda', requer: 'insignias:16', recusa: 'A trilha do Pico Pingorama some dentro de uma nuvem parada.\nDizem que ela só se abre para quem carrega as dezesseis insígnias.' },
   ],
   portoes: [{ ...X, requer: 'insignias:15', fala: 'O guardião Abaeté estende o cajado e fecha a trilha sem dizer palavra.\nFale com ele.' }],
   npcs: [
     { id: 'mt-guardiao', sprite: 'cl-vaqueiro', x: X.x + 1, y: X.y + 1, dir: 'o', script: 'a2-mt-guardiao' },
     { id: 'mt-andarilha', sprite: 'npc-mulher-3', x: 12, y: 22, mov: 'olhar', fala: ['Do lago para cima só existe um caminho: a cascata. A pé, o monte não dá passagem.', 'Lá no alto o ar é fino e o trovão mora perto. Dá para ouvir ele bocejar.'] },
-    { id: 'mt-menino', sprite: 'cl-crianca-m', x: 30, y: 6, mov: 'vagar', fala: ['Para lá é a Aldeia Tupã! Eu moro lá. Aqui é o meu quintal. É um quintal bem alto.', 'A trilha do norte vai para o Pico Pindorama. Meu avô diz que lá em cima moram os Guardiões de verdade.'] },
+    { id: 'mt-menino', sprite: 'cl-crianca-m', x: 30, y: 6, mov: 'vagar', fala: ['Para lá é a Aldeia Tupã! Eu moro lá. Aqui é o meu quintal. É um quintal bem alto.', 'A trilha do norte vai para o Pico Pingorama. Meu avô diz que lá em cima moram os Guardiões de verdade.'] },
     { id: 'A-MT-1', sprite: 'cl-montanhista', ...g.p('1'), dir: 'l', treinador: 'A-MT-1', visao: 4 },
     { id: 'A-MT-2', sprite: 'cl-observadora', ...g.p('2'), dir: 'l', mov: 'olhar', treinador: 'A-MT-2', visao: 4 },
     { id: 'A-MT-3', sprite: 'cl-capoeirista', ...g.p('3'), dir: 'o', treinador: 'A-MT-3', visao: 4 },

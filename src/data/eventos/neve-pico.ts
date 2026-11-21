@@ -1,6 +1,6 @@
 /**
  * Neve brilhante do Cume (spec 10A item 37): no dia 20 de novembro (relógio do aparelho mais o deslocamento do jogo),
- * depois do Conselho (`pos-jogo`, como diz o Seu Floco-Velho em `pp-neve`), o alto do Pico Pindorama (zona PP, acima
+ * depois do Conselho (`pos-jogo`, como diz o Seu Floco-Velho em `pp-neve`), o alto do Pico Pingorama (zona PP, acima
  * da muralha do Cume) ganha faíscas de cor piscando na neve e alguns flocos brilhantes descendo devagar.
  * Camada própria em DOM/CSS, em coordenadas do mapa (rola com a câmera), logo depois do chão (z 0) e por baixo dos atores (z 1).
  * Posições fixas por hash (sem sorteio): a neve é sempre a mesma.

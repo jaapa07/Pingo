@@ -1,7 +1,7 @@
 /**
  * RÁDIO CIPÓ — Contatos (telefone: conversa e revanche, uma por dia por contato; líderes só no pós-jogo),
  * Bicho do Dia (a criatura mais rara de cada local hoje, pelas tabelas de habitat), Hora da Música,
- * Notícias do Cartel (pelas flags da história), Recado do dia e o Mapa de Pindorama.
+ * Notícias do Cartel (pelas flags da história), Recado do dia e o Mapa de Pingorama.
  * Os contatos são ids de treinador em `jogo.save.contatos`. Revanche do dia: `flags['revanche:<id>']` = dia.
  */
 import type { TreinadorDef } from '../../core/tipos';
@@ -76,14 +76,14 @@ export function criarRadio(): Tela {
     const op = ops[i];
     const txt = op === 'Agenda do dia' ? `${agendaHoje().resumo}\n\nA: ouvir tudo`
       : op === 'Revanches' ? `Quem aceita revanche em cada dia da semana. Hoje: {c:amarelo}${contatos().filter(podeHoje).length}{/c} disponível(is).`
-      : op === 'Cantiga das Lendas' ? 'Programa do Cartão do Rádio: as cantigas antigas sobre as criaturas lendárias de Pindorama.'
+      : op === 'Cantiga das Lendas' ? 'Programa do Cartão do Rádio: as cantigas antigas sobre as criaturas lendárias de Pingorama.'
       : [
       `Ligue para treinadores que deixaram o número. Contatos: {c:amarelo}${contatos().length}{/c}`,
       `Onde andam as criaturas raras nesta ${NOME_PER[periodo()]}. O programa muda todo dia.`,
       tocando ? `Tocando agora: {c:verde}${FAIXAS_RADIO.find((f) => f.id === tocando)?.nome ?? tocando}{/c} ♪` : 'Escolha uma faixa. Ao desligar o rádio, volta a música do lugar.',
       `O que se sabe do Cartel Ferrugem. Última: {c:amarelo}${noticias()[0]?.titulo ?? '—'}{/c}`,
       `Hoje é ${hoje()}.\n\n${RECADOS_SEMANA[diaSemana()]}`,
-      'O mapa de Pindorama: Costa do Sol e Sertão das Névoas.', 'Desliga o rádio.',
+      'O mapa de Pingorama: Costa do Sol e Sertão das Névoas.', 'Desliga o rádio.',
     ][['Contatos', 'Bicho do Dia', 'Hora da Música', 'Notícias', 'Recado do dia', 'Mapa', 'Desligar'].indexOf(op)];
     rotulo(corpo, txt, 0, 14, 'creme', { largura: 150 });
   }

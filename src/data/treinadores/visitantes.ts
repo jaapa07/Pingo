@@ -30,5 +30,5 @@ export const TREINADORES_VISITANTES: TreinadorDef[] = [
     [{ e: 138, nv: 68 }, { e: 136, nv: 69 }, { e: 132, nv: 70 }],
     'Eu traço o rumo da expedição, e o rumo da última lanterna passa por mim. Bússola na mão, criaturas na neve!',
     'O norte é para lá. E a lanterna é sua.',
-    'Com as quatro na mochila, suba ao alto do Pico Pindorama de noite e acenda todas juntas. Lá em cima o céu fica perto demais para mentir.'),
+    'Com as quatro na mochila, suba ao alto do Pico Pingorama de noite e acenda todas juntas. Lá em cima o céu fica perto demais para mentir.'),
 ];

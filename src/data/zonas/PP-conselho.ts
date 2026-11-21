@@ -2,7 +2,7 @@ import type { ZonaDef } from '../../core/tipos';
 import { grade, obj, saidas, gente, placa } from './_b2n-lib';
 
 /**
- * PP-conselho · Salão do Conselho dos Guardiões (Pico Pindorama). De baixo para cima: o vestíbulo (porta do Cume), a
+ * PP-conselho · Salão do Conselho dos Guardiões (Pico Pingorama). De baixo para cima: o vestíbulo (porta do Cume), a
  * sala de espera, as cinco salas em fila — Guardiã do Mar Iara Costa (Rio/Encanto), Guardião da Mata Cauã (Mata/Inseto),
  * Guardiã do Céu Jandaia (Vento/Trovão), Guardião da Terra Moacir (Terra/Pedra/Ferro) e o Guardião-Mor Arandu — e, no
  * alto, a Sala da Memória (créditos).

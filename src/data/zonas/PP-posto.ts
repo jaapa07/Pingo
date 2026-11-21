@@ -1,7 +1,7 @@
 import { postoGuardiao } from './_b2n-lib';
 
-/** Posto Guardião do Pico Pindorama, no Acampamento da Fronteira (porta em (11, 47) no Pico). O último antes do Conselho. */
-export default { ...postoGuardiao('PP', 'Pico Pindorama', 17, 'pico', [11, 48], [
+/** Posto Guardião do Pico Pingorama, no Acampamento da Fronteira (porta em (11, 47) no Pico). O último antes do Conselho. */
+export default { ...postoGuardiao('PP', 'Pico Pingorama', 17, 'pico', [11, 48], [
   'MURAL — ACAMPAMENTO DA FRONTEIRA',
   '• O Conselho dos Guardiões recebe desafiantes com dezesseis insígnias. Cinco lutas seguidas, sem Posto entre elas.',
   '• Aviso dos Guardiões: homens do Cartel Ferrugem foram vistos subindo para o Cume com correntes. Cuidado.',

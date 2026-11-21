@@ -3,7 +3,7 @@ import { Pincel, grade, obj, objs, entrada, saidas, gente, duelista, item, placa
 import { AMT_PARA_PP, BR4_PARA_PP } from './_b2n-ligacoes';
 
 /**
- * PP · Pico Pindorama — a fronteira entre a Costa do Sol e o Sertão das Névoas (passo 17, depois das 16 insígnias).
+ * PP · Pico Pingorama — a fronteira entre a Costa do Sol e o Sertão das Névoas (passo 17, depois das 16 insígnias).
  * De baixo para cima:
  *  - Acampamento da Fronteira: chegadas de A-MT em (6, 52) e de B-R4 em (34, 52), Posto e Venda do Pico.
  *  - Portão dos Guardiões (`insignias:16`): o guardião Tibiriçá confere o estojo.
@@ -49,15 +49,15 @@ const g = grade('PP', p.fim(), {
   G: '.', N: '.', L: '.', K: '.', X: ':', Z: '.', W: '.', S: '.', k: ',', j: ',', i: ';', q: '"', y: '"', O: '"', z: '.',
 });
 const placas = [
-  placa(g, 'a', 'PICO PINDORAMA — ACAMPAMENTO DA FRONTEIRA\nSul: Monte Tupã (Costa do Sol). Posto e Venda no acampamento.'),
-  placa(g, 'I', 'PICO PINDORAMA — ACAMPAMENTO DA FRONTEIRA\nSul: Subida da Serra (Sertão das Névoas). Posto e Venda no acampamento.'),
+  placa(g, 'a', 'PICO PINGORAMA — ACAMPAMENTO DA FRONTEIRA\nSul: Monte Tupã (Costa do Sol). Posto e Venda no acampamento.'),
+  placa(g, 'I', 'PICO PINGORAMA — ACAMPAMENTO DA FRONTEIRA\nSul: Subida da Serra (Sertão das Névoas). Posto e Venda no acampamento.'),
   placa(g, 'n', 'PORTÃO DOS GUARDIÕES\n"Dezesseis insígnias abrem o portão. Uma equipe inteira abre o Conselho."'),
   placa(g, 'm', 'O CUME\nAdiante, o Salão do Conselho dos Guardiões. Lá dentro: cinco lutas, nenhuma volta.'),
   placa(g, 'h', 'MIRANTE DO CUME\nA oeste, a Costa do Sol inteira até o mar. A leste, o Sertão até onde a névoa deixa.'),
 ];
 const [xg, yg] = g.p('X');
 const zona: ZonaDef = {
-  id: 'PP', nome: 'Pico Pindorama', mapa: 'PP', tipo: 'rota', tileset: 'pico', musica: 'pico', arena: 'pico', passo: 17, clima: 'garoa',
+  id: 'PP', nome: 'Pico Pingorama', mapa: 'PP', tipo: 'rota', tileset: 'pico', musica: 'pico', arena: 'pico', passo: 17, clima: 'garoa',
   mapaChars: g.mapa,
   objetos: [
     obj(g, 'P', 'posto'), obj(g, 'V', 'venda'), obj(g, 'Y', 'ginasio', { cor: '#3a3448,#7c7690,#d8d4e8' }), obj(g, 'H', 'caverna-entrada'),
@@ -78,7 +78,7 @@ const zona: ZonaDef = {
     { x: 37, y: 23, para: { zona: 'PP-gruta', x: 20, y: 3, dir: 's' }, tipo: 'caverna' },
   ],
   portoes: [
-    { x: 19, y: 42, w: 2, h: 1, requer: 'insignias:16', sprite: 'guardiao-tibirica', fala: 'O guardião Tibiriçá, de cocar de penas de gavião, ergue a mão aberta:\n— Este é o Portão dos Guardiões. Daqui para cima, só quem venceu os dezesseis ginásios de Pindorama.\f— Não há desonra em voltar. A serra espera. Quando o estojo estiver cheio, o portão se abre sozinho.' },
+    { x: 19, y: 42, w: 2, h: 1, requer: 'insignias:16', sprite: 'guardiao-tibirica', fala: 'O guardião Tibiriçá, de cocar de penas de gavião, ergue a mão aberta:\n— Este é o Portão dos Guardiões. Daqui para cima, só quem venceu os dezesseis ginásios de Pingorama.\f— Não há desonra em voltar. A serra espera. Quando o estojo estiver cheio, o portão se abre sozinho.' },
   ],
   npcs: [
     duelista(g, '1', 'PP-1', 'cl-montanhista', 's', 3),

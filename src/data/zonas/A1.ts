@@ -43,7 +43,7 @@ const g = grade('A1', [
 const placas = [
   placa(g, 'e', 'VILA JACARANDÁ\n"Onde a sombra é roxa e o café é forte."'),
   placa(g, 'q', 'Casa de {JOGADOR}.'),
-  placa(g, 'r', 'LABORATÓRIO DA PROFª IPÊ AMARELO\nPesquisa de criaturas de Pindorama. Bata antes de entrar (ninguém bate).'),
+  placa(g, 'r', 'LABORATÓRIO DA PROFª IPÊ AMARELO\nPesquisa de criaturas de Pingorama. Bata antes de entrar (ninguém bate).'),
   placa(g, 's', 'Casa da Vó Zica.\nVendem-se cocadas (quando sobram).'),
   placa(g, 'u', 'Casa da família da {RIVAL}.\n"Cuidado com a campeã" (a placa foi ela que pintou).'),
 ];

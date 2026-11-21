@@ -13,7 +13,7 @@
  * 182 BOREALCE — "A Expedição Boreal" (depois de `conselho-vencido`):
  *   navio de pesquisa encalhado no cais de Porto Pantaneiro (B9, desenhado aqui por cima do mapa) e a Drª Solveig
  *   (`boreal-missao`) → 4 Lanternas Boreais, cada uma com um pesquisador da expedição (treinadores B-EXP-1..4, Geada
- *   nv 66–70; `boreal-lanterna-1..4`) em B7, B-SG, B-LG e B-R5 → acender no alto do Pico Pindorama, de noite
+ *   nv 66–70; `boreal-lanterna-1..4`) em B7, B-SG, B-LG e B-R5 → acender no alto do Pico Pingorama, de noite
  *   (`vis-pico-aurora`, aurora em camada própria) → Borealce nv 65 (`boreal-acesa`, `borealce-ok`). Mesma regra do 181
  *   (fuga: volta debaixo da aurora; vencido: `borealce-sumiu`, não volta).
  *   As zonas geladas e o Pico são de outros times e podem ainda não existir: os NPCs e o ponto do Pico ficam definidos
@@ -242,13 +242,13 @@ const SOLVEIG = { nome: 'Drª Solveig', retrato: 'dra-solveig' };
 const lanterna = (n: number, onde: string): EventoDef => ({
   id: `vis-lanterna-${n}`,
   passos: [
-    se(`flag:boreal-lanterna-${n}`, [f(null, n === 4 ? 'O navegador confere a bússola e aponta para o alto da serra: o Pico Pindorama.' : 'O pesquisador da expedição anota alguma coisa num caderno molhado de neve e acena para você.')], [
+    se(`flag:boreal-lanterna-${n}`, [f(null, n === 4 ? 'O navegador confere a bússola e aponta para o alto da serra: o Pico Pingorama.' : 'O pesquisador da expedição anota alguma coisa num caderno molhado de neve e acena para você.')], [
       f(null, `Um pesquisador da expedição da Drª Solveig guarda uma Lanterna Boreal ${onde}.`),
       ['batalha', `B-EXP-${n}`],
       ['dar', 'lanterna-boreal', 1],
       ['flag', `boreal-lanterna-${n}`],
       ['vis-estado'],
-      se('flag:vis-lanternas', [f(null, 'As quatro Lanternas Boreais estão na mochila! O vidro verde brilha sozinho quando sopra o vento frio.\fAgora é subir ao alto do Pico Pindorama, de noite, e acendê-las.')],
+      se('flag:vis-lanternas', [f(null, 'As quatro Lanternas Boreais estão na mochila! O vidro verde brilha sozinho quando sopra o vento frio.\fAgora é subir ao alto do Pico Pingorama, de noite, e acendê-las.')],
         [f(null, 'Mais uma Lanterna Boreal! Faltam as dos outros pesquisadores, espalhados pelas terras geladas da serra.')]),
     ]),
   ],
@@ -262,7 +262,7 @@ export const EVENTOS_VISITANTES: EventoDef[] = [
       ['vis-estado'],
       se('!insignias:16', [
         f(TARUMA, 'Eu sou o Tarumã, canoeiro lá do Amazonas. Desci o rio atrás de uma história e vim parar neste porto.\fLá na minha terra tem um lugar onde um rio preto e um rio barrento correm lado a lado e não se misturam. E tem uma ave que só dança ali.'),
-        f(TARUMA, 'Mas essa ave não dança para quem ainda está de passagem. Quando você tiver as dezesseis insígnias de Pindorama, volte para conversar.'),
+        f(TARUMA, 'Mas essa ave não dança para quem ainda está de passagem. Quando você tiver as dezesseis insígnias de Pingorama, volte para conversar.'),
       ], [
         se('!flag:ea-missao', [
           f(TARUMA, 'Dezesseis insígnias! Então você já remou, mergulhou e subiu cascata por esta terra inteira. É de você que eu preciso.'),
@@ -343,7 +343,7 @@ export const EVENTOS_VISITANTES: EventoDef[] = [
           ['flag', 'borealce-nota'],
         ], [
           se('flag:borealce-sumiu', [f(SOLVEIG, 'O Borealce sumiu nas nuvens e não voltou mais… Pelo menos ele está livre, no frio que tanto queria. Obrigada por tentar.')], [se('flag:boreal-acesa', [f(SOLVEIG, 'Você acendeu as lanternas no Pico! Se você só se afastou dele, volte lá de noite: debaixo da aurora ele continua por perto.')], [
-            se('flag:vis-lanternas', [f(SOLVEIG, 'As quatro lanternas! Agora suba ao alto do Pico Pindorama, de noite, e acenda todas juntas. Eu fico aqui, tentando desencalhar o navio.')], [
+            se('flag:vis-lanternas', [f(SOLVEIG, 'As quatro lanternas! Agora suba ao alto do Pico Pingorama, de noite, e acenda todas juntas. Eu fico aqui, tentando desencalhar o navio.')], [
               f(SOLVEIG, 'Ainda faltam lanternas. Os meus pesquisadores só entregam a quem vence uma batalha com eles.'),
               se('!flag:boreal-lanterna-1', [f(SOLVEIG, 'A da Ingrid, em Serra da Geada.')]),
               se('!flag:boreal-lanterna-2', [f(SOLVEIG, 'A do Halvard, nos Campos de Altitude.')]),
@@ -363,7 +363,7 @@ export const EVENTOS_VISITANTES: EventoDef[] = [
     id: 'vis-pico-aurora',
     passos: [
       ['vis-estado'],
-      se('!flag:vis-noite', [f(null, 'O alto do Pico Pindorama. Daqui se vê o mar da Costa do Sol de um lado e o Sertão das Névoas do outro.\fA Drª Solveig disse que as lanternas só fazem efeito de noite.')], [
+      se('!flag:vis-noite', [f(null, 'O alto do Pico Pingorama. Daqui se vê o mar da Costa do Sol de um lado e o Sertão das Névoas do outro.\fA Drª Solveig disse que as lanternas só fazem efeito de noite.')], [
         se('flag:boreal-acesa', [
           se('!flag:borealce-ok&!flag:borealce-sumiu', [
             f(null, 'Debaixo da aurora, uma galhada acende entre as nuvens. O Borealce voltou!'),
@@ -374,7 +374,7 @@ export const EVENTOS_VISITANTES: EventoDef[] = [
             f(null, 'Lá no alto, o vento de serra assobia frio. {JOGADOR} põe as quatro Lanternas Boreais sobre a pedra, uma em cada canto.\fUma a uma, elas acendem em verde.'),
             ['vis-acender'],
             ['tirar', 'lanterna-boreal', 4], ['flag', 'boreal-acesa'],
-            f(null, 'O céu do Pico se rasga em faixas verdes e violeta: uma aurora boreal, em plena Pindorama!\fDescendo das nuvens, com a galhada acesa como a própria aurora, vem o BOREALCE!'),
+            f(null, 'O céu do Pico se rasga em faixas verdes e violeta: uma aurora boreal, em plena Pingorama!\fDescendo das nuvens, com a galhada acesa como a própria aurora, vem o BOREALCE!'),
             ['chamar', 'vis-borealce-batalha'],
           ]),
         ]),
@@ -391,7 +391,7 @@ export const EVENTOS_VISITANTES: EventoDef[] = [
         f(null, 'O Borealce entrou na cuia. Lá no alto, a aurora ainda brilhou um pouco, como quem se despede.\fA Drª Solveig vai querer saber disso, lá em Porto Pantaneiro.'),
       ]),
       // aparece uma vez só (decisão do autor; spec 6.5): vencido sem captura, não volta
-      se('flag:vis-venceu', [['flag', 'borealce-sumiu'], f(null, 'O Borealce recua para dentro das nuvens e a galhada apaga devagar. Ele não foi mais visto em Pindorama.')]),
+      se('flag:vis-venceu', [['flag', 'borealce-sumiu'], f(null, 'O Borealce recua para dentro das nuvens e a galhada apaga devagar. Ele não foi mais visto em Pingorama.')]),
       se('flag:vis-fugiu', [f(null, 'O Borealce sacode a galhada e fica olhando o céu. Ele continua por perto.')]),
     ],
   },

@@ -9,6 +9,6 @@ export default casa({
   cantoTexto: ['Um oratório pequeno com uma vela acesa e um bilhete: "Para a névoa abrir no caminho de quem sobe a serra".'],
   moradores: [
     { id: 'b8-luthier', sprite: 'npc-homem-2', nome: 'Mestre Cavaquinho', dir: 's', fala: ['Faço instrumento com madeira caída da Floresta Ancestral. Só a caída: a viva tem dono, e o dono é grande e peludo.', 'O Papagálio do vizinho aprendeu o meu choro inteiro. Agora ele toca melhor que eu.'] },
-    { id: 'b8-flautista', sprite: 'npc-mulher-4', nome: 'Dona Pixinguinha', dir: 'l', fala: ['A praça do coreto toca choro toda noite. Quando o observatório abre, a gente toca baixinho para não espantar as estrelas.', 'Dizem que no alto do Pico Pindorama o vento toca flauta sozinho. Quem chega lá conta.'] },
+    { id: 'b8-flautista', sprite: 'npc-mulher-4', nome: 'Dona Pixinguinha', dir: 'l', fala: ['A praça do coreto toca choro toda noite. Quando o observatório abre, a gente toca baixinho para não espantar as estrelas.', 'Dizem que no alto do Pico Pingorama o vento toca flauta sozinho. Quem chega lá conta.'] },
   ],
 });

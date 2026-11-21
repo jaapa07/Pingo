@@ -41,7 +41,7 @@ export const FATOR_EXP_POS_LIGA = 0.55;
 export const FATOR_EXP_INSIGNIA_12 = 1.0;
 /**
  * Prêmio em patacas dos treinadores da jornada do mapa B (decisão do autor, docs/DECISOES-FINAIS.md): ×1,5. Vale para as
- * batalhas travadas nas zonas do mapa B (ids `B…`), do Pico Pindorama (`PP…`) e nas áreas do mapa A que só se abrem
+ * batalhas travadas nas zonas do mapa B (ids `B…`), do Pico Pingorama (`PP…`) e nas áreas do mapa A que só se abrem
  * nessa jornada (Rio Cachoeira-Véu `A-R6`, Monte Tupã `A-MT…`, Cidade `A9…` do ginásio 16). Revanches, rival semanal e Torre
  * (mapa A) ficam como estão. Fica no prêmio que o treinador PAGA (a mensagem "Você ganhou N patacas" já mostra o valor final).
  */
