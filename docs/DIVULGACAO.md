@@ -1,6 +1,6 @@
 # Adventures of Pingo — kit de divulgação
 
-Imagens prontas em `docs/divulgacao/` (960 × 540): `1-titulo`, `2-mundo`, `3-batalha`, `4-mapa-b-1` (Vila Cascavel), `5-mapa-b-2` (Pantanal Grande), `6-pico` (Pico Pindorama), `7-batalha-demo`.
+Imagens prontas em `docs/divulgacao/` (960 × 540): `1-titulo`, `2-mundo`, `3-batalha`, `4-mapa-b-1` (Vila Cascavel), `5-mapa-b-2` (Pantanal Grande), `6-pico` (Pico Pingorama), `7-batalha-demo`.
 
 Links:
 - Demo grátis (navegador/celular): https://jaapa07.github.io/Pingo-demo1/
@@ -33,7 +33,7 @@ Links:
 
 > Quem cresceu com Pokémon Gold lembra: a primeira escolha de parceiro, a grama alta, a música da cidade, a sensação de que o mundo era enorme. **Adventures of Pingo** nasceu dessa saudade — só que no Brasil.
 >
-> Você sai de casa com **Tamanduí**, **Guaraxim** ou **Botinho** — um tamanduá de mata, um lobinho de fogo e um boto de rio — e atravessa matas, serras, praias, o Pantanal e o alto do Pico Pindorama atrás de 16 insígnias, da Liga dos Guardiões e das criaturas lendárias que estão acordando.
+> Você sai de casa com **Tamanduí**, **Guaraxim** ou **Botinho** — um tamanduá de mata, um lobinho de fogo e um boto de rio — e atravessa matas, serras, praias, o Pantanal e o alto do Pico Pingorama atrás de 16 insígnias, da Liga dos Guardiões e das criaturas lendárias que estão acordando.
 >
 > - **182 criaturas originais** inspiradas em bichos e lendas brasileiras, do Saguinho ao Iaraboto
 > - **Batalhas por turnos** com tipos, clima e estratégia de verdade
@@ -56,7 +56,7 @@ Links:
 2. `3-batalha` — "182 criaturas inspiradas na fauna e nas lendas do Brasil"
 3. `2-mundo` — "Escolha seu parceiro: Tamanduí, Guaraxim ou Botinho"
 4. `5-mapa-b-2` — "Do Pantanal…"
-5. `6-pico` — "…ao alto do Pico Pindorama"
+5. `6-pico` — "…ao alto do Pico Pingorama"
 6. `4-mapa-b-1` — "Demo grátis — link na bio"
 
 **Legenda:**
@@ -197,7 +197,7 @@ Sites e canais para mandar: Jovem Nerd, IGN Brasil, TecMundo/Voxel, Meio Bit, Ga
 | 8 | Vídeo "Criatura brasileira do dia" nº 1 |
 | 9 | Release para sites e canais do YouTube |
 | 10 | Vídeo "O lendário que some para sempre" |
-| 11 | Post em r/PixelArt com a arte do Pico Pindorama |
+| 11 | Post em r/PixelArt com a arte do Pico Pingorama |
 | 12 | "Criatura do dia" nº 2 |
 | 13 (sábado) | #screenshotsaturday nº 2 |
 | 14 | Devlog nº 2 com o que os jogadores pediram + números da demo |

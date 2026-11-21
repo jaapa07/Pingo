@@ -1,4 +1,4 @@
-# ZONAS-B2-NORTE.md — diário do time B2-norte (Serra da Geada para cima, Planalto Lume, Floresta Ancestral e Pico Pindorama)
+# ZONAS-B2-NORTE.md — diário do time B2-norte (Serra da Geada para cima, Planalto Lume, Floresta Ancestral e Pico Pingorama)
 
 ## Decisões
 - Régua própria `src/data/zonas/_b2n-lib.ts` (cópia do método do B1, com a lista de defeitos `ERROS_B2N` e os serviços aceitando o mapa `PP`). Nenhuma zona lança exceção na carga.
@@ -14,7 +14,7 @@
 - **B-SG Campos de Altitude** 70×40, geada, passo 14: Açude Congelado (gelo), Mirante do Uirapuru (Escalar), Trilha Velha (`pos-jogo`), pastor da troca.
 - **B-LG Lagoa Gelada** 50×44, geada, passo 14: Ilha do Joca (`B-LG-cabana`, Remo), praia dos juncos (só de canoa), Poça de Cima (Cachoeira), Trapiche Comprido (Jubartão, pós-jogo).
 - **B-FA Floresta Ancestral** 64×60, mata, passo 17 (pós-jogo): 3 Ninhos Raros, Lagoa Escura, Coração da Floresta (Mapinguari).
-- **PP Pico Pindorama** 40×54, pico, passo 17: Acampamento (chegadas (6, 52) de A-MT e (34, 52) de B-R4; `PP-posto`, `PP-venda`), Portão dos Guardiões (`insignias:16`, oferenda de 2 Elixires + 2 Chás), Subida (8 treinadores), campo de gelo, `PP-gruta` (escura) com saída secreta no Beiral Escondido, muralha do Cume com o Garrote, porta do Salão (exige `garrote-vencido`), rival 8, Andarilho do Cume, neve brilhante.
+- **PP Pico Pingorama** 40×54, pico, passo 17: Acampamento (chegadas (6, 52) de A-MT e (34, 52) de B-R4; `PP-posto`, `PP-venda`), Portão dos Guardiões (`insignias:16`, oferenda de 2 Elixires + 2 Chás), Subida (8 treinadores), campo de gelo, `PP-gruta` (escura) com saída secreta no Beiral Escondido, muralha do Cume com o Garrote, porta do Salão (exige `garrote-vencido`), rival 8, Andarilho do Cume, neve brilhante.
 - **PP-conselho** 30×57: vestíbulo, sala de espera (porta sem volta), 5 salas, Sala da Memória.
 - Interiores: B8-posto, B8-venda, B8-casa-1, B8-casa-2, B8-observatorio, B-LG-cabana, PP-posto, PP-venda, PP-gruta.
 

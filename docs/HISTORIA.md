@@ -79,7 +79,7 @@ Itens de cura em batalha (spec 7A): rival, líderes e chefes só usam do 8º gin
 - **A1**: A1 (+quarto, casa, lab, casas), A-R1, A2, A-R2, A-MS, A3, A-R3, A-GE, A4 (+estação, mercado), **A-R7, A10 (+posto, venda, lab da Drª Buriti, casas), A-LG (+posto, venda)**, a ABERTURA completa do jogo e a **Liga dos Guardiões** (`treinadores/liga.ts`, `eventos/liga.ts`).
 - **A2**: A-R4, A-US, A-BA, A5, A6 (+farol), A-PR, A-MG, A-GB, A7, A-R5, A-R6, A8, A-RS, A-MT, A9.
 - **B1**: B1 **Vila Cascavel** (+estação; sem ginásio — o prédio é o "Salão da Raizeira"), B-R1, B-CE, B-PA, B2, B9, B-R2, B3 (+mina), B-CH, B-CV, B4.
-- **B2**: B-R3, B5, B-TA, B6 (+laboratório do Cartel), B-VV, B-R4, B7, B-SG, B-LG, B-R5, B8, B-FA, PP (Pico Pindorama: Portão, Garrote, salas do Conselho, créditos).
+- **B2**: B-R3, B5, B-TA, B6 (+laboratório do Cartel), B-VV, B-R4, B7, B-SG, B-LG, B-R5, B8, B-FA, PP (Pico Pingorama: Portão, Garrote, salas do Conselho, créditos).
 
 ## Gincana e Safári do pós-Liga (spec 10A itens 32 e 33; diário em docs/GINCANA-SAFARI.md)
 | Ligação | Chegada |

@@ -41,7 +41,7 @@ Tudo é sintetizado em tempo real (Web Audio); não há arquivos de som. Timbre:
 | `caverna` | Grutas e Túneis | 32 | 4/4 · 76 bpm | laço |
 | `agua` | Remando na Baía | 32 | 4/4 · 100 bpm | laço |
 | `mergulho` | Recife Submerso | 32 | 4/4 · 72 bpm | laço |
-| `pico` | Pico Pindorama | 32 | 4/4 · 80 bpm | laço |
+| `pico` | Pico Pingorama | 32 | 4/4 · 80 bpm | laço |
 | `posto` | Posto Guardião | 16 | 4/4 · 96 bpm | laço |
 | `venda` | A Venda (xote) | 16 | 4/4 · 104 bpm | laço |
 | `laboratorio` | Laboratório da Profª Ipê | 16 | 4/4 · 112 bpm | laço |
@@ -74,7 +74,7 @@ Faixas de batalha e vitória têm introdução que toca uma vez; o laço volta p
 ### Tema sugerido por cidade (`MUSICA_DA_CIDADE` em `src/data/music/index.ts`)
 A1 `vila-jacaranda` · A2 `cidade-samba` · A3 `cidade-choro` · A4 `cidade-frevo` · A5 `cidade-maracatu` · A6 `cidade-samba` · A7 `cidade-choro` · A8 `cidade-baiao` · A9 `cidade-catira` · B1 `cidade-catira` · B2 `cidade-baiao` · B3 `cidade-baiao` · B4 `cidade-forro` · B5 `cidade-samba` · B6 `cidade-maracatu` · B7 `cidade-gaucha` · B8 `cidade-choro` · B9 `cidade-frevo`
 
-Sugestões de uso: rotas e florestas do mapa A `rota-dia-A`/`rota-noite-A`; do mapa B `rota-dia-B`/`rota-noite-B`; cavernas, Usina e mina `caverna`; Baía Azul, Pantanal e Lagoa `agua`; Recife e Túnel Alagado `mergulho`; Pico Pindorama e Floresta Ancestral `pico`; cenas do Cartel `cartel-tema`; Gincana (A-GN) `gincana`; Portaria e Parque Safári (A-SF, A-SF-parque, também nos encontros do passeio) `safari`; encontro do Borealce (182) `borealce` com a arena `boreal` (única faixa com sonoridade de fora do Brasil, spec 6.5: ré dórico com toques de quarta aumentada, bordão de quintas, instrumento `hardanger`); casas `vila-jacaranda` ou a música da cidade.
+Sugestões de uso: rotas e florestas do mapa A `rota-dia-A`/`rota-noite-A`; do mapa B `rota-dia-B`/`rota-noite-B`; cavernas, Usina e mina `caverna`; Baía Azul, Pantanal e Lagoa `agua`; Recife e Túnel Alagado `mergulho`; Pico Pingorama e Floresta Ancestral `pico`; cenas do Cartel `cartel-tema`; Gincana (A-GN) `gincana`; Portaria e Parque Safári (A-SF, A-SF-parque, também nos encontros do passeio) `safari`; encontro do Borealce (182) `borealce` com a arena `boreal` (única faixa com sonoridade de fora do Brasil, spec 6.5: ré dórico com toques de quarta aumentada, bordão de quintas, instrumento `hardanger`); casas `vila-jacaranda` ou a música da cidade.
 
 ## SFX (184)
 **interface (18):** `ui-mover` `ui-ok` `ui-voltar` `ui-erro` `ui-abrir` `ui-fechar` `ui-aba` `ui-confirmar` `ui-negar` `ui-pausa` `ui-digitar` `ui-apagar` `ui-limite` `ui-pagina` `ui-alternar` `texto` `texto-fim` `salvar`
