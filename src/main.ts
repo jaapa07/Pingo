@@ -3,6 +3,8 @@
  * Fluxo: splash → título → saves → (novo jogo: abertura do time de eventos, se existir) → mundo.
  * Atalhos de teste por URL: `?zona=A1&x=10&y=8`, `?batalha=10,5` (src/world), `?tela=<id>` e `?vitrine=1` (kit).
  */
+// pacotes do itch.io (só com VITE_PACOTES=1): precisa vir antes de qualquer outro módulo pedir arquivo
+import './core/pacotes';
 import './styles/base.css';
 import './styles/kit.css';
 import './styles/toque.css';

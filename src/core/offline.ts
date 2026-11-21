@@ -10,6 +10,7 @@
  */
 import { plataforma } from './plataforma';
 import { gravarRetomada } from './save';
+import { DEMO } from './progresso';
 
 type Entrada = [caminho: string, hash: string, bytes: number, grupo: 'n' | 'r' | 'd'];
 interface Lista { v: string; arquivos: Entrada[] }
@@ -28,7 +29,9 @@ export const offline = {
 };
 
 const LOTE = 24;
-const CACHE_DADOS = 'pingo-dados'; // o mesmo nome usado pelo Service Worker (tools/build-sw.ts)
+// o mesmo nome usado pelo Service Worker (tools/build-sw.ts). A demo (docs/DEMO.md) usa outro prefixo, que NÃO começa
+// com 'pingo-': no GitHub Pages ela divide o domínio com o jogo completo e a faxina de um não pode apagar o cache do outro
+const CACHE_DADOS = DEMO ? 'pingodemo-dados' : 'pingo-dados';
 let faixa: HTMLElement | null = null, somem = 0;
 
 function avisar(texto: string, sumirEm = 0) {
@@ -166,6 +169,8 @@ async function conferirVersao() {
 export async function iniciarOffline(): Promise<void> {
   if (!import.meta.env.PROD || typeof navigator === 'undefined' || typeof window === 'undefined') return;
   if (plataforma.alvo !== 'web' && plataforma.alvo !== 'pwa') return;
+  // pacotes do itch.io (VITE_SEM_SW=1, docs/DEMO.md): o jogo roda num iframe de outro domínio; sem Service Worker
+  if (import.meta.env.VITE_SEM_SW === '1') return;
   (window as unknown as { __pingoOffline: typeof offline }).__pingoOffline = offline;
   void pedirPersistencia();
   window.addEventListener('pointerdown', () => void pedirPersistencia(), { once: true, passive: true });

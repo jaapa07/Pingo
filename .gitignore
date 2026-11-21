@@ -8,3 +8,9 @@ plataformas/desktop/out/
 
 # registros dos pilotos de teste
 tools/testes/**/*.log
+
+# pacotes extras (docs/DEMO.md): demo e itch.io
+dist-demo/
+dist-itch/
+dist-itch-completo/
+tools/testes/demo/saida/

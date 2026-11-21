@@ -54,7 +54,8 @@ function prioridade(c: string): number {
   return 30;
 }
 
-export function gerar(DIST: string = DIST_PADRAO): { versao: string; total: number; bytes: number; nucleo: number; bytesNucleo: number; resto: number; bytesResto: number; demanda: number; bytesDemanda: number } {
+/** `prefixo` dos caches: 'pingo-' no jogo completo; a demo usa 'pingodemo-' (src/core/offline.ts explica) */
+export function gerar(DIST: string = DIST_PADRAO, prefixo = 'pingo-'): { versao: string; total: number; bytes: number; nucleo: number; bytesNucleo: number; resto: number; bytesResto: number; demanda: number; bytesDemanda: number } {
   if (!existsSync(join(DIST, 'index.html'))) throw new Error('dist/index.html não existe: rode `vite build` antes.');
   const brutos = andar(DIST).map((p) => relative(DIST, p).split(sep).join('/')).filter((c) => c !== 'sw.js' && c !== 'pingo-arquivos.json');
   const bytesTotal = brutos.reduce((s, c) => s + statSync(join(DIST, c)).size, 0);
@@ -69,17 +70,17 @@ export function gerar(DIST: string = DIST_PADRAO): { versao: string; total: numb
   writeFileSync(join(DIST, 'pingo-arquivos.json'), JSON.stringify({ v: versao, arquivos }));
   const nucleo = arquivos.filter((a) => a[3] === 'n').map((a) => a[0]);
   nucleo.push('pingo-arquivos.json');
-  writeFileSync(join(DIST, 'sw.js'), codigoSw(versao, nucleo));
+  writeFileSync(join(DIST, 'sw.js'), codigoSw(versao, nucleo, prefixo));
   const soma = (g: Grupo) => arquivos.filter((a) => a[3] === g).reduce((s, a) => s + a[2], 0);
   const conta = (g: Grupo) => arquivos.filter((a) => a[3] === g).length;
   return { versao, total: arquivos.length, bytes: bytesTotal, nucleo: conta('n'), bytesNucleo: soma('n'), resto: conta('r'), bytesResto: soma('r'), demanda: conta('d'), bytesDemanda: soma('d') };
 }
 
-function codigoSw(versao: string, nucleo: string[]): string {
+function codigoSw(versao: string, nucleo: string[], prefixo: string): string {
   return `/* Adventures of Pingo: Service Worker gerado por tools/build-sw.ts. Não edite à mão. */
 'use strict';
 const VERSAO = ${JSON.stringify(versao)};
-const PREFIXO = 'pingo-';
+const PREFIXO = '${prefixo}';
 const CACHE_NUCLEO = PREFIXO + 'n-' + VERSAO; // página, código, interface: um por versão
 const CACHE_DADOS = PREFIXO + 'dados';        // sprites, arenas e zonas: um só, com o hash na chave
 const NUCLEO = ${JSON.stringify(nucleo)};

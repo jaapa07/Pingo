@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build && tsx tools/build-sw.ts",
+    "build:demo": "tsc --noEmit && tsx tools/build-pacote.ts demo",
+    "build:itch": "tsc --noEmit && tsx tools/build-pacote.ts itch",
+    "build:itch:completo": "tsc --noEmit && tsx tools/build-pacote.ts itch-completo",
     "preview": "vite preview",
     "assets": "tsx tools/render-all.ts",
     "bake": "tsx tools/bake-maps.ts",
