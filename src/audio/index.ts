@@ -256,6 +256,7 @@ bus.on('musica', aoPedirMusica);
 bus.on('music', aoPedirMusica);
 bus.on('jingle', (d: Carga) => { const id = campo(d, 'id'); if (typeof id === 'string') audio.jingle(id); });
 bus.on('babble', (d: Carga) => {
+  if (!jogo.opcoes.vozes) return; // vozes dos personagens desligadas (padrão): texto sem balbucio, como nos clássicos
   if (!d || typeof d !== 'object') return;
   const voz = d.voz ?? d.voice;
   const texto = d.texto ?? d.text;

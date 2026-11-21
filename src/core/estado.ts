@@ -3,7 +3,7 @@ import type { SaveData, Opcoes, CriaturaInst, AmuletoId, Cond, Periodo } from '.
 import { rng } from './rng';
 import { MAPA_B_ABERTO, DEMO } from './progresso';
 
-export const opcoesPadrao = (): Opcoes => ({ musica: 0.7, sfx: 0.85, velTexto: 2, dificuldade: 'aventureiro', animBatalha: true, numerosDano: false, vibrar: true, parceiraSegue: false, teclas: {}, qualidade: 'pc' });
+export const opcoesPadrao = (): Opcoes => ({ musica: 0.7, sfx: 0.85, velTexto: 2, dificuldade: 'aventureiro', animBatalha: true, numerosDano: false, vibrar: true, parceiraSegue: false, teclas: {}, qualidade: 'pc', vozes: false });
 
 export function novoSave(): SaveData {
   return {

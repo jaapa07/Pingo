@@ -25,7 +25,8 @@ export function criarOpcoes(): Tela {
   const DIF = ['explorador', 'aventureiro', 'veterano'] as const, NOME_DIF = { explorador: 'Explorador', aventureiro: 'Aventureiro (Recomendado)', veterano: 'Veterano' };
   const linhas: Linha[] = [
     { rotulo: 'Música', valor: () => nivel(o.musica), mudar: (d) => { o.musica = passo(o.musica, d); aplicarVolumes(); }, dica: 'Volume da música.' },
-    { rotulo: 'Efeitos', valor: () => nivel(o.sfx), mudar: (d) => { o.sfx = passo(o.sfx, d); aplicarVolumes(); som('ui-ok'); }, dica: 'Volume dos efeitos, vozes e gritos das criaturas.' },
+    { rotulo: 'Efeitos', valor: () => nivel(o.sfx), mudar: (d) => { o.sfx = passo(o.sfx, d); aplicarVolumes(); som('ui-ok'); }, dica: 'Volume dos efeitos e gritos das criaturas.' },
+    { rotulo: 'Vozes nas falas', valor: () => simNao(!!o.vozes), mudar: () => { o.vozes = !o.vozes; }, dica: 'Personagens "falam" com sons enquanto o texto aparece.' },
     { rotulo: 'Velocidade do texto', valor: () => ['Calma', 'Normal', 'Ligeira'][o.velTexto - 1], mudar: (d) => { o.velTexto = (((o.velTexto - 1 + d + 3) % 3) + 1) as 1 | 2 | 3; }, dica: 'Ritmo das letras nas caixas de fala.' },
     { rotulo: 'Dificuldade', valor: () => NOME_DIF[o.dificuldade], mudar: (d) => { o.dificuldade = DIF[(DIF.indexOf(o.dificuldade) + d + 3) % 3]; }, dica: 'Explorador: leve. Aventureiro (recomendado): equilíbrio. Veterano: rivais espertos.' },
     { rotulo: 'Animações de batalha', valor: () => simNao(o.animBatalha), mudar: () => { o.animBatalha = !o.animBatalha; }, dica: 'Mostra as animações dos golpes.' },
