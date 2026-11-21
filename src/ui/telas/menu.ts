@@ -39,6 +39,17 @@ export function criarMenu(): Tela {
   const lista = new Lista({ itens: ops.map((o) => o.rotulo), tamanho: 12, visiveis: ops.length, inicial: Math.max(0, ops.findIndex((o) => o.id === ultimo)), aoEscolher: (i) => void escolher(ops[i].id), aoCancelar: () => fechar(tela) });
   const fundo = document.createElement('div'); fundo.style.cssText = 'position:absolute;left:0;top:0;width:320px;height:180px'; tocavel(fundo, () => { som('ui-voltar'); fechar(tela); });
   em(lista.el, 316 - lista.largura, 4); el.append(fundo, lista.el);
+  // alvos de toque invisíveis, maiores que o texto: cada linha vira uma faixa de 16 px de altura (o passo da lista,
+  // sem sobreposição) que vai de 32 px à esquerda da moldura até a borda da tela; a primeira e a última vão até as
+  // bordas da moldura
+  const xAlvo = 316 - lista.largura - 32, yLista = 4 + 8 + 1, hLista = parseInt(lista.el.style.height);
+  ops.forEach((o, i) => {
+    const y0 = i === 0 ? 0 : yLista + i * lista.alt, y1 = i === ops.length - 1 ? 4 + hLista + 2 : yLista + (i + 1) * lista.alt;
+    const a = document.createElement('div'); a.className = 'alvo-menu';
+    a.style.cssText = `position:absolute;left:${xAlvo}px;top:${y0}px;width:${320 - xAlvo}px;height:${y1 - y0}px`;
+    tocavel(a, () => { if (ocupado) return; lista.selecionar(i, true); som('ui-ok'); void escolher(o.id); }, () => lista.selecionar(i, true));
+    el.append(a);
+  });
   const cx = moldura('tinta', 132, 46, 26, 118); el.append(cx);
   const l1 = texto(nomeLocal(s.jogador.zona), { cor: 'amarelo', sombra: true }), l2 = texto('', { cor: 'creme' }), l3 = texto(`${patacas(s.jogador.dinheiro)} patacas`, { cor: 'creme' });
   cx.append(em(l1, 6, 5), em(spr(periodo() === 'noite' ? 'lua' : 'sol'), 5, 15), em(l2, 22, 18), em(l3, 6, 32));

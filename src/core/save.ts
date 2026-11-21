@@ -161,15 +161,21 @@ export function exportar(slot?: number): string {
 export function lerExportado(txt: string): SaveData {
   // código colado de mensageiros e e-mail chega com espaços, quebras de linha, caracteres invisíveis,
   // aspas ou texto em volta (e às vezes como link #pingo=): tudo isso é descartado antes de conferir
-  const limpo = String(txt ?? '').replace(/%3A/gi, ':').replace(/[\s\u00ad\u200b-\u200f\u2060\ufeff]+/g, '');
+  const bruto = String(txt ?? '').replace(/%3A/gi, ':').replace(/[\u00ad\u200b-\u200f\u2060\ufeff]+/g, '');
+  const limpo = bruto.replace(/\s+/g, '');
   const outra = /PINGO(\d+):/.exec(limpo);
   if (outra && outra[1] !== '1') throw new Error('Este código é de uma versão mais nova do jogo. Atualize o jogo neste aparelho e tente de novo.');
-  const m = /PINGO1:([0-9a-fA-F]{8}):([A-Za-z0-9_-]+)/.exec(limpo);
-  if (!m) throw new Error(/PINGO1:?$/.test(limpo) || /^PINGO1:[0-9a-fA-F]{0,8}:?$/.test(limpo) ? 'O código está incompleto: copie o código inteiro de novo.' : 'Isto não é um código de Adventures of Pingo.');
-  const incompleto = 'O código está incompleto ou foi alterado: copie o código inteiro de novo (ou use o arquivo .pingo).';
-  let bytes: Uint8Array;
-  try { bytes = descompactar(deB64(m[2])); } catch { throw new Error(incompleto); }
-  if (crc32(bytes) !== m[1].toLowerCase()) throw new Error(incompleto);
+  if (!/PINGO1:([0-9a-fA-F]{8}):([A-Za-z0-9_-]+)/.test(limpo)) throw new Error(/PINGO1:/.test(limpo) ? 'O código está incompleto: copie o código inteiro de novo.' : 'Isto não é um código de Adventures of Pingo.');
+  // o texto depois do código numa linha nova ("Abraço!") se gruda nele quando os espaços somem: tenta cortar
+  // nas quebras, do fim para o começo, até a soma conferir
+  const pedacos = bruto.slice(bruto.indexOf('PINGO1')).split(/\s+/).filter(Boolean);
+  let bytes: Uint8Array | null = null;
+  for (let k = pedacos.length; k >= Math.max(1, pedacos.length - 8) && !bytes; k--) {
+    const m = /^PINGO1:([0-9a-fA-F]{8}):([A-Za-z0-9_-]+)/.exec(pedacos.slice(0, k).join(''));
+    if (!m) continue;
+    try { const b = descompactar(deB64(m[2])); if (crc32(b) === m[1].toLowerCase()) bytes = b; } catch { /* tenta um corte menor */ }
+  }
+  if (!bytes) throw new Error('O código está incompleto ou foi alterado: copie o código inteiro de novo (ou use o arquivo .pingo).');
   let d: unknown;
   try { d = JSON.parse(deUtf8(bytes)); } catch { throw new Error('O arquivo está danificado.'); }
   if (!saveValido(d)) throw new Error((d as { versao?: number } | null)?.versao && (d as { versao: number }).versao > 1 ? 'Este código é de uma versão mais nova do jogo. Atualize o jogo neste aparelho e tente de novo.' : 'O código é de uma versão que este jogo não conhece.');

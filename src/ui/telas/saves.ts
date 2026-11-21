@@ -111,13 +111,13 @@ export function campoCodigo(modo: 'colar' | 'copiar', codigo = ''): Promise<stri
     bts.forEach((b, i) => tocavel(b.el, () => void apertar(i), () => { foco = i; pintarFoco(); }));
     ta.addEventListener('input', pintar);
     ta.addEventListener('focus', () => { if (modo === 'copiar') ta.setSelectionRange(0, codigo.length); });
-    // enquanto o campo tem o foco, as teclas são dele (o jogo não as lê), menos Esc e Enter
+    // enquanto o campo tem o foco, as teclas são dele (o jogo não as lê), menos Esc e Enter; o soltar (keyup)
+    // segue para o jogo, senão a tecla que abriu este quadro ficaria presa como apertada
     ta.addEventListener('keydown', (e) => {
       e.stopPropagation();
       if (e.key === 'Escape') { e.preventDefault(); som('ui-voltar'); sair(null); }
       else if (e.key === 'Enter' && modo === 'colar') { e.preventDefault(); usar(); }
     });
-    ta.addEventListener('keyup', (e) => e.stopPropagation());
     for (const ev of ['pointerdown', 'pointerup']) ta.addEventListener(ev, (e) => e.stopPropagation());
     const tela: Tela = {
       el, sobreposta: true,
