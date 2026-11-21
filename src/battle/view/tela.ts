@@ -28,6 +28,8 @@ const som = (id: string, o: { pitch?: number; vol?: number } = {}) => bus.emit('
 const NOME_ST: Record<Stat, string> = { vida: 'Vida', atq: 'Ataque', def: 'Defesa', atqEsp: 'Atq. Esp.', defEsp: 'Def. Esp.', vel: 'Velocidade' };
 const SOM_STATUS: Record<StatusId, string> = { queimado: 'status-queimadura', envenenado: 'status-veneno', paralisado: 'status-paralisia', dormindo: 'status-sono', congelado: 'status-congelado', encantado: 'status-confusao' };
 const SOM_CLIMA: Record<string, string> = { sol: 'clima-sol', chuva: 'clima-chuva', garoa: 'clima-geada', poeira: 'clima-areia', nevoa: 'vento' };
+/** quantos px o treinador do jogador fica à esquerda do lugar da (primeira) criatura dele */
+const RECUO_TREINADOR = 36;
 
 export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
   const { controle, pedido } = args, b = controle.b, dupla = b.porLado > 1;
@@ -109,7 +111,11 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
     f.quadro = 0; return f;
   }
   function definirBase(a: Ator, s: StatusId | null) { a.base(s === 'dormindo' || s === 'congelado' ? 'status' : 'idle'); }
-  async function entrar(p: Pos, r: ResumoCriatura, modo: 'cuia' | 'selvagem' | 'pronto') {
+  /** onde o treinador fica na cena: o do jogador um passo atrás (à esquerda) do lugar da criatura, para a cuia sair da
+   *  mão dele e voar para a frente, sem cair de volta em cima dele (feedback de jogador, docs/UI-CORRECOES.md) */
+  const xTreinador = (lado: 0 | 1) => (lado === 0 ? palco.apoio(0, 0)[0] - RECUO_TREINADOR : palco.arena.apoios.inimigo.x);
+  /** `saiTreinador`: o treinador do jogador sai de cena enquanto a cuia voa (é o último a ser solto agora) */
+  async function entrar(p: Pos, r: ResumoCriatura, modo: 'cuia' | 'selvagem' | 'pronto', saiTreinador = true) {
     const a = atorDe(p); [a.x, a.y] = palco.apoio(p.lado, p.pos);
     const rara = !!inst.get(r.uid)?.rara;
     await palco.precarregarCriatura(r.especie, rara);
@@ -117,10 +123,16 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
     emCampo[p.lado][p.pos] = r.uid; vis.set(r.uid, { ...r });
     if (modo === 'cuia') {
       const t = palco.treinador[p.lado]; let de: [number, number];
-      if (p.lado === 0 && t?.visivel) { void t.tocar('arremessar'); await rel.dormir(0.22); de = [t.x + 12, t.y - 40]; } else de = p.lado === 0 ? [-10, a.y - 20] : [330, a.y - 40];
+      let saindo: Promise<void> | null = null;
+      if (p.lado === 0 && t?.visivel) {
+        // espera o quadro em que o braço solta (4º de 5 do `arremessar`, a 10 qps) e a cuia sai da mão, à frente do corpo
+        void t.tocar('arremessar'); await rel.dormir(0.28); de = [t.x + 16, t.y - 30];
+        if (saiTreinador) saindo = rel.dormir(0.1).then(() => deslizar(0, false, 0.4));
+      } else de = p.lado === 0 ? [-10, a.y - 20] : [330, a.y - 40];
       const f = await arremessar(cuiaDe(r.uid), de, [a.x, a.y - 18], 0.4, p.lado === 0 ? 34 : 22);
       f.quadro = 3; som('cuia-abrir'); cena.fx('cap-luz', a.x, a.y - 16);
       a.visivel = true; a.branco = true; await rel.dormir(0.14); f.remover(); a.branco = false;
+      await saindo;
     } else { a.visivel = true; a.escuro = false; }
     definirBase(a, r.status);
     if (rara) void brilhoRaro(a);
@@ -147,7 +159,7 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
   /** treinador desliza para fora (ou para dentro) da cena */
   async function deslizar(lado: 0 | 1, entrando: boolean, dur = 0.36) {
     const t = palco.treinador[lado]; if (!t) return;
-    const base = palco.arena.apoios[lado ? 'inimigo' : 'jogador'].x, fora = lado === 0 ? -50 : 380;
+    const base = xTreinador(lado), fora = lado === 0 ? -50 : 380;
     t.visivel = true;
     await rel.entre(dur, (k) => { t.x = Math.round(entrando ? fora + (base - fora) * k : base + (fora - base) * k); });
     if (!entrando) t.visivel = false;
@@ -175,8 +187,9 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
         const ladoTreinador = e.lado === 1 && pedido.tipo === 'treinador';
         if (ladoTreinador && palco.treinador[1]?.visivel) await deslizar(1, false, 0.3);
         const temMsg = adiantarMsg();
-        await entrar(e, e.criatura, e.lado === 0 || ladoTreinador ? 'cuia' : 'selvagem');
-        if (e.lado === 0 && palco.treinador[0]?.visivel && !(fila[0]?.t === 'entra' && fila[0].lado === 0)) void deslizar(0, false);
+        const outroDoJogador = fila[0]?.t === 'entra' && fila[0].lado === 0;
+        await entrar(e, e.criatura, e.lado === 0 || ladoTreinador ? 'cuia' : 'selvagem', !outroDoJogador);
+        if (e.lado === 0 && palco.treinador[0]?.visivel && !outroDoJogador) void deslizar(0, false);
         if (temMsg) await esperarFala(0.5);
         return;
       }
@@ -507,7 +520,7 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
     if (pedido.tipo === 'lendario') som('lendario-aparece');
     await rel.entre(0.7, (k) => {
       abrirCortina(Math.min(1, k * 1.6)); palco.definirDolly(1 - k);
-      for (const lado of [0, 1] as const) { const tr = palco.treinador[lado]; if (tr) { const base = palco.arena.apoios[lado ? 'inimigo' : 'jogador'].x; tr.x = Math.round(base + (lado === 0 ? -1 : 1) * 120 * (1 - k)); } }
+      for (const lado of [0, 1] as const) { const tr = palco.treinador[lado]; if (tr) { const base = xTreinador(lado); tr.x = Math.round(base + (lado === 0 ? -1 : 1) * 120 * (1 - k)); } }
       vultos.forEach((a, i) => { a.x = Math.round(bases[i] + 120 * (1 - k)); });
     });
     palco.definirDolly(0);
