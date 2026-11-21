@@ -34,7 +34,7 @@ export function criarOpcoes(): Tela {
     { rotulo: 'Vibração', valor: () => simNao(o.vibrar), mudar: () => { o.vibrar = !o.vibrar; input.vibrar(30, true); }, dica: 'Vibra em críticos, capturas e insígnias (celular e controle).' },
     { rotulo: 'Parceira segue', valor: () => simNao(o.parceiraSegue), mudar: () => { o.parceiraSegue = !o.parceiraSegue; }, dica: 'A 1ª criatura da equipe anda atrás de você. Também se liga pela tela da Equipe.' },
     { rotulo: 'Qualidade', valor: () => (o.qualidade === 'pc' ? 'PC' : 'Celular'), mudar: () => { o.qualidade = o.qualidade === 'pc' ? 'celular' : 'pc'; }, dica: 'Celular: menos efeitos de cenário, para poupar bateria.' },
-    ...(plataforma.alvo === 'ios' ? [] : [{ rotulo: 'Tela cheia', valor: () => simNao(telaCheia), mudar: () => { telaCheia = !telaCheia; plataforma.telaCheia(telaCheia); }, dica: 'Usa a tela inteira do aparelho.' } as Linha]),
+    ...(plataforma.alvo === 'ios' || plataforma.alvo === 'android' ? [] : [{ rotulo: 'Tela cheia', valor: () => simNao(telaCheia), mudar: () => { telaCheia = !telaCheia; plataforma.telaCheia(telaCheia); }, dica: 'Usa a tela inteira do aparelho.' } as Linha]),
     { rotulo: 'Teclas…', valor: () => '', acao: abrirTeclas, dica: 'Escolha as teclas de cada ação.' },
     { rotulo: 'Voltar', valor: () => '', acao: sair, dica: 'Guarda as opções e volta.' },
   ];

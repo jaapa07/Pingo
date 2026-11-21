@@ -1,4 +1,4 @@
-# Diário: versões PC (Electron) e iOS (Capacitor)
+# Diário: versões PC/Mac (Electron), iOS e Android (Capacitor)
 
 Spec 2.2 e 15A: um só código, três empacotamentos. A web/PWA já existia; aqui entram o PC e o iOS.
 Como gerar, rodar e publicar: `docs/JOGAR.md` (seções 1A e 6).
@@ -109,10 +109,110 @@ pacotes do sistema não foi permitido neste contêiner. Fica configurado; sai co
 
 `npx cap add ios` e `npx cap sync ios` rodaram sem erro (5 plugins via Swift Package Manager).
 
+## Android (.apk) e Mac: publicação na Release
+
+Tudo sai do workflow `.github/workflows/release.yml` (substituiu o antigo `pc.yml`). Ele dispara quando
+`plataformas/desktop/VERSAO` muda em `main` e publica **uma** Release `pc-<VERSAO>` com:
+
+| Arquivo | Job | Como é feito |
+|---|---|---|
+| `Adventures-of-Pingo-<V>-portatil.exe` | `pc` (ubuntu) | electron-builder `--win portable --x64` |
+| `Adventures-of-Pingo-<V>-linux-x86_64.AppImage` | `pc` (ubuntu) | electron-builder `--linux AppImage` |
+| `Adventures-of-Pingo-<V>-mac.dmg` e `-mac.zip` | `mac` (macos-latest) | electron-builder `--mac`, app **universal** (Intel + Apple Silicon) |
+| `Adventures-of-Pingo-<V>-android.apk` | `android` (ubuntu) | `npm run build` + `npx cap sync android` + `./gradlew assembleRelease` |
+
+Cada job sobe seus arquivos como artifact; o job `publicar` só roda se os três derem certo e cria a Release com
+todos de uma vez (com o texto de instalação por plataforma). Rodar à mão (Actions → "Versões para PC, Mac e
+Android" → Run workflow) só gera os arquivos (baixáveis em "Artifacts" da execução), a não ser que se marque
+"publicar". `versionName` do Android = VERSAO e `versionCode` = `MAJOR*10000 + MINOR*100 + PATCH` (1.2.1 → 10201),
+lidos de `plataformas/desktop/VERSAO` pelo `app/build.gradle`.
+
+### Android: o projeto
+
+- Gerado com `npx cap add android` (Capacitor 8.6, `@capacitor/android`), em `plataformas/android`
+  (`android.path` no `capacitor.config.ts`). O jogo vai inteiro dentro do APK (`assets/public` = cópia do `dist/`,
+  fora do git, refeita por `npx cap sync android`), servido de `https://localhost` pelo próprio app: nada de servidor
+  remoto. Atualizar o projeto: `npm run android` (build + sync); APK local: `npm run android:apk` (precisa de JDK 21
+  e Android SDK 36; saída em `plataformas/android/app/build/outputs/apk/release/`).
+- Plugins: os mesmos do iOS (App, Filesystem, Haptics, Preferences, Share) + **`@capacitor/clipboard`**.
+- `plataforma.ts` passou a reconhecer o alvo `android` (`Capacitor.getPlatform()`), tratado como o iOS:
+  - **save** no Preferences (SharedPreferences do app), com localStorage/IndexedDB do WebView de reserva (o
+    Capacitor liga o DOM storage; ambos persistem entre aberturas). Desinstalar o app apaga o save.
+  - **Copiar código**: `navigator.clipboard.writeText` (funciona no WebView, que é contexto seguro); se falhar, o
+    plugin Clipboard; depois o `execCommand('copy')`. **Colar código**: no app nativo o plugin Clipboard é lido
+    primeiro (o WebView do Android nega `navigator.clipboard.readText`), depois o navegador; se nada der, a tela
+    abre o campo para colar à mão, como antes. Na web nada muda (o plugin não existe lá).
+  - **Exportar .pingo**: grava no cache do app (sem permissão de armazenamento) e abre o Compartilhar do Android
+    (FileProvider do modelo do Capacitor). **Importar**: o `<input type=file>` vai sem filtro de tipo no Android
+    (o seletor filtra por MIME e `.pingo` não tem um; com filtro o arquivo ficava cinza).
+  - A opção "Tela cheia" some, como no iOS: o app já é tela cheia.
+- `MainActivity.java`: tela cheia imersiva (barras do sistema escondidas; um deslize na borda mostra por um
+  instante), desenho também atrás do entalhe da câmera (`SHORT_EDGES`), zoom desligado, `textZoom` 100 (o tamanho
+  de fonte do sistema não deforma a interface em pixels), sem overscroll. A **área segura** chega ao jogo pelo
+  `SystemBars` do Capacitor 8 (modo `css`): em WebView novo repassa os recortes ao `env(safe-area-inset-*)` que o
+  `base.css` já usa; em WebView antigo põe o recuo como padding nativo. **Orientação livre** (nenhuma
+  `screenOrientation` no manifesto; girar não recria a Activity). O viewport do `index.html` já tem
+  `user-scalable=no`.
+- Ícone e abertura gerados de `public/icones` (script Python/Pillow de uso único; refazer se a arte mudar):
+  `mipmap-*/ic_launcher.png` (icone-512 com cantos arredondados), `ic_launcher_round.png` (recorte redondo),
+  `ic_launcher_foreground.png` (icone-maskable-512 em 108 dp, ícone adaptativo, fundo `#3FA7D6`);
+  `drawable*/splash.png` (fundo `#211824` com o ícone em escala inteira, Android 11 e antes) e
+  `drawable-xxxhdpi/splash_icone.png` (ícone da tela de abertura do Android 12+, `windowSplashScreen*` em `styles.xml`).
+- O botão Voltar do Android segue o padrão do Capacitor (sem página anterior: o app vai para segundo plano; o
+  jogo grava o ponto de retomada ao sair de foco, igual ao iPhone).
+- `.gitignore` do projeto: `*.jks` e `*.keystore` descomentados, para nenhuma chave entrar no repositório.
+
+### Android: assinatura (keystore) — o que o dono do jogo precisa fazer
+
+Sem configurar nada, o CI assina o APK com a **chave de debug** gerada na hora pelo Android Gradle Plugin. Esse
+APK instala normalmente, mas **cada versão sai com uma chave diferente**: para instalar uma atualização é preciso
+**desinstalar o app antes** (o Android recusa atualizar um app com outra assinatura) — e desinstalar apaga o save.
+Antes de desinstalar, exporte o jogo (Jogos → Copiar código ou Exportar arquivo .pingo) e importe depois.
+
+Para que as atualizações instalem por cima, crie **uma** keystore fixa e guarde-a bem (perdeu = nunca mais
+atualiza por cima; nunca coloque no repositório, que é público):
+
+1. Num computador com Java (JDK 17+): 
+   `keytool -genkeypair -v -keystore pingo-release.keystore -alias pingo -keyalg RSA -keysize 4096 -validity 10000`
+   (ele pede uma senha e nome/organização; pode usar a mesma senha para a chave).
+2. Gere o texto base64 do arquivo: Linux `base64 -w0 pingo-release.keystore > ks.txt`; Mac
+   `base64 -i pingo-release.keystore -o ks.txt`; Windows (PowerShell)
+   `[Convert]::ToBase64String([IO.File]::ReadAllBytes("pingo-release.keystore")) > ks.txt`.
+3. No GitHub: repositório → Settings → Secrets and variables → Actions → New repository secret, e crie:
+   - `ANDROID_KEYSTORE_BASE64` = conteúdo de `ks.txt`;
+   - `ANDROID_KEYSTORE_PASSWORD` = senha da keystore;
+   - `ANDROID_KEY_ALIAS` = `pingo` (o `-alias` usado no passo 1);
+   - `ANDROID_KEY_PASSWORD` = senha da chave (se for a mesma, repita).
+4. Apague o `ks.txt` e guarde a keystore + senhas num lugar seguro (dois backups).
+
+Na próxima Release o job `android` decodifica a keystore num arquivo temporário do runner e o `build.gradle`
+assina com ela (o log mostra "Assinando com a keystore dos secrets" e o certificado no `apksigner verify`).
+A primeira versão com a chave fixa ainda exige desinstalar a versão assinada com debug; dali em diante, atualiza por cima.
+
+### Mac
+
+- `electron-builder.yml`: alvos `dmg` e `zip`, arquitetura **universal** (um app só para Intel e Apple Silicon),
+  nome `Adventures-of-Pingo-<V>-mac.{dmg,zip}`. Gerado no runner `macos-latest` (o `.dmg` precisa do `hdiutil`).
+- Sem conta de desenvolvedor Apple: assinatura **ad hoc** (`identity: "-"`), sem notarização. Não é uma
+  assinatura "de verdade" (o Gatekeeper continua avisando), mas sem ela o macOS dos Macs Apple Silicon diz que o
+  app "está danificado". O job confere `lipo -info` (x86_64 + arm64) e `codesign --verify`.
+- **Como abrir no Mac** (vai no texto da Release):
+  1. `.dmg`: abra e arraste "Adventures of Pingo" para Aplicativos. `.zip`: dê dois cliques para descompactar.
+  2. Na primeira vez, **clique com o botão direito** (ou Control + clique) no app → **Abrir** → **Abrir**.
+  3. No macOS 15 (Sequoia) ou mais novo, ou se só aparecer "Cancelar"/"Mover para o Lixo": tente abrir uma vez,
+     depois vá em **Ajustes do Sistema → Privacidade e Segurança**, role até "Adventures of Pingo foi bloqueado" e
+     clique em **Abrir mesmo assim** (pede a senha do Mac). Das próximas vezes abre normalmente.
+  4. Último recurso, no Terminal: `xattr -cr "/Applications/Adventures of Pingo.app"`.
+- O save fica em `~/Library/Application Support/Adventures of Pingo/saves`.
+
 ## Pendências conhecidas
 
-- **Assinatura**: nenhum executável é assinado (Windows: aviso do SmartScreen; macOS: botão direito → Abrir).
-- **macOS**: o `.dmg` depende do `hdiutil`, que só existe no Mac; configurado, não gerado aqui.
+- **Assinatura**: Windows sem certificado (aviso do SmartScreen); Mac só ad hoc, sem notarização (botão direito →
+  Abrir ou "Abrir mesmo assim"); Android com chave de debug até os secrets da keystore serem cadastrados.
+- **Android não compilado neste contêiner**: sem Android SDK aqui (o download do SDK é bloqueado pelo proxy);
+  compilado e conferido (`apksigner verify`) no CI. O teste da ponte (`plataforma.ts` com um Capacitor Android
+  simulado: copiar/colar pelo plugin com o `navigator.clipboard` negado, save no Preferences, exportar no cache)
+  foi feito no Chromium do Playwright.
 - **Instalador NSIS do Windows**: precisa de `wine` no Linux (ou gerar no Windows); configurado, não gerado aqui.
 - **iOS só com `movel/`** (spec 15A.3): os assets ainda não têm dois níveis (`hd/` e `movel/`), então o app iOS
   leva o mesmo `dist/` do PWA (~42 MB de arquivos), bem dentro do orçamento de 300 MB.

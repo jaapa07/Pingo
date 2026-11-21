@@ -21,6 +21,8 @@
     "desktop:abrir": "electron plataformas/desktop/main.cjs",
     "test:desktop": "tsx tools/verify/desktop.ts",
     "ios": "npm run build && npx cap sync ios",
+    "android": "npm run build && npx cap sync android",
+    "android:apk": "npm run android && cd plataformas/android && ./gradlew assembleRelease",
     "test:offline": "tsx tools/verify/offline.ts",
     "icones": "tsx tools/build-icones.ts",
     "test:atualizacao": "tsx tools/verify/atualizacao.ts"
@@ -38,7 +40,9 @@
     "vite": "^5.4.11"
   },
   "dependencies": {
+    "@capacitor/android": "8.6.0",
     "@capacitor/app": "8.1.2",
+    "@capacitor/clipboard": "8.0.1",
     "@capacitor/core": "8.6.0",
     "@capacitor/filesystem": "8.1.5",
     "@capacitor/haptics": "8.0.2",

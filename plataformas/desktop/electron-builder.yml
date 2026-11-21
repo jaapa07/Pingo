@@ -2,7 +2,7 @@
 # Rodar da raiz do projeto:
 #   npm run desktop            -> pasta pronta para o sistema atual (plataformas/desktop/out/<sistema>-unpacked)
 #   npm run desktop:pacotes    -> Linux AppImage + Windows portátil e instalador NSIS
-#   npm run desktop:mac        -> macOS (dmg + zip), só num Mac
+#   npm run desktop:mac        -> macOS universal (dmg + zip), só num Mac (o CI gera em .github/workflows/release.yml)
 appId: com.pingo.adventures
 productName: Adventures of Pingo
 copyright: Adventures of Pingo
@@ -60,11 +60,19 @@ nsis:
   artifactName: Adventures-of-Pingo-${version}-instalador.${ext}
 
 mac:
-  target: [dmg, zip]
+  # um app só para Intel e Apple Silicon (universal), em .dmg e .zip
+  target:
+    - target: dmg
+      arch: [universal]
+    - target: zip
+      arch: [universal]
   category: public.app-category.role-playing-games
   icon: plataformas/desktop/icone.png
-  # sem conta de desenvolvedor Apple: app não assinado (abrir com botão direito -> Abrir na primeira vez)
-  identity: null
+  artifactName: Adventures-of-Pingo-${version}-mac.${ext}
+  # sem conta de desenvolvedor Apple: assinatura "ad hoc" ("-"), sem notarização. Sem ela o macOS dos Macs
+  # Apple Silicon recusa o app como "danificado"; com ela, basta liberar na 1ª vez (docs/PLATAFORMAS.md)
+  identity: "-"
   hardenedRuntime: false
+  gatekeeperAssess: false
 dmg:
   artifactName: Adventures-of-Pingo-${version}-mac.${ext}

@@ -1,5 +1,7 @@
 /**
- * Adventures of Pingo — app iOS (Capacitor). O projeto Xcode fica em `plataformas/ios/ios/App`.
+ * Adventures of Pingo — apps iOS e Android (Capacitor). O projeto Xcode fica em `plataformas/ios/ios/App`;
+ * o do Android (Gradle) em `plataformas/android` (`npm run android`, depois `npm run android:apk`; o CI gera o .apk
+ * em .github/workflows/release.yml, docs/PLATAFORMAS.md).
  * Gerar/atualizar: `npm run ios` (build + `npx cap sync ios`). Compilar e assinar só num Mac com Xcode
  * (passo a passo em docs/JOGAR.md, "Publicar na App Store").
  *
@@ -23,6 +25,14 @@ const config: CapacitorConfig = {
     allowsLinkPreview: false,
     preferredContentMode: 'mobile',
     webContentsDebuggingEnabled: false,
+  },
+  android: {
+    path: 'plataformas/android',
+    backgroundColor: '#211824',
+    allowMixedContent: false,
+    captureInput: false,
+    webContentsDebuggingEnabled: false,
+    // o .apk é gerado pelo Gradle (docs/PLATAFORMAS.md); a assinatura vem dos secrets do GitHub ou da chave de debug
   },
   plugins: {
     // o Capacitor HTTP e o de cookies ficam desligados: o jogo não fala com a rede

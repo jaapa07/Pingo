@@ -1,12 +1,12 @@
 /**
- * Plataforma: detecta o alvo (web, pwa, ios, desktop) e entrega armazenamento, vibração, tela cheia,
+ * Plataforma: detecta o alvo (web, pwa, ios, android, desktop) e entrega armazenamento, vibração, tela cheia,
  * saída do jogo e troca de arquivos. Nada aqui depende de rede.
  *
  * Pontes esperadas (fornecidas pelos empacotamentos em `plataformas/`):
- *  - iOS (Capacitor): `window.Capacitor.Plugins.{Preferences, Filesystem, Share, Haptics, App}`.
+ *  - iOS e Android (Capacitor): `window.Capacitor.Plugins.{Preferences, Filesystem, Share, Haptics, App, Clipboard}`.
  *  - Desktop (Electron, preload): `window.pingoDesktop` com a interface `PonteDesktop` abaixo.
  */
-export type Alvo = 'web' | 'pwa' | 'ios' | 'desktop';
+export type Alvo = 'web' | 'pwa' | 'ios' | 'android' | 'desktop';
 
 export interface Armazenamento {
   ler(chave: string): Promise<string | null>;
@@ -31,13 +31,15 @@ interface PluginsCapacitor {
   Share?: { share(o: { title?: string; url?: string; text?: string }): Promise<unknown> };
   Haptics?: { impact(o: { style: string }): Promise<void>; vibrate(o: { duration: number }): Promise<void> };
   App?: { exitApp?(): void; addListener?(ev: string, fn: (d: { isActive: boolean }) => void): void };
+  /** @capacitor/clipboard: o WebView do Android não libera `navigator.clipboard.readText` */
+  Clipboard?: { write(o: { string: string }): Promise<void>; read(): Promise<{ value: string; type: string }> };
 }
-type Janela = Window & { Capacitor?: { isNativePlatform?(): boolean; Plugins?: PluginsCapacitor }; pingoDesktop?: PonteDesktop };
+type Janela = Window & { Capacitor?: { isNativePlatform?(): boolean; getPlatform?(): string; Plugins?: PluginsCapacitor }; pingoDesktop?: PonteDesktop };
 const jan = (typeof window === 'undefined' ? {} : window) as Janela;
 
 function detectar(): Alvo {
   if (jan.pingoDesktop) return 'desktop';
-  if (jan.Capacitor?.isNativePlatform?.()) return 'ios';
+  if (jan.Capacitor?.isNativePlatform?.()) return jan.Capacitor.getPlatform?.() === 'android' ? 'android' : 'ios';
   const solto = typeof matchMedia === 'function' && matchMedia('(display-mode: standalone)').matches;
   if (solto || (typeof navigator !== 'undefined' && (navigator as Navigator & { standalone?: boolean }).standalone)) return 'pwa';
   return 'web';
@@ -83,7 +85,8 @@ function armazenamentoWeb(): Armazenamento {
     async apagar(k) { memoria.delete(k); try { ls()?.removeItem(k); } catch { /* nada a remover */ } await idb.apagar(k); },
   };
 }
-function armazenamentoIos(reserva: Armazenamento): Armazenamento {
+/** iOS e Android: Preferences (UserDefaults / SharedPreferences), com o armazenamento do WebView de reserva */
+function armazenamentoNativo(reserva: Armazenamento): Armazenamento {
   const pref = jan.Capacitor?.Plugins?.Preferences;
   if (!pref) return reserva;
   return {
@@ -106,7 +109,7 @@ export const plataforma = {
     if (typeof location !== 'undefined') { const q = new URLSearchParams(location.search).get('toque'); if (q === '1') return true; if (q === '0') return false; }
     return typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
   })(),
-  armazenamento: (alvo === 'desktop' ? armazenamentoDesktop(jan.pingoDesktop!) : alvo === 'ios' ? armazenamentoIos(web) : web) as Armazenamento,
+  armazenamento: (alvo === 'desktop' ? armazenamentoDesktop(jan.pingoDesktop!) : alvo === 'ios' || alvo === 'android' ? armazenamentoNativo(web) : web) as Armazenamento,
   /** prefixo dos assets (igual em todos os alvos: tudo vai dentro do pacote) */
   caminhoAssets: 'assets/',
   podeSair: alvo === 'desktop',
@@ -128,13 +131,14 @@ export const plataforma = {
   },
   sair() { if (jan.pingoDesktop) jan.pingoDesktop.sair(); else jan.Capacitor?.Plugins?.App?.exitApp?.(); },
 
-  /** entrega um arquivo ao usuário (download no navegador, Compartilhar no iOS, diálogo no desktop) */
+  /** entrega um arquivo ao usuário (download no navegador, Compartilhar no iOS/Android, diálogo no desktop) */
   async salvarArquivo(nome: string, conteudo: string): Promise<boolean> {
     try {
       if (jan.pingoDesktop) return await jan.pingoDesktop.salvarArquivo(nome, conteudo);
       const cap = jan.Capacitor?.Plugins;
-      if (alvo === 'ios' && cap?.Filesystem) {
-        const r = await cap.Filesystem.writeFile({ path: nome, data: conteudo, directory: 'DOCUMENTS', encoding: 'utf8' });
+      if ((alvo === 'ios' || alvo === 'android') && cap?.Filesystem) {
+        // Android: o cache do app dispensa permissão de armazenamento e o FileProvider do Capacitor já o compartilha
+        const r = await cap.Filesystem.writeFile({ path: nome, data: conteudo, directory: alvo === 'android' ? 'CACHE' : 'DOCUMENTS', encoding: 'utf8' });
         await cap.Share?.share({ title: nome, url: r.uri });
         return true;
       }
@@ -149,7 +153,9 @@ export const plataforma = {
   abrirArquivo(): Promise<string | null> {
     if (jan.pingoDesktop) return jan.pingoDesktop.abrirArquivo().catch(() => null);
     return new Promise((res) => {
-      const inp = document.createElement('input'); inp.type = 'file'; inp.accept = '.pingo,text/plain'; inp.style.display = 'none';
+      const inp = document.createElement('input'); inp.type = 'file'; inp.style.display = 'none';
+      // no Android o seletor filtra por tipo MIME e `.pingo` não tem um: sem filtro, o arquivo aparece para escolher
+      if (alvo !== 'android') inp.accept = '.pingo,text/plain';
       let feito = false; const fim = (v: string | null) => { if (feito) return; feito = true; inp.remove(); res(v); };
       inp.onchange = () => { const f = inp.files?.[0]; if (!f) return fim(null); f.text().then(fim, () => fim(null)); };
       inp.addEventListener('cancel', () => fim(null));
@@ -162,6 +168,8 @@ export const plataforma = {
   async copiar(txt: string): Promise<boolean> {
     if (jan.pingoDesktop?.copiar) { try { return await jan.pingoDesktop.copiar(txt); } catch { /* segue para o navegador */ } }
     try { await navigator.clipboard.writeText(txt); return true; } catch { /* sem permissão ou sem contexto seguro */ }
+    const clip = jan.Capacitor?.Plugins?.Clipboard;
+    if (clip) { try { await clip.write({ string: txt }); return true; } catch { /* segue para o recurso antigo */ } }
     // recurso antigo (Safari sem gesto recente, http local): seleciona um campo escondido e pede "copiar"
     try {
       const ta = document.createElement('textarea'); ta.value = txt; ta.readOnly = true;
@@ -173,6 +181,9 @@ export const plataforma = {
   /** lê a área de transferência; null se negou ou não há suporte (aí a tela oferece o campo para colar) */
   async colar(): Promise<string | null> {
     if (jan.pingoDesktop?.colar) { try { return await jan.pingoDesktop.colar(); } catch { /* segue para o navegador */ } }
+    // app nativo: o plugin lê direto (o WebView do Android nega `navigator.clipboard.readText`)
+    const clip = jan.Capacitor?.Plugins?.Clipboard;
+    if (clip) { try { const r = await clip.read(); if (typeof r?.value === 'string' && r.value) return r.value; } catch { /* área vazia ou negada: tenta o navegador */ } }
     try { return await navigator.clipboard.readText(); } catch { return null; }
   },
   /** avisa quando o app vai para segundo plano ou volta (visibilitychange + Capacitor App) */

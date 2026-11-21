@@ -1,19 +1,35 @@
-# Gera a versão para PC (Windows portátil + Linux AppImage) e publica como Release do GitHub.
-# Dispara quando o arquivo plataformas/desktop/VERSAO muda em main (mude o número para publicar uma versão nova)
-# ou manualmente em Actions → "Versão para PC" → Run workflow.
-name: Versão para PC
+# Gera o jogo completo para Windows, Linux, Mac e Android e publica tudo numa só Release do GitHub (`pc-<VERSAO>`).
+# Dispara quando o arquivo plataformas/desktop/VERSAO muda em main (mude o número para publicar uma versão nova).
+# Também roda à mão em Actions → "Versões para PC, Mac e Android" → Run workflow: por padrão só gera os arquivos
+# (ficam em "Artifacts" da execução); marque "publicar" para criar/atualizar a Release.
+name: Versões para PC, Mac e Android
 
 on:
   push:
     branches: [main]
     paths: ['plataformas/desktop/VERSAO']
   workflow_dispatch:
+    inputs:
+      publicar:
+        description: 'Publicar a Release pc-<VERSAO> (senão só gera os arquivos)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
 
 jobs:
+  versao:
+    runs-on: ubuntu-latest
+    outputs:
+      versao: ${{ steps.v.outputs.versao }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: v
+        run: echo "versao=$(tr -d '[:space:]' < plataformas/desktop/VERSAO)" >> "$GITHUB_OUTPUT"
+
   pc:
+    needs: versao
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,22 +39,122 @@ jobs:
           cache: npm
       - name: Instalar dependências
         run: npm ci
-      - name: Ler versão
-        id: v
-        run: echo "versao=$(tr -d '[:space:]' < plataformas/desktop/VERSAO)" >> "$GITHUB_OUTPUT"
       - name: Gerar pacotes (AppImage + .exe portátil)
-        run: npm run build && npx electron-builder --config plataformas/desktop/electron-builder.yml --linux AppImage --win portable --x64 -c.extraMetadata.version=${{ steps.v.outputs.versao }}
+        run: npm run build && npx electron-builder --config plataformas/desktop/electron-builder.yml --linux AppImage --win portable --x64 -c.extraMetadata.version=${{ needs.versao.outputs.versao }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pc
+          if-no-files-found: error
+          compression-level: 0
+          path: |
+            plataformas/desktop/out/*.exe
+            plataformas/desktop/out/*.AppImage
+
+  mac:
+    needs: versao
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Instalar dependências
+        run: npm ci
+      - name: Gerar pacotes (universal Intel + Apple Silicon, .dmg e .zip)
+        run: npm run build && npx electron-builder --config plataformas/desktop/electron-builder.yml --mac -c.extraMetadata.version=${{ needs.versao.outputs.versao }}
+      - name: Conferir o app (arquiteturas e assinatura ad hoc)
+        run: |
+          app=$(ls -d plataformas/desktop/out/mac*/*.app | head -1)
+          lipo -info "$app/Contents/MacOS/Adventures of Pingo"
+          codesign --verify --deep --verbose=2 "$app"
+          codesign -dv "$app" 2>&1 | grep -E 'Signature|Identifier'
+          ls -la plataformas/desktop/out/*.dmg plataformas/desktop/out/*.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mac
+          if-no-files-found: error
+          compression-level: 0
+          path: |
+            plataformas/desktop/out/*.dmg
+            plataformas/desktop/out/*.zip
+
+  android:
+    needs: versao
+    runs-on: ubuntu-latest
+    env:
+      VERSAO: ${{ needs.versao.outputs.versao }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: gradle
+      - name: Instalar dependências
+        run: npm ci
+      - name: Jogo completo dentro do app (build + cap sync)
+        run: npm run build && npx cap sync android
+      - name: Keystore (se os secrets existirem)
+        env:
+          KS_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KS_B64" ]; then
+            echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/pingo.keystore"
+            echo "ANDROID_KEYSTORE_FILE=$RUNNER_TEMP/pingo.keystore" >> "$GITHUB_ENV"
+            echo "Assinando com a keystore dos secrets."
+          else
+            echo "Sem ANDROID_KEYSTORE_BASE64: o APK sai assinado com a chave de debug."
+          fi
+      - name: Gerar APK
+        working-directory: plataformas/android
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: chmod +x gradlew && ./gradlew assembleRelease --no-daemon --stacktrace
+      - name: Conferir assinatura e renomear
+        run: |
+          apk=plataformas/android/app/build/outputs/apk/release/app-release.apk
+          bt=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          "$bt/apksigner" verify --print-certs "$apk"
+          "$bt/aapt" dump badging "$apk" | head -3 || true
+          mkdir -p saida && cp "$apk" "saida/Adventures-of-Pingo-$VERSAO-android.apk"
+          ls -la saida
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android
+          if-no-files-found: error
+          compression-level: 0
+          path: saida/*.apk
+
+  publicar:
+    needs: [versao, pc, mac, android]
+    if: github.event_name == 'push' || inputs.publicar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: arquivos
+          merge-multiple: true
+      - run: ls -la arquivos
       - name: Publicar Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: pc-${{ steps.v.outputs.versao }}
-          name: Adventures of Pingo — versão para PC
+          tag_name: pc-${{ needs.versao.outputs.versao }}
+          target_commitish: ${{ github.sha }}
+          name: Adventures of Pingo ${{ needs.versao.outputs.versao }} — PC, Mac e Android
           prerelease: true
           body: |
-            Versão para computador, 100% offline.
-            - **Windows:** baixe o `.exe` portátil e abra (não precisa instalar). Na 1ª vez o Windows pode avisar "O Windows protegeu o computador": clique em "Mais informações" → "Executar assim mesmo" (o app não é assinado).
-            - **Linux:** baixe o `.AppImage`, dê permissão de execução e abra.
-            O save fica na pasta do usuário (menu Jogo → Abrir pasta dos saves).
-          files: |
-            plataformas/desktop/out/*.exe
-            plataformas/desktop/out/*.AppImage
+            Jogo completo, 100% offline. Baixe o arquivo do seu aparelho:
+            - **Windows:** `Adventures-of-Pingo-${{ needs.versao.outputs.versao }}-portatil.exe` — não precisa instalar, é só abrir. Na 1ª vez o Windows pode avisar "O Windows protegeu o computador": clique em "Mais informações" → "Executar assim mesmo" (o app não é assinado).
+            - **Linux:** `.AppImage` — dê permissão de execução (Propriedades → Permitir executar, ou `chmod +x`) e abra.
+            - **Mac (Intel e Apple Silicon):** `.dmg` (arraste para Aplicativos) ou `.zip` (descompacte). O app não é assinado pela Apple: na 1ª vez, clique com o botão direito no app → Abrir → Abrir. Se o Mac só oferecer "Cancelar", vá em Ajustes do Sistema → Privacidade e Segurança e clique em "Abrir mesmo assim".
+            - **Android (.apk):** baixe no celular e toque no arquivo. Se pedir, permita "Instalar apps desconhecidos" para o navegador ou o app de arquivos e toque em Instalar. Se uma versão anterior não deixar atualizar ("app não instalado" / conflito de pacote), desinstale a antiga antes (exporte o save primeiro em Jogos → Exportar ou Copiar código).
+
+            O save fica no aparelho (no PC, menu Jogo → Abrir pasta dos saves). Para levar o jogo de um aparelho para outro, use "Copiar código" / "Colar código" ou o arquivo `.pingo`.
+          files: arquivos/*
