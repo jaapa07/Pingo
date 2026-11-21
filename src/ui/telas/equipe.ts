@@ -21,7 +21,7 @@ import { iconeCriatura, nomeCri, sexoTxt, vidaMaxDe, esp, faixaDica, placaTitulo
 import { T } from '../../data/textos-ui';
 
 export interface ArgsEquipe { modo?: 'menu' | 'escolher' | 'usar'; item?: string; titulo?: string; pode?(c: CriaturaInst, i: number): boolean | string }
-interface Cartao { el: HTMLElement; ic: Icone; vida?: Barra; pintar(animar?: boolean): void }
+interface Cartao { el: HTMLElement; ic: Icone; vida?: Barra; tag: HTMLElement; pintar(animar?: boolean): void }
 
 export function criarEquipe(args: ArgsEquipe = {}): Tela {
   const modo = args.modo === 'escolher' || args.modo === 'usar' ? args.modo : 'menu';
@@ -49,6 +49,8 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
     let vida: Barra | undefined;
     if (!c.ovo) { vida = barra('vida', 72, (px, max) => escrever(num, `${Math.round((px / max) * vidaMaxDe(c))}/${vidaMaxDe(c)}`)); cx.append(em(texto('VD', { cor: 'amarelo' }), 34, 18), em(vida.el, 48, 19)); }
     const ordem = em(texto(String(i + 1), { cor: 'cinza' }), 147, 36); cx.append(ordem);
+    // etiqueta da troca de lugar ("MOVENDO" na criatura escolhida, "TROCAR AQUI" no destino); some fora do modo mover
+    const tag = document.createElement('div'); tag.className = 'etiqueta-troca'; cx.append(tag);
     const pintar = (animar = false) => {
       const max = vidaMaxDe(c);
       escrever(nome, `${nomeCri(c)} ${sexoTxt(c)}`); escrever(nv, c.ovo ? '' : `Nv${c.nivel}`); nv.style.left = 150 - parseInt(nv.style.width) + 'px';
@@ -61,7 +63,7 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
       obs.style.left = 142 - parseInt(obs.style.width) + 'px';
     };
     pintar();
-    return { el: cx, ic, vida, pintar };
+    return { el: cx, ic, vida, tag, pintar };
   }
   function montar(indice = grade?.indice ?? 0) {
     camada.replaceChildren();
@@ -72,8 +74,18 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
   }
   function pintarFoco() {
     const i = grade?.indice ?? 0;
-    cartoes.forEach((c, k) => { c.ic.animar(k === i); c.el.classList.toggle('movendo', k === movendo); });
-    dica(movendo >= 0 ? T.equipe.dicaMover : modo === 'escolher' ? T.equipe.dicaEscolher : modo === 'usar' ? T.equipe.dicaUsar : T.equipe.dicaMenu);
+    cartoes.forEach((c, k) => {
+      const origem = movendo >= 0 && k === movendo, alvo = movendo >= 0 && k === i && k !== movendo;
+      c.ic.animar(k === i || origem);
+      c.el.classList.toggle('movendo', origem); c.el.classList.toggle('alvo-troca', alvo);
+      const rot = origem ? 'MOVENDO' : alvo ? 'TROCAR AQUI' : '';
+      c.tag.replaceChildren(); c.tag.style.display = rot ? '' : 'none';
+      if (rot) { const t = texto(rot, { cor: origem ? 'tinta' : 'creme' }); c.tag.append(t); c.tag.style.width = parseInt(t.style.width) + 6 + 'px'; c.tag.style.left = Math.round((156 - parseInt(t.style.width) - 6) / 2) + 'px'; }
+    });
+    const nomeDe = (k: number) => (eq[k] ? nomeCri(eq[k]) : '');
+    dica(movendo >= 0
+      ? (i === movendo ? T.equipe.dicaMover.replace('{nome}', nomeDe(movendo)) : T.equipe.dicaTrocar.replace('{a}', nomeDe(movendo)).replace('{b}', nomeDe(i)))
+      : modo === 'escolher' ? T.equipe.dicaEscolher : modo === 'usar' ? T.equipe.dicaUsar : T.equipe.dicaMenu);
   }
   function voltar() {
     if (movendo >= 0) { movendo = -1; pintarFoco(); return; }

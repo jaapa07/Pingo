@@ -11,7 +11,14 @@
 .fundo-terra { background: #6b4226 linear-gradient(45deg, #5d3a22 25%, transparent 25%, transparent 75%, #5d3a22 75%) 0 0 / 8px 8px; }
 .fundo-roxo { background: #3b2a35 linear-gradient(45deg, #453040 25%, transparent 25%, transparent 75%, #453040 75%) 0 0 / 8px 8px; }
 .faixa-dica { z-index: 4; }
-.cartao-cri.movendo::after, .cel-viv.pega::after { content: ''; position: absolute; left: 1px; top: 1px; right: 1px; bottom: 1px; box-shadow: inset 0 0 0 1px #f9c22b; pointer-events: none; }
+.cartao-cri.movendo { transform: translateY(-2px); filter: brightness(1.12); z-index: 2; }
+.cartao-cri.movendo::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 2px #f9c22b, inset 0 0 0 3px #1a1423; pointer-events: none; animation: pisca-troca 0.5s steps(1) infinite; }
+.cartao-cri.alvo-troca::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 2px #5fd3e8; background: rgba(95, 211, 232, 0.18); pointer-events: none; }
+@keyframes pisca-troca { 50% { box-shadow: inset 0 0 0 2px #f08c2b, inset 0 0 0 3px #1a1423; } }
+.etiqueta-troca { position: absolute; top: 40px; height: 9px; background: #f9c22b; box-shadow: 0 0 0 1px #1a1423; z-index: 3; pointer-events: none; }
+.alvo-troca .etiqueta-troca { background: #2c6f8a; }
+.etiqueta-troca .txt { position: absolute; left: 3px; top: 0; }
+.cel-viv.pega::after { content: ''; position: absolute; left: 1px; top: 1px; right: 1px; bottom: 1px; box-shadow: inset 0 0 0 1px #f9c22b; pointer-events: none; }
 .trilho-stat { background: #3b2a35; }
 .ench-stat { background: linear-gradient(to bottom, #f9c22b 0 1px, #f58a4b 1px 3px); }
 .linha-div { background: #c98f4e; }

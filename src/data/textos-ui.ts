@@ -11,7 +11,7 @@ export const T = {
   },
   equipe: {
     vazia: 'Você ainda não tem nenhuma criatura parceira. A Profª Ipê pode ajudar com isso!',
-    dicaMenu: 'A: opções   SELECT: mover   B: voltar', dicaMover: 'Escolha o novo lugar.   B: cancelar',
+    dicaMenu: 'A: opções   SELECT: mover   B: voltar', dicaMover: 'Mover {nome}: escolha o novo lugar.   B: cancelar', dicaTrocar: 'A: trocar {a} com {b}   B: cancelar',
     dicaEscolher: 'A: escolher   B: voltar', dicaUsar: 'A: usar nesta criatura   B: voltar',
   },
   resumo: {
