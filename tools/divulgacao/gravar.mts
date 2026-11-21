@@ -511,7 +511,7 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; 
   },
   /** Gincana do Vale do Buriti-Alto: prova de Agilidade (Corrida da Vereda) com a Emaçu, até o placar e o recorde */
   'extra-gincana': {
-    css: '.faixa-dica { visibility: hidden !important; }',
+    css: '.faixa-dica, .gn-res > :last-child { visibility: hidden !important; }',
     url: FAIXA('zona=A-GN&x=16&y=11&dir=n&flags=liga-vencida,gincana-visitou&equipe=23:45,102:45,98:45'),
     async rodar(g) {
       await g.dormir(1000);

@@ -10,8 +10,8 @@
  *    (desenhada a partir de dist/assets/ui/fonte12.png + src/ui/gerado/kit.json, ampliada por vizinho mais próximo);
  *  - GIFs curtos de 640 px de largura (≤ 8 MB) para X e Reddit.
  *
- * Uso: npx tsx tools/divulgacao/montar.mts [base|clipes|montagem|gifs|lendarios|mundo ...]
- *   (lendarios / mundo: vídeos A e B de 45–50 s, vertical e horizontal, com legendas)   (sem argumentos: tudo)
+ * Uso: npx tsx tools/divulgacao/montar.mts [base|clipes|montagem|gifs|lendarios|mundo|extras ...]
+ *   (lendarios / mundo / extras: vídeos A, B e C de 45–55 s, vertical e horizontal, com legendas)   (sem argumentos: tudo)
  * Entrada: $PINGO_BRUTOS (o mesmo do gravar.mts). Saída: docs/divulgacao/clipes/ (fora do git: ver .gitignore).
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync, statSync, readdirSync, rmSync } from 'node:fs';
@@ -224,6 +224,24 @@ const LENDARIOS: Secao[] = [
   ], texto: ['Alguns só aparecem', '{c:agua}sob a aurora{/c}'] },
   FIM,
 ];
+/** vídeo C: atividades extras (tomadas extra-*) */
+const EXTRAS: Secao[] = [
+  { trechos: [{ tomada: 'extra-bike', de: ['inicio', 0], ate: ['fim', 0] }], texto: ['Pedale pela cidade'] },
+  { trechos: [
+    { tomada: 'extra-gincana', de: ['fala', -0.2], ate: ['fala', 2.4] },
+    { tomada: 'extra-gincana', de: ['corrida', 3.6], ate: ['corrida', 9.6] },
+  ], texto: ['Corra na {c:amarelo}Gincana{/c}'] },
+  { trechos: [{ tomada: 'extra-gincana', de: ['resultado', -0.2], ate: ['resultado', 3.4] }], texto: ['e bata o', '{c:amarelo}recorde do dia{/c}'] },
+  { trechos: [
+    { tomada: 'extra-safari', de: ['encontro', 1.2], ate: ['isca', 3.0] },
+    { tomada: 'extra-safari', de: ['cuia', -0.3], ate: ['cuia', 5.4] },
+  ], texto: ['{c:verde}Safári:{/c} capture', 'com isca'] },
+  { trechos: [{ tomada: 'extra-ninho', de: ['ninho', -0.6], ate: ['batalha', 2.6] }], texto: ['{c:amarelo}Ninhos Raros{/c}', 'na floresta'] },
+  { trechos: [{ tomada: 'extra-quiz', de: ['pergunta-0', -0.3], ate: ['resposta-0', 3.3] }], texto: ['Quiz da fauna', 'no rádio'] },
+  { trechos: [{ tomada: 'extra-rara', de: ['inicio', 0.3], ate: ['batalha', 2.6] }], texto: ['{c:amarelo}Pelagens raras ★{/c}'] },
+  { trechos: [{ tomada: 'extra-radio', de: ['radio', -0.3], ate: ['radio', 3.6] }], texto: ['Rádio Cipó:', '{c:amarelo}enxame do dia{/c}'] },
+  FIM,
+];
 /** vídeo B: mais do mundo (tomadas mundo-*) */
 const MUNDO: Secao[] = [
   { trechos: [{ tomada: 'mundo-bike', de: ['inicio', 0], ate: ['fim', 0] }], texto: ['Cidades grandes', 'pra explorar'] },
@@ -255,11 +273,12 @@ function gif(nome: string, def: { trechos: Trecho[]; fps: number }) {
   console.log(`${nome}: ${duracao(nat).toFixed(1)} s · ${mb(saida)}`);
 }
 
-const etapas = process.argv.slice(2).length ? process.argv.slice(2) : ['base', 'clipes', 'montagem', 'gifs', 'lendarios', 'mundo'];
+const etapas = process.argv.slice(2).length ? process.argv.slice(2) : ['base', 'clipes', 'montagem', 'gifs', 'lendarios', 'mundo', 'extras'];
 if (etapas.includes('base')) for (const t of readdirSync(BRUTOS)) if (existsSync(join(BRUTOS, t, 'quadros.json'))) base(t);
 if (etapas.includes('clipes')) for (const [nome, tr] of Object.entries(CLIPES)) { try { exportar(nome, nativo(nome, tr)); } catch (e) { console.log(`${nome}: não montado (${String(e).slice(0, 160)})`); } }
 if (etapas.includes('montagem')) await montagem();
 if (etapas.includes('lendarios')) await montarRoteiro('video-a-lendarios', LENDARIOS, true);
 if (etapas.includes('mundo')) await montarRoteiro('video-b-mais-do-mundo', MUNDO, true);
+if (etapas.includes('extras')) await montarRoteiro('video-c-atividades-extras', EXTRAS, true);
 if (etapas.includes('gifs')) for (const [nome, d] of Object.entries(GIFS)) gif(nome, d);
 if (process.env.PINGO_LIMPAR) rmSync(TMP, { recursive: true, force: true });
