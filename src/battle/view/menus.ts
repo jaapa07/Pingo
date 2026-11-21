@@ -17,6 +17,12 @@ import { atributos, especie, nomeDe, temEspecie } from '../criatura';
 import { fxUi, temFx } from './cena';
 import { div, type Ator } from './palco';
 import { painel } from './hud';
+import { botaoVoltar, larguraVoltar } from '../../ui/componentes/voltar';
+
+/** "◀ Voltar" da batalha (classe `bt-voltar`): saída visível por toque de cada submenu, além do B */
+function voltar(pai: HTMLElement, x: number, y: number, aoTocar: () => void, folga: [number, number, number, number] = [4, 4, 4, 4]): HTMLElement {
+  const b = botaoVoltar({ aoTocar, folga }); b.classList.add('bt-voltar'); pai.append(em(b, x, y)); return b;
+}
 
 export interface Modal { el: HTMLElement; atualizar(dt: number): void; fechar?(): void }
 const CAT = { fisico: 'Físico', especial: 'Especial', status: 'Apoio' } as const;
@@ -40,6 +46,8 @@ export function menuAcao(o: { fugir: string; voltar: boolean; aoEscolher(a: Opca
   const ir = (n: number) => { if (n === i) return; i = n; som('ui-mover'); pintar(); };
   const ok = () => { ultimaAcao = i; som('ui-ok'); o.aoEscolher(i === 0 ? 'lutar' : rot[i - 1][0]); };
   tocavel(cartao, () => { i = 0; pintar(); ok(); }, () => ir(0));
+  // duplas: volta para a escolha da criatura anterior; fica acima da caixa de texto, no canto esquerdo da tela
+  if (o.voltar) voltar(el, -174, -17, () => o.aoEscolher('voltar'), [4, 6, 4, 2]);
   botoes.forEach((b, j) => tocavel(b, () => { i = j + 1; pintar(); ok(); }, () => ir(j + 1)));
   pintar();
   return {
@@ -75,10 +83,14 @@ function fichaGolpe(pai: HTMLElement, x: number, y: number, larg = 70) {
   };
 }
 export function menuGolpes(o: { c: CriaturaInst; eficacia(id: string): InfoEficacia | null; aoEscolher(slot: number): void }): Modal {
-  const p = painel(312, 45, 'bt-golpes'), el = p.el, m = p.miolo;
+  // o painel recorta o que passa da borda (clip-path); o "◀ Voltar" fica fora dele, na mesma caixa
+  const p = painel(312, 45, 'bt-golpes'), el = div('bt-golpes-caixa'), m = p.miolo;
+  el.style.cssText = 'position:absolute;width:312px;height:45px'; el.append(p.el);
   const gs = o.c.golpes, cels: HTMLElement[] = [];
   const cursor = cursorMao(); m.append(cursor);
   const ficha = fichaGolpe(m, 237, 1);
+  // saída visível por toque: no canto esquerdo, logo acima do painel (o painel começa na linha 135 da tela)
+  voltar(el, 0, -17, () => o.aoEscolher(-1), [4, 6, 4, 2]);
   div('bt-divisa', m).style.cssText = 'left:232px;top:3px;height:37px';
   let i = Math.min(ultimoGolpe.get(o.c.uid) ?? 0, gs.length - 1);
   if (gs[i].pg <= 0) i = Math.max(0, gs.findIndex((g) => g.pg > 0));
@@ -122,6 +134,7 @@ export function menuAlvo(o: { alvos: Ator[]; camada: HTMLElement; aoEscolher(i: 
     tocavel(zona, () => { i = j; pintar(); som('ui-ok'); o.aoEscolher(j); }, () => { if (i !== j) { i = j; som('ui-mover'); pintar(); } });
     return s;
   });
+  voltar(el, 4, 118, () => o.aoEscolher(-1), [4, 6, 4, 2]);
   let i = 0;
   const pintar = () => marcas.forEach((m, j) => { m.style.visibility = j === i ? '' : 'hidden'; });
   pintar();
@@ -146,8 +159,9 @@ export function menuOpcoes(o: { opcoes: string[]; x?: number; y?: number; padrao
 const BOLSOS_BATALHA: Bolso[] = ['remedios', 'cuias', 'frutos'];
 let ultimoBolso = 0;
 export function menuMochila(o: { mochila: Record<string, number>; podeCuia: boolean; motivoCuia: string; aoEscolher(id: string | null): void }): Modal {
-  const el = moldura('madeira', 232, 138, 44, 0); el.classList.add('bt-mochila');
-  const desc = texto('', { cor: 'tinta', largura: 208 }); const fundoDesc = div('bt-desc', el); em(fundoDesc, 10, 96); fundoDesc.append(em(desc, 3, 3));
+  // 280 de largura (antes 232): cabe o "◀ Voltar" na linha dos bolsos, à direita das abas, sem cobrir nenhuma
+  const L = 280, el = moldura('madeira', L, 138, 20, 0); el.classList.add('bt-mochila');
+  const desc = texto('', { cor: 'tinta', largura: L - 24 }); const fundoDesc = div('bt-desc', el); em(fundoDesc, 10, 96); fundoDesc.style.width = L - 20 + 'px'; fundoDesc.append(em(desc, 3, 3));
   const itensDe = (b: Bolso) => ITENS.filter((it) => it.bolso === b && it.uso?.emBatalha && (o.mochila[it.id] ?? 0) > 0);
   let lista: Lista | null = null;
   const montar = (bi: number) => {
@@ -156,7 +170,7 @@ export function menuMochila(o: { mochila: Record<string, number>; podeCuia: bool
     const mini = (id: string) => (b === 'cuias' ? (() => { const f = fxUi(temFx(id) ? id : 'cuia', 0); f.el.style.marginTop = '-2px'; return f.el; })() : undefined);
     lista = new Lista({
       itens: its.length ? its.map((it) => ({ rotulo: it.nome, valor: '×' + o.mochila[it.id], icone: mini(it.id), desabilitado: b === 'cuias' && !o.podeCuia })) : [{ rotulo: 'Nada neste bolso.', desabilitado: true }],
-      x: 10, y: 30, largura: 212, visiveis: 4, moldura: null, tamanho: 12,
+      x: 10, y: 30, largura: L - 20, visiveis: 4, moldura: null, tamanho: 12,
       aoMover: (i) => escrever(desc, its[i]?.desc ?? ''),
       aoEscolher: (i) => { if (its[i]) o.aoEscolher(its[i].id); },
       aoCancelar: () => o.aoEscolher(null),
@@ -166,7 +180,7 @@ export function menuMochila(o: { mochila: Record<string, number>; podeCuia: bool
   };
   const abas = new Abas({ rotulos: BOLSOS_BATALHA.map((b) => NOME_BOLSO[b]), icones: BOLSOS_BATALHA.map((b) => iconeBolso(b)), x: 10, y: 8, inicial: ultimoBolso, aoTrocar: montar });
   el.append(abas.el);
-  const sair = moldura('botao', 34, 14, 190, 11); sair.append(em(texto('Sair', { cor: 'tinta' }), 8, 3)); el.append(sair); tocavel(sair, () => { som('ui-voltar'); o.aoEscolher(null); });
+  voltar(el, L - 10 - larguraVoltar(), 10, () => o.aoEscolher(null), [3, 3, 6, 3]);
   montar(ultimoBolso);
   return { el, atualizar(dt) { if (!abas.atualizar(dt)) lista?.atualizar(dt); } };
 }
@@ -211,7 +225,7 @@ export function menuEquipe(o: OpEquipe): Modal {
     if (o.emCampo.includes(j)) { const t = texto('em campo', { cor: 'agua' }); cx.append(em(t, 142 - medir('em campo'), 30)); }
     tocavel(cx, () => { i = j; pintar(); ok(); }, () => ir(j));
   });
-  if (!o.obrigatorio) { const sair = moldura('botao', 40, 14, 276, 2); sair.append(em(texto('Voltar', { cor: 'tinta' }), 6, 3)); el.append(sair); tocavel(sair, () => { som('ui-voltar'); o.aoEscolher(-1); }); }
+  if (!o.obrigatorio) voltar(el, 316 - larguraVoltar(), 2, () => o.aoEscolher(-1), [4, 2, 4, 2]);
   let i = Math.max(0, o.equipe.findIndex((_, j) => o.pode(j) === true));
   const pintar = () => {
     cartoes.forEach((c, j) => c.classList.toggle('foco', j === i));
@@ -249,6 +263,7 @@ export function menuGolpeDe(o: { c: CriaturaInst; titulo: string; novo?: string;
     aoMover: mostra, aoEscolher: (i) => o.aoEscolher(i), aoCancelar: () => o.aoEscolher(-1),
   });
   el.append(lista.el); mostra(0);
+  voltar(el, 10, 100, () => o.aoEscolher(-1), [3, 3, 3, 3]);
   return { el, atualizar: (dt) => lista.atualizar(dt) };
 }
 

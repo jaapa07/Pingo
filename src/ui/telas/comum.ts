@@ -15,6 +15,7 @@ import { atributos, podeEvoluir, evoluir, aprenderGolpe, ganharExp, expParaNivel
 import { telas, criarTela, temTela } from '../telas';
 import { texto, escrever, em, type CorTexto } from '../fonte';
 import { moldura, CORES_TIPO, iconeTipo, NOME_STATUS, som } from '../kit';
+import { botaoVoltar, larguraVoltar, separarDicaB } from '../componentes/voltar';
 import { perguntar, informar } from '../componentes/confirmacao';
 import { Lista, type ItemLista } from '../componentes/lista';
 import { input } from '../../core/input';
@@ -110,8 +111,17 @@ export function figura(num: number, w = 96, h = 96, o: { silhueta?: boolean; mis
 export function faixaDica(pai: HTMLElement, y = 166, x = 2, w = 316): (s: string) => void {
   const cx = moldura('placa', w, 13, x, y); cx.classList.add('faixa-dica');
   const t = texto('', { cor: 'creme' }); cx.append(em(t, 6, 3)); pai.append(cx);
-  let atual = '';
-  return (s) => { if (s === atual) return; atual = s; escrever(t, s); };
+  // o trecho "B: voltar" (ou desligar, sair, cancelar…) vira um botão "◀ Voltar" tocável na ponta direita da faixa
+  // (feedback de jogador: no celular o B não é óbvio). O alvo de toque sobe 5 px acima da faixa e vai até a borda.
+  let atual = '', bt: HTMLElement | null = null, rotB = '';
+  return (s) => {
+    if (s === atual) return; atual = s;
+    const [resto, rot] = separarDicaB(s);
+    escrever(t, resto);
+    if (rot === rotB) return;
+    rotB = rot ?? ''; bt?.remove(); bt = null;
+    if (rot) { bt = botaoVoltar({ rotulo: rot, altura: 13, folga: [4, 5, 0, 0] }); cx.append(em(bt, w - larguraVoltar(rot), 0)); }
+  };
 }
 /** título entalhado numa placa */
 export function placaTitulo(pai: HTMLElement, str: string, x = 2, y = 2, w = 120): HTMLElement {
