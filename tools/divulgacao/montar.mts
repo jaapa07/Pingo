@@ -234,7 +234,7 @@ const EXTRAS: Secao[] = [
   { trechos: [{ tomada: 'extra-gincana', de: ['resultado', -0.2], ate: ['resultado', 3.4] }], texto: ['e bata o', '{c:amarelo}recorde do dia{/c}'] },
   { trechos: [
     { tomada: 'extra-safari', de: ['encontro', 1.2], ate: ['isca', 3.0] },
-    { tomada: 'extra-safari', de: ['cuia', -0.3], ate: ['cuia', 5.4] },
+    { tomada: 'extra-safari', de: ['cuia', -0.3], ate: ['cuia', 4.9] },
   ], texto: ['{c:verde}Safári:{/c} capture', 'com isca'] },
   { trechos: [{ tomada: 'extra-ninho', de: ['ninho', -0.6], ate: ['batalha', 2.6] }], texto: ['{c:amarelo}Ninhos Raros{/c}', 'na floresta'] },
   { trechos: [{ tomada: 'extra-quiz', de: ['pergunta-0', -0.3], ate: ['resposta-0', 3.3] }], texto: ['Quiz da fauna', 'no rádio'] },
