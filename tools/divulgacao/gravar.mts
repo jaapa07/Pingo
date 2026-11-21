@@ -10,7 +10,8 @@
  *
  * Uso:  npm run build && npx tsx tools/divulgacao/gravar.mts [tomada ...]
  *       (sem argumentos grava todas; tomadas: titulo cidade grama evolucao lab mapa-b diario,
- *        lenda-gaviao lenda-boitata lenda-borealce, mundo-bike mundo-lider mundo-pesca mundo-remo mundo-noite mundo-trem)
+ *        lenda-gaviao lenda-boitata lenda-borealce, mundo-bike mundo-lider mundo-pesca mundo-remo mundo-noite mundo-trem,
+ *        extra-bike extra-gincana extra-safari extra-ninho extra-quiz extra-rara extra-radio)
  * Saída: $PINGO_BRUTOS (padrão: <tmp>/pingo-divulgacao/brutos)/<tomada>/
  * Depois: npx tsx tools/divulgacao/montar.mts
  */
@@ -200,9 +201,28 @@ async function ateLivre(g: Tomada, max = 30000) {
     await g.dormir(600); await g.apertar('a');
   }
 }
+
+/**
+ * lê o texto da tela do topo (caixa de fala, pergunta) a partir dos glifos da fonte bitmap: cada letra é um <i> com a
+ * folha de glifos de fundo, e a posição do fundo diz qual é a letra. Devolve o texto SEM espaços (os espaços não viram <i>).
+ */
+const KIT = JSON.parse(readFileSync(join(RAIZ, 'src/ui/gerado/kit.json'), 'utf8'));
+const lerTela = (g: Tomada): Promise<string> => g.page.evaluate((fontes: Record<string, any>) => {
+  const p = (window as any).__pingo; const topo = p.telas.pilha[p.telas.pilha.length - 1]?.el as HTMLElement | undefined;
+  if (!topo) return '';
+  const inv: Record<string, string[]> = {};
+  for (const [t, f] of Object.entries(fontes)) { inv[t] = []; for (const [ch, [i]] of Object.entries(f.glifos as Record<string, number[]>)) inv[t][i] = ch; }
+  return [...topo.querySelectorAll('i.g8, i.g12')].map((el) => {
+    const t = el.classList.contains('g12') ? '12' : '8', f = fontes[t];
+    const [bx, by] = (el as HTMLElement).style.backgroundPosition.split(' ').map((v) => -parseFloat(v));
+    const col = Math.round((bx % f.bw) / f.cw), lin = Math.round((by % f.bh) / f.ch);
+    return inv[t][lin * f.cols + col] ?? '';
+  }).join('');
+}, KIT.fontes);
+const semEspaco = (t: string) => t.replace(/\s+/g, '');
 const EQUIPE_FORTE = 'equipe=3:72,9:76,6:74,12:72,34:71,14:72&insignias=16&amuletos=todos';
 
-const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; rodar(g: Tomada): Promise<boolean | void> }> = {
+const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; /** CSS só da gravação (ex.: esconder a faixa de dica dos controles) */ css?: string; rodar(g: Tomada): Promise<boolean | void> }> = {
   /** tela de abertura → título com a música */
   titulo: {
     url: '', mundo: false,
@@ -478,9 +498,139 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; 
     },
   },
 
+  /* ============ vídeo C: atividades extras ============ */
+  /** de bicicleta (Bicicleta de Bambu) pelas ruas de Porto Sereia */
+  'extra-bike': {
+    url: FAIXA('zona=A4&x=4&y=20&dir=l&itens=bike-bambu&equipe=4:30'),
+    async rodar(g) {
+      await repelente(g.page); await g.dormir(900);
+      await g.page.evaluate(() => (window as any).__pingo.mundo.usarItem('bike-bambu')); await g.dormir(700);
+      g.marca('inicio'); await g.segurar('dir', 2600); await g.segurar('cima', 600); await g.segurar('dir', 2200); g.marca('fim'); await g.dormir(400);
+    },
+  },
+  /** Gincana do Vale do Buriti-Alto: prova de Agilidade (Corrida da Vereda) com a Emaçu, até o placar e o recorde */
+  'extra-gincana': {
+    css: '.faixa-dica { visibility: hidden !important; }',
+    url: FAIXA('zona=A-GN&x=16&y=11&dir=n&flags=liga-vencida,gincana-visitou&equipe=23:45,102:45,98:45'),
+    async rodar(g) {
+      await g.dormir(1000);
+      g.marca('inicio'); await g.andar('cima', 2); await g.apertar('cima', 300);
+      g.marca('fala'); await g.apertar('a', 1300);
+      // "Qual prova vai ser?" → Agilidade; as regras; a escolha da criatura (Emaçu, a 2ª)
+      for (let i = 0; i < 12 && !/tela-equipe/.test(topo(await g.st())); i++) await g.apertar('a', 1100);
+      await g.dormir(600); await g.apertar('dir', 500); await g.apertar('a', 600);
+      await g.esperar((s) => /tela-gincana/.test(topo(s)), 10000, 'gincana');
+      g.marca('corrida');
+      // troca de raia como um jogador: desvia de vez em quando
+      // piloto da corrida (como um jogador atento): desvia das pedras e cupinzeiros e busca as estrelas da raia vizinha
+      await g.page.evaluate(() => {
+        const W = window as any; W.__raia = 1; let espera = 0;
+        const tecla = (code: string) => { window.dispatchEvent(new KeyboardEvent('keydown', { code, key: code })); setTimeout(() => window.dispatchEvent(new KeyboardEvent('keyup', { code, key: code })), 60); };
+        W.__piloto = setInterval(() => {
+          const pista = document.querySelector('.tela-gincana .gn-pista'); if (!pista || Date.now() < espera) return;
+          const obs = [...pista.querySelectorAll('.gn-ob')].map((el) => {
+            const e = el as HTMLElement, m = /translate\((-?\d+)px, (-?\d+)px\)/.exec(e.style.transform), w = parseInt(e.style.width);
+            return { estrela: !w, x: m ? Number(m[1]) + (w ? w / 2 : 0) : 999, r: [112, 132, 152].indexOf(Number(e.style.zIndex)) };
+          });
+          const CX = 64, perigo = (l: number) => obs.some((o) => !o.estrela && o.r === l && o.x > CX - 16 && o.x < CX + 72);
+          const estrela = (l: number) => obs.some((o) => o.estrela && o.r === l && o.x > CX + 8 && o.x < CX + 90);
+          const r = W.__raia, viz = [r - 1, r + 1].filter((l) => l >= 0 && l <= 2);
+          let alvo = r;
+          if (perigo(r)) alvo = viz.filter((l) => !perigo(l)).sort((a, b) => Number(estrela(b)) - Number(estrela(a)))[0] ?? r;
+          else if (!estrela(r)) alvo = viz.find((l) => estrela(l) && !perigo(l)) ?? r;
+          if (alvo !== r) { tecla(alvo < r ? 'ArrowUp' : 'ArrowDown'); W.__raia = alvo; espera = Date.now() + 260; }
+        }, 30);
+      });
+      await g.page.waitForFunction(() => !!document.querySelector('.tela-gincana .gn-res'), null, { timeout: 70000 });
+      await g.page.evaluate(() => clearInterval((window as any).__piloto));
+      g.marca('resultado'); await g.dormir(4000);
+      await ateLivre(g, 20000); g.marca('fim');
+    },
+  },
+  /** Parque Safári: capim do parque → encontro → isca → Cuia-Safári até pegar (refaz a tomada se a criatura fugir) */
+  'extra-safari': {
+    url: FAIXA('zona=A-SF-parque&x=10&y=26&dir=n&flags=liga-vencida,safari-ativo,safari-setor-2&itens=cuia-safari:30&equipe=23:45,102:45'),
+    async rodar(g) {
+      await g.page.evaluate(() => { (window as any).__pingo.jogo.save.flags['safari-passos'] = 300; });
+      await g.dormir(1200);
+      g.marca('inicio'); await g.andar('cima', 3);
+      void g.page.evaluate(() => (window as any).__pingo.mundo.rodarPassos([['tela', 'safari-encontro', { especie: 108, nivel: 42, arena: 'pantanal', setor: 2 }]]));
+      await g.esperar((s) => /tela-safari/.test(topo(s)), 10000, 'safári'); g.marca('encontro');
+      await g.dormir(2600); await g.apertar('a', 900);
+      g.marca('isca'); await g.apertar('baixo', 400); await g.apertar('a', 2600); await g.apertar('a', 1000);
+      for (let n = 0; n < 6; n++) {
+        if (!/tela-safari/.test(topo(await g.st()))) break;
+        await g.apertar('cima', 300); g.marca('cuia'); await g.apertar('a', 4200);
+        if (!/tela-safari/.test(topo(await g.st()))) break;
+        const txt = await lerTela(g);
+        if (/fugiu|foiembora/i.test(txt)) { g.marca('fim'); return false; }
+        if (/Parceria|capturad/i.test(txt)) break;
+        await g.apertar('a', 1000);
+      }
+      g.marca('fim'); await ateLivre(g, 15000);
+      return g.page.evaluate(() => (window as any).__pingo.jogo.save.diario.capturado.includes(108));
+    },
+  },
+  /** Floresta Ancestral de manhãzinha: o Ninho Raro da Brasa e o Lobo-Fornalha que o protege */
+  'extra-ninho': {
+    url: FAIXA('zona=B-FA&x=53&y=12&dir=n&hora=06:40&equipe=3:72&insignias=16').replace('periodo=dia', 'periodo=manha'),
+    async rodar(g) {
+      await repelente(g.page); await g.dormir(1200);
+      g.marca('inicio'); await g.andar('cima', 4); await g.apertar('cima', 300);
+      g.marca('ninho'); await g.apertar('a');
+      for (let i = 0; i < 10 && !naBatalha(await g.st()); i++) { await g.dormir(1300); if (!naBatalha(await g.st())) await g.apertar('a'); }
+      await g.esperar(naBatalha, 10000, 'batalha'); g.marca('batalha'); await g.dormir(4000); g.marca('fim');
+    },
+  },
+  /** Ilha do Farol: Quiz da Fauna da Rádio Farol (responde certo lendo a pergunta na tela) */
+  'extra-quiz': {
+    url: FAIXA('zona=A6&x=28&y=26&dir=l&equipe=3:72&insignias=16&flags=liga-vencida'),
+    async rodar(g) {
+      const { QUIZ_FAUNA } = await import('../../src/data/quiz');
+      await g.dormir(1200); await g.apertar('dir', 300);
+      g.marca('inicio'); await g.apertar('a', 1500);
+      for (let i = 0; i < 6; i++) { if (/Topaentrar/.test(await lerTela(g))) break; await g.apertar('a', 1300); }
+      await g.dormir(500); await g.apertar('a', 1200); // Sim
+      for (let k = 0; k < 2; k++) {
+        let q: (typeof QUIZ_FAUNA)[number] | undefined;
+        for (let i = 0; i < 20 && !q; i++) { const t = semEspaco(await lerTela(g)); q = QUIZ_FAUNA.find((x) => t.includes(semEspaco(x.p).slice(0, 25))); if (!q) await g.dormir(250); }
+        if (!q) throw new Error('pergunta não lida');
+        g.marca(`pergunta-${k}`); await g.dormir(2400);
+        if (!q.r) await g.apertar('baixo', 500);
+        await g.apertar('a', 300); g.marca(`resposta-${k}`);
+        await g.dormir(3200); await g.apertar('a', 2600); await g.apertar('a', 600);
+      }
+      g.marca('fim');
+    },
+  },
+  /** Gruta Breu, Lago do Fundo: o Mandizinho de Pelagem Rara (escamas furta-cor) salta do lago */
+  'extra-rara': {
+    url: FAIXA('zona=A-GB-2&equipe=3:72&insignias=16'),
+    async rodar(g) {
+      await g.dormir(1200);
+      g.marca('inicio'); void g.page.evaluate(() => (window as any).__pingo.mundo.rodarPassos([['lagoRaro']]));
+      await g.dormir(1800); await g.apertar('a');
+      await g.esperar(naBatalha, 10000, 'batalha'); g.marca('batalha'); await g.dormir(4500); g.marca('fim');
+    },
+  },
+  /** Rádio Cipó: a agenda do dia (enxame, revanches, torre, quiz) */
+  'extra-radio': {
+    url: FAIXA('zona=A2&x=15&y=15&equipe=3:72&insignias=16&flags=liga-vencida,intro-ok&itens=radio-cipo'),
+    async rodar(g) {
+      await g.dormir(1200);
+      g.marca('inicio'); void g.page.evaluate(() => (window as any).__pingo.mundo.rodarPassos([['tela', 'radio']]));
+      await g.esperar((s) => /tela-radio/.test(topo(s)), 8000, 'rádio'); await g.dormir(1500);
+      await g.apertar('a', 1600); g.marca('radio');
+      await g.apertar('a', 3200); await g.apertar('a', 3000); await g.apertar('a', 3000);
+      g.marca('fim'); await g.apertar('a', 600);
+    },
+  },
+
 };
 
 async function main() {
+  // promessas soltas (void page.evaluate) podem falhar quando a tomada fecha a página: não derrubam a gravação
+  process.on('unhandledRejection', (e) => { if (!/closed/.test(String(e))) console.log('    aviso:', String(e).slice(0, 200)); });
   const pedidas = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(TOMADAS);
   const srv = await servir(join(RAIZ, 'dist'), PORTA, '/Pingo/');
   const browser = await pw.chromium.launch({ args: ARGS });
@@ -498,6 +648,7 @@ async function main() {
         const semente = (def.semente ?? 1) + (tentativa - 1) * 7919;
         await abrir(page, srv.url + def.url + (def.url.includes('zona=') ? `&semente=${semente}` : ''), def.mundo !== false);
         if (tentativa > 1 || def.semente) console.log(`    semente ${semente}`);
+        if (def.css) await page.addStyleTag({ content: def.css });
         const g = new Tomada(nome, page, cdp);
         await g.iniciar();
         let ok: boolean | void = true;
