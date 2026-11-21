@@ -559,14 +559,15 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; 
       await g.esperar((s) => /tela-safari/.test(topo(s)), 10000, 'safári'); g.marca('encontro');
       await g.dormir(2600); await g.apertar('a', 900);
       g.marca('isca'); await g.apertar('baixo', 400); await g.apertar('a', 2600); await g.apertar('a', 1000);
-      for (let n = 0; n < 6; n++) {
+      for (let n = 0; n < 8; n++) {
         if (!/tela-safari/.test(topo(await g.st()))) break;
-        await g.apertar('cima', 300); g.marca('cuia'); await g.apertar('a', 4200);
-        if (!/tela-safari/.test(topo(await g.st()))) break;
-        const txt = await lerTela(g);
-        if (/fugiu|foiembora/i.test(txt)) { g.marca('fim'); return false; }
-        if (/Parceria|capturad/i.test(txt)) break;
-        await g.apertar('a', 1000);
+        await g.apertar('cima', 300); g.marca('cuia'); await g.apertar('a', 1500);
+        // espera o desfecho do arremesso: escapou, fugiu ou "Parceria firmada!"
+        let txt = '';
+        for (let i = 0; i < 40; i++) { txt = await lerTela(g); if (/Escapou|fugiu|foiembora|Parceria/i.test(txt) || !/tela-safari/.test(topo(await g.st()))) break; await g.dormir(150); }
+        if (/Parceria/.test(txt)) { g.marca('capturou'); await g.dormir(2500); break; }
+        if (/fugiu|foiembora/i.test(txt) || !/tela-safari/.test(topo(await g.st()))) { g.marca('fim'); return false; }
+        await g.dormir(1200); await g.apertar('a', 1200);
       }
       g.marca('fim'); await ateLivre(g, 15000);
       return g.page.evaluate(() => (window as any).__pingo.jogo.save.diario.capturado.includes(108));
