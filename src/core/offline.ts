@@ -122,10 +122,35 @@ function mostrarAtualizacao() {
     location.reload();
   });
   document.body.append(b);
-  // some durante as batalhas e volta quando elas terminam
-  const acertar = () => { b.style.display = emBatalha() ? 'none' : 'block'; };
+  // some durante as batalhas e volta quando elas terminam; nunca cobre o relógio do HUD do mapa
+  const acertar = () => { b.style.display = emBatalha() ? 'none' : 'block'; if (b.style.display === 'block') posicionarAviso(b); };
   acertar(); window.setInterval(acertar, 1000);
+  window.addEventListener('resize', acertar); window.addEventListener('orientationchange', () => window.setTimeout(acertar, 120));
 }
+/**
+ * Lugar do aviso: no alto, centralizado. Se ali ele cobrir o relógio do HUD (iPhone em pé: a tela do jogo ocupa a
+ * largura toda), desce para logo abaixo da tela do jogo, no espaço livre acima dos controles de toque; sem espaço
+ * embaixo, encosta à esquerda do relógio.
+ */
+function posicionarAviso(b: HTMLElement) {
+  b.style.top = 'calc(env(safe-area-inset-top, 0px) + 6px)'; b.style.left = '50%'; b.style.transform = 'translateX(-50%)';
+  const rel = document.querySelector('.hud-mapa > .mol')?.getBoundingClientRect();
+  const tela = document.getElementById('tela')?.getBoundingClientRect();
+  const cruza = (a: DOMRect, c: DOMRect) => a.left < c.right + 4 && c.left < a.right + 4 && a.top < c.bottom + 4 && c.top < a.bottom + 4;
+  let r = b.getBoundingClientRect();
+  // sem HUD visível (título, menus), confere com o canto do relógio na tela do jogo
+  const alvo = rel && rel.width ? rel : tela ? new DOMRect(tela.left + tela.width * (268 / 320), tela.top, tela.width * (52 / 320), tela.height * (20 / 180)) : null;
+  if (!alvo || !cruza(r, alvo)) return;
+  // o espaço livre embaixo vai até o primeiro controle de toque (ou até o fim da janela)
+  const fim = tela?.bottom ?? window.innerHeight;
+  const limite = Math.min(window.innerHeight, ...[...document.querySelectorAll<HTMLElement>('#toque.ativo .tq, #toque.ativo .tq-zona')].map((e) => e.getBoundingClientRect().top).filter((y) => y > fim));
+  if (tela && limite - tela.bottom >= r.height + 12) { b.style.top = Math.round(tela.bottom + 8) + 'px'; return; }
+  b.style.left = Math.max(4, Math.round(alvo.left - 8 - r.width)) + 'px'; b.style.transform = 'none';
+  r = b.getBoundingClientRect();
+  if (cruza(r, alvo)) b.style.top = Math.round(alvo.bottom + 6) + 'px';
+}
+/** mostra o aviso de versão nova (usado pelos testes de interface; no jogo ele aparece sozinho) */
+export const mostrarAvisoAtualizacao = mostrarAtualizacao;
 
 /** confere se o Service Worker já serve uma versão diferente da desta página; se sim, baixa o que mudou e avisa */
 async function conferirVersao() {

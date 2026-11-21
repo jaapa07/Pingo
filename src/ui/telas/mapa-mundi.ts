@@ -57,12 +57,16 @@ export function criarMapaMundi(args: ArgsMapa = {}): Tela {
     return p[0];
   }
   /* marcadores */
-  for (const l of LOCAIS) {
+  // alvo de toque de cada marcador: 12 px no mínimo e até 20 px onde os vizinhos deixam (metade da distância ao mais
+  // próximo, na métrica do quadrado), sem dois alvos se cobrirem
+  const posicoes = LOCAIS.map((l) => mapa.pos(l.id));
+  const raio = (i: number) => Math.max(6, Math.min(10, Math.floor(Math.min(99, ...posicoes.filter((_, j) => j !== i).map(([x, y]) => Math.max(Math.abs(x - posicoes[i][0]), Math.abs(y - posicoes[i][1])))) / 2)));
+  for (const [n, l] of LOCAIS.entries()) {
     const [x, y] = mapa.pos(l.id), cid = l.tipo === 'cidade', t = cid ? 6 : 4;
     const m = caixa('', t, t); m.style.background = cid ? (visitou(l.id) ? '#e0483c' : '#c4c6d4') : l.id === 'PP' ? '#f9c22b' : '#fff8e7'; m.style.boxShadow = '0 0 0 1px #1a1423'; m.style.zIndex = '2';
     if (voo && !pode(l)) m.style.opacity = '0.45';
     mapa.el.append(em(m, x - t / 2, y - t / 2));
-    const alvo = caixa('', 12, 12); alvo.style.zIndex = '4'; mapa.el.append(em(alvo, x - 6, y - 6));
+    const ra = raio(n), alvo = caixa('', ra * 2, ra * 2); alvo.style.zIndex = '4'; mapa.el.append(em(alvo, x - ra, y - ra));
     tocavel(alvo, () => { if (!pode(l)) { som('ui-erro'); return; } if (atual === l.id && voo) void confirmarVoo(); else { atual = l.id; som('ui-mover'); pintar(); } });
   }
   const aqui = localAtual();

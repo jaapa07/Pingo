@@ -64,11 +64,11 @@ function fichaGolpe(pai: HTMLElement, x: number, y: number, larg = 70) {
   const cx = div('bt-ficha', pai); em(cx, x, y);
   const pg = texto('', { cor: 'tinta' }), ef = texto('', { cor: 'tinta' }), cat = texto('', { cor: 'marrom' });
   let chip: HTMLElement | null = null;
-  // chip na linha 1 e textos a cada 9 px logo abaixo dele: a linha de eficácia termina 3 px acima da borda de baixo
+  // chip (12 px) e três linhas a cada 9 px, cada uma com 1 px de folga: a de eficácia termina 3 px acima da borda de baixo
   cx.append(em(pg, 0, 13), em(cat, 0, 22), em(ef, 0, 31));
   return (id: string, pgAtual: number | null, pgMax: number, e: InfoEficacia | null) => {
     const g = defGolpe(id);
-    chip?.remove(); chip = chipTipo(g.tipo, larg); cx.append(em(chip, 0, 1));
+    chip?.remove(); chip = chipTipo(g.tipo, larg); cx.append(em(chip, 0, 0));
     escrever(pg, pgAtual === null ? `PG ${pgMax}` : `PG {c:${pgAtual === 0 ? 'vermelho' : pgAtual <= pgMax / 4 ? 'laranja' : 'tinta'}}${pgAtual}{/c}/${pgMax}`);
     escrever(cat, `${CAT[g.cat]}${g.poder ? ' · ' + g.poder : ''}`);
     escrever(ef, e ? `{c:${e.cor}}${e.texto}{/c}` : '');
