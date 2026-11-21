@@ -189,8 +189,8 @@ Relato: iPhone (Safari, site e itch.io), jogo vazio → "Colar código" → toqu
 - **Causa** (reproduzida por toque no iPhone 13 emulado, Chromium com `hasTouch`, área de transferência e menu Colar do
   iOS simulados): depois de colar, o campo (`textarea`) continuava focado com o menu do iOS aberto. No iOS o 1º toque
   fora do campo só tira o foco e fecha o menu, sem chegar ao botão: "Usar código" parecia morto. O jogador colava de
-  novo e o texto entrava no cursor, **somado ao que já estava lá**: o código ficava duplicado (1936 letras em vez de
-  968), `lerExportado` recusava ("incompleto ou alterado") e daí em diante "Usar código" só dava erro. Além disso, com
+  novo e o texto entrava no cursor, **somado ao que já estava lá**: o código ficava duplicado (o dobro de letras),
+  `lerExportado` recusava ("incompleto ou alterado") e daí em diante "Usar código" só dava erro. Além disso, com
   o campo focado, `atualizar` ignorava o A/B da tela de toque (os botões virtuais não tiram o foco do campo), e a
   mensagem de erro de 3 linhas ficava debaixo dos botões.
 - **Correção** (src/ui/telas/saves.ts, `campoCodigo`):
