@@ -20,7 +20,7 @@ async function cenario(save, fn) {
       bus.on('batalha-inicio', ({ pedido }) => { Q.inicios.push({ id: pedido.treinador?.id, tipo: pedido.tipo, inimigos: (pedido.inimigos ?? []).map((c) => c.especie).join(',') }); });
       Q.rodarAte = async (passos) => {
         let fim = false; const p = window.__pingo.mundo.rodarPassos(passos).then(() => { fim = true; }, (e) => { fim = true; Q.erroEv = String(e); });
-        for (let k = 0; k < 40000 && !fim; k++) { if (/dialogo|pergunta|escolha/.test(window.__pingo.telas.topo?.el.className ?? '')) await Q.toque('a'); await Q.quadros(2); }
+        for (let k = 0; k < 40000 && !fim; k++) { const cl = window.__pingo.telas.topo?.el.className ?? ''; if (/tela-nome/.test(cl)) { for (const ty of ['keydown', 'keyup']) window.dispatchEvent(new KeyboardEvent(ty, { key: 'Enter', code: 'Enter' })); } else if (/dialogo|pergunta|escolha/.test(cl)) await Q.toque('a'); await Q.quadros(2); }
         await p; await Q.assentar?.();
       };
       /** equipe forte (nível 100) para os lendários */
@@ -35,7 +35,8 @@ const ir = (t, z, x, y, d = 's') => t.q(([z, x, y, d]) => window.__pingo.mundo.i
 
 // 1. rival 5 (Platô, logo depois da Liga) e rival 6/7/8: a variante da Tainá conforme o inicial
 const RIVAL = { mata: 'brasa', brasa: 'rio' };
-for (const ini of ['mata', 'brasa']) {
+const SO = process.env.SO ?? '1234';
+for (const ini of SO.includes('1') ? ['mata', 'brasa'] : []) {
   await cenario(`${SV}/campeao-${ini}.json`, async (t) => {
     for (const [n, ev, zona, x, y] of [[5, 'rival-5', 'A-LG', 15, 50], [6, null, 'B4', 20, 20], [7, 'b2-rival-7', 'B7', 24, 37], [8, null, 'PP', 20, 20]]) {
       await t.page.evaluate((n) => { const f = window.__pingo.jogo.save.flags; delete f['rival-' + n]; }, n);
@@ -51,7 +52,7 @@ for (const ini of ['mata', 'brasa']) {
 }
 
 // 2. presentes do inicial: Drª Buriti (insígnia 8) e o ovo da Praia das Tartarugas
-for (const [ini, buriti, ovo] of [['mata', 4, 7], ['brasa', 1, 7]]) {
+for (const [ini, buriti, ovo] of SO.includes('2') ? [['mata', 4, 7], ['brasa', 1, 7]] : []) {
   await cenario(`${SV}/plato-${ini}.json`, async (t) => {
     await t.page.evaluate(() => { const s = window.__pingo.jogo.save; delete s.flags['inicial-extra-1']; delete s.flags['inicial-extra-2']; delete s.flags['a2-sim']; s.equipe = s.equipe.slice(0, 4); });
     await ir(t, 'A10-lab', 5, 5);
@@ -65,6 +66,7 @@ for (const [ini, buriti, ovo] of [['mata', 4, 7], ['brasa', 1, 7]]) {
   });
 }
 
+if (SO.includes('3')) {
 // 3. lendários de evento que a regra nova cobre e não tinham sido vencidos na tela: Borealce e Gavião-Tupã (vencidos → somem)
 await cenario('campeao-b', async (t) => {
   await t.q(() => window.Q.forte());
@@ -81,6 +83,8 @@ await cenario('campeao-b', async (t) => {
   ok((await t.q(() => window.Q.inicios.length)) === n, 'Gavião-Tupã não volta a lutar');
 });
 
+}
+if (SO.includes('4')) {
 // 4. Cuia Guardiã: a 3ª vem da Profª Ipê com 100 espécies, uma vez só
 await cenario('campeao-b', async (t) => {
   const antes = await t.page.evaluate(() => { const s = window.__pingo.jogo.save; delete s.flags['guardia-100']; for (let i = 1; i <= 120; i++) if (!s.diario.capturado.includes(i)) s.diario.capturado.push(i); return s.mochila['cuia-guardia'] ?? 0; });
@@ -94,4 +98,5 @@ await cenario('campeao-b', async (t) => {
   const chao = await t.page.evaluate(() => ['item:A-RS:fundo', 'item:A9:leste'].map((f) => f + '=' + !!window.__pingo.jogo.save.flags[f]).join(' '));
   console.log('     cuias do chão no save do QA 4:', chao, '· total na mochila:', d2);
 });
+}
 console.log(falhas ? `FALHAS: ${falhas}` : 'TUDO OK');
