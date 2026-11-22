@@ -5,6 +5,7 @@ Imagens prontas em `docs/divulgacao/` (960 × 540): `1-titulo`, `2-mundo`, `3-ba
 Links:
 - Demo grátis (navegador/celular): https://jaapa07.github.io/Pingo-demo1/
 - Página do itch.io: https://advpingo.itch.io/adventures-of-pingo-demo
+- Jogo completo (pago): https://advpingo.itch.io/adventures-of-pingo-full-version
 
 ---
 
