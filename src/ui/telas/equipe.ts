@@ -78,6 +78,7 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
       const origem = movendo >= 0 && k === movendo, alvo = movendo >= 0 && k === i && k !== movendo;
       c.ic.animar(k === i || origem);
       c.el.classList.toggle('movendo', origem); c.el.classList.toggle('alvo-troca', alvo);
+      c.el.classList.toggle('foco-cartao', k === i && movendo < 0); // criatura selecionada bem visível (feedback: o cursor sumia no celular)
       const rot = origem ? 'MOVENDO' : alvo ? 'TROCAR AQUI' : '';
       c.tag.replaceChildren(); c.tag.style.display = rot ? '' : 'none';
       if (rot) { const t = texto(rot, { cor: origem ? 'tinta' : 'creme' }); c.tag.append(t); c.tag.style.width = parseInt(t.style.width) + 6 + 'px'; c.tag.style.left = Math.round((156 - parseInt(t.style.width) - 6) / 2) + 'px'; }
