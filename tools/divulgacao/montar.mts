@@ -14,7 +14,7 @@
  *   (lendarios / mundo / extras / fortes: vídeos A, B, C e D de 45–60 s, vertical e horizontal, com legendas)   (sem argumentos: tudo)
  * Entrada: $PINGO_BRUTOS (o mesmo do gravar.mts). Saída: docs/divulgacao/clipes/ (fora do git: ver .gitignore).
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync, statSync, readdirSync, rmSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync, statSync, readdirSync, rmSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
@@ -56,7 +56,7 @@ function base(tomada: string) {
 
 /* ------------------------------ 2. clipes ------------------------------ */
 type Ponto = [marca: string, desvio: number];
-interface Trecho { tomada: string; de: Ponto; ate: Ponto }
+interface Trecho { tomada: string; de: Ponto; ate: Ponto; /** duração máxima do trecho (s) */ max?: number }
 /** os clipes pedidos (marcas gravadas em marcas.json de cada tomada; desvios em segundos) */
 const CLIPES: Record<string, Trecho[]> = {
   '1-titulo': [{ tomada: 'titulo', de: ['titulo', -0.3], ate: ['titulo', 5.7] }],
@@ -76,7 +76,18 @@ const CLIPES: Record<string, Trecho[]> = {
   ],
   '7a-pantanal-grande': [{ tomada: 'mapa-b', de: ['pantanal', 0], ate: ['fim-pantanal', 0.2] }],
   '7b-vila-cascavel': [{ tomada: 'mapa-b', de: ['cascavel', 0], ate: ['fim-cascavel', 0.2] }],
-  '7c-pico-pindorama': [{ tomada: 'mapa-b', de: ['pico', 0], ate: ['fim-pico', 0.2] }],
+  '7c-pico-pingorama': [{ tomada: 'mapa-b', de: ['pico', 0], ate: ['fim-pico', 0.2] }],
+  /* caminhadas sem legenda (6–8 s) */
+  'andar-vila-jacaranda': [{ tomada: 'andar-vila-jacaranda', de: ['inicio', -0.2], ate: ['fim', 0.2], max: 8 }],
+  'andar-rota-grama': [{ tomada: 'andar-rota-grama', de: ['inicio', -0.2], ate: ['fim', 0.2], max: 8 }],
+  'andar-porto-sereia-bike': [{ tomada: 'andar-porto-sereia-bike', de: ['inicio', -0.3], ate: ['travou', -0.5], max: 8 }],
+  'andar-floresta-ancestral': [{ tomada: 'andar-floresta-ancestral', de: ['inicio', -0.2], ate: ['fim', 0.2], max: 8 }],
+  'andar-pantanal-grande': [{ tomada: 'andar-pantanal-grande', de: ['inicio', -0.2], ate: ['fim', 0.2], max: 8 }],
+  'andar-vila-cascavel': [{ tomada: 'andar-vila-cascavel', de: ['inicio', -0.2], ate: ['fim', 0.2], max: 8 }],
+  'andar-pico-pingorama': [{ tomada: 'andar-pico-pingorama', de: ['inicio', -0.2], ate: ['fim', 0.2], max: 8 }],
+  'andar-praia': [{ tomada: 'andar-praia', de: ['inicio', -0.2], ate: ['fim', 0.2], max: 8 }],
+  'andar-cidade-coral-noite': [{ tomada: 'andar-cidade-coral-noite', de: ['inicio', -0.2], ate: ['fim', 0.2], max: 8 }],
+  'andar-caverna': [{ tomada: 'andar-caverna', de: ['inicio', -0.2], ate: ['fim', 0.2], max: 8 }],
   '8-diario-equipe': [
     { tomada: 'diario', de: ['diario', -0.3], ate: ['diario', 3.2] },
     { tomada: 'diario', de: ['equipe', -0.5], ate: ['equipe', 1.2] },
@@ -91,7 +102,7 @@ const instante = (t: string, [m, d]: Ponto) => { const v = marcas(t)[m]; if (v =
 function nativo(nome: string, trechos: Trecho[]) {
   const partes: string[] = [];
   trechos.forEach((tr, i) => {
-    const a = instante(tr.tomada, tr.de), b = instante(tr.tomada, tr.ate), d = b - a;
+    const a = instante(tr.tomada, tr.de), b = Math.min(instante(tr.tomada, tr.ate), tr.max ? a + tr.max : Infinity), d = b - a;
     const p = join(TMP, `${nome}-${i}.mkv`);
     const fade = trechos.length > 1 ? `afade=t=in:d=0.06,afade=t=out:st=${(d - 0.1).toFixed(3)}:d=0.1` : 'anull';
     ff(['-ss', a.toFixed(3), '-t', d.toFixed(3), '-i', join(TMP, `${tr.tomada}.mkv`), '-af', fade, '-c:v', 'ffv1', '-c:a', 'flac', p]);
@@ -298,7 +309,11 @@ function gif(nome: string, def: { trechos: Trecho[]; fps: number }) {
 
 const etapas = process.argv.slice(2).length ? process.argv.slice(2) : ['base', 'clipes', 'montagem', 'gifs', 'lendarios', 'mundo', 'extras', 'fortes'];
 if (etapas.includes('base')) for (const t of readdirSync(BRUTOS)) if (existsSync(join(BRUTOS, t, 'quadros.json'))) base(t);
-if (etapas.includes('clipes')) for (const [nome, tr] of Object.entries(CLIPES)) { try { exportar(nome, nativo(nome, tr)); } catch (e) { console.log(`${nome}: não montado (${String(e).slice(0, 160)})`); } }
+if (etapas.includes('clipes')) {
+  for (const [nome, tr] of Object.entries(CLIPES)) { try { exportar(nome, nativo(nome, tr)); } catch (e) { console.log(`${nome}: não montado (${String(e).slice(0, 160)})`); } }
+  // o Pico virou "Pingorama": cópia com o nome antigo para não quebrar scripts de quem usa os clipes
+  for (const f of ['horizontal', 'vertical']) if (existsSync(join(SAIDA, `7c-pico-pingorama-${f}.mp4`))) copyFileSync(join(SAIDA, `7c-pico-pingorama-${f}.mp4`), join(SAIDA, `7c-pico-pindorama-${f}.mp4`));
+}
 if (etapas.includes('montagem')) await montagem();
 if (etapas.includes('lendarios')) await montarRoteiro('video-a-lendarios', LENDARIOS, true);
 if (etapas.includes('mundo')) await montarRoteiro('video-b-mais-do-mundo', MUNDO, true);

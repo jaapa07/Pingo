@@ -13,7 +13,9 @@
  *        lenda-gaviao lenda-boitata lenda-borealce, mundo-bike mundo-lider mundo-pesca mundo-remo mundo-noite mundo-trem,
  *        extra-bike extra-gincana extra-safari extra-ninho extra-quiz extra-rara extra-radio,
  *        forte-onca-guaraci forte-lobo-jaci forte-jacarucu forte-harpia forte-lavadeira-dragao forte-jubartao
- *        forte-bandeirao forte-lobo-fornalha forte-iaraboto forte-time)
+ *        forte-bandeirao forte-lobo-fornalha forte-iaraboto forte-time,
+ *        andar-vila-jacaranda andar-rota-grama andar-porto-sereia-bike andar-floresta-ancestral andar-pantanal-grande
+ *        andar-vila-cascavel andar-pico-pingorama andar-praia andar-cidade-coral-noite andar-caverna)
  * Saída: $PINGO_BRUTOS (padrão: <tmp>/pingo-divulgacao/brutos)/<tomada>/
  * Depois: npx tsx tools/divulgacao/montar.mts
  */
@@ -127,6 +129,9 @@ class Tomada {
   async parar(dir: string) {
     const fim = this.agora();
     await this.cdp.send('Page.stopScreencast'); this.gravando = false;
+    const balbucios = await this.page.evaluate(() => (window as any).__balbucios ?? 0);
+    if (balbucios) console.log(`    ATENÇÃO: ${balbucios} balbucio(s) de voz tocaram nesta tomada`);
+    this.marcas.balbucios = balbucios;
     const som = await this.page.evaluate(() => (window as any).__pararSom());
     rmSync(dir, { recursive: true, force: true }); mkdirSync(join(dir, 'q'), { recursive: true });
     const qs = this.quadros.filter((q) => q.t >= 0).sort((a, b) => a.t - b.t);
@@ -145,7 +150,13 @@ async function abrir(page: any, url: string, mundo = true) {
   await page.goto(url);
   await page.waitForFunction(() => (window as any).__pingo?.telas?.pilha?.length > 0, null, { timeout: 90000 });
   await page.evaluate('window.__name = (f) => f'); // tsx/esbuild injeta __name nas funções passadas ao navegador
-  await page.evaluate(() => { window.dispatchEvent(new Event('pointerdown')); const p = (window as any).__pingo; p.jogo.opcoes.velTexto = 3; });
+  await page.evaluate(() => {
+    window.dispatchEvent(new Event('pointerdown'));
+    const W = window as any, p = W.__pingo; p.jogo.opcoes.velTexto = 3;
+    // sem as vozes balbuciadas dos personagens (o padrão do jogo; um localStorage antigo pode ter ligado): conta qualquer balbucio que escape
+    p.jogo.opcoes.vozes = false; W.__balbucios = 0;
+    const a = p.audio; if (a?.babble) { const b = a.babble.bind(a); a.babble = (...r: unknown[]) => { W.__balbucios++; return b(...r); }; }
+  });
   if (mundo) await page.waitForFunction(() => { const p = (window as any).__pingo; return p?.mundo?.pronto && !p.telas.ocupada; }, null, { timeout: 90000 });
 }
 const repelente = (page: any) => page.evaluate(() => { (window as any).__pingo.jogo.save.repelente = 999; });
@@ -251,6 +262,23 @@ function forte(zona: string, especie: number, nivel: number, o: { lider?: string
         await g.dormir(600);
       }
       g.marca('fim'); return false;
+    },
+  };
+}
+
+/** passeio a pé (ou de bicicleta) por uma rota de casas livres; avisa se o personagem parou antes (obstáculo) */
+function passeio(url: string, rota: [Tecla, number][], o: { bike?: boolean } = {}) {
+  return {
+    url: FAIXA(url + '&equipe=4:30&parceira=1' + (o.bike ? '&itens=bike-bambu' : '')).replace(/periodo=dia&(.*periodo=)/, '$1'),
+    async rodar(g: Tomada) {
+      await repelente(g.page); await g.dormir(1200);
+      if (o.bike) { await g.page.evaluate(() => (window as any).__pingo.mundo.usarItem('bike-bambu')); await g.dormir(600); }
+      g.marca('inicio');
+      for (const [d, n] of rota) {
+        const feitos = await g.andar(d, n);
+        if (feitos < n) { console.log(`    TRAVOU: ${d} ${feitos}/${n}`); g.marcas.travou = g.agora(); break; }
+      }
+      g.marca('fim'); await g.dormir(500);
     },
   };
 }
@@ -383,7 +411,7 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; 
       // save de fim de jogo do QA: as espécies vistas viram fichas completas (para o Diário mostrar as criaturas)
       save.diario.capturado = [...new Set([...save.diario.capturado, ...save.diario.visto])];
       save.jogador.zona = 'B2'; save.jogador.x = 12; save.jogador.y = 14;
-      await g.page.evaluate(async (d: any) => { const p = (window as any).__pingo; p.jogo.carregar(d); p.jogo.opcoes.velTexto = 3; await p.mundo.irPara('B2', 12, 14, 's', 'nenhuma'); }, save);
+      await g.page.evaluate(async (d: any) => { const p = (window as any).__pingo; p.jogo.carregar(d); p.jogo.opcoes.velTexto = 3; p.jogo.opcoes.vozes = false; await p.mundo.irPara('B2', 12, 14, 's', 'nenhuma'); }, save);
       await g.esperar(livre, 20000, 'mundo'); await g.dormir(1200);
       g.marca('inicio');
       await g.apertar('menu', 700);
@@ -523,6 +551,7 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; 
   },
   /** a viagem de trem da Estação de Porto Sereia */
   'mundo-trem': {
+    css: '.tela-cinematica [style*="left: 268px"] { visibility: hidden !important; }', // sem a dica "A: pular"
     url: FAIXA('zona=A4-estacao&equipe=4:30&flags=campeao&insignias=16'),
     async rodar(g) {
       await g.dormir(1200);
@@ -684,6 +713,18 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; 
       g.marca('fim');
     },
   },
+
+  /* ============ caminhadas (clipes andar-*) ============ */
+  'andar-vila-jacaranda': passeio('zona=A1&x=7&y=11&dir=l', [['dir', 12], ['baixo', 11], ['dir', 8]]),
+  'andar-rota-grama': passeio('zona=A-R1&x=13&y=40&dir=l', [['dir', 6], ['baixo', 2], ['dir', 5], ['cima', 2], ['dir', 2], ['baixo', 5], ['esq', 6]]),
+  'andar-porto-sereia-bike': passeio('zona=A4&x=4&y=20&dir=l', [['dir', 40], ['cima', 6], ['dir', 12], ['cima', 6], ['esq', 20]], { bike: true }),
+  'andar-floresta-ancestral': passeio('zona=B-FA&x=53&y=10&dir=n', [['baixo', 20], ['esq', 10]]),
+  'andar-pantanal-grande': passeio('zona=B2&x=14&y=15&dir=l', [['dir', 26]]),
+  'andar-vila-cascavel': passeio('zona=B1&x=4&y=16&dir=l', [['dir', 17], ['cima', 6]]),
+  'andar-pico-pingorama': passeio('zona=PP&x=4&y=29&dir=l&flags=' + [1, 2, 3, 4, 5, 6, 7, 8].map((n) => 'venceu:PP-' + n).join(','), [['dir', 29]]),
+  'andar-praia': passeio('zona=A-PR&x=12&y=22&dir=l', [['dir', 23], ['cima', 3]]),
+  'andar-cidade-coral-noite': passeio('zona=A5&x=15&y=22&dir=l&hora=21:30&periodo=noite', [['dir', 26], ['baixo', 6], ['esq', 6]]),
+  'andar-caverna': passeio('zona=A-GE&x=2&y=15&dir=l', [['dir', 30]]),
 
 };
 
