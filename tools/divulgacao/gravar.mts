@@ -388,7 +388,7 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; 
       }
     },
   },
-  /** mapa B: Pantanal Grande, Vila Cascavel e o Pico Pindorama nevado */
+  /** mapa B: Pantanal Grande, Vila Cascavel e o Pico Pingorama nevado */
   'mapa-b': {
     url: FAIXA('zona=B2&x=21&y=15&dir=l&equipe=6:50&parceira=1&insignias=16&flags=campeao'),
     async rodar(g) {
@@ -470,7 +470,7 @@ const TOMADAS: Record<string, { url: string; mundo?: boolean; semente?: number; 
       await ateLivre(g); g.marca('fim'); await g.dormir(600);
     },
   },
-  /** Pico Pindorama de noite: quatro Lanternas Boreais, a aurora e o Borealce descendo das nuvens */
+  /** Pico Pingorama de noite: quatro Lanternas Boreais, a aurora e o Borealce descendo das nuvens */
   'lenda-borealce': {
     url: FAIXA(`zona=PP&x=9&y=9&dir=n&hora=21:40&periodo=noite&${EQUIPE_FORTE}&flags=boreal-missao,boreal-lanterna-1,boreal-lanterna-2,boreal-lanterna-3,boreal-lanterna-4&itens=lanterna-boreal:4`).replace('periodo=dia&', ''),
     async rodar(g) {
