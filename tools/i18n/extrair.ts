@@ -80,6 +80,8 @@ function foraDeTela(n: ts.Node): boolean {
   }
   if (ts.isCallExpression(p) && p.expression.getText() === 'tr' && p.arguments[0] !== n) return true;
   if (ts.isArrayLiteralExpression(p)) {
+    // linhas da grade de uma zona (`mapaChars: ['T::b::::b::T', …]`): desenho do mapa, nunca texto de tela
+    if (ts.isPropertyAssignment(p.parent) && p.parent.initializer === p && propNome(p.parent.name) === 'mapaChars') return true;
     // comandos de evento: só o texto de falar/escolha/simnao/avisar e as opções de escolha
     const cab = p.elements[0];
     if (cab && ts.isStringLiteral(cab) && COMANDOS.has(cab.text)) {
