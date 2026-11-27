@@ -68,7 +68,7 @@ async function volta(r: Roda, n: number, cam: { x: number; y: number }, num: num
       const k = Math.floor(q / B), fase = q % B;
       if (fase === 0) {
         if (k < 2) tchi();
-        else if (k < 2 + n) { dom(); enf.pix('seta', [DIVISAS[seq[k - 2]]], { w: SETA_COR }, cam.x, cam.y, { dx: 3, dy: -26, z: 5000 }); avisar(GOLPE[seq[k - 2]] + '!'); }
+        else if (k < 2 + n) { dom(); enf.pix('seta', [DIVISAS[seq[k - 2]]], { w: SETA_COR }, cam.x, cam.y, { dx: 3, dy: -26, z: 5000 }); avisar(tr('{golpe}!', { golpe: GOLPE[seq[k - 2]] })); }
         else if (k === 2 + n) { tchi(); enf.tirar('seta'); pintarRespostas(); }
         else dom();
       }
