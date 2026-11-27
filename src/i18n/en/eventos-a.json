@@ -20,543 +20,543 @@
   "ctx": "src/data/eventos/_motor.ts:24 · fala de null"
  },
  "Ayra": {
-  "en": "",
+  "en": "Ayra",
   "ctx": "src/data/eventos/a1.ts:14 · registrarComando() | src/data/eventos/a1.ts:60 · pergunta/opção"
  },
  "Você vai escolher {nome}, do tipo {tipo}?": {
-  "en": "",
+  "en": "Will you choose {nome}, the {tipo} type?",
   "ctx": "src/data/eventos/a1.ts:41 · pergunta/opção"
  },
  "Sem pressa. É a primeira parceira da sua vida: pense bem!": {
-  "en": "",
+  "en": "No rush. It's the first partner of your life: think it over!",
   "ctx": "src/data/eventos/a1.ts:47 · f()"
  },
  "Opa, chegou gente! Seja bem-vindo a Pingorama!\fEu sou a Ipê Amarelo, mas todo mundo me chama de Profª Ipê.": {
-  "en": "",
+  "en": "Oh, we have company! Welcome to Pingorama!\fI'm Ipê Amarelo, but everyone calls me Prof. Ipê.",
   "ctx": "src/data/eventos/a1.ts:57 · f()"
  },
  "Esta terra é cheia de criaturas: no capim, nos rios, nas grutas, no alto das árvores.\fA gente vive com elas, aprende com elas e, de vez em quando, batalha ao lado delas. Eu? Eu estudo todas. Ou tento.": {
-  "en": "",
+  "en": "This land is full of creatures: in the grass, in the rivers, in the caves, high up in the trees.\fWe live with them, learn from them and, now and then, battle alongside them. Me? I study them all. Or I try to.",
   "ctx": "src/data/eventos/a1.ts:58 · f()"
  },
  "Mas antes de falar de bicho, me fale de você.": {
-  "en": "",
+  "en": "But before we talk critters, tell me about yourself.",
   "ctx": "src/data/eventos/a1.ts:59 · f()"
  },
  "Quem é você?": {
-  "en": "",
+  "en": "Who are you?",
   "ctx": "src/data/eventos/a1.ts:60 · pergunta/opção"
  },
  "{JOGADOR}! Nome bom de gritar no meio do mato.\fPois então, {JOGADOR}: a sua história em Pingorama começa agora. E começa do jeito certo — atrasada para o café.": {
-  "en": "",
+  "en": "{JOGADOR}! A good name to shout across the bush.\fWell then, {JOGADOR}: your story in Pingorama starts now. And it starts the right way — late for breakfast.",
   "ctx": "src/data/eventos/a1.ts:64 · f()"
  },
  "{JOGADOR}! Acorda, criatura! O café está na mesa e a Profª Ipê já passou aqui duas vezes!": {
-  "en": "",
+  "en": "{JOGADOR}! Wake up, sleepyhead! Breakfast is on the table and Prof. Ipê has already come by twice!",
   "ctx": "src/data/eventos/a1.ts:70 · f()"
  },
  "É o seu quarto, em Vila Jacarandá. O computador está ligado e a escada desce para a cozinha.": {
-  "en": "",
+  "en": "It's your room, in Vila Jacarandá. The computer is on and the stairs lead down to the kitchen.",
   "ctx": "src/data/eventos/a1.ts:72 · f()"
  },
  "Até que enfim, {JOGADOR}! Achei que você tinha virado Preguicim.\fA Profª Ipê quer falar com você lá no laboratório. Disse que é coisa importante — e ela só diz isso umas três vezes por dia.": {
-  "en": "",
+  "en": "Finally, {JOGADOR}! I thought you'd turned into a Preguicim.\fProf. Ipê wants to see you at the lab. She said it's important — and she only says that about three times a day.",
   "ctx": "src/data/eventos/a1.ts:80 · f()"
  },
  "Antes de sair, leva isto. Chegou do conserto hoje cedo.": {
-  "en": "",
+  "en": "Before you go, take this. It came back from the repair shop this morning.",
   "ctx": "src/data/eventos/a1.ts:81 · f()"
  },
  "É o seu Rádio Cipó: pega os programas, guarda os contatos de quem você conhecer e mostra a hora.\fFalando em hora… o relógio dele zerou no conserto. Que dia é hoje, mesmo? E que horas são?": {
-  "en": "",
+  "en": "It's your Rádio Cipó: it picks up the shows, keeps the contacts of everyone you meet and tells the time.\fSpeaking of time… its clock got reset at the shop. What day is it again? And what time is it?",
   "ctx": "src/data/eventos/a1.ts:83 · f()"
  },
  "Isso! Eu sabia. Só estava testando você.\fJá anotei o número de casa nos contatos. Me liga de vez em quando, viu? Mãe também é criatura que precisa de atenção.": {
-  "en": "",
+  "en": "That's it! I knew it. I was just testing you.\fI already saved the home number in your contacts. Call me now and then, okay? Moms are creatures that need attention too.",
   "ctx": "src/data/eventos/a1.ts:85 · f()"
  },
  "Ah, e mais uma coisa: quando você começar a ganhar patacas por aí, posso guardar uma parte para você. É só falar comigo.\fAgora vai, que a professora está esperando. E penteia esse cabelo!": {
-  "en": "",
+  "en": "Oh, one more thing: when you start earning patacas out there, I can keep some of it safe for you. Just ask.\fNow go, the professor is waiting. And comb that hair!",
   "ctx": "src/data/eventos/a1.ts:87 · f()"
  },
  "A Profª Ipê está no laboratório, descendo a rua e virando à direita. Vai lá, não deixa ela esperando!": {
-  "en": "",
+  "en": "Prof. Ipê is at the lab, down the street and to the right. Go on, don't keep her waiting!",
   "ctx": "src/data/eventos/a1.ts:96 · f()"
  },
  "Mãe: \"Oi, meu bem! Precisa de alguma coisa?\"": {
-  "en": "",
+  "en": "Mom: \"Hi, sweetie! Need anything?\"",
   "ctx": "src/data/eventos/a1.ts:97 · pergunta/opção"
  },
  "Descansar um pouco": {
-  "en": "",
+  "en": "Rest a while",
   "ctx": "src/data/eventos/a1.ts:97 · pergunta/opção"
  },
  "Guardar dinheiro": {
-  "en": "",
+  "en": "Save money",
   "ctx": "src/data/eventos/a1.ts:97 · pergunta/opção"
  },
  "Só um abraço": {
-  "en": "",
+  "en": "Just a hug",
   "ctx": "src/data/eventos/a1.ts:97 · pergunta/opção"
  },
  "Senta aí, toma um suco de caju. As suas criaturas também: tem biscoito de polvilho para todo mundo.": {
-  "en": "",
+  "en": "Sit down, have some cashew juice. Your creatures too: there are cassava puffs for everyone.",
   "ctx": "src/data/eventos/a1.ts:100 · f()"
  },
  "Pronto! Vocês estão com outra cara. Juízo na estrada!": {
-  "en": "",
+  "en": "There! You all look brand new. Be good out there!",
   "ctx": "src/data/eventos/a1.ts:102 · f()"
  },
  "Vem cá. Pronto. Agora vai conquistar o mundo, mas volta para o almoço de domingo.": {
-  "en": "",
+  "en": "Come here. There. Now go conquer the world, but be back for Sunday lunch.",
   "ctx": "src/data/eventos/a1.ts:105 · f()"
  },
  "Cem espécies diferentes no Diário de Campo?! {JOGADOR}, nem eu cheguei nisso na sua idade!\fGuardei uma coisa por anos esperando alguém merecer.": {
-  "en": "",
+  "en": "A hundred different species in the Field Journal?! {JOGADOR}, not even I managed that at your age!\fI've kept something for years, waiting for someone who deserved it.",
   "ctx": "src/data/eventos/a1.ts:119 · f()"
  },
  "É uma Cuia Guardiã, obra dos antigos Guardiões. Nunca falha.\fSó existem três no mundo inteiro. Use com sabedoria: há criaturas que só aparecem uma vez.": {
-  "en": "",
+  "en": "It's a Guardian Gourd, made by the ancient Guardians. It never fails.\fOnly three exist in the whole world. Use it wisely: some creatures only show up once.",
   "ctx": "src/data/eventos/a1.ts:120 · f()"
  },
  "{JOGADOR}! Bem na hora. Quer dizer, atrasado, mas na hora do atraso de sempre.\fPreciso de um favor que só dá para pedir a alguém de confiança.": {
-  "en": "",
+  "en": "{JOGADOR}! Right on time. I mean, late, but right on your usual late time.\fI need a favor I can only ask of someone I trust.",
   "ctx": "src/data/eventos/a1.ts:126 · f()"
  },
  "Chegou às minhas mãos um ovo que eu nunca vi igual: o Ovo Pintado. Quem entende de ovo nesta costa é o Seu Aroeira, lá de Vila Caiçara.\fAlguém tem de levar o ovo até ele. Eu iria, mas se eu saio daqui o Juca mistura as amostras outra vez.": {
-  "en": "",
+  "en": "An egg like none I've ever seen came into my hands: the Painted Egg. The egg expert on this coast is Seu Aroeira, over in Vila Caiçara.\fSomeone has to take the egg to him. I'd go, but if I leave, Juca will mix up the samples again.",
   "ctx": "src/data/eventos/a1.ts:127 · f()"
  },
  "Só que a Trilha do Ipê é cheia de grama alta, e ninguém atravessa grama alta sozinho.\fEstá vendo as três cuias na mesa? Cada uma guarda uma criatura novinha, que eu mesma criei. Uma delas vai com você.": {
-  "en": "",
+  "en": "The thing is, Trilha do Ipê is full of tall grass, and nobody crosses tall grass alone.\fSee the three gourds on the table? Each holds a young creature I raised myself. One of them is going with you.",
   "ctx": "src/data/eventos/a1.ts:128 · f()"
  },
  "Chegue perto de cada cuia e examine. A criatura se apresenta sozinha — elas são exibidas.\fEscolha com calma. Pense bem: parceria é para a vida toda!": {
-  "en": "",
+  "en": "Walk up to each gourd and take a look. The creature will introduce itself — they're show-offs.\fTake your time. Think it through: a partnership is for life!",
   "ctx": "src/data/eventos/a1.ts:129 · f()"
  },
  "As três cuias estão na mesa: Mata à esquerda, Brasa no meio, Rio à direita.\fExamine cada uma de frente e escolha. Pense bem!": {
-  "en": "",
+  "en": "The three gourds are on the table: Grass on the left, Ember in the middle, River on the right.\fStand in front of each one, take a look and choose. Think it through!",
   "ctx": "src/data/eventos/a1.ts:133 · f()"
  },
  "O Seu Aroeira mora em Vila Caiçara, ao norte, no fim da Trilha do Ipê. É a casa grande com cheiro de café.\fCuidado com o Ovo Pintado: nada de correr com ele debaixo do braço!": {
-  "en": "",
+  "en": "Seu Aroeira lives in Vila Caiçara, to the north, at the end of Trilha do Ipê. It's the big house that smells of coffee.\fCareful with the Painted Egg: no running with it under your arm!",
   "ctx": "src/data/eventos/a1.ts:135 · f()"
  },
  "O Diário de Campo anota sozinho cada criatura que você encontra. As que você captura ganham ficha completa.\fO primeiro ginásio fica em Vila Caiçara. O Mestre Gaivota é do tipo Vento: Trovão e Pedra dão trabalho para ele.": {
-  "en": "",
+  "en": "The Field Journal records every creature you meet on its own. The ones you catch get a complete entry.\fThe first gym is in Vila Caiçara. Master Gaivota uses the Wind type: Thunder and Stone give him trouble.",
   "ctx": "src/data/eventos/a1.ts:137 · f()"
  },
  "Insígnia no estojo e criatura bem cuidada: você está me saindo melhor que a encomenda!\fDepois de Bosque Alto, siga até Porto Sereia. A Capitã Marola, de lá, é quem entrega o Amuleto do Remo: a Costa do Sol continua pelo mar.": {
-  "en": "",
+  "en": "A badge in the case and a well-cared-for creature: you're turning out better than I ordered!\fAfter Bosque Alto, head on to Porto Sereia. Captain Marola there is the one who gives out the Paddle Charm: the Costa do Sol continues by sea.",
   "ctx": "src/data/eventos/a1.ts:138 · f()"
  },
  "Três insígnias! Eu sabia que aquele atraso todo era só para tomar impulso.\fSão oito insígnias na Costa do Sol, e depois delas a Liga dos Guardiões, no Platô. Só Campeão da Liga embarca para o Sertão das Névoas.\fA última insígnia fica em Vila Buriti, onde trabalha a Drª Buriti, minha colega. Diga que eu mandei um abraço e que ela me deve um livro.": {
-  "en": "",
+  "en": "Three badges! I knew all that lateness was just you getting a running start.\fThere are eight badges on the Costa do Sol, and after them the League of Guardians, on the Plateau. Only a League Champion can board for the Sertão das Névoas.\fThe last badge is in Vila Buriti, where my colleague Dr. Buriti works. Tell her I said hi and that she owes me a book.",
   "ctx": "src/data/eventos/a1.ts:139 · f()"
  },
  "As outras duas cuias continuam na mesa, esperando os seus treinadores.": {
-  "en": "",
+  "en": "The other two gourds are still on the table, waiting for their trainers.",
   "ctx": "src/data/eventos/a1.ts:152 · f()"
  },
  "Três cuias de cabaça entalhada, com trançado de palha. Uma delas deu um pulinho.\fMelhor falar com a Profª Ipê antes de mexer.": {
-  "en": "",
+  "en": "Three carved calabash gourds wrapped in woven straw. One of them just hopped.\fBetter talk to Prof. Ipê before touching anything.",
   "ctx": "src/data/eventos/a1.ts:153 · f()"
  },
  "A mesa das três cuias. Para examinar uma delas, fique bem de frente para ela.": {
-  "en": "",
+  "en": "The table with the three gourds. To look at one, stand right in front of it.",
   "ctx": "src/data/eventos/a1.ts:157 · f()"
  },
  "A cuia da esquerda se abre: é o Tamanduí, um tamanduá-mirim de pelagem de folhas!\fCalmo e carinhoso, abraça tudo o que vê. Criaturas do tipo Mata levam a melhor sobre Rio, Terra e Pedra.": {
-  "en": "",
+  "en": "The left gourd opens: it's Tamanduí, a little tamandua with leafy fur!\fCalm and cuddly, it hugs everything it sees. Grass-type creatures have the edge over River, Earth and Stone.",
   "ctx": "src/data/eventos/a1.ts:162 · cuia()"
  },
  "A cuia do meio se abre: é o Guaraxim, um filhote de lobo-guará com a crina em brasa!\fArisco e orgulhoso, esquenta a sala inteira. Criaturas do tipo Brasa levam a melhor sobre Mata, Geada, Inseto e Ferro.": {
-  "en": "",
+  "en": "The middle gourd opens: it's Guaraxim, a maned wolf pup with a mane of embers!\fSkittish and proud, it warms up the whole room. Ember-type creatures have the edge over Grass, Frost, Bug and Iron.",
   "ctx": "src/data/eventos/a1.ts:163 · cuia()"
  },
  "A cuia da direita se abre: é o Botinho, um filhote de boto-cor-de-rosa!\fBrincalhão e esperto, já molhou o chão. Criaturas do tipo Rio levam a melhor sobre Brasa, Terra e Pedra.": {
-  "en": "",
+  "en": "The right gourd opens: it's Botinho, a pink river dolphin calf!\fPlayful and clever, it's already splashed the floor. River-type creatures have the edge over Ember, Earth and Stone.",
   "ctx": "src/data/eventos/a1.ts:164 · cuia()"
  },
  "Olha só como vocês já se entenderam! Cuide bem dela: criatura feliz luta melhor e vai mais longe.\fSe ela se machucar, a sua mãe e qualquer Posto Guardião dão jeito de graça.": {
-  "en": "",
+  "en": "Look how well you two already get along! Take good care of it: a happy creature fights better and goes further.\fIf it gets hurt, your mom and any Guardian Post will patch it up for free.",
   "ctx": "src/data/eventos/a1.ts:168 · f()"
  },
  "Agora, o favor. Aqui está o Ovo Pintado. Segure com as duas mãos!": {
-  "en": "",
+  "en": "Now, the favor. Here's the Painted Egg. Hold it with both hands!",
   "ctx": "src/data/eventos/a1.ts:169 · f()"
  },
  "O ovo é morno e, de vez em quando, dá uma batidinha por dentro.": {
-  "en": "",
+  "en": "The egg is warm and, every so often, gives a little tap from inside.",
   "ctx": "src/data/eventos/a1.ts:171 · f()"
  },
  "Leve ao Seu Aroeira, em Vila Caiçara: saia da vila pelo norte e siga a Trilha do Ipê até o fim.\fDepois volte aqui para me contar o que ele disse. Vou deixar um presente separado para você!": {
-  "en": "",
+  "en": "Take it to Seu Aroeira, in Vila Caiçara: leave town to the north and follow Trilha do Ipê to the end.\fThen come back and tell me what he said. I'll have a present set aside for you!",
   "ctx": "src/data/eventos/a1.ts:173 · f()"
  },
  "Ora, ora! Visita da Vila Jacarandá — e trazendo ovo! Deixa eu ver isso de perto, com licença…": {
-  "en": "",
+  "en": "Well, well! A visitor from Vila Jacarandá — bearing an egg! Let me take a closer look, if you don't mind…",
   "ctx": "src/data/eventos/a1.ts:183 · f()"
  },
  "Hum. Casca pintadinha, morna, batendo por dentro… Menino, em sessenta anos de viveiro eu só vi dois assim.\fVêm de ninho de praia, enterrado na areia. Esse aqui tem história, e eu vou chocar ele com todo o capricho.": {
-  "en": "",
+  "en": "Hmm. Speckled shell, warm, tapping inside… Kid, in sixty years of keeping an aviary I've only seen two like this.\fThey come from beach nests, buried in the sand. This one has a story, and I'll hatch it with all the care in the world.",
   "ctx": "src/data/eventos/a1.ts:184 · f()"
  },
  "{JOGADOR} entregou o Ovo Pintado ao Seu Aroeira.": {
-  "en": "",
+  "en": "{JOGADOR} handed the Painted Egg to Seu Aroeira.",
   "ctx": "src/data/eventos/a1.ts:186 · f()"
  },
  "Diga à Ipê que o ovo ficou em boas mãos e que, quando nascer, eu aviso pelo Rádio Cipó.\fE leve isto para a viagem de volta. Chá de erva-cidreira: bom para criatura e para gente.": {
-  "en": "",
+  "en": "Tell Ipê the egg is in good hands and that I'll call on Rádio Cipó when it hatches.\fAnd take this for the trip back. Lemon balm tea: good for creatures and people alike.",
   "ctx": "src/data/eventos/a1.ts:187 · f()"
  },
  "Ah! E quando você tiver a insígnia do Mestre Gaivota, passe aqui de novo. Tenho um ensinamento antigo guardado para treinador de confiança.": {
-  "en": "",
+  "en": "Oh! And once you have Master Gaivota's badge, come by again. I've got an old lesson saved for a trustworthy trainer.",
   "ctx": "src/data/eventos/a1.ts:190 · f()"
  },
  "Bem-vindo ao viveiro! Aqui se choca ovo, se cria filhote e se serve café.\fNão repare na bagunça: é que o ninho da sala também é meu.": {
-  "en": "",
+  "en": "Welcome to the aviary! Here we hatch eggs, raise little ones and serve coffee.\fDon't mind the mess: the nest in the living room is mine too.",
   "ctx": "src/data/eventos/a1.ts:192 · f()"
  },
  "O Faro só funciona com criatura que confia em você. Passeie com ela, cuide dela, e ela mostra o que o chão esconde.\fA Paçoca manda lembranças. Quer dizer, ela mandou um caroço. É o jeito dela.": {
-  "en": "",
+  "en": "Scent only works with a creature that trusts you. Walk with it, look after it, and it'll show you what the ground is hiding.\fPaçoca says hi. Well, she sent a fruit pit. That's her way.",
   "ctx": "src/data/eventos/a1.ts:195 · f()"
  },
  "O Ovo Pintado está quietinho perto do fogão, batendo no compasso.\fVolte ao laboratório e conte à Ipê. E apareça quando tiver a Insígnia da Pena!": {
-  "en": "",
+  "en": "The Painted Egg is resting quietly by the stove, tapping in rhythm.\fHead back to the lab and tell Ipê. And drop by once you have the Feather Badge!",
   "ctx": "src/data/eventos/a1.ts:196 · f()"
  },
  "Espere aí. Esse seu Tamanduí… é bicho de folha, não é? E você vai encarar o Mestre Gaivota com ele?\fO vento do píer derruba folha que é uma beleza. E o Tucaninho do Gaivota bica feito pica-pau.": {
-  "en": "",
+  "en": "Hold on. That Tamanduí of yours… it's a leafy critter, isn't it? And you're taking on Master Gaivota with it?\fThe wind on that pier strips leaves like nobody's business. And Gaivota's Tucaninho pecks like a woodpecker.",
   "ctx": "src/data/eventos/a1.ts:209 · f()"
  },
  "Tenho aqui um Jabutim que nasceu no viveiro e já está grande para o quintal. Casco de pedra não liga para bicada.\fEle é devagar em tudo, até para crescer. Mas quando aprender a atirar pedrinha, passarinho nenhum chega perto.": {
-  "en": "",
+  "en": "I've got a Jabutim here that hatched in the aviary and has outgrown the yard. A stone shell doesn't care about pecking.\fIt's slow at everything, even growing up. But once it learns to throw pebbles, no bird will come near.",
   "ctx": "src/data/eventos/a1.ts:210 · f()"
  },
  "Cuide bem dele. Jabuti vive mais que a gente: ele ainda vai contar a sua história para os seus netos.": {
-  "en": "",
+  "en": "Take good care of it. Tortoises outlive us: it'll be telling your story to your grandkids one day.",
   "ctx": "src/data/eventos/a1.ts:213 · f()"
  },
  "Ah, olha quem voltou do passeio! {JOGADOR}, o entregador de ovo.": {
-  "en": "",
+  "en": "Oh, look who's back from the trip! {JOGADOR}, the egg courier.",
   "ctx": "src/data/eventos/a1.ts:225 · f()"
  },
  "{JOGADOR}, você conhece a Tainá, da casa do outro lado da rua. Ela também vai sair pelo mundo — e acabou de escolher a parceira dela.": {
-  "en": "",
+  "en": "{JOGADOR}, you know Tainá, from the house across the street. She's heading out into the world too — and she just picked her partner.",
   "ctx": "src/data/eventos/a1.ts:226 · f()"
  },
  "Escolhi a que ganha da sua, é claro. Eu perguntei qual você tinha levado ANTES de escolher. Estratégia, meu bem.\fProfessora, posso testar? É rapidinho. Prometo não quebrar nada. Do laboratório.": {
-  "en": "",
+  "en": "I picked the one that beats yours, obviously. I asked which one you took BEFORE choosing. Strategy, sweetie.\fProfessor, can I test it? Just real quick. I promise not to break anything. In the lab.",
   "ctx": "src/data/eventos/a1.ts:227 · f()"
  },
  "Uma batalha de estreia? Só se for agora! Mas longe das minhas amostras!": {
-  "en": "",
+  "en": "A debut battle? Right now! But keep away from my samples!",
   "ctx": "src/data/eventos/a1.ts:228 · f()"
  },
  "Ganhei! Eu disse que a minha já nasceu ganhando. Não fica assim, {JOGADOR}: perder para mim é quase um elogio.": {
-  "en": "",
+  "en": "I won! I told you mine was born a winner. Don't sulk, {JOGADOR}: losing to me is practically a compliment.",
   "ctx": "src/data/eventos/a1.ts:232 · f()"
  },
  "Tá bom, tá bom. Hoje foi só o começo. Mas eu vou conquistar as dezesseis insígnias antes de você decorar o caminho de Vila Caiçara!\fFui! Não me segue, que eu não gosto de plateia.": {
-  "en": "",
+  "en": "Fine, fine. Today was just the beginning. But I'll win all sixteen badges before you even learn the way to Vila Caiçara!\fI'm off! Don't follow me, I don't like an audience.",
   "ctx": "src/data/eventos/a1.ts:233 · f()"
  },
  "Essa menina vai longe. Tomara que na direção certa.\fMas me conte: o Seu Aroeira ficou com o ovo? Ah, que alívio! Promessa é dívida: aqui estão os seus presentes.": {
-  "en": "",
+  "en": "That girl will go far. Hopefully in the right direction.\fBut tell me: did Seu Aroeira take the egg? Oh, what a relief! A promise is a promise: here are your presents.",
   "ctx": "src/data/eventos/a1.ts:236 · f()"
  },
  "É o Diário de Campo. Ele anota sozinho cada criatura que você encontra e completa a ficha das que você captura.\fExistem 180 espécies em Pingorama. Eu registrei doze. Conto com você para as outras cento e sessenta e oito!": {
-  "en": "",
+  "en": "It's the Field Journal. It records every creature you meet on its own and completes the entry for those you catch.\fThere are 180 species in Pingorama. I've recorded twelve. I'm counting on you for the other hundred and sixty-eight!",
   "ctx": "src/data/eventos/a1.ts:239 · f()"
  },
  "E estas são Cuias de Captura. Criatura selvagem cansada aceita melhor o convite: enfraqueça primeiro, arremesse depois.\fA cuia acolhe, não prende. Quem entra nela vira parceiro; e parceiro solto volta para casa quando quiser.": {
-  "en": "",
+  "en": "And these are Capture Gourds. A tired wild creature is more open to the invitation: weaken it first, throw second.\fA gourd welcomes, it doesn't trap. Whoever goes in becomes a partner; and a released partner goes home whenever it likes.",
   "ctx": "src/data/eventos/a1.ts:241 · f()"
  },
  "A Mateira Jurema está no começo da Trilha do Ipê. Peça a ela para mostrar como se captura — ela adora plateia.\fE procure o ginásio de Vila Caiçara: quem junta as dezesseis insígnias dos Guardiões pode desafiar o Conselho, lá no Pico Pingorama. Boa viagem, {JOGADOR}!": {
-  "en": "",
+  "en": "Ranger Jurema is at the start of Trilha do Ipê. Ask her to show you how to catch — she loves an audience.\fAnd look for the Vila Caiçara gym: whoever collects the Guardians' sixteen badges can challenge the Council, up on Pico Pingorama. Safe travels, {JOGADOR}!",
   "ctx": "src/data/eventos/a1.ts:243 · f()"
  },
  "Ei, {JOGADOR}! Aqui! Cuia nova no cinto, é? Dá para ver de longe, você anda todo torto.": {
-  "en": "",
+  "en": "Hey, {JOGADOR}! Over here! New gourd on your belt, huh? I can tell from a mile away, you're walking all lopsided.",
   "ctx": "src/data/eventos/a1.ts:253 · f()"
  },
  "Grama alta é casa de criatura selvagem. Entrou, pode aparecer uma a qualquer passo.\fSem cuia não se captura nada. Quando a Profª Ipê te der algumas, volta aqui que eu te ensino o pulo do gato.": {
-  "en": "",
+  "en": "Tall grass is home to wild creatures. Step in and one could show up at any moment.\fNo gourds, no catching. When Prof. Ipê gives you some, come back and I'll teach you the trick.",
   "ctx": "src/data/eventos/a1.ts:260 · f()"
  },
  "Capturar é fácil de explicar e difícil de fazer bonito. Escuta:\fUm: ache a criatura na grama alta. Dois: lute até a barra de vida dela ficar amarela ou vermelha, sem derrubar. Três: abra a MOCHILA, escolha a Cuia e arremesse.": {
-  "en": "",
+  "en": "Catching is easy to explain and hard to do well. Listen:\fOne: find the creature in tall grass. Two: battle until its HP bar turns yellow or red, without knocking it out. Three: open the BAG, pick the Gourd and throw it.",
   "ctx": "src/data/eventos/a1.ts:262 · f()"
  },
  "A cuia balança uma, duas, três vezes. Se fechar com um estalo, pronto: parceira nova no Diário de Campo.\fCriatura dormindo ou paralisada entra mais fácil. E de noite aparecem bichos que de dia nem dão as caras.": {
-  "en": "",
+  "en": "The gourd wobbles once, twice, three times. If it snaps shut, that's it: a new partner in the Field Journal.\fSleeping or paralyzed creatures go in more easily. And at night, critters show up that never come out by day.",
   "ctx": "src/data/eventos/a1.ts:263 · f()"
  },
  "Chega de conversa. Olha aquela moita mexendo… É uma Cotiazinha! Vai, é toda sua. Enfraquece e arremessa!": {
-  "en": "",
+  "en": "Enough talk. Look at that bush rustling… It's a Cotiazinha! Go on, it's all yours. Weaken it and throw!",
   "ctx": "src/data/eventos/a1.ts:264 · f()"
  },
  "Viu só? Com o tempo a mão acostuma. Toma mais duas cuias, por conta da aula.": {
-  "en": "",
+  "en": "See? Your hand gets used to it in time. Here, two more gourds, on the house for the lesson.",
   "ctx": "src/data/eventos/a1.ts:267 · f()"
  },
  "Vila Caiçara tem Venda: lá a cuia custa pouco e o conselho da Dona Cotinha sai de graça. Boa caçada — quer dizer, bom convite!": {
-  "en": "",
+  "en": "Vila Caiçara has a Shop: gourds are cheap there and Dona Cotinha's advice is free. Happy hunting — I mean, happy inviting!",
   "ctx": "src/data/eventos/a1.ts:269 · f()"
  },
  "Lembrete da Jurema: enfraquecer, depois arremessar. E nunca arremesse cuia em criatura de outro treinador, que é falta de educação.": {
-  "en": "",
+  "en": "A reminder from Jurema: weaken, then throw. And never throw a gourd at another trainer's creature — it's rude.",
   "ctx": "src/data/eventos/a1.ts:270 · f()"
  },
  "O Rádio Cipó está chiando no seu bolso!": {
-  "en": "",
+  "en": "The Rádio Cipó is crackling in your pocket!",
   "ctx": "src/data/eventos/a1.ts:280 · f()"
  },
  "…alô? Alô! {JOGADOR}? Aqui é o Aroeira. Soube da Insígnia da Pena — parabéns, menino!\fPasse no viveiro assim que puder. Tenho um ensinamento para você… e um probleminha de quatro patas.": {
-  "en": "",
+  "en": "…hello? Hello! {JOGADOR}? It's Aroeira. I heard about the Feather Badge — congratulations, kid!\fCome by the aviary when you can. I've got a lesson for you… and a little four-legged problem.",
   "ctx": "src/data/eventos/a1.ts:281 · f()"
  },
  "Chegou em boa hora! Lembra do ensinamento que eu prometi? Chama-se Faro.\fCriatura que confia no treinador fareja o que está escondido: fruto enterrado, concha na areia, pergaminho perdido. O chão de Pingorama é um baú.": {
-  "en": "",
+  "en": "Perfect timing! Remember the lesson I promised? It's called Scent.\fA creature that trusts its trainer sniffs out what's hidden: buried fruit, shells in the sand, lost scrolls. Pingorama's ground is a treasure chest.",
   "ctx": "src/data/eventos/a1.ts:287 · f()"
  },
  "Quem ia demonstrar era a Paçoca, minha Cotiazinha. Mas a danada farejou caju maduro e sumiu pelos Campos de Restinga, a leste da vila.\fEla gosta de se esconder em canto fechado de árvore, bem lá no fim dos campos, para o lado do nascente e do norte.": {
-  "en": "",
+  "en": "Paçoca, my Cotiazinha, was going to demonstrate. But the rascal sniffed out ripe cashews and vanished into the Campos de Restinga, east of town.\fShe likes hiding in a closed-in nook of trees, way out at the end of the fields, toward the sunrise and the north.",
   "ctx": "src/data/eventos/a1.ts:288 · f()"
  },
  "Traga a Paçoca de volta e o Amuleto do Faro é seu. Ela não morde. Quer dizer, morde caju.": {
-  "en": "",
+  "en": "Bring Paçoca back and the Scent Charm is yours. She doesn't bite. Well, she bites cashews.",
   "ctx": "src/data/eventos/a1.ts:289 · f()"
  },
  "Uma Cotiazinha de lenço no pescoço, cercada de cascas de caju. Só pode ser a Paçoca!\fEla fareja a sua mão, reconhece o cheiro do viveiro e dá um pulo de alegria.": {
-  "en": "",
+  "en": "A Cotiazinha with a scarf around its neck, surrounded by cashew peels. It must be Paçoca!\fShe sniffs your hand, recognizes the smell of the aviary and jumps for joy.",
   "ctx": "src/data/eventos/a1.ts:298 · f()"
  },
  "A Paçoca saiu disparada na direção de Vila Caiçara. Parece que ela sabe muito bem o caminho de casa.": {
-  "en": "",
+  "en": "Paçoca dashed off toward Vila Caiçara. Looks like she knows the way home just fine.",
   "ctx": "src/data/eventos/a1.ts:300 · f()"
  },
  "A Paçoca chegou antes de você, de barriga cheia e sem um pingo de vergonha! Muito obrigado, {JOGADOR}.\fPromessa cumprida: estenda a mão.": {
-  "en": "",
+  "en": "Paçoca got here before you, belly full and without a shred of shame! Thank you so much, {JOGADOR}.\fA promise kept: hold out your hand.",
   "ctx": "src/data/eventos/a1.ts:309 · f()"
  },
  "Com o Amuleto do Faro, a sua criatura avisa quando houver coisa escondida por perto: aparece um brilho no chão. Chegue junto e examine.\fSó funciona se ela gostar de você de verdade. Então trate bem, que amizade não se compra na Venda.": {
-  "en": "",
+  "en": "With the Scent Charm, your creature lets you know when something's hidden nearby: a sparkle appears on the ground. Go up and take a look.\fIt only works if it really likes you. So treat it well — friendship isn't sold at the Shop.",
   "ctx": "src/data/eventos/a1.ts:312 · f()"
  },
  "Agora siga para o leste, pelos mesmos campos, até a Mata dos Sabiás. Depois dela fica Bosque Alto, a cidade nas copas. Vá com o vento!": {
-  "en": "",
+  "en": "Now head east, through the same fields, to the Mata dos Sabiás. Past it is Bosque Alto, the treetop town. Go with the wind!",
   "ctx": "src/data/eventos/a1.ts:313 · f()"
  },
  "Nada da Paçoca ainda? Ela se esconde nos Campos de Restinga, a leste daqui: procure um recanto fechado de árvores, lá no canto nordeste, perto da entrada da mata.": {
-  "en": "",
+  "en": "No sign of Paçoca yet? She hides in the Campos de Restinga, east of here: look for a closed-in nook of trees in the northeast corner, near the edge of the forest.",
   "ctx": "src/data/eventos/a1.ts:314 · f()"
  },
  "Parado aí, {JOGADOR}! Eu vi você saindo do ginásio com cara de quem ganhou.": {
-  "en": "",
+  "en": "Hold it right there, {JOGADOR}! I saw you leaving the gym looking like a winner.",
   "ctx": "src/data/eventos/a1.ts:325 · f()"
  },
  "Rá! Viu só? Treina mais, {JOGADOR}. Mas escuta, que isto é sério.": {
-  "en": "",
+  "en": "Ha! See? Train harder, {JOGADOR}. But listen, this is serious.",
   "ctx": "src/data/eventos/a1.ts:329 · f()"
  },
  "Olha, vou te contar uma coisa, e não é para espalhar: vi uns sujeitos de macacão cor de ferrugem na Trilha dos Cipós.\fCarregavam gaiola. GAIOLA, {JOGADOR}. Quem é que põe criatura em gaiola?": {
-  "en": "",
+  "en": "Look, I'm going to tell you something, and keep it to yourself: I saw some guys in rust-colored overalls on Trilha dos Cipós.\fThey were carrying cages. CAGES, {JOGADOR}. Who puts creatures in cages?",
   "ctx": "src/data/eventos/a1.ts:330 · f()"
  },
  "Eles foram para os lados de Porto Sereia. Eu vou atrás. Você… faz o que quiser. Mas leva isto, que eu peguei duas sem querer.": {
-  "en": "",
+  "en": "They headed toward Porto Sereia. I'm going after them. You… do whatever you want. But take this, I grabbed two by accident.",
   "ctx": "src/data/eventos/a1.ts:331 · f()"
  },
  "Não é presente! É… excesso de bagagem. Tchau!": {
-  "en": "",
+  "en": "It's not a gift! It's… extra baggage. Bye!",
   "ctx": "src/data/eventos/a1.ts:333 · f()"
  },
  "{JOGADOR}! Então foi VOCÊ que religou a Usina Velha? Eu cheguei lá e só achei capanga chorando e tomada funcionando.\fO guincho do cais voltou a descer canoa por sua causa. Antes de você zarpar, eu quero a minha revanche!": {
-  "en": "",
+  "en": "{JOGADOR}! So it was YOU who switched the Old Power Plant back on? I got there and only found crying goons and working outlets.\fThe dock winch is lowering canoes again because of you. Before you set sail, I want my rematch!",
   "ctx": "src/data/eventos/a1.ts:344 · f()"
  },
  "Essa foi minha! Anota aí no seu Diário: \"Tainá, espécie rara, invicta hoje\".": {
-  "en": "",
+  "en": "That one's mine! Write it in your Journal: \"Tainá, rare species, undefeated today.\"",
   "ctx": "src/data/eventos/a1.ts:348 · f()"
  },
  "O tal Cartel Ferrugem não é brincadeira, {JOGADOR}. Ouvi um capanga dizer que a carga da Usina saiu de barco, para os lados da Ilha do Farol.\fEu vou remando atrás. Se você for também, não cola na minha canoa: eu gosto de espaço.": {
-  "en": "",
+  "en": "This Rust Cartel is no joke, {JOGADOR}. I heard a goon say the Power Plant's cargo left by boat, toward Ilha do Farol.\fI'm paddling after it. If you're coming too, don't tailgate my canoe: I like my space.",
   "ctx": "src/data/eventos/a1.ts:349 · f()"
  },
  "Isso é para as suas criaturas, não para você. Elas lutaram bem. Você só apertou os botões.\fTe vejo na Cidade Coral. Ou no Farol. Ou não. Tanto faz!": {
-  "en": "",
+  "en": "This is for your creatures, not you. They fought well. You just pushed the buttons.\fSee you in Cidade Coral. Or at the Lighthouse. Or not. Whatever!",
   "ctx": "src/data/eventos/a1.ts:351 · f()"
  },
  "Chapéu na cabeça e cocada no tabuleiro: a vida voltou ao normal.\fPassa aqui quando quiser, que para você sempre sobra uma.": {
-  "en": "",
+  "en": "Hat on my head and coconut candy on the tray: life is back to normal.\fCome by whenever you like, there's always one left for you.",
   "ctx": "src/data/eventos/a1.ts:362 · f()"
  },
  "Meu chapéu de palha! Trinta anos comigo e nunca tinha ido tão longe sozinho.\fToma, meu bem: cocada de rapadura, receita de família. Dá uma energia que só vendo.": {
-  "en": "",
+  "en": "My straw hat! Thirty years with me and it never went so far on its own.\fHere, sweetie: coconut candy with brown sugar, a family recipe. Gives you energy like you wouldn't believe.",
   "ctx": "src/data/eventos/a1.ts:364 · f()"
  },
  "Ai, {JOGADOR}, que vento! Levou meu chapéu de palha lá para as bandas do píer.\fMinhas pernas não descem mais aquela areia. Se você achar, eu faço uma cocada só para você.": {
-  "en": "",
+  "en": "Oh, {JOGADOR}, what a wind! It blew my straw hat all the way down by the pier.\fMy legs can't manage that sand anymore. If you find it, I'll make coconut candy just for you.",
   "ctx": "src/data/eventos/a1.ts:370 · f()"
  },
  "Um chapéu de palha enganchado no cabeço de amarração! Está um pouco salgado, mas inteiro.": {
-  "en": "",
+  "en": "A straw hat snagged on the mooring post! A bit salty, but in one piece.",
   "ctx": "src/data/eventos/a1.ts:380 · f()"
  },
  "Um cabeço de amarração. A corda cheira a maresia e a peixe de ontem.": {
-  "en": "",
+  "en": "A mooring post. The rope smells of sea air and yesterday's fish.",
   "ctx": "src/data/eventos/a1.ts:383 · f()"
  },
  "Desenhei a Pintinhas no meu caderno. Contei as pintas: sete de cada lado e uma de sobra, no nariz.": {
-  "en": "",
+  "en": "I drew Pintinhas in my notebook. I counted the spots: seven on each side and one extra, on the nose.",
   "ctx": "src/data/eventos/a1.ts:390 · f()"
  },
  "É UMA PINTINHAS! De verdade! Ela é mais bonita que a da figurinha!\fObrigada, obrigada! Toma, meu pai faz estas cuias com mel. Criatura que entra nela fica amiga mais depressa.": {
-  "en": "",
+  "en": "IT'S A PINTINHAS! A real one! It's prettier than the one on the sticker!\fThank you, thank you! Here, my dad makes these gourds with honey. Creatures that go in become friends faster.",
   "ctx": "src/data/eventos/a1.ts:394 · f()"
  },
  "Você viaja, né? Então me faz um favor: eu queria MUITO ver uma Pintinhas de perto. É uma joaninha de todas as cores.\fDizem que ela cai dos cajueiros dos Campos de Restinga, mas só de dia. Se pegar uma, traz na equipe para eu ver?": {
-  "en": "",
+  "en": "You travel, right? Then do me a favor: I REALLY want to see a Pintinhas up close. It's a ladybug of every color.\fThey say it drops from the cashew trees in the Campos de Restinga, but only by day. If you catch one, bring it in your team so I can see?",
   "ctx": "src/data/eventos/a1.ts:398 · f()"
  },
  "Fique de frente para a água e use a vara. Quando a boia afundar, puxe sem dó!\fCom Vara Velha só vem peixe miúdo. Mas peixe miúdo também cresce.\fE guarde um conselho de pescador: lá em Porto Sereia, canoa só sai do cais puxada por criatura do tipo Rio. Uma Piabinha da beira d'água já dá conta.": {
-  "en": "",
+  "en": "Face the water and use the rod. When the float sinks, pull hard!\fAn Old Rod only brings in small fry. But small fry grow up too.\fAnd here's a fisher's tip: in Porto Sereia, canoes only leave the dock pulled by a River-type creature. A Piabinha from the shore will do.",
   "ctx": "src/data/eventos/a1.ts:408 · f()"
  },
  "Gosta de pescar? Não? É porque nunca pescou. Toma: esta vara me acompanhou a vida toda, mas meu braço cansou antes dela.": {
-  "en": "",
+  "en": "Like fishing? No? That's because you've never fished. Here: this rod has been with me my whole life, but my arm gave out before it did.",
   "ctx": "src/data/eventos/a1.ts:409 · f()"
  },
  "É a Vara Velha. Fique de frente para qualquer água, use a vara e espere a fisgada.\fCada água tem o seu peixe. E cada peixe, a sua história — mas essa parte é por minha conta.": {
-  "en": "",
+  "en": "It's the Old Rod. Face any water, use the rod and wait for a bite.\fEvery water has its fish. And every fish, its story — but that part's on me.",
   "ctx": "src/data/eventos/a1.ts:412 · f()"
  },
  "Li a resposta do meu pai umas dez vezes. Ele disse que volta no próximo saveiro!\fA vó já está fazendo cocada para a chegada. Vai sobrar para você, pode deixar.": {
-  "en": "",
+  "en": "I've read my dad's reply about ten times. He says he's coming back on the next saveiro!\fGrandma is already making coconut candy for when he arrives. There'll be some for you, don't worry.",
   "ctx": "src/data/eventos/a1.ts:420 · f()"
  },
  "Uma resposta do meu pai?! Me dá, me dá! …Ele escreveu que está com saudade e que trouxe um presente de além-mar.\fVocê atravessou a costa inteira por causa de uma carta. Fica com isto: achei na praia e nunca soube usar.": {
-  "en": "",
+  "en": "A reply from my dad?! Gimme, gimme! …He wrote that he misses me and brought a present from overseas.\fYou crossed the whole coast for a letter. Keep this: I found it on the beach and never knew how to use it.",
   "ctx": "src/data/eventos/a1.ts:422 · f()"
  },
  "Meu pai é o Marinheiro Bartô. Ele vive no cais de Porto Sereia, bem lá na ponta, olhando o mar.\fÉ longe: depois de Bosque Alto e da Gruta do Eco. Sem pressa — carta boa não azeda.": {
-  "en": "",
+  "en": "My dad is Sailor Bartô. He lives at the Porto Sereia docks, right at the end, looking out to sea.\fIt's far: past Bosque Alto and the Gruta do Eco. No rush — a good letter doesn't go stale.",
   "ctx": "src/data/eventos/a1.ts:427 · f()"
  },
  "Um dia eu vou a Porto Sereia visitar meu pai. Ele é marinheiro!\fMas a vó não deixa eu pisar na grama alta sem criatura.": {
-  "en": "",
+  "en": "Someday I'm going to Porto Sereia to visit my dad. He's a sailor!\fBut Grandma won't let me set foot in tall grass without a creature.",
   "ctx": "src/data/eventos/a1.ts:428 · f()"
  },
  "Você vai viajar com a sua criatura? Então você pode ir aonde eu não posso!\fMeu pai é o Marinheiro Bartô, do cais de Porto Sereia. Escrevi uma carta para ele faz um mês e não tenho como mandar. Você leva?": {
-  "en": "",
+  "en": "You're traveling with your creature? Then you can go where I can't!\fMy dad is Sailor Bartô, from the Porto Sereia docks. I wrote him a letter a month ago and have no way to send it. Will you take it?",
   "ctx": "src/data/eventos/a1.ts:429 · f()"
  },
  "Carta? Para mim? Da Vila Jacarandá?! …É a letra do meu Dudu. Olha o tamanho desse \"papai\"!\fEspera. Espera aí, que homem do mar não chora, só marejou.": {
-  "en": "",
+  "en": "A letter? For me? From Vila Jacarandá?! …It's my Dudu's handwriting. Look at the size of that \"daddy\"!\fWait. Hold on — sailors don't cry, it's just sea spray.",
   "ctx": "src/data/eventos/a1.ts:443 · f()"
  },
  "Vou responder agora mesmo. Pronto. Leve de volta para ele, por favor: diga que eu chego no próximo saveiro.\fE fique com isto pela viagem. Quem carrega carta merece carregar coisa boa.": {
-  "en": "",
+  "en": "I'll write back right now. There. Take it back to him, please: tell him I'll be on the next saveiro.\fAnd keep this for your trouble. Whoever carries letters deserves to carry good things.",
   "ctx": "src/data/eventos/a1.ts:444 · f()"
  },
  "Entregou a resposta ao Dudu? Aquele menino escreve melhor que eu navego.\fQuando tiver o Remo, lembre: o cais é a porta da Baía Azul.": {
-  "en": "",
+  "en": "Did you give Dudu the reply? That boy writes better than I sail.\fOnce you have the Paddle, remember: the dock is the gateway to Baía Azul.",
   "ctx": "src/data/eventos/a1.ts:450 · f()"
  },
  "Daqui do cais eu vejo a Baía Azul inteira. Lá longe, quando o tempo abre, pisca o Farol.\fTenho um filho em Vila Jacarandá. Faz tempo que não chega notícia de lá.": {
-  "en": "",
+  "en": "From this dock I can see all of Baía Azul. Far off, when the sky clears, the Lighthouse blinks.\fI have a son in Vila Jacarandá. It's been a long time since I heard any news from there.",
   "ctx": "src/data/eventos/a1.ts:451 · f()"
  },
  "Avisou a minha mãe? Ela mora na primeira casa de Bosque Alto, no alto, à esquerda.\fEu espero aqui. Já fiz amizade com um Quatinho. Ele rouba minha merenda, mas é amizade.": {
-  "en": "",
+  "en": "Did you tell my mom? She lives in the first house in Bosque Alto, up top, on the left.\fI'll wait here. I already made friends with a Quatinho. It steals my snacks, but it's friendship.",
   "ctx": "src/data/eventos/a1.ts:460 · f()"
  },
  "GENTE! Uma pessoa! Eu entrei na mata atrás de um Saguinho e agora toda árvore é igual!\fEu sou o Nico, de Bosque Alto. Não consigo sair daqui, e se eu andar mais eu me perco pior.": {
-  "en": "",
+  "en": "WOW! A person! I came into the forest after a Saguinho and now every tree looks the same!\fI'm Nico, from Bosque Alto. I can't get out of here, and if I keep walking I'll get even more lost.",
   "ctx": "src/data/eventos/a1.ts:462 · f()"
  },
  "Você avisa a minha mãe? Dona Graúna, a primeira casa lá no alto da cidade. Diz que eu estou bem, só… geograficamente confuso.": {
-  "en": "",
+  "en": "Will you tell my mom? Dona Graúna, the first house at the top of town. Tell her I'm fine, just… geographically confused.",
   "ctx": "src/data/eventos/a1.ts:463 · f()"
  },
  "O Nico está de castigo: uma semana sem estilingue e com aula de mapa todo dia.\fObrigada de novo, {JOGADOR}. Mãe nenhuma esquece um favor desses.": {
-  "en": "",
+  "en": "Nico is grounded: a week without his slingshot and map lessons every day.\fThanks again, {JOGADOR}. No mom ever forgets a favor like that.",
   "ctx": "src/data/eventos/a1.ts:471 · f()"
  },
  "O Nico?! Na Mata dos Sabiás?! Aquele menino me mata do coração e depois pede merenda!\fPai! PAI! Pega a lanterna e a corda, que o seu neto resolveu virar explorador!": {
-  "en": "",
+  "en": "Nico?! In the Mata dos Sabiás?! That boy gives me a heart attack and then asks for a snack!\fDad! DAD! Grab the lantern and the rope, your grandson decided to become an explorer!",
   "ctx": "src/data/eventos/a1.ts:474 · f()"
  },
  "Pronto: o avô já trouxe o fujão de volta, com um Quatinho pendurado na mochila. Agora são dois para dar banho.\fVocê foi um anjo. Aceite isto — era do tempo em que eu também corria atrás de criatura.": {
-  "en": "",
+  "en": "There: Grandpa brought the runaway back, with a Quatinho hanging off his backpack. Now there are two to bathe.\fYou were an angel. Take this — it's from back when I chased creatures too.",
   "ctx": "src/data/eventos/a1.ts:476 · f()"
  },
  "Você viu um menino de estilingue por aí? O Nico saiu cedo \"para ver um macaquinho\" e até agora nada.\fSe ele estiver na Mata dos Sabiás de novo, eu juro que amarro um sino nele.": {
-  "en": "",
+  "en": "Have you seen a boy with a slingshot around? Nico left early \"to see a little monkey\" and still no sign of him.\fIf he's in the Mata dos Sabiás again, I swear I'll tie a bell on him.",
   "ctx": "src/data/eventos/a1.ts:480 · f()"
  },
  "Firme como promessa de mãe! Pode atravessar sem medo.\fA casa-da-árvore tem canteiro de terra boa. O que você plantar lá, cresce cantando.": {
-  "en": "",
+  "en": "Solid as a mother's promise! Cross without fear.\fThe treehouse has a patch of good soil. Whatever you plant there grows singing.",
   "ctx": "src/data/eventos/a1.ts:488 · f()"
  },
  "Isso aí no seu cinto é Corda de Cipó? Três rolos?! Criatura, você caiu do céu — e sem precisar de ponte!": {
-  "en": "",
+  "en": "Is that Vine Rope on your belt? Three coils?! Kid, you fell from the sky — and without needing a bridge!",
   "ctx": "src/data/eventos/a1.ts:491 · f()"
  },
  "Entregar 3 Cordas de Cipó ao Mestre Imbuia?": {
-  "en": "",
+  "en": "Give 3 Vine Ropes to Master Imbuia?",
   "ctx": "src/data/eventos/a1.ts:492 · pergunta/opção"
  },
  "Segura a ponta ali. Não, a outra. A OUTRA. Deixa, eu faço.": {
-  "en": "",
+  "en": "Hold that end there. No, the other one. The OTHER one. Never mind, I'll do it.",
   "ctx": "src/data/eventos/a1.ts:495 · f()"
  },
  "Pronto! Ponte nova, nó de marinheiro e tábua de lei. A casa-da-árvore é sua para visitar quando quiser.\fTem coisa boa lá em cima que ninguém buscou desde que a ponte caiu.": {
-  "en": "",
+  "en": "Done! New bridge, sailor's knots and hardwood planks. The treehouse is yours to visit whenever you like.\fThere's good stuff up there nobody's fetched since the bridge fell.",
   "ctx": "src/data/eventos/a1.ts:498 · f()"
  },
  "Tudo bem, corda boa a gente não larga fácil. Mas se mudar de ideia, a ponte agradece.": {
-  "en": "",
+  "en": "That's fine, nobody lets go of good rope easily. But if you change your mind, the bridge will thank you.",
   "ctx": "src/data/eventos/a1.ts:499 · f()"
  },
  "Está vendo essa ponte? Pois é. Nem eu. Arrebentou na última chuva e lá se foi o caminho da casa-da-árvore.\fTábua eu tenho. Falta corda: três rolos de Corda de Cipó, dos bons. A Venda do Galho vende, mas meu dinheiro foi todo em prego.": {
-  "en": "",
+  "en": "See that bridge? Exactly. Neither do I. It snapped in the last rain and there went the way to the treehouse.\fI've got planks. What I need is rope: three coils of Vine Rope, good ones. The Branch Shop sells them, but all my money went on nails.",
   "ctx": "src/data/eventos/a1.ts:501 · f()"
  },
  "O Eco está dormindo de cabeça para baixo no meu capacete. Não se mexe por nada.\fA galeria alta, atrás da rocha rachada, eu ainda mapeio um dia. Quando alguém quebrar a rocha.": {
-  "en": "",
+  "en": "Eco is sleeping upside down in my helmet. Won't budge for anything.\fThe upper gallery, behind the cracked rock, I'll map someday. When someone breaks the rock.",
   "ctx": "src/data/eventos/a1.ts:511 · f()"
  },
  "ECO! Seu fujão de asa! …Ele voltou sozinho e ficou me olhando com cara de quem foi encontrado.\fFoi você, não foi? Tome: copiei este pergaminho de uma inscrição da gruta. Ensina criatura a voar em bando.": {
-  "en": "",
+  "en": "ECO! You winged runaway! …He came back on his own and just stared at me like he'd been found.\fIt was you, wasn't it? Here: I copied this scroll from an inscription in the cave. It teaches creatures to fly in a flock.",
   "ctx": "src/data/eventos/a1.ts:513 · f()"
  },
  "Psiu… você viu um Morceguim com uma fitinha azul na pata? É o Eco, meu ajudante de mapeamento.\fEle se assustou com um desmoronamento e voou para o fundo da gruta, para lá do rio. Eu não posso largar os instrumentos aqui.": {
-  "en": "",
+  "en": "Psst… have you seen a Morceguim with a little blue ribbon on its leg? That's Eco, my mapping assistant.\fA rockfall scared him and he flew deep into the cave, past the river. I can't leave my instruments here.",
   "ctx": "src/data/eventos/a1.ts:517 · f()"
  },
  "Se você atravessar a segunda ponte ou contornar o lago, deve achar o salão do fundo. Ele gosta de canto escuro e sem saída.": {
-  "en": "",
+  "en": "If you cross the second bridge or go around the lake, you should find the back chamber. He likes dark dead-end corners.",
   "ctx": "src/data/eventos/a1.ts:518 · f()"
  },
  "Um Morceguim de fitinha azul na pata, encolhido no canto. É o Eco!\fVocê estende a mão devagar. Ele cheira, pisca… e levanta voo na direção da ponte.": {
-  "en": "",
+  "en": "A Morceguim with a little blue ribbon on its leg, huddled in the corner. It's Eco!\fYou slowly hold out your hand. He sniffs, blinks… and takes off toward the bridge.",
   "ctx": "src/data/eventos/a1.ts:529 · f()"
  },
  "A Vara Boa alcança o fundo, onde mora o peixe graúdo. Experimente no cais e no Riacho da Piaba.\fE se pescar coisa esquisita, traga para eu ver. Eu não compro: eu admiro.": {
-  "en": "",
+  "en": "The Good Rod reaches the bottom, where the big fish live. Try it at the docks and in Riacho da Piaba.\fAnd if you catch something weird, bring it to me. I don't buy: I admire.",
   "ctx": "src/data/eventos/a1.ts:538 · f()"
  },
  "Um Mandizinho! Olha o bigode! Olha o BIGODE! Trinta anos de feira e eu só tinha visto em gravura.\fNão, não, eu não quero comprar — isso é parceiro, não é mercadoria. Só queria ver. Promessa é promessa: a vara é sua.": {
-  "en": "",
+  "en": "A Mandizinho! Look at those whiskers! Look at those WHISKERS! Thirty years at the market and I'd only seen one in pictures.\fNo, no, I don't want to buy it — that's a partner, not merchandise. I just wanted to see. A promise is a promise: the rod is yours.",
   "ctx": "src/data/eventos/a1.ts:542 · f()"
  },
  "Freguês, você tem cara de quem anda por gruta. Já viu um Mandizinho? Bagre de bigode, mora no escuro, na água da Gruta do Eco.\fSe um dia tiver um na equipe, traga para eu conhecer. Dou em troca uma Vara Boa, de bambu-mestre.": {
-  "en": "",
+  "en": "Friend, you look like someone who explores caves. Ever seen a Mandizinho? A whiskered catfish that lives in the dark, in the waters of the Gruta do Eco.\fIf you ever have one in your team, bring it to meet me. I'll give you a Good Rod, made of master bamboo, in return.",
   "ctx": "src/data/eventos/a1.ts:546 · f()"
  },
  "Dona Bilro": {
