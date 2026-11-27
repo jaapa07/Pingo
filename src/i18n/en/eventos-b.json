@@ -876,7 +876,7 @@
   "ctx": "src/data/eventos/b2-norte.ts:268 · f()"
  },
  "Doutora Zinabre": {
-  "en": "",
+  "en": "Doctor Zinabre",
   "ctx": "src/data/eventos/b2-sul.ts:57 · campo nome | src/data/treinadores/b2-sul.ts:93 · campo nome | src/data/zonas/B6-lab-3.ts:29 · gente()"
  },
  "Coronel Garrote (rádio)": {
@@ -4984,7 +4984,7 @@
   "ctx": "src/data/treinadores/ginasio-13.ts:12 · campo classe"
  },
  "Dona Babosa": {
-  "en": "",
+  "en": "Dona Babosa",
   "ctx": "src/data/treinadores/ginasio-13.ts:12 · campo nome | src/data/zonas/B6-casa-1.ts:23 · gente()"
  },
  "Babosa no corte, arruda no quebranto e batalha para quem passa ligeiro!": {
@@ -6231,18 +6231,6 @@
   "en": "",
   "ctx": "src/data/zonas/B-R4.ts:74 · campo fala"
  },
- "T.t.T.T": {
-  "en": "",
-  "ctx": "src/data/zonas/B-R5.ts:23 · p.t()"
- },
- "t.T.t": {
-  "en": "",
-  "ctx": "src/data/zonas/B-R5.ts:23"
- },
- "T.t.T": {
-  "en": "",
-  "ctx": "src/data/zonas/B-R5.ts:23 | src/data/zonas/B-SG.ts:22 · p.t()"
- },
  "CAMINHO DAS NÉVOAS\nOeste: Serra da Geada · Leste: Planalto Lume.\nNa névoa, ande com o Lampião aceso e o pé na trilha.": {
   "en": "",
   "ctx": "src/data/zonas/B-R5.ts:54 · placa()"
@@ -6314,18 +6302,6 @@
  "Pelo menos o capim lá embaixo é macio.": {
   "en": "",
   "ctx": "src/data/zonas/B-R5.ts:88 · campo fala"
- },
- "t.T": {
-  "en": "",
-  "ctx": "src/data/zonas/B-SG.ts:22"
- },
- "T.t": {
-  "en": "",
-  "ctx": "src/data/zonas/B-SG.ts:22"
- },
- "T.": {
-  "en": "",
-  "ctx": "src/data/zonas/B-SG.ts:22"
  },
  "CAMPOS DE ALTITUDE\nSul: Serra da Geada. Oeste: Lagoa Gelada.\nCuidado: a geada da manhã escorrega.": {
   "en": "",
@@ -7700,891 +7676,887 @@
   "ctx": "src/data/zonas/B4.ts:69 · campo fala"
  },
  "Sobrado dos Sapateado": {
-  "en": "",
+  "en": "Sapateado Family Townhouse",
   "ctx": "src/data/zonas/B5-casa-1.ts:5 · campo nome"
  },
  "♪ …e atenção, ouvintes da Rádio Cipó: carregamento estranho de jaulas visto na estrada do Brejo Roxo… ♪": {
-  "en": "",
+  "en": "♪ …and attention, Rádio Cipó listeners: a strange load of cages spotted on the Brejo Roxo road… ♪",
   "ctx": "src/data/zonas/B5-casa-1.ts:20 · campo texto"
  },
  "Vó Sapateado": {
-  "en": "",
+  "en": "Grandma Sapateado",
   "ctx": "src/data/zonas/B5-casa-1.ts:24 · gente()"
  },
  "No meu tempo a roda ia até o sol nascer.": {
-  "en": "",
+  "en": "In my day the roda went on till sunrise.",
   "ctx": "src/data/zonas/B5-casa-1.ts:24 · campo fala"
  },
  "Hoje eu durmo às oito. Mas sonho que estou dando rasteira.": {
-  "en": "",
+  "en": "Nowadays I'm asleep by eight. But I dream I'm sweeping legs.",
   "ctx": "src/data/zonas/B5-casa-1.ts:24 · campo fala"
  },
  "Zezinho": {
-  "en": "",
+  "en": "Zezinho",
   "ctx": "src/data/zonas/B5-casa-1.ts:25 · gente()"
  },
  "O Mestre Gingado tem uma Quero-Guarda que voa E chuta!": {
-  "en": "",
+  "en": "Master Gingado has a Quero-Guarda that flies AND kicks!",
   "ctx": "src/data/zonas/B5-casa-1.ts:25 · campo fala"
  },
  "Tipo Vento e tipo Ginga ao mesmo tempo. Golpe de Geada nela!": {
-  "en": "",
+  "en": "Wind type and Brawl type at the same time. Hit it with a Frost move!",
   "ctx": "src/data/zonas/B5-casa-1.ts:25 · campo fala"
  },
  "Ateliê da Dona Linha": {
-  "en": "",
+  "en": "Dona Linha's Studio",
   "ctx": "src/data/zonas/B5-casa-2.ts:5 · campo nome"
  },
  "A máquina de costura ainda está com um abadá enorme preso no pé: oito metros de calça branca.": {
-  "en": "",
+  "en": "The sewing machine still has a huge abadá stuck under the foot: eight meters of white pants.",
   "ctx": "src/data/zonas/B5-casa-2.ts:19 · campo texto"
  },
  "Moldes de abadá em todos os tamanhos, de Saguinho a Capivarona.": {
-  "en": "",
+  "en": "Abadá patterns in every size, from Saguinho to Capivarona.",
   "ctx": "src/data/zonas/B5-casa-2.ts:20 · campo texto"
  },
  "Dona Linha": {
-  "en": "",
+  "en": "Dona Linha",
   "ctx": "src/data/zonas/B5-casa-2.ts:24 · gente() | src/data/zonas/B5-casa-2.ts:25 · gente()"
  },
  "Costuro abadá para gente e para criatura.": {
-  "en": "",
+  "en": "I sew abadás for people and for creatures.",
   "ctx": "src/data/zonas/B5-casa-2.ts:24 · campo fala"
  },
  "O mais difícil foi o da Sucurião do Doutor Peçonha, lá do Brejo Roxo. Oito metros de calça.": {
-  "en": "",
+  "en": "The hardest was the one for Doctor Peçonha's Sucurião, out in Brejo Roxo. Eight meters of pants.",
   "ctx": "src/data/zonas/B5-casa-2.ts:24 · campo fala"
  },
  "Ele sumiu faz dias e não veio buscar a encomenda. Estranho: aquele homem não perde prazo nem para tomar veneno.": {
-  "en": "",
+  "en": "He disappeared days ago and never came to pick up his order. Strange: that man never misses a deadline, not even to take poison.",
   "ctx": "src/data/zonas/B5-casa-2.ts:24 · campo fala"
  },
  "O Doutor Peçonha veio buscar o abadá da Sucurião! Contou que ficou preso numa jaula do Cartel.": {
-  "en": "",
+  "en": "Doctor Peçonha came for the Sucurião's abadá! He said he'd been stuck in a Cartel cage.",
   "ctx": "src/data/zonas/B5-casa-2.ts:25 · campo fala"
  },
  "Pagou com uma cobra de pelúcia. Eu aceitei. Cobra de pelúcia não morde.": {
-  "en": "",
+  "en": "He paid with a stuffed snake. I took it. Stuffed snakes don't bite.",
   "ctx": "src/data/zonas/B5-casa-2.ts:25 · campo fala"
  },
  "Rapaz do Abadá": {
-  "en": "",
+  "en": "Abadá Guy",
   "ctx": "src/data/zonas/B5-casa-2.ts:26 · gente()"
  },
  "Pedi a calça branca e ela veio com um bolso para Cuia. Genial!": {
-  "en": "",
+  "en": "I ordered white pants and they came with a Gourd pocket. Genius!",
   "ctx": "src/data/zonas/B5-casa-2.ts:26 · campo fala"
  },
  "Academia do Mestre Cabaça": {
-  "en": "",
+  "en": "Master Cabaça's Academy",
   "ctx": "src/data/zonas/B5-casa-3.ts:5 · campo nome"
  },
  "Um retrato do Mestre Cabaça moço, de cabelo black e calça boca de sino, no meio de um rabo-de-arraia.": {
-  "en": "",
+  "en": "A portrait of young Master Cabaça, with an afro and bell-bottoms, mid rabo-de-arraia kick.",
   "ctx": "src/data/zonas/B5-casa-3.ts:20 · campo texto"
  },
  "Um berimbau de biriba com a cabaça remendada. Tem cheiro de festa antiga.": {
-  "en": "",
+  "en": "A biriba-wood berimbau with a patched gourd. It smells like old parties.",
   "ctx": "src/data/zonas/B5-casa-3.ts:21 · campo texto"
  },
  "Troféus de roda, fitas de batizado e um caderno de cantigas com a letra tremida do Mestre.": {
-  "en": "",
+  "en": "Roda trophies, batizado ribbons and a songbook in the Master's shaky handwriting.",
   "ctx": "src/data/zonas/B5-casa-3.ts:22 · campo texto"
  },
  "Mestre Cabaça": {
-  "en": "",
+  "en": "Master Cabaça",
   "ctx": "src/data/zonas/B5-casa-3.ts:25 · gente()"
  },
  "Aluna Sereia": {
-  "en": "",
+  "en": "Student Sereia",
   "ctx": "src/data/zonas/B5-casa-3.ts:26 · gente()"
  },
  "Eu sou a única que não fugiu do treino.": {
-  "en": "",
+  "en": "I'm the only one who didn't skip practice.",
   "ctx": "src/data/zonas/B5-casa-3.ts:26 · campo fala"
  },
  "Não por virtude: é que eu durmo aqui na rede.": {
-  "en": "",
+  "en": "Not out of virtue: I sleep here in the hammock.",
   "ctx": "src/data/zonas/B5-casa-3.ts:26 · campo fala"
  },
  "Casa do Pescador Lambari": {
-  "en": "",
+  "en": "Fisher Lambari's House",
   "ctx": "src/data/zonas/B5-casa-4.ts:5 · campo nome"
  },
  "Anzóis, chumbadas e um bilhete: \"Jaú-Gigante: só na gruta do Túnel, e só com vara de respeito.\"": {
-  "en": "",
+  "en": "Hooks, sinkers and a note: \"Jaú-Gigante: only in the Tunnel's cave, and only with a serious rod.\"",
   "ctx": "src/data/zonas/B5-casa-4.ts:20 · campo texto"
  },
  "Pescador Lambari": {
-  "en": "",
+  "en": "Fisher Lambari",
   "ctx": "src/data/zonas/B5-casa-4.ts:22 · gente()"
  },
  "Feira da Cidade Ginga": {
-  "en": "",
+  "en": "Cidade Ginga Fair",
   "ctx": "src/data/zonas/B5-feira.ts:23 · campo nome"
  },
  "Seu Cajá": {
-  "en": "",
+  "en": "Seu Cajá",
   "ctx": "src/data/zonas/B5-feira.ts:34 · gente()"
  },
  "Fruto fresco, colhido hoje! Plante nos canteiros e volte depois.": {
-  "en": "",
+  "en": "Fresh fruit, picked today! Plant it in the beds and come back later.",
   "ctx": "src/data/zonas/B5-feira.ts:34 · campo fala"
  },
  "Se a criatura segurar o fruto, ela come sozinha na hora do aperto. Mais educada que muita gente.": {
-  "en": "",
+  "en": "If a creature holds a fruit, it eats it by itself in a pinch. More polite than a lot of people.",
   "ctx": "src/data/zonas/B5-feira.ts:34 · campo fala"
  },
  "Artesã Cabacinha": {
-  "en": "",
+  "en": "Artisan Cabacinha",
   "ctx": "src/data/zonas/B5-feira.ts:35 · gente()"
  },
  "Mestre Rabo-de-Arraia": {
-  "en": "",
+  "en": "Master Rabo-de-Arraia",
   "ctx": "src/data/zonas/B5-feira.ts:36 · gente()"
  },
  "Pergaminhos de Técnica: golpe de livro, mas dói igual.": {
-  "en": "",
+  "en": "Technique Scrolls: moves from a book, but they hurt just the same.",
   "ctx": "src/data/zonas/B5-feira.ts:36 · campo fala"
  },
  "Garimpeira Faísca": {
-  "en": "",
+  "en": "Prospector Faísca",
   "ctx": "src/data/zonas/B5-feira.ts:37 · gente()"
  },
  "Pedra Solar, Maré, Lunar… Vieram da Chapada Rubra no lombo de mula.": {
-  "en": "",
+  "en": "Sun Stone, Tide Stone, Moon Stone… They came from Chapada Rubra on muleback.",
   "ctx": "src/data/zonas/B5-feira.ts:37 · campo fala"
  },
  "Dona Dendê": {
-  "en": "",
+  "en": "Dona Dendê",
   "ctx": "src/data/zonas/B5-feira.ts:38 · gente()"
  },
  "Seu Gaspar": {
-  "en": "",
+  "en": "Seu Gaspar",
   "ctx": "src/data/zonas/B5-feira.ts:39 · gente()"
  },
  "Eu provo de tudo antes de comprar.": {
-  "en": "",
+  "en": "I taste everything before I buy.",
   "ctx": "src/data/zonas/B5-feira.ts:39 · campo fala"
  },
  "Hoje já provei cocada, pé de moleque, queijo coalho e a paciência da feira inteira.": {
-  "en": "",
+  "en": "Today I've already tasted cocada, peanut brittle, grilled cheese and the patience of the whole fair.",
   "ctx": "src/data/zonas/B5-feira.ts:39 · campo fala"
  },
  "Moço, moça, me empresta dez patacas?": {
-  "en": "",
+  "en": "Hey, you, could you lend me ten patacas?",
   "ctx": "src/data/zonas/B5-feira.ts:40 · campo fala"
  },
  "É para comprar uma Cuia de Mel. A minha Jataí merece.": {
-  "en": "",
+  "en": "It's to buy a Honey Gourd. My Jataí deserves it.",
   "ctx": "src/data/zonas/B5-feira.ts:40 · campo fala"
  },
  "Ginásio de Cidade Ginga": {
-  "en": "",
+  "en": "Cidade Ginga Gym",
   "ctx": "src/data/zonas/B5-ginasio.ts:14 · campo nome"
  },
  "GINÁSIO DE CIDADE GINGA\nLíder: Mestre Gingado\n\"Quem não pode com a mandinga não carrega patuá.\"": {
-  "en": "",
+  "en": "CIDADE GINGA GYM\nLeader: Master Gingado\n\"If you can't handle the mandinga, don't wear the charm.\"",
   "ctx": "src/data/zonas/B5-ginasio.ts:38 · campo texto"
  },
  "Dica da roda: o camarada chama os golpes, uma seta por batida do berimbau. Depois é a sua vez: devolva as mesmas setas, cada uma na sua batida.": {
-  "en": "",
+  "en": "Roda tip: your partner calls the moves, one arrow per berimbau beat. Then it's your turn: send back the same arrows, each on its beat.",
   "ctx": "src/data/zonas/B5-ginasio.ts:38 · campo texto"
  },
  "Não adianta correr na frente do berimbau. Aperte a seta quando a batida soar, nem antes nem depois.": {
-  "en": "",
+  "en": "No use rushing ahead of the berimbau. Press the arrow when the beat sounds, not before, not after.",
   "ctx": "src/data/zonas/B5-ginasio.ts:39 · campo texto"
  },
  "Numa volta, a roda perdoa um tropeço. Dois, e o jogo recomeça.": {
-  "en": "",
+  "en": "In one round, the roda forgives one stumble. Two, and the game starts over.",
   "ctx": "src/data/zonas/B5-ginasio.ts:39 · campo texto"
  },
  "Um berimbau de verga de biriba e cabaça pintada. O toque de Angola é lento: dá tempo de pensar.": {
-  "en": "",
+  "en": "A berimbau with a biriba bow and a painted gourd. The Angola rhythm is slow: there's time to think.",
   "ctx": "src/data/zonas/B5-ginasio.ts:40 · campo texto"
  },
  "Um berimbau médio. O toque de Benguela é o do meio: nem devagar, nem ligeiro.": {
-  "en": "",
+  "en": "A medium berimbau. The Benguela rhythm is in between: not slow, not quick.",
   "ctx": "src/data/zonas/B5-ginasio.ts:41 · campo texto"
  },
  "O berimbau gunga, de som grosso. No São Bento Grande a roda pega fogo: o ritmo é rápido e o jogo é longo.": {
-  "en": "",
+  "en": "The gunga berimbau, deep-sounding. In São Bento Grande the roda catches fire: the rhythm is fast and the game is long.",
   "ctx": "src/data/zonas/B5-ginasio.ts:42 · campo texto"
  },
  "MURAL DE MISSÕES — CIDADE GINGA": {
-  "en": "",
+  "en": "MISSION BOARD — CIDADE GINGA",
   "ctx": "src/data/zonas/B5-posto.ts:5 · postoGuardiao()"
  },
  "• O Mestre Cabaça procura três alunos que fugiram do treino para a Trilha da Roda.": {
-  "en": "",
+  "en": "• Master Cabaça is looking for three students who skipped practice for the Trilha da Roda.",
   "ctx": "src/data/zonas/B5-posto.ts:6 · postoGuardiao()"
  },
  "• Dona Dendê, da Feira, precisa de pequi, caju e açaí para o tabuleiro.": {
-  "en": "",
+  "en": "• Dona Dendê, at the Fair, needs pequi, cashew and açaí for her stall.",
   "ctx": "src/data/zonas/B5-posto.ts:7 · postoGuardiao()"
  },
  "• Sábado é dia de Roda Grande na praça: a Contramestra Maré aceita desafio de quem já ganhou dela.": {
-  "en": "",
+  "en": "• Saturday is Big Roda day in the square: Contramestra Maré takes challenges from those who've beaten her.",
   "ctx": "src/data/zonas/B5-posto.ts:8 · postoGuardiao()"
  },
  "• Quinta é dia de feira: a Artesã Cabacinha traz cuias de encomenda.": {
-  "en": "",
+  "en": "• Thursday is fair day: Artisan Cabacinha brings custom gourds.",
   "ctx": "src/data/zonas/B5-posto.ts:9 · postoGuardiao()"
  },
  "Capoeirista Canjiquinha": {
-  "en": "",
+  "en": "Capoeirista Canjiquinha",
   "ctx": "src/data/zonas/B5-posto.ts:11 · campo nome"
  },
  "Minha Prego-Mestre torceu o rabo num aú mal dado.": {
-  "en": "",
+  "en": "My Prego-Mestre twisted its tail on a sloppy cartwheel.",
   "ctx": "src/data/zonas/B5-posto.ts:11 · campo fala"
  },
  "A máquina do Posto resolve em três acordes. É quase um berimbau com luzinha.": {
-  "en": "",
+  "en": "The Post machine fixes it in three chords. It's basically a berimbau with blinking lights.",
   "ctx": "src/data/zonas/B5-posto.ts:11 · campo fala"
  },
  "Viajante Otília": {
-  "en": "",
+  "en": "Traveler Otília",
   "ctx": "src/data/zonas/B5-posto.ts:12 · campo nome"
  },
  "Depois da insígnia do Mestre Gingado, a gente ganha o Amuleto da Cachoeira.": {
-  "en": "",
+  "en": "After Master Gingado's badge, you get the Waterfall Charm.",
   "ctx": "src/data/zonas/B5-posto.ts:12 · campo fala"
  },
  "Aí dá para subir a cascata do Túnel Alagado até o Brejo Roxo… e voltar à Costa do Sol para subir o Rio Cachoeira-Véu. O mundo dá voltas, e a gente junto.": {
-  "en": "",
+  "en": "Then you can climb the Túnel Alagado waterfall up to Brejo Roxo… and go back to the Costa do Sol to climb the Rio Cachoeira-Véu. The world goes around, and we go with it.",
   "ctx": "src/data/zonas/B5-posto.ts:12 · campo fala"
  },
  "Mergulhadora Arraia": {
-  "en": "",
+  "en": "Diver Arraia",
   "ctx": "src/data/zonas/B5-posto.ts:13 · campo nome"
  },
  "Você mergulha desde a insígnia da Boiadeira Zefa, né? Então o Túnel Alagado não assusta.": {
-  "en": "",
+  "en": "You've been diving since Cowgirl Zefa's badge, right? Then the Túnel Alagado won't scare you.",
   "ctx": "src/data/zonas/B5-posto.ts:13 · campo fala"
  },
  "O que assusta é a gruta do meio: ar parado, eco e um eremita que fala sozinho.": {
-  "en": "",
+  "en": "What's scary is the cave in the middle: still air, echoes and a hermit who talks to himself.",
   "ctx": "src/data/zonas/B5-posto.ts:13 · campo fala"
  },
  "Seu Gonçalo": {
-  "en": "",
+  "en": "Seu Gonçalo",
   "ctx": "src/data/zonas/B5-venda.ts:5 · campo nome"
  },
  "Bem-vindo! Aqui o troco vem com um passo de ginga de brinde.": {
-  "en": "",
+  "en": "Welcome! Here your change comes with a free ginga step.",
   "ctx": "src/data/zonas/B5-venda.ts:5 · campo fala"
  },
  "Dona Nazinha": {
-  "en": "",
+  "en": "Dona Nazinha",
   "ctx": "src/data/zonas/B5-venda.ts:10 · campo nome"
  },
  "Cuia de Rede é uma mão na roda para bicho de água.": {
-  "en": "",
+  "en": "Net Gourds are a big help with water critters.",
   "ctx": "src/data/zonas/B5-venda.ts:10 · campo fala"
  },
  "No Túnel Alagado você vai agradecer. Ou não vai, porque estará debaixo d'água. Agradeça agora.": {
-  "en": "",
+  "en": "In the Túnel Alagado you'll thank me. Or you won't, because you'll be underwater. Thank me now.",
   "ctx": "src/data/zonas/B5-venda.ts:10 · campo fala"
  },
- "TTT.TT": {
-  "en": "",
-  "ctx": "src/data/zonas/B5.ts:14 · p.t()"
- },
  "CIDADE GINGA\n\"Quem não ginga, tropeça.\"\nOeste: Trilha da Roda, para Arraial Brasa.": {
-  "en": "",
+  "en": "CIDADE GINGA\n\"Whoever doesn't sway, stumbles.\"\nWest: Trilha da Roda, to Arraial Brasa.",
   "ctx": "src/data/zonas/B5.ts:56 · placa()"
  },
  "GINÁSIO DE CIDADE GINGA\nLíder: Mestre Gingado, o pé que canta.\nInsígnia Berimbau.": {
-  "en": "",
+  "en": "CIDADE GINGA GYM\nLeader: Master Gingado, the singing foot.\nBerimbau Badge.",
   "ctx": "src/data/zonas/B5.ts:57 · placa()"
  },
  "LAGOA DO BERIMBAU\nO poço fundo no meio é a boca do Túnel Alagado, que sai no Brejo Roxo.\nProibido mergulhar sem Amuleto. (O salva-vidas é uma capivara e ela está de folga.)": {
-  "en": "",
+  "en": "BERIMBAU LAGOON\nThe deep pool in the middle is the mouth of the Túnel Alagado, which comes out in Brejo Roxo.\nNo diving without a Charm. (The lifeguard is a capybara and she's off today.)",
   "ctx": "src/data/zonas/B5.ts:58 · placa()"
  },
  "FEIRA DA CIDADE GINGA\nFrutos, cuias de artesão e pergaminhos.\nÀs quintas: banca da Artesã Cabacinha com cuias de encomenda.": {
-  "en": "",
+  "en": "CIDADE GINGA FAIR\nFruit, artisan gourds and scrolls.\nThursdays: Artisan Cabacinha's stall with custom gourds.",
   "ctx": "src/data/zonas/B5.ts:59 · placa()"
  },
  "MIRANTE DA CASCATA\n\"Daqui de cima a cidade inteira parece uma roda.\" — gravado na pedra por um aluno do Mestre Cabaça": {
-  "en": "",
+  "en": "WATERFALL LOOKOUT\n\"From up here the whole town looks like a roda.\" — carved in the stone by one of Master Cabaça's students",
   "ctx": "src/data/zonas/B5.ts:60 · placa()"
  },
  "Estátua de bronze de um capoeirista no meio de um aú. Na base: \"Mestre Gingado, campeão da Roda Grande\".": {
-  "en": "",
+  "en": "A bronze statue of a capoeirista mid-cartwheel. On the base: \"Master Gingado, Big Roda champion\".",
   "ctx": "src/data/zonas/B5.ts:68 · campo texto"
  },
  "Tocador Caxixi": {
-  "en": "",
+  "en": "Musician Caxixi",
   "ctx": "src/data/zonas/B5.ts:91 · gente()"
  },
  "♪ Tim, tim, tim, dom, dom… ♪": {
-  "en": "",
+  "en": "♪ Ting, ting, ting, dong, dong… ♪",
   "ctx": "src/data/zonas/B5.ts:91 · campo fala"
  },
  "Na roda só entra quem bate palma no tempo. Você bate palma igual a quem espanta mosquito, mas tudo bem.": {
-  "en": "",
+  "en": "Only those who clap on the beat get into the roda. You clap like you're swatting mosquitoes, but that's okay.",
   "ctx": "src/data/zonas/B5.ts:91 · campo fala"
  },
  "Capoeirista Besouro": {
-  "en": "",
+  "en": "Capoeirista Besouro",
   "ctx": "src/data/zonas/B5.ts:92 · gente()"
  },
  "Aqui a gente treina com as criaturas, não contra elas.": {
-  "en": "",
+  "en": "Here we train with the creatures, not against them.",
   "ctx": "src/data/zonas/B5.ts:92 · campo fala"
  },
  "Criatura do tipo Ginga derruba Comum, Pedra, Ferro e Geada. Mas se aparecer um passarinho… a gente perde o rebolado.": {
-  "en": "",
+  "en": "Brawl creatures knock down Normal, Stone, Iron and Frost. But if a little bird shows up… we lose our groove.",
   "ctx": "src/data/zonas/B5.ts:92 · campo fala"
  },
  "Contramestra Maré": {
-  "en": "",
+  "en": "Contramestra Maré",
   "ctx": "src/data/zonas/B5.ts:93 · gente()"
  },
  "Seu Dedé": {
-  "en": "",
+  "en": "Seu Dedé",
   "ctx": "src/data/zonas/B5.ts:94 · gente()"
  },
  "O ginásio é uma academia: cada duelo acontece no toque do berimbau.": {
-  "en": "",
+  "en": "The gym is an academy: every duel happens to the berimbau's rhythm.",
   "ctx": "src/data/zonas/B5.ts:94 · campo fala"
  },
  "Tipo Vento, Mente e Encanto fazem o povo do Mestre perder o passo.": {
-  "en": "",
+  "en": "Wind, Mind and Charm types make the Master's crew lose their footing.",
   "ctx": "src/data/zonas/B5.ts:94 · campo fala"
  },
  "Eu? Eu só guardo os chinelos da turma.": {
-  "en": "",
+  "en": "Me? I just watch everybody's flip-flops.",
   "ctx": "src/data/zonas/B5.ts:94 · campo fala"
  },
  "Pescador Tainha": {
-  "en": "",
+  "en": "Fisher Tainha",
   "ctx": "src/data/zonas/B5.ts:95 · gente()"
  },
  "Tá vendo a água escura lá no meio? É fundo que não acaba mais.": {
-  "en": "",
+  "en": "See the dark water in the middle? It goes down forever.",
   "ctx": "src/data/zonas/B5.ts:95 · campo fala"
  },
  "O túnel por baixo sai lá no Brejo Roxo. Meu avô atravessava prendendo o fôlego. Meu avô mentia muito.": {
-  "en": "",
+  "en": "The tunnel underneath comes out in Brejo Roxo. My grandpa used to cross it holding his breath. My grandpa told a lot of fibs.",
   "ctx": "src/data/zonas/B5.ts:95 · campo fala"
  },
  "No meio do túnel tem uma gruta com ar e uma cascata que sobe. Sem o Amuleto da Cachoeira, a gruta é o fim da linha.": {
-  "en": "",
+  "en": "In the middle of the tunnel there's a cave with air and a waterfall that goes up. Without the Waterfall Charm, the cave is the end of the line.",
   "ctx": "src/data/zonas/B5.ts:95 · campo fala"
  },
  "Ritinha": {
-  "en": "",
+  "en": "Ritinha",
   "ctx": "src/data/zonas/B5.ts:96 · gente()"
  },
  "Eu sei dar estrela, ponte e bananeira!": {
-  "en": "",
+  "en": "I can do cartwheels, backbends and handstands!",
   "ctx": "src/data/zonas/B5.ts:96 · campo fala"
  },
  "A minha Quatizão só sabe dar trabalho.": {
-  "en": "",
+  "en": "My Quatizão only knows how to do trouble.",
   "ctx": "src/data/zonas/B5.ts:96 · campo fala"
  },
  "Dona Marocas": {
-  "en": "",
+  "en": "Dona Marocas",
   "ctx": "src/data/zonas/B5.ts:97 · gente() | src/data/zonas/B5.ts:98 · gente()"
  },
  "Menino, passou por aqui um povo de macacão cor de ferrugem comprando sacos e mais sacos de cal.": {
-  "en": "",
+  "en": "Dear, some folks in rust-colored overalls came by buying sacks and sacks of lime.",
   "ctx": "src/data/zonas/B5.ts:97 · campo fala"
  },
  "Disseram que iam \"limpar\" o Brejo Roxo. Desde quando brejo se limpa?": {
-  "en": "",
+  "en": "They said they were going to \"clean up\" Brejo Roxo. Since when do you clean a swamp?",
   "ctx": "src/data/zonas/B5.ts:97 · campo fala"
  },
  "Eu não sou de falar da vida alheia. Mas que é esquisito, é.": {
-  "en": "",
+  "en": "I'm not one to gossip. But it sure is fishy.",
   "ctx": "src/data/zonas/B5.ts:97 · campo fala"
  },
  "Soube? Derrubaram o esconderijo do Cartel no Brejo Roxo! Uma tal de Queixada saiu correndo de lá e brotou mato por onde passou.": {
-  "en": "",
+  "en": "Heard? They brought down the Cartel hideout in Brejo Roxo! Some Queixada ran out of there and brush sprouted wherever it went.",
   "ctx": "src/data/zonas/B5.ts:98 · campo fala"
  },
  "Eu não sou de espalhar notícia. Mas já contei para a cidade inteira.": {
-  "en": "",
+  "en": "I'm not one to spread news. But I've already told the whole town.",
   "ctx": "src/data/zonas/B5.ts:98 · campo fala"
  },
  "Seu Quiabo": {
-  "en": "",
+  "en": "Seu Quiabo",
   "ctx": "src/data/zonas/B5.ts:99 · gente()"
  },
  "Olha a garrafada! Levanta até defunto de criatura!": {
-  "en": "",
+  "en": "Herbal tonic here! It'll raise a creature from the dead!",
   "ctx": "src/data/zonas/B5.ts:99 · campo fala"
  },
  "Levanta nada. Mas cura que é uma beleza.": {
-  "en": "",
+  "en": "It won't. But it heals like a charm.",
   "ctx": "src/data/zonas/B5.ts:99 · campo fala"
  },
  "Dona Cocada": {
-  "en": "",
+  "en": "Dona Cocada",
   "ctx": "src/data/zonas/B5.ts:100 · gente()"
  },
  "Biscoito de polvilho, rapadura e fumaça de andiroba!": {
-  "en": "",
+  "en": "Tapioca biscuits, rapadura and andiroba smoke!",
   "ctx": "src/data/zonas/B5.ts:100 · campo fala"
  },
  "A rapadura é dura. O preço também.": {
-  "en": "",
+  "en": "The rapadura is hard. So is the price.",
   "ctx": "src/data/zonas/B5.ts:100 · campo fala"
  },
  "Turista Evaristo": {
-  "en": "",
+  "en": "Tourist Evaristo",
   "ctx": "src/data/zonas/B5.ts:101 · gente()"
  },
  "Vim de Porto Sereia só para a feira.": {
-  "en": "",
+  "en": "I came from Porto Sereia just for the fair.",
   "ctx": "src/data/zonas/B5.ts:101 · campo fala"
  },
  "Já comprei um berimbau, dois caxixis e uma dor nas costas tentando dar um aú.": {
-  "en": "",
+  "en": "I've already bought a berimbau, two caxixis and a backache from trying a cartwheel.",
   "ctx": "src/data/zonas/B5.ts:101 · campo fala"
  },
  "Mergulhador Baiacu": {
-  "en": "",
+  "en": "Diver Baiacu",
   "ctx": "src/data/zonas/B5.ts:102 · gente()"
  },
  "Eu treino apneia aqui. Meu recorde é dois minutos.": {
-  "en": "",
+  "en": "I practice breath-holding here. My record is two minutes.",
   "ctx": "src/data/zonas/B5.ts:102 · campo fala"
  },
  "A minha Poraquê aguenta vinte. E ainda acende a luz lá embaixo.": {
-  "en": "",
+  "en": "My Poraquê can last twenty. And it lights things up down there.",
   "ctx": "src/data/zonas/B5.ts:102 · campo fala"
  },
  "No Túnel Alagado, suba nas clareiras de luz: é por elas que se volta à tona.": {
-  "en": "",
+  "en": "In the Túnel Alagado, surface at the patches of light: that's how you get back up.",
   "ctx": "src/data/zonas/B5.ts:102 · campo fala"
  },
  "Homem de Macacão": {
-  "en": "",
+  "en": "Man in Overalls",
   "ctx": "src/data/zonas/B5.ts:103 · gente()"
  },
  "Tá olhando o quê? Estou só… contando mangas.": {
-  "en": "",
+  "en": "What are you looking at? I'm just… counting mangoes.",
   "ctx": "src/data/zonas/B5.ts:103 · campo fala"
  },
  "Circulando, circulando. Este quintal é particular. Do Cartel. Quer dizer, de ninguém.": {
-  "en": "",
+  "en": "Move along, move along. This yard is private. The Cartel's. I mean, nobody's.",
   "ctx": "src/data/zonas/B5.ts:103 · campo fala"
  },
  "Contramestre Zumbi": {
-  "en": "",
+  "en": "Contramestre Zumbi",
   "ctx": "src/data/zonas/B5.ts:104 · gente()"
  },
  "A casa de azulejo é a Academia do Mestre Cabaça, o mais velho da cidade.": {
-  "en": "",
+  "en": "The tiled house is Master Cabaça's Academy, the oldest master in town.",
   "ctx": "src/data/zonas/B5.ts:104 · campo fala"
  },
  "Ele anda procurando três alunos fujões. Se quiser ajudar, entre.": {
-  "en": "",
+  "en": "He's been looking for three runaway students. If you want to help, go in.",
   "ctx": "src/data/zonas/B5.ts:104 · campo fala"
  },
  "Moça do Posto": {
-  "en": "",
+  "en": "Post Attendant",
   "ctx": "src/data/zonas/B5.ts:105 · gente()"
  },
  "O Posto Guardião cura de graça e guarda as suas cuias no Viveiro.": {
-  "en": "",
+  "en": "The Guardian Post heals for free and keeps your gourds in the Gourd Keep.",
   "ctx": "src/data/zonas/B5.ts:105 · campo fala"
  },
  "Dica da casa: o Mestre Gingado luta com criaturas de Ginga. Vento, Mente e Encanto acertam em cheio.": {
-  "en": "",
+  "en": "House tip: Master Gingado fights with Brawl creatures. Wind, Mind and Charm hit them hard.",
   "ctx": "src/data/zonas/B5.ts:105 · campo fala"
  },
  "Casa do Zelador Urtigão": {
-  "en": "",
+  "en": "Caretaker Urtigão's House",
   "ctx": "src/data/zonas/B6-casa-1.ts:5 · campo nome"
  },
  "\"Como Conversar com Cobras\", \"Cobras: Elas Não Querem Conversar\" e um álbum de figurinhas de sapos.": {
-  "en": "",
+  "en": "\"How to Talk to Snakes\", \"Snakes: They Don't Want to Talk\" and a frog sticker album.",
   "ctx": "src/data/zonas/B6-casa-1.ts:20 · campo texto"
  },
  "Palafita do Canoeiro": {
-  "en": "",
+  "en": "Canoeist's Stilt House",
   "ctx": "src/data/zonas/B6-casa-2.ts:5 · campo nome"
  },
  "Canoeiro Piau": {
-  "en": "",
+  "en": "Canoeist Piau",
   "ctx": "src/data/zonas/B6-casa-2.ts:23 · gente()"
  },
  "No Vale do Veneno a água é grossa de tão roxa, mas a canoa passa.": {
-  "en": "",
+  "en": "In the Vale do Veneno the water is thick it's so purple, but the canoe gets through.",
   "ctx": "src/data/zonas/B6-casa-2.ts:23 · campo fala"
  },
  "Tem Sucurião lá que pesca a gente em vez de a gente pescar ela. Reme ligeiro.": {
-  "en": "",
+  "en": "There's a Sucurião out there that fishes for you instead of you fishing for it. Paddle fast.",
   "ctx": "src/data/zonas/B6-casa-2.ts:23 · campo fala"
  },
  "Piabinha (a menina)": {
-  "en": "",
+  "en": "Piabinha (the girl)",
   "ctx": "src/data/zonas/B6-casa-2.ts:24 · gente()"
  },
  "Meu nome é Piabinha igual ao peixe. Meu irmão se chama Mandi. Meu pai gosta muito de pescar.": {
-  "en": "",
+  "en": "My name is Piabinha, like the fish. My brother's name is Mandi. My dad really likes fishing.",
   "ctx": "src/data/zonas/B6-casa-2.ts:24 · campo fala"
  },
  "Palafita da Raizeira": {
-  "en": "",
+  "en": "Herbalist's Stilt House",
   "ctx": "src/data/zonas/B6-casa-3.ts:5 · campo nome"
  },
  "Vidros de raiz, casca e flor. Um deles está etiquetado \"NÃO É CHÁ\". Outro, \"TALVEZ SEJA CHÁ\".": {
-  "en": "",
+  "en": "Jars of roots, bark and flowers. One is labeled \"NOT TEA\". Another, \"MAYBE TEA\".",
   "ctx": "src/data/zonas/B6-casa-3.ts:19 · campo texto"
  },
  "Raizeira Mandrágora": {
-  "en": "",
+  "en": "Herbalist Mandrágora",
   "ctx": "src/data/zonas/B6-casa-3.ts:22 · gente()"
  },
  "Dizem que no fundo do Vale do Veneno mora uma Coralzinha de anéis que brilham. Rara que só.": {
-  "en": "",
+  "en": "They say deep in the Vale do Veneno lives a Coralzinha with glowing rings. Rare as can be.",
   "ctx": "src/data/zonas/B6-casa-3.ts:22 · campo fala"
  },
  "E que as árvores de lá escondem Marimbondão. Sacuda e corra. Nessa ordem.": {
-  "en": "",
+  "en": "And that the trees there hide Marimbondão. Shake and run. In that order.",
   "ctx": "src/data/zonas/B6-casa-3.ts:22 · campo fala"
  },
  "Quando o brejo sarar, as criaturas voltam. Brejo é teimoso igual a gente.": {
-  "en": "",
+  "en": "When the swamp heals, the creatures come back. A swamp is stubborn, just like us.",
   "ctx": "src/data/zonas/B6-casa-3.ts:22 · campo fala"
  },
  "Ginásio de Brejo Roxo": {
-  "en": "",
+  "en": "Brejo Roxo Gym",
   "ctx": "src/data/zonas/B6-ginasio.ts:18 · campo nome"
  },
  "GINÁSIO DE BREJO ROXO\nLíder: Doutor Peçonha\n\"Veneno e remédio: a diferença é a dose.\"": {
-  "en": "",
+  "en": "BREJO ROXO GYM\nLeader: Doctor Peçonha\n\"Poison and medicine: the difference is the dose.\"",
   "ctx": "src/data/zonas/B6-ginasio.ts:42 · campo texto"
  },
  "Aviso do serpentário: no piso tóxico você aguenta 3 passos. A planta-antídoto devolve o fôlego todo… e murcha na hora. Chão limpo não gasta nem devolve.": {
-  "en": "",
+  "en": "Serpentarium notice: on toxic floor you can last 3 steps. The antidote plant restores all your breath… and wilts right away. Clean floor doesn't cost or restore.",
   "ctx": "src/data/zonas/B6-ginasio.ts:42 · campo texto"
  },
  "Sair do tanque faz as plantas rebrotarem. Desmaiou? Os assistentes trazem você de volta à boca do tanque.": {
-  "en": "",
+  "en": "Leaving the tank makes the plants grow back. Fainted? The assistants bring you back to the tank entrance.",
   "ctx": "src/data/zonas/B6-ginasio.ts:43 · campo texto"
  },
  "Conselho do Doutor: antes de pisar, conte. Toda planta que você pular agora pode faltar lá na frente.": {
-  "en": "",
+  "en": "The Doctor's advice: count before you step. Every plant you skip now might be missing later on.",
   "ctx": "src/data/zonas/B6-ginasio.ts:43 · campo texto"
  },
  "Laboratório do Cartel — Depósito": {
-  "en": "",
+  "en": "Cartel Lab — Storage",
   "ctx": "src/data/zonas/B6-lab-1.ts:20 · campo nome"
  },
  "Uma jaula vazia. Na plaqueta: \"Lote 12 — sapos-cururu — ENVIADO AO NÍVEL 2\".": {
-  "en": "",
+  "en": "An empty cage. On the tag: \"Lot 12 — cururu toads — SENT TO LEVEL 2\".",
   "ctx": "src/data/zonas/B6-lab-1.ts:25 · campo texto"
  },
  "PRESSÃO DAS CALDEIRAS DE PEÇONHA: ALTA.\nAlguém colou um bilhete: \"não encostar, isso é com a Doutora Zinabre\".": {
-  "en": "",
+  "en": "VENOM BOILER PRESSURE: HIGH.\nSomeone stuck a note on it: \"don't touch, that's Doctor Zinabre's job\".",
   "ctx": "src/data/zonas/B6-lab-1.ts:26 · campo texto"
  },
  "REGISTRO DE CARGA\n• 212 anfíbios do Brejo Roxo\n• 38 serpentes do Vale\n• 1 \"espécime especial\" (jaula reforçada, nível 3)\n• 1 herpetólogo intrometido (cela, nível 2)": {
-  "en": "",
+  "en": "CARGO LOG\n• 212 Brejo Roxo amphibians\n• 38 Vale serpents\n• 1 \"special specimen\" (reinforced cage, level 3)\n• 1 nosy herpetologist (cell, level 2)",
   "ctx": "src/data/zonas/B6-lab-1.ts:28 · campo texto"
  },
  "Uma porta blindada com o emblema da engrenagem enferrujada.\nUm cabo grosso sai dela e segue pela parede para o leste, até a sala de máquinas.": {
-  "en": "",
+  "en": "An armored door with the rusty gear emblem.\nA thick cable comes out of it and runs along the wall to the east, to the machine room.",
   "ctx": "src/data/zonas/B6-lab-1.ts:32 · campo fala"
  },
  "Faxineiro Contratado": {
-  "en": "",
+  "en": "Hired Janitor",
   "ctx": "src/data/zonas/B6-lab-1.ts:37 · gente()"
  },
  "Eu só fui contratado para passar pano. Ninguém me avisou que o pano ia derreter.": {
-  "en": "",
+  "en": "I was only hired to mop. Nobody told me the mop would melt.",
   "ctx": "src/data/zonas/B6-lab-1.ts:37 · campo fala"
  },
  "A porta lá de cima? Abre na alavanca da sala das máquinas, a leste. Eu não falei nada.": {
-  "en": "",
+  "en": "The door upstairs? It opens with the lever in the machine room, to the east. I didn't say anything.",
   "ctx": "src/data/zonas/B6-lab-1.ts:37 · campo fala"
  },
  "Laboratório do Cartel — Jaulas": {
-  "en": "",
+  "en": "Cartel Lab — Cages",
   "ctx": "src/data/zonas/B6-lab-2.ts:25 · campo nome"
  },
  "ESTEIRAS: LIGADAS.\nDESTINO DAS JAULAS: \"COMPRADORES — COSTA DO SOL\".": {
-  "en": "",
+  "en": "CONVEYORS: ON.\nCAGE DESTINATION: \"BUYERS — COSTA DO SOL\".",
   "ctx": "src/data/zonas/B6-lab-2.ts:30 · campo texto"
  },
  "Frascos de peçonha rotulados por espécie. Há uma tabela de preços. Dá vontade de quebrar tudo.": {
-  "en": "",
+  "en": "Venom flasks labeled by species. There's a price list. It makes you want to smash everything.",
   "ctx": "src/data/zonas/B6-lab-2.ts:31 · campo texto"
  },
  "Sapos-cururu espremidos, olhando para você.": {
-  "en": "",
+  "en": "Cururu toads squeezed together, staring at you.",
   "ctx": "src/data/zonas/B6-lab-2.ts:32 · campo texto"
  },
  "Uma Jararaquinha enrolada num canto, tremendo.": {
-  "en": "",
+  "en": "A Jararaquinha curled up in a corner, trembling.",
   "ctx": "src/data/zonas/B6-lab-2.ts:32 · campo texto"
  },
  "Pererequinhas. Uma delas acena. Ou é impressão.": {
-  "en": "",
+  "en": "Pererequinhas. One of them waves. Or so it seems.",
   "ctx": "src/data/zonas/B6-lab-2.ts:32 · campo texto"
  },
  "A tranca desta cela é diferente: tem um teclado. E alguém lá dentro assobiando para uma cobra.": {
-  "en": "",
+  "en": "This cell's lock is different: it has a keypad. And someone inside whistling to a snake.",
   "ctx": "src/data/zonas/B6-lab-2.ts:33 · campo texto"
  },
  "PROJETO CAIPORA\n\"O espécime resiste à sedação. Onde ele pisa, brota mato no concreto. O Coronel quer o segredo dele até a lua cheia.\"": {
-  "en": "",
+  "en": "PROJECT CAIPORA\n\"The specimen resists sedation. Wherever it steps, brush sprouts from the concrete. The Colonel wants its secret by the full moon.\"",
   "ctx": "src/data/zonas/B6-lab-2.ts:35 · campo texto"
  },
  "Comporta do núcleo. Duas luzes vermelhas piscam: \"ALAVANCA A — JAULAS\" e \"ALAVANCA B — DESTILARIA\".\nEnquanto as duas não ficarem verdes, nada feito.": {
-  "en": "",
+  "en": "Core floodgate. Two red lights blink: \"LEVER A — CAGES\" and \"LEVER B — DISTILLERY\".\nUntil both turn green, no dice.",
   "ctx": "src/data/zonas/B6-lab-2.ts:38 · campo fala"
  },
  "Laboratório do Cartel — Núcleo": {
-  "en": "",
+  "en": "Cartel Lab — Core",
   "ctx": "src/data/zonas/B6-lab-3.ts:17 · campo nome"
  },
  "NÍVEL 3 — NÚCLEO\nAcesso restrito à Doutora Zinabre e ao tenente Lata.\n\"Quem deixar a jaula 176 abrir limpa o brejo com escova de dentes. — Cel. Garrote\"": {
-  "en": "",
+  "en": "LEVEL 3 — CORE\nAccess restricted to Doctor Zinabre and Lieutenant Lata.\n\"Whoever lets cage 176 open cleans the swamp with a toothbrush. — Col. Garrote\"",
   "ctx": "src/data/zonas/B6-lab-3.ts:22 · campo texto"
  },
  "Seringas de sedativo vazias, uma atrás da outra. Ao lado, um broto de ipê nascendo de dentro de uma delas.": {
-  "en": "",
+  "en": "Empty sedative syringes, one after another. Next to them, an ipê sprout growing out of one.",
   "ctx": "src/data/zonas/B6-lab-3.ts:24 · campo texto"
  },
  "A criatura bufa atrás das grades. O concreto em volta dela está rachado, cheio de brotos verdes.": {
-  "en": "",
+  "en": "The creature snorts behind the bars. The concrete around it is cracked, full of green sprouts.",
   "ctx": "src/data/zonas/B6-lab-3.ts:31 · campo fala"
  },
  "MURAL DE MISSÕES — BREJO ROXO": {
-  "en": "",
+  "en": "MISSION BOARD — BREJO ROXO",
   "ctx": "src/data/zonas/B6-posto.ts:5 · postoGuardiao()"
  },
  "• PROCURA-SE: Doutor Peçonha, líder do ginásio. Visto pela última vez indo ao Curtume Abandonado com uma lanterna e uma cobra no pescoço.": {
-  "en": "",
+  "en": "• MISSING: Doctor Peçonha, gym leader. Last seen heading to the Abandoned Tannery with a lantern and a snake around his neck.",
   "ctx": "src/data/zonas/B6-posto.ts:6 · postoGuardiao()"
  },
  "• Dona Rã, do charco, procura as cinco Pererequinhas que criava soltas no quintal. Duas pularam para o Vale do Veneno.": {
-  "en": "",
+  "en": "• Dona Rã, from the marsh, is looking for the five Pererequinhas she raised loose in her yard. Two hopped off to the Vale do Veneno.",
   "ctx": "src/data/zonas/B6-posto.ts:7 · postoGuardiao()"
  },
  "• O Carteiro Sapé precisa de alguém que suba a serra com uma carta para a Serra da Geada.": {
-  "en": "",
+  "en": "• Mail Carrier Sapé needs someone to go up the mountain with a letter for Serra da Geada.",
   "ctx": "src/data/zonas/B6-posto.ts:8 · postoGuardiao()"
  },
  "Garimpeiro Verde": {
-  "en": "",
+  "en": "Green Prospector",
   "ctx": "src/data/zonas/B6-posto.ts:10 · campo nome"
  },
  "Fui lavar o rosto no riacho roxo. Agora estou assim, verde.": {
-  "en": "",
+  "en": "I washed my face in the purple creek. Now I'm like this, green.",
   "ctx": "src/data/zonas/B6-posto.ts:10 · campo fala"
  },
  "A atendente disse que passa. Disse rindo, mas disse.": {
-  "en": "",
+  "en": "The attendant said it'll go away. She was laughing, but she said it.",
   "ctx": "src/data/zonas/B6-posto.ts:10 · campo fala"
  },
  "Guardiã Sucupira": {
-  "en": "",
+  "en": "Guardian Sucupira",
   "ctx": "src/data/zonas/B6-posto.ts:11 · campo nome"
  },
  "O Cartel Ferrugem rouba criatura para vender e, pelo jeito, para estudar veneno.": {
-  "en": "",
+  "en": "The Rust Cartel steals creatures to sell and, by the looks of it, to study venom.",
   "ctx": "src/data/zonas/B6-posto.ts:11 · campo fala"
  },
  "Capanga deles adora criatura de Veneno e de Ferro. Leve tipo Terra, que acerta as duas.": {
-  "en": "",
+  "en": "Their goons love Poison and Iron creatures. Bring Earth types, they hit both.",
   "ctx": "src/data/zonas/B6-posto.ts:11 · campo fala"
  },
  "Herpetóloga Jiboia": {
-  "en": "",
+  "en": "Herpetologist Jiboia",
   "ctx": "src/data/zonas/B6-posto.ts:12 · campo nome"
  },
  "Jararacuçu, Coralzinha, Sucurião… o Vale do Veneno é o melhor lugar do mundo para estudar cobra.": {
-  "en": "",
+  "en": "Jararacuçu, Coralzinha, Sucurião… the Vale do Veneno is the best place in the world to study snakes.",
   "ctx": "src/data/zonas/B6-posto.ts:12 · campo fala"
  },
  "E o pior para tropeçar. Use a Fumaça de Andiroba se não quiser companhia.": {
-  "en": "",
+  "en": "And the worst place to trip. Use Andiroba Smoke if you don't want company.",
   "ctx": "src/data/zonas/B6-posto.ts:12 · campo fala"
  },
  "Boticário Jurubeba": {
-  "en": "",
+  "en": "Apothecary Jurubeba",
   "ctx": "src/data/zonas/B6-venda.ts:5 · campo nome"
  },
  "Botica do Brejo! Antídoto para tudo, menos para o preço.": {
-  "en": "",
+  "en": "Swamp Apothecary! An antidote for everything, except the prices.",
   "ctx": "src/data/zonas/B6-venda.ts:5 · campo fala"
  },
  "Aprendiz de Boticário": {
-  "en": "",
+  "en": "Apothecary's Apprentice",
   "ctx": "src/data/zonas/B6-venda.ts:7 · campo nome"
  },
  "Estou decorando: Mel Puro para veneno, Unguento para queimadura, Pomada de Copaíba para tudo.": {
-  "en": "",
+  "en": "I'm memorizing: Pure Honey for poison, Ointment for burns, Copaíba Ointment for everything.",
   "ctx": "src/data/zonas/B6-venda.ts:7 · campo fala"
  },
  "E Chá de Guaraná para quem desmaiou. Serve para criatura e para segunda-feira.": {
-  "en": "",
+  "en": "And Guaraná Tea for the fainted. Works for creatures and for Mondays.",
   "ctx": "src/data/zonas/B6-venda.ts:7 · campo fala"
  },
  "Botica do Brejo Roxo": {
-  "en": "",
+  "en": "Brejo Roxo Apothecary",
   "ctx": "src/data/zonas/B6-venda.ts:8 · venda()"
  },
  "PASSO DA SERRA\nNorte: Subida da Serra e Serra da Geada.\nSó sobe quem tem a Insígnia Espinho. E agasalho.": {
-  "en": "",
+  "en": "SERRA PASS\nNorth: Subida da Serra and Serra da Geada.\nOnly those with the Thorn Badge go up. And a coat.",
   "ctx": "src/data/zonas/B6.ts:50 · placa()"
  },
  "GINÁSIO DE BREJO ROXO\nLíder: Doutor Peçonha, o homem que abraça cobra.\nInsígnia Espinho.": {
-  "en": "",
+  "en": "BREJO ROXO GYM\nLeader: Doctor Peçonha, the man who hugs snakes.\nThorn Badge.",
   "ctx": "src/data/zonas/B6.ts:51 · placa()"
  },
  "VALE DO VENENO →\nNão beba a água. Não lamba os sapos. Não diga que não avisamos.": {
-  "en": "",
+  "en": "VALE DO VENENO →\nDon't drink the water. Don't lick the frogs. Don't say we didn't warn you.",
   "ctx": "src/data/zonas/B6.ts:52 · placa()"
  },
  "CHARCO DO TÚNEL\nFundo de lama, saída para Cidade Ginga por baixo d'água.": {
-  "en": "",
+  "en": "TUNNEL MARSH\nMuddy bottom, exit to Cidade Ginga underwater.",
   "ctx": "src/data/zonas/B6.ts:53 · placa()"
  },
  "CURTUME ABANDONADO\nFechado desde a última cheia.\n(Alguém rabiscou embaixo: \"então por que sai fumaça roxa da chaminé?\")": {
-  "en": "",
+  "en": "ABANDONED TANNERY\nClosed since the last flood.\n(Someone scribbled underneath: \"then why is purple smoke coming out of the chimney?\")",
   "ctx": "src/data/zonas/B6.ts:54 · placa()"
  },
  "BREJO ROXO\n\"Aqui até o sapo tem nome e sobrenome.\"": {
-  "en": "",
+  "en": "BREJO ROXO\n\"Here even the frogs have a first and last name.\"",
   "ctx": "src/data/zonas/B6.ts:55 · placa()"
  },
  "Um totem de madeira com uma cobra entalhada mordendo o próprio rabo. Na base: \"o veneno e a cura moram no mesmo dente\".": {
-  "en": "",
+  "en": "A wooden totem with a carved snake biting its own tail. On the base: \"poison and cure live in the same fang\".",
   "ctx": "src/data/zonas/B6.ts:66 · campo texto"
  },
  "Guarda-serra Pinheiro: \"Daqui para cima é paredão, pedregulho e frio de rachar.\nSem a Insígnia Espinho do Doutor Peçonha eu não deixo subir. Ordem dos Guardiões.\"": {
-  "en": "",
+  "en": "Mountain Ranger Pinheiro: \"From here up it's cliffs, boulders and bone-cracking cold.\nWithout Doctor Peçonha's Thorn Badge I'm not letting you up. Guardians' orders.\"",
   "ctx": "src/data/zonas/B6.ts:83 · campo fala"
  },
  "Zelador Urtigão: \"O ginásio está fechado. O Doutor Peçonha saiu para investigar a fumaça roxa do curtume e não voltou.\nFaz três dias. As cobras estão com saudade. Eu também, mas não conta para ele.\"": {
-  "en": "",
+  "en": "Caretaker Urtigão: \"The gym is closed. Doctor Peçonha went to look into the tannery's purple smoke and never came back.\nIt's been three days. The snakes miss him. So do I, but don't tell him.\"",
   "ctx": "src/data/zonas/B6.ts:84 · campo fala"
  },
  "Dona Rã": {
-  "en": "",
+  "en": "Dona Rã",
   "ctx": "src/data/zonas/B6.ts:89 · gente()"
  },
  "Botânica Jurema": {
-  "en": "",
+  "en": "Botanist Jurema",
   "ctx": "src/data/zonas/B6.ts:93 · gente() | src/data/zonas/B6.ts:94 · gente()"
  },
  "As flores roxas do brejo estão murchando. Tem cal e produto químico escorrendo do curtume.": {
-  "en": "",
+  "en": "The swamp's purple flowers are wilting. Lime and chemicals are leaking out of the tannery.",
   "ctx": "src/data/zonas/B6.ts:93 · campo fala"
  },
  "Os sapos sumiram, as pererecas sumiram… e toda noite passa carroça com jaula coberta de lona.": {
-  "en": "",
+  "en": "The frogs are gone, the tree frogs are gone… and every night a cart goes by with cages under a tarp.",
   "ctx": "src/data/zonas/B6.ts:93 · campo fala"
  },
  "Se você tem criatura que corta cipó, dê uma olhada lá atrás da cerca. Eu fico aqui… vigiando as flores.": {
-  "en": "",
+  "en": "If you have a creature that cuts vines, take a look behind the fence. I'll stay here… watching the flowers.",
   "ctx": "src/data/zonas/B6.ts:93 · campo fala"
  },
  "Os sapos voltaram para o brejo na mesma noite em que você derrubou o laboratório. Cantaram até de manhã.": {
-  "en": "",
+  "en": "The frogs came back to the swamp the same night you took down the lab. They sang till morning.",
   "ctx": "src/data/zonas/B6.ts:94 · campo fala"
  },
  "Brejo saudável é brejo barulhento. Ninguém dormiu, e todo mundo acordou feliz.": {
-  "en": "",
+  "en": "A healthy swamp is a noisy swamp. Nobody slept, and everybody woke up happy.",
   "ctx": "src/data/zonas/B6.ts:94 · campo fala"
  },
  "Seu Muçum": {
-  "en": "",
+  "en": "Seu Muçum",
   "ctx": "src/data/zonas/B6.ts:95 · gente()"
  },
  "Você saiu de dentro do charco?! Achei que fosse assombração.": {
-  "en": "",
+  "en": "You came out of the marsh?! I thought you were a ghost.",
   "ctx": "src/data/zonas/B6.ts:95 · campo fala"
  },
  "O túnel vai dar em Cidade Ginga. Mande um abraço para o meu primo Tainha. Diga que ele me deve vinte patacas.": {
-  "en": "",
+  "en": "The tunnel comes out in Cidade Ginga. Say hi to my cousin Tainha. Tell him he owes me twenty patacas.",
   "ctx": "src/data/zonas/B6.ts:95 · campo fala"
  },
  "Vó Arruda": {
-  "en": "",
+  "en": "Grandma Arruda",
   "ctx": "src/data/zonas/B6.ts:96 · gente()"
  },
  "Menino, aqui todo mundo tem um chazinho para veneno.": {
-  "en": "",
+  "en": "Dear, everyone here has a little tea for poison.",
   "ctx": "src/data/zonas/B6.ts:96 · campo fala"
  },
  "Mel Puro tira peçonha de bicho. Para peçonha de gente, só mudando de cidade.": {
-  "en": "",
+  "en": "Pure Honey draws the venom out of critters. For people's venom, you have to move to another town.",
   "ctx": "src/data/zonas/B6.ts:96 · campo fala"
  },
  "Girino": {
-  "en": "",
+  "en": "Girino",
   "ctx": "src/data/zonas/B6.ts:97 · gente()"
  },
  "Eu sei pular todas as poças de lama sem sujar o pé!": {
-  "en": "",
+  "en": "I can jump over every mud puddle without getting my feet dirty!",
   "ctx": "src/data/zonas/B6.ts:97 · campo fala"
  },
  "…Menos esta. E aquela. E a outra.": {
-  "en": "",
+  "en": "…Except this one. And that one. And the other one.",
   "ctx": "src/data/zonas/B6.ts:97 · campo fala"
  },
  "Aprendiz Ofídio": {
-  "en": "",
+  "en": "Apprentice Ofídio",
   "ctx": "src/data/zonas/B6.ts:98 · gente()"
  },
  "O Doutor diz que veneno é só remédio na dose errada.": {
-  "en": "",
+  "en": "The Doctor says poison is just medicine at the wrong dose.",
   "ctx": "src/data/zonas/B6.ts:98 · campo fala"
  },
  "Tipo Terra e tipo Mente dão dor de cabeça nas cobras dele. Tipo Mata, coitado, vira salada.": {
-  "en": "",
+  "en": "Earth and Mind types give his snakes a headache. Grass types, poor things, turn into salad.",
   "ctx": "src/data/zonas/B6.ts:98 · campo fala"
  },
  "Moradora Aliviada": {
-  "en": "",
+  "en": "Relieved Resident",
   "ctx": "src/data/zonas/B6.ts:99 · gente()"
  },
  "A fumaça parou! O brejo voltou a cheirar a… brejo.": {
-  "en": "",
+  "en": "The smoke stopped! The swamp smells like… swamp again.",
   "ctx": "src/data/zonas/B6.ts:99 · campo fala"
  },
  "Dizem que uma queixada enorme saiu correndo do curtume, com folhas nascendo onde pisava.": {
-  "en": "",
+  "en": "They say a huge peccary came running out of the tannery, with leaves sprouting wherever it stepped.",
   "ctx": "src/data/zonas/B6.ts:99 · campo fala"
  },
  "Carroceiro Assustado": {
-  "en": "",
+  "en": "Scared Carter",
   "ctx": "src/data/zonas/B6.ts:100 · gente()"
  },
  "Me pagaram para levar caixas até o curtume. Uma delas roncou.": {
-  "en": "",
+  "en": "They paid me to haul boxes to the tannery. One of them snored.",
   "ctx": "src/data/zonas/B6.ts:100 · campo fala"
  },
  "Caixa não ronca, criatura. Larguei tudo e vim tomar um chá.": {
-  "en": "",
+  "en": "Boxes don't snore, friend. I dropped everything and came for some tea.",
   "ctx": "src/data/zonas/B6.ts:100 · campo fala"
  },
  "Guarda-serra Pinheiro": {
-  "en": "",
+  "en": "Mountain Ranger Pinheiro",
   "ctx": "src/data/zonas/B6.ts:101 · gente()"
  },
  "Insígnia Espinho! Pode subir. A Subida da Serra tem paredão de trepadeira e pedregulho no caminho.": {
-  "en": "",
+  "en": "Thorn Badge! You can go up. The Subida da Serra has creeper cliffs and boulders in the way.",
   "ctx": "src/data/zonas/B6.ts:101 · campo fala"
  },
  "Lá no alto, à esquerda, tem a trilha do Pico Pingorama. O guia de lá só leva ao Pico quem tem as dezesseis insígnias: é onde ficam os Guardiões.": {
-  "en": "",
+  "en": "Up top, to the left, is the Pico Pingorama trail. The guide there only takes those with all sixteen badges to the Peak: that's where the Guardians are.",
   "ctx": "src/data/zonas/B6.ts:101 · campo fala"
  },
  "Carteiro Sapé": {
-  "en": "",
+  "en": "Mail Carrier Sapé",
   "ctx": "src/data/zonas/B6.ts:104 · gente()"
  },
  "Casa da Vó Querência": {
