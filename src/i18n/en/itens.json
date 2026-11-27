@@ -1,922 +1,922 @@
 {
  "Tapete": {
-  "en": "",
+  "en": "Rug",
   "ctx": "src/data/decoracao.ts:13 · campo nome"
  },
  "Sem tapete": {
-  "en": "",
+  "en": "No rug",
   "ctx": "src/data/decoracao.ts:13 · campo vazio"
  },
  "Pôster": {
-  "en": "",
+  "en": "Poster",
   "ctx": "src/data/decoracao.ts:13 · campo nome"
  },
  "Parede lisa": {
-  "en": "",
+  "en": "Bare wall",
   "ctx": "src/data/decoracao.ts:13 · campo vazio"
  },
  "Planta": {
-  "en": "",
+  "en": "Plant",
   "ctx": "src/data/decoracao.ts:13 · campo nome"
  },
  "Sem planta": {
-  "en": "",
+  "en": "No plant",
   "ctx": "src/data/decoracao.ts:13 · campo vazio"
  },
  "Pelúcia": {
-  "en": "",
+  "en": "Plushie",
   "ctx": "src/data/decoracao.ts:14 · campo nome"
  },
  "Sem pelúcia": {
-  "en": "",
+  "en": "No plushie",
   "ctx": "src/data/decoracao.ts:14 · campo vazio"
  },
  "Console": {
-  "en": "",
+  "en": "Console",
   "ctx": "src/data/decoracao.ts:14 · campo nome"
  },
  "Sem console": {
-  "en": "",
+  "en": "No console",
   "ctx": "src/data/decoracao.ts:14 · campo vazio"
  },
  "Cama": {
-  "en": "",
+  "en": "Bed",
   "ctx": "src/data/decoracao.ts:14 · campo nome"
  },
  "Cama simples": {
-  "en": "",
+  "en": "Simple bed",
   "ctx": "src/data/decoracao.ts:14 · campo vazio"
  },
  "Tapete de Retalhos": {
-  "en": "",
+  "en": "Patchwork Rug",
   "ctx": "src/data/decoracao.ts:17 · campo nome"
  },
  "Costurado pela Mãe.": {
-  "en": "",
+  "en": "Sewn by Mom.",
   "ctx": "src/data/decoracao.ts:17 · campo origem"
  },
  "Passadeira Listrada": {
-  "en": "",
+  "en": "Striped Runner",
   "ctx": "src/data/decoracao.ts:18 · campo nome"
  },
  "À venda na Feira de Porto Sereia.": {
-  "en": "",
+  "en": "For sale at the Porto Sereia Fair.",
   "ctx": "src/data/decoracao.ts:18 · campo origem"
  },
  "Tapete de Fuxico": {
-  "en": "",
+  "en": "Yo-Yo Quilt Rug",
   "ctx": "src/data/decoracao.ts:19 · campo nome"
  },
  "Presente das rendeiras da Cidade Coral.": {
-  "en": "",
+  "en": "A gift from the lacemakers of Cidade Coral.",
   "ctx": "src/data/decoracao.ts:19 · campo origem"
  },
  "Pôster do Conselho": {
-  "en": "",
+  "en": "Council Poster",
   "ctx": "src/data/decoracao.ts:20 · campo nome"
  },
  "Prêmio por vencer o Conselho dos Guardiões.": {
-  "en": "",
+  "en": "Prize for beating the Council of Guardians.",
   "ctx": "src/data/decoracao.ts:20 · campo origem"
  },
  "Pôster do Trem": {
-  "en": "",
+  "en": "Train Poster",
   "ctx": "src/data/decoracao.ts:21 · campo nome"
  },
  "Lembrança da primeira viagem no Trem Serra-Sol.": {
-  "en": "",
+  "en": "A souvenir from your first ride on the Serra-Sol Train.",
   "ctx": "src/data/decoracao.ts:21 · campo origem"
  },
  "Pôster da Costa do Sol": {
-  "en": "",
+  "en": "Costa do Sol Poster",
   "ctx": "src/data/decoracao.ts:22 · campo nome"
  },
  "Veio com o quarto.": {
-  "en": "",
+  "en": "Came with the room.",
   "ctx": "src/data/decoracao.ts:22 · campo origem"
  },
  "Espada-de-São-Jorge": {
-  "en": "",
+  "en": "Snake Plant",
   "ctx": "src/data/decoracao.ts:23 · campo nome"
  },
  "A Mãe diz que protege a casa.": {
-  "en": "",
+  "en": "Mom says it protects the house.",
   "ctx": "src/data/decoracao.ts:23 · campo origem"
  },
  "Samambaia de Xaxim": {
-  "en": "",
+  "en": "Potted Fern",
   "ctx": "src/data/decoracao.ts:24 · campo nome"
  },
  "À venda na Venda da Vila Buriti.": {
-  "en": "",
+  "en": "For sale at the Vila Buriti Shop.",
   "ctx": "src/data/decoracao.ts:24 · campo origem"
  },
  "Vasinho de Violetas": {
-  "en": "",
+  "en": "Little Violet Pot",
   "ctx": "src/data/decoracao.ts:25 · campo nome"
  },
  "Presente da Drª Buriti.": {
-  "en": "",
+  "en": "A gift from Dr. Buriti.",
   "ctx": "src/data/decoracao.ts:25 · campo origem"
  },
  "Cama de Estrela": {
-  "en": "",
+  "en": "Star Bed",
   "ctx": "src/data/decoracao.ts:26 · campo nome"
  },
  "A sua cama de sempre.": {
-  "en": "",
+  "en": "Your good old bed.",
   "ctx": "src/data/decoracao.ts:26 · campo origem"
  },
  "Videogame de Cartucho": {
-  "en": "",
+  "en": "Cartridge Console",
   "ctx": "src/data/decoracao.ts:27 · campo nome"
  },
  "Presente de aniversário.": {
-  "en": "",
+  "en": "A birthday present.",
   "ctx": "src/data/decoracao.ts:27 · campo origem"
  },
  "Pelúcia de Tamanduá": {
-  "en": "",
+  "en": "Anteater Plushie",
   "ctx": "src/data/decoracao.ts:28 · campo nome"
  },
  "Prêmio do festival de sábado.": {
-  "en": "",
+  "en": "Prize from the Saturday festival.",
   "ctx": "src/data/decoracao.ts:28 · campo origem"
  },
  "Pelúcia de Capivara": {
-  "en": "",
+  "en": "Capybara Plushie",
   "ctx": "src/data/decoracao.ts:29 · campo nome"
  },
  "À venda na Feira da Cidade Ginga.": {
-  "en": "",
+  "en": "For sale at the Cidade Ginga Fair.",
   "ctx": "src/data/decoracao.ts:29 · campo origem"
  },
  "Pelúcia de Arara": {
-  "en": "",
+  "en": "Macaw Plushie",
   "ctx": "src/data/decoracao.ts:30 · campo nome"
  },
  "Presente da Observadora de Aves.": {
-  "en": "",
+  "en": "A gift from the Birdwatcher.",
   "ctx": "src/data/decoracao.ts:30 · campo origem"
  },
  "Pelúcia de Boto": {
-  "en": "",
+  "en": "River Dolphin Plushie",
   "ctx": "src/data/decoracao.ts:31 · campo nome"
  },
  "Lembrança do Saveiro.": {
-  "en": "",
+  "en": "A souvenir from the Saveiro.",
   "ctx": "src/data/decoracao.ts:31 · campo origem"
  },
  "Peça rara de colecionador.": {
-  "en": "",
+  "en": "A rare collector's piece.",
   "ctx": "src/data/decoracao.ts:35 · campo origem"
  },
  "Pedra Solar": {
-  "en": "",
+  "en": "Sun Stone",
   "ctx": "src/data/eventos/liga.ts:165 · pergunta/opção | src/data/itens.ts:97 · i()"
  },
  "Pedra Lunar": {
-  "en": "",
+  "en": "Moon Stone",
   "ctx": "src/data/eventos/liga.ts:165 · pergunta/opção | src/data/itens.ts:99 · i()"
  },
  "Folha Ancestral": {
-  "en": "",
+  "en": "Ancient Leaf",
   "ctx": "src/data/eventos/liga.ts:165 · pergunta/opção | src/data/itens.ts:100 · i()"
  },
  "Cuia": {
-  "en": "",
+  "en": "Gourd",
   "ctx": "src/data/itens.ts:72 · i()"
  },
  "Cuia de cabaça entalhada, com trançado de palha. Firma parceria com criaturas selvagens.": {
-  "en": "",
+  "en": "A carved calabash gourd wrapped in woven straw. Seals a partnership with wild creatures.",
   "ctx": "src/data/itens.ts:72 · i()"
  },
  "Cuia Trançada": {
-  "en": "",
+  "en": "Woven Gourd",
   "ctx": "src/data/itens.ts:73 · i()"
  },
  "Trançado reforçado de buriti. Segura melhor que a Cuia comum.": {
-  "en": "",
+  "en": "Reinforced buriti weave. Holds better than a regular Gourd.",
   "ctx": "src/data/itens.ts:73 · i()"
  },
  "Cuia de Ouro": {
-  "en": "",
+  "en": "Gold Gourd",
   "ctx": "src/data/itens.ts:74 · i()"
  },
  "Banhada em ouro de aluvião. Ótima chance de captura.": {
-  "en": "",
+  "en": "Plated in river gold. A great chance to catch.",
   "ctx": "src/data/itens.ts:74 · i()"
  },
  "Cuia de Rede": {
-  "en": "",
+  "en": "Net Gourd",
   "ctx": "src/data/itens.ts:75 · i()"
  },
  "Forrada com rede de pesca. Excelente contra criaturas de Rio e Inseto.": {
-  "en": "",
+  "en": "Lined with fishing net. Excellent against River and Bug creatures.",
   "ctx": "src/data/itens.ts:75 · i()"
  },
  "Cuia Noturna": {
-  "en": "",
+  "en": "Night Gourd",
   "ctx": "src/data/itens.ts:76 · i()"
  },
  "Pintada com jenipapo. Excelente durante a noite.": {
-  "en": "",
+  "en": "Painted with genipap dye. Excellent at night.",
   "ctx": "src/data/itens.ts:76 · i()"
  },
  "Cuia Rápida": {
-  "en": "",
+  "en": "Quick Gourd",
   "ctx": "src/data/itens.ts:77 · i()"
  },
  "Leve como pena. Excelente se arremessada logo no primeiro turno.": {
-  "en": "",
+  "en": "Light as a feather. Excellent if thrown on the very first turn.",
   "ctx": "src/data/itens.ts:77 · i()"
  },
  "Cuia de Mel": {
-  "en": "",
+  "en": "Honey Gourd",
   "ctx": "src/data/itens.ts:78 · i()"
  },
  "Untada com mel de jataí. A criatura capturada já chega amiga e se apega mais depressa.": {
-  "en": "",
+  "en": "Coated in jataí honey. The caught creature arrives friendly and bonds faster.",
   "ctx": "src/data/itens.ts:78 · i()"
  },
  "Cuia Guardiã": {
-  "en": "",
+  "en": "Guardian Gourd",
   "ctx": "src/data/itens.ts:79 · i()"
  },
  "Obra dos antigos Guardiões. Nunca falha. Só existem três no mundo.": {
-  "en": "",
+  "en": "Made by the ancient Guardians. Never fails. Only three exist in the world.",
   "ctx": "src/data/itens.ts:79 · i()"
  },
  "Chá de Erva-Cidreira": {
-  "en": "",
+  "en": "Lemon Balm Tea",
   "ctx": "src/data/itens.ts:82 · i()"
  },
  "Chazinho morno. Recupera 20 de vida.": {
-  "en": "",
+  "en": "A warm little tea. Restores 20 HP.",
   "ctx": "src/data/itens.ts:82 · i()"
  },
  "Garrafada": {
-  "en": "",
+  "en": "Root Tonic",
   "ctx": "src/data/itens.ts:83 · i()"
  },
  "Mistura de raízes da feira. Recupera 50 de vida.": {
-  "en": "",
+  "en": "A blend of roots from the market. Restores 50 HP.",
   "ctx": "src/data/itens.ts:83 · i()"
  },
  "Elixir de Andiroba": {
-  "en": "",
+  "en": "Andiroba Elixir",
   "ctx": "src/data/itens.ts:84 · i()"
  },
  "Óleo raro da floresta. Recupera toda a vida.": {
-  "en": "",
+  "en": "A rare forest oil. Restores all HP.",
   "ctx": "src/data/itens.ts:84 · i()"
  },
  "Mel Puro": {
-  "en": "",
+  "en": "Pure Honey",
   "ctx": "src/data/itens.ts:85 · i()"
  },
  "Cura envenenamento, sono e encantamento.": {
-  "en": "",
+  "en": "Cures poison, sleep and charm.",
   "ctx": "src/data/itens.ts:85 · i()"
  },
  "Unguento": {
-  "en": "",
+  "en": "Ointment",
   "ctx": "src/data/itens.ts:86 · i()"
  },
  "Pasta de ervas. Cura queimadura, congelamento e paralisia.": {
-  "en": "",
+  "en": "An herbal paste. Cures burns, freezing and paralysis.",
   "ctx": "src/data/itens.ts:86 · i()"
  },
  "Pomada de Copaíba": {
-  "en": "",
+  "en": "Copaiba Balm",
   "ctx": "src/data/itens.ts:87 · i()"
  },
  "Cura qualquer status e também a confusão.": {
-  "en": "",
+  "en": "Cures any status and confusion too.",
   "ctx": "src/data/itens.ts:87 · i()"
  },
  "Chá de Guaraná": {
-  "en": "",
+  "en": "Guaraná Tea",
   "ctx": "src/data/itens.ts:88 · i()"
  },
  "Forte de acordar qualquer um: reanima uma criatura desmaiada com metade da vida.": {
-  "en": "",
+  "en": "Strong enough to wake anyone: revives a fainted creature with half its HP.",
   "ctx": "src/data/itens.ts:88 · i()"
  },
  "Garapa": {
-  "en": "",
+  "en": "Cane Juice",
   "ctx": "src/data/itens.ts:89 · i()"
  },
  "Caldo de cana gelado. Restaura 10 PG de um golpe.": {
-  "en": "",
+  "en": "Iced sugarcane juice. Restores 10 MP to one move.",
   "ctx": "src/data/itens.ts:89 · i()"
  },
  "Garapa com Limão": {
-  "en": "",
+  "en": "Lime Cane Juice",
   "ctx": "src/data/itens.ts:90 · i()"
  },
  "Restaura todos os PG de todos os golpes.": {
-  "en": "",
+  "en": "Restores all MP to all moves.",
   "ctx": "src/data/itens.ts:90 · i()"
  },
  "Rapadura": {
-  "en": "",
+  "en": "Brown Sugar Brick",
   "ctx": "src/data/itens.ts:91 · i()"
  },
  "Doce de dar sustança: a criatura sobe um nível.": {
-  "en": "",
+  "en": "A hearty sweet: the creature goes up a level.",
   "ctx": "src/data/itens.ts:91 · i()"
  },
  "Fumaça de Andiroba": {
-  "en": "",
+  "en": "Andiroba Smoke",
   "ctx": "src/data/itens.ts:94 · i()"
  },
  "Repelente: por 100 passos, criaturas mais fracas que a primeira da equipe não aparecem.": {
-  "en": "",
+  "en": "Repellent: for 100 steps, creatures weaker than your lead won't appear.",
   "ctx": "src/data/itens.ts:94 · i()"
  },
  "Fumaça de Andiroba Forte": {
-  "en": "",
+  "en": "Strong Andiroba Smoke",
   "ctx": "src/data/itens.ts:95 · i()"
  },
  "Repelente caprichado: dura 250 passos.": {
-  "en": "",
+  "en": "Extra-strength repellent: lasts 250 steps.",
   "ctx": "src/data/itens.ts:95 · i()"
  },
  "Corda de Cipó": {
-  "en": "",
+  "en": "Vine Rope",
   "ctx": "src/data/itens.ts:96 · i()"
  },
  "Leva de volta à entrada de cavernas e matas fechadas.": {
-  "en": "",
+  "en": "Takes you back to the entrance of caves and thick forests.",
   "ctx": "src/data/itens.ts:96 · i()"
  },
  "Pedra morna que guarda a luz do meio-dia. Faz certas criaturas evoluírem.": {
-  "en": "",
+  "en": "A warm stone that holds the midday light. Makes certain creatures evolve.",
   "ctx": "src/data/itens.ts:97 · i()"
  },
  "Pedra Maré": {
-  "en": "",
+  "en": "Tide Stone",
   "ctx": "src/data/itens.ts:98 · i()"
  },
  "Pedra lisa que pulsa com as marés. Faz certas criaturas evoluírem.": {
-  "en": "",
+  "en": "A smooth stone that pulses with the tides. Makes certain creatures evolve.",
   "ctx": "src/data/itens.ts:98 · i()"
  },
  "Pedra pálida que brilha no escuro. Faz certas criaturas evoluírem.": {
-  "en": "",
+  "en": "A pale stone that glows in the dark. Makes certain creatures evolve.",
   "ctx": "src/data/itens.ts:99 · i()"
  },
  "Folha de uma árvore mais velha que as cidades. Faz certas criaturas evoluírem.": {
-  "en": "",
+  "en": "A leaf from a tree older than the towns. Makes certain creatures evolve.",
   "ctx": "src/data/itens.ts:100 · i()"
  },
  "Engrenagem Velha": {
-  "en": "",
+  "en": "Old Gear",
   "ctx": "src/data/itens.ts:101 · i()"
  },
  "Peça da antiga ferrovia. Faz certas criaturas evoluírem.": {
-  "en": "",
+  "en": "A part from the old railway. Makes certain creatures evolve.",
   "ctx": "src/data/itens.ts:101 · i()"
  },
  "Pepita": {
-  "en": "",
+  "en": "Gold Nugget",
   "ctx": "src/data/itens.ts:102 · i()"
  },
  "Ouro de garimpo. Vale um bom dinheiro na Venda.": {
-  "en": "",
+  "en": "Prospector's gold. Worth good money at the Shop.",
   "ctx": "src/data/itens.ts:102 · i()"
  },
  "Pena Colorida": {
-  "en": "",
+  "en": "Bright Feather",
   "ctx": "src/data/itens.ts:103 · i()"
  },
  "Pena bonita achada no chão. Colecionadores pagam bem.": {
-  "en": "",
+  "en": "A pretty feather found on the ground. Collectors pay well.",
   "ctx": "src/data/itens.ts:103 · i()"
  },
  "Concha Rara": {
-  "en": "",
+  "en": "Rare Shell",
   "ctx": "src/data/itens.ts:104 · i()"
  },
  "Concha de brilho furta-cor. Vende-se bem nas feiras.": {
-  "en": "",
+  "en": "An iridescent shell. Sells well at the fairs.",
   "ctx": "src/data/itens.ts:104 · i()"
  },
  "Biscoito de Polvilho": {
-  "en": "",
+  "en": "Cassava Puff",
   "ctx": "src/data/itens.ts:105 · i()"
  },
  "Petisco crocante. A criatura fica mais amiga.": {
-  "en": "",
+  "en": "A crunchy snack. The creature grows friendlier.",
   "ctx": "src/data/itens.ts:105 · i()"
  },
  "Caju": {
-  "en": "",
+  "en": "Cashew Fruit",
   "ctx": "src/data/itens.ts:108 · i()"
  },
  "Suculento. Recupera 10 de vida. Quem segura come sozinha quando a vida cai à metade.": {
-  "en": "",
+  "en": "Juicy. Restores 10 HP. The holder eats it on its own when its HP drops to half.",
   "ctx": "src/data/itens.ts:108 · i()"
  },
  "Pitanga": {
-  "en": "",
+  "en": "Pitanga",
   "ctx": "src/data/itens.ts:109 · i() | src/data/treinadores/b1.ts:36 · t()"
  },
  "Azedinha e fresca. Cura queimadura.": {
-  "en": "",
+  "en": "Tart and fresh. Cures burns.",
   "ctx": "src/data/itens.ts:109 · i()"
  },
  "Jabuticaba": {
-  "en": "",
+  "en": "Jabuticaba",
   "ctx": "src/data/itens.ts:110 · i()"
  },
  "Docinha, direto do tronco. Cura envenenamento.": {
-  "en": "",
+  "en": "Sweet, straight off the trunk. Cures poison.",
   "ctx": "src/data/itens.ts:110 · i()"
  },
  "Cupuaçu": {
-  "en": "",
+  "en": "Cupuaçu",
   "ctx": "src/data/itens.ts:111 · i()"
  },
  "Cheiro forte de acordar a vizinhança. Cura o sono.": {
-  "en": "",
+  "en": "A smell strong enough to wake the neighbors. Cures sleep.",
   "ctx": "src/data/itens.ts:111 · i()"
  },
  "Pequi": {
-  "en": "",
+  "en": "Pequi",
   "ctx": "src/data/itens.ts:112 · i()"
  },
  "Cuidado com os espinhos! Cura paralisia.": {
-  "en": "",
+  "en": "Mind the spines! Cures paralysis.",
   "ctx": "src/data/itens.ts:112 · i()"
  },
  "Buriti": {
-  "en": "",
+  "en": "Buriti",
   "ctx": "src/data/itens.ts:113 · i()"
  },
  "Fruto quente do cerrado. Cura congelamento.": {
-  "en": "",
+  "en": "A warm fruit from the cerrado. Cures freezing.",
   "ctx": "src/data/itens.ts:113 · i()"
  },
  "Acerola": {
-  "en": "",
+  "en": "Acerola",
   "ctx": "src/data/itens.ts:114 · i()"
  },
  "Vitamina pura. Cura o encantamento.": {
-  "en": "",
+  "en": "Pure vitamins. Cures charm.",
   "ctx": "src/data/itens.ts:114 · i()"
  },
  "Açaí": {
-  "en": "",
+  "en": "Açaí",
   "ctx": "src/data/itens.ts:115 · i()"
  },
  "Energia da floresta. Restaura 10 PG de um golpe.": {
-  "en": "",
+  "en": "Forest energy. Restores 10 MP to one move.",
   "ctx": "src/data/itens.ts:115 · i()"
  },
  "Rádio e telefone de bolso: contatos, programas e o relógio.": {
-  "en": "",
+  "en": "Pocket radio and phone: contacts, shows and the clock.",
   "ctx": "src/data/itens.ts:118 · i()"
  },
  "Diário de Campo": {
-  "en": "",
+  "en": "Field Journal",
   "ctx": "src/data/itens.ts:119 · i()"
  },
  "Caderno da Profª Ipê para registrar as criaturas de Pingorama.": {
-  "en": "",
+  "en": "Prof. Ipê's notebook for recording Pingorama's creatures.",
   "ctx": "src/data/itens.ts:119 · i()"
  },
  "Bicicleta de Bambu": {
-  "en": "",
+  "en": "Bamboo Bike",
   "ctx": "src/data/itens.ts:120 · i()"
  },
  "Leve e resistente. Anda bem mais rápido que a pé.": {
-  "en": "",
+  "en": "Light and sturdy. Much faster than walking.",
   "ctx": "src/data/itens.ts:120 · i()"
  },
  "Vara de bambu remendada. Pesca o que dá.": {
-  "en": "",
+  "en": "A patched bamboo rod. Catches whatever bites.",
   "ctx": "src/data/itens.ts:121 · i()"
  },
  "Vara firme, de bom anzol. Pesca criaturas melhores.": {
-  "en": "",
+  "en": "A sturdy rod with a good hook. Catches better creatures.",
   "ctx": "src/data/itens.ts:122 · i()"
  },
  "A vara dos velhos pescadores. Pesca as raras.": {
-  "en": "",
+  "en": "The old fishers' rod. Catches the rare ones.",
   "ctx": "src/data/itens.ts:123 · i()"
  },
  "Passe do Trem": {
-  "en": "",
+  "en": "Train Pass",
   "ctx": "src/data/itens.ts:124 · i()"
  },
  "Passe da Maria-Fumaça que liga a Costa do Sol ao Sertão das Névoas.": {
-  "en": "",
+  "en": "A pass for the steam train linking Costa do Sol to Sertão das Névoas.",
   "ctx": "src/data/itens.ts:124 · i()"
  },
  "Bilhete do Saveiro": {
-  "en": "",
+  "en": "Saveiro Ticket",
   "ctx": "src/data/itens.ts:125 · i()"
  },
  "Bilhete permanente do Saveiro que cruza a baía.": {
-  "en": "",
+  "en": "A permanent ticket for the Saveiro that crosses the bay.",
   "ctx": "src/data/itens.ts:125 · i()"
  },
  "Ovo Pintado": {
-  "en": "",
+  "en": "Painted Egg",
   "ctx": "src/data/itens.ts:126 · i()"
  },
  "Ovo morno de casca pintadinha que a Profª Ipê mandou levar ao Seu Aroeira.": {
-  "en": "",
+  "en": "A warm, speckled egg that Prof. Ipê asked you to take to Seu Aroeira.",
   "ctx": "src/data/itens.ts:126 · i()"
  },
  "Carta do Dudu": {
-  "en": "",
+  "en": "Dudu's Letter",
   "ctx": "src/data/itens.ts:127 · i()"
  },
  "Carta do Dudu, de Vila Jacarandá, para o pai marinheiro em Porto Sereia.": {
-  "en": "",
+  "en": "A letter from Dudu, of Vila Jacarandá, to his sailor dad in Porto Sereia.",
   "ctx": "src/data/itens.ts:127 · i()"
  },
  "Resposta do Bartô": {
-  "en": "",
+  "en": "Bartô's Reply",
   "ctx": "src/data/itens.ts:128 · i()"
  },
  "Resposta do Marinheiro Bartô para o filho Dudu, em Vila Jacarandá.": {
-  "en": "",
+  "en": "Sailor Bartô's reply to his son Dudu, in Vila Jacarandá.",
   "ctx": "src/data/itens.ts:128 · i()"
  },
  "Chapéu da Vó Zica": {
-  "en": "",
+  "en": "Grandma Zica's Hat",
   "ctx": "src/data/itens.ts:129 · i()"
  },
  "Chapéu de palha da Vó Zica, que o vento levou até o píer.": {
-  "en": "",
+  "en": "Grandma Zica's straw hat, which the wind blew down to the pier.",
   "ctx": "src/data/itens.ts:129 · i()"
  },
  "Câmera de Bolso": {
-  "en": "",
+  "en": "Pocket Camera",
   "ctx": "src/data/itens.ts:130 · i()"
  },
  "Tira fotos de qualquer cena. As melhores vão para o álbum.": {
-  "en": "",
+  "en": "Takes photos of any scene. The best go in the album.",
   "ctx": "src/data/itens.ts:130 · i()"
  },
  "Regador": {
-  "en": "",
+  "en": "Watering Can",
   "ctx": "src/data/itens.ts:131 · i()"
  },
  "Para cuidar dos canteiros de frutos.": {
-  "en": "",
+  "en": "For tending the fruit patches.",
   "ctx": "src/data/itens.ts:131 · i()"
  },
  "Chocalho do Mutirão": {
-  "en": "",
+  "en": "Teamwork Rattle",
   "ctx": "src/data/itens.ts:132 · i()"
  },
  "Invento do Faroleiro Volta. Quem fica na reserva, 2 níveis ou mais atrás da mais forte da equipe (5 depois da Liga), ganha metade da experiência da luta.": {
-  "en": "",
+  "en": "Lightkeeper Volta's invention. Benched creatures 2 or more levels behind your strongest (5 after the League) get half the battle's experience.",
   "ctx": "src/data/itens.ts:132 · i()"
  },
  "Estojo de Insígnias": {
-  "en": "",
+  "en": "Badge Case",
   "ctx": "src/data/itens.ts:133 · i()"
  },
  "Guarda as 16 insígnias de Pingorama.": {
-  "en": "",
+  "en": "Holds Pingorama's 16 badges.",
   "ctx": "src/data/itens.ts:133 · i()"
  },
  "Amuleto do Facão": {
-  "en": "",
+  "en": "Machete Charm",
   "ctx": "src/data/itens.ts:134 · i()"
  },
  "Com uma parceira de Mata, Inseto ou Ginga, corta cipós grossos.": {
-  "en": "",
+  "en": "With a Grass, Bug or Brawl partner, cuts through thick vines.",
   "ctx": "src/data/itens.ts:134 · i()"
  },
  "Amuleto do Remo": {
-  "en": "",
+  "en": "Paddle Charm",
   "ctx": "src/data/itens.ts:135 · i()"
  },
  "Com uma parceira de Rio, a canoa cruza as águas.": {
-  "en": "",
+  "en": "With a River partner, the canoe crosses the water.",
   "ctx": "src/data/itens.ts:135 · i()"
  },
  "Amuleto da Força": {
-  "en": "",
+  "en": "Strength Charm",
   "ctx": "src/data/itens.ts:136 · i()"
  },
  "Com uma parceira de Terra, Pedra ou Ginga, empurra pedregulhos.": {
-  "en": "",
+  "en": "With an Earth, Stone or Brawl partner, pushes boulders.",
   "ctx": "src/data/itens.ts:136 · i()"
  },
  "Amuleto do Lampião": {
-  "en": "",
+  "en": "Lantern Charm",
   "ctx": "src/data/itens.ts:137 · i()"
  },
  "Com uma parceira de Brasa, Trovão ou Encanto, ilumina cavernas e névoa.": {
-  "en": "",
+  "en": "With an Ember, Thunder or Charm partner, lights up caves and fog.",
   "ctx": "src/data/itens.ts:137 · i()"
  },
  "Amuleto Quebra-Pedra": {
-  "en": "",
+  "en": "Rock Smash Charm",
   "ctx": "src/data/itens.ts:138 · i()"
  },
  "Com uma parceira de Pedra, Terra, Ferro ou Ginga, quebra rochas rachadas.": {
-  "en": "",
+  "en": "With a Stone, Earth, Iron or Brawl partner, smashes cracked rocks.",
   "ctx": "src/data/itens.ts:138 · i()"
  },
  "Amuleto de Escalar": {
-  "en": "",
+  "en": "Climb Charm",
   "ctx": "src/data/itens.ts:139 · i()"
  },
  "Com uma parceira de Ginga, Comum ou Inseto, sobe paredões com trepadeiras.": {
-  "en": "",
+  "en": "With a Brawl, Normal or Bug partner, climbs creeper-covered cliffs.",
   "ctx": "src/data/itens.ts:139 · i()"
  },
  "Amuleto da Cachoeira": {
-  "en": "",
+  "en": "Waterfall Charm",
   "ctx": "src/data/itens.ts:140 · i()"
  },
  "Com uma parceira de Rio ou Lenda, sobe cascatas.": {
-  "en": "",
+  "en": "With a River or Legend partner, climbs waterfalls.",
   "ctx": "src/data/itens.ts:140 · i()"
  },
  "Amuleto do Mergulho": {
-  "en": "",
+  "en": "Dive Charm",
   "ctx": "src/data/itens.ts:141 · i()"
  },
  "Com uma parceira de Rio, mergulha nas águas fundas marcadas.": {
-  "en": "",
+  "en": "With a River partner, dives into marked deep water.",
   "ctx": "src/data/itens.ts:141 · i()"
  },
  "Amuleto do Voo": {
-  "en": "",
+  "en": "Flight Charm",
   "ctx": "src/data/itens.ts:142 · i()"
  },
  "Com uma parceira de Vento, voa entre as cidades já visitadas.": {
-  "en": "",
+  "en": "With a Wind partner, flies between towns you've visited.",
   "ctx": "src/data/itens.ts:142 · i()"
  },
  "Amuleto do Faro": {
-  "en": "",
+  "en": "Scent Charm",
   "ctx": "src/data/itens.ts:143 · i()"
  },
  "Com uma parceira muito amiga, itens e criaturas ocultas brilham.": {
-  "en": "",
+  "en": "With a very friendly partner, hidden items and creatures sparkle.",
   "ctx": "src/data/itens.ts:143 · i()"
  },
  "PT{n} {golpe}": {
-  "en": "",
+  "en": "TS{n} {golpe}",
   "ctx": "src/data/itens.ts:146 · i()"
  },
  "Pergaminho de Técnica reutilizável. Ensina {golpe} a uma criatura compatível.": {
-  "en": "",
+  "en": "Reusable Technique Scroll. Teaches {golpe} to a compatible creature.",
   "ctx": "src/data/itens.ts:146 · i()"
  },
  "Cartão do Rádio": {
-  "en": "",
+  "en": "Radio Card",
   "ctx": "src/data/itens.ts:148 · i()"
  },
  "Prêmio do Quiz do Rádio. Libera os programas extras do Rádio Cipó: Cantiga das Lendas, músicas dos lugares visitados e dicas de captura no Bicho do Dia.": {
-  "en": "",
+  "en": "The Radio Quiz prize. Unlocks Rádio Cipó's extra shows: Legend Songs, music from places you've visited and catching tips in Critter of the Day.",
   "ctx": "src/data/itens.ts:148 · i()"
  },
  "Cabaça Amarela": {
-  "en": "",
+  "en": "Yellow Calabash",
   "ctx": "src/data/itens.ts:150 · i()"
  },
  "Fruto de cuieira amarelo-ovo. O artesão faz dele uma Cuia Ligeira.": {
-  "en": "",
+  "en": "An egg-yellow calabash. The craftsman turns it into a Swift Gourd.",
   "ctx": "src/data/itens.ts:150 · i()"
  },
  "Cabaça Preta": {
-  "en": "",
+  "en": "Black Calabash",
   "ctx": "src/data/itens.ts:151 · i()"
  },
  "Fruto de cuieira escuro e pesado. O artesão faz dele uma Cuia Pesada.": {
-  "en": "",
+  "en": "A dark, heavy calabash. The craftsman turns it into a Heavy Gourd.",
   "ctx": "src/data/itens.ts:151 · i()"
  },
  "Cabaça Branca": {
-  "en": "",
+  "en": "White Calabash",
   "ctx": "src/data/itens.ts:152 · i()"
  },
  "Fruto de cuieira branco como a lua. O artesão faz dele uma Cuia da Lua.": {
-  "en": "",
+  "en": "A calabash white as the moon. The craftsman turns it into a Moon Gourd.",
   "ctx": "src/data/itens.ts:152 · i()"
  },
  "Cabaça Verde": {
-  "en": "",
+  "en": "Green Calabash",
   "ctx": "src/data/itens.ts:153 · i()"
  },
  "Fruto de cuieira verde-folha. O artesão faz dele uma Cuia Amiga.": {
-  "en": "",
+  "en": "A leaf-green calabash. The craftsman turns it into a Friend Gourd.",
   "ctx": "src/data/itens.ts:153 · i()"
  },
  "Cabaça Azul": {
-  "en": "",
+  "en": "Blue Calabash",
   "ctx": "src/data/itens.ts:154 · i()"
  },
  "Fruto de cuieira azulado, cheiro de rio. O artesão faz dele uma Cuia de Isca.": {
-  "en": "",
+  "en": "A bluish calabash that smells of the river. The craftsman turns it into a Lure Gourd.",
   "ctx": "src/data/itens.ts:154 · i()"
  },
  "Cabaça Vermelha": {
-  "en": "",
+  "en": "Red Calabash",
   "ctx": "src/data/itens.ts:155 · i()"
  },
  "Fruto de cuieira vermelho-urucum. O artesão faz dele uma Cuia de Nível.": {
-  "en": "",
+  "en": "An annatto-red calabash. The craftsman turns it into a Level Gourd.",
   "ctx": "src/data/itens.ts:155 · i()"
  },
  "Cabaça Rosa": {
-  "en": "",
+  "en": "Pink Calabash",
   "ctx": "src/data/itens.ts:156 · i()"
  },
  "Fruto de cuieira rosado. O artesão faz dele uma Cuia do Amor.": {
-  "en": "",
+  "en": "A pinkish calabash. The craftsman turns it into a Love Gourd.",
   "ctx": "src/data/itens.ts:156 · i()"
  },
  "Cuia Ligeira": {
-  "en": "",
+  "en": "Swift Gourd",
   "ctx": "src/data/itens.ts:157 · i()"
  },
  "Cuia artesanal leve como pluma. Muito boa contra criaturas velozes, que vivem fugindo.": {
-  "en": "",
+  "en": "A handmade gourd light as a feather. Great against fast creatures that keep running off.",
   "ctx": "src/data/itens.ts:157 · i()"
  },
  "Cuia Pesada": {
-  "en": "",
+  "en": "Heavy Gourd",
   "ctx": "src/data/itens.ts:158 · i()"
  },
  "Cuia artesanal de casca grossa. Quanto mais pesada a criatura, melhor ela segura.": {
-  "en": "",
+  "en": "A thick-shelled handmade gourd. The heavier the creature, the better it holds.",
   "ctx": "src/data/itens.ts:158 · i()"
  },
  "Cuia da Lua": {
-  "en": "",
+  "en": "Moon Gourd",
   "ctx": "src/data/itens.ts:159 · i()"
  },
  "Cuia artesanal pintada de branco. Muito boa com criaturas que evoluem com pedras ou só à noite.": {
-  "en": "",
+  "en": "A handmade gourd painted white. Great for creatures that evolve with stones or only at night.",
   "ctx": "src/data/itens.ts:159 · i()"
  },
  "Cuia Amiga": {
-  "en": "",
+  "en": "Friend Gourd",
   "ctx": "src/data/itens.ts:160 · i()"
  },
  "Cuia artesanal forrada de paina. A criatura capturada chega muito amiga.": {
-  "en": "",
+  "en": "A handmade gourd lined with kapok fluff. The caught creature arrives very friendly.",
   "ctx": "src/data/itens.ts:160 · i()"
  },
  "Cuia de Isca": {
-  "en": "",
+  "en": "Lure Gourd",
   "ctx": "src/data/itens.ts:161 · i()"
  },
  "Cuia artesanal com cheiro de isca. Ótima para criaturas fisgadas na pesca.": {
-  "en": "",
+  "en": "A handmade gourd that smells like bait. Great for creatures hooked while fishing.",
   "ctx": "src/data/itens.ts:161 · i()"
  },
  "Cuia de Nível": {
-  "en": "",
+  "en": "Level Gourd",
   "ctx": "src/data/itens.ts:162 · i()"
  },
  "Cuia artesanal de urucum. Quanto mais forte a sua criatura que a selvagem, melhor ela segura.": {
-  "en": "",
+  "en": "A handmade annatto gourd. The stronger your creature is than the wild one, the better it holds.",
   "ctx": "src/data/itens.ts:162 · i()"
  },
  "Cuia do Amor": {
-  "en": "",
+  "en": "Love Gourd",
   "ctx": "src/data/itens.ts:163 · i()"
  },
  "Cuia artesanal enfeitada de fitas. Muito boa se a selvagem é da mesma espécie e do sexo oposto da sua.": {
-  "en": "",
+  "en": "A handmade gourd decorated with ribbons. Great if the wild one is the same species and opposite sex as yours.",
   "ctx": "src/data/itens.ts:163 · i()"
  },
  "item desconhecido: ": {
-  "en": "",
+  "en": "item desconhecido: ",
   "ctx": "src/data/itens.ts:168"
  },
  "Frasco Vazio": {
-  "en": "",
+  "en": "Empty Flask",
   "ctx": "src/data/itens.ts:174 · i()"
  },
  "Frasco de vidro grosso com rolha de cortiça, do canoeiro Seu Tarumã. Serve para colher água de rio.": {
-  "en": "",
+  "en": "A thick glass flask with a cork stopper, from the canoeist Seu Tarumã. Used to collect river water.",
   "ctx": "src/data/itens.ts:174 · i()"
  },
  "Frasco de Água Escura": {
-  "en": "",
+  "en": "Flask of Dark Water",
   "ctx": "src/data/itens.ts:175 · i()"
  },
  "Água preta como café, colhida de noite no fundo do Poço do Breu, no Rio Cachoeira-Véu.": {
-  "en": "",
+  "en": "Water black as coffee, collected at night from the bottom of Poço do Breu, on the Rio Cachoeira-Véu.",
   "ctx": "src/data/itens.ts:175 · i()"
  },
  "Frasco de Água Barrenta": {
-  "en": "",
+  "en": "Flask of Muddy Water",
   "ctx": "src/data/itens.ts:176 · i()"
  },
  "Água cor de barro, colhida de dia no poço da cascata da Estrada Vermelha.": {
-  "en": "",
+  "en": "Clay-colored water, collected by day from the waterfall pool on Estrada Vermelha.",
   "ctx": "src/data/itens.ts:176 · i()"
  },
  "Lanterna Boreal": {
-  "en": "",
+  "en": "Boreal Lantern",
   "ctx": "src/data/itens.ts:177 · i()"
  },
  "Lanterna de vidro verde da expedição da Drª Solveig. Juntas e acesas no alto do Pico, de noite, chamam o céu do norte.": {
-  "en": "",
+  "en": "A green-glass lantern from Dr. Solveig's expedition. Lit together atop the Peak at night, they call the northern sky.",
   "ctx": "src/data/itens.ts:177 · i()"
  },
  "Cuia-Safári": {
-  "en": "",
+  "en": "Safari Gourd",
   "ctx": "src/data/itens.ts:186 · i()"
  },
  "Cuia de palha de buriti do Parque Safári. Só funciona lá dentro e é devolvida na saída.": {
-  "en": "",
+  "en": "A buriti-straw gourd from the Safari Park. Only works inside and is returned at the exit.",
   "ctx": "src/data/itens.ts:186 · i()"
  },
  "Pedra de Rio": {
-  "en": "",
+  "en": "River Stone",
   "ctx": "src/data/itens.ts:187 · i()"
  },
  "Seixo liso e pesado, rolado pela correnteza. O dono do Safári quer calçar a margem da lagoa com ela.": {
-  "en": "",
+  "en": "A smooth, heavy pebble rolled by the current. The Safari owner wants to pave the lagoon's edge with it.",
   "ctx": "src/data/itens.ts:187 · i()"
  },
  "Muda de Buriti": {
-  "en": "",
+  "en": "Buriti Sapling",
   "ctx": "src/data/itens.ts:188 · i()"
  },
  "Mudinha de buriti num saco de estopa molhado. Onde tem buriti, tem água.": {
-  "en": "",
+  "en": "A buriti seedling in a wet burlap sack. Where there's buriti, there's water.",
   "ctx": "src/data/itens.ts:188 · i()"
  },
  "Tronco Oco": {
-  "en": "",
+  "en": "Hollow Log",
   "ctx": "src/data/itens.ts:189 · i()"
  },
  "Pedaço de tronco ocado pelo tempo, leve e firme. Casa pronta para quem gosta de escuro.": {
-  "en": "",
+  "en": "A log hollowed out by time, light and sturdy. A ready-made home for those who like the dark.",
   "ctx": "src/data/itens.ts:189 · i()"
  },
  "Vitamina de Abacate": {
-  "en": "",
+  "en": "Avocado Shake",
   "ctx": "src/data/itens.ts:190 · i()"
  },
  "Batida grossa de abacate. Fortalece a Vida da criatura (esforço).": {
-  "en": "",
+  "en": "A thick avocado shake. Boosts the creature's HP (effort).",
   "ctx": "src/data/itens.ts:190 · i()"
  },
  "Vitamina de Banana": {
-  "en": "",
+  "en": "Banana Shake",
   "ctx": "src/data/itens.ts:191 · i()"
  },
  "Banana com leite e aveia. Fortalece o Ataque da criatura (esforço).": {
-  "en": "",
+  "en": "Banana with milk and oats. Boosts the creature's Attack (effort).",
   "ctx": "src/data/itens.ts:191 · i()"
  },
  "Vitamina de Mamão": {
-  "en": "",
+  "en": "Papaya Shake",
   "ctx": "src/data/itens.ts:192 · i()"
  },
  "Mamão batido bem gelado. Fortalece a Defesa da criatura (esforço).": {
-  "en": "",
+  "en": "Ice-cold blended papaya. Boosts the creature's Defense (effort).",
   "ctx": "src/data/itens.ts:192 · i()"
  },
  "Vitamina de Graviola": {
-  "en": "",
+  "en": "Soursop Shake",
   "ctx": "src/data/itens.ts:193 · i()"
  },
  "Graviola cremosa. Fortalece o Ataque Especial da criatura (esforço).": {
-  "en": "",
+  "en": "Creamy soursop. Boosts the creature's Sp. Attack (effort).",
   "ctx": "src/data/itens.ts:193 · i()"
  },
  "Vitamina de Manga": {
-  "en": "",
+  "en": "Mango Shake",
   "ctx": "src/data/itens.ts:194 · i()"
  },
  "Manga espada batida. Fortalece a Defesa Especial da criatura (esforço).": {
-  "en": "",
+  "en": "Blended mango. Boosts the creature's Sp. Defense (effort).",
   "ctx": "src/data/itens.ts:194 · i()"
  },
  "Vitamina de Guaraná": {
-  "en": "",
+  "en": "Guaraná Shake",
   "ctx": "src/data/itens.ts:195 · i()"
  },
  "Guaraná batido com fruta. Fortalece a Velocidade da criatura (esforço).": {
-  "en": "",
+  "en": "Guaraná blended with fruit. Boosts the creature's Speed (effort).",
   "ctx": "src/data/itens.ts:195 · i()"
  },
  "Garrafada Forte": {
-  "en": "",
+  "en": "Strong Root Tonic",
   "ctx": "src/data/itens.ts:202 · i()"
  },
  "Garrafada curtida com casca de jatobá e mel. Recupera 120 de vida.": {
-  "en": "",
+  "en": "Root tonic aged with jatobá bark and honey. Restores 120 HP.",
   "ctx": "src/data/itens.ts:202 · i()"
  }
 }
