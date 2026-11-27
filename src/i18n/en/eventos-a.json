@@ -564,603 +564,603 @@
   "ctx": "src/data/eventos/a2.ts:20 · campo nome | src/data/treinadores/a1.ts:123 · t() | src/data/zonas/A5-casa-1.ts:9 · campo nome"
  },
  "Esse aí ainda é ovo. Ovo eu registro quando nascer, que eu não sou de adivinhar.": {
-  "en": "",
+  "en": "That one's still an egg. I register eggs once they hatch — I'm no fortune teller.",
   "ctx": "src/data/eventos/a2.ts:22 · falar()"
  },
  "um lugar que nem o caderno sabe": {
-  "en": "",
+  "en": "a place not even the notebook knows",
   "ctx": "src/data/eventos/a2.ts:23"
  },
  "{nome}: conheceu você em {onde}, no nível {nivel}.": {
-  "en": "",
+  "en": "{nome}: met you at {onde}, at level {nivel}.",
   "ctx": "src/data/eventos/a2.ts:25 · falar()"
  },
  "Cresceu que foi uma beleza! Isso é comida boa e batalha honesta.": {
-  "en": "",
+  "en": "It's grown like a weed! That's good food and honest battling.",
   "ctx": "src/data/eventos/a2.ts:25 · t()"
  },
  "Já engordou uns níveis. Está no caminho.": {
-  "en": "",
+  "en": "It's already put on a few levels. On the right track.",
   "ctx": "src/data/eventos/a2.ts:25 · t()"
  },
  "Ainda está com cheirinho de capim novo.": {
-  "en": "",
+  "en": "It still smells like fresh grass.",
   "ctx": "src/data/eventos/a2.ts:25 · t()"
  },
  "Tenente Lata": {
-  "en": "",
+  "en": "Lieutenant Lata",
   "ctx": "src/data/eventos/a2.ts:30 · campo nome | src/data/eventos/b2-sul.ts:56 · campo nome | src/data/treinadores/b2-sul.ts:99 · campo nome | +1"
  },
  "Tenente Rebite": {
-  "en": "",
+  "en": "Lieutenant Rebite",
   "ctx": "src/data/eventos/a2.ts:31 · campo nome | src/data/eventos/b1.ts:90 · campo nome | src/data/zonas/B3-mina-2.ts:44 · gente()"
  },
  "A alavanca já está abaixada. Lá do outro lado do salão, a grade continua aberta.": {
-  "en": "",
+  "en": "The lever is already down. Across the hall, the gate is still open.",
   "ctx": "src/data/eventos/a2.ts:47 · f()"
  },
  "Uma alavanca de ferro, lubrificada com capricho. Na plaquinha: \"GRADE DA ESCADA LESTE\".": {
-  "en": "",
+  "en": "An iron lever, lovingly greased. The little plate says: \"EAST STAIRWAY GATE\".",
   "ctx": "src/data/eventos/a2.ts:48 · f()"
  },
  "Puxar a alavanca?": {
-  "en": "",
+  "en": "Pull the lever?",
   "ctx": "src/data/eventos/a2.ts:49 · pergunta/opção | src/data/eventos/a2.ts:200 · pergunta/opção"
  },
  "CLANC! Do outro lado do salão, uma grade pesada sobe rangendo.": {
-  "en": "",
+  "en": "CLANK! Across the hall, a heavy gate creaks its way up.",
   "ctx": "src/data/eventos/a2.ts:50 · f()"
  },
  "A chave geral está ligada. O painel zumbe baixinho, satisfeito.": {
-  "en": "",
+  "en": "The main switch is on. The panel hums quietly, content.",
   "ctx": "src/data/eventos/a2.ts:57 · f()"
  },
  "CHAVE GERAL DA USINA. Alguém colou um aviso do Cartel por cima: \"NÃO LIGAR. ORDEM DA TENENTE.\"\fO aviso está preso com chiclete.": {
-  "en": "",
+  "en": "POWER PLANT MAIN SWITCH. Someone stuck a Cartel notice over it: \"DO NOT TURN ON. LIEUTENANT'S ORDERS.\"\fThe notice is held on with chewing gum.",
   "ctx": "src/data/eventos/a2.ts:58 · f()"
  },
  "Ligar a chave geral?": {
-  "en": "",
+  "en": "Turn on the main switch?",
   "ctx": "src/data/eventos/a2.ts:59 · pergunta/opção"
  },
  "As lâmpadas do porão acendem uma a uma.\fLá em cima, a porta elétrica da sala de controle faz \"clique\".": {
-  "en": "",
+  "en": "The basement lights come on one by one.\fUpstairs, the control room's electric door goes \"click\".",
   "ctx": "src/data/eventos/a2.ts:60 · f()"
  },
  "A jaula está vazia e de porta aberta. Ficou só um fiapo de capim e um cheiro de tempestade.": {
-  "en": "",
+  "en": "The cage is empty, its door wide open. All that's left is a wisp of grass and a smell of thunderstorm.",
   "ctx": "src/data/eventos/a2.ts:67 · f()"
  },
  "Uma jaula do Cartel Ferrugem. Lá dentro, um Vagalumim pisca fraco, em código de socorro.\fO cadeado é elétrico: só abre da sala de controle.": {
-  "en": "",
+  "en": "A Rust Cartel cage. Inside, a Vagalumim blinks weakly, in distress code.\fThe padlock is electric: it only opens from the control room.",
   "ctx": "src/data/eventos/a2.ts:69 · f()"
  },
  "Quem ligou a chave geral?! Eu mandei colar um aviso! Com chiclete do bom!": {
-  "en": "",
+  "en": "Who turned on the main switch?! I had a notice put up! With the good chewing gum!",
   "ctx": "src/data/eventos/a2.ts:79 · f()"
  },
  "Ah, é só uma criança enxerida. Escute aqui: esta usina agora é uma fábrica de \"baterias vivas\" do Cartel Ferrugem.\fCada criatura de Trovão vale uma nota no mercado. E você não vai estragar a minha cota do mês!": {
-  "en": "",
+  "en": "Oh, it's just a nosy kid. Listen here: this power plant is now a Rust Cartel \"living battery\" factory.\fEvery Thunder creature is worth a fortune on the market. And you're not going to ruin my monthly quota!",
   "ctx": "src/data/eventos/a2.ts:80 · f()"
  },
  "Amassada por uma criança… O Coronel Garrote vai me mandar para o ferro-velho.": {
-  "en": "",
+  "en": "Crushed by a kid… Colonel Garrote is going to send me to the scrapyard.",
   "ctx": "src/data/eventos/a2.ts:82 · f()"
  },
  "Fique com a sua usina! A carga boa já saiu de barco, de qualquer jeito. O Rebite cuida do resto, lá no farol.\fOps. Eu não disse farol. Eu disse… faról. É outra coisa.": {
-  "en": "",
+  "en": "Keep your power plant! The good cargo already left by boat anyway. Rebite is handling the rest, at the lighthouse.\fOops. I didn't say lighthouse. I said… light… house. It's something else.",
   "ctx": "src/data/eventos/a2.ts:83 · f()"
  },
  "A tenente Lata e os capangas fugiram pela passarela.\fOs geradores da Usina Velha voltam a girar. As jaulas do porão se abrem sozinhas!": {
-  "en": "",
+  "en": "Lieutenant Lata and her goons ran off across the catwalk.\fThe Old Power Plant's generators start spinning again. The basement cages open on their own!",
   "ctx": "src/data/eventos/a2.ts:86 · f()"
  },
  "Engenheira-chefe": {
-  "en": "",
+  "en": "Chief Engineer",
   "ctx": "src/data/eventos/a2.ts:87 · campo nome | src/data/eventos/a2.ts:88 · campo nome"
  },
  "Você religou a Usina! Eu estava trancada no almoxarifado há três dias, à base de biscoito de polvilho.\fCom a energia de volta, o guindaste do cais de Porto Sereia já pode descer as canoas. A Baía Azul está aberta para quem tem o Remo!": {
-  "en": "",
+  "en": "You got the Power Plant running again! I'd been locked in the storeroom for three days, living on cassava biscuits.\fWith the power back on, the crane at the Porto Sereia dock can lower the canoes. Baía Azul is open to anyone with the Paddle!",
   "ctx": "src/data/eventos/a2.ts:87 · f()"
  },
  "A estação também acendeu, mas o maquinista só embarca Campeão da Liga dos Guardiões. Regra da linha da serra.\fTome, é da gaveta do diretor. Ele não vai dar falta.": {
-  "en": "",
+  "en": "The station lit up too, but the engineer only lets League of Guardians Champions on board. Mountain line rules.\fHere, this is from the director's drawer. He won't miss it.",
   "ctx": "src/data/eventos/a2.ts:88 · f()"
  },
  "O Saveiro sobe o rio até Porto Pantaneiro, lá no Sertão das Névoas.": {
-  "en": "",
+  "en": "The Saveiro sails up the river to Porto Pantaneiro, in the Sertão das Névoas.",
   "ctx": "src/data/eventos/a2.ts:100 · f()"
  },
  "Mas o mestre só leva quem venceu a Liga dos Guardiões. Diz que o Sertão não é passeio de domingo.": {
-  "en": "",
+  "en": "But the skipper only takes those who've beaten the League of Guardians. Says the Sertão is no Sunday stroll.",
   "ctx": "src/data/eventos/a2.ts:101 · f()"
  },
  "Subia, quer dizer. O barco está no estaleiro, de casco para cima, e o mestre jura que volta para a água em breve.\fE mesmo depois da reforma ele só leva quem venceu a Liga dos Guardiões. Diz que o Sertão não é passeio de domingo.": {
-  "en": "",
+  "en": "Used to sail, I mean. The boat's in the shipyard, hull up, and the skipper swears it'll be back in the water soon.\fAnd even after the repairs he only takes those who've beaten the League of Guardians. Says the Sertão is no Sunday stroll.",
   "ctx": "src/data/eventos/a2.ts:102 · f()"
  },
  "Campeão a bordo! Bilhete conferido. O Saveiro está na ponta do cais: é só subir a prancha.\fPróxima parada: Porto Pantaneiro, Sertão das Névoas. Enjoo por conta do passageiro.": {
-  "en": "",
+  "en": "A Champion aboard! Ticket checked. The Saveiro is at the end of the dock: just walk up the gangplank.\fNext stop: Porto Pantaneiro, Sertão das Névoas. Seasickness is the passenger's problem.",
   "ctx": "src/data/eventos/a2.ts:110 · f()"
  },
  "Campeão da Liga no meu cais! Bilhete conferido, tudo certo… menos o barco.\fO Saveiro está no estaleiro, em reforma: tábua nova, vela nova. Guarde o bilhete: ele vale assim que o casco voltar para a água. Em breve, diz o mestre. O Rádio Cipó avisa.": {
-  "en": "",
+  "en": "A League Champion on my dock! Ticket checked, all good… except the boat.\fThe Saveiro is in the shipyard for repairs: new planks, new sail. Hang on to that ticket: it's good as soon as the hull's back in the water. Soon, says the skipper. Rádio Cipó will let you know.",
   "ctx": "src/data/eventos/a2.ts:111 · f()"
  },
  "Campeão da Liga e sem bilhete? O Cacique Aracê entrega um para cada Campeão, lá no Platô. Dá uma conferida na mochila.": {
-  "en": "",
+  "en": "A League Champion with no ticket? Chief Aracê hands one to every Champion, up on the Platô. Take a look in your bag.",
   "ctx": "src/data/eventos/a2.ts:112 · f()"
  },
  "Cais do Saveiro, linha Cidade Coral ⇄ Porto Pantaneiro. Bonito, né? Pois é só para olhar.\fO mestre só sobe o rio com Campeão da Liga dos Guardiões a bordo, e de bilhete na mão.": {
-  "en": "",
+  "en": "Saveiro Dock, Cidade Coral - Porto Pantaneiro line. Pretty, huh? Well, it's just for looking.\fThe skipper only goes up the river with a League of Guardians Champion aboard, ticket in hand.",
   "ctx": "src/data/eventos/a2.ts:114 · f()"
  },
  "A Liga fica no Platô, depois de Vila Buriti. Oito insígnias para entrar, cinco lutas seguidas para sair Campeão.\fVocê tem cara de quem chega lá. Eu tenho cara de quem vende bilhete. Cada um com o seu talento.": {
-  "en": "",
+  "en": "The League is on the Platô, past Vila Buriti. Eight badges to get in, five battles in a row to come out Champion.\fYou look like someone who'll make it. I look like someone who sells tickets. Everyone has their talent.",
   "ctx": "src/data/eventos/a2.ts:115 · f()"
  },
  "A mãe respondeu a carta com três páginas e uma receita de broa. Você é o melhor carteiro que a Gruta Breu já viu!": {
-  "en": "",
+  "en": "Mom answered the letter with three pages and a cornbread recipe. You're the best mail carrier Gruta Breu has ever seen!",
   "ctx": "src/data/eventos/a2.ts:123 · f()"
  },
  "Você entregou?! E ela mandou resposta?! Deixa eu ver… \"Minha filha, agasalhe-se.\" É ela mesmo.": {
-  "en": "",
+  "en": "You delivered it?! And she wrote back?! Let me see… \"My dear daughter, wear a sweater.\" That's her, all right.",
   "ctx": "src/data/eventos/a2.ts:125 · f()"
  },
  "Promessa é dívida. Este pergaminho era do meu avô. Ele dizia que ensina a criatura a brilhar feito renda no sol.": {
-  "en": "",
+  "en": "A promise is a promise. This scroll was my grandfather's. He used to say it teaches a creature to shine like lace in the sun.",
   "ctx": "src/data/eventos/a2.ts:126 · f()"
  },
  "A carta é para a Vó Candinha, no sobrado amarelo de Serra Fumaça, do outro lado da Gruta Breu.\fNão molhe, não amasse e, por favor, não leia. Tem fofoca.": {
-  "en": "",
+  "en": "The letter is for Vó Candinha, in the yellow two-story house in Serra Fumaça, on the other side of Gruta Breu.\fDon't get it wet, don't crumple it and please, don't read it. There's gossip in it.",
   "ctx": "src/data/eventos/a2.ts:129 · f()"
  },
  "Ai, moço… moça… treinador! Você vai para os lados de Serra Fumaça? A minha mãe mora lá e o correio parou desde que a Gruta Breu ficou sem luz.": {
-  "en": "",
+  "en": "Oh, young man… young lady… trainer! Are you headed toward Serra Fumaça? My mother lives there, and the mail stopped once Gruta Breu lost its lights.",
   "ctx": "src/data/eventos/a2.ts:130 · f()"
  },
  "Levar a carta da rendeira para Serra Fumaça?": {
-  "en": "",
+  "en": "Take the lacemaker's letter to Serra Fumaça?",
   "ctx": "src/data/eventos/a2.ts:131 · pergunta/opção"
  },
  "{JOGADOR} guardou a Carta de Renda no bolso mais seco da mochila.": {
-  "en": "",
+  "en": "{JOGADOR} tucked the Lace Letter into the driest pocket of the bag.",
   "ctx": "src/data/eventos/a2.ts:134 · f()"
  },
  "É para a Vó Candinha, no sobrado amarelo logo depois da boca da gruta. Diga que a renda do enxoval está quase pronta. Faz dois anos que está quase pronta.": {
-  "en": "",
+  "en": "It's for Vó Candinha, in the yellow house just past the mouth of the cave. Tell her the trousseau lace is almost done. It's been almost done for two years.",
   "ctx": "src/data/eventos/a2.ts:135 · f()"
  },
  "Tudo bem. Vou amarrar numa garrafa e jogar no mar. Deve chegar em uns quarenta anos.": {
-  "en": "",
+  "en": "That's fine. I'll put it in a bottle and toss it in the sea. Should get there in about forty years.",
   "ctx": "src/data/eventos/a2.ts:136 · f()"
  },
  "Diga para a minha filha que aqui na serra a gente dorme de meia. E que eu quero ver essa renda pronta antes do meu centenário.": {
-  "en": "",
+  "en": "Tell my daughter that up here in the mountains we sleep in socks. And that I want to see that lace finished before my hundredth birthday.",
   "ctx": "src/data/eventos/a2.ts:145 · f()"
  },
  "Carta? Para mim? De Cidade Coral?! Faz tanto tempo que o carteiro não atravessa a gruta que eu achei que o mar tinha acabado.": {
-  "en": "",
+  "en": "A letter? For me? From Cidade Coral?! The mail carrier hasn't crossed the cave in so long I thought the sea had dried up.",
   "ctx": "src/data/eventos/a2.ts:147 · f()"
  },
  "A Vó Candinha lê a carta três vezes, ri duas e resmunga uma.": {
-  "en": "",
+  "en": "Vó Candinha reads the letter three times, laughs twice and grumbles once.",
   "ctx": "src/data/eventos/a2.ts:148 · f()"
  },
  "\"A renda do enxoval está quase pronta.\" Há! Essa menina puxou ao pai. Espere aí que eu vou responder.\fPronto. E isto é para você, pelo frete. Pedra da lua: achei no cemitério, mas juro que não estava sendo usada.": {
-  "en": "",
+  "en": "\"The trousseau lace is almost done.\" Ha! That girl takes after her father. Hold on, I'll write back.\fThere. And this is for you, for the postage. A moon stone: found it in the cemetery, but I swear nobody was using it.",
   "ctx": "src/data/eventos/a2.ts:149 · f()"
  },
  "{JOGADOR} guardou a Resposta da Vó Candinha junto com a receita de broa.": {
-  "en": "",
+  "en": "{JOGADOR} put Vó Candinha's Reply away with the cornbread recipe.",
   "ctx": "src/data/eventos/a2.ts:151 · f()"
  },
  "Nesta casa só entra visita com notícia. Você tem notícia? Não? Então tome um café e vá procurar uma.\fMinha filha é rendeira lá em Cidade Coral. Se passar pela praça, diga que a mãe dela ainda está viva e brava.": {
-  "en": "",
+  "en": "Only visitors with news come into this house. Do you have news? No? Then have a coffee and go find some.\fMy daughter is a lacemaker down in Cidade Coral. If you pass by the square, tell her that her mother is still alive and still cranky.",
   "ctx": "src/data/eventos/a2.ts:152 · f()"
  },
  "Soube que você entregou uma carta que veio pela Gruta Breu! Você me deixou sem desculpa para não trabalhar.\fDeixa eu ao menos carimbar a sua mochila. Pronto: \"ENTREGUE COM CARINHO\".": {
-  "en": "",
+  "en": "I heard you delivered a letter that came through Gruta Breu! Now I've got no excuse not to work.\fAt least let me stamp your bag. There: \"DELIVERED WITH LOVE\".",
   "ctx": "src/data/eventos/a2.ts:159 · f()"
  },
  "Sou o carteiro de Serra Fumaça. Na neblina eu entrego carta pelo tato: bato na porta e pergunto quem é.": {
-  "en": "",
+  "en": "I'm the mail carrier of Serra Fumaça. In the fog I deliver letters by feel: I knock on the door and ask who's there.",
   "ctx": "src/data/eventos/a2.ts:160 · f()"
  },
  "De Cidade Coral não chega nada desde que a gruta escureceu. A Vó Candinha, do sobrado amarelo ali em cima, pergunta por carta todo santo dia.": {
-  "en": "",
+  "en": "Nothing's come from Cidade Coral since the cave went dark. Vó Candinha, in the yellow house up there, asks about letters every single day.",
   "ctx": "src/data/eventos/a2.ts:161 · f()"
  },
  "Eu sou a Dona Bilro, do registro. Toda parceira que passa por esta ilha eu anoto: de onde veio e de que tamanho chegou.\fDeixa eu ver as suas. De óculos. Onde estão os meus óculos?": {
-  "en": "",
+  "en": "I'm Dona Bilro, from the registry. Every partner that passes through this island, I write down: where it came from and how big it was.\fLet me see yours. With my glasses. Where are my glasses?",
   "ctx": "src/data/eventos/a2.ts:169 · f()"
  },
  "Tudo anotado. Pela ficha limpa, tome: é mel do meu quintal. Criatura bem registrada merece agrado.": {
-  "en": "",
+  "en": "All written down. For the clean record, here: honey from my backyard. A well-registered creature deserves a treat.",
   "ctx": "src/data/eventos/a2.ts:172 · f()"
  },
  "Volte quando tiver parceira nova. O caderno aguenta.": {
-  "en": "",
+  "en": "Come back when you have a new partner. The notebook can take it.",
   "ctx": "src/data/eventos/a2.ts:174 · f()"
  },
  "Soube que a Faísca do Volta já está acendendo o farol de novo. Xarope de Algas: receita da minha bisavó, que era sereia nas horas vagas.": {
-  "en": "",
+  "en": "I heard Volta's Faísca is lighting up the lighthouse again. Seaweed Syrup: my great-grandmother's recipe — she was a mermaid in her spare time.",
   "ctx": "src/data/eventos/a2.ts:181 · f()"
  },
  "O xarope não vai se entregar sozinho, criatura! A Faísca está esperando lá no alto do farol.": {
-  "en": "",
+  "en": "That syrup won't deliver itself, friend! Faísca is waiting at the top of the lighthouse.",
   "ctx": "src/data/eventos/a2.ts:183 · f()"
  },
  "O Volta mandou pedir Xarope de Algas? Para a Faísca? Coitadinha da Poraquê, sugaram a bateria dela até o osso. Se é que peixe-elétrico tem osso.": {
-  "en": "",
+  "en": "Volta sent for Seaweed Syrup? For Faísca? Poor Poraquê, they drained her battery to the bone. If an electric eel even has bones.",
   "ctx": "src/data/eventos/a2.ts:184 · f()"
  },
  "Espere… alga-parda, uma pitada de sal grosso, mel para descer… Pronto! Sacuda antes de dar. O frasco, não a Poraquê.": {
-  "en": "",
+  "en": "Hold on… brown seaweed, a pinch of coarse salt, honey to help it go down… Done! Shake before giving. The bottle, not the Poraquê.",
   "ctx": "src/data/eventos/a2.ts:185 · f()"
  },
  "{JOGADOR} recebeu o Xarope de Algas! O frasco é morno e faz \"glub\".": {
-  "en": "",
+  "en": "{JOGADOR} received the Seaweed Syrup! The bottle is warm and goes \"glub\".",
   "ctx": "src/data/eventos/a2.ts:187 · f()"
  },
  "Sou a Moça Sargaço, boticária. Remédio de mar é comigo: xarope de alga, pomada de concha, chá de espuma.\fSe alguém da baía adoecer, é só mandar me chamar. Ou mandar buscar, que eu enjoo em canoa.": {
-  "en": "",
+  "en": "I'm Moça Sargaço, the apothecary. Sea remedies are my thing: seaweed syrup, shell ointment, foam tea.\fIf anyone on the bay gets sick, just send for me. Or send someone to fetch the medicine, because I get seasick in canoes.",
   "ctx": "src/data/eventos/a2.ts:189 · f()"
  },
  "A alavanca já está puxada. O cabo que desce para o térreo está esticado.": {
-  "en": "",
+  "en": "The lever's already pulled. The cable running down to the ground floor is pulled taut.",
   "ctx": "src/data/eventos/a2.ts:198 · f()"
  },
  "Uma alavanca com um cabo de aço que some pelo assoalho. Etiqueta com a letra do Volta: \"GRADE DA ESCADA 2 (não esquecer aberta!!)\".": {
-  "en": "",
+  "en": "A lever with a steel cable that disappears through the floorboards. A label in Volta's handwriting: \"STAIRWAY 2 GATE (don't forget to leave it open!!)\".",
   "ctx": "src/data/eventos/a2.ts:199 · f()"
  },
  "RRRRÉC! Lá embaixo, uma grade sobe e bate no teto.": {
-  "en": "",
+  "en": "RRRRRK! Down below, a gate shoots up and slams into the ceiling.",
   "ctx": "src/data/eventos/a2.ts:201 · f()"
  },
  "{JOGADOR}?! Eu falei para não colar na minha canoa e você veio de escada!": {
-  "en": "",
+  "en": "{JOGADOR}?! I told you not to tag along in my canoe, and you came by the stairs!",
   "ctx": "src/data/eventos/a2.ts:210 · f()"
  },
  "Lá em cima tem um tenente do Cartel com as criaturas de Trovão da baía inteira em jaula. Eu ia resolver sozinha, mas…\fMas nada. Antes de subir, você vai me mostrar que não vai atrapalhar!": {
-  "en": "",
+  "en": "Up there, there's a Cartel lieutenant with the whole bay's Thunder creatures in cages. I was going to handle it myself, but…\fBut nothing. Before you go up, you're going to show me you won't get in the way!",
   "ctx": "src/data/eventos/a2.ts:211 · f()"
  },
  "Ganhei. Então fica combinado: eu fui a favorita e você deu sorte de eu estar com pressa.": {
-  "en": "",
+  "en": "I won. So it's settled: I was the favorite and you got lucky I was in a hurry.",
   "ctx": "src/data/eventos/a2.ts:215 · f()"
  },
  "Tá bom, tá bom. Você melhorou. Um pouco. Não conta para ninguém que eu disse.": {
-  "en": "",
+  "en": "Fine, fine. You've gotten better. A little. Don't tell anyone I said that.",
   "ctx": "src/data/eventos/a2.ts:216 · f()"
  },
  "Escuta: eu já derrubei meia escada de capanga e as minhas estão no fim do fôlego. As suas também, depois dessa.\fDeixa eu dar um jeito.": {
-  "en": "",
+  "en": "Listen: I've already knocked down half a staircase of goons and mine are running on fumes. Yours too, after that.\fLet me fix that.",
   "ctx": "src/data/eventos/a2.ts:217 · f()"
  },
  "Pronto, novas em folha. Remédio da minha avó, não pergunte o que tem dentro.\fSobe você. Eu fico aqui segurando a escada: se descer capanga correndo, tropeça em mim.": {
-  "en": "",
+  "en": "There, good as new. My grandma's remedy — don't ask what's in it.\fYou go up. I'll stay here holding the stairs: if a goon comes running down, he'll trip over me.",
   "ctx": "src/data/eventos/a2.ts:219 · f()"
  },
  "E {JOGADOR}… solta todas as jaulas, tá? Todas.": {
-  "en": "",
+  "en": "And {JOGADOR}… open every cage, okay? Every single one.",
   "ctx": "src/data/eventos/a2.ts:220 · f()"
  },
  "Jaula aberta e vazia. Sobrou uma pena chamuscada e um zumbido feliz no ar.": {
-  "en": "",
+  "en": "Cage open and empty. All that's left is a singed feather and a happy buzz in the air.",
   "ctx": "src/data/eventos/a2.ts:228 · f()"
  },
  "Jaulas do Cartel empilhadas até o teto: Poraquins, Vagalumins e Grilinhos, todos ligados por fios à lanterna do farol.\fO Cartel está usando as criaturas como pilha!": {
-  "en": "",
+  "en": "Cartel cages stacked to the ceiling: Poraquins, Vagalumins and Grilinhos, all wired up to the lighthouse lamp.\fThe Cartel is using the creatures as batteries!",
   "ctx": "src/data/eventos/a2.ts:230 · f()"
  },
  "A Faísca nada em oito dentro do aquário. A cada volta, a lanterna do farol pisca mais forte.": {
-  "en": "",
+  "en": "Faísca swims figure eights in the tank. With every lap, the lighthouse lamp shines brighter.",
   "ctx": "src/data/eventos/a2.ts:237 · f()"
  },
  "O aquário da lanterna. A Faísca, a Poraquê do Volta, está deitada no fundo, apagada feito lâmpada queimada.": {
-  "en": "",
+  "en": "The lamp's tank. Faísca, Volta's Poraquê, is lying on the bottom, dark as a burnt-out bulb.",
   "ctx": "src/data/eventos/a2.ts:238 · f()"
  },
  "Um aquário enorme, cheio de fios do Cartel. No fundo, uma Poraquê quase sem brilho.": {
-  "en": "",
+  "en": "A huge tank full of Cartel wires. At the bottom, a Poraquê with barely any glow.",
   "ctx": "src/data/eventos/a2.ts:239 · f()"
  },
  "Parado aí. Mais um passo e você pisa no meu chão limpo.": {
-  "en": "",
+  "en": "Stop right there. One more step and you'll be on my clean floor.",
   "ctx": "src/data/eventos/a2.ts:250 · f()"
  },
  "Tenente Rebite, Cartel Ferrugem. Este farol agora é uma antena: com a força dessas criaturas, o Coronel Garrote vai falar com a costa inteira. E a costa inteira vai obedecer.": {
-  "en": "",
+  "en": "Lieutenant Rebite, Rust Cartel. This lighthouse is now an antenna: with these creatures' power, Colonel Garrote will speak to the whole coast. And the whole coast will obey.",
   "ctx": "src/data/eventos/a2.ts:251 · f()"
  },
  "Mmmf! Mmmmf mmf MMF!": {
-  "en": "",
+  "en": "Mmmf! Mmmmf mmf MMF!",
   "ctx": "src/data/eventos/a2.ts:252 · f()"
  },
  "O faroleiro discorda. O faroleiro está amarrado. Capangas: parafusem a visita!": {
-  "en": "",
+  "en": "The lighthouse keeper disagrees. The lighthouse keeper is tied up. Goons: screw down our guest!",
   "ctx": "src/data/eventos/a2.ts:253 · f()"
  },
  "Incompetentes. Tudo eu, tudo eu.\fArrume as suas criaturas, se quiser: eu gosto de apertar parafuso inteiro. Quando chegar perto, eu aperto você pessoalmente.": {
-  "en": "",
+  "en": "Incompetents. I have to do everything myself.\fPatch up your creatures, if you like: I prefer to tighten bolts that are in one piece. When you get close, I'll tighten you personally.",
   "ctx": "src/data/eventos/a2.ts:256 · f()"
  },
  "Pronto? Venha, então. Eu aperto você pessoalmente.": {
-  "en": "",
+  "en": "Ready? Come on, then. I'll tighten you personally.",
   "ctx": "src/data/eventos/a2.ts:258 · f()"
  },
  "Soltou… Tudo o que eu prendo, solta. A Lata tinha razão: esta costa dá azar.": {
-  "en": "",
+  "en": "Loose… Everything I tighten comes loose. Lata was right: this coast is bad luck.",
   "ctx": "src/data/eventos/a2.ts:260 · f()"
  },
  "Fique com o seu farol. O Coronel tem planos maiores no Sertão, e lá não tem criança com canoa.\fCartel Ferrugem: recolher!": {
-  "en": "",
+  "en": "Keep your lighthouse. The Colonel has bigger plans in the Sertão, and there are no kids with canoes there.\fRust Cartel: fall back!",
   "ctx": "src/data/eventos/a2.ts:261 · f()"
  },
  "O tenente Rebite e os capangas descem a escada aos tropeços.\fUma por uma, as jaulas se abrem. As criaturas de Trovão saem pela janela da lanterna, piscando de alívio.": {
-  "en": "",
+  "en": "Lieutenant Rebite and his goons stumble down the stairs.\fOne by one, the cages open. The Thunder creatures fly out the lamp room window, blinking with relief.",
   "ctx": "src/data/eventos/a2.ts:263 · f()"
  },
  "Ufa! Obrigado, obrigado! Três dias amarrado, e o pior: sem poder mexer em nada!\fEu sou o Volta, faroleiro, inventor e, nas horas vagas, líder do ginásio da ilha.": {
-  "en": "",
+  "en": "Phew! Thank you, thank you! Three days tied up, and the worst part: I couldn't tinker with anything!\fI'm Volta: lighthouse keeper, inventor and, in my spare time, the island's Gym Leader.",
   "ctx": "src/data/eventos/a2.ts:264 · f()"
  },
  "Você merece mais que um aperto de mão. Tome o meu Lampião: fui eu que fiz. Com uma parceira de Brasa, Trovão ou Encanto na equipe, ele espanta qualquer breu. Até o da Gruta Breu!": {
-  "en": "",
+  "en": "You deserve more than a handshake. Take my Lantern: I made it myself. With an Ember, Thunder or Charm partner on your team, it chases away any darkness. Even the one in Gruta Breu!",
   "ctx": "src/data/eventos/a2.ts:265 · f()"
  },
  "Agora, o ginásio… Eu adoraria um desafio, mas olhe a Faísca, a minha Poraquê. É ela que acende a lanterna do farol, e esses brutos sugaram a bateria dela.\fSem a Faísca eu não saio daqui. E líder preocupado luta mal.": {
-  "en": "",
+  "en": "Now, the gym… I'd love a challenge, but look at Faísca, my Poraquê. She's the one who lights the lighthouse lamp, and those brutes drained her battery.\fI'm not leaving here without Faísca. And a worried Leader battles badly.",
   "ctx": "src/data/eventos/a2.ts:267 · f()"
  },
  "Só o Xarope de Algas da Moça Sargaço, a boticária de Cidade Coral, levanta peixe-elétrico. Você remaria até lá por mim?\fTraga o xarope e eu abro o ginásio na mesma hora. Palavra de inventor: quase nunca falha!": {
-  "en": "",
+  "en": "Only Moça Sargaço's Seaweed Syrup can perk up an electric fish — she's the apothecary in Cidade Coral. Would you paddle there for me?\fBring the syrup and I'll open the gym right away. Inventor's word: it almost never fails!",
   "ctx": "src/data/eventos/a2.ts:268 · f()"
  },
  "Mmmf! Mmf mmf!": {
-  "en": "",
+  "en": "Mmmf! Mmf mmf!",
   "ctx": "src/data/eventos/a2.ts:275 · f()"
  },
  "O Faroleiro Volta está amarrado com fio de telefone. Ele aponta o queixo para o tenente.": {
-  "en": "",
+  "en": "Lighthouse Keeper Volta is tied up with telephone wire. He points his chin at the lieutenant.",
   "ctx": "src/data/eventos/a2.ts:275 · f()"
  },
  "É o Xarope de Algas?! Dá aqui! Sacudiu? A Sargaço sempre manda sacudir.": {
-  "en": "",
+  "en": "Is that the Seaweed Syrup?! Hand it over! Did you shake it? Sargaço always says to shake it.",
   "ctx": "src/data/eventos/a2.ts:277 · f()"
  },
  "O Volta pinga o xarope no aquário. A água fica verde, depois azul, depois… faísca!": {
-  "en": "",
+  "en": "Volta drips the syrup into the tank. The water turns green, then blue, then… sparks!",
   "ctx": "src/data/eventos/a2.ts:278 · f()"
  },
  "A Faísca dá um salto e a lanterna do farol acende de uma vez. O facho de luz varre a Baía Azul inteira!": {
-  "en": "",
+  "en": "Faísca leaps up and the lighthouse lamp blazes to life all at once. The beam sweeps across all of Baía Azul!",
   "ctx": "src/data/eventos/a2.ts:280 · f()"
  },
  "Ela voltou! Olha esse brilho! Dá para ler jornal em Porto Sereia com essa luz!": {
-  "en": "",
+  "en": "She's back! Look at that glow! You could read a newspaper in Porto Sereia with this light!",
   "ctx": "src/data/eventos/a2.ts:282 · f()"
  },
  "Promessa de inventor se cumpre: o ginásio está aberto. Eu desço na frente para ligar os circuitos. Traga borracha na sola do sapato!": {
-  "en": "",
+  "en": "An inventor keeps his promises: the gym is open. I'll head down first to switch on the circuits. Wear rubber soles!",
   "ctx": "src/data/eventos/a2.ts:283 · f()"
  },
  "E leve mais um invento meu: o Chocalho do Mutirão. Ele espalha o que uma criatura aprende na luta para quem ficou para trás.\fQuem está na reserva, dois níveis ou mais abaixo da sua mais forte, ganha metade da experiência só de escutar. Daqui para a serra os treinadores engrossam: ninguém sobe aquilo com uma criatura só.": {
-  "en": "",
+  "en": "And take one more of my inventions: the Teamwork Rattle. It shares what a creature learns in battle with the ones left behind.\fAnyone in reserve, two or more levels below your strongest, gets half the experience just by listening. From here to the mountains the trainers get tougher: nobody climbs that with just one creature.",
   "ctx": "src/data/eventos/a2.ts:285 · f()"
  },
  "A Faísca continua apagadinha… O Xarope de Algas é com a Moça Sargaço, a boticária de Cidade Coral. Ela fica perto da Venda.\fVá remando pelo oeste e depois para o sul. Eu fico aqui cantando para a Faísca. Ela finge que gosta.": {
-  "en": "",
+  "en": "Faísca is still dim… The Seaweed Syrup comes from Moça Sargaço, the apothecary in Cidade Coral. She's near the Shop.\fPaddle west, then south. I'll stay here singing to Faísca. She pretends to like it.",
   "ctx": "src/data/eventos/a2.ts:288 · f()"
  },
  "O farol acendeu e o mestre voltou para o ginásio! A oficina está uma bagunça, então está tudo normal.\fA Faísca mandou um choquinho de agradecimento. Eu repasso: bzzt.": {
-  "en": "",
+  "en": "The lighthouse is lit and the master is back at the gym! The workshop is a mess, so everything's normal.\fFaísca sent a little thank-you zap. I'll pass it on: bzzt.",
   "ctx": "src/data/eventos/a2.ts:295 · f()"
  },
  "O mestre não desce do farol enquanto a Faísca não melhorar. Poraquê é assim: sem bateria, murcha.\fO remédio é o Xarope de Algas da boticária de Cidade Coral. Ela fica na rua da Venda de lá.": {
-  "en": "",
+  "en": "The master won't come down from the lighthouse until Faísca gets better. Poraquês are like that: no battery, no spark.\fThe cure is the Seaweed Syrup from the apothecary in Cidade Coral. She's on the street with the Shop.",
   "ctx": "src/data/eventos/a2.ts:296 · f()"
  },
  "Sou a Centelha, aprendiz do Volta. Ele subiu ao farol há três dias \"para dar uma olhadinha\" e não voltou.\fDepois subiu uma gente de macacão cor de ferrugem. Eu tranquei a oficina e estou fingindo que não tem ninguém. Você não me viu.": {
-  "en": "",
+  "en": "I'm Centelha, Volta's apprentice. He went up the lighthouse three days ago \"to take a quick look\" and never came back.\fThen some people in rust-colored overalls went up. I locked the workshop and I'm pretending nobody's here. You didn't see me.",
   "ctx": "src/data/eventos/a2.ts:297 · f()"
  },
  "Rádio Farol no ar! Hoje: previsão da maré, modinhas de viola e o quadro \"Quem viu a Tartaruga-Gigante?\".\fDizem que ela sobe para respirar no Recife Submerso toda sexta-feira. Só às sextas.": {
-  "en": "",
+  "en": "Rádio Farol, on the air! Today: the tide forecast, guitar ballads and our segment \"Who's Seen the Giant Turtle?\".\fThey say she surfaces to breathe at the Sunken Reef every Friday. Only on Fridays.",
   "ctx": "src/data/eventos/a2.ts:305 · f()"
  },
  "Eu sou o Zé Dial, radioamador. O meu transmissor pifou no dia em que o farol apagou: queimou a engrenagem do dínamo.": {
-  "en": "",
+  "en": "I'm Zé Dial, ham radio operator. My transmitter died the day the lighthouse went out: it burned the dynamo's gear.",
   "ctx": "src/data/eventos/a2.ts:306 · f()"
  },
  "Dar uma Engrenagem Velha para o Zé Dial?": {
-  "en": "",
+  "en": "Give an Old Gear to Zé Dial?",
   "ctx": "src/data/eventos/a2.ts:309 · pergunta/opção"
  },
  "Serve certinho! Escuta só: chhh… \"Rádio Farol chamando a Baía Azul\"… FUNCIONA!\fVocê acaba de salvar o único programa de modinha de viola do litoral. Tome, é do baú de prêmios dos ouvintes.": {
-  "en": "",
+  "en": "Fits perfectly! Listen: shhh… \"Rádio Farol calling Baía Azul\"… IT WORKS!\fYou just saved the only guitar ballad show on the coast. Here, it's from the listeners' prize chest.",
   "ctx": "src/data/eventos/a2.ts:312 · f()"
  },
  "Sem engrenagem, sem rádio. Sem rádio, a ilha não sabe nem que horas é a maré.": {
-  "en": "",
+  "en": "No gear, no radio. No radio, and the island doesn't even know what time the tide is.",
   "ctx": "src/data/eventos/a2.ts:314 · f()"
  },
  "Se achar uma Engrenagem Velha por aí, me traga. Em Vila Ferrugem dizem que tem até pelo chão, mas é longe que só.": {
-  "en": "",
+  "en": "If you find an Old Gear somewhere, bring it to me. In Vila Ferrugem they say they're lying all over the ground, but that's a long way off.",
   "ctx": "src/data/eventos/a2.ts:315 · f()"
  },
  "Então o galho do portão era um Urutauzim fingindo de pau? Vinte anos de jardinagem e eu regando passarinho.\fFique com o Regador. Canteiro regado dá fruto mais depressa.": {
-  "en": "",
+  "en": "So the branch at the gate was an Urutauzim pretending to be a stick? Twenty years of gardening and I've been watering a bird.\fKeep the Watering Can. A watered garden bed bears fruit faster.",
   "ctx": "src/data/eventos/a2.ts:325 · f()"
  },
  "Sou a jardineira do cemitério. Tem um galho seco fincado bem no portão que eu não plantei, não podo e não consigo arrancar.\fE o esquisito: toda vez que eu rego, ele se mexe.": {
-  "en": "",
+  "en": "I'm the cemetery gardener. There's a dry branch stuck right in the gate that I didn't plant, don't prune and can't pull out.\fAnd the weird part: every time I water it, it moves.",
   "ctx": "src/data/eventos/a2.ts:326 · f()"
  },
  "Você tem um Regador? Então regue você. Eu é que não chego perto de novo.": {
-  "en": "",
+  "en": "You've got a Watering Can? Then you water it. I'm not going near it again.",
   "ctx": "src/data/eventos/a2.ts:327 · f()"
  },
  "Tome o meu Regador reserva. Se o galho morder, a culpa é do galho.": {
-  "en": "",
+  "en": "Take my spare Watering Can. If the branch bites, that's the branch's fault.",
   "ctx": "src/data/eventos/a2.ts:328 · f()"
  },
  "Um galho seco, fincado bem no meio do portão do cemitério. Tem dois nós na madeira que parecem olhos fechados.": {
-  "en": "",
+  "en": "A dry branch, stuck right in the middle of the cemetery gate. There are two knots in the wood that look like closed eyes.",
   "ctx": "src/data/eventos/a2.ts:338 · f()"
  },
  "Regar o galho?": {
-  "en": "",
+  "en": "Water the branch?",
   "ctx": "src/data/eventos/a2.ts:340 · pergunta/opção"
  },
  "O galho arregala os olhos e abre um bico do tamanho de uma gaveta!": {
-  "en": "",
+  "en": "The branch's eyes pop open and it opens a beak the size of a drawer!",
   "ctx": "src/data/eventos/a2.ts:343 · f()"
  },
  "O portão do cemitério ficou livre.": {
-  "en": "",
+  "en": "The cemetery gate is clear.",
   "ctx": "src/data/eventos/a2.ts:346 · f()"
  },
  "Ele não sai do lugar por nada. Talvez com um pouco de água…": {
-  "en": "",
+  "en": "It won't budge for anything. Maybe with a little water…",
   "ctx": "src/data/eventos/a2.ts:348 · f()"
  },
  "Com as suas engrenagens eu terminei o meu relógio de sol a manivela. Funciona até de noite. Não me pergunte como.": {
-  "en": "",
+  "en": "With your gears I finished my hand-cranked sundial. It works even at night. Don't ask me how.",
   "ctx": "src/data/eventos/a2.ts:356 · f()"
  },
  "Eu sou o Seu Ferro-Velho. Coleciono Engrenagem Velha da fábrica antiga: cada uma lembra um colega de turno.\fMe traga três e eu dou em troca uma coisa que brilha de verdade.": {
-  "en": "",
+  "en": "I'm Seu Ferro-Velho. I collect Old Gears from the old factory: each one reminds me of a shift buddy.\fBring me three and I'll give you something that really shines.",
   "ctx": "src/data/eventos/a2.ts:357 · f()"
  },
  "Entregar 3 Engrenagens Velhas?": {
-  "en": "",
+  "en": "Hand over 3 Old Gears?",
   "ctx": "src/data/eventos/a2.ts:360 · pergunta/opção"
  },
  "Uma do torno, uma da prensa, uma da esteira três… Você trouxe a turma inteira de volta!\fTrato é trato: Cuia de Ouro, forjada aqui mesmo. E uma rapadura, que ninguém é de ferro.": {
-  "en": "",
+  "en": "One from the lathe, one from the press, one from conveyor belt three… You brought the whole crew back!\fA deal's a deal: a Gold Gourd, forged right here. And a block of rapadura, since nobody's made of iron.",
   "ctx": "src/data/eventos/a2.ts:363 · f()"
  },
  "Ainda não tem três? Procure na Encosta da Fumaça, perto do pedregulho da saída leste e no fundo do meu quintal, que eu mesmo já perdi uma lá.": {
-  "en": "",
+  "en": "Don't have three yet? Look on Encosta da Fumaça, near the boulder at the east exit, and at the back of my yard — I lost one there myself.",
   "ctx": "src/data/eventos/a2.ts:366 · f()"
  },
  "E o ovo, já nasceu? Ande bastante com ele: ovo gosta de balanço de mochila.\fO Projeto Tartaruí agradece. Volte de noite para ver as mães subirem a areia.": {
-  "en": "",
+  "en": "So, has the egg hatched? Walk around a lot with it: eggs love the swaying of a backpack.\fThe Tartaruí Project thanks you. Come back at night to see the mothers climb up the sand.",
   "ctx": "src/data/eventos/a2.ts:375 · f()"
  },
  "Bem-vindo ao Projeto Tartaruí! Eu sou a Drª Maré, coordenadora. Você veio com a insígnia Estrela, então sabe pisar leve.": {
-  "en": "",
+  "en": "Welcome to the Tartaruí Project! I'm Dr. Maré, the coordinator. You came with the Star badge, so you know how to tread lightly.",
   "ctx": "src/data/eventos/a2.ts:376 · f()"
  },
  "Preciso de alguém de confiança. Achamos um ovo num ninho de tartaruga, mas não é de tartaruga: é quente, pinta diferente e veio com uma etiqueta do laboratório da Profª Ipê Amarelo.\fAlgum contrabandista do Cartel deve ter largado na fuga.": {
-  "en": "",
+  "en": "I need someone I can trust. We found an egg in a turtle nest, but it's not a turtle's: it's warm, spotted differently and came with a tag from Prof. Ipê Amarelo's lab.\fSome Cartel smuggler must have dropped it while fleeing.",
   "ctx": "src/data/eventos/a2.ts:377 · f()"
  },
  "A Profª Ipê disse pelo rádio que é irmão da criatura que ela te confiou, e que não há mãos melhores que as suas. Você cuida dele?": {
-  "en": "",
+  "en": "Prof. Ipê said over the radio that it's a sibling of the creature she entrusted to you, and that there are no better hands than yours. Will you look after it?",
   "ctx": "src/data/eventos/a2.ts:378 · f()"
  },
  "Ficar com o ovo do ninho?": {
-  "en": "",
+  "en": "Take the egg from the nest?",
   "ctx": "src/data/eventos/a2.ts:379 · pergunta/opção"
  },
  "Ele vai nascer depois de uma boa caminhada. Ou remada: balanço de canoa também conta, eu acho. A ciência ainda está discutindo.": {
-  "en": "",
+  "en": "It'll hatch after a good long walk. Or paddle: a rocking canoe counts too, I think. Science is still debating it.",
   "ctx": "src/data/eventos/a2.ts:383 · f()"
  },
  "Sem pressa. Ele fica aquecido na areia até você voltar.": {
-  "en": "",
+  "en": "No rush. It'll stay warm in the sand until you come back.",
   "ctx": "src/data/eventos/a2.ts:384 · f()"
  },
  "Um ninho na areia. No escuro, dá para ouvir os ovos estalando baixinho.\fUma Tartaruí recém-nascida põe a cabeça para fora, olha a lua e corre para o mar.": {
-  "en": "",
+  "en": "A nest in the sand. In the dark, you can hear the eggs quietly cracking.\fA newborn Tartaruí pokes its head out, looks at the moon and runs for the sea.",
   "ctx": "src/data/eventos/a2.ts:392 · f()"
  },
  "Um ninho de tartaruga cercado por estacas e fitas do Projeto Tartaruí.\fPlaquinha: \"Desova nº 37. Não pise. As mães sobem a praia de noite.\"": {
-  "en": "",
+  "en": "A turtle nest surrounded by stakes and Tartaruí Project tape.\fA little sign: \"Clutch no. 37. Don't step here. The mothers come up the beach at night.\"",
   "ctx": "src/data/eventos/a2.ts:393 · f()"
  },
  "Estação fria! Chegaram os visitantes do sul: tem Pinguinzinho perdido no capim da ponta e baleia com filhote lá na baía.\fPinguim a gente não devolve na marra. Ele vai embora quando esquenta. Ou fica, se gostar de você.": {
-  "en": "",
+  "en": "Cold season! The visitors from the south have arrived: there are lost Pinguinzinhos in the grass at the point and a whale with her calf out in the bay.\fWe don't force a penguin to go back. It leaves when it warms up. Or stays, if it likes you.",
   "ctx": "src/data/eventos/a2.ts:400 · f()"
  },
  "No calor só tem tartaruga, siri e turista. Na estação fria, de junho a setembro, é que chegam os pinguins e as baleias.\fVolte quando esfriar. Traga casaco: para você, não para o pinguim.": {
-  "en": "",
+  "en": "When it's hot there are only turtles, crabs and tourists. In the cold season, from June to September, that's when the penguins and whales arrive.\fCome back when it cools off. Bring a coat: for you, not the penguin.",
   "ctx": "src/data/eventos/a2.ts:401 · f()"
  },
  "A água do recife está diferente hoje. Uma sombra larga e lenta passa perto da clareira de areia…": {
-  "en": "",
+  "en": "The reef water is different today. A wide, slow shadow passes near the sandy clearing…",
   "ctx": "src/data/eventos/a2.ts:410 · f()"
  },
  "A Tartaruga-Gigante das sextas-feiras! O casco dela é um recife ambulante: tem coral, craca e um peixinho inquilino.\fEla olha para você devagar. Muito devagar.": {
-  "en": "",
+  "en": "The Friday Giant Turtle! Her shell is a walking reef: it has coral, barnacles and a little fish tenant.\fShe looks at you slowly. Very slowly.",
   "ctx": "src/data/eventos/a2.ts:417 · f()"
  },
  "A gruta do fundo está vazia. Na areia ficou o risco de um corpo comprido, do tamanho de um rio.": {
-  "en": "",
+  "en": "The cave at the back is empty. In the sand there's the trail of a long body, as long as a river.",
   "ctx": "src/data/eventos/a2.ts:425 · f()"
  },
  "No fundo da gruta, dois faróis verdes se acendem. Não são faróis.\fA água inteira do recife começa a girar devagar em volta de você.": {
-  "en": "",
+  "en": "At the back of the cave, two green beacons light up. They're not beacons.\fAll the water in the reef starts swirling slowly around you.",
   "ctx": "src/data/eventos/a2.ts:427 · f()"
  },
  "A BOIÚNA, a cobra-grande das águas, desenrola o corpo e ergue a cabeça!": {
-  "en": "",
+  "en": "The BOIÚNA, the great serpent of the waters, uncoils its body and raises its head!",
   "ctx": "src/data/eventos/a2.ts:429 · f()"
  },
  "A Boiúna afunda no redemoinho e a água do recife para de girar. A cobra-grande não foi mais vista.": {
-  "en": "",
+  "en": "The Boiúna sinks into the whirlpool and the reef water stops swirling. The great serpent was never seen again.",
   "ctx": "src/data/eventos/a2.ts:432 · f()"
  },
  "Algo imenso dorme enrolado no fundo da gruta. Cada respiração dele empurra você um palmo para trás.\fNão acorda com barulho, nem com luz. Parece esperar um ritmo… um toque de berimbau que você ainda não conhece.": {
-  "en": "",
+  "en": "Something immense sleeps coiled at the back of the cave. Each breath it takes pushes you back a hand's width.\fNoise won't wake it, and neither will light. It seems to be waiting for a rhythm… a berimbau beat you don't know yet.",
   "ctx": "src/data/eventos/a2.ts:434 · f()"
  },
  "Quinze insígnias, contei uma por uma. O monte reconhece você.\fSuba com respeito: paredão, breu e cascata, nessa ordem. Lá no alto, o Pajé Trovão-Velho espera há muito tempo por alguém assim.": {
-  "en": "",
+  "en": "Fifteen badges, I counted them one by one. The mountain recognizes you.\fClimb with respect: cliff face, darkness and waterfall, in that order. Up at the top, Shaman Trovão-Velho has been waiting a long time for someone like you.",
   "ctx": "src/data/eventos/a2.ts:444 · f()"
  },
  "Alto. Eu sou Abaeté, guardião do Monte Tupã. Esta trilha leva à Aldeia e ao último ginásio de Pingorama.": {
-  "en": "",
+  "en": "Halt. I am Abaeté, guardian of Monte Tupã. This trail leads to the Aldeia and to the last gym in Pingorama.",
   "ctx": "src/data/eventos/a2.ts:445 · f()"
  },
  "O monte só se abre para quem carrega quinze insígnias. Deixe-me contar as suas… uma… duas…\fNão dá quinze. Volte quando o Sertão das Névoas inteiro conhecer o seu nome.": {
-  "en": "",
+  "en": "The mountain only opens for those who carry fifteen badges. Let me count yours… one… two…\fThat's not fifteen. Come back when the whole Sertão das Névoas knows your name.",
   "ctx": "src/data/eventos/a2.ts:446 · f()"
  },
  "A Escama está com você. O céu sobre a Aldeia mudou: escute.\fNa pedra mais alta, ao norte, o Gavião-Tupã pousa para ver de perto quem o trovão escolheu.": {
-  "en": "",
+  "en": "The Scale is yours. The sky over the Aldeia has changed: listen.\fOn the highest rock, to the north, Gavião-Tupã has landed to get a close look at the one the thunder chose.",
   "ctx": "src/data/eventos/a2.ts:453 · f()"
  },
  "Bem-vindo à Aldeia Tupã, o lugar mais perto do céu em toda Pingorama.\fO Pajé Trovão-Velho guarda a insígnia da Escama. As quatro provas do ginásio pedem o que você aprendeu nos dois mapas: mata, fogo, água e vento.": {
-  "en": "",
+  "en": "Welcome to Aldeia Tupã, the place closest to the sky in all of Pingorama.\fShaman Trovão-Velho guards the Scale badge. The gym's four trials ask for everything you learned on both maps: forest, fire, water and wind.",
   "ctx": "src/data/eventos/a2.ts:454 · f()"
  },
  "A pedra mais alta do Monte Tupã. Ficou uma pena comprida, que estala quando se toca.": {
-  "en": "",
+  "en": "The highest rock on Monte Tupã. A long feather was left behind; it crackles when you touch it.",
   "ctx": "src/data/eventos/a2.ts:460 · f()"
  },
  "O ar fica parado. Os pelos do braço se arrepiam. Longe, um trovão sem nuvem.": {
-  "en": "",
+  "en": "The air goes still. The hair on your arms stands up. Far away, thunder with no cloud.",
   "ctx": "src/data/eventos/a2.ts:462 · f()"
  },
  "O GAVIÃO-TUPÃ desce do céu e pousa na pedra! Cada batida de asa é um relâmpago.": {
-  "en": "",
+  "en": "GAVIÃO-TUPÃ swoops down from the sky and lands on the rock! Every beat of its wings is a lightning bolt.",
   "ctx": "src/data/eventos/a2.ts:464 · f()"
  },
  "O Gavião-Tupã cai, se ergue num estalo de trovão e some acima das nuvens. Ele não foi mais visto no Monte Tupã.": {
-  "en": "",
+  "en": "Gavião-Tupã falls, rises in a crack of thunder and vanishes above the clouds. It was never seen on Monte Tupã again.",
   "ctx": "src/data/eventos/a2.ts:467 · f()"
  },
  "A pedra mais alta do Monte Tupã. Está riscada de raio de cima a baixo.\fO céu aqui parece esperar alguém. Ainda não é você: falta a insígnia do Pajé.": {
-  "en": "",
+  "en": "The highest rock on Monte Tupã. It's scored by lightning from top to bottom.\fThe sky here seems to be waiting for someone. It's not you yet: you still need the Shaman's badge.",
   "ctx": "src/data/eventos/a2.ts:468 · f()"
  },
  "Aroeirinha": {
-  "en": "",
+  "en": "Aroeirinha",
   "ctx": "src/data/eventos/b1.ts:47 · campo treinadorOriginal | src/data/treinadores/a2.ts:24 · t()"
  },
  "Dona Jurema": {
@@ -1364,11 +1364,11 @@
   "ctx": "src/data/eventos/captura.ts:160 · falar()"
  },
  "Capanga do Cartel": {
-  "en": "",
+  "en": "Cartel Goon",
   "ctx": "src/data/eventos/captura.ts:166 · campo classe | src/data/treinadores/a2.ts:14 · t() | src/data/treinadores/b1.ts:16 · t() | +4"
  },
  "Ferrolho": {
-  "en": "",
+  "en": "Ferrolho",
   "ctx": "src/data/eventos/captura.ts:166 · campo nome | src/data/treinadores/a2.ts:14 · t() | src/data/treinadores/b1.ts:16 · t() | +2"
  },
  "Xi, um treinador! Vai embora: esse bicho de cor esquisita vale uma fortuna no porto!": {
@@ -1896,7 +1896,7 @@
   "ctx": "src/data/revancha.ts:118 · campo classe | src/data/treinadores/a1.ts:153 · campo classe | src/data/treinadores/a2.ts:98 · campo classe | +4"
  },
  "Ubirajara": {
-  "en": "",
+  "en": "Ubirajara",
   "ctx": "src/data/torre.ts:21 | src/data/treinadores/a2.ts:197 · t()"
  },
  "Jandira": {
@@ -2768,1443 +2768,1443 @@
   "ctx": "src/data/treinadores/a1.ts:161"
  },
  "Ferrolha": {
-  "en": "",
+  "en": "Ferrolha",
   "ctx": "src/data/treinadores/a2.ts:14 · t() | src/data/treinadores/b1.ts:16 · t() | src/data/treinadores/b2-norte.ts:93 · t() | +1"
  },
  "Faísca": {
-  "en": "",
+  "en": "Faísca",
   "ctx": "src/data/treinadores/a2.ts:18 · t() | src/data/treinadores/ginasio-05.ts:12 · campo nome"
  },
  "Alerta de escoteira: a luz da cidade pisca e EU vou descobrir por quê! Depois de ganhar de você.": {
-  "en": "",
+  "en": "Scout alert: the city lights are flickering and I'M going to find out why! Right after I beat you.",
   "ctx": "src/data/treinadores/a2.ts:19 · t()"
  },
  "Descobri que perdi.": {
-  "en": "",
+  "en": "I found out I lost.",
   "ctx": "src/data/treinadores/a2.ts:19 · t()"
  },
  "A Usina Velha fica no fim da estrada. Tem um portão de ferro e gente mal-encarada na frente.": {
-  "en": "",
+  "en": "The Old Power Plant is at the end of the road. There's an iron gate and some shady folks out front.",
   "ctx": "src/data/treinadores/a2.ts:19 · t()"
  },
  "Dona Plumária": {
-  "en": "",
+  "en": "Dona Plumária",
   "ctx": "src/data/treinadores/a2.ts:20 · t()"
  },
  "Psiu! Os Urubuzins estão rodando em cima da Usina. Mau sinal. Bom sinal para batalha!": {
-  "en": "",
+  "en": "Shh! The Urubuzins are circling over the Power Plant. Bad sign. Good sign for a battle!",
   "ctx": "src/data/treinadores/a2.ts:21 · t()"
  },
  "Voaram todos. Inclusive a minha dignidade.": {
-  "en": "",
+  "en": "They all flew off. Including my dignity.",
   "ctx": "src/data/treinadores/a2.ts:21 · t()"
  },
  "Urubuzim só vira Urubu-Rei no nível 36. Paciência é a asa do observador.": {
-  "en": "",
+  "en": "Urubuzim only becomes Urubu-Rei at level 36. Patience is the watcher's wing.",
   "ctx": "src/data/treinadores/a2.ts:21 · t()"
  },
  "Tico Fio": {
-  "en": "",
+  "en": "Tico Fio",
   "ctx": "src/data/treinadores/a2.ts:22 · t()"
  },
  "Minha pipa enroscou no fio da Usina e deu choque no meu grilo. Ele gostou!": {
-  "en": "",
+  "en": "My kite got tangled in the Power Plant's wires and zapped my cricket. He liked it!",
   "ctx": "src/data/treinadores/a2.ts:23 · t()"
  },
  "Agora quem levou choque fui eu.": {
-  "en": "",
+  "en": "Now I'm the one who got zapped.",
   "ctx": "src/data/treinadores/a2.ts:23 · t()"
  },
  "Criatura de Trovão adora a Usina. De noite o capim da estrada chia de Grilinho.": {
-  "en": "",
+  "en": "Thunder creatures love the Power Plant. At night the grass by the road buzzes with Grilinhos.",
   "ctx": "src/data/treinadores/a2.ts:23 · t()"
  },
  "Cuidado onde pisa: jararaquinha não avisa. Eu aviso. E desafio!": {
-  "en": "",
+  "en": "Watch your step: little vipers don't give warnings. I do. And challenges!",
   "ctx": "src/data/treinadores/a2.ts:25 · t()"
  },
  "Pisou foi em mim.": {
-  "en": "",
+  "en": "You stepped on me instead.",
   "ctx": "src/data/treinadores/a2.ts:25 · t()"
  },
  "Para o sul tem um ramal que dá no Manguezal. Sem Facão, o cipó não deixa.": {
-  "en": "",
+  "en": "To the south there's a branch path to the Manguezal. Without the Machete, the vines won't let you by.",
   "ctx": "src/data/treinadores/a2.ts:25 · t()"
  },
  "Mestre Meia-Lua": {
-  "en": "",
+  "en": "Master Meia-Lua",
   "ctx": "src/data/treinadores/a2.ts:26 · t()"
  },
  "Estrada boa é estrada com roda de capoeira no meio. Entra na roda!": {
-  "en": "",
+  "en": "A good road is a road with a capoeira roda in the middle. Step into the roda!",
   "ctx": "src/data/treinadores/a2.ts:27 · t()"
  },
  "Você ginga torto, mas ginga.": {
-  "en": "",
+  "en": "Your ginga's crooked, but it's ginga.",
   "ctx": "src/data/treinadores/a2.ts:27 · t()"
  },
  "As saliências daqui só se pulam para baixo. Para voltar, dê a volta pela trilha do Manguezal.": {
-  "en": "",
+  "en": "The ledges here only go down. To come back, go around by the Manguezal trail.",
   "ctx": "src/data/treinadores/a2.ts:27 · t()"
  },
  "Alto lá! A Usina Velha está em \"reforma\". Reforma do Cartel Ferrugem!": {
-  "en": "",
+  "en": "Hold it! The Old Power Plant is under \"renovation\". A Rust Cartel renovation!",
   "ctx": "src/data/treinadores/a2.ts:29 · capanga()"
  },
  "O chefe vai me reformar…": {
-  "en": "",
+  "en": "The boss is going to renovate me…",
   "ctx": "src/data/treinadores/a2.ts:29 · capanga()"
  },
  "Eu só vigio portão. Quem manda lá dentro é a tenente Lata.": {
-  "en": "",
+  "en": "I just guard the gate. The one in charge inside is Lieutenant Lata.",
   "ctx": "src/data/treinadores/a2.ts:29 · capanga()"
  },
  "Criança não entra em obra do Cartel. Nem adulto. Nem ninguém!": {
-  "en": "",
+  "en": "No kids allowed on a Cartel work site. No adults either. Nobody!",
   "ctx": "src/data/treinadores/a2.ts:31 · capanga()"
  },
  "Tá, entra. Mas limpe os pés.": {
-  "en": "",
+  "en": "Fine, go in. But wipe your feet.",
   "ctx": "src/data/treinadores/a2.ts:31 · capanga()"
  },
  "Estamos levando as criaturas de Trovão em jaula. Ops. Eu não disse nada.": {
-  "en": "",
+  "en": "We're hauling off the Thunder creatures in cages. Oops. I didn't say anything.",
   "ctx": "src/data/treinadores/a2.ts:31 · capanga()"
  },
  "Esta salinha é do Cartel. A alavanca também. O ar também!": {
-  "en": "",
+  "en": "This little room belongs to the Cartel. So does the lever. So does the air!",
   "ctx": "src/data/treinadores/a2.ts:36 · capanga()"
  },
  "Pode respirar. Só um pouco.": {
-  "en": "",
+  "en": "You can breathe. Just a little.",
   "ctx": "src/data/treinadores/a2.ts:36 · capanga()"
  },
  "A alavanca solta a grade da sala leste. Não que eu me importe mais.": {
-  "en": "",
+  "en": "The lever releases the gate in the east room. Not that I care anymore.",
   "ctx": "src/data/treinadores/a2.ts:36 · capanga()"
  },
  "Subiu a escada errada, mocinho. Ou mocinha. Não enxergo bem com esta máscara.": {
-  "en": "",
+  "en": "Wrong staircase, young man. Or young lady. I can't see well in this mask.",
   "ctx": "src/data/treinadores/a2.ts:37 · capanga()"
  },
  "Enxerguei a derrota direitinho.": {
-  "en": "",
+  "en": "I saw my defeat just fine.",
   "ctx": "src/data/treinadores/a2.ts:37 · capanga()"
  },
  "Lá em cima as passarelas têm buraco. Quem cai vai parar no depósito.": {
-  "en": "",
+  "en": "Upstairs the catwalks have holes. Fall through and you land in the storeroom.",
   "ctx": "src/data/treinadores/a2.ts:37 · capanga()"
  },
  "Patrulha do salão dos geradores! Você tem crachá? Então tem batalha.": {
-  "en": "",
+  "en": "Generator hall patrol! Got a badge? Then you've got a battle.",
   "ctx": "src/data/treinadores/a2.ts:38 · capanga()"
  },
  "Meu crachá era de papelão mesmo.": {
-  "en": "",
+  "en": "My badge was just cardboard anyway.",
   "ctx": "src/data/treinadores/a2.ts:38 · capanga()"
  },
  "A chave geral fica no porão. A tenente guardou o controle com ela.": {
-  "en": "",
+  "en": "The main switch is in the basement. The lieutenant kept the control with her.",
   "ctx": "src/data/treinadores/a2.ts:38 · capanga()"
  },
  "O Cartel paga hora extra para quem derrubar intruso. Vem cá, minha hora extra!": {
-  "en": "",
+  "en": "The Cartel pays overtime for taking down intruders. Come here, my overtime!",
   "ctx": "src/data/treinadores/a2.ts:39 · capanga()"
  },
  "Vou ficar devendo no banco de horas.": {
-  "en": "",
+  "en": "Guess I'll owe hours on my timesheet.",
   "ctx": "src/data/treinadores/a2.ts:39 · capanga()"
  },
  "Os depósitos trancados? Só caindo pelas passarelas. Engenharia de primeira.": {
-  "en": "",
+  "en": "The locked storerooms? Only by falling through the catwalks. First-class engineering.",
   "ctx": "src/data/treinadores/a2.ts:39 · capanga()"
  },
  "Daqui você não passa! A tenente Lata está ocupada contando jaula.": {
-  "en": "",
+  "en": "You're not getting past here! Lieutenant Lata is busy counting cages.",
   "ctx": "src/data/treinadores/a2.ts:40 · capanga()"
  },
  "Uma jaula a mais, uma a menos…": {
-  "en": "",
+  "en": "One cage more, one cage less…",
   "ctx": "src/data/treinadores/a2.ts:40 · capanga()"
  },
  "A porta da sala de controle é elétrica. Sem a chave geral, nem a tenente sai. Não conta para ela.": {
-  "en": "",
+  "en": "The control room door is electric. Without the main switch, not even the lieutenant can get out. Don't tell her.",
   "ctx": "src/data/treinadores/a2.ts:40 · capanga()"
  },
  "Passarela é mão única: a minha!": {
-  "en": "",
+  "en": "The catwalk is one-way: mine!",
   "ctx": "src/data/treinadores/a2.ts:41 · capanga()"
  },
  "Passou por cima.": {
-  "en": "",
+  "en": "You walked right over me.",
   "ctx": "src/data/treinadores/a2.ts:41 · capanga()"
  },
  "Olhe para o chão de grade. Onde tem buraco, o ferro é mais escuro.": {
-  "en": "",
+  "en": "Look at the grate floor. Where there's a hole, the iron is darker.",
   "ctx": "src/data/treinadores/a2.ts:41 · capanga()"
  },
  "Eu tenho medo de altura e me puseram na passarela. Vou descontar em você!": {
-  "en": "",
+  "en": "I'm scared of heights and they put me on the catwalk. I'm taking it out on you!",
   "ctx": "src/data/treinadores/a2.ts:42 · capanga()"
  },
  "Agora tenho medo de você também.": {
-  "en": "",
+  "en": "Now I'm scared of you too.",
   "ctx": "src/data/treinadores/a2.ts:42 · capanga()"
  },
  "Se cair no buraco, pule a mureta do depósito para sair.": {
-  "en": "",
+  "en": "If you fall through a hole, hop over the storeroom's low wall to get out.",
   "ctx": "src/data/treinadores/a2.ts:42 · capanga()"
  },
  "O porão é úmido, escuro e cheio de bicho que dá choque. Adoro. Você não vai adorar.": {
-  "en": "",
+  "en": "The basement is damp, dark and full of critters that zap you. I love it. You won't.",
   "ctx": "src/data/treinadores/a2.ts:43 · capanga()"
  },
  "Deu curto.": {
-  "en": "",
+  "en": "Short circuit.",
   "ctx": "src/data/treinadores/a2.ts:43 · capanga()"
  },
  "As criaturas nas jaulas são daqui mesmo. O Cartel vende como \"bateria viva\". Feio, né?": {
-  "en": "",
+  "en": "The creatures in the cages are from around here. The Cartel sells them as \"living batteries\". Nasty, right?",
   "ctx": "src/data/treinadores/a2.ts:43 · capanga()"
  },
  "Tire a mão da chave geral! Essa chave é do Cartel desde anteontem!": {
-  "en": "",
+  "en": "Hands off the main switch! That switch has belonged to the Cartel since the day before yesterday!",
   "ctx": "src/data/treinadores/a2.ts:44 · capanga()"
  },
  "Tá bom, a chave é sua.": {
-  "en": "",
+  "en": "Fine, the switch is yours.",
   "ctx": "src/data/treinadores/a2.ts:44 · capanga()"
  },
  "Ligou a chave? Então a porta de cima destravou. A tenente vai me matar.": {
-  "en": "",
+  "en": "You flipped the switch? Then the door upstairs unlocked. The lieutenant's going to kill me.",
   "ctx": "src/data/treinadores/a2.ts:44 · capanga()"
  },
  "Guarda das jaulas! Ninguém solta bicho no meu turno!": {
-  "en": "",
+  "en": "Cage guard! Nobody frees a critter on my shift!",
   "ctx": "src/data/treinadores/a2.ts:45 · capanga()"
  },
  "Meu turno acabou agora.": {
-  "en": "",
+  "en": "My shift just ended.",
   "ctx": "src/data/treinadores/a2.ts:45 · capanga()"
  },
  "Quando a Usina voltar a funcionar, esses bichos vão embora cantando. Eu até acho bom.": {
-  "en": "",
+  "en": "When the Power Plant's running again, these critters will leave singing. Honestly, I'm kind of glad.",
   "ctx": "src/data/treinadores/a2.ts:45 · capanga()"
  },
  "Tenente do Cartel": {
-  "en": "",
+  "en": "Cartel Lieutenant",
   "ctx": "src/data/treinadores/a2.ts:54 · t() | src/data/treinadores/a2.ts:92 · t() | src/data/treinadores/b1.ts:76 · t() | +2"
  },
  "Lata": {
-  "en": "",
+  "en": "Lata",
   "ctx": "src/data/treinadores/a2.ts:54 · t()"
  },
  "Então é você que anda amassando os meus capangas. Eu sou a tenente Lata, do Cartel Ferrugem, e não amasso fácil!": {
-  "en": "",
+  "en": "So you're the one denting my goons. I'm Lieutenant Lata, of the Rust Cartel, and I don't dent easy!",
   "ctx": "src/data/treinadores/a2.ts:55 · t()"
  },
  "Amassou… Lata velha é assim: faz barulho e entorta.": {
-  "en": "",
+  "en": "Dented… That's old tin for you: lots of noise, then it bends.",
   "ctx": "src/data/treinadores/a2.ts:55 · t()"
  },
  "Zé Banco-de-Areia": {
-  "en": "",
+  "en": "Zé Banco-de-Areia",
   "ctx": "src/data/treinadores/a2.ts:61 · t()"
  },
  "Encalhei aqui na maré baixa. Já que você veio, vamos batalhar até a maré subir!": {
-  "en": "",
+  "en": "I got stranded here at low tide. Since you're here, let's battle till the tide comes in!",
   "ctx": "src/data/treinadores/a2.ts:61 · t()"
  },
  "A maré subiu foi para você.": {
-  "en": "",
+  "en": "The tide came in for you.",
   "ctx": "src/data/treinadores/a2.ts:61 · t()"
  },
  "Na estação fria as baleias entram na baía. Reme devagar e de boca fechada.": {
-  "en": "",
+  "en": "In the cold season the whales come into the bay. Paddle slowly and keep your mouth shut.",
   "ctx": "src/data/treinadores/a2.ts:61 · t()"
  },
  "Marola Jr.": {
-  "en": "",
+  "en": "Marola Jr.",
   "ctx": "src/data/treinadores/a2.ts:62 · t()"
  },
  "Onda hoje não tem. Tem treinador. Serve!": {
-  "en": "",
+  "en": "No waves today. But there's a trainer. That'll do!",
   "ctx": "src/data/treinadores/a2.ts:62 · t()"
  },
  "Caldo. Tomei um caldo.": {
-  "en": "",
+  "en": "Wiped out. Totally wiped out.",
   "ctx": "src/data/treinadores/a2.ts:62 · t()"
  },
  "Para o leste fica a Ilha do Farol. A Capitania só libera com a insígnia Estrela.": {
-  "en": "",
+  "en": "To the east is Ilha do Farol. The Harbor Office only lets you through with the Star badge.",
   "ctx": "src/data/treinadores/a2.ts:62 · t()"
  },
  "Kiki Espuma": {
-  "en": "",
+  "en": "Kiki Espuma",
   "ctx": "src/data/treinadores/a2.ts:63 · t()"
  },
  "A Ilhota do Meio é o meu pico secreto! Quer dizer, era secreto.": {
-  "en": "",
+  "en": "Ilhota do Meio is my secret spot! I mean, it was secret.",
   "ctx": "src/data/treinadores/a2.ts:63 · t()"
  },
  "Agora todo mundo sabe.": {
-  "en": "",
+  "en": "Now everybody knows.",
   "ctx": "src/data/treinadores/a2.ts:63 · t()"
  },
  "Estrelinha evolui com Pedra Maré. Tem uma por aqui, atrás do capim.": {
-  "en": "",
+  "en": "Estrelinha evolves with a Tide Stone. There's one around here, behind the grass.",
   "ctx": "src/data/treinadores/a2.ts:63 · t()"
  },
  "Mergulhador": {
-  "en": "",
+  "en": "Diver",
   "ctx": "src/data/treinadores/a2.ts:64 · t() | src/data/treinadores/a2.ts:179 · t() | src/data/treinadores/a2.ts:181 · t() | +5"
  },
  "Escafandro": {
-  "en": "",
+  "en": "Escafandro",
   "ctx": "src/data/treinadores/a2.ts:64 · t()"
  },
  "Glub. Quer dizer: batalha!": {
-  "en": "",
+  "en": "Glub. I mean: battle!",
   "ctx": "src/data/treinadores/a2.ts:64 · t()"
  },
  "Glub glub…": {
-  "en": "",
+  "en": "Glub glub…",
   "ctx": "src/data/treinadores/a2.ts:64 · t()"
  },
  "Viu as manchas escuras na água? São poços fundos. Com o Amuleto do Mergulho dá para descer ao Recife Submerso.": {
-  "en": "",
+  "en": "See the dark patches in the water? They're deep pools. With the Dive Charm you can go down to the Sunken Reef.",
   "ctx": "src/data/treinadores/a2.ts:64 · t()"
  },
  "Seu Caniço": {
-  "en": "",
+  "en": "Seu Caniço",
   "ctx": "src/data/treinadores/a2.ts:65 · t()"
  },
  "Ô de canoa! Aqui na praia quem chega paga pedágio de batalha.": {
-  "en": "",
+  "en": "Ahoy, canoe! On this beach, whoever lands pays a battle toll.",
   "ctx": "src/data/treinadores/a2.ts:65 · t()"
  },
  "Pedágio devolvido com troco.": {
-  "en": "",
+  "en": "Toll refunded, with change.",
   "ctx": "src/data/treinadores/a2.ts:65 · t()"
  },
  "A boca do Manguezal fica ao norte, entre as pedras. Lá dentro o cipó fecha tudo: leve o Facão.": {
-  "en": "",
+  "en": "The mouth of the Manguezal is to the north, between the rocks. Inside, the vines close everything off: bring the Machete.",
   "ctx": "src/data/treinadores/a2.ts:65 · t()"
  },
  "Dona Maré-Cheia": {
-  "en": "",
+  "en": "Dona Maré-Cheia",
   "ctx": "src/data/treinadores/a2.ts:66 · t()"
  },
  "Vim catar concha para a renda da Iracema. Achei foi um desafio!": {
-  "en": "",
+  "en": "I came to gather shells for Iracema's lace. Found a challenge instead!",
   "ctx": "src/data/treinadores/a2.ts:66 · t()"
  },
  "Perdi o fio da meada.": {
-  "en": "",
+  "en": "I've lost the thread.",
   "ctx": "src/data/treinadores/a2.ts:66 · t()"
  },
  "Cidade Coral é logo ao sul. Entre pelo píer do norte e não pise na renda estendida.": {
-  "en": "",
+  "en": "Cidade Coral is just to the south. Come in by the north pier and don't step on the lace laid out to dry.",
   "ctx": "src/data/treinadores/a2.ts:66 · t()"
  },
  "Bilrinha": {
-  "en": "",
+  "en": "Bilrinha",
   "ctx": "src/data/treinadores/a2.ts:71 · t()"
  },
  "Aprendiz da Iracema Lua! Antes de chegar nela, desembarace-se de mim.": {
-  "en": "",
+  "en": "Iracema Lua's apprentice! Before you get to her, untangle yourself from me.",
   "ctx": "src/data/treinadores/a2.ts:71 · t()"
  },
  "Deu nó.": {
-  "en": "",
+  "en": "It's all knotted.",
   "ctx": "src/data/treinadores/a2.ts:71 · t()"
  },
  "Encanto bate forte em Ginga, Assombro e Lenda. E não sente nadinha de golpe de Lenda.": {
-  "en": "",
+  "en": "Charm hits Brawl, Spook and Legend hard. And it doesn't feel Legend moves one bit.",
   "ctx": "src/data/treinadores/a2.ts:71 · t()"
  },
  "Juca Coral": {
-  "en": "",
+  "en": "Juca Coral",
   "ctx": "src/data/treinadores/a2.ts:72 · t()"
  },
  "Meu siri belisca! Meu caranguejo belisca! Eu belisco!": {
-  "en": "",
+  "en": "My crab pinches! My other crab pinches! I pinch!",
   "ctx": "src/data/treinadores/a2.ts:72 · t()"
  },
  "Ai. Belisquei a derrota.": {
-  "en": "",
+  "en": "Ow. I pinched myself a loss.",
   "ctx": "src/data/treinadores/a2.ts:72 · t()"
  },
  "O Saveiro do cais só leva Campeão da Liga. Eu perguntei se criança paga meia. Não paga.": {
-  "en": "",
+  "en": "The Saveiro at the dock only takes League Champions. I asked if kids ride half-price. They don't.",
   "ctx": "src/data/treinadores/a2.ts:72 · t()"
  },
  "Clarinha Pisca": {
-  "en": "",
+  "en": "Clarinha Pisca",
   "ctx": "src/data/treinadores/a2.ts:77 · t()"
  },
  "O farol apagou, mas o meu Vagalumim não! Olha como pisca!": {
-  "en": "",
+  "en": "The lighthouse went out, but my Vagalumim didn't! Look at it blink!",
   "ctx": "src/data/treinadores/a2.ts:77 · t()"
  },
  "Piscou e apagou.": {
-  "en": "",
+  "en": "It blinked and went out.",
   "ctx": "src/data/treinadores/a2.ts:77 · t()"
  },
  "O Volta sumiu no farol. O ginásio está trancado desde então.": {
-  "en": "",
+  "en": "Volta disappeared into the lighthouse. The gym's been locked ever since.",
   "ctx": "src/data/treinadores/a2.ts:77 · t()"
  },
  "O cabo do farol é área do Cartel Ferrugem. Você não tem convite. Nem cara de convidado.": {
-  "en": "",
+  "en": "The lighthouse point is Rust Cartel territory. You don't have an invitation. You don't even look invited.",
   "ctx": "src/data/treinadores/a2.ts:78 · capanga()"
  },
  "Convite aceito, pelo visto.": {
-  "en": "",
+  "en": "Invitation accepted, apparently.",
   "ctx": "src/data/treinadores/a2.ts:78 · capanga()"
  },
  "O tenente Rebite está na sala da lanterna. Ele odeia visita. E escada.": {
-  "en": "",
+  "en": "Lieutenant Rebite is in the lamp room. He hates visitors. And stairs.",
   "ctx": "src/data/treinadores/a2.ts:78 · capanga()"
  },
  "Guarda do caminho do farol! Senha? Não tem senha. É não mesmo.": {
-  "en": "",
+  "en": "Lighthouse path guard! Password? There's no password. It's just no.",
   "ctx": "src/data/treinadores/a2.ts:79 · capanga()"
  },
  "A senha era \"perdi\".": {
-  "en": "",
+  "en": "The password was \"I lost\".",
   "ctx": "src/data/treinadores/a2.ts:79 · capanga()"
  },
  "Estamos carregando o farol de criatura de Trovão para… ah, pergunte ao tenente.": {
-  "en": "",
+  "en": "We're charging the lighthouse with Thunder creatures to… ah, ask the lieutenant.",
   "ctx": "src/data/treinadores/a2.ts:79 · capanga()"
  },
  "Sem a luz do farol as garças se perdem. Eu não: sempre acho um desafiante.": {
-  "en": "",
+  "en": "Without the lighthouse light the herons get lost. Not me: I always find a challenger.",
   "ctx": "src/data/treinadores/a2.ts:80 · t()"
  },
  "Me achei derrotada.": {
-  "en": "",
+  "en": "I found myself beaten.",
   "ctx": "src/data/treinadores/a2.ts:80 · t()"
  },
  "Garcinha vira Garça-Real no nível 30. Fica chique e passa a não te cumprimentar.": {
-  "en": "",
+  "en": "Garcinha becomes Garça-Real at level 30. Gets all fancy and stops saying hi to you.",
   "ctx": "src/data/treinadores/a2.ts:80 · t()"
  },
  "A praia sul tem a melhor esquerda da baía. E o melhor surfista: eu!": {
-  "en": "",
+  "en": "The south beach has the best left in the bay. And the best surfer: me!",
   "ctx": "src/data/treinadores/a2.ts:81 · t()"
  },
  "Vaca. Tomei uma vaca.": {
-  "en": "",
+  "en": "Wipeout. Total wipeout.",
   "ctx": "src/data/treinadores/a2.ts:81 · t()"
  },
  "Na ponta da praia tem uma loca fechada por rocha rachada. Dizem que guarda uma pedra que brilha de noite.": {
-  "en": "",
+  "en": "At the tip of the beach there's a nook sealed by a cracked rock. They say it holds a stone that glows at night.",
   "ctx": "src/data/treinadores/a2.ts:81 · t()"
  },
  "Seu Lamparão": {
-  "en": "",
+  "en": "Seu Lamparão",
   "ctx": "src/data/treinadores/a2.ts:82 · t()"
  },
  "Pesco no escuro desde que o farol apagou. Já fisguei uma bota, um remo e agora você.": {
-  "en": "",
+  "en": "I've been fishing in the dark since the lighthouse went out. I've hooked a boot, a paddle and now you.",
   "ctx": "src/data/treinadores/a2.ts:82 · t()"
  },
  "Você eu devolvo.": {
-  "en": "",
+  "en": "You, I'll throw back.",
   "ctx": "src/data/treinadores/a2.ts:82 · t()"
  },
  "Poraquim morde na Vara Boa aqui no píer. Dá choque na linha, na vara e no pescador.": {
-  "en": "",
+  "en": "Poraquim bites on a Good Rod here on the pier. It zaps the line, the rod and the fisher.",
   "ctx": "src/data/treinadores/a2.ts:82 · t()"
  },
  "Térreo do farol: propriedade do Cartel. A escada também. O degrau também!": {
-  "en": "",
+  "en": "Lighthouse ground floor: Cartel property. So are the stairs. So is the step!",
   "ctx": "src/data/treinadores/a2.ts:83 · capanga()"
  },
  "Pode subir. Cuidado com o degrau.": {
-  "en": "",
+  "en": "You can go up. Mind the step.",
   "ctx": "src/data/treinadores/a2.ts:83 · capanga()"
  },
  "A escada do outro lado tem grade. Solta numa alavanca, lá em cima.": {
-  "en": "",
+  "en": "The stairs on the other side have a gate. It's released by a lever, upstairs.",
   "ctx": "src/data/treinadores/a2.ts:83 · capanga()"
  },
  "Eu vigio a porta. E o salão. E você, de perto!": {
-  "en": "",
+  "en": "I'm guarding the door. And the hall. And you, up close!",
   "ctx": "src/data/treinadores/a2.ts:84 · capanga()"
  },
  "Vigiei mal.": {
-  "en": "",
+  "en": "Not much of a guard.",
   "ctx": "src/data/treinadores/a2.ts:84 · capanga()"
  },
  "Tem uma menina brava subindo o farol na nossa frente. Derrubou três dos nossos e nem suou.": {
-  "en": "",
+  "en": "There's an angry girl climbing the lighthouse ahead of us. Took down three of ours without breaking a sweat.",
   "ctx": "src/data/treinadores/a2.ts:84 · capanga()"
  },
  "Segundo andar! Aqui o assoalho range e o capanga morde!": {
-  "en": "",
+  "en": "Second floor! Here the floorboards creak and the goons bite!",
   "ctx": "src/data/treinadores/a2.ts:85 · capanga()"
  },
  "Só rangi.": {
-  "en": "",
+  "en": "All I did was creak.",
   "ctx": "src/data/treinadores/a2.ts:85 · capanga()"
  },
  "Tem um buraco no assoalho perto das caixas. Cai direto no depósito do térreo.": {
-  "en": "",
+  "en": "There's a hole in the floor near the crates. It drops straight into the ground-floor storeroom.",
   "ctx": "src/data/treinadores/a2.ts:85 · capanga()"
  },
  "Como você passou pela grade?! Alguém mexeu na alavanca!": {
-  "en": "",
+  "en": "How did you get past the gate?! Someone touched the lever!",
   "ctx": "src/data/treinadores/a2.ts:86 · capanga()"
  },
  "Fui eu que deixei a alavanca sem vigia…": {
-  "en": "",
+  "en": "I'm the one who left the lever unguarded…",
   "ctx": "src/data/treinadores/a2.ts:86 · capanga()"
  },
  "A escada para o terceiro andar é a do canto. A menina brava já subiu.": {
-  "en": "",
+  "en": "The stairs to the third floor are the ones in the corner. The angry girl already went up.",
   "ctx": "src/data/treinadores/a2.ts:86 · capanga()"
  },
  "A alavanca é minha. Eu durmo abraçado com ela!": {
-  "en": "",
+  "en": "The lever is mine. I sleep hugging it!",
   "ctx": "src/data/treinadores/a2.ts:87 · capanga()"
  },
  "Acordei.": {
-  "en": "",
+  "en": "I'm awake now.",
   "ctx": "src/data/treinadores/a2.ts:87 · capanga()"
  },
  "Puxou? Então a grade do térreo subiu. O Rebite vai me rebitar.": {
-  "en": "",
+  "en": "You pulled it? Then the ground-floor gate went up. Rebite's going to rivet me.",
   "ctx": "src/data/treinadores/a2.ts:87 · capanga()"
  },
  "Último lance antes da lanterna. Daqui só passa quem o tenente chamar.": {
-  "en": "",
+  "en": "Last flight before the lamp room. Only those the lieutenant calls get past here.",
   "ctx": "src/data/treinadores/a2.ts:88 · capanga()"
  },
  "Ele chamou você, pelo visto.": {
-  "en": "",
+  "en": "Looks like he called you.",
   "ctx": "src/data/treinadores/a2.ts:88 · capanga()"
  },
  "Lá em cima estão as jaulas. E um faroleiro amarrado que não para de dar palpite.": {
-  "en": "",
+  "en": "The cages are up there. And a tied-up lighthouse keeper who won't stop giving advice.",
   "ctx": "src/data/treinadores/a2.ts:88 · capanga()"
  },
  "Terceiro andar! Eu contei os degraus: são muitos. Você não vai contar o resto.": {
-  "en": "",
+  "en": "Third floor! I counted the steps: there are a lot. You won't get to count the rest.",
   "ctx": "src/data/treinadores/a2.ts:89 · capanga()"
  },
  "Perdi a conta.": {
-  "en": "",
+  "en": "I lost count.",
   "ctx": "src/data/treinadores/a2.ts:89 · capanga()"
  },
  "A menina de trança disse que ia \"resolver sozinha\". Ninguém resolve o Rebite sozinho.": {
-  "en": "",
+  "en": "The girl with the braid said she'd \"handle it herself\". Nobody handles Rebite alone.",
   "ctx": "src/data/treinadores/a2.ts:89 · capanga()"
  },
  "Às ordens, tenente! Vou parafusar este intruso no chão!": {
-  "en": "",
+  "en": "At your orders, Lieutenant! I'll bolt this intruder to the floor!",
   "ctx": "src/data/treinadores/a2.ts:90 · capanga()"
  },
  "Espanou a rosca…": {
-  "en": "",
+  "en": "Stripped the thread…",
   "ctx": "src/data/treinadores/a2.ts:90 · capanga()"
  },
  "Minha vez! Ninguém encosta nas jaulas do tenente!": {
-  "en": "",
+  "en": "My turn! Nobody touches the lieutenant's cages!",
   "ctx": "src/data/treinadores/a2.ts:91 · capanga()"
  },
  "Encostou. E como.": {
-  "en": "",
+  "en": "Touched them. And how.",
   "ctx": "src/data/treinadores/a2.ts:91 · capanga()"
  },
  "Rebite": {
-  "en": "",
+  "en": "Rebite",
   "ctx": "src/data/treinadores/a2.ts:92 · t() | src/data/treinadores/b1.ts:124 · t()"
  },
  "Tenente Rebite, Cartel Ferrugem. Eu prendo as coisas no lugar. Você está fora do lugar.": {
-  "en": "",
+  "en": "Lieutenant Rebite, Rust Cartel. I fasten things in place. You're out of place.",
   "ctx": "src/data/treinadores/a2.ts:93 · t()"
  },
  "Soltou… tudo soltou. Odeio quando solta.": {
-  "en": "",
+  "en": "Loose… everything came loose. I hate it when things come loose.",
   "ctx": "src/data/treinadores/a2.ts:93 · t()"
  },
  "Se você não passa nem por mim, o tenente lá de cima te usa de pano de chão. Mostra o que aprendeu!": {
-  "en": "",
+  "en": "If you can't even get past me, the lieutenant up there will use you as a mop. Show me what you've learned!",
   "ctx": "src/data/treinadores/a2.ts:99 · campo desafio"
  },
  "Tá. Você serve. Não espalha.": {
-  "en": "",
+  "en": "Okay. You'll do. Don't spread it around.",
   "ctx": "src/data/treinadores/a2.ts:100 · campo derrota"
  },
  "Breno Breu": {
-  "en": "",
+  "en": "Breno Breu",
   "ctx": "src/data/treinadores/a2.ts:110 · t()"
  },
  "Quem vem lá? Ah, um lampião com um treinador pendurado. Batalha!": {
-  "en": "",
+  "en": "Who goes there? Oh, a lantern with a trainer attached. Battle!",
   "ctx": "src/data/treinadores/a2.ts:110 · t()"
  },
  "Apagou. Eu, não o lampião.": {
-  "en": "",
+  "en": "Out like a light. Me, not the lantern.",
   "ctx": "src/data/treinadores/a2.ts:110 · t()"
  },
  "A escada que desce fica no nordeste. A saliência do salão de cima só serve para voltar.": {
-  "en": "",
+  "en": "The stairs down are in the northeast. The ledge in the upper hall is only for coming back.",
   "ctx": "src/data/treinadores/a2.ts:110 · t()"
  },
  "Achei ouro! Não, espera, é só o seu lampião brilhando. Batalha de consolação!": {
-  "en": "",
+  "en": "I struck gold! No, wait, it's just your lantern shining. Consolation battle!",
   "ctx": "src/data/treinadores/a2.ts:111 · t()"
  },
  "Nem ouro, nem vitória.": {
-  "en": "",
+  "en": "No gold, no win.",
   "ctx": "src/data/treinadores/a2.ts:111 · t()"
  },
  "Rocha rachada esconde loca com tesouro. Sem o Quebra-pedra, é só olhar e suspirar.": {
-  "en": "",
+  "en": "Cracked rocks hide nooks with treasure. Without Rock Smash, all you can do is look and sigh.",
   "ctx": "src/data/treinadores/a2.ts:111 · t()"
  },
  "Drª Quiróptera": {
-  "en": "",
+  "en": "Dr. Quiróptera",
   "ctx": "src/data/treinadores/a2.ts:112 · t()"
  },
  "Shhh! Estou contando Morcegão. Você espantou quarenta e dois. Vai repor em batalha!": {
-  "en": "",
+  "en": "Shhh! I'm counting Morcegões. You scared off forty-two. You'll make up for them in battle!",
   "ctx": "src/data/treinadores/a2.ts:112 · t()"
  },
  "Quarenta e três, contando a minha derrota.": {
-  "en": "",
+  "en": "Forty-three, counting my loss.",
   "ctx": "src/data/treinadores/a2.ts:112 · t()"
  },
  "Morcegão só evolui quando gosta muito do treinador. Morcego carente, quem diria.": {
-  "en": "",
+  "en": "Morcegão only evolves when it really likes its trainer. A needy bat, who knew.",
   "ctx": "src/data/treinadores/a2.ts:112 · t()"
  },
  "Medalha de espeleologia: falta só vencer um treinador no escuro!": {
-  "en": "",
+  "en": "Caving badge: all I need is to beat a trainer in the dark!",
   "ctx": "src/data/treinadores/a2.ts:113 · t()"
  },
  "Falta ainda.": {
-  "en": "",
+  "en": "Still need it.",
   "ctx": "src/data/treinadores/a2.ts:113 · t()"
  },
  "O Noitim daqui tem olho de lua. Dizem que ele enxerga o que você vai fazer antes de você.": {
-  "en": "",
+  "en": "The Noitim around here have moon eyes. They say they see what you'll do before you do.",
   "ctx": "src/data/treinadores/a2.ts:113 · t()"
  },
  "Seu Cascalho": {
-  "en": "",
+  "en": "Seu Cascalho",
   "ctx": "src/data/treinadores/a2.ts:114 · t() | src/data/zonas/B3-casa-1.ts:10 · campo nome"
  },
  "Este salão é meu garimpo. Pisou, pagou: em batalha!": {
-  "en": "",
+  "en": "This hall is my dig. Step in, pay up: in battle!",
   "ctx": "src/data/treinadores/a2.ts:114 · t()"
  },
  "Fali.": {
-  "en": "",
+  "en": "I'm broke.",
   "ctx": "src/data/treinadores/a2.ts:114 · t()"
  },
  "O poço lá do meio tem uma ilhota. Só de canoa, e com lampião aceso para não remar em círculo.": {
-  "en": "",
+  "en": "The pool in the middle has an islet. Canoe only, and with a lantern lit so you don't paddle in circles.",
   "ctx": "src/data/treinadores/a2.ts:114 · t()"
  },
  "Mestre Fole": {
-  "en": "",
+  "en": "Master Fole",
   "ctx": "src/data/treinadores/a2.ts:115 · t()"
  },
  "Desço à gruta buscar minério para a forja de Vila Ferrugem. E briga, quando aparece!": {
-  "en": "",
+  "en": "I come down into the cave for ore for the Vila Ferrugem forge. And for a fight, when one turns up!",
   "ctx": "src/data/treinadores/a2.ts:115 · t()"
  },
  "Minério eu acho. Vitória, hoje não.": {
-  "en": "",
+  "en": "Ore I can find. A win, not today.",
   "ctx": "src/data/treinadores/a2.ts:115 · t()"
  },
  "Vila Ferrugem fica depois de Serra Fumaça, no fim da encosta.": {
-  "en": "",
+  "en": "Vila Ferrugem is past Serra Fumaça, at the bottom of the slope.",
   "ctx": "src/data/treinadores/a2.ts:115 · t()"
  },
  "Zé do Eco": {
-  "en": "",
+  "en": "Zé do Eco",
   "ctx": "src/data/treinadores/a2.ts:116 · t()"
  },
  "Na gruta escura eu canto e o eco responde: \"perdeu, perdeu, perdeu\"! É de você que ele fala!": {
-  "en": "",
+  "en": "In the dark cave I sing and the echo answers: \"you lose, you lose, you lose\"! It's talking about you!",
   "ctx": "src/data/treinadores/a2.ts:116 · t()"
  },
  "O eco mudou de lado.": {
-  "en": "",
+  "en": "The echo switched sides.",
   "ctx": "src/data/treinadores/a2.ts:116 · t()"
  },
  "A saída para Serra Fumaça é ao sul daqui. Vai sentindo o ar frio.": {
-  "en": "",
+  "en": "The exit to Serra Fumaça is south of here. Follow the cold air.",
   "ctx": "src/data/treinadores/a2.ts:116 · t()"
  },
  "Bagre-Cego": {
-  "en": "",
+  "en": "Bagre-Cego",
   "ctx": "src/data/treinadores/a2.ts:117 · t()"
  },
  "Pesco no lago da gruta há tanto tempo que esqueci como é sol. Lembra-me com uma batalha!": {
-  "en": "",
+  "en": "I've fished the cave lake so long I forgot what the sun is like. Remind me with a battle!",
   "ctx": "src/data/treinadores/a2.ts:117 · t()"
  },
  "Lembrei. Arde.": {
-  "en": "",
+  "en": "I remember now. It stings.",
   "ctx": "src/data/treinadores/a2.ts:117 · t()"
  },
  "Com a Vara Mestra, dizem que sai um Jaú-Gigante desse lago. Eu só tenho a Velha.": {
-  "en": "",
+  "en": "With the Master Rod, they say a Jaú-Gigante comes out of this lake. All I have is the Old one.",
   "ctx": "src/data/treinadores/a2.ts:117 · t()"
  },
  "Samambaia": {
-  "en": "",
+  "en": "Samambaia",
   "ctx": "src/data/treinadores/a2.ts:118 · t()"
  },
  "Até aqui embaixo nasce planta, sabia? E treinadora teimosa!": {
-  "en": "",
+  "en": "Plants grow even down here, you know? And stubborn trainers!",
   "ctx": "src/data/treinadores/a2.ts:118 · t()"
  },
  "Murchei.": {
-  "en": "",
+  "en": "I wilted.",
   "ctx": "src/data/treinadores/a2.ts:118 · t() | src/data/treinadores/ginasio-08.ts:17 · campo derrota"
  },
  "Serra Fumaça tem neblina o dia todo. Deixe o Lampião aceso ao sair.": {
-  "en": "",
+  "en": "Serra Fumaça is foggy all day long. Keep your Lantern lit on your way out.",
   "ctx": "src/data/treinadores/a2.ts:118 · t()"
  },
  "Dona Coruja": {
-  "en": "",
+  "en": "Dona Coruja",
   "ctx": "src/data/treinadores/a2.ts:123 · t()"
  },
  "Na neblina eu observo de ouvido. E ouvi um desafiante chegando!": {
-  "en": "",
+  "en": "In the fog I birdwatch by ear. And I heard a challenger coming!",
   "ctx": "src/data/treinadores/a2.ts:123 · t()"
  },
  "Ouvi errado. Era um vencedor.": {
-  "en": "",
+  "en": "I heard wrong. It was a winner.",
   "ctx": "src/data/treinadores/a2.ts:123 · t()"
  },
  "Urutauzim finge que é galho. Sacuda as árvores grossas de noite e veja o galho reclamar.": {
-  "en": "",
+  "en": "Urutauzim pretends to be a branch. Shake the thick trees at night and hear the branch complain.",
   "ctx": "src/data/treinadores/a2.ts:123 · t()"
  },
  "Na Serra Fumaça, meu povo, quem chega tem que rimar: você entra na batalha e eu entro para ganhar!": {
-  "en": "",
+  "en": "Up in Serra Fumaça, my friend, whoever comes has got to rhyme: you step into the battle and I'll win it every time!",
   "ctx": "src/data/treinadores/a2.ts:124 · t()"
  },
  "A rima quebrou no meio, o verso foi pro beleléu…": {
-  "en": "",
+  "en": "The rhyme broke in the middle, my verse went down the drain…",
   "ctx": "src/data/treinadores/a2.ts:124 · t()"
  },
  "A Dona Benta Sombra só conta causo verdadeiro. É isso que dá medo.": {
-  "en": "",
+  "en": "Dona Benta Sombra only tells true tales. That's what makes them scary.",
   "ctx": "src/data/treinadores/a2.ts:124 · t()"
  },
  "Benzedeira": {
-  "en": "",
+  "en": "Folk Healer",
   "ctx": "src/data/treinadores/a2.ts:125 · t()"
  },
  "Dona Arrepio": {
-  "en": "",
+  "en": "Dona Arrepio",
   "ctx": "src/data/treinadores/a2.ts:125 · t()"
  },
  "Este cemitério é sossegado, meu bem. Até alguém pisar nas flores. Você pisou.": {
-  "en": "",
+  "en": "This cemetery is peaceful, dear. Until someone steps on the flowers. You stepped on them.",
   "ctx": "src/data/treinadores/a2.ts:125 · t()"
  },
  "Vá com Deus. E pela calçada.": {
-  "en": "",
+  "en": "Go with God. And on the sidewalk.",
   "ctx": "src/data/treinadores/a2.ts:125 · t()"
  },
  "O jazigo do meio tem a porta de pedra rachada. Lá dentro guardaram um pergaminho antigo.": {
-  "en": "",
+  "en": "The tomb in the middle has a cracked stone door. Someone stored an old scroll inside.",
   "ctx": "src/data/treinadores/a2.ts:125 · t()"
  },
  "Neblino": {
-  "en": "",
+  "en": "Neblino",
   "ctx": "src/data/treinadores/a2.ts:126 · t()"
  },
  "Soltei pipa na neblina e perdi a pipa, a linha e a hora. Só não perco batalha!": {
-  "en": "",
+  "en": "I flew a kite in the fog and lost the kite, the string and track of time. But I never lose a battle!",
   "ctx": "src/data/treinadores/a2.ts:126 · t()"
  },
  "Perdi a batalha também.": {
-  "en": "",
+  "en": "Lost the battle too.",
   "ctx": "src/data/treinadores/a2.ts:126 · t()"
  },
  "Tem um mirante ali adiante, mas a escada caiu. Só sobe quem escala trepadeira.": {
-  "en": "",
+  "en": "There's a lookout up ahead, but the stairs collapsed. Only those who can climb creepers get up there.",
   "ctx": "src/data/treinadores/a2.ts:126 · t()"
  },
  "Serrano": {
-  "en": "",
+  "en": "Serrano",
   "ctx": "src/data/treinadores/a2.ts:127 · t()"
  },
  "Subi a serra para ver a vista. Só vi neblina. Vou ver uma batalha, pelo menos!": {
-  "en": "",
+  "en": "I climbed the mountain for the view. All I saw was fog. At least I'll see a battle!",
   "ctx": "src/data/treinadores/a2.ts:127 · t()"
  },
  "A vista daqui de baixo é ruim.": {
-  "en": "",
+  "en": "The view from down here is lousy.",
   "ctx": "src/data/treinadores/a2.ts:127 · t()"
  },
  "Depois do ginásio, pegue a estrada leste. A Encosta da Fumaça desce até Vila Ferrugem.": {
-  "en": "",
+  "en": "After the gym, take the east road. Encosta da Fumaça goes down to Vila Ferrugem.",
   "ctx": "src/data/treinadores/a2.ts:127 · t()"
  },
  "Trilha": {
-  "en": "",
+  "en": "Trilha",
   "ctx": "src/data/treinadores/a2.ts:132 · t()"
  },
  "Medalha de quebra-pedra: quem passa pela primeira rocha me enfrenta!": {
-  "en": "",
+  "en": "Rock-smashing badge: whoever gets past the first rock has to face me!",
   "ctx": "src/data/treinadores/a2.ts:132 · t()"
  },
  "Medalha de consolação, tem?": {
-  "en": "",
+  "en": "Is there a consolation badge?",
   "ctx": "src/data/treinadores/a2.ts:132 · t()"
  },
  "A segunda barreira fica mais adiante, ao norte. Depois dela é só descida.": {
-  "en": "",
+  "en": "The second barrier is farther ahead, to the north. After it, it's all downhill.",
   "ctx": "src/data/treinadores/a2.ts:132 · t()"
  },
  "Dona Araponga": {
-  "en": "",
+  "en": "Dona Araponga",
   "ctx": "src/data/treinadores/a2.ts:133 · t()"
  },
  "Um Bem-te-viço acabou de me delatar: \"bem-te-vi, bem-te-vi!\". Viu você. Batalha!": {
-  "en": "",
+  "en": "A Bem-te-viço just ratted me out: \"I see you, I see you!\". It saw you. Battle!",
   "ctx": "src/data/treinadores/a2.ts:133 · t()"
  },
  "Mal-te-vi.": {
-  "en": "",
+  "en": "Wish I hadn't seen you.",
   "ctx": "src/data/treinadores/a2.ts:133 · t()"
  },
  "Papagaiozim evolui por amizade. Converse com ele. Ele responde, e com sotaque.": {
-  "en": "",
+  "en": "Papagaiozim evolves through friendship. Talk to it. It talks back, with an accent.",
   "ctx": "src/data/treinadores/a2.ts:133 · t()"
  },
  "Tropeiro Zeca": {
-  "en": "",
+  "en": "Drover Zeca",
   "ctx": "src/data/treinadores/a2.ts:134 · t()"
  },
  "Tropa parada, tropeiro à toa. E tropeiro à toa arruma briga!": {
-  "en": "",
+  "en": "Herd's resting, drover's idle. And an idle drover goes looking for trouble!",
   "ctx": "src/data/treinadores/a2.ts:134 · t()"
  },
  "Eita, coice bem dado.": {
-  "en": "",
+  "en": "Whoa, that was a solid kick.",
   "ctx": "src/data/treinadores/a2.ts:134 · t()"
  },
  "De noite desce Jaguatirim da mata. Arisco que só. Leve Cuia Noturna.": {
-  "en": "",
+  "en": "At night Jaguatirim come down from the woods. Skittish as anything. Bring a Night Gourd.",
   "ctx": "src/data/treinadores/a2.ts:134 · t()"
  },
  "Pedra-Lascada": {
-  "en": "",
+  "en": "Pedra-Lascada",
   "ctx": "src/data/treinadores/a2.ts:135 · t()"
  },
  "O balcão ali de cima tem uma folha rara. Não alcanço. Fico aqui, de mau humor, desafiando gente.": {
-  "en": "",
+  "en": "The ledge up there has a rare leaf. I can't reach it. So I stay here, grumpy, challenging people.",
   "ctx": "src/data/treinadores/a2.ts:135 · t()"
  },
  "Meu humor piorou.": {
-  "en": "",
+  "en": "My mood just got worse.",
   "ctx": "src/data/treinadores/a2.ts:135 · t()"
  },
  "Só com o Amuleto de Escalar se sobe a trepadeira. Coisa de lá do Sertão.": {
-  "en": "",
+  "en": "Only the Climb Charm gets you up the creepers. That's a Sertão thing.",
   "ctx": "src/data/treinadores/a2.ts:135 · t()"
  },
  "Contramestre Rasteira": {
-  "en": "",
+  "en": "Contramestre Rasteira",
   "ctx": "src/data/treinadores/a2.ts:136 · t()"
  },
  "Descida boa pede ginga. Quem desce duro, rola. Vem gingar!": {
-  "en": "",
+  "en": "A good downhill calls for ginga. Go down stiff and you roll. Come sway with me!",
   "ctx": "src/data/treinadores/a2.ts:136 · t()"
  },
  "Rolei eu.": {
-  "en": "",
+  "en": "I'm the one who rolled.",
   "ctx": "src/data/treinadores/a2.ts:136 · t()"
  },
  "O ginásio de Vila Ferrugem é de Ferro. Ginga amassa lata que é uma beleza.": {
-  "en": "",
+  "en": "The Vila Ferrugem gym is Iron type. Brawl crumples tin like nobody's business.",
   "ctx": "src/data/treinadores/a2.ts:136 · t()"
  },
  "Faiscador": {
-  "en": "",
+  "en": "Sparksmith",
   "ctx": "src/data/treinadores/a2.ts:137 · t()"
  },
  "Cada rocha rachada tem uma surpresa. A minha surpresa para você é uma batalha!": {
-  "en": "",
+  "en": "Every cracked rock has a surprise. My surprise for you is a battle!",
   "ctx": "src/data/treinadores/a2.ts:137 · t()"
  },
  "Surpresa!… para mim.": {
-  "en": "",
+  "en": "Surprise!… for me.",
   "ctx": "src/data/treinadores/a2.ts:137 · t()"
  },
  "Quebre rocha com vontade: de vez em quando sai um Cupinzim bravo de dentro.": {
-  "en": "",
+  "en": "Smash rocks with gusto: now and then an angry Cupinzim pops out.",
   "ctx": "src/data/treinadores/a2.ts:137 · t()"
  },
  "Zé Marreta": {
-  "en": "",
+  "en": "Zé Marreta",
   "ctx": "src/data/treinadores/a2.ts:138 · t()"
  },
  "Vila Ferrugem não recebe qualquer um. Passe pela minha marreta primeiro!": {
-  "en": "",
+  "en": "Vila Ferrugem doesn't let just anyone in. Get past my sledgehammer first!",
   "ctx": "src/data/treinadores/a2.ts:138 · t()"
  },
  "Entortei a marreta.": {
-  "en": "",
+  "en": "I bent my sledgehammer.",
   "ctx": "src/data/treinadores/a2.ts:138 · t()"
  },
  "Bem-vindo, então. O Posto fica logo na entrada, à esquerda de quem chega.": {
-  "en": "",
+  "en": "Welcome, then. The Post is right at the entrance, on your left as you come in.",
   "ctx": "src/data/treinadores/a2.ts:138 · t()"
  },
  "Rebarba": {
-  "en": "",
+  "en": "Rebarba",
   "ctx": "src/data/treinadores/a2.ts:143 · t()"
  },
  "No intervalo do turno eu treino. O apito tocou: é intervalo!": {
-  "en": "",
+  "en": "I train during my shift break. The whistle blew: it's break time!",
   "ctx": "src/data/treinadores/a2.ts:143 · t()"
  },
  "O apito tocou de novo. Voltei ao trabalho.": {
-  "en": "",
+  "en": "The whistle blew again. Back to work.",
   "ctx": "src/data/treinadores/a2.ts:143 · t()"
  },
  "O açude ali é a nascente do Cachoeira-Véu. O guarda-rios não deixa descer sem saber subir.": {
-  "en": "",
+  "en": "That reservoir is the source of the Cachoeira-Véu. The river warden won't let you go down unless you know how to go up.",
   "ctx": "src/data/treinadores/a2.ts:143 · t()"
  },
  "Pepitão": {
-  "en": "",
+  "en": "Pepitão",
   "ctx": "src/data/treinadores/a2.ts:144 · t()"
  },
  "Achei uma engrenagem de ouro! É latão pintado. Estou bravo. Batalha!": {
-  "en": "",
+  "en": "I found a gold gear! It's painted brass. I'm mad. Battle!",
   "ctx": "src/data/treinadores/a2.ts:144 · t()"
  },
  "Latão pintado, igual a minha estratégia.": {
-  "en": "",
+  "en": "Painted brass, just like my strategy.",
   "ctx": "src/data/treinadores/a2.ts:144 · t()"
  },
  "O sucateiro da vila troca Engrenagem Velha por coisa boa. Tem uma perdida perto do pedregulho.": {
-  "en": "",
+  "en": "The town junk dealer trades Old Gears for good stuff. There's one lying near the boulder.",
   "ctx": "src/data/treinadores/a2.ts:144 · t()"
  },
  "Mola": {
-  "en": "",
+  "en": "Mola",
   "ctx": "src/data/treinadores/a2.ts:145 · t()"
  },
  "Na roda de Vila Ferrugem o berimbau é de vergalhão! Entra!": {
-  "en": "",
+  "en": "In the Vila Ferrugem roda, the berimbau is made of rebar! Step in!",
   "ctx": "src/data/treinadores/a2.ts:145 · t()"
  },
  "Desafinei.": {
-  "en": "",
+  "en": "I'm out of tune.",
   "ctx": "src/data/treinadores/a2.ts:145 · t()"
  },
  "Preguinho vira Prego-Mestre no 36. Aí ele para de jogar pedra e começa a jogar bigorna.": {
-  "en": "",
+  "en": "Preguinho becomes Prego-Mestre at 36. Then it stops throwing rocks and starts throwing anvils.",
   "ctx": "src/data/treinadores/a2.ts:145 · t()"
  },
  "Ferreira": {
-  "en": "",
+  "en": "Smith",
   "ctx": "src/data/treinadores/a2.ts:146 · t() | src/data/treinadores/b1.ts:156 · t() | src/data/treinadores/ginasio-07.ts:16 · campo classe | +1"
  },
  "Dona Solda": {
-  "en": "",
+  "en": "Dona Solda",
   "ctx": "src/data/treinadores/a2.ts:146 · t()"
  },
  "Eu soldo o que quebra. Hoje vou quebrar para depois soldar: a sua equipe!": {
-  "en": "",
+  "en": "I weld what breaks. Today I'll break first and weld later: your team!",
   "ctx": "src/data/treinadores/a2.ts:146 · t()"
  },
  "Quebrei foi a cara.": {
-  "en": "",
+  "en": "What I broke was my pride.",
   "ctx": "src/data/treinadores/a2.ts:146 · t()"
  },
  "Lá no sul da vila tem uma loca fechada por rocha rachada. O Quebra-pedra resolve.": {
-  "en": "",
+  "en": "In the south of town there's a nook sealed by a cracked rock. Rock Smash will sort it out.",
   "ctx": "src/data/treinadores/a2.ts:146 · t()"
  },
  "Porca-Solta": {
-  "en": "",
+  "en": "Porca-Solta",
   "ctx": "src/data/treinadores/a2.ts:147 · t()"
  },
  "Minha pipa é de chapa de zinco. Não voa. Mas a minha equipe voa!": {
-  "en": "",
+  "en": "My kite is made of sheet zinc. It doesn't fly. But my team does!",
   "ctx": "src/data/treinadores/a2.ts:147 · t()"
  },
  "Também não voou.": {
-  "en": "",
+  "en": "It didn't fly either.",
   "ctx": "src/data/treinadores/a2.ts:147 · t()"
  },
  "A ilhota do laguinho tem uma cuia dourada. Eu vi com a luneta do meu avô.": {
-  "en": "",
+  "en": "The islet in the pond has a golden Gourd. I saw it through my grandpa's spyglass.",
   "ctx": "src/data/treinadores/a2.ts:147 · t()"
  },
  "Drª Desova": {
-  "en": "",
+  "en": "Dr. Desova",
   "ctx": "src/data/treinadores/a2.ts:152 · t()"
  },
  "Projeto Tartaruí! Só anda nesta praia quem prova que tem cuidado. Prove em batalha!": {
-  "en": "",
+  "en": "Tartaruí Project! Only those who prove they're careful may walk this beach. Prove it in battle!",
   "ctx": "src/data/treinadores/a2.ts:152 · t()"
  },
  "Cuidadoso e forte. Aprovado.": {
-  "en": "",
+  "en": "Careful and strong. Approved.",
   "ctx": "src/data/treinadores/a2.ts:152 · t()"
  },
  "Os ninhos ficam atrás das cordas. De noite as mães sobem a areia: olhe de longe.": {
-  "en": "",
+  "en": "The nests are behind the ropes. At night the mothers climb the sand: watch from a distance.",
   "ctx": "src/data/treinadores/a2.ts:152 · t()"
  },
  "Aqui é proibido surfar na desova. Então eu batalho. Tédio é fogo!": {
-  "en": "",
+  "en": "No surfing allowed during nesting season. So I battle. Boredom is brutal!",
   "ctx": "src/data/treinadores/a2.ts:153 · t()"
  },
  "Tédio resolvido.": {
-  "en": "",
+  "en": "Boredom solved.",
   "ctx": "src/data/treinadores/a2.ts:153 · t()"
  },
  "Na estação fria aparece Pinguinzinho perdido no capim da ponta. Vem do sul, pegando jacaré em onda.": {
-  "en": "",
+  "en": "In the cold season, lost Pinguinzinhos show up in the grass at the point. They come from the south, bodysurfing.",
   "ctx": "src/data/treinadores/a2.ts:153 · t()"
  },
  "Seu Puçá": {
-  "en": "",
+  "en": "Seu Puçá",
   "ctx": "src/data/treinadores/a2.ts:154 · t()"
  },
  "Pescar aqui não pode. Batalhar, o Projeto não proibiu!": {
-  "en": "",
+  "en": "No fishing here. But the Project never banned battling!",
   "ctx": "src/data/treinadores/a2.ts:154 · t()"
  },
  "Vão proibir depois dessa.": {
-  "en": "",
+  "en": "They'll ban it after this.",
   "ctx": "src/data/treinadores/a2.ts:154 · t()"
  },
  "Guaiamuque de garra azul mora nas tocas da restinga. Belisca até pensamento.": {
-  "en": "",
+  "en": "Blue-clawed Guaiamuques live in the restinga burrows. They'll pinch your very thoughts.",
   "ctx": "src/data/treinadores/a2.ts:154 · t()"
  },
  "Vigia-Ninho": {
-  "en": "",
+  "en": "Nest Watcher",
   "ctx": "src/data/treinadores/a2.ts:155 · t()"
  },
  "Turno da noite ou do dia, eu vigio os ninhos! Identifique-se com uma batalha!": {
-  "en": "",
+  "en": "Night shift or day shift, I watch the nests! Identify yourself with a battle!",
   "ctx": "src/data/treinadores/a2.ts:155 · t()"
  },
  "Identificado: melhor que eu.": {
-  "en": "",
+  "en": "Identified: better than me.",
   "ctx": "src/data/treinadores/a2.ts:155 · t()"
  },
  "A bióloga-chefe está com um ovo que ninguém sabe de quem é. Ela procura alguém de confiança.": {
-  "en": "",
+  "en": "The head biologist has an egg nobody can place. She's looking for someone she can trust.",
   "ctx": "src/data/treinadores/a2.ts:155 · t()"
  },
  "Catadora": {
-  "en": "",
+  "en": "Crab Catcher",
   "ctx": "src/data/treinadores/a2.ts:160 · t()"
  },
  "Dona Uçá": {
-  "en": "",
+  "en": "Dona Uçá",
   "ctx": "src/data/treinadores/a2.ts:160 · t()"
  },
  "No meu mangue, caranguejo eu cato um por um. Treinador também!": {
-  "en": "",
+  "en": "In my mangrove I catch crabs one by one. Trainers too!",
   "ctx": "src/data/treinadores/a2.ts:160 · t()"
  },
  "Me catou.": {
-  "en": "",
+  "en": "You caught me.",
   "ctx": "src/data/treinadores/a2.ts:160 · t()"
  },
  "Na andada do caranguejo ninguém cata. É lei, é respeito e é mais gostoso depois.": {
-  "en": "",
+  "en": "Nobody catches crabs during the crab walk. It's the law, it's respect, and they taste better afterward.",
   "ctx": "src/data/treinadores/a2.ts:160 · t()"
  },
  "Seu Tarrafa": {
-  "en": "",
+  "en": "Seu Tarrafa",
   "ctx": "src/data/treinadores/a2.ts:161 · t()"
  },
  "Psiu, devagar com esse remo! Espantou meu jacarezinho. Agora ele quer briga.": {
-  "en": "",
+  "en": "Psst, easy with that paddle! You scared my little caiman. Now it wants a fight.",
   "ctx": "src/data/treinadores/a2.ts:161 · t()"
  },
  "Ele perdeu a vontade. Eu também.": {
-  "en": "",
+  "en": "It lost the urge. So did I.",
   "ctx": "src/data/treinadores/a2.ts:161 · t()"
  },
  "Manatim aparece no canal fundo, bem de vez em quando. Peixe-boi é tímido que só.": {
-  "en": "",
+  "en": "Manatim turns up in the deep channel, every once in a while. Manatees are shy as can be.",
   "ctx": "src/data/treinadores/a2.ts:161 · t()"
  },
  "Drª Rizófora": {
-  "en": "",
+  "en": "Dr. Rizófora",
   "ctx": "src/data/treinadores/a2.ts:162 · t()"
  },
  "O mangue é o berçário da baía! E eu sou a babá. Babá brava!": {
-  "en": "",
+  "en": "The mangrove is the bay's nursery! And I'm the nanny. A fierce nanny!",
   "ctx": "src/data/treinadores/a2.ts:162 · t()"
  },
  "Nana, neném…": {
-  "en": "",
+  "en": "Hush, little baby…",
   "ctx": "src/data/treinadores/a2.ts:162 · t()"
  },
  "Raiz de mangue segura a lama e o cipó segura a canoa. Para o cipó, Facão.": {
-  "en": "",
+  "en": "Mangrove roots hold the mud and vines hold the canoe. For vines, the Machete.",
   "ctx": "src/data/treinadores/a2.ts:162 · t()"
  },
  "Lama-Fina": {
-  "en": "",
+  "en": "Lama-Fina",
   "ctx": "src/data/treinadores/a2.ts:163 · t()"
  },
  "Atolou? Não? Então vai atolar na minha estratégia!": {
-  "en": "",
+  "en": "Stuck in the mud? No? Then you'll get stuck in my strategy!",
   "ctx": "src/data/treinadores/a2.ts:163 · t()"
  },
  "Atolei eu.": {
-  "en": "",
+  "en": "I'm the one who got stuck.",
   "ctx": "src/data/treinadores/a2.ts:163 · t()"
  },
  "De noite o Pererecão canta tão alto que o mangue inteiro perde o sono.": {
-  "en": "",
+  "en": "At night the Pererecão sings so loud the whole mangrove loses sleep.",
   "ctx": "src/data/treinadores/a2.ts:163 · t()"
  },
  "Dona Socó": {
-  "en": "",
+  "en": "Dona Socó",
   "ctx": "src/data/treinadores/a2.ts:164 · t() | src/data/treinadores/b2-sul.ts:115 · t()"
  },
  "Estou esperando uma Garça-Real há três dias. Você serve para passar o tempo!": {
-  "en": "",
+  "en": "I've been waiting for a Garça-Real for three days. You'll do to pass the time!",
   "ctx": "src/data/treinadores/a2.ts:164 · t()"
  },
  "O tempo passou rápido demais.": {
-  "en": "",
+  "en": "Time passed way too fast.",
   "ctx": "src/data/treinadores/a2.ts:164 · t()"
  },
  "Garça-Real só aparece para quem já tem nome na Costa do Sol. Volte com mais insígnias.": {
-  "en": "",
+  "en": "Garça-Real only shows up for those who've made a name on the Costa do Sol. Come back with more badges.",
   "ctx": "src/data/treinadores/a2.ts:164 · t()"
  },
  "Mestre Corredeira": {
-  "en": "",
+  "en": "Master Corredeira",
   "ctx": "src/data/treinadores/a2.ts:169 · t()"
  },
  "Subiu a cascata? Então já é gente grande. Batalha de gente grande!": {
-  "en": "",
+  "en": "Climbed the waterfall? Then you're a grown-up. Grown-up battle!",
   "ctx": "src/data/treinadores/a2.ts:169 · t()"
  },
  "Gente grande também perde.": {
-  "en": "",
+  "en": "Grown-ups lose too.",
   "ctx": "src/data/treinadores/a2.ts:169 · t()"
  },
  "Com a Vara Mestra sai Dourado-Rei no poço de cima. Escama de brasa, gênio de brasa.": {
-  "en": "",
+  "en": "With the Master Rod, Dourado-Rei bites in the upper pool. Ember scales, ember temper.",
   "ctx": "src/data/treinadores/a2.ts:169 · t()"
  },
  "Drª Lontra": {
-  "en": "",
+  "en": "Dr. Lontra",
   "ctx": "src/data/treinadores/a2.ts:170 · t()"
  },
  "Estudo as ariranhas deste rio. Elas me estudam de volta. Hoje o experimento é você!": {
-  "en": "",
+  "en": "I study the giant otters of this river. They study me back. Today, the experiment is you!",
   "ctx": "src/data/treinadores/a2.ts:170 · t()"
  },
  "Resultado: inconclusivo para mim.": {
-  "en": "",
+  "en": "Result: inconclusive, for me.",
   "ctx": "src/data/treinadores/a2.ts:170 · t()"
  },
  "O Andorinhão-da-Cachoeira faz ninho atrás do véu d’água. Só sai para caçar e para se exibir.": {
-  "en": "",
+  "en": "The Waterfall Swift nests behind the curtain of water. It only comes out to hunt and to show off.",
   "ctx": "src/data/treinadores/a2.ts:170 · t()"
  },
  "Dona Tucana": {
-  "en": "",
+  "en": "Dona Tucana",
   "ctx": "src/data/treinadores/a2.ts:171 · t()"
  },
  "Um Tucanuçu de bico em brasa pousou ali agorinha! Você espantou. Paga em batalha!": {
-  "en": "",
+  "en": "A Tucanuçu with a fire-red beak landed there just now! You scared it off. Pay up in battle!",
   "ctx": "src/data/treinadores/a2.ts:171 · t()"
  },
  "Paguei eu.": {
-  "en": "",
+  "en": "I'm the one who paid.",
   "ctx": "src/data/treinadores/a2.ts:171 · t()"
  },
  "De dia, nas árvores grossas, com muita sorte cai um Mico-Leãozim. Dourado feito o sol das dez.": {
-  "en": "",
+  "en": "By day, in the thick trees, with a lot of luck, a Mico-Leãozim drops out. Golden as the ten o'clock sun.",
   "ctx": "src/data/treinadores/a2.ts:171 · t()"
  },
  "Mestre Cachoeira": {
-  "en": "",
+  "en": "Master Cachoeira",
   "ctx": "src/data/treinadores/a2.ts:172 · t()"
  },
  "Treino debaixo da queda d’água para firmar a base. Vem ver se firmou!": {
-  "en": "",
+  "en": "I train under the waterfall to steady my stance. Come see if it's steady!",
   "ctx": "src/data/treinadores/a2.ts:172 · t()"
  },
  "Escorreguei.": {
-  "en": "",
+  "en": "I slipped.",
   "ctx": "src/data/treinadores/a2.ts:172 · t()"
  },
  "Bugio-Trovão ronca lá no alto. Quando ele ronca, a cascata treme.": {
-  "en": "",
+  "en": "Bugio-Trovão roars up high. When it roars, the waterfall shakes.",
   "ctx": "src/data/treinadores/a2.ts:172 · t()"
  },
  "Esta margem é reserva. Quem entra, mostra que merece!": {
-  "en": "",
+  "en": "This riverbank is a reserve. Whoever comes in must prove they deserve it!",
   "ctx": "src/data/treinadores/a2.ts:173 · t()"
  },
  "Merece.": {
-  "en": "",
+  "en": "You deserve it.",
   "ctx": "src/data/treinadores/a2.ts:173 · t()"
  },
  "A anta abre trilha no mato para todo mundo. Tapirinho aparece raro no capim da margem.": {
-  "en": "",
+  "en": "The tapir clears trails in the brush for everyone. Tapirinho rarely shows up in the grass by the bank.",
   "ctx": "src/data/treinadores/a2.ts:173 · t()"
  },
  "Rio-Abaixo": {
-  "en": "",
+  "en": "Rio-Abaixo",
   "ctx": "src/data/treinadores/a2.ts:174 · t()"
  },
  "Desço cascata de prancha! Subir é que eu ainda não aprendi. Você sabe? Então batalha!": {
-  "en": "",
+  "en": "I ride down waterfalls on a board! Going up, I still haven't figured out. You know how? Then battle!",
   "ctx": "src/data/treinadores/a2.ts:174 · t()"
  },
  "Vou descer de novo. De cabeça baixa.": {
-  "en": "",
+  "en": "I'll ride down again. Head hung low.",
   "ctx": "src/data/treinadores/a2.ts:174 · t()"
  },
  "Lá embaixo o rio cai no poço de Serra Fumaça. Lá em cima nasce no açude de Vila Ferrugem.": {
-  "en": "",
+  "en": "Down below, the river falls into the Serra Fumaça pool. Up above, it starts at the Vila Ferrugem reservoir.",
   "ctx": "src/data/treinadores/a2.ts:174 · t()"
  },
  "Glub-Glub": {
-  "en": "",
+  "en": "Glub-Glub",
   "ctx": "src/data/treinadores/a2.ts:179 · t()"
  },
  "(Ele faz sinal de \"batalha\" com as mãos. Ou de \"tubarão\". Melhor batalhar.)": {
-  "en": "",
+  "en": "(He signals \"battle\" with his hands. Or \"shark\". Better to battle.)",
   "ctx": "src/data/treinadores/a2.ts:179 · t()"
  },
  "(Sinal de \"tudo bem\". Bolhas tristes.)": {
-  "en": "",
+  "en": "(The \"okay\" sign. Sad bubbles.)",
   "ctx": "src/data/treinadores/a2.ts:179 · t()"
  },
  "(Ele aponta para o fundo e desenha uma cobra enorme com o dedo.)": {
-  "en": "",
+  "en": "(He points to the bottom and draws a huge snake with his finger.)",
   "ctx": "src/data/treinadores/a2.ts:179 · t()"
  },
  "Mergulhadora": {
-  "en": "",
+  "en": "Diver",
   "ctx": "src/data/treinadores/a2.ts:180 · t() | src/data/treinadores/a2.ts:182 · t() | src/data/treinadores/b2-sul.ts:53 · t() | +1"
  },
  "Coralina": {
-  "en": "",
+  "en": "Coralina",
   "ctx": "src/data/treinadores/a2.ts:180 · t()"
  },
  "(Ela mostra uma lousa: \"ÁREA DE PESQUISA. BATALHA OBRIGATÓRIA.\")": {
-  "en": "",
+  "en": "(She shows a slate: \"RESEARCH AREA. BATTLE MANDATORY.\")",
   "ctx": "src/data/treinadores/a2.ts:180 · t()"
  },
  "(Lousa: \"PESQUISA CONCLUÍDA. PERDI.\")": {
-  "en": "",
+  "en": "(Slate: \"RESEARCH COMPLETE. I LOST.\")",
   "ctx": "src/data/treinadores/a2.ts:180 · t()"
  },
  "(Lousa: \"O Hipocampo só aparece para quem tem paciência de coral.\")": {
-  "en": "",
+  "en": "(Slate: \"Hipocampo only shows up for those with the patience of coral.\")",
   "ctx": "src/data/treinadores/a2.ts:180 · t()"
  },
  "Abissal": {
-  "en": "",
+  "en": "Abissal",
   "ctx": "src/data/treinadores/a2.ts:181 · t()"
  },
  "(Ele bate no próprio cilindro: tóin, tóin. É um desafio. Ou está sem ar.)": {
-  "en": "",
+  "en": "(He taps his own tank: tonk, tonk. It's a challenge. Or he's out of air.)",
   "ctx": "src/data/treinadores/a2.ts:181 · t()"
  },
  "(Tóin… tóin…)": {
-  "en": "",
+  "en": "(Tonk… tonk…)",
   "ctx": "src/data/treinadores/a2.ts:181 · t()"
  },
  "(Ele aponta a gruta do fundo e cruza os braços em X.)": {
-  "en": "",
+  "en": "(He points at the cave at the bottom and crosses his arms in an X.)",
   "ctx": "src/data/treinadores/a2.ts:181 · t()"
  },
  "Sereia Aposentada": {
-  "en": "",
+  "en": "Retired Mermaid",
   "ctx": "src/data/treinadores/a2.ts:182 · t()"
  },
  "(Lousa: \"NADEI COM A BOIÚNA EM 1974. ELA NÃO LEMBRA DE MIM. BATALHA?\")": {
-  "en": "",
+  "en": "(Slate: \"SWAM WITH THE BOIÚNA IN 1974. SHE DOESN'T REMEMBER ME. BATTLE?\")",
   "ctx": "src/data/treinadores/a2.ts:182 · t()"
  },
  "(Lousa: \"VOCÊ ELA VAI LEMBRAR.\")": {
-  "en": "",
+  "en": "(Slate: \"YOU, SHE'LL REMEMBER.\")",
   "ctx": "src/data/treinadores/a2.ts:182 · t()"
  },
  "(Lousa: \"ELA SÓ ACORDA PARA QUEM JÁ DANÇOU NA RODA DE CIDADE GINGA.\")": {
-  "en": "",
+  "en": "(Slate: \"SHE ONLY WAKES FOR THOSE WHO'VE DANCED IN THE CIDADE GINGA RODA.\")",
   "ctx": "src/data/treinadores/a2.ts:182 · t()"
  },
  "Pico-Fino": {
-  "en": "",
+  "en": "Pico-Fino",
   "ctx": "src/data/treinadores/a2.ts:187 · t()"
  },
  "Quinze insígnias e ainda tem fôlego? Vamos ver até onde!": {
-  "en": "",
+  "en": "Fifteen badges and still got some breath left? Let's see how far it goes!",
   "ctx": "src/data/treinadores/a2.ts:187 · t()"
  },
  "Acabou o meu.": {
-  "en": "",
+  "en": "I'm out of breath.",
   "ctx": "src/data/treinadores/a2.ts:187 · t()"
  },
  "O paredão da trepadeira é só o começo. Depois vem a gruta escura e a cascata.": {
-  "en": "",
+  "en": "The creeper wall is just the beginning. Then comes the dark cave and the waterfall.",
   "ctx": "src/data/treinadores/a2.ts:187 · t()"
  },
  "Dona Harpia": {
-  "en": "",
+  "en": "Dona Harpia",
   "ctx": "src/data/treinadores/a2.ts:188 · t() | src/data/treinadores/b2-norte.ts:83 · t()"
  },
  "Observo o Gavião-Tupã há quarenta anos. Ele nunca apareceu. Você apareceu. Batalha!": {
-  "en": "",
+  "en": "I've been watching for Gavião-Tupã for forty years. It never showed up. You did. Battle!",
   "ctx": "src/data/treinadores/a2.ts:188 · t()"
  },
  "Quarenta e um anos, então.": {
-  "en": "",
+  "en": "Forty-one years, then.",
   "ctx": "src/data/treinadores/a2.ts:188 · t()"
  },
  "Ele só desce do trovão para quem a Aldeia reconhece. Fale com o Pajé.": {
-  "en": "",
+  "en": "It only comes down from the thunder for those the Aldeia recognizes. Talk to the Shaman.",
   "ctx": "src/data/treinadores/a2.ts:188 · t()"
  },
  "Mestre Ventania": {
-  "en": "",
+  "en": "Master Ventania",
   "ctx": "src/data/treinadores/a2.ts:189 · t()"
  },
  "No alto do monte o vento joga capoeira com a gente. Aprendi com ele!": {
-  "en": "",
+  "en": "At the top of the mountain the wind plays capoeira with us. I learned from it!",
   "ctx": "src/data/treinadores/a2.ts:189 · t()"
  },
  "O vento virou.": {
-  "en": "",
+  "en": "The wind turned.",
   "ctx": "src/data/treinadores/a2.ts:189 · t()"
  },
  "De noite, com sorte, um Maracajim cruza a trilha. De dia, só o rastro.": {
-  "en": "",
+  "en": "At night, with luck, a Maracajim crosses the trail. By day, only its tracks.",
   "ctx": "src/data/treinadores/a2.ts:189 · t()"
  },
  "Drª Bromélia": {
-  "en": "",
+  "en": "Dr. Bromélia",
   "ctx": "src/data/treinadores/a2.ts:190 · t()"
  },
  "Cada bromélia daqui é um condomínio de criaturas. Eu sou a síndica!": {
-  "en": "",
+  "en": "Every bromeliad here is an apartment building for creatures. And I'm the building manager!",
   "ctx": "src/data/treinadores/a2.ts:190 · t()"
  },
  "A síndica renunciou.": {
-  "en": "",
+  "en": "The manager resigns.",
   "ctx": "src/data/treinadores/a2.ts:190 · t()"
  },
  "Lavadeira-Dragão de asa de vitral voa sobre as poças do alto. Rara. Linda. Brava.": {
-  "en": "",
+  "en": "The stained-glass-winged Lavadeira-Dragão flies over the pools up high. Rare. Gorgeous. Fierce.",
   "ctx": "src/data/treinadores/a2.ts:190 · t()"
  },
  "Cristalino": {
-  "en": "",
+  "en": "Cristalino",
   "ctx": "src/data/treinadores/a2.ts:191 · t()"
  },
  "A gruta do monte tem cristal que canta. Eu canto junto. Mal. Batalha para abafar!": {
-  "en": "",
+  "en": "The mountain cave has crystals that sing. I sing along. Badly. A battle to drown it out!",
   "ctx": "src/data/treinadores/a2.ts:191 · t()"
  },
  "Desafinei de vez.": {
-  "en": "",
+  "en": "Completely out of tune.",
   "ctx": "src/data/treinadores/a2.ts:191 · t()"
  },
  "Sem Lampião a gruta não tem saída. Com Lampião, tem uma: para cima.": {
-  "en": "",
+  "en": "Without a Lantern, the cave has no way out. With a Lantern, it has one: up.",
   "ctx": "src/data/treinadores/a2.ts:191 · t()"
  },
  "Guardiã da Trilha": {
-  "en": "",
+  "en": "Trail Guardian",
   "ctx": "src/data/treinadores/a2.ts:192 · t()"
  },
  "Yara-do-Alto": {
-  "en": "",
+  "en": "Yara-do-Alto",
   "ctx": "src/data/treinadores/a2.ts:192 · t()"
  },
  "Última curva antes da Aldeia Tupã. Quem passa por mim, o Pajé recebe de pé!": {
-  "en": "",
+  "en": "Last bend before Aldeia Tupã. Get past me, and the Shaman will greet you standing!",
   "ctx": "src/data/treinadores/a2.ts:192 · t()"
  },
  "Ele vai receber você de pé.": {
-  "en": "",
+  "en": "He'll greet you standing.",
   "ctx": "src/data/treinadores/a2.ts:192 · t()"
  },
  "A Aldeia fica logo acima. A trilha da esquerda sobe ainda mais: é a do Pico Pingorama.": {
-  "en": "",
+  "en": "The Aldeia is just above. The trail on the left climbs even higher: that's the one to Pico Pingorama.",
   "ctx": "src/data/treinadores/a2.ts:192 · t()"
  },
  "Arqueiro": {
-  "en": "",
+  "en": "Archer",
   "ctx": "src/data/treinadores/a2.ts:197 · t()"
  },
  "A Aldeia recebe bem. Mas antes mede. Deixa eu medir você!": {
-  "en": "",
+  "en": "The Aldeia welcomes everyone. But first it takes their measure. Let me measure you!",
   "ctx": "src/data/treinadores/a2.ts:197 · t()"
  },
  "Medida tirada: maior que eu.": {
-  "en": "",
+  "en": "Measurement taken: bigger than me.",
   "ctx": "src/data/treinadores/a2.ts:197 · t()"
  },
  "O Pajé Trovão-Velho guarda a última insígnia. As quatro provas do ginásio são dos quatro elementos.": {
-  "en": "",
+  "en": "Shaman Trovão-Velho guards the last badge. The gym's four trials are of the four elements.",
   "ctx": "src/data/treinadores/a2.ts:197 · t()"
  },
  "Contadora de Histórias": {
-  "en": "",
+  "en": "Storyteller",
   "ctx": "src/data/treinadores/a2.ts:198 · t()"
  },
  "Jurema": {
-  "en": "",
+  "en": "Jurema",
   "ctx": "src/data/treinadores/a2.ts:198 · t() | src/data/treinadores/ginasio-08.ts:9 · campo nome"
  },
  "Toda história boa tem uma batalha no meio. Vamos escrever a sua!": {
-  "en": "",
+  "en": "Every good story has a battle in the middle. Let's write yours!",
   "ctx": "src/data/treinadores/a2.ts:198 · t()"
  },
  "Fim. Para mim.": {
-  "en": "",
+  "en": "The end. For me.",
   "ctx": "src/data/treinadores/a2.ts:198 · t()"
  },
  "O Gavião-Tupã pousa na pedra mais alta quando o céu reconhece um guardião de verdade.": {
-  "en": "",
+  "en": "Gavião-Tupã lands on the highest rock when the sky recognizes a true guardian.",
   "ctx": "src/data/treinadores/a2.ts:198 · t()"
  },
  "Menino da Aldeia": {
-  "en": "",
+  "en": "Aldeia Kid",
   "ctx": "src/data/treinadores/a2.ts:199 · t()"
  },
  "Curumim Raio": {
-  "en": "",
+  "en": "Curumim Raio",
   "ctx": "src/data/treinadores/a2.ts:199 · t()"
  },
  "Quando eu crescer vou ser Pajé! Hoje vou ser só o seu pesadelo!": {
-  "en": "",
+  "en": "When I grow up I'm gonna be a Shaman! Today I'll just be your nightmare!",
   "ctx": "src/data/treinadores/a2.ts:199 · t()"
  },
  "Tipo Lenda só teme Geada, Encanto e outra Lenda. O Pajé tem todas as outras respostas.": {
-  "en": "",
+  "en": "Legend type only fears Frost, Charm and other Legends. The Shaman has all the other answers.",
   "ctx": "src/data/treinadores/a2.ts:199 · t()"
  },
  "Fiquei sem ar.": {
