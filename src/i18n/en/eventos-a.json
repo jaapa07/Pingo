@@ -6624,1243 +6624,1243 @@
   "ctx": "src/data/zonas/A4-mercado.ts:37 · campo fala"
  },
  "Podia ser pior. Meu irmão é o Baiacu.": {
-  "en": "",
+  "en": "Could be worse. My brother is Baiacu.",
   "ctx": "src/data/zonas/A4-mercado.ts:37 · campo fala"
  },
  "Cozinheiro Dendê": {
-  "en": "",
+  "en": "Cook Dendê",
   "ctx": "src/data/zonas/A4-mercado.ts:38 · gente()"
  },
  "Moqueca de Porto Sereia leva dendê, coentro e paciência.": {
-  "en": "",
+  "en": "A Porto Sereia moqueca takes palm oil, cilantro and patience.",
   "ctx": "src/data/zonas/A4-mercado.ts:38 · campo fala"
  },
  "Criatura cansada no meio da estrada? Garapa levanta na hora. Vende ali na banca do capitão.": {
-  "en": "",
+  "en": "Tired creature in the middle of the road? Garapa perks it right up. They sell it at the captain's stall.",
   "ctx": "src/data/zonas/A4-mercado.ts:38 · campo fala"
  },
  "Marinheiro Caolho": {
-  "en": "",
+  "en": "One-Eyed Sailor",
   "ctx": "src/data/zonas/A4-posto.ts:5 · campo nome"
  },
  "Atravessei a Gruta do Eco só com um Pipirim e muita reza.": {
-  "en": "",
+  "en": "I crossed Gruta do Eco with nothing but a Pipirim and a lot of prayer.",
   "ctx": "src/data/zonas/A4-posto.ts:5 · campo fala"
  },
  "Na volta eu vou de canoa. Quando tiver guincho. Quando tiver luz.": {
-  "en": "",
+  "en": "On the way back I'll take a canoe. When there's a crane. When there's power.",
   "ctx": "src/data/zonas/A4-posto.ts:5 · campo fala"
  },
  "Pescador Nilo": {
-  "en": "",
+  "en": "Fisher Nilo",
   "ctx": "src/data/zonas/A4-posto.ts:6 · campo nome"
  },
  "A Vara Boa pesca coisa que a Vara Velha nem sonha.": {
-  "en": "",
+  "en": "A Good Rod catches things an Old Rod can only dream of.",
   "ctx": "src/data/zonas/A4-posto.ts:6 · campo fala"
  },
  "O Feirante Deodato, na porta do mercado, dá uma para quem mostrar peixe de bigode.": {
-  "en": "",
+  "en": "Vendor Deodato, at the market door, gives one to anyone who shows him a fish with whiskers.",
   "ctx": "src/data/zonas/A4-posto.ts:6 · campo fala"
  },
  "Ginásio de Treino": {
-  "en": "",
+  "en": "Training Gym",
   "ctx": "src/data/zonas/A4-treino.ts:16 · campo nome"
  },
  "GINÁSIO DE TREINO\nRevanches dos líderes de Pingorama.\nLigue pelo Rádio Cipó no dia e no período de cada um.": {
-  "en": "",
+  "en": "TRAINING GYM\nRematches with Pingorama's Leaders.\nCall each one on the Rádio Cipó on their day and time of day.",
   "ctx": "src/data/zonas/A4-treino.ts:38 · campo texto"
  },
  "Regra da casa: uma revanche por líder por dia. Quem perde volta para o Posto, como em qualquer ginásio.": {
-  "en": "",
+  "en": "House rule: one rematch per Leader per day. Whoever loses goes back to the Post, like in any gym.",
   "ctx": "src/data/zonas/A4-treino.ts:39 · campo texto"
  },
  "Dona Âncora": {
-  "en": "",
+  "en": "Dona Âncora",
   "ctx": "src/data/zonas/A4-venda.ts:4 · campo nome"
  },
  "Venda do Porto, às ordens! Chegou de navio, de trem ou de teimosia, a gente tem.": {
-  "en": "",
+  "en": "Port Shop, at your service! Whether it came by ship, by train or by sheer stubbornness, we've got it.",
   "ctx": "src/data/zonas/A4-venda.ts:4 · campo fala"
  },
  "Viajante Dália": {
-  "en": "",
+  "en": "Traveler Dália",
   "ctx": "src/data/zonas/A4-venda.ts:8 · campo nome"
  },
  "Cuia Trançada segura criatura mais arisca que a cuia comum.": {
-  "en": "",
+  "en": "A Woven Gourd holds skittish creatures better than a regular Gourd.",
   "ctx": "src/data/zonas/A4-venda.ts:8 · campo fala"
  },
  "Eu compro de dúzia. Nunca se sabe quando vai aparecer bicho raro.": {
-  "en": "",
+  "en": "I buy them by the dozen. You never know when a rare critter will turn up.",
   "ctx": "src/data/zonas/A4-venda.ts:8 · campo fala"
  },
  "GRUTA DO ECO\nAtalho para a Trilha dos Cipós e Bosque Alto. Grite \"oi\" lá dentro: ela responde com juros.": {
-  "en": "",
+  "en": "GRUTA DO ECO\nShortcut to Trilha dos Cipós and Bosque Alto. Shout \"hi\" inside: it answers with interest.",
   "ctx": "src/data/zonas/A4.ts:64 · placa()"
  },
  "ESTAÇÃO DE PORTO SEREIA\nTrem Serra-Sol — Porto Sereia ↔ Sertão das Névoas.\nLinha da serra: embarque só para Campeões da Liga dos Guardiões.": {
-  "en": "",
+  "en": "PORTO SEREIA STATION\nSerra-Sol Train — Porto Sereia - Sertão das Névoas.\nMountain line: boarding for League of Guardians Champions only.",
   "ctx": "src/data/zonas/A4.ts:65 · placa()"
  },
  "POSTO GUARDIÃO\nCura grátis. Sal grosso na porta por conta da casa.": {
-  "en": "",
+  "en": "GUARDIAN POST\nFree healing. Coarse salt at the door, on the house.",
   "ctx": "src/data/zonas/A4.ts:66 · placa()"
  },
  "VENDA DO PORTO\nCuias, remédios e novidade que chega de trem.": {
-  "en": "",
+  "en": "PORT SHOP\nGourds, medicine and news that arrives by train.",
   "ctx": "src/data/zonas/A4.ts:67 · placa()"
  },
  "GINÁSIO DE PORTO SEREIA\nLíder: Capitã Marola — \"quem não sabe remar, que aprenda a nadar\".": {
-  "en": "",
+  "en": "PORTO SEREIA GYM\nLeader: Captain Marola — \"if you can't paddle, learn to swim\".",
   "ctx": "src/data/zonas/A4.ts:68 · placa()"
  },
  "MERCADO DE PEIXE\nPeixe fresco, fruto maduro e raridade de além-mar. Feira todo dia.": {
-  "en": "",
+  "en": "FISH MARKET\nFresh fish, ripe fruit and rarities from across the sea. Market every day.",
   "ctx": "src/data/zonas/A4.ts:69 · placa()"
  },
  "Casa do Mestre Remendo, o veleiro.": {
-  "en": "",
+  "en": "Home of Master Remendo, the sailmaker.",
   "ctx": "src/data/zonas/A4.ts:70 · placa()"
  },
  "Casa da Dona Enseada.\nRendas e fofocas sob encomenda.": {
-  "en": "",
+  "en": "Dona Enseada's house.\nLace and gossip made to order.",
   "ctx": "src/data/zonas/A4.ts:71 · placa()"
  },
  "Casa do Clube do Anzol.\nSócio paga com história de pescador.": {
-  "en": "",
+  "en": "Hook Club House.\nMembers pay in fish stories.",
   "ctx": "src/data/zonas/A4.ts:72 · placa()"
  },
  "PORTO SEREIA\n\"Onde o rio encontra o mar e o trem encontra os dois.\"\nNorte: Estação · Leste: Estrada da Usina · Sul: Cais": {
-  "en": "",
+  "en": "PORTO SEREIA\n\"Where the river meets the sea and the train meets them both.\"\nNorth: Station · East: Estrada da Usina · South: Dock",
   "ctx": "src/data/zonas/A4.ts:73 · placa()"
  },
  "O cais termina aqui. Para lá é só Baía Azul.\fSem o Amuleto do Remo ninguém sai do porto — e, enquanto a Usina Velha não devolver a luz, o guincho das canoas não desce nem com reza.": {
-  "en": "",
+  "en": "The dock ends here. Beyond is nothing but Baía Azul.\fWithout the Paddle Charm nobody leaves the port — and until the Old Power Plant gets the power back, the canoe crane won't come down even with prayers.",
   "ctx": "src/data/zonas/A4.ts:102 · campo recusa"
  },
  "Estrada da Usina interditada! Tem fio solto cuspindo faísca por todo lado.\fA Capitã Marola mandou liberar só para quem tiver a Insígnia da Concha. Ordem é ordem, e a dela vem com apito.": {
-  "en": "",
+  "en": "Estrada da Usina is closed! There are loose wires spitting sparks everywhere.\fCaptain Marola said to only let through those with the Shell Badge. Orders are orders, and hers come with a whistle.",
   "ctx": "src/data/zonas/A4.ts:105 · campo fala"
  },
  "Estação fechada, freguesia. Sem energia da Usina Velha, a Maria-Fumaça não apita nem para espantar galinha.\fQuando a luz voltar eu abro a porta. Embarcar já é outra conversa: a linha da serra é só para Campeões da Liga.": {
-  "en": "",
+  "en": "Station's closed, folks. Without power from the Old Power Plant, the steam engine can't even whistle to shoo a chicken.\fWhen the power's back I'll open the door. Boarding is another story: the mountain line is for League Champions only.",
   "ctx": "src/data/zonas/A4.ts:106 · campo fala"
  },
  "Moça do Guarda-sol": {
-  "en": "",
+  "en": "Parasol Girl",
   "ctx": "src/data/zonas/A4.ts:111 · gente()"
  },
  "Criatura do tipo Rio apaga Brasa, afoga Terra e desgasta Pedra.": {
-  "en": "",
+  "en": "River-type creatures put out Ember, drown Earth and wear down Stone.",
   "ctx": "src/data/zonas/A4.ts:111 · campo fala"
  },
  "Para enfrentar a Capitã Marola, leve Mata ou Trovão. E um casaco: lá dentro respinga.": {
-  "en": "",
+  "en": "To face Captain Marola, bring Grass or Thunder. And a jacket: it splashes in there.",
   "ctx": "src/data/zonas/A4.ts:111 · campo fala"
  },
  "Biu": {
-  "en": "",
+  "en": "Biu",
   "ctx": "src/data/zonas/A4.ts:112 · gente()"
  },
  "Quando eu crescer vou ser maquinista do Trem Serra-Sol!": {
-  "en": "",
+  "en": "When I grow up I'm going to drive the Serra-Sol Train!",
   "ctx": "src/data/zonas/A4.ts:112 · campo fala"
  },
  "Ou sorveteiro. O que tiver menos fila.": {
-  "en": "",
+  "en": "Or sell ice cream. Whichever has the shorter line.",
   "ctx": "src/data/zonas/A4.ts:112 · campo fala"
  },
  "Feirante Deodato": {
-  "en": "",
+  "en": "Vendor Deodato",
   "ctx": "src/data/zonas/A4.ts:113 · gente()"
  },
  "Dona Maroca": {
-  "en": "",
+  "en": "Dona Maroca",
   "ctx": "src/data/zonas/A4.ts:114 · gente()"
  },
  "No meu tempo, a luz da Usina Velha nunca piscava.": {
-  "en": "",
+  "en": "In my day, the Old Power Plant's lights never flickered.",
   "ctx": "src/data/zonas/A4.ts:114 · campo fala"
  },
  "Agora pisca tanto que meu rádio aprendeu código Morse sozinho.": {
-  "en": "",
+  "en": "Now they flicker so much my radio taught itself Morse code.",
   "ctx": "src/data/zonas/A4.ts:114 · campo fala"
  },
  "Surfista Lua": {
-  "en": "",
+  "en": "Surfer Lua",
   "ctx": "src/data/zonas/A4.ts:115 · gente()"
  },
  "A Baía Azul liga tudo: a Cidade Coral, a Ilha do Farol, a Praia das Tartarugas.": {
-  "en": "",
+  "en": "Baía Azul connects everything: Cidade Coral, Ilha do Farol, Praia das Tartarugas.",
   "ctx": "src/data/zonas/A4.ts:115 · campo fala"
  },
  "Mas sem Remo e sem parceira do tipo Rio, você só liga para a sua mãe vir buscar.": {
-  "en": "",
+  "en": "But without the Paddle and a River-type partner, the only thing you'll connect with is your mom, to come pick you up.",
   "ctx": "src/data/zonas/A4.ts:115 · campo fala"
  },
  "Marinheiro Bartô": {
-  "en": "",
+  "en": "Sailor Bartô",
   "ctx": "src/data/zonas/A4.ts:116 · gente()"
  },
  "Casa da Dona Bilro": {
-  "en": "",
+  "en": "Dona Bilro's House",
   "ctx": "src/data/zonas/A5-casa-1.ts:5 · campo nome"
  },
  "Cadernos e mais cadernos: \"Registro de Parceiras de Cidade Coral — volume 31\".": {
-  "en": "",
+  "en": "Notebooks upon notebooks: \"Cidade Coral Partner Registry — volume 31\".",
   "ctx": "src/data/zonas/A5-casa-1.ts:6 · campo estante"
  },
  "Na lombada do último: \"{JOGADOR}: a conferir\".": {
-  "en": "",
+  "en": "On the spine of the last one: \"{JOGADOR}: to be checked\".",
   "ctx": "src/data/zonas/A5-casa-1.ts:6 · campo estante"
  },
  "Almofadas de renda com alfinetes espetados no formato de uma Estrelinha.": {
-  "en": "",
+  "en": "Lace pillows with pins stuck in the shape of an Estrelinha.",
   "ctx": "src/data/zonas/A5-casa-1.ts:7 · campo bau"
  },
  "A vó sabe de cor onde cada criatura da ilha foi encontrada. Menos onde ela deixou os óculos.": {
-  "en": "",
+  "en": "Grandma knows by heart where every creature on the island was found. Except where she left her glasses.",
   "ctx": "src/data/zonas/A5-casa-1.ts:10 · campo fala"
  },
  "Estão na cabeça dela. Não conta que eu contei.": {
-  "en": "",
+  "en": "They're on her head. Don't tell her I told you.",
   "ctx": "src/data/zonas/A5-casa-1.ts:10 · campo fala"
  },
  "Casa do Mestre Timão": {
-  "en": "",
+  "en": "Master Timão's House",
   "ctx": "src/data/zonas/A5-casa-2.ts:5 · campo nome"
  },
  "Cartas náuticas do rio que sobe para o Sertão das Névoas. Alguém desenhou uma cobra enorme no meio da baía e escreveu \"aqui não\".": {
-  "en": "",
+  "en": "Nautical charts of the river that goes up to the Sertão das Névoas. Someone drew a huge snake in the middle of the bay and wrote \"not here\".",
   "ctx": "src/data/zonas/A5-casa-2.ts:6 · campo estante"
  },
  "Passa a previsão do tempo: \"Mar calmo, com possibilidade de baleia\".": {
-  "en": "",
+  "en": "The weather forecast is on: \"Calm seas, with a chance of whales\".",
   "ctx": "src/data/zonas/A5-casa-2.ts:7 · campo tv"
  },
  "Um quepe de mestre de saveiro e um apito que só toca desafinado.": {
-  "en": "",
+  "en": "A sailboat skipper's cap and a whistle that only plays off-key.",
   "ctx": "src/data/zonas/A5-casa-2.ts:8 · campo bau"
  },
  "Mestre Timão": {
-  "en": "",
+  "en": "Master Timão",
   "ctx": "src/data/zonas/A5-casa-2.ts:10 · campo nome"
  },
  "O meu Saveiro sobe o rio até Porto Pantaneiro, no Sertão das Névoas, quando não está no estaleiro tomando tábua nova. E só levo Campeão.": {
-  "en": "",
+  "en": "My Saveiro goes up the river to Porto Pantaneiro, in the Sertão das Névoas, when it's not in the shipyard getting new planks. And I only take Champions.",
   "ctx": "src/data/zonas/A5-casa-2.ts:10 · campo fala"
  },
  "Regra da Liga dos Guardiões: oito insígnias, cinco lutas seguidas no Platô, e aí sim eu carimbo o bilhete.": {
-  "en": "",
+  "en": "League of Guardians rules: eight badges, five battles in a row on the Platô, and then I'll stamp your ticket.",
   "ctx": "src/data/zonas/A5-casa-2.ts:10 · campo fala"
  },
  "Até lá, a Baía Azul é toda sua. E olhe que não é pouca água.": {
-  "en": "",
+  "en": "Until then, Baía Azul is all yours. And that's no small amount of water.",
   "ctx": "src/data/zonas/A5-casa-2.ts:10 · campo fala"
  },
  "Meu pai jura que viu uma sombra comprida passar por baixo do Saveiro, bem no fundo da baía.": {
-  "en": "",
+  "en": "My dad swears he saw a long shadow pass under the Saveiro, way down at the bottom of the bay.",
   "ctx": "src/data/zonas/A5-casa-2.ts:11 · campo fala"
  },
  "Para ver de perto só mergulhando. E Amuleto do Mergulho é coisa lá do Sertão.": {
-  "en": "",
+  "en": "The only way to see it up close is diving. And the Dive Charm is a Sertão thing.",
   "ctx": "src/data/zonas/A5-casa-2.ts:11 · campo fala"
  },
  "Clube da Renda": {
-  "en": "",
+  "en": "Lace Club",
   "ctx": "src/data/zonas/A5-casa-3.ts:5 · campo nome"
  },
  "Moldes de renda: \"ponto concha\", \"ponto onda\", \"ponto Estrelinha\" e \"ponto final (para quem errar tudo)\".": {
-  "en": "",
+  "en": "Lace patterns: \"shell stitch\", \"wave stitch\", \"Estrelinha stitch\" and \"final stitch (for those who mess everything up)\".",
   "ctx": "src/data/zonas/A5-casa-3.ts:6 · campo estante"
  },
  "Novelos de linha de todas as cores, organizados por humor.": {
-  "en": "",
+  "en": "Balls of thread in every color, organized by mood.",
   "ctx": "src/data/zonas/A5-casa-3.ts:7 · campo bau"
  },
  "Rendeira Marocas": {
-  "en": "",
+  "en": "Lacemaker Marocas",
   "ctx": "src/data/zonas/A5-casa-3.ts:9 · campo nome"
  },
  "Estrelinha só evolui com Pedra Maré. Tem uma escondida numa ilhota da baía, quem rema acha.": {
-  "en": "",
+  "en": "Estrelinha only evolves with a Tide Stone. There's one hidden on an islet in the bay; paddlers can find it.",
   "ctx": "src/data/zonas/A5-casa-3.ts:9 · campo fala"
  },
  "E Beija-florzim só com Pedra Solar. Bicho chique evolui com joia.": {
-  "en": "",
+  "en": "And Beija-florzim only with a Sun Stone. Fancy critters evolve with jewelry.",
   "ctx": "src/data/zonas/A5-casa-3.ts:9 · campo fala"
  },
  "Eu ainda estou no ponto \"nó cego\". Mas é um nó cego muito bonito.": {
-  "en": "",
+  "en": "I'm still on the \"hopeless knot\" stitch. But it's a very pretty hopeless knot.",
   "ctx": "src/data/zonas/A5-casa-3.ts:10 · campo fala"
  },
  "Ginásio de Cidade Coral": {
-  "en": "",
+  "en": "Cidade Coral Gym",
   "ctx": "src/data/zonas/A5-ginasio.ts:15 · campo nome"
  },
  "GINÁSIO DE CIDADE CORAL\nLíder: Iracema Lua\n\"Cada ponto da renda segura o outro.\"": {
-  "en": "",
+  "en": "CIDADE CORAL GYM\nLeader: Iracema Lua\n\"Every stitch of lace holds up the next.\"",
   "ctx": "src/data/zonas/A5-ginasio.ts:39 · campo texto"
  },
  "Dica do ateliê: a luz dos vitrais anda em linha reta e ninguém passa por ela. Os espelhos de renda giram e mandam o raio para outro lado.": {
-  "en": "",
+  "en": "Studio tip: light from the stained glass travels in a straight line and nobody can pass through it. The lace mirrors turn and send the beam elsewhere.",
   "ctx": "src/data/zonas/A5-ginasio.ts:39 · campo texto"
  },
  "A cortina da Iracema só abre quando as duas estrelas de cristal recebem luz ao mesmo tempo.": {
-  "en": "",
+  "en": "Iracema's curtain only opens when both crystal stars get light at the same time.",
   "ctx": "src/data/zonas/A5-ginasio.ts:40 · campo texto"
  },
  "Um raio que acende uma estrela pode fechar a passagem por onde você veio. Antes de girar o último espelho, veja por onde vai entrar.": {
-  "en": "",
+  "en": "A beam that lights a star might close the passage you came through. Before you turn the last mirror, check how you'll get in.",
   "ctx": "src/data/zonas/A5-ginasio.ts:40 · campo texto"
  },
  "Rendeira Biluca": {
-  "en": "",
+  "en": "Lacemaker Biluca",
   "ctx": "src/data/zonas/A5-posto.ts:5 · campo nome"
  },
  "A Iracema Lua borda com luz. Os espelhos do ginásio dela devolvem o raio para onde você apontar.": {
-  "en": "",
+  "en": "Iracema Lua embroiders with light. The mirrors in her gym send the beam wherever you point them.",
   "ctx": "src/data/zonas/A5-posto.ts:5 · campo fala"
  },
  "Dica de comadre: Encanto tem medo de Ferro e de Veneno. De Lenda, ela ri.": {
-  "en": "",
+  "en": "A friendly tip: Charm fears Iron and Poison. At Legend, it just laughs.",
   "ctx": "src/data/zonas/A5-posto.ts:5 · campo fala"
  },
  "Marujo Tibúrcio": {
-  "en": "",
+  "en": "Sailor Tibúrcio",
   "ctx": "src/data/zonas/A5-posto.ts:6 · campo nome"
  },
  "Vim da Ilha do Farol remando no escuro. O farol apagou e tem gente esquisita de macacão cor de ferrugem na porta.": {
-  "en": "",
+  "en": "I paddled from Ilha do Farol in the dark. The lighthouse went out and there are weird folks in rust-colored overalls at the door.",
   "ctx": "src/data/zonas/A5-posto.ts:6 · campo fala"
  },
  "A Capitania só deixa ir para lá quem tem a insígnia Estrela.": {
-  "en": "",
+  "en": "The Harbor Office only lets people go there if they have the Star badge.",
   "ctx": "src/data/zonas/A5-posto.ts:6 · campo fala"
  },
  "Dona Alga": {
-  "en": "",
+  "en": "Dona Alga",
   "ctx": "src/data/zonas/A5-venda.ts:4 · campo nome"
  },
  "Venda e botica da Dona Alga! O que o mar não cura, eu engarrafo.": {
-  "en": "",
+  "en": "Dona Alga's Shop and apothecary! Whatever the sea can't cure, I bottle.",
   "ctx": "src/data/zonas/A5-venda.ts:4 · campo fala"
  },
  "Pescador Zé Tarrafa": {
-  "en": "",
+  "en": "Fisher Zé Tarrafa",
   "ctx": "src/data/zonas/A5-venda.ts:7 · campo nome"
  },
  "Cuia de Rede pega bicho de Rio e de Inseto que é uma beleza.": {
-  "en": "",
+  "en": "A Net Gourd catches River and Bug critters like a charm.",
   "ctx": "src/data/zonas/A5-venda.ts:7 · campo fala"
  },
  "Eu gasto tudo em cuia e depois pesco o almoço. Economia circular.": {
-  "en": "",
+  "en": "I spend everything on Gourds and then fish for my lunch. Circular economy.",
   "ctx": "src/data/zonas/A5-venda.ts:7 · campo fala"
  },
  "CIDADE CORAL\n\"Onde cada onda traz um fio para a renda.\"": {
-  "en": "",
+  "en": "CIDADE CORAL\n\"Where every wave brings a thread for the lace.\"",
   "ctx": "src/data/zonas/A5.ts:63 · campo texto"
  },
  "GINÁSIO DE CIDADE CORAL\nLíder: Iracema Lua, a rendeira que borda com luz.": {
-  "en": "",
+  "en": "CIDADE CORAL GYM\nLeader: Iracema Lua, the lacemaker who embroiders with light.",
   "ctx": "src/data/zonas/A5.ts:64 · campo texto"
  },
  "CAIS DO SAVEIRO\nLinha Cidade Coral ⇄ Porto Pantaneiro. Bilhete na mão, enjoo por conta do passageiro.": {
-  "en": "",
+  "en": "SAVEIRO DOCK\nCidade Coral - Porto Pantaneiro line. Ticket in hand; seasickness is the passenger's problem.",
   "ctx": "src/data/zonas/A5.ts:65 · campo texto"
  },
  "GRUTA BREU\nTravessia por baixo do mar até a Serra Fumaça. Escura feito pensamento de segunda-feira: leve o Lampião.": {
-  "en": "",
+  "en": "GRUTA BREU\nA crossing under the sea to Serra Fumaça. Dark as a Monday-morning thought: bring the Lantern.",
   "ctx": "src/data/zonas/A5.ts:66 · campo texto"
  },
  "Trancada. Lá de dentro vem um barulho de bilros: téc-téc-téc. Melhor não interromper.": {
-  "en": "",
+  "en": "Locked. From inside comes the sound of bobbins: click-click-click. Better not interrupt.",
   "ctx": "src/data/zonas/A5.ts:80 · campo recusa"
  },
  "O mestre do Saveiro cruza os braços:\n— Rio acima só levo Campeão da Liga dos Guardiões, e de bilhete na mão. Sem isso, só embarca gaivota.": {
-  "en": "",
+  "en": "The Saveiro's skipper crosses his arms:\n\"Upriver, I only take League of Guardians Champions, ticket in hand. Without that, only seagulls get on board.\"",
   "ctx": "src/data/zonas/A5.ts:82 · campo recusa"
  },
  "Guia da Gruta Breu: lá dentro não se enxerga o próprio nariz, e os raios do Farol apagado deixaram a rocha dando choque.\nVolte com o Lampião e com a insígnia Raio, do Faroleiro Volta, que eu abro a corda.": {
-  "en": "",
+  "en": "Gruta Breu guide: in there you can't see your own nose, and the dead Lighthouse's lightning left the rock giving off shocks.\nCome back with the Lantern and the Bolt badge, from Lighthouse Keeper Volta, and I'll lift the rope.",
   "ctx": "src/data/zonas/A5.ts:85 · campo fala"
  },
  "Feira de Cidade Coral! Fruta fresca que veio de saveiro e peixe que veio nadando!": {
-  "en": "",
+  "en": "Cidade Coral Market! Fresh fruit that came by sailboat and fish that came swimming!",
   "ctx": "src/data/zonas/A5.ts:89 · campo fala"
  },
  "Esta fonte nunca secou. Dizem que a água vem da Gruta Breu, por baixo do mar.": {
-  "en": "",
+  "en": "This fountain has never run dry. They say the water comes from Gruta Breu, under the sea.",
   "ctx": "src/data/zonas/A5.ts:93 · campo fala"
  },
  "Meu compadre atravessou a gruta sem lampião. Saiu do outro lado três dias depois, em Serra Fumaça, jurando que tinha conversado com um macaco de olho de lua.": {
-  "en": "",
+  "en": "My buddy crossed the cave without a lantern. He came out the other side three days later, in Serra Fumaça, swearing he'd chatted with a moon-eyed monkey.",
   "ctx": "src/data/zonas/A5.ts:93 · campo fala"
  },
  "A Iracema Lua faz renda com raio de luz! No ginásio dela tem espelho para todo lado.": {
-  "en": "",
+  "en": "Iracema Lua makes lace out of light beams! Her gym has mirrors everywhere.",
   "ctx": "src/data/zonas/A5.ts:94 · campo fala"
  },
  "Criatura de Encanto não liga para golpe de Lenda. Mas de Ferro e de Veneno ela tem medo. Anota aí!": {
-  "en": "",
+  "en": "Charm creatures don't care about Legend moves. But they're scared of Iron and Poison. Write that down!",
   "ctx": "src/data/zonas/A5.ts:94 · campo fala"
  },
  "No capinzal da ponta leste aparece siri, caranguejo e, de vez em quando, uma garça metida.": {
-  "en": "",
+  "en": "In the grass on the east point you'll find crabs, more crabs and, now and then, a stuck-up heron.",
   "ctx": "src/data/zonas/A5.ts:96 · campo fala"
  },
  "Na estação fria dá para ver jubarte pulando lá na baía. Parece ônibus caindo n’água.": {
-  "en": "",
+  "en": "In the cold season you can see humpbacks leaping out in the bay. Looks like a bus falling into the water.",
   "ctx": "src/data/zonas/A5.ts:96 · campo fala"
  },
  "Casa do Ajudante de Faroleiro": {
-  "en": "",
+  "en": "Lighthouse Assistant's House",
   "ctx": "src/data/zonas/A6-casa-1.ts:5 · campo nome"
  },
  "\"Manual do Farol, edição do Volta\": metade é desenho de invenção, metade é receita de moqueca.": {
-  "en": "",
+  "en": "\"Lighthouse Manual, Volta's edition\": half of it is invention sketches, half is moqueca recipes.",
   "ctx": "src/data/zonas/A6-casa-1.ts:6 · campo estante"
  },
  "Um capacete com uma lâmpada colada com esparadrapo. Etiqueta: \"protótipo 14 — não lamber\".": {
-  "en": "",
+  "en": "A helmet with a light bulb taped on. Label: \"prototype 14 — do not lick\".",
   "ctx": "src/data/zonas/A6-casa-1.ts:7 · campo bau"
  },
  "Ajudante Fagulha": {
-  "en": "",
+  "en": "Assistant Fagulha",
   "ctx": "src/data/zonas/A6-casa-1.ts:9 · campo nome"
  },
  "O farol tem quatro andares. A grade do segundo lance só solta numa alavanca lá de cima.": {
-  "en": "",
+  "en": "The lighthouse has four floors. The gate on the second flight is only released by a lever upstairs.",
   "ctx": "src/data/zonas/A6-casa-1.ts:9 · campo fala"
  },
  "Eu desci correndo quando a turma do Cartel chegou. O Volta ficou. Ele nunca larga a lanterna.": {
-  "en": "",
+  "en": "I ran down when the Cartel crew showed up. Volta stayed. He never leaves the lamp.",
   "ctx": "src/data/zonas/A6-casa-1.ts:9 · campo fala"
  },
  "Clarinha": {
-  "en": "",
+  "en": "Clarinha",
   "ctx": "src/data/zonas/A6-casa-1.ts:10 · campo nome"
  },
  "A lanterna do farol quem acende é a Faísca, a Poraquê do Volta. Ela mora num aquário gigante lá em cima!": {
-  "en": "",
+  "en": "The one who lights the lighthouse lamp is Faísca, Volta's Poraquê. She lives in a giant tank up top!",
   "ctx": "src/data/zonas/A6-casa-1.ts:10 · campo fala"
  },
  "Será que ela está com fome?": {
-  "en": "",
+  "en": "Do you think she's hungry?",
   "ctx": "src/data/zonas/A6-casa-1.ts:10 · campo fala"
  },
  "Palafita do Seu Maré-Baixa": {
-  "en": "",
+  "en": "Seu Maré-Baixa's Stilt House",
   "ctx": "src/data/zonas/A6-casa-2.ts:5 · campo nome"
  },
  "Tábua de marés anotada a lápis. Toda sexta-feira tem um círculo e a palavra \"ELA\".": {
-  "en": "",
+  "en": "A tide table annotated in pencil. Every Friday is circled with the word \"HER\".",
   "ctx": "src/data/zonas/A6-casa-2.ts:6 · campo estante"
  },
  "Uma luneta de latão apontada para a janela.": {
-  "en": "",
+  "en": "A brass spyglass pointed at the window.",
   "ctx": "src/data/zonas/A6-casa-2.ts:7 · campo bau"
  },
  "Seu Maré-Baixa": {
-  "en": "",
+  "en": "Seu Maré-Baixa",
   "ctx": "src/data/zonas/A6-casa-2.ts:9 · campo nome"
  },
  "Toda sexta-feira, uma Tartaruga-Gigante sobe para respirar numa clareira do Recife Submerso, debaixo da Baía Azul.": {
-  "en": "",
+  "en": "Every Friday, a Giant Turtle surfaces to breathe in a clearing of the Sunken Reef, beneath Baía Azul.",
   "ctx": "src/data/zonas/A6-casa-2.ts:9 · campo fala"
  },
  "Só às sextas. Nos outros dias ela tem mais o que fazer, igual a gente.": {
-  "en": "",
+  "en": "Only on Fridays. On other days she has better things to do, same as us.",
   "ctx": "src/data/zonas/A6-casa-2.ts:9 · campo fala"
  },
  "Para descer lá precisa do Amuleto do Mergulho. Volte quando for Campeão e tiver andado pelo Sertão.": {
-  "en": "",
+  "en": "To go down there you need the Dive Charm. Come back once you're Champion and you've traveled the Sertão.",
   "ctx": "src/data/zonas/A6-casa-2.ts:9 · campo fala"
  },
  "Duda": {
-  "en": "",
+  "en": "Duda",
   "ctx": "src/data/zonas/A6-casa-2.ts:10 · campo nome"
  },
  "O vô marca no calendário o dia da tartaruga. E o dia do pastel. São o mesmo dia.": {
-  "en": "",
+  "en": "Grandpa marks turtle day on the calendar. And pastry day. They're the same day.",
   "ctx": "src/data/zonas/A6-casa-2.ts:10 · campo fala"
  },
  "Farol — Térreo": {
-  "en": "",
+  "en": "Lighthouse — Ground Floor",
   "ctx": "src/data/zonas/A6-farol-1.ts:25 · campo nome"
  },
  "Uma grade de ferro desce do teto e fecha a passagem.\nO cabo dela sobe para o andar de cima.": {
-  "en": "",
+  "en": "An iron gate drops from the ceiling and blocks the way.\nIts cable runs up to the floor above.",
   "ctx": "src/data/zonas/A6-farol-1.ts:37 · campo fala"
  },
  "Entrei para reclamar da luz e fiquei preso entre dois capangas. Estou fingindo que sou uma âncora.": {
-  "en": "",
+  "en": "I came in to complain about the light and got stuck between two goons. I'm pretending to be an anchor.",
   "ctx": "src/data/zonas/A6-farol-1.ts:41 · campo fala"
  },
  "A escada do lado de lá tem grade. O Volta abria com uma alavanca no andar de cima.": {
-  "en": "",
+  "en": "The stairs on the other side have a gate. Volta used to open it with a lever on the floor above.",
   "ctx": "src/data/zonas/A6-farol-1.ts:41 · campo fala"
  },
  "Agora que a luz voltou, eu podia ir embora. Mas aqui dentro é fresquinho.": {
-  "en": "",
+  "en": "Now that the light's back, I could leave. But it's nice and cool in here.",
   "ctx": "src/data/zonas/A6-farol-1.ts:42 · campo fala"
  },
  "Farol — 2º andar": {
-  "en": "",
+  "en": "Lighthouse — 2nd Floor",
   "ctx": "src/data/zonas/A6-farol-2.ts:25 · campo nome"
  },
  "Farol — 3º andar": {
-  "en": "",
+  "en": "Lighthouse — 3rd Floor",
   "ctx": "src/data/zonas/A6-farol-3.ts:22 · campo nome"
  },
  "Farol — Sala da Lanterna": {
-  "en": "",
+  "en": "Lighthouse — Lamp Room",
   "ctx": "src/data/zonas/A6-farol-4.ts:20 · campo nome"
  },
  "Ginásio da Ilha do Farol": {
-  "en": "",
+  "en": "Ilha do Farol Gym",
   "ctx": "src/data/zonas/A6-ginasio.ts:14 · campo nome"
  },
  "GINÁSIO DA ILHA DO FAROL\nLíder: Faroleiro Volta\n\"Luz acesa, navio salvo.\"": {
-  "en": "",
+  "en": "ILHA DO FAROL GYM\nLeader: Lighthouse Keeper Volta\n\"Light on, ship saved.\"",
   "ctx": "src/data/zonas/A6-ginasio.ts:38 · campo texto"
  },
  "Dica da oficina: o gerador só dá conta de um ramo por vez. Cada chave escolhe para onde a energia segue. Ponte sem energia recolhe.": {
-  "en": "",
+  "en": "Workshop tip: the generator can only power one branch at a time. Each switch chooses where the power goes. A bridge with no power retracts.",
   "ctx": "src/data/zonas/A6-ginasio.ts:38 · campo texto"
  },
  "CHAVE 1: ponte oeste OU relé do meio.\nCHAVE 2 (relé): ponte leste OU linha de cima.\nCHAVE 3: piso de teste OU ponte do líder.": {
-  "en": "",
+  "en": "SWITCH 1: west bridge OR middle relay.\nSWITCH 2 (relay): east bridge OR upper line.\nSWITCH 3: test floor OR leader's bridge.",
   "ctx": "src/data/zonas/A6-ginasio.ts:39 · campo texto"
  },
  "Chave sem energia também vira: ela só passa a valer quando a corrente chega. Deixe o relé pronto ANTES de mandar energia para ele.": {
-  "en": "",
+  "en": "A switch with no power still flips: it only takes effect once current reaches it. Set the relay BEFORE sending power to it.",
   "ctx": "src/data/zonas/A6-ginasio.ts:39 · campo texto"
  },
  "Oficina do Volta": {
-  "en": "",
+  "en": "Volta's Workshop",
   "ctx": "src/data/zonas/A6-oficina.ts:5 · campo nome"
  },
  "Rádios abertos, relógios parados em horas diferentes e um bilhete: \"NÃO arrumar o que está funcionando. De novo.\"": {
-  "en": "",
+  "en": "Opened-up radios, clocks stopped at different times and a note: \"DON'T fix what's working. Again.\"",
   "ctx": "src/data/zonas/A6-oficina.ts:6 · campo estante"
  },
  "A tela só mostra chuvisco. No canto, um adesivo: \"consertada pelo Volta\" — e outro por cima: \"duas vezes\".": {
-  "en": "",
+  "en": "The screen only shows static. In the corner, a sticker: \"fixed by Volta\" — and another on top: \"twice\".",
   "ctx": "src/data/zonas/A6-oficina.ts:7 · campo tv"
  },
  "Fios, válvulas, um ferro de solda frio e meia rapadura.": {
-  "en": "",
+  "en": "Wires, vacuum tubes, a cold soldering iron and half a block of rapadura.",
   "ctx": "src/data/zonas/A6-oficina.ts:8 · campo bau"
  },
  "Aprendiz Centelha": {
-  "en": "",
+  "en": "Apprentice Centelha",
   "ctx": "src/data/zonas/A6-oficina.ts:10 · campo nome"
  },
  "Seu Ondas-Curtas": {
-  "en": "",
+  "en": "Seu Ondas-Curtas",
   "ctx": "src/data/zonas/A6-oficina.ts:11 · campo nome"
  },
  "Trouxe meu rádio para o Volta arrumar faz um mês. Ele devolveu funcionando e fazendo café.": {
-  "en": "",
+  "en": "I brought my radio for Volta to fix a month ago. He gave it back working and making coffee.",
   "ctx": "src/data/zonas/A6-oficina.ts:11 · campo fala"
  },
  "Não reclamei.": {
-  "en": "",
+  "en": "I didn't complain.",
   "ctx": "src/data/zonas/A6-oficina.ts:11 · campo fala"
  },
  "Pescador Faísca": {
-  "en": "",
+  "en": "Fisher Faísca",
   "ctx": "src/data/zonas/A6-posto.ts:5 · campo nome"
  },
  "Sem farol eu não saio de noite. Da última vez pesquei a própria canoa.": {
-  "en": "",
+  "en": "Without the lighthouse I don't go out at night. Last time I hooked my own canoe.",
   "ctx": "src/data/zonas/A6-posto.ts:5 · campo fala"
  },
  "Lá no alto prenderam as criaturas de Trovão em jaula. Dá para ouvir o zumbido daqui.": {
-  "en": "",
+  "en": "Up top they've locked the Thunder creatures in cages. You can hear the buzzing from here.",
   "ctx": "src/data/zonas/A6-posto.ts:5 · campo fala"
  },
  "Dona Candeia": {
-  "en": "",
+  "en": "Dona Candeia",
   "ctx": "src/data/zonas/A6-posto.ts:6 · campo nome"
  },
  "Quem derrotar aquela gente do farol ganha o Lampião do Volta, pode apostar. Ele dá presente até para o carteiro.": {
-  "en": "",
+  "en": "Whoever beats those folks at the lighthouse will get Volta's Lantern, you can bet on it. He gives presents even to the mail carrier.",
   "ctx": "src/data/zonas/A6-posto.ts:6 · campo fala"
  },
  "Lampião só acende com parceira de Brasa, Trovão ou Encanto na equipe.": {
-  "en": "",
+  "en": "The Lantern only lights with an Ember, Thunder or Charm partner on your team.",
   "ctx": "src/data/zonas/A6-posto.ts:6 · campo fala"
  },
  "Seu Pavio": {
-  "en": "",
+  "en": "Seu Pavio",
   "ctx": "src/data/zonas/A6-venda.ts:4 · campo nome"
  },
  "Venda do Pavio! Vela, pilha, cuia e conversa fiada. A conversa é grátis.": {
-  "en": "",
+  "en": "Pavio's Shop! Candles, batteries, Gourds and small talk. The small talk is free.",
   "ctx": "src/data/zonas/A6-venda.ts:4 · campo fala"
  },
  "Escoteira Luzia": {
-  "en": "",
+  "en": "Scout Luzia",
   "ctx": "src/data/zonas/A6-venda.ts:7 · campo nome"
  },
  "Cuia Noturna funciona melhor de noite e em caverna. Na Gruta Breu deve ser uma festa.": {
-  "en": "",
+  "en": "Night Gourds work best at night and in caves. Gruta Breu must be a party.",
   "ctx": "src/data/zonas/A6-venda.ts:7 · campo fala"
  },
  "Paralisia cura com Pomada de Copaíba. Contra o Volta, leve um punhado.": {
-  "en": "",
+  "en": "Paralysis is cured with Copaíba Ointment. Against Volta, bring a handful.",
   "ctx": "src/data/zonas/A6-venda.ts:7 · campo fala"
  },
  "ILHA DO FAROL\n\"A luz que guia a Baía Azul.\"\nNorte: Ginásio · Nordeste: Farol · Sul: praia dos pescadores.": {
-  "en": "",
+  "en": "ILHA DO FAROL\n\"The light that guides Baía Azul.\"\nNorth: Gym · Northeast: Lighthouse · South: fishers' beach.",
   "ctx": "src/data/zonas/A6.ts:61 · campo texto"
  },
  "GINÁSIO DA ILHA DO FAROL\nLíder: Faroleiro Volta, o inventor.\n\"Se piscar, é defeito. Se piscar bonito, é invenção.\"": {
-  "en": "",
+  "en": "ILHA DO FAROL GYM\nLeader: Lighthouse Keeper Volta, the inventor.\n\"If it blinks, it's a defect. If it blinks nicely, it's an invention.\"",
   "ctx": "src/data/zonas/A6.ts:62 · campo texto"
  },
  "OFICINA DO VOLTA — consertam-se rádios, relógios e ideias.\nO FAROL fica na ponta do cabo: suba pelo caminho ao lado da Venda.": {
-  "en": "",
+  "en": "VOLTA'S WORKSHOP — radios, clocks and ideas repaired.\nThe LIGHTHOUSE is at the tip of the cape: go up the path next to the Shop.",
   "ctx": "src/data/zonas/A6.ts:63 · campo texto"
  },
  "A porta do ginásio está trancada. Um bilhete preso com fita isolante:\n\"Fui dar uma olhada no farol, que piscou esquisito. Volto em cinco minutos. — Volta\"\fA tinta do bilhete já desbotou.": {
-  "en": "",
+  "en": "The gym door is locked. A note held on with electrical tape:\n\"Went to check on the lighthouse, it blinked funny. Back in five minutes. — Volta\"\fThe ink on the note has already faded.",
   "ctx": "src/data/zonas/A6.ts:78 · campo fala"
  },
  "Chegou em má hora, canoeiro. O farol apagou faz três noites e o Volta sumiu lá dentro.": {
-  "en": "",
+  "en": "Bad timing, canoeist. The lighthouse went out three nights ago and Volta vanished inside.",
   "ctx": "src/data/zonas/A6.ts:81 · campo fala"
  },
  "Uns sujeitos de macacão cor de ferrugem subiram o cabo carregando jaulas. Desde então só desce faísca.": {
-  "en": "",
+  "en": "Some folks in rust-colored overalls went up the cape carrying cages. Since then, nothing's come down but sparks.",
   "ctx": "src/data/zonas/A6.ts:81 · campo fala"
  },
  "O farol voltou a varrer a baía! Já dá para ver as pedras do canal de novo.": {
-  "en": "",
+  "en": "The lighthouse is sweeping the bay again! You can see the channel rocks again.",
   "ctx": "src/data/zonas/A6.ts:82 · campo fala"
  },
  "Ouvi dizer que você subiu lá e desceu com o Lampião. Com ele, a Gruta Breu de Cidade Coral deixa de ser breu.": {
-  "en": "",
+  "en": "I heard you went up there and came down with the Lantern. With it, Cidade Coral's Gruta Breu won't be pitch-dark anymore.",
   "ctx": "src/data/zonas/A6.ts:82 · campo fala"
  },
  "O Volta é um gênio, mas esquece a chave até do próprio ginásio.": {
-  "en": "",
+  "en": "Volta's a genius, but he even forgets the key to his own gym.",
   "ctx": "src/data/zonas/A6.ts:83 · campo fala"
  },
  "Tipo Trovão morre de medo de Terra. O resto ele eletrocuta e pede desculpa depois.": {
-  "en": "",
+  "en": "Thunder types are terrified of Earth. Everything else, they zap and apologize afterward.",
   "ctx": "src/data/zonas/A6.ts:83 · campo fala"
  },
  "Sobrado da Vó Candinha": {
-  "en": "",
+  "en": "Vó Candinha's House",
   "ctx": "src/data/zonas/A7-casa-1.ts:5 · campo nome"
  },
  "Álbuns de retrato. Em todos, a mesma senhora ao lado de um Graxaim cada vez mais grisalho.": {
-  "en": "",
+  "en": "Photo albums. In every one, the same lady next to a Graxaim that gets grayer and grayer.",
   "ctx": "src/data/zonas/A7-casa-1.ts:6 · campo estante"
  },
  "Cobertas de lã dobradas e um saquinho de naftalina com cheiro de 1950.": {
-  "en": "",
+  "en": "Folded wool blankets and a little bag of mothballs that smells like 1950.",
   "ctx": "src/data/zonas/A7-casa-1.ts:7 · campo bau"
  },
  "Vó Candinha": {
-  "en": "",
+  "en": "Vó Candinha",
   "ctx": "src/data/zonas/A7-casa-1.ts:9 · campo nome"
  },
  "O Graxaim boceja e mostra todos os dentes. Depois deita no tapete, que ninguém é de ferro.": {
-  "en": "",
+  "en": "The Graxaim yawns and shows all its teeth. Then it lies down on the rug, since nobody's made of iron.",
   "ctx": "src/data/zonas/A7-casa-1.ts:10 · campo fala"
  },
  "Sobrado do Seu Lampadário": {
-  "en": "",
+  "en": "Seu Lampadário's House",
   "ctx": "src/data/zonas/A7-casa-2.ts:5 · campo nome"
  },
  "Dezenas de lamparinas, cada uma com etiqueta: \"1932, querosene\", \"1958, azeite\", \"ontem, pilha\".": {
-  "en": "",
+  "en": "Dozens of oil lamps, each with a label: \"1932, kerosene\", \"1958, olive oil\", \"yesterday, batteries\".",
   "ctx": "src/data/zonas/A7-casa-2.ts:6 · campo estante"
  },
  "Passa um filme de assombração. A antena é um garfo. O filme fica melhor assim.": {
-  "en": "",
+  "en": "A ghost movie is on. The antenna is a fork. The movie's better that way.",
   "ctx": "src/data/zonas/A7-casa-2.ts:7 · campo tv"
  },
  "Pavios de reserva, enrolados feito cobra dormindo.": {
-  "en": "",
+  "en": "Spare wicks, coiled up like sleeping snakes.",
   "ctx": "src/data/zonas/A7-casa-2.ts:8 · campo bau"
  },
  "Seu Lampadário": {
-  "en": "",
+  "en": "Seu Lampadário",
   "ctx": "src/data/zonas/A7-casa-2.ts:10 · campo nome"
  },
  "No ginásio da Dona Benta as salas são escuras e o chão mente. Só a lamparina mostra onde pisar de verdade.": {
-  "en": "",
+  "en": "In Dona Benta's gym the rooms are dark and the floor lies. Only the lamp shows where it's really safe to step.",
   "ctx": "src/data/zonas/A7-casa-2.ts:10 · campo fala"
  },
  "Eu ofereci as minhas. Ela disse que as dela têm mais história.": {
-  "en": "",
+  "en": "I offered her mine. She said hers have more history.",
   "ctx": "src/data/zonas/A7-casa-2.ts:10 · campo fala"
  },
  "Escoteira Lume": {
-  "en": "",
+  "en": "Scout Lume",
   "ctx": "src/data/zonas/A7-casa-2.ts:11 · campo nome"
  },
  "Noitim só evolui no nível 34. Antes disso, é só olho arregalado e travessura.": {
-  "en": "",
+  "en": "Noitim only evolves at level 34. Before that, it's all wide eyes and mischief.",
   "ctx": "src/data/zonas/A7-casa-2.ts:11 · campo fala"
  },
  "Casa dos Causos": {
-  "en": "",
+  "en": "House of Tales",
   "ctx": "src/data/zonas/A7-casa-3.ts:5 · campo nome"
  },
  "\"Causos de Serra Fumaça, por Benta Sombra\". Capítulo 1: \"A noite em que o sino tocou sozinho (era o vento)\". Capítulo 2: \"A noite em que NÃO era o vento\".": {
-  "en": "",
+  "en": "\"Tales of Serra Fumaça, by Benta Sombra\". Chapter 1: \"The night the bell rang by itself (it was the wind)\". Chapter 2: \"The night it was NOT the wind\".",
   "ctx": "src/data/zonas/A7-casa-3.ts:6 · campo estante"
  },
  "Uma lamparina apagada e fósforos. Um bilhete: \"só acender se ouvir passos no forro\".": {
-  "en": "",
+  "en": "An unlit oil lamp and matches. A note: \"only light if you hear footsteps in the attic\".",
   "ctx": "src/data/zonas/A7-casa-3.ts:7 · campo bau"
  },
  "Bentinho": {
-  "en": "",
+  "en": "Bentinho",
   "ctx": "src/data/zonas/A7-casa-3.ts:9 · campo nome | src/data/zonas/B1-casa-1.ts:12 · campo nome"
  },
  "A vó diz que no alto do Monte Tupã mora um gavião que faz trovão quando bate a asa.": {
-  "en": "",
+  "en": "Grandma says at the top of Monte Tupã lives a hawk that makes thunder when it flaps its wings.",
   "ctx": "src/data/zonas/A7-casa-3.ts:9 · campo fala"
  },
  "E que no fundo da Baía Azul dorme uma cobra do tamanho de um rio. Eu durmo de luz acesa.": {
-  "en": "",
+  "en": "And that at the bottom of Baía Azul sleeps a snake as long as a river. I sleep with the light on.",
   "ctx": "src/data/zonas/A7-casa-3.ts:9 · campo fala"
  },
  "Dona Sereno": {
-  "en": "",
+  "en": "Dona Sereno",
   "ctx": "src/data/zonas/A7-casa-3.ts:10 · campo nome"
  },
  "Depois de Vila Ferrugem a estrada segue para Vila Buriti, e de lá para o Platô da Liga.": {
-  "en": "",
+  "en": "After Vila Ferrugem the road goes on to Vila Buriti, and from there to the Platô da Liga.",
   "ctx": "src/data/zonas/A7-casa-3.ts:10 · campo fala"
  },
  "Oito insígnias e cinco lutas seguidas. Só de pensar me dá sono.": {
-  "en": "",
+  "en": "Eight badges and five battles in a row. Just thinking about it makes me sleepy.",
   "ctx": "src/data/zonas/A7-casa-3.ts:10 · campo fala"
  },
  "Ginásio de Serra Fumaça": {
-  "en": "",
+  "en": "Serra Fumaça Gym",
   "ctx": "src/data/zonas/A7-ginasio.ts:15 · campo nome"
  },
  "GINÁSIO DE SERRA FUMAÇA\nLíder: Dona Benta Sombra\n\"Quem tem medo do escuro nunca ouviu o fim da história.\"": {
-  "en": "",
+  "en": "SERRA FUMAÇA GYM\nLeader: Dona Benta Sombra\n\"Whoever fears the dark has never heard the end of the story.\"",
   "ctx": "src/data/zonas/A7-ginasio.ts:39 · campo texto"
  },
  "Dica do sobrado: o assoalho está cheio de alçapões que só a luz da lamparina mostra. Encoste numa lamparina de pé para acender a sua.": {
-  "en": "",
+  "en": "Manor tip: the floor is full of trapdoors that only lamplight reveals. Touch a standing lamp to light yours.",
   "ctx": "src/data/zonas/A7-ginasio.ts:39 · campo texto"
  },
  "O óleo dá para 16 passos. Parado, a chama não gasta: olhe em volta antes de andar.": {
-  "en": "",
+  "en": "The oil lasts 16 steps. Standing still, the flame doesn't burn down: look around before you walk.",
   "ctx": "src/data/zonas/A7-ginasio.ts:40 · campo texto"
  },
  "Quem cai num alçapão volta ao começo da sala com a chama apagada. Corredor comprido demais costuma ser beco.": {
-  "en": "",
+  "en": "Fall through a trapdoor and you go back to the start of the room with your flame out. A corridor that's too long is usually a dead end.",
   "ctx": "src/data/zonas/A7-ginasio.ts:40 · campo texto"
  },
  "Montanhista Brumado": {
-  "en": "",
+  "en": "Hiker Brumado",
   "ctx": "src/data/zonas/A7-posto.ts:5 · campo nome"
  },
  "Atravessei a Gruta Breu de lampião aceso e mesmo assim bati a testa três vezes.": {
-  "en": "",
+  "en": "I crossed Gruta Breu with my lantern lit and still bumped my head three times.",
   "ctx": "src/data/zonas/A7-posto.ts:5 · campo fala"
  },
  "A Lamparina da Dona Benta vem com o Quebra-pedra. Sem ele, a Encosta da Fumaça é um muro.": {
-  "en": "",
+  "en": "Dona Benta's Lamp comes with Rock Smash. Without it, Encosta da Fumaça is a wall.",
   "ctx": "src/data/zonas/A7-posto.ts:5 · campo fala"
  },
  "Dona Garoa": {
-  "en": "",
+  "en": "Dona Garoa",
   "ctx": "src/data/zonas/A7-posto.ts:6 · campo nome"
  },
  "Criatura de Assombro some na neblina e aparece atrás de você. Igualzinho meu finado marido na hora da louça.": {
-  "en": "",
+  "en": "Spook creatures vanish into the fog and show up behind you. Just like my late husband when it was time to do the dishes.",
   "ctx": "src/data/zonas/A7-posto.ts:6 · campo fala"
  },
  "Leve Encanto ou outro Assombro. Golpe Comum passa direto, feito vento em peneira.": {
-  "en": "",
+  "en": "Bring Charm or another Spook. Normal moves pass right through, like wind through a sieve.",
   "ctx": "src/data/zonas/A7-posto.ts:6 · campo fala"
  },
  "Seu Orvalho": {
-  "en": "",
+  "en": "Seu Orvalho",
   "ctx": "src/data/zonas/A7-venda.ts:4 · campo nome"
  },
  "Armazém da Serra! Tem queijo, tem cuia e tem casaco. O casaco não vendo: é meu.": {
-  "en": "",
+  "en": "Mountain General Store! There's cheese, there are Gourds and there's a coat. The coat's not for sale: it's mine.",
   "ctx": "src/data/zonas/A7-venda.ts:4 · campo fala"
  },
  "Tropeiro Zé Bruma": {
-  "en": "",
+  "en": "Drover Zé Bruma",
   "ctx": "src/data/zonas/A7-venda.ts:7 · campo nome"
  },
  "Elixir de Andiroba levanta criatura quase desmaiada. Na serra, vale mais que cobertor.": {
-  "en": "",
+  "en": "Andiroba Elixir revives a creature that's almost fainted. Up in the mountains, it's worth more than a blanket.",
   "ctx": "src/data/zonas/A7-venda.ts:7 · campo fala"
  },
  "Quase.": {
-  "en": "",
+  "en": "Almost.",
   "ctx": "src/data/zonas/A7-venda.ts:7 · campo fala"
  },
  "GRUTA BREU\nTravessia por baixo do mar até Cidade Coral.\nEscura feito pensamento de segunda-feira: leve o Lampião.": {
-  "en": "",
+  "en": "GRUTA BREU\nA crossing under the sea to Cidade Coral.\nDark as a Monday-morning thought: bring the Lantern.",
   "ctx": "src/data/zonas/A7.ts:58 · campo texto"
  },
  "SERRA FUMAÇA\n\"Aqui a neblina chega antes do sol e sai depois da janta.\"\nLeste: Encosta da Fumaça → Vila Ferrugem.": {
-  "en": "",
+  "en": "SERRA FUMAÇA\n\"Here the fog arrives before the sun and leaves after dinner.\"\nEast: Encosta da Fumaça → Vila Ferrugem.",
   "ctx": "src/data/zonas/A7.ts:59 · campo texto"
  },
  "GINÁSIO DE SERRA FUMAÇA\nLíder: Dona Benta Sombra, contadora de causos.\n\"Entre sem medo. O medo já está lá dentro.\"": {
-  "en": "",
+  "en": "SERRA FUMAÇA GYM\nLeader: Dona Benta Sombra, teller of tales.\n\"Come in without fear. The fear is already inside.\"",
   "ctx": "src/data/zonas/A7.ts:60 · campo texto"
  },
  "A porta da igrejinha está encostada, mas lá dentro alguém ensaia o sino.\nBLÉM! … Melhor não atrapalhar: está quase acertando a nota.": {
-  "en": "",
+  "en": "The little church door is ajar, but inside someone is practicing the bell.\nBONG! … Better not interrupt: they've almost got the note.",
   "ctx": "src/data/zonas/A7.ts:76 · campo recusa"
  },
  "A neblina aqui é tão grossa que a gente pendura o chapéu nela.": {
-  "en": "",
+  "en": "The fog here is so thick we hang our hats on it.",
   "ctx": "src/data/zonas/A7.ts:79 · campo fala"
  },
  "Sem o Lampião aceso você não acha nem a própria sombra. E olhe que sombra, nesta cidade, é o que não falta.": {
-  "en": "",
+  "en": "Without the Lantern lit you can't even find your own shadow. And shadows are one thing this town has plenty of.",
   "ctx": "src/data/zonas/A7.ts:79 · campo fala"
  },
  "A Dona Benta Sombra conta que tem um macaco de olho de lua na Gruta Breu.": {
-  "en": "",
+  "en": "Dona Benta Sombra says there's a moon-eyed monkey in Gruta Breu.",
   "ctx": "src/data/zonas/A7.ts:80 · campo fala"
  },
  "Tipo Assombro não sente golpe Comum nem Ginga! Mas tem medo de Encanto. E de outro Assombro, que é pior que ele.": {
-  "en": "",
+  "en": "Spook types don't feel Normal or Brawl moves! But they're scared of Charm. And of other Spooks, which are worse than them.",
   "ctx": "src/data/zonas/A7.ts:80 · campo fala"
  },
  "A Encosta da Fumaça desce até Vila Ferrugem, mas rolou pedra na estrada.": {
-  "en": "",
+  "en": "Encosta da Fumaça goes down to Vila Ferrugem, but rocks rolled onto the road.",
   "ctx": "src/data/zonas/A7.ts:81 · campo fala"
  },
  "Rocha rachada só abre com o Quebra-pedra. A Dona Benta dá um para quem ganhar a Lamparina dela.": {
-  "en": "",
+  "en": "Cracked rocks only open with Rock Smash. Dona Benta gives one to whoever wins her Lamp.",
   "ctx": "src/data/zonas/A7.ts:81 · campo fala"
  },
  "Este poço é o pé da Cachoeira-Véu. O rio desce lá de Vila Ferrugem aos pulos.": {
-  "en": "",
+  "en": "This pool is the foot of the Cachoeira-Véu. The river comes leaping down from Vila Ferrugem.",
   "ctx": "src/data/zonas/A7.ts:84 · campo fala"
  },
  "Descer cascata qualquer canoa desce. Subir é que são elas: só com o Amuleto da Cachoeira, coisa do Sertão.": {
-  "en": "",
+  "en": "Any canoe can go down a waterfall. Going up is the tricky part: only with the Waterfall Charm, a Sertão thing.",
   "ctx": "src/data/zonas/A7.ts:84 · campo fala"
  },
  "Oficina da Dona Catraca": {
-  "en": "",
+  "en": "Dona Catraca's Workshop",
   "ctx": "src/data/zonas/A8-casa-1.ts:5 · campo nome"
  },
  "Recortes de jornal: \"FÁBRICA FECHA AS PORTAS\", \"EX-GERENTE GARROTE SOME COM O COFRE\", \"CARTEL FERRUGEM: QUEM SÃO?\".": {
-  "en": "",
+  "en": "Newspaper clippings: \"FACTORY CLOSES ITS DOORS\", \"FORMER MANAGER GARROTE VANISHES WITH THE SAFE\", \"RUST CARTEL: WHO ARE THEY?\".",
   "ctx": "src/data/zonas/A8-casa-1.ts:6 · campo estante"
  },
  "Reprise do campeonato de arremesso de porca. O favorito é o mesmo há doze anos.": {
-  "en": "",
+  "en": "A rerun of the nut-throwing championship. The favorite's been the same for twelve years.",
   "ctx": "src/data/zonas/A8-casa-1.ts:7 · campo tv"
  },
  "Câmaras de ar, remendos e uma buzina que faz \"fom\" com sotaque.": {
-  "en": "",
+  "en": "Inner tubes, patches and a horn that goes \"honk\" with an accent.",
   "ctx": "src/data/zonas/A8-casa-1.ts:8 · campo bau"
  },
  "Dona Catraca": {
-  "en": "",
+  "en": "Dona Catraca",
   "ctx": "src/data/zonas/A8-casa-1.ts:10 · campo nome"
  },
  "O tal Coronel Garrote era gerente da fábrica daqui. Quando ela fechou, levou as máquinas e o mau humor.": {
-  "en": "",
+  "en": "That Colonel Garrote used to be the manager of the factory here. When it closed, he took the machines and the bad mood.",
   "ctx": "src/data/zonas/A8-casa-1.ts:10 · campo fala"
  },
  "O Cartel Ferrugem veste macacão cor de ferrugem por causa disso. Mau gosto tem história.": {
-  "en": "",
+  "en": "That's why the Rust Cartel wears rust-colored overalls. Bad taste has a history.",
   "ctx": "src/data/zonas/A8-casa-1.ts:10 · campo fala"
  },
  "Escoteira Roda": {
-  "en": "",
+  "en": "Scout Roda",
   "ctx": "src/data/zonas/A8-casa-1.ts:11 · campo nome"
  },
  "De bicicleta a Encosta da Fumaça é um pulo. Para descer. Para subir é um drama em três atos.": {
-  "en": "",
+  "en": "By bike, Encosta da Fumaça is a breeze. Going down. Going up is a drama in three acts.",
   "ctx": "src/data/zonas/A8-casa-1.ts:11 · campo fala"
  },
  "Casa do Seu Turno": {
-  "en": "",
+  "en": "Seu Turno's House",
   "ctx": "src/data/zonas/A8-casa-2.ts:5 · campo nome"
  },
  "Cartões de ponto guardados como figurinhas. Trinta e cinco anos sem um atraso. Um está emoldurado: \"o do dia da enchente\".": {
-  "en": "",
+  "en": "Time cards kept like stickers. Thirty-five years without being late once. One is framed: \"the one from flood day\".",
   "ctx": "src/data/zonas/A8-casa-2.ts:6 · campo estante"
  },
  "Uma marmita de alumínio areada até brilhar.": {
-  "en": "",
+  "en": "An aluminum lunchbox scrubbed until it shines.",
   "ctx": "src/data/zonas/A8-casa-2.ts:7 · campo bau"
  },
  "Seu Turno": {
-  "en": "",
+  "en": "Seu Turno",
   "ctx": "src/data/zonas/A8-casa-2.ts:9 · campo nome"
  },
  "O açude lá de cima é a nascente do Rio Cachoeira-Véu. Ele desce pulando até Serra Fumaça.": {
-  "en": "",
+  "en": "The reservoir up there is the source of the Rio Cachoeira-Véu. It goes leaping down to Serra Fumaça.",
   "ctx": "src/data/zonas/A8-casa-2.ts:9 · campo fala"
  },
  "Tem bicho ali que não se vê em mais lugar nenhum: lontra, ariranha, mico de juba dourada.": {
-  "en": "",
+  "en": "There are critters there you won't see anywhere else: otters, giant otters, golden-maned monkeys.",
   "ctx": "src/data/zonas/A8-casa-2.ts:9 · campo fala"
  },
  "Mas é rio de gente grande. Volte quando subir cascata.": {
-  "en": "",
+  "en": "But it's a river for grown-ups. Come back when you can climb waterfalls.",
   "ctx": "src/data/zonas/A8-casa-2.ts:9 · campo fala"
  },
  "Porquinha": {
-  "en": "",
+  "en": "Porquinha",
   "ctx": "src/data/zonas/A8-casa-2.ts:10 · campo nome"
  },
  "Meu apelido é Porquinha por causa da porca de parafuso. É o que eu digo para todo mundo.": {
-  "en": "",
+  "en": "They call me Porquinha because of the little screw nut. That's what I tell everyone, anyway.",
   "ctx": "src/data/zonas/A8-casa-2.ts:10 · campo fala"
  },
  "República dos Soldadores": {
-  "en": "",
+  "en": "Welders' Lodge",
   "ctx": "src/data/zonas/A8-casa-3.ts:5 · campo nome"
  },
  "\"Guia do Soldador Treinador\": Tatuzim vira Tatucanastra no 30, Tuquim vira Tuco-Escavador no 32, Preguinho vira Prego-Mestre no 36.": {
-  "en": "",
+  "en": "\"Welder-Trainer's Guide\": Tatuzim becomes Tatucanastra at 30, Tuquim becomes Tuco-Escavador at 32, Preguinho becomes Prego-Mestre at 36.",
   "ctx": "src/data/zonas/A8-casa-3.ts:6 · campo estante"
  },
  "Três máscaras de solda e um baralho com o ás de ouros colado no verso do ás de paus.": {
-  "en": "",
+  "en": "Three welding masks and a deck of cards with the ace of diamonds glued to the back of the ace of clubs.",
   "ctx": "src/data/zonas/A8-casa-3.ts:7 · campo bau"
  },
  "Soldador Estanho": {
-  "en": "",
+  "en": "Welder Estanho",
   "ctx": "src/data/zonas/A8-casa-3.ts:9 · campo nome"
  },
  "Criatura no último estágio é outra conversa: bate forte, mas só aparece em gente de nível alto.": {
-  "en": "",
+  "en": "Final-stage creatures are a different story: they hit hard, but they only show up with high-level folks.",
   "ctx": "src/data/zonas/A8-casa-3.ts:9 · campo fala"
  },
  "A Bigorna tem um Herculão que levanta a esteira do ginásio com o chifre. Eu vi. Ninguém acredita.": {
-  "en": "",
+  "en": "Bigorna has a Herculão that lifts the gym's conveyor belt with its horn. I saw it. Nobody believes me.",
   "ctx": "src/data/zonas/A8-casa-3.ts:9 · campo fala"
  },
  "Soldadora Brasa": {
-  "en": "",
+  "en": "Welder Brasa",
   "ctx": "src/data/zonas/A8-casa-3.ts:10 · campo nome"
  },
  "Quer um conselho para o ginásio? Brasa. Quer outro? Mais Brasa.": {
-  "en": "",
+  "en": "Want some advice for the gym? Ember. Want more? More Ember.",
   "ctx": "src/data/zonas/A8-casa-3.ts:10 · campo fala"
  },
  "Forja do Mestre Bigorna-Pai": {
-  "en": "",
+  "en": "Master Bigorna Sr.'s Forge",
   "ctx": "src/data/zonas/A8-forja.ts:5 · campo nome"
  },
  "Moldes de sino, de ferradura e de insígnia. O de insígnia tem formato de engrenagem e um aviso: \"só a Engenheira mexe\".": {
-  "en": "",
+  "en": "Molds for bells, horseshoes and badges. The badge one is shaped like a gear, with a warning: \"only the Engineer touches this\".",
   "ctx": "src/data/zonas/A8-forja.ts:6 · campo estante"
  },
  "Martelos de todos os tamanhos, do \"prego\" ao \"problema\".": {
-  "en": "",
+  "en": "Hammers of every size, from \"nail\" to \"trouble\".",
   "ctx": "src/data/zonas/A8-forja.ts:7 · campo bau"
  },
  "Mestre Bigorna-Pai": {
-  "en": "",
+  "en": "Master Bigorna Sr.",
   "ctx": "src/data/zonas/A8-forja.ts:9 · campo nome"
  },
  "A minha filha é a líder do ginásio. Puxou a mim: teimosa feito rebite.": {
-  "en": "",
+  "en": "My daughter is the Gym Leader. Takes after me: stubborn as a rivet.",
   "ctx": "src/data/zonas/A8-forja.ts:9 · campo fala"
  },
  "Quem ganha dela leva a Engrenagem e o Amuleto da Força. Só funciona com parceira de Terra, Pedra ou Ginga para empurrar.": {
-  "en": "",
+  "en": "Whoever beats her gets the Gear and the Strength Charm. It only works with an Earth, Stone or Brawl partner to do the pushing.",
   "ctx": "src/data/zonas/A8-forja.ts:9 · campo fala"
  },
  "Pedregulho empurrado anda um passo de cada vez. Pense antes, que ele não volta sozinho.": {
-  "en": "",
+  "en": "A pushed boulder moves one step at a time. Think first, because it won't come back on its own.",
   "ctx": "src/data/zonas/A8-forja.ts:9 · campo fala"
  },
  "Faísquinha": {
-  "en": "",
+  "en": "Faísquinha",
   "ctx": "src/data/zonas/A8-forja.ts:10 · campo nome"
  },
  "Eu ainda só posso soprar o fole. Mas sopro com muita personalidade.": {
-  "en": "",
+  "en": "For now I'm only allowed to work the bellows. But I blow with a lot of personality.",
   "ctx": "src/data/zonas/A8-forja.ts:10 · campo fala"
  },
  "Ginásio de Vila Ferrugem": {
-  "en": "",
+  "en": "Vila Ferrugem Gym",
   "ctx": "src/data/zonas/A8-ginasio.ts:15 · campo nome"
  },
  "GINÁSIO DE VILA FERRUGEM\nLíder: Engenheira Bigorna\n\"Máquina boa é a que a gente entende.\"": {
-  "en": "",
+  "en": "VILA FERRUGEM GYM\nLeader: Engineer Bigorna\n\"A good machine is one you understand.\"",
   "ctx": "src/data/zonas/A8-ginasio.ts:39 · campo texto"
  },
  "Dica da fábrica: esteira carrega para onde a seta aponta. Seta VERMELHA obedece às engrenagens vermelhas; seta AZUL, às azuis.": {
-  "en": "",
+  "en": "Factory tip: belts carry you where the arrow points. RED arrows obey the red gears; BLUE arrows, the blue ones.",
   "ctx": "src/data/zonas/A8-ginasio.ts:39 · campo texto"
  },
  "Cada engrenagem inverte todas as esteiras da sua cor de uma vez, até as que você já deixou para trás.": {
-  "en": "",
+  "en": "Each gear reverses every belt of its color at once, even the ones you've already left behind.",
   "ctx": "src/data/zonas/A8-ginasio.ts:40 · campo texto"
  },
  "Cuidado com a esteira do meio: enquanto o circuito vermelho sobe, ela termina na prensa de vapor.": {
-  "en": "",
+  "en": "Careful with the middle belt: while the red circuit runs upward, it ends at the steam press.",
   "ctx": "src/data/zonas/A8-ginasio.ts:40 · campo texto"
  },
  "No ginásio da Bigorna as esteiras mudam de lado quando alguém pisa na engrenagem do chão.": {
-  "en": "",
+  "en": "In Bigorna's gym the belts switch direction when someone steps on the floor gear.",
   "ctx": "src/data/zonas/A8-posto.ts:5 · campo fala"
  },
  "Minha dica? Olhe antes de pisar. Minha experiência? Eu não olhei.": {
-  "en": "",
+  "en": "My tip? Look before you step. My experience? I didn't look.",
   "ctx": "src/data/zonas/A8-posto.ts:5 · campo fala"
  },
  "Dona Limalha": {
-  "en": "",
+  "en": "Dona Limalha",
   "ctx": "src/data/zonas/A8-posto.ts:6 · campo nome"
  },
  "Com a Força você empurra o pedregulho da saída leste e segue para Vila Buriti.": {
-  "en": "",
+  "en": "With Strength you can push the boulder at the east exit and head on to Vila Buriti.",
   "ctx": "src/data/zonas/A8-posto.ts:6 · campo fala"
  },
  "Lá fica o oitavo ginásio. Depois dele, só a Liga dos Guardiões.": {
-  "en": "",
+  "en": "That's where the eighth gym is. After it, there's only the League of Guardians.",
   "ctx": "src/data/zonas/A8-posto.ts:6 · campo fala"
  },
  "Seu Parafuso": {
-  "en": "",
+  "en": "Seu Parafuso",
   "ctx": "src/data/zonas/A8-venda.ts:4 · campo nome"
  },
  "Armazém do Parafuso! Se não tem na prateleira, eu fabrico. Se não sei fabricar, eu invento que tem.": {
-  "en": "",
+  "en": "Parafuso's General Store! If it's not on the shelf, I'll make it. If I can't make it, I'll pretend we have it.",
   "ctx": "src/data/zonas/A8-venda.ts:4 · campo fala"
  },
  "Garimpeiro Cascalho": {
-  "en": "",
+  "en": "Prospector Cascalho",
   "ctx": "src/data/zonas/A8-venda.ts:7 · campo nome"
  },
  "Engrenagem Velha faz o Besourim… não, minto. Faz é o sucateiro da vila feliz. Ele troca por coisa boa.": {
-  "en": "",
+  "en": "An Old Gear makes Besourim… no, I'm lying. It makes the town junk dealer happy. He trades them for good stuff.",
   "ctx": "src/data/zonas/A8-venda.ts:7 · campo fala"
  },
  "Besourim evolui sozinho, no nível 34. Com um chifre de dar inveja em guindaste.": {
-  "en": "",
+  "en": "Besourim evolves on its own, at level 34. With a horn that would make a crane jealous.",
   "ctx": "src/data/zonas/A8-venda.ts:7 · campo fala"
  },
  "VILA FERRUGEM\n\"O que enferruja a gente lixa. O que quebra a gente solda.\"\nNorte: trilha do Monte Tupã · Leste: Estrada do Buriti.": {
-  "en": "",
+  "en": "VILA FERRUGEM\n\"What rusts, we sand. What breaks, we weld.\"\nNorth: Monte Tupã trail · East: Estrada do Buriti.",
   "ctx": "src/data/zonas/A8.ts:52 · campo texto"
  },
  "GINÁSIO DE VILA FERRUGEM\nLíder: Engenheira Bigorna.\n\"Favor não se apoiar nas engrenagens. Elas se apoiam de volta.\"": {
-  "en": "",
+  "en": "VILA FERRUGEM GYM\nLeader: Engineer Bigorna.\n\"Please don't lean on the gears. They lean back.\"",
   "ctx": "src/data/zonas/A8.ts:53 · campo texto"
  },
  "ESTRADA DO BURITI → Vila Buriti e Platô da Liga.\nPista interditada por pedregulho. A prefeitura promete tirar \"assim que alguém forte passar\".": {
-  "en": "",
+  "en": "ESTRADA DO BURITI → Vila Buriti and the Platô da Liga.\nRoad blocked by a boulder. The town promises to remove it \"as soon as someone strong comes by\".",
   "ctx": "src/data/zonas/A8.ts:54 · campo texto"
  },
  "TRILHA DO MONTE TUPÃ\nSubida para gente de muitas insígnias. O guardião confere uma por uma. Devagar.": {
-  "en": "",
+  "en": "MONTE TUPÃ TRAIL\nA climb for those with many badges. The guardian checks them one by one. Slowly.",
   "ctx": "src/data/zonas/A8.ts:55 · campo texto"
  },
  "Guarda-rios: daqui para baixo o rio despenca no Véu, três cascatas de uma vez.\nDescer é fácil. Voltar é que só com o Amuleto da Cachoeira. Sem ele, eu não deixo ninguém virar espuma.": {
-  "en": "",
+  "en": "River warden: from here down the river plunges into the Véu, three waterfalls in a row.\nGoing down is easy. Coming back takes the Waterfall Charm. Without it, I won't let anyone turn into foam.",
   "ctx": "src/data/zonas/A8.ts:73 · campo fala"
  },
  "Bem-vindo a Vila Ferrugem! Aqui o apito da fábrica toca às seis, ao meio-dia e quando o gato pisa no botão.": {
-  "en": "",
+  "en": "Welcome to Vila Ferrugem! Here the factory whistle blows at six, at noon and whenever the cat steps on the button.",
   "ctx": "src/data/zonas/A8.ts:77 · campo fala"
  },
  "A Engenheira Bigorna transformou a fábrica velha em ginásio. As esteiras ainda andam. Para onde, só ela sabe.": {
-  "en": "",
+  "en": "Engineer Bigorna turned the old factory into a gym. The belts still run. Where to, only she knows.",
   "ctx": "src/data/zonas/A8.ts:77 · campo fala"
  },
  "Tipo Ferro aguenta quase tudo. Quase: Brasa derrete, Terra entorta e Ginga amassa.": {
-  "en": "",
+  "en": "Iron types can take almost anything. Almost: Ember melts them, Earth bends them and Brawl dents them.",
   "ctx": "src/data/zonas/A8.ts:78 · campo fala"
  },
  "Veneno em Ferro é igual xingar parede.": {
-  "en": "",
+  "en": "Poison against Iron is like yelling at a wall.",
   "ctx": "src/data/zonas/A8.ts:78 · campo fala"
  },
  "Meu pai disse que a Insígnia da Engrenagem vem com o Amuleto da Força.": {
-  "en": "",
+  "en": "My dad said the Gear Badge comes with the Strength Charm.",
   "ctx": "src/data/zonas/A8.ts:79 · campo fala"
  },
  "Aí dá para empurrar o pedregulho da saída leste. Eu já tentei com a testa. Não recomendo.": {
-  "en": "",
+  "en": "Then you can push the boulder at the east exit. I tried with my forehead. Don't recommend it.",
   "ctx": "src/data/zonas/A8.ts:79 · campo fala"
  },
  "Depois do pedregulho é a Estrada do Buriti. No fim dela, Vila Buriti e o último ginásio da Costa do Sol.": {
-  "en": "",
+  "en": "Past the boulder is Estrada do Buriti. At the end of it, Vila Buriti and the last gym of the Costa do Sol.",
   "ctx": "src/data/zonas/A8.ts:80 · campo fala"
  },
  "E depois o Platô da Liga dos Guardiões. Eu fui lá uma vez. Assistir.": {
-  "en": "",
+  "en": "And after that, the League of Guardians' Platô. I went there once. To watch.",
   "ctx": "src/data/zonas/A8.ts:80 · campo fala"
  },
  "A trilha do Monte Tupã começa aqui. Paredão, gruta escura e cascata: precisa de Escalar, Lampião e Cachoeira.": {
-  "en": "",
+  "en": "The Monte Tupã trail starts here. Cliff face, dark cave and waterfall: you need Climb, Lantern and Waterfall.",
   "ctx": "src/data/zonas/A8.ts:81 · campo fala"
  },
  "E o guardião lá de cima só abre o caminho para quem tem quinze insígnias. Eu tenho duas. E uma delas é de escoteiro.": {
-  "en": "",
+  "en": "And the guardian up top only opens the way for those with fifteen badges. I have two. And one of them is from the scouts.",
   "ctx": "src/data/zonas/A8.ts:81 · campo fala"
  },
  "Oca do Guardador de Histórias": {
-  "en": "",
+  "en": "The Story Keeper's Oca",
   "ctx": "src/data/zonas/A9-casa-1.ts:5 · campo nome"
  },
  "Cordas com nós, uma para cada líder que subiu o monte. São poucas cordas. A última ainda está sem nó.": {
-  "en": "",
+  "en": "Knotted cords, one for each Leader who climbed the mountain. There aren't many cords. The last one still has no knot.",
   "ctx": "src/data/zonas/A9-casa-1.ts:6 · campo estante"
  },
  "Penas compridas que estalam quando se toca. Guardadas em pano, uma por trovão.": {
-  "en": "",
+  "en": "Long feathers that crackle when touched. Wrapped in cloth, one for each thunderclap.",
   "ctx": "src/data/zonas/A9-casa-1.ts:7 · campo bau"
  },
  "Guardador Tibiriçá": {
-  "en": "",
+  "en": "Keeper Tibiriçá",
   "ctx": "src/data/zonas/A9-casa-1.ts:9 · campo nome"
  },
  "O Gavião-Tupã não se captura com pressa nem com força. Ele pousa para quem o céu já conhece.": {
-  "en": "",
+  "en": "Gavião-Tupã isn't caught with haste or with force. It lands for those the sky already knows.",
   "ctx": "src/data/zonas/A9-casa-1.ts:9 · campo fala"
  },
  "Depois da Escama, suba a trilha do meio até a Pedra do Trovão. E segure o chapéu.": {
-  "en": "",
+  "en": "After the Scale, climb the middle trail to the Pedra do Trovão. And hold on to your hat.",
   "ctx": "src/data/zonas/A9-casa-1.ts:9 · campo fala"
  },
  "Aprendiz Poti": {
-  "en": "",
+  "en": "Apprentice Poti",
   "ctx": "src/data/zonas/A9-casa-1.ts:10 · campo nome"
  },
  "Eu estou decorando as dezesseis insígnias na ordem. Empaco sempre na do Casulo.": {
-  "en": "",
+  "en": "I'm memorizing all sixteen badges in order. I always get stuck on the Cocoon one.",
   "ctx": "src/data/zonas/A9-casa-1.ts:10 · campo fala"
  },
  "Oca da Raizeira do Alto": {
-  "en": "",
+  "en": "The Mountain Herbalist's Oca",
   "ctx": "src/data/zonas/A9-casa-2.ts:5 · campo nome"
  },
  "Potes de raiz, casca e flor. Um rótulo diz \"para saudade\". Está quase vazio.": {
-  "en": "",
+  "en": "Jars of roots, bark and flowers. One label says \"for longing\". It's almost empty.",
   "ctx": "src/data/zonas/A9-casa-2.ts:6 · campo estante"
  },
  "Cobertores trançados. No alto do monte, o frio chega antes do escuro.": {
-  "en": "",
+  "en": "Woven blankets. Up on the mountain, the cold arrives before the dark.",
   "ctx": "src/data/zonas/A9-casa-2.ts:7 · campo bau"
  },
  "Raizeira Potira": {
-  "en": "",
+  "en": "Herbalist Potira",
   "ctx": "src/data/zonas/A9-casa-2.ts:9 · campo nome"
  },
  "A trilha do Pico Pingorama sai do alto do Monte Tupã, para o norte. Só passa quem tem as dezesseis insígnias.": {
-  "en": "",
+  "en": "The Pico Pingorama trail leaves from the top of Monte Tupã, heading north. Only those with all sixteen badges get through.",
   "ctx": "src/data/zonas/A9-casa-2.ts:9 · campo fala"
  },
  "Lá em cima estão o Conselho dos Guardiões e, dizem, o tal Coronel Garrote. Descanse aqui antes. Chá?": {
-  "en": "",
+  "en": "Up there are the Council of Guardians and, they say, that Colonel Garrote. Rest here first. Tea?",
   "ctx": "src/data/zonas/A9-casa-2.ts:9 · campo fala"
  },
  "A vó põe mel no chá de quem está com medo. O seu veio com bastante mel.": {
-  "en": "",
+  "en": "Grandma puts honey in the tea of anyone who's scared. Yours came with lots of honey.",
   "ctx": "src/data/zonas/A9-casa-2.ts:10 · campo fala"
  },
  "Casa de Provas da Aldeia Tupã": {
-  "en": "",
+  "en": "Aldeia Tupã Trial House",
   "ctx": "src/data/zonas/A9-ginasio.ts:23 · campo nome"
  },
  "CASA DE PROVAS DA ALDEIA TUPÃ\nGuardião: Pajé Trovão-Velho\n\"Fogo, terra, vento e água: quem respeita os quatro, caminha.\"": {
-  "en": "",
+  "en": "ALDEIA TUPÃ TRIAL HOUSE\nGuardian: Shaman Trovão-Velho\n\"Fire, earth, wind and water: whoever respects all four may walk on.\"",
   "ctx": "src/data/zonas/A9-ginasio.ts:47 · campo texto"
  },
  "A porta do Pajé só se abre quando os quatro totens estão acesos. Cada ala guarda uma prova, e a ordem é você quem escolhe.": {
-  "en": "",
+  "en": "The Shaman's door only opens when all four totems are lit. Each wing holds a trial, and you choose the order.",
   "ctx": "src/data/zonas/A9-ginasio.ts:47 · campo texto"
  },
  "Fogo: a brasa vermelha queima no próximo passo. Terra: a pedra só anda empurrada, e o buraco engole a pedra.": {
-  "en": "",
+  "en": "Fire: the red ember burns on your next step. Earth: the stone only moves when pushed, and the hole swallows the stone.",
   "ctx": "src/data/zonas/A9-ginasio.ts:48 · campo texto"
  },
  "Vento: a corrente leva para onde o vento sopra, e a pena muda o vento. Água: o seu reflexo anda ao contrário de você.": {
-  "en": "",
+  "en": "Wind: the current carries you where the wind blows, and the feather changes the wind. Water: your reflection walks opposite to you.",
   "ctx": "src/data/zonas/A9-ginasio.ts:48 · campo texto"
  },
  "Montanhista Sem-Fôlego": {
-  "en": "",
+  "en": "Hiker Sem-Fôlego",
   "ctx": "src/data/zonas/A9-posto.ts:5 · campo nome"
  },
  "Paredão, gruta e cascata. Cheguei aqui com as pernas de outra pessoa.": {
-  "en": "",
+  "en": "Cliff face, cave and waterfall. I got here on someone else's legs.",
   "ctx": "src/data/zonas/A9-posto.ts:5 · campo fala"
  },
  "Dizem que do Pico Pingorama dá para ver os dois mapas de uma vez. Eu vou acreditar sem conferir.": {
-  "en": "",
+  "en": "They say from Pico Pingorama you can see both maps at once. I'll take their word for it.",
   "ctx": "src/data/zonas/A9-posto.ts:5 · campo fala"
  },
  "Vó Jaciara": {
-  "en": "",
+  "en": "Vó Jaciara",
   "ctx": "src/data/zonas/A9-posto.ts:6 · campo nome"
  },
  "O Pajé Trovão-Velho usa criaturas de Lenda. Geada, Encanto e outra Lenda são o que elas respeitam.": {
-  "en": "",
+  "en": "Shaman Trovão-Velho uses Legend creatures. Frost, Charm and other Legends are what they respect.",
   "ctx": "src/data/zonas/A9-posto.ts:6 · campo fala"
  },
  "E leve remédio. Aqui em cima a Venda fecha quando o vendedor resolve tirar soneca.": {
-  "en": "",
+  "en": "And bring medicine. Up here the Shop closes whenever the shopkeeper decides to take a nap.",
   "ctx": "src/data/zonas/A9-posto.ts:6 · campo fala"
  },
  "Seu Relâmpago": {
-  "en": "",
+  "en": "Seu Relâmpago",
   "ctx": "src/data/zonas/A9-venda.ts:4 · campo nome"
  },
  "Tudo o que subiu o monte nas costas de alguém está à venda. Por isso o preço: é frete.": {
-  "en": "",
+  "en": "Everything that came up the mountain on someone's back is for sale. Hence the price: it's shipping.",
   "ctx": "src/data/zonas/A9-venda.ts:4 · campo fala"
  },
  "Caçador Aimberê": {
-  "en": "",
+  "en": "Hunter Aimberê",
   "ctx": "src/data/zonas/A9-venda.ts:6 · campo nome"
  },
  "Para criatura de Lenda, Cuia de Ouro. Para o Gavião-Tupã… muita Cuia de Ouro. E paciência de pedra.": {
-  "en": "",
+  "en": "For Legend creatures, Gold Gourds. For Gavião-Tupã… lots of Gold Gourds. And the patience of a stone.",
   "ctx": "src/data/zonas/A9-venda.ts:6 · campo fala"
  },
  "ALDEIA TUPÃ\n\"O lugar mais perto do céu.\"\nNorte: a Pedra do Trovão · Ginásio: Pajé Trovão-Velho.": {
-  "en": "",
+  "en": "ALDEIA TUPÃ\n\"The place closest to the sky.\"\nNorth: the Pedra do Trovão · Gym: Shaman Trovão-Velho.",
   "ctx": "src/data/zonas/A9.ts:51 · campo texto"
  },
  "GINÁSIO DA ALDEIA TUPÃ\nLíder: Pajé Trovão-Velho.\nQuatro provas: mata, fogo, água e vento. Quem chegou até aqui já conhece as quatro.": {
-  "en": "",
+  "en": "ALDEIA TUPÃ GYM\nLeader: Shaman Trovão-Velho.\nFour trials: forest, fire, water and wind. If you've made it this far, you already know all four.",
   "ctx": "src/data/zonas/A9.ts:52 · campo texto"
  },
  "Cada insígnia que você traz é um fio. Dezesseis fios fazem a rede que segura Pingorama no lugar.": {
-  "en": "",
+  "en": "Every badge you bring is a thread. Sixteen threads make the net that holds Pingorama in place.",
   "ctx": "src/data/zonas/A9.ts:66 · campo fala"
  },
  "A última o Pajé só entrega para quem passa nas quatro provas. Não tenha pressa: ele não tem.": {
-  "en": "",
+  "en": "The Shaman only hands over the last one to those who pass all four trials. Don't rush: he doesn't.",
   "ctx": "src/data/zonas/A9.ts:66 · campo fala"
  },
  "Você subiu o monte todinho? Eu subo todo dia para buscar água. Duas vezes!": {
-  "en": "",
+  "en": "You climbed the whole mountain? I climb it every day to fetch water. Twice!",
   "ctx": "src/data/zonas/A9.ts:67 · campo fala"
  },
  "Quando troveja sem nuvem, é o Gavião-Tupã passando. A gente dá tchau.": {
-  "en": "",
+  "en": "When it thunders with no clouds, it's Gavião-Tupã flying by. We wave.",
   "ctx": "src/data/zonas/A9.ts:67 · campo fala"
  },
  "Posto Guardião de {cidade}": {
