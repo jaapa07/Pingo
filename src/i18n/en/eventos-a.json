@@ -691,8 +691,8 @@
   "en": "A League Champion with no ticket? Chief Aracê hands one to every Champion, up on the Platô. Take a look in your bag.",
   "ctx": "src/data/eventos/a2.ts:112 · f()"
  },
- "Cais do Saveiro, linha Cidade Coral ⇄ Porto Pantaneiro. Bonito, né? Pois é só para olhar.\fO mestre só sobe o rio com Campeão da Liga dos Guardiões a bordo, e de bilhete na mão.": {
-  "en": "Saveiro Dock, Cidade Coral - Porto Pantaneiro line. Pretty, huh? Well, it's just for looking.\fThe skipper only goes up the river with a League of Guardians Champion aboard, ticket in hand.",
+ "Cais do Saveiro, linha Cidade Coral – Porto Pantaneiro. Bonito, né? Pois é só para olhar.\fO mestre só sobe o rio com Campeão da Liga dos Guardiões a bordo, e de bilhete na mão.": {
+  "en": "Saveiro Dock, Cidade Coral – Porto Pantaneiro line. Pretty, huh? Well, it's just for looking.\fThe skipper only goes up the river with a League of Guardians Champion aboard, ticket in hand.",
   "ctx": "src/data/eventos/a2.ts:114 · f()"
  },
  "A Liga fica no Platô, depois de Vila Buriti. Oito insígnias para entrar, cinco lutas seguidas para sair Campeão.\fVocê tem cara de quem chega lá. Eu tenho cara de quem vende bilhete. Cada um com o seu talento.": {
@@ -6479,12 +6479,8 @@
   "en": "Porto Sereia Station",
   "ctx": "src/data/zonas/A4-estacao.ts:9 · campo nome"
  },
- "T::b::::::::::b::T": {
-  "en": "T::b::::::::::b::T",
-  "ctx": "src/data/zonas/A4-estacao.ts:13 · campo mapaChars | src/data/zonas/A4-estacao.ts:14 · campo mapaChars | src/data/zonas/B1-estacao.ts:15 · campo mapaChars | +1"
- },
- "BILHETERIA\nTrem Serra-Sol: Porto Sereia ↔ Sertão das Névoas, com vista para a serra inteira.": {
-  "en": "TICKET OFFICE\nSerra-Sol Train: Porto Sereia - Sertão das Névoas, with a view of the whole mountain range.",
+ "BILHETERIA\nTrem Serra-Sol: Porto Sereia – Sertão das Névoas, com vista para a serra inteira.": {
+  "en": "TICKET OFFICE\nSerra-Sol Train: Porto Sereia – Sertão das Névoas, with a view of the whole mountain range.",
   "ctx": "src/data/zonas/A4-estacao.ts:25 · campo texto"
  },
  "Um aviso colado no vidro: \"Linha da serra: embarque só para Campeões da Liga dos Guardiões. O Passe do Trem se ganha no Platô, não no guichê.\"": {
@@ -6699,8 +6695,8 @@
   "en": "GRUTA DO ECO\nShortcut to Trilha dos Cipós and Bosque Alto. Shout \"hi\" inside: it answers with interest.",
   "ctx": "src/data/zonas/A4.ts:64 · placa()"
  },
- "ESTAÇÃO DE PORTO SEREIA\nTrem Serra-Sol — Porto Sereia ↔ Sertão das Névoas.\nLinha da serra: embarque só para Campeões da Liga dos Guardiões.": {
-  "en": "PORTO SEREIA STATION\nSerra-Sol Train — Porto Sereia - Sertão das Névoas.\nMountain line: boarding for League of Guardians Champions only.",
+ "ESTAÇÃO DE PORTO SEREIA\nTrem Serra-Sol — Porto Sereia – Sertão das Névoas.\nLinha da serra: embarque só para Campeões da Liga dos Guardiões.": {
+  "en": "PORTO SEREIA STATION\nSerra-Sol Train — Porto Sereia – Sertão das Névoas.\nMountain line: boarding for League of Guardians Champions only.",
   "ctx": "src/data/zonas/A4.ts:65 · placa()"
  },
  "POSTO GUARDIÃO\nCura grátis. Sal grosso na porta por conta da casa.": {
@@ -6967,8 +6963,8 @@
   "en": "CIDADE CORAL GYM\nLeader: Iracema Lua, the lacemaker who embroiders with light.",
   "ctx": "src/data/zonas/A5.ts:64 · campo texto"
  },
- "CAIS DO SAVEIRO\nLinha Cidade Coral ⇄ Porto Pantaneiro. Bilhete na mão, enjoo por conta do passageiro.": {
-  "en": "SAVEIRO DOCK\nCidade Coral - Porto Pantaneiro line. Ticket in hand; seasickness is the passenger's problem.",
+ "CAIS DO SAVEIRO\nLinha Cidade Coral – Porto Pantaneiro. Bilhete na mão, enjoo por conta do passageiro.": {
+  "en": "SAVEIRO DOCK\nCidade Coral – Porto Pantaneiro line. Ticket in hand; seasickness is the passenger's problem.",
   "ctx": "src/data/zonas/A5.ts:65 · campo texto"
  },
  "GRUTA BREU\nTravessia por baixo do mar até a Serra Fumaça. Escura feito pensamento de segunda-feira: leve o Lampião.": {

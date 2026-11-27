@@ -111,7 +111,7 @@ export const EVENTOS_A2: EventoDef[] = [
           [f('bilheteiro', 'Campeão da Liga no meu cais! Bilhete conferido, tudo certo… menos o barco.\fO Saveiro está no estaleiro, em reforma: tábua nova, vela nova. Guarde o bilhete: ele vale assim que o casco voltar para a água. Em breve, diz o mestre. O Rádio Cipó avisa.')])],
           [f('bilheteiro', 'Campeão da Liga e sem bilhete? O Cacique Aracê entrega um para cada Campeão, lá no Platô. Dá uma conferida na mochila.')]),
       ], [
-        f('bilheteiro', 'Cais do Saveiro, linha Cidade Coral ⇄ Porto Pantaneiro. Bonito, né? Pois é só para olhar.\fO mestre só sobe o rio com Campeão da Liga dos Guardiões a bordo, e de bilhete na mão.'),
+        f('bilheteiro', 'Cais do Saveiro, linha Cidade Coral – Porto Pantaneiro. Bonito, né? Pois é só para olhar.\fO mestre só sobe o rio com Campeão da Liga dos Guardiões a bordo, e de bilhete na mão.'),
         f('bilheteiro', 'A Liga fica no Platô, depois de Vila Buriti. Oito insígnias para entrar, cinco lutas seguidas para sair Campeão.\fVocê tem cara de quem chega lá. Eu tenho cara de quem vende bilhete. Cada um com o seu talento.'),
       ]),
     ],

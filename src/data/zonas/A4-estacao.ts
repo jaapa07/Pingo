@@ -22,7 +22,7 @@ const zona: ZonaDef = {
   ],
   objetos: [
     { o: 'trem', x: 5, y: 3 },
-    { o: 'bilheteria', x: 14, y: 6, texto: ['BILHETERIA\nTrem Serra-Sol: Porto Sereia ↔ Sertão das Névoas, com vista para a serra inteira.', 'Um aviso colado no vidro: "Linha da serra: embarque só para Campeões da Liga dos Guardiões. O Passe do Trem se ganha no Platô, não no guichê."'] },
+    { o: 'bilheteria', x: 14, y: 6, texto: ['BILHETERIA\nTrem Serra-Sol: Porto Sereia – Sertão das Névoas, com vista para a serra inteira.', 'Um aviso colado no vidro: "Linha da serra: embarque só para Campeões da Liga dos Guardiões. O Passe do Trem se ganha no Platô, não no guichê."'] },
     { o: 'banco-estacao', x: 2, y: 6 },
     { o: 'relogio-estacao', x: 1, y: 4 },
     { o: 'poste', x: 5, y: 6 }, { o: 'poste', x: 12, y: 4 },

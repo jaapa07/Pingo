@@ -62,7 +62,7 @@ const zona: ZonaDef = {
     { o: 'saveiro', ...g.p('Y') },
     { o: 'placa', x: 22, y: 6, texto: 'CIDADE CORAL\n"Onde cada onda traz um fio para a renda."' },
     { o: 'placa', x: 30, y: 17, texto: 'GINÁSIO DE CIDADE CORAL\nLíder: Iracema Lua, a rendeira que borda com luz.' },
-    { o: 'placa', x: 23, y: 31, texto: 'CAIS DO SAVEIRO\nLinha Cidade Coral ⇄ Porto Pantaneiro. Bilhete na mão, enjoo por conta do passageiro.' },
+    { o: 'placa', x: 23, y: 31, texto: 'CAIS DO SAVEIRO\nLinha Cidade Coral – Porto Pantaneiro. Bilhete na mão, enjoo por conta do passageiro.' },
     { o: 'placa', x: 9, y: 9, texto: 'GRUTA BREU\nTravessia por baixo do mar até a Serra Fumaça. Escura feito pensamento de segunda-feira: leve o Lampião.' },
     { o: 'poste', x: 23, y: 10 }, { o: 'poste', x: 26, y: 17 }, { o: 'poste', x: 23, y: 28 }, { o: 'poste', x: 40, y: 16 },
     { o: 'banco', x: 17, y: 20 }, { o: 'banco', x: 27, y: 20 },

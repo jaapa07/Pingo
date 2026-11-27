@@ -62,7 +62,7 @@ const g = grade('A4', [
 });
 const placas = [
   placa(g, 'a', 'GRUTA DO ECO\nAtalho para a Trilha dos Cipós e Bosque Alto. Grite "oi" lá dentro: ela responde com juros.'),
-  placa(g, 'q', 'ESTAÇÃO DE PORTO SEREIA\nTrem Serra-Sol — Porto Sereia ↔ Sertão das Névoas.\nLinha da serra: embarque só para Campeões da Liga dos Guardiões.'),
+  placa(g, 'q', 'ESTAÇÃO DE PORTO SEREIA\nTrem Serra-Sol — Porto Sereia – Sertão das Névoas.\nLinha da serra: embarque só para Campeões da Liga dos Guardiões.'),
   placa(g, 'm', 'POSTO GUARDIÃO\nCura grátis. Sal grosso na porta por conta da casa.'),
   placa(g, 'n', 'VENDA DO PORTO\nCuias, remédios e novidade que chega de trem.'),
   placa(g, 'u', 'GINÁSIO DE PORTO SEREIA\nLíder: Capitã Marola — "quem não sabe remar, que aprenda a nadar".'),
