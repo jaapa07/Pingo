@@ -58,9 +58,8 @@ const placas = [
   placa(g, 'R', 'O TABULEIRO\nSubida só para quem sabe Escalar.\nLá em cima venta poesia.'),
   placa(g, 'S', 'RIACHO DO ATABAQUE\nA Lagoa de Cima fica depois da cascata.\nDizem que só o berimbau do Mestre Gingado ensina a subir.'),
 ];
-const T = 'rota-dia-B';
 const zona: ZonaDef = {
-  id: 'B-R3', nome: 'Trilha da Roda', mapa: 'B', tipo: 'rota', tileset: 'cerrado', musica: T, arena: 'cerrado', passo: 12,
+  id: 'B-R3', nome: 'Trilha da Roda', mapa: 'B', tipo: 'rota', tileset: 'cerrado', musica: 'rota-dia-B', arena: 'cerrado', passo: 12,
   mapaChars: g.mapa,
   objetos: [
     ...placas.map((q) => q.objeto),
