@@ -55,7 +55,7 @@ function faltou(s: string) {
   if (!DEV || faltas.has(s) || produzidos.has(s) || conferidos.has(s)) return;
   if (conferidos.size > 20000) conferidos.clear();
   conferidos.add(s);
-  const palavras = s.match(PALAVRA);
+  const palavras = s.replace(/\{[^}]*\}/g, ' ').match(PALAVRA); // sem as marcações ({c:cor}, {/c}, {marcador})
   if (!palavras || palavras.every((p) => vocabulario.has(p.toLowerCase()))) return;
   faltas.add(s); console.info('[i18n] sem tradução:', JSON.stringify(s));
 }
