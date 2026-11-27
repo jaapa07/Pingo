@@ -54,7 +54,10 @@ export function ajustarPalco() {
   const e = palco.escala = k / dpr;
   palco.w = TELA_W * e; palco.h = TELA_H * e;
   palco.x = noPixel(s.l + (areaW - palco.w) / 2);
-  palco.y = palco.modo === 'retrato' ? noPixel(s.t + Math.min(8 * e, Math.max(0, (altUtil - palco.h) / 2))) : noPixel(s.t + (areaH - palco.h) / 2);
+  // em pé, a tela desce um pouco (cerca de 7% da altura) para não ficar colada no topo do aparelho, desde que sobrem
+  // ao menos 360 px para os controles embaixo
+  const folgaTopo = Math.max(Math.min(8 * e, Math.max(0, (altUtil - palco.h) / 2)), Math.min(areaH * 0.07, areaH - palco.h - 360));
+  palco.y = palco.modo === 'retrato' ? noPixel(s.t + folgaTopo) : noPixel(s.t + (areaH - palco.h) / 2);
   quadro.style.transform = `translate(${palco.x}px, ${palco.y}px) scale(${e})`;
   const p = camada('palha');
   fundo.style.backgroundImage = `url(${p.url})`;
