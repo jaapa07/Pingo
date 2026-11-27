@@ -12,7 +12,7 @@ import { bus } from '../../core/events';
 import { simNao } from '../deps';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, cena, falar, avisar, sfx, quadros, laco, naZona, chave } from './_pecas';
-import { tr } from '../../i18n';
+import { tr, t as traduzir } from '../../i18n';
 
 const ZONA = 'B4-ginasio';
 type Nota = 'DÓ' | 'RÉ' | 'MI' | 'FÁ' | 'SOL';
@@ -74,13 +74,13 @@ async function tocarMusica(t: Terreiro) {
     const f = t.fogueiras[i];
     tocarNota(f.nota);
     if (t.mostra) { enf.pix('pisca', [BRILHO[0]], { w: '#fff48c' }, f.x, f.y, { dx: 3, dy: -10, z: 4000 }); if (!(acesas[k] > t.ordem.indexOf(i))) acender(f); }
-    else avisar(f.nota + '…');
+    else avisar(tr('{nota}…', { nota: f.nota }));
     await quadros(34);
     enf.tirar('pisca');
     if (t.mostra && !(resolvido[k] || t.ordem.indexOf(i) < acesas[k])) apagar(f);
     await quadros(8);
   }
-  const nomes = t.musica.map((i) => t.fogueiras[i].nota).join(', ');
+  const nomes = t.musica.map((i) => traduzir(t.fogueiras[i].nota)).join(', ');
   await falar(t.mostra ? (t === TERREIROS[1] ? tr('A música foi: {nomes}. ANARRIÊ!', { nomes }) : tr('Foi assim: {nomes}. Agora é com você!', { nomes })) : tr('Lá vai de novo, devagarinho: {nomes}.', { nomes }), { nome: t.nome });
 }
 

@@ -31,6 +31,8 @@ const PLANTA: Omit<Cercado, 'lama' | 'pisada' | 'afundada' | 'aberta' | 'firme'>
   { nome: 'segundo', y0: 9, y1: 11, porteira: [6, 8], sino: [3, 11], volta: [6, 12] },
   { nome: 'terceiro', y0: 4, y1: 6, porteira: [7, 3], sino: [2, 6], volta: [9, 7] },
 ];
+/** ordinal de cada cercado nas falas (tabela de texto: entra no catálogo palavra por palavra) */
+const NOME_CERCADO: Record<string, string> = { primeiro: 'primeiro', segundo: 'segundo', terceiro: 'terceiro' };
 const enf = new Enfeites();
 let cercados: Cercado[] = [];
 let ultimo: [number, number] | null = null;
@@ -87,7 +89,7 @@ async function atolar(c: Cercado) {
   ultimo = [...c.volta];
 }
 async function tocarSino(c: Cercado) {
-  if (c.firme) { await falar(tr('O sino do {nome} cercado. A lama dele já secou: o chão está firme.', { nome: c.nome })); return; }
+  if (c.firme) { await falar(tr('O sino do {nome} cercado. A lama dele já secou: o chão está firme.', { nome: NOME_CERCADO[c.nome] })); return; }
   sfx('saveiro-sino');
   await quadros(16);
   const mexida = c.pisada.size > 0;
@@ -118,7 +120,7 @@ registrarMecanica(ZONA, {
     const de = doCercado(ant[0], ant[1]), para = doCercado(x, y);
     if (de && !de.firme) afundar(de, ant[0], ant[1]);
     if (para && !para.firme) {
-      if (para.pisada.size === 0) avisar(tr('Lama do {nome} cercado!', { nome: para.nome }));
+      if (para.pisada.size === 0) avisar(tr('Lama do {nome} cercado!', { nome: NOME_CERCADO[para.nome] }));
       para.pisada.add(chave(x, y));
       if (para.pisada.size === para.lama.length && !para.aberta) {
         abrirPorteira(para); sfx('porta'); M.cena.tremer(4);
@@ -130,7 +132,7 @@ registrarMecanica(ZONA, {
     if (de && !de.firme) {
       if (naPorteira(de, x, y)) {
         firmar(de); sfx('item-obtido');
-        avisar(tr('O {nome} cercado secou!', { nome: de.nome }));
+        avisar(tr('O {nome} cercado secou!', { nome: NOME_CERCADO[de.nome] }));
       } else {
         alisar(de);
         cena(() => falar('Você saiu do cercado antes de pisar a lama toda.\nOs peões já passaram o rodo: a lama está lisinha outra vez.'));

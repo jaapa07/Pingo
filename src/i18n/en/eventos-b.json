@@ -4,7 +4,7 @@
   "ctx": "src/data/eventos/b1.ts:62 · escolher()"
  },
  "Agora não": {
-  "en": "",
+  "en": "Not now",
   "ctx": "src/data/eventos/b1.ts:62 · escolher() | src/data/eventos/posliga.ts:94 · pergunta/opção | src/ui/telas/gincana.ts:407 · escolher()"
  },
  "Tenente Arame": {
@@ -16,7 +16,7 @@
   "ctx": "src/data/eventos/b1.ts:92 · campo nome | src/data/zonas/B1-estacao.ts:41 · campo nome"
  },
  "Dona Sucupira": {
-  "en": "",
+  "en": "Dona Sucupira",
   "ctx": "src/data/eventos/b1.ts:93 · campo nome | src/data/zonas/B1-salao.ts:39 · gente()"
  },
  "O ninho {onde} já está no rolo de filme da observadora. Os filhotes nem olharam para a câmera.": {
@@ -624,7 +624,7 @@
   "ctx": "src/data/eventos/b2-norte.ts:69 · campo nome | src/data/zonas/PP.ts:99 · gente()"
  },
  "Andarilho do Cume": {
-  "en": "",
+  "en": "Summit Wanderer",
   "ctx": "src/data/eventos/b2-norte.ts:70 · campo nome | src/data/zonas/PP.ts:98 · gente()"
  },
  "No {onde}, o capim se abre. Uma criatura enorme se ergue sobre os ovos e encara você, protegendo o ninho.": {
@@ -1392,7 +1392,7 @@
   "ctx": "src/data/eventos/b2-sul.ts:413 · se()"
  },
  "Tchê Barbosa": {
-  "en": "",
+  "en": "Tchê Barbosa",
   "ctx": "src/data/eventos/b2-sul.ts:413 · se() | src/data/trocas.ts:76 · campo morador"
  },
  "{JOGADOR} trocou o Tuco-Escavador pela Gralha-Azul Azulina!": {
@@ -1452,199 +1452,199 @@
   "ctx": "src/data/eventos/b2-sul.ts:452 · f()"
  },
  "Guardiã da Sala de Espera": {
-  "en": "",
+  "en": "Guardian of the Waiting Room",
   "ctx": "src/data/eventos/conselho.ts:20 · campo nome | src/data/eventos/liga.ts:82 · campo nome | src/data/eventos/liga.ts:92 · campo nome | +2"
  },
  "A porta ao norte se abriu. No Salão ninguém cura de graça: se precisar, use os remédios da mochila antes de seguir.": {
-  "en": "",
+  "en": "The north door has opened. Nobody heals you for free in the Hall: if you need to, use the medicine in your bag before moving on.",
   "ctx": "src/data/eventos/conselho.ts:36 · f()"
  },
  "Os Guardiões falam de você com a voz baixa que se usa para os antigos, {JOGADOR}. O Salão continua aberto para quem quiser medir forças de novo.\fE dizem que, a cada vitória sua, um andarilho sobe até a pedra do Cume. Ninguém sabe de onde ele vem.": {
-  "en": "",
+  "en": "The Guardians speak of you in the hushed voice reserved for the elders, {JOGADOR}. The Hall stays open to anyone who wants to test their strength again.\fAnd they say that with every win of yours, a wanderer climbs up to the Summit stone. Nobody knows where he comes from.",
   "ctx": "src/data/eventos/conselho.ts:54 · f()"
  },
  "Dezesseis insígnias. O portão reconheceu você antes de mim.\fLá em cima fica o Salão do Conselho: cinco Guardiões, cinco lutas, nenhuma porta de volta. Deixei uma oferenda na saída do portão: dois Elixires e dois Chás de Guaraná. Leve.": {
-  "en": "",
+  "en": "Sixteen badges. The gate recognized you before I did.\fUp there is the Council Hall: five Guardians, five battles, no door back. I left an offering by the gate exit: two Elixirs and two Guaraná Teas. Take them.",
   "ctx": "src/data/eventos/conselho.ts:56 · f()"
  },
  "Mais uma coisa. Hoje cedo passou um homem de chapéu de couro e botas de ferro, com dois capangas. Disse que vinha \"fazer negócio com o Conselho\". O Conselho não faz negócio. Tome cuidado no Cume.": {
-  "en": "",
+  "en": "One more thing. Early today a man came by in a leather hat and iron boots, with two goons. Said he came to \"do business with the Council\". The Council doesn't do business. Be careful at the Summit.",
   "ctx": "src/data/eventos/conselho.ts:57 · f()"
  },
  "Ora, ora. O herói das dezesseis insígnias. A Usina, o Farol, o Pantanal, a Mina, o Laboratório… sempre você.\fSabe por que eu subi até aqui? Porque o Salão do Conselho guarda as criaturas mais antigas de Pingorama. Com uma delas numa gaiola, o Cartel Ferrugem nunca mais precisa de usina nenhuma.": {
-  "en": "",
+  "en": "Well, well. The hero of sixteen badges. The Power Plant, the Lighthouse, the Pantanal, the Mine, the Lab… always you.\fKnow why I climbed all the way up here? Because the Council Hall keeps the oldest creatures in Pingorama. With one of them in a cage, the Rust Cartel will never need a power plant again.",
   "ctx": "src/data/eventos/conselho.ts:69 · f()"
  },
  "Acorrentei as argolas da porta. Os velhos lá dentro vão negociar comigo ou não saem mais.\fE você? Vai sair do meu caminho ou vai ser o último bicho da minha coleção?": {
-  "en": "",
+  "en": "I've chained the door rings. The old folks in there will deal with me, or they're never coming out.\fAnd you? Will you get out of my way, or be the last critter in my collection?",
   "ctx": "src/data/eventos/conselho.ts:70 · f()"
  },
  "Perdi… para um moleque com um Diário de Campo e uma mochila de remédio.": {
-  "en": "",
+  "en": "Beaten… by a kid with a Field Journal and a bag full of medicine.",
   "ctx": "src/data/eventos/conselho.ts:74 · f()"
  },
  "As portas de pedra do Salão se abrem por dentro, com corrente e tudo. Quatro Guardiões descem a escada em silêncio.": {
-  "en": "",
+  "en": "The Hall's stone doors open from the inside, chains and all. Four Guardians come down the stairs in silence.",
   "ctx": "src/data/eventos/conselho.ts:76 · f()"
  },
  "Guardião Moacir": {
-  "en": "",
+  "en": "Guardian Moacir",
   "ctx": "src/data/eventos/conselho.ts:77 · campo nome | src/data/zonas/PP-conselho.ts:105 · gente()"
  },
  "Garrote. A montanha avisou que você vinha. A montanha também avisou quem vinha atrás de você.": {
-  "en": "",
+  "en": "Garrote. The mountain warned us you were coming. The mountain also warned us who was coming after you.",
   "ctx": "src/data/eventos/conselho.ts:77 · f()"
  },
  "Guardiã Iara Costa": {
-  "en": "",
+  "en": "Guardian Iara Costa",
   "ctx": "src/data/eventos/conselho.ts:78 · campo nome | src/data/zonas/PP-conselho.ts:102 · gente()"
  },
  "As criaturas que o Cartel prendeu nesses anos todos já voltaram para os rios, os ninhos e as matas. Só falta você voltar para a planície — e responder pelo que fez.": {
-  "en": "",
+  "en": "The creatures the Cartel locked up all these years are already back in their rivers, nests and forests. All that's left is for you to go back down to the plains — and answer for what you did.",
   "ctx": "src/data/eventos/conselho.ts:78 · f()"
  },
  "…O Cartel Ferrugem acabou. Mas o mundo é grande, Guardiã.": {
-  "en": "",
+  "en": "…The Rust Cartel is finished. But the world is big, Guardian.",
   "ctx": "src/data/eventos/conselho.ts:79 · f()"
  },
  "Guardiã Jandaia": {
-  "en": "",
+  "en": "Guardian Jandaia",
   "ctx": "src/data/eventos/conselho.ts:83 · campo nome | src/data/zonas/PP-conselho.ts:104 · gente()"
  },
  "Os Guardiões da planície levaram o Coronel. As correntes ficaram no chão, onde é o lugar delas.\fNós voltamos para as nossas salas, {JOGADOR}. Quando estiver pronto, a porta está aberta. Lá dentro não se volta atrás.": {
-  "en": "",
+  "en": "The Guardians of the plains took the Colonel. The chains stayed on the ground, where they belong.\fWe're going back to our rooms, {JOGADOR}. When you're ready, the door is open. Once inside, there's no turning back.",
   "ctx": "src/data/eventos/conselho.ts:83 · f()"
  },
  "\"Edição extraordinária do Rádio Cipó! O Coronel Garrote, chefe do Cartel Ferrugem, foi preso no Pico Pingorama! Os Guardiões confirmam: o Cartel acabou. Os pesquisadores dos dois mapas comemoram — e a Drª Buriti mandou dizer que vai dormir oito horas seguidas pela primeira vez em anos!\"": {
-  "en": "",
+  "en": "\"Rádio Cipó special edition! Colonel Garrote, boss of the Rust Cartel, has been arrested on Pico Pingorama! The Guardians confirm it: the Cartel is finished. Researchers on both maps are celebrating — and Dr. Buriti says she's going to sleep eight hours straight for the first time in years!\"",
   "ctx": "src/data/eventos/conselho.ts:85 · f()"
  },
  "{JOGADOR}! Espera! Eu subi a trilha correndo desde a Serra da Geada!\fEu tenho as dezesseis também, sabia? Ganhei a última ontem. Mas eu não vou entrar antes de você. Não seria justo… e eu quero ver a sua cara quando você sair.": {
-  "en": "",
+  "en": "{JOGADOR}! Wait! I ran all the way up the trail from Serra da Geada!\fI've got all sixteen too, you know? Won the last one yesterday. But I'm not going in before you. It wouldn't be fair… and I want to see your face when you come out.",
   "ctx": "src/data/eventos/conselho.ts:97 · f()"
  },
  "Ganhei! Ganhei na porta do Conselho! …Mas olha a sua equipe: cansada e sorrindo. Vai, descansa no Posto e volta. Eu espero o resultado aqui fora.": {
-  "en": "",
+  "en": "I won! I won at the Council's door! …But look at your team: tired and smiling. Go rest at the Post and come back. I'll wait out here for the result.",
   "ctx": "src/data/eventos/conselho.ts:101 · f()"
  },
  "Desde aquele dia no laboratório, cada vez que eu perdia para você eu ficava mais forte. Acho que foi o melhor presente que você me deu.": {
-  "en": "",
+  "en": "Ever since that day at the lab, every time I lost to you I got stronger. I think that was the best gift you ever gave me.",
   "ctx": "src/data/eventos/conselho.ts:102 · f()"
  },
  "Entra lá, Campeão da Costa e do Sertão. E quando sair, a gente vai juntos pescar na Lagoa Gelada. Eu pago o pinhão.": {
-  "en": "",
+  "en": "Go on in, Champion of the Coast and the Sertão. And when you come out, we'll go fishing together at Lagoa Gelada. The pine nuts are on me.",
   "ctx": "src/data/eventos/conselho.ts:104 · f()"
  },
  "Desafiante! Daqui para dentro é o Conselho dos Guardiões: a Guardiã do Mar, o Guardião da Mata, a Guardiã do Céu, o Guardião da Terra e o Guardião-Mor.\fA porta fecha às suas costas. Ninguém cura de graça lá dentro, só o que couber na sua mochila. Se a sua equipe cair, os Guardiões levam você de volta ao Portão, e o Conselho recomeça da primeira sala.": {
-  "en": "",
+  "en": "Challenger! Beyond this point is the Council of Guardians: the Sea Guardian, the Forest Guardian, the Sky Guardian, the Earth Guardian and the High Guardian.\fThe door closes behind you. Nobody heals you for free inside, only what fits in your bag. If your team falls, the Guardians will bring you back to the Gate, and the Council starts over from the first room.",
   "ctx": "src/data/eventos/conselho.ts:114 · f()"
  },
  "Entrar no Salão do Conselho agora? (Não há volta.)": {
-  "en": "",
+  "en": "Enter the Council Hall now? (There's no going back.)",
   "ctx": "src/data/eventos/conselho.ts:115 · pergunta/opção"
  },
  "A porta de pedra fechou. Na sala de espera, a luz entra pelas frestas do teto como se fosse água.": {
-  "en": "",
+  "en": "The stone door has closed. In the waiting room, light pours through the cracks in the ceiling like water.",
   "ctx": "src/data/eventos/conselho.ts:122 · f()"
  },
  "Sem pressa. O Posto do acampamento fica logo abaixo do Portão. Volte quando estiver pronto.": {
-  "en": "",
+  "en": "No rush. The camp's Post is just below the Gate. Come back when you're ready.",
   "ctx": "src/data/eventos/conselho.ts:124 · f()"
  },
  "Esta é a sala de espera. Olhe a equipe e a mochila com calma: daqui para cima, cada sala é uma luta.\fPrimeira sala: Iara Costa, Rio e Encanto. Segunda: Cauã, Mata e Inseto. Terceira: Jandaia, Vento e Trovão. Quarta: Moacir, Terra, Pedra e Ferro.": {
-  "en": "",
+  "en": "This is the waiting room. Check your team and bag calmly: from here up, every room is a battle.\fFirst room: Iara Costa, River and Charm. Second: Cauã, Grass and Bug. Third: Jandaia, Wind and Thunder. Fourth: Moacir, Earth, Stone and Iron.",
   "ctx": "src/data/eventos/conselho.ts:132 · f()"
  },
  "Na quinta sala está o Guardião-Mor Arandu. Ele luta com um pouco de tudo, e guarda para o fim uma criatura que só se vê nas histórias.\fBoa sorte. Pingorama inteira está ouvindo os seus passos.": {
-  "en": "",
+  "en": "In the fifth room is High Guardian Arandu. He fights with a bit of everything, and saves for last a creature you only see in stories.\fGood luck. All of Pingorama is listening to your footsteps.",
   "ctx": "src/data/eventos/conselho.ts:133 · f()"
  },
  "Chegou molhado de névoa. Bom: a água gosta de quem já está molhado.": {
-  "en": "",
+  "en": "You came in wet with mist. Good: water likes those who are already wet.",
   "ctx": "src/data/eventos/conselho.ts:137 · sala()"
  },
  "O Cauã luta com a mata inteira: raiz, casco e asa. Fogo e vento abrem caminho, mas ele tem casca grossa para isso.": {
-  "en": "",
+  "en": "Cauã fights with the whole forest: root, shell and wing. Fire and wind clear a path, but he has thick bark for that.",
   "ctx": "src/data/eventos/conselho.ts:138 · sala()"
  },
  "Já me venceu, desafiante. A porta está aberta: a mata do Cauã espera.": {
-  "en": "",
+  "en": "You've already beaten me, challenger. The door is open: Cauã's forest awaits.",
   "ctx": "src/data/eventos/conselho.ts:139 · sala()"
  },
  "Pisou na minha sala sem quebrar um galho. Já é um bom começo.": {
-  "en": "",
+  "en": "You stepped into my room without snapping a twig. That's a good start.",
   "ctx": "src/data/eventos/conselho.ts:141 · sala()"
  },
  "A Jandaia manda no céu. Pedra e Geada derrubam o que voa; Terra só não alcança quem está no alto.": {
-  "en": "",
+  "en": "Jandaia rules the sky. Stone and Frost bring down what flies; Earth just can't reach whoever's up high.",
   "ctx": "src/data/eventos/conselho.ts:142 · sala()"
  },
  "A mata já abriu caminho. Siga para o céu.": {
-  "en": "",
+  "en": "The forest has already made way. On to the sky.",
   "ctx": "src/data/eventos/conselho.ts:143 · sala()"
  },
  "Ventou lá fora quando você abriu a porta. O céu gosta de você. Eu ainda não decidi.": {
-  "en": "",
+  "en": "The wind blew outside when you opened the door. The sky likes you. I haven't decided yet.",
   "ctx": "src/data/eventos/conselho.ts:145 · sala()"
  },
  "O Moacir é a montanha. Água e raiz amolecem a pedra; e Brasa entorta o ferro dele — mas ele tem resposta para quase tudo.": {
-  "en": "",
+  "en": "Moacir is the mountain. Water and roots soften stone; Ember bends his iron — but he has an answer for almost everything.",
   "ctx": "src/data/eventos/conselho.ts:146 · sala()"
  },
  "O céu está limpo para você. A terra espera na próxima sala.": {
-  "en": "",
+  "en": "The sky is clear for you. The earth waits in the next room.",
   "ctx": "src/data/eventos/conselho.ts:147 · sala()"
  },
  "Quatro salas, e você ainda caminha. A pedra respeita quem caminha.": {
-  "en": "",
+  "en": "Four rooms, and you're still walking. Stone respects those who walk.",
   "ctx": "src/data/eventos/conselho.ts:149 · sala()"
  },
  "Atrás daquela porta está o Arandu. Ele não tem um tipo: tem a memória de todos. E guarda o gavião do trovão para o fim.": {
-  "en": "",
+  "en": "Behind that door is Arandu. He doesn't have a type: he has the memory of them all. And he saves the thunder hawk for last.",
   "ctx": "src/data/eventos/conselho.ts:150 · sala()"
  },
  "A terra já tremeu por você. Vá: o Guardião-Mor não gosta de esperar.": {
-  "en": "",
+  "en": "The earth has already shaken for you. Go: the High Guardian doesn't like to wait.",
   "ctx": "src/data/eventos/conselho.ts:151 · sala()"
  },
  "Entre, {JOGADOR}. Sente no chão um instante: aqui o chão é a coisa mais alta de Pingorama.\fQuatro Guardiões abriram as portas para você. Eu sou a última porta. E a última porta é sempre a que mais pesa.": {
-  "en": "",
+  "en": "Come in, {JOGADOR}. Sit on the floor a moment: here the floor is the highest thing in Pingorama.\fFour Guardians opened their doors to you. I am the last door. And the last door is always the heaviest.",
   "ctx": "src/data/eventos/conselho.ts:155 · f()"
  },
  "Ainda não. Mas eu vi a sua equipe se colocar na sua frente, uma depois da outra. Isso é o que o Conselho procura.\fDesça, descanse e volte. A montanha não sai daqui.": {
-  "en": "",
+  "en": "Not yet. But I saw your team step in front of you, one after another. That's what the Council looks for.\fGo down, rest and come back. The mountain isn't going anywhere.",
   "ctx": "src/data/eventos/conselho.ts:158 · f()"
  },
  "Os Guardiões trouxeram você de volta ao Portão dos Guardiões e cuidaram da sua equipe.\fO Conselho recomeça da primeira sala. O Posto do acampamento fica logo depois do portão, se quiser reforçar a mochila.": {
-  "en": "",
+  "en": "The Guardians brought you back to the Guardians' Gate and took care of your team.\fThe Council starts over from the first room. The camp's Post is just past the gate, if you want to restock your bag.",
   "ctx": "src/data/eventos/conselho.ts:170 · f()"
  },
  "De novo, {JOGADOR}. E melhor que da primeira vez. O Marco da Memória ganha mais um risco ao lado do seu nome.": {
-  "en": "",
+  "en": "Again, {JOGADOR}. And better than the first time. The Memory Marker gets one more notch beside your name.",
   "ctx": "src/data/eventos/conselho.ts:180 · f()"
  },
  "Dizem que o andarilho voltou a subir até a pedra do Cume. Ele sempre aparece depois que alguém nos vence. Vá ver.": {
-  "en": "",
+  "en": "They say the wanderer has climbed up to the Summit stone again. He always shows up after someone beats us. Go see.",
   "ctx": "src/data/eventos/conselho.ts:183 · f()"
  },
  "Venha comigo. Há uma sala acima desta onde só entra quem o Conselho reconhece.": {
-  "en": "",
+  "en": "Come with me. There's a room above this one that only those the Council recognizes may enter.",
   "ctx": "src/data/eventos/conselho.ts:185 · f()"
  },
  "Este é o Marco da Memória. Cada nome aqui é de alguém que subiu por todos: pelos bichos dos rios, das matas, dos céus e das pedras.\fHoje o Marco ganha o seu nome, {JOGADOR}, e os nomes da sua equipe ao lado dele. A Costa do Sol e o Sertão das Névoas têm um Guardião novo.": {
-  "en": "",
+  "en": "This is the Memory Marker. Every name here belongs to someone who climbed for everyone: for the critters of the rivers, the forests, the skies and the stones.\fToday the Marker gets your name, {JOGADOR}, and your team's names beside it. Costa do Sol and the Sertão das Névoas have a new Guardian.",
   "ctx": "src/data/eventos/conselho.ts:190 · f()"
  },
  "Os Guardiões cuidaram da sua equipe: todas de pé, descansadas e orgulhosas.": {
-  "en": "",
+  "en": "The Guardians took care of your team: all of them up, rested and proud.",
   "ctx": "src/data/eventos/conselho.ts:196 · f()"
  },
  "Agora as portas que estavam fechadas se abrem. A Guardiã da Floresta, no Planalto Lume, já sabe que você vem: a Floresta Ancestral vai receber você.\fE sente o chão? Duas criaturas que só andam pela terra depois que o Conselho reconhece alguém acabaram de acordar: o lobo da lua e a onça do sol. Elas vão vagar pelos dois mapas.": {
-  "en": "",
+  "en": "Now the doors that were shut are opening. The Forest Guardian, in Planalto Lume, already knows you're coming: Floresta Ancestral will welcome you.\fAnd do you feel the ground? Two creatures that only walk the land after the Council recognizes someone have just woken up: the wolf of the moon and the jaguar of the sun. They'll roam both maps.",
   "ctx": "src/data/eventos/conselho.ts:197 · f()"
  },
  "\"Atenção, Pingorama! O Rádio Cipó interrompe tudo — até a moda de viola — para anunciar: {JOGADOR}, de Vila Jacarandá, venceu o Conselho dos Guardiões no Pico Pingorama!\fA Profª Ipê chorou no microfone, a mãe já está fazendo bolo e a Tainá mandou dizer que vem buscar o título semana que vem. Parabéns, Guardião!\"": {
-  "en": "",
+  "en": "\"Attention, Pingorama! Rádio Cipó interrupts everything — even the fiddle tunes — to announce: {JOGADOR}, from Vila Jacarandá, has beaten the Council of Guardians on Pico Pingorama!\fProf. Ipê cried into the microphone, Mom is already baking a cake and Tainá says she's coming for the title next week. Congratulations, Guardian!\"",
   "ctx": "src/data/eventos/conselho.ts:201 · f()"
  },
  "Os ninhos estão a salvo e a peãozada não para de falar de você!\fO canal do sul agora leva ao Porto Pantaneiro. De lá, a Estrada Vermelha sobe até Chapada Rubra, onde o Garimpeiro Topázio cava o ginásio dele.": {
@@ -1856,331 +1856,331 @@
   "ctx": "src/data/eventos/ginasio-16.ts:20 · fala de PAJE"
  },
  "HALL DA FAMA": {
-  "en": "",
+  "en": "HALL OF FAME",
   "ctx": "src/data/eventos/liga.ts:28 · texto()"
  },
  "Campeão da Costa do Sol: {jogador}": {
-  "en": "",
+  "en": "Champion of Costa do Sol: {jogador}",
   "ctx": "src/data/eventos/liga.ts:29 · texto()"
  },
  "A porta ao norte se abriu. Aqui dentro ninguém cura de graça: se precisar, use os itens da mochila antes de seguir.": {
-  "en": "",
+  "en": "The north door has opened. Nobody heals you for free in here: if you need to, use items from your bag before moving on.",
   "ctx": "src/data/eventos/liga.ts:68 · f()"
  },
  "Uma faixa na porta: \"A Liga descansa. O Campeão {JOGADOR} já passou por aqui.\"\fRevanches com os Mestres, só com hora marcada pelo Rádio Cipó.": {
-  "en": "",
+  "en": "A banner on the door: \"The League is resting. Champion {JOGADOR} has already been through.\"\fRematches with the Masters by appointment only, over Rádio Cipó.",
   "ctx": "src/data/eventos/liga.ts:79 · f()"
  },
  "Desafiante! Daqui para dentro é a Liga dos Guardiões: quatro Mestres e o Campeão, um atrás do outro.\fA porta tranca às suas costas. Não há cura lá dentro, só o que você levar na mochila. Se a sua equipe cair, você volta para este terreiro e recomeça do primeiro Mestre.": {
-  "en": "",
+  "en": "Challenger! Beyond this point is the League of Guardians: four Masters and the Champion, one after another.\fThe door locks behind you. There's no healing inside, only what you carry in your bag. If your team falls, you come back to this yard and start over from the first Master.",
   "ctx": "src/data/eventos/liga.ts:82 · f()"
  },
  "Entrar na Liga agora? (Não há volta.)": {
-  "en": "",
+  "en": "Enter the League now? (There's no going back.)",
   "ctx": "src/data/eventos/liga.ts:83 · pergunta/opção"
  },
  "A porta trancou. À frente, a sala de espera e, depois dela, a maré.": {
-  "en": "",
+  "en": "The door has locked. Ahead lies the waiting room and, after it, the tide.",
   "ctx": "src/data/eventos/liga.ts:90 · f()"
  },
  "Sem pressa. O Posto e a Venda estão logo ali: cure a equipe, encha a mochila e salve a viagem.": {
-  "en": "",
+  "en": "No rush. The Post and the Shop are right over there: heal your team, stock up your bag and save your journey.",
   "ctx": "src/data/eventos/liga.ts:92 · f()"
  },
  "Esta é a sala de espera. Respire. Olhe a equipe, olhe a mochila.\fPrimeira sala: Mestra Maré, Rio e Veneno. Segunda: Ferreiro Brasa-Viva, Brasa e Ferro. Terceira: Pajé Neblina, Mente e Assombro. Quarta: Domadora Pampa, Comum e Ginga.": {
-  "en": "",
+  "en": "This is the waiting room. Breathe. Check your team, check your bag.\fFirst room: Master Maré, River and Poison. Second: Smith Brasa-Viva, Ember and Iron. Third: Shaman Neblina, Mind and Spook. Fourth: Tamer Pampa, Normal and Brawl.",
   "ctx": "src/data/eventos/liga.ts:101 · f()"
  },
  "Na quinta sala está o Cacique Aracê, Campeão da Costa do Sol há vinte anos.\fQuem vence o Cacique entra para o Hall da Fama e ganha o direito de cruzar a serra. Boa sorte, desafiante!": {
-  "en": "",
+  "en": "In the fifth room waits Chief Aracê, Champion of Costa do Sol for twenty years.\fWhoever beats the Chief enters the Hall of Fame and earns the right to cross the mountains. Good luck, challenger!",
   "ctx": "src/data/eventos/liga.ts:102 · f()"
  },
  "Pisou devagar, hein? Faz bem. No mangue quem corre afunda.": {
-  "en": "",
+  "en": "Stepped in slowly, huh? Smart. In the mangrove, whoever runs sinks.",
   "ctx": "src/data/eventos/liga.ts:106 · sala()"
  },
  "Vá com a maré a favor. O Brasa-Viva bate forte, mas ferro quente também entorta: água, terra e um bom chute resolvem.": {
-  "en": "",
+  "en": "Go with the tide in your favor. Brasa-Viva hits hard, but hot iron bends too: water, earth and a good kick do the trick.",
   "ctx": "src/data/eventos/liga.ts:107 · sala()"
  },
  "Já me venceu, desafiante. A porta está aberta: não deixe o ferro do Brasa-Viva esfriar.": {
-  "en": "",
+  "en": "You've already beaten me, challenger. The door is open: don't let Brasa-Viva's iron cool down.",
   "ctx": "src/data/eventos/liga.ts:108 · sala()"
  },
  "Chegou cheirando a maresia. Venceu a Maré, então. Aqui dentro a água evapora!": {
-  "en": "",
+  "en": "You came in smelling of sea breeze. So you beat Maré. In here, water boils away!",
   "ctx": "src/data/eventos/liga.ts:110 · sala()"
  },
  "O Pajé Neblina não bate: ele embaralha. Criatura do tipo Assombro acerta as dele em cheio — mas as dele também têm Assombro.": {
-  "en": "",
+  "en": "Shaman Neblina doesn't hit: he scrambles. Spook-type creatures hit his squarely — but his have Spook moves too.",
   "ctx": "src/data/eventos/liga.ts:111 · sala()"
  },
  "Sino rachado não toca duas vezes. Siga, que a neblina não espera.": {
-  "en": "",
+  "en": "A cracked bell doesn't ring twice. Go on, the fog won't wait.",
   "ctx": "src/data/eventos/liga.ts:112 · sala()"
  },
  "Hum… duas vitórias e o passo ainda firme. Vamos ver se a cabeça acompanha as pernas.": {
-  "en": "",
+  "en": "Hmm… two wins and your step is still steady. Let's see if your head keeps up with your legs.",
   "ctx": "src/data/eventos/liga.ts:114 · sala()"
  },
  "A Pampa luta de perto e no compasso. Vento, Mente e Encanto tiram o chão da Ginga. E Assombro… bem, ela tem resposta para Assombro.": {
-  "en": "",
+  "en": "Pampa fights up close and on the beat. Wind, Mind and Charm knock the ground out from under Brawl. And Spook… well, she has an answer for Spook.",
   "ctx": "src/data/eventos/liga.ts:115 · sala()"
  },
  "Você já ouviu a minha história até o fim. A próxima é a da Pampa.": {
-  "en": "",
+  "en": "You've heard my story to the very end. The next one is Pampa's.",
   "ctx": "src/data/eventos/liga.ts:116 · sala()"
  },
  "Três Mestres no chão! Aqui o chão é meu, parceiro. Sobe na sela!": {
-  "en": "",
+  "en": "Three Masters down! Here the ground is mine, partner. Climb into the saddle!",
   "ctx": "src/data/eventos/liga.ts:118 · sala()"
  },
  "Agora é com o Cacique. Ele não tem um tipo: tem um plano. E guarda o Pirarucão para o fim — Encanto e Geada pegam Lenda de jeito.": {
-  "en": "",
+  "en": "Now it's up to the Chief. He doesn't have a type: he has a plan. And he saves Pirarucão for last — Charm and Frost get Legend good.",
   "ctx": "src/data/eventos/liga.ts:119 · sala()"
  },
  "Passa, passa! O Campeão não gosta de esperar e eu não gosto de ver gente boa parada.": {
-  "en": "",
+  "en": "Go on, go on! The Champion doesn't like to wait, and I don't like seeing good folks standing still.",
   "ctx": "src/data/eventos/liga.ts:120 · sala()"
  },
  "Entre. Tire o pó da estrada dos ombros e olhe em volta: cada estátua desta sala foi alguém que chegou onde você está.": {
-  "en": "",
+  "en": "Come in. Dust the road off your shoulders and look around: every statue in this room was someone who got where you are.",
   "ctx": "src/data/eventos/liga.ts:124 · f()"
  },
  "Ainda não é o seu amanhecer, {JOGADOR}. Mas eu vi a sua equipe olhar para você antes de cair: isso não se treina.\fVolte. A Liga recomeça, e eu estarei aqui, como sempre.": {
-  "en": "",
+  "en": "It's not your dawn yet, {JOGADOR}. But I saw your team look at you before they fell: that can't be trained.\fCome back. The League starts over, and I'll be here, as always.",
   "ctx": "src/data/eventos/liga.ts:127 · f()"
  },
  "Os Guardiões levaram a sua equipe de volta ao terreiro do Platô e cuidaram dela.\fA Liga recomeça do primeiro Mestre. Passe no Posto, reforce a mochila e tente de novo quando estiver pronto.": {
-  "en": "",
+  "en": "The Guardians carried your team back to the Platô yard and took care of them.\fThe League starts over from the first Master. Stop by the Post, restock your bag and try again when you're ready.",
   "ctx": "src/data/eventos/liga.ts:139 · f()"
  },
  "Venha comigo, {JOGADOR}. Há uma sala neste Platô onde só entram duas pessoas por geração: o Campeão que sai e o Campeão que chega.": {
-  "en": "",
+  "en": "Come with me, {JOGADOR}. There's a room on this Platô that only two people enter each generation: the Champion who leaves and the Champion who arrives.",
   "ctx": "src/data/eventos/liga.ts:146 · f()"
  },
  "Cacique Aracê": {
-  "en": "",
+  "en": "Chief Aracê",
   "ctx": "src/data/eventos/liga.ts:152 · campo nome | src/data/eventos/liga.ts:159 · campo nome | src/data/eventos/liga.ts:163 · campo nome | +5"
  },
  "Este é o Hall da Fama. Hoje o Marco ganha um nome novo: {JOGADOR}, Campeão da Costa do Sol!\fE ao lado do seu nome ficam os delas — porque ninguém sobe este Platô sozinho.": {
-  "en": "",
+  "en": "This is the Hall of Fame. Today the Marker gets a new name: {JOGADOR}, Champion of Costa do Sol!\fAnd beside your name go theirs — because nobody climbs this Platô alone.",
   "ctx": "src/data/eventos/liga.ts:152 · f()"
  },
  "Hall da Fama": {
-  "en": "",
+  "en": "Hall of Fame",
   "ctx": "src/data/eventos/liga.ts:153 · campo titulo"
  },
  "Os Guardiões do Hall cuidaram da sua equipe: todas de pé e descansadas.": {
-  "en": "",
+  "en": "The Hall's Guardians took care of your team: all of them up and rested.",
   "ctx": "src/data/eventos/liga.ts:157 · f()"
  },
  "O título abre o que estava fechado. A linha da serra e o rio grande são perigosos demais para quem não provou o que você provou hoje.": {
-  "en": "",
+  "en": "The title opens what was closed. The mountain line and the great river are too dangerous for anyone who hasn't proven what you proved today.",
   "ctx": "src/data/eventos/liga.ts:159 · f()"
  },
  "O Passe vale no Trem Serra-Sol, em Porto Sereia. O Bilhete, no Saveiro da Cidade Coral. Os dois levam ao Sertão das Névoas, onde há outras oito insígnias — e gente pior que capanga de usina.\fE todo Campeão leva do Platô uma pedra da nossa coleção. Escolha a sua.": {
-  "en": "",
+  "en": "The Pass is good on the Serra-Sol Train, in Porto Sereia. The Ticket, on the Saveiro from Cidade Coral. Both lead to the Sertão das Névoas, where there are eight more badges — and people worse than power-plant goons.\fAnd every Champion takes a stone from our collection home from the Platô. Pick yours.",
   "ctx": "src/data/eventos/liga.ts:163 · f()"
  },
  "O Passe é do Trem Serra-Sol, em Porto Sereia. O Bilhete, do Saveiro da Cidade Coral. Os dois levam ao Sertão das Névoas, onde há outras oito insígnias — e gente pior que capanga de usina.\fSó não corra para a estação: a linha da serra e o Saveiro estão em obras. Guarde os dois; valem assim que reabrirem. E todo Campeão leva do Platô uma pedra da nossa coleção. Escolha a sua.": {
-  "en": "",
+  "en": "The Pass is for the Serra-Sol Train, in Porto Sereia. The Ticket, for the Saveiro from Cidade Coral. Both lead to the Sertão das Névoas, where there are eight more badges — and people worse than power-plant goons.\fJust don't rush to the station: the mountain line and the Saveiro are under repair. Keep both; they're good as soon as they reopen. And every Champion takes a stone from our collection home from the Platô. Pick yours.",
   "ctx": "src/data/eventos/liga.ts:164 · f()"
  },
  "Qual Pedra de Evolução você quer?": {
-  "en": "",
+  "en": "Which Evolution Stone do you want?",
   "ctx": "src/data/eventos/liga.ts:165 · pergunta/opção"
  },
  "Pedra da Maré": {
-  "en": "",
+  "en": "Tide Stone",
   "ctx": "src/data/eventos/liga.ts:165 · pergunta/opção"
  },
  "\"Interrompemos a moda de viola para uma notícia do Platô: a Costa do Sol tem Campeão novo! {JOGADOR}, de Vila Jacarandá, venceu a Liga dos Guardiões!\fCom isso, a região do Sertão das Névoas agora está aberta: o Trem Serra-Sol e o Saveiro voltam a aceitar o Campeão a bordo. Boa viagem, e leve casaco!\"": {
-  "en": "",
+  "en": "\"We interrupt this fiddle tune for news from the Platô: Costa do Sol has a new Champion! {JOGADOR}, from Vila Jacarandá, has won the League of Guardians!\fWith that, the Sertão das Névoas region is now open: the Serra-Sol Train and the Saveiro are taking the Champion aboard again. Safe travels, and bring a coat!\"",
   "ctx": "src/data/eventos/liga.ts:171 · f()"
  },
  "\"Interrompemos a moda de viola para uma notícia do Platô: a Costa do Sol tem Campeão novo! {JOGADOR}, de Vila Jacarandá, venceu a Liga dos Guardiões!\fA viagem ao Sertão das Névoas fica para em breve: o Trem Serra-Sol e o Saveiro seguem em obras, e esta rádio avisa quando reabrirem. Até lá, a Costa do Sol inteira quer conhecer o Campeão!\"": {
-  "en": "",
+  "en": "\"We interrupt this fiddle tune for news from the Platô: Costa do Sol has a new Champion! {JOGADOR}, from Vila Jacarandá, has won the League of Guardians!\fThe trip to the Sertão das Névoas will have to wait a little: the Serra-Sol Train and the Saveiro are still under repair, and this station will let you know when they reopen. Until then, all of Costa do Sol wants to meet the Champion!\"",
   "ctx": "src/data/eventos/liga.ts:173 · f()"
  },
  "Ouviu? Agora é oficial. Vá ver o sol nascer do outro lado da serra, Campeão. O Platô fica comigo mais um pouco.": {
-  "en": "",
+  "en": "Hear that? Now it's official. Go watch the sun rise on the other side of the mountains, Champion. The Platô stays with me a little longer.",
   "ctx": "src/data/eventos/liga.ts:175 · f()"
  },
  "Ouviu? Agora é oficial. Enquanto a serra não abre, ande pela Costa com o título no peito: há criatura que você ainda não viu e gente que vai querer revanche. O Platô fica comigo mais um pouco.": {
-  "en": "",
+  "en": "Hear that? Now it's official. Until the mountains open, walk the Coast with the title on your chest: there are creatures you haven't seen yet and people who'll want a rematch. The Platô stays with me a little longer.",
   "ctx": "src/data/eventos/liga.ts:176 · f()"
  },
  "GANHEI DO CAMPEÃO! Ouviu, Platô?! …Tá, você estava cansado de cinco lutas. Eu sei. Mas ganhei.": {
-  "en": "",
+  "en": "I BEAT THE CHAMPION! Hear that, Platô?! …Fine, you were tired from five battles. I know. But I won.",
   "ctx": "src/data/eventos/liga.ts:194 · f()"
  },
  "Sabe o que eu descobri, {JOGADOR}? Que eu passei oito insígnias querendo ganhar de você, e você passou oito insígnias cuidando das suas criaturas.\fEu vou voltar lá dentro e vencer aquela Liga do meu jeito. E depois, quando a linha da serra reabrir, eu pego o trem. O Cartel Ferrugem fugiu para o sertão, e eu ainda tenho contas a acertar com quem enjaula criatura.": {
-  "en": "",
+  "en": "You know what I figured out, {JOGADOR}? I spent eight badges wanting to beat you, and you spent eight badges taking care of your creatures.\fI'm going back in there to beat that League my own way. And then, when the mountain line reopens, I'm taking the train. The Rust Cartel ran off to the sertão, and I still have a score to settle with people who cage creatures.",
   "ctx": "src/data/eventos/liga.ts:195 · f()"
  },
  "Te vejo do outro lado da serra, Campeão. E não vai se acostumando com o título: eu disse que sou a próxima.": {
-  "en": "",
+  "en": "See you on the other side of the mountains, Champion. And don't get used to the title: I told you I'm next.",
   "ctx": "src/data/eventos/liga.ts:196 · f()"
  },
  "Como vai a criatura que eu te confiei? Ela ficava na janela todo dia, olhando a estrada. Acho que esperava por você.\fQuando cruzar a serra, mande notícias: do Sertão das Névoas eu só conheço o que os tropeiros contam.": {
-  "en": "",
+  "en": "How's the creature I entrusted to you? She used to sit by the window every day, watching the road. I think she was waiting for you.\fWhen you cross the mountains, send news: all I know of the Sertão das Névoas is what the drovers tell.",
   "ctx": "src/data/eventos/liga.ts:205 · f()"
  },
  "{JOGADOR}! A Ipê falou tanto de você nas cartas que eu já te conhecia de letra. E agora com a Insígnia da Folha no estojo!\fTenho comigo, desde aquele dia no laboratório dela, uma das criaturas que ficaram na mesa. A Ipê pediu que eu só entregasse a quem cuidasse bem da primeira.": {
-  "en": "",
+  "en": "{JOGADOR}! Ipê talked about you so much in her letters I already knew you by heart. And now with the Leaf Badge in your case!\fEver since that day in her lab, I've had one of the creatures that stayed on the table. Ipê asked me to give it only to someone who took good care of the first one.",
   "ctx": "src/data/eventos/liga.ts:207 · f()"
  },
  "Ela ainda é pequena, mas aprende depressa ao lado de uma equipe como a sua.\fDizem que a terceira criatura daquela mesa nasceu de novo num ovo da Praia das Tartarugas. Mas isso já é assunto de maré, não de vereda.": {
-  "en": "",
+  "en": "She's still small, but she learns fast next to a team like yours.\fThey say the third creature from that table was born again from an egg on Praia das Tartarugas. But that's a matter for the tide, not the vereda.",
   "ctx": "src/data/eventos/liga.ts:210 · f()"
  },
  "Bem-vindo ao laboratório de campo! Eu sou a Drª Buriti: estudo veredas, brejos e tudo o que canta de noite.\fTenho uma criatura guardada para um treinador de confiança. Volte com a Insígnia da Folha, do ginásio aqui da vila, e a gente conversa.": {
-  "en": "",
+  "en": "Welcome to the field lab! I'm Dr. Buriti: I study veredas, marshes and everything that sings at night.\fI'm keeping a creature for a trainer I can trust. Come back with the Leaf Badge, from this village's gym, and we'll talk.",
   "ctx": "src/data/eventos/liga.ts:212 · f()"
  },
  "Leve ao Seu Jatobá, o dono do Parque Safári, lá no Vale do Buriti-Alto. O carreiro do Platô da Liga sobe para lá.": {
-  "en": "",
+  "en": "Take it to Seu Jatobá, the owner of the Safari Park, up in Vale do Buriti-Alto. The cart track from the League Platô goes up there.",
   "ctx": "src/data/eventos/posliga.ts:35 · fala de quem"
  },
  "Ô, Campeão! Parabéns pela Liga! Eu sou o Tião, do carro de boi.": {
-  "en": "",
+  "en": "Hey, Champion! Congrats on the League! I'm Tião, from the ox cart.",
   "ctx": "src/data/eventos/posliga.ts:45 · fala de TIAO"
  },
  "Lá em cima, na trilha do leste, fica o Vale do Buriti-Alto: tem a Gincana de Criaturas e o Parque Safári do Seu Jatobá. Só Campeão sobe, que a trilha é braba.": {
-  "en": "",
+  "en": "Up there, on the east trail, is Vale do Buriti-Alto: it has the Creature Games and Seu Jatobá's Safari Park. Only Champions go up, the trail's a rough one.",
   "ctx": "src/data/eventos/posliga.ts:46 · fala de TIAO"
  },
  "Subir de carro de boi para o Vale do Buriti-Alto?": {
-  "en": "",
+  "en": "Ride the ox cart up to Vale do Buriti-Alto?",
   "ctx": "src/data/eventos/posliga.ts:49 · pergunta/opção"
  },
  "Chegamos! Quando quiser descer, é só falar comigo aqui na entrada.": {
-  "en": "",
+  "en": "We're here! When you want to go down, just talk to me here at the entrance.",
   "ctx": "src/data/eventos/posliga.ts:50 · fala de TIAO"
  },
  "O boi espera. Ele é paciente; eu também.": {
-  "en": "",
+  "en": "The ox will wait. He's patient; so am I.",
   "ctx": "src/data/eventos/posliga.ts:50 · fala de TIAO"
  },
  "Descer para o Platô da Liga?": {
-  "en": "",
+  "en": "Go down to the League Platô?",
   "ctx": "src/data/eventos/posliga.ts:56 · pergunta/opção"
  },
  "Aproveite o vale. Dizem que a Juíza Bia corre mais que as criaturas.": {
-  "en": "",
+  "en": "Enjoy the valley. They say Judge Bia runs faster than the creatures.",
   "ctx": "src/data/eventos/posliga.ts:57 · fala de TIAO"
  },
  "Ponto de prova vale prêmio! Vitamina de fruta, pedra de evolução, pergaminho e rapadura. Nada de aposta: aqui só se ganha correndo.": {
-  "en": "",
+  "en": "Games points win prizes! Fruit shakes, evolution stones, scrolls and brown sugar. No betting: here you only win by running.",
   "ctx": "src/data/eventos/posliga.ts:68 · fala de PATACA"
  },
  "Criatura cansada de prova não rende. Deixa eu benzer com arruda e água de buriti.": {
-  "en": "",
+  "en": "A creature worn out from the trials won't perform. Let me bless them with rue and buriti water.",
   "ctx": "src/data/eventos/posliga.ts:75 · fala de FIOTA"
  },
  "Pronto: todo mundo inteirinho. Vai com fé e com fôlego.": {
-  "en": "",
+  "en": "There: everyone's good as new. Go with faith and with breath.",
   "ctx": "src/data/eventos/posliga.ts:77 · fala de FIOTA"
  },
  "Bem-vindo ao Parque Safári do Buriti-Alto! Aqui não se luta: a criatura é selvagem e fica selvagem até você firmar parceria.": {
-  "en": "",
+  "en": "Welcome to the Buriti-Alto Safari Park! No battling here: creatures are wild and stay wild until you form a partnership.",
   "ctx": "src/data/eventos/posliga.ts:89 · fala de INGA"
  },
  "Lá dentro você tem ISCA (ela come e foge menos, mas a cuia pega pior), PEDRA (ela fica brava: a cuia pega melhor, mas ela foge mais) e PERTO (chegar devagarinho ajuda a cuia).": {
-  "en": "",
+  "en": "Inside you have BAIT (it eats and flees less, but the gourd works worse), ROCK (it gets angry: the gourd works better, but it flees more) and CLOSER (creeping up slowly helps the gourd).",
   "ctx": "src/data/eventos/posliga.ts:90 · fala de INGA"
  },
  "Entrada: 500 patacas, 30 Cuias-Safári e 500 passos. Vai entrar?": {
-  "en": "",
+  "en": "Entry: 500 patacas, 30 Safari Gourds and 500 steps. Going in?",
   "ctx": "src/data/eventos/posliga.ts:94 · pergunta/opção"
  },
  "Entrar": {
-  "en": "",
+  "en": "Enter",
   "ctx": "src/data/eventos/posliga.ts:94 · pergunta/opção"
  },
  "Como funciona?": {
-  "en": "",
+  "en": "How does it work?",
   "ctx": "src/data/eventos/posliga.ts:94 · pergunta/opção"
  },
  "As criaturas só aparecem no capim alto do parque. Cada setor tem bicho próprio, de dia e de noite.": {
-  "en": "",
+  "en": "Creatures only show up in the park's tall grass. Each sector has its own critters, by day and by night.",
   "ctx": "src/data/eventos/posliga.ts:97 · fala de INGA"
  },
  "Os passos acabam? O passeio acaba. As cuias acabam? Idem. Saiu pela porteira? Também. As Cuias-Safári que sobrarem ficam aqui comigo.": {
-  "en": "",
+  "en": "Out of steps? The outing's over. Out of gourds? Same. Walked out the gate? That too. Any Safari Gourds left over stay here with me.",
   "ctx": "src/data/eventos/posliga.ts:98 · fala de INGA"
  },
  "O parque só tem a Vereda por enquanto. O Seu Jatobá monta os outros setores com o que o povo traz: pedra de rio, muda de buriti, tronco oco… Fala com ele ali na casa.": {
-  "en": "",
+  "en": "For now the park only has the Vereda. Seu Jatobá builds the other sectors with what folks bring: river stones, buriti saplings, hollow logs… Talk to him over at the house.",
   "ctx": "src/data/eventos/posliga.ts:99 · fala de INGA"
  },
  "Aqui estão as 30 Cuias-Safári. Boa caçada… quer dizer, boa parceria! Pííí, porteira aberta!": {
-  "en": "",
+  "en": "Here are your 30 Safari Gourds. Happy hunting… I mean, happy partnering! Tweeet, gate's open!",
   "ctx": "src/data/eventos/posliga.ts:104 · fala de INGA"
  },
  "Faltam patacas, criatura. A entrada é 500, e o parque precisa de capim e de comida para os bichos.": {
-  "en": "",
+  "en": "Not enough patacas, buddy. Entry is 500, and the park needs grass and food for the critters.",
   "ctx": "src/data/eventos/posliga.ts:106 · fala de INGA"
  },
  "Tá certo. A porteira fica aqui esperando.": {
-  "en": "",
+  "en": "All right. The gate will be right here waiting.",
   "ctx": "src/data/eventos/posliga.ts:108 · fala de INGA"
  },
  "Sou guia do parque. Dica de quem anda no capim: a Pedra deixa o bicho bravo e mais fácil de pegar, mas ele foge mais. Use quando tiver cuia sobrando.": {
-  "en": "",
+  "en": "I'm a park guide. Tip from someone who walks the grass: the Rock makes a critter angry and easier to catch, but it flees more. Use it when you have gourds to spare.",
   "ctx": "src/data/eventos/posliga.ts:116 · fala de JACI"
  },
  "E o Seu Jatobá quer material para os setores novos: pedra de rio, que um pescador da Trilha dos Cipós junta na beira do rio; muda de buriti, da viveirista de Vila Buriti; e tronco oco, do lenhador da Estrada do Buriti.": {
-  "en": "",
+  "en": "And Seu Jatobá wants materials for the new sectors: river stones, which a fisher on Trilha dos Cipós collects by the river; buriti saplings, from the nursery keeper in Vila Buriti; and hollow logs, from the woodcutter on Estrada do Buriti.",
   "ctx": "src/data/eventos/posliga.ts:117 · fala de JACI"
  },
  "Pescador Seixo": {
-  "en": "",
+  "en": "Fisher Seixo",
   "ctx": "src/data/eventos/posliga.ts:120 · campo nome"
  },
  "Ô, Campeão! Sabe o que este rio faz? Rola pedra. Rola tanto que ela sai lisinha, redonda, boa de calçar margem.": {
-  "en": "",
+  "en": "Hey, Champion! Know what this river does? It rolls stones. Rolls them so much they come out smooth and round, perfect for lining a bank.",
   "ctx": "src/data/eventos/posliga.ts:121 · doador()"
  },
  "O Seu Jatobá do Safári anda pedindo pedra de rio para a lagoa nova dele. Toma esta, a mais bonita que eu achei.": {
-  "en": "",
+  "en": "Seu Jatobá from the Safari has been asking for river stones for his new lagoon. Here, the prettiest one I found.",
   "ctx": "src/data/eventos/posliga.ts:121 · doador()"
  },
  "Essa pedra que te dei veio de três cachoeiras acima. Levou mais tempo que eu para chegar aqui.": {
-  "en": "",
+  "en": "That stone I gave you came from three waterfalls upstream. It took longer than I did to get here.",
   "ctx": "src/data/eventos/posliga.ts:122 · doador()"
  },
  "Viveirista Carnaúba": {
-  "en": "",
+  "en": "Nursery Keeper Carnaúba",
   "ctx": "src/data/eventos/posliga.ts:123 · campo nome"
  },
  "Buriti é a árvore da água: onde ele nasce, o brejo vem junto, e o bicho vem atrás.": {
-  "en": "",
+  "en": "Buriti is the water tree: where it sprouts, the marsh comes along, and the critters follow.",
   "ctx": "src/data/eventos/posliga.ts:124 · doador()"
  },
  "Esta muda é das boas. Planta na beira de água corrente e conversa com ela de vez em quando.": {
-  "en": "",
+  "en": "This sapling is a good one. Plant it by running water and talk to it now and then.",
   "ctx": "src/data/eventos/posliga.ts:124 · doador()"
  },
  "A muda pegou? Buriti demora, mas quando firma não tem seca que derrube.": {
-  "en": "",
+  "en": "Did the sapling take? Buriti is slow, but once it's rooted no drought can knock it down.",
   "ctx": "src/data/eventos/posliga.ts:125 · doador()"
  },
  "Lenhador Seu Angico": {
-  "en": "",
+  "en": "Woodcutter Seu Angico",
   "ctx": "src/data/eventos/posliga.ts:126 · campo nome"
  },
  "Eu só corto árvore que já caiu, viu? E esta aqui caiu oca: dentro, morava uma coruja.": {
-  "en": "",
+  "en": "I only cut trees that have already fallen, you know? And this one fell hollow: an owl used to live inside.",
   "ctx": "src/data/eventos/posliga.ts:127 · doador()"
  },
  "Tronco oco é casa pronta. O Seu Jatobá falou que quer fazer uma toca para os bichos da noite no Safári. Leva, que é leve.": {
-  "en": "",
+  "en": "A hollow log is a ready-made home. Seu Jatobá said he wants to make a den for the night critters at the Safari. Take it, it's light.",
   "ctx": "src/data/eventos/posliga.ts:127 · doador()"
  },
  "Tronco oco é casa de coruja, de urutau, de gambá… Bicho da noite gosta de escuro e de silêncio.": {
-  "en": "",
+  "en": "A hollow log is home to owls, potoos, possums… Night critters like dark and quiet.",
   "ctx": "src/data/eventos/posliga.ts:128 · doador()"
  },
  "Seu Tarumã": {
@@ -2420,7 +2420,7 @@
   "ctx": "src/data/torre.ts:21 | src/data/torre.ts:22 | src/data/treinadores/liga.ts:27 · desafiante() | +5"
  },
  "Moema": {
-  "en": "",
+  "en": "Moema",
   "ctx": "src/data/torre.ts:21 | src/data/treinadores/ginasio-16.ts:21 · campo nome"
  },
  "Maiara": {
@@ -3928,7 +3928,7 @@
   "ctx": "src/data/treinadores/b2-sul.ts:43 · t() | src/data/treinadores/b2-sul.ts:45 · t()"
  },
  "Maré": {
-  "en": "",
+  "en": "Maré",
   "ctx": "src/data/treinadores/b2-sul.ts:43 · t() | src/data/treinadores/b2-sul.ts:45 · t() | src/data/treinadores/liga.ts:53 · mestre()"
  },
  "Quer entrar na Roda Grande? Primeiro passa por mim. O berimbau tocou São Bento Grande: é jogo duro!": {
@@ -4512,103 +4512,103 @@
   "ctx": "src/data/treinadores/conselho.ts:23 · campo classe"
  },
  "Garrote": {
-  "en": "",
+  "en": "Garrote",
   "ctx": "src/data/treinadores/conselho.ts:23 · campo nome"
  },
  "Dezesseis insígnias… Então é você que fecha as minhas usinas, solta os meus ninhos e explode os meus laboratórios.\fSabe o que tem dentro desse Salão? Cinco velhos e a maior coleção de criaturas raras de Pingorama. Eu vim buscar. E você veio me atrapalhar pela última vez!": {
-  "en": "",
+  "en": "Sixteen badges… So you're the one who shuts down my power plants, frees my nests and blows up my labs.\fKnow what's inside that Hall? Five old-timers and the biggest collection of rare creatures in Pingorama. I came to take it. And you came to get in my way for the last time!",
   "ctx": "src/data/treinadores/conselho.ts:26 · campo desafio"
  },
  "Impossível… Uma criança e um punhado de bichos de mato.\fO Cartel Ferrugem… acabou aqui. Mas lembre: enquanto houver gente querendo gaiola, vai haver gente querendo vender.": {
-  "en": "",
+  "en": "Impossible… A child and a handful of backwoods critters.\fThe Rust Cartel… ends here. But remember: as long as there are people who want cages, there'll be people who want to sell them.",
   "ctx": "src/data/treinadores/conselho.ts:27 · campo derrota"
  },
  "{JOGADOR}! Eu vi o Garrote descendo a trilha algemado pelos Guardiões. Você fez isso, né? Claro que fez.\fAntes de você entrar aí, uma última vez: eu e você, equipe completa, como na primeira manhã no laboratório da Profª Ipê. Sem desculpa de cansaço!": {
-  "en": "",
+  "en": "{JOGADOR}! I saw Garrote heading down the trail in handcuffs with the Guardians. You did that, right? Of course you did.\fBefore you go in there, one last time: you and me, full teams, like that first morning in Prof. Ipê's lab. No being-tired excuses!",
   "ctx": "src/data/treinadores/conselho.ts:34 · campo desafio"
  },
  "Pronto. Agora eu sei: você não é o meu rival. Você é o meu parâmetro. Entra lá e mostra para eles quem a Costa e o Sertão criaram.": {
-  "en": "",
+  "en": "There. Now I know: you're not my rival. You're my yardstick. Go in there and show them what the Coast and the Sertão raised.",
   "ctx": "src/data/treinadores/conselho.ts:35 · campo derrota"
  },
  "Guardiã do Mar": {
-  "en": "",
+  "en": "Sea Guardian",
   "ctx": "src/data/treinadores/conselho.ts:42 · guardiao()"
  },
  "Iara Costa": {
-  "en": "",
+  "en": "Iara Costa",
   "ctx": "src/data/treinadores/conselho.ts:42 · guardiao()"
  },
  "Eu sou Iara Costa, Guardiã do Mar. Guardo os rios que descem da serra e o mar que os recebe.\fA água não tem pressa, {JOGADOR}: ela contorna, ela espera e, quando chega a enchente, leva tudo. Vamos ver se você sabe nadar.": {
-  "en": "",
+  "en": "I am Iara Costa, Sea Guardian. I guard the rivers that run down the mountains and the sea that receives them.\fWater is never in a hurry, {JOGADOR}: it goes around, it waits and, when the flood comes, it carries everything away. Let's see if you can swim.",
   "ctx": "src/data/treinadores/conselho.ts:44 · guardiao()"
  },
  "A maré virou, e virou bonita. Siga: o Cauã já ouviu os seus passos na mata.": {
-  "en": "",
+  "en": "The tide turned, and turned beautifully. Go on: Cauã has already heard your footsteps in the forest.",
   "ctx": "src/data/treinadores/conselho.ts:45 · guardiao()"
  },
  "Guardião da Mata": {
-  "en": "",
+  "en": "Forest Guardian",
   "ctx": "src/data/treinadores/conselho.ts:51 · guardiao()"
  },
  "Cauã": {
-  "en": "",
+  "en": "Cauã",
   "ctx": "src/data/treinadores/conselho.ts:51 · guardiao()"
  },
  "Cauã, Guardião da Mata. Cada árvore desta serra me conhece pelo nome.\fNa mata ninguém luta sozinho: a formiga, a anta e o jabuti trabalham juntos. Mostre que a sua equipe também é uma floresta!": {
-  "en": "",
+  "en": "Cauã, Forest Guardian. Every tree on these mountains knows me by name.\fIn the forest nobody fights alone: the ant, the tapir and the tortoise work together. Show me your team is a forest too!",
   "ctx": "src/data/treinadores/conselho.ts:53 · guardiao()"
  },
  "A mata abriu caminho para você. Isso ela não faz para qualquer um. A Jandaia espera no céu.": {
-  "en": "",
+  "en": "The forest made way for you. It doesn't do that for just anyone. Jandaia awaits in the sky.",
   "ctx": "src/data/treinadores/conselho.ts:54 · guardiao()"
  },
  "Guardiã do Céu": {
-  "en": "",
+  "en": "Sky Guardian",
   "ctx": "src/data/treinadores/conselho.ts:59 · guardiao()"
  },
  "Jandaia": {
-  "en": "",
+  "en": "Jandaia",
   "ctx": "src/data/treinadores/conselho.ts:59 · guardiao()"
  },
  "Jandaia, Guardiã do Céu! Daqui de cima eu vejo as nuvens nascerem.\fDuas vitórias e você ainda está de pé? Então segure o chapéu, porque aqui venta, troveja e cai raio!": {
-  "en": "",
+  "en": "Jandaia, Sky Guardian! From up here I watch the clouds being born.\fTwo wins and you're still standing? Then hold on to your hat, because up here it blows, it thunders and lightning strikes!",
   "ctx": "src/data/treinadores/conselho.ts:61 · guardiao()"
  },
  "Que tempestade foi essa? Foi a sua. Passe: o Moacir é paciente como pedra, mas não gosta de esperar.": {
-  "en": "",
+  "en": "What storm was that? It was yours. Go on: Moacir is patient as stone, but he doesn't like to wait.",
   "ctx": "src/data/treinadores/conselho.ts:62 · guardiao()"
  },
  "Guardião da Terra": {
-  "en": "",
+  "en": "Earth Guardian",
   "ctx": "src/data/treinadores/conselho.ts:68 · guardiao()"
  },
  "Moacir": {
-  "en": "",
+  "en": "Moacir",
   "ctx": "src/data/treinadores/conselho.ts:68 · guardiao()"
  },
  "Moacir. Guardião da Terra. Sou o chão onde você pisa desde que saiu de casa.\fUm… dois… três… eu conto devagar porque a pedra não tem pressa. Vamos ver quanto tempo você aguenta debaixo da montanha.": {
-  "en": "",
+  "en": "Moacir. Earth Guardian. I am the ground you've walked on since you left home.\fOne… two… three… I count slowly because stone is never in a hurry. Let's see how long you last under the mountain.",
   "ctx": "src/data/treinadores/conselho.ts:70 · guardiao()"
  },
  "A montanha tremeu. Faz tempo que isso não acontecia. Vá, o Guardião-Mor sabe o seu nome desde que você nasceu.": {
-  "en": "",
+  "en": "The mountain shook. It's been a long time since that happened. Go, the High Guardian has known your name since you were born.",
   "ctx": "src/data/treinadores/conselho.ts:71 · guardiao()"
  },
  "Guardião-Mor": {
-  "en": "",
+  "en": "High Guardian",
   "ctx": "src/data/treinadores/conselho.ts:77 · guardiao()"
  },
  "Arandu": {
-  "en": "",
+  "en": "Arandu",
   "ctx": "src/data/treinadores/conselho.ts:77 · guardiao()"
  },
  "Arandu quer dizer \"o que guarda a memória\". Eu guardo a de Pingorama inteira: o mar da Iara, a mata do Cauã, o céu da Jandaia, a terra do Moacir.\fVocê veio da Vila Jacarandá até o topo do mundo, {JOGADOR}. Agora mostre-me o que aprendeu no caminho — com tudo o que tem.": {
-  "en": "",
+  "en": "Arandu means \"the one who keeps memory\". I keep all of Pingorama's: Iara's sea, Cauã's forest, Jandaia's sky, Moacir's earth.\fYou came from Vila Jacarandá to the top of the world, {JOGADOR}. Now show me what you learned along the way — with everything you've got.",
   "ctx": "src/data/treinadores/conselho.ts:82 · guardiao()"
  },
  "Eis a memória nova de Pingorama. Você e as suas criaturas lutam como quem cuida. Era isso que o Conselho esperava.": {
-  "en": "",
+  "en": "Behold Pingorama's newest memory. You and your creatures fight like those who care. That's what the Council was waiting for.",
   "ctx": "src/data/treinadores/conselho.ts:83 · guardiao()"
  },
  "Tonho Berrante": {
@@ -5344,7 +5344,7 @@
   "ctx": "src/data/treinadores/ginasio-16.ts:23 · campo depois"
  },
  "Pajé": {
-  "en": "",
+  "en": "Shaman",
   "ctx": "src/data/treinadores/ginasio-16.ts:36 · campo classe | src/data/treinadores/liga.ts:80 · mestre()"
  },
  "Trovão-Velho": {
@@ -5364,171 +5364,171 @@
   "ctx": "src/data/treinadores/ginasio-16.ts:47 · campo depois"
  },
  "Lodo": {
-  "en": "",
+  "en": "Lodo",
   "ctx": "src/data/treinadores/liga.ts:27 · desafiante()"
  },
  "Cheguei ao terceiro Mestre mês passado. Estou juntando coragem para voltar. Me ajuda a esquentar?": {
-  "en": "",
+  "en": "I made it to the third Master last month. I'm working up the courage to go back. Help me warm up?",
   "ctx": "src/data/treinadores/liga.ts:28 · desafiante()"
  },
  "Esquentei até demais.": {
-  "en": "",
+  "en": "I warmed up a little too much.",
   "ctx": "src/data/treinadores/liga.ts:28 · desafiante()"
  },
  "A Mestra Maré envenena primeiro e alaga depois. Leve Mel Puro e alguém de Terra ou de Mente: Trovão sozinho não resolve as dela.": {
-  "en": "",
+  "en": "Master Maré poisons first and floods after. Bring Pure Honey and someone Earth or Mind: Thunder alone won't handle hers.",
   "ctx": "src/data/treinadores/liga.ts:29 · desafiante()"
  },
  "Tição": {
-  "en": "",
+  "en": "Tição",
   "ctx": "src/data/treinadores/liga.ts:30 · desafiante()"
  },
  "Treino aqui para o Brasa-Viva. Ferro com ferro: bate que eu quero ouvir o som!": {
-  "en": "",
+  "en": "I train here for Brasa-Viva. Iron on iron: hit me, I want to hear the clang!",
   "ctx": "src/data/treinadores/liga.ts:31 · desafiante()"
  },
  "Trincou.": {
-  "en": "",
+  "en": "Cracked.",
   "ctx": "src/data/treinadores/liga.ts:31 · desafiante()"
  },
  "O Brasa-Viva tem Brasa e tem Ferro. Terra pega os dois; Rio apaga metade. Só não mande Mata nem Inseto para a forja.": {
-  "en": "",
+  "en": "Brasa-Viva has Ember and Iron. Earth hits both; River puts out half. Just don't send Grass or Bug into the forge.",
   "ctx": "src/data/treinadores/liga.ts:32 · desafiante()"
  },
  "Vulto": {
-  "en": "",
+  "en": "Vulto",
   "ctx": "src/data/treinadores/liga.ts:33 · desafiante()"
  },
  "Um verso antes da luta: quem entra na neblina / sem saber de onde veio / sai contando a própria sina / pela metade, pelo meio!": {
-  "en": "",
+  "en": "A verse before the fight: who walks into the fog / not knowing whence they came / leaves telling their own tale / only halfway, all the same!",
   "ctx": "src/data/treinadores/liga.ts:34 · desafiante()"
  },
  "Perdi o fio do verso.": {
-  "en": "",
+  "en": "I lost the thread of my verse.",
   "ctx": "src/data/treinadores/liga.ts:34 · desafiante()"
  },
  "O Pajé Neblina faz dormir e confunde. Pomada de Copaíba cura tudo de uma vez, e golpe de Assombro acerta as dele em cheio.": {
-  "en": "",
+  "en": "Shaman Neblina puts you to sleep and confuses you. Copaiba Balm cures everything at once, and Spook moves hit his squarely.",
   "ctx": "src/data/treinadores/liga.ts:35 · desafiante()"
  },
  "Laço": {
-  "en": "",
+  "en": "Laço",
   "ctx": "src/data/treinadores/liga.ts:36 · desafiante()"
  },
  "Eita! Campeão de oito insígnias no meu terreiro? Então aguenta um rodeio de aquecimento!": {
-  "en": "",
+  "en": "Whoa! An eight-badge Champion in my yard? Then hold on for a warm-up rodeo!",
   "ctx": "src/data/treinadores/liga.ts:37 · desafiante()"
  },
  "Caí do cavalo. De novo.": {
-  "en": "",
+  "en": "Fell off the horse. Again.",
   "ctx": "src/data/treinadores/liga.ts:37 · desafiante()"
  },
  "A Pampa bate de perto e bate forte. Vento, Mente e Encanto derrubam a Ginga dela; Assombro nem sente os golpes Comuns.": {
-  "en": "",
+  "en": "Pampa hits up close and hits hard. Wind, Mind and Charm take down her Brawl; Spook doesn't even feel Normal moves.",
   "ctx": "src/data/treinadores/liga.ts:38 · desafiante()"
  },
  "Vereda": {
-  "en": "",
+  "en": "Vereda",
   "ctx": "src/data/treinadores/liga.ts:39 · desafiante()"
  },
  "Vim de Vila Buriti atrás de você. A Dona Buriti mandou dizer que raiz forte se prova é na seca!": {
-  "en": "",
+  "en": "I came from Vila Buriti after you. Dona Buriti says to tell you strong roots prove themselves in a drought!",
   "ctx": "src/data/treinadores/liga.ts:40 · desafiante()"
  },
  "Secou. A raiz era a sua.": {
-  "en": "",
+  "en": "Dried up. The strong root was yours.",
   "ctx": "src/data/treinadores/liga.ts:40 · desafiante()"
  },
  "São cinco lutas sem Posto. Chá de Guaraná levanta quem caiu; Elixir enche a vida de uma vez. Gaste o dinheiro na Venda ANTES de entrar.": {
-  "en": "",
+  "en": "That's five battles with no Post. Guaraná Tea gets the fallen back up; Elixir refills health in one go. Spend your money at the Shop BEFORE going in.",
   "ctx": "src/data/treinadores/liga.ts:41 · desafiante()"
  },
  "Alvorada": {
-  "en": "",
+  "en": "Alvorada",
   "ctx": "src/data/treinadores/liga.ts:42 · desafiante()"
  },
  "Perdi para o Cacique três vezes. Aprendi o jeito dele de cor. Quer ver? Então luta!": {
-  "en": "",
+  "en": "I lost to the Chief three times. I learned his moves by heart. Want to see? Then fight!",
   "ctx": "src/data/treinadores/liga.ts:43 · desafiante()"
  },
  "Quatro vezes, contando com você.": {
-  "en": "",
+  "en": "Four times, counting you.",
   "ctx": "src/data/treinadores/liga.ts:43 · desafiante()"
  },
  "O Cacique abre com o Gaviãozão, paralisa com o Poraquê e guarda o Pirarucão para o fim. Encanto e Geada pegam Lenda de jeito.": {
-  "en": "",
+  "en": "The Chief opens with Gaviãozão, paralyzes with Poraquê and saves Pirarucão for last. Charm and Frost get Legend good.",
   "ctx": "src/data/treinadores/liga.ts:44 · desafiante()"
  },
  "Mestra": {
-  "en": "",
+  "en": "Master",
   "ctx": "src/data/treinadores/liga.ts:53 · mestre()"
  },
  "Sou a Maré, primeira Mestra. No mangue a água sobe devagar e quando você vê já está no pescoço. Assim é a minha equipe: veneno primeiro, enchente depois!": {
-  "en": "",
+  "en": "I'm Maré, the first Master. In the mangrove the water rises slowly, and by the time you notice it's up to your neck. That's my team: poison first, flood after!",
   "ctx": "src/data/treinadores/liga.ts:60 · mestre()"
  },
  "A maré virou… e virou para o seu lado. Passe, desafiante: a forja do Brasa-Viva já está acesa.": {
-  "en": "",
+  "en": "The tide turned… and it turned your way. Go on, challenger: Brasa-Viva's forge is already lit.",
   "ctx": "src/data/treinadores/liga.ts:61 · mestre()"
  },
  "Brasa-Viva": {
-  "en": "",
+  "en": "Brasa-Viva",
   "ctx": "src/data/treinadores/liga.ts:66 · mestre()"
  },
  "Brasa-Viva, segundo Mestre! Sino bom se faz batendo: ferro na brasa, martelo no ferro. Vamos ver de que liga é feita a sua equipe!": {
-  "en": "",
+  "en": "Brasa-Viva, second Master! A good bell is made by hammering: iron in the coals, hammer on the iron. Let's see what alloy your team is made of!",
   "ctx": "src/data/treinadores/liga.ts:73 · mestre()"
  },
  "Rachou o meu sino… e que som bonito ele fez. Vá, a neblina do Pajé está à sua espera.": {
-  "en": "",
+  "en": "You cracked my bell… and what a lovely sound it made. Go, the Shaman's fog is waiting for you.",
   "ctx": "src/data/treinadores/liga.ts:74 · mestre()"
  },
  "Neblina": {
-  "en": "",
+  "en": "Neblina",
   "ctx": "src/data/treinadores/liga.ts:80 · mestre()"
  },
  "Sente, desafiante. Eu sou o Neblina, e toda luta minha começa com uma história: era uma vez uma equipe que entrou nesta sala… e não lembrava como saiu.": {
-  "en": "",
+  "en": "Sit down, challenger. I'm Neblina, and every battle of mine starts with a story: once upon a time a team walked into this room… and couldn't remember how it left.",
   "ctx": "src/data/treinadores/liga.ts:87 · mestre()"
  },
  "Essa história eu não conhecia: a do desafiante que atravessou a neblina. Vou contar aos meus netos. A Pampa é a próxima porteira.": {
-  "en": "",
+  "en": "That's a story I didn't know: the one about the challenger who crossed the fog. I'll tell it to my grandchildren. Pampa is the next gate.",
   "ctx": "src/data/treinadores/liga.ts:88 · mestre()"
  },
  "Domadora": {
-  "en": "",
+  "en": "Tamer",
   "ctx": "src/data/treinadores/liga.ts:94 · mestre()"
  },
  "Pampa": {
-  "en": "",
+  "en": "Pampa",
   "ctx": "src/data/treinadores/liga.ts:94 · mestre()"
  },
  "Eita, chegou longe! Sou a Pampa, última porteira antes do Campeão. Bicho meu não é domado no grito: é no compasso. Segura o tranco, que o rodeio vai começar!": {
-  "en": "",
+  "en": "Whoa, you got far! I'm Pampa, the last gate before the Champion. My critters aren't tamed by shouting: they're tamed by rhythm. Hold on tight, the rodeo's about to start!",
   "ctx": "src/data/treinadores/liga.ts:101 · mestre()"
  },
  "Me derrubou da sela, e com classe! Atrás daquela porta está o Cacique Aracê. Tire o chapéu ao entrar.": {
-  "en": "",
+  "en": "You knocked me out of the saddle, and with style! Behind that door is Chief Aracê. Take off your hat when you go in.",
   "ctx": "src/data/treinadores/liga.ts:102 · mestre()"
  },
  "Campeão": {
-  "en": "",
+  "en": "Champion",
   "ctx": "src/data/treinadores/liga.ts:113 · campo classe"
  },
  "Aracê quer dizer \"o nascer do dia\". Há vinte anos eu vejo o sol nascer deste Platô, e há vinte anos ninguém me tira daqui.\fVocê trouxe oito insígnias e venceu quatro Mestres. Falta um amanhecer. Mostre-me a sua equipe inteira, {JOGADOR}!": {
-  "en": "",
+  "en": "Aracê means \"the break of day\". For twenty years I've watched the sun rise from this Platô, and for twenty years nobody has moved me from here.\fYou brought eight badges and beat four Masters. One dawn to go. Show me your whole team, {JOGADOR}!",
   "ctx": "src/data/treinadores/liga.ts:121 · campo desafio"
  },
  "O sol… nasceu do outro lado hoje. Vinte anos! E perdi sorrindo. Você e as suas criaturas lutam como quem conversa.": {
-  "en": "",
+  "en": "The sun… rose on the other side today. Twenty years! And I lost smiling. You and your creatures fight like you're having a conversation.",
   "ctx": "src/data/treinadores/liga.ts:122 · campo derrota"
  },
  "CAMPEÃO?! Você?! Eu estava presa no terceiro Mestre e ouvi o sino do Platô tocar para VOCÊ!\fNão, não, não. Antes de qualquer festa, {JOGADOR}: eu e você, aqui, agora. Equipe completa!": {
-  "en": "",
+  "en": "CHAMPION?! You?! I was stuck at the third Master and heard the Platô bell ring for YOU!\fNo, no, no. Before any party, {JOGADOR}: you and me, here, now. Full team!",
   "ctx": "src/data/treinadores/liga.ts:132 · campo desafio"
  },
  "Tá. Tá bom! Você é o Campeão e eu sou… a próxima. Anota: a PRÓXIMA.": {
-  "en": "",
+  "en": "Fine. Fine! You're the Champion and I'm… next. Write it down: NEXT.",
   "ctx": "src/data/treinadores/liga.ts:133 · campo derrota"
  },
  "Glacióloga": {
@@ -5612,11 +5612,11 @@
   "ctx": "src/data/treinadores/visitantes.ts:33 · exp()"
  },
  "Dona Quitéria": {
-  "en": "",
+  "en": "Dona Quitéria",
   "ctx": "src/data/trocas.ts:23 · campo morador | src/world/mecanicas/ginasio-11.ts:36 · campo nome"
  },
  "Seu Aroeirinha": {
-  "en": "",
+  "en": "Seu Aroeirinha",
   "ctx": "src/data/trocas.ts:75 · campo morador | src/data/zonas/B1-casa-3.ts:11 · campo nome"
  },
  "Desafiante Ginga-Mole": {
@@ -5624,135 +5624,135 @@
   "ctx": "src/data/zonas/A-LG-posto.ts:5 · campo nome"
  },
  "Perdi para o Pajé Neblina. As criaturas dele botam a gente para dormir e depois assombram o sono.": {
-  "en": "",
+  "en": "I lost to Shaman Neblina. His creatures put you to sleep and then haunt your dreams.",
   "ctx": "src/data/zonas/A-LG-posto.ts:5 · campo fala"
  },
  "Leve criatura do tipo Assombro ou de Mente forte. E Pomada de Copaíba. Muita.": {
-  "en": "",
+  "en": "Bring a Spook-type creature or a strong Mind one. And Copaiba Balm. Lots of it.",
   "ctx": "src/data/zonas/A-LG-posto.ts:5 · campo fala"
  },
  "Desafiante Alvorada": {
-  "en": "",
+  "en": "Challenger Alvorada",
   "ctx": "src/data/zonas/A-LG-posto.ts:6 · campo nome"
  },
  "Salve o jogo antes de entrar, descanse a equipe e confira a mochila.": {
-  "en": "",
+  "en": "Save before you go in, rest your team and check your bag.",
   "ctx": "src/data/zonas/A-LG-posto.ts:6 · campo fala"
  },
  "Parece conselho de mãe. É que a minha mãe foi Mestra da Liga.": {
-  "en": "",
+  "en": "Sounds like a mom's advice. That's because my mom was a League Master.",
   "ctx": "src/data/zonas/A-LG-posto.ts:6 · campo fala"
  },
  "Dona Cumbuca": {
-  "en": "",
+  "en": "Dona Cumbuca",
   "ctx": "src/data/zonas/A-LG-venda.ts:4 · campo nome"
  },
  "Última venda antes da glória! Ou da vergonha. Nos dois casos, leve Elixir.": {
-  "en": "",
+  "en": "Last shop before glory! Or shame. Either way, take some Elixir.",
   "ctx": "src/data/zonas/A-LG-venda.ts:4 · campo fala"
  },
  "Desafiante Cascalho": {
-  "en": "",
+  "en": "Challenger Cascalho",
   "ctx": "src/data/zonas/A-LG-venda.ts:6 · campo nome"
  },
  "São cinco lutas sem descanso: os golpes bons acabam antes das criaturas. Garapa devolve o fôlego de um golpe gasto.": {
-  "en": "",
+  "en": "That's five battles with no rest: the good moves run out before the creatures do. Cane Juice restores one spent move.",
   "ctx": "src/data/zonas/A-LG-venda.ts:6 · campo fala"
  },
  "Custa os olhos da cara. Mas contra o Campeão, olho da cara é troco.": {
-  "en": "",
+  "en": "It costs an arm and a leg. But against the Champion, an arm and a leg is pocket change.",
   "ctx": "src/data/zonas/A-LG-venda.ts:6 · campo fala"
  },
  "PLATÔ DA LIGA DOS GUARDIÕES\nQuatro Mestres e um Campeão. Oito insígnias para entrar; coragem para ficar.": {
-  "en": "",
+  "en": "LEAGUE OF GUARDIANS PLATÔ\nFour Masters and a Champion. Eight badges to get in; courage to stay.",
   "ctx": "src/data/zonas/A-LG.ts:89 · placa()"
  },
  "POSTO GUARDIÃO DO PLATÔ\nCure-se AQUI. Lá dentro, só o que couber na mochila.": {
-  "en": "",
+  "en": "PLATÔ GUARDIAN POST\nHeal up HERE. Inside, only what fits in your bag.",
   "ctx": "src/data/zonas/A-LG.ts:90 · placa()"
  },
  "VENDA DO PLATÔ\nPreço de altitude. Reclamações: desça a serra.": {
-  "en": "",
+  "en": "PLATÔ SHOP\nHigh-altitude prices. Complaints: go down the mountain.",
   "ctx": "src/data/zonas/A-LG.ts:91 · placa()"
  },
  "REGRAS DA LIGA\n1. Entrou, não volta.  2. Cinco lutas seguidas.  3. Cura só por itens.\n4. Perdeu, recomeça do primeiro Mestre.  5. É proibido chorar no tapete.": {
-  "en": "",
+  "en": "LEAGUE RULES\n1. Once in, no going back.  2. Five battles in a row.  3. Healing by items only.\n4. Lose, and start over from the first Master.  5. No crying on the carpet.",
   "ctx": "src/data/zonas/A-LG.ts:92 · placa()"
  },
  "Estátua de um Campeão antigo. A placa diz só: \"Chegou aqui. Você também pode.\"": {
-  "en": "",
+  "en": "Statue of a Champion of old. The plaque just says: \"Made it here. So can you.\"",
   "ctx": "src/data/zonas/A-LG.ts:102 · campo texto"
  },
  "O Marco do Hall da Fama. Os nomes dos Campeões da Costa do Sol estão entalhados de cima a baixo.": {
-  "en": "",
+  "en": "The Hall of Fame Marker. The names of the Champions of Costa do Sol are carved from top to bottom.",
   "ctx": "src/data/zonas/A-LG.ts:103 · campo texto"
  },
  "Alto! Sou o Guardião da Entrada. Daqui para cima é o Platô da Liga.\fMostre o estojo… Faltam insígnias aí. São OITO, criatura: uma de cada ginásio da Costa do Sol. Volte quando o estojo estiver cheio.": {
-  "en": "",
+  "en": "Halt! I'm the Guardian of the Entrance. From here up is the League Platô.\fShow me your case… You're missing badges. It's EIGHT, buddy: one from each gym in Costa do Sol. Come back when your case is full.",
   "ctx": "src/data/zonas/A-LG.ts:116 · campo fala"
  },
  "A porta da sala de espera trancou atrás de você. Na Liga só se anda para a frente.": {
-  "en": "",
+  "en": "The waiting room door locked behind you. In the League you only move forward.",
   "ctx": "src/data/zonas/A-LG.ts:117 · porta()"
  },
  "A porta só abre para quem vencer a Mestra Maré.": {
-  "en": "",
+  "en": "The door only opens for those who beat Master Maré.",
   "ctx": "src/data/zonas/A-LG.ts:118 · porta()"
  },
  "A porta só abre para quem vencer o Ferreiro Brasa-Viva.": {
-  "en": "",
+  "en": "The door only opens for those who beat Smith Brasa-Viva.",
   "ctx": "src/data/zonas/A-LG.ts:119 · porta()"
  },
  "A porta só abre para quem vencer o Pajé Neblina.": {
-  "en": "",
+  "en": "The door only opens for those who beat Shaman Neblina.",
   "ctx": "src/data/zonas/A-LG.ts:120 · porta()"
  },
  "A porta do Hall da Fama só se abre pelas mãos do Campeão.": {
-  "en": "",
+  "en": "The Hall of Fame door only opens by the Champion's hand.",
   "ctx": "src/data/zonas/A-LG.ts:121 · porta()"
  },
  "A porta só abre para quem vencer a Domadora Pampa. Do outro lado espera o Campeão.": {
-  "en": "",
+  "en": "The door only opens for those who beat Tamer Pampa. On the other side waits the Champion.",
   "ctx": "src/data/zonas/A-LG.ts:122 · porta()"
  },
  "Mestra Maré": {
-  "en": "",
+  "en": "Master Maré",
   "ctx": "src/data/zonas/A-LG.ts:130 · gente()"
  },
  "Ferreiro Brasa-Viva": {
-  "en": "",
+  "en": "Smith Brasa-Viva",
   "ctx": "src/data/zonas/A-LG.ts:131 · gente()"
  },
  "Pajé Neblina": {
-  "en": "",
+  "en": "Shaman Neblina",
   "ctx": "src/data/zonas/A-LG.ts:132 · gente()"
  },
  "Domadora Pampa": {
-  "en": "",
+  "en": "Tamer Pampa",
   "ctx": "src/data/zonas/A-LG.ts:133 · gente()"
  },
  "Veterana Cumeeira": {
-  "en": "",
+  "en": "Veteran Cumeeira",
   "ctx": "src/data/zonas/A-LG.ts:135 · gente()"
  },
  "Maré mistura Rio com Veneno; Brasa-Viva, Brasa com Ferro; Neblina, Mente com Assombro; Pampa, Comum com Ginga.": {
-  "en": "",
+  "en": "Maré mixes River with Poison; Brasa-Viva, Ember with Iron; Neblina, Mind with Spook; Pampa, Normal with Brawl.",
   "ctx": "src/data/zonas/A-LG.ts:135 · campo fala"
  },
  "O Cacique Aracê usa de tudo um pouco, e guarda para o fim uma criatura do tipo Lenda. Encanto e Geada assustam Lenda.": {
-  "en": "",
+  "en": "Chief Aracê uses a bit of everything, and saves a Legend-type creature for last. Charm and Frost scare Legend.",
   "ctx": "src/data/zonas/A-LG.ts:135 · campo fala"
  },
  "Torcedor Pequi": {
-  "en": "",
+  "en": "Fan Pequi",
   "ctx": "src/data/zonas/A-LG.ts:136 · gente()"
  },
  "Eu venho todo dia ver quem entra. Sair pela porta da frente, vi poucos.": {
-  "en": "",
+  "en": "I come every day to see who goes in. I've seen few come out the front door.",
   "ctx": "src/data/zonas/A-LG.ts:136 · campo fala"
  },
  "Você tem cara de quem sai. Ou de quem volta rápido. Uma das duas.": {
-  "en": "",
+  "en": "You look like someone who'll come out. Or come back fast. One of the two.",
   "ctx": "src/data/zonas/A-LG.ts:136 · campo fala"
  },
  "CERRADO ABERTO\nA estrada dá a volta no capinzal e volta para cá. Não tem como se perder. (Já se perderam.)": {
@@ -5992,7 +5992,7 @@
   "ctx": "src/data/zonas/B-PA.ts:82 · campo fala"
  },
  "Bióloga Ingá": {
-  "en": "",
+  "en": "Biologist Ingá",
   "ctx": "src/data/zonas/B-PA.ts:88 · gente() | src/data/zonas/B1-lab.ts:35 · gente()"
  },
  "Contei os ninhos do ninhal: todos os ovos de volta e chocando!": {
@@ -6468,427 +6468,427 @@
   "ctx": "src/data/zonas/B-VV.ts:70 · campo fala"
  },
  "Casa da Dona Mangaba": {
-  "en": "",
+  "en": "Dona Mangaba's House",
   "ctx": "src/data/zonas/B1-casa-1.ts:5 · campo nome"
  },
  "Potes de doce em fila: buriti, mangaba, cagaita, pequi. Cada um com uma etiqueta escrita à mão e um coração desenhado.": {
-  "en": "",
+  "en": "Jars of preserves in a row: buriti, mangaba, cagaita, pequi. Each with a handwritten label and a little heart drawn on it.",
   "ctx": "src/data/zonas/B1-casa-1.ts:7 · campo estante"
  },
  "Um baú de receitas. A de cima diz: \"Doce de buriti: paciência, açúcar e mais paciência.\"": {
-  "en": "",
+  "en": "A chest of recipes. The top one says: \"Buriti preserves: patience, sugar and more patience.\"",
   "ctx": "src/data/zonas/B1-casa-1.ts:8 · campo bau"
  },
  "O tacho de cobre borbulha no fogão a lenha. O cheiro de buriti enche a casa inteira.": {
-  "en": "",
+  "en": "The copper pot bubbles on the wood stove. The smell of buriti fills the whole house.",
   "ctx": "src/data/zonas/B1-casa-1.ts:9 · campo cantoTexto"
  },
  "Dona Mangaba": {
-  "en": "",
+  "en": "Dona Mangaba",
   "ctx": "src/data/zonas/B1-casa-1.ts:11 · campo nome"
  },
  "A vó diz que doce de buriti cura tristeza.": {
-  "en": "",
+  "en": "Grandma says buriti preserves cure sadness.",
   "ctx": "src/data/zonas/B1-casa-1.ts:12 · campo fala"
  },
  "Eu fico triste três vezes por dia, só por garantia.": {
-  "en": "",
+  "en": "I get sad three times a day, just to be safe.",
   "ctx": "src/data/zonas/B1-casa-1.ts:12 · campo fala"
  },
  "Casa do Violeiro": {
-  "en": "",
+  "en": "Fiddler's House",
   "ctx": "src/data/zonas/B1-casa-2.ts:5 · campo nome"
  },
  "Uma viola de dez cordas pendurada e um caderno de modas. A última página tem só um título: \"Saudade de Porto Pantaneiro\".": {
-  "en": "",
+  "en": "A ten-string viola hanging up and a songbook. The last page has only a title: \"Missing Porto Pantaneiro\".",
   "ctx": "src/data/zonas/B1-casa-2.ts:7 · campo estante"
  },
  "Cordas de viola, palhetas de chifre e um retrato de uma moça na beira do rio, com dedicatória borrada de tanto ser lida.": {
-  "en": "",
+  "en": "Viola strings, horn picks and a portrait of a girl by the river, with an inscription smudged from so much rereading.",
   "ctx": "src/data/zonas/B1-casa-2.ts:8 · campo bau"
  },
  "A rede listrada balança sozinha. O violeiro jura que é o vento. Não tem janela aberta.": {
-  "en": "",
+  "en": "The striped hammock sways by itself. The fiddler swears it's the wind. There's no open window.",
   "ctx": "src/data/zonas/B1-casa-2.ts:9 · campo cantoTexto"
  },
  "Seu Zabelê": {
-  "en": "",
+  "en": "Seu Zabelê",
   "ctx": "src/data/zonas/B1-casa-2.ts:11 · campo nome"
  },
  "(O Bem-te-viço do violeiro canta três notas e fica esperando você completar a moda.)": {
-  "en": "",
+  "en": "(The fiddler's Bem-te-viço sings three notes and waits for you to finish the tune.)",
   "ctx": "src/data/zonas/B1-casa-2.ts:12 · campo fala"
  },
  "Casa do Criador": {
-  "en": "",
+  "en": "Breeder's House",
   "ctx": "src/data/zonas/B1-casa-3.ts:5 · campo nome"
  },
  "Cadernos de criação: \"Quero-Guarda: come de tudo, guarda tudo, reclama de tudo.\" Ao lado, fitas de exposição.": {
-  "en": "",
+  "en": "Breeding notebooks: \"Quero-Guarda: eats everything, keeps everything, complains about everything.\" Next to them, show ribbons.",
   "ctx": "src/data/zonas/B1-casa-3.ts:7 · campo estante"
  },
  "Coleiras de couro com plaquinha de nome, uma escova de pelo e um apito que não faz barulho nenhum.": {
-  "en": "",
+  "en": "Leather collars with little name tags, a fur brush and a whistle that makes no sound at all.",
   "ctx": "src/data/zonas/B1-casa-3.ts:8 · campo bau"
  },
  "Um oratório com vela acesa e uma pena de seriema presa na moldura.": {
-  "en": "",
+  "en": "A home altar with a lit candle and a seriema feather tucked into the frame.",
   "ctx": "src/data/zonas/B1-casa-3.ts:9 · campo cantoTexto"
  },
  "Dona Laia": {
-  "en": "",
+  "en": "Dona Laia",
   "ctx": "src/data/zonas/B1-casa-3.ts:12 · campo nome"
  },
  "Meu marido é primo do Seu Aroeira, lá da Costa. Na família todo mundo cria bicho e ninguém cria juízo.": {
-  "en": "",
+  "en": "My husband is Seu Aroeira's cousin, from the Coast. In the family everybody raises critters and nobody raises any sense.",
   "ctx": "src/data/zonas/B1-casa-3.ts:12 · campo fala"
  },
  "Ele vive trocando criatura com viajante. Diz que bicho que viaja aprende mais.": {
-  "en": "",
+  "en": "He's always trading creatures with travelers. Says a critter that travels learns more.",
   "ctx": "src/data/zonas/B1-casa-3.ts:12 · campo fala"
  },
  "Estação de Vila Cascavel": {
-  "en": "",
+  "en": "Vila Cascavel Station",
   "ctx": "src/data/zonas/B1-estacao.ts:11 · campo nome"
  },
  "BILHETERIA DE VILA CASCAVEL\nO Passe do Trem dos Campeões vale para sempre. A paciência do bilheteiro, não.": {
-  "en": "",
+  "en": "VILA CASCAVEL TICKET OFFICE\nThe Champions' Train Pass is good forever. The ticket clerk's patience is not.",
   "ctx": "src/data/zonas/B1-estacao.ts:27 · campo texto"
  },
  "LINHA SERRA-SOL\nPorto Sereia (Costa do Sol) – Vila Cascavel (Sertão das Névoas).\nCuidado com o vão entre o trem e a serra.": {
-  "en": "",
+  "en": "SERRA-SOL LINE\nPorto Sereia (Costa do Sol) – Vila Cascavel (Sertão das Névoas).\nMind the gap between the train and the mountain.",
   "ctx": "src/data/zonas/B1-estacao.ts:34 · campo texto"
  },
  "O maquinista confere a mochila e coça a cabeça:\n\"Sem o Passe do Trem não desço a serra, Campeão. O Cacique Aracê entrega um a quem vence a Liga.\"": {
-  "en": "",
+  "en": "The engineer checks your bag and scratches his head:\n\"Without the Train Pass I'm not going down the mountain, Champion. Chief Aracê gives one to whoever beats the League.\"",
   "ctx": "src/data/zonas/B1-estacao.ts:36 · campo recusa"
  },
  "Quer voltar para Porto Sereia? É só subir no vagão. A Maria-Fumaça desce a serra em vinte minutos e sobe em quarenta: subida é subida.": {
-  "en": "",
+  "en": "Want to go back to Porto Sereia? Just hop on the car. The steam train goes down the mountain in twenty minutes and up in forty: uphill is uphill.",
   "ctx": "src/data/zonas/B1-estacao.ts:41 · campo fala"
  },
  "Linha da serra só leva Campeão da Liga. Você é Campeão. Logo, sobe quando quiser. Lógica de maquinista.": {
-  "en": "",
+  "en": "The mountain line only takes League Champions. You're a Champion. Therefore, hop on whenever you like. Engineer logic.",
   "ctx": "src/data/zonas/B1-estacao.ts:41 · campo fala"
  },
  "Viajante Lucinha": {
-  "en": "",
+  "en": "Traveler Lucinha",
   "ctx": "src/data/zonas/B1-estacao.ts:42 · campo nome"
  },
  "Vim da Costa do Sol só para comer doce de buriti em Vila Cascavel.": {
-  "en": "",
+  "en": "I came all the way from Costa do Sol just to eat buriti preserves in Vila Cascavel.",
   "ctx": "src/data/zonas/B1-estacao.ts:42 · campo fala"
  },
  "Já estou na terceira viagem. É um doce muito bom. Ou eu sou muito fraca para doce.": {
-  "en": "",
+  "en": "This is already my third trip. They're really good preserves. Or I'm really weak for sweets.",
   "ctx": "src/data/zonas/B1-estacao.ts:42 · campo fala"
  },
  "Carregador Tonho": {
-  "en": "",
+  "en": "Porter Tonho",
   "ctx": "src/data/zonas/B1-estacao.ts:43 · campo nome"
  },
  "Tem gente de macacão cor de ferrugem rondando o Pantanal. Embarcaram umas gaiolas no último trem de carga.": {
-  "en": "",
+  "en": "There are people in rust-colored overalls prowling the Pantanal. They loaded some cages onto the last freight train.",
   "ctx": "src/data/zonas/B1-estacao.ts:43 · campo fala"
  },
  "Não gostei da cara deles. Também não gostei da cara das gaiolas. Gaiola não devia ter cara de nada.": {
-  "en": "",
+  "en": "I didn't like the look of them. Didn't like the look of the cages either. A cage shouldn't have a look at all.",
   "ctx": "src/data/zonas/B1-estacao.ts:43 · campo fala"
  },
  "Estação de Pesquisa do Sertão": {
-  "en": "",
+  "en": "Sertão Research Station",
   "ctx": "src/data/zonas/B1-lab.ts:18 · campo nome"
  },
  "Mapa do Sertão das Névoas com alfinetes: vermelhos no Pantanal Alagado, pretos na Chapada Rubra, e um amarelo escrito \"BOITATÁ?\" na Caverna Vulcânica.": {
-  "en": "",
+  "en": "A map of the Sertão das Névoas with pins: red in Pantanal Alagado, black in Chapada Rubra, and a yellow one marked \"BOITATÁ?\" in Caverna Vulcânica.",
   "ctx": "src/data/zonas/B1-lab.ts:22 · campo texto"
  },
  "Réguas de cheia, cadernos encharcados e um pato de borracha com a etiqueta \"boia oficial\".": {
-  "en": "",
+  "en": "Flood gauges, soaked notebooks and a rubber duck labeled \"official buoy\".",
   "ctx": "src/data/zonas/B1-lab.ts:24 · campo texto"
  },
  "Um microscópio aponta para uma asa de Lavadeira-Dragão. Parece vitral de igreja.": {
-  "en": "",
+  "en": "A microscope points at a Lavadeira-Dragão wing. It looks like a church window.",
   "ctx": "src/data/zonas/B1-lab.ts:26 · campo texto"
  },
  "Pastas: \"Ninhal do Pantanal — contagem de ovos\", \"Cartel Ferrugem — denúncias\", \"Receitas de pequi (não científicas)\".": {
-  "en": "",
+  "en": "Folders: \"Pantanal Rookery — egg count\", \"Rust Cartel — complaints\", \"Pequi recipes (not scientific)\".",
   "ctx": "src/data/zonas/B1-lab.ts:28 · campo texto"
  },
  "Um tanque de observação com um Aruazão dormindo. Ou meditando. Com caramujo não dá para saber.": {
-  "en": "",
+  "en": "An observation tank with an Aruazão asleep. Or meditating. With snails, you can't tell.",
   "ctx": "src/data/zonas/B1-lab.ts:29 · campo texto"
  },
  "Pesquisador Baru": {
-  "en": "",
+  "en": "Researcher Baru",
   "ctx": "src/data/zonas/B1-lab.ts:34 · gente()"
  },
  "A Drª Buriti montou esta estação antes de ir para Vila Buriti, na Costa do Sol. Ela liga todo domingo pelo Rádio Cipó.": {
-  "en": "",
+  "en": "Dr. Buriti set up this station before moving to Vila Buriti, in Costa do Sol. She calls every Sunday over Rádio Cipó.",
   "ctx": "src/data/zonas/B1-lab.ts:34 · campo fala"
  },
  "No Sertão, as criaturas já nascem para o nível de Campeão. Quem chega da Liga com equipe de 45 sente o tranco nos primeiros dias, mas a Vereda e o Cerrado treinam ligeiro: no Pantanal você já está no passo.": {
-  "en": "",
+  "en": "In the Sertão, creatures are born ready for Champion level. Anyone arriving from the League with a level-45 team feels the jolt for the first few days, but the Vereda and the Cerrado train you fast: by the Pantanal you'll be up to speed.",
   "ctx": "src/data/zonas/B1-lab.ts:34 · campo fala"
  },
  "As cheias do Pantanal deixam os ninhos do ninhal expostos. E o Cartel Ferrugem sabe disso.": {
-  "en": "",
+  "en": "The Pantanal floods leave the rookery nests exposed. And the Rust Cartel knows it.",
   "ctx": "src/data/zonas/B1-lab.ts:35 · campo fala"
  },
  "A Boiadeira Zefa interditou o ninhal. Ela só deixa passar quem provar que sabe lidar com bicho grande: quem tiver a Insígnia do Barro.": {
-  "en": "",
+  "en": "Herder Zefa closed off the rookery. She only lets through those who prove they can handle big critters: whoever has the Clay Badge.",
   "ctx": "src/data/zonas/B1-lab.ts:35 · campo fala"
  },
  "Estagiário Tico": {
-  "en": "",
+  "en": "Intern Tico",
   "ctx": "src/data/zonas/B1-lab.ts:36 · gente()"
  },
  "Descobri que o Sapo-Cururuí canta em dó maior.": {
-  "en": "",
+  "en": "I found out the Sapo-Cururuí sings in C major.",
   "ctx": "src/data/zonas/B1-lab.ts:36 · campo fala"
  },
  "Descobri também que ele canta às três da manhã. Do lado da minha rede.": {
-  "en": "",
+  "en": "I also found out it sings at three in the morning. Right next to my hammock.",
   "ctx": "src/data/zonas/B1-lab.ts:36 · campo fala"
  },
  "MURAL DE MISSÕES — VILA CASCAVEL": {
-  "en": "",
+  "en": "MISSION BOARD — VILA CASCAVEL",
   "ctx": "src/data/zonas/B1-posto.ts:5 · postoGuardiao()"
  },
  "• O violeiro da casa de madeira procura um portador de confiança para uma carta. (Vila Cascavel)": {
-  "en": "",
+  "en": "• The fiddler in the wooden house is looking for a trustworthy courier for a letter. (Vila Cascavel)",
   "ctx": "src/data/zonas/B1-posto.ts:6 · postoGuardiao()"
  },
  "• A observadora do Cerrado Aberto quer fotos de cinco ninhos do Sertão. (Cerrado Aberto)": {
-  "en": "",
+  "en": "• The birdwatcher in Cerrado Aberto wants photos of five Sertão nests. (Cerrado Aberto)",
   "ctx": "src/data/zonas/B1-posto.ts:7 · postoGuardiao()"
  },
  "• A Dona Mangaba troca receita por ingrediente. Pergunte na casa rosa. (Vila Cascavel)": {
-  "en": "",
+  "en": "• Dona Mangaba trades recipes for ingredients. Ask at the pink house. (Vila Cascavel)",
   "ctx": "src/data/zonas/B1-posto.ts:8 · postoGuardiao()"
  },
  "Vaqueiro Juvêncio": {
-  "en": "",
+  "en": "Cowhand Juvêncio",
   "ctx": "src/data/zonas/B1-posto.ts:10 · campo nome"
  },
  "Vim tocando boi lá de Pantanal Grande. De canoa, veja você. O boi foi nadando e reclamando.": {
-  "en": "",
+  "en": "I drove cattle all the way from Pantanal Grande. By canoe, if you can believe it. The cattle swam and complained.",
   "ctx": "src/data/zonas/B1-posto.ts:10 · campo fala"
  },
  "A Boiadeira Zefa só usa bicho de Terra. Leve Rio, Mata ou Geada, que barro com água vira lama, e lama a Zefa não segura.": {
-  "en": "",
+  "en": "Herder Zefa only uses Earth critters. Bring River, Grass or Frost, since clay plus water makes mud, and Zefa can't hold mud.",
   "ctx": "src/data/zonas/B1-posto.ts:10 · campo fala"
  },
  "Escoteira Lúcia": {
-  "en": "",
+  "en": "Scout Lúcia",
   "ctx": "src/data/zonas/B1-posto.ts:11 · campo nome"
  },
  "Os bichos do Sertão já chegam crescidos: nível 44, 45, quase do tamanho da Liga!": {
-  "en": "",
+  "en": "Sertão critters arrive full-grown: level 44, 45, almost League-sized!",
   "ctx": "src/data/zonas/B1-posto.ts:11 · campo fala"
  },
  "Treine na Vereda antes de encarar a Zefa. E compre Garrafada: no Pantanal o Posto mais perto fica em cima de palafita.": {
-  "en": "",
+  "en": "Train in the Vereda before facing Zefa. And buy Root Tonic: in the Pantanal the nearest Post is on stilts.",
   "ctx": "src/data/zonas/B1-posto.ts:11 · campo fala"
  },
  "Salão da Raizeira": {
-  "en": "",
+  "en": "Herbalist's Hall",
   "ctx": "src/data/zonas/B1-salao.ts:22 · campo nome"
  },
  "Ex-votos de madeira: uma pata de Tatuzim, uma asa de Ararinha, um casco de Jabutim. Todos curados aqui.": {
-  "en": "",
+  "en": "Wooden ex-votos: a Tatuzim paw, an Ararinha wing, a Jabutim shell. All healed here.",
   "ctx": "src/data/zonas/B1-salao.ts:26 · campo texto"
  },
  "Uma chaleira de barro ferve chá de jurubeba. Amargo que só, cura que só.": {
-  "en": "",
+  "en": "A clay kettle boils jurubeba tea. Bitter as can be, healing as can be.",
   "ctx": "src/data/zonas/B1-salao.ts:28 · campo texto"
  },
  "O oratório da raizeira: uma vela, um galho de arruda e um retrato antigo do ginásio, com a placa \"Insígnia da Folha\".": {
-  "en": "",
+  "en": "The herbalist's altar: a candle, a sprig of rue and an old photo of the gym, with the plaque \"Leaf Badge\".",
   "ctx": "src/data/zonas/B1-salao.ts:29 · campo texto"
  },
  "Vidros de raízes secas com rótulos: \"Sucupira — dor de junta\", \"Barbatimão — corte feio\", \"Ipê-roxo — tristeza de criatura\".": {
-  "en": "",
+  "en": "Jars of dried roots with labels: \"Sucupira — achy joints\", \"Barbatimão — nasty cuts\", \"Purple ipê — creature blues\".",
   "ctx": "src/data/zonas/B1-salao.ts:30 · campo texto"
  },
  "A bancada de ervas. Tem pilão, peneira e um caderno aberto na página \"o que NÃO dar para Calangão\".": {
-  "en": "",
+  "en": "The herb bench. It has a mortar, a sieve and a notebook open to the page \"what NOT to give Calangão\".",
   "ctx": "src/data/zonas/B1-salao.ts:32 · campo texto"
  },
  "Aprendiz Jurema-Preta": {
-  "en": "",
+  "en": "Apprentice Jurema-Preta",
   "ctx": "src/data/zonas/B1-salao.ts:40 · gente()"
  },
  "Isto aqui já foi ginásio. A líder, a Dona Buriti, aprendeu as ervas com a Dona Sucupira e foi abrir ginásio na Costa do Sol.": {
-  "en": "",
+  "en": "This used to be a gym. The leader, Dona Buriti, learned herbs from Dona Sucupira and went off to open a gym in Costa do Sol.",
   "ctx": "src/data/zonas/B1-salao.ts:40 · campo fala"
  },
  "Quando ela saiu, deixou o salão para a mestra. Agora o único combate aqui dentro é contra a dor de barriga.": {
-  "en": "",
+  "en": "When she left, she handed the hall to her teacher. Now the only battle in here is against tummy aches.",
   "ctx": "src/data/zonas/B1-salao.ts:40 · campo fala"
  },
  "Peão Brás": {
-  "en": "",
+  "en": "Ranch Hand Brás",
   "ctx": "src/data/zonas/B1-salao.ts:41 · gente()"
  },
  "Trouxe meu Antão para tomar chá de casca. Ele pisou num cupinzeiro e o cupinzeiro pisou de volta.": {
-  "en": "",
+  "en": "I brought my Antão for some bark tea. He stepped on a termite mound and the termite mound stepped back.",
   "ctx": "src/data/zonas/B1-salao.ts:41 · campo fala"
  },
  "A Dona Sucupira não cobra nada. Diz que planta que cura não tem dono.": {
-  "en": "",
+  "en": "Dona Sucupira doesn't charge a thing. She says healing plants have no owner.",
   "ctx": "src/data/zonas/B1-salao.ts:41 · campo fala"
  },
  "Seu Bento Pequi": {
-  "en": "",
+  "en": "Seu Bento Pequi",
   "ctx": "src/data/zonas/B1-venda.ts:5 · campo nome"
  },
  "Venda do Pequi, às ordens! Cuia de palha de buriti, chá de raiz e repelente de andiroba. O resto é conversa, e conversa é de graça.": {
-  "en": "",
+  "en": "Pequi Shop, at your service! Buriti-straw gourds, root tea and andiroba repellent. The rest is chit-chat, and chit-chat is free.",
   "ctx": "src/data/zonas/B1-venda.ts:5 · campo fala"
  },
  "Dona Lia": {
-  "en": "",
+  "en": "Dona Lia",
   "ctx": "src/data/zonas/B1-venda.ts:7 · campo nome"
  },
  "Cuia de Rede é a melhor para o Pantanal: bicho de Rio escorrega da cuia comum que nem sabão.": {
-  "en": "",
+  "en": "Net Gourds are the best for the Pantanal: River critters slip out of a regular gourd like soap.",
   "ctx": "src/data/zonas/B1-venda.ts:7 · campo fala"
  },
  "E a Cuia Noturna para o cerrado de noite, que o bicho de lá só sai depois do pôr do sol.": {
-  "en": "",
+  "en": "And Night Gourds for the cerrado at night, since the critters there only come out after sunset.",
   "ctx": "src/data/zonas/B1-venda.ts:7 · campo fala"
  },
  "VILA CASCAVEL\nOnde o Trem Serra-Sol desce a serra e o Sertão começa.\nNorte: Vereda dos Buritis. Leste, pela lagoa: Pantanal Alagado.": {
-  "en": "",
+  "en": "VILA CASCAVEL\nWhere the Serra-Sol Train comes down the mountain and the Sertão begins.\nNorth: Vereda dos Buritis. East, across the lagoon: Pantanal Alagado.",
   "ctx": "src/data/zonas/B1.ts:53 · placa()"
  },
  "ESTAÇÃO DE VILA CASCAVEL\nLinha Serra-Sol: Porto Sereia – Vila Cascavel. Segure o chapéu no túnel.": {
-  "en": "",
+  "en": "VILA CASCAVEL STATION\nSerra-Sol Line: Porto Sereia – Vila Cascavel. Hold on to your hat in the tunnel.",
   "ctx": "src/data/zonas/B1.ts:54 · placa()"
  },
  "SALÃO DA RAIZEIRA\nAqui já foi ginásio. Hoje é chá, conselho e cura de raiz.\n\"Planta que cura não tem pressa.\"": {
-  "en": "",
+  "en": "HERBALIST'S HALL\nThis used to be a gym. Now it's tea, advice and root cures.\n\"Healing plants are never in a hurry.\"",
   "ctx": "src/data/zonas/B1.ts:55 · placa()"
  },
  "LAGOA DO CASCAVEL\nCanoa só com o Amuleto do Remo e uma criatura de Rio puxando.\nO Pantanal Alagado começa onde a lagoa acaba, a leste.": {
-  "en": "",
+  "en": "LAGOA DO CASCAVEL\nCanoe only with the Paddle Charm and a River creature pulling.\nPantanal Alagado begins where the lagoon ends, to the east.",
   "ctx": "src/data/zonas/B1.ts:56 · placa()"
  },
  "MIRANTE DO PEQUIZEIRO\nDaqui se vê a Chapada Rubra num dia limpo. Num dia de névoa, se vê névoa.": {
-  "en": "",
+  "en": "PEQUI TREE LOOKOUT\nOn a clear day you can see Chapada Rubra from here. On a foggy day, you see fog.",
   "ctx": "src/data/zonas/B1.ts:57 · placa()"
  },
  "Montanhista Ana Baru": {
-  "en": "",
+  "en": "Hiker Ana Baru",
   "ctx": "src/data/zonas/B1.ts:85 · gente()"
  },
  "Lá no alto do paredão fica o Mirante do Pequizeiro. Tem um pé de pequi carregado e coisa brilhando no chão.": {
-  "en": "",
+  "en": "High up the cliff is the Pequi Tree Lookout. There's a pequi tree loaded with fruit and something shiny on the ground.",
   "ctx": "src/data/zonas/B1.ts:85 · campo fala"
  },
  "Só sobe quem tem o Amuleto de Escalar. Dizem que o Garimpeiro Topázio, da Chapada Rubra, entrega um a quem vence o ginásio dele.": {
-  "en": "",
+  "en": "Only those with the Climb Charm can go up. They say Prospector Topázio, from Chapada Rubra, gives one to whoever beats his gym.",
   "ctx": "src/data/zonas/B1.ts:85 · campo fala"
  },
  "Jaci": {
-  "en": "",
+  "en": "Jaci",
   "ctx": "src/data/zonas/B1.ts:86 · gente()"
  },
  "A cidade tem nome de cobra, mas a cascavel daqui é educada: chocalha antes de chegar.": {
-  "en": "",
+  "en": "The town is named after a snake, but our rattlesnakes are polite: they rattle before they arrive.",
   "ctx": "src/data/zonas/B1.ts:86 · campo fala"
  },
  "Meu avô diz que é para a gente respeitar o Sertão. Eu respeito. De longe.": {
-  "en": "",
+  "en": "My grandpa says it's so we respect the Sertão. I do. From a distance.",
   "ctx": "src/data/zonas/B1.ts:86 · campo fala"
  },
  "Seu Juazeiro": {
-  "en": "",
+  "en": "Seu Juazeiro",
   "ctx": "src/data/zonas/B1.ts:87 · gente()"
  },
  "Do buriti a gente aproveita tudo: a palha, o doce, o óleo e a sombra.": {
-  "en": "",
+  "en": "We use every part of the buriti: the straw, the preserves, the oil and the shade.",
   "ctx": "src/data/zonas/B1.ts:87 · campo fala"
  },
  "O prédio de pedra lá em cima foi ginásio no meu tempo. A líder foi embora para a Costa, e a raizeira ficou com o salão. Melhor assim: lá dentro agora se cura em vez de se bater.": {
-  "en": "",
+  "en": "The stone building up there was a gym in my day. The leader moved to the Coast, and the herbalist kept the hall. Better that way: now folks get healed in there instead of beaten.",
   "ctx": "src/data/zonas/B1.ts:87 · campo fala"
  },
  "Vaqueira Inhuma": {
-  "en": "",
+  "en": "Cowgirl Inhuma",
   "ctx": "src/data/zonas/B1.ts:88 · gente()"
  },
  "Quer chegar em Pantanal Grande? Tem dois jeitos.": {
-  "en": "",
+  "en": "Want to get to Pantanal Grande? There are two ways.",
   "ctx": "src/data/zonas/B1.ts:88 · campo fala"
  },
  "Por terra: sobe a Vereda, cruza o Cerrado Aberto e desce as passarelas do Pantanal. Pela água: canoa na lagoa daqui e rema para o leste.": {
-  "en": "",
+  "en": "By land: up the Vereda, across Cerrado Aberto and down the Pantanal boardwalks. By water: canoe across the lagoon here and paddle east.",
   "ctx": "src/data/zonas/B1.ts:88 · campo fala"
  },
  "A Boiadeira Zefa é a líder de lá. Bicho de Terra que não sai do lugar nem com reza. Leve Rio, Mata ou Geada.": {
-  "en": "",
+  "en": "Herder Zefa is the leader there. Earth critters that won't budge even with prayer. Bring River, Grass or Frost.",
   "ctx": "src/data/zonas/B1.ts:88 · campo fala"
  },
  "Zé Trilho": {
-  "en": "",
+  "en": "Zé Trilho",
   "ctx": "src/data/zonas/B1.ts:89 · gente()"
  },
  "Eu conto os vagões todo dia. Hoje deu sete.": {
-  "en": "",
+  "en": "I count the train cars every day. Today there were seven.",
   "ctx": "src/data/zonas/B1.ts:89 · campo fala"
  },
  "Agora o trem traz Campeão da Liga! Você é o terceiro que eu vejo. Os outros dois foram embora chorando para Porto Sereia.": {
-  "en": "",
+  "en": "Now the train brings League Champions! You're the third one I've seen. The other two went back to Porto Sereia crying.",
   "ctx": "src/data/zonas/B1.ts:89 · campo fala"
  },
  "Ajudante Caraíba": {
-  "en": "",
+  "en": "Helper Caraíba",
   "ctx": "src/data/zonas/B1.ts:90 · gente()"
  },
  "Trabalho no Salão da Raizeira. A Dona Sucupira cura qualquer criatura de graça e ainda ensina o nome da erva.": {
-  "en": "",
+  "en": "I work at the Herbalist's Hall. Dona Sucupira heals any creature for free and even teaches you the herb's name.",
   "ctx": "src/data/zonas/B1.ts:90 · campo fala"
  },
  "Atrás daquela rocha rachada, no canto oeste, fica o quintal de ervas dela. A rocha caiu na última chuva. Quem tiver o Quebra-pedra pode abrir.": {
-  "en": "",
+  "en": "Behind that cracked rock, in the west corner, is her herb garden. The rock fell in the last rain. Anyone with Rock Smash can open it up.",
   "ctx": "src/data/zonas/B1.ts:90 · campo fala"
  },
  "Bióloga Cagaita": {
-  "en": "",
+  "en": "Biologist Cagaita",
   "ctx": "src/data/zonas/B1.ts:91 · gente()"
  },
  "O laboratório é a Estação de Pesquisa do Sertão. A Drª Buriti mandou montar antes de se mudar para a Costa do Sol.": {
-  "en": "",
+  "en": "The lab is the Sertão Research Station. Dr. Buriti had it built before moving to Costa do Sol.",
   "ctx": "src/data/zonas/B1.ts:91 · campo fala"
  },
  "Estamos medindo as cheias do Pantanal. E as cheias estão medindo a nossa paciência.": {
-  "en": "",
+  "en": "We're measuring the Pantanal floods. And the floods are measuring our patience.",
   "ctx": "src/data/zonas/B1.ts:91 · campo fala"
  },
  "Seu Gravatá": {
-  "en": "",
+  "en": "Seu Gravatá",
   "ctx": "src/data/zonas/B1.ts:92 · gente()"
  },
  "Tá vendo aquela ilhota na lagoa? Meu chapéu voou para lá faz um ano.": {
-  "en": "",
+  "en": "See that little island in the lagoon? My hat blew over there a year ago.",
   "ctx": "src/data/zonas/B1.ts:92 · campo fala"
  },
  "Quem tiver canoa pode ficar com o que achar. Só não fique com o chapéu, que era do meu pai.": {
-  "en": "",
+  "en": "Anyone with a canoe can keep whatever they find. Just don't keep the hat, it was my father's.",
   "ctx": "src/data/zonas/B1.ts:92 · campo fala"
  },
  "Pescador Mandi": {
-  "en": "",
+  "en": "Fisher Mandi",
   "ctx": "src/data/zonas/B1.ts:93 · gente()"
  },
  "Na lagoa só dá Piabinha de Vara Velha. Peixe grande mesmo mora no Pantanal.": {
-  "en": "",
+  "en": "In the lagoon there's only Piabinha on an Old Rod. The really big fish live in the Pantanal.",
   "ctx": "src/data/zonas/B1.ts:93 · campo fala"
  },
  "Rema para o leste e você chega no Pantanal Alagado. Lá a Vara Boa pega Dourado-Rei, e a Mestra… a Mestra pega até história de pescador.": {
-  "en": "",
+  "en": "Paddle east and you'll reach Pantanal Alagado. There a Good Rod catches Dourado-Rei, and the Master… the Master catches even fish stories.",
   "ctx": "src/data/zonas/B1.ts:93 · campo fala"
  },
  "Palafita da Dona Brejeira": {
@@ -9432,187 +9432,187 @@
   "ctx": "src/data/zonas/B9.ts:62 · campo fala"
  },
  "SALÃO DO CONSELHO DOS GUARDIÕES\n1. Entrou, não volta.  2. Cinco lutas seguidas.  3. Cura só pela mochila.\n4. Perdeu, desce ao Portão.  5. Ganhou, sobe à Memória.": {
-  "en": "",
+  "en": "COUNCIL OF GUARDIANS HALL\n1. Once in, no going back.  2. Five battles in a row.  3. Healing from your bag only.\n4. Lose, and back down to the Gate.  5. Win, and up to Memory.",
   "ctx": "src/data/zonas/PP-conselho.ts:78 · placa()"
  },
  "Salão do Conselho": {
-  "en": "",
+  "en": "Council Hall",
   "ctx": "src/data/zonas/PP-conselho.ts:80 · campo nome"
  },
  "Uma estátua de Guardião com os olhos fechados. Na base, o nome de quem venceu o Conselho há cem anos.": {
-  "en": "",
+  "en": "A statue of a Guardian with closed eyes. On the base, the name of whoever beat the Council a hundred years ago.",
   "ctx": "src/data/zonas/PP-conselho.ts:83 · campo texto"
  },
  "O Marco da Memória: um tronco de pau-brasil entalhado com os nomes de todos que já subiram até aqui. Há espaço para mais um.": {
-  "en": "",
+  "en": "The Memory Marker: a brazilwood trunk carved with the names of everyone who has climbed up here. There's room for one more.",
   "ctx": "src/data/zonas/PP-conselho.ts:84 · campo texto"
  },
  "A porta da sala de espera fechou atrás de você. No Conselho só se anda para a frente.": {
-  "en": "",
+  "en": "The waiting room door closed behind you. In the Council you only move forward.",
   "ctx": "src/data/zonas/PP-conselho.ts:93 · porta()"
  },
  "A porta só abre para quem vencer a Guardiã do Mar.": {
-  "en": "",
+  "en": "The door only opens for those who beat the Sea Guardian.",
   "ctx": "src/data/zonas/PP-conselho.ts:94 · porta()"
  },
  "A porta só abre para quem vencer o Guardião da Mata.": {
-  "en": "",
+  "en": "The door only opens for those who beat the Forest Guardian.",
   "ctx": "src/data/zonas/PP-conselho.ts:95 · porta()"
  },
  "A porta só abre para quem vencer a Guardiã do Céu.": {
-  "en": "",
+  "en": "The door only opens for those who beat the Sky Guardian.",
   "ctx": "src/data/zonas/PP-conselho.ts:96 · porta()"
  },
  "A porta só abre para quem vencer o Guardião da Terra. Do outro lado espera o Guardião-Mor.": {
-  "en": "",
+  "en": "The door only opens for those who beat the Earth Guardian. On the other side waits the High Guardian.",
   "ctx": "src/data/zonas/PP-conselho.ts:97 · porta()"
  },
  "A porta da Sala da Memória só se abre pelas mãos do Guardião-Mor.": {
-  "en": "",
+  "en": "The Memory Room door only opens by the High Guardian's hand.",
   "ctx": "src/data/zonas/PP-conselho.ts:98 · porta()"
  },
  "Guardião Cauã": {
-  "en": "",
+  "en": "Guardian Cauã",
   "ctx": "src/data/zonas/PP-conselho.ts:103 · gente()"
  },
  "Gruta do Pico": {
-  "en": "",
+  "en": "Peak Cave",
   "ctx": "src/data/zonas/PP-gruta.ts:28 · campo nome"
  },
  "MURAL — ACAMPAMENTO DA FRONTEIRA": {
-  "en": "",
+  "en": "BOARD — FRONTIER CAMP",
   "ctx": "src/data/zonas/PP-posto.ts:5 · postoGuardiao()"
  },
  "• O Conselho dos Guardiões recebe desafiantes com dezesseis insígnias. Cinco lutas seguidas, sem Posto entre elas.": {
-  "en": "",
+  "en": "• The Council of Guardians welcomes challengers with sixteen badges. Five battles in a row, no Post in between.",
   "ctx": "src/data/zonas/PP-posto.ts:6 · postoGuardiao()"
  },
  "• Aviso dos Guardiões: homens do Cartel Ferrugem foram vistos subindo para o Cume com correntes. Cuidado.": {
-  "en": "",
+  "en": "• Guardians' notice: Rust Cartel men were seen heading up to the Summit with chains. Be careful.",
   "ctx": "src/data/zonas/PP-posto.ts:7 · postoGuardiao()"
  },
  "• Quem perder no Salão é trazido de volta ao Portão. Curar aqui é de graça.": {
-  "en": "",
+  "en": "• Anyone who loses in the Hall is brought back to the Gate. Healing here is free.",
   "ctx": "src/data/zonas/PP-posto.ts:8 · postoGuardiao()"
  },
  "Alpinista Cumeeira": {
-  "en": "",
+  "en": "Climber Cumeeira",
   "ctx": "src/data/zonas/PP-posto.ts:10 · campo nome"
  },
  "Tentei o Conselho três vezes. Cheguei à Jandaia uma vez. O céu dela é cheio de raio.": {
-  "en": "",
+  "en": "I've tried the Council three times. Reached Jandaia once. Her sky is full of lightning.",
   "ctx": "src/data/zonas/PP-posto.ts:10 · campo fala"
  },
  "Dica de quem caiu muito: compre Elixir e Chá de Guaraná. Lá dentro, cada cura vale uma luta.": {
-  "en": "",
+  "en": "Advice from someone who fell a lot: buy Elixir and Guaraná Tea. In there, every heal is worth a battle.",
   "ctx": "src/data/zonas/PP-posto.ts:10 · campo fala"
  },
  "Vó Serrana": {
-  "en": "",
+  "en": "Vó Serrana",
   "ctx": "src/data/zonas/PP-posto.ts:11 · campo nome"
  },
  "Meu avô subia esta trilha para levar recado de um mapa ao outro. A pé! Hoje vocês vêm de trem e de saveiro.": {
-  "en": "",
+  "en": "My grandpa used to climb this trail to carry messages from one map to the other. On foot! Nowadays you all come by train and by saveiro.",
   "ctx": "src/data/zonas/PP-posto.ts:11 · campo fala"
  },
  "O Guardião-Mor Arandu é mais velho que esta montanha, dizem. Mentira. Mas é quase.": {
-  "en": "",
+  "en": "High Guardian Arandu is older than this mountain, they say. Not true. But almost.",
   "ctx": "src/data/zonas/PP-posto.ts:11 · campo fala"
  },
  "Dona Brasa-Fria": {
-  "en": "",
+  "en": "Dona Brasa-Fria",
   "ctx": "src/data/zonas/PP-venda.ts:5 · campo nome"
  },
  "Última venda antes do Conselho! Preço de altitude, mas é o que tem: remédio bom, cuia boa e pinhão de brinde.": {
-  "en": "",
+  "en": "Last shop before the Council! High-altitude prices, but it's what there is: good medicine, good gourds and free pine nuts.",
   "ctx": "src/data/zonas/PP-venda.ts:5 · campo fala"
  },
  "Seu Agasalho": {
-  "en": "",
+  "en": "Seu Agasalho",
   "ctx": "src/data/zonas/PP-venda.ts:7 · campo nome"
  },
  "Subi para vender casaco e esqueci o meu. Estou de camiseta desde terça.": {
-  "en": "",
+  "en": "I came up here to sell coats and forgot my own. I've been in a T-shirt since Tuesday.",
   "ctx": "src/data/zonas/PP-venda.ts:7 · campo fala"
  },
  "Os Guardiões não usam casaco. Dizem que a luta esquenta.": {
-  "en": "",
+  "en": "The Guardians don't wear coats. They say battle keeps you warm.",
   "ctx": "src/data/zonas/PP-venda.ts:7 · campo fala"
  },
  "PICO PINGORAMA — ACAMPAMENTO DA FRONTEIRA\nSul: Monte Tupã (Costa do Sol). Posto e Venda no acampamento.": {
-  "en": "",
+  "en": "PICO PINGORAMA — FRONTIER CAMP\nSouth: Monte Tupã (Costa do Sol). Post and Shop at the camp.",
   "ctx": "src/data/zonas/PP.ts:52 · placa()"
  },
  "PICO PINGORAMA — ACAMPAMENTO DA FRONTEIRA\nSul: Subida da Serra (Sertão das Névoas). Posto e Venda no acampamento.": {
-  "en": "",
+  "en": "PICO PINGORAMA — FRONTIER CAMP\nSouth: Subida da Serra (Sertão das Névoas). Post and Shop at the camp.",
   "ctx": "src/data/zonas/PP.ts:53 · placa()"
  },
  "PORTÃO DOS GUARDIÕES\n\"Dezesseis insígnias abrem o portão. Uma equipe inteira abre o Conselho.\"": {
-  "en": "",
+  "en": "GUARDIANS' GATE\n\"Sixteen badges open the gate. A whole team opens the Council.\"",
   "ctx": "src/data/zonas/PP.ts:54 · placa()"
  },
  "O CUME\nAdiante, o Salão do Conselho dos Guardiões. Lá dentro: cinco lutas, nenhuma volta.": {
-  "en": "",
+  "en": "THE SUMMIT\nAhead, the Council of Guardians Hall. Inside: five battles, no way back.",
   "ctx": "src/data/zonas/PP.ts:55 · placa()"
  },
  "MIRANTE DO CUME\nA oeste, a Costa do Sol inteira até o mar. A leste, o Sertão até onde a névoa deixa.": {
-  "en": "",
+  "en": "SUMMIT LOOKOUT\nTo the west, all of Costa do Sol down to the sea. To the east, the Sertão as far as the mist allows.",
   "ctx": "src/data/zonas/PP.ts:56 · placa()"
  },
  "Um Guardião antigo, de pedra, com o cajado apontado para o cume. Na base: \"Quem sobe, sobe por todos.\"": {
-  "en": "",
+  "en": "An ancient stone Guardian, staff pointed at the summit. On the base: \"Who climbs, climbs for all.\"",
   "ctx": "src/data/zonas/PP.ts:64 · campo texto"
  },
  "A trilha do Monte Tupã desce para a Costa do Sol. O guardião Abaeté só deixa passar, lá embaixo, quem já tem quinze insígnias.\nSem as dezesseis, o Pico não leva ninguém para o outro lado.": {
-  "en": "",
+  "en": "The Monte Tupã trail goes down to Costa do Sol. Guardian Abaeté, down below, only lets through those who already have fifteen badges.\nWithout all sixteen, the Peak takes no one to the other side.",
   "ctx": "src/data/zonas/PP.ts:71 · campo recusa"
  },
  "A porta de pedra do Salão do Conselho não se mexe.\nAlguém do Cartel acorrentou as argolas de bronze.": {
-  "en": "",
+  "en": "The stone door of the Council Hall won't budge.\nSomeone from the Cartel chained the bronze rings.",
   "ctx": "src/data/zonas/PP.ts:75 · campo recusa"
  },
  "O guardião Tibiriçá, de cocar de penas de gavião, ergue a mão aberta:\n— Este é o Portão dos Guardiões. Daqui para cima, só quem venceu os dezesseis ginásios de Pingorama.\f— Não há desonra em voltar. A serra espera. Quando o estojo estiver cheio, o portão se abre sozinho.": {
-  "en": "",
+  "en": "Guardian Tibiriçá, in a headdress of hawk feathers, raises an open hand:\n— This is the Guardians' Gate. From here up, only those who beat the sixteen gyms of Pingorama.\f— There's no shame in turning back. The mountains will wait. When your case is full, the gate opens by itself.",
   "ctx": "src/data/zonas/PP.ts:81 · campo fala"
  },
  "Guardião Tibiriçá": {
-  "en": "",
+  "en": "Guardian Tibiriçá",
   "ctx": "src/data/zonas/PP.ts:92 · gente()"
  },
  "Tropeira Neve-Mansa": {
-  "en": "",
+  "en": "Drover Neve-Mansa",
   "ctx": "src/data/zonas/PP.ts:93 · gente()"
  },
  "Esta trilha liga a Costa do Sol ao Sertão desde antes das estradas. Os tropeiros subiam com mula e desciam com histórias.": {
-  "en": "",
+  "en": "This trail has linked Costa do Sol to the Sertão since before there were roads. Drovers went up with mules and came down with stories.",
   "ctx": "src/data/zonas/PP.ts:93 · campo fala"
  },
  "Lá no Cume fica o Salão do Conselho. Cinco Guardiões, um atrás do outro. Ninguém que eu conheço passou do segundo.": {
-  "en": "",
+  "en": "Up on the Summit is the Council Hall. Five Guardians, one after another. Nobody I know got past the second.",
   "ctx": "src/data/zonas/PP.ts:93 · campo fala"
  },
  "Cozinheiro Pinhão": {
-  "en": "",
+  "en": "Cook Pinhão",
   "ctx": "src/data/zonas/PP.ts:94 · gente()"
  },
  "Pinhão cozido na fogueira, quentão sem álcool e chá de guaraná. É o cardápio do acampamento.": {
-  "en": "",
+  "en": "Pine nuts roasted on the fire, alcohol-free mulled cider and guaraná tea. That's the camp menu.",
   "ctx": "src/data/zonas/PP.ts:94 · campo fala"
  },
  "Os capangas do Cartel subiram ontem com caixote e corrente. Não pagaram o pinhão. Isso eu não perdoo.": {
-  "en": "",
+  "en": "The Cartel goons came up yesterday with crates and chains. Didn't pay for their pine nuts. That I don't forgive.",
   "ctx": "src/data/zonas/PP.ts:94 · campo fala"
  },
  "Doutora Altitude": {
-  "en": "",
+  "en": "Doctor Altitude",
   "ctx": "src/data/zonas/PP.ts:95 · gente()"
  },
  "No Pico o ar é fino. Respire fundo antes de cada luta e leve remédio na mochila: lá em cima ninguém cura de graça.": {
-  "en": "",
+  "en": "On the Peak the air is thin. Breathe deep before each battle and bring medicine in your bag: up there nobody heals you for free.",
   "ctx": "src/data/zonas/PP.ts:95 · campo fala"
  },
  "O Posto daqui é o último antes do Conselho. Se perder lá dentro, os Guardiões trazem você até o Portão — e o Posto está logo abaixo.": {
-  "en": "",
+  "en": "This Post is the last one before the Council. If you lose in there, the Guardians bring you to the Gate — and the Post is just below.",
   "ctx": "src/data/zonas/PP.ts:95 · campo fala"
  },
  "Encontro das Águas": {
@@ -9628,80 +9628,92 @@
   "ctx": "src/data/zonas/_b1-lib.ts:17 · console.error()"
  },
  "Prateleiras cheias: cuias, chás, rapadura e um vidro de pequi em conserva que ninguém tem coragem de abrir.": {
-  "en": "",
+  "en": "Full shelves: gourds, teas, brown sugar and a jar of pickled pequi nobody has the nerve to open.",
   "ctx": "src/data/zonas/_b1-lib.ts:200 · campo texto | src/data/zonas/_b2n-lib.ts:201 · campo texto"
  },
  "Água fresca do filtro de barro. No Sertão, água fresca é tesouro.": {
-  "en": "",
+  "en": "Fresh water from the clay filter. In the Sertão, fresh water is treasure.",
   "ctx": "src/data/zonas/_b1-lib.ts:243 · campo texto | src/data/zonas/_b2n-lib.ts:244 · campo texto"
  },
  "Atendente": {
-  "en": "",
+  "en": "Clerk",
   "ctx": "src/data/zonas/_b2-lib.ts:70 · npc()"
  },
  "Vendedor": {
-  "en": "",
+  "en": "Shopkeeper",
   "ctx": "src/data/zonas/_b2-lib.ts:83 · npc()"
  },
  "[zonas B2-norte] ": {
-  "en": "",
+  "en": "[zonas B2-norte]",
   "ctx": "src/data/zonas/_b2n-lib.ts:18 · console.error()"
  },
  "[zonas B2-sul] ": {
-  "en": "",
+  "en": "[zonas B2-sul]",
   "ctx": "src/data/zonas/_b2s-lib.ts:16 · console.error()"
  },
  "Prateleiras cheias: cuias, garrafadas, rapadura e um vidro de pimenta que ninguém tem coragem de abrir.": {
-  "en": "",
+  "en": "Full shelves: gourds, root tonics, brown sugar and a jar of hot peppers nobody has the nerve to open.",
   "ctx": "src/data/zonas/_b2s-lib.ts:202 · campo texto"
+ },
+ "primeiro": {
+  "en": "",
+  "ctx": "src/world/mecanicas/ginasio-09.ts:35 · campo primeiro"
+ },
+ "segundo": {
+  "en": "",
+  "ctx": "src/world/mecanicas/ginasio-09.ts:35 · campo segundo"
+ },
+ "terceiro": {
+  "en": "",
+  "ctx": "src/world/mecanicas/ginasio-09.ts:35 · campo terceiro"
  },
  "Ixe, atolou! Não sobrou lama firme em volta para dar o próximo passo.\nDois peões puxam você pelo cinto e alisam o cercado de novo.": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:84 · falar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:86 · falar()"
  },
  "O sino do {nome} cercado. A lama dele já secou: o chão está firme.": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:90 · falar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:92 · falar()"
  },
  "DLEM, DLEM! Os peões correm com o rodo e alisam a lama do cercado. Pode começar de novo.": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:95 · falar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:97 · falar()"
  },
  "DLEM, DLEM! O sino chama os peões, mas a lama do cercado ainda está lisinha, sem nenhuma pegada.": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:95 · falar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:97 · falar()"
  },
  "Lama do {nome} cercado!": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:121 · avisar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:123 · avisar()"
  },
  "A porteira abriu!": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:125 · avisar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:127 · avisar()"
  },
  "O {nome} cercado secou!": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:133 · avisar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:135 · avisar()"
  },
  "Você saiu do cercado antes de pisar a lama toda.\nOs peões já passaram o rodo: a lama está lisinha outra vez.": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:136 · falar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:138 · falar()"
  },
  "Ali a lama engoliu a pegada: ficou um buraco fundo, cheio de água barrenta.": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:147 · falar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:149 · falar()"
  },
  "Lama mole do Pantanal. Pisou e saiu, ela afunda.": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:147 · falar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:149 · falar()"
  },
  "A porteira está trancada com tramela.\nUm aviso pendurado: \"Só abre depois que o cercado inteiro levar pisada.\"": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:151 · falar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:153 · falar()"
  },
  "Um fardo de feno amarrado ao mourão com corda de couro. Nem a Força tira ele do lugar.": {
   "en": "",
-  "ctx": "src/world/mecanicas/ginasio-09.ts:152 · falar()"
+  "ctx": "src/world/mecanicas/ginasio-09.ts:154 · falar()"
  },
  "Um vagonete de mina. Subir e soltar o freio?": {
   "en": "",
@@ -9754,6 +9766,10 @@
  "Aqui no último terreiro, fogueira nenhuma pisca para ajudar. Eu canto o nome das notas e você acende na mesma ordem.\nCada fogueira tem a sua nota escrita na bandeirinha: chegue perto e leia.": {
   "en": "",
   "ctx": "src/world/mecanicas/ginasio-11.ts:39 · campo fala"
+ },
+ "{nota}…": {
+  "en": "",
+  "ctx": "src/world/mecanicas/ginasio-11.ts:77 · avisar()"
  },
  "A música foi: {nomes}. ANARRIÊ!": {
   "en": "",
@@ -9906,6 +9922,22 @@
  "Gelo liso como espelho. Quem pisa só para quando bate em alguma coisa.": {
   "en": "",
   "ctx": "src/world/mecanicas/ginasio-14.ts:84 · falar()"
+ },
+ "anoitecer": {
+  "en": "",
+  "ctx": "src/world/mecanicas/ginasio-15.ts:15"
+ },
+ "meia-noite": {
+  "en": "",
+  "ctx": "src/world/mecanicas/ginasio-15.ts:15"
+ },
+ "madrugada": {
+  "en": "",
+  "ctx": "src/world/mecanicas/ginasio-15.ts:15"
+ },
+ "alvorada": {
+  "en": "",
+  "ctx": "src/world/mecanicas/ginasio-15.ts:15"
  },
  "a Ema": {
   "en": "",

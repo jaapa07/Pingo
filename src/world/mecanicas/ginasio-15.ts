@@ -12,7 +12,7 @@ import { tr } from '../../i18n';
 
 const ZONA = 'B8-ginasio';
 type Const = 'ema' | 'anta' | 'homem-velho' | 'veado' | 'cruzeiro' | 'tres-marias' | 'eixu';
-const HORAS = ['anoitecer', 'meia-noite', 'madrugada', 'alvorada'];
+const NOME_HORAS = ['anoitecer', 'meia-noite', 'madrugada', 'alvorada'];
 /** portais: posição e constelação em cada hora (null = apagado); pares por hora conferidos pela busca do diário */
 const PORTAIS: { x: number; y: number; c: (Const | null)[] }[] = [
   { x: 5, y: 15, c: ['ema', 'veado', 'eixu', 'homem-velho'] }, // P0 entrada
@@ -62,15 +62,15 @@ function pintar() {
   });
 }
 async function girar() {
-  hora = (hora + 1) % HORAS.length;
+  hora = (hora + 1) % NOME_HORAS.length;
   sfx('g-mente'); M.cena.tremer(3);
   pintar();
-  avisar(tr('O céu girou: {hora}.', { hora: HORAS[hora] }));
+  avisar(tr('O céu girou: {hora}.', { hora: NOME_HORAS[hora] }));
 }
 async function saltar(i: number) {
   const p = PORTAIS[i], c = p.c[hora];
   const j = c ? PORTAIS.findIndex((q, k) => k !== i && q.c[hora] === c) : -1;
-  if (j < 0) { sfx('ui-erro'); await falar(c ? tr('O portal mostra {n}, mas nenhum outro portal brilha com ela nesta hora.', { n: NOME[c] }) : tr('O portal está apagado: nenhuma constelação passa por ele no céu da {hora}.', { hora: HORAS[hora] })); return; }
+  if (j < 0) { sfx('ui-erro'); await falar(c ? tr('O portal mostra {n}, mas nenhum outro portal brilha com ela nesta hora.', { n: NOME[c] }) : tr('O portal está apagado: nenhuma constelação passa por ele no céu da {hora}.', { hora: NOME_HORAS[hora] })); return; }
   sfx('warp');
   await quadros(14, (k) => { M.jog.visivel = k % 4 < 2; });
   recolocar(PORTAIS[j].x, PORTAIS[j].y, M.jog.dir);
@@ -95,9 +95,9 @@ registrarMecanica(ZONA, {
   },
   interagir(x, y) {
     const i = portalEm(x, y);
-    if (i >= 0) { const c = PORTAIS[i].c[hora]; cena(() => falar(c ? tr('Um portal de constelação. No céu da {hora}, ele mostra {n}.', { hora: HORAS[hora], n: NOME[c] }) : tr('Um portal apagado. No céu da {hora}, nenhuma constelação passa por ele.', { hora: HORAS[hora] }))); return true; }
+    if (i >= 0) { const c = PORTAIS[i].c[hora]; cena(() => falar(c ? tr('Um portal de constelação. No céu da {hora}, ele mostra {n}.', { hora: NOME_HORAS[hora], n: NOME[c] }) : tr('Um portal apagado. No céu da {hora}, nenhuma constelação passa por ele.', { hora: NOME_HORAS[hora] }))); return true; }
     if (M.zv.ch(x, y) === 'x') { cena(() => falar(vencido() ? 'O campo mental zumbe baixinho. Nem a vitória deixa alguém atravessar pensamento puro.' : 'Um campo mental: o ar treme como água e empurra a gente de volta. Só os portais atravessam.')); return true; }
-    if (M.zv.ch(x, y) === ',') { cena(() => falar(tr('Uma estrela-guia no chão. Pisar nela gira o céu uma hora adiante. Agora é {hora}.', { hora: HORAS[hora] }))); return true; }
+    if (M.zv.ch(x, y) === ',') { cena(() => falar(tr('Uma estrela-guia no chão. Pisar nela gira o céu uma hora adiante. Agora é {hora}.', { hora: NOME_HORAS[hora] }))); return true; }
     return false;
   },
   sair() { enf.esquecer(); hora = 0; },
