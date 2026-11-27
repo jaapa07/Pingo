@@ -24,7 +24,12 @@ export const idiomaAtual = (): Idioma => idioma;
 export const emIngles = () => idioma === 'en';
 export function definirIdioma(i: Idioma) { idioma = i === 'en' ? 'en' : 'pt'; }
 /** acrescenta traduções ao catálogo (valores vazios são ignorados: caem para o PT) */
-export function instalarCatalogo(pares: Record<string, string>) { for (const [k, v] of Object.entries(pares)) if (v) catalogo.set(k, v); }
+export function instalarCatalogo(pares: Record<string, string>) { for (const [k, v] of Object.entries(pares)) if (v) { catalogo.set(k, v); if (DEV) guardarPalavras(v); } }
+/**
+ * nomes que são iguais nos dois idiomas e aparecem sozinhos na tela (criaturas, o nome do jogador, apelidos): não entram
+ * na lista de textos sem tradução. Só tem efeito em desenvolvimento.
+ */
+export function nomesFixos(nomes: Iterable<string | null | undefined>) { if (DEV) for (const n of nomes) if (n) guardarPalavras(n); }
 export const tamanhoCatalogo = () => catalogo.size;
 /** textos que apareceram em inglês sem tradução nesta sessão (só em desenvolvimento; os testes leem por window.__pingo.i18n) */
 export const semTraducao = () => [...faltas];
@@ -35,8 +40,23 @@ export function idiomaDoNavegador(): Idioma {
   return /^pt\b/i.test(n) ? 'pt' : 'en';
 }
 
+/*
+ * Lista dos textos sem tradução (só em desenvolvimento). Um texto que já está em inglês volta a passar por `tela` quando a
+ * tela o mostra (a fonte recebe a saída de `t`/`tr`/`tela`, as caixas do diálogo depois de `{JOGADOR}` e de `\f`, as
+ * linhas de `quebrar`, rótulos montados como "Nº 011 Bem-te-viço" ou "◀ Back"): ele não está no catálogo como chave e não
+ * pode aparecer na lista. Por isso um texto só é acusado se tiver alguma palavra (2+ letras) que não esteja no
+ * vocabulário do inglês: as palavras das traduções do catálogo e dos `nomesFixos`.
+ */
+const vocabulario = new Set<string>();
+const conferidos = new Set<string>();
+const PALAVRA = /[A-Za-zÀ-ÖØ-öø-ÿ]{2,}/g;
+function guardarPalavras(s: string) { for (const p of s.match(PALAVRA) ?? []) vocabulario.add(p.toLowerCase()); }
 function faltou(s: string) {
-  if (!DEV || faltas.has(s) || produzidos.has(s) || !/[A-Za-zÀ-ÿ]{2}/.test(s)) return;
+  if (!DEV || faltas.has(s) || produzidos.has(s) || conferidos.has(s)) return;
+  if (conferidos.size > 20000) conferidos.clear();
+  conferidos.add(s);
+  const palavras = s.match(PALAVRA);
+  if (!palavras || palavras.every((p) => vocabulario.has(p.toLowerCase()))) return;
   faltas.add(s); console.info('[i18n] sem tradução:', JSON.stringify(s));
 }
 function produzido(s: string) { if (produzidos.size > 4000) produzidos.clear(); produzidos.add(s); return s; }
@@ -58,12 +78,14 @@ export function tela(s: string): string {
 
 export type Valores = Record<string, string | number | null | undefined>;
 const MARCADOR = /\{([A-Za-z][A-Za-z0-9_]*)\}/g;
+/** valor de texto de `tr` em inglês: tradução do catálogo, ou o próprio valor (nome de criatura/pessoa, número…) */
+function valorEn(v: string) { const e = catalogo.get(v); if (e !== undefined) return e; faltou(v); return v; }
 /** frase montada: troca o modelo (se houver tradução) e preenche os marcadores; valores de texto também são traduzidos */
 export function tr(modelo: string, valores?: Valores): string {
   const ing = idioma === 'en';
   let m = modelo;
   if (ing) { const e = catalogo.get(modelo); if (e !== undefined) m = e; else faltou(modelo); }
-  if (valores) m = m.replace(MARCADOR, (todo, k: string) => { if (!(k in valores)) return todo; const v = valores[k]; return v == null ? '' : typeof v === 'number' ? String(v) : ing ? (catalogo.get(v) ?? v) : v; });
+  if (valores) m = m.replace(MARCADOR, (todo, k: string) => { if (!(k in valores)) return todo; const v = valores[k]; return v == null ? '' : typeof v === 'number' ? String(v) : ing ? valorEn(v) : v; });
   return ing ? produzido(m) : m;
 }
 /** junta uma lista como na fala: "A, B e C" / "A, B and C" (`conj` 'ou' → "ou"/"or"); os itens já vêm traduzidos */

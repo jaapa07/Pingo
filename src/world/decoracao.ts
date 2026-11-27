@@ -9,6 +9,7 @@ import { precarregar } from '../core/assets';
 import { DECORACOES, decoracaoAtual, type CategoriaDeco } from '../data/decoracao';
 import { M } from './vivo';
 import { objCat } from './zonas';
+import { t } from '../i18n';
 
 interface Ret { sx: number; sy: number; w: number; h: number; dx: number; dy: number }
 interface Folha { pecas: Record<string, { chao?: Ret; alto?: Ret }> }
@@ -54,7 +55,7 @@ function pintar() {
     if (f.alto) peca(f.alto, x, y, 0, M.cena.alto);
     if (!c) continue;
     const d = DECORACOES.find((p) => p.id === id);
-    const exame = EXAME[id] ?? (d ? [`${d.nome}. ${d.origem}`] : []);
+    const exame = EXAME[id] ?? (d ? [`${t(d.nome)}. ${t(d.origem)}`] : []);
     for (let j = 0; j < c.h; j++) for (let i = 0; i < c.w; i++) {
       if (!c.colisao[j][i]) continue;
       const tx = x + i, ty = y - (c.h - 1) + j;

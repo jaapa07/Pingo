@@ -8,7 +8,7 @@ import { Grade } from '../componentes/grade';
 import { faixaDica, placaTitulo, caixa, rotulo } from './comum';
 import { LIDERES, T } from '../../data/textos-ui';
 import { em } from '../fonte';
-import { emIngles, tr } from '../../i18n';
+import { emIngles, t, tr } from '../../i18n';
 
 export const TIPO_INSIGNIA: TipoId[] = ['vento', 'inseto', 'rio', 'mata', 'terra', 'encanto', 'trovao', 'assombro', 'pedra', 'brasa', 'ginga', 'ferro', 'veneno', 'geada', 'mente', 'lenda'];
 export function criarInsignias(): Tela {
@@ -36,7 +36,7 @@ export function criarInsignias(): Tela {
     rotulo(corpo, `${i + 1}. ${emIngles() ? tr('Insígnia {nome}', { nome: NOME_INSIGNIA[i] }) : nomeIns}`, 0, 1, 'amarelo', { sombra: true }); // i18n-ok
     corpo.append(em(chipTipo(TIPO_INSIGNIA[i], 56), 208, 0));
     rotulo(corpo, tr('Líder: {c:agua}{lider}{/c}, de {cidade}', { lider: l.lider, cidade: l.cidade }), 0, 14, 'creme');
-    rotulo(corpo, tem(i + 1) ? `"${l.frase}"` : T.insignias.falta, 0, 26, tem(i + 1) ? 'creme' : 'cinza');
+    rotulo(corpo, tem(i + 1) ? `"${t(l.frase)}"` : T.insignias.falta, 0, 26, tem(i + 1) ? 'creme' : 'cinza');
   }
   const tela: Tela = { el, entrar() { pintar(); }, atualizar(dt) { grade.atualizar(dt); } };
   return tela;

@@ -5,6 +5,7 @@
 import { input, tocavel } from '../../core/input';
 import { texto, escrever, em, type CorTexto, type Tamanho } from '../fonte';
 import { moldura, cursorMao, seta, som, fatiaDe, type TipoMoldura } from '../kit';
+import { t } from '../../i18n';
 
 export interface ItemLista { rotulo: string; /** texto à direita (quantidade, valor) */ valor?: string; desabilitado?: boolean; icone?: HTMLElement; cor?: CorTexto }
 export interface OpLista {
@@ -42,7 +43,8 @@ export class Lista {
     this.visiveis = Math.max(1, Math.min(o.visiveis ?? 7, Math.max(1, its.length)));
     const tipo = o.moldura === undefined ? 'madeira' : o.moldura;
     this.margem = tipo ? fatiaDe(tipo) + (fatiaDe(tipo) >= 8 ? 0 : 2) : 0;
-    const maior = Math.max(24, ...its.map((i) => parseInt(texto(i.rotulo + (i.valor ? '  ' + i.valor : ''), { tamanho: tam }).style.width) + (i.icone ? 18 : 0)));
+    // cada parte passa pelo catálogo antes de juntar (o inglês mede a largura do texto que vai aparecer)
+    const maior = Math.max(24, ...its.map((i) => parseInt(texto(t(i.rotulo) + (i.valor ? '  ' + t(i.valor) : ''), { tamanho: tam }).style.width) + (i.icone ? 18 : 0)));
     this.largura = o.largura ?? maior + 20 + this.margem * 2;
     this.wItem = this.largura - this.margem * 2 - 18;
     const h = this.visiveis * this.alt + this.margem * 2 + 2;

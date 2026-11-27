@@ -21,7 +21,7 @@ import { Lista } from '../componentes/lista';
 import { figura, nomeCri, sexoTxt, esp, n3, faixaDica, pix, caixa, rotulo, estrelaRara, type Icone } from './comum';
 import { nomeLocal } from './mapa-dados';
 import { T } from '../../data/textos-ui';
-import { tr } from '../../i18n';
+import { t, tr } from '../../i18n';
 
 export interface ArgsResumo { lista?: CriaturaInst[]; indice?: number }
 const NOME_STAT: Record<Stat, string> = { vida: 'Vida', atq: 'Ataque', def: 'Defesa', atqEsp: 'Atq. Esp.', defEsp: 'Def. Esp.', vel: 'Velocidade' };
@@ -94,7 +94,7 @@ export function criarResumo(args: ArgsResumo = {}): Tela {
   function paginaGolpes() {
     const k = c();
     if (k.ovo) { rotulo(corpo, T.resumo.ovo, 2, 4, 'tinta', { largura: 186 }); return; }
-    const itens = () => k.golpes.map((g, i) => ({ rotulo: (i === pego ? '▶ ' : '') + (temGolpe(g.id) ? golpe(g.id).nome : g.id), valor: tr('PG {pg}/{pgMax}', { pg: g.pg, pgMax: g.pgMax }), icone: iconeTipo(temGolpe(g.id) ? golpe(g.id).tipo : 'comum'), cor: i === pego ? ('vermelho' as const) : undefined }));
+    const itens = () => k.golpes.map((g, i) => ({ rotulo: (i === pego ? '▶ ' : '') + (temGolpe(g.id) ? t(golpe(g.id).nome) : g.id), valor: tr('PG {pg}/{pgMax}', { pg: g.pg, pgMax: g.pgMax }), icone: iconeTipo(temGolpe(g.id) ? golpe(g.id).tipo : 'comum'), cor: i === pego ? ('vermelho' as const) : undefined }));
     golpes = new Lista({ itens: itens(), moldura: null, largura: 190, visiveis: 4, tamanho: 8, aoMover: pintarDetalhe, aoCancelar: () => { if (pego >= 0) { pego = -1; golpes!.definirItens(itens()); pintarDica(); } else sair(); },
       aoEscolher: (i) => {
         if (k.golpes.length < 2) return;

@@ -310,7 +310,7 @@ function criarGincana(args: ArgsGincana): Tela {
   const tNome = texto(traduz(def.nome).toUpperCase(), { cor: 'amarelo', sombra: true }); placar.append(em(tNome, 6, 4));
   const tTempo = texto('', { cor: 'creme', sombra: true }); placar.append(tTempo);
   const tPts = texto('', { cor: 'creme', sombra: true }); placar.append(tPts);
-  if (ctx.bonus > 0) { const s = sucoDe(c); const tb = texto(`${s?.nome ?? 'Suco'} +${Math.round(ctx.bonus * 100)}%`, { cor: 'verde', sombra: true }); el.append(em(tb, 4, 19)); }
+  if (ctx.bonus > 0) { const s = sucoDe(c); const tb = texto(`${traduz(s?.nome ?? 'Suco')} +${Math.round(ctx.bonus * 100)}%`, { cor: 'verde', sombra: true }); el.append(em(tb, 4, 19)); }
   const dica = faixaDica(el);
   dica(prova.dica);
   // placa da contagem / FIM (só aparece com texto)
@@ -431,7 +431,7 @@ registrarComando('gincanaSucos', async () => {
   }
   const tem = SUCOS.filter((s) => qtdItem(s.fruto) > 0);
   if (!tem.length) { await falar('Sem fruto não tem suco. Caju, pitanga, cupuaçu, pequi, jabuticaba, buriti, acerola ou açaí: colha nos canteiros e nas árvores e traga aqui.', GRAVIOLA); return; }
-  const i = await escolher('Qual fruto vai no liquidificador?', [...tem.map((s) => `${itemDef(s.fruto).nome} (×${qtdItem(s.fruto)}): ${NOME_ALVO[s.alvo]} +${s.pct}%`), 'Nenhum']);
+  const i = await escolher('Qual fruto vai no liquidificador?', [...tem.map((s) => `${traduz(itemDef(s.fruto).nome)} (×${qtdItem(s.fruto)}): ${traduz(NOME_ALVO[s.alvo])} +${s.pct}%`), 'Nenhum']);
   if (i < 0 || i >= tem.length) { await falar('Tá certo. O liquidificador fica ligado na tomada esperando.', GRAVIOLA); return; }
   const s = tem[i];
   const c = await escolherCriatura('QUEM BEBE O SUCO?');

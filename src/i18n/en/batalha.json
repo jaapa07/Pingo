@@ -249,7 +249,7 @@
  },
  "{nome} recuperou {qtd} de vida.": {
   "en": "{nome} recovered {qtd} HP.",
-  "ctx": "src/battle/engine.ts:436 · this.msg() | src/ui/telas/comum.ts:242 · partes.push()"
+  "ctx": "src/battle/engine.ts:436 · this.msg() | src/ui/telas/comum.ts:243 · partes.push()"
  },
  "{nome} {acao}": {
   "en": "{nome} {acao}",
@@ -569,15 +569,15 @@
  },
  "{nome} subiu para o nível {nivel}!": {
   "en": "{nome} grew to level {nivel}!",
-  "ctx": "src/battle/engine.ts:821 · this.msg() | src/ui/telas/comum.ts:217 · informar()"
+  "ctx": "src/battle/engine.ts:821 · this.msg() | src/ui/telas/comum.ts:218 · informar()"
  },
  "{nome} aprendeu {golpe}!": {
   "en": "{nome} learned {golpe}!",
-  "ctx": "src/battle/engine.ts:828 · this.msg() | src/ui/telas/comum.ts:169 · informar()"
+  "ctx": "src/battle/engine.ts:828 · this.msg() | src/ui/telas/comum.ts:170 · informar()"
  },
  "{nome} não aprendeu {golpe}.": {
   "en": "{nome} did not learn {golpe}.",
-  "ctx": "src/battle/engine.ts:844 · this.msg() | src/ui/telas/comum.ts:171 · informar()"
+  "ctx": "src/battle/engine.ts:844 · this.msg() | src/ui/telas/comum.ts:172 · informar()"
  },
  "{nome} esqueceu {golpe} e aprendeu {golpe2}!": {
   "en": "{nome} forgot {golpe} and learned {golpe2}!",

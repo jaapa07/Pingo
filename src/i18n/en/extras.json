@@ -800,7 +800,7 @@
   "ctx": "src/data/radio.ts:84"
  },
  "{n} revanche(s) agora.": {
-  "en": "{n} rematch(es) now.",
+  "en": "Rematches now: {n}.",
   "ctx": "src/data/radio.ts:84"
  },
  "Nenhuma revanche agora.": {
@@ -1353,7 +1353,7 @@
  },
  "Suco": {
   "en": "Juice",
-  "ctx": "src/ui/telas/gincana.ts:313 · texto()"
+  "ctx": "src/ui/telas/gincana.ts:313 · traduz()"
  },
  "Tempo {resto}s": {
   "en": "Time {resto}s",

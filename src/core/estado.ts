@@ -1,6 +1,7 @@
 /** Estado global da sessão: o save em memória + opções. Persistência em core/save.ts. */
 import type { SaveData, Opcoes, CriaturaInst, AmuletoId, Cond, Periodo } from './tipos';
 import { rng } from './rng';
+import { nomesFixos } from '../i18n';
 import { MAPA_B_ABERTO, DEMO } from './progresso';
 
 export const opcoesPadrao = (): Opcoes => ({ musica: 0.7, sfx: 0.85, velTexto: 2, dificuldade: 'aventureiro', animBatalha: true, numerosDano: false, vibrar: true, parceiraSegue: false, teclas: {}, qualidade: 'pc', vozes: false, idioma: 'pt' });
@@ -21,7 +22,11 @@ export const jogo = {
   save: novoSave(),
   opcoes: opcoesPadrao(),
   slot: 0,
-  carregar(s: SaveData) { this.save = s; rng.seed(s.rng); },
+  carregar(s: SaveData) {
+    this.save = s; rng.seed(s.rng);
+    // nomes escolhidos pelo jogador não têm tradução (lista de textos sem tradução, só em desenvolvimento)
+    nomesFixos([s.jogador?.nome, String(s.flags?.['rival'] ?? ''), ...[...(s.equipe ?? []), ...(s.viveiro ?? []).flat()].map((c) => c?.apelido)]);
+  },
 };
 
 /* ------------------------- consultas e mutações comuns ------------------------- */

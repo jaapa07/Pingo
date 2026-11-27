@@ -53,15 +53,15 @@
  },
  "Não teria efeito.": {
   "en": "It wouldn't have any effect.",
-  "ctx": "src/battle/view/tela.ts:467 · telaEquipe() | src/ui/telas/comum.ts:162"
+  "ctx": "src/battle/view/tela.ts:467 · telaEquipe() | src/ui/telas/comum.ts:163"
  },
  "Kauê": {
   "en": "Kauê",
-  "ctx": "src/core/estado.ts:11 · campo nome | src/data/eventos/a1.ts:14 · registrarComando() | src/data/eventos/a1.ts:60 · pergunta/opção"
+  "ctx": "src/core/estado.ts:12 · campo nome | src/data/eventos/a1.ts:14 · registrarComando() | src/data/eventos/a1.ts:60 · pergunta/opção"
  },
  "condição desconhecida: ": {
   "en": "condição desconhecida: ",
-  "ctx": "src/core/estado.ts:76"
+  "ctx": "src/core/estado.ts:81"
  },
  "Cima": {
   "en": "Up",
@@ -524,7 +524,7 @@
   "ctx": "src/data/textos-ui.ts:19 · campo ovo"
  },
  "A barra mostra a força natural da espécie. {c:vermelho}Vermelho{/c}: o jeito ajuda. {c:azul}Azul{/c}: o jeito atrapalha.": {
-  "en": "The bar shows the species' natural strength. {c:vermelho}Red{/c}: the nature helps. {c:azul}Blue{/c}: the nature hinders.",
+  "en": "Bar: the species' natural strength. {c:vermelho}Red{/c}: nature helps. {c:azul}Blue{/c}: it hinders.",
   "ctx": "src/data/textos-ui.ts:20 · campo legendaAtributos"
  },
  "←→: página   ↑↓: criatura   A: cafuné   B: voltar": {
@@ -1569,107 +1569,107 @@
  },
  "{nome} já sabe {golpe}.": {
   "en": "{nome} already knows {golpe}.",
-  "ctx": "src/ui/telas/comum.ts:168 · informar()"
+  "ctx": "src/ui/telas/comum.ts:169 · informar()"
  },
  "{nome} quer aprender {golpe}, mas já sabe 4 golpes. Esquecer qual?": {
   "en": "{nome} wants to learn {golpe}, but already knows 4 moves. Forget which one?",
-  "ctx": "src/ui/telas/comum.ts:170 · perguntar()"
+  "ctx": "src/ui/telas/comum.ts:171 · perguntar()"
  },
  "Não aprender": {
   "en": "Don't learn",
-  "ctx": "src/ui/telas/comum.ts:170 · perguntar()"
+  "ctx": "src/ui/telas/comum.ts:171 · perguntar()"
  },
  "1, 2 e… pronto! {nome} esqueceu {velho} e aprendeu {golpe}!": {
   "en": "1, 2 and… poof! {nome} forgot {velho} and learned {golpe}!",
-  "ctx": "src/ui/telas/comum.ts:174 · informar()"
+  "ctx": "src/ui/telas/comum.ts:175 · informar()"
  },
  "O quê? {nome} está evoluindo!": {
   "en": "What? {nome} is evolving!",
-  "ctx": "src/ui/telas/comum.ts:186 · informar()"
+  "ctx": "src/ui/telas/comum.ts:187 · informar()"
  },
  "{nome} parou de evoluir.": {
   "en": "{nome} stopped evolving.",
-  "ctx": "src/ui/telas/comum.ts:187 · informar()"
+  "ctx": "src/ui/telas/comum.ts:188 · informar()"
  },
  "Parabéns! {nome} evoluiu para {nova}!": {
   "en": "Congratulations! {nome} evolved into {nova}!",
-  "ctx": "src/ui/telas/comum.ts:190 · informar()"
+  "ctx": "src/ui/telas/comum.ts:191 · informar()"
  },
  "Este item não se usa numa criatura.": {
   "en": "This item isn't used on a creature.",
-  "ctx": "src/ui/telas/comum.ts:197 · nada()"
+  "ctx": "src/ui/telas/comum.ts:198 · nada()"
  },
  "O ovo ainda não pode usar isso.": {
   "en": "The egg can't use that yet.",
-  "ctx": "src/ui/telas/comum.ts:198 · nada()"
+  "ctx": "src/ui/telas/comum.ts:199 · nada()"
  },
  "{nome} não consegue aprender {golpe}.": {
   "en": "{nome} can't learn {golpe}.",
-  "ctx": "src/ui/telas/comum.ts:202 · nada()"
+  "ctx": "src/ui/telas/comum.ts:203 · nada()"
  },
  "A {item} não reage a {nome}.": {
   "en": "The {item} doesn't react to {nome}.",
-  "ctx": "src/ui/telas/comum.ts:208 · nada()"
+  "ctx": "src/ui/telas/comum.ts:209 · nada()"
  },
  "{nome} já está no nível máximo.": {
   "en": "{nome} is already at the max level.",
-  "ctx": "src/ui/telas/comum.ts:213 · nada()"
+  "ctx": "src/ui/telas/comum.ts:214 · nada()"
  },
  "{nome} aprendeu {n}!": {
   "en": "{nome} learned {n}!",
-  "ctx": "src/ui/telas/comum.ts:218 · informar()"
+  "ctx": "src/ui/telas/comum.ts:219 · informar()"
  },
  "A vitamina não faz mais efeito em {nome}.": {
   "en": "The vitamin has no more effect on {nome}.",
-  "ctx": "src/ui/telas/comum.ts:227 · nada()"
+  "ctx": "src/ui/telas/comum.ts:228 · nada()"
  },
  "{nome} tomou a vitamina e ficou mais forte!": {
   "en": "{nome} took the vitamin and got stronger!",
-  "ctx": "src/ui/telas/comum.ts:231 · campo msg"
+  "ctx": "src/ui/telas/comum.ts:232 · campo msg"
  },
  "{nome} já é sua amiga do peito.": {
   "en": "{nome} is already your best friend.",
-  "ctx": "src/ui/telas/comum.ts:234 · nada()"
+  "ctx": "src/ui/telas/comum.ts:235 · nada()"
  },
  "{nome} adorou! Ficou mais amiga.": {
   "en": "{nome} loved it! You're closer now.",
-  "ctx": "src/ui/telas/comum.ts:235 · campo msg"
+  "ctx": "src/ui/telas/comum.ts:236 · campo msg"
  },
  "{nome} não está desmaiada.": {
   "en": "{nome} hasn't fainted.",
-  "ctx": "src/ui/telas/comum.ts:239 · nada()"
+  "ctx": "src/ui/telas/comum.ts:240 · nada()"
  },
  "{nome} voltou a si!": {
   "en": "{nome} came to!",
-  "ctx": "src/ui/telas/comum.ts:240 · partes.push()"
+  "ctx": "src/ui/telas/comum.ts:241 · partes.push()"
  },
  "{nome} está desmaiada.": {
   "en": "{nome} has fainted.",
-  "ctx": "src/ui/telas/comum.ts:241 · nada()"
+  "ctx": "src/ui/telas/comum.ts:242 · nada()"
  },
  "{nome} não está mais {n}.": {
   "en": "{nome} is no longer {n}.",
-  "ctx": "src/ui/telas/comum.ts:243 · partes.push()"
+  "ctx": "src/ui/telas/comum.ts:244 · partes.push()"
  },
  "Os PG de {nome} foram restaurados.": {
   "en": "{nome}'s MP was restored.",
-  "ctx": "src/ui/telas/comum.ts:247 · partes.push()"
+  "ctx": "src/ui/telas/comum.ts:248 · partes.push()"
  },
  "Restaurar os PG de qual golpe?": {
   "en": "Restore MP for which move?",
-  "ctx": "src/ui/telas/comum.ts:249 · perguntar()"
+  "ctx": "src/ui/telas/comum.ts:250 · perguntar()"
  },
  "Desistir": {
   "en": "Cancel",
-  "ctx": "src/ui/telas/comum.ts:249 · perguntar() | src/ui/telas/gincana.ts:337 · perguntar()"
+  "ctx": "src/ui/telas/comum.ts:250 · perguntar() | src/ui/telas/gincana.ts:337 · perguntar()"
  },
  "{golpe} recuperou PG.": {
   "en": "{golpe} recovered MP.",
-  "ctx": "src/ui/telas/comum.ts:251 · partes.push()"
+  "ctx": "src/ui/telas/comum.ts:252 · partes.push()"
  },
  "{golpe} já está com todos os PG.": {
   "en": "{golpe} already has full MP.",
-  "ctx": "src/ui/telas/comum.ts:252 · nada()"
+  "ctx": "src/ui/telas/comum.ts:253 · nada()"
  },
  "capim alto": {
   "en": "tall grass",
@@ -2924,7 +2924,7 @@
   "ctx": "src/ui/telas/resumo.ts:82 · rotulo()"
  },
  "TREINO": {
-  "en": "TRAINING",
+  "en": "TRAIN",
   "ctx": "src/ui/telas/resumo.ts:82 · rotulo()"
  },
  "PG {pg}/{pgMax}": {
@@ -3397,19 +3397,19 @@
  },
  "Sua cama. A colcha de estrela foi a vó que costurou.": {
   "en": "Your bed. Grandma sewed the star quilt.",
-  "ctx": "src/world/decoracao.ts:20 · campo cama-jogador"
+  "ctx": "src/world/decoracao.ts:21 · campo cama-jogador"
  },
  "Uma cama simples, de colcha lisa. Dá saudade da colcha de estrela.": {
   "en": "A simple bed with a plain quilt. You miss the star quilt.",
-  "ctx": "src/world/decoracao.ts:21 · campo cama"
+  "ctx": "src/world/decoracao.ts:22 · campo cama"
  },
  "O videogame de cartucho. A fita de corrida de jangada está emperrada desde o Natal.": {
   "en": "The cartridge console. The raft-racing cartridge has been stuck since Christmas.",
-  "ctx": "src/world/decoracao.ts:22 · campo console"
+  "ctx": "src/world/decoracao.ts:23 · campo console"
  },
  "Um tamanduá de pelúcia. O focinho já está meio careca de tanto abraço.": {
   "en": "A plush anteater. Its snout is a bit bald from all the hugs.",
-  "ctx": "src/world/decoracao.ts:23 · campo pelucia-a"
+  "ctx": "src/world/decoracao.ts:24 · campo pelucia-a"
  },
  "{classe} {treinador} quer batalhar!": {
   "en": "{classe} {treinador} wants to battle!",

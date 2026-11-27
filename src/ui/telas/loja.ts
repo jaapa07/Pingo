@@ -32,7 +32,7 @@ export function criarLoja(args: ArgsLoja = {}): Tela {
   let modo: 'menu' | 'comprar' | 'vender' = 'menu', lista: Lista | null = null, atuais: ItemInfo[] = [], ocupado = false, viva = true;
   const precoVenda = (i: ItemInfo) => Math.floor(i.preco / 2);
   const vendaveis = () => ITENS.filter((i) => qtdItem(i.id) > 0 && i.bolso !== 'chave' && i.preco > 0);
-  function dinheiro() { escrever(tDin, `${patacas(saldo())} ${md ? md.nome : 'patacas'}`); tDin.style.left = 114 - parseInt(tDin.style.width) + 'px'; }
+  function dinheiro() { escrever(tDin, `${patacas(saldo())} ${t(md ? md.nome : 'patacas')}`); tDin.style.left = 114 - parseInt(tDin.style.width) + 'px'; }
   function montar(indice = 0) {
     lista?.el.remove(); [...painel.querySelectorAll('.vazio')].forEach((x) => x.remove()); dinheiro();
     if (modo === 'menu') {

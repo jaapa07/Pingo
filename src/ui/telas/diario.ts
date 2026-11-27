@@ -26,7 +26,7 @@ import { habitatsDe, NOME_MEIO, type PeriodoTabela } from './dados';
 import { ESPECIES } from '../../data/criaturas';
 import { caber } from './mochila';
 import { T } from '../../data/textos-ui';
-import { t as traduz, tr } from '../../i18n';
+import { t as traduz, tr, emIngles } from '../../i18n';
 
 const CUIA = ['........', '..kkkk..', '.kooook.', 'koollook', 'kooooook', 'kddddddk', '.kddddk.', '..kkkk..'];
 const OLHO = ['........', '........', '..kkkk..', '.kwkkwk.', 'kwwkkwwk', '.kwkkwk.', '..kkkk..', '........'];
@@ -41,7 +41,7 @@ const PEGADAS: Record<string, string[]> = {
 };
 const pegadaDe = (t: TipoId): keyof typeof PEGADAS => (t === 'vento' ? 'ave' : t === 'rio' || t === 'geada' ? 'agua' : t === 'inseto' || t === 'veneno' ? 'inseto' : t === 'terra' || t === 'pedra' || t === 'ferro' ? 'casco' : 'pata');
 const NOME_PER: Record<PeriodoTabela, string> = { manha: 'manhã', dia: 'dia', noite: 'noite' };
-const num1 = (n: number) => String(Math.round(n * 10) / 10).replace('.', ',');
+const num1 = (n: number) => { const s = String(Math.round(n * 10) / 10); return emIngles() ? s : s.replace('.', ','); }
 function condEvolucao(ev: Evolucao): string {
   const p: string[] = [];
   if (ev.nivel) p.push(tr('Nv {nivel}', { nivel: ev.nivel }));
@@ -184,8 +184,8 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
     rotulo(corpo, 'Costa do Sol', 2, 63, 'marrom'); rotulo(corpo, 'Sertão das Névoas', 2, 63, 'marrom', { largura: 186, alinhar: 'dir' });
     if (!hs.length) { rotulo(corpo, T.diario.semHabitat, 2, 78, 'chumbo', { largura: 186 }); return; }
     hs.slice(0, 5).forEach((h, i) => {
-      const per = h.periodos.length >= 3 ? '' : `, ${h.periodos.map((p) => NOME_PER[p]).join('/')}`;
-      rotulo(corpo, '•', 2, 76 + i * 10, 'vermelho'); rotulo(corpo, caber(`${local(h.local)?.nome ?? h.local}: ${NOME_MEIO[h.metodos[0]]}${per}`, 176), 10, 76 + i * 10, 'tinta');
+      const per = h.periodos.length >= 3 ? '' : `, ${h.periodos.map((p) => traduz(NOME_PER[p])).join('/')}`;
+      rotulo(corpo, '•', 2, 76 + i * 10, 'vermelho'); rotulo(corpo, caber(`${traduz(local(h.local)?.nome ?? h.local)}: ${traduz(NOME_MEIO[h.metodos[0]])}${per}`, 176), 10, 76 + i * 10, 'tinta');
     });
     if (hs.length > 5) rotulo(corpo, tr(hs.length - 5 === 1 ? 'e mais {n} lugar' : 'e mais {n} lugares', { n: hs.length - 5 }), 2, 126, 'chumbo');
   }

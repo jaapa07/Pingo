@@ -13,7 +13,7 @@ import { texto, escrever, revelar, em, type CorTexto } from './fonte';
 import { moldura, spr, som } from './kit';
 import { Lista } from './componentes/lista';
 import { criarTelaNome } from './telas/nome';
-import { tela as traduzir, t } from '../i18n';
+import { tela as traduzir, t, nomesFixos } from '../i18n';
 
 export interface Quem { nome?: string; retrato?: string; expressao?: 'neutro' | 'feliz' | 'bravo'; voz?: string }
 
@@ -184,7 +184,7 @@ export function escolher(pergunta: string, opcoes: string[], padrao = 0): Promis
 export const simNao = (pergunta: string): Promise<boolean> => escolher(pergunta, [t('Sim'), t('Não')]).then((i) => i === 0);
 /** teclado em grade; devolve o nome digitado (ou `padrao` se o jogador confirmar vazio) */
 export function pedirNome(titulo: string, max: number, padrao = ''): Promise<string> {
-  return emFila(() => new Promise<string>((r) => { const t = criarTelaNome({ titulo: substituir(titulo), max, padrao }); const s = t.sair?.bind(t); t.sair = () => { s?.(); r(String((t as Tela & { resultado?: unknown }).resultado ?? padrao)); }; telas.empilhar(t); }));
+  return emFila(() => new Promise<string>((r) => { const t = criarTelaNome({ titulo: substituir(titulo), max, padrao }); const s = t.sair?.bind(t); t.sair = () => { s?.(); const nome = String((t as Tela & { resultado?: unknown }).resultado ?? padrao); nomesFixos([nome]); r(nome); }; telas.empilhar(t); }));
 }
 /** empilha uma tela registrada e resolve quando ela fecha, com o `resultado` que ela deixou (ver `fechar` em ui/base.ts) */
 export function abrirTela(id: string, args?: unknown): Promise<unknown> {

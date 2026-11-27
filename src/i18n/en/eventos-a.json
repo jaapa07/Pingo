@@ -968,7 +968,7 @@
   "ctx": "src/data/eventos/a2.ts:297 · f()"
  },
  "Rádio Farol no ar! Hoje: previsão da maré, modinhas de viola e o quadro \"Quem viu a Tartaruga-Gigante?\".\fDizem que ela sobe para respirar no Recife Submerso toda sexta-feira. Só às sextas.": {
-  "en": "Rádio Farol, on the air! Today: the tide forecast, guitar ballads and our segment \"Who's Seen the Giant Turtle?\".\fThey say she surfaces to breathe at the Sunken Reef every Friday. Only on Fridays.",
+  "en": "Rádio Farol, on the air! Today: the tide forecast, guitar ballads and our segment \"Who's Seen the Tartaruga-Gigante?\".\fThey say she surfaces to breathe at Recife Submerso every Friday. Only on Fridays.",
   "ctx": "src/data/eventos/a2.ts:305 · f()"
  },
  "Eu sou o Zé Dial, radioamador. O meu transmissor pifou no dia em que o farol apagou: queimou a engrenagem do dínamo.": {
@@ -1096,7 +1096,7 @@
   "ctx": "src/data/eventos/a2.ts:410 · f()"
  },
  "A Tartaruga-Gigante das sextas-feiras! O casco dela é um recife ambulante: tem coral, craca e um peixinho inquilino.\fEla olha para você devagar. Muito devagar.": {
-  "en": "The Friday Giant Turtle! Her shell is a walking reef: it has coral, barnacles and a little fish tenant.\fShe looks at you slowly. Very slowly.",
+  "en": "The Friday Tartaruga-Gigante! Her shell is a walking reef: it has coral, barnacles and a little fish tenant.\fShe looks at you slowly. Very slowly.",
   "ctx": "src/data/eventos/a2.ts:417 · f()"
  },
  "A gruta do fundo está vazia. Na areia ficou o risco de um corpo comprido, do tamanho de um rio.": {
@@ -3072,7 +3072,7 @@
   "ctx": "src/data/treinadores/a2.ts:64 · t()"
  },
  "Viu as manchas escuras na água? São poços fundos. Com o Amuleto do Mergulho dá para descer ao Recife Submerso.": {
-  "en": "See the dark patches in the water? They're deep pools. With the Dive Charm you can go down to the Sunken Reef.",
+  "en": "See the dark patches in the water? They're deep pools. With the Dive Charm you can go down to Recife Submerso.",
   "ctx": "src/data/treinadores/a2.ts:64 · t()"
  },
  "Seu Caniço": {
@@ -3924,7 +3924,7 @@
   "ctx": "src/data/treinadores/a2.ts:170 · t()"
  },
  "O Andorinhão-da-Cachoeira faz ninho atrás do véu d'água. Só sai para caçar e para se exibir.": {
-  "en": "The Waterfall Swift nests behind the curtain of water. It only comes out to hunt and to show off.",
+  "en": "The Andorinhão-da-Cachoeira nests behind the curtain of water. It only comes out to hunt and to show off.",
   "ctx": "src/data/treinadores/a2.ts:170 · t()"
  },
  "Dona Tucana": {
@@ -5236,7 +5236,7 @@
   "ctx": "src/data/zonas/A-R6.ts:85 · campo fala"
  },
  "Atrás do véu da segunda cascata mora o Andorinhão-da-Cachoeira. Sai voando por dentro d'água, sem molhar uma pena.": {
-  "en": "Behind the curtain of the second waterfall lives the Waterfall Swift. It flies out through the water without wetting a feather.",
+  "en": "Behind the curtain of the second waterfall lives the Andorinhão-da-Cachoeira. It flies out through the water without wetting a feather.",
   "ctx": "src/data/zonas/A-R6.ts:86 · campo fala"
  },
  "Eu fico aqui todo dia esperando ele errar. Faz onze anos.": {
@@ -7068,7 +7068,7 @@
   "ctx": "src/data/zonas/A6-casa-2.ts:9 · campo nome"
  },
  "Toda sexta-feira, uma Tartaruga-Gigante sobe para respirar numa clareira do Recife Submerso, debaixo da Baía Azul.": {
-  "en": "Every Friday, a Giant Turtle surfaces to breathe in a clearing of the Sunken Reef, beneath Baía Azul.",
+  "en": "Every Friday, a Tartaruga-Gigante surfaces to breathe in a clearing of Recife Submerso, beneath Baía Azul.",
   "ctx": "src/data/zonas/A6-casa-2.ts:9 · campo fala"
  },
  "Só às sextas. Nos outros dias ela tem mais o que fazer, igual a gente.": {

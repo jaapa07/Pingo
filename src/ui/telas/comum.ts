@@ -21,7 +21,7 @@ import { Lista, type ItemLista } from '../componentes/lista';
 import { input } from '../../core/input';
 import { elTela, retirar } from '../base';
 import type { Tela } from '../telas';
-import { t, tr } from '../../i18n';
+import { t, tr, emIngles } from '../../i18n';
 
 /* ------------------------------ espécies (tolerante a lotes ainda não entregues) ------------------------------ */
 // os Visitantes (181–182, spec 6.5) também têm nome, figura e ficha, fora do total de 180
@@ -34,7 +34,8 @@ export const tiposDe = (n: number): TipoId[] => esp(n)?.tipos ?? ['comum'];
 export const vidaMaxDe = (c: CriaturaInst) => (esp(c.especie) ? atributos(c).vida : Math.max(1, c.vida));
 export const sexoTxt = (c: CriaturaInst) => (c.ovo ? '' : c.sexo === 'F' ? '{c:rosa}♀{/c}' : c.sexo === 'M' ? '{c:azul}♂{/c}' : '');
 export const n3 = (n: number) => String(n).padStart(3, '0');
-export const patacas = (n: number) => String(Math.floor(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+/** milhar com ponto em português (1.250) e vírgula em inglês (1,250) */
+export const patacas = (n: number) => String(Math.floor(n)).replace(/\B(?=(\d{3})+(?!\d))/g, emIngles() ? ',' : '.');
 
 /* ------------------------------ pixel art por grade ------------------------------ */
 /** desenho de 1 px por caractere (sombras de 1 px); `escala` inteira amplia sem suavizar */
@@ -246,7 +247,7 @@ export async function usarItemEm(id: string, c: CriaturaInst): Promise<Resultado
     if (faltam.length) {
       if (u.pgTodos) { for (const g of c.golpes) g.pg = g.pgMax; fez = true; partes.push(tr('Os PG de {nome} foram restaurados.', { nome })); }
       else {
-        const i = await perguntar('Restaurar os PG de qual golpe?', [...c.golpes.map((g) => `${golpe(g.id).nome}  ${g.pg}/${g.pgMax}`), 'Desistir']);
+        const i = await perguntar('Restaurar os PG de qual golpe?', [...c.golpes.map((g) => `${t(golpe(g.id).nome)}  ${g.pg}/${g.pgMax}`), 'Desistir']);
         const g = c.golpes[i];
         if (g && g.pg < g.pgMax) { g.pg = Math.min(g.pgMax, g.pg + u.pg); fez = true; partes.push(tr('{golpe} recuperou PG.', { golpe: golpe(g.id).nome })); }
         else if (g) return nada(tr('{golpe} já está com todos os PG.', { golpe: golpe(g.id).nome }));

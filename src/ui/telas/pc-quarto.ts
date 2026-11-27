@@ -76,7 +76,7 @@ export function criarPcQuarto(): Tela {
       const fonte = deMochila ? s.mochila : s.pcItens;
       const its = ITENS.filter((i) => (fonte[i.id] ?? 0) > 0 && (!deMochila || i.bolso !== 'chave'));
       if (!its.length) { await informar(deMochila ? T.pc.nadaGuardar : T.pc.nadaPc); return; }
-      ind = await escolherEm(titulo, its.map((i) => linha(i, fonte[i.id])), { inicial: Math.min(ind, its.length - 1), descricao: (k) => `${its[k].nome}\n\n${its[k].desc}` });
+      ind = await escolherEm(titulo, its.map((i) => linha(i, fonte[i.id])), { inicial: Math.min(ind, its.length - 1), descricao: (k) => `${t(its[k].nome)}\n\n${t(its[k].desc)}` });
       if (ind < 0) return;
       const it = its[ind], q = await pedirQuantidade(descartar ? 'Descartar quantos?' : deMochila ? 'Guardar quantos?' : 'Retirar quantos?', fonte[it.id]);
       if (!q) continue;
