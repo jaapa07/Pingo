@@ -12,6 +12,7 @@ import { moldura, cursorMao, fileiraInsignias, fmtTempo, som, botao } from '../k
 import { perguntar, confirmar, informar } from '../componentes/confirmacao';
 import { svgQr } from '../qr';
 import { palco } from '../palco';
+import { tr } from '../../i18n';
 
 export interface ArgsSaves { aoNovo(slot: number): void; aoContinuar(slot: number, retomada: boolean): void; aoVoltar(): void; /** texto exportado que chegou por QR/link e espera um slot */ pendente?: string }
 
@@ -32,7 +33,7 @@ export function mostrarQr(partes: string[]): Promise<void> {
       vitrine.style.paddingTop = retrato ? palco.y + palco.h + 24 + 'px' : '0'; vitrine.style.paddingBottom = retrato ? '0' : '20px';
       vitrine.classList.add('aberta');
       (vitrine.firstElementChild as HTMLElement).onpointerup = () => proximo();
-      escrever(info, `Código ${i + 1} de ${partes.length}. Aponte a câmera do outro aparelho.\n${partes.length > 1 ? '→ ou toque: próximo.  ' : ''}B: fechar.`);
+      escrever(info, tr(partes.length > 1 ? 'Código {n} de {total}. Aponte a câmera do outro aparelho.\n→ ou toque: próximo.  B: fechar.' : 'Código {n} de {total}. Aponte a câmera do outro aparelho.\nB: fechar.', { n: i + 1, total: partes.length }));
     };
     const proximo = () => { if (i + 1 < partes.length) { i++; som('ui-mover'); pintar(); } else fechar(); };
     const fechar = () => { vitrine.classList.remove('aberta'); vitrine.innerHTML = ''; retirar(tela); fim(); };
@@ -82,10 +83,10 @@ export function campoCodigo(modo: 'colar' | 'copiar', codigo = ''): Promise<stri
     /** devolve true se o texto do campo é um código completo */
     const pintar = (): boolean => {
       const v = ta.value.trim();
-      if (modo === 'copiar') { escrever(estado, `Código do jogo: ${codigo.length} letras.`); return false; }
+      if (modo === 'copiar') { escrever(estado, tr('Código do jogo: {n} letras.', { n: codigo.length })); return false; }
       if (!v) { escrever(estado, '— vazio —  Cole o código aqui.'); escrever(aviso, ''); return false; }
-      try { const d = lerExportado(v); escrever(estado, `{c:verde}Jogo de ${d.jogador.nome}: código completo.{/c}`); escrever(aviso, ''); return true; }
-      catch (e) { escrever(estado, `Recebido: ${v.length} letras.`); escrever(aviso, e instanceof Error ? e.message : 'Código inválido.'); return false; }
+      try { const d = lerExportado(v); escrever(estado, tr('{c:verde}Jogo de {jogador}: código completo.{/c}', { jogador: d.jogador.nome })); escrever(aviso, ''); return true; }
+      catch (e) { escrever(estado, tr('Recebido: {n} letras.', { n: v.length })); escrever(aviso, e instanceof Error ? e.message : 'Código inválido.'); return false; }
     };
     const sair = (r: string | null) => { if (feito) return; feito = true; clearInterval(vigia); clearTimeout(abrir); document.removeEventListener('selectionchange', tudo); ta.blur(); retirar(tela); fim(r); };
     const usar = () => {
@@ -185,10 +186,10 @@ export function criarSaves(args: ArgsSaves): Tela {
     const ret = lerRetomada();
     slots.forEach((s, i) => {
       const c = moldura('azulejo', 294, 46, 20, 17 + i * 50);
-      c.append(em(texto(`JOGO ${i + 1}`, { cor: 'azul' }), 12, 10));
+      c.append(em(texto(tr('JOGO {n}', { n: i + 1 }), { cor: 'azul' }), 12, 10));
       if (s) {
         c.append(em(texto(s.nome, { tamanho: 12, cor: 'tinta' }), 50, 8));
-        const dir = texto(`Diário ${s.diario}/180   Tempo ${fmtTempo(s.tempo)}`, { cor: 'chumbo' });
+        const dir = texto(tr('Diário {diario}/180   Tempo {tempo}', { diario: s.diario, tempo: fmtTempo(s.tempo) }), { cor: 'chumbo' });
         c.append(em(dir, 282 - parseInt(dir.style.width), 10));
         c.append(em(fileiraInsignias(s.insignias, 16, 17), 12, 21));
         if (ret?.slot === i) c.append(em(texto('•', { cor: 'vermelho' }), 44, 10));
@@ -209,9 +210,9 @@ export function criarSaves(args: ArgsSaves): Tela {
   async function receber(txt: string, i: number) {
     try {
       const d = lerExportado(txt);
-      if (slots[i] && !(await confirmar(`Substituir o Jogo ${i + 1} (${slots[i]!.nome}) pelo jogo de ${d.jogador.nome}?`, false))) return;
+      if (slots[i] && !(await confirmar(tr('Substituir o Jogo {n} ({nome}) pelo jogo de {jogador}?', { n: i + 1, nome: slots[i]!.nome, jogador: d.jogador.nome }), false))) return;
       importar(txt, i); som('salvar'); desenhar();
-      await informar(`Jogo de ${d.jogador.nome} guardado no Jogo ${i + 1}.`);
+      await informar(tr('Jogo de {jogador} guardado no Jogo {n}.', { jogador: d.jogador.nome, n: i + 1 }));
     } catch (e) { som('ui-erro'); await informar(e instanceof Error ? e.message : 'Não foi possível importar.'); }
   }
   async function escolher() {
@@ -221,7 +222,7 @@ export function criarSaves(args: ArgsSaves): Tela {
       if (pendente) { const p = pendente; pendente = undefined; await receber(p, i); return; }
       if (!s) {
         const ruim = slotDanificado(i);
-        const r = await perguntar(`Jogo ${i + 1} ${ruim ? 'danificado' : 'vazio'}`, ['Novo jogo', 'Importar arquivo .pingo', 'Colar código', 'Voltar']);
+        const r = await perguntar(tr(ruim ? 'Jogo {n} danificado' : 'Jogo {n} vazio', { n: i + 1 }), ['Novo jogo', 'Importar arquivo .pingo', 'Colar código', 'Voltar']);
         if (r === 0) { if (!ruim || (await confirmar('O que restou deste jogo danificado será apagado. Começar mesmo assim?', false))) args.aoNovo(i); }
         else if (r === 1) { const t = await plataforma.abrirArquivo(); if (t) await receber(t, i); }
         else if (r === 2) {
@@ -234,13 +235,13 @@ export function criarSaves(args: ArgsSaves): Tela {
       }
       const ret = lerRetomada()?.slot === i;
       const ops = [...(ret ? ['Retomar de onde parou'] : []), 'Continuar', 'Exportar arquivo .pingo', 'Mostrar código QR', 'Copiar código', 'Apagar', 'Voltar'];
-      const r = ops[await perguntar(`${s.nome} — ${s.insignias.length} insígnia${s.insignias.length === 1 ? '' : 's'}`, ops)];
+      const r = ops[await perguntar(tr(s.insignias.length === 1 ? '{nome} — {n} insígnia' : '{nome} — {n} insígnias', { nome: s.nome, n: s.insignias.length }), ops)];
       if (r === 'Retomar de onde parou') args.aoContinuar(i, true);
       else if (r === 'Continuar') args.aoContinuar(i, false);
       else if (r === 'Exportar arquivo .pingo') { const ok = await plataforma.salvarArquivo(nomeArquivo(s), exportar(i)); await informar(ok ? 'Arquivo gerado. Leve-o para o outro aparelho e use "Importar arquivo".' : 'Não foi possível gerar o arquivo.'); }
       else if (r === 'Mostrar código QR') {
         const partes = partesQr(exportar(i));
-        if (partes.length > 12 && !(await confirmar(`Este jogo precisa de ${partes.length} códigos. O arquivo .pingo é mais prático. Mostrar mesmo assim?`, false))) return;
+        if (partes.length > 12 && !(await confirmar(tr('Este jogo precisa de {n} códigos. O arquivo .pingo é mais prático. Mostrar mesmo assim?', { n: partes.length }), false))) return;
         await mostrarQr(partes);
       } else if (r === 'Copiar código') {
         // sempre pelo quadro de copiar: o toque no botão "Copiar" é um gesto novo, e o Safari do iPhone só copia de
@@ -249,7 +250,7 @@ export function criarSaves(args: ArgsSaves): Tela {
         await campoCodigo('copiar', exportar(i));
       }
       else if (r === 'Apagar') {
-        if ((await confirmar(`Apagar o Jogo ${i + 1} de ${s.nome}?`, false)) && (await confirmar('Tem certeza? Isso não tem volta.', false))) { apagarSlot(i); som('ui-voltar'); desenhar(); }
+        if ((await confirmar(tr('Apagar o Jogo {n} de {nome}?', { n: i + 1, nome: s.nome }), false)) && (await confirmar('Tem certeza? Isso não tem volta.', false))) { apagarSlot(i); som('ui-voltar'); desenhar(); }
       }
     } finally { ocupado = false; }
   }

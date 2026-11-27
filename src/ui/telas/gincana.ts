@@ -30,6 +30,8 @@ import { moldura, som } from '../kit';
 import { perguntar } from '../componentes/confirmacao';
 import { falar, escolher, abrirTela, avisar } from '../dialogo';
 import { pix, faixaDica, placaTitulo, nomeCri, esp, iconeCriatura } from './comum';
+import { t as traduz } from '../../i18n';
+import { tr } from '../../i18n';
 
 const div = (classe: string, pai?: HTMLElement): HTMLElement => { const d = document.createElement('div'); d.className = classe; pai?.append(d); return d; };
 /** faixa de marcas do chão que rola para dar a sensação de velocidade */
@@ -275,7 +277,7 @@ function provaSalto(raiz: HTMLElement, x: Ctx): Prova {
           // perfeito: passou por baixo bem no topo do pulo
           const perfeito = (o as Ob & { meio?: boolean }).meio === true;
           const ganho = 4 + combo + (perfeito ? 4 : 0); pts += ganho;
-          x.fx.txt(perfeito ? `PERFEITO +${ganho}` : `+${ganho}`, CX, CHAO - 60, perfeito ? 'amarelo' : 'verde');
+          x.fx.txt(perfeito ? tr('PERFEITO +{ganho}', { ganho }) : `+${ganho}`, CX, CHAO - 60, perfeito ? 'amarelo' : 'verde');
           if (perfeito) { som('ui-ok'); x.fx.fx('comum-estrela', CX, CHAO - ALT - 12); }
         }
         if (Math.abs(o.x - CX) < 3 && noAr >= 0.3 && noAr <= 0.7) (o as Ob & { meio?: boolean }).meio = true;
@@ -305,7 +307,7 @@ function criarGincana(args: ArgsGincana): Tela {
   const prova = args.prova === 'agilidade' ? provaAgilidade(toque, ctx) : args.prova === 'forca' ? provaForca(toque, ctx) : provaSalto(toque, ctx);
   // placar
   const placar = moldura('placa', 316, 15, 2, 2); el.append(placar);
-  const tNome = texto(def.nome.toUpperCase(), { cor: 'amarelo', sombra: true }); placar.append(em(tNome, 6, 4));
+  const tNome = texto(traduz(def.nome).toUpperCase(), { cor: 'amarelo', sombra: true }); placar.append(em(tNome, 6, 4));
   const tTempo = texto('', { cor: 'creme', sombra: true }); placar.append(tTempo);
   const tPts = texto('', { cor: 'creme', sombra: true }); placar.append(tPts);
   if (ctx.bonus > 0) { const s = sucoDe(c); const tb = texto(`${s?.nome ?? 'Suco'} +${Math.round(ctx.bonus * 100)}%`, { cor: 'verde', sombra: true }); el.append(em(tb, 4, 19)); }
@@ -317,14 +319,14 @@ function criarGincana(args: ArgsGincana): Tela {
   const mostrarAviso = (str: string) => { escreverSe(aviso, str); cxAviso.style.visibility = str ? '' : 'hidden'; };
   let fase: 'conta' | 'jogo' | 'fim' | 'res' = 'conta', t = 3.2, resto = def.duracao, pausado = false, res: HTMLElement | null = null;
   const pintarPlacar = () => {
-    escreverSe(tTempo, `Tempo ${Math.ceil(Math.max(0, resto))}s`); em(tTempo, 160 - Math.floor(parseInt(tTempo.style.width) / 2), 4);
-    escreverSe(tPts, `Pontos ${prova.pontos}`); em(tPts, 310 - parseInt(tPts.style.width), 4);
+    escreverSe(tTempo, tr('Tempo {resto}s', { resto: Math.ceil(Math.max(0, resto)) })); em(tTempo, 160 - Math.floor(parseInt(tTempo.style.width) / 2), 4);
+    escreverSe(tPts, tr('Pontos {pontos}', { pontos: prova.pontos })); em(tPts, 310 - parseInt(tPts.style.width), 4);
   };
   const mostrarResultado = () => {
     fase = 'res';
     const rec = recordeHoje(args.prova), pts = prova.pontos;
     res = moldura('madeira', 200, 92, 60, 40); res.classList.add('gn-res'); el.append(res);
-    const linhas = [`${nomeCri(c)} fez`, `{c:vermelho}${pts} pontos{/c}`, pts > rec ? 'Recorde do dia!' : `Recorde do dia: ${rec}`];
+    const linhas = [tr('{n} fez', { n: nomeCri(c) }), tr('{c:vermelho}{pts} pontos{/c}', { pts }), pts > rec ? 'Recorde do dia!' : tr('Recorde do dia: {rec}', { rec })];
     res.append(em(texto(linhas.join('\n'), { tamanho: 12, cor: 'tinta', largura: 184, alinhar: 'centro' }), 8, 12));
     const ok = texto('A: continuar', { cor: 'marrom' }); res.append(em(ok, 100 - Math.floor(parseInt(ok.style.width) / 2), 72));
     tocavel(res, () => fechar(tela, { pontos: pts }));
@@ -362,7 +364,7 @@ function criarRanking(): Tela {
   const el = elTela('ui', 'tela-gincana-ranking', 'fundo-terra');
   placaTitulo(el, 'RANKING DO DIA', 2, 1, 150);
   const cxP = moldura('placa', 160, 15, 158, 1); el.append(cxP);
-  cxP.append(em(texto(`Pontos da Gincana: {c:amarelo}${pontosGincana()}{/c}`, { cor: 'creme', sombra: true }), 6, 4));
+  cxP.append(em(texto(tr('Pontos da Gincana: {c:amarelo}{pontosGincana}{/c}', { pontosGincana: pontosGincana() }), { cor: 'creme', sombra: true }), 6, 4));
   const quadro = moldura('madeira', 316, 146, 2, 18); el.append(quadro);
   const COL = [8, 116, 182, 248];
   ['Participante', 'Agilidade', 'Força', 'Salto'].forEach((h, i) => quadro.append(em(texto(h, { cor: 'marrom' }), COL[i], 10)));
@@ -407,18 +409,18 @@ registrarComando('gincanaJuiza', async () => {
   if (op < 0 || op > 2) { await falar('Volte quando quiser. A pista não sai daqui.', JUIZA); return; }
   const p = PROVAS[op];
   await falar(PROVA[p].regra, JUIZA);
-  const c = await escolherCriatura(`${PROVA[p].nome.toUpperCase()}: QUEM VAI?`);
+  const c = await escolherCriatura(tr('{prova}: QUEM VAI?', { prova: traduz(PROVA[p].nome).toUpperCase() }));
   if (!c) return;
   const s = sucoDe(c);
-  if (s) await falar(`${nomeCri(c)} tomou ${s.nome} hoje: ${s.alvo === p || s.alvo === 'todas' ? `+${s.pct}% nesta prova!` : `só vale para ${NOME_ALVO[s.alvo]}.`}`, JUIZA);
+  if (s) await falar(tr(s.alvo === p || s.alvo === 'todas' ? '{nome} tomou {suco} hoje: +{pct}% nesta prova!' : '{nome} tomou {suco} hoje: só vale para {alvo}.', { nome: nomeCri(c), suco: s.nome, pct: s.pct, alvo: NOME_ALVO[s.alvo] }), JUIZA);
   const r = (await abrirTela('gincana', { prova: p, uid: c.uid })) as { pontos: number } | null | undefined;
   if (!r) { await falar('Desistiu? Sem problema. Respira, toma uma água e volta.', JUIZA); return; }
   const f = registrarProva(p, r.pontos);
-  await falar(`${nomeCri(c)} fez ${f.pontos} pontos ${p === 'salto' ? 'no' : 'na'} ${PROVA[p].nome}!${f.recorde ? ' É o seu melhor resultado de hoje.' : ''}`, JUIZA);
+  await falar(tr(p === 'salto' ? '{nome} fez {pontos} pontos no {prova}!' : '{nome} fez {pontos} pontos na {prova}!', { nome: nomeCri(c), pontos: f.pontos, prova: PROVA[p].nome }) + (f.recorde ? ' ' + traduz('É o seu melhor resultado de hoje.') : ''), JUIZA);
   // a posição é a desta rodada; se ela não bateu o recorde, a Juíza lembra a posição que vale no ranking (a do recorde)
-  const posTxt = `Posição desta rodada no ranking de hoje: ${f.posRodada}º lugar.${!f.recorde && f.pos !== f.posRodada ? ` No quadro vale o seu recorde: ${f.pos}º.` : ''}`;
-  const ganhoTxt = f.ganhos ? `Você ganhou ${f.ganhos} pontos da Gincana (total: ${pontosGincana()}).` : `Sem pontos novos: só o recorde do dia vale pontos (total: ${pontosGincana()}).`;
-  await falar(`${posTxt}${f.premio ? ` Prêmio de pódio: +${f.premio}!` : ''}\f${ganhoTxt}`, JUIZA);
+  const posTxt = tr('Posição desta rodada no ranking de hoje: {pos}º lugar.', { pos: f.posRodada }) + (!f.recorde && f.pos !== f.posRodada ? ' ' + tr('No quadro vale o seu recorde: {pos}º.', { pos: f.pos }) : '');
+  const ganhoTxt = f.ganhos ? tr('Você ganhou {ganhos} pontos da Gincana (total: {pontosGincana}).', { ganhos: f.ganhos, pontosGincana: pontosGincana() }) : tr('Sem pontos novos: só o recorde do dia vale pontos (total: {pontosGincana}).', { pontosGincana: pontosGincana() });
+  await falar(`${posTxt}${f.premio ? ' ' + tr('Prêmio de pódio: +{premio}!', { premio: f.premio }) : ''}\f${ganhoTxt}`, JUIZA); // i18n-ok
 });
 registrarComando('gincanaSucos', async () => {
   if (!flag('gincana-sucos-presente')) {
@@ -435,9 +437,9 @@ registrarComando('gincanaSucos', async () => {
   const c = await escolherCriatura('QUEM BEBE O SUCO?');
   if (!c) return;
   const antes = sucoDe(c);
-  if (antes && antes.fruto !== s.fruto) await falar(`${nomeCri(c)} já tomou ${antes.nome} hoje. O suco novo toma o lugar do outro.`, GRAVIOLA);
+  if (antes && antes.fruto !== s.fruto) await falar(tr('{n} já tomou {nome} hoje. O suco novo toma o lugar do outro.', { n: nomeCri(c), nome: antes.nome }), GRAVIOLA);
   tirarItem(s.fruto, 1); tomarSuco(c, s); som('cura-posto');
-  await falar(`Vrrrrrrum! ${s.nome} na cuia! ${nomeCri(c)} bebeu tudinho: +${s.pct}% em ${NOME_ALVO[s.alvo]} até o fim do dia.`, GRAVIOLA);
+  await falar(tr('Vrrrrrrum! {nome} na cuia! {n} bebeu tudinho: +{pct}% em {alvo} até o fim do dia.', { nome: s.nome, n: nomeCri(c), pct: s.pct, alvo: NOME_ALVO[s.alvo] }), GRAVIOLA);
 });
 registrarComando('gincanaTroca', async () => {
   await abrirTela('loja', { titulo: 'Tesouraria', itens: Object.keys(TROCA), moeda: { nome: 'pontos', saldo: pontosGincana, gastar: gastarPontos, preco: (id: string) => TROCA[id] ?? 999 } });
@@ -446,6 +448,6 @@ registrarComando('gincanaRival', async ([n]) => {
   const r = RIVAIS[Number(n) || 0]; if (!r) return;
   const quem = { nome: r.nome, retrato: r.sprite };
   await falar(r.fala, quem);
-  const pts = PROVAS.map((p) => `${PROVA[p].nome}: ${pontosRival(r, p)}`);
-  await falar(`Hoje eu fiz… ${pts.join(' · ')}. Bate isso se for capaz!`, quem);
+  const pts = PROVAS.map((p) => `${traduz(PROVA[p].nome)}: ${pontosRival(r, p)}`);
+  await falar(tr('Hoje eu fiz… {lista}. Bate isso se for capaz!', { lista: pts.join(' · ') }), quem);
 });

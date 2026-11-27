@@ -11,6 +11,7 @@ import { flag } from '../../core/estado';
 import { bus } from '../../core/events';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, DX, DY, DIRS, cena, falar, avisar, sfx, quadros, recolocar, chave } from './_pecas';
+import { tr } from '../../i18n';
 
 const ZONA = 'B2-ginasio';
 interface Cercado {
@@ -86,7 +87,7 @@ async function atolar(c: Cercado) {
   ultimo = [...c.volta];
 }
 async function tocarSino(c: Cercado) {
-  if (c.firme) { await falar(`O sino do ${c.nome} cercado. A lama dele já secou: o chão está firme.`); return; }
+  if (c.firme) { await falar(tr('O sino do {nome} cercado. A lama dele já secou: o chão está firme.', { nome: c.nome })); return; }
   sfx('saveiro-sino');
   await quadros(16);
   const mexida = c.pisada.size > 0;
@@ -117,7 +118,7 @@ registrarMecanica(ZONA, {
     const de = doCercado(ant[0], ant[1]), para = doCercado(x, y);
     if (de && !de.firme) afundar(de, ant[0], ant[1]);
     if (para && !para.firme) {
-      if (para.pisada.size === 0) avisar(`Lama do ${para.nome} cercado!`);
+      if (para.pisada.size === 0) avisar(tr('Lama do {nome} cercado!', { nome: para.nome }));
       para.pisada.add(chave(x, y));
       if (para.pisada.size === para.lama.length && !para.aberta) {
         abrirPorteira(para); sfx('porta'); M.cena.tremer(4);
@@ -129,7 +130,7 @@ registrarMecanica(ZONA, {
     if (de && !de.firme) {
       if (naPorteira(de, x, y)) {
         firmar(de); sfx('item-obtido');
-        avisar(`O ${de.nome} cercado secou!`);
+        avisar(tr('O {nome} cercado secou!', { nome: de.nome }));
       } else {
         alisar(de);
         cena(() => falar('Você saiu do cercado antes de pisar a lama toda.\nOs peões já passaram o rodo: a lama está lisinha outra vez.'));

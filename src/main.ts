@@ -30,6 +30,10 @@ import { criarRelogio } from './ui/telas/relogio';
 import { criarOpcoes, aplicarVolumes } from './ui/telas/opcoes';
 import { criarVitrine } from './ui/telas/vitrine';
 import { DEMO } from './core/demo';
+import { criarTelaIdioma } from './ui/telas/idioma';
+import { aplicarIdioma } from './i18n/carga';
+import { idiomaAtual, idiomaDoNavegador, t, tr, type Idioma } from './i18n';
+import * as i18n from './i18n';
 
 type Modulo = Record<string, unknown>;
 // módulos de outros times: carregados com tolerância (podem não existir ou falhar durante o desenvolvimento)
@@ -50,8 +54,19 @@ function musicaDoTitulo() {
 
 function irAoTitulo() {
   save.marcarEmJogo(false);
-  void telas.trocar(criarTela('titulo', { aoJogar: irAosSaves, aoOpcoes: () => void dialogo.abrirTela('opcoes') }));
+  void telas.trocar(criarTela('titulo', { aoJogar: irAosSaves, aoOpcoes: () => void dialogo.abrirTela('opcoes'), aoIdioma: trocarIdioma }));
   musicaDoTitulo();
+}
+/** idioma (docs/I18N.md): escolhido na 1ª abertura ou pela tela de título, antes de entrar num jogo; vale até o fim */
+/**
+ * Troca pela tela de título: grava e recarrega a página. Os dados do jogo (eventos, itens, zonas) montam alguns textos
+ * com `tr` quando são carregados, depois de o idioma ser aplicado em `iniciar`; recarregar refaz tudo no idioma novo.
+ */
+function trocarIdioma() {
+  void telas.trocar(criarTela('idioma', { inicial: idiomaAtual(), podeVoltar: true, aoEscolher: async (i: Idioma | null) => {
+    if (!i || i === idiomaAtual()) { irAoTitulo(); return; }
+    jogo.opcoes.idioma = i; await save.gravarOpcoesAgora(); location.reload();
+  } }));
 }
 let pendenteQr: string | undefined;
 function irAosSaves() {
@@ -66,13 +81,13 @@ async function entrarNoMundo() {
     if (temTela('mundo')) { await telas.trocar(criarTela('mundo')); return; }
   } catch (e) { console.error('[pingo] não foi possível entrar em', j.zona, e); }
   save.marcarEmJogo(false);
-  await dialogo.falar(`O lugar "${j.zona}" não foi encontrado neste pacote do jogo.`);
+  await dialogo.falar(tr('O lugar "{zona}" não foi encontrado neste pacote do jogo.', { zona: j.zona }));
   irAoTitulo();
 }
 async function novoJogo(slot: number) {
   // seletor de dificuldade do novo jogo (spec 7A): Aventureiro é o padrão recomendado; dá para trocar depois em Opções
   const DIF = ['explorador', 'aventureiro', 'veterano'] as const;
-  const d = await dialogo.escolher('Escolha a dificuldade da aventura.\nDá para mudar depois, em Opções.', ['Explorador: batalhas leves', 'Aventureiro (Recomendado)', 'Veterano: rivais espertos'], Math.max(0, DIF.indexOf(jogo.opcoes.dificuldade)));
+  const d = await dialogo.escolher('Escolha a dificuldade da aventura.\nDá para mudar depois, em Opções.', ['Explorador: batalhas leves', 'Aventureiro (Recomendado)', 'Veterano: rivais espertos'].map(t), Math.max(0, DIF.indexOf(jogo.opcoes.dificuldade)));
   if (d < 0) return;
   jogo.opcoes.dificuldade = DIF[d]; save.gravarOpcoes();
   jogo.slot = slot; jogo.carregar(novoSave()); rng.seed(jogo.save.rng);
@@ -94,13 +109,21 @@ async function iniciar() {
   const avisos = document.createElement('div'); avisos.id = 'avisos'; raiz.append(avisos);
   telas.iniciar(raiz);
   await save.iniciarSave();
+  const q = new URLSearchParams(location.search);
+  // idioma: o das opções (opções antigas sem o campo: português); `?idioma=en` força só nesta visita (testes)
+  const idiomaUrl = q.get('idioma');
+  if (idiomaUrl === 'pt' || idiomaUrl === 'en') jogo.opcoes.idioma = idiomaUrl;
+  // 1ª abertura: começa no idioma do navegador (o que a tela de idioma vai sugerir)
+  // (os atalhos de teste por URL e o save recebido por link não passam pela tela de idioma: ficam no padrão)
+  else if (save.primeiraAbertura && !['zona', 'batalha', 'tela'].some((k) => q.has(k)) && !location.hash.includes('pingo=')) jogo.opcoes.idioma = idiomaDoNavegador();
+  await aplicarIdioma(jogo.opcoes.idioma ?? 'pt');
   iniciarInput(); input.recarregarTeclas();
   await Promise.all([carregarAtlas(), iniciarKit()]);
   iniciarToque();
 
   registrarTela('splash', criarSplash); registrarTela('titulo', criarTitulo); registrarTela('saves', criarSaves);
   registrarTela('nome', criarTelaNome); registrarTela('relogio', criarRelogio); registrarTela('opcoes', criarOpcoes);
-  registrarTela('vitrine-kit', criarVitrine);
+  registrarTela('vitrine-kit', criarVitrine); registrarTela('idioma', criarTelaIdioma);
 
   [audio, mundo] = await Promise.all([tentar(gAudio), tentar(gMundo)]);
   await tentar(gMec); await tentar(gBatalha); for (const [k, f] of Object.entries(gTelas)) await tentar({ [k]: f });
@@ -120,7 +143,7 @@ async function iniciar() {
   });
   plataforma.aoMudarVisibilidade((visivel) => { if (!visivel) { input.soltarTudo(); save.gravarRetomada(); } bus.emit('visibilidade', { visivel }); });
 
-  (window as unknown as { __pingo: unknown }).__pingo = { jogo, telas, mundo: mundo?.mundo, bus, input, save, dialogo, palco, plataforma, audio: audio?.audio };
+  (window as unknown as { __pingo: unknown }).__pingo = { jogo, telas, mundo: mundo?.mundo, bus, input, save, dialogo, palco, plataforma, audio: audio?.audio, i18n };
 
   // save recebido por QR/link: #pingo=<parte>
   const m = /#pingo=(.+)$/.exec(location.hash);
@@ -128,11 +151,10 @@ async function iniciar() {
     history.replaceState(null, '', location.pathname + location.search);
     const parte = decodeURIComponent(m[1]);
     if (parte.startsWith('PINGO1:')) pendenteQr = parte;
-    else { const r = save.receberParteQr(parte); if (r?.completo) pendenteQr = r.completo; else if (r) dialogo.avisar(`Código ${r.tem} de ${r.total} recebido. Leia os outros.`); }
+    else { const r = save.receberParteQr(parte); if (r?.completo) pendenteQr = r.completo; else if (r) dialogo.avisar(tr('Código {tem} de {total} recebido. Leia os outros.', { tem: r.tem, total: r.total })); }
   }
 
   startLoop();
-  const q = new URLSearchParams(location.search);
   // atalhos de teste por URL: fora da demo (lá eles abririam zonas e telas além do limite)
   if (!DEMO && q.get('tela') && temTela(q.get('tela')!)) {
     const id = q.get('tela')!;
@@ -144,6 +166,16 @@ async function iniciar() {
     try { if (porUrl && (await porUrl(q))) { save.marcarEmJogo(true); jogo.slot = -1; return; } } catch (e) { console.error('[pingo] atalho de URL falhou', e); }
   }
   if (pendenteQr) { irAosSaves(); return; }
+  if (save.primeiraAbertura && !idiomaUrl && !pendenteQr) {
+    // 1ª abertura: o idioma vem antes de tudo (pré-selecionado pelo navegador)
+    telas.empilhar(criarTela('idioma', { inicial: idiomaAtual(), aoEscolher: async (i: Idioma | null) => {
+      const novo = i ?? idiomaAtual();
+      jogo.opcoes.idioma = novo; await save.gravarOpcoesAgora();
+      if (novo !== idiomaAtual()) { location.reload(); return; } // os dados já carregaram no outro idioma
+      void telas.trocar(criarTela('splash', { aoFim: irAoTitulo }));
+    } }));
+    return;
+  }
   telas.empilhar(criarTela('splash', { aoFim: irAoTitulo }));
 }
 void iniciar();

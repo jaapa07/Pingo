@@ -24,6 +24,7 @@ import { rodarEvento, rodarPassos, COMANDOS_PADRAO } from './eventos';
 import { sincronizarParceira, atualizarParceira } from './parceira';
 import { montarDecoracao } from './decoracao';
 import { vigiarObstaculo, derrotaNoCampo } from './integracao';
+import { tr } from '../i18n';
 import './precarga'; // sprites dos iniciais e das criaturas da zona, em segundo plano
 
 export { registrarComando, registrarMecanica, registrarCinematica, registrarTreinador, registrarEvento, type Mecanica } from './registro';
@@ -46,7 +47,7 @@ export function atualizarLuz(avisarUso = false) {
   if (z.escuro) cena.definirEscuro(lamp ? 80 : 32);
   else if (z.nevoa) cena.definirEscuro(lamp ? 0 : 40, '#dfe8ee');
   else cena.definirEscuro(0);
-  if (lamp && (avisarUso || luzAvisada !== z.id)) { luzAvisada = z.id; avisar(`${nomeCriatura(ajudante('lampiao')!)} acendeu o Lampião!`); }
+  if (lamp && (avisarUso || luzAvisada !== z.id)) { luzAvisada = z.id; avisar(tr('{nome} acendeu o Lampião!', { nome: nomeCriatura(ajudante('lampiao')!) })); }
   else if ((z.escuro || z.nevoa) && !lamp && avisarUso) avisar(temAmuleto('lampiao') ? 'Nenhuma criatura da equipe consegue acender o Lampião.' : 'Está escuro demais.');
 }
 /** NPCs, guardas de portão e luz conforme as flags atuais (chamado após scripts e batalhas) */

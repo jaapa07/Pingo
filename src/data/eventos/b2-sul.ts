@@ -20,6 +20,7 @@
 import type { EventoDef, Comando } from '../../core/tipos';
 import { jogo, setFlag, diaSemana } from '../../core/estado';
 import { registrarComando } from '../../world/registro';
+import { tr } from '../../i18n';
 import './comuns'; // comandos extras: temItens, temEspecie, grito, opcao…
 
 /* ------------------------------ comandos do time ------------------------------ */
@@ -107,7 +108,7 @@ const ADIVINHAS: [string, string[], number, string][] = [
 ];
 const payada: Comando[] = ADIVINHAS.flatMap(([q, op, certa, exp], i): Comando[] => [
   ['escolha', q, op, `b2-adv${i + 1}`], ['opcao', `b2-adv${i + 1}`],
-  se(`flag:b2-adv${i + 1}-${certa}`, [['sfx', 'ui-ok'], ['b2s-soma', 'b2-payada-pontos'], f(PAYADOR, `Acertou, vivente! ${exp}`)], [['sfx', 'ui-erro'], f(PAYADOR, `Errou, tchê! ${exp}`)]),
+  se(`flag:b2-adv${i + 1}-${certa}`, [['sfx', 'ui-ok'], ['b2s-soma', 'b2-payada-pontos'], f(PAYADOR, tr('Acertou, vivente! {exp}', { exp }))], [['sfx', 'ui-erro'], f(PAYADOR, tr('Errou, tchê! {exp}', { exp }))]),
 ]);
 
 export const EVENTOS_B2S: EventoDef[] = [

@@ -7,6 +7,7 @@ import type { Tela } from '../telas';
 import { elTela, fechar } from '../base';
 import { texto, escrever, em } from '../fonte';
 import { moldura, som } from '../kit';
+import { tr } from '../../i18n';
 
 const PAGINAS = [
   ['ABCDEFGHIJKLM', 'NOPQRSTUVWXYZ', 'ÁÀÂÃÉÊÍÓÔÕÚÜÇ', "0123456789-'."],
@@ -48,7 +49,7 @@ export function criarTelaNome(args: ArgsNome): Tela {
     quadro.append(c); teclas[4].push(c);
     tocavel(c, () => { mover(4, i, true); apertar(); }, () => mover(4, i, true));
   });
-  const dica = texto(input.modo === 'toque' ? 'Toque nas letras. B apaga.' : `Digite ou use as setas. ${input.nomeTecla(input.teclasDe('a')[0] ?? 'Enter')} escolhe, Enter confirma.`, { cor: 'marrom', largura: 260, alinhar: 'centro' });
+  const dica = texto(input.modo === 'toque' ? 'Toque nas letras. B apaga.' : tr('Digite ou use as setas. {tecla} escolhe, Enter confirma.', { tecla: input.nomeTecla(input.teclasDe('a')[0] ?? 'Enter') }), { cor: 'marrom', largura: 260, alinhar: 'centro' });
   quadro.append(em(dica, 16, 107));
 
   function pintarLetras() {

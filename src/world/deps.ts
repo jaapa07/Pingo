@@ -10,6 +10,7 @@ import { temTela } from '../ui/telas';
 import { rng } from '../core/rng';
 import { treinadoresExtras, eventosExtras } from './registro';
 import { entradaReserva, pollReserva, ligarEntrada, falarR, escolherR, pedirNomeR, avisarR, abrirTelaR, type Entrada } from './reserva';
+import { tr } from '../i18n';
 
 type Mod = Record<string, any>;
 const primeiro = (g: Record<string, unknown>): Mod | undefined => Object.values(g)[0] as Mod | undefined;
@@ -60,7 +61,7 @@ export async function iniciarBatalha(p: PedidoBatalha): Promise<ResultadoBatalha
   if (f) return f(p);
   // sem o módulo de batalha (teste isolado): anuncia e devolve vitória
   const e = p.inimigos[0];
-  await falar(p.treinador ? `${p.treinador.classe} ${p.treinador.nome} quer batalhar!` : `Um ${nomeCriatura(e)} selvagem apareceu!`);
+  await falar(p.treinador ? tr('{classe} {treinador} quer batalhar!', { classe: p.treinador.classe, treinador: p.treinador.nome }) : tr('Um {n} selvagem apareceu!', { n: nomeCriatura(e) }));
   const resultado = (jogo.save.flags['teste-resultado-batalha'] as ResultadoBatalha['resultado']) ?? 'vitoria';
   // com o módulo de batalha, quem emite 'batalha-fim' é ele (uma vez só); aqui é o substituto do teste isolado
   bus.emit('batalha-fim', { tipo: p.tipo, resultado, pedido: p });
@@ -106,7 +107,7 @@ export function especie(n: number): EspecieDef | undefined {
   try { return bat()?.especie?.(n); } catch { return undefined; }
 }
 export const tiposDe = (n: number): TipoId[] | undefined => especie(n)?.tipos;
-export const nomeCriatura = (c: CriaturaInst | undefined) => (c ? c.apelido ?? especie(c.especie)?.nome ?? `Criatura nº ${c.especie}` : 'criatura');
+export const nomeCriatura = (c: CriaturaInst | undefined) => (c ? c.apelido ?? especie(c.especie)?.nome ?? tr('Criatura nº {especie}', { especie: c.especie }) : 'criatura');
 let _itens: Map<string, ItemDef> | undefined;
 function itens() { return (_itens ??= new Map(coletar<ItemDef>(gItens, (v) => typeof v.id === 'string' && typeof v.bolso === 'string').map((i) => [i.id, i]))); }
 export const item = (id: string): ItemDef | undefined => itens().get(id);

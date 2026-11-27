@@ -10,6 +10,7 @@ import { flag } from '../../core/estado';
 import { OPOSTO } from '../zonas';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, DIVISAS, DX, DY, laco, arrastar, cair, cena, livre, olharTreinadores, falar, avisar, sfx, quadros, naZona } from './_pecas';
+import { tr } from '../../i18n';
 
 const ZONA = 'A8-ginasio';
 const INICIO: [number, number] = [8, 16];
@@ -70,8 +71,8 @@ async function girar(g: (typeof ENGRENAGENS)[number]) {
   await quadros(12);
   invertido[g.cor] = !invertido[g.cor];
   pintar(); sfx('trem');
-  avisar(`Circuito ${g.cor.toUpperCase()} invertido!`);
-  await falar(`CLANC-CLANC! Todas as esteiras de seta ${g.cor === 'vermelho' ? 'vermelha' : 'azul'} mudaram de sentido.`);
+  avisar(g.cor === 'vermelho' ? 'Circuito VERMELHO invertido!' : 'Circuito AZUL invertido!');
+  await falar(g.cor === 'vermelho' ? 'CLANC-CLANC! Todas as esteiras de seta vermelha mudaram de sentido.' : 'CLANC-CLANC! Todas as esteiras de seta azul mudaram de sentido.');
 }
 
 registrarMecanica(ZONA, {
@@ -97,7 +98,7 @@ registrarMecanica(ZONA, {
     const g = ENGRENAGENS.find((o) => o.x === x && o.y === y);
     if (g) { cena(() => girar(g)); return true; }
     const e = esteiraEm(x, y);
-    if (e && !vencido()) { cena(() => falar(`Uma esteira do circuito ${e.cor}. Ela carrega tudo o que encosta para onde a seta aponta.`)); return true; }
+    if (e && !vencido()) { cena(() => falar(tr('Uma esteira do circuito {cor}. Ela carrega tudo o que encosta para onde a seta aponta.', { cor: e.cor }))); return true; }
     if (M.zv.ch(x, y) === 'x') { cena(() => falar('A prensa de vapor bufa a cada dois segundos. Melhor não ficar embaixo.')); return true; }
     return false;
   },

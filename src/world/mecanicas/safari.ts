@@ -17,6 +17,7 @@ import { M, mundo, cena, falar, avisar, sfx } from './_pecas';
 import { musica } from '../vivo';
 import { abrirTela, simNao, pedirNome, especie } from '../deps';
 import type { ResultadoSafari } from '../../ui/telas/gincana-safari';
+import { tr } from '../../i18n';
 
 const ZONA = 'A-SF-parque';
 export const SAIDA_SAFARI: [number, number] = [13, 3];
@@ -24,7 +25,7 @@ let seguros = 0, hud: HTMLElement | null = null, tHud: HTMLElement | null = null
 
 function pintarHud() {
   if (!tHud) return;
-  escrever(tHud, `Passos {c:amarelo}${Math.max(0, Number(flag('safari-passos') ?? 0))}{/c}   Cuias {c:amarelo}${qtdItem(SAFARI.item)}{/c}`);
+  escrever(tHud, tr('Passos {c:amarelo}{passos}{/c}   Cuias {c:amarelo}{cuias}{/c}', { passos: Math.max(0, Number(flag('safari-passos') ?? 0)), cuias: qtdItem(SAFARI.item) }));
 }
 function montarHud() {
   tirarHud();
@@ -46,7 +47,7 @@ async function fimDoPasseio(motivo: string) {
   if (encerrando) return; encerrando = true;
   try {
     sfx('ui-ok');
-    await falar(`PÍÍÍ! ${motivo}\nA Dona Ingá chama todo mundo de volta para a porteira.`);
+    await falar(tr('PÍÍÍ! {motivo}\nA Dona Ingá chama todo mundo de volta para a porteira.', { motivo }));
     encerrar();
     await mundo.irPara('A-SF', SAIDA_SAFARI[0], SAIDA_SAFARI[1], 's');
     await falar('Fim do passeio! Volte quando quiser: o parque abre todos os dias.', { nome: 'Bilheteira Dona Ingá', retrato: 'npc-mulher-1' });
@@ -62,8 +63,8 @@ async function encontro(x: number, y: number) {
   musica(M.zv.def.musica, true); seguros = 3; pintarHud();
   if (r?.resultado === 'captura' && r.criatura) {
     const c = r.criatura, nome = especie(c.especie)?.nome ?? 'A criatura';
-    if (await simNao(`Quer dar um apelido para ${nome}?`)) { const a = (await pedirNome('Apelido', 10, nome)).trim(); if (a && a !== nome) c.apelido = a; }
-    if (r.destino === 'viveiro') await falar(`A equipe está cheia. ${c.apelido ?? nome} foi para o Viveiro de Cuias.`);
+    if (await simNao(tr('Quer dar um apelido para {nome}?', { nome }))) { const a = (await pedirNome('Apelido', 10, nome)).trim(); if (a && a !== nome) c.apelido = a; }
+    if (r.destino === 'viveiro') await falar(tr('A equipe está cheia. {apelido} foi para o Viveiro de Cuias.', { apelido: c.apelido ?? nome }));
     setFlag('safari-capturas', Number(flag('safari-capturas') ?? 0) + 1);
   }
   if (flag('safari-ativo') && qtdItem(SAFARI.item) <= 0) await fimDoPasseio('Acabaram as Cuias-Safári.');
@@ -96,5 +97,5 @@ registrarMecanica(ZONA, {
 // Recarregar o próprio parque (mundo.recarregar) não encerra nada.
 bus.on('zona', (e: { id: string; de?: string }) => {
   if (e.de !== ZONA || e.id === ZONA || encerrando || !flag('safari-ativo')) return;
-  const n = encerrar(); avisar(n ? `Passeio encerrado: ${n} Cuias-Safári ficaram na porteira.` : 'Passeio encerrado.');
+  const n = encerrar(); avisar(n ? tr('Passeio encerrado: {nome} Cuias-Safári ficaram na porteira.', { nome: n }) : 'Passeio encerrado.');
 });

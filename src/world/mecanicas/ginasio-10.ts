@@ -12,6 +12,7 @@ import { DX, DY, OPOSTO, dirPara } from '../zonas';
 import { falar, simNao, avisar } from '../deps';
 import type { Pix } from '../pixel';
 import { DIRS, NOME_DIR, pix, pixSeta, enfeite, passoForcado, vigiar, livre, acao, gravarPos } from './_apoio-9a16';
+import { tr } from '../../i18n';
 
 const ZONA = 'B3-ginasio';
 interface Desvio { jx: number; jy: number; ops: [Dir, Dir]; est: 0 | 1; ax: number; ay: number }
@@ -99,7 +100,7 @@ registrarMecanica(ZONA, {
     const v = desvios.find((d) => d.ax === x && d.ay === y);
     if (v) {
       v.est = v.est ? 0 : 1; pintarDesvio(v); sfx('ui-ok'); M.cena.tremer(4);
-      avisar(`Desvio virado para o ${NOME_DIR[v.ops[v.est]]}.`);
+      avisar(tr('Desvio virado para o {est}.', { est: NOME_DIR[v.ops[v.est]] }));
       acao(async () => { await quadros(10); });
       return true;
     }

@@ -15,6 +15,7 @@ import { faixaDica, caixa, rotulo, pix } from './comum';
 import { criarMapaDuplo, LOCAIS, local, localAtual, visitou, NOME_TIPO_LOCAL, type Local } from './mapa-dados';
 import { caber } from './mochila';
 import { T } from '../../data/textos-ui';
+import { t, tr } from '../../i18n';
 
 const TREM = ['.kk......', 'kffk.kkkk', 'kffkkrrrk', 'krrrrrrrk', 'kkkkkkkkk', '.o..o..o.'];
 const BARCO = ['...k.....', '...kw....', '...kww...', '...kwww..', 'kkkkkkkkk', '.kmmmmmk.', '..kkkkk..'];
@@ -79,7 +80,7 @@ export function criarMapaMundi(args: ArgsMapa = {}): Tela {
     const l = local(atual)!; const [x, y] = mapa.pos(atual); em(sel, x - 7, y - 7);
     corpo.replaceChildren();
     rotulo(corpo, l.nome, 0, 1, 'amarelo', { sombra: true });
-    rotulo(corpo, `${l.ginasio ? 'Ginásio ' + NOME_INSIGNIA[l.ginasio - 1] : NOME_TIPO_LOCAL[l.tipo]}${l.id === aqui ? ' · você está aqui' : l.tipo === 'cidade' && !visitou(l.id) ? ' · não visitada' : ''}`, 0, 1, 'cinza', { largura: l.ginasio ? 248 : 268, alinhar: 'dir' });
+    rotulo(corpo, [l.ginasio ? tr('Ginásio {nome}', { nome: NOME_INSIGNIA[l.ginasio - 1] }) : t(NOME_TIPO_LOCAL[l.tipo]), t(l.id === aqui ? 'você está aqui' : l.tipo === 'cidade' && !visitou(l.id) ? 'não visitada' : '')].filter(Boolean).join(' · '), 0, 1, 'cinza', { largura: l.ginasio ? 248 : 268, alinhar: 'dir' });
     rotulo(corpo, caber(l.nota, 268), 0, 13, 'creme');
     if (l.ginasio) corpo.append(em(insignia(l.ginasio, jogo.save.insignias.includes(l.ginasio)), 252, -3));
     dica(voo ? T.mapa.dicaVoo : T.mapa.dica);
@@ -102,7 +103,7 @@ export function criarMapaMundi(args: ArgsMapa = {}): Tela {
   async function confirmarVoo() {
     if (ocupado) return; ocupado = true;
     const l = local(atual)!;
-    if (await confirmar(T.mapa.voar.replace('{L}', l.nome))) { fechar(tela, l.id); return; }
+    if (await confirmar(tr(T.mapa.voar, { L: l.nome }))) { fechar(tela, l.id); return; }
     ocupado = false;
   }
   const tela: Tela = {

@@ -11,6 +11,7 @@ import { M, ajudante, ocupar } from './vivo';
 import { DX, DY } from './zonas';
 import { treinador, avisar, item as itemDef } from './deps';
 import { derrota } from './encontros';
+import { tr } from '../i18n';
 
 /* ------------------------------ obstáculo à frente → HUD ------------------------------ */
 let ultimo = '';
@@ -54,7 +55,7 @@ bus.on('treinador-vencido', (d: { id?: string } | undefined) => {
   const t = d?.id ? treinador(d.id) : undefined, c = jogo.save.contatos;
   if (!t || c.includes(t.id) || !qtdItem('radio-cipo') || !daContato(t)) return;
   c.push(t.id);
-  avisar(`${t.classe} ${t.nome} deixou o número no seu Rádio Cipó!`);
+  avisar(tr('{classe} {nome} deixou o número no seu Rádio Cipó!', { classe: t.classe, nome: t.nome }));
   bus.emit('contato', { id: t.id });
 });
 

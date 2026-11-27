@@ -1,0 +1,3658 @@
+{
+ "Ataque": {
+  "en": "Attack",
+  "ctx": "src/battle/engine.ts:149 · campo atq | src/battle/view/tela.ts:29 · campo atq | src/ui/telas/resumo.ts:27 · campo atq"
+ },
+ "Defesa": {
+  "en": "Defense",
+  "ctx": "src/battle/engine.ts:149 · campo def | src/battle/view/tela.ts:29 · campo def | src/ui/telas/resumo.ts:27 · campo def"
+ },
+ "Velocidade": {
+  "en": "Speed",
+  "ctx": "src/battle/engine.ts:149 · campo vel | src/battle/view/tela.ts:29 · campo vel | src/ui/telas/resumo.ts:27 · campo vel"
+ },
+ "Você": {
+  "en": "You",
+  "ctx": "src/battle/engine.ts:235 · campo nome | src/ui/telas/diario.ts:166 · regua()"
+ },
+ "Físico": {
+  "en": "Physical",
+  "ctx": "src/battle/view/menus.ts:29 · campo fisico | src/ui/telas/resumo.ts:28 · campo fisico"
+ },
+ "Especial": {
+  "en": "Special",
+  "ctx": "src/battle/view/menus.ts:29 · campo especial | src/ui/telas/resumo.ts:28 · campo especial"
+ },
+ "EQUIPE": {
+  "en": "TEAM",
+  "ctx": "src/battle/view/menus.ts:38 | src/ui/telas/equipe.ts:31 · placaTitulo() | src/ui/telas/viveiro.ts:37 · texto()"
+ },
+ "Ovo": {
+  "en": "Egg",
+  "ctx": "src/battle/view/menus.ts:220 · texto() | src/ui/telas/comum.ts:32 | src/ui/telas/resumo.ts:58 · rotulo()"
+ },
+ "Vida": {
+  "en": "HP",
+  "ctx": "src/battle/view/tela.ts:29 · campo vida | src/ui/telas/resumo.ts:27 · campo vida"
+ },
+ "Atq. Esp.": {
+  "en": "Sp. Atk",
+  "ctx": "src/battle/view/tela.ts:29 · campo atqEsp | src/ui/telas/resumo.ts:27 · campo atqEsp"
+ },
+ "Def. Esp.": {
+  "en": "Sp. Def",
+  "ctx": "src/battle/view/tela.ts:29 · campo defEsp | src/ui/telas/resumo.ts:27 · campo defEsp"
+ },
+ "Sim": {
+  "en": "Yes",
+  "ctx": "src/battle/view/tela.ts:88 · campo opcoes | src/ui/componentes/confirmacao.ts:24 · perguntar() | src/ui/dialogo.ts:184 · t() | +3"
+ },
+ "Não": {
+  "en": "No",
+  "ctx": "src/battle/view/tela.ts:88 · campo opcoes | src/ui/componentes/confirmacao.ts:24 · perguntar() | src/ui/dialogo.ts:184 · t() | +3"
+ },
+ "Não teria efeito.": {
+  "en": "It wouldn't have any effect.",
+  "ctx": "src/battle/view/tela.ts:467 · telaEquipe() | src/ui/telas/comum.ts:162"
+ },
+ "Kauê": {
+  "en": "Kauê",
+  "ctx": "src/core/estado.ts:11 · campo nome | src/data/eventos/a1.ts:14 · registrarComando() | src/data/eventos/a1.ts:60 · pergunta/opção"
+ },
+ "condição desconhecida: ": {
+  "en": "condição desconhecida: ",
+  "ctx": "src/core/estado.ts:76"
+ },
+ "Cima": {
+  "en": "Up",
+  "ctx": "src/core/input.ts:14 · campo cima"
+ },
+ "Baixo": {
+  "en": "Down",
+  "ctx": "src/core/input.ts:14 · campo baixo"
+ },
+ "Esquerda": {
+  "en": "Left",
+  "ctx": "src/core/input.ts:14 · campo esq"
+ },
+ "Direita": {
+  "en": "Right",
+  "ctx": "src/core/input.ts:14 · campo dir"
+ },
+ "Confirmar": {
+  "en": "Confirm",
+  "ctx": "src/core/input.ts:14 · campo a"
+ },
+ "Voltar/Correr": {
+  "en": "Back/Run",
+  "ctx": "src/core/input.ts:14 · campo b"
+ },
+ "Menu": {
+  "en": "Menu",
+  "ctx": "src/core/input.ts:14 · campo menu"
+ },
+ "Atalho": {
+  "en": "Shortcut",
+  "ctx": "src/core/input.ts:14 · campo select"
+ },
+ "Esc": {
+  "en": "Esc",
+  "ctx": "src/core/input.ts:134 · campo Escape"
+ },
+ "Shift D": {
+  "en": "Right Shift",
+  "ctx": "src/core/input.ts:134 · campo ShiftRight"
+ },
+ "Espaço": {
+  "en": "Space",
+  "ctx": "src/core/input.ts:134 · campo Space | src/ui/telas/nome.ts:18"
+ },
+ "Apagar": {
+  "en": "Delete",
+  "ctx": "src/core/input.ts:134 · campo Backspace | src/ui/telas/foto.ts:101 · perguntar() | src/ui/telas/nome.ts:18 | +1"
+ },
+ "Ctrl": {
+  "en": "Ctrl",
+  "ctx": "src/core/input.ts:134 · campo ControlLeft"
+ },
+ "Ctrl D": {
+  "en": "Right Ctrl",
+  "ctx": "src/core/input.ts:134 · campo ControlRight"
+ },
+ "Alt": {
+  "en": "Alt",
+  "ctx": "src/core/input.ts:134 · campo AltLeft"
+ },
+ "Alt D": {
+  "en": "Right Alt",
+  "ctx": "src/core/input.ts:134 · campo AltRight"
+ },
+ "Num ": {
+  "en": "Num ",
+  "ctx": "src/core/input.ts:135"
+ },
+ "Guardando o jogo para jogar sem internet: {total}%": {
+  "en": "Saving the game to play offline: {total}%",
+  "ctx": "src/core/offline.ts:92 · avisar()"
+ },
+ "Sem rede: o download continua na próxima abertura.": {
+  "en": "No connection: the download will resume next time.",
+  "ctx": "src/core/offline.ts:98 · avisar()"
+ },
+ "Pronto: o jogo já funciona sem internet.": {
+  "en": "Done: the game now works offline.",
+  "ctx": "src/core/offline.ts:103 · avisar()"
+ },
+ "Atualização disponível: toque para recarregar": {
+  "en": "Update available: tap to reload",
+  "ctx": "src/core/offline.ts:115"
+ },
+ "anterior a {v}": {
+  "en": "older than {v}",
+  "ctx": "src/core/offline.ts:192"
+ },
+ "pacote indisponível": {
+  "en": "package unavailable",
+  "ctx": "src/core/pacotes.ts:157 · campo statusText"
+ },
+ "LIGHT": {
+  "en": "LIGHT",
+  "ctx": "src/core/plataforma.ts:121 · campo style"
+ },
+ "CACHE": {
+  "en": "CACHE",
+  "ctx": "src/core/plataforma.ts:141 · campo directory"
+ },
+ "DOCUMENTS": {
+  "en": "DOCUMENTS",
+  "ctx": "src/core/plataforma.ts:141 · campo directory"
+ },
+ "O maquinista tira o boné e coça a cabeça:\n\"Campeão, a linha da serra está em obras! Caiu barreira no túnel e a turma ainda está assentando trilho.\"\f\"Guarde bem o seu Passe. Quando a Maria-Fumaça voltar a subir, o Rádio Cipó avisa.\"": {
+  "en": "The engineer takes off his cap and scratches his head:\n\"Champ, the mountain line is under repair! A landslide hit the tunnel and the crew is still laying track.\"\f\"Hold on to your Pass. When the old steam train runs again, Rádio Cipó will let you know.\"",
+  "ctx": "src/core/progresso.ts:11 · campo trem"
+ },
+ "O mestre do Saveiro aponta o casco virado no estaleiro:\n— Rio acima, só depois da reforma, Campeão. O barco está em obras: tábua nova, vela nova, tudo.\f— Guarde o bilhete. Quando o Saveiro voltar para a água, o Rádio Cipó avisa.": {
+  "en": "The Saveiro's skipper points at the hull upside down in the boatyard:\n\"Upriver? Only after the refit, Champ. The boat is getting new planks, a new sail, the works.\"\f\"Keep your ticket. When the Saveiro is back in the water, Rádio Cipó will let you know.\"",
+  "ctx": "src/core/progresso.ts:12 · campo saveiro"
+ },
+ "Isto não é um código do jogo (começa com \"{ini}…\"). Copie de novo pelo menu do jogo: Copiar código → Copiar.": {
+  "en": "This is not a game code (it starts with \"{ini}…\"). Copy it again from the game menu: Copy code → Copy.",
+  "ctx": "src/core/save.ts:184"
+ },
+ "Isto não é um código do jogo. Copie de novo pelo menu do jogo: Copiar código → Copiar.": {
+  "en": "This is not a game code. Copy it again from the game menu: Copy code → Copy.",
+  "ctx": "src/core/save.ts:184"
+ },
+ "Este código é de uma versão mais nova do jogo. Atualize o jogo neste aparelho e tente de novo.": {
+  "en": "This code comes from a newer version of the game. Update the game on this device and try again.",
+  "ctx": "src/core/save.ts:202"
+ },
+ "O código é de uma versão que este jogo não conhece.": {
+  "en": "This code comes from a version this game doesn't know.",
+  "ctx": "src/core/save.ts:202"
+ },
+ "Teste": {
+  "en": "Test",
+  "ctx": "src/core/save.ts:239"
+ },
+ "Profª Ipê": {
+  "en": "Prof. Ipê",
+  "ctx": "src/data/eventos/a1.ts:23 · campo nome | src/data/textos-ui.ts:95 · campo de | src/data/textos-ui.ts:101 · campo de | +1"
+ },
+ "Tainá": {
+  "en": "Tainá",
+  "ctx": "src/data/eventos/a1.ts:24 · campo nome | src/data/eventos/a2.ts:29 · campo nome | src/data/eventos/b1.ts:88 · campo nome | +20"
+ },
+ "Seu Aroeira": {
+  "en": "Seu Aroeira",
+  "ctx": "src/data/eventos/a1.ts:25 · campo nome | src/data/eventos/captura.ts:25 · campo nome | src/data/textos-ui.ts:96 · campo de | +1"
+ },
+ "Mãe": {
+  "en": "Mom",
+  "ctx": "src/data/eventos/a1.ts:70 · campo nome | src/data/eventos/comuns.ts:62 · campo nome | src/data/textos-ui.ts:94 · campo de | +2"
+ },
+ "Que dia e que horas são?": {
+  "en": "What day and time is it?",
+  "ctx": "src/data/eventos/a1.ts:84 · campo titulo | src/ui/telas/relogio.ts:17 · texto()"
+ },
+ "Mata": {
+  "en": "Grass",
+  "ctx": "src/data/eventos/a1.ts:162 · cuia() | src/data/tabela-tipos.ts:39 · campo mata | src/ui/kit.ts:18 · campo mata | +1"
+ },
+ "Brasa": {
+  "en": "Ember",
+  "ctx": "src/data/eventos/a1.ts:163 · cuia() | src/data/tabela-tipos.ts:39 · campo brasa | src/ui/kit.ts:18 · campo brasa"
+ },
+ "Rio": {
+  "en": "River",
+  "ctx": "src/data/eventos/a1.ts:164 · cuia() | src/data/tabela-tipos.ts:39 · campo rio | src/ui/kit.ts:18 · campo rio"
+ },
+ "Faroleiro Volta": {
+  "en": "Lightkeeper Volta",
+  "ctx": "src/data/eventos/a2.ts:32 · campo nome | src/data/eventos/ginasio-05.ts:3 · campo nome | src/data/textos-ui.ts:78 · campo lider | +1"
+ },
+ "Vila Cascavel": {
+  "en": "Vila Cascavel",
+  "ctx": "src/data/eventos/b1.ts:47 · campo localCaptura | src/data/zonas/B1-posto.ts:4 · postoGuardiao() | src/data/zonas/B1-venda.ts:4 · venda() | +2"
+ },
+ "Garimpeiro Topázio": {
+  "en": "Prospector Topázio",
+  "ctx": "src/data/eventos/b1.ts:91 · campo nome | src/data/eventos/ginasio-10.ts:3 · campo nome | src/data/textos-ui.ts:83 · campo lider | +2"
+ },
+ "Rádio Cipó": {
+  "en": "Rádio Cipó",
+  "ctx": "src/data/eventos/b1.ts:126 · campo nome | src/data/eventos/b2-sul.ts:60 · campo nome | src/data/eventos/captura.ts:134 · campo nome | +8"
+ },
+ "Campos de Altitude": {
+  "en": "Campos de Altitude",
+  "ctx": "src/data/eventos/b2-norte.ts:55 · campo localCaptura | src/data/zonas/B-SG.ts:51 · campo nome | src/ui/telas/mapa-dados.ts:125 · L()"
+ },
+ "Doutor Peçonha": {
+  "en": "Doctor Peçonha",
+  "ctx": "src/data/eventos/b2-sul.ts:58 · campo nome | src/data/eventos/ginasio-13.ts:3 · campo nome | src/data/textos-ui.ts:86 · campo lider | +2"
+ },
+ "Serra da Geada": {
+  "en": "Serra da Geada",
+  "ctx": "src/data/eventos/b2-sul.ts:413 · se() | src/data/textos-ui.ts:87 · campo cidade | src/data/zonas/B7-posto.ts:4 · postoGuardiao() | +3"
+ },
+ "{JOGADOR} recebeu {n}× {item}!": {
+  "en": "{JOGADOR} received {n}× {item}!",
+  "ctx": "src/data/eventos/captura.ts:67 · falar() | src/world/eventos.ts:51 · falar()"
+ },
+ "Até logo": {
+  "en": "See you",
+  "ctx": "src/data/eventos/captura.ts:104 · ops.push() | src/data/textos-ui.ts:60 · campo sair"
+ },
+ "Gruta Breu": {
+  "en": "Gruta Breu",
+  "ctx": "src/data/eventos/captura.ts:186 · campo localCaptura | src/data/zonas/A-GB-1.ts:40 · campo nome | src/ui/telas/mapa-dados.ts:96 · L()"
+ },
+ "Coronel Garrote": {
+  "en": "Colonel Garrote",
+  "ctx": "src/data/eventos/conselho.ts:17 · campo nome | src/data/textos-ui.ts:102 · campo de | src/data/zonas/PP.ts:96 · gente()"
+ },
+ "Guardião-Mor Arandu": {
+  "en": "High Guardian Arandu",
+  "ctx": "src/data/eventos/conselho.ts:18 · campo nome | src/data/textos-ui.ts:103 · campo de | src/data/zonas/PP-conselho.ts:106 · gente()"
+ },
+ "Mestre Gaivota": {
+  "en": "Master Gaivota",
+  "ctx": "src/data/eventos/ginasio-01.ts:3 · campo nome | src/data/textos-ui.ts:74 · campo lider | src/data/treinadores/ginasio-01.ts:39 · campo nome"
+ },
+ "Lia Teia": {
+  "en": "Lia Teia",
+  "ctx": "src/data/eventos/ginasio-02.ts:3 · campo nome | src/data/textos-ui.ts:75 · campo lider | src/data/treinadores/ginasio-02.ts:29 · campo nome"
+ },
+ "Marujo Netuno Silva": {
+  "en": "Sailor Netuno Silva",
+  "ctx": "src/data/eventos/ginasio-03.ts:3 · campo nome | src/data/textos-ui.ts:76 · campo lider | src/data/treinadores/ginasio-03.ts:28 · campo nome"
+ },
+ "Iracema Lua": {
+  "en": "Iracema Lua",
+  "ctx": "src/data/eventos/ginasio-04.ts:3 · campo nome | src/data/textos-ui.ts:77 · campo lider | src/data/treinadores/ginasio-04.ts:28 · campo nome"
+ },
+ "Dona Benta Sombra": {
+  "en": "Dona Benta Sombra",
+  "ctx": "src/data/eventos/ginasio-06.ts:3 · campo nome | src/data/textos-ui.ts:79 · campo lider | src/data/treinadores/ginasio-06.ts:31 · campo nome"
+ },
+ "Engenheira Bigorna": {
+  "en": "Engineer Bigorna",
+  "ctx": "src/data/eventos/ginasio-07.ts:3 · campo nome | src/data/textos-ui.ts:80 · campo lider | src/data/treinadores/ginasio-07.ts:34 · campo nome"
+ },
+ "Dona Buriti": {
+  "en": "Dona Buriti",
+  "ctx": "src/data/eventos/ginasio-08.ts:3 · campo nome | src/data/textos-ui.ts:81 · campo lider | src/data/treinadores/ginasio-08.ts:32 · campo nome"
+ },
+ "Boiadeira Zefa": {
+  "en": "Cowgirl Zefa",
+  "ctx": "src/data/eventos/ginasio-09.ts:3 · campo nome | src/data/textos-ui.ts:82 · campo lider | src/data/treinadores/ginasio-09.ts:33 · campo nome"
+ },
+ "Ferreira Labareda": {
+  "en": "Smith Labareda",
+  "ctx": "src/data/eventos/ginasio-11.ts:3 · campo nome | src/data/textos-ui.ts:84 · campo lider | src/data/treinadores/ginasio-11.ts:34 · campo nome"
+ },
+ "Mestre Gingado": {
+  "en": "Master Gingado",
+  "ctx": "src/data/eventos/ginasio-12.ts:3 · campo nome | src/data/textos-ui.ts:85 · campo lider | src/data/treinadores/ginasio-12.ts:34 · campo nome"
+ },
+ "Gaúcha Pinhão": {
+  "en": "Gaúcha Pinhão",
+  "ctx": "src/data/eventos/ginasio-14.ts:3 · campo nome | src/data/textos-ui.ts:87 · campo lider | src/data/treinadores/ginasio-14.ts:35 · campo nome"
+ },
+ "Astrônoma Jaci": {
+  "en": "Astronomer Jaci",
+  "ctx": "src/data/eventos/ginasio-15.ts:3 · campo nome | src/data/textos-ui.ts:88 · campo lider | src/data/treinadores/ginasio-15.ts:34 · campo nome"
+ },
+ "Pajé Trovão-Velho": {
+  "en": "Pajé Trovão-Velho",
+  "ctx": "src/data/eventos/ginasio-16.ts:3 · campo nome | src/data/textos-ui.ts:89 · campo lider"
+ },
+ "Nv {nivel}": {
+  "en": "Lv {nivel}",
+  "ctx": "src/data/eventos/liga.ts:38 · texto() | src/ui/telas/diario.ts:47 · p.push()"
+ },
+ "Sair": {
+  "en": "Quit",
+  "ctx": "src/data/eventos/regras.ts:154 · d.escolher() | src/ui/telas/menu.ts:39 · campo rotulo | src/ui/telas/titulo.ts:42 · acoes.push()"
+ },
+ "Voltar": {
+  "en": "Back",
+  "ctx": "src/data/eventos/regras.ts:158 · d.escolher() | src/ui/componentes/voltar.ts:24 | src/ui/componentes/voltar.ts:27 · t() | +11"
+ },
+ "Ginga": {
+  "en": "Brawl",
+  "ctx": "src/data/golpes.ts:213 · g() | src/data/tabela-tipos.ts:39 · campo ginga | src/ui/kit.ts:18 · campo ginga"
+ },
+ "Casulo": {
+  "en": "Cocoon",
+  "ctx": "src/data/golpes.ts:292 · g() | src/ui/kit.ts:19"
+ },
+ "Luar": {
+  "en": "Moonlight",
+  "ctx": "src/data/golpes.ts:369 · g() | src/ui/telas/foto.ts:27 · campo nome"
+ },
+ "Vara Velha": {
+  "en": "Old Rod",
+  "ctx": "src/data/itens.ts:121 · i() | src/world/campo.ts:197 · campo velha"
+ },
+ "Vara Boa": {
+  "en": "Good Rod",
+  "ctx": "src/data/itens.ts:122 · i() | src/world/campo.ts:197 · campo boa"
+ },
+ "Vara Mestra": {
+  "en": "Master Rod",
+  "ctx": "src/data/itens.ts:123 · i() | src/world/campo.ts:197 · campo mestra"
+ },
+ "Vila Jacarandá": {
+  "en": "Vila Jacarandá",
+  "ctx": "src/data/radio.ts:26 · campo nome | src/data/zonas/A1.ts:51 · campo nome | src/ui/telas/mapa-dados.ts:80 · L()"
+ },
+ "sábado": {
+  "en": "Saturday",
+  "ctx": "src/data/radio.ts:75 | src/data/revancha.ts:24 | src/ui/telas/dados.ts:77"
+ },
+ "manhã": {
+  "en": "morning",
+  "ctx": "src/data/radio.ts:76 · campo manha | src/ui/telas/diario.ts:43 · campo manha | src/ui/telas/foto.ts:98 · campo manha | +3"
+ },
+ "dia": {
+  "en": "daytime",
+  "ctx": "src/data/radio.ts:76 · campo dia | src/ui/telas/diario.ts:43 · campo dia | src/ui/telas/menu.ts:22 · campo dia | +2"
+ },
+ "tarde": {
+  "en": "afternoon",
+  "ctx": "src/data/radio.ts:76 · campo tarde | src/ui/telas/menu.ts:22 · campo tarde | src/ui/telas/radio.ts:47 · campo tarde"
+ },
+ "noite": {
+  "en": "night",
+  "ctx": "src/data/radio.ts:76 · campo noite | src/ui/telas/diario.ts:43 · campo noite | src/ui/telas/menu.ts:22 · campo noite | +2"
+ },
+ "domingo": {
+  "en": "Sunday",
+  "ctx": "src/data/revancha.ts:24 | src/ui/telas/dados.ts:77"
+ },
+ "Gruta do Eco": {
+  "en": "Gruta do Eco",
+  "ctx": "src/data/revancha.ts:136 · campo lugar | src/data/zonas/A-GE.ts:48 · campo nome | src/ui/telas/mapa-dados.ts:87 · L()"
+ },
+ "Vereda dos Buritis": {
+  "en": "Vereda dos Buritis",
+  "ctx": "src/data/safari.ts:41 · campo nome | src/data/zonas/B-R1.ts:12 · campo nome | src/ui/telas/mapa-dados.ts:108 · L()"
+ },
+ "Comum": {
+  "en": "Normal",
+  "ctx": "src/data/tabela-tipos.ts:39 · campo comum | src/ui/kit.ts:18 · campo comum"
+ },
+ "Trovão": {
+  "en": "Thunder",
+  "ctx": "src/data/tabela-tipos.ts:39 · campo trovao | src/ui/kit.ts:18 · campo trovao"
+ },
+ "Geada": {
+  "en": "Frost",
+  "ctx": "src/data/tabela-tipos.ts:39 · campo geada | src/ui/kit.ts:18 · campo geada"
+ },
+ "Veneno": {
+  "en": "Poison",
+  "ctx": "src/data/tabela-tipos.ts:39 · campo veneno | src/ui/kit.ts:18 · campo veneno"
+ },
+ "Terra": {
+  "en": "Earth",
+  "ctx": "src/data/tabela-tipos.ts:39 · campo terra | src/ui/kit.ts:18 · campo terra"
+ },
+ "Vento": {
+  "en": "Wind",
+  "ctx": "src/data/tabela-tipos.ts:40 · campo vento | src/ui/kit.ts:18 · campo vento"
+ },
+ "Mente": {
+  "en": "Mind",
+  "ctx": "src/data/tabela-tipos.ts:40 · campo mente | src/ui/kit.ts:18 · campo mente"
+ },
+ "Inseto": {
+  "en": "Bug",
+  "ctx": "src/data/tabela-tipos.ts:40 · campo inseto | src/ui/kit.ts:18 · campo inseto"
+ },
+ "Pedra": {
+  "en": "Stone",
+  "ctx": "src/data/tabela-tipos.ts:40 · campo pedra | src/ui/kit.ts:18 · campo pedra"
+ },
+ "Assombro": {
+  "en": "Spook",
+  "ctx": "src/data/tabela-tipos.ts:40 · campo assombro | src/ui/kit.ts:18 · campo assombro"
+ },
+ "Lenda": {
+  "en": "Legend",
+  "ctx": "src/data/tabela-tipos.ts:40 · campo lenda | src/ui/kit.ts:18 · campo lenda"
+ },
+ "Ferro": {
+  "en": "Iron",
+  "ctx": "src/data/tabela-tipos.ts:40 · campo ferro | src/ui/kit.ts:18 · campo ferro"
+ },
+ "Encanto": {
+  "en": "Charm",
+  "ctx": "src/data/tabela-tipos.ts:40 · campo encanto | src/ui/kit.ts:18 · campo encanto"
+ },
+ "Salvar o jogo agora?": {
+  "en": "Save the game now?",
+  "ctx": "src/data/textos-ui.ts:7 · campo salvar"
+ },
+ "Jogo salvo! Bom descanso, {JOGADOR}.": {
+  "en": "Game saved! Rest well, {JOGADOR}.",
+  "ctx": "src/data/textos-ui.ts:7 · campo salvo"
+ },
+ "Não foi possível salvar. Tente de novo.": {
+  "en": "Couldn't save. Please try again.",
+  "ctx": "src/data/textos-ui.ts:7 · campo naoSalvou"
+ },
+ "Este é um jogo de teste: não há onde salvar.": {
+  "en": "This is a test game: there's nowhere to save.",
+  "ctx": "src/data/textos-ui.ts:8 · campo semSlot"
+ },
+ "Voltar à tela de título? O que não foi salvo se perde.": {
+  "en": "Back to the title screen? Anything unsaved will be lost.",
+  "ctx": "src/data/textos-ui.ts:9 · campo sair"
+ },
+ "A: abrir   B: fechar": {
+  "en": "A: open   B: close",
+  "ctx": "src/data/textos-ui.ts:10 · campo dica"
+ },
+ "Você ainda não tem nenhuma criatura parceira. A Profª Ipê pode ajudar com isso!": {
+  "en": "You don't have a partner creature yet. Prof. Ipê can help with that!",
+  "ctx": "src/data/textos-ui.ts:13 · campo vazia"
+ },
+ "A: opções   SELECT: mover   B: voltar": {
+  "en": "A: options   SELECT: move   B: back",
+  "ctx": "src/data/textos-ui.ts:14 · campo dicaMenu"
+ },
+ "Mover {nome}: escolha o novo lugar.   B: cancelar": {
+  "en": "Move {nome}: pick the new spot.   B: cancel",
+  "ctx": "src/data/textos-ui.ts:14 · campo dicaMover"
+ },
+ "A: trocar {a} com {b}   B: cancelar": {
+  "en": "A: swap {a} with {b}   B: cancel",
+  "ctx": "src/data/textos-ui.ts:14 · campo dicaTrocar"
+ },
+ "A: escolher   B: voltar": {
+  "en": "A: choose   B: back",
+  "ctx": "src/data/textos-ui.ts:15 · campo dicaEscolher | src/data/textos-ui.ts:55 · campo dica | src/data/textos-ui.ts:63 · campo dica | +1"
+ },
+ "A: usar nesta criatura   B: voltar": {
+  "en": "A: use on this creature   B: back",
+  "ctx": "src/data/textos-ui.ts:15 · campo dicaUsar"
+ },
+ "Ainda está se acostumando com você.": {
+  "en": "Still getting used to you.",
+  "ctx": "src/data/textos-ui.ts:18 · campo amizade"
+ },
+ "Já aceita um cafuné sem reclamar.": {
+  "en": "Takes a head pat without fussing.",
+  "ctx": "src/data/textos-ui.ts:18 · campo amizade"
+ },
+ "Gosta de andar ao seu lado.": {
+  "en": "Likes walking by your side.",
+  "ctx": "src/data/textos-ui.ts:18 · campo amizade"
+ },
+ "Confia em você de olhos fechados.": {
+  "en": "Trusts you with its eyes closed.",
+  "ctx": "src/data/textos-ui.ts:18 · campo amizade"
+ },
+ "Vocês são unha e carne!": {
+  "en": "You two are inseparable!",
+  "ctx": "src/data/textos-ui.ts:18 · campo amizade"
+ },
+ "Um ovo. Quem será que está aí dentro? Caminhe bastante com ele na equipe para descobrir.": {
+  "en": "An egg. Who could be inside? Walk a lot with it in your team to find out.",
+  "ctx": "src/data/textos-ui.ts:19 · campo ovo"
+ },
+ "A barra mostra a força natural da espécie. {c:vermelho}Vermelho{/c}: o jeito ajuda. {c:azul}Azul{/c}: o jeito atrapalha.": {
+  "en": "The bar shows the species' natural strength. {c:vermelho}Red{/c}: the nature helps. {c:azul}Blue{/c}: the nature hinders.",
+  "ctx": "src/data/textos-ui.ts:20 · campo legendaAtributos"
+ },
+ "←→: página   ↑↓: criatura   A: cafuné   B: voltar": {
+  "en": "←→: page   ↑↓: creature   A: pat   B: back",
+  "ctx": "src/data/textos-ui.ts:21 · campo dicaInfo"
+ },
+ "←→: página   ↑↓: criatura   B: voltar": {
+  "en": "←→: page   ↑↓: creature   B: back",
+  "ctx": "src/data/textos-ui.ts:21 · campo dicaAtributos"
+ },
+ "←→: página   A: pegar golpe   B: voltar": {
+  "en": "←→: page   A: pick move   B: back",
+  "ctx": "src/data/textos-ui.ts:22 · campo dicaGolpes"
+ },
+ "A: trocar com este golpe   B: soltar": {
+  "en": "A: swap with this move   B: drop",
+  "ctx": "src/data/textos-ui.ts:22 · campo dicaTroca"
+ },
+ "adorou o cafuné!": {
+  "en": "loved the head pat!",
+  "ctx": "src/data/textos-ui.ts:23 · campo cafuneBom"
+ },
+ "se espreguiça, contente.": {
+  "en": "stretches, happy.",
+  "ctx": "src/data/textos-ui.ts:23 · campo cafuneRepetido"
+ },
+ "precisa descansar primeiro.": {
+  "en": "needs to rest first.",
+  "ctx": "src/data/textos-ui.ts:23 · campo cafuneDesmaiada"
+ },
+ "Este bolso está vazio.": {
+  "en": "This pocket is empty.",
+  "ctx": "src/data/textos-ui.ts:26 · campo vazio"
+ },
+ "←→: bolso   A: opções   SELECT: atalho   B: voltar": {
+  "en": "←→: pocket   A: options   SELECT: shortcut   B: back",
+  "ctx": "src/data/textos-ui.ts:26 · campo dica"
+ },
+ "←→: bolso   A: escolher   B: voltar": {
+  "en": "←→: pocket   A: choose   B: back",
+  "ctx": "src/data/textos-ui.ts:26 · campo dicaEscolher"
+ },
+ "Não há criatura na equipe para isso.": {
+  "en": "No creature in your team can use this.",
+  "ctx": "src/data/textos-ui.ts:27 · campo semEquipe"
+ },
+ "Não dá para usar isso agora.": {
+  "en": "You can't use that now.",
+  "ctx": "src/data/textos-ui.ts:27 · campo naoAqui"
+ },
+ "A fumaça da outra ainda está no ar.": {
+  "en": "The smoke from the last one is still in the air.",
+  "ctx": "src/data/textos-ui.ts:27 · campo repelenteAtivo | src/world/campo.ts:266 · falar()"
+ },
+ "Os Amuletos de Campo agem sozinhos: chegue perto do obstáculo com a parceira certa na equipe.": {
+  "en": "Field Charms work on their own: walk up to the obstacle with the right partner in your team.",
+  "ctx": "src/data/textos-ui.ts:28 · campo amuleto"
+ },
+ "ficou no botão SELECT.": {
+  "en": "is now on the SELECT button.",
+  "ctx": "src/data/textos-ui.ts:29 · campo registrado"
+ },
+ "saiu do botão SELECT.": {
+  "en": "was taken off the SELECT button.",
+  "ctx": "src/data/textos-ui.ts:29 · campo desregistrado"
+ },
+ "Criatura ainda não avistada. Procure por pegadas novas!": {
+  "en": "Creature not seen yet. Look out for new footprints!",
+  "ctx": "src/data/textos-ui.ts:32 · campo naoVisto"
+ },
+ "Avistada, mas ainda não capturada. Capture-a para a Profª Ipê completar a ficha.": {
+  "en": "Seen, but not caught yet. Catch it so Prof. Ipê can complete the entry.",
+  "ctx": "src/data/textos-ui.ts:32 · campo soVisto"
+ },
+ "Não aparece solta nos mapas: chega por evolução, ovo ou acontecimento especial.": {
+  "en": "Not found in the wild: it comes from evolution, eggs or special events.",
+  "ctx": "src/data/textos-ui.ts:33 · campo semHabitat"
+ },
+ "A: ficha   SELECT: medalhas   ←→: pular 10   B: voltar": {
+  "en": "A: entry   SELECT: medals   ←→: skip 10   B: back",
+  "ctx": "src/data/textos-ui.ts:34 · campo dicaLista"
+ },
+ "←→: página   ↑↓: espécie   A: ouvir o grito   B: voltar": {
+  "en": "←→: page   ↑↓: species   A: hear its cry   B: back",
+  "ctx": "src/data/textos-ui.ts:34 · campo dicaFicha"
+ },
+ "Medalha Broto": {
+  "en": "Sprout Medal",
+  "ctx": "src/data/textos-ui.ts:35 · campo medalhas"
+ },
+ "Medalha Trilha": {
+  "en": "Trail Medal",
+  "ctx": "src/data/textos-ui.ts:35 · campo medalhas"
+ },
+ "Medalha Lupa": {
+  "en": "Magnifier Medal",
+  "ctx": "src/data/textos-ui.ts:35 · campo medalhas"
+ },
+ "Medalha Bússola": {
+  "en": "Compass Medal",
+  "ctx": "src/data/textos-ui.ts:35 · campo medalhas"
+ },
+ "Medalha Jequitibá": {
+  "en": "Jequitibá Medal",
+  "ctx": "src/data/textos-ui.ts:35 · campo medalhas"
+ },
+ "Medalha Pingorama": {
+  "en": "Pingorama Medal",
+  "ctx": "src/data/textos-ui.ts:35 · campo medalhas"
+ },
+ "30 espécies registradas": {
+  "en": "30 species recorded",
+  "ctx": "src/data/textos-ui.ts:36 · campo medalhaDesc"
+ },
+ "60 espécies registradas": {
+  "en": "60 species recorded",
+  "ctx": "src/data/textos-ui.ts:36 · campo medalhaDesc"
+ },
+ "90 espécies registradas": {
+  "en": "90 species recorded",
+  "ctx": "src/data/textos-ui.ts:36 · campo medalhaDesc"
+ },
+ "120 espécies registradas": {
+  "en": "120 species recorded",
+  "ctx": "src/data/textos-ui.ts:36 · campo medalhaDesc"
+ },
+ "150 espécies registradas": {
+  "en": "150 species recorded",
+  "ctx": "src/data/textos-ui.ts:36 · campo medalhaDesc"
+ },
+ "As 180 espécies registradas!": {
+  "en": "All 180 species recorded!",
+  "ctx": "src/data/textos-ui.ts:36 · campo medalhaDesc"
+ },
+ "DIÁRIO": {
+  "en": "JOURNAL",
+  "ctx": "src/data/textos-ui.ts:38 · campo abaDiario"
+ },
+ "VISITANTES": {
+  "en": "VISITORS",
+  "ctx": "src/data/textos-ui.ts:38 · campo abaVisitantes"
+ },
+ "A: ficha   SELECT: medalhas   MENU: visitantes   B: voltar": {
+  "en": "A: entry   SELECT: medals   MENU: visitors   B: back",
+  "ctx": "src/data/textos-ui.ts:39 · campo dicaListaVis"
+ },
+ "A: ficha   MENU: voltar às 180   B: sair": {
+  "en": "A: entry   MENU: back to the 180   B: exit",
+  "ctx": "src/data/textos-ui.ts:39 · campo dicaPaginaVis"
+ },
+ "Visitante, fora das 180": {
+  "en": "Visitor, outside the 180",
+  "ctx": "src/data/textos-ui.ts:40 · campo visitanteCurto"
+ },
+ "Ilhota do Encontro das Águas, aonde só o canoeiro Seu Tarumã leva, a partir de Porto Sereia. Missão \"O Encontro das Águas\": com as 16 insígnias, leve a ele um frasco de água escura (de noite, Poço do Breu, Rio Cachoeira-Véu) e um de água barrenta (de dia, poço da cascata da Estrada Vermelha).": {
+  "en": "Ilhota do Encontro das Águas, where only the canoeist Seu Tarumã can take you, from Porto Sereia. Quest \"The Meeting of the Waters\": with all 16 badges, bring him a flask of dark water (at night, Poço do Breu, Rio Cachoeira-Véu) and one of muddy water (by day, the waterfall pool on Estrada Vermelha).",
+  "ctx": "src/data/textos-ui.ts:42 · campo 181"
+ },
+ "Alto do Pico Pingorama, de noite, sob a aurora das quatro Lanternas Boreais. Missão \"A Expedição Boreal\": depois do Conselho, fale com a Drª Solveig no navio encalhado de Porto Pantaneiro.": {
+  "en": "The top of Pico Pingorama, at night, under the aurora of the four Boreal Lanterns. Quest \"The Boreal Expedition\": after the Council, talk to Dr. Solveig on the stranded ship in Porto Pantaneiro.",
+  "ctx": "src/data/textos-ui.ts:43 · campo 182"
+ },
+ "Nota da Drª Solveig: o Borealce é um visitante das montanhas do norte, trazido pela nossa expedição. Ele não pertence à fauna local.": {
+  "en": "Note from Dr. Solveig: Borealce is a visitor from the northern mountains, brought by our expedition. It is not part of the local wildlife.",
+  "ctx": "src/data/textos-ui.ts:45 · campo notaSolveig"
+ },
+ "A: opções   SELECT: próxima caixa   B: sair": {
+  "en": "A: options   SELECT: next box   B: exit",
+  "ctx": "src/data/textos-ui.ts:48 · campo dica"
+ },
+ "A: soltar aqui   B: cancelar": {
+  "en": "A: drop here   B: cancel",
+  "ctx": "src/data/textos-ui.ts:48 · campo dicaMover"
+ },
+ "←→: trocar de caixa   A: renomear   ↓: criaturas": {
+  "en": "←→: change box   A: rename   ↓: creatures",
+  "ctx": "src/data/textos-ui.ts:48 · campo dicaTopo"
+ },
+ "Não dá: a equipe precisa de ao menos uma criatura de pé.": {
+  "en": "Can't do that: your team needs at least one creature that can fight.",
+  "ctx": "src/data/textos-ui.ts:49 · campo ultima"
+ },
+ "A equipe já tem 6 criaturas.": {
+  "en": "Your team already has 6 creatures.",
+  "ctx": "src/data/textos-ui.ts:49 · campo equipeCheia"
+ },
+ "Esta caixa está cheia.": {
+  "en": "This box is full.",
+  "ctx": "src/data/textos-ui.ts:49 · campo caixaCheia"
+ },
+ "Soltar {N} de volta na natureza? Não dá para desfazer.": {
+  "en": "Release {N} back into the wild? This can't be undone.",
+  "ctx": "src/data/textos-ui.ts:50 · campo soltar"
+ },
+ "{N} voltou para {H}. Boa sorte, amiga!": {
+  "en": "{N} went back to {H}. Good luck, friend!",
+  "ctx": "src/data/textos-ui.ts:50 · campo soltou"
+ },
+ "Um ovo não pode ser solto.": {
+  "en": "An egg can't be released.",
+  "ctx": "src/data/textos-ui.ts:50 · campo soltarOvo"
+ },
+ "PC DO QUARTO": {
+  "en": "BEDROOM PC",
+  "ctx": "src/data/textos-ui.ts:53 · campo titulo"
+ },
+ "Guardar item": {
+  "en": "Store item",
+  "ctx": "src/data/textos-ui.ts:53 · campo guardar"
+ },
+ "Retirar item": {
+  "en": "Withdraw item",
+  "ctx": "src/data/textos-ui.ts:53 · campo retirar"
+ },
+ "Descartar item": {
+  "en": "Toss item",
+  "ctx": "src/data/textos-ui.ts:53 · campo descartar"
+ },
+ "Cartas": {
+  "en": "Letters",
+  "ctx": "src/data/textos-ui.ts:53 · campo cartas"
+ },
+ "Decoração": {
+  "en": "Decor",
+  "ctx": "src/data/textos-ui.ts:53 · campo decoracao"
+ },
+ "Desligar": {
+  "en": "Turn off",
+  "ctx": "src/data/textos-ui.ts:53 · campo desligar | src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+ },
+ "Não há nada na mochila que caiba no PC.": {
+  "en": "There's nothing in your bag that fits in the PC.",
+  "ctx": "src/data/textos-ui.ts:54 · campo nadaGuardar"
+ },
+ "O PC não guarda nenhum item.": {
+  "en": "The PC isn't storing any items.",
+  "ctx": "src/data/textos-ui.ts:54 · campo nadaPc"
+ },
+ "Nenhuma carta por enquanto.": {
+  "en": "No letters yet.",
+  "ctx": "src/data/textos-ui.ts:54 · campo semCartas"
+ },
+ "Pronto! O quarto vai ficar uma beleza.": {
+  "en": "Done! The room is going to look great.",
+  "ctx": "src/data/textos-ui.ts:55 · campo aplicado"
+ },
+ "Você ainda não tem esta peça.": {
+  "en": "You don't have this piece yet.",
+  "ctx": "src/data/textos-ui.ts:55 · campo naoTem"
+ },
+ "Setas: escolher   B: voltar": {
+  "en": "Arrows: choose   B: back",
+  "ctx": "src/data/textos-ui.ts:57 · campo dica"
+ },
+ "Ainda não conquistada.": {
+  "en": "Not earned yet.",
+  "ctx": "src/data/textos-ui.ts:57 · campo falta"
+ },
+ "Setas: mover   SELECT: trocar de região   B: voltar": {
+  "en": "Arrows: move   SELECT: change region   B: back",
+  "ctx": "src/data/textos-ui.ts:58 · campo dica"
+ },
+ "Setas: escolher a cidade   A: voar para lá   B: desistir": {
+  "en": "Arrows: pick a town   A: fly there   B: cancel",
+  "ctx": "src/data/textos-ui.ts:58 · campo dicaVoo"
+ },
+ "Voar para {L}?": {
+  "en": "Fly to {L}?",
+  "ctx": "src/data/textos-ui.ts:58 · campo voar"
+ },
+ "Nenhuma cidade visitada ainda.": {
+  "en": "No towns visited yet.",
+  "ctx": "src/data/textos-ui.ts:58 · campo semDestino"
+ },
+ "Você ainda não passou por aqui.": {
+  "en": "You haven't been here yet.",
+  "ctx": "src/data/textos-ui.ts:58 · campo desconhecido"
+ },
+ "Seja bem-vindo à Venda! Em que posso ajudar?": {
+  "en": "Welcome to the shop! How can I help you?",
+  "ctx": "src/data/textos-ui.ts:60 · campo ola"
+ },
+ "Comprar": {
+  "en": "Buy",
+  "ctx": "src/data/textos-ui.ts:60 · campo comprar"
+ },
+ "Vender": {
+  "en": "Sell",
+  "ctx": "src/data/textos-ui.ts:60 · campo vender"
+ },
+ "As patacas não dão para isso.": {
+  "en": "You don't have enough patacas for that.",
+  "ctx": "src/data/textos-ui.ts:61 · campo semDinheiro"
+ },
+ "Você não tem nada que eu possa comprar.": {
+  "en": "You have nothing I can buy.",
+  "ctx": "src/data/textos-ui.ts:61 · campo nadaVender"
+ },
+ "Isso eu não posso comprar.": {
+  "en": "I can't buy that.",
+  "ctx": "src/data/textos-ui.ts:61 · campo naoCompro"
+ },
+ "Aqui está! Obrigado pela preferência.": {
+  "en": "Here you go! Thanks for shopping with us.",
+  "ctx": "src/data/textos-ui.ts:62 · campo comprou"
+ },
+ "Negócio fechado!": {
+  "en": "It's a deal!",
+  "ctx": "src/data/textos-ui.ts:62 · campo vendeu"
+ },
+ "E uma Cuia de brinde, por conta da casa!": {
+  "en": "And a free Gourd, on the house!",
+  "ctx": "src/data/textos-ui.ts:62 · campo brinde"
+ },
+ "←→: filtro   A: fotografar   SELECT: álbum   B: sair": {
+  "en": "←→: filter   A: take photo   SELECT: album   B: exit",
+  "ctx": "src/data/textos-ui.ts:66 · campo dica"
+ },
+ "Setas: escolher   A: opções   B: voltar à câmera": {
+  "en": "Arrows: choose   A: options   B: back to camera",
+  "ctx": "src/data/textos-ui.ts:66 · campo dicaAlbum"
+ },
+ "Ficou boa! Guardar no álbum?": {
+  "en": "Nice shot! Save it to the album?",
+  "ctx": "src/data/textos-ui.ts:67 · campo guardar"
+ },
+ "O álbum está cheio (24 fotos). Apague alguma primeiro.": {
+  "en": "The album is full (24 photos). Delete one first.",
+  "ctx": "src/data/textos-ui.ts:67 · campo cheio"
+ },
+ "O álbum ainda está vazio.": {
+  "en": "The album is still empty.",
+  "ctx": "src/data/textos-ui.ts:67 · campo vazio"
+ },
+ "Apagar esta foto?": {
+  "en": "Delete this photo?",
+  "ctx": "src/data/textos-ui.ts:67 · campo apagar"
+ },
+ "←→: aba   A: escolher   B: desligar": {
+  "en": "←→: tab   A: choose   B: turn off",
+  "ctx": "src/data/textos-ui.ts:69 · campo dica"
+ },
+ "Nenhum contato ainda. Treinadores que simpatizarem com você passam o número depois da batalha.": {
+  "en": "No contacts yet. Trainers who take a liking to you share their number after a battle.",
+  "ctx": "src/data/textos-ui.ts:69 · campo semContatos"
+ },
+ "Já batalhamos hoje. Me liga amanhã!": {
+  "en": "We already battled today. Call me tomorrow!",
+  "ctx": "src/data/textos-ui.ts:69 · campo revancheHoje"
+ },
+ "Sua equipe precisa descansar antes de uma revanche.": {
+  "en": "Your team needs to rest before a rematch.",
+  "ctx": "src/data/textos-ui.ts:69 · campo semEquipe"
+ },
+ "Vila Caiçara": {
+  "en": "Vila Caiçara",
+  "ctx": "src/data/textos-ui.ts:74 · campo cidade | src/data/zonas/A2-posto.ts:4 · postoGuardiao() | src/data/zonas/A2-venda.ts:4 · venda() | +2"
+ },
+ "Quem lê o vento nunca perde o rumo.": {
+  "en": "Whoever reads the wind never loses their way.",
+  "ctx": "src/data/textos-ui.ts:74 · campo frase"
+ },
+ "Bosque Alto": {
+  "en": "Bosque Alto",
+  "ctx": "src/data/textos-ui.ts:75 · campo cidade | src/data/trocas.ts:23 · campo local | src/data/zonas/A3-posto.ts:4 · postoGuardiao() | +3"
+ },
+ "Paciência de casulo, voo de borboleta.": {
+  "en": "A cocoon's patience, a butterfly's flight.",
+  "ctx": "src/data/textos-ui.ts:75 · campo frase"
+ },
+ "Porto Sereia": {
+  "en": "Porto Sereia",
+  "ctx": "src/data/textos-ui.ts:76 · campo cidade | src/data/trocas.ts:39 · campo local | src/data/zonas/A4-posto.ts:4 · postoGuardiao() | +3"
+ },
+ "Remo firme e maré a favor.": {
+  "en": "Steady paddle and a friendly tide.",
+  "ctx": "src/data/textos-ui.ts:76 · campo frase"
+ },
+ "Cidade Coral": {
+  "en": "Cidade Coral",
+  "ctx": "src/data/textos-ui.ts:77 · campo cidade | src/data/trocas.ts:50 · campo local | src/data/zonas/A5-posto.ts:4 · postoGuardiao() | +3"
+ },
+ "Cada ponto da renda guarda uma estrela.": {
+  "en": "Every stitch of lace holds a star.",
+  "ctx": "src/data/textos-ui.ts:77 · campo frase"
+ },
+ "Ilha do Farol": {
+  "en": "Ilha do Farol",
+  "ctx": "src/data/textos-ui.ts:78 · campo cidade | src/data/zonas/A6-posto.ts:4 · postoGuardiao() | src/data/zonas/A6-venda.ts:4 · venda() | +2"
+ },
+ "Ideia boa dá choque!": {
+  "en": "A good idea gives you a jolt!",
+  "ctx": "src/data/textos-ui.ts:78 · campo frase"
+ },
+ "Serra Fumaça": {
+  "en": "Serra Fumaça",
+  "ctx": "src/data/textos-ui.ts:79 · campo cidade | src/data/zonas/A7-posto.ts:4 · postoGuardiao() | src/data/zonas/A7-venda.ts:4 · venda() | +2"
+ },
+ "Todo causo tem um fundo de verdade.": {
+  "en": "Every tall tale has some truth to it.",
+  "ctx": "src/data/textos-ui.ts:79 · campo frase"
+ },
+ "Vila Ferrugem": {
+  "en": "Vila Ferrugem",
+  "ctx": "src/data/textos-ui.ts:80 · campo cidade | src/data/trocas.ts:61 · campo local | src/data/zonas/A8-posto.ts:4 · postoGuardiao() | +3"
+ },
+ "Toda engrenagem tem sua vez.": {
+  "en": "Every gear gets its turn.",
+  "ctx": "src/data/textos-ui.ts:80 · campo frase"
+ },
+ "Vila Buriti": {
+  "en": "Vila Buriti",
+  "ctx": "src/data/textos-ui.ts:81 · campo cidade | src/data/zonas/A10-posto.ts:4 · postoGuardiao() | src/data/zonas/A10-venda.ts:4 · venda() | +2"
+ },
+ "Toda cura começa numa folha.": {
+  "en": "Every cure starts with a leaf.",
+  "ctx": "src/data/textos-ui.ts:81 · campo frase"
+ },
+ "Pantanal Grande": {
+  "en": "Pantanal Grande",
+  "ctx": "src/data/textos-ui.ts:82 · campo cidade | src/data/zonas/B2-posto.ts:4 · postoGuardiao() | src/data/zonas/B2-venda.ts:4 · venda() | +2"
+ },
+ "Pé no barro e cabeça erguida.": {
+  "en": "Feet in the mud, head held high.",
+  "ctx": "src/data/textos-ui.ts:82 · campo frase"
+ },
+ "Chapada Rubra": {
+  "en": "Chapada Rubra",
+  "ctx": "src/data/textos-ui.ts:83 · campo cidade | src/data/zonas/B3-posto.ts:4 · postoGuardiao() | src/data/zonas/B3-venda.ts:4 · venda() | +2"
+ },
+ "Brilho de verdade se acha cavando.": {
+  "en": "Real shine is found by digging.",
+  "ctx": "src/data/textos-ui.ts:83 · campo frase"
+ },
+ "Arraial Brasa": {
+  "en": "Arraial Brasa",
+  "ctx": "src/data/textos-ui.ts:84 · campo cidade | src/data/zonas/B4-posto.ts:4 · postoGuardiao() | src/data/zonas/B4-venda.ts:4 · venda() | +2"
+ },
+ "Ferro bom se prova no fogo.": {
+  "en": "Good iron is proven in the fire.",
+  "ctx": "src/data/textos-ui.ts:84 · campo frase"
+ },
+ "Cidade Ginga": {
+  "en": "Cidade Ginga",
+  "ctx": "src/data/textos-ui.ts:85 · campo cidade | src/data/zonas/B5-posto.ts:4 · postoGuardiao() | src/data/zonas/B5-venda.ts:4 · venda() | +2"
+ },
+ "Na roda, quem não ginga dança.": {
+  "en": "In the roda, whoever doesn't sway gets swept.",
+  "ctx": "src/data/textos-ui.ts:85 · campo frase"
+ },
+ "Brejo Roxo": {
+  "en": "Brejo Roxo",
+  "ctx": "src/data/textos-ui.ts:86 · campo cidade | src/data/zonas/B6-posto.ts:4 · postoGuardiao() | src/data/zonas/B6-venda.ts:4 · venda() | +2"
+ },
+ "O veneno e o remédio moram na mesma dose.": {
+  "en": "Poison and cure live in the same dose.",
+  "ctx": "src/data/textos-ui.ts:86 · campo frase"
+ },
+ "Frio de rachar, coração quente.": {
+  "en": "Bitter cold, warm heart.",
+  "ctx": "src/data/textos-ui.ts:87 · campo frase"
+ },
+ "Planalto Lume": {
+  "en": "Planalto Lume",
+  "ctx": "src/data/textos-ui.ts:88 · campo cidade | src/data/zonas/B8-posto.ts:4 · postoGuardiao() | src/data/zonas/B8-venda.ts:4 · venda() | +2"
+ },
+ "Quem olha para cima enxerga longe.": {
+  "en": "Whoever looks up sees far.",
+  "ctx": "src/data/textos-ui.ts:88 · campo frase"
+ },
+ "Aldeia Tupã": {
+  "en": "Aldeia Tupã",
+  "ctx": "src/data/textos-ui.ts:89 · campo cidade | src/data/zonas/A9-posto.ts:4 · postoGuardiao() | src/data/zonas/A9-venda.ts:4 · venda() | +2"
+ },
+ "A lenda só respeita quem respeita a terra.": {
+  "en": "Legends only respect those who respect the land.",
+  "ctx": "src/data/textos-ui.ts:89 · campo frase"
+ },
+ "Não esqueça o casaco": {
+  "en": "Don't forget your coat",
+  "ctx": "src/data/textos-ui.ts:94 · campo assunto"
+ },
+ "Filhote, deixei um Chá de Erva-Cidreira guardado neste PC. Coma direito, durma cedo e me ligue pelo Rádio Cipó. Com amor, Mãe.": {
+  "en": "Sweetie, I left a Lemon Balm Tea stored in this PC. Eat properly, sleep early and call me on Rádio Cipó. Love, Mom.",
+  "ctx": "src/data/textos-ui.ts:94 · campo texto"
+ },
+ "Seu Diário de Campo": {
+  "en": "Your Field Journal",
+  "ctx": "src/data/textos-ui.ts:95 · campo assunto"
+ },
+ "O Diário registra sozinho tudo o que você avista. Mas ficha completa, só capturando! A cada 30 espécies eu mando uma medalha de pesquisador.": {
+  "en": "The Journal records everything you see on its own. But a complete entry only comes from catching! Every 30 species, I'll send you a researcher medal.",
+  "ctx": "src/data/textos-ui.ts:95 · campo texto"
+ },
+ "Sobre o Faro": {
+  "en": "About Scent",
+  "ctx": "src/data/textos-ui.ts:96 · campo assunto"
+ },
+ "Bicho amigo fareja o que a gente não vê. Ande com a parceira mais chegada na frente da equipe e repare quando o chão brilhar.": {
+  "en": "A friendly critter sniffs out what we can't see. Walk with your closest partner at the front of the team and watch for the ground to sparkle.",
+  "ctx": "src/data/textos-ui.ts:96 · campo texto"
+ },
+ "Nem pense em relaxar": {
+  "en": "Don't even think about slacking",
+  "ctx": "src/data/textos-ui.ts:97 · campo assunto"
+ },
+ "Já tenho mais insígnias que você, viu? Mentira. Mas vou ter! Treine direito para a nossa próxima batalha não ser sem graça.": {
+  "en": "I already have more badges than you, you know? Just kidding. But I will! Train hard so our next battle isn't boring.",
+  "ctx": "src/data/textos-ui.ts:97 · campo texto"
+ },
+ "Vi você no jornal!": {
+  "en": "I saw you in the paper!",
+  "ctx": "src/data/textos-ui.ts:98 · campo assunto"
+ },
+ "A cidade inteira comenta que a luz da Usina voltou por sua causa. Guardei um pouco das suas patacas na poupança, como combinamos. Juízo no trem!": {
+  "en": "The whole town is saying the Power Plant's lights came back thanks to you. I put some of your patacas in savings, like we agreed. Behave on the train!",
+  "ctx": "src/data/textos-ui.ts:98 · campo texto"
+ },
+ "Drª Buriti": {
+  "en": "Dr. Buriti",
+  "ctx": "src/data/textos-ui.ts:99 · campo de | src/data/zonas/A10-lab.ts:33 · gente()"
+ },
+ "Ninhos do Pantanal": {
+  "en": "Pantanal Nests",
+  "ctx": "src/data/textos-ui.ts:99 · campo assunto"
+ },
+ "Os tuiuiús voltaram a fazer ninho na palafita grande. Se passar por aqui, venha ver: é graças a você e às suas parceiras.": {
+  "en": "The jabiru storks are nesting on the big stilt house again. If you come by, come see: it's thanks to you and your partners.",
+  "ctx": "src/data/textos-ui.ts:99 · campo texto"
+ },
+ "Obrigada (não espalha)": {
+  "en": "Thanks (don't tell anyone)",
+  "ctx": "src/data/textos-ui.ts:100 · campo assunto"
+ },
+ "Tá, você ajudou lá no Farol. Fiquei devendo uma. Só uma! Na próxima batalha eu desconto.": {
+  "en": "Fine, you helped out at the Lighthouse. I owe you one. Just one! I'll get even in our next battle.",
+  "ctx": "src/data/textos-ui.ts:100 · campo texto"
+ },
+ "Criaturas resgatadas": {
+  "en": "Rescued creatures",
+  "ctx": "src/data/textos-ui.ts:101 · campo assunto"
+ },
+ "As criaturas tiradas das jaulas da Mina já foram soltas na Chapada. Passe por lá um dia desses: a paisagem agradece.": {
+  "en": "The creatures taken from the Mine's cages have been set free in the Chapada. Drop by someday: the landscape will thank you.",
+  "ctx": "src/data/textos-ui.ts:101 · campo texto"
+ },
+ "Sem assunto": {
+  "en": "No subject",
+  "ctx": "src/data/textos-ui.ts:102 · campo assunto"
+ },
+ "Perdi. Vendi o que não era meu e paguei o preço. Vou plantar árvore até o fim da vida, por ordem do Conselho. Não me escreva.": {
+  "en": "I lost. I sold what wasn't mine and paid the price. I'll be planting trees for the rest of my life, by order of the Council. Don't write to me.",
+  "ctx": "src/data/textos-ui.ts:102 · campo texto"
+ },
+ "À nova guardiã de Pingorama": {
+  "en": "To Pingorama's new guardian",
+  "ctx": "src/data/textos-ui.ts:103 · campo assunto"
+ },
+ "O Pico Pingorama guarda o seu nome na pedra. Mas a trilha não acaba: a Floresta Ancestral abriu, e há lendas andando soltas por aí.": {
+  "en": "Pico Pingorama keeps your name in stone. But the trail doesn't end: the Floresta Ancestral has opened, and there are legends roaming free out there.",
+  "ctx": "src/data/textos-ui.ts:103 · campo texto"
+ },
+ "ADVENTURES OF PINGO": {
+  "en": "ADVENTURES OF PINGO",
+  "ctx": "src/data/textos-ui.ts:108 | src/ui/telas/idioma.ts:18 · texto() | src/ui/telas/splash.ts:11 · texto()"
+ },
+ "Uma aventura por Pingorama": {
+  "en": "An adventure across Pingorama",
+  "ctx": "src/data/textos-ui.ts:108"
+ },
+ "HISTÓRIA E MUNDO": {
+  "en": "STORY AND WORLD",
+  "ctx": "src/data/textos-ui.ts:109"
+ },
+ "Costa do Sol e Sertão das Névoas": {
+  "en": "Costa do Sol and Sertão das Névoas",
+  "ctx": "src/data/textos-ui.ts:109"
+ },
+ "32 cidades, rotas, grutas e matas": {
+  "en": "32 towns, routes, caves and forests",
+  "ctx": "src/data/textos-ui.ts:109"
+ },
+ "AS 180 CRIATURAS": {
+  "en": "THE 180 CREATURES",
+  "ctx": "src/data/textos-ui.ts:110"
+ },
+ "Inspiradas na fauna do Brasil": {
+  "en": "Inspired by Brazil's wildlife",
+  "ctx": "src/data/textos-ui.ts:110"
+ },
+ "do tamanduá ao boto-cor-de-rosa": {
+  "en": "from the anteater to the pink river dolphin",
+  "ctx": "src/data/textos-ui.ts:110"
+ },
+ "ARTE EM PIXEL": {
+  "en": "PIXEL ART",
+  "ctx": "src/data/textos-ui.ts:111"
+ },
+ "Modelos, cenários e interface": {
+  "en": "Models, scenery and interface",
+  "ctx": "src/data/textos-ui.ts:111"
+ },
+ "desenhados à mão, ponto por ponto": {
+  "en": "drawn by hand, dot by dot",
+  "ctx": "src/data/textos-ui.ts:111"
+ },
+ "MÚSICA E SONS": {
+  "en": "MUSIC AND SOUND",
+  "ctx": "src/data/textos-ui.ts:112"
+ },
+ "Choro, baião, frevo, catira e maracatu": {
+  "en": "Choro, baião, frevo, catira and maracatu",
+  "ctx": "src/data/textos-ui.ts:112"
+ },
+ "sintetizados dentro do próprio jogo": {
+  "en": "synthesized inside the game itself",
+  "ctx": "src/data/textos-ui.ts:112"
+ },
+ "BATALHAS": {
+  "en": "BATTLES",
+  "ctx": "src/data/textos-ui.ts:113"
+ },
+ "17 tipos, 16 insígnias": {
+  "en": "17 types, 16 badges",
+  "ctx": "src/data/textos-ui.ts:113"
+ },
+ "e um Conselho de Guardiões": {
+  "en": "and a Council of Guardians",
+  "ctx": "src/data/textos-ui.ts:113"
+ },
+ "AGRADECIMENTOS": {
+  "en": "THANKS",
+  "ctx": "src/data/textos-ui.ts:114"
+ },
+ "À Profª Ipê, pelo Diário de Campo": {
+  "en": "To Prof. Ipê, for the Field Journal",
+  "ctx": "src/data/textos-ui.ts:114"
+ },
+ "À Mãe, pelo casaco e pelo chá": {
+  "en": "To Mom, for the coat and the tea",
+  "ctx": "src/data/textos-ui.ts:114"
+ },
+ "Ao Seu Aroeira, pelo Faro": {
+  "en": "To Seu Aroeira, for Scent",
+  "ctx": "src/data/textos-ui.ts:114"
+ },
+ "À Tainá, pela teimosia": {
+  "en": "To Tainá, for her stubbornness",
+  "ctx": "src/data/textos-ui.ts:114"
+ },
+ "E a você, que cuidou de cada parceira": {
+  "en": "And to you, who cared for every partner",
+  "ctx": "src/data/textos-ui.ts:114"
+ },
+ "LEMBRETE DA PROFESSORA": {
+  "en": "A NOTE FROM THE PROFESSOR",
+  "ctx": "src/data/textos-ui.ts:115"
+ },
+ "Bicho solto é bicho feliz.": {
+  "en": "A free critter is a happy critter.",
+  "ctx": "src/data/textos-ui.ts:115"
+ },
+ "Na natureza de verdade, só se leva foto": {
+  "en": "In real nature, take nothing but photos",
+  "ctx": "src/data/textos-ui.ts:115"
+ },
+ "e só se deixa pegada.": {
+  "en": "and leave nothing but footprints.",
+  "ctx": "src/data/textos-ui.ts:115"
+ },
+ "OBRIGADO POR JOGAR!": {
+  "en": "THANKS FOR PLAYING!",
+  "ctx": "src/data/textos-ui.ts:116"
+ },
+ "A trilha continua…": {
+  "en": "The trail goes on…",
+  "ctx": "src/data/textos-ui.ts:116"
+ },
+ "Baía Azul": {
+  "en": "Baía Azul",
+  "ctx": "src/data/zonas/A-BA.ts:65 · campo nome | src/ui/telas/mapa-dados.ts:91 · L()"
+ },
+ "Platô da Liga": {
+  "en": "Platô da Liga",
+  "ctx": "src/data/zonas/A-LG-posto.ts:4 · postoGuardiao() | src/data/zonas/A-LG-venda.ts:4 · venda() | src/data/zonas/A-LG.ts:97 · campo nome | +1"
+ },
+ "Manguezal": {
+  "en": "Manguezal",
+  "ctx": "src/data/zonas/A-MG.ts:49 · campo nome | src/ui/telas/mapa-dados.ts:95 · L()"
+ },
+ "Mata dos Sabiás": {
+  "en": "Mata dos Sabiás",
+  "ctx": "src/data/zonas/A-MS.ts:62 · campo nome | src/ui/telas/mapa-dados.ts:84 · L()"
+ },
+ "Monte Tupã": {
+  "en": "Monte Tupã",
+  "ctx": "src/data/zonas/A-MT.ts:75 · campo nome | src/ui/telas/mapa-dados.ts:102 · L()"
+ },
+ "Praia das Tartarugas": {
+  "en": "Praia das Tartarugas",
+  "ctx": "src/data/zonas/A-PR.ts:50 · campo nome | src/ui/telas/mapa-dados.ts:94 · L()"
+ },
+ "Trilha do Ipê": {
+  "en": "Trilha do Ipê",
+  "ctx": "src/data/zonas/A-R1.ts:95 · campo nome | src/ui/telas/mapa-dados.ts:81 · L()"
+ },
+ "Campos de Restinga": {
+  "en": "Campos de Restinga",
+  "ctx": "src/data/zonas/A-R2.ts:44 · campo nome | src/ui/telas/mapa-dados.ts:83 · L()"
+ },
+ "Trilha dos Cipós": {
+  "en": "Trilha dos Cipós",
+  "ctx": "src/data/zonas/A-R3.ts:49 · campo nome | src/ui/telas/mapa-dados.ts:86 · L()"
+ },
+ "Estrada da Usina": {
+  "en": "Estrada da Usina",
+  "ctx": "src/data/zonas/A-R4.ts:43 · campo nome | src/ui/telas/mapa-dados.ts:89 · L()"
+ },
+ "Encosta da Fumaça": {
+  "en": "Encosta da Fumaça",
+  "ctx": "src/data/zonas/A-R5.ts:43 · campo nome | src/ui/telas/mapa-dados.ts:98 · L()"
+ },
+ "Rio Cachoeira-Véu": {
+  "en": "Rio Cachoeira-Véu",
+  "ctx": "src/data/zonas/A-R6.ts:73 · campo nome | src/ui/telas/mapa-dados.ts:99 · L()"
+ },
+ "Estrada do Buriti": {
+  "en": "Estrada do Buriti",
+  "ctx": "src/data/zonas/A-R7.ts:50 · campo nome | src/ui/telas/mapa-dados.ts:104 · L()"
+ },
+ "Recife Submerso": {
+  "en": "Recife Submerso",
+  "ctx": "src/data/zonas/A-RS.ts:47 · campo nome | src/ui/telas/mapa-dados.ts:101 · L()"
+ },
+ "Viveiro do Seu Aroeira": {
+  "en": "Seu Aroeira's Aviary",
+  "ctx": "src/data/zonas/A2-casa-aroeira.ts:19 · campo nome | src/world/ninhos.ts:59 · campo localCaptura"
+ },
+ "Cerrado Aberto": {
+  "en": "Cerrado Aberto",
+  "ctx": "src/data/zonas/B-CE.ts:12 · campo nome | src/ui/telas/mapa-dados.ts:109 · L()"
+ },
+ "Chapada dos Paredões": {
+  "en": "Chapada dos Paredões",
+  "ctx": "src/data/zonas/B-CH.ts:48 · campo nome | src/ui/telas/mapa-dados.ts:115 · L()"
+ },
+ "Caverna Vulcânica": {
+  "en": "Caverna Vulcânica",
+  "ctx": "src/data/zonas/B-CV.ts:27 · campo nome | src/ui/telas/mapa-dados.ts:116 · L()"
+ },
+ "Floresta Ancestral": {
+  "en": "Floresta Ancestral",
+  "ctx": "src/data/zonas/B-FA.ts:49 · campo nome | src/ui/telas/mapa-dados.ts:129 · L()"
+ },
+ "Lagoa Gelada": {
+  "en": "Lagoa Gelada",
+  "ctx": "src/data/zonas/B-LG.ts:50 · campo nome | src/ui/telas/mapa-dados.ts:126 · L()"
+ },
+ "Pantanal Alagado": {
+  "en": "Pantanal Alagado",
+  "ctx": "src/data/zonas/B-PA.ts:55 · campo nome | src/ui/telas/mapa-dados.ts:110 · L()"
+ },
+ "Estrada Vermelha": {
+  "en": "Estrada Vermelha",
+  "ctx": "src/data/zonas/B-R2.ts:43 · campo nome | src/ui/telas/mapa-dados.ts:113 · L()"
+ },
+ "Trilha da Roda": {
+  "en": "Trilha da Roda",
+  "ctx": "src/data/zonas/B-R3.ts:63 · campo nome | src/ui/telas/mapa-dados.ts:118 · L()"
+ },
+ "Subida da Serra": {
+  "en": "Subida da Serra",
+  "ctx": "src/data/zonas/B-R4.ts:52 · campo nome | src/ui/telas/mapa-dados.ts:123 · L()"
+ },
+ "Caminho das Névoas": {
+  "en": "Caminho das Névoas",
+  "ctx": "src/data/zonas/B-R5.ts:60 · campo nome | src/ui/telas/mapa-dados.ts:127 · L()"
+ },
+ "Túnel Alagado": {
+  "en": "Túnel Alagado",
+  "ctx": "src/data/zonas/B-TA.ts:29 · campo nome | src/ui/telas/mapa-dados.ts:120 · L()"
+ },
+ "Vale do Veneno": {
+  "en": "Vale do Veneno",
+  "ctx": "src/data/zonas/B-VV.ts:51 · campo nome | src/ui/telas/mapa-dados.ts:122 · L()"
+ },
+ "Porto Pantaneiro": {
+  "en": "Porto Pantaneiro",
+  "ctx": "src/data/zonas/B9-posto.ts:4 · postoGuardiao() | src/data/zonas/B9-venda.ts:4 · venda() | src/data/zonas/B9.ts:32 · campo nome | +1"
+ },
+ "Pico Pingorama": {
+  "en": "Pico Pingorama",
+  "ctx": "src/data/zonas/PP-posto.ts:4 · postoGuardiao() | src/data/zonas/PP-venda.ts:4 · venda() | src/data/zonas/PP.ts:60 · campo nome | +1"
+ },
+ "O lugar \"{zona}\" não foi encontrado neste pacote do jogo.": {
+  "en": "The place \"{zona}\" wasn't found in this game package.",
+  "ctx": "src/main.ts:84 · dialogo.falar()"
+ },
+ "Escolha a dificuldade da aventura.\nDá para mudar depois, em Opções.": {
+  "en": "Choose the adventure's difficulty.\nYou can change it later in Options.",
+  "ctx": "src/main.ts:90 · dialogo.escolher()"
+ },
+ "Explorador: batalhas leves": {
+  "en": "Explorer: easy battles",
+  "ctx": "src/main.ts:90 · dialogo.escolher()"
+ },
+ "Aventureiro (Recomendado)": {
+  "en": "Adventurer (Recommended)",
+  "ctx": "src/main.ts:90 · dialogo.escolher() | src/ui/telas/opcoes.ts:26 · campo aventureiro"
+ },
+ "Veterano: rivais espertos": {
+  "en": "Veteran: clever rivals",
+  "ctx": "src/main.ts:90 · dialogo.escolher()"
+ },
+ "Este jogo não pôde ser aberto.": {
+  "en": "This game couldn't be opened.",
+  "ctx": "src/main.ts:102 · dialogo.falar()"
+ },
+ "Código {tem} de {total} recebido. Leia os outros.": {
+  "en": "Code {tem} of {total} received. Scan the others.",
+  "ctx": "src/main.ts:154 · dialogo.avisar()"
+ },
+ "Qual é o seu nome?": {
+  "en": "What's your name?",
+  "ctx": "src/main.ts:161 · campo titulo | src/world/eventos.ts:101 · pedirNome()"
+ },
+ "Chuva": {
+  "en": "Rain",
+  "ctx": "src/ui/hud.ts:18 · campo nome"
+ },
+ "Garoa": {
+  "en": "Drizzle",
+  "ctx": "src/ui/hud.ts:19 · campo nome"
+ },
+ "Névoa": {
+  "en": "Fog",
+  "ctx": "src/ui/hud.ts:20 · campo nome"
+ },
+ "Poeira": {
+  "en": "Dust",
+  "ctx": "src/ui/hud.ts:21 · campo nome"
+ },
+ "Sol forte": {
+  "en": "Harsh sun",
+  "ctx": "src/ui/hud.ts:22 · campo nome"
+ },
+ "Facão": {
+  "en": "Machete",
+  "ctx": "src/ui/hud.ts:26 · campo nome | src/world/vivo.ts:56 · campo nome"
+ },
+ "Remo": {
+  "en": "Paddle",
+  "ctx": "src/ui/hud.ts:26 · campo nome | src/world/vivo.ts:57 · campo nome"
+ },
+ "Força": {
+  "en": "Strength",
+  "ctx": "src/ui/hud.ts:26 · campo nome | src/ui/telas/gincana.ts:370 | src/ui/telas/gincana.ts:407 · escolher() | +1"
+ },
+ "Lampião": {
+  "en": "Lantern",
+  "ctx": "src/ui/hud.ts:26 · campo nome | src/world/vivo.ts:59 · campo nome"
+ },
+ "Quebra-pedra": {
+  "en": "Rock Smash",
+  "ctx": "src/ui/hud.ts:26 · campo nome | src/world/vivo.ts:60 · campo nome"
+ },
+ "Escalar": {
+  "en": "Climb",
+  "ctx": "src/ui/hud.ts:27 · campo nome | src/world/vivo.ts:61 · campo nome"
+ },
+ "Cachoeira": {
+  "en": "Waterfall",
+  "ctx": "src/ui/hud.ts:27 · campo nome | src/world/vivo.ts:62 · campo nome"
+ },
+ "Mergulho": {
+  "en": "Dive",
+  "ctx": "src/ui/hud.ts:27 · campo nome | src/world/vivo.ts:63 · campo nome"
+ },
+ "Voo": {
+  "en": "Flight",
+  "ctx": "src/ui/hud.ts:27 · campo nome | src/world/vivo.ts:64 · campo nome"
+ },
+ "Faro": {
+  "en": "Scent",
+  "ctx": "src/ui/hud.ts:27 · campo nome | src/world/vivo.ts:65 · campo nome"
+ },
+ "Pena": {
+  "en": "Feather",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Concha": {
+  "en": "Shell",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Folha": {
+  "en": "Leaf",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Barro": {
+  "en": "Clay",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Estrela": {
+  "en": "Star",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Raio": {
+  "en": "Bolt",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Lamparina": {
+  "en": "Oil Lamp",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Cristal": {
+  "en": "Crystal",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Chama": {
+  "en": "Flame",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Berimbau": {
+  "en": "Berimbau",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Engrenagem": {
+  "en": "Gear",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Espinho": {
+  "en": "Thorn",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Floco": {
+  "en": "Snowflake",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Olho": {
+  "en": "Eye",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Escama": {
+  "en": "Scale",
+  "ctx": "src/ui/kit.ts:19"
+ },
+ "Queimado": {
+  "en": "Burned",
+  "ctx": "src/ui/kit.ts:20 · campo queimado"
+ },
+ "Envenenado": {
+  "en": "Poisoned",
+  "ctx": "src/ui/kit.ts:20 · campo envenenado"
+ },
+ "Paralisado": {
+  "en": "Paralyzed",
+  "ctx": "src/ui/kit.ts:20 · campo paralisado"
+ },
+ "Dormindo": {
+  "en": "Asleep",
+  "ctx": "src/ui/kit.ts:20 · campo dormindo"
+ },
+ "Congelado": {
+  "en": "Frozen",
+  "ctx": "src/ui/kit.ts:20 · campo congelado"
+ },
+ "Encantado": {
+  "en": "Charmed",
+  "ctx": "src/ui/kit.ts:20 · campo encantado"
+ },
+ "Desmaiado": {
+  "en": "Fainted",
+  "ctx": "src/ui/kit.ts:20 · campo desmaiado"
+ },
+ "Itens": {
+  "en": "Items",
+  "ctx": "src/ui/kit.ts:21 · campo itens"
+ },
+ "Remédios": {
+  "en": "Medicine",
+  "ctx": "src/ui/kit.ts:21 · campo remedios"
+ },
+ "Cuias": {
+  "en": "Gourds",
+  "ctx": "src/ui/kit.ts:21 · campo cuias"
+ },
+ "Pergaminhos": {
+  "en": "Scrolls",
+  "ctx": "src/ui/kit.ts:21 · campo pergaminhos"
+ },
+ "Frutos": {
+  "en": "Fruits",
+  "ctx": "src/ui/kit.ts:21 · campo frutos"
+ },
+ "Itens-chave": {
+  "en": "Key items",
+  "ctx": "src/ui/kit.ts:21 · campo chave"
+ },
+ "sprite de UI desconhecido: ": {
+  "en": "sprite de UI desconhecido: ",
+  "ctx": "src/ui/kit.ts:45"
+ },
+ "mq nw": {
+  "en": "mq nw",
+  "ctx": "src/ui/kit.ts:52"
+ },
+ "mq ne": {
+  "en": "mq ne",
+  "ctx": "src/ui/kit.ts:52"
+ },
+ "mq sw": {
+  "en": "mq sw",
+  "ctx": "src/ui/kit.ts:52"
+ },
+ "mq se": {
+  "en": "mq se",
+  "ctx": "src/ui/kit.ts:52"
+ },
+ "mol mol-": {
+  "en": "mol mol-",
+  "ctx": "src/ui/kit.ts:55"
+ },
+ "barra-ench vida ": {
+  "en": "barra-ench vida ",
+  "ctx": "src/ui/kit.ts:104"
+ },
+ "Saveiro do Rio Grande": {
+  "en": "Saveiro do Rio Grande",
+  "ctx": "src/ui/telas/cinematica.ts:107 · texto()"
+ },
+ "Trem Serra-Sol": {
+  "en": "Serra-Sol Train",
+  "ctx": "src/ui/telas/cinematica.ts:107 · texto()"
+ },
+ "A: pular": {
+  "en": "A: skip",
+  "ctx": "src/ui/telas/cinematica.ts:108 · texto()"
+ },
+ "Criatura nº {nome}": {
+  "en": "Creature no. {nome}",
+  "ctx": "src/ui/telas/comum.ts:31"
+ },
+ "{nome} já sabe {golpe}.": {
+  "en": "{nome} already knows {golpe}.",
+  "ctx": "src/ui/telas/comum.ts:168 · informar()"
+ },
+ "{nome} quer aprender {golpe}, mas já sabe 4 golpes. Esquecer qual?": {
+  "en": "{nome} wants to learn {golpe}, but already knows 4 moves. Forget which one?",
+  "ctx": "src/ui/telas/comum.ts:170 · perguntar()"
+ },
+ "Não aprender": {
+  "en": "Don't learn",
+  "ctx": "src/ui/telas/comum.ts:170 · perguntar()"
+ },
+ "1, 2 e… pronto! {nome} esqueceu {velho} e aprendeu {golpe}!": {
+  "en": "1, 2 and… poof! {nome} forgot {velho} and learned {golpe}!",
+  "ctx": "src/ui/telas/comum.ts:174 · informar()"
+ },
+ "O quê? {nome} está evoluindo!": {
+  "en": "What? {nome} is evolving!",
+  "ctx": "src/ui/telas/comum.ts:186 · informar()"
+ },
+ "{nome} parou de evoluir.": {
+  "en": "{nome} stopped evolving.",
+  "ctx": "src/ui/telas/comum.ts:187 · informar()"
+ },
+ "Parabéns! {nome} evoluiu para {nova}!": {
+  "en": "Congratulations! {nome} evolved into {nova}!",
+  "ctx": "src/ui/telas/comum.ts:190 · informar()"
+ },
+ "Este item não se usa numa criatura.": {
+  "en": "This item isn't used on a creature.",
+  "ctx": "src/ui/telas/comum.ts:197 · nada()"
+ },
+ "O ovo ainda não pode usar isso.": {
+  "en": "The egg can't use that yet.",
+  "ctx": "src/ui/telas/comum.ts:198 · nada()"
+ },
+ "{nome} não consegue aprender {golpe}.": {
+  "en": "{nome} can't learn {golpe}.",
+  "ctx": "src/ui/telas/comum.ts:202 · nada()"
+ },
+ "A {item} não reage a {nome}.": {
+  "en": "The {item} doesn't react to {nome}.",
+  "ctx": "src/ui/telas/comum.ts:208 · nada()"
+ },
+ "{nome} já está no nível máximo.": {
+  "en": "{nome} is already at the max level.",
+  "ctx": "src/ui/telas/comum.ts:213 · nada()"
+ },
+ "{nome} aprendeu {n}!": {
+  "en": "{nome} learned {n}!",
+  "ctx": "src/ui/telas/comum.ts:218 · informar()"
+ },
+ "A vitamina não faz mais efeito em {nome}.": {
+  "en": "The vitamin has no more effect on {nome}.",
+  "ctx": "src/ui/telas/comum.ts:227 · nada()"
+ },
+ "{nome} tomou a vitamina e ficou mais forte!": {
+  "en": "{nome} took the vitamin and got stronger!",
+  "ctx": "src/ui/telas/comum.ts:231 · campo msg"
+ },
+ "{nome} já é sua amiga do peito.": {
+  "en": "{nome} is already your best friend.",
+  "ctx": "src/ui/telas/comum.ts:234 · nada()"
+ },
+ "{nome} adorou! Ficou mais amiga.": {
+  "en": "{nome} loved it! You're closer now.",
+  "ctx": "src/ui/telas/comum.ts:235 · campo msg"
+ },
+ "{nome} não está desmaiada.": {
+  "en": "{nome} hasn't fainted.",
+  "ctx": "src/ui/telas/comum.ts:239 · nada()"
+ },
+ "{nome} voltou a si!": {
+  "en": "{nome} came to!",
+  "ctx": "src/ui/telas/comum.ts:240 · partes.push()"
+ },
+ "{nome} está desmaiada.": {
+  "en": "{nome} has fainted.",
+  "ctx": "src/ui/telas/comum.ts:241 · nada()"
+ },
+ "{nome} não está mais {n}.": {
+  "en": "{nome} is no longer {n}.",
+  "ctx": "src/ui/telas/comum.ts:243 · partes.push()"
+ },
+ "Os PG de {nome} foram restaurados.": {
+  "en": "{nome}'s MP was restored.",
+  "ctx": "src/ui/telas/comum.ts:247 · partes.push()"
+ },
+ "Restaurar os PG de qual golpe?": {
+  "en": "Restore MP for which move?",
+  "ctx": "src/ui/telas/comum.ts:249 · perguntar()"
+ },
+ "Desistir": {
+  "en": "Cancel",
+  "ctx": "src/ui/telas/comum.ts:249 · perguntar() | src/ui/telas/gincana.ts:337 · perguntar()"
+ },
+ "{golpe} recuperou PG.": {
+  "en": "{golpe} recovered MP.",
+  "ctx": "src/ui/telas/comum.ts:251 · partes.push()"
+ },
+ "{golpe} já está com todos os PG.": {
+  "en": "{golpe} already has full MP.",
+  "ctx": "src/ui/telas/comum.ts:252 · nada()"
+ },
+ "capim alto": {
+  "en": "tall grass",
+  "ctx": "src/ui/telas/dados.ts:30 · campo grama"
+ },
+ "caverna": {
+  "en": "cave",
+  "ctx": "src/ui/telas/dados.ts:30 · campo caverna"
+ },
+ "sobre a água": {
+  "en": "surfing",
+  "ctx": "src/ui/telas/dados.ts:30 · campo agua"
+ },
+ "pesca": {
+  "en": "fishing",
+  "ctx": "src/ui/telas/dados.ts:30 · campo pesca-velha | src/ui/telas/dados.ts:30 · campo pesca-boa | src/ui/telas/dados.ts:30 · campo pesca-mestra"
+ },
+ "sacudindo árvores": {
+  "en": "shaking trees",
+  "ctx": "src/ui/telas/dados.ts:30 · campo arvore"
+ },
+ "quebrando rochas": {
+  "en": "smashing rocks",
+  "ctx": "src/ui/telas/dados.ts:30 · campo rocha"
+ },
+ "mergulho": {
+  "en": "diving",
+  "ctx": "src/ui/telas/dados.ts:30 · campo mergulho"
+ },
+ "segunda": {
+  "en": "Mon",
+  "ctx": "src/ui/telas/dados.ts:77"
+ },
+ "terça": {
+  "en": "Tue",
+  "ctx": "src/ui/telas/dados.ts:77"
+ },
+ "quarta": {
+  "en": "Wed",
+  "ctx": "src/ui/telas/dados.ts:77"
+ },
+ "quinta": {
+  "en": "Thu",
+  "ctx": "src/ui/telas/dados.ts:77"
+ },
+ "sexta": {
+  "en": "Fri",
+  "ctx": "src/ui/telas/dados.ts:77"
+ },
+ "de {periodo}": {
+  "en": "at {periodo}",
+  "ctx": "src/ui/telas/diario.ts:50 · p.push()"
+ },
+ "DIÁRIO DE CAMPO": {
+  "en": "FIELD JOURNAL",
+  "ctx": "src/ui/telas/diario.ts:78 · placaTitulo()"
+ },
+ "Vistas {c:amarelo}{vistas}{/c}  Capturadas {c:amarelo}{capturadas}{/c}": {
+  "en": "Seen {c:amarelo}{vistas}{/c}  Caught {c:amarelo}{capturadas}{/c}",
+  "ctx": "src/ui/telas/diario.ts:89 · texto()"
+ },
+ "MEDALHAS DE PESQUISADOR": {
+  "en": "RESEARCHER MEDALS",
+  "ctx": "src/ui/telas/diario.ts:94 · texto()"
+ },
+ "Só avistada": {
+  "en": "Only seen",
+  "ctx": "src/ui/telas/diario.ts:106 · rotulo()"
+ },
+ "Ainda não avistada": {
+  "en": "Not seen yet",
+  "ctx": "src/ui/telas/diario.ts:106 · rotulo()"
+ },
+ "Faltam {n} capturas para a {medalha}.": {
+  "en": "{n} more catches for the {medalha}.",
+  "ctx": "src/ui/telas/diario.ts:112"
+ },
+ "Diário completo. A Profª Ipê chorou de alegria!": {
+  "en": "Journal complete. Prof. Ipê cried tears of joy!",
+  "ctx": "src/ui/telas/diario.ts:112"
+ },
+ "Nenhuma medalha ainda. ": {
+  "en": "No medals yet. ",
+  "ctx": "src/ui/telas/diario.ts:113 · informar()"
+ },
+ "FICHA": {
+  "en": "ENTRY",
+  "ctx": "src/ui/telas/diario.ts:123 · campo rotulos"
+ },
+ "PORTE": {
+  "en": "SIZE",
+  "ctx": "src/ui/telas/diario.ts:123 · campo rotulos"
+ },
+ "HABITAT": {
+  "en": "HABITAT",
+  "ctx": "src/ui/telas/diario.ts:123 · campo rotulos"
+ },
+ "EVOL.": {
+  "en": "EVOL.",
+  "ctx": "src/ui/telas/diario.ts:123 · campo rotulos"
+ },
+ "Habitat: ???": {
+  "en": "Habitat: ???",
+  "ctx": "src/ui/telas/diario.ts:151 · rotulo()"
+ },
+ "Altura: {n} m": {
+  "en": "Height: {n} m",
+  "ctx": "src/ui/telas/diario.ts:152 · rotulo()"
+ },
+ "Altura: ???": {
+  "en": "Height: ???",
+  "ctx": "src/ui/telas/diario.ts:152 · rotulo()"
+ },
+ "Peso: {n} kg": {
+  "en": "Weight: {n} kg",
+  "ctx": "src/ui/telas/diario.ts:152 · rotulo()"
+ },
+ "Peso: ???": {
+  "en": "Weight: ???",
+  "ctx": "src/ui/telas/diario.ts:152 · rotulo()"
+ },
+ "A: Ouvir o grito ♪": {
+  "en": "A: Hear the cry ♪",
+  "ctx": "src/ui/telas/diario.ts:155 · texto()"
+ },
+ "Pegada": {
+  "en": "Footprint",
+  "ctx": "src/ui/telas/diario.ts:170 · rotulo()"
+ },
+ "{peso} kg": {
+  "en": "{peso} kg",
+  "ctx": "src/ui/telas/diario.ts:171 · rotulo()"
+ },
+ "ONDE ENCONTRAR": {
+  "en": "WHERE TO FIND",
+  "ctx": "src/ui/telas/diario.ts:175 · rotulo()"
+ },
+ "Costa do Sol": {
+  "en": "Costa do Sol",
+  "ctx": "src/ui/telas/diario.ts:184 · rotulo()"
+ },
+ "Sertão das Névoas": {
+  "en": "Sertão das Névoas",
+  "ctx": "src/ui/telas/diario.ts:184 · rotulo()"
+ },
+ "e mais {n} lugar": {
+  "en": "and {n} more place",
+  "ctx": "src/ui/telas/diario.ts:190 · rotulo()"
+ },
+ "e mais {n} lugares": {
+  "en": "and {n} more places",
+  "ctx": "src/ui/telas/diario.ts:190 · rotulo()"
+ },
+ "{nome} não evolui.": {
+  "en": "{nome} doesn't evolve.",
+  "ctx": "src/ui/telas/diario.ts:194 · rotulo()"
+ },
+ "forma inicial": {
+  "en": "first form",
+  "ctx": "src/ui/telas/diario.ts:202 · rotulo()"
+ },
+ "{c:cinza}Já sabe{/c}": {
+  "en": "{c:cinza}Knows it{/c}",
+  "ctx": "src/ui/telas/equipe.ts:39"
+ },
+ "{c:vermelho}Não aprende{/c}": {
+  "en": "{c:vermelho}Can't learn{/c}",
+  "ctx": "src/ui/telas/equipe.ts:39"
+ },
+ "{c:cinza}Sem reação{/c}": {
+  "en": "{c:cinza}No reaction{/c}",
+  "ctx": "src/ui/telas/equipe.ts:40"
+ },
+ "Vai demorar…": {
+  "en": "It'll take a while…",
+  "ctx": "src/ui/telas/equipe.ts:59 · escrever()"
+ },
+ "Às vezes se mexe.": {
+  "en": "It moves now and then.",
+  "ctx": "src/ui/telas/equipe.ts:59 · escrever()"
+ },
+ "Quase chocando!": {
+  "en": "About to hatch!",
+  "ctx": "src/ui/telas/equipe.ts:59 · escrever()"
+ },
+ "MOVENDO": {
+  "en": "MOVING",
+  "ctx": "src/ui/telas/equipe.ts:83"
+ },
+ "TROCAR AQUI": {
+  "en": "SWAP HERE",
+  "ctx": "src/ui/telas/equipe.ts:83"
+ },
+ "{n} não pode ser escolhida agora.": {
+  "en": "{n} can't be chosen right now.",
+  "ctx": "src/ui/telas/equipe.ts:104 · informar()"
+ },
+ "Resumo": {
+  "en": "Summary",
+  "ctx": "src/ui/telas/equipe.ts:119 | src/ui/telas/viveiro.ts:137"
+ },
+ "Mover": {
+  "en": "Move",
+  "ctx": "src/ui/telas/equipe.ts:119 | src/ui/telas/viveiro.ts:137"
+ },
+ "Tirar item": {
+  "en": "Take item",
+  "ctx": "src/ui/telas/equipe.ts:119"
+ },
+ "Dar item": {
+  "en": "Give item",
+  "ctx": "src/ui/telas/equipe.ts:119"
+ },
+ "Parar de seguir": {
+  "en": "Stop following",
+  "ctx": "src/ui/telas/equipe.ts:119"
+ },
+ "Seguir você": {
+  "en": "Follow you",
+  "ctx": "src/ui/telas/equipe.ts:119"
+ },
+ "{n} volta para a cuia e não segue mais você no mapa.": {
+  "en": "{n} goes back into its gourd and stops following you on the map.",
+  "ctx": "src/ui/telas/equipe.ts:123 · informar()"
+ },
+ "{n} vai na frente da equipe e anda atrás de você no mapa!": {
+  "en": "{n} moves to the front of the team and walks behind you on the map!",
+  "ctx": "src/ui/telas/equipe.ts:127 · informar()"
+ },
+ "{n} vai seguir você assim que se recuperar.": {
+  "en": "{n} will follow you as soon as it recovers.",
+  "ctx": "src/ui/telas/equipe.ts:127 · informar()"
+ },
+ "{nome} voltou para a mochila.": {
+  "en": "{nome} went back into the bag.",
+  "ctx": "src/ui/telas/equipe.ts:129 · informar()"
+ },
+ "DAR QUAL ITEM?": {
+  "en": "GIVE WHICH ITEM?",
+  "ctx": "src/ui/telas/equipe.ts:131 · campo titulo"
+ },
+ "{n} agora segura {item}.": {
+  "en": "{n} is now holding {item}.",
+  "ctx": "src/ui/telas/equipe.ts:132 · informar() | src/ui/telas/mochila.ts:108 · informar()"
+ },
+ "Natural": {
+  "en": "Natural",
+  "ctx": "src/ui/telas/foto.ts:26 · campo nome"
+ },
+ "Sépia": {
+  "en": "Sepia",
+  "ctx": "src/ui/telas/foto.ts:26 · campo nome"
+ },
+ "Preto e branco": {
+  "en": "Black and white",
+  "ctx": "src/ui/telas/foto.ts:26 · campo nome"
+ },
+ "Cores vivas": {
+  "en": "Vivid",
+  "ctx": "src/ui/telas/foto.ts:27 · campo nome"
+ },
+ "Sonho": {
+  "en": "Dream",
+  "ctx": "src/ui/telas/foto.ts:28 · campo nome"
+ },
+ "Negativo": {
+  "en": "Negative",
+  "ctx": "src/ui/telas/foto.ts:28 · campo nome"
+ },
+ "Álbum": {
+  "en": "Album",
+  "ctx": "src/ui/telas/foto.ts:66 · texto()"
+ },
+ "A: Foto": {
+  "en": "A: Photo",
+  "ctx": "src/ui/telas/foto.ts:67 · texto()"
+ },
+ "Foto guardada! O álbum tem {n} de {MAX}.": {
+  "en": "Photo saved! The album has {n} of {MAX}.",
+  "ctx": "src/ui/telas/foto.ts:78 · informar()"
+ },
+ "ÁLBUM  {n}/{MAX}": {
+  "en": "ALBUM  {n}/{MAX}",
+  "ctx": "src/ui/telas/foto.ts:93 · placaTitulo()"
+ },
+ "Página {pagina} de {paginas}": {
+  "en": "Page {pagina} of {paginas}",
+  "ctx": "src/ui/telas/foto.ts:94 · rotulo()"
+ },
+ "com {nome}": {
+  "en": "with {nome}",
+  "ctx": "src/ui/telas/foto.ts:98 · escrever()"
+ },
+ "O que fazer com a foto?": {
+  "en": "What to do with the photo?",
+  "ctx": "src/ui/telas/foto.ts:101 · perguntar()"
+ },
+ "Continuar": {
+  "en": "Continue",
+  "ctx": "src/ui/telas/gincana.ts:337 · perguntar() | src/ui/telas/saves.ts:237"
+ },
+ "pt": {
+  "en": "pt",
+  "ctx": "src/ui/telas/idioma.ts:13"
+ },
+ "Português": {
+  "en": "Português",
+  "ctx": "src/ui/telas/idioma.ts:13"
+ },
+ "en": {
+  "en": "en",
+  "ctx": "src/ui/telas/idioma.ts:13"
+ },
+ "English": {
+  "en": "English",
+  "ctx": "src/ui/telas/idioma.ts:13"
+ },
+ "Idioma · Language": {
+  "en": "Idioma · Language",
+  "ctx": "src/ui/telas/idioma.ts:19 · texto()"
+ },
+ "↑↓  ·  Z / Enter": {
+  "en": "↑↓  ·  Z / Enter",
+  "ctx": "src/ui/telas/idioma.ts:29 · texto()"
+ },
+ "ESTOJO DE INSÍGNIAS  {n}/16": {
+  "en": "BADGE CASE  {n}/16",
+  "ctx": "src/ui/telas/insignias.ts:17 · placaTitulo()"
+ },
+ "do Estrela": {
+  "en": "do Estrela",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "da Estrela": {
+  "en": "da Estrela",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "do Engrenagem": {
+  "en": "do Engrenagem",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "da Engrenagem": {
+  "en": "da Engrenagem",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "do Escama": {
+  "en": "do Escama",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "da Escama": {
+  "en": "da Escama",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "da Casulo": {
+  "en": "da Casulo",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "do Casulo": {
+  "en": "do Casulo",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "da Barro": {
+  "en": "da Barro",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "do Barro": {
+  "en": "do Barro",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "da Raio": {
+  "en": "da Raio",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "do Raio": {
+  "en": "do Raio",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "da Cristal": {
+  "en": "da Cristal",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "do Cristal": {
+  "en": "do Cristal",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "da Berimbau": {
+  "en": "da Berimbau",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "do Berimbau": {
+  "en": "do Berimbau",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "da Floco": {
+  "en": "da Floco",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "do Floco": {
+  "en": "do Floco",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "da Espinho": {
+  "en": "da Espinho",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "do Espinho": {
+  "en": "do Espinho",
+  "ctx": "src/ui/telas/insignias.ts:34"
+ },
+ "Insígnia {nome}": {
+  "en": "{nome} Badge",
+  "ctx": "src/ui/telas/insignias.ts:36 · rotulo()"
+ },
+ "Líder: {c:agua}{lider}{/c}, de {cidade}": {
+  "en": "Leader: {c:agua}{lider}{/c}, of {cidade}",
+  "ctx": "src/ui/telas/insignias.ts:38 · rotulo()"
+ },
+ "VENDA": {
+  "en": "SHOP",
+  "ctx": "src/ui/telas/loja.ts:26 · t()"
+ },
+ "Trocar": {
+  "en": "Swap",
+  "ctx": "src/ui/telas/loja.ts:40 · campo itens"
+ },
+ "A prateleira está vazia hoje.": {
+  "en": "The shelf is empty today.",
+  "ctx": "src/ui/telas/loja.ts:44 · texto()"
+ },
+ "Troque seus {nome} por prêmios.": {
+  "en": "Trade your {nome} for prizes.",
+  "ctx": "src/ui/telas/loja.ts:50 · rotulo()"
+ },
+ "Volte sempre!": {
+  "en": "Come back anytime!",
+  "ctx": "src/ui/telas/loja.ts:50 · rotulo()"
+ },
+ "Pago a metade do preço pelo que você não usa mais.": {
+  "en": "I'll pay half price for what you don't use anymore.",
+  "ctx": "src/ui/telas/loja.ts:50 · rotulo()"
+ },
+ "Na mochila: {c:amarelo}×{qtd}{/c}": {
+  "en": "In bag: {c:amarelo}×{qtd}{/c}",
+  "ctx": "src/ui/telas/loja.ts:57 · rotulo() | src/ui/telas/mochila.ts:78 · rotulo()"
+ },
+ "{item}: quantas?": {
+  "en": "{item}: how many?",
+  "ctx": "src/ui/telas/loja.ts:65 · pedirQuantidade()"
+ },
+ "Vender quantas?": {
+  "en": "Sell how many?",
+  "ctx": "src/ui/telas/loja.ts:71 · pedirQuantidade()"
+ },
+ "{vendeu} Você recebeu {valor} patacas.": {
+  "en": "{vendeu} You got {valor} patacas.",
+  "ctx": "src/ui/telas/loja.ts:73 · informar()"
+ },
+ "Casa da família e laboratório da Profª Ipê.": {
+  "en": "Your family home and Prof. Ipê's lab.",
+  "ctx": "src/ui/telas/mapa-dados.ts:80 · L()"
+ },
+ "Caminho de terra entre ipês amarelos.": {
+  "en": "A dirt road among yellow ipê trees.",
+  "ctx": "src/ui/telas/mapa-dados.ts:81 · L()"
+ },
+ "Vila de pescadores de pipa.": {
+  "en": "A village of kite fishers.",
+  "ctx": "src/ui/telas/mapa-dados.ts:82 · L()"
+ },
+ "Dunas baixas e cajueiros.": {
+  "en": "Low dunes and cashew trees.",
+  "ctx": "src/ui/telas/mapa-dados.ts:83 · L()"
+ },
+ "Labirinto de árvores; vale sacudir os galhos.": {
+  "en": "A maze of trees; worth shaking the branches.",
+  "ctx": "src/ui/telas/mapa-dados.ts:84 · L()"
+ },
+ "Cidade nas copas, ligada por pontes de corda.": {
+  "en": "A treetop town linked by rope bridges.",
+  "ctx": "src/ui/telas/mapa-dados.ts:85 · L()"
+ },
+ "Cipós grossos e um riacho bom de pesca.": {
+  "en": "Thick vines and a stream good for fishing.",
+  "ctx": "src/ui/telas/mapa-dados.ts:86 · L()"
+ },
+ "Toda palavra volta três vezes.": {
+  "en": "Every word comes back three times.",
+  "ctx": "src/ui/telas/mapa-dados.ts:87 · L()"
+ },
+ "Estação do trem, cais e mercado de peixe.": {
+  "en": "Train station, docks and fish market.",
+  "ctx": "src/ui/telas/mapa-dados.ts:88 · L()"
+ },
+ "Postes velhos acompanham a estrada.": {
+  "en": "Old poles line the road.",
+  "ctx": "src/ui/telas/mapa-dados.ts:89 · L()"
+ },
+ "Usina Velha": {
+  "en": "Old Power Plant",
+  "ctx": "src/ui/telas/mapa-dados.ts:90 · L()"
+ },
+ "Usina abandonada; faíscas no escuro.": {
+  "en": "An abandoned power plant; sparks in the dark.",
+  "ctx": "src/ui/telas/mapa-dados.ts:90 · L()"
+ },
+ "Águas calmas que ligam o porto às ilhas.": {
+  "en": "Calm waters linking the port to the islands.",
+  "ctx": "src/ui/telas/mapa-dados.ts:91 · L()"
+ },
+ "Ilha das rendeiras e cais do Saveiro.": {
+  "en": "Island of lacemakers and the Saveiro's dock.",
+  "ctx": "src/ui/telas/mapa-dados.ts:92 · L()"
+ },
+ "O farol do inventor ilumina a baía.": {
+  "en": "The inventor's lighthouse lights up the bay.",
+  "ctx": "src/ui/telas/mapa-dados.ts:93 · L()"
+ },
+ "Ninhos na areia em noites de lua.": {
+  "en": "Nests in the sand on moonlit nights.",
+  "ctx": "src/ui/telas/mapa-dados.ts:94 · L()"
+ },
+ "Raízes, caranguejos e jacarés.": {
+  "en": "Roots, crabs and caimans.",
+  "ctx": "src/ui/telas/mapa-dados.ts:95 · L()"
+ },
+ "Escuridão completa sem o Lampião.": {
+  "en": "Pitch black without the Lantern.",
+  "ctx": "src/ui/telas/mapa-dados.ts:96 · L()"
+ },
+ "Casario colonial envolto em neblina.": {
+  "en": "Colonial houses wrapped in mist.",
+  "ctx": "src/ui/telas/mapa-dados.ts:97 · L()"
+ },
+ "Trilha de pedra ao redor da serra.": {
+  "en": "A stone trail around the mountains.",
+  "ctx": "src/ui/telas/mapa-dados.ts:98 · L()"
+ },
+ "Quedas d’água em degraus.": {
+  "en": "Waterfalls in steps.",
+  "ctx": "src/ui/telas/mapa-dados.ts:99 · L()"
+ },
+ "Antiga cidade operária.": {
+  "en": "An old factory town.",
+  "ctx": "src/ui/telas/mapa-dados.ts:100 · L()"
+ },
+ "Corais sob a Baía Azul.": {
+  "en": "Corals beneath Baía Azul.",
+  "ctx": "src/ui/telas/mapa-dados.ts:101 · L()"
+ },
+ "Paredões, grutas e cascatas.": {
+  "en": "Cliffs, caves and cascades.",
+  "ctx": "src/ui/telas/mapa-dados.ts:102 · L()"
+ },
+ "Aldeia no topo do monte.": {
+  "en": "A village on top of the mountain.",
+  "ctx": "src/ui/telas/mapa-dados.ts:103 · L()"
+ },
+ "Pedregulhos que só a Força tira do caminho.": {
+  "en": "Boulders only Strength can move.",
+  "ctx": "src/ui/telas/mapa-dados.ts:104 · L()"
+ },
+ "Raizeiras, buritis e o último ginásio da Costa.": {
+  "en": "Herbalists, buriti palms and the Costa's last gym.",
+  "ctx": "src/ui/telas/mapa-dados.ts:105 · L()"
+ },
+ "Onde se enfrenta a Liga dos Guardiões.": {
+  "en": "Where you face the League of Guardians.",
+  "ctx": "src/ui/telas/mapa-dados.ts:106 · L()"
+ },
+ "Estação do trem e Salão da Raizeira.": {
+  "en": "Train station and the Herbalist's Hall.",
+  "ctx": "src/ui/telas/mapa-dados.ts:107 · L()"
+ },
+ "Palmeiras em fila ao longo do brejo.": {
+  "en": "Rows of palms along the marsh.",
+  "ctx": "src/ui/telas/mapa-dados.ts:108 · L()"
+ },
+ "Cupinzeiros, ipês e emas.": {
+  "en": "Termite mounds, ipê trees and rheas.",
+  "ctx": "src/ui/telas/mapa-dados.ts:109 · L()"
+ },
+ "Água rasa a perder de vista.": {
+  "en": "Shallow water as far as the eye can see.",
+  "ctx": "src/ui/telas/mapa-dados.ts:110 · L()"
+ },
+ "Cidade sobre palafitas.": {
+  "en": "A town on stilts.",
+  "ctx": "src/ui/telas/mapa-dados.ts:111 · L()"
+ },
+ "Cais do Saveiro no Sertão.": {
+  "en": "The Saveiro's dock in the Sertão.",
+  "ctx": "src/ui/telas/mapa-dados.ts:112 · L()"
+ },
+ "Terra roxa e rochas rachadas.": {
+  "en": "Red earth and cracked rocks.",
+  "ctx": "src/ui/telas/mapa-dados.ts:113 · L()"
+ },
+ "Cidade de garimpo junto à mina.": {
+  "en": "A mining town next to the mine.",
+  "ctx": "src/ui/telas/mapa-dados.ts:114 · L()"
+ },
+ "Paredões vermelhos com trepadeiras.": {
+  "en": "Red cliffs covered in creepers.",
+  "ctx": "src/ui/telas/mapa-dados.ts:115 · L()"
+ },
+ "O chão é morno; dizem que algo dorme lá.": {
+  "en": "The ground is warm; they say something sleeps there.",
+  "ctx": "src/ui/telas/mapa-dados.ts:116 · L()"
+ },
+ "Forjas e fogueira de São João.": {
+  "en": "Forges and a São João bonfire.",
+  "ctx": "src/ui/telas/mapa-dados.ts:117 · L()"
+ },
+ "O som do berimbau vem de longe.": {
+  "en": "The berimbau's sound carries from afar.",
+  "ctx": "src/ui/telas/mapa-dados.ts:118 · L()"
+ },
+ "Rodas de capoeira e mercado.": {
+  "en": "Capoeira circles and a market.",
+  "ctx": "src/ui/telas/mapa-dados.ts:119 · L()"
+ },
+ "Passagem submersa até o brejo.": {
+  "en": "A flooded passage to the marsh.",
+  "ctx": "src/ui/telas/mapa-dados.ts:120 · L()"
+ },
+ "Vila de palafitas sobre o lodo roxo.": {
+  "en": "A stilt village over purple mud.",
+  "ctx": "src/ui/telas/mapa-dados.ts:121 · L()"
+ },
+ "Pântano de névoa arroxeada.": {
+  "en": "A swamp of purplish fog.",
+  "ctx": "src/ui/telas/mapa-dados.ts:122 · L()"
+ },
+ "Subida íngreme com pedregulhos.": {
+  "en": "A steep climb with boulders.",
+  "ctx": "src/ui/telas/mapa-dados.ts:123 · L()"
+ },
+ "Araucárias brancas de geada.": {
+  "en": "Araucaria trees white with frost.",
+  "ctx": "src/ui/telas/mapa-dados.ts:124 · L()"
+ },
+ "Capim dourado e vento frio.": {
+  "en": "Golden grass and cold wind.",
+  "ctx": "src/ui/telas/mapa-dados.ts:125 · L()"
+ },
+ "Espelho d’água entre as araucárias.": {
+  "en": "A mirror of water among the araucarias.",
+  "ctx": "src/ui/telas/mapa-dados.ts:126 · L()"
+ },
+ "Só o Lampião abre a névoa.": {
+  "en": "Only the Lantern cuts through the fog.",
+  "ctx": "src/ui/telas/mapa-dados.ts:127 · L()"
+ },
+ "Observatório à beira dos cânions.": {
+  "en": "An observatory at the edge of the canyons.",
+  "ctx": "src/ui/telas/mapa-dados.ts:128 · L()"
+ },
+ "Árvores mais velhas que as cidades.": {
+  "en": "Trees older than the towns.",
+  "ctx": "src/ui/telas/mapa-dados.ts:129 · L()"
+ },
+ "Portão dos Guardiões e salão do Conselho.": {
+  "en": "The Guardians' Gate and the Council hall.",
+  "ctx": "src/ui/telas/mapa-dados.ts:130 · L()"
+ },
+ "Cidade": {
+  "en": "Town",
+  "ctx": "src/ui/telas/mapa-dados.ts:140 · campo cidade"
+ },
+ "Rota": {
+  "en": "Route",
+  "ctx": "src/ui/telas/mapa-dados.ts:140 · campo rota"
+ },
+ "Caverna": {
+  "en": "Cave",
+  "ctx": "src/ui/telas/mapa-dados.ts:140 · campo caverna"
+ },
+ "Águas": {
+  "en": "Waters",
+  "ctx": "src/ui/telas/mapa-dados.ts:140 · campo agua"
+ },
+ "Serra": {
+  "en": "Mountains",
+  "ctx": "src/ui/telas/mapa-dados.ts:140 · campo serra"
+ },
+ "Ruína": {
+  "en": "Ruins",
+  "ctx": "src/ui/telas/mapa-dados.ts:140 · campo ruina"
+ },
+ "COSTA DO SOL": {
+  "en": "COSTA DO SOL",
+  "ctx": "src/ui/telas/mapa-mundi.ts:30 · rotulo()"
+ },
+ "SERTÃO DAS NÉVOAS": {
+  "en": "SERTÃO DAS NÉVOAS",
+  "ctx": "src/ui/telas/mapa-mundi.ts:31 · rotulo()"
+ },
+ "Ginásio {nome}": {
+  "en": "{nome} Gym",
+  "ctx": "src/ui/telas/mapa-mundi.ts:83"
+ },
+ "você está aqui": {
+  "en": "you are here",
+  "ctx": "src/ui/telas/mapa-mundi.ts:83 · t()"
+ },
+ "não visitada": {
+  "en": "not visited",
+  "ctx": "src/ui/telas/mapa-mundi.ts:83 · t()"
+ },
+ "Diário": {
+  "en": "Journal",
+  "ctx": "src/ui/telas/menu.ts:35 · campo rotulo | src/ui/telas/perfil.ts:29 · linha()"
+ },
+ "Equipe": {
+  "en": "Team",
+  "ctx": "src/ui/telas/menu.ts:36 · campo rotulo"
+ },
+ "Mochila": {
+  "en": "Bag",
+  "ctx": "src/ui/telas/menu.ts:37 · campo rotulo"
+ },
+ "Salvar": {
+  "en": "Save",
+  "ctx": "src/ui/telas/menu.ts:39 · campo rotulo"
+ },
+ "Opções": {
+  "en": "Options",
+  "ctx": "src/ui/telas/menu.ts:39 · campo rotulo | src/ui/telas/titulo.ts:40"
+ },
+ "{dinheiro} patacas": {
+  "en": "{dinheiro} patacas",
+  "ctx": "src/ui/telas/menu.ts:56 · texto()"
+ },
+ "fumaça {n}": {
+  "en": "smoke {n}",
+  "ctx": "src/ui/telas/menu.ts:59"
+ },
+ "No botão SELECT": {
+  "en": "On the SELECT button",
+  "ctx": "src/ui/telas/mochila.ts:79 · rotulo()"
+ },
+ "Venda: {preco} patacas": {
+  "en": "Sells for: {preco} patacas",
+  "ctx": "src/ui/telas/mochila.ts:80 · rotulo()"
+ },
+ "{jogador} acendeu a {item}. Por {repelente} passos, as criaturas mais fracas vão manter distância.": {
+  "en": "{jogador} lit the {item}. For {repelente} steps, weaker creatures will keep their distance.",
+  "ctx": "src/ui/telas/mochila.ts:98 · informar()"
+ },
+ "DAR A QUEM?": {
+  "en": "GIVE TO WHOM?",
+  "ctx": "src/ui/telas/mochila.ts:105 · campo titulo"
+ },
+ "Um ovo não segura itens.": {
+  "en": "An egg can't hold items.",
+  "ctx": "src/ui/telas/mochila.ts:105 · campo pode"
+ },
+ "{n} trocou {velho} por {item}.": {
+  "en": "{n} swapped {velho} for {item}.",
+  "ctx": "src/ui/telas/mochila.ts:108 · informar()"
+ },
+ "Descartar quantos?": {
+  "en": "Toss how many?",
+  "ctx": "src/ui/telas/mochila.ts:111 · pedirQuantidade() | src/ui/telas/pc-quarto.ts:81 · pedirQuantidade()"
+ },
+ "Jogar fora {n}× {item}?": {
+  "en": "Throw away {n}× {item}?",
+  "ctx": "src/ui/telas/mochila.ts:112 · confirmar()"
+ },
+ "{item} {acao}": {
+  "en": "{item} {acao}",
+  "ctx": "src/ui/telas/mochila.ts:115 · informar() | src/ui/telas/mochila.ts:116 · informar()"
+ },
+ "Ensinar": {
+  "en": "Teach",
+  "ctx": "src/ui/telas/mochila.ts:124 · ops.push()"
+ },
+ "Usar": {
+  "en": "Use",
+  "ctx": "src/ui/telas/mochila.ts:124 · ops.push()"
+ },
+ "Dar": {
+  "en": "Give",
+  "ctx": "src/ui/telas/mochila.ts:125 · ops.push()"
+ },
+ "Tirar do SELECT": {
+  "en": "Remove from SELECT",
+  "ctx": "src/ui/telas/mochila.ts:126 · ops.push()"
+ },
+ "Registrar no SELECT": {
+  "en": "Register to SELECT",
+  "ctx": "src/ui/telas/mochila.ts:126 · ops.push()"
+ },
+ "Descartar": {
+  "en": "Toss",
+  "ctx": "src/ui/telas/mochila.ts:127 · ops.push()"
+ },
+ "Como funciona": {
+  "en": "How it works",
+  "ctx": "src/ui/telas/mochila.ts:128 · ops.push()"
+ },
+ "SELECT": {
+  "en": "SELECT",
+  "ctx": "src/ui/telas/mochila.ts:135"
+ },
+ "ABCDEFGHIJKLM": {
+  "en": "ABCDEFGHIJKLM",
+  "ctx": "src/ui/telas/nome.ts:13"
+ },
+ "NOPQRSTUVWXYZ": {
+  "en": "NOPQRSTUVWXYZ",
+  "ctx": "src/ui/telas/nome.ts:13"
+ },
+ "ÁÀÂÃÉÊÍÓÔÕÚÜÇ": {
+  "en": "ÁÀÂÃÉÊÍÓÔÕÚÜÇ",
+  "ctx": "src/ui/telas/nome.ts:13"
+ },
+ "áàâãéêíóôõúüç": {
+  "en": "áàâãéêíóôõúüç",
+  "ctx": "src/ui/telas/nome.ts:14"
+ },
+ "Fim": {
+  "en": "Done",
+  "ctx": "src/ui/telas/nome.ts:18"
+ },
+ "Toque nas letras. B apaga.": {
+  "en": "Tap the letters. B erases.",
+  "ctx": "src/ui/telas/nome.ts:52 · texto()"
+ },
+ "Digite ou use as setas. {tecla} escolhe, Enter confirma.": {
+  "en": "Type or use the arrows. {tecla} picks, Enter confirms.",
+  "ctx": "src/ui/telas/nome.ts:52 · texto()"
+ },
+ "Explorador": {
+  "en": "Explorer",
+  "ctx": "src/ui/telas/opcoes.ts:26 · campo explorador"
+ },
+ "Veterano": {
+  "en": "Veteran",
+  "ctx": "src/ui/telas/opcoes.ts:26 · campo veterano"
+ },
+ "Música": {
+  "en": "Music",
+  "ctx": "src/ui/telas/opcoes.ts:28 · campo rotulo"
+ },
+ "Volume da música.": {
+  "en": "Music volume.",
+  "ctx": "src/ui/telas/opcoes.ts:28 · campo dica"
+ },
+ "Efeitos": {
+  "en": "Sound effects",
+  "ctx": "src/ui/telas/opcoes.ts:29 · campo rotulo"
+ },
+ "Volume dos efeitos e gritos das criaturas.": {
+  "en": "Volume of sound effects and creature cries.",
+  "ctx": "src/ui/telas/opcoes.ts:29 · campo dica"
+ },
+ "Vozes nas falas": {
+  "en": "Talking voices",
+  "ctx": "src/ui/telas/opcoes.ts:30 · campo rotulo"
+ },
+ "Personagens \"falam\" com sons enquanto o texto aparece.": {
+  "en": "Characters \"talk\" with sounds while the text appears.",
+  "ctx": "src/ui/telas/opcoes.ts:30 · campo dica"
+ },
+ "Velocidade do texto": {
+  "en": "Text speed",
+  "ctx": "src/ui/telas/opcoes.ts:31 · campo rotulo"
+ },
+ "Calma": {
+  "en": "Slow",
+  "ctx": "src/ui/telas/opcoes.ts:31 · campo valor"
+ },
+ "Normal": {
+  "en": "Normal",
+  "ctx": "src/ui/telas/opcoes.ts:31 · campo valor"
+ },
+ "Ligeira": {
+  "en": "Fast",
+  "ctx": "src/ui/telas/opcoes.ts:31 · campo valor"
+ },
+ "Ritmo das letras nas caixas de fala.": {
+  "en": "How fast letters appear in dialogue boxes.",
+  "ctx": "src/ui/telas/opcoes.ts:31 · campo dica"
+ },
+ "Dificuldade": {
+  "en": "Difficulty",
+  "ctx": "src/ui/telas/opcoes.ts:32 · campo rotulo"
+ },
+ "Explorador: leve. Aventureiro (recomendado): equilíbrio. Veterano: rivais espertos.": {
+  "en": "Explorer: easy. Adventurer (recommended): balanced. Veteran: clever rivals.",
+  "ctx": "src/ui/telas/opcoes.ts:32 · campo dica"
+ },
+ "Animações de batalha": {
+  "en": "Battle animations",
+  "ctx": "src/ui/telas/opcoes.ts:33 · campo rotulo"
+ },
+ "Mostra as animações dos golpes.": {
+  "en": "Shows move animations.",
+  "ctx": "src/ui/telas/opcoes.ts:33 · campo dica"
+ },
+ "Números de dano": {
+  "en": "Damage numbers",
+  "ctx": "src/ui/telas/opcoes.ts:34 · campo rotulo"
+ },
+ "Mostra quanto de vida cada golpe tirou.": {
+  "en": "Shows how much HP each move took.",
+  "ctx": "src/ui/telas/opcoes.ts:34 · campo dica"
+ },
+ "Vibração": {
+  "en": "Vibration",
+  "ctx": "src/ui/telas/opcoes.ts:35 · campo rotulo"
+ },
+ "Vibra em críticos, capturas e insígnias (celular e controle).": {
+  "en": "Vibrates on critical hits, catches and badges (phone and controller).",
+  "ctx": "src/ui/telas/opcoes.ts:35 · campo dica"
+ },
+ "Parceira segue": {
+  "en": "Partner follows",
+  "ctx": "src/ui/telas/opcoes.ts:36 · campo rotulo"
+ },
+ "A 1ª criatura da equipe anda atrás de você. Também se liga pela tela da Equipe.": {
+  "en": "The 1st creature in your team walks behind you. Can also be set on the Team screen.",
+  "ctx": "src/ui/telas/opcoes.ts:36 · campo dica"
+ },
+ "Qualidade": {
+  "en": "Quality",
+  "ctx": "src/ui/telas/opcoes.ts:37 · campo rotulo"
+ },
+ "Celular": {
+  "en": "Phone",
+  "ctx": "src/ui/telas/opcoes.ts:37 · campo valor"
+ },
+ "Celular: menos efeitos de cenário, para poupar bateria.": {
+  "en": "Phone: fewer scenery effects, to save battery.",
+  "ctx": "src/ui/telas/opcoes.ts:37 · campo dica"
+ },
+ "Tela cheia": {
+  "en": "Fullscreen",
+  "ctx": "src/ui/telas/opcoes.ts:38 · campo rotulo"
+ },
+ "Usa a tela inteira do aparelho.": {
+  "en": "Uses the device's whole screen.",
+  "ctx": "src/ui/telas/opcoes.ts:38 · campo dica"
+ },
+ "Teclas…": {
+  "en": "Keys…",
+  "ctx": "src/ui/telas/opcoes.ts:39 · campo rotulo"
+ },
+ "Escolha as teclas de cada ação.": {
+  "en": "Choose the keys for each action.",
+  "ctx": "src/ui/telas/opcoes.ts:39 · campo dica"
+ },
+ "Guarda as opções e volta.": {
+  "en": "Saves the options and goes back.",
+  "ctx": "src/ui/telas/opcoes.ts:40 · campo dica"
+ },
+ "OPÇÕES": {
+  "en": "OPTIONS",
+  "ctx": "src/ui/telas/opcoes.ts:43 · texto()"
+ },
+ "Aperte a nova tecla para \"{capturando}\"…": {
+  "en": "Press the new key for \"{capturando}\"…",
+  "ctx": "src/ui/telas/opcoes.ts:48 · escrever()"
+ },
+ "A: trocar a tecla.  B: voltar.": {
+  "en": "A: change key.  B: back.",
+  "ctx": "src/ui/telas/opcoes.ts:48 · escrever()"
+ },
+ "Restaurar o padrão": {
+  "en": "Restore defaults",
+  "ctx": "src/ui/telas/opcoes.ts:51 · campo rotulo"
+ },
+ "De: {c:azul}{de}{/c}": {
+  "en": "From: {c:azul}{de}{/c}",
+  "ctx": "src/ui/telas/pc-quarto.ts:42 · texto()"
+ },
+ "A: fechar": {
+  "en": "A: close",
+  "ctx": "src/ui/telas/pc-quarto.ts:44 · texto()"
+ },
+ "Passe para o PC o que pesa na mochila. Itens-chave ficam com você.": {
+  "en": "Move what's weighing down your bag to the PC. Key items stay with you.",
+  "ctx": "src/ui/telas/pc-quarto.ts:57"
+ },
+ "Pegue de volta o que está guardado.": {
+  "en": "Take back what's stored.",
+  "ctx": "src/ui/telas/pc-quarto.ts:57"
+ },
+ "Apague de vez itens guardados no PC.": {
+  "en": "Permanently delete items stored in the PC.",
+  "ctx": "src/ui/telas/pc-quarto.ts:57"
+ },
+ "Recados da família, dos amigos e de quem mais escrever.": {
+  "en": "Messages from family, friends and whoever else writes.",
+  "ctx": "src/ui/telas/pc-quarto.ts:57"
+ },
+ "Tapete, pôster, planta, pelúcia, console e cama: o quarto fica com a sua cara.": {
+  "en": "Rug, poster, plant, plushie, console and bed: make the room your own.",
+  "ctx": "src/ui/telas/pc-quarto.ts:57"
+ },
+ "Desliga o computador.": {
+  "en": "Turns the computer off.",
+  "ctx": "src/ui/telas/pc-quarto.ts:57"
+ },
+ "No PC: {c:amarelo}{n}{/c} item": {
+  "en": "In PC: {c:amarelo}{n}{/c} item",
+  "ctx": "src/ui/telas/pc-quarto.ts:68 · rotulo()"
+ },
+ "No PC: {c:amarelo}{n}{/c} itens": {
+  "en": "In PC: {c:amarelo}{n}{/c} items",
+  "ctx": "src/ui/telas/pc-quarto.ts:68 · rotulo()"
+ },
+ "Cartas: {c:amarelo}{n}{/c}": {
+  "en": "Letters: {c:amarelo}{n}{/c}",
+  "ctx": "src/ui/telas/pc-quarto.ts:69 · rotulo()"
+ },
+ "Guardar quantos?": {
+  "en": "Store how many?",
+  "ctx": "src/ui/telas/pc-quarto.ts:81 · pedirQuantidade()"
+ },
+ "Retirar quantos?": {
+  "en": "Withdraw how many?",
+  "ctx": "src/ui/telas/pc-quarto.ts:81 · pedirQuantidade()"
+ },
+ "Apagar {n}× {item} do PC?": {
+  "en": "Delete {n}× {item} from the PC?",
+  "ctx": "src/ui/telas/pc-quarto.ts:83 · confirmar()"
+ },
+ "CARTAS": {
+  "en": "LETTERS",
+  "ctx": "src/ui/telas/pc-quarto.ts:93 · escolherEm()"
+ },
+ "De: {de}\n\nJá lida.": {
+  "en": "From: {de}\n\nAlready read.",
+  "ctx": "src/ui/telas/pc-quarto.ts:93 · campo descricao"
+ },
+ "De: {de}\n\nCarta nova!": {
+  "en": "From: {de}\n\nNew letter!",
+  "ctx": "src/ui/telas/pc-quarto.ts:93 · campo descricao"
+ },
+ "DECORAÇÃO DO QUARTO": {
+  "en": "ROOM DECOR",
+  "ctx": "src/ui/telas/pc-quarto.ts:101 · escolherEm()"
+ },
+ "Escolha a {categoria} do quarto.\n\nVocê tem {n} de {total} peças.": {
+  "en": "Choose the room's {categoria}.\n\nYou have {n} of {total} pieces.",
+  "ctx": "src/ui/telas/pc-quarto.ts:101 · campo descricao"
+ },
+ "Escolha o {categoria} do quarto.\n\nVocê tem {n} de {total} peças.": {
+  "en": "Choose the room's {categoria}.\n\nYou have {n} of {total} pieces.",
+  "ctx": "src/ui/telas/pc-quarto.ts:101 · campo descricao"
+ },
+ "Deixa o lugar vazio.": {
+  "en": "Leaves the spot empty.",
+  "ctx": "src/ui/telas/pc-quarto.ts:105 · campo descricao"
+ },
+ "Na sua coleção.": {
+  "en": "In your collection.",
+  "ctx": "src/ui/telas/pc-quarto.ts:105 · t()"
+ },
+ "Ainda não é sua.": {
+  "en": "Not yours yet.",
+  "ctx": "src/ui/telas/pc-quarto.ts:105 · t()"
+ },
+ "GUARDAR NO PC": {
+  "en": "STORE IN PC",
+  "ctx": "src/ui/telas/pc-quarto.ts:116 · mover()"
+ },
+ "RETIRAR DO PC": {
+  "en": "WITHDRAW FROM PC",
+  "ctx": "src/ui/telas/pc-quarto.ts:116 · mover()"
+ },
+ "DESCARTAR DO PC": {
+  "en": "DELETE FROM PC",
+  "ctx": "src/ui/telas/pc-quarto.ts:116 · mover()"
+ },
+ "CARTÃO DE TREINADOR": {
+  "en": "TRAINER CARD",
+  "ctx": "src/ui/telas/perfil.ts:20 · placaTitulo()"
+ },
+ "Nome": {
+  "en": "Name",
+  "ctx": "src/ui/telas/perfil.ts:28 · linha()"
+ },
+ "Patacas": {
+  "en": "Patacas",
+  "ctx": "src/ui/telas/perfil.ts:28 · linha()"
+ },
+ "Tempo de jogo": {
+  "en": "Play time",
+  "ctx": "src/ui/telas/perfil.ts:28 · linha()"
+ },
+ "{n} capturadas de {TOTAL_DIARIO}": {
+  "en": "{n} caught of {TOTAL_DIARIO}",
+  "ctx": "src/ui/telas/perfil.ts:29 · linha()"
+ },
+ "Avistadas": {
+  "en": "Seen",
+  "ctx": "src/ui/telas/perfil.ts:29 · linha()"
+ },
+ "Amuletos de Campo": {
+  "en": "Field Charms",
+  "ctx": "src/ui/telas/perfil.ts:30 · linha()"
+ },
+ "{n} de 10": {
+  "en": "{n} of 10",
+  "ctx": "src/ui/telas/perfil.ts:30 · linha()"
+ },
+ "Insígnias {n}/16": {
+  "en": "Badges {n}/16",
+  "ctx": "src/ui/telas/perfil.ts:32 · rotulo()"
+ },
+ "A: Estojo": {
+  "en": "A: Case",
+  "ctx": "src/ui/telas/perfil.ts:34 · texto()"
+ },
+ "A: estojo de insígnias   B: voltar": {
+  "en": "A: badge case   B: back",
+  "ctx": "src/ui/telas/perfil.ts:35"
+ },
+ "Total: {preco} patacas": {
+  "en": "Total: {preco} patacas",
+  "ctx": "src/ui/telas/quantidade.ts:24 · escrever()"
+ },
+ "Domingo": {
+  "en": "Sunday",
+  "ctx": "src/ui/telas/relogio.ts:9"
+ },
+ "Segunda-feira": {
+  "en": "Monday",
+  "ctx": "src/ui/telas/relogio.ts:9"
+ },
+ "Terça-feira": {
+  "en": "Tuesday",
+  "ctx": "src/ui/telas/relogio.ts:9"
+ },
+ "Quarta-feira": {
+  "en": "Wednesday",
+  "ctx": "src/ui/telas/relogio.ts:9"
+ },
+ "Quinta-feira": {
+  "en": "Thursday",
+  "ctx": "src/ui/telas/relogio.ts:9"
+ },
+ "Sexta-feira": {
+  "en": "Friday",
+  "ctx": "src/ui/telas/relogio.ts:9"
+ },
+ "Sábado": {
+  "en": "Saturday",
+  "ctx": "src/ui/telas/relogio.ts:9"
+ },
+ "Noite": {
+  "en": "Night",
+  "ctx": "src/ui/telas/relogio.ts:10"
+ },
+ "Manhã": {
+  "en": "Morning",
+  "ctx": "src/ui/telas/relogio.ts:10"
+ },
+ "Dia": {
+  "en": "Day",
+  "ctx": "src/ui/telas/relogio.ts:10"
+ },
+ "Tarde": {
+  "en": "Afternoon",
+  "ctx": "src/ui/telas/relogio.ts:10"
+ },
+ "Pronto": {
+  "en": "Done",
+  "ctx": "src/ui/telas/relogio.ts:21 · botao()"
+ },
+ "INFO": {
+  "en": "INFO",
+  "ctx": "src/ui/telas/resumo.ts:42 · campo rotulos"
+ },
+ "ATRIBUTOS": {
+  "en": "STATS",
+  "ctx": "src/ui/telas/resumo.ts:42 · campo rotulos"
+ },
+ "GOLPES": {
+  "en": "MOVES",
+  "ctx": "src/ui/telas/resumo.ts:42 · campo rotulos"
+ },
+ "{ind} de {n}": {
+  "en": "{ind} of {n}",
+  "ctx": "src/ui/telas/resumo.ts:61 · escrever()"
+ },
+ "Treinador: {c:azul}{jogador}{/c}": {
+  "en": "Trainer: {c:azul}{jogador}{/c}",
+  "ctx": "src/ui/telas/resumo.ts:67 · rotulo()"
+ },
+ "Jeito: {jeito}  {c:vermelho}+{mais}{/c} {c:azul}-{menos}{/c}": {
+  "en": "Nature: {jeito}  {c:vermelho}+{mais}{/c} {c:azul}-{menos}{/c}",
+  "ctx": "src/ui/telas/resumo.ts:68 · rotulo()"
+ },
+ "Jeito: Sereno": {
+  "en": "Nature: Serene",
+  "ctx": "src/ui/telas/resumo.ts:68 · rotulo()"
+ },
+ "Encontro: {local}, Nv{nivel}": {
+  "en": "Met: {local}, Lv{nivel}",
+  "ctx": "src/ui/telas/resumo.ts:69 · rotulo()"
+ },
+ "Encontro: {local}": {
+  "en": "Met: {local}",
+  "ctx": "src/ui/telas/resumo.ts:69 · rotulo()"
+ },
+ "Item: {c:agua}{item}{/c}": {
+  "en": "Item: {c:agua}{item}{/c}",
+  "ctx": "src/ui/telas/resumo.ts:70 · rotulo()"
+ },
+ "Item: nenhum": {
+  "en": "Item: none",
+  "ctx": "src/ui/telas/resumo.ts:70 · rotulo()"
+ },
+ "Exp: {exp}": {
+  "en": "Exp: {exp}",
+  "ctx": "src/ui/telas/resumo.ts:72 · rotulo()"
+ },
+ "Nível máximo": {
+  "en": "Max level",
+  "ctx": "src/ui/telas/resumo.ts:72 · rotulo()"
+ },
+ "Próx. nível: {prox}": {
+  "en": "Next level: {prox}",
+  "ctx": "src/ui/telas/resumo.ts:72 · rotulo()"
+ },
+ "Amizade: {amizade}": {
+  "en": "Friendship: {amizade}",
+  "ctx": "src/ui/telas/resumo.ts:74 · rotulo()"
+ },
+ "A: Fazer cafuné": {
+  "en": "A: Give a pat",
+  "ctx": "src/ui/telas/resumo.ts:76 · texto()"
+ },
+ "ATRIBUTO": {
+  "en": "STAT",
+  "ctx": "src/ui/telas/resumo.ts:82 · rotulo()"
+ },
+ "VALOR": {
+  "en": "VALUE",
+  "ctx": "src/ui/telas/resumo.ts:82 · rotulo()"
+ },
+ "TREINO": {
+  "en": "TRAINING",
+  "ctx": "src/ui/telas/resumo.ts:82 · rotulo()"
+ },
+ "PG {pg}/{pgMax}": {
+  "en": "MP {pg}/{pgMax}",
+  "ctx": "src/ui/telas/resumo.ts:97 · campo valor"
+ },
+ "Poder {poder}   Precisão {precisao}": {
+  "en": "Power {poder}   Accuracy {precisao}",
+  "ctx": "src/ui/telas/resumo.ts:114 · rotulo()"
+ },
+ "Código {n} de {total}. Aponte a câmera do outro aparelho.\n→ ou toque: próximo.  B: fechar.": {
+  "en": "Code {n} of {total}. Point the other device's camera.\n→ or tap: next.  B: close.",
+  "ctx": "src/ui/telas/saves.ts:36 · escrever()"
+ },
+ "Código {n} de {total}. Aponte a câmera do outro aparelho.\nB: fechar.": {
+  "en": "Code {n} of {total}. Point the other device's camera.\nB: close.",
+  "ctx": "src/ui/telas/saves.ts:36 · escrever()"
+ },
+ "COLAR CÓDIGO": {
+  "en": "PASTE CODE",
+  "ctx": "src/ui/telas/saves.ts:63 · texto()"
+ },
+ "COPIAR CÓDIGO": {
+  "en": "COPY CODE",
+  "ctx": "src/ui/telas/saves.ts:63 · texto()"
+ },
+ "Toque e segure no quadro abaixo e escolha Colar.\nNo PC: clique no quadro e aperte Ctrl+V.": {
+  "en": "Tap and hold the box below and choose Paste.\nOn PC: click the box and press Ctrl+V.",
+  "ctx": "src/ui/telas/saves.ts:64 · texto()"
+ },
+ "Toque e segure no quadro abaixo e escolha Copiar.\nNo PC: clique no quadro e aperte Ctrl+C.": {
+  "en": "Tap and hold the box below and choose Copy.\nOn PC: click the box and press Ctrl+C.",
+  "ctx": "src/ui/telas/saves.ts:64 · texto()"
+ },
+ "Cole aqui o código do jogo": {
+  "en": "Paste the game code here",
+  "ctx": "src/ui/telas/saves.ts:69 · ta.setAttribute()"
+ },
+ "Código do jogo": {
+  "en": "Game code",
+  "ctx": "src/ui/telas/saves.ts:69 · ta.setAttribute()"
+ },
+ "Colar": {
+  "en": "Paste",
+  "ctx": "src/ui/telas/saves.ts:76"
+ },
+ "Usar código": {
+  "en": "Use code",
+  "ctx": "src/ui/telas/saves.ts:76"
+ },
+ "Copiar": {
+  "en": "Copy",
+  "ctx": "src/ui/telas/saves.ts:76"
+ },
+ "Código do jogo: {n} letras.": {
+  "en": "Game code: {n} characters.",
+  "ctx": "src/ui/telas/saves.ts:86 · escrever()"
+ },
+ "— vazio —  Cole o código aqui.": {
+  "en": "— empty —  Paste the code here.",
+  "ctx": "src/ui/telas/saves.ts:87 · escrever()"
+ },
+ "{c:verde}Jogo de {jogador}: código completo.{/c}": {
+  "en": "{c:verde}{jogador}'s game: code complete.{/c}",
+  "ctx": "src/ui/telas/saves.ts:88 · escrever()"
+ },
+ "Recebido: {n} letras.": {
+  "en": "Received: {n} characters.",
+  "ctx": "src/ui/telas/saves.ts:89 · escrever()"
+ },
+ "Código inválido.": {
+  "en": "Invalid code.",
+  "ctx": "src/ui/telas/saves.ts:89 · escrever() | src/ui/telas/saves.ts:94 · escrever()"
+ },
+ "Cole o código no quadro primeiro.": {
+  "en": "Paste the code in the box first.",
+  "ctx": "src/ui/telas/saves.ts:94 · escrever()"
+ },
+ "O aparelho não deixou ler. Toque e segure no quadro e escolha Colar.": {
+  "en": "The device wouldn't allow reading. Tap and hold the box and choose Paste.",
+  "ctx": "src/ui/telas/saves.ts:121 · escrever()"
+ },
+ "{c:verde}Copiado! No outro aparelho, use \"Colar código\".{/c}": {
+  "en": "{c:verde}Copied! On the other device, use \"Paste code\".{/c}",
+  "ctx": "src/ui/telas/saves.ts:126 · escrever() | src/ui/telas/saves.ts:141 · escrever()"
+ },
+ "O aparelho não deixou. Toque e segure no quadro e escolha Copiar.": {
+  "en": "The device wouldn't allow it. Tap and hold the box and choose Copy.",
+  "ctx": "src/ui/telas/saves.ts:126 · escrever()"
+ },
+ "ESCOLHA UM JOGO": {
+  "en": "CHOOSE A GAME",
+  "ctx": "src/ui/telas/saves.ts:176 · texto()"
+ },
+ "JOGO {n}": {
+  "en": "GAME {n}",
+  "ctx": "src/ui/telas/saves.ts:189 · texto()"
+ },
+ "Diário {diario}/180   Tempo {tempo}": {
+  "en": "Journal {diario}/180   Time {tempo}",
+  "ctx": "src/ui/telas/saves.ts:192 · texto()"
+ },
+ "— danificado —  Este jogo não pôde ser lido.": {
+  "en": "— damaged —  This game couldn't be read.",
+  "ctx": "src/ui/telas/saves.ts:196 · texto()"
+ },
+ "— vazio —  Comece uma aventura nova aqui.": {
+  "en": "— empty —  Start a new adventure here.",
+  "ctx": "src/ui/telas/saves.ts:197 · texto()"
+ },
+ "Escolha onde guardar o jogo recebido.  B: desistir": {
+  "en": "Choose where to store the received game.  B: cancel",
+  "ctx": "src/ui/telas/saves.ts:206 · escrever()"
+ },
+ "A: abrir   B: voltar": {
+  "en": "A: open   B: back",
+  "ctx": "src/ui/telas/saves.ts:206 · escrever()"
+ },
+ "A: novo jogo ou importar   B: voltar": {
+  "en": "A: new game or import   B: back",
+  "ctx": "src/ui/telas/saves.ts:206 · escrever()"
+ },
+ "Substituir o Jogo {n} ({nome}) pelo jogo de {jogador}?": {
+  "en": "Replace Game {n} ({nome}) with {jogador}'s game?",
+  "ctx": "src/ui/telas/saves.ts:213 · confirmar()"
+ },
+ "Jogo de {jogador} guardado no Jogo {n}.": {
+  "en": "{jogador}'s game stored in Game {n}.",
+  "ctx": "src/ui/telas/saves.ts:215 · informar()"
+ },
+ "Não foi possível importar.": {
+  "en": "Couldn't import.",
+  "ctx": "src/ui/telas/saves.ts:216 · informar()"
+ },
+ "Jogo {n} danificado": {
+  "en": "Game {n} damaged",
+  "ctx": "src/ui/telas/saves.ts:225 · perguntar()"
+ },
+ "Jogo {n} vazio": {
+  "en": "Game {n} empty",
+  "ctx": "src/ui/telas/saves.ts:225 · perguntar()"
+ },
+ "Novo jogo": {
+  "en": "New game",
+  "ctx": "src/ui/telas/saves.ts:225 · perguntar()"
+ },
+ "Importar arquivo .pingo": {
+  "en": "Import .pingo file",
+  "ctx": "src/ui/telas/saves.ts:225 · perguntar()"
+ },
+ "Colar código": {
+  "en": "Paste code",
+  "ctx": "src/ui/telas/saves.ts:225 · perguntar()"
+ },
+ "O que restou deste jogo danificado será apagado. Começar mesmo assim?": {
+  "en": "What's left of this damaged game will be erased. Start anyway?",
+  "ctx": "src/ui/telas/saves.ts:226 · confirmar()"
+ },
+ "Retomar de onde parou": {
+  "en": "Resume where you left off",
+  "ctx": "src/ui/telas/saves.ts:237"
+ },
+ "Exportar arquivo .pingo": {
+  "en": "Export .pingo file",
+  "ctx": "src/ui/telas/saves.ts:237"
+ },
+ "Mostrar código QR": {
+  "en": "Show QR code",
+  "ctx": "src/ui/telas/saves.ts:237"
+ },
+ "Copiar código": {
+  "en": "Copy code",
+  "ctx": "src/ui/telas/saves.ts:237"
+ },
+ "{nome} — {n} insígnia": {
+  "en": "{nome} — {n} badge",
+  "ctx": "src/ui/telas/saves.ts:238 · perguntar()"
+ },
+ "{nome} — {n} insígnias": {
+  "en": "{nome} — {n} badges",
+  "ctx": "src/ui/telas/saves.ts:238 · perguntar()"
+ },
+ "Arquivo gerado. Leve-o para o outro aparelho e use \"Importar arquivo\".": {
+  "en": "File created. Take it to the other device and use \"Import file\".",
+  "ctx": "src/ui/telas/saves.ts:241 · informar()"
+ },
+ "Não foi possível gerar o arquivo.": {
+  "en": "Couldn't create the file.",
+  "ctx": "src/ui/telas/saves.ts:241 · informar()"
+ },
+ "Este jogo precisa de {n} códigos. O arquivo .pingo é mais prático. Mostrar mesmo assim?": {
+  "en": "This game needs {n} codes. The .pingo file is easier. Show them anyway?",
+  "ctx": "src/ui/telas/saves.ts:244 · confirmar()"
+ },
+ "Apagar o Jogo {n} de {nome}?": {
+  "en": "Delete {nome}'s Game {n}?",
+  "ctx": "src/ui/telas/saves.ts:253 · confirmar()"
+ },
+ "Tem certeza? Isso não tem volta.": {
+  "en": "Are you sure? This can't be undone.",
+  "ctx": "src/ui/telas/saves.ts:253 · confirmar()"
+ },
+ "Uma aventura pelas terras de Pingorama": {
+  "en": "An adventure across the lands of Pingorama",
+  "ctx": "src/ui/telas/splash.ts:12 · texto()"
+ },
+ "Toque para começar": {
+  "en": "Tap to start",
+  "ctx": "src/ui/telas/splash.ts:13 · texto()"
+ },
+ "Aperte Z ou Enter": {
+  "en": "Press Z or Enter",
+  "ctx": "src/ui/telas/splash.ts:13 · texto()"
+ },
+ "Jogar": {
+  "en": "Play",
+  "ctx": "src/ui/telas/titulo.ts:40"
+ },
+ "Language: English": {
+  "en": "Language: English",
+  "ctx": "src/ui/telas/titulo.ts:41 · acoes.push()"
+ },
+ "Idioma: Português": {
+  "en": "Idioma: Português",
+  "ctx": "src/ui/telas/titulo.ts:41 · acoes.push()"
+ },
+ "Caixa {n}": {
+  "en": "Box {n}",
+  "ctx": "src/ui/telas/viveiro.ts:30 · String()"
+ },
+ "Nv{nivel}  {vida}/{n}": {
+  "en": "Lv{nivel}  {vida}/{n}",
+  "ctx": "src/ui/telas/viveiro.ts:76 · rotulo()"
+ },
+ "{cx}: {n} de 30 vagas ocupadas.": {
+  "en": "{cx}: {n} of 30 slots taken.",
+  "ctx": "src/ui/telas/viveiro.ts:77 · rotulo()"
+ },
+ "Vaga livre.": {
+  "en": "Empty slot.",
+  "ctx": "src/ui/telas/viveiro.ts:77 · rotulo()"
+ },
+ "Renomear caixa": {
+  "en": "Rename box",
+  "ctx": "src/ui/telas/viveiro.ts:119 · perguntar()"
+ },
+ "Caixa anterior": {
+  "en": "Previous box",
+  "ctx": "src/ui/telas/viveiro.ts:119 · perguntar()"
+ },
+ "Próxima caixa": {
+  "en": "Next box",
+  "ctx": "src/ui/telas/viveiro.ts:119 · perguntar()"
+ },
+ "Nome da caixa?": {
+  "en": "Box name?",
+  "ctx": "src/ui/telas/viveiro.ts:120 · pedirNome()"
+ },
+ "Depositar": {
+  "en": "Deposit",
+  "ctx": "src/ui/telas/viveiro.ts:137"
+ },
+ "Retirar": {
+  "en": "Withdraw",
+  "ctx": "src/ui/telas/viveiro.ts:137"
+ },
+ "Soltar na natureza": {
+  "en": "Release into the wild",
+  "ctx": "src/ui/telas/viveiro.ts:137"
+ },
+ "tela não registrada: ": {
+  "en": "tela não registrada: ",
+  "ctx": "src/ui/telas.ts:41"
+ },
+ "do tipo {tipos}": {
+  "en": "of the {tipos} type",
+  "ctx": "src/world/campo.ts:67"
+ },
+ "com muita amizade": {
+  "en": "with lots of friendship",
+  "ctx": "src/world/campo.ts:67 · t()"
+ },
+ "A {amuleto} precisa de uma criatura {tipos} na equipe.": {
+  "en": "{amuleto} needs a creature {tipos} in your team.",
+  "ctx": "src/world/campo.ts:68 · falar()"
+ },
+ "O {amuleto} precisa de uma criatura {tipos} na equipe.": {
+  "en": "{amuleto} needs a creature {tipos} in your team.",
+  "ctx": "src/world/campo.ts:68 · falar()"
+ },
+ "Usar {art} {nome}?": {
+  "en": "Use {nome}?",
+  "ctx": "src/world/campo.ts:71 · simNao()"
+ },
+ "{n} usou {art} {amuleto}!": {
+  "en": "{n} used {amuleto}!",
+  "ctx": "src/world/campo.ts:76 · avisar()"
+ },
+ "A Força já está valendo: é só empurrar o pedregulho.": {
+  "en": "Strength is already active: just push the boulder.",
+  "ctx": "src/world/campo.ts:99 · falar()"
+ },
+ "{n} vai ajudar a empurrar os pedregulhos daqui!": {
+  "en": "{n} will help push the boulders around here!",
+  "ctx": "src/world/campo.ts:103 · falar()"
+ },
+ "O paredão só dá passagem subindo ou descendo.": {
+  "en": "The cliff only lets you go up or down.",
+  "ctx": "src/world/campo.ts:121 · falar()"
+ },
+ "Não há onde se firmar do outro lado.": {
+  "en": "There's nothing to hold on to on the other side.",
+  "ctx": "src/world/campo.ts:124 · falar()"
+ },
+ "{n} usou o Escalar!": {
+  "en": "{n} used Climb!",
+  "ctx": "src/world/campo.ts:126 · avisar()"
+ },
+ "A água está calma. Usar o Remo?": {
+  "en": "The water is calm. Use the Paddle?",
+  "ctx": "src/world/campo.ts:130 · pedirAmuleto()"
+ },
+ "{n} puxa a canoa!": {
+  "en": "{n} pulls the canoe!",
+  "ctx": "src/world/campo.ts:131 · avisar()"
+ },
+ "Não dá para subir por aqui.": {
+  "en": "You can't go up here.",
+  "ctx": "src/world/campo.ts:140 · falar()"
+ },
+ "{n} usou a Cachoeira!": {
+  "en": "{n} used Waterfall!",
+  "ctx": "src/world/campo.ts:142 · avisar()"
+ },
+ "Não dá para subir à superfície por aqui.": {
+  "en": "You can't surface here.",
+  "ctx": "src/world/campo.ts:149 · falar()"
+ },
+ "Não há nada para ver lá embaixo.": {
+  "en": "There's nothing to see down there.",
+  "ctx": "src/world/campo.ts:149 · falar()"
+ },
+ "Subir à superfície?": {
+  "en": "Surface?",
+  "ctx": "src/world/campo.ts:150 · pedirAmuleto()"
+ },
+ "A água é funda aqui. Usar o Mergulho?": {
+  "en": "The water is deep here. Use Dive?",
+  "ctx": "src/world/campo.ts:150 · pedirAmuleto()"
+ },
+ "{n} usou o Mergulho!": {
+  "en": "{n} used Dive!",
+  "ctx": "src/world/campo.ts:151 · avisar()"
+ },
+ "Não dá para levantar voo aqui dentro.": {
+  "en": "You can't take off indoors.",
+  "ctx": "src/world/campo.ts:162 · falar()"
+ },
+ "Levantar voo e viajar?": {
+  "en": "Take off and travel?",
+  "ctx": "src/world/campo.ts:163 · pedirAmuleto()"
+ },
+ "{n} usou o Voo!": {
+  "en": "{n} used Flight!",
+  "ctx": "src/world/campo.ts:168 · avisar()"
+ },
+ "Pedir para farejar por perto?": {
+  "en": "Ask it to sniff around?",
+  "ctx": "src/world/campo.ts:176 · pedirAmuleto()"
+ },
+ "{n} farejou algo escondido por perto!": {
+  "en": "{n} sniffed out something hidden nearby!",
+  "ctx": "src/world/campo.ts:178 · falar()"
+ },
+ "{n} não sentiu cheiro de nada escondido.": {
+  "en": "{n} didn't smell anything hidden.",
+  "ctx": "src/world/campo.ts:178 · falar()"
+ },
+ "Não tem água para pescar aqui.": {
+  "en": "There's no water to fish in here.",
+  "ctx": "src/world/campo.ts:202 · falar()"
+ },
+ "Puxou a linha cedo demais…": {
+  "en": "You reeled in too soon…",
+  "ctx": "src/world/campo.ts:207 · falar()"
+ },
+ "Nada mordeu a isca…": {
+  "en": "Nothing took the bait…",
+  "ctx": "src/world/campo.ts:209 · falar()"
+ },
+ "A criatura escapou com a isca!": {
+  "en": "The creature got away with the bait!",
+  "ctx": "src/world/campo.ts:212 · falar()"
+ },
+ "Fisgou! Tem alguma coisa na linha!": {
+  "en": "Hooked! Something's on the line!",
+  "ctx": "src/world/campo.ts:214 · falar()"
+ },
+ "A árvore tem o tronco bem grosso. Sacudir?": {
+  "en": "This tree has a really thick trunk. Shake it?",
+  "ctx": "src/world/campo.ts:221 · simNao()"
+ },
+ "Alguma coisa caiu da árvore!": {
+  "en": "Something fell out of the tree!",
+  "ctx": "src/world/campo.ts:227 · falar()"
+ },
+ "Só caíram algumas folhas.": {
+  "en": "Only a few leaves fell.",
+  "ctx": "src/world/campo.ts:227 · falar()"
+ },
+ "{JOGADOR} colheu {n}× {item}!\nA terra ficou fofa de novo.": {
+  "en": "{JOGADOR} harvested {n}× {item}!\nThe soil is soft again.",
+  "ctx": "src/world/campo.ts:235 · falar()"
+ },
+ "Um brotinho de {item} acabou de nascer.": {
+  "en": "A little {item} sprout just came up.",
+  "ctx": "src/world/campo.ts:238 · falar()"
+ },
+ "O pé de {item} está crescendo bem. Volte mais tarde.": {
+  "en": "The {item} plant is growing well. Come back later.",
+  "ctx": "src/world/campo.ts:238 · falar()"
+ },
+ "Um canteiro de terra fofa. Dá para plantar um fruto aqui.": {
+  "en": "A patch of soft soil. You can plant a fruit here.",
+  "ctx": "src/world/campo.ts:240 · falar()"
+ },
+ "Plantar qual fruto?": {
+  "en": "Plant which fruit?",
+  "ctx": "src/world/campo.ts:241 · escolher()"
+ },
+ "Deixar para depois": {
+  "en": "Maybe later",
+  "ctx": "src/world/campo.ts:241 · escolher()"
+ },
+ "{JOGADOR} plantou {item}.": {
+  "en": "{JOGADOR} planted {item}.",
+  "ctx": "src/world/campo.ts:244 · falar()"
+ },
+ "{JOGADOR} achou {n}× {item}!": {
+  "en": "{JOGADOR} found {n}× {item}!",
+  "ctx": "src/world/campo.ts:250 · falar()"
+ },
+ "{JOGADOR} achou {item}!": {
+  "en": "{JOGADOR} found {item}!",
+  "ctx": "src/world/campo.ts:250 · falar()"
+ },
+ "Não dá para pedalar aqui.": {
+  "en": "You can't ride a bike here.",
+  "ctx": "src/world/campo.ts:257 · falar()"
+ },
+ "{JOGADOR} acendeu a {item}.\nAs criaturas mais fracas vão manter distância.": {
+  "en": "{JOGADOR} lit the {item}.\nWeaker creatures will keep their distance.",
+  "ctx": "src/world/campo.ts:269 · falar()"
+ },
+ "{item} não tem uso aqui.": {
+  "en": "{item} has no use here.",
+  "ctx": "src/world/campo.ts:284 · falar()"
+ },
+ "Pescar com a {vara}?": {
+  "en": "Fish with the {vara}?",
+  "ctx": "src/world/campo.ts:331 · simNao()"
+ },
+ "Tt": {
+  "en": "Tt",
+  "ctx": "src/world/cena.ts:128"
+ },
+ "conj per-": {
+  "en": "conj per-",
+  "ctx": "src/world/cena.ts:148"
+ },
+ "Sua cama. A colcha de estrela foi a vó que costurou.": {
+  "en": "Your bed. Grandma sewed the star quilt.",
+  "ctx": "src/world/decoracao.ts:20 · campo cama-jogador"
+ },
+ "Uma cama simples, de colcha lisa. Dá saudade da colcha de estrela.": {
+  "en": "A simple bed with a plain quilt. You miss the star quilt.",
+  "ctx": "src/world/decoracao.ts:21 · campo cama"
+ },
+ "O videogame de cartucho. A fita de corrida de jangada está emperrada desde o Natal.": {
+  "en": "The cartridge console. The raft-racing cartridge has been stuck since Christmas.",
+  "ctx": "src/world/decoracao.ts:22 · campo console"
+ },
+ "Um tamanduá de pelúcia. O focinho já está meio careca de tanto abraço.": {
+  "en": "A plush anteater. Its snout is a bit bald from all the hugs.",
+  "ctx": "src/world/decoracao.ts:23 · campo pelucia-a"
+ },
+ "{classe} {treinador} quer batalhar!": {
+  "en": "{classe} {treinador} wants to battle!",
+  "ctx": "src/world/deps.ts:64 · falar()"
+ },
+ "Um {n} selvagem apareceu!": {
+  "en": "A wild {n} appeared!",
+  "ctx": "src/world/deps.ts:64 · falar()"
+ },
+ "Criatura nº {especie}": {
+  "en": "Creature no. {especie}",
+  "ctx": "src/world/deps.ts:110"
+ },
+ "{JOGADOR} ficou sem criaturas para lutar!\nVocê corre até o último Posto Guardião…": {
+  "en": "{JOGADOR} has no creatures left to fight!\nYou rush back to the last Guardian Post…",
+  "ctx": "src/world/encontros.ts:54 · falar()"
+ },
+ "Sua equipe foi curada. Cuide bem dela!": {
+  "en": "Your team has been healed. Take good care of it!",
+  "ctx": "src/world/encontros.ts:61 · falar()"
+ },
+ "{nome} fugiu ferida e não foi mais vista.": {
+  "en": "{nome} fled wounded and was never seen again.",
+  "ctx": "src/world/encontros.ts:104 · avisar()"
+ },
+ "A criatura": {
+  "en": "The creature",
+  "ctx": "src/world/encontros.ts:104 · campo nome | src/world/encontros.ts:105 · campo nome | src/world/mecanicas/safari.ts:65"
+ },
+ "{nome} sumiu na mata…": {
+  "en": "{nome} vanished into the forest…",
+  "ctx": "src/world/encontros.ts:105 · avisar()"
+ },
+ "Opa! O ovo está se mexendo…\fNasceu {n}!": {
+  "en": "Oh! The egg is moving…\f{n} hatched!",
+  "ctx": "src/world/encontros.ts:122 · falar()"
+ },
+ "O cheiro da Fumaça de Andiroba se dissipou.": {
+  "en": "The Andiroba Smoke's scent has faded.",
+  "ctx": "src/world/encontros.ts:126 · avisar()"
+ },
+ "Notícia quentinha do mato: hoje tem enxame de {especieNome} no capim da {zonaNome}! Quem tiver cuia sobrando, é a hora.": {
+  "en": "Hot news from the bush: today there's a swarm of {especieNome} in the grass at {zonaNome}! If you've got spare gourds, now's the time.",
+  "ctx": "src/world/enxames.ts:31"
+ },
+ "{JOGADOR} recebeu {nome}!": {
+  "en": "{JOGADOR} received {nome}!",
+  "ctx": "src/world/eventos.ts:32 · falar()"
+ },
+ "Quer dar um apelido para {nome}?": {
+  "en": "Give {nome} a nickname?",
+  "ctx": "src/world/eventos.ts:33 · simNao() | src/world/mecanicas/safari.ts:66 · simNao()"
+ },
+ "Apelido": {
+  "en": "Nickname",
+  "ctx": "src/world/eventos.ts:33 · pedirNome() | src/world/mecanicas/safari.ts:66 · pedirNome()"
+ },
+ "A equipe está cheia. {n} foi para o Viveiro de Cuias.": {
+  "en": "Your team is full. {n} was sent to the Gourd Keep.",
+  "ctx": "src/world/eventos.ts:35 · falar()"
+ },
+ "{JOGADOR} recebeu um ovo!\nEle vai chocar depois de uma boa caminhada.": {
+  "en": "{JOGADOR} received an egg!\nIt'll hatch after a good long walk.",
+  "ctx": "src/world/eventos.ts:59 · falar()"
+ },
+ "Amuleto de Campo: {n}": {
+  "en": "Field Charm: {n}",
+  "ctx": "src/world/eventos.ts:79 · avisar()"
+ },
+ "Jogo salvo.": {
+  "en": "Game saved.",
+  "ctx": "src/world/eventos.ts:97 · avisar()"
+ },
+ "Nome da rival?": {
+  "en": "Your rival's name?",
+  "ctx": "src/world/eventos.ts:100 · pedirNome()"
+ },
+ "{nome} acendeu o Lampião!": {
+  "en": "{nome} lit the Lantern!",
+  "ctx": "src/world/index.ts:50 · avisar()"
+ },
+ "Nenhuma criatura da equipe consegue acender o Lampião.": {
+  "en": "No creature in your team can light the Lantern.",
+  "ctx": "src/world/index.ts:51 · avisar()"
+ },
+ "Está escuro demais.": {
+  "en": "It's too dark.",
+  "ctx": "src/world/index.ts:51 · avisar()"
+ },
+ "zona desconhecida: ": {
+  "en": "zona desconhecida: ",
+  "ctx": "src/world/index.ts:66"
+ },
+ "O módulo de batalha ainda não está disponível.": {
+  "en": "The battle module isn't available yet.",
+  "ctx": "src/world/index.ts:247 · falar()"
+ },
+ "{classe} {nome} deixou o número no seu Rádio Cipó!": {
+  "en": "{classe} {nome} left their number on your Rádio Cipó!",
+  "ctx": "src/world/integracao.ts:58 · avisar()"
+ },
+ "O caminho está fechado por enquanto.": {
+  "en": "The way is closed for now.",
+  "ctx": "src/world/jogador.ts:53 · recusar() | src/world/jogador.ts:59 · recusar()"
+ },
+ "norte": {
+  "en": "north",
+  "ctx": "src/world/mecanicas/_apoio-9a16.ts:16 · campo n | src/world/mecanicas/_pecas.ts:105 · campo n"
+ },
+ "sul": {
+  "en": "south",
+  "ctx": "src/world/mecanicas/_apoio-9a16.ts:16 · campo s | src/world/mecanicas/_pecas.ts:105 · campo s"
+ },
+ "leste": {
+  "en": "east",
+  "ctx": "src/world/mecanicas/_apoio-9a16.ts:16 · campo l | src/world/mecanicas/_pecas.ts:105 · campo l"
+ },
+ "oeste": {
+  "en": "west",
+  "ctx": "src/world/mecanicas/_apoio-9a16.ts:16 · campo o | src/world/mecanicas/_pecas.ts:105 · campo o"
+ },
+ "{n} achou alguma coisa no caminho!": {
+  "en": "{n} found something along the way!",
+  "ctx": "src/world/parceira.ts:92 · avisar()"
+ },
+ "{N} encosta a cabeça em você. Não troca essa caminhada por nada.": {
+  "en": "{N} leans its head against you. It wouldn't trade this walk for anything.",
+  "ctx": "src/world/parceira.ts:98"
+ },
+ "{N} dá uma volta inteira em torno de você, toda contente!": {
+  "en": "{N} runs a full circle around you, delighted!",
+  "ctx": "src/world/parceira.ts:98"
+ },
+ "{N} olha para você como quem diz: \"para onde for, eu vou\".": {
+  "en": "{N} looks at you as if to say: \"wherever you go, I go.\"",
+  "ctx": "src/world/parceira.ts:98"
+ },
+ "{N} está radiante ao seu lado!": {
+  "en": "{N} is beaming by your side!",
+  "ctx": "src/world/parceira.ts:99"
+ },
+ "{N} cantarola baixinho enquanto anda.": {
+  "en": "{N} hums softly as it walks.",
+  "ctx": "src/world/parceira.ts:99"
+ },
+ "{N} cutuca a sua mão pedindo carinho.": {
+  "en": "{N} nudges your hand asking for a pat.",
+  "ctx": "src/world/parceira.ts:99"
+ },
+ "{N} segue você de perto, atenta ao caminho.": {
+  "en": "{N} follows close behind, watching the path.",
+  "ctx": "src/world/parceira.ts:100"
+ },
+ "{N} fareja o ar e olha para você, animada.": {
+  "en": "{N} sniffs the air and looks at you, excited.",
+  "ctx": "src/world/parceira.ts:100"
+ },
+ "{N} parece estar gostando do passeio.": {
+  "en": "{N} seems to be enjoying the walk.",
+  "ctx": "src/world/parceira.ts:100"
+ },
+ "{N} olha curiosa para você.": {
+  "en": "{N} looks at you curiously.",
+  "ctx": "src/world/parceira.ts:101"
+ },
+ "{N} ainda está se acostumando com a viagem.": {
+  "en": "{N} is still getting used to the journey.",
+  "ctx": "src/world/parceira.ts:101"
+ },
+ "{N} mantém uma distância educada.": {
+  "en": "{N} keeps a polite distance.",
+  "ctx": "src/world/parceira.ts:101"
+ },
+ "{N} desvia o olhar, meio emburrada.": {
+  "en": "{N} looks away, a bit grumpy.",
+  "ctx": "src/world/parceira.ts:102"
+ },
+ "{N} vem atrás, mas resmungando.": {
+  "en": "{N} tags along, grumbling.",
+  "ctx": "src/world/parceira.ts:102"
+ },
+ "{nome} trouxe uma coisa guardada com todo o cuidado.\f{JOGADOR} recebeu {item}!": {
+  "en": "{nome} brought something it kept with great care.\f{JOGADOR} received {item}!",
+  "ctx": "src/world/parceira.ts:115 · falar()"
+ },
+ "{nome} acorda num susto, boceja e se ajeita para seguir viagem.": {
+  "en": "{nome} wakes with a start, yawns and gets ready to keep going.",
+  "ctx": "src/world/parceira.ts:118 · falar()"
+ },
+ "{nome} não parece bem. Melhor passar num Posto Guardião.": {
+  "en": "{nome} doesn't look well. Better stop at a Guardian Post.",
+  "ctx": "src/world/parceira.ts:120 · falar()"
+ },
+ "{nome} está exausta, mas não sai do seu lado.": {
+  "en": "{nome} is exhausted, but won't leave your side.",
+  "ctx": "src/world/parceira.ts:121 · falar()"
+ },
+ "Gg": {
+  "en": "Gg",
+  "ctx": "src/world/pixel.ts:52"
+ },
+ "Cipós grossos fecham a passagem. Só um bom facão daria jeito.": {
+  "en": "Thick vines block the way. Only a good machete would do.",
+  "ctx": "src/world/vivo.ts:56 · campo obst"
+ },
+ "A água é funda. Dá para ver peixes passando lá embaixo.": {
+  "en": "The water is deep. You can see fish swimming below.",
+  "ctx": "src/world/vivo.ts:57 · campo obst"
+ },
+ "Um pedregulho enorme. Nem se mexe.": {
+  "en": "A huge boulder. It won't budge.",
+  "ctx": "src/world/vivo.ts:58 · campo obst"
+ },
+ "Não dá para enxergar quase nada aqui.": {
+  "en": "You can barely see anything here.",
+  "ctx": "src/world/vivo.ts:59 · campo obst"
+ },
+ "Uma rocha cheia de rachaduras. Uma pancada certeira a partiria.": {
+  "en": "A rock full of cracks. One good blow would break it.",
+  "ctx": "src/world/vivo.ts:60 · campo obst"
+ },
+ "Um paredão coberto de trepadeiras firmes.": {
+  "en": "A cliff covered in sturdy creepers.",
+  "ctx": "src/world/vivo.ts:61 · campo obst"
+ },
+ "A cascata despenca com força. Não dá para subir assim.": {
+  "en": "The waterfall crashes down hard. You can't climb it like this.",
+  "ctx": "src/world/vivo.ts:62 · campo obst"
+ },
+ "A água aqui é escura e muito funda.": {
+  "en": "The water here is dark and very deep.",
+  "ctx": "src/world/vivo.ts:63 · campo obst"
+ },
+ "sem id": {
+  "en": "sem id",
+  "ctx": "src/world/zonas.ts:22"
+ },
+ "grade vazia": {
+  "en": "grade vazia",
+  "ctx": "src/world/zonas.ts:23"
+ },
+ "primeira linha da grade vazia": {
+  "en": "primeira linha da grade vazia",
+  "ctx": "src/world/zonas.ts:25"
+ },
+ "sem a lista de warps": {
+  "en": "sem a lista de warps",
+  "ctx": "src/world/zonas.ts:28"
+ },
+ "Caminho em obras: esta passagem ainda não leva a lugar nenhum.": {
+  "en": "Under construction: this path doesn't lead anywhere yet.",
+  "ctx": "src/world/zonas.ts:33"
+ }
+}

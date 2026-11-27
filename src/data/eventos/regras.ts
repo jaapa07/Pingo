@@ -25,6 +25,7 @@ import {
 } from '../revancha';
 import { QUIZ_FAUNA, QUIZ_RODADA, QUIZ_META, LOCUTORA } from '../quiz';
 import { TORRE, PREMIOS_TORRE, adversarioDaTorre } from '../torre';
+import { t, tr } from '../../i18n';
 
 const mundoDeps = () => import('../../world/deps');
 const hoje = () => diaCorrido(jogo.save.relogio.deslocamentoMin);
@@ -60,25 +61,25 @@ const GUIA = { nome: 'Guia do Treino', retrato: 'npc-homem-2' };
 registrarComando('agendaTreino', async () => {
   const d = await mundoDeps(), dia = diaSemana(), s = jogo.save;
   const ORDEM = ['manha', 'dia', 'noite'];
-  const linha = (dd: number) => LIDERES_AGENDA.filter((l) => l.dia === dd && liberada(l) && d.treinador(l.id)).sort((a, b) => ORDEM.indexOf(a.periodo) - ORDEM.indexOf(b.periodo)).map((l) => `${d.treinador(l.id)!.nome} (${NOME_PERIODO[l.periodo]})`).join(', ');
+  const linha = (dd: number) => LIDERES_AGENDA.filter((l) => l.dia === dd && liberada(l) && d.treinador(l.id)).sort((a, b) => ORDEM.indexOf(a.periodo) - ORDEM.indexOf(b.periodo)).map((l) => `${d.treinador(l.id)!.nome} (${t(NOME_PERIODO[l.periodo])})`).join(', ');
   const marcados = LIDERES_AGENDA.filter((l) => liberada(l) && s.flags['treino:' + l.id] === hoje() && s.flags['revanche:' + l.id] !== hoje()).map((l) => d.treinador(l.id)?.nome).filter(Boolean);
-  await d.falar(`Bem-vindo ao ${TREINO.nome}! Hoje é ${NOME_DIA_LONGO[dia]}.\fQuem aceita revanche hoje: ${linha(dia) || 'ninguém'}.\f${marcados.length ? `Já confirmaram presença: ${marcados.join(', ')}. Estão no salão!` : 'Ninguém marcou hoje. Ligue pelo Rádio Cipó no dia e no período do líder: ele vem para cá.'}`, RECEPCAO);
+  await d.falar(tr('Bem-vindo ao {lugar}! Hoje é {dia}.', { lugar: TREINO.nome, dia: NOME_DIA_LONGO[dia] }) + '\f' + tr('Quem aceita revanche hoje: {lista}.', { lista: linha(dia) || 'ninguém' }) + '\f' + (marcados.length ? tr('Já confirmaram presença: {lista}. Estão no salão!', { lista: marcados.join(', ') }) : t('Ninguém marcou hoje. Ligue pelo Rádio Cipó no dia e no período do líder: ele vem para cá.')), RECEPCAO);
   if (!(await d.simNao('Quer ouvir a agenda da semana inteira?'))) return;
   // um dia por caixa: cabe nas duas linhas do diálogo
-  await d.falar([1, 2, 3, 4, 5, 6, 0].map((dd) => `${NOME_DIA_LONGO[dd].toUpperCase()}: ${linha(dd) || 'ninguém'}.`).join('\f'), RECEPCAO);
+  await d.falar([1, 2, 3, 4, 5, 6, 0].map((dd) => `${t(NOME_DIA_LONGO[dd]).toUpperCase()}: ${linha(dd) || t('ninguém')}.`).join('\f'), RECEPCAO);
 });
 /** ['revPreparar', idLider] → `rev-ok` = pode lutar agora; registra o treinador `revanche:<id>` com a equipe da fase */
 registrarComando('revPreparar', async ([idArg]) => {
   const id = String(idArg), d = await mundoDeps(), t = d.treinador(id), s = jogo.save;
   setFlag('rev-ok', false);
   if (!t) return;
-  const quem = { nome: `${t.classe} ${t.nome}`, retrato: t.sprite };
+  const quem = { nome: tr('{classe} {nome}', { classe: t.classe, nome: t.nome }), retrato: t.sprite };
   const ag = agendaLider(id);
   if (ag && !liberada(ag)) { await d.falar('Revanche comigo só depois que você vencer os dezesseis ginásios. Termine a jornada pelo Sertão!', quem); return; }
   if (s.flags['revanche:' + id] === hoje()) { await d.falar('Já tivemos a nossa revanche hoje. Ligue na próxima semana, no mesmo dia!', quem); return; }
-  if (s.flags['treino:' + id] !== hoje()) { const a = agendaLider(id)!; await d.falar(`Só treino aqui nas ${NOME_DIA_LONGO[a.dia]}s, ${NOME_PERIODO[a.periodo]}. Ligue antes pelo Rádio Cipó!`, quem); return; }
+  if (s.flags['treino:' + id] !== hoje()) { const a = agendaLider(id)!; await d.falar(tr('Só treino aqui nas {dia}s, {periodo}. Ligue antes pelo Rádio Cipó!', { dia: NOME_DIA_LONGO[a.dia], periodo: NOME_PERIODO[a.periodo] }), quem); return; }
   const def = treinadorDaFase(t, faseAtual(), (n) => d.especie(n));
-  def.desafio = `{JOGADOR}! Treinei a semana inteira para este momento. Aqui não tem quebra-cabeça nem insígnia: só a equipe que eu tenho hoje.\f${t.desafio}`;
+  def.desafio = tr('{JOGADOR}! Treinei a semana inteira para este momento. Aqui não tem quebra-cabeça nem insígnia: só a equipe que eu tenho hoje.\f{desafio}', { desafio: t.desafio });
   registrarTreinador(def);
   s.flags['revanche:' + id] = hoje();
   setFlag('rev-ok', true);
@@ -96,7 +97,7 @@ registrarComando('revLutar', async ([idArg]) => {
 registrarComando('revFim', async ([idArg]) => {
   const id = String(idArg), d = await mundoDeps(), t = d.treinador(id); if (!t) return;
   setFlag('revanches-vencidas', Number(flags()['revanches-vencidas'] ?? 0) + 1);
-  await d.falar(`${t.derrota}\fVocê está mais forte a cada semana. Me ligue de novo no meu dia!`, { nome: `${t.classe} ${t.nome}`, retrato: t.sprite });
+  await d.falar(tr('{derrota}\fVocê está mais forte a cada semana. Me ligue de novo no meu dia!', { derrota: t.derrota }), { nome: tr('{classe} {nome}', { classe: t.classe, nome: t.nome }), retrato: t.sprite });
   limpar('treino-hoje:' + id, false);
 });
 
@@ -122,7 +123,7 @@ registrarComando('rivalFim', async () => {
 registrarComando('quizRadio', async () => {
   const d = await mundoDeps(), s = jogo.save, tem = (s.mochila['cartao-radio'] ?? 0) > 0;
   if (s.flags['quiz-dia'] === hoje()) { await d.falar('O quiz de hoje já foi ao ar! Amanhã tem perguntas novas. Fique ligado na Rádio Cipó!', LOCUTORA); return; }
-  await d.falar(`Alô, alô, ouvinte! Aqui é a ${LOCUTORA.nome}, direto da Rádio Farol para todo o Rádio Cipó.\fNo QUIZ DA FAUNA são ${QUIZ_RODADA} perguntas de Sim ou Não sobre os bichos do Brasil. ${tem ? 'Você já tem o Cartão do Rádio, mas jogar é sempre bom!' : `Acertando ${QUIZ_META} ou mais, você ganha o Cartão do Rádio!`}`, LOCUTORA);
+  await d.falar(tr('Alô, alô, ouvinte! Aqui é a {locutora}, direto da Rádio Farol para todo o Rádio Cipó.\fNo QUIZ DA FAUNA são {n} perguntas de Sim ou Não sobre os bichos do Brasil.', { locutora: LOCUTORA.nome, n: QUIZ_RODADA }) + ' ' + (tem ? t('Você já tem o Cartão do Rádio, mas jogar é sempre bom!') : tr('Acertando {meta} ou mais, você ganha o Cartão do Rádio!', { meta: QUIZ_META })), LOCUTORA);
   if (!(await d.simNao('Topa entrar no ar?'))) { await d.falar('Sem problema! O microfone fica aqui esperando.', LOCUTORA); return; }
   s.flags['quiz-dia'] = hoje();
   const livres = QUIZ_FAUNA.map((_, i) => i), sorteio: number[] = [];
@@ -131,19 +132,19 @@ registrarComando('quizRadio', async () => {
   for (let k = 0; k < sorteio.length; k++) {
     const q = QUIZ_FAUNA[sorteio[k]];
     bus.emit('sfx', { id: 'radio' });
-    const sim = await d.simNao(`Pergunta ${k + 1}: ${q.p}`);
+    const sim = await d.simNao(tr('Pergunta {n}: {pergunta}', { n: k + 1, pergunta: q.p }));
     const certo = sim === q.r;
     if (certo) acertos++;
-    await d.falar(`${certo ? 'Resposta CERTA!' : 'Ihh, resposta errada…'} A resposta é ${q.r ? 'SIM' : 'NÃO'}.\f${q.porque}`, LOCUTORA);
+    await d.falar(t(certo ? 'Resposta CERTA!' : 'Ihh, resposta errada…') + ' ' + t(q.r ? 'A resposta é SIM.' : 'A resposta é NÃO.') + '\f' + t(q.porque), LOCUTORA);
   }
   setFlag('quiz-acertos', acertos);
   if (acertos >= QUIZ_META) {
     if (!tem) {
-      await d.falar(`${acertos} de ${QUIZ_RODADA}! Que ouvinte! Isto aqui é seu:`, LOCUTORA);
+      await d.falar(tr('{acertos} de {total}! Que ouvinte! Isto aqui é seu:', { acertos, total: QUIZ_RODADA }), LOCUTORA);
       darItem('cartao-radio'); bus.emit('sfx', { id: 'item-obtido' }); bus.emit('item-obtido', { id: 'cartao-radio', qtd: 1 });
       await d.falar('{JOGADOR} recebeu o Cartão do Rádio!\fCom ele, o Rádio Cipó libera a Cantiga das Lendas, as músicas dos lugares visitados e as dicas de captura do Bicho do Dia.');
-    } else await d.falar(`${acertos} de ${QUIZ_RODADA}! Você sabe tudo de bicho. Volte amanhã!`, LOCUTORA);
-  } else await d.falar(`${acertos} de ${QUIZ_RODADA}. Faltou pouco! ${tem ? '' : `Precisa de ${QUIZ_META} para o Cartão do Rádio. `}Amanhã tem perguntas novas.`, LOCUTORA);
+    } else await d.falar(tr('{acertos} de {total}! Você sabe tudo de bicho. Volte amanhã!', { acertos, total: QUIZ_RODADA }), LOCUTORA);
+  } else await d.falar(tr(tem ? '{acertos} de {total}. Faltou pouco! Amanhã tem perguntas novas.' : '{acertos} de {total}. Faltou pouco! Precisa de {meta} para o Cartão do Rádio. Amanhã tem perguntas novas.', { acertos, total: QUIZ_RODADA, meta: QUIZ_META }), LOCUTORA);
 });
 
 /* ------------------------------ Torre de Desafios (item 35) ------------------------------ */
@@ -151,15 +152,15 @@ const JUIZ = { nome: 'Juiz da Torre', retrato: 'npc-homem-4' };
 registrarComando('torre', async () => {
   const d = await mundoDeps(), s = jogo.save, pontos = () => Number(s.flags['torre-pontos'] ?? 0);
   const op = await d.escolher(`TORRE DE DESAFIOS — você tem ${pontos()} ponto(s). O que vai ser?`, ['Desafio do dia', 'Trocar pontos', 'Regras', 'Sair']);
-  if (op === 2) { await d.falar(`Uma batalha por dia. Todas as criaturas, as suas e as do desafiante, lutam no nível ${TORRE.nivel}.\fNinguém ganha experiência e nada de mochila: só estratégia. Vitória vale ${TORRE.pontosVitoria} pontos; a 7ª vitória seguida vale o dobro.\fOs pontos se trocam aqui por itens raros.`, JUIZ); return; }
+  if (op === 2) { await d.falar(tr('Uma batalha por dia. Todas as criaturas, as suas e as do desafiante, lutam no nível {nivel}.\fNinguém ganha experiência e nada de mochila: só estratégia. Vitória vale {pontosVitoria} pontos; a 7ª vitória seguida vale o dobro.\fOs pontos se trocam aqui por itens raros.', { nivel: TORRE.nivel, pontosVitoria: TORRE.pontosVitoria }), JUIZ); return; }
   if (op === 1) {
     for (;;) {
-      const i = await d.escolher(`Pontos: ${pontos()}. Escolha um prêmio:`, [...PREMIOS_TORRE.map((p) => `${d.nomeItem(p.item)} (${p.custo})`), 'Voltar']);
+      const i = await d.escolher(tr('Pontos: {pontos}. Escolha um prêmio:', { pontos: pontos() }), [...PREMIOS_TORRE.map((p) => `${d.nomeItem(p.item)} (${p.custo})`), 'Voltar']);
       if (i < 0 || i >= PREMIOS_TORRE.length) return;
       const p = PREMIOS_TORRE[i];
       if (pontos() < p.custo) { await d.falar('Pontos insuficientes. Volte depois de mais algumas vitórias.', JUIZ); continue; }
       setFlag('torre-pontos', pontos() - p.custo); darItem(p.item); bus.emit('sfx', { id: 'item-obtido' });
-      await d.falar(`{JOGADOR} recebeu ${d.nomeItem(p.item)}!`);
+      await d.falar(tr('{JOGADOR} recebeu {item}!', { item: d.nomeItem(p.item) }));
     }
   }
   if (op !== 0) return;
@@ -167,7 +168,7 @@ registrarComando('torre', async () => {
   const vivos = s.equipe.filter((c) => !c.ovo);
   if (vivos.length < 3) { await d.falar('A Torre pede pelo menos três criaturas na equipe.', JUIZ); return; }
   const seq = Number(s.flags['torre-seguidas'] ?? 0), t = adversarioDaTorre(hoje(), seq, (n) => d.especie(n));
-  await d.falar(`Desafio nº ${seq + 1} da sequência: ${t.classe} ${t.nome}. Tudo no nível ${TORRE.nivel}. Pronto?`, JUIZ);
+  await d.falar(tr('Desafio nº {seq} da sequência: {classe} {nome}. Tudo no nível {nivel}. Pronto?', { seq: seq + 1, classe: t.classe, nome: t.nome, nivel: TORRE.nivel }), JUIZ);
   if (!(await d.simNao('Começar o desafio?'))) return;
   s.flags['torre-dia'] = hoje();
   // a equipe luta com cópias no nível 50 (curadas); as originais ficam guardadas e voltam intactas
@@ -180,7 +181,7 @@ registrarComando('torre', async () => {
   if (r.resultado === 'vitoria') {
     const ganho = TORRE.pontosVitoria * ((seq + 1) % 7 === 0 ? 2 : 1);
     setFlag('torre-pontos', pontos() + ganho); setFlag('torre-seguidas', seq + 1); setFlag('torre-vitorias', Number(s.flags['torre-vitorias'] ?? 0) + 1);
-    await d.falar(`Vitória! +${ganho} pontos (total: ${pontos()}). Sequência: ${seq + 1}.`, JUIZ);
+    await d.falar(tr('Vitória! +{ganho} pontos (total: {pontos}). Sequência: {seq}.', { ganho, pontos: pontos(), seq: seq + 1 }), JUIZ);
   } else { setFlag('torre-seguidas', 0); await d.falar('Derrota. A sequência volta ao começo, mas os pontos ficam. Até amanhã!', JUIZ); }
 });
 type Deps = Awaited<ReturnType<typeof mundoDeps>>;

@@ -1,0 +1,922 @@
+{
+ "Tapete": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:13 · campo nome"
+ },
+ "Sem tapete": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:13 · campo vazio"
+ },
+ "Pôster": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:13 · campo nome"
+ },
+ "Parede lisa": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:13 · campo vazio"
+ },
+ "Planta": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:13 · campo nome"
+ },
+ "Sem planta": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:13 · campo vazio"
+ },
+ "Pelúcia": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:14 · campo nome"
+ },
+ "Sem pelúcia": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:14 · campo vazio"
+ },
+ "Console": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:14 · campo nome"
+ },
+ "Sem console": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:14 · campo vazio"
+ },
+ "Cama": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:14 · campo nome"
+ },
+ "Cama simples": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:14 · campo vazio"
+ },
+ "Tapete de Retalhos": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:17 · campo nome"
+ },
+ "Costurado pela Mãe.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:17 · campo origem"
+ },
+ "Passadeira Listrada": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:18 · campo nome"
+ },
+ "À venda na Feira de Porto Sereia.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:18 · campo origem"
+ },
+ "Tapete de Fuxico": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:19 · campo nome"
+ },
+ "Presente das rendeiras da Cidade Coral.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:19 · campo origem"
+ },
+ "Pôster do Conselho": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:20 · campo nome"
+ },
+ "Prêmio por vencer o Conselho dos Guardiões.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:20 · campo origem"
+ },
+ "Pôster do Trem": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:21 · campo nome"
+ },
+ "Lembrança da primeira viagem no Trem Serra-Sol.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:21 · campo origem"
+ },
+ "Pôster da Costa do Sol": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:22 · campo nome"
+ },
+ "Veio com o quarto.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:22 · campo origem"
+ },
+ "Espada-de-São-Jorge": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:23 · campo nome"
+ },
+ "A Mãe diz que protege a casa.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:23 · campo origem"
+ },
+ "Samambaia de Xaxim": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:24 · campo nome"
+ },
+ "À venda na Venda da Vila Buriti.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:24 · campo origem"
+ },
+ "Vasinho de Violetas": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:25 · campo nome"
+ },
+ "Presente da Drª Buriti.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:25 · campo origem"
+ },
+ "Cama de Estrela": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:26 · campo nome"
+ },
+ "A sua cama de sempre.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:26 · campo origem"
+ },
+ "Videogame de Cartucho": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:27 · campo nome"
+ },
+ "Presente de aniversário.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:27 · campo origem"
+ },
+ "Pelúcia de Tamanduá": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:28 · campo nome"
+ },
+ "Prêmio do festival de sábado.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:28 · campo origem"
+ },
+ "Pelúcia de Capivara": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:29 · campo nome"
+ },
+ "À venda na Feira da Cidade Ginga.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:29 · campo origem"
+ },
+ "Pelúcia de Arara": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:30 · campo nome"
+ },
+ "Presente da Observadora de Aves.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:30 · campo origem"
+ },
+ "Pelúcia de Boto": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:31 · campo nome"
+ },
+ "Lembrança do Saveiro.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:31 · campo origem"
+ },
+ "Peça rara de colecionador.": {
+  "en": "",
+  "ctx": "src/data/decoracao.ts:35 · campo origem"
+ },
+ "Pedra Solar": {
+  "en": "",
+  "ctx": "src/data/eventos/liga.ts:165 · pergunta/opção | src/data/itens.ts:97 · i()"
+ },
+ "Pedra Lunar": {
+  "en": "",
+  "ctx": "src/data/eventos/liga.ts:165 · pergunta/opção | src/data/itens.ts:99 · i()"
+ },
+ "Folha Ancestral": {
+  "en": "",
+  "ctx": "src/data/eventos/liga.ts:165 · pergunta/opção | src/data/itens.ts:100 · i()"
+ },
+ "Cuia": {
+  "en": "",
+  "ctx": "src/data/itens.ts:72 · i()"
+ },
+ "Cuia de cabaça entalhada, com trançado de palha. Firma parceria com criaturas selvagens.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:72 · i()"
+ },
+ "Cuia Trançada": {
+  "en": "",
+  "ctx": "src/data/itens.ts:73 · i()"
+ },
+ "Trançado reforçado de buriti. Segura melhor que a Cuia comum.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:73 · i()"
+ },
+ "Cuia de Ouro": {
+  "en": "",
+  "ctx": "src/data/itens.ts:74 · i()"
+ },
+ "Banhada em ouro de aluvião. Ótima chance de captura.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:74 · i()"
+ },
+ "Cuia de Rede": {
+  "en": "",
+  "ctx": "src/data/itens.ts:75 · i()"
+ },
+ "Forrada com rede de pesca. Excelente contra criaturas de Rio e Inseto.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:75 · i()"
+ },
+ "Cuia Noturna": {
+  "en": "",
+  "ctx": "src/data/itens.ts:76 · i()"
+ },
+ "Pintada com jenipapo. Excelente durante a noite.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:76 · i()"
+ },
+ "Cuia Rápida": {
+  "en": "",
+  "ctx": "src/data/itens.ts:77 · i()"
+ },
+ "Leve como pena. Excelente se arremessada logo no primeiro turno.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:77 · i()"
+ },
+ "Cuia de Mel": {
+  "en": "",
+  "ctx": "src/data/itens.ts:78 · i()"
+ },
+ "Untada com mel de jataí. A criatura capturada já chega amiga e se apega mais depressa.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:78 · i()"
+ },
+ "Cuia Guardiã": {
+  "en": "",
+  "ctx": "src/data/itens.ts:79 · i()"
+ },
+ "Obra dos antigos Guardiões. Nunca falha. Só existem três no mundo.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:79 · i()"
+ },
+ "Chá de Erva-Cidreira": {
+  "en": "",
+  "ctx": "src/data/itens.ts:82 · i()"
+ },
+ "Chazinho morno. Recupera 20 de vida.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:82 · i()"
+ },
+ "Garrafada": {
+  "en": "",
+  "ctx": "src/data/itens.ts:83 · i()"
+ },
+ "Mistura de raízes da feira. Recupera 50 de vida.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:83 · i()"
+ },
+ "Elixir de Andiroba": {
+  "en": "",
+  "ctx": "src/data/itens.ts:84 · i()"
+ },
+ "Óleo raro da floresta. Recupera toda a vida.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:84 · i()"
+ },
+ "Mel Puro": {
+  "en": "",
+  "ctx": "src/data/itens.ts:85 · i()"
+ },
+ "Cura envenenamento, sono e encantamento.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:85 · i()"
+ },
+ "Unguento": {
+  "en": "",
+  "ctx": "src/data/itens.ts:86 · i()"
+ },
+ "Pasta de ervas. Cura queimadura, congelamento e paralisia.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:86 · i()"
+ },
+ "Pomada de Copaíba": {
+  "en": "",
+  "ctx": "src/data/itens.ts:87 · i()"
+ },
+ "Cura qualquer status e também a confusão.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:87 · i()"
+ },
+ "Chá de Guaraná": {
+  "en": "",
+  "ctx": "src/data/itens.ts:88 · i()"
+ },
+ "Forte de acordar qualquer um: reanima uma criatura desmaiada com metade da vida.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:88 · i()"
+ },
+ "Garapa": {
+  "en": "",
+  "ctx": "src/data/itens.ts:89 · i()"
+ },
+ "Caldo de cana gelado. Restaura 10 PG de um golpe.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:89 · i()"
+ },
+ "Garapa com Limão": {
+  "en": "",
+  "ctx": "src/data/itens.ts:90 · i()"
+ },
+ "Restaura todos os PG de todos os golpes.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:90 · i()"
+ },
+ "Rapadura": {
+  "en": "",
+  "ctx": "src/data/itens.ts:91 · i()"
+ },
+ "Doce de dar sustança: a criatura sobe um nível.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:91 · i()"
+ },
+ "Fumaça de Andiroba": {
+  "en": "",
+  "ctx": "src/data/itens.ts:94 · i()"
+ },
+ "Repelente: por 100 passos, criaturas mais fracas que a primeira da equipe não aparecem.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:94 · i()"
+ },
+ "Fumaça de Andiroba Forte": {
+  "en": "",
+  "ctx": "src/data/itens.ts:95 · i()"
+ },
+ "Repelente caprichado: dura 250 passos.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:95 · i()"
+ },
+ "Corda de Cipó": {
+  "en": "",
+  "ctx": "src/data/itens.ts:96 · i()"
+ },
+ "Leva de volta à entrada de cavernas e matas fechadas.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:96 · i()"
+ },
+ "Pedra morna que guarda a luz do meio-dia. Faz certas criaturas evoluírem.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:97 · i()"
+ },
+ "Pedra Maré": {
+  "en": "",
+  "ctx": "src/data/itens.ts:98 · i()"
+ },
+ "Pedra lisa que pulsa com as marés. Faz certas criaturas evoluírem.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:98 · i()"
+ },
+ "Pedra pálida que brilha no escuro. Faz certas criaturas evoluírem.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:99 · i()"
+ },
+ "Folha de uma árvore mais velha que as cidades. Faz certas criaturas evoluírem.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:100 · i()"
+ },
+ "Engrenagem Velha": {
+  "en": "",
+  "ctx": "src/data/itens.ts:101 · i()"
+ },
+ "Peça da antiga ferrovia. Faz certas criaturas evoluírem.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:101 · i()"
+ },
+ "Pepita": {
+  "en": "",
+  "ctx": "src/data/itens.ts:102 · i()"
+ },
+ "Ouro de garimpo. Vale um bom dinheiro na Venda.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:102 · i()"
+ },
+ "Pena Colorida": {
+  "en": "",
+  "ctx": "src/data/itens.ts:103 · i()"
+ },
+ "Pena bonita achada no chão. Colecionadores pagam bem.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:103 · i()"
+ },
+ "Concha Rara": {
+  "en": "",
+  "ctx": "src/data/itens.ts:104 · i()"
+ },
+ "Concha de brilho furta-cor. Vende-se bem nas feiras.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:104 · i()"
+ },
+ "Biscoito de Polvilho": {
+  "en": "",
+  "ctx": "src/data/itens.ts:105 · i()"
+ },
+ "Petisco crocante. A criatura fica mais amiga.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:105 · i()"
+ },
+ "Caju": {
+  "en": "",
+  "ctx": "src/data/itens.ts:108 · i()"
+ },
+ "Suculento. Recupera 10 de vida. Quem segura come sozinha quando a vida cai à metade.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:108 · i()"
+ },
+ "Pitanga": {
+  "en": "",
+  "ctx": "src/data/itens.ts:109 · i() | src/data/treinadores/b1.ts:36 · t()"
+ },
+ "Azedinha e fresca. Cura queimadura.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:109 · i()"
+ },
+ "Jabuticaba": {
+  "en": "",
+  "ctx": "src/data/itens.ts:110 · i()"
+ },
+ "Docinha, direto do tronco. Cura envenenamento.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:110 · i()"
+ },
+ "Cupuaçu": {
+  "en": "",
+  "ctx": "src/data/itens.ts:111 · i()"
+ },
+ "Cheiro forte de acordar a vizinhança. Cura o sono.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:111 · i()"
+ },
+ "Pequi": {
+  "en": "",
+  "ctx": "src/data/itens.ts:112 · i()"
+ },
+ "Cuidado com os espinhos! Cura paralisia.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:112 · i()"
+ },
+ "Buriti": {
+  "en": "",
+  "ctx": "src/data/itens.ts:113 · i()"
+ },
+ "Fruto quente do cerrado. Cura congelamento.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:113 · i()"
+ },
+ "Acerola": {
+  "en": "",
+  "ctx": "src/data/itens.ts:114 · i()"
+ },
+ "Vitamina pura. Cura o encantamento.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:114 · i()"
+ },
+ "Açaí": {
+  "en": "",
+  "ctx": "src/data/itens.ts:115 · i()"
+ },
+ "Energia da floresta. Restaura 10 PG de um golpe.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:115 · i()"
+ },
+ "Rádio e telefone de bolso: contatos, programas e o relógio.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:118 · i()"
+ },
+ "Diário de Campo": {
+  "en": "",
+  "ctx": "src/data/itens.ts:119 · i()"
+ },
+ "Caderno da Profª Ipê para registrar as criaturas de Pingorama.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:119 · i()"
+ },
+ "Bicicleta de Bambu": {
+  "en": "",
+  "ctx": "src/data/itens.ts:120 · i()"
+ },
+ "Leve e resistente. Anda bem mais rápido que a pé.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:120 · i()"
+ },
+ "Vara de bambu remendada. Pesca o que dá.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:121 · i()"
+ },
+ "Vara firme, de bom anzol. Pesca criaturas melhores.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:122 · i()"
+ },
+ "A vara dos velhos pescadores. Pesca as raras.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:123 · i()"
+ },
+ "Passe do Trem": {
+  "en": "",
+  "ctx": "src/data/itens.ts:124 · i()"
+ },
+ "Passe da Maria-Fumaça que liga a Costa do Sol ao Sertão das Névoas.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:124 · i()"
+ },
+ "Bilhete do Saveiro": {
+  "en": "",
+  "ctx": "src/data/itens.ts:125 · i()"
+ },
+ "Bilhete permanente do Saveiro que cruza a baía.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:125 · i()"
+ },
+ "Ovo Pintado": {
+  "en": "",
+  "ctx": "src/data/itens.ts:126 · i()"
+ },
+ "Ovo morno de casca pintadinha que a Profª Ipê mandou levar ao Seu Aroeira.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:126 · i()"
+ },
+ "Carta do Dudu": {
+  "en": "",
+  "ctx": "src/data/itens.ts:127 · i()"
+ },
+ "Carta do Dudu, de Vila Jacarandá, para o pai marinheiro em Porto Sereia.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:127 · i()"
+ },
+ "Resposta do Bartô": {
+  "en": "",
+  "ctx": "src/data/itens.ts:128 · i()"
+ },
+ "Resposta do Marinheiro Bartô para o filho Dudu, em Vila Jacarandá.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:128 · i()"
+ },
+ "Chapéu da Vó Zica": {
+  "en": "",
+  "ctx": "src/data/itens.ts:129 · i()"
+ },
+ "Chapéu de palha da Vó Zica, que o vento levou até o píer.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:129 · i()"
+ },
+ "Câmera de Bolso": {
+  "en": "",
+  "ctx": "src/data/itens.ts:130 · i()"
+ },
+ "Tira fotos de qualquer cena. As melhores vão para o álbum.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:130 · i()"
+ },
+ "Regador": {
+  "en": "",
+  "ctx": "src/data/itens.ts:131 · i()"
+ },
+ "Para cuidar dos canteiros de frutos.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:131 · i()"
+ },
+ "Chocalho do Mutirão": {
+  "en": "",
+  "ctx": "src/data/itens.ts:132 · i()"
+ },
+ "Invento do Faroleiro Volta. Quem fica na reserva, 2 níveis ou mais atrás da mais forte da equipe (5 depois da Liga), ganha metade da experiência da luta.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:132 · i()"
+ },
+ "Estojo de Insígnias": {
+  "en": "",
+  "ctx": "src/data/itens.ts:133 · i()"
+ },
+ "Guarda as 16 insígnias de Pingorama.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:133 · i()"
+ },
+ "Amuleto do Facão": {
+  "en": "",
+  "ctx": "src/data/itens.ts:134 · i()"
+ },
+ "Com uma parceira de Mata, Inseto ou Ginga, corta cipós grossos.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:134 · i()"
+ },
+ "Amuleto do Remo": {
+  "en": "",
+  "ctx": "src/data/itens.ts:135 · i()"
+ },
+ "Com uma parceira de Rio, a canoa cruza as águas.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:135 · i()"
+ },
+ "Amuleto da Força": {
+  "en": "",
+  "ctx": "src/data/itens.ts:136 · i()"
+ },
+ "Com uma parceira de Terra, Pedra ou Ginga, empurra pedregulhos.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:136 · i()"
+ },
+ "Amuleto do Lampião": {
+  "en": "",
+  "ctx": "src/data/itens.ts:137 · i()"
+ },
+ "Com uma parceira de Brasa, Trovão ou Encanto, ilumina cavernas e névoa.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:137 · i()"
+ },
+ "Amuleto Quebra-Pedra": {
+  "en": "",
+  "ctx": "src/data/itens.ts:138 · i()"
+ },
+ "Com uma parceira de Pedra, Terra, Ferro ou Ginga, quebra rochas rachadas.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:138 · i()"
+ },
+ "Amuleto de Escalar": {
+  "en": "",
+  "ctx": "src/data/itens.ts:139 · i()"
+ },
+ "Com uma parceira de Ginga, Comum ou Inseto, sobe paredões com trepadeiras.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:139 · i()"
+ },
+ "Amuleto da Cachoeira": {
+  "en": "",
+  "ctx": "src/data/itens.ts:140 · i()"
+ },
+ "Com uma parceira de Rio ou Lenda, sobe cascatas.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:140 · i()"
+ },
+ "Amuleto do Mergulho": {
+  "en": "",
+  "ctx": "src/data/itens.ts:141 · i()"
+ },
+ "Com uma parceira de Rio, mergulha nas águas fundas marcadas.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:141 · i()"
+ },
+ "Amuleto do Voo": {
+  "en": "",
+  "ctx": "src/data/itens.ts:142 · i()"
+ },
+ "Com uma parceira de Vento, voa entre as cidades já visitadas.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:142 · i()"
+ },
+ "Amuleto do Faro": {
+  "en": "",
+  "ctx": "src/data/itens.ts:143 · i()"
+ },
+ "Com uma parceira muito amiga, itens e criaturas ocultas brilham.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:143 · i()"
+ },
+ "PT{n} {golpe}": {
+  "en": "",
+  "ctx": "src/data/itens.ts:146 · i()"
+ },
+ "Pergaminho de Técnica reutilizável. Ensina {golpe} a uma criatura compatível.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:146 · i()"
+ },
+ "Cartão do Rádio": {
+  "en": "",
+  "ctx": "src/data/itens.ts:148 · i()"
+ },
+ "Prêmio do Quiz do Rádio. Libera os programas extras do Rádio Cipó: Cantiga das Lendas, músicas dos lugares visitados e dicas de captura no Bicho do Dia.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:148 · i()"
+ },
+ "Cabaça Amarela": {
+  "en": "",
+  "ctx": "src/data/itens.ts:150 · i()"
+ },
+ "Fruto de cuieira amarelo-ovo. O artesão faz dele uma Cuia Ligeira.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:150 · i()"
+ },
+ "Cabaça Preta": {
+  "en": "",
+  "ctx": "src/data/itens.ts:151 · i()"
+ },
+ "Fruto de cuieira escuro e pesado. O artesão faz dele uma Cuia Pesada.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:151 · i()"
+ },
+ "Cabaça Branca": {
+  "en": "",
+  "ctx": "src/data/itens.ts:152 · i()"
+ },
+ "Fruto de cuieira branco como a lua. O artesão faz dele uma Cuia da Lua.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:152 · i()"
+ },
+ "Cabaça Verde": {
+  "en": "",
+  "ctx": "src/data/itens.ts:153 · i()"
+ },
+ "Fruto de cuieira verde-folha. O artesão faz dele uma Cuia Amiga.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:153 · i()"
+ },
+ "Cabaça Azul": {
+  "en": "",
+  "ctx": "src/data/itens.ts:154 · i()"
+ },
+ "Fruto de cuieira azulado, cheiro de rio. O artesão faz dele uma Cuia de Isca.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:154 · i()"
+ },
+ "Cabaça Vermelha": {
+  "en": "",
+  "ctx": "src/data/itens.ts:155 · i()"
+ },
+ "Fruto de cuieira vermelho-urucum. O artesão faz dele uma Cuia de Nível.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:155 · i()"
+ },
+ "Cabaça Rosa": {
+  "en": "",
+  "ctx": "src/data/itens.ts:156 · i()"
+ },
+ "Fruto de cuieira rosado. O artesão faz dele uma Cuia do Amor.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:156 · i()"
+ },
+ "Cuia Ligeira": {
+  "en": "",
+  "ctx": "src/data/itens.ts:157 · i()"
+ },
+ "Cuia artesanal leve como pluma. Muito boa contra criaturas velozes, que vivem fugindo.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:157 · i()"
+ },
+ "Cuia Pesada": {
+  "en": "",
+  "ctx": "src/data/itens.ts:158 · i()"
+ },
+ "Cuia artesanal de casca grossa. Quanto mais pesada a criatura, melhor ela segura.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:158 · i()"
+ },
+ "Cuia da Lua": {
+  "en": "",
+  "ctx": "src/data/itens.ts:159 · i()"
+ },
+ "Cuia artesanal pintada de branco. Muito boa com criaturas que evoluem com pedras ou só à noite.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:159 · i()"
+ },
+ "Cuia Amiga": {
+  "en": "",
+  "ctx": "src/data/itens.ts:160 · i()"
+ },
+ "Cuia artesanal forrada de paina. A criatura capturada chega muito amiga.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:160 · i()"
+ },
+ "Cuia de Isca": {
+  "en": "",
+  "ctx": "src/data/itens.ts:161 · i()"
+ },
+ "Cuia artesanal com cheiro de isca. Ótima para criaturas fisgadas na pesca.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:161 · i()"
+ },
+ "Cuia de Nível": {
+  "en": "",
+  "ctx": "src/data/itens.ts:162 · i()"
+ },
+ "Cuia artesanal de urucum. Quanto mais forte a sua criatura que a selvagem, melhor ela segura.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:162 · i()"
+ },
+ "Cuia do Amor": {
+  "en": "",
+  "ctx": "src/data/itens.ts:163 · i()"
+ },
+ "Cuia artesanal enfeitada de fitas. Muito boa se a selvagem é da mesma espécie e do sexo oposto da sua.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:163 · i()"
+ },
+ "item desconhecido: ": {
+  "en": "",
+  "ctx": "src/data/itens.ts:168"
+ },
+ "Frasco Vazio": {
+  "en": "",
+  "ctx": "src/data/itens.ts:174 · i()"
+ },
+ "Frasco de vidro grosso com rolha de cortiça, do canoeiro Seu Tarumã. Serve para colher água de rio.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:174 · i()"
+ },
+ "Frasco de Água Escura": {
+  "en": "",
+  "ctx": "src/data/itens.ts:175 · i()"
+ },
+ "Água preta como café, colhida de noite no fundo do Poço do Breu, no Rio Cachoeira-Véu.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:175 · i()"
+ },
+ "Frasco de Água Barrenta": {
+  "en": "",
+  "ctx": "src/data/itens.ts:176 · i()"
+ },
+ "Água cor de barro, colhida de dia no poço da cascata da Estrada Vermelha.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:176 · i()"
+ },
+ "Lanterna Boreal": {
+  "en": "",
+  "ctx": "src/data/itens.ts:177 · i()"
+ },
+ "Lanterna de vidro verde da expedição da Drª Solveig. Juntas e acesas no alto do Pico, de noite, chamam o céu do norte.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:177 · i()"
+ },
+ "Cuia-Safári": {
+  "en": "",
+  "ctx": "src/data/itens.ts:186 · i()"
+ },
+ "Cuia de palha de buriti do Parque Safári. Só funciona lá dentro e é devolvida na saída.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:186 · i()"
+ },
+ "Pedra de Rio": {
+  "en": "",
+  "ctx": "src/data/itens.ts:187 · i()"
+ },
+ "Seixo liso e pesado, rolado pela correnteza. O dono do Safári quer calçar a margem da lagoa com ela.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:187 · i()"
+ },
+ "Muda de Buriti": {
+  "en": "",
+  "ctx": "src/data/itens.ts:188 · i()"
+ },
+ "Mudinha de buriti num saco de estopa molhado. Onde tem buriti, tem água.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:188 · i()"
+ },
+ "Tronco Oco": {
+  "en": "",
+  "ctx": "src/data/itens.ts:189 · i()"
+ },
+ "Pedaço de tronco ocado pelo tempo, leve e firme. Casa pronta para quem gosta de escuro.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:189 · i()"
+ },
+ "Vitamina de Abacate": {
+  "en": "",
+  "ctx": "src/data/itens.ts:190 · i()"
+ },
+ "Batida grossa de abacate. Fortalece a Vida da criatura (esforço).": {
+  "en": "",
+  "ctx": "src/data/itens.ts:190 · i()"
+ },
+ "Vitamina de Banana": {
+  "en": "",
+  "ctx": "src/data/itens.ts:191 · i()"
+ },
+ "Banana com leite e aveia. Fortalece o Ataque da criatura (esforço).": {
+  "en": "",
+  "ctx": "src/data/itens.ts:191 · i()"
+ },
+ "Vitamina de Mamão": {
+  "en": "",
+  "ctx": "src/data/itens.ts:192 · i()"
+ },
+ "Mamão batido bem gelado. Fortalece a Defesa da criatura (esforço).": {
+  "en": "",
+  "ctx": "src/data/itens.ts:192 · i()"
+ },
+ "Vitamina de Graviola": {
+  "en": "",
+  "ctx": "src/data/itens.ts:193 · i()"
+ },
+ "Graviola cremosa. Fortalece o Ataque Especial da criatura (esforço).": {
+  "en": "",
+  "ctx": "src/data/itens.ts:193 · i()"
+ },
+ "Vitamina de Manga": {
+  "en": "",
+  "ctx": "src/data/itens.ts:194 · i()"
+ },
+ "Manga espada batida. Fortalece a Defesa Especial da criatura (esforço).": {
+  "en": "",
+  "ctx": "src/data/itens.ts:194 · i()"
+ },
+ "Vitamina de Guaraná": {
+  "en": "",
+  "ctx": "src/data/itens.ts:195 · i()"
+ },
+ "Guaraná batido com fruta. Fortalece a Velocidade da criatura (esforço).": {
+  "en": "",
+  "ctx": "src/data/itens.ts:195 · i()"
+ },
+ "Garrafada Forte": {
+  "en": "",
+  "ctx": "src/data/itens.ts:202 · i()"
+ },
+ "Garrafada curtida com casca de jatobá e mel. Recupera 120 de vida.": {
+  "en": "",
+  "ctx": "src/data/itens.ts:202 · i()"
+ }
+}

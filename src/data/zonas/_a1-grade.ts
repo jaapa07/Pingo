@@ -85,6 +85,7 @@ export function placa(g: Grade, m: string, texto: string): { objeto: ObjetoSpawn
 
 /* ------------------------------ serviços de cidade (mesma planta em toda a Costa do Sol) ------------------------------ */
 import type { ZonaDef } from '../../core/tipos';
+import { tr } from '../../i18n';
 interface Visita { sprite: string; nome: string; fala: string[]; mov?: NpcDef['mov'] }
 /** Posto Guardião: atendente atrás do balcão (script `posto`), máquina de cura e terminal do Viveiro. Entrada em (6, 8). */
 export function postoGuardiao(cidade: string, nomeCidade: string, volta: Ponto, visitas: [Visita, Visita]): ZonaDef {
@@ -102,7 +103,7 @@ export function postoGuardiao(cidade: string, nomeCidade: string, volta: Ponto, 
     '######DD######',
   ], { K: '#', W: '#', R: '.', h: '.', V: '.', B: '.', s: '.', a: ',', D: '+', '1': '.', '2': '.', '3': '.' });
   return {
-    id, nome: `Posto Guardião de ${nomeCidade}`, mapa: 'A', tipo: 'interior', tileset: 'predio', musica: 'posto', arena: 'restinga',
+    id, nome: tr('Posto Guardião de {cidade}', { cidade: nomeCidade }), mapa: 'A', tipo: 'interior', tileset: 'predio', musica: 'posto', arena: 'restinga',
     mapaChars: g.mapa,
     objetos: [
       { o: 'tema', x: 0, y: 0, tema: 'posto' },
@@ -138,7 +139,7 @@ export function venda(cidade: string, nomeCidade: string, volta: Ponto, vendedor
   ], { K: '#', W: '#', P: '.', B: '.', c: '.', s: '.', b: '.', a: ',', D: '+', '1': '.', '2': '.' });
   const pr = g.todos('P'), cx = g.todos('c'), [vx, vy] = g.p('1');
   return {
-    id, nome: `Venda de ${nomeCidade}`, mapa: 'A', tipo: 'interior', tileset: 'predio', musica: 'venda', arena: 'restinga',
+    id, nome: tr('Venda de {cidade}', { cidade: nomeCidade }), mapa: 'A', tipo: 'interior', tileset: 'predio', musica: 'venda', arena: 'restinga',
     mapaChars: g.mapa,
     objetos: [
       { o: 'tema', x: 0, y: 0, tema: 'venda' },

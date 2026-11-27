@@ -7,6 +7,7 @@ import type { EventoDef, Comando } from '../../core/tipos';
 import { jogo, setFlag } from '../../core/estado';
 import { registrarComando } from '../../world/registro';
 import { COLUNAS_CUIAS, LINHA_CUIAS } from '../zonas/A1-lab';
+import { tr } from '../../i18n';
 import './comuns'; // comandos extras: opcao, temEspecie, temItens, vitrine…
 
 /** avatar escolhido na abertura (o nome padrão acompanha) */
@@ -37,7 +38,7 @@ const cuia = (id: string, num: number, nome: string, tipo: string, flagTipo: str
     ['sfx', 'cuia-balanco'],
     ['vitrine', num],
     f(null, descricao),
-    ['simnao', `Você vai escolher ${nome}, do tipo ${tipo}?`, 'cuia-sim'],
+    ['simnao', tr('Você vai escolher {nome}, do tipo {tipo}?', { nome, tipo }), 'cuia-sim'],
     ['vitrineFim'],
     se('flag:cuia-sim', [
       ['flag', 'inicial', num], ['flag', flagTipo],

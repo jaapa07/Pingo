@@ -3,6 +3,7 @@
  * `ItemInfo` = `ItemDef` + `uso` (o que o item faz; lido pelo motor de batalha e pelas telas de Mochila/Equipe).
  */
 import type { ItemDef, Bolso, StatusId, TipoId, AmuletoId } from '../core/tipos';
+import { tr } from '../i18n';
 
 export interface UsoItem {
   /** recupera vida: pontos ou 'total' */
@@ -142,7 +143,7 @@ export const ITENS: ItemInfo[] = [
   i('amuleto-faro', 'Amuleto do Faro', 'chave', 0, 'Com uma parceira muito amiga, itens e criaturas ocultas brilham.', { amuleto: 'faro' }),
 
   /* ------------------------------ Pergaminhos de Técnica (50, reutilizáveis) ------------------------------ */
-  ...Object.entries(PERGAMINHOS).map(([id, gid], n) => i(id, `PT${String(n + 1).padStart(2, '0')} ${NOME_PT[gid]}`, 'pergaminhos', 3000, `Pergaminho de Técnica reutilizável. Ensina ${NOME_PT[gid]} a uma criatura compatível.`, { golpe: gid })),
+  ...Object.entries(PERGAMINHOS).map(([id, gid], n) => i(id, tr('PT{n} {golpe}', { n: String(n + 1).padStart(2, '0'), golpe: NOME_PT[gid] }), 'pergaminhos', 3000, tr('Pergaminho de Técnica reutilizável. Ensina {golpe} a uma criatura compatível.', { golpe: NOME_PT[gid] }), { golpe: gid })),
   /* ------------------------------ regras clássicas (spec 10A) ------------------------------ */
   i('cartao-radio', 'Cartão do Rádio', 'chave', 0, 'Prêmio do Quiz do Rádio. Libera os programas extras do Rádio Cipó: Cantiga das Lendas, músicas dos lugares visitados e dicas de captura no Bicho do Dia.'),
   /* ------------------------------ cuieiras e cuias artesanais (spec 10A-6; src/battle/cuias.ts) ------------------------------ */

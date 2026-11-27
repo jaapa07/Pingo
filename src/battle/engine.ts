@@ -16,6 +16,7 @@ import { eficaciaContra } from '../data/tabela-tipos';
 import { item as defItem, temItemDef, type UsoItem } from '../data/itens';
 import { bonusArtesanal, chanceObedecer, deOutroTreinador, AMIZADE_CUIA_AMIGA } from './cuias';
 import { aprenderGolpe, atributos, especie, expDerrota, expParaNivel, ganharEsforco, mudarAmizade, NIVEL_MAX, nomeDe, podeEvoluir, subirNivel } from './criatura';
+import { tr } from '../i18n';
 
 /* ============================== tipos públicos ============================== */
 /**
@@ -146,6 +147,8 @@ export interface LadoBatalha {
 
 /* ============================== tabelas ============================== */
 export const NOME_STAT: Record<StatEst, string> = { atq: 'Ataque', def: 'Defesa', atqEsp: 'Ataque Especial', defEsp: 'Defesa Especial', vel: 'Velocidade', prec: 'Precisão', eva: 'Evasão' };
+/** o atributo com artigo, no começo da frase ("O Ataque de … subiu!") */
+const NOME_STAT_ART: Record<StatEst, string> = { atq: 'O Ataque', def: 'A Defesa', atqEsp: 'O Ataque Especial', defEsp: 'A Defesa Especial', vel: 'A Velocidade', prec: 'A Precisão', eva: 'A Evasão' };
 const IMUNE_STATUS: Record<StatusId, TipoId[]> = { queimado: ['brasa'], envenenado: ['veneno', 'ferro'], paralisado: ['trovao'], congelado: ['geada'], dormindo: [], encantado: ['encanto'] };
 const MSG_STATUS: Record<StatusId, string> = { queimado: 'ficou queimando!', envenenado: 'foi envenenado!', paralisado: 'ficou paralisado! Talvez não consiga se mexer!', dormindo: 'pegou no sono!', congelado: 'virou um bloco de gelo!', encantado: 'ficou encantado!' };
 const MSG_CURA_STATUS: Record<StatusId, string> = { queimado: 'não está mais queimando.', envenenado: 'ficou livre do veneno.', paralisado: 'voltou a se mexer.', dormindo: 'acordou!', congelado: 'descongelou!', encantado: 'saiu do encantamento.' };
@@ -254,7 +257,7 @@ export class Batalha {
     if (s === 'vel' && c.status === 'paralisado') v /= 4;
     return Math.max(1, Math.floor(v));
   }
-  nome(p: Pos): string { const c = this.criatura(p)!; return p.lado === 0 ? nomeDe(c) : `${nomeDe(c)} ${this.selvagem ? 'selvagem' : 'rival'}`; }
+  nome(p: Pos): string { const c = this.criatura(p)!; return p.lado === 0 ? nomeDe(c) : tr(this.selvagem ? '{nome} selvagem' : '{nome} rival', { nome: nomeDe(c) }); }
   resumo(c: CriaturaInst): ResumoCriatura {
     const e = especie(c.especie), a = atributos(c);
     return { uid: c.uid, especie: c.especie, nome: nomeDe(c), nivel: c.nivel, vida: c.vida, vidaMax: a.vida, status: c.status, sexo: c.sexo, exp: c.exp, expNivel: expParaNivel(e.crescimento, c.nivel), expProx: expParaNivel(e.crescimento, Math.min(NIVEL_MAX, c.nivel + 1)) };
@@ -308,8 +311,8 @@ export class Batalha {
       this.lados[l].vol = Array.from({ length: this.porLado }, novoVol);
     }
     const ini = this.posicoes(1).filter((p) => this.ativo(p));
-    if (this.selvagem) this.msg(ini.length > 1 ? `${ini.map((p) => nomeDe(this.criatura(p)!)).join(' e ')} selvagens apareceram!` : `${this.cfg.tipo === 'lendario' ? 'O lendário' : 'Um'} ${nomeDe(this.criatura(ini[0])!)}${this.cfg.tipo === 'lendario' ? '' : ' selvagem'} apareceu!`);
-    else this.msg(`${this.lados[1].nome || 'A treinadora rival'} quer batalhar!`);
+    if (this.selvagem) this.msg(ini.length > 1 ? tr('{a} e {b} selvagens apareceram!', { a: nomeDe(this.criatura(ini[0])!), b: nomeDe(this.criatura(ini[1])!) }) : tr(this.cfg.tipo === 'lendario' ? 'O lendário {nome} apareceu!' : 'Um {nome} selvagem apareceu!', { nome: nomeDe(this.criatura(ini[0])!) }));
+    else this.msg(this.lados[1].nome ? tr('{treinador} quer batalhar!', { treinador: this.lados[1].nome }) : 'A treinadora rival quer batalhar!');
     for (const l of [1, 0] as const) for (const p of this.posicoes(l)) if (this.ativo(p)) this.anunciarEntrada(p, true);
     if (this.clima !== 'limpo') { this.ev({ t: 'clima', clima: this.clima }); this.msg(MSG_CLIMA_INICIO[this.clima]); }
     this.fase = 'acoes';
@@ -319,8 +322,8 @@ export class Batalha {
     const l = this.lados[p.lado], c = this.criatura(p)!;
     l.vistos.add(l.ativos[p.pos]);
     this.ev({ t: 'entra', lado: p.lado, pos: p.pos, indice: l.ativos[p.pos], criatura: this.resumo(c), ...(inicial ? { inicial } : {}) });
-    if (p.lado === 0) this.msg(`Vai, ${nomeDe(c)}!`);
-    else if (!this.selvagem) this.msg(`${l.nome || 'A rival'} enviou ${nomeDe(c)}!`);
+    if (p.lado === 0) this.msg(tr('Vai, {nome}!', { nome: nomeDe(c) }));
+    else if (!this.selvagem) this.msg(tr('{treinador} enviou {nome}!', { treinador: l.nome || 'A rival', nome: nomeDe(c) }));
     // quem está em campo junto passa a contar para a experiência
     for (const q of this.ativosDe(1)) { const ini = this.criatura(q)!; let s = this.participantes.get(ini.uid); if (!s) this.participantes.set(ini.uid, (s = new Set())); for (const j of this.ativosDe(0)) s.add(this.criatura(j)!.uid); }
   }
@@ -330,7 +333,7 @@ export class Batalha {
     this.anunciarEntrada(p);
     if (l.espinhos && !this.tipos(p).includes('vento')) {
       this.ev({ t: 'anim', anim: 'espinhos', lado: p.lado, pos: p.pos });
-      this.msg(`${this.nome(p)} se feriu nos espinhos!`);
+      this.msg(tr('{nome} se feriu nos espinhos!', { nome: this.nome(p) }));
       this.ferir(p, Math.max(1, Math.floor(atributos(this.criatura(p)!).vida / 8)), 'espinhos');
       this.checarDesmaio(p);
     }
@@ -396,21 +399,21 @@ export class Batalha {
   /* ---------------------------- ações que não são golpes ---------------------------- */
   private tentarFuga(p: Pos) {
     if (p.lado === 1) { // selvagem que foge (errantes)
-      if (!this.selvagem || this.vol(p).preso > 0) { this.msg(`${this.nome(p)} tentou fugir, mas não conseguiu!`); this.ev({ t: 'fuga', lado: 1, sucesso: false }); return; }
-      this.ev({ t: 'fuga', lado: 1, sucesso: true }); this.msg(`${this.nome(p)} fugiu!`); this.terminar('fuga'); return;
+      if (!this.selvagem || this.vol(p).preso > 0) { this.msg(tr('{nome} tentou fugir, mas não conseguiu!', { nome: this.nome(p) })); this.ev({ t: 'fuga', lado: 1, sucesso: false }); return; }
+      this.ev({ t: 'fuga', lado: 1, sucesso: true }); this.msg(tr('{nome} fugiu!', { nome: this.nome(p) })); this.terminar('fuga'); return;
     }
     if (!this.selvagem) { this.msg('Não dá para fugir de uma batalha contra treinador!'); this.ev({ t: 'fuga', lado: 0, sucesso: false }); return; }
     if (this.cfg.semFuga) { this.msg('Não dá para fugir desta batalha!'); this.ev({ t: 'fuga', lado: 0, sucesso: false }); return; }
-    if (this.ativosDe(0).some((q) => this.vol(q).preso > 0)) { this.msg(`${this.nome(p)} está preso e não consegue fugir!`); this.ev({ t: 'fuga', lado: 0, sucesso: false }); return; }
+    if (this.ativosDe(0).some((q) => this.vol(q).preso > 0)) { this.msg(tr('{nome} está preso e não consegue fugir!', { nome: this.nome(p) })); this.ev({ t: 'fuga', lado: 0, sucesso: false }); return; }
     const velI = Math.max(...this.ativosDe(1).map((q) => this.stat(q, 'vel')));
     const ok = rng.f() < chanceFuga(this.stat(p, 'vel'), velI, this.tentativasFuga++);
     this.ev({ t: 'fuga', lado: 0, sucesso: ok });
     if (ok) { this.msg('Você escapou em segurança!'); this.terminar('fuga'); } else this.msg('Não deu para escapar!');
   }
   private trocar(p: Pos, para: number) {
-    if (this.vol(p).preso > 0) { this.msg(`${this.nome(p)} está preso e não pode sair!`); return; }
+    if (this.vol(p).preso > 0) { this.msg(tr('{nome} está preso e não pode sair!', { nome: this.nome(p) })); return; }
     if (!this.reservas(p.lado).includes(para)) return;
-    this.msg(p.lado === 0 ? `Volta, ${nomeDe(this.criatura(p)!)}!` : `${this.lados[1].nome || 'A rival'} chamou ${nomeDe(this.criatura(p)!)} de volta!`);
+    this.msg(p.lado === 0 ? tr('Volta, {nome}!', { nome: nomeDe(this.criatura(p)!) }) : tr('{treinador} chamou {nome} de volta!', { treinador: this.lados[1].nome || 'A rival', nome: nomeDe(this.criatura(p)!) }));
     this.sair(p); this.entrar(p, para);
   }
   private usarItem(p: Pos, a: Extract<Acao, { tipo: 'item' }>) {
@@ -419,26 +422,26 @@ export class Batalha {
     const d = defItem(a.item), u: UsoItem = d.uso ?? {};
     if (u.cuia) { this.arremessarCuia(p, a.item); return; }
     const alvo = a.alvo ?? l.ativos[p.pos], c = l.equipe[alvo];
-    if (!this.itemServe(p.lado, a.item, alvo, a.slot)) { this.msg(`${d.nome} não teria efeito.`); return; }
+    if (!this.itemServe(p.lado, a.item, alvo, a.slot)) { this.msg(tr('{item} não teria efeito.', { item: d.nome })); return; }
     this.gastar(p.lado, a.item);
     this.ev({ t: 'item', lado: p.lado, item: a.item, uid: c.uid });
-    this.msg(p.lado === 0 ? `Você usou ${d.nome}!` : `${l.nome || 'A rival'} usou ${d.nome}!`);
+    this.msg(p.lado === 0 ? tr('Você usou {item}!', { item: d.nome }) : tr('{treinador} usou {item}!', { treinador: l.nome || 'A rival', item: d.nome }));
     this.aplicarRemedio(p.lado, alvo, u, a.slot);
     if (p.lado === 0) mudarAmizade(c, 1);
   }
   private gastar(lado: 0 | 1, id: string) { const it = this.lados[lado].itens; if ((it[id] ?? 0) <= 1) delete it[id]; else it[id]--; }
   private aplicarRemedio(lado: 0 | 1, indice: number, u: UsoItem, slot?: number) {
     const c = this.lados[lado].equipe[indice], max = atributos(c).vida, q = this.posDe(lado, indice), pos = q?.pos ?? -1, n = nomeDe(c);
-    if (u.reanima && c.vida <= 0) { c.vida = Math.max(1, Math.floor((max * u.reanima) / 100)); c.status = null; this.ev({ t: 'cura', lado, pos, uid: c.uid, de: 0, para: c.vida, max }); this.msg(`${n} se levantou!`); }
-    if (u.cura && c.vida > 0 && c.vida < max) { const de = c.vida; c.vida = u.cura === 'total' ? max : Math.min(max, c.vida + u.cura); this.ev({ t: 'cura', lado, pos, uid: c.uid, de, para: c.vida, max }); this.msg(`${n} recuperou ${c.vida - de} de vida.`); }
+    if (u.reanima && c.vida <= 0) { c.vida = Math.max(1, Math.floor((max * u.reanima) / 100)); c.status = null; this.ev({ t: 'cura', lado, pos, uid: c.uid, de: 0, para: c.vida, max }); this.msg(tr('{nome} se levantou!', { nome: n })); }
+    if (u.cura && c.vida > 0 && c.vida < max) { const de = c.vida; c.vida = u.cura === 'total' ? max : Math.min(max, c.vida + u.cura); this.ev({ t: 'cura', lado, pos, uid: c.uid, de, para: c.vida, max }); this.msg(tr('{nome} recuperou {qtd} de vida.', { nome: n, qtd: c.vida - de })); }
     if (u.curaStatus) {
-      if (c.status && (u.curaStatus === 'todos' || u.curaStatus.includes(c.status))) { const s = c.status; c.status = null; delete c.sonoTurnos; this.ev({ t: 'status', lado, pos, uid: c.uid, status: null }); this.msg(`${n} ${MSG_CURA_STATUS[s]}`); }
-      if (u.curaStatus === 'todos' && q && this.vol(q).confuso) { this.vol(q).confuso = 0; this.ev({ t: 'volatil', ...q, v: 'confuso', ativo: false }); this.msg(`${n} não está mais confuso.`); }
+      if (c.status && (u.curaStatus === 'todos' || u.curaStatus.includes(c.status))) { const s = c.status; c.status = null; delete c.sonoTurnos; this.ev({ t: 'status', lado, pos, uid: c.uid, status: null }); this.msg(tr('{nome} {acao}', { nome: n, acao: MSG_CURA_STATUS[s] })); }
+      if (u.curaStatus === 'todos' && q && this.vol(q).confuso) { this.vol(q).confuso = 0; this.ev({ t: 'volatil', ...q, v: 'confuso', ativo: false }); this.msg(tr('{nome} não está mais confuso.', { nome: n })); }
     }
     if (u.pg) {
       const alvos = u.pgTodos ? c.golpes : [c.golpes[slot ?? c.golpes.findIndex((g) => g.pg < g.pgMax)]].filter(Boolean);
       for (const g of alvos) g.pg = Math.min(g.pgMax, g.pg + u.pg);
-      this.msg(`${n} recuperou PG.`);
+      this.msg(tr('{nome} recuperou PG.', { nome: n }));
     }
   }
   private arremessarCuia(p: Pos, cuia: string) {
@@ -450,7 +453,7 @@ export class Batalha {
     if (alvos.length !== 1) { this.msg('São duas criaturas! Não dá para mirar a cuia.'); return; }
     const q = alvos[0], c = this.criatura(q)!, e = especie(c.especie);
     this.gastar(0, cuia);
-    this.msg(`Você arremessou a ${nomeCuia}!`);
+    this.msg(tr('Você arremessou a {cuia}!', { cuia: nomeCuia }));
     if (this.vol(q).some) { this.ev({ t: 'captura', cuia, ...q, balancos: 0, sucesso: false }); this.msg('A cuia não alcançou a criatura!'); return; }
     const garantida = !!defItem(cuia).uso?.cuia?.garantida;
     const art = defItem(cuia).uso?.cuia?.artesanal;
@@ -462,7 +465,7 @@ export class Batalha {
     c.cuia = cuia; if (cuia === 'cuia-mel') c.amizade = Math.max(c.amizade, 200);
     if (art === 'amiga') c.amizade = Math.max(c.amizade, AMIZADE_CUIA_AMIGA);
     this.capturada = c;
-    this.msg(`Parceria firmada! ${nomeDe(c)} agora anda com você.`);
+    this.msg(tr('Parceria firmada! {nome} agora anda com você.', { nome: nomeDe(c) }));
     this.terminar('captura');
   }
 
@@ -470,22 +473,22 @@ export class Batalha {
   private agir(p: Pos, a: Extract<Acao, { tipo: 'golpe' }>) {
     const c = this.criatura(p)!, v = this.vol(p), n = this.nome(p);
     const cancelar = () => { if (v.carga) { v.carga = null; if (v.some) { v.some = false; this.ev({ t: 'carga', ...p, golpe: '', some: false, solta: true }); } } };
-    if (v.recarga) { v.recarga = false; this.msg(`${n} precisa descansar!`); return; }
+    if (v.recarga) { v.recarga = false; this.msg(tr('{nome} precisa descansar!', { nome: n })); return; }
     if (c.status === 'dormindo') {
       c.sonoTurnos = (c.sonoTurnos ?? 1) - 1;
-      if (c.sonoTurnos > 0) { this.ev({ t: 'anim', anim: 'status-dormindo', ...p }); this.msg(`${n} está dormindo.`); cancelar(); return; }
+      if (c.sonoTurnos > 0) { this.ev({ t: 'anim', anim: 'status-dormindo', ...p }); this.msg(tr('{nome} está dormindo.', { nome: n })); cancelar(); return; }
       this.curarStatus(p);
     }
     if (c.status === 'congelado') {
-      if (!rng.chance(0.2)) { this.ev({ t: 'anim', anim: 'status-congelado', ...p }); this.msg(`${n} está congelado!`); cancelar(); return; }
+      if (!rng.chance(0.2)) { this.ev({ t: 'anim', anim: 'status-congelado', ...p }); this.msg(tr('{nome} está congelado!', { nome: n })); cancelar(); return; }
       this.curarStatus(p);
     }
-    if (v.atordoado) { this.msg(`${n} ficou atordoado e não agiu!`); cancelar(); return; }
+    if (v.atordoado) { this.msg(tr('{nome} ficou atordoado e não agiu!', { nome: n })); cancelar(); return; }
     if (v.confuso > 0) {
       v.confuso--;
-      if (v.confuso <= 0) { this.ev({ t: 'volatil', ...p, v: 'confuso', ativo: false }); this.msg(`${n} não está mais confuso.`); }
+      if (v.confuso <= 0) { this.ev({ t: 'volatil', ...p, v: 'confuso', ativo: false }); this.msg(tr('{nome} não está mais confuso.', { nome: n })); }
       else {
-        this.msg(`${n} está confuso!`);
+        this.msg(tr('{nome} está confuso!', { nome: n }));
         if (rng.chance(1 / 3)) {
           this.ev({ t: 'anim', anim: 'confusao-auto', ...p }); this.msg('Atrapalhou-se e acabou se machucando!');
           const dano = Math.max(1, Math.floor(danoBase(c.nivel, 40, this.stat(p, 'atq'), this.stat(p, 'def')) * (rng.int(85, 100) / 100)));
@@ -493,13 +496,13 @@ export class Batalha {
         }
       }
     }
-    if (c.status === 'paralisado' && rng.chance(0.25)) { this.ev({ t: 'anim', anim: 'status-paralisado', ...p }); this.msg(`${n} está paralisado e não consegue se mexer!`); cancelar(); return; }
+    if (c.status === 'paralisado' && rng.chance(0.25)) { this.ev({ t: 'anim', anim: 'status-paralisado', ...p }); this.msg(tr('{nome} está paralisado e não consegue se mexer!', { nome: n })); cancelar(); return; }
     // obediência (spec 10A-13): criatura recebida em troca acima do limite das insígnias pode ignorar a ordem
     const ob = this.cfg.obediencia, pObedece = p.lado === 0 && ob && !v.carga && a.slot >= 0 ? chanceObedecer(c, ob.dono, ob.limite) : 1;
     if (pObedece < 1 && !rng.chance(pObedece)) {
       const outros = this.golpesValidos(p).filter((i) => i !== a.slot);
-      if (outros.length && rng.chance(0.4)) { this.msg(`${n} não obedeceu e fez o que quis!`); a = { ...a, slot: rng.escolha(outros) }; }
-      else { this.msg(rng.escolha([`${n} ignorou a ordem!`, `${n} está fazendo corpo mole…`, `${n} virou a cara e não obedeceu!`])); cancelar(); return; }
+      if (outros.length && rng.chance(0.4)) { this.msg(tr('{nome} não obedeceu e fez o que quis!', { nome: n })); a = { ...a, slot: rng.escolha(outros) }; }
+      else { this.msg(rng.escolha([tr('{nome} ignorou a ordem!', { nome: n }), tr('{nome} está fazendo corpo mole…', { nome: n }), tr('{nome} virou a cara e não obedeceu!', { nome: n })])); cancelar(); return; }
     }
 
     // qual golpe?
@@ -508,15 +511,15 @@ export class Batalha {
     else {
       if (a.slot === -1) g = DESESPERO;
       else { const s = c.golpes[a.slot]; s.pg = Math.max(0, s.pg - 1); g = defGolpe(s.id); }
-      if (a.slot === -1) this.msg(`${n} não tem mais PG!`);
+      if (a.slot === -1) this.msg(tr('{nome} não tem mais PG!', { nome: n }));
       const imitado = this.lados[(1 - p.lado) as 0 | 1].ultimoGolpe;
       if (c.status === 'encantado' && imitado && a.slot !== -1 && rng.chance(0.5)) {
-        this.ev({ t: 'anim', anim: 'status-encantado', ...p }); this.msg(`${n} está encantado e imita o adversário!`);
+        this.ev({ t: 'anim', anim: 'status-encantado', ...p }); this.msg(tr('{nome} está encantado e imita o adversário!', { nome: n }));
         g = defGolpe(imitado);
       }
     }
     if (!temEf(g, 'protecao')) v.protUsos = 0;
-    this.msg(`${n} usou ${g.nome}!`);
+    this.msg(tr('{nome} usou {golpe}!', { nome: n, golpe: g.nome }));
     this.lados[p.lado].ultimoGolpe = g.id === DESESPERO.id ? this.lados[p.lado].ultimoGolpe : g.id;
     let rev = this.lados[p.lado].revelados.get(c.uid); if (!rev) this.lados[p.lado].revelados.set(c.uid, (rev = new Set())); if (g.id !== DESESPERO.id) rev.add(g.id);
 
@@ -524,7 +527,7 @@ export class Batalha {
     const carga = temEf(g, 'carga');
     if (carga && !carregado && carga.semCargaNoClima !== this.clima) {
       v.carga = { golpe: g.id, alvo: alvoEscolhido }; v.some = !!carga.some;
-      this.ev({ t: 'carga', ...p, golpe: g.id, some: v.some }); this.msg(`${n} ${carga.msg}`);
+      this.ev({ t: 'carga', ...p, golpe: g.id, some: v.some }); this.msg(tr('{nome} {acao}', { nome: n, acao: carga.msg }));
       return;
     }
     this.executarGolpe(p, g, alvoEscolhido, a.trocaPara);
@@ -607,15 +610,15 @@ export class Batalha {
     const exige = temEf(g, 'exige');
     for (const q of alvos) {
       const nq = this.nome(q);
-      if (this.vol(q).some) { this.ev({ t: 'errou', ...p, alvo: q, motivo: 'fora' }); this.msg(`${nq} está fora de alcance!`); continue; }
-      if (this.vol(q).protegido) { this.ev({ t: 'errou', ...p, alvo: q, motivo: 'protecao' }); this.msg(`${nq} se protegeu!`); continue; }
+      if (this.vol(q).some) { this.ev({ t: 'errou', ...p, alvo: q, motivo: 'fora' }); this.msg(tr('{nome} está fora de alcance!', { nome: nq })); continue; }
+      if (this.vol(q).protegido) { this.ev({ t: 'errou', ...p, alvo: q, motivo: 'protecao' }); this.msg(tr('{nome} se protegeu!', { nome: nq })); continue; }
       if (exige && exige.cond === 'alvoDormindo' && this.criatura(q)!.status !== 'dormindo') { this.ev({ t: 'errou', ...p, alvo: q, motivo: 'falhou' }); this.msg('Mas não funcionou!'); continue; }
-      if (g.cat !== 'status' && eficaciaGolpe(g, this.tipos(q)) === 0) { this.ev({ t: 'errou', ...p, alvo: q, motivo: 'imune' }); this.msg(`Não afeta ${nq}…`); continue; }
-      if (!this.acerta(p, g, q)) { this.ev({ t: 'errou', ...p, alvo: q, motivo: 'precisao' }); this.msg(`O golpe de ${n} errou!`); continue; }
+      if (g.cat !== 'status' && eficaciaGolpe(g, this.tipos(q)) === 0) { this.ev({ t: 'errou', ...p, alvo: q, motivo: 'imune' }); this.msg(tr('Não afeta {nome}…', { nome: nq })); continue; }
+      if (!this.acerta(p, g, q)) { this.ev({ t: 'errou', ...p, alvo: q, motivo: 'precisao' }); this.msg(tr('O golpe de {nome} errou!', { nome: n })); continue; }
       acertados.push(q);
     }
     if (!acertados.length) {
-      if (temEf(g, 'tombo')) { this.msg(`${n} caiu de mau jeito!`); this.ferir(p, Math.max(1, Math.floor(atributos(c).vida / 8)), 'tombo'); this.checarDesmaio(p); }
+      if (temEf(g, 'tombo')) { this.msg(tr('{nome} caiu de mau jeito!', { nome: n })); this.ferir(p, Math.max(1, Math.floor(atributos(c).vida / 8)), 'tombo'); this.checarDesmaio(p); }
       return;
     }
     this.ev({ t: 'golpe', ...p, golpe: g.id, anim: g.anim, alvos: acertados });
@@ -632,7 +635,7 @@ export class Batalha {
         }
         if (crit) this.msg('Acertou em cheio!');
         if (!temEf(g, 'fixo')) { if (ef > 1) this.msg('É super eficaz!'); else if (ef < 1) this.msg('Não é muito eficaz…'); }
-        if (multi) this.msg(`Acertou ${feitos} ${feitos === 1 ? 'vez' : 'vezes'}!`);
+        if (multi) this.msg(tr(feitos === 1 ? 'Acertou {n} vez!' : 'Acertou {n} vezes!', { n: feitos }));
         if (g.tipo === 'brasa' && alvo.status === 'congelado' && alvo.vida > 0) this.curarStatus(q);
       }
       // efeitos sobre o alvo
@@ -640,15 +643,15 @@ export class Batalha {
     }
     // efeitos sobre quem usou (uma vez, se acertou alguém)
     const dreno = temEf(g, 'dreno'), recuo = temEf(g, 'recuo');
-    if (dreno && danoTotal > 0 && c.vida > 0 && this.curar(p, Math.max(1, Math.floor((danoTotal * dreno.pct) / 100)))) this.msg(`${n} recuperou energia!`);
-    if (recuo && danoTotal > 0 && c.vida > 0) { this.msg(`${n} sofreu com o recuo!`); this.ferir(p, Math.max(1, Math.floor((danoTotal * recuo.pct) / 100)), 'recuo'); }
+    if (dreno && danoTotal > 0 && c.vida > 0 && this.curar(p, Math.max(1, Math.floor((danoTotal * dreno.pct) / 100)))) this.msg(tr('{nome} recuperou energia!', { nome: n }));
+    if (recuo && danoTotal > 0 && c.vida > 0) { this.msg(tr('{nome} sofreu com o recuo!', { nome: n })); this.ferir(p, Math.max(1, Math.floor((danoTotal * recuo.pct) / 100)), 'recuo'); }
     if (c.vida > 0) for (const e of g.efeitos) this.efeitoProprio(p, e, false);
     for (const q of acertados) this.checarDesmaio(q);
     this.checarDesmaio(p);
     // bater e voltar
     if (temEf(g, 'bateVolta') && c.vida > 0 && !this.resultado && this.criatura(p) === c && this.vol(p).preso <= 0) {
       const res = this.reservas(p.lado);
-      if (res.length) { this.msg(p.lado === 0 ? `${nomeDe(c)} voltou correndo para a cuia!` : `${n} voltou para a cuia!`); this.sair(p); this.entrar(p, trocaPara !== undefined && res.includes(trocaPara) ? trocaPara : res[0]); }
+      if (res.length) { this.msg(p.lado === 0 ? tr('{nome} voltou correndo para a cuia!', { nome: nomeDe(c) }) : tr('{nome} voltou para a cuia!', { nome: n })); this.sair(p); this.entrar(p, trocaPara !== undefined && res.includes(trocaPara) ? trocaPara : res[0]); }
     }
   }
 
@@ -664,12 +667,12 @@ export class Batalha {
         else if (e.v === 'confuso') this.confundir(q, principal);
         else if (e.v === 'semente') {
           if (this.vol(q).semente || this.tipos(q).includes('mata')) { if (principal) this.msg('Mas não funcionou!'); break; }
-          this.vol(q).semente = { ...p }; this.ev({ t: 'volatil', ...q, v: 'semente', ativo: true }); this.msg(`Uma parasita brotou em ${this.nome(q)}!`);
+          this.vol(q).semente = { ...p }; this.ev({ t: 'volatil', ...q, v: 'semente', ativo: true }); this.msg(tr('Uma parasita brotou em {nome}!', { nome: this.nome(q) }));
         }
         break;
       case 'estagio': if (!e.eu && passa(e.chance)) this.mudarEstagio(q, e.s, e.n, p); break;
       case 'armadilha':
-        if (this.vol(q).preso <= 0) { this.vol(q).preso = rng.int(4, 5); this.ev({ t: 'volatil', ...q, v: 'preso', ativo: true }); this.msg(`${this.nome(q)} ficou preso!`); }
+        if (this.vol(q).preso <= 0) { this.vol(q).preso = rng.int(4, 5); this.ev({ t: 'volatil', ...q, v: 'preso', ativo: true }); this.msg(tr('{nome} ficou preso!', { nome: this.nome(q) })); }
         break;
       case 'trocaForcada': this.forcarTroca(p, q); break;
     }
@@ -681,11 +684,11 @@ export class Batalha {
     switch (e.t) {
       case 'estagio': if (e.eu && passa(e.chance)) { this.mudarEstagio(p, e.s, e.n, p); return true; } return false;
       case 'volatil': if (e.eu && e.v === 'confuso') { this.confundir(p, false); return true; } return false;
-      case 'cura': if (this.curar(p, (atributos(c).vida * e.pct) / 100)) { this.msg(`${n} recuperou vida!`); return true; } if (direto) this.msg(`A vida de ${n} já está cheia!`); return direto;
+      case 'cura': if (this.curar(p, (atributos(c).vida * e.pct) / 100)) { this.msg(tr('{nome} recuperou vida!', { nome: n })); return true; } if (direto) this.msg(tr('A vida de {nome} já está cheia!', { nome: n })); return direto;
       case 'descanso': {
-        if (c.vida >= atributos(c).vida) { this.msg(`${n} não está com sono.`); return true; }
+        if (c.vida >= atributos(c).vida) { this.msg(tr('{nome} não está com sono.', { nome: n })); return true; }
         c.status = 'dormindo'; c.sonoTurnos = 3; this.ev({ t: 'status', ...p, uid: c.uid, status: 'dormindo' });
-        this.curar(p, atributos(c).vida); this.msg(`${n} dormiu e recuperou as forças!`); return true;
+        this.curar(p, atributos(c).vida); this.msg(tr('{nome} dormiu e recuperou as forças!', { nome: n })); return true;
       }
       case 'curaStatus': {
         let fez = false;
@@ -693,11 +696,11 @@ export class Batalha {
         if (c.status) { this.curarStatus(p); fez = true; }
         return fez;
       }
-      case 'foco': if (v.foco < 2) { v.foco++; this.msg(`${n} está pronto para acertar em cheio!`); return true; } return false;
+      case 'foco': if (v.foco < 2) { v.foco++; this.msg(tr('{nome} está pronto para acertar em cheio!', { nome: n })); return true; } return false;
       case 'protecao': {
         const ok = rng.f() < 1 / Math.pow(2, v.protUsos);
         v.protUsos++;
-        if (ok) { v.protegido = true; this.msg(`${n} se preparou para se proteger!`); } else this.msg('Mas falhou!');
+        if (ok) { v.protegido = true; this.msg(tr('{nome} se preparou para se proteger!', { nome: n })); } else this.msg('Mas falhou!');
         return true;
       }
       case 'recarga': v.recarga = true; return true;
@@ -727,45 +730,45 @@ export class Batalha {
     const c = this.criatura(q)!, nq = this.nome(q);
     const falha = (t = 'Mas não funcionou!') => { if (avisar) this.msg(t); return false; };
     if (c.vida <= 0) return false;
-    if (c.status) return falha(c.status === s ? `${nq} já está assim!` : undefined);
-    if (this.tipos(q).some((t) => IMUNE_STATUS[s].includes(t))) return falha(`Não afeta ${nq}…`);
+    if (c.status) return falha(c.status === s ? tr('{nome} já está assim!', { nome: nq }) : undefined);
+    if (this.tipos(q).some((t) => IMUNE_STATUS[s].includes(t))) return falha(tr('Não afeta {nome}…', { nome: nq }));
     if (s === 'congelado' && this.clima === 'sol') return falha();
-    if (origem && origem.lado !== q.lado && this.lados[q.lado].barreira.status > 0) return falha(`A simpatia protegeu ${nq}!`);
+    if (origem && origem.lado !== q.lado && this.lados[q.lado].barreira.status > 0) return falha(tr('A simpatia protegeu {nome}!', { nome: nq }));
     c.status = s;
     if (s === 'dormindo') c.sonoTurnos = rng.int(2, 4); else if (s === 'encantado') c.sonoTurnos = rng.int(2, 4); else delete c.sonoTurnos;
     this.ev({ t: 'status', ...q, uid: c.uid, status: s });
-    this.msg(`${nq} ${MSG_STATUS[s]}`);
+    this.msg(tr('{nome} {acao}', { nome: nq, acao: MSG_STATUS[s] }));
     this.comerFruto(q);
     return true;
   }
   private curarStatus(q: Pos) {
     const c = this.criatura(q)!, s = c.status; if (!s) return;
     c.status = null; delete c.sonoTurnos;
-    this.ev({ t: 'status', ...q, uid: c.uid, status: null }); this.msg(`${this.nome(q)} ${MSG_CURA_STATUS[s]}`);
+    this.ev({ t: 'status', ...q, uid: c.uid, status: null }); this.msg(tr('{nome} {acao}', { nome: this.nome(q), acao: MSG_CURA_STATUS[s] }));
   }
   private confundir(q: Pos, avisar: boolean) {
     const v = this.vol(q);
-    if (v.confuso > 0) { if (avisar) this.msg(`${this.nome(q)} já está confuso!`); return; }
-    if (this.lados[q.lado].barreira.status > 0) { if (avisar) this.msg(`A simpatia protegeu ${this.nome(q)}!`); return; }
-    v.confuso = rng.int(2, 5); this.ev({ t: 'volatil', ...q, v: 'confuso', ativo: true }); this.msg(`${this.nome(q)} ficou confuso!`);
+    if (v.confuso > 0) { if (avisar) this.msg(tr('{nome} já está confuso!', { nome: this.nome(q) })); return; }
+    if (this.lados[q.lado].barreira.status > 0) { if (avisar) this.msg(tr('A simpatia protegeu {nome}!', { nome: this.nome(q) })); return; }
+    v.confuso = rng.int(2, 5); this.ev({ t: 'volatil', ...q, v: 'confuso', ativo: true }); this.msg(tr('{nome} ficou confuso!', { nome: this.nome(q) }));
   }
   private mudarEstagio(q: Pos, s: StatEst, n: number, _origem: Pos) {
     const v = this.vol(q), antes = v.est[s], depois = limitar(antes + n, -6, 6), nq = this.nome(q);
-    const art = s === 'atq' || s === 'atqEsp' ? 'O' : 'A';
-    if (depois === antes) { this.msg(`${art} ${NOME_STAT[s]} de ${nq} não pode ${n > 0 ? 'subir' : 'cair'} mais!`); return; }
+    const st = { stat: NOME_STAT_ART[s], nome: nq };
+    if (depois === antes) { this.msg(tr(n > 0 ? '{stat} de {nome} não pode subir mais!' : '{stat} de {nome} não pode cair mais!', st)); return; }
     v.est[s] = depois;
     this.ev({ t: 'estagio', ...q, stat: s, delta: depois - antes, valor: depois });
-    this.msg(`${art} ${NOME_STAT[s]} de ${nq} ${n > 0 ? 'subiu' : 'caiu'}${Math.abs(n) > 1 ? ' muito' : ''}!`);
+    this.msg(tr(n > 0 ? (n > 1 ? '{stat} de {nome} subiu muito!' : '{stat} de {nome} subiu!') : n < -1 ? '{stat} de {nome} caiu muito!' : '{stat} de {nome} caiu!', st));
   }
   private forcarTroca(p: Pos, q: Pos) {
     if (this.selvagem) {
       if (this.cfg.tipo === 'lendario' || this.cfg.semFuga || this.porLado > 1) { this.msg('Mas não funcionou!'); return; }
-      this.msg(q.lado === 1 ? `${this.nome(q)} fugiu assustado!` : `${nomeDe(this.criatura(q)!)} foi espantado para longe!`);
+      this.msg(q.lado === 1 ? tr('{nome} fugiu assustado!', { nome: this.nome(q) }) : tr('{nome} foi espantado para longe!', { nome: nomeDe(this.criatura(q)!) }));
       this.ev({ t: 'fuga', lado: q.lado, sucesso: true }); this.terminar('fuga'); return;
     }
     const res = this.reservas(q.lado);
     if (!res.length) { this.msg('Mas não funcionou!'); return; }
-    this.msg(`${this.nome(q)} foi arrastado de volta para a cuia!`);
+    this.msg(tr('{nome} foi arrastado de volta para a cuia!', { nome: this.nome(q) }));
     this.sair(q); this.entrar(q, rng.escolha(res));
     void p;
   }
@@ -778,7 +781,7 @@ export class Batalha {
     this.desmaiados.add(c.uid);
     c.status = null; delete c.sonoTurnos;
     const v = this.vol(q); v.carga = null; v.some = false; v.recarga = false;
-    this.ev({ t: 'desmaio', ...q, uid: c.uid }); this.msg(`${this.nome(q)} desmaiou!`);
+    this.ev({ t: 'desmaio', ...q, uid: c.uid }); this.msg(tr('{nome} desmaiou!', { nome: this.nome(q) }));
     for (const l of [0, 1] as const) for (const r of this.posicoes(l)) { const w = this.lados[l].vol[r.pos]; if (w?.semente && w.semente.lado === q.lado && w.semente.pos === q.pos) w.semente = null; }
     if (q.lado === 0) mudarAmizade(c, -1);
     else if (this.cfg.ganhaExp !== false) this.darExp(c);
@@ -810,19 +813,19 @@ export class Batalha {
       const curva = especie(c.especie).crescimento, de = c.exp;
       c.exp = Math.min(c.exp + cada, expParaNivel(curva, NIVEL_MAX));
       this.ev({ t: 'exp', uid: c.uid, ganho: c.exp - de, de, para: c.exp });
-      this.msg(`${nomeDe(c)} ganhou ${c.exp - de} pontos de experiência${trocada ? ' com bônus de troca' : ''}!`);
+      this.msg(tr(trocada ? '{nome} ganhou {n} pontos de experiência com bônus de troca!' : '{nome} ganhou {n} pontos de experiência!', { nome: nomeDe(c), n: c.exp - de }));
       while (c.nivel < NIVEL_MAX && c.exp >= expParaNivel(curva, c.nivel + 1)) {
         const s = subirNivel(c);
         this.subiu.add(c.uid);
         this.ev({ t: 'nivel', uid: c.uid, nivel: s.nivel, antes: s.antes, depois: s.depois });
-        this.msg(`${nomeDe(c)} subiu para o nível ${s.nivel}!`);
+        this.msg(tr('{nome} subiu para o nível {nivel}!', { nome: nomeDe(c), nivel: s.nivel }));
         for (const id of s.golpes) this.oferecerGolpe(c, id);
       }
     }
   }
   private oferecerGolpe(c: CriaturaInst, id: string) {
     if (c.golpes.some((g) => g.id === id)) return;
-    if (c.golpes.length < 4) { aprenderGolpe(c, id); this.ev({ t: 'novo-golpe', uid: c.uid, golpe: id }); this.msg(`${nomeDe(c)} aprendeu ${defGolpe(id).nome}!`); return; }
+    if (c.golpes.length < 4) { aprenderGolpe(c, id); this.ev({ t: 'novo-golpe', uid: c.uid, golpe: id }); this.msg(tr('{nome} aprendeu {golpe}!', { nome: nomeDe(c), golpe: defGolpe(id).nome })); return; }
     if (this.cfg.autoAprender) {
       // troca o golpe de menor valor (poder × precisão; status vale 45) se o novo for melhor
       const valor = (gid: string) => { const g = defGolpe(gid); return g.cat === 'status' ? 45 : g.poder * (g.precisao || 100) / 100; };
@@ -838,8 +841,8 @@ export class Batalha {
     const c = this.lados[0].equipe.find((x) => x.uid === uid) ?? this.lados[1].equipe.find((x) => x.uid === uid);
     this.golpesPendentes = this.golpesPendentes.filter((g) => !(g.uid === uid && g.golpe === id));
     if (c) {
-      if (slot < 0 || slot >= c.golpes.length) this.msg(`${nomeDe(c)} não aprendeu ${defGolpe(id).nome}.`);
-      else { const velho = c.golpes[slot].id; if (aprenderGolpe(c, id, slot)) { this.ev({ t: 'novo-golpe', uid, golpe: id, esqueceu: velho }); this.msg(`${nomeDe(c)} esqueceu ${defGolpe(velho).nome} e aprendeu ${defGolpe(id).nome}!`); } }
+      if (slot < 0 || slot >= c.golpes.length) this.msg(tr('{nome} não aprendeu {golpe}.', { nome: nomeDe(c), golpe: defGolpe(id).nome }));
+      else { const velho = c.golpes[slot].id; if (aprenderGolpe(c, id, slot)) { this.ev({ t: 'novo-golpe', uid, golpe: id, esqueceu: velho }); this.msg(tr('{nome} esqueceu {golpe} e aprendeu {golpe2}!', { nome: nomeDe(c), golpe: defGolpe(velho).nome, golpe2: defGolpe(id).nome })); } }
     }
     return this.novos();
   }
@@ -851,8 +854,8 @@ export class Batalha {
   private terminar(r: ResultadoId) {
     if (this.resultado) return;
     this.resultado = r; this.fase = 'fim';
-    if (r === 'derrota') this.msg(`${this.lados[0].nome} não tem mais criaturas em condições de lutar!`);
-    if (r === 'vitoria' && !this.selvagem) this.msg(`${this.lados[1].nome || 'A rival'} foi vencida!`);
+    if (r === 'derrota') this.msg(tr('{jogador} não tem mais criaturas em condições de lutar!', { jogador: this.lados[0].nome }));
+    if (r === 'vitoria' && !this.selvagem) this.msg(tr('{treinador} foi vencida!', { treinador: this.lados[1].nome || 'A rival' }));
     if (r !== 'derrota') for (const c of this.lados[0].equipe) {
       if (!this.subiu.has(c.uid) || c.vida <= 0) continue;
       const evo = podeEvoluir(c, { periodo: this.cfg.periodo });
@@ -868,20 +871,20 @@ export class Batalha {
       const c = this.criatura(p)!; if (c.vida <= 0) continue;
       const max = atributos(c).vida, n = this.nome(p), v = this.vol(p), tipos = this.tipos(p);
       const parte = (d: number) => Math.max(1, Math.floor(max / d));
-      if (this.clima === 'garoa' && !tipos.includes('geada') && !v.some) { this.ev({ t: 'anim', anim: 'clima-garoa', ...p }); this.msg(`A garoa gelada castiga ${n}!`); this.ferir(p, parte(16), 'clima'); }
-      if (this.clima === 'poeira' && !tipos.some((t) => t === 'terra' || t === 'pedra' || t === 'ferro') && !v.some && c.vida > 0) { this.ev({ t: 'anim', anim: 'clima-poeira', ...p }); this.msg(`A poeira castiga ${n}!`); this.ferir(p, parte(16), 'clima'); }
-      if (c.vida > 0 && c.status === 'queimado') { this.ev({ t: 'anim', anim: 'status-queimado', ...p }); this.msg(`${n} sofre com a queimadura!`); this.ferir(p, parte(16), 'status'); }
-      if (c.vida > 0 && c.status === 'envenenado') { this.ev({ t: 'anim', anim: 'status-envenenado', ...p }); this.msg(`${n} sofre com o veneno!`); this.ferir(p, parte(8), 'status'); }
+      if (this.clima === 'garoa' && !tipos.includes('geada') && !v.some) { this.ev({ t: 'anim', anim: 'clima-garoa', ...p }); this.msg(tr('A garoa gelada castiga {nome}!', { nome: n })); this.ferir(p, parte(16), 'clima'); }
+      if (this.clima === 'poeira' && !tipos.some((t) => t === 'terra' || t === 'pedra' || t === 'ferro') && !v.some && c.vida > 0) { this.ev({ t: 'anim', anim: 'clima-poeira', ...p }); this.msg(tr('A poeira castiga {nome}!', { nome: n })); this.ferir(p, parte(16), 'clima'); }
+      if (c.vida > 0 && c.status === 'queimado') { this.ev({ t: 'anim', anim: 'status-queimado', ...p }); this.msg(tr('{nome} sofre com a queimadura!', { nome: n })); this.ferir(p, parte(16), 'status'); }
+      if (c.vida > 0 && c.status === 'envenenado') { this.ev({ t: 'anim', anim: 'status-envenenado', ...p }); this.msg(tr('{nome} sofre com o veneno!', { nome: n })); this.ferir(p, parte(8), 'status'); }
       if (c.vida > 0 && v.semente) {
         const dono = v.semente;
-        this.ev({ t: 'anim', anim: 'semente', ...p }); this.msg(`A parasita suga a energia de ${n}!`);
+        this.ev({ t: 'anim', anim: 'semente', ...p }); this.msg(tr('A parasita suga a energia de {nome}!', { nome: n }));
         const tirou = this.ferir(p, parte(8), 'semente');
         if (this.ativo(dono)) this.curar(dono, tirou);
       }
       if (c.vida > 0 && v.preso > 0) {
         v.preso--;
-        if (v.preso <= 0) { this.ev({ t: 'volatil', ...p, v: 'preso', ativo: false }); this.msg(`${n} se soltou!`); }
-        else { this.ev({ t: 'anim', anim: 'armadilha', ...p }); this.msg(`${n} continua preso e se machuca!`); this.ferir(p, parte(16), 'armadilha'); }
+        if (v.preso <= 0) { this.ev({ t: 'volatil', ...p, v: 'preso', ativo: false }); this.msg(tr('{nome} se soltou!', { nome: n })); }
+        else { this.ev({ t: 'anim', anim: 'armadilha', ...p }); this.msg(tr('{nome} continua preso e se machuca!', { nome: n })); this.ferir(p, parte(16), 'armadilha'); }
       }
       if (c.vida > 0 && c.status === 'encantado') { c.sonoTurnos = (c.sonoTurnos ?? 1) - 1; if (c.sonoTurnos <= 0) this.curarStatus(p); }
       if (c.vida > 0) this.comerFruto(p);
@@ -889,7 +892,7 @@ export class Batalha {
     }
     for (const l of [0, 1] as const) for (const b of ['fisico', 'especial', 'status'] as const) {
       const bar = this.lados[l].barreira;
-      if (bar[b] > 0 && --bar[b] === 0) { this.ev({ t: 'campo', lado: l, efeito: `barreira-${b}`, ativo: false }); this.msg(`${b === 'fisico' ? 'O muro invisível' : b === 'especial' ? 'A cortina de brilho' : 'A simpatia'} ${l === 0 ? 'da sua equipe' : 'da equipe rival'} se desfez.`); }
+      if (bar[b] > 0 && --bar[b] === 0) { this.ev({ t: 'campo', lado: l, efeito: `barreira-${b}`, ativo: false }); this.msg(tr(l === 0 ? '{barreira} da sua equipe se desfez.' : '{barreira} da equipe rival se desfez.', { barreira: b === 'fisico' ? 'O muro invisível' : b === 'especial' ? 'A cortina de brilho' : 'A simpatia' })); }
     }
     if (this.climaTurnos > 0 && --this.climaTurnos === 0) {
       this.msg(MSG_CLIMA_FIM[this.clima]); this.clima = this.climaBase; this.ev({ t: 'clima', clima: this.clima });
@@ -906,7 +909,7 @@ export class Batalha {
     const serve = (u.cura && c.vida * 2 <= max) || (u.curaStatus && c.status && (u.curaStatus === 'todos' || u.curaStatus.includes(c.status))) || (u.pg && c.golpes.some((g) => g.pg === 0));
     if (!serve) return;
     delete c.item;
-    this.ev({ t: 'item', lado: p.lado, item: d.id, uid: c.uid }); this.msg(`${this.nome(p)} comeu ${d.nome}!`);
+    this.ev({ t: 'item', lado: p.lado, item: d.id, uid: c.uid }); this.msg(tr('{nome} comeu {item}!', { nome: this.nome(p), item: d.nome }));
     this.aplicarRemedio(p.lado, this.lados[p.lado].ativos[p.pos], u, u.pg ? c.golpes.findIndex((g) => g.pg === 0) : undefined);
   }
 
@@ -919,7 +922,7 @@ export class Batalha {
       const e = escolhas.find((x) => x.lado === 1);
       const para = e && this.reservas(1).includes(e.para) ? e.para : this.reservas(1)[0];
       this.ofertaPara = para; this.fase = 'oferta';
-      this.msg(`${this.lados[1].nome || 'A rival'} vai enviar ${nomeDe(this.lados[1].equipe[para])}.`);
+      this.msg(tr('{treinador} vai enviar {nome}.', { treinador: this.lados[1].nome || 'A rival', nome: nomeDe(this.lados[1].equipe[para]) }));
       this.ev({ t: 'oferta-troca', proxima: this.resumo(this.lados[1].equipe[para]) });
       return this.novos();
     }
@@ -940,7 +943,7 @@ export class Batalha {
   responderOferta(para: number | null): EventoBatalha[] {
     if (this.fase !== 'oferta' || this.ofertaPara === null) throw new Error('não há oferta de troca');
     const p: Pos = { lado: 0, pos: 0 };
-    if (para !== null && this.reservas(0).includes(para) && this.ativo(p)) { this.msg(`Volta, ${nomeDe(this.criatura(p)!)}!`); this.sair(p); this.entrar(p, para); }
+    if (para !== null && this.reservas(0).includes(para) && this.ativo(p)) { this.msg(tr('Volta, {nome}!', { nome: nomeDe(this.criatura(p)!) })); this.sair(p); this.entrar(p, para); }
     const rival = this.ofertaPara; this.ofertaPara = null;
     if (!this.resultado) {
       this.entrar({ lado: 1, pos: 0 }, rival);

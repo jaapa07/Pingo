@@ -5,6 +5,7 @@ import { elTela, retirar } from '../base';
 import { texto, escrever, em } from '../fonte';
 import { moldura, seta, botao, som } from '../kit';
 import { patacas } from './comum';
+import { tr } from '../../i18n';
 
 export function pedirQuantidade(titulo: string, max: number, o: { preco?: number; inicial?: number } = {}): Promise<number> {
   return new Promise((resolver) => {
@@ -20,7 +21,7 @@ export function pedirQuantidade(titulo: string, max: number, o: { preco?: number
     cx.append(em(num, 60, y0 + 8), sC, sB, sE, sD); if (o.preco != null) cx.append(em(total, 10, yT));
     const ok = botao('OK', 36), nao = botao('Voltar', 44); ok.definirFoco(true);
     cx.append(em(ok.el, 26, yB), em(nao.el, 88, yB));
-    const pintar = () => { escrever(num, `×${n}`); num.style.left = Math.floor((150 - parseInt(num.style.width)) / 2) + 'px'; if (o.preco != null) escrever(total, `Total: ${patacas(n * o.preco)} patacas`); };
+    const pintar = () => { escrever(num, `×${n}`); num.style.left = Math.floor((150 - parseInt(num.style.width)) / 2) + 'px'; if (o.preco != null) escrever(total, tr('Total: {preco} patacas', { preco: patacas(n * o.preco) })); };
     const mudar = (d: number) => { const v = d === 1 && n === max ? 1 : d === -1 && n === 1 ? max : Math.max(1, Math.min(max, n + d)); if (v !== n) { n = v; som('ui-mover'); pintar(); } };
     const tela: Tela = { el, sobreposta: true, atualizar() {
       if (input.repetiu('cima')) mudar(1); else if (input.repetiu('baixo')) mudar(-1); else if (input.repetiu('dir')) mudar(10); else if (input.repetiu('esq')) mudar(-10);

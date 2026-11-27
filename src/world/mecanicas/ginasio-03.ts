@@ -7,6 +7,7 @@
  */
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, recolocar, Ladrilho, laco, cena, falar, avisar, sfx, quadros, naZona } from './_pecas';
+import { t, tr } from '../../i18n';
 
 const ZONA = 'A4-ginasio';
 type Canal = 'A' | 'B' | 'C' | 'D';
@@ -50,8 +51,8 @@ async function girar(v: (typeof VOLANTES)[number]) {
   sfx('cachoeira');
   for (const c of v.canais) { cheio[c] = !cheio[c]; aplicar(c); }
   await quadros(10);
-  avisar(v.canais.map((c) => `${NOME[c]}: ${cheio[c] ? 'CHEIO' : 'VAZIO'}`).join(' · '));
-  await falar('O volante range e a água corre pelas comportas.\n' + v.canais.map((c) => `O ${NOME[c]} ${cheio[c] ? 'encheu' : 'esvaziou'}.`).join(' '));
+  avisar(v.canais.map((c) => tr(cheio[c] ? '{canal}: CHEIO' : '{canal}: VAZIO', { canal: NOME[c] })).join(' · '));
+  await falar(t('O volante range e a água corre pelas comportas.') + '\n' + v.canais.map((c) => tr(cheio[c] ? 'O {canal} encheu.' : 'O {canal} esvaziou.', { canal: NOME[c] })).join(' '));
 }
 
 registrarMecanica(ZONA, {

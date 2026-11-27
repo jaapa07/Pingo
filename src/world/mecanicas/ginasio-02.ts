@@ -7,6 +7,7 @@
  */
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, cair, cena, falar, avisar, sfx, chave, olharTreinadores } from './_pecas';
+import { tr } from '../../i18n';
 
 const ZONA = 'A3-ginasio';
 const INICIO: [number, number] = [8, 16];
@@ -35,7 +36,7 @@ function pintar(p: Ponte) {
   const g = nos(p.n), larg = g[0].length;
   for (const [i, [x, y]] of [p.tiles[0], p.tiles[p.tiles.length - 1]].entries()) enf.pix(`n${p.n}-${i}`, [g], pal, x, y, { dx: Math.floor((16 - larg) / 2), dy: 6, z: 2 });
 }
-const plural = (n: number) => (n === 1 ? '1 nó' : `${n} nós`);
+const plural = (n: number) => (n === 1 ? '1 nó' : tr('{n} nós', { n }));
 
 async function queda(texto: string) {
   emCurso?.pisados.clear(); emCurso = null;
@@ -54,7 +55,7 @@ registrarMecanica(ZONA, {
     const p = ponteEm(x, y);
     if (p) {
       if (!p.firme && p.n !== proxima) {
-        cena(() => queda(`CRAC! A teia de ${plural(p.n)} arrebentou sob os seus pés.\nA rede de segurança devolveu você à entrada. A ponte da vez é a de ${plural(proxima)}.`));
+        cena(() => queda(tr('CRAC! A teia de {n} arrebentou sob os seus pés.\nA rede de segurança devolveu você à entrada. A ponte da vez é a de {proxima}.', { n: plural(p.n), proxima: plural(proxima) })));
         return true;
       }
       if (!p.firme) { if (emCurso !== p) { emCurso?.pisados.clear(); emCurso = p; sfx('passo-madeira'); } p.pisados.add(chave(x, y)); }
@@ -70,7 +71,7 @@ registrarMecanica(ZONA, {
       if (c.pisados.size === c.tiles.length) {
         c.firme = true; proxima = Math.max(proxima, c.n + 1);
         sfx('item-obtido'); pontes.forEach(pintar);
-        avisar(c.n >= 6 ? `A teia de ${plural(c.n)} ficou firme!` : `A teia de ${plural(c.n)} ficou firme! Agora a de ${plural(proxima)} aguenta.`);
+        avisar(c.n >= 6 ? tr('A teia de {n} ficou firme!', { n: plural(c.n) }) : tr('A teia de {n} ficou firme! Agora a de {proxima} aguenta.', { n: plural(c.n), proxima: plural(proxima) }));
         cena(olharTreinadores);
         return true;
       }
@@ -80,7 +81,7 @@ registrarMecanica(ZONA, {
   },
   interagir(x, y) {
     const p = ponteEm(x, y);
-    if (p) { cena(() => falar(p.firme ? `Uma ponte de teia com ${plural(p.n)} dourados. Está firme como corda de viola.` : `Uma ponte de teia com ${plural(p.n)}. ${p.n === proxima ? 'Os fios estão esticados, prontos para o peso.' : 'Os fios ainda estão frouxos.'}`)); return true; }
+    if (p) { cena(() => falar(p.firme ? tr('Uma ponte de teia com {n} dourados. Está firme como corda de viola.', { n: plural(p.n) }) : tr(p.n === proxima ? 'Uma ponte de teia com {n}. Os fios estão esticados, prontos para o peso.' : 'Uma ponte de teia com {n}. Os fios ainda estão frouxos.', { n: plural(p.n) }))); return true; }
     if (M.zv.ch(x, y) === 'c') { cena(() => falar('Um casulo morno, do tamanho de uma jaca. Algo se mexe lá dentro… melhor deixar dormir.')); return true; }
     if (M.zv.ch(x, y) === 'o') { cena(() => falar('Daqui se vê o chão da floresta, lá embaixo, e uma rede de segurança no meio do caminho.')); return true; }
     return false;

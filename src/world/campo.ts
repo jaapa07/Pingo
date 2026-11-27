@@ -4,6 +4,7 @@
  */
 import type { AmuletoId, CriaturaInst, Dir, MetodoEncontro, ItemChao } from '../core/tipos';
 import { TILE } from '../core/tipos';
+import { NOME_TIPO } from '../data/tabela-tipos';
 import { jogo, flag, setFlag, darItem, tirarItem, qtdItem, temAmuleto } from '../core/estado';
 import { rng } from '../core/rng';
 import { bus } from '../core/events';
@@ -20,6 +21,7 @@ import { rodarEvento } from './eventos';
 import { sortear, batalhaSelvagem, tabela } from './encontros';
 import { irPara, zonaDef, atualizarLuz } from './index';
 import { andarJogador, baseDoModo } from './jogador';
+import { t, juntar, tr } from '../i18n';
 
 /** itens-chave que abrem uma tela (os mesmos da Mochila) */
 const TELA_DO_ITEM: Record<string, string> = { 'radio-cipo': 'radio', 'diario-de-campo': 'diario', 'estojo-de-insignias': 'insignias', 'camera-de-bolso': 'foto' };
@@ -62,16 +64,16 @@ export async function pedirAmuleto(id: AmuletoId, pergunta?: string): Promise<Cr
   if (!temAmuleto(id)) { if (a.obst) await falar(a.obst); return null; }
   const c = ajudante(id);
   if (!c) {
-    const tipos = a.tipos ? `do tipo ${a.tipos.map((t) => t[0].toUpperCase() + t.slice(1)).join(', ').replace(/, ([^,]*)$/, ' ou $1')}` : 'com muita amizade';
-    await falar(`${a.obst ? a.obst + '\n' : ''}${a.art === 'a' ? 'A' : 'O'} ${a.nome} precisa de uma criatura ${tipos} na equipe.`);
+    const tipos = a.tipos ? tr('do tipo {tipos}', { tipos: juntar(a.tipos.map((x) => t(NOME_TIPO[x])), 'ou') }) : t('com muita amizade');
+    await falar((a.obst ? t(a.obst) + '\n' : '') + tr(a.art === 'a' ? 'A {amuleto} precisa de uma criatura {tipos} na equipe.' : 'O {amuleto} precisa de uma criatura {tipos} na equipe.', { amuleto: a.nome, tipos }));
     return null;
   }
-  if (!(await simNao(pergunta ?? `Usar ${a.art} ${a.nome}?`))) return null;
+  if (!(await simNao(pergunta ?? tr('Usar {art} {nome}?', { art: a.art, nome: a.nome })))) return null;
   return c;
 }
 /** a criatura ajudante salta do jogador até o alvo, faz a ação e volta */
 export async function animarAjudante(c: CriaturaInst, id: AmuletoId, dir: Dir, efeito?: () => void) {
-  avisar(`${nomeCriatura(c)} usou ${AMULETOS[id].art} ${AMULETOS[id].nome}!`);
+  avisar(tr('{n} usou {art} {amuleto}!', { n: nomeCriatura(c), art: AMULETOS[id].art, amuleto: AMULETOS[id].nome }));
   bus.emit('amuleto-usado', { id, especie: c.especie });
   const a = new Ator('c:' + (especie(c.especie)?.id ?? 'especie-' + c.especie), M.cena.sprites, M.jog.x, M.jog.y, dir);
   a.solido = false; M.extras.push(a);
@@ -98,7 +100,7 @@ async function ativarForca(d: Dir) {
   const c = await pedirAmuleto('forca'); if (!c) return;
   await animarAjudante(c, 'forca', d, () => { sfx('empurrar'); M.cena.tremer(6); });
   M.forca = true;
-  await falar(`${nomeCriatura(c)} vai ajudar a empurrar os pedregulhos daqui!`);
+  await falar(tr('{n} vai ajudar a empurrar os pedregulhos daqui!', { n: nomeCriatura(c) }));
 }
 /** empurra o pedregulho 1 tile (com a Força ativa); devolve se moveu */
 export function empurrar(x: number, y: number, d: Dir): boolean {
@@ -121,12 +123,12 @@ async function escalar(d: Dir) {
   const fy = j.y + DY[d] * (n + 1);
   if (!z.chao(j.x, fy) || atorEm(j.x, fy)) { await falar('Não há onde se firmar do outro lado.'); return; }
   const c = await pedirAmuleto('escalar'); if (!c) return;
-  avisar(`${nomeCriatura(c)} usou o Escalar!`); sfx('escalar');
+  avisar(tr('{n} usou o Escalar!', { n: nomeCriatura(c) })); sfx('escalar');
   await andarJogador(d, 14 * (n + 1), { tiles: n + 1, base: 'escalar', semVirar: d === 's' });
 }
 async function embarcar(d: Dir) {
   const c = await pedirAmuleto('remo', 'A água está calma. Usar o Remo?'); if (!c) return false;
-  avisar(`${nomeCriatura(c)} puxa a canoa!`); sfx('remo');
+  avisar(tr('{n} puxa a canoa!', { n: nomeCriatura(c) })); sfx('remo');
   jogo.save.jogador.modo = 'remo';
   await andarJogador(d, 16, { salto: 6, base: 'remar' });
   return true;
@@ -137,7 +139,7 @@ export async function subirCascata() {
   let n = 0; while (z.ch(j.x, j.y - 1 - n) === 'w') n++;
   if (!z.agua(j.x, j.y - 1 - n)) { await falar('Não dá para subir por aqui.'); return; }
   const c = await pedirAmuleto('cachoeira'); if (!c) return;
-  avisar(`${nomeCriatura(c)} usou a Cachoeira!`); sfx('cachoeira');
+  avisar(tr('{n} usou a Cachoeira!', { n: nomeCriatura(c) })); sfx('cachoeira');
   soltar(pixBolha, j.x, j.y - 1, 5);
   await andarJogador('n', 12 * (n + 1), { tiles: n + 1 });
 }
@@ -146,7 +148,7 @@ async function mergulhar() {
   const sobe = !!M.zv.def.submerso;
   if (!w) { await falar(sobe ? 'Não dá para subir à superfície por aqui.' : 'Não há nada para ver lá embaixo.'); return; }
   const c = await pedirAmuleto('mergulho', sobe ? 'Subir à superfície?' : 'A água é funda aqui. Usar o Mergulho?'); if (!c) return;
-  avisar(`${nomeCriatura(c)} usou o Mergulho!`); sfx('mergulho');
+  avisar(tr('{n} usou o Mergulho!', { n: nomeCriatura(c) })); sfx('mergulho');
   soltar(pixBolha, j.x, j.y, 6);
   await quadros(20, (i) => { j.ey = sobe ? -i : i >> 1; });
   j.ey = 0;
@@ -163,7 +165,7 @@ export async function usarAmuleto(id: AmuletoId): Promise<boolean> {
       const destino = typeof r === 'string' ? r : r?.zona;
       const dz = destino ? zonaDef(destino) : undefined;
       if (!dz) return false;
-      avisar(`${nomeCriatura(c)} usou o Voo!`); sfx('voo');
+      avisar(tr('{n} usou o Voo!', { n: nomeCriatura(c) })); sfx('voo');
       await quadros(40, (i) => { M.jog.ey = -i * 4; });
       M.jog.ey = 0; jogo.save.jogador.modo = 'pe';
       const [px, py] = dz.pouso ?? [Math.floor(dz.mapaChars[0].length / 2), Math.floor(dz.mapaChars.length / 2)];
@@ -173,7 +175,7 @@ export async function usarAmuleto(id: AmuletoId): Promise<boolean> {
     if (id === 'faro') {
       const c = await pedirAmuleto('faro', 'Pedir para farejar por perto?'); if (!c) return false;
       const n = farejar(8);
-      await falar(n ? `${nomeCriatura(c)} farejou algo escondido por perto!` : `${nomeCriatura(c)} não sentiu cheiro de nada escondido.`);
+      await falar(n ? tr('{n} farejou algo escondido por perto!', { n: nomeCriatura(c) }) : tr('{n} não sentiu cheiro de nada escondido.', { n: nomeCriatura(c) }));
       return true;
     }
     if (id === 'lampiao') { atualizarLuz(true); return !!ajudante('lampiao'); }
@@ -230,22 +232,22 @@ async function canteiro(x: number, y: number) {
   if (est === 3 && c) {
     const n = rng.int(2, 4);
     delete jogo.save.canteiros[k]; darItem(c.fruto, n); pintarTile(x, y); sfx('item-obtido');
-    await falar(`{JOGADOR} colheu ${n}× ${nomeItem(c.fruto)}!\nA terra ficou fofa de novo.`);
+    await falar(tr('{JOGADOR} colheu {n}× {item}!\nA terra ficou fofa de novo.', { n, item: nomeItem(c.fruto) }));
     return;
   }
-  if (c) { await falar(est === 1 ? `Um brotinho de ${nomeItem(c.fruto)} acabou de nascer.` : `O pé de ${nomeItem(c.fruto)} está crescendo bem. Volte mais tarde.`); return; }
+  if (c) { await falar(est === 1 ? tr('Um brotinho de {item} acabou de nascer.', { item: nomeItem(c.fruto) }) : tr('O pé de {item} está crescendo bem. Volte mais tarde.', { item: nomeItem(c.fruto) })); return; }
   const frutos = Object.keys(jogo.save.mochila).filter(ehFruto);
   if (!frutos.length) { await falar('Um canteiro de terra fofa. Dá para plantar um fruto aqui.'); return; }
   const i = await escolher('Plantar qual fruto?', [...frutos.map(nomeItem), 'Deixar para depois']);
   if (i < 0 || i >= frutos.length) return;
   tirarItem(frutos[i]); jogo.save.canteiros[k] = { fruto: frutos[i], plantado: agoraJogo() }; pintarTile(x, y);
-  await falar(`{JOGADOR} plantou ${nomeItem(frutos[i])}.`);
+  await falar(tr('{JOGADOR} plantou {item}.', { item: nomeItem(frutos[i]) }));
 }
 async function pegar(i: ItemChao) {
   const q = i.qtd ?? 1;
   setFlag(i.flag); darItem(i.item, q); M.cena.tirarProp(kItem(i)); sfx('item-obtido');
   bus.emit('item-obtido', { id: i.item, qtd: q });
-  await falar(`{JOGADOR} achou ${q > 1 ? q + '× ' : ''}${nomeItem(i.item)}!`);
+  await falar(tr(q > 1 ? '{JOGADOR} achou {n}× {item}!' : '{JOGADOR} achou {item}!', { n: q, item: nomeItem(i.item) }));
 }
 
 /* ------------------------------ itens usados no campo ------------------------------ */
@@ -264,7 +266,7 @@ export async function usarItemNoCampo(id: string): Promise<boolean> {
     if (jogo.save.repelente > 0) { await ocupar(() => falar('A fumaça da outra ainda está no ar.')); return false; }
     if (!tirarItem(id)) return false;
     jogo.save.repelente = rep; sfx('ui-ok');
-    await ocupar(() => falar(`{JOGADOR} acendeu a ${nomeItem(id)}.\nAs criaturas mais fracas vão manter distância.`));
+    await ocupar(() => falar(tr('{JOGADOR} acendeu a {item}.\nAs criaturas mais fracas vão manter distância.', { item: nomeItem(id) })));
     return true;
   }
   for (const v of ['velha', 'boa', 'mestra'] as const) if (id === IDS.varas[v]) return ocupar(() => pescar(v));
@@ -279,7 +281,7 @@ export async function atalho() {
     if (TELA_DO_ITEM[reg]) { await ocupar(() => abrirTela(TELA_DO_ITEM[reg])); musica(M.zv.def.musica); return; }
     if (u?.amuleto) { await usarAmuleto(u.amuleto); return; }
     if (await usarItemNoCampo(reg)) return;
-    if (!M.ocupado && reg !== IDS.bike) await ocupar(() => falar(`${nomeItem(reg)} não tem uso aqui.`));
+    if (!M.ocupado && reg !== IDS.bike) await ocupar(() => falar(tr('{item} não tem uso aqui.', { item: nomeItem(reg) })));
     return;
   }
   if (qtdItem(IDS.bike)) { await alternarBike(); return; }
@@ -326,7 +328,7 @@ export function interagir(): Promise<void> {
         // com o Remo e sem criatura de Rio, o aviso vem antes da pergunta da vara: quem pesca uma Piabinha ali mesmo já pode remar
         else if (!vara || temAmuleto('remo')) { await pedirAmuleto('remo'); if (!vara) return; }
       }
-      if (vara && (await simNao(`Pescar com a ${NOME_VARA[vara]}?`))) await pescar(vara);
+      if (vara && (await simNao(tr('Pescar com a {vara}?', { vara: NOME_VARA[vara] })))) await pescar(vara);
     }
   });
 }

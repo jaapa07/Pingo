@@ -15,6 +15,7 @@ import { perguntar, informar, confirmar } from '../componentes/confirmacao';
 import { abrirTela, pedirNome } from '../dialogo';
 import { iconeCriatura, figura, nomeCri, sexoTxt, esp, vidaMaxDe, faixaDica, caixa, rotulo, pix, type Icone, estrelaRara } from './comum';
 import { T } from '../../data/textos-ui';
+import { t, tr } from '../../i18n';
 
 type Area = 'topo' | 'caixa' | 'equipe';
 interface Pos { area: Area; i: number }
@@ -26,7 +27,7 @@ export function criarViveiro(): Tela {
   const el = elTela('ui', 'tela-viveiro', 'fundo-azulejo');
   let cx = Math.max(0, Math.min(15, Number(s.flags['caixa-atual'] ?? 0)));
   let cur: Pos = { area: 'caixa', i: 0 }, pego: Pos | null = null, pegoCx = 0, ocupado = false, viva = true;
-  const nomeCaixa = (i: number) => String(s.flags['caixa:' + i] ?? `Caixa ${i + 1}`);
+  const nomeCaixa = (i: number) => String(s.flags['caixa:' + i] ?? tr('Caixa {n}', { n: i + 1 }));
   const info = moldura('tinta', 108, 84, 2, 2), painelEq = moldura('tinta', 108, 77, 2, 88), topo = moldura('placa', 206, 16, 112, 2), painel = moldura('madeira', 206, 146, 112, 19);
   el.append(info, painelEq, topo, painel);
   const dica = faixaDica(el);
@@ -72,8 +73,8 @@ export function criarViveiro(): Tela {
       figInfo = figura(c.especie, 100, 52, { misterio: !!c.ovo, rara: !!c.rara }); infoDyn.append(em(figInfo.el, 0, 0));
       if (c.rara && !c.ovo) infoDyn.append(em(estrelaRara(), 2, 2)); // Pelagem Rara
       rotulo(infoDyn, `${nomeCri(c)} ${sexoTxt(c)}`, 0, 54, 'creme');
-      if (!c.ovo) { rotulo(infoDyn, `Nv${c.nivel}  ${c.vida}/${vidaMaxDe(c)}`, 0, 65, 'amarelo'); e?.tipos.forEach((t, i) => infoDyn.append(em(iconeTipo(t), 74 + i * 13, 63))); const st = c.vida <= 0 ? 'desmaiado' : c.status; if (st) infoDyn.append(em(iconeStatus(st, true), 90, 54)); }
-    } else rotulo(infoDyn, cur.area === 'topo' ? `${nomeCaixa(cx)}: ${s.viveiro[cx].filter(Boolean).length} de 30 vagas ocupadas.` : 'Vaga livre.', 0, 30, 'cinza', { largura: 100, alinhar: 'centro' });
+      if (!c.ovo) { rotulo(infoDyn, tr('Nv{nivel}  {vida}/{n}', { nivel: c.nivel, vida: c.vida, n: vidaMaxDe(c) }), 0, 65, 'amarelo'); e?.tipos.forEach((t, i) => infoDyn.append(em(iconeTipo(t), 74 + i * 13, 63))); const st = c.vida <= 0 ? 'desmaiado' : c.status; if (st) infoDyn.append(em(iconeStatus(st, true), 90, 54)); }
+    } else rotulo(infoDyn, cur.area === 'topo' ? tr('{cx}: {n} de 30 vagas ocupadas.', { cx: nomeCaixa(cx), n: s.viveiro[cx].filter(Boolean).length }) : 'Vaga livre.', 0, 30, 'cinza', { largura: 100, alinhar: 'centro' });
     dica(pego ? T.viveiro.dicaMover : cur.area === 'topo' ? T.viveiro.dicaTopo : T.viveiro.dica);
   }
   function trocarCaixa(d: number) { cx = (cx + d + 16) % 16; som('ui-mover'); montar(); }
@@ -94,7 +95,7 @@ export function criarViveiro(): Tela {
   async function soltar(p: Pos, c: CriaturaInst) {
     if (c.ovo) { som('ui-erro'); await informar(T.viveiro.soltarOvo); return; }
     if (p.area === 'equipe' && !equipeValida(s.equipe.filter((x) => x !== c))) { som('ui-erro'); await informar(T.viveiro.ultima); return; }
-    if (!(await confirmar(T.viveiro.soltar.replace('{N}', nomeCri(c)), false))) return;
+    if (!(await confirmar(tr(T.viveiro.soltar, { N: nomeCri(c) }), false))) return;
     const nome = nomeCri(c), [x, y] = xy(p);
     if (p.area === 'equipe') s.equipe.splice(p.i, 1); else s.viveiro[cx][p.i] = null;
     montar();
@@ -110,7 +111,7 @@ export function criarViveiro(): Tela {
       if (t < 1.5) return false;
       ator.remove(); folhas.forEach((f) => f.remove()); ok(); return true;
     } }));
-    await informar(T.viveiro.soltou.replace('{N}', nome).replace('{H}', (esp(c.especie)?.habitat ?? 'a mata').replace(/^[A-ZÁÉÍÓÚÂÊÔÃÕÇ]/, (m) => m.toLowerCase())));
+    await informar(tr(T.viveiro.soltou, { N: nome, H: t(esp(c.especie)?.habitat ?? 'a mata').replace(/^[A-ZÁÉÍÓÚÂÊÔÃÕÇ]/, (m) => m.toLowerCase()) }));
   }
   async function acaoTopo() {
     if (ocupado || pego) return; ocupado = true;

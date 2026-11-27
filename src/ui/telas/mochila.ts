@@ -22,6 +22,7 @@ import { abrirTela } from '../dialogo';
 import { faixaDica, itemPedeCriatura, nomeCri, rotulo, caixa } from './comum';
 import { pedirQuantidade } from './quantidade';
 import { T } from '../../data/textos-ui';
+import { t, tr } from '../../i18n';
 
 export interface ArgsMochila { modo?: 'menu' | 'escolher' | 'batalha'; filtro?: 'dar'; titulo?: string }
 export const BOLSOS: Bolso[] = ['itens', 'remedios', 'cuias', 'pergaminhos', 'frutos', 'chave'];
@@ -29,7 +30,7 @@ const TELA_ITEM: Record<string, string> = { 'radio-cipo': 'radio', 'diario-de-ca
 const DE_CAMPO = new Set(['bike-bambu', 'vara-velha', 'vara-boa', 'vara-mestra']);
 const AMULETO_MENU: AmuletoId[] = ['voo', 'faro', 'lampiao'];
 /** encurta com reticências para caber em `w` px */
-export function caber(s: string, w: number): string { if (medir(s) <= w) return s; let r = s; while (r.length > 1 && medir(r + '…') > w) r = r.slice(0, -1); return r.trimEnd() + '…'; }
+export function caber(s: string, w: number): string { s = t(s); if (medir(s) <= w) return s; let r = s; while (r.length > 1 && medir(r + '…') > w) r = r.slice(0, -1); return r.trimEnd() + '…'; }
 export const itemRegistrado = () => String(jogo.save.flags['atalho'] ?? '');
 /** itens de um bolso que o jogador tem, na ordem do catálogo */
 export function itensDoBolso(b: Bolso, fonte: Record<string, number> = jogo.save.mochila): ItemInfo[] { return ITENS.filter((i) => i.bolso === b && (fonte[i.id] ?? 0) > 0); }
@@ -51,7 +52,7 @@ export function criarMochila(args: ArgsMochila = {}): Tela {
 
   function montar(indice = lista?.indice ?? 0) {
     const b = bolsos[abas.indice]; ultimoBolso = abas.indice;
-    escrever(titulo, (args.titulo ? args.titulo + ' · ' : '') + NOME_BOLSO[b].toUpperCase());
+    escrever(titulo, (args.titulo ? t(args.titulo) + ' · ' : '') + t(NOME_BOLSO[b]).toUpperCase());
     atuais = itensDoBolso(b).filter(serve);
     lista?.el.remove();
     const reg = itemRegistrado();
@@ -74,9 +75,9 @@ export function criarMochila(args: ArgsMochila = {}): Tela {
     const y = Math.max(20, parseInt(n.style.height) + 6);
     const d = rotulo(corpo, it.desc, 0, y, 'creme', { largura: 118 });
     let yy = y + parseInt(d.style.height) + 6;
-    if (it.bolso !== 'chave' && yy <= 122) { rotulo(corpo, `Na mochila: {c:amarelo}×${qtdItem(it.id)}{/c}`, 0, yy, 'cinza'); yy += 10; }
+    if (it.bolso !== 'chave' && yy <= 122) { rotulo(corpo, tr('Na mochila: {c:amarelo}×{qtd}{/c}', { qtd: qtdItem(it.id) }), 0, yy, 'cinza'); yy += 10; }
     if (it.id === itemRegistrado() && yy <= 122) rotulo(corpo, 'No botão SELECT', 0, yy, 'agua');
-    else if (it.preco > 0 && it.bolso !== 'chave' && yy <= 122) rotulo(corpo, `Venda: ${Math.floor(it.preco / 2)} patacas`, 0, yy, 'cinza');
+    else if (it.preco > 0 && it.bolso !== 'chave' && yy <= 122) rotulo(corpo, tr('Venda: {preco} patacas', { preco: Math.floor(it.preco / 2) }), 0, yy, 'cinza');
   }
   function sair() { fechar(tela, modo === 'menu' ? undefined : null); }
 
@@ -94,7 +95,7 @@ export function criarMochila(args: ArgsMochila = {}): Tela {
     if (u?.repelente) {
       if (jogo.save.repelente > 0) { som('ui-erro'); await informar(T.mochila.repelenteAtivo); return; }
       tirarItem(it.id); jogo.save.repelente = u.repelente; som('ui-ok');
-      await informar(`${jogo.save.jogador.nome} acendeu a ${it.nome}. Por ${u.repelente} passos, as criaturas mais fracas vão manter distância.`); return;
+      await informar(tr('{jogador} acendeu a {item}. Por {repelente} passos, as criaturas mais fracas vão manter distância.', { jogador: jogo.save.jogador.nome, item: it.nome, repelente: u.repelente })); return;
     }
     if (DE_CAMPO.has(it.id)) { fechar(tela, { campo: it.id }); return; }
     if (u?.amuleto) { fechar(tela, { amuleto: u.amuleto }); return; }
@@ -104,15 +105,15 @@ export function criarMochila(args: ArgsMochila = {}): Tela {
     const i = (await abrirTela('equipe', { modo: 'escolher', titulo: 'DAR A QUEM?', pode: (c: { ovo?: number }) => (c.ovo ? 'Um ovo não segura itens.' : true) })) as number;
     const c = jogo.save.equipe[i]; if (!c || !tirarItem(it.id)) return;
     const velho = c.item; c.item = it.id; if (velho) darItem(velho);
-    await informar(velho ? `${nomeCri(c)} trocou ${itemDef(velho).nome} por ${it.nome}.` : `${nomeCri(c)} agora segura ${it.nome}.`);
+    await informar(velho ? tr('{n} trocou {velho} por {item}.', { n: nomeCri(c), velho: itemDef(velho).nome, item: it.nome }) : tr('{n} agora segura {item}.', { n: nomeCri(c), item: it.nome }));
   }
   async function descartar(it: ItemInfo) {
     const q = await pedirQuantidade(`Descartar quantos?`, qtdItem(it.id)); if (!q) return;
-    if (await confirmar(`Jogar fora ${q}× ${it.nome}?`, false)) { tirarItem(it.id, q); som('ui-ok'); }
+    if (await confirmar(tr('Jogar fora {n}× {item}?', { n: q, item: it.nome }), false)) { tirarItem(it.id, q); som('ui-ok'); }
   }
   async function registrar(it: ItemInfo) {
-    if (itemRegistrado() === it.id) { delete jogo.save.flags['atalho']; await informar(`${it.nome} ${T.mochila.desregistrado}`); }
-    else { jogo.save.flags['atalho'] = it.id; som('ui-ok'); await informar(`${it.nome} ${T.mochila.registrado}`); }
+    if (itemRegistrado() === it.id) { delete jogo.save.flags['atalho']; await informar(tr('{item} {acao}', { item: it.nome, acao: T.mochila.desregistrado })); }
+    else { jogo.save.flags['atalho'] = it.id; som('ui-ok'); await informar(tr('{item} {acao}', { item: it.nome, acao: T.mochila.registrado })); }
   }
   async function escolher(it: ItemInfo | undefined) {
     if (!it || ocupado) return;

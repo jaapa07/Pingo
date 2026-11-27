@@ -10,6 +10,7 @@ import { moldura, fileiraInsignias, fmtTempo, som } from '../kit';
 import { abrirTela } from '../dialogo';
 import { faixaDica, placaTitulo, caixa, rotulo, patacas, TOTAL_DIARIO } from './comum';
 import { nomeLocal } from './mapa-dados';
+import { tr } from '../../i18n';
 
 export function criarPerfil(): Tela {
   const s = jogo.save, j = s.jogador;
@@ -25,10 +26,10 @@ export function criarPerfil(): Tela {
   if (m) { spr = new Sprite(j.avatar, vista(j.avatar, 'batalha') ? 'batalha' : 'retrato', rec); spr.x = m.px + Math.floor((68 - m.cw) / 2); spr.y = m.py + Math.floor((68 - m.ch) / 2); spr.tocar(spr.tem('idle') ? 'idle' : 'neutro'); spr.desenhar(); }
   const linha = (rot: string, val: string, y: number) => { rotulo(papel, rot, 90, y, 'marrom'); rotulo(papel, val, 150, y, 'tinta', { largura: 130, alinhar: 'dir' }); const l = caixa('linha-div', 190, 1); papel.append(em(l, 90, y + 10)); };
   linha('Nome', j.nome, 24); linha('Patacas', patacas(j.dinheiro), 37); linha('Tempo de jogo', fmtTempo(s.tempoJogo), 50);
-  linha('Diário', `${s.diario.capturado.filter((n) => n <= 180).length} capturadas de ${TOTAL_DIARIO}`, 63); linha('Avistadas', String(s.diario.visto.filter((n) => n <= 180).length), 76);
-  linha('Amuletos de Campo', `${s.amuletos.length} de 10`, 89);
+  linha('Diário', tr('{n} capturadas de {TOTAL_DIARIO}', { n: s.diario.capturado.filter((n) => n <= 180).length, TOTAL_DIARIO }), 63); linha('Avistadas', String(s.diario.visto.filter((n) => n <= 180).length), 76);
+  linha('Amuletos de Campo', tr('{n} de 10', { n: s.amuletos.length }), 89);
   rotulo(papel, nomeLocal(j.zona), 6, 101, 'chumbo', { largura: 76, alinhar: 'centro' });
-  rotulo(papel, `Insígnias ${s.insignias.length}/16`, 90, 105, 'marrom');
+  rotulo(papel, tr('Insígnias {n}/16', { n: s.insignias.length }), 90, 105, 'marrom');
   const fil = fileiraInsignias(s.insignias, 16, 17); papel.append(em(fil, 10, 121));
   const bt = moldura('botao-foco', 52, 14); bt.append(em(texto('A: Estojo', { cor: 'tinta' }), 5, 3)); papel.append(em(bt, 228, 105)); tocavel(bt, () => void estojo());
   faixaDica(el)('A: estojo de insígnias   B: voltar');

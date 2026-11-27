@@ -7,6 +7,7 @@
 import { input, tocavel } from '../../core/input';
 import { em, medir, texto } from '../fonte';
 import { moldura, som } from '../kit';
+import { t } from '../../i18n';
 
 export interface OpVoltar {
   /** texto depois do ◀ (padrão "Voltar") */
@@ -20,10 +21,10 @@ export interface OpVoltar {
 }
 
 /** largura do botão para um rótulo */
-export const larguraVoltar = (rotulo = 'Voltar') => medir('◀ ' + rotulo) + 12;
+export const larguraVoltar = (rotulo = 'Voltar') => medir('◀ ' + t(rotulo)) + 12;
 
 export function botaoVoltar(o: OpVoltar = {}): HTMLElement {
-  const rot = '◀ ' + (o.rotulo ?? 'Voltar'), h = o.altura ?? 14, w = larguraVoltar(o.rotulo);
+  const rot = '◀ ' + t(o.rotulo ?? 'Voltar'), h = o.altura ?? 14, w = larguraVoltar(o.rotulo);
   const el = moldura('botao', w, h); el.classList.add('voltar-toque');
   el.append(em(texto(rot, { cor: 'tinta' }), 6, Math.floor((h - 8) / 2)));
   const [fe, fc, fd, fb] = o.folga ?? [4, 4, 4, 4];
@@ -42,7 +43,8 @@ export function botaoVoltar(o: OpVoltar = {}): HTMLElement {
  * esse trecho como botão tocável. "A ou B: fechar" fica como está (o B não é o único jeito).
  */
 export function separarDicaB(s: string): [resto: string, rotulo: string | null] {
-  const m = /(^|\s)(?<!ou )B: ([A-Za-zÀ-ú]+)[^]*?(?=\s{2,}|$)/.exec(s);
+  s = t(s); // traduz a dica inteira antes de separar (docs/I18N.md)
+  const m = /(^|\s)(?<!ou |or )B: ([A-Za-zÀ-ú]+)[^]*?(?=\s{2,}|$)/.exec(s);
   if (!m) return [s, null];
   const palavra = m[2];
   const resto = (s.slice(0, m.index) + s.slice(m.index + m[0].length)).replace(/\s+$/, '').replace(/^\s+/, '');

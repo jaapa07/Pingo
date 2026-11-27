@@ -8,6 +8,7 @@
 import type { EventoDef, Comando } from '../../core/tipos';
 import { jogo, setFlag, diaSemana, estacaoFria } from '../../core/estado';
 import { registrarComando } from '../../world/registro';
+import { t, tr } from '../../i18n';
 import './comuns'; // comandos extras: temItens, temEspecie, grito…
 
 /** marca `hoje-sexta` (relógio do jogo) e `estacao-fria` para os roteiros que dependem do calendário */
@@ -21,7 +22,7 @@ registrarComando('a2-registro', async () => {
     if (c.ovo) { await falar('Esse aí ainda é ovo. Ovo eu registro quando nascer, que eu não sou de adivinhar.', quem); continue; }
     const onde = c.localCaptura ?? 'um lugar que nem o caderno sabe', nv = c.nivelCaptura ?? c.nivel;
     const cresceu = c.nivel - nv;
-    await falar(`${nomeCriatura(c)}: conheceu você em ${onde}, no nível ${nv}.\n${cresceu >= 20 ? 'Cresceu que foi uma beleza! Isso é comida boa e batalha honesta.' : cresceu >= 5 ? 'Já engordou uns níveis. Está no caminho.' : 'Ainda está com cheirinho de capim novo.'}`, quem);
+    await falar(tr('{nome}: conheceu você em {onde}, no nível {nivel}.', { nome: nomeCriatura(c), onde, nivel: nv }) + '\n' + t(cresceu >= 20 ? 'Cresceu que foi uma beleza! Isso é comida boa e batalha honesta.' : cresceu >= 5 ? 'Já engordou uns níveis. Está no caminho.' : 'Ainda está com cheirinho de capim novo.'), quem);
   }
 });
 

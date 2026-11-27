@@ -10,6 +10,7 @@ import type { ArgsTelaEvolucao } from './index';
 import { especie, nomeDe, temEspecie } from './criatura';
 import { Cena, precarregarFx } from './view/cena';
 import { Ator, div } from './view/palco';
+import { tr } from '../i18n';
 
 const som = (id: string) => bus.emit('sfx', { id });
 
@@ -34,7 +35,7 @@ export function criarTelaEvolucao(args: ArgsTelaEvolucao): Tela {
     await precarregarFx();
     await rel.entre(0.4, (k) => { el.style.opacity = String(Math.round(k * 4) / 4); });
     bus.emit('musica', 'evolucao');
-    await dizer(`O quê?\n${nome} está evoluindo!`, 1.6);
+    await dizer(tr('O quê?\n{nome} está evoluindo!', { nome }), 1.6);
     som('evolucao');
     velha.branco = nova.branco = true;
     fundo.classList.add('aceso');
@@ -53,7 +54,7 @@ export function criarTelaEvolucao(args: ArgsTelaEvolucao): Tela {
     if (cancelou) {
       som('evolucao-cancelada');
       nova.visivel = false; velha.visivel = true; velha.branco = false; fundo.classList.remove('aceso');
-      await dizer(`Hã? ${nome} parou de evoluir!`, 2.4);
+      await dizer(tr('Hã? {nome} parou de evoluir!', { nome }), 2.4);
       await rel.entre(0.3, (k) => { el.style.opacity = String(1 - Math.round(k * 4) / 4); });
       concluir(true); return;
     }
@@ -67,7 +68,7 @@ export function criarTelaEvolucao(args: ArgsTelaEvolucao): Tela {
     bus.emit('grito', args.para); bus.emit('jingle', 'vitoria-lider');
     if (nova.tem('entrada')) await nova.tocar('entrada');
     for (const dx of [-28, 24, -8]) { cena.fx('st-brilho', X + dx, Y - 50 + (dx % 9)); await rel.dormir(0.12); }
-    await dizer(`Parabéns! ${nome} evoluiu para ${nomeNovo}!`, 4);
+    await dizer(tr('Parabéns! {nome} evoluiu para {nomeNovo}!', { nome, nomeNovo }), 4);
     await rel.entre(0.3, (k) => { el.style.opacity = String(1 - Math.round(k * 4) / 4); });
     concluir(false);
   }

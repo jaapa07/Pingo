@@ -19,6 +19,7 @@ import { perguntar, informar, confirmar } from '../componentes/confirmacao';
 import { faixaDica, caixa, iconeCriatura, nomeEsp, placaTitulo, rotulo } from './comum';
 import { local, baseZona, nomeLocal } from './mapa-dados';
 import { T } from '../../data/textos-ui';
+import { t, tr } from '../../i18n';
 
 export interface Foto { z: string; p: Periodo; f: string; e: number; a: 'kaue' | 'ayra'; d: number }
 export const FILTROS: { id: string; nome: string; css: string }[] = [
@@ -74,7 +75,7 @@ export function criarFoto(): Tela {
     const f = agora(); bus.emit('foto', { zona: f.z, local: baseZona(f.z), periodo: f.p, filtro: f.f, especie: f.e });
     await new Promise<void>((r) => { espera = r; });
     const a = lerAlbum();
-    if (await confirmar(T.foto.guardar)) { if (a.length >= MAX) await informar(T.foto.cheio); else { a.push(f); gravarAlbum(a); som('item-obtido'); await informar(`Foto guardada! O álbum tem ${a.length} de ${MAX}.`); } }
+    if (await confirmar(T.foto.guardar)) { if (a.length >= MAX) await informar(T.foto.cheio); else { a.push(f); gravarAlbum(a); som('item-obtido'); await informar(tr('Foto guardada! O álbum tem {n} de {MAX}.', { n: a.length, MAX })); } }
     ocupado = false;
   }
   let espera: (() => void) | null = null, anim: Sprite[] = [];
@@ -89,12 +90,12 @@ export function criarFoto(): Tela {
     const a = lerAlbum(); if (!a.length) { fecharAlbum(); return; }
     ind = Math.max(0, Math.min(a.length - 1, ind)); pagina = Math.floor(ind / 6);
     const cx = (album = caixa('fundo-roxo', 320, 164)); el.insertBefore(cx, clarao);
-    placaTitulo(cx, `ÁLBUM  ${a.length}/${MAX}`, 2, 1, 130);
-    const paginas = Math.ceil(a.length / 6); rotulo(cx, `Página ${pagina + 1} de ${paginas}`, 200, 5, 'creme', { largura: 114, alinhar: 'dir' });
+    placaTitulo(cx, tr('ÁLBUM  {n}/{MAX}', { n: a.length, MAX }), 2, 1, 130);
+    const paginas = Math.ceil(a.length / 6); rotulo(cx, tr('Página {pagina} de {paginas}', { pagina: pagina + 1, paginas }), 200, 5, 'creme', { largura: 114, alinhar: 'dir' });
     const fotos = a.slice(pagina * 6, pagina * 6 + 6);
     const cels = fotos.map((f) => { const m = moldura('tinta', 100, 62); const c = cartao(f, 92, 54); m.append(em(c.el, 4, 4)); anim.push(...c.sprites); return m; });
     const legenda = texto('', { cor: 'creme', largura: 312, alinhar: 'centro' }); cx.append(em(legenda, 4, 152));
-    const pintar = () => { const f = fotos[grade!.indice]; escrever(legenda, `${nomeLocal(f.z)} · ${{ manha: 'manhã', dia: 'dia', tarde: 'tarde', noite: 'noite' }[f.p]} · ${FILTROS.find((x) => x.id === f.f)?.nome ?? ''}${f.e ? ' · com ' + nomeEsp(f.e) : ''}`); };
+    const pintar = () => { const f = fotos[grade!.indice]; escrever(legenda, `${nomeLocal(f.z)} · ${t({ manha: 'manhã', dia: 'dia', tarde: 'tarde', noite: 'noite' }[f.p])} · ${t(FILTROS.find((x) => x.id === f.f)?.nome ?? '')}${f.e ? ' · ' + tr('com {nome}', { nome: nomeEsp(f.e) }) : ''}`); };
     grade = new Grade({ colunas: 3, celulas: cels, w: 100, h: 62, vao: 4, x: 6, y: 20, inicial: ind - pagina * 6, aoMover: pintar, aoCancelar: fecharAlbum,
       aoSair: (lado) => { if (lado === 'dir' && pagina + 1 < paginas) { montarAlbum((pagina + 1) * 6); return true; } if (lado === 'esq' && pagina > 0) { montarAlbum(pagina * 6 - 1); return true; } },
       aoEscolher: (i) => { if (ocupado) return; ocupado = true; void perguntar('O que fazer com a foto?', ['Apagar', 'Voltar'], 1).then(async (op) => { if (op === 0 && (await confirmar(T.foto.apagar, false))) { const b = lerAlbum(); b.splice(pagina * 6 + i, 1); gravarAlbum(b); montarAlbum(pagina * 6 + i); } ocupado = false; }); } });

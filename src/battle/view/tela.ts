@@ -22,6 +22,7 @@ import { precarregarFx, temFx, type Fx } from './cena';
 import { Palco, div, type Ator } from './palco';
 import { Bolinhas, CaixaStatus, fracExp, numeroDano, painel } from './hud';
 import { menuAcao, menuAlvo, menuEquipe, menuGolpeDe, menuGolpes, menuMochila, menuOpcoes, type InfoEficacia, type Modal } from './menus';
+import { tr } from '../../i18n';
 
 type Vis = ResumoCriatura;
 const som = (id: string, o: { pitch?: number; vol?: number } = {}) => bus.emit('sfx', { id, ...o });
@@ -297,7 +298,7 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
         if (v.vida > 0) v.vida = Math.min(e.depois.vida, v.vida + (e.depois.vida - e.antes.vida)); v.vidaMax = e.depois.vida;
         som('subir-nivel');
         const quadro = painel(104, 70, 'bt-nivel'); em(quadro.el, 212, 24);
-        (Object.keys(NOME_ST) as Stat[]).forEach((s, i) => { quadro.miolo.append(em(texto(NOME_ST[s], { cor: 'tinta' }), 5, 4 + i * 10)); const t = texto(`${e.depois[s]} {c:verde}+${e.depois[s] - e.antes[s]}{/c}`, { cor: 'tinta' }); quadro.miolo.append(em(t, 98 - parseInt(t.style.width), 4 + i * 10)); });
+        (Object.keys(NOME_ST) as Stat[]).forEach((s, i) => { quadro.miolo.append(em(texto(NOME_ST[s], { cor: 'tinta' }), 5, 4 + i * 10)); const t = texto(`${e.depois[s]} {c:verde}+${e.depois[s] - e.antes[s]}{/c}`, { cor: 'tinta' }); quadro.miolo.append(em(t, 98 - parseInt(t.style.width), 4 + i * 10)); }); // i18n-ok
         const temMsg = adiantarMsg();
         if (p && p.lado === 0) {
           const cx = caixas[0][p.pos]; cx.nivel(e.nivel); cx.vida(v.vida, v.vidaMax, false); cx.exp(0, false);
@@ -313,9 +314,9 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
       case 'golpe-pendente': {
         const c = inst.get(e.uid); if (!c || !temGolpe(e.golpe)) return;
         const g = defGolpe(e.golpe), nome = vis.get(e.uid)?.nome ?? '';
-        await dizer(`${nome} quer aprender ${g.nome}, mas já sabe quatro golpes.`, 1.6);
+        await dizer(tr('{nome} quer aprender {golpe}, mas já sabe quatro golpes.', { nome, golpe: g.nome }), 1.6);
         for (;;) {
-          if (!(await simNao(`Esquecer um golpe para aprender ${g.nome}?`))) { if (await simNao(`Desistir de aprender ${g.nome}?`)) { fila.unshift(...controle.aprender(e.uid, e.golpe, -1)); return; } continue; }
+          if (!(await simNao(tr('Esquecer um golpe para aprender {golpe}?', { golpe: g.nome })))) { if (await simNao(tr('Desistir de aprender {golpe}?', { golpe: g.nome }))) { fila.unshift(...controle.aprender(e.uid, e.golpe, -1)); return; } continue; }
           caixa.el.style.visibility = 'hidden';
           const slot = await abrir<number>((f) => menuGolpeDe({ c, titulo: 'Qual golpe esquecer?', novo: e.golpe, aoEscolher: f }));
           caixa.el.style.visibility = '';
@@ -385,20 +386,20 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
     } else if (r === 'derrota') {
       bus.emit('musica', 'derrota');
       await rel.entre(0.5, (k) => { palco.penumbra.style.background = '#1a1423'; palco.penumbra.style.opacity = String(Math.round(k * 4) / 4 * 0.8); });
-      await dizer(`${jogo.save.jogador.nome} ficou sem ação… Tudo escureceu!`, 2.2);
+      await dizer(tr('{jogador} ficou sem ação… Tudo escureceu!', { jogador: jogo.save.jogador.nome }), 2.2);
     }
   }
   async function encerramento() {
     encerrando = true;
     if (controle.resultado === 'captura' && b.capturada) {
       const c = b.capturada, nome = especie(c.especie).nome;
-      if (!jaCapturadas.has(c.especie)) { som('diario-registro'); await dizer(`Os dados de ${nome} foram registrados no Diário de Campo.`, 2); }
-      if (await simNao(`Quer dar um apelido a ${nome}?`)) {
-        const apelido = (await pedirNome(`Apelido de ${nome}?`, 10, '')).trim();
+      if (!jaCapturadas.has(c.especie)) { som('diario-registro'); await dizer(tr('Os dados de {nome} foram registrados no Diário de Campo.', { nome }), 2); }
+      if (await simNao(tr('Quer dar um apelido a {nome}?', { nome }))) {
+        const apelido = (await pedirNome(tr('Apelido de {nome}?', { nome }), 10, '')).trim();
         if (apelido && apelido !== nome) c.apelido = apelido;
       }
       const cheia = jogo.save.equipe.length >= 6, vaga = jogo.save.viveiro.some((cx) => cx.includes(null));
-      await dizer(!cheia ? `${c.apelido || nome} entrou para a sua equipe!` : vaga ? `A equipe está cheia. ${c.apelido || nome} foi enviado ao Viveiro de Cuias.` : `A equipe e o Viveiro estão cheios! ${c.apelido || nome} não pôde ficar.`, 2.4);
+      await dizer(!cheia ? tr('{apelido} entrou para a sua equipe!', { apelido: c.apelido || nome }) : vaga ? tr('A equipe está cheia. {apelido} foi enviado ao Viveiro de Cuias.', { apelido: c.apelido || nome }) : tr('A equipe e o Viveiro estão cheios! {apelido} não pôde ficar.', { apelido: c.apelido || nome }), 2.4);
     }
     caixa.mostrarSeta(false);
     await rel.entre(0.4, (k) => abrirCortina(1 - k));
@@ -436,7 +437,7 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
     for (;;) {
       const guia = faseTutorial();
       if (guia && guia !== guiaDita) { guiaDita = guia; await dizer(guia === 'lutar' ? 'Guia de captura, passo 1: escolha LUTAR e canse a criatura selvagem. Cansada, ela resiste menos à cuia.' : 'Passo 2: a criatura cansou! Abra a MOCHILA, vá ao bolso Cuias e arremesse uma cuia.', 4); }
-      mostrar(`O que\n${nome} vai fazer?`); caixa.completar();
+      mostrar(tr('O que\n{nome} vai fazer?', { nome })); caixa.completar();
       const a = await abrir<string>((f) => { const m = menuAcao({ fugir: 'FUGIR', voltar: podeVoltar, aoEscolher: f }); em(m.el, 178, 135); return m; });
       if (a === 'voltar') return 'voltar';
       if (guia === 'lutar' && a !== 'lutar') { som('ui-erro'); await dizer('Ainda não: primeiro use LUTAR para cansar a criatura.', 2); continue; }
@@ -463,7 +464,7 @@ export function criarTelaBatalha(args: ArgsTelaBatalha): Tela {
         const u = defItem(id).uso ?? {};
         if (guia === 'cuia' && !u.cuia) { som('ui-erro'); await dizer('Esse não: escolha uma cuia no bolso Cuias.', 2); continue; }
         if (u.cuia) return { tipo: 'item', item: id };
-        const alvo = await telaEquipe(`USAR ${defItem(id).nome.toUpperCase()}`, (i) => (b.itemServe(0, id, i) ? true : 'Não teria efeito.'));
+        const alvo = await telaEquipe(tr('Usar {item}', { item: defItem(id).nome }).toUpperCase(), (i) => (b.itemServe(0, id, i) ? true : 'Não teria efeito.'));
         if (alvo < 0) continue;
         if (u.pg && !u.pgTodos) {
           const slot = await abrir<number>((f) => menuGolpeDe({ c: b.lados[0].equipe[alvo], titulo: 'Recuperar PG de qual golpe?', aoEscolher: f }));

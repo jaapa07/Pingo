@@ -26,6 +26,7 @@ import { quebrar, texto as txtFonte } from '../fonte';
 import { caber } from './mochila';
 import { NOTICIAS, FAIXAS_RADIO, RECADOS_SEMANA, FALAS_CONTATO } from '../../data/radio';
 import { T } from '../../data/textos-ui';
+import { t as traduz, tr } from '../../i18n';
 
 /**
  * o papel de `lerCarta` (pc-quarto.ts) tem espaço para poucas linhas: textos longos do rádio (agenda do dia, cantigas)
@@ -56,7 +57,7 @@ export function criarRadio(): Tela {
   const cartao = (s.mochila['cartao-radio'] ?? 0) > 0;
   const ops = ['Agenda do dia', 'Contatos', 'Revanches', 'Bicho do Dia', 'Hora da Música', 'Notícias', 'Recado do dia', ...(cartao ? ['Cantiga das Lendas'] : []), 'Mapa', 'Desligar'];
   const fase = (): Fase => faseDoProgresso(s.insignias.length, s.flags);
-  const agendaHoje = () => agendaDoDia({ dia: diaSemana(), periodo: periodo(), liga: !!flag('liga-vencida'), contatos: contatos().filter((t) => podeHoje(t)).map((t) => `${t.classe} ${t.nome}`), enxame: enxameHoje(), cartao, mergulho: s.amuletos.includes('mergulho') });
+  const agendaHoje = () => agendaDoDia({ dia: diaSemana(), periodo: periodo(), liga: !!flag('liga-vencida'), contatos: contatos().filter((t) => podeHoje(t)).map((t) => tr('{classe} {nome}', { classe: t.classe, nome: t.nome })), enxame: enxameHoje(), cartao, mergulho: s.amuletos.includes('mergulho') });
   const enxameHoje = () => { const e = enxameDoDia(todasZonas(), diaDoAno(), MAPA_B_ABERTO); return e ? { local: e.zona.nome, especie: s.diario.visto.includes(e.e) ? nomeEsp(e.e) : '' } : null; };
   const ehRival = (t: TreinadorDef) => /^rival-/.test(t.id);
   /** pode lutar hoje: no dia e período da agenda, sem revanche hoje; líder só depois da Liga */
@@ -72,17 +73,17 @@ export function criarRadio(): Tela {
   function pintar() {
     corpo.replaceChildren();
     const i = lista.indice;
-    rotulo(corpo, ops[i].toUpperCase(), 0, 0, 'amarelo', { sombra: true });
+    rotulo(corpo, traduz(ops[i]).toUpperCase(), 0, 0, 'amarelo', { sombra: true });
     const op = ops[i];
-    const txt = op === 'Agenda do dia' ? `${agendaHoje().resumo}\n\nA: ouvir tudo`
-      : op === 'Revanches' ? `Quem aceita revanche em cada dia da semana. Hoje: {c:amarelo}${contatos().filter(podeHoje).length}{/c} disponível(is).`
+    const txt = op === 'Agenda do dia' ? tr('{resumo}\n\nA: ouvir tudo', { resumo: agendaHoje().resumo })
+      : op === 'Revanches' ? tr('Quem aceita revanche em cada dia da semana. Hoje: {c:amarelo}{n}{/c} disponível(is).', { n: contatos().filter(podeHoje).length })
       : op === 'Cantiga das Lendas' ? 'Programa do Cartão do Rádio: as cantigas antigas sobre as criaturas lendárias de Pingorama.'
       : [
-      `Ligue para treinadores que deixaram o número. Contatos: {c:amarelo}${contatos().length}{/c}`,
-      `Onde andam as criaturas raras nesta ${NOME_PER[periodo()]}. O programa muda todo dia.`,
-      tocando ? `Tocando agora: {c:verde}${FAIXAS_RADIO.find((f) => f.id === tocando)?.nome ?? tocando}{/c} ♪` : 'Escolha uma faixa. Ao desligar o rádio, volta a música do lugar.',
-      `O que se sabe do Cartel Ferrugem. Última: {c:amarelo}${noticias()[0]?.titulo ?? '—'}{/c}`,
-      `Hoje é ${hoje()}.\n\n${RECADOS_SEMANA[diaSemana()]}`,
+      tr('Ligue para treinadores que deixaram o número. Contatos: {c:amarelo}{n}{/c}', { n: contatos().length }),
+      tr('Onde andam as criaturas raras nesta {periodo}. O programa muda todo dia.', { periodo: NOME_PER[periodo()] }),
+      tocando ? tr('Tocando agora: {c:verde}{tocando}{/c} ♪', { tocando: FAIXAS_RADIO.find((f) => f.id === tocando)?.nome ?? tocando }) : 'Escolha uma faixa. Ao desligar o rádio, volta a música do lugar.',
+      tr('O que se sabe do Cartel Ferrugem. Última: {c:amarelo}{titulo}{/c}', { titulo: noticias()[0]?.titulo ?? '—' }),
+      tr('Hoje é {hoje}.\n\n{diaSemana}', { hoje: hoje(), diaSemana: RECADOS_SEMANA[diaSemana()] }),
       'O mapa de Pingorama: Costa do Sol e Sertão das Névoas.', 'Desliga o rádio.',
     ][['Contatos', 'Bicho do Dia', 'Hora da Música', 'Notícias', 'Recado do dia', 'Mapa', 'Desligar'].indexOf(op)];
     rotulo(corpo, txt, 0, 14, 'creme', { largura: 150 });
@@ -90,17 +91,17 @@ export function criarRadio(): Tela {
   async function ligar(t: TreinadorDef) {
     const quem = { nome: t.nome, retrato: t.sprite }, F = FALAS_CONTATO, k = (t.id.length + diaDoAno()) % 4;
     som('radio');
-    await falar(`${F.atende[k].replace('{N}', t.nome)}\f${t.depois ?? F.conversa[(k + t.nome.length) % 4]}`, quem);
+    await falar(tr(F.atende[k], { N: t.nome }) + '\f' + traduz(t.depois ?? F.conversa[(k + t.nome.length) % 4]), quem);
     // rival: não luta pelo rádio; conta onde treina (item 27)
-    if (ehRival(t)) { await falar(flag('liga-vencida') ? F.rival.replace('{L}', RIVAL_SEMANAL.lugar) : F.rivalAntes, quem); return; }
+    if (ehRival(t)) { await falar(flag('liga-vencida') ? tr(F.rival, { L: RIVAL_SEMANAL.lugar }) : F.rivalAntes, quem); return; }
     if (t.insignia && !liberado(t)) { await falar(t.insignia <= 8 ? F.lider : F.liderSertao, quem); return; }
-    const ag = agendaDe(t), quando = `${NOME_DIA_LONGO[ag.dia]}, ${NOME_PERIODO[ag.periodo]}`;
+    const ag = agendaDe(t), quando = `${traduz(NOME_DIA_LONGO[ag.dia])}, ${traduz(NOME_PERIODO[ag.periodo])}`;
     if (Number(s.flags['revanche:' + t.id] ?? -1) === diaDoAno()) { await falar(T.radio.revancheHoje, quem); return; }
-    if (!naAgenda(ag, diaSemana(), periodo())) { await falar(F.foraDaAgenda.replace('{Q}', quando), quem); return; }
+    if (!naAgenda(ag, diaSemana(), periodo())) { await falar(tr(F.foraDaAgenda, { Q: quando }), quem); return; }
     // líder: marca a revanche no Ginásio de Treino (item 25); a luta é lá, hoje
     if (t.insignia) {
-      if (s.flags['treino:' + t.id] === diaDoAno()) { await falar(F.treinoMarcado.replace('{G}', TREINO.nome), quem); return; }
-      await falar(F.treino.replace('{G}', TREINO.nome).replace('{L}', agendaLider(t.id)?.lugar ?? ''), quem);
+      if (s.flags['treino:' + t.id] === diaDoAno()) { await falar(tr(F.treinoMarcado, { G: TREINO.nome }), quem); return; }
+      await falar(tr(F.treino, { G: TREINO.nome, L: agendaLider(t.id)?.lugar ?? '' }), quem);
       s.flags['treino:' + t.id] = diaDoAno(); s.flags['treino-hoje:' + t.id] = true;
       return;
     }
@@ -112,7 +113,7 @@ export function criarRadio(): Tela {
     const r = await iniciarBatalha({ tipo: 'treinador', treinador: forte, inimigos: forte.equipe.map((m) => criarDeMembro(m, t.nome)), arena: zona(s.jogador.zona)?.arena ?? 'campo' });
     const mz = zona(s.jogador.zona)?.musica; if (mz) bus.emit('musica', mz);
     if (r.resultado === 'vitoria') s.flags['revanche-venceu:' + t.id] = true;
-    if (r.resultado === 'vitoria') await falar(`${F.venceu}\fO prêmio da revanche foi de ${forte.premio} patacas.`, quem);
+    if (r.resultado === 'vitoria') await falar(tr('{venceu}\fO prêmio da revanche foi de {premio} patacas.', { venceu: F.venceu, premio: forte.premio }), quem);
     else {
       await falar(F.perdeu, quem);
       // sem criaturas de pé: derrota de verdade (último Posto, metade das patacas); o rádio e os menus fecham
@@ -123,17 +124,17 @@ export function criarRadio(): Tela {
     let ind = 0;
     for (;;) {
       const cs = contatos(); if (!cs.length) { await informar(T.radio.semContatos); return; }
-      ind = await escolherEm('CONTATOS', cs.map((t) => ({ rotulo: caber(t.nome, 96), valor: caber(t.classe, 66) })), { inicial: Math.min(ind, cs.length - 1), descricao: (k) => `${cs[k].classe} ${cs[k].nome}\n\n${descAgenda(cs[k])}\n\nA: ligar` });
+      ind = await escolherEm('CONTATOS', cs.map((t) => ({ rotulo: caber(t.nome, 96), valor: caber(t.classe, 66) })), { inicial: Math.min(ind, cs.length - 1), descricao: (k) => tr('{classe} {nome}\n\n{agenda}\n\nA: ligar', { classe: cs[k].classe, nome: cs[k].nome, agenda: descAgenda(cs[k]) }) });
       if (ind < 0) return;
       await ligar(cs[ind]);
     }
   }
   function descAgenda(t: TreinadorDef): string {
     if (ehRival(t)) return flag('liga-vencida') ? 'Treina na Gruta do Eco às terças e quintas.' : 'Sua rival. Ainda anda pela estrada.';
-    const ag = agendaDe(t), q = `${NOME_DIA_LONGO[ag.dia]}, ${NOME_PERIODO[ag.periodo]}`;
-    if (t.insignia && !liberado(t)) return `Líder de ginásio. Revanche ${quandoAbreRevanche(t.insignia)}: ${q}.`;
+    const ag = agendaDe(t), q = `${traduz(NOME_DIA_LONGO[ag.dia])}, ${traduz(NOME_PERIODO[ag.periodo])}`;
+    if (t.insignia && !liberado(t)) return tr('Líder de ginásio. Revanche {quando}: {agenda}.', { quando: quandoAbreRevanche(t.insignia), agenda: q });
     if (Number(s.flags['revanche:' + t.id] ?? -1) === diaDoAno()) return 'Já batalhou com você hoje.';
-    return `${t.insignia && !/l[ií]der/i.test(t.classe) ? 'Líder de ginásio. ' : ''}Revanche: ${q}.${podeHoje(t) ? ' {c:verde}Hoje!{/c}' : ''}`;
+    return (t.insignia && !/l[ií]der/i.test(t.classe) ? traduz('Líder de ginásio.') + ' ' : '') + tr('Revanche: {agenda}.', { agenda: q }) + (podeHoje(t) ? ' {c:verde}' + traduz('Hoje!') + '{/c}' : '');
   }
   /** tabela da semana (itens 25/26): cada contato com dia, período, lugar e a equipe da fase atual */
   async function verRevanches() {
@@ -143,9 +144,9 @@ export function criarRadio(): Tela {
     const PER = { manha: 'manhã', dia: 'dia', noite: 'noite' } as const;
     let ind = 0;
     for (;;) {
-      ind = await escolherEm('REVANCHES', cs.map((t) => ({ rotulo: caber(t.nome, 96), valor: `${NOME_DIA_CURTO[agendaDe(t).dia]} ${PER[agendaDe(t).periodo]}`, cor: podeHoje(t) ? 'verde' as const : undefined })), {
+      ind = await escolherEm('REVANCHES', cs.map((t) => ({ rotulo: caber(t.nome, 96), valor: `${traduz(NOME_DIA_CURTO[agendaDe(t).dia])} ${traduz(PER[agendaDe(t).periodo])}`, cor: podeHoje(t) ? 'verde' as const : undefined })), {
         inicial: ind,
-        descricao: (k) => { const t = cs[k], eq = equipeDaFase(t, t.insignia ? Math.max(3, fase()) as Fase : fase(), especie); return `${t.classe} ${t.nome}\n${descAgenda(t)}\n${t.insignia ? 'No ' + TREINO.nome + '.' : 'Luta pelo rádio.'}\nFase: ${NOME_FASE[t.insignia ? Math.max(3, fase()) as Fase : fase()]}\nEquipe: ${eq.length} criaturas, nível até ${Math.max(...eq.map((m) => m.nv))}.\n\nA: ligar`; },
+        descricao: (k) => { const t = cs[k], eq = equipeDaFase(t, t.insignia ? Math.max(3, fase()) as Fase : fase(), especie); return [tr('{classe} {nome}', { classe: t.classe, nome: t.nome }), descAgenda(t), t.insignia ? tr('No {lugar}.', { lugar: TREINO.nome }) : traduz('Luta pelo rádio.'), tr('Fase: {fase}', { fase: NOME_FASE[t.insignia ? Math.max(3, fase()) as Fase : fase()] }), tr('Equipe: {n} criaturas, nível até {nivel}.', { n: eq.length, nivel: Math.max(...eq.map((m) => m.nv)) }), '', traduz('A: ligar')].join('\n'); },
       });
       if (ind < 0) return;
       await ligar(cs[ind]);
@@ -154,7 +155,7 @@ export function criarRadio(): Tela {
   function dicaCaptura(n: number): string {
     let tx = 255; try { tx = especie(n).taxaCaptura; } catch { /* espécie fora do pacote */ }
     const base = tx >= 150 ? 'Dica: fácil de pegar, a Cuia comum resolve' : tx >= 75 ? 'Dica: deixe a vida no amarelo e use Cuia Trançada' : 'Dica: arisca! Vida no vermelho, faça dormir e use Cuia de Ouro';
-    return base + (periodo() === 'noite' ? '; à noite a Cuia Noturna ajuda.' : '.');
+    return traduz(base) + (periodo() === 'noite' ? traduz('; à noite a Cuia Noturna ajuda.') : '.');
   }
   async function cantigas() {
     let ind = 0;
@@ -171,7 +172,7 @@ export function criarRadio(): Tela {
     let ind = 0;
     for (;;) {
       const viu = (n: number) => s.diario.visto.includes(n);
-      ind = await escolherEm('BICHO DO DIA', rs.map((r) => ({ rotulo: caber(local(r.local)!.nome, 150) })), { inicial: ind, descricao: (k) => `Ouvintes avisam: ${viu(rs[k].especie) ? nomeEsp(rs[k].especie) : 'uma criatura que você ainda não registrou'} foi vista em ${local(rs[k].local)!.nome} (${NOME_MEIO[rs[k].metodo]}).${cartao ? '\n' + dicaCaptura(rs[k].especie) : ''}${viu(rs[k].especie) ? '\n\nA: abrir a ficha' : ''}` });
+      ind = await escolherEm('BICHO DO DIA', rs.map((r) => ({ rotulo: caber(local(r.local)!.nome, 150) })), { inicial: ind, descricao: (k) => tr('Ouvintes avisam: {nome} foi vista em {local} ({meio}).', { nome: viu(rs[k].especie) ? nomeEsp(rs[k].especie) : 'uma criatura que você ainda não registrou', local: local(rs[k].local)!.nome, meio: NOME_MEIO[rs[k].metodo] }) + (cartao ? '\n' + dicaCaptura(rs[k].especie) : '') + (viu(rs[k].especie) ? '\n\n' + traduz('A: abrir a ficha') : '') });
       if (ind < 0) return;
       if (viu(rs[ind].especie)) await abrirTela('diario', { especie: rs[ind].especie }); else som('ui-erro');
     }
@@ -202,10 +203,10 @@ export function criarRadio(): Tela {
     if (ocupado) return; ocupado = true;
     try {
       const op = ops[i];
-      if (op === 'Agenda do dia') { await dadosProntos; await lerCarta({ de: 'Rádio Cipó', assunto: `Agenda de ${hoje()}`, texto: agendaHoje().texto }); }
+      if (op === 'Agenda do dia') { await dadosProntos; await lerCarta({ de: 'Rádio Cipó', assunto: tr('Agenda de {hoje}', { hoje: hoje() }), texto: agendaHoje().texto }); }
       else if (op === 'Contatos') { await dadosProntos; await verContatos(); } else if (op === 'Revanches') { await dadosProntos; await verRevanches(); }
       else if (op === 'Bicho do Dia') await bichoDoDia(); else if (op === 'Hora da Música') await musica(); else if (op === 'Notícias') await verNoticias();
-      else if (op === 'Recado do dia') await lerCarta({ de: 'Rádio Cipó', assunto: `Recado de ${hoje()}`, texto: RECADOS_SEMANA[diaSemana()] });
+      else if (op === 'Recado do dia') await lerCarta({ de: 'Rádio Cipó', assunto: tr('Recado de {hoje}', { hoje: hoje() }), texto: RECADOS_SEMANA[diaSemana()] });
       else if (op === 'Cantiga das Lendas') await cantigas();
       else if (op === 'Mapa') await abrirTela('mapa-mundi'); else { fechar(tela); return; }
     } finally { ocupado = false; if (viva) pintar(); }

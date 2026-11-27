@@ -1,0 +1,2962 @@
+{
+ "espécie não registrada: ": {
+  "en": "espécie não registrada: ",
+  "ctx": "src/battle/criatura.ts:14"
+ },
+ "Ataque Especial": {
+  "en": "Special Attack",
+  "ctx": "src/battle/engine.ts:149 · campo atqEsp"
+ },
+ "Defesa Especial": {
+  "en": "Special Defense",
+  "ctx": "src/battle/engine.ts:149 · campo defEsp"
+ },
+ "Precisão": {
+  "en": "Accuracy",
+  "ctx": "src/battle/engine.ts:149 · campo prec"
+ },
+ "Evasão": {
+  "en": "Evasion",
+  "ctx": "src/battle/engine.ts:149 · campo eva"
+ },
+ "O Ataque": {
+  "en": "Attack",
+  "ctx": "src/battle/engine.ts:151 · campo atq"
+ },
+ "A Defesa": {
+  "en": "Defense",
+  "ctx": "src/battle/engine.ts:151 · campo def"
+ },
+ "O Ataque Especial": {
+  "en": "Special Attack",
+  "ctx": "src/battle/engine.ts:151 · campo atqEsp"
+ },
+ "A Defesa Especial": {
+  "en": "Special Defense",
+  "ctx": "src/battle/engine.ts:151 · campo defEsp"
+ },
+ "A Velocidade": {
+  "en": "Speed",
+  "ctx": "src/battle/engine.ts:151 · campo vel"
+ },
+ "A Precisão": {
+  "en": "Accuracy",
+  "ctx": "src/battle/engine.ts:151 · campo prec"
+ },
+ "A Evasão": {
+  "en": "Evasion",
+  "ctx": "src/battle/engine.ts:151 · campo eva"
+ },
+ "ficou queimando!": {
+  "en": "was burned!",
+  "ctx": "src/battle/engine.ts:153 · campo queimado"
+ },
+ "foi envenenado!": {
+  "en": "was poisoned!",
+  "ctx": "src/battle/engine.ts:153 · campo envenenado"
+ },
+ "ficou paralisado! Talvez não consiga se mexer!": {
+  "en": "is paralyzed! It may not be able to move!",
+  "ctx": "src/battle/engine.ts:153 · campo paralisado"
+ },
+ "pegou no sono!": {
+  "en": "fell asleep!",
+  "ctx": "src/battle/engine.ts:153 · campo dormindo"
+ },
+ "virou um bloco de gelo!": {
+  "en": "was frozen solid!",
+  "ctx": "src/battle/engine.ts:153 · campo congelado"
+ },
+ "ficou encantado!": {
+  "en": "was charmed!",
+  "ctx": "src/battle/engine.ts:153 · campo encantado"
+ },
+ "não está mais queimando.": {
+  "en": "is no longer burned.",
+  "ctx": "src/battle/engine.ts:154 · campo queimado"
+ },
+ "ficou livre do veneno.": {
+  "en": "is free of the poison.",
+  "ctx": "src/battle/engine.ts:154 · campo envenenado"
+ },
+ "voltou a se mexer.": {
+  "en": "can move again.",
+  "ctx": "src/battle/engine.ts:154 · campo paralisado"
+ },
+ "acordou!": {
+  "en": "woke up!",
+  "ctx": "src/battle/engine.ts:154 · campo dormindo"
+ },
+ "descongelou!": {
+  "en": "thawed out!",
+  "ctx": "src/battle/engine.ts:154 · campo congelado"
+ },
+ "saiu do encantamento.": {
+  "en": "snapped out of the charm.",
+  "ctx": "src/battle/engine.ts:154 · campo encantado"
+ },
+ "O tempo abriu.": {
+  "en": "The weather cleared up.",
+  "ctx": "src/battle/engine.ts:155 · campo limpo"
+ },
+ "O sol ficou forte!": {
+  "en": "The sunlight turned harsh!",
+  "ctx": "src/battle/engine.ts:155 · campo sol"
+ },
+ "Começou a chover!": {
+  "en": "It started to rain!",
+  "ctx": "src/battle/engine.ts:155 · campo chuva"
+ },
+ "Uma garoa gelada começou a cair!": {
+  "en": "An icy drizzle began to fall!",
+  "ctx": "src/battle/engine.ts:155 · campo garoa"
+ },
+ "Uma névoa espessa cobriu o campo!": {
+  "en": "A thick fog covered the field!",
+  "ctx": "src/battle/engine.ts:155 · campo nevoa"
+ },
+ "A poeira subiu!": {
+  "en": "The dust rose up!",
+  "ctx": "src/battle/engine.ts:155 · campo poeira"
+ },
+ "O sol forte passou.": {
+  "en": "The harsh sunlight faded.",
+  "ctx": "src/battle/engine.ts:156 · campo sol"
+ },
+ "A chuva parou.": {
+  "en": "The rain stopped.",
+  "ctx": "src/battle/engine.ts:156 · campo chuva"
+ },
+ "A garoa gelada parou.": {
+  "en": "The icy drizzle stopped.",
+  "ctx": "src/battle/engine.ts:156 · campo garoa"
+ },
+ "A névoa se desfez.": {
+  "en": "The fog lifted.",
+  "ctx": "src/battle/engine.ts:156 · campo nevoa"
+ },
+ "A poeira baixou.": {
+  "en": "The dust settled.",
+  "ctx": "src/battle/engine.ts:156 · campo poeira"
+ },
+ "{nome} selvagem": {
+  "en": "Wild {nome}",
+  "ctx": "src/battle/engine.ts:260"
+ },
+ "{nome} rival": {
+  "en": "Foe {nome}",
+  "ctx": "src/battle/engine.ts:260"
+ },
+ "{a} e {b} selvagens apareceram!": {
+  "en": "Wild {a} and {b} appeared!",
+  "ctx": "src/battle/engine.ts:314 · this.msg()"
+ },
+ "O lendário {nome} apareceu!": {
+  "en": "The legendary {nome} appeared!",
+  "ctx": "src/battle/engine.ts:314 · this.msg()"
+ },
+ "Um {nome} selvagem apareceu!": {
+  "en": "A wild {nome} appeared!",
+  "ctx": "src/battle/engine.ts:314 · this.msg()"
+ },
+ "{treinador} quer batalhar!": {
+  "en": "{treinador} wants to battle!",
+  "ctx": "src/battle/engine.ts:315 · this.msg()"
+ },
+ "A treinadora rival quer batalhar!": {
+  "en": "The rival trainer wants to battle!",
+  "ctx": "src/battle/engine.ts:315 · this.msg()"
+ },
+ "Vai, {nome}!": {
+  "en": "Go, {nome}!",
+  "ctx": "src/battle/engine.ts:325 · this.msg()"
+ },
+ "{treinador} enviou {nome}!": {
+  "en": "{treinador} sent out {nome}!",
+  "ctx": "src/battle/engine.ts:326 · this.msg()"
+ },
+ "A rival": {
+  "en": "The rival",
+  "ctx": "src/battle/engine.ts:326 · campo treinador | src/battle/engine.ts:416 · campo treinador | src/battle/engine.ts:428 · campo treinador | +2"
+ },
+ "{nome} se feriu nos espinhos!": {
+  "en": "{nome} was hurt by the thorns!",
+  "ctx": "src/battle/engine.ts:336 · this.msg()"
+ },
+ "fase inválida para executarTurno: ": {
+  "en": "fase inválida para executarTurno: ",
+  "ctx": "src/battle/engine.ts:350"
+ },
+ "{nome} tentou fugir, mas não conseguiu!": {
+  "en": "{nome} tried to flee, but couldn't!",
+  "ctx": "src/battle/engine.ts:402 · this.msg()"
+ },
+ "{nome} fugiu!": {
+  "en": "{nome} fled!",
+  "ctx": "src/battle/engine.ts:403 · this.msg() | src/ui/telas/gincana-safari.ts:149 · msg()"
+ },
+ "Não dá para fugir de uma batalha contra treinador!": {
+  "en": "You can't run from a trainer battle!",
+  "ctx": "src/battle/engine.ts:405 · this.msg() | src/battle/view/tela.ts:482 · dizer()"
+ },
+ "Não dá para fugir desta batalha!": {
+  "en": "You can't run from this battle!",
+  "ctx": "src/battle/engine.ts:406 · this.msg() | src/battle/view/tela.ts:483 · dizer()"
+ },
+ "{nome} está preso e não consegue fugir!": {
+  "en": "{nome} is trapped and can't flee!",
+  "ctx": "src/battle/engine.ts:407 · this.msg()"
+ },
+ "Você escapou em segurança!": {
+  "en": "You got away safely!",
+  "ctx": "src/battle/engine.ts:411 · this.msg()"
+ },
+ "Não deu para escapar!": {
+  "en": "Couldn't get away!",
+  "ctx": "src/battle/engine.ts:411 · this.msg()"
+ },
+ "{nome} está preso e não pode sair!": {
+  "en": "{nome} is trapped and can't switch out!",
+  "ctx": "src/battle/engine.ts:414 · this.msg()"
+ },
+ "Volta, {nome}!": {
+  "en": "Come back, {nome}!",
+  "ctx": "src/battle/engine.ts:416 · this.msg() | src/battle/engine.ts:946 · this.msg()"
+ },
+ "{treinador} chamou {nome} de volta!": {
+  "en": "{treinador} called {nome} back!",
+  "ctx": "src/battle/engine.ts:416 · this.msg()"
+ },
+ "O item acabou!": {
+  "en": "You're out of that item!",
+  "ctx": "src/battle/engine.ts:421 · this.msg()"
+ },
+ "{item} não teria efeito.": {
+  "en": "{item} wouldn't have any effect.",
+  "ctx": "src/battle/engine.ts:425 · this.msg()"
+ },
+ "Você usou {item}!": {
+  "en": "You used {item}!",
+  "ctx": "src/battle/engine.ts:428 · this.msg()"
+ },
+ "{treinador} usou {item}!": {
+  "en": "{treinador} used {item}!",
+  "ctx": "src/battle/engine.ts:428 · this.msg()"
+ },
+ "{nome} se levantou!": {
+  "en": "{nome} got back up!",
+  "ctx": "src/battle/engine.ts:435 · this.msg()"
+ },
+ "{nome} recuperou {qtd} de vida.": {
+  "en": "{nome} recovered {qtd} HP.",
+  "ctx": "src/battle/engine.ts:436 · this.msg() | src/ui/telas/comum.ts:242 · partes.push()"
+ },
+ "{nome} {acao}": {
+  "en": "{nome} {acao}",
+  "ctx": "src/battle/engine.ts:438 · this.msg() | src/battle/engine.ts:530 · this.msg() | src/battle/engine.ts:740 · this.msg() | +2"
+ },
+ "{nome} não está mais confuso.": {
+  "en": "{nome} is no longer confused.",
+  "ctx": "src/battle/engine.ts:439 · this.msg() | src/battle/engine.ts:489 · this.msg()"
+ },
+ "{nome} recuperou PG.": {
+  "en": "{nome} recovered MP.",
+  "ctx": "src/battle/engine.ts:444 · this.msg()"
+ },
+ "A rival rebateu a cuia! Não se desfaz a parceria dos outros.": {
+  "en": "The rival knocked the gourd away! You can't break up someone else's partnership.",
+  "ctx": "src/battle/engine.ts:450 · this.msg()"
+ },
+ "A cuia não funciona aqui!": {
+  "en": "Gourds don't work here!",
+  "ctx": "src/battle/engine.ts:451 · this.msg()"
+ },
+ "São duas criaturas! Não dá para mirar a cuia.": {
+  "en": "There are two creatures! You can't aim the gourd.",
+  "ctx": "src/battle/engine.ts:453 · this.msg()"
+ },
+ "Você arremessou a {cuia}!": {
+  "en": "You threw a {cuia}!",
+  "ctx": "src/battle/engine.ts:456 · this.msg()"
+ },
+ "A cuia não alcançou a criatura!": {
+  "en": "The gourd couldn't reach the creature!",
+  "ctx": "src/battle/engine.ts:457 · this.msg()"
+ },
+ "Ah, não! A criatura escapou!": {
+  "en": "Oh no! The creature broke free!",
+  "ctx": "src/battle/engine.ts:464 · this.msg()"
+ },
+ "Puxa! Parecia que ia dar certo!": {
+  "en": "Aw! It looked like it would work!",
+  "ctx": "src/battle/engine.ts:464 · this.msg() | src/ui/telas/gincana-safari.ts:113 · msg()"
+ },
+ "Quase! Faltou tão pouco!": {
+  "en": "Almost! So close!",
+  "ctx": "src/battle/engine.ts:464 · this.msg() | src/ui/telas/gincana-safari.ts:113 · msg()"
+ },
+ "Aaah! Foi por um triz!": {
+  "en": "Aaah! By a hair!",
+  "ctx": "src/battle/engine.ts:464 · this.msg() | src/ui/telas/gincana-safari.ts:113 · msg()"
+ },
+ "Parceria firmada! {nome} agora anda com você.": {
+  "en": "Partnership sealed! {nome} now travels with you.",
+  "ctx": "src/battle/engine.ts:468 · this.msg() | src/ui/telas/gincana-safari.ts:107 · msg()"
+ },
+ "{nome} precisa descansar!": {
+  "en": "{nome} needs to rest!",
+  "ctx": "src/battle/engine.ts:476 · this.msg()"
+ },
+ "{nome} está dormindo.": {
+  "en": "{nome} is fast asleep.",
+  "ctx": "src/battle/engine.ts:479 · this.msg()"
+ },
+ "{nome} está congelado!": {
+  "en": "{nome} is frozen solid!",
+  "ctx": "src/battle/engine.ts:483 · this.msg()"
+ },
+ "{nome} ficou atordoado e não agiu!": {
+  "en": "{nome} was stunned and couldn't move!",
+  "ctx": "src/battle/engine.ts:486 · this.msg()"
+ },
+ "{nome} está confuso!": {
+  "en": "{nome} is confused!",
+  "ctx": "src/battle/engine.ts:491 · this.msg()"
+ },
+ "Atrapalhou-se e acabou se machucando!": {
+  "en": "It got mixed up and hurt itself!",
+  "ctx": "src/battle/engine.ts:493 · this.msg()"
+ },
+ "{nome} está paralisado e não consegue se mexer!": {
+  "en": "{nome} is paralyzed and can't move!",
+  "ctx": "src/battle/engine.ts:499 · this.msg()"
+ },
+ "{nome} não obedeceu e fez o que quis!": {
+  "en": "{nome} didn't obey and did its own thing!",
+  "ctx": "src/battle/engine.ts:504 · this.msg()"
+ },
+ "{nome} ignorou a ordem!": {
+  "en": "{nome} ignored the order!",
+  "ctx": "src/battle/engine.ts:505 · rng.escolha()"
+ },
+ "{nome} está fazendo corpo mole…": {
+  "en": "{nome} is slacking off…",
+  "ctx": "src/battle/engine.ts:505 · rng.escolha()"
+ },
+ "{nome} virou a cara e não obedeceu!": {
+  "en": "{nome} turned away and didn't obey!",
+  "ctx": "src/battle/engine.ts:505 · rng.escolha()"
+ },
+ "{nome} não tem mais PG!": {
+  "en": "{nome} has no MP left!",
+  "ctx": "src/battle/engine.ts:514 · this.msg()"
+ },
+ "{nome} está encantado e imita o adversário!": {
+  "en": "{nome} is charmed and mimics its opponent!",
+  "ctx": "src/battle/engine.ts:517 · this.msg()"
+ },
+ "{nome} usou {golpe}!": {
+  "en": "{nome} used {golpe}!",
+  "ctx": "src/battle/engine.ts:522 · this.msg()"
+ },
+ "Mas não aconteceu nada!": {
+  "en": "But nothing happened!",
+  "ctx": "src/battle/engine.ts:604 · this.msg()"
+ },
+ "Mas não havia alvo!": {
+  "en": "But there was no target!",
+  "ctx": "src/battle/engine.ts:608 · this.msg()"
+ },
+ "{nome} está fora de alcance!": {
+  "en": "{nome} is out of reach!",
+  "ctx": "src/battle/engine.ts:613 · this.msg()"
+ },
+ "{nome} se protegeu!": {
+  "en": "{nome} protected itself!",
+  "ctx": "src/battle/engine.ts:614 · this.msg()"
+ },
+ "Mas não funcionou!": {
+  "en": "But it failed!",
+  "ctx": "src/battle/engine.ts:615 · this.msg() | src/battle/engine.ts:669 · this.msg() | src/battle/engine.ts:731 | +2"
+ },
+ "Não afeta {nome}…": {
+  "en": "It doesn't affect {nome}…",
+  "ctx": "src/battle/engine.ts:616 · this.msg() | src/battle/engine.ts:734 · falha()"
+ },
+ "O golpe de {nome} errou!": {
+  "en": "{nome}'s attack missed!",
+  "ctx": "src/battle/engine.ts:617 · this.msg()"
+ },
+ "{nome} caiu de mau jeito!": {
+  "en": "{nome} landed badly!",
+  "ctx": "src/battle/engine.ts:621 · this.msg()"
+ },
+ "Acertou em cheio!": {
+  "en": "A critical hit!",
+  "ctx": "src/battle/engine.ts:636 · this.msg()"
+ },
+ "É super eficaz!": {
+  "en": "It's super effective!",
+  "ctx": "src/battle/engine.ts:637 · this.msg()"
+ },
+ "Não é muito eficaz…": {
+  "en": "It's not very effective…",
+  "ctx": "src/battle/engine.ts:637 · this.msg()"
+ },
+ "Acertou {n} vez!": {
+  "en": "Hit {n} time!",
+  "ctx": "src/battle/engine.ts:638 · this.msg()"
+ },
+ "Acertou {n} vezes!": {
+  "en": "Hit {n} times!",
+  "ctx": "src/battle/engine.ts:638 · this.msg()"
+ },
+ "{nome} recuperou energia!": {
+  "en": "{nome} drained some energy!",
+  "ctx": "src/battle/engine.ts:646 · this.msg()"
+ },
+ "{nome} sofreu com o recuo!": {
+  "en": "{nome} was hurt by the recoil!",
+  "ctx": "src/battle/engine.ts:647 · this.msg()"
+ },
+ "{nome} voltou correndo para a cuia!": {
+  "en": "{nome} ran back to its gourd!",
+  "ctx": "src/battle/engine.ts:654 · this.msg()"
+ },
+ "{nome} voltou para a cuia!": {
+  "en": "{nome} went back to its gourd!",
+  "ctx": "src/battle/engine.ts:654 · this.msg()"
+ },
+ "Uma parasita brotou em {nome}!": {
+  "en": "A parasite sprouted on {nome}!",
+  "ctx": "src/battle/engine.ts:670 · this.msg()"
+ },
+ "{nome} ficou preso!": {
+  "en": "{nome} was trapped!",
+  "ctx": "src/battle/engine.ts:675 · this.msg()"
+ },
+ "{nome} recuperou vida!": {
+  "en": "{nome} recovered HP!",
+  "ctx": "src/battle/engine.ts:687 · this.msg()"
+ },
+ "A vida de {nome} já está cheia!": {
+  "en": "{nome}'s HP is already full!",
+  "ctx": "src/battle/engine.ts:687 · this.msg()"
+ },
+ "{nome} não está com sono.": {
+  "en": "{nome} isn't sleepy.",
+  "ctx": "src/battle/engine.ts:689 · this.msg()"
+ },
+ "{nome} dormiu e recuperou as forças!": {
+  "en": "{nome} slept and regained its strength!",
+  "ctx": "src/battle/engine.ts:691 · this.msg()"
+ },
+ "A equipe ficou livre dos status!": {
+  "en": "The team was cured of status problems!",
+  "ctx": "src/battle/engine.ts:695 · this.msg()"
+ },
+ "Ninguém precisava de cura.": {
+  "en": "Nobody needed curing.",
+  "ctx": "src/battle/engine.ts:695 · this.msg()"
+ },
+ "{nome} está pronto para acertar em cheio!": {
+  "en": "{nome} is getting pumped for a critical hit!",
+  "ctx": "src/battle/engine.ts:699 · this.msg()"
+ },
+ "{nome} se preparou para se proteger!": {
+  "en": "{nome} braced itself to protect!",
+  "ctx": "src/battle/engine.ts:703 · this.msg()"
+ },
+ "Mas falhou!": {
+  "en": "But it failed!",
+  "ctx": "src/battle/engine.ts:703 · this.msg()"
+ },
+ "O tempo já está assim.": {
+  "en": "The weather is already like that.",
+  "ctx": "src/battle/engine.ts:708 · this.msg()"
+ },
+ "A proteção já está de pé.": {
+  "en": "The protection is already up.",
+  "ctx": "src/battle/engine.ts:712 · this.msg()"
+ },
+ "Um muro invisível protege a equipe de golpes físicos!": {
+  "en": "An invisible wall shields the team from physical moves!",
+  "ctx": "src/battle/engine.ts:714 · this.msg()"
+ },
+ "Uma cortina de brilho protege a equipe de golpes especiais!": {
+  "en": "A shimmering curtain shields the team from special moves!",
+  "ctx": "src/battle/engine.ts:714 · this.msg()"
+ },
+ "Uma simpatia protege a equipe de status!": {
+  "en": "A good-luck charm shields the team from status problems!",
+  "ctx": "src/battle/engine.ts:714 · this.msg()"
+ },
+ "O chão já está coberto de espinhos.": {
+  "en": "The ground is already covered in thorns.",
+  "ctx": "src/battle/engine.ts:718 · this.msg()"
+ },
+ "Espinhos cobriram o chão do outro lado!": {
+  "en": "Thorns covered the ground on the other side!",
+  "ctx": "src/battle/engine.ts:719 · this.msg()"
+ },
+ "Todas as mudanças de atributo foram desfeitas!": {
+  "en": "All stat changes were undone!",
+  "ctx": "src/battle/engine.ts:723 · this.msg()"
+ },
+ "{nome} já está assim!": {
+  "en": "{nome} is already like that!",
+  "ctx": "src/battle/engine.ts:733 · falha()"
+ },
+ "A simpatia protegeu {nome}!": {
+  "en": "The good-luck charm protected {nome}!",
+  "ctx": "src/battle/engine.ts:736 · falha() | src/battle/engine.ts:752 · this.msg()"
+ },
+ "{nome} já está confuso!": {
+  "en": "{nome} is already confused!",
+  "ctx": "src/battle/engine.ts:751 · this.msg()"
+ },
+ "{nome} ficou confuso!": {
+  "en": "{nome} became confused!",
+  "ctx": "src/battle/engine.ts:753 · this.msg()"
+ },
+ "{stat} de {nome} não pode subir mais!": {
+  "en": "{nome}'s {stat} won't go any higher!",
+  "ctx": "src/battle/engine.ts:758 · this.msg()"
+ },
+ "{stat} de {nome} não pode cair mais!": {
+  "en": "{nome}'s {stat} won't go any lower!",
+  "ctx": "src/battle/engine.ts:758 · this.msg()"
+ },
+ "{stat} de {nome} subiu muito!": {
+  "en": "{nome}'s {stat} rose sharply!",
+  "ctx": "src/battle/engine.ts:761 · this.msg()"
+ },
+ "{stat} de {nome} subiu!": {
+  "en": "{nome}'s {stat} rose!",
+  "ctx": "src/battle/engine.ts:761 · this.msg()"
+ },
+ "{stat} de {nome} caiu muito!": {
+  "en": "{nome}'s {stat} fell harshly!",
+  "ctx": "src/battle/engine.ts:761 · this.msg()"
+ },
+ "{stat} de {nome} caiu!": {
+  "en": "{nome}'s {stat} fell!",
+  "ctx": "src/battle/engine.ts:761 · this.msg()"
+ },
+ "{nome} fugiu assustado!": {
+  "en": "{nome} fled in fright!",
+  "ctx": "src/battle/engine.ts:766 · this.msg()"
+ },
+ "{nome} foi espantado para longe!": {
+  "en": "{nome} was scared away!",
+  "ctx": "src/battle/engine.ts:766 · this.msg()"
+ },
+ "{nome} foi arrastado de volta para a cuia!": {
+  "en": "{nome} was dragged back to its gourd!",
+  "ctx": "src/battle/engine.ts:771 · this.msg()"
+ },
+ "{nome} desmaiou!": {
+  "en": "{nome} fainted!",
+  "ctx": "src/battle/engine.ts:784 · this.msg()"
+ },
+ "{nome} ganhou {n} pontos de experiência com bônus de troca!": {
+  "en": "{nome} gained {n} experience points with a trade bonus!",
+  "ctx": "src/battle/engine.ts:816 · this.msg()"
+ },
+ "{nome} ganhou {n} pontos de experiência!": {
+  "en": "{nome} gained {n} experience points!",
+  "ctx": "src/battle/engine.ts:816 · this.msg()"
+ },
+ "{nome} subiu para o nível {nivel}!": {
+  "en": "{nome} grew to level {nivel}!",
+  "ctx": "src/battle/engine.ts:821 · this.msg() | src/ui/telas/comum.ts:217 · informar()"
+ },
+ "{nome} aprendeu {golpe}!": {
+  "en": "{nome} learned {golpe}!",
+  "ctx": "src/battle/engine.ts:828 · this.msg() | src/ui/telas/comum.ts:169 · informar()"
+ },
+ "{nome} não aprendeu {golpe}.": {
+  "en": "{nome} did not learn {golpe}.",
+  "ctx": "src/battle/engine.ts:844 · this.msg() | src/ui/telas/comum.ts:171 · informar()"
+ },
+ "{nome} esqueceu {golpe} e aprendeu {golpe2}!": {
+  "en": "{nome} forgot {golpe} and learned {golpe2}!",
+  "ctx": "src/battle/engine.ts:845 · this.msg()"
+ },
+ "{jogador} não tem mais criaturas em condições de lutar!": {
+  "en": "{jogador} has no more creatures fit to fight!",
+  "ctx": "src/battle/engine.ts:857 · this.msg()"
+ },
+ "{treinador} foi vencida!": {
+  "en": "{treinador} was defeated!",
+  "ctx": "src/battle/engine.ts:858 · this.msg()"
+ },
+ "A garoa gelada castiga {nome}!": {
+  "en": "The icy drizzle pelts {nome}!",
+  "ctx": "src/battle/engine.ts:874 · this.msg()"
+ },
+ "A poeira castiga {nome}!": {
+  "en": "The dust batters {nome}!",
+  "ctx": "src/battle/engine.ts:875 · this.msg()"
+ },
+ "{nome} sofre com a queimadura!": {
+  "en": "{nome} is hurt by its burn!",
+  "ctx": "src/battle/engine.ts:876 · this.msg()"
+ },
+ "{nome} sofre com o veneno!": {
+  "en": "{nome} is hurt by poison!",
+  "ctx": "src/battle/engine.ts:877 · this.msg()"
+ },
+ "A parasita suga a energia de {nome}!": {
+  "en": "The parasite drains {nome}'s energy!",
+  "ctx": "src/battle/engine.ts:880 · this.msg()"
+ },
+ "{nome} se soltou!": {
+  "en": "{nome} broke free!",
+  "ctx": "src/battle/engine.ts:886 · this.msg()"
+ },
+ "{nome} continua preso e se machuca!": {
+  "en": "{nome} is still trapped and gets hurt!",
+  "ctx": "src/battle/engine.ts:887 · this.msg()"
+ },
+ "{barreira} da sua equipe se desfez.": {
+  "en": "{barreira} around your team wore off.",
+  "ctx": "src/battle/engine.ts:895 · this.msg()"
+ },
+ "{barreira} da equipe rival se desfez.": {
+  "en": "{barreira} around the rival team wore off.",
+  "ctx": "src/battle/engine.ts:895 · this.msg()"
+ },
+ "O muro invisível": {
+  "en": "The invisible wall",
+  "ctx": "src/battle/engine.ts:895 · campo barreira"
+ },
+ "A cortina de brilho": {
+  "en": "The shimmering curtain",
+  "ctx": "src/battle/engine.ts:895 · campo barreira"
+ },
+ "A simpatia": {
+  "en": "The good-luck charm",
+  "ctx": "src/battle/engine.ts:895 · campo barreira"
+ },
+ "{nome} comeu {item}!": {
+  "en": "{nome} ate its {item}!",
+  "ctx": "src/battle/engine.ts:912 · this.msg()"
+ },
+ "fase inválida para substituir: ": {
+  "en": "fase inválida para substituir: ",
+  "ctx": "src/battle/engine.ts:918"
+ },
+ "{treinador} vai enviar {nome}.": {
+  "en": "{treinador} is about to send out {nome}.",
+  "ctx": "src/battle/engine.ts:925 · this.msg()"
+ },
+ "O quê?\n{nome} está evoluindo!": {
+  "en": "What?\n{nome} is evolving!",
+  "ctx": "src/battle/evolucao.ts:38 · dizer()"
+ },
+ "Hã? {nome} parou de evoluir!": {
+  "en": "Huh? {nome} stopped evolving!",
+  "ctx": "src/battle/evolucao.ts:57 · dizer()"
+ },
+ "Parabéns! {nome} evoluiu para {nomeNovo}!": {
+  "en": "Congratulations! {nome} evolved into {nomeNovo}!",
+  "ctx": "src/battle/evolucao.ts:71 · dizer()"
+ },
+ "Você ganhou {premio} patacas!": {
+  "en": "You won {premio} patacas!",
+  "ctx": "src/battle/index.ts:93 · campo texto"
+ },
+ "{classe} {nome}": {
+  "en": "{classe} {nome}",
+  "ctx": "src/battle/index.ts:125 · campo nome | src/data/eventos/regras.ts:76 · campo nome | src/data/eventos/regras.ts:100 · campo nome | +5"
+ },
+ "FX desconhecido: ": {
+  "en": "FX desconhecido: ",
+  "ctx": "src/battle/view/cena.ts:64"
+ },
+ "VD": {
+  "en": "HP",
+  "ctx": "src/battle/view/hud.ts:44 · texto() | src/battle/view/menus.ts:224 · texto()"
+ },
+ "EXP": {
+  "en": "EXP",
+  "ctx": "src/battle/view/hud.ts:49 · texto()"
+ },
+ "LUTAR": {
+  "en": "FIGHT",
+  "ctx": "src/battle/view/menus.ts:37 · texto() | src/battle/view/menus.ts:37 · medir()"
+ },
+ "MOCHILA": {
+  "en": "BAG",
+  "ctx": "src/battle/view/menus.ts:38"
+ },
+ "PG {pgMax}": {
+  "en": "MP {pgMax}",
+  "ctx": "src/battle/view/menus.ts:81 · escrever()"
+ },
+ "PG": {
+  "en": "MP",
+  "ctx": "src/battle/view/menus.ts:81 · escrever()"
+ },
+ "Nada neste bolso.": {
+  "en": "Nothing in this pocket.",
+  "ctx": "src/battle/view/menus.ts:173 · campo rotulo"
+ },
+ "Sem {bolso} que sirvam em batalha.": {
+  "en": "No {bolso} usable in battle.",
+  "ctx": "src/battle/view/menus.ts:180 · escrever()"
+ },
+ "em campo": {
+  "en": "in battle",
+  "ctx": "src/battle/view/menus.ts:226 · texto() | src/battle/view/menus.ts:226 · medir()"
+ },
+ "Confirmar: escolher": {
+  "en": "Confirm: choose",
+  "ctx": "src/battle/view/menus.ts:234 · escrever()"
+ },
+ "Confirmar: escolher   Voltar: cancelar": {
+  "en": "Confirm: choose   Back: cancel",
+  "ctx": "src/battle/view/menus.ts:234 · escrever()"
+ },
+ "{nome} quer aprender {golpe}, mas já sabe quatro golpes.": {
+  "en": "{nome} wants to learn {golpe}, but already knows four moves.",
+  "ctx": "src/battle/view/tela.ts:317 · dizer()"
+ },
+ "Esquecer um golpe para aprender {golpe}?": {
+  "en": "Forget a move to learn {golpe}?",
+  "ctx": "src/battle/view/tela.ts:319 · simNao()"
+ },
+ "Desistir de aprender {golpe}?": {
+  "en": "Give up on learning {golpe}?",
+  "ctx": "src/battle/view/tela.ts:319 · simNao()"
+ },
+ "Qual golpe esquecer?": {
+  "en": "Forget which move?",
+  "ctx": "src/battle/view/tela.ts:321 · campo titulo"
+ },
+ "Um, dois e… pronto!": {
+  "en": "One, two and… poof!",
+  "ctx": "src/battle/view/tela.ts:323 · dizer()"
+ },
+ "{jogador} ficou sem ação… Tudo escureceu!": {
+  "en": "{jogador} is out of options… Everything went dark!",
+  "ctx": "src/battle/view/tela.ts:389 · dizer()"
+ },
+ "Os dados de {nome} foram registrados no Diário de Campo.": {
+  "en": "{nome}'s data was recorded in the Field Journal.",
+  "ctx": "src/battle/view/tela.ts:396 · dizer()"
+ },
+ "Quer dar um apelido a {nome}?": {
+  "en": "Give {nome} a nickname?",
+  "ctx": "src/battle/view/tela.ts:397 · simNao()"
+ },
+ "Apelido de {nome}?": {
+  "en": "Nickname for {nome}?",
+  "ctx": "src/battle/view/tela.ts:398 · pedirNome()"
+ },
+ "{apelido} entrou para a sua equipe!": {
+  "en": "{apelido} joined your team!",
+  "ctx": "src/battle/view/tela.ts:402 · dizer()"
+ },
+ "A equipe está cheia. {apelido} foi enviado ao Viveiro de Cuias.": {
+  "en": "Your team is full. {apelido} was sent to the Gourd Keep.",
+  "ctx": "src/battle/view/tela.ts:402 · dizer()"
+ },
+ "A equipe e o Viveiro estão cheios! {apelido} não pôde ficar.": {
+  "en": "The team and the Keep are full! {apelido} couldn't stay.",
+  "ctx": "src/battle/view/tela.ts:402 · dizer()"
+ },
+ "Eficácia: ?": {
+  "en": "Effect: ?",
+  "ctx": "src/battle/view/tela.ts:414 · campo texto"
+ },
+ "Sem efeito": {
+  "en": "No effect",
+  "ctx": "src/battle/view/tela.ts:416 · campo texto"
+ },
+ "Super eficaz!": {
+  "en": "Super effective!",
+  "ctx": "src/battle/view/tela.ts:416 · campo texto"
+ },
+ "Pouco eficaz": {
+  "en": "Not very effective",
+  "ctx": "src/battle/view/tela.ts:416 · campo texto"
+ },
+ "Eficaz": {
+  "en": "Effective",
+  "ctx": "src/battle/view/tela.ts:416 · campo texto"
+ },
+ "Um ovo não pode lutar.": {
+  "en": "An egg can't fight.",
+  "ctx": "src/battle/view/tela.ts:420"
+ },
+ "Está desmaiada e não pode lutar.": {
+  "en": "It has fainted and can't fight.",
+  "ctx": "src/battle/view/tela.ts:420"
+ },
+ "Já está em campo.": {
+  "en": "It's already in battle.",
+  "ctx": "src/battle/view/tela.ts:420"
+ },
+ "Já vai entrar em campo.": {
+  "en": "It's already about to go in.",
+  "ctx": "src/battle/view/tela.ts:420"
+ },
+ "Quem está em campo está preso e não pode sair!": {
+  "en": "The one in battle is trapped and can't switch out!",
+  "ctx": "src/battle/view/tela.ts:420"
+ },
+ "Guia de captura, passo 1: escolha LUTAR e canse a criatura selvagem. Cansada, ela resiste menos à cuia.": {
+  "en": "Catching guide, step 1: choose FIGHT and wear down the wild creature. When it's tired, it resists the gourd less.",
+  "ctx": "src/battle/view/tela.ts:439 · dizer()"
+ },
+ "Passo 2: a criatura cansou! Abra a MOCHILA, vá ao bolso Cuias e arremesse uma cuia.": {
+  "en": "Step 2: the creature is tired! Open the BAG, go to the Gourds pocket and throw a gourd.",
+  "ctx": "src/battle/view/tela.ts:439 · dizer()"
+ },
+ "O que\n{nome} vai fazer?": {
+  "en": "What will\n{nome} do?",
+  "ctx": "src/battle/view/tela.ts:440 · mostrar()"
+ },
+ "FUGIR": {
+  "en": "RUN",
+  "ctx": "src/battle/view/tela.ts:441 · campo fugir | src/ui/telas/gincana-safari.ts:51"
+ },
+ "Ainda não: primeiro use LUTAR para cansar a criatura.": {
+  "en": "Not yet: first use FIGHT to tire the creature out.",
+  "ctx": "src/battle/view/tela.ts:443 · dizer()"
+ },
+ "Agora é a hora da cuia: abra a MOCHILA e escolha uma no bolso Cuias.": {
+  "en": "Now it's gourd time: open the BAG and pick one from the Gourds pocket.",
+  "ctx": "src/battle/view/tela.ts:444 · dizer()"
+ },
+ "Atacar quem?": {
+  "en": "Attack whom?",
+  "ctx": "src/battle/view/tela.ts:453 · mostrar()"
+ },
+ "Não se captura a criatura de outro treinador.": {
+  "en": "You can't catch another trainer's creature.",
+  "ctx": "src/battle/view/tela.ts:461"
+ },
+ "Aqui não dá para arremessar cuias agora.": {
+  "en": "You can't throw gourds here right now.",
+  "ctx": "src/battle/view/tela.ts:461"
+ },
+ "Esse não: escolha uma cuia no bolso Cuias.": {
+  "en": "Not that one: pick a gourd from the Gourds pocket.",
+  "ctx": "src/battle/view/tela.ts:465 · dizer()"
+ },
+ "Usar {item}": {
+  "en": "Use {item}",
+  "ctx": "src/battle/view/tela.ts:467 · telaEquipe()"
+ },
+ "Recuperar PG de qual golpe?": {
+  "en": "Restore MP for which move?",
+  "ctx": "src/battle/view/tela.ts:470 · campo titulo"
+ },
+ "Esse golpe já está com todo o PG.": {
+  "en": "That move already has full MP.",
+  "ctx": "src/battle/view/tela.ts:472 · dizer()"
+ },
+ "TROCAR POR QUEM?": {
+  "en": "SWITCH TO WHOM?",
+  "ctx": "src/battle/view/tela.ts:478 · telaEquipe() | src/battle/view/tela.ts:543 · telaEquipe()"
+ },
+ "QUEM ENTRA EM CAMPO?": {
+  "en": "WHO GOES IN?",
+  "ctx": "src/battle/view/tela.ts:503 · telaEquipe()"
+ },
+ "Quer trocar de criatura?": {
+  "en": "Switch creatures?",
+  "ctx": "src/battle/view/tela.ts:543 · simNao()"
+ },
+ "Corisco": {
+  "en": "Corisco",
+  "ctx": "src/data/eventos/b1.ts:305 · se() | src/data/golpes.ts:171 · g()"
+ },
+ "Encontrão": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:91 · g()"
+ },
+ "Joga o corpo inteiro contra o alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:91 · g()"
+ },
+ "Arranhão": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:92 · g()"
+ },
+ "Risca o alvo com as unhas.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:92 · g()"
+ },
+ "Patada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:93 · g()"
+ },
+ "Patada seca. Costuma acertar em cheio.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:93 · g()"
+ },
+ "Dentada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:94 · g()"
+ },
+ "Morde com vontade. Pode atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:94 · g()"
+ },
+ "Cabeçada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:95 · g()"
+ },
+ "Baixa a cabeça e acerta de frente. Pode atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:95 · g()"
+ },
+ "Bote Ligeiro": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:96 · g()"
+ },
+ "Um bote tão rápido que sempre sai na frente.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:96 · g()"
+ },
+ "Pisoteio": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:97 · g()"
+ },
+ "Passa por cima do alvo. Pode atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:97 · g()"
+ },
+ "Atropelo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:98 · g() | src/data/itens.ts:58 · campo atropelo"
+ },
+ "Carreira desembestada. Quem usa também se machuca.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:98 · g()"
+ },
+ "Tabefes": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:99 · g()"
+ },
+ "Uma sequência de 2 a 5 tapas.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:99 · g()"
+ },
+ "Rabada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:100 · g()"
+ },
+ "Chicoteia com a cauda e baixa a Defesa de vez em quando.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:100 · g()"
+ },
+ "Toca e Foge": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:101 · g() | src/data/itens.ts:58 · campo toca-e-foge"
+ },
+ "Acerta e volta correndo para a cuia, dando lugar a uma parceira.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:101 · g()"
+ },
+ "Dar o Troco": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:102 · g()"
+ },
+ "Espera a pancada e devolve em dobro se já apanhou no turno.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:102 · g()"
+ },
+ "Última Cartada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:103 · g()"
+ },
+ "Poder dobrado quando quem usa está com menos da metade da vida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:103 · g()"
+ },
+ "Estrondo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:104 · g() | src/data/itens.ts:58 · campo estrondo"
+ },
+ "Um barulho de rachar os ouvidos atinge os adversários.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:104 · g()"
+ },
+ "Eco da Serra": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:105 · g()"
+ },
+ "Grito que volta das montanhas e acerta o alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:105 · g()"
+ },
+ "Mutirão": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:106 · g()"
+ },
+ "Força de um mutirão inteiro. Precisa descansar no turno seguinte.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:106 · g()"
+ },
+ "Berro": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:107 · g()"
+ },
+ "Berra alto e baixa o Ataque dos adversários.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:107 · g()"
+ },
+ "Cara Feia": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:108 · g()"
+ },
+ "Encara de cara amarrada e baixa a Defesa do alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:108 · g()"
+ },
+ "Assobio Agudo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:109 · g()"
+ },
+ "Assobio que deixa o alvo confuso.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:109 · g()"
+ },
+ "Cantiga de Ninar": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:110 · g()"
+ },
+ "Uma cantiga mansa que faz o alvo dormir.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:110 · g()"
+ },
+ "Esturro": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:111 · g()"
+ },
+ "Urro que espanta o alvo de volta para a cuia. Selvagens fogem.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:111 · g()"
+ },
+ "Espreguiçar": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:112 · g()"
+ },
+ "Estica o corpo e recupera metade da vida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:112 · g()"
+ },
+ "Soneca": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:113 · g() | src/data/itens.ts:58 · campo soneca"
+ },
+ "Dorme por 2 turnos e acorda com a vida cheia.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:113 · g()"
+ },
+ "Fincar Pé": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:114 · g() | src/data/itens.ts:58 · campo fincar-pe"
+ },
+ "Firma o corpo e não sofre nada neste turno. Falha se repetido.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:114 · g()"
+ },
+ "Faro Fino": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:115 · g()"
+ },
+ "Aguça os sentidos: mais Precisão e mais golpes em cheio.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:115 · g()"
+ },
+ "Grito de Guerra": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:116 · g() | src/data/itens.ts:58 · campo grito-de-guerra"
+ },
+ "Enche o peito e sobe o Ataque em 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:116 · g()"
+ },
+ "Chicote de Cipó": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:119 · g()"
+ },
+ "Estala um cipó comprido no alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:119 · g()"
+ },
+ "Folhas ao Vento": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:120 · g()"
+ },
+ "Folhas afiadas voam no alvo. Costuma acertar em cheio.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:120 · g()"
+ },
+ "Chuva de Sementes": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:121 · g()"
+ },
+ "Dispara de 2 a 5 sementes duras.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:121 · g()"
+ },
+ "Sorver Seiva": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:122 · g()"
+ },
+ "Suga a energia do alvo e recupera metade do dano.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:122 · g()"
+ },
+ "Abraço de Sumaúma": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:123 · g() | src/data/itens.ts:59 · campo abraco-de-sumauma"
+ },
+ "Raízes enormes sugam o alvo. Recupera metade do dano.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:123 · g()"
+ },
+ "Laço de Cipó": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:124 · g()"
+ },
+ "Amarra o alvo por 4 a 5 turnos, apertando aos poucos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:124 · g()"
+ },
+ "Espinho de Mandacaru": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:125 · g()"
+ },
+ "Crava um espinho do sertão no alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:125 · g()"
+ },
+ "Vendaval de Folhas": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:126 · g()"
+ },
+ "Um turbilhão de folhas. Pode baixar a Defesa Especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:126 · g()"
+ },
+ "Queda de Jequitibá": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:127 · g()"
+ },
+ "Desaba como uma árvore gigante. Quem usa sofre recuo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:127 · g()"
+ },
+ "Raio da Clareira": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:128 · g() | src/data/itens.ts:59 · campo raio-da-clareira"
+ },
+ "Junta luz num turno e dispara no outro. Sob sol forte, dispara direto.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:128 · g()"
+ },
+ "está juntando a luz da clareira!": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:128 · campo msg"
+ },
+ "Erva-de-Passarinho": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:129 · g()"
+ },
+ "Planta uma parasita no alvo, que perde vida a cada turno para quem usou.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:129 · g()"
+ },
+ "Pólen Dorminhoco": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:130 · g()"
+ },
+ "Espalha um pólen que faz o alvo dormir.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:130 · g()"
+ },
+ "Pó de Urtiga": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:131 · g()"
+ },
+ "Pó que coça e trava o corpo: paralisa o alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:131 · g()"
+ },
+ "Tapete de Espinhos": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:132 · g() | src/data/itens.ts:59 · campo tapete-de-espinhos"
+ },
+ "Cobre o lado adversário de espinhos que ferem quem entrar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:132 · g()"
+ },
+ "Banho de Sol": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:133 · g()"
+ },
+ "Abre as folhas ao sol e recupera metade da vida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:133 · g()"
+ },
+ "Floresta em Flor": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:134 · g()"
+ },
+ "Floresce: recupera um quarto da vida e sobe a Defesa Especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:134 · g()"
+ },
+ "Fagulha": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:137 · g()"
+ },
+ "Solta uma fagulha. Pode queimar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:137 · g()"
+ },
+ "Brasa Viva": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:138 · g()"
+ },
+ "Arremessa uma brasa acesa. Pode queimar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:138 · g()"
+ },
+ "Cinzas Quentes": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:139 · g()"
+ },
+ "Cinzas no rosto do alvo. Pode baixar a Precisão.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:139 · g()"
+ },
+ "Bafo Quente": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:140 · g()"
+ },
+ "Poder dobrado contra alvos que já têm um status.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:140 · g() | src/data/golpes.ts:191 · g() | src/data/golpes.ts:221 · g() | +1"
+ },
+ "Patada Ardente": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:141 · g()"
+ },
+ "Patada em brasa. Pode queimar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:141 · g()"
+ },
+ "Pirueta em Chamas": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:142 · g()"
+ },
+ "Gira envolto em fogo. Pode queimar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:142 · g()"
+ },
+ "Labareda": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:143 · g() | src/data/itens.ts:59 · campo labareda"
+ },
+ "Uma língua de fogo comprida. Pode queimar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:143 · g()"
+ },
+ "Queimada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:144 · g()"
+ },
+ "O fogo corre pelo chão e pega os adversários. Pode queimar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:144 · g()"
+ },
+ "Fogo de Coivara": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:145 · g() | src/data/itens.ts:60 · campo fogo-de-coivara"
+ },
+ "Fogaréu difícil de controlar. Boa chance de queimar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:145 · g()"
+ },
+ "Carreira em Chamas": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:146 · g()"
+ },
+ "Corre pegando fogo. Sofre recuo e pode queimar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:146 · g()"
+ },
+ "Fornalha": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:147 · g()"
+ },
+ "Calor de fornalha. Depois, o Ataque Especial de quem usa cai 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:147 · g()"
+ },
+ "Lume Errante": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:148 · g() | src/data/itens.ts:60 · campo lume-errante"
+ },
+ "Uma chama azulada persegue o alvo e o deixa queimado.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:148 · g()"
+ },
+ "Sol a Pino": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:149 · g() | src/data/itens.ts:60 · campo sol-a-pino"
+ },
+ "Chama o sol forte por 5 turnos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:149 · g()"
+ },
+ "Fogueira de São João": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:150 · g()"
+ },
+ "Aquece o corpo na fogueira: sobe Ataque e Velocidade.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:150 · g()"
+ },
+ "Esguicho": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:153 · g()"
+ },
+ "Esguicha água no alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:153 · g()"
+ },
+ "Espuma do Mar": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:154 · g()"
+ },
+ "Espuma salgada nos olhos. Pode baixar a Precisão.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:154 · g()"
+ },
+ "Bolhas do Mangue": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:155 · g()"
+ },
+ "Bolhas pegajosas nos adversários. Podem baixar a Velocidade.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:155 · g()"
+ },
+ "Jato de Igarapé": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:156 · g()"
+ },
+ "Jato de água fria. Pode baixar a Velocidade.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:156 · g()"
+ },
+ "Rabanada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:157 · g()"
+ },
+ "Bate com a cauda molhada.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:157 · g()"
+ },
+ "Canoa Virada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:158 · g()"
+ },
+ "Poder dobrado contra alvos com menos da metade da vida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:158 · g()"
+ },
+ "Mordida de Piranha": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:159 · g()"
+ },
+ "Dentes de navalha. Pode atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:159 · g()"
+ },
+ "Cachoeirada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:160 · g()"
+ },
+ "Despenca como uma queda-d'água. Pode atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:160 · g()"
+ },
+ "Mergulho Fundo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:161 · g()"
+ },
+ "Some debaixo d'água num turno e ataca no outro.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:161 · g()"
+ },
+ "mergulhou fundo!": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:161 · campo msg"
+ },
+ "Enxurrada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:162 · g() | src/data/itens.ts:60 · campo enxurrada"
+ },
+ "A água desce o morro e arrasta os adversários.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:162 · g()"
+ },
+ "Pororoca": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:163 · g() | src/data/itens.ts:60 · campo pororoca | src/data/treinadores/b1.ts:86 · t()"
+ },
+ "A grande onda do encontro do rio com o mar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:163 · g()"
+ },
+ "Tromba-d'Água": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:164 · g()"
+ },
+ "Coluna de água devastadora. Precisa descansar no turno seguinte.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:164 · g()"
+ },
+ "Redemoinho": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:165 · g()"
+ },
+ "Prende o alvo num redemoinho por 4 a 5 turnos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:165 · g()"
+ },
+ "Chuva de Verão": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:166 · g() | src/data/itens.ts:61 · campo chuva-de-verao"
+ },
+ "Chama a chuva por 5 turnos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:166 · g()"
+ },
+ "Água de Cacimba": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:167 · g()"
+ },
+ "Bebe água fresca e recupera metade da vida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:167 · g()"
+ },
+ "Choquinho": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:170 · g()"
+ },
+ "Um choque pequeno. Pode paralisar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:170 · g()"
+ },
+ "Rápido como um corisco: sempre sai na frente.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:171 · g()"
+ },
+ "Faísca Dupla": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:172 · g()"
+ },
+ "Duas faíscas seguidas.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:172 · g()"
+ },
+ "Esbarrão Elétrico": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:173 · g()"
+ },
+ "Encosta carregado de eletricidade. Boa chance de paralisar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:173 · g()"
+ },
+ "Mordida Elétrica": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:174 · g()"
+ },
+ "Mordida que dá choque. Pode paralisar ou atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:174 · g()"
+ },
+ "Zunido de Alta Tensão": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:175 · g()"
+ },
+ "Zunido de fio elétrico. Pode confundir.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:175 · g()"
+ },
+ "Relâmpago": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:176 · g() | src/data/itens.ts:61 · campo relampago"
+ },
+ "Um raio certeiro. Pode paralisar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:176 · g()"
+ },
+ "Fio Desencapado": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:177 · g()"
+ },
+ "Descarga perigosa até para quem usa.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:177 · g()"
+ },
+ "Tempestade de Raios": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:178 · g()"
+ },
+ "Raios caem sobre os adversários.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:178 · g()"
+ },
+ "Trovoada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:179 · g() | src/data/itens.ts:61 · campo trovoada | src/data/trocas.ts:62 · campo apelido"
+ },
+ "Raio enorme. Nunca erra na chuva. Boa chance de paralisar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:179 · g()"
+ },
+ "Curto-Circuito": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:180 · g()"
+ },
+ "Descarrega tudo. O Ataque Especial de quem usa cai 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:180 · g()"
+ },
+ "Choque de Poraquê": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:181 · g() | src/data/itens.ts:61 · campo choque-de-poraque"
+ },
+ "A descarga do peixe-elétrico paralisa o alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:181 · g()"
+ },
+ "Dínamo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:182 · g()"
+ },
+ "Gira até zunir e sobe a Velocidade em 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:182 · g()"
+ },
+ "Pelo Arrepiado": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:183 · g()"
+ },
+ "A estática arrepia o pelo: sobe Ataque Especial e Velocidade.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:183 · g()"
+ },
+ "Escorregão": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:186 · g()"
+ },
+ "Desliza no gelo e sempre sai na frente.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:186 · g()"
+ },
+ "Granizo Miúdo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:187 · g()"
+ },
+ "De 2 a 5 pedrinhas de gelo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:187 · g()"
+ },
+ "Sopro Frio": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:188 · g()"
+ },
+ "Sopro gelado que sempre baixa a Velocidade do alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:188 · g()"
+ },
+ "Geada Serrana": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:189 · g()"
+ },
+ "A geada da serra cobre os adversários. Pode congelar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:189 · g()"
+ },
+ "Mordida Gelada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:190 · g()"
+ },
+ "Presas de gelo. Pode congelar ou atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:190 · g()"
+ },
+ "Frio de Rachar": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:191 · g()"
+ },
+ "Estaca de Gelo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:192 · g()"
+ },
+ "Crava uma estaca de gelo. Pode atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:192 · g()"
+ },
+ "Vento Minuano": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:193 · g() | src/data/itens.ts:61 · campo vento-minuano"
+ },
+ "O vento frio do sul. Pode congelar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:193 · g()"
+ },
+ "Gelo que Desaba": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:194 · g()"
+ },
+ "Age por último; poder dobrado se já apanhou no turno.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:194 · g()"
+ },
+ "Friagem": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:195 · g() | src/data/itens.ts:62 · campo friagem"
+ },
+ "Frente fria violenta sobre os adversários. Nunca erra na garoa gelada.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:195 · g()"
+ },
+ "Garoa Gelada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:196 · g() | src/data/itens.ts:62 · campo garoa-gelada"
+ },
+ "Chama a garoa gelada por 5 turnos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:196 · g()"
+ },
+ "Manto de Geada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:197 · g()"
+ },
+ "Cobre-se de geada: sobe Defesa e Defesa Especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:197 · g()"
+ },
+ "Bafo de Inverno": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:198 · g()"
+ },
+ "Um frio que zera as mudanças de atributo de todos em campo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:198 · g()"
+ },
+ "Chapa de Costas": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:201 · g()"
+ },
+ "Coice rápido de costas. Sempre sai na frente.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:201 · g()"
+ },
+ "Rasteira": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:202 · g()"
+ },
+ "Varre as pernas do alvo e baixa a Velocidade dele.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:202 · g()"
+ },
+ "Aú Giratório": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:203 · g()"
+ },
+ "Estrela de capoeira que acerta duas vezes.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:203 · g()"
+ },
+ "Meia-Lua": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:204 · g()"
+ },
+ "Chute em arco. Costuma acertar em cheio.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:204 · g()"
+ },
+ "Queixada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:205 · g() | src/world/mecanicas/ginasio-12.ts:33 · campo o"
+ },
+ "Chute no queixo. Pode confundir.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:205 · g()"
+ },
+ "Bênção": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:206 · g()"
+ },
+ "Empurrão com a sola do pé que manda o alvo de volta para a cuia.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:206 · g()"
+ },
+ "Armada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:207 · g() | src/data/itens.ts:62 · campo armada | src/world/mecanicas/ginasio-12.ts:33 · campo n"
+ },
+ "Giro completo com a perna estendida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:207 · g()"
+ },
+ "Rabo de Arraia": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:208 · g()"
+ },
+ "Chute giratório rasteiro. Pode baixar a Defesa.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:208 · g()"
+ },
+ "Martelo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:209 · g() | src/data/itens.ts:62 · campo martelo | src/world/mecanicas/ginasio-12.ts:33 · campo l"
+ },
+ "Chute lateral que desce como um martelo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:209 · g()"
+ },
+ "Roda de Capoeira": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:210 · g()"
+ },
+ "Gira no meio da roda e acerta os adversários.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:210 · g()"
+ },
+ "Arpão de Cabeça": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:211 · g()"
+ },
+ "Mergulha de cabeça no alvo. Sofre recuo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:211 · g()"
+ },
+ "Voo do Morcego": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:212 · g()"
+ },
+ "Voadora com os dois pés. Se errar, quem usa se machuca.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:212 · g()"
+ },
+ "Entra no balanço: sobe Ataque e Velocidade.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:213 · g()"
+ },
+ "Toque de Berimbau": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:214 · g() | src/data/itens.ts:62 · campo toque-de-berimbau"
+ },
+ "O berimbau chama para o jogo: sobe o Ataque em 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:214 · g()"
+ },
+ "Esquiva": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:215 · g()"
+ },
+ "Desvia de tudo neste turno. Falha se repetida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:215 · g()"
+ },
+ "Espinho Peçonhento": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:218 · g()"
+ },
+ "Espinho com peçonha. Boa chance de envenenar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:218 · g()"
+ },
+ "Cuspe Ácido": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:219 · g()"
+ },
+ "Cuspe que corrói. Pode baixar a Defesa Especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:219 · g()"
+ },
+ "Presa Dupla": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:220 · g()"
+ },
+ "Duas mordidas seguidas. Podem envenenar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:220 · g()"
+ },
+ "Peçonha Forte": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:221 · g()"
+ },
+ "Curare": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:222 · g()"
+ },
+ "Veneno de flecha que trava os músculos. Pode paralisar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:222 · g()"
+ },
+ "Bote de Jararaca": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:223 · g()"
+ },
+ "Bote certeiro. Boa chance de envenenar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:223 · g()"
+ },
+ "Gás do Pântano": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:224 · g()"
+ },
+ "Gás que sobe do brejo e pega os adversários. Pode envenenar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:224 · g()"
+ },
+ "Borra de Timbó": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:225 · g() | src/data/itens.ts:63 · campo borra-de-timbo"
+ },
+ "Lança o caldo do timbó. Boa chance de envenenar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:225 · g()"
+ },
+ "Chorume": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:226 · g()"
+ },
+ "Uma onda imunda. Boa chance de envenenar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:226 · g()"
+ },
+ "Leite de Cururu": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:227 · g() | src/data/itens.ts:63 · campo leite-de-cururu"
+ },
+ "A secreção do sapo-cururu envenena o alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:227 · g()"
+ },
+ "Fumaça Fedida": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:228 · g()"
+ },
+ "Fedor que arde os olhos: baixa a Precisão do alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:228 · g()"
+ },
+ "Pele Amarga": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:229 · g()"
+ },
+ "Solta toxinas na pele: sobe a Defesa em 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:229 · g()"
+ },
+ "Purga": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:230 · g()"
+ },
+ "Expulsa o que faz mal: cura o próprio status e um quarto da vida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:230 · g()"
+ },
+ "Bola de Barro": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:233 · g()"
+ },
+ "Barro no rosto do alvo. Pode baixar a Precisão.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:233 · g()"
+ },
+ "Tatu-Bola": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:234 · g()"
+ },
+ "Enrola-se e quica de 2 a 5 vezes no alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:234 · g()"
+ },
+ "Pisão de Anta": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:235 · g()"
+ },
+ "Pisão que faz o chão tremer e baixa a Velocidade dos adversários.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:235 · g()"
+ },
+ "Casco Pesado": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:236 · g()"
+ },
+ "Coice de casco. Costuma acertar em cheio.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:236 · g()"
+ },
+ "Toca de Tatu": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:237 · g() | src/data/itens.ts:63 · campo toca-de-tatu"
+ },
+ "Cava num turno e surge debaixo do alvo no outro.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:237 · g()"
+ },
+ "cavou uma toca!": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:237 · campo msg"
+ },
+ "Voçoroca": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:238 · g()"
+ },
+ "Abre um rasgo no chão sob o alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:238 · g()"
+ },
+ "Tremor de Terra": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:239 · g() | src/data/itens.ts:63 · campo tremor-de-terra"
+ },
+ "Sacode o chão e atinge todos em campo, até a parceira.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:239 · g()"
+ },
+ "Desbarrancar": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:240 · g()"
+ },
+ "Derruba um barranco inteiro. Sofre recuo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:240 · g()"
+ },
+ "Areia Movediça": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:241 · g()"
+ },
+ "Prende o alvo na areia por 4 a 5 turnos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:241 · g()"
+ },
+ "Jogar Areia": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:242 · g()"
+ },
+ "Areia nos olhos: baixa a Precisão do alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:242 · g()"
+ },
+ "Atoleiro": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:243 · g()"
+ },
+ "Enche o chão de lama: a Velocidade do alvo cai 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:243 · g()"
+ },
+ "Poeirão": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:244 · g() | src/data/itens.ts:63 · campo poeirao"
+ },
+ "Levanta poeira por 5 turnos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:244 · g()"
+ },
+ "Terra Batida": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:245 · g()"
+ },
+ "Firma os pés no chão: sobe Ataque e Defesa.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:245 · g()"
+ },
+ "Barro Curativo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:246 · g()"
+ },
+ "Cobre-se de argila medicinal e recupera metade da vida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:246 · g()"
+ },
+ "Lufada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:249 · g()"
+ },
+ "Um sopro de vento no alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:249 · g()"
+ },
+ "Bicada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:250 · g()"
+ },
+ "Bica o alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:250 · g()"
+ },
+ "Brisa da Serra": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:251 · g()"
+ },
+ "Vento fresco que passa pelos adversários.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:251 · g()"
+ },
+ "Golpe de Asa": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:252 · g()"
+ },
+ "Bate com a asa aberta.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:252 · g()"
+ },
+ "Rasante": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:253 · g() | src/data/itens.ts:64 · campo rasante"
+ },
+ "Voo rasteiro que nunca erra.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:253 · g()"
+ },
+ "Pé de Vento": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:254 · g()"
+ },
+ "Rajada repentina. Boa chance de atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:254 · g()"
+ },
+ "Bico Furador": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:255 · g()"
+ },
+ "Bico em broca. Costuma acertar em cheio.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:255 · g()"
+ },
+ "Revoada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:256 · g() | src/data/itens.ts:64 · campo revoada"
+ },
+ "Sobe alto num turno e desce atacando no outro.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:256 · g()"
+ },
+ "voou bem alto!": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:256 · campo msg"
+ },
+ "Ventania": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:257 · g()"
+ },
+ "Vento de derrubar telhado. Nunca erra na chuva. Pode confundir.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:257 · g()"
+ },
+ "Mergulho de Gavião": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:258 · g()"
+ },
+ "Despenca do céu sobre o alvo. Sofre recuo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:258 · g()"
+ },
+ "Rodamoinho": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:259 · g()"
+ },
+ "Um rodamoinho carrega o alvo de volta para a cuia. Selvagens fogem.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:259 · g()"
+ },
+ "Chuva de Penas": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:260 · g()"
+ },
+ "Cobre o alvo de penas: o Ataque dele cai 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:260 · g()"
+ },
+ "Vento a Favor": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:261 · g() | src/data/itens.ts:64 · campo vento-a-favor"
+ },
+ "Com o vento nas costas, a Velocidade sobe 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:261 · g()"
+ },
+ "Pouso no Galho": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:262 · g()"
+ },
+ "Pousa para descansar e recupera metade da vida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:262 · g()"
+ },
+ "Intuição": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:265 · g()"
+ },
+ "Um palpite que acerta. Pode confundir.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:265 · g()"
+ },
+ "Adivinhação": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:266 · g()"
+ },
+ "Causa dano igual ao nível de quem usa.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:266 · g() | src/data/golpes.ts:321 · g()"
+ },
+ "Pressentimento": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:267 · g()"
+ },
+ "Onda de pensamento. Pode baixar a Defesa Especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:267 · g()"
+ },
+ "Onda Mental": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:268 · g()"
+ },
+ "O pensamento se espalha e atinge os adversários.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:268 · g()"
+ },
+ "Dor de Cabeça": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:269 · g()"
+ },
+ "Uma pontada na cabeça do alvo. Pode atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:269 · g()"
+ },
+ "Cabeçada Certeira": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:270 · g()"
+ },
+ "Cabeçada com toda a concentração. Boa chance de atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:270 · g()"
+ },
+ "Força do Pensamento": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:271 · g() | src/data/itens.ts:64 · campo forca-do-pensamento"
+ },
+ "Ergue o alvo só com a mente. Pode baixar a Defesa Especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:271 · g()"
+ },
+ "Premonição": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:272 · g()"
+ },
+ "Concentra-se num turno e acerta o que previu no outro.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:272 · g()"
+ },
+ "fechou os olhos e se concentrou!": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:272 · campo msg"
+ },
+ "Olho de Coruja": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:273 · g()"
+ },
+ "Olhar fixo que faz o alvo dormir.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:273 · g()"
+ },
+ "Cisma": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:274 · g()"
+ },
+ "Enche a cabeça do alvo de dúvidas: fica confuso.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:274 · g()"
+ },
+ "Matutar": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:275 · g() | src/data/itens.ts:64 · campo matutar"
+ },
+ "Pensa com calma e sobe o Ataque Especial em 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:275 · g()"
+ },
+ "Cabeça Fria": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:276 · g()"
+ },
+ "Acalma a mente: sobe Ataque Especial e Defesa Especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:276 · g()"
+ },
+ "Muro Invisível": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:277 · g() | src/data/itens.ts:65 · campo muro-invisivel"
+ },
+ "Por 5 turnos, a equipe sofre metade do dano físico.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:277 · g()"
+ },
+ "Cortina de Brilho": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:278 · g() | src/data/itens.ts:65 · campo cortina-de-brilho"
+ },
+ "Por 5 turnos, a equipe sofre metade do dano especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:278 · g()"
+ },
+ "Ferroada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:281 · g()"
+ },
+ "Ferrão certeiro. Pode envenenar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:281 · g()"
+ },
+ "Ferrão Duplo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:282 · g()"
+ },
+ "Duas ferroadas seguidas. Podem envenenar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:282 · g()"
+ },
+ "Nuvem de Mosquitos": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:283 · g()"
+ },
+ "De 2 a 5 ondas de mosquitos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:283 · g()"
+ },
+ "Formigueiro": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:284 · g()"
+ },
+ "Formigas sobem no alvo e o prendem por 4 a 5 turnos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:284 · g()"
+ },
+ "Mordida de Saúva": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:285 · g()"
+ },
+ "Mandíbulas de tesoura. Costuma acertar em cheio.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:285 · g()"
+ },
+ "Voo de Mamangava": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:286 · g() | src/data/itens.ts:65 · campo voo-de-mamangava"
+ },
+ "Acerta num zigue-zague e volta para a cuia.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:286 · g()"
+ },
+ "Zumbido": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:287 · g()"
+ },
+ "Zumbido insuportável. Pode confundir.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:287 · g()"
+ },
+ "Sanguessuga": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:288 · g()"
+ },
+ "Gruda no alvo e recupera metade do dano.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:288 · g()"
+ },
+ "Enxame": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:289 · g() | src/data/itens.ts:65 · campo enxame"
+ },
+ "Um enxame inteiro. Pode baixar a Defesa Especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:289 · g()"
+ },
+ "Chifrada de Besouro": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:290 · g()"
+ },
+ "Levanta o alvo com o chifre e arremessa longe.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:290 · g()"
+ },
+ "Teia Pegajosa": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:291 · g()"
+ },
+ "Teia que gruda: a Velocidade dos adversários cai 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:291 · g()"
+ },
+ "Fecha-se num casulo: a Defesa sobe 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:292 · g()"
+ },
+ "Dança do Vaga-Lume": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:293 · g()"
+ },
+ "Dança de luzes: sobe Ataque Especial, Defesa Especial e Velocidade.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:293 · g()"
+ },
+ "Mel de Jataí": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:294 · g()"
+ },
+ "Prova um mel raro e recupera metade da vida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:294 · g()"
+ },
+ "Estilingue": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:297 · g()"
+ },
+ "Pedrinha disparada tão rápido que sempre sai na frente.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:297 · g()"
+ },
+ "Pedrada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:298 · g()"
+ },
+ "Atira uma pedra no alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:298 · g()"
+ },
+ "Chuva de Cascalho": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:299 · g()"
+ },
+ "De 2 a 5 punhados de cascalho.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:299 · g()"
+ },
+ "Brilho de Cristal": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:300 · g()"
+ },
+ "Reflexo de cristal que ofusca. Pode baixar a Precisão.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:300 · g()"
+ },
+ "Soterrar": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:301 · g()"
+ },
+ "Cobre o alvo de pedras e baixa a Velocidade dele.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:301 · g()"
+ },
+ "Lasca Afiada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:302 · g() | src/data/itens.ts:66 · campo lasca-afiada"
+ },
+ "Lasca de pedra cortante. Costuma acertar em cheio.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:302 · g()"
+ },
+ "Pedra Preciosa": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:303 · g()"
+ },
+ "Dispara a luz de uma gema da chapada.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:303 · g()"
+ },
+ "Deslizamento": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:304 · g() | src/data/itens.ts:65 · campo deslizamento"
+ },
+ "Pedras rolam sobre os adversários. Boa chance de atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:304 · g()"
+ },
+ "Pedregulho Rolante": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:305 · g()"
+ },
+ "Empurra um pedregulho ladeira abaixo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:305 · g()"
+ },
+ "Peso da Serra": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:306 · g()"
+ },
+ "Ergue um rochedo num turno e arremessa no outro.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:306 · g()"
+ },
+ "ergueu um rochedo!": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:306 · campo msg"
+ },
+ "Cabeça Dura": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:307 · g()"
+ },
+ "Cabeçada de quebrar rocha. O recuo é enorme.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:307 · g()"
+ },
+ "Polir Casco": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:308 · g()"
+ },
+ "Alisa o corpo para cortar o ar: Velocidade sobe 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:308 · g()"
+ },
+ "Couraça de Pedra": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:309 · g()"
+ },
+ "Veste-se de pedra: sobe a Defesa e recupera um quarto da vida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:309 · g()"
+ },
+ "Susto": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:312 · g()"
+ },
+ "Aparece de repente e sempre sai na frente.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:312 · g()"
+ },
+ "Lambida Fria": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:313 · g()"
+ },
+ "Lambida de dar arrepio. Boa chance de paralisar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:313 · g()"
+ },
+ "Corrente Arrastada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:314 · g()"
+ },
+ "Correntes prendem o alvo por 4 a 5 turnos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:314 · g()"
+ },
+ "Assombração": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:315 · g()"
+ },
+ "Sombra Rasteira": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:316 · g()"
+ },
+ "Ataca pela sombra do alvo. Costuma acertar em cheio.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:316 · g()"
+ },
+ "Bola de Breu": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:317 · g() | src/data/itens.ts:66 · campo bola-de-breu"
+ },
+ "Esfera de escuridão. Pode baixar a Defesa Especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:317 · g()"
+ },
+ "Sumiço": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:318 · g() | src/data/itens.ts:66 · campo sumico"
+ },
+ "Desaparece num turno e ataca do nada no outro.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:318 · g()"
+ },
+ "sumiu sem deixar rastro!": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:318 · campo msg"
+ },
+ "Sonho Ruim": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:319 · g()"
+ },
+ "Só funciona em quem dorme. Recupera metade do dano.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:319 · g()"
+ },
+ "Rasga-Mortalha": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:320 · g()"
+ },
+ "O grito da coruja da meia-noite. Pode baixar a Defesa Especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:320 · g()"
+ },
+ "Noite sem Lua": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:321 · g()"
+ },
+ "Badalada da Meia-Noite": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:322 · g()"
+ },
+ "Tira metade da vida atual do alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:322 · g()"
+ },
+ "Luz de Lamparina": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:323 · g()"
+ },
+ "Uma luzinha dançante deixa o alvo confuso.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:323 · g()"
+ },
+ "Mau Agouro": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:324 · g()"
+ },
+ "Um mau presságio baixa Ataque e Ataque Especial do alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:324 · g()"
+ },
+ "Nevoeiro": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:325 · g() | src/data/itens.ts:66 · campo nevoeiro"
+ },
+ "Cobre o campo de névoa por 5 turnos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:325 · g()"
+ },
+ "Ira Antiga": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:328 · g()"
+ },
+ "Uma raiva de outros tempos: causa sempre 40 de dano.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:328 · g()"
+ },
+ "Bote Duplo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:329 · g()"
+ },
+ "Dois botes seguidos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:329 · g()"
+ },
+ "Sopro Ancestral": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:330 · g()"
+ },
+ "Sopro das criaturas antigas. Boa chance de paralisar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:330 · g()"
+ },
+ "Cauda de Boiúna": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:331 · g()"
+ },
+ "Rabada da cobra-grande que manda o alvo de volta para a cuia.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:331 · g()"
+ },
+ "Garra Ancestral": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:332 · g() | src/data/itens.ts:67 · campo garra-ancestral"
+ },
+ "Garras de uma linhagem antiga.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:332 · g()"
+ },
+ "Pulso das Eras": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:333 · g() | src/data/itens.ts:66 · campo pulso-das-eras"
+ },
+ "Uma onda que vem do começo do mundo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:333 · g()"
+ },
+ "Voo do Guardião": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:334 · g()"
+ },
+ "Sobe além das nuvens num turno e desce no outro.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:334 · g()"
+ },
+ "subiu além das nuvens!": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:334 · campo msg"
+ },
+ "Fúria Lendária": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:335 · g()"
+ },
+ "Ataca com fúria cega e fica confuso depois.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:335 · g()"
+ },
+ "Estrela Cadente": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:336 · g()"
+ },
+ "Chama uma estrela do céu. O Ataque Especial de quem usa cai 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:336 · g()"
+ },
+ "Juízo da Floresta": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:337 · g()"
+ },
+ "A floresta inteira julga o alvo. Precisa descansar no turno seguinte.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:337 · g()"
+ },
+ "Dança Ancestral": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:338 · g()"
+ },
+ "Dança dos primeiros tempos: sobe Ataque e Velocidade.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:338 · g()"
+ },
+ "Escama Sagrada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:339 · g()"
+ },
+ "Escamas que brilham: a Defesa Especial sobe 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:339 · g()"
+ },
+ "Chamado Antigo": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:340 · g()"
+ },
+ "Ouve os ancestrais: sobe o Ataque Especial e a chance de golpe em cheio.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:340 · g()"
+ },
+ "Unha de Aço": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:343 · g()"
+ },
+ "Garras de metal. Pode subir o próprio Ataque.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:343 · g()"
+ },
+ "Chuva de Pregos": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:344 · g()"
+ },
+ "De 2 a 5 punhados de pregos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:344 · g()"
+ },
+ "Engrenagem Girante": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:345 · g()"
+ },
+ "Duas engrenagens acertam em sequência.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:345 · g()"
+ },
+ "Pião de Ferro": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:346 · g()"
+ },
+ "Gira como um pião. Pode subir a própria Defesa.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:346 · g()"
+ },
+ "Reflexo de Lata": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:347 · g() | src/data/itens.ts:67 · campo reflexo-de-lata"
+ },
+ "Luz refletida no metal. Pode baixar a Defesa Especial.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:347 · g()"
+ },
+ "Bigornada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:348 · g() | src/data/itens.ts:67 · campo bigornada"
+ },
+ "Pancada com peso de bigorna. Boa chance de atordoar.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:348 · g()"
+ },
+ "Marretada": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:349 · g()"
+ },
+ "Marreta pesada. A Velocidade de quem usa cai.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:349 · g()"
+ },
+ "Rabo de Corrente": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:350 · g()"
+ },
+ "Corrente de ferro girando. Boa chance de baixar a Defesa.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:350 · g()"
+ },
+ "Locomotiva": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:351 · g()"
+ },
+ "Avança como um trem sem freio. Sofre recuo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:351 · g()"
+ },
+ "Canhão de Sucata": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:352 · g()"
+ },
+ "Dispara tudo o que tem. Precisa descansar no turno seguinte.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:352 · g()"
+ },
+ "Apito de Trem": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:353 · g()"
+ },
+ "Apito estridente: a Defesa Especial do alvo cai 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:353 · g()"
+ },
+ "Amolar Garras": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:354 · g()"
+ },
+ "Afia as garras: sobe Ataque e Precisão.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:354 · g()"
+ },
+ "Blindagem": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:355 · g()"
+ },
+ "Fecha as placas de metal: a Defesa sobe 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:355 · g()"
+ },
+ "Piscadela": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:358 · g()"
+ },
+ "Uma piscada marota. Pode deixar o alvo encantado.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:358 · g()"
+ },
+ "Poeira de Estrela": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:359 · g()"
+ },
+ "Poeira brilhante cai sobre os adversários.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:359 · g()"
+ },
+ "Estrela-Guia": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:360 · g()"
+ },
+ "Uma estrelinha que segue o alvo e nunca erra.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:360 · g()"
+ },
+ "Beijo de Beija-Flor": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:361 · g()"
+ },
+ "Rouba a energia do alvo como néctar. Recupera 75% do dano.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:361 · g()"
+ },
+ "Canto da Iara": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:362 · g()"
+ },
+ "Canto das águas. Pode deixar o alvo encantado.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:362 · g()"
+ },
+ "Ciranda": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:363 · g()"
+ },
+ "Uma roda de luz gira em volta dos adversários.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:363 · g()"
+ },
+ "Clarão da Lua": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:364 · g() | src/data/itens.ts:67 · campo clarao-da-lua"
+ },
+ "A luz da lua cheia. Pode baixar o Ataque Especial do alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:364 · g()"
+ },
+ "Arraial Encantado": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:365 · g()"
+ },
+ "Fogos e bandeirinhas mágicas. Pode deixar o alvo encantado.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:365 · g()"
+ },
+ "Canto do Uirapuru": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:366 · g() | src/data/itens.ts:67 · campo canto-do-uirapuru"
+ },
+ "O canto mais raro da mata deixa o alvo encantado: ele passa a imitar golpes.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:366 · g()"
+ },
+ "Cafuné": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:367 · g()"
+ },
+ "Um carinho que amolece: baixa Ataque e Defesa do alvo.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:367 · g()"
+ },
+ "Charme do Boto": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:368 · g()"
+ },
+ "Olhar galante: o Ataque Especial do alvo cai 2 níveis.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:368 · g()"
+ },
+ "Banha-se na luz da lua e recupera metade da vida.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:369 · g()"
+ },
+ "Serenata": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:370 · g()"
+ },
+ "Uma canção que cura os status de toda a equipe.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:370 · g()"
+ },
+ "Simpatia": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:371 · g()"
+ },
+ "Uma simpatia das antigas protege a equipe de status por 5 turnos.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:371 · g()"
+ },
+ "Desespero": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:375 · g()"
+ },
+ "Sem PG, a criatura se debate. Quem usa também se machuca.": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:375 · g()"
+ },
+ "golpe desconhecido: ": {
+  "en": "",
+  "ctx": "src/data/golpes.ts:380"
+ },
+ "Valente": {
+  "en": "Brave",
+  "ctx": "src/data/personalidades.ts:7 · campo nome"
+ },
+ "Encara qualquer briga, mas não tem pressa.": {
+  "en": "Takes on any fight, but is never in a hurry.",
+  "ctx": "src/data/personalidades.ts:7 · campo desc"
+ },
+ "Brava": {
+  "en": "Fierce",
+  "ctx": "src/data/personalidades.ts:8 · campo nome"
+ },
+ "Bate forte e se irrita com facilidade.": {
+  "en": "Hits hard and gets cross easily.",
+  "ctx": "src/data/personalidades.ts:8 · campo desc"
+ },
+ "Teimosa": {
+  "en": "Stubborn",
+  "ctx": "src/data/personalidades.ts:9 · campo nome"
+ },
+ "Não arreda o pé por nada.": {
+  "en": "Won't budge for anything.",
+  "ctx": "src/data/personalidades.ts:9 · campo desc"
+ },
+ "Mansa": {
+  "en": "Gentle",
+  "ctx": "src/data/personalidades.ts:10 · campo nome"
+ },
+ "Aguenta tudo com paciência e evita confusão.": {
+  "en": "Puts up with everything patiently and avoids trouble.",
+  "ctx": "src/data/personalidades.ts:10 · campo desc"
+ },
+ "Curiosa": {
+  "en": "Curious",
+  "ctx": "src/data/personalidades.ts:11 · campo nome"
+ },
+ "Prefere descobrir truques a usar a força.": {
+  "en": "Prefers figuring out tricks to using force.",
+  "ctx": "src/data/personalidades.ts:11 · campo desc"
+ },
+ "Matreira": {
+  "en": "Crafty",
+  "ctx": "src/data/personalidades.ts:12 · campo nome"
+ },
+ "Cheia de artimanhas, mas se descuida.": {
+  "en": "Full of schemes, but gets careless.",
+  "ctx": "src/data/personalidades.ts:12 · campo desc"
+ },
+ "Serena": {
+  "en": "Serene",
+  "ctx": "src/data/personalidades.ts:13 · campo nome"
+ },
+ "Calma como um rio largo.": {
+  "en": "Calm as a wide river.",
+  "ctx": "src/data/personalidades.ts:13 · campo desc"
+ },
+ "Faceira": {
+  "en": "Showy",
+  "ctx": "src/data/personalidades.ts:14 · campo nome"
+ },
+ "Vaidosa: nada a abala, nada a apressa.": {
+  "en": "Vain: nothing shakes her, nothing rushes her.",
+  "ctx": "src/data/personalidades.ts:14 · campo desc"
+ },
+ "Arisca": {
+  "en": "Skittish",
+  "ctx": "src/data/personalidades.ts:15 · campo nome"
+ },
+ "Some num piscar de olhos.": {
+  "en": "Gone in the blink of an eye.",
+  "ctx": "src/data/personalidades.ts:15 · campo desc"
+ },
+ "Brincalhona": {
+  "en": "Playful",
+  "ctx": "src/data/personalidades.ts:16 · campo nome"
+ },
+ "Corre o dia inteiro e não leva nada a sério.": {
+  "en": "Runs around all day and takes nothing seriously.",
+  "ctx": "src/data/personalidades.ts:16 · campo desc"
+ }
+}

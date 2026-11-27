@@ -8,6 +8,7 @@
 import type { Dir } from '../../core/tipos';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, recolocar, Ladrilho, DX, DY, laco, cena, falar, avisar, sfx, quadros, naZona, chave } from './_pecas';
+import { tr } from '../../i18n';
 
 const ZONA = 'A5-ginasio';
 type Giro = '/' | '\\';
@@ -84,7 +85,7 @@ registrarMecanica(ZONA, {
     const e = espelhos.find((m) => m.x === x && m.y === y);
     if (e) { cena(() => girar(e)); return true; }
     if (raio.has(chave(x, y))) { cena(() => falar('Um raio de luz forte demais para encarar. Só girando um espelho ele sai do caminho.')); return true; }
-    if (x === CORTINA[0] && y === CORTINA[1] && !aberta) { cena(() => falar(`Uma cortina de renda grossa fecha o salão da líder.\nEla só abre com as duas estrelas de cristal acesas (${acesas.filter(Boolean).length} de 2).`)); return true; }
+    if (x === CORTINA[0] && y === CORTINA[1] && !aberta) { cena(() => falar(tr('Uma cortina de renda grossa fecha o salão da líder.\nEla só abre com as duas estrelas de cristal acesas ({n} de 2).', { n: acesas.filter(Boolean).length }))); return true; }
     const s = ESTRELAS.findIndex(([a, b]) => a === x && b === y);
     if (s >= 0) { cena(() => falar(acesas[s] ? 'A estrela de cristal brilha com a luz do vitral.' : 'Uma estrela de cristal apagada, presa à parede. Falta luz.')); return true; }
     if (VITRAIS.some((v) => v.x === x && v.y === y)) { cena(() => falar('Um vitral amarelo. A luz do sol entra por ele num raio só, reto como linha de bilro.')); return true; }

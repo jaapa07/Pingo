@@ -21,6 +21,7 @@ import { Lista } from '../componentes/lista';
 import { figura, nomeCri, sexoTxt, esp, n3, faixaDica, pix, caixa, rotulo, estrelaRara, type Icone } from './comum';
 import { nomeLocal } from './mapa-dados';
 import { T } from '../../data/textos-ui';
+import { tr } from '../../i18n';
 
 export interface ArgsResumo { lista?: CriaturaInst[]; indice?: number }
 const NOME_STAT: Record<Stat, string> = { vida: 'Vida', atq: 'Ataque', def: 'Defesa', atqEsp: 'Atq. Esp.', defEsp: 'Def. Esp.', vel: 'Velocidade' };
@@ -54,23 +55,23 @@ export function criarResumo(args: ArgsResumo = {}): Tela {
     fig = figura(k.especie, 96, 92, { misterio: !!k.ovo, rara: !!k.rara }); d.append(em(fig.el, 2, 0), maoEl);
     if (k.rara && !k.ovo) d.append(em(estrelaRara(2), 4, 4), em(estrelaRara(), 13, 104)); // Pelagem Rara: no retrato e ao lado do nível
     rotulo(d, `${nomeCri(k)} ${sexoTxt(k)}`, 0, 92, 'creme', { largura: 100, alinhar: 'centro' });
-    rotulo(d, k.ovo ? 'Ovo' : `Nv${k.nivel}`, 24, 103, 'amarelo');
+    rotulo(d, k.ovo ? 'Ovo' : tr('Nv{n}', { n: k.nivel }), 24, 103, 'amarelo');
     if (!k.ovo) { const s = k.vida <= 0 ? 'desmaiado' : k.status; if (s) d.append(em(iconeStatus(s), 62, 102)); }
     if (e && !k.ovo) e.tipos.forEach((t, i) => d.append(em(chipTipo(t, 56), 24, e.tipos.length === 1 ? 120 : 114 + i * 13)));
-    escrever(posT, `${ind + 1} de ${lista.length}`); posT.style.left = Math.floor((108 - parseInt(posT.style.width)) / 2) + 'px';
+    escrever(posT, tr('{ind} de {n}', { ind: ind + 1, n: lista.length })); posT.style.left = Math.floor((108 - parseInt(posT.style.width)) / 2) + 'px';
   }
   function paginaInfo() {
     const k = c(), e = esp(k.especie), p = personalidade(k.personalidade);
     if (k.ovo) { rotulo(corpo, T.resumo.ovo, 2, 4, 'tinta', { largura: 186 }); return; }
     rotulo(corpo, `Nº ${n3(k.especie)}  ${e?.nome ?? '???'}`, 2, 2, 'marrom');
-    rotulo(corpo, `Treinador: {c:azul}${k.treinadorOriginal || jogo.save.jogador.nome}{/c}`, 2, 14);
-    rotulo(corpo, `Jeito: ${p ? `${p.nome}  {c:vermelho}+${NOME_STAT[p.mais]}{/c} {c:azul}-${NOME_STAT[p.menos]}{/c}` : 'Sereno'}`, 2, 26);
-    rotulo(corpo, `Encontro: ${nomeLocal(k.localCaptura)}${k.nivelCaptura ? `, Nv${k.nivelCaptura}` : ''}`, 2, 38);
-    rotulo(corpo, `Item: ${k.item && temItemDef(k.item) ? `{c:agua}${itemDef(k.item).nome}{/c}` : 'nenhum'}`, 2, 50);
+    rotulo(corpo, tr('Treinador: {c:azul}{jogador}{/c}', { jogador: k.treinadorOriginal || jogo.save.jogador.nome }), 2, 14);
+    rotulo(corpo, p ? tr('Jeito: {jeito}  {c:vermelho}+{mais}{/c} {c:azul}-{menos}{/c}', { jeito: p.nome, mais: NOME_STAT[p.mais], menos: NOME_STAT[p.menos] }) : 'Jeito: Sereno', 2, 26);
+    rotulo(corpo, tr(k.nivelCaptura ? 'Encontro: {local}, Nv{nivel}' : 'Encontro: {local}', { local: nomeLocal(k.localCaptura), nivel: k.nivelCaptura }), 2, 38);
+    rotulo(corpo, k.item && temItemDef(k.item) ? tr('Item: {c:agua}{item}{/c}', { item: itemDef(k.item).nome }) : 'Item: nenhum', 2, 50);
     const prox = k.nivel >= 100 || !e ? 0 : expParaNivel(e.crescimento, k.nivel + 1) - k.exp;
-    rotulo(corpo, `Exp: ${k.exp}`, 2, 62); rotulo(corpo, k.nivel >= 100 ? 'Nível máximo' : `Próx. nível: ${prox}`, 96, 62);
+    rotulo(corpo, tr('Exp: {exp}', { exp: k.exp }), 2, 62); rotulo(corpo, k.nivel >= 100 ? 'Nível máximo' : tr('Próx. nível: {prox}', { prox }), 96, 62);
     if (e && k.nivel < 100) { const b = barra('exp', 186); const a0 = expParaNivel(e.crescimento, k.nivel), a1 = expParaNivel(e.crescimento, k.nivel + 1); b.definir(Math.max(0, Math.min(1, (k.exp - a0) / Math.max(1, a1 - a0)))); corpo.append(em(b.el, 2, 73)); }
-    rotulo(corpo, `Amizade: ${coracoes(k.amizade)}`, 2, 82);
+    rotulo(corpo, tr('Amizade: {amizade}', { amizade: coracoes(k.amizade) }), 2, 82);
     rotulo(corpo, fraseAmizade(k.amizade), 2, 94, 'chumbo', { largura: 186 });
     const bt = moldura('botao-foco', 94, 14); bt.append(em(texto('A: Fazer cafuné', { cor: 'tinta' }), 6, 3)); corpo.append(em(bt, 72, 116)); tocavel(bt, fazerCafune);
   }
@@ -93,7 +94,7 @@ export function criarResumo(args: ArgsResumo = {}): Tela {
   function paginaGolpes() {
     const k = c();
     if (k.ovo) { rotulo(corpo, T.resumo.ovo, 2, 4, 'tinta', { largura: 186 }); return; }
-    const itens = () => k.golpes.map((g, i) => ({ rotulo: (i === pego ? '▶ ' : '') + (temGolpe(g.id) ? golpe(g.id).nome : g.id), valor: `PG ${g.pg}/${g.pgMax}`, icone: iconeTipo(temGolpe(g.id) ? golpe(g.id).tipo : 'comum'), cor: i === pego ? ('vermelho' as const) : undefined }));
+    const itens = () => k.golpes.map((g, i) => ({ rotulo: (i === pego ? '▶ ' : '') + (temGolpe(g.id) ? golpe(g.id).nome : g.id), valor: tr('PG {pg}/{pgMax}', { pg: g.pg, pgMax: g.pgMax }), icone: iconeTipo(temGolpe(g.id) ? golpe(g.id).tipo : 'comum'), cor: i === pego ? ('vermelho' as const) : undefined }));
     golpes = new Lista({ itens: itens(), moldura: null, largura: 190, visiveis: 4, tamanho: 8, aoMover: pintarDetalhe, aoCancelar: () => { if (pego >= 0) { pego = -1; golpes!.definirItens(itens()); pintarDica(); } else sair(); },
       aoEscolher: (i) => {
         if (k.golpes.length < 2) return;
@@ -109,8 +110,8 @@ export function criarResumo(args: ArgsResumo = {}): Tela {
     const s = c().golpes[golpes.indice]; if (!s || !temGolpe(s.id)) return;
     const g = golpe(s.id);
     detalhe.append(em(chipTipo(g.tipo, 52), 0, 0));
-    rotulo(detalhe, `${CAT[g.cat]}`, 58, 2, 'marrom');
-    rotulo(detalhe, `Poder ${g.poder || '—'}   Precisão ${g.precisao || '—'}`, 0, 16);
+    rotulo(detalhe, CAT[g.cat], 58, 2, 'marrom');
+    rotulo(detalhe, tr('Poder {poder}   Precisão {precisao}', { poder: g.poder || '—', precisao: g.precisao || '—' }), 0, 16);
     rotulo(detalhe, g.desc, 0, 28, 'chumbo', { largura: 186 });
   }
   function pintarDica() { dica(abas.indice === 0 ? T.resumo.dicaInfo : abas.indice === 1 ? T.resumo.dicaAtributos : pego >= 0 ? T.resumo.dicaTroca : T.resumo.dicaGolpes); }
@@ -125,7 +126,7 @@ export function criarResumo(args: ArgsResumo = {}): Tela {
     const chave = 'cafune:' + k.uid, ultimo = Number(jogo.save.flags[chave] ?? -9999);
     const rende = k.vida > 0 && jogo.save.tempoJogo - ultimo >= 600;
     if (rende) { amizadePor(k, 'cafune'); jogo.save.flags[chave] = jogo.save.tempoJogo; }
-    recado = `${nomeCri(k)} ${k.vida <= 0 ? T.resumo.cafuneDesmaiada : rende ? T.resumo.cafuneBom : T.resumo.cafuneRepetido}`; dica(recado);
+    recado = tr('{nome} {acao}', { nome: nomeCri(k), acao: k.vida <= 0 ? T.resumo.cafuneDesmaiada : rende ? T.resumo.cafuneBom : T.resumo.cafuneRepetido }); dica(recado);
     for (let i = 0; i < 3; i++) { const h = texto('♥', { cor: 'vermelho', sombra: true }); h.dataset.t = String(-i * 0.35); h.style.display = 'none'; h.style.zIndex = '7'; maoEl.parentElement?.append(em(h, 30 + i * 18, 30)); mimos.push(h); }
   }
   function sair() { fechar(tela, ind); }

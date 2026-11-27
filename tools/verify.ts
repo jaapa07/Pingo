@@ -19,6 +19,7 @@ import { progressao, progressaoDemo, type ResultadoProgressao } from './verify/p
 import { niveis, sprites } from './verify/niveis';
 import { buildLimpo, type ResultadoLimpo } from './verify/build-limpo';
 import { pacote } from './verify/pacote';
+import { checarCatalogo } from './i18n/checar';
 
 const args = process.argv.slice(2);
 const TUDO = args.includes('--tudo'), OFFLINE = args.includes('--offline'), RAPIDO = args.includes('--rapido'), SO_HEAD = args.includes('--so-head');
@@ -142,6 +143,18 @@ async function offline(): Promise<Achado> {
   return a;
 }
 
+/** catálogo de idiomas (docs/I18N.md): marcadores e glifos errados derrubam; o que falta traduzir é aviso por enquanto */
+async function i18n(): Promise<Achado> {
+  const a = novoAchado(), r = checarCatalogo();
+  for (const e of r.erros) a.erros.push(`src/i18n/en/${e.area}.json: ${JSON.stringify(e.pt.slice(0, 70))} — ${e.motivo}`);
+  for (const x of r.porArea) if (x.faltam) a.avisos.push(`src/i18n/en/${x.area}.json: ${x.faltam} de ${x.entradas} entradas sem tradução (${x.palavrasFaltam} palavras) — em inglês esses textos aparecem em português`);
+  if (r.largos.length) a.avisos.push(`src/i18n/en: ${r.largos.length} texto(s) em inglês mais largos que o PT — confira as caixas fixas (npm run i18n:faltando -- --largura)`);
+  if (r.montagens.length > 7) a.avisos.push(`src/i18n/en/_montagens.txt: ${r.montagens.length} frase(s) montadas no código fora de tr() — converta (docs/I18N.md)`);
+  const t = r.porArea.reduce((s, x) => s + x.traduzidas, 0), n = r.porArea.reduce((s, x) => s + x.entradas, 0);
+  a.info.push(`${n} entradas em ${r.porArea.length} áreas · ${t} traduzidas (${n ? Math.floor((100 * t) / n) : 0}%) · ${r.erros.length} erro(s)`);
+  return a;
+}
+
 /* ------------------------------ execução ------------------------------ */
 let limpo: ResultadoLimpo | undefined;
 const quer = (id: string) => !SO || SO.includes(id);
@@ -159,6 +172,7 @@ if (quer('zonas-b2-norte')) filhos.push(medir('zonas-b2-norte', 'Zonas B2-norte 
 if (!RAPIDO && quer('limpo')) filhos.push(medir('limpo', 'Build limpo (git clone do HEAD + npm run build, como no GitHub)', async () => (limpo = await buildLimpo(SO_HEAD))));
 if (quer('palavras')) await medir('palavras', 'Palavras proibidas, acaso e canvas', palavras);
 if (quer('integridade')) await medir('integridade', 'Integridade de dados (ids referenciados)', integridade);
+if (quer('i18n')) await medir('i18n', 'Catálogo de idiomas (inglês)', i18n);
 let prog: ResultadoProgressao | undefined;
 if (quer('progressao') || quer('progressao-b') || quer('niveis') || quer('sprites')) {
   const l = await medir('progressao', 'Progressão do mapa A (quarto → Liga)', async () => (prog = await progressao({ mapaB: true })));
@@ -174,7 +188,7 @@ if (quer('pacote')) await medir('pacote', 'Arquivos do jogo no pacote publicado 
 if (OFFLINE && quer('offline')) await medir('offline', 'Pacote offline e atualização no navegador (Playwright)', offline);
 if (quer('dist')) await medir('dist', 'Pacote dist/ e PWA', () => dist(pastaDist, !!limpo?.dist));
 
-const ORDEM = ['tsc', 'batalha', 'zonas-a1', 'zonas-a2', 'zonas-b1', 'zonas-b2-sul', 'zonas-b2-norte', 'palavras', 'integridade', 'progressao', 'progressao-b', 'demo', 'niveis', 'sprites', 'limpo', 'pacote', 'offline', 'dist'];
+const ORDEM = ['tsc', 'batalha', 'zonas-a1', 'zonas-a2', 'zonas-b1', 'zonas-b2-sul', 'zonas-b2-norte', 'palavras', 'integridade', 'i18n', 'progressao', 'progressao-b', 'demo', 'niveis', 'sprites', 'limpo', 'pacote', 'offline', 'dist'];
 linhas.sort((x, y) => ORDEM.indexOf(x.id) - ORDEM.indexOf(y.id));
 for (const l of linhas) {
   const marca = l.erros.length ? '✗ FALHOU' : l.avisos.length ? '✓ ok (com avisos)' : '✓ ok';

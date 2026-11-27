@@ -25,7 +25,9 @@
     "android:apk": "npm run android && cd plataformas/android && ./gradlew assembleRelease",
     "test:offline": "tsx tools/verify/offline.ts",
     "icones": "tsx tools/build-icones.ts",
-    "test:atualizacao": "tsx tools/verify/atualizacao.ts"
+    "test:atualizacao": "tsx tools/verify/atualizacao.ts",
+    "i18n:extrair": "tsx tools/i18n/extrair.ts",
+    "i18n:faltando": "tsx tools/i18n/faltando.ts"
   },
   "devDependencies": {
     "@capacitor/cli": "8.6.0",

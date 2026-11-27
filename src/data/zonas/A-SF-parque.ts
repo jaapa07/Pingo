@@ -1,5 +1,6 @@
 import type { ZonaDef } from '../../core/tipos';
 import { grade, obj, saidas } from './_a1-grade';
+import { tr } from '../../i18n';
 
 /**
  * A-SF-parque · Parque Safári do Buriti-Alto (spec 10A item 33). Quatro setores de 22 × 17 tiles, desenhados à mão
@@ -89,7 +90,7 @@ const LAGOA = [
 
 const g = grade('A-SF-parque', [...MATA.map((l, i) => l + TOCA[i]), ...VEREDA.map((l, i) => l + LAGOA[i])], { X: '.', U: '.', S: ':' });
 export const PARQUE_ENTRADA: [number, number] = [10, 32];
-const obra = (x: number, y: number, n: number, onde: string) => ({ x, y, requer: `flag:safari-setor-${n}`, sprite: 'npc-homem-2', fala: `Cerca em obra! Aqui vai ser ${onde}. O Seu Jatobá ainda está montando: falta o material.` });
+const obra = (x: number, y: number, n: number, onde: string) => ({ x, y, requer: `flag:safari-setor-${n}`, sprite: 'npc-homem-2', fala: tr('Cerca em obra! Aqui vai ser {onde}. O Seu Jatobá ainda está montando: falta o material.', { onde }) });
 const zona: ZonaDef = {
   id: 'A-SF-parque', nome: 'Parque Safári', mapa: 'A', tipo: 'rota', tileset: 'cerrado', musica: 'safari', arena: 'cerrado', passo: 9,
   mapaChars: g.mapa,

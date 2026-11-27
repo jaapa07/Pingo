@@ -11,6 +11,7 @@
 import type { Dir, NpcDef, ObjetoSpawn, Warp, ItemChao, ZonaDef, Encontro } from '../../core/tipos';
 import { CATALOGO_EXTERIOR } from '../catalogo-objetos';
 import { CATALOGO_INTERIOR } from '../catalogo-interiores';
+import { tr } from '../../i18n';
 
 export const ERROS_B1: string[] = [];
 const erro = (s: string) => { ERROS_B1.push(s); console.error('[zonas B1] ' + s); };
@@ -154,7 +155,7 @@ export function postoGuardiao(cidade: string, nomeCidade: string, passo: number,
     '######DD######',
   ], { K: '#', W: '#', R: '.', h: '.', V: '.', B: '.', s: '.', a: ',', D: '+', Q: '.', '1': '.', '2': '.', '3': '.' });
   return {
-    id, nome: `Posto Guardião de ${nomeCidade}`, mapa: 'B', tipo: 'interior', tileset: 'predio', musica: 'posto', arena, passo,
+    id, nome: tr('Posto Guardião de {cidade}', { cidade: nomeCidade }), mapa: 'B', tipo: 'interior', tileset: 'predio', musica: 'posto', arena, passo,
     mapaChars: g.mapa,
     objetos: [
       { o: 'tema', x: 0, y: 0, tema: 'posto' },
@@ -191,7 +192,7 @@ export function venda(cidade: string, nomeCidade: string, passo: number, arena: 
   ], { K: '#', W: '#', P: '.', B: '.', J: '.', s: '.', G: '.', a: ',', D: '+', '1': '.', '2': '.' });
   const pr = g.todos('P'), [vx, vy] = g.p('1');
   return {
-    id, nome: `Venda de ${nomeCidade}`, mapa: 'B', tipo: 'interior', tileset: 'predio', musica: 'venda', arena, passo,
+    id, nome: tr('Venda de {cidade}', { cidade: nomeCidade }), mapa: 'B', tipo: 'interior', tileset: 'predio', musica: 'venda', arena, passo,
     mapaChars: g.mapa,
     objetos: [
       { o: 'tema', x: 0, y: 0, tema: 'venda' },

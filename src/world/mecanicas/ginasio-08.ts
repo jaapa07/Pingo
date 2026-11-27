@@ -13,6 +13,7 @@ import { ajudante } from '../vivo';
 import { nomeCriatura } from '../deps';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, DX, DY, cena, falar, avisar, sfx, quadros, livre } from './_pecas';
+import { tr } from '../../i18n';
 
 const ZONA = 'A10-ginasio';
 interface Cipo { tiles: [number, number][]; atraso: number; nasc: number; n: number }
@@ -59,7 +60,7 @@ async function cortar(c: Cipo) {
   sfx('facao');
   await quadros(10);
   murchar(c, cipos.indexOf(c));
-  await falar(`${nomeCriatura(a)} cortou o cipó com o Facão! Ele murchou até a raiz… e já começa a brotar de novo.`);
+  await falar(tr('{n} cortou o cipó com o Facão! Ele murchou até a raiz… e já começa a brotar de novo.', { n: nomeCriatura(a) }));
 }
 
 // a insígnia chegou: os cipós murcham na hora (antes só murchavam no passo seguinte e podiam deixar o jogador cercado depois da luta)

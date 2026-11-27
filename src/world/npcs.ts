@@ -9,6 +9,7 @@ import { DX, DY, OPOSTO } from './zonas';
 import { treinador, falar, abrirTela, criarDeMembro } from './deps';
 import { lutar } from './encontros';
 import { rodarEvento } from './eventos';
+import { tr } from '../i18n';
 
 const DIRS: Dir[] = ['n', 's', 'l', 'o'];
 const chaveOculto = (id: string) => `oculto:${M.zv.def.id}:${id}`;
@@ -90,7 +91,7 @@ export async function abordagem(n: NpcVivo) {
   await desafiar(n.treinador!, n);
 }
 export async function desafiar(t: TreinadorDef, n?: NpcVivo, extra: { semDerrota?: boolean } = {}): Promise<boolean> {
-  const quem = { nome: `${t.classe} ${t.nome}`, retrato: t.sprite };
+  const quem = { nome: tr('{classe} {nome}', { classe: t.classe, nome: t.nome }), retrato: t.sprite };
   await falar(t.desafio, quem);
   const inimigos = t.equipe.map((m) => criarDeMembro(m, t.nome));
   const r = await lutar({ tipo: 'treinador', inimigos, treinador: t, arena: M.zv.def.arena, clima: M.zv.def.clima, dupla: t.dupla, musica: t.musica, ...extra });
@@ -107,7 +108,7 @@ export async function interagirNpc(n: NpcVivo) {
   n.ator.olharPara(M.jog.x, M.jog.y);
   if (t && !flag(flagVitoria(t))) {
     if (jogo.save.equipe.length) { await desafiar(t, n); return; }
-  } else if (t && !d.script && !d.fala) { await falar(t.depois ?? t.derrota, { nome: `${t.classe} ${t.nome}`, retrato: t.sprite }); return; }
+  } else if (t && !d.script && !d.fala) { await falar(t.depois ?? t.derrota, { nome: tr('{classe} {nome}', { classe: t.classe, nome: t.nome }), retrato: t.sprite }); return; }
   if (d.script) { await rodarEvento(d.script); return; }
   const nome = (d as NpcDef & { nome?: string }).nome;
   for (const f of d.fala ?? []) await falar(f, { nome, retrato: d.sprite });

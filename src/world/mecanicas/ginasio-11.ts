@@ -12,6 +12,7 @@ import { bus } from '../../core/events';
 import { simNao } from '../deps';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, cena, falar, avisar, sfx, quadros, laco, naZona, chave } from './_pecas';
+import { tr } from '../../i18n';
 
 const ZONA = 'B4-ginasio';
 type Nota = 'DÓ' | 'RÉ' | 'MI' | 'FÁ' | 'SOL';
@@ -80,14 +81,14 @@ async function tocarMusica(t: Terreiro) {
     await quadros(8);
   }
   const nomes = t.musica.map((i) => t.fogueiras[i].nota).join(', ');
-  await falar(t.mostra ? (t === TERREIROS[1] ? `A música foi: ${nomes}. ANARRIÊ!` : `Foi assim: ${nomes}. Agora é com você!`) : `Lá vai de novo, devagarinho: ${nomes}.`, { nome: t.nome });
+  await falar(t.mostra ? (t === TERREIROS[1] ? tr('A música foi: {nomes}. ANARRIÊ!', { nomes }) : tr('Foi assim: {nomes}. Agora é com você!', { nomes })) : tr('Lá vai de novo, devagarinho: {nomes}.', { nomes }), { nome: t.nome });
 }
 
 async function mexerNaFogueira(t: Terreiro, i: number) {
   const k = TERREIROS.indexOf(t), f = t.fogueiras[i];
-  if (resolvido[k]) { await falar(`A fogueira do ${f.nota} estala e espalha faísca. Viva São João!`); return; }
-  if (t.ordem.indexOf(i) < acesas[k]) { await falar(`A fogueira do ${f.nota} já está acesa.`); return; }
-  if (!(await simNao(`Uma fogueira de São João apagada. A bandeirinha diz "${f.nota}".\nAcender?`))) return;
+  if (resolvido[k]) { await falar(tr('A fogueira do {nota} estala e espalha faísca. Viva São João!', { nota: f.nota })); return; }
+  if (t.ordem.indexOf(i) < acesas[k]) { await falar(tr('A fogueira do {nota} já está acesa.', { nota: f.nota })); return; }
+  if (!(await simNao(tr('Uma fogueira de São João apagada. A bandeirinha diz "{nota}".\nAcender?', { nota: f.nota })))) return;
   sfx('fogueira'); acender(f); tocarNota(f.nota);
   await quadros(20);
   if (t.ordem[acesas[k]] === i) {
@@ -98,7 +99,7 @@ async function mexerNaFogueira(t: Terreiro, i: number) {
       sfx('item-obtido'); M.cena.tremer(6);
       esfriar(t);
       avisar('As brasas da passagem esfriaram!');
-      await falar(`Que arrasta-pé! As ${t.ordem.length} fogueiras queimam juntas e as brasas da passagem viram cinza fria.`);
+      await falar(tr('Que arrasta-pé! As {n} fogueiras queimam juntas e as brasas da passagem viram cinza fria.', { n: t.ordem.length }));
     }
     return;
   }
@@ -106,7 +107,7 @@ async function mexerNaFogueira(t: Terreiro, i: number) {
   await quadros(10);
   acesas[k] = 0;
   t.fogueiras.forEach(apagar);
-  await falar(`PUF! Nota fora da música. Um sopro de fumaça e as fogueiras deste terreiro apagam todas.\nFale com ${t.nome.startsWith('Dona') ? 'a' : 'o'} ${t.nome} para ouvir a música de novo.`);
+  await falar(tr(t.nome.startsWith('Dona') ? 'PUF! Nota fora da música. Um sopro de fumaça e as fogueiras deste terreiro apagam todas.\nFale com a {nome} para ouvir a música de novo.' : 'PUF! Nota fora da música. Um sopro de fumaça e as fogueiras deste terreiro apagam todas.\nFale com o {nome} para ouvir a música de novo.', { nome: t.nome }));
 }
 
 bus.on('insignia', (n: number) => { if (n === 11 && M.zv?.def.id === ZONA) TERREIROS.forEach((_, k) => acender3(k)); });

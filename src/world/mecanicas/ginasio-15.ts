@@ -8,6 +8,7 @@
 import { flag } from '../../core/estado';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, cena, recolocar, falar, avisar, sfx, quadros } from './_pecas';
+import { tr } from '../../i18n';
 
 const ZONA = 'B8-ginasio';
 type Const = 'ema' | 'anta' | 'homem-velho' | 'veado' | 'cruzeiro' | 'tres-marias' | 'eixu';
@@ -32,6 +33,7 @@ const PORTAIS: { x: number; y: number; c: (Const | null)[] }[] = [
   { x: 13, y: 3, c: [null, 'homem-velho', null, 'anta'] }, // P15 ilha da líder
 ];
 const NOME: Record<Const, string> = { ema: 'a Ema', anta: 'a Anta', 'homem-velho': 'o Homem Velho', veado: 'o Veado', cruzeiro: 'o Cruzeiro do Sul', 'tres-marias': 'as Três Marias', eixu: 'o Eixu' };
+const CONST_SEM_ARTIGO: Record<Const, string> = { ema: 'Ema', anta: 'Anta', 'homem-velho': 'Homem Velho', veado: 'Veado', cruzeiro: 'Cruzeiro do Sul', 'tres-marias': 'Três Marias', eixu: 'Eixu' };
 /* desenhos 7×7 das constelações (a = estrela), cada uma com a sua cor */
 const DESENHO: Record<Const, string[]> = {
   ema: ['....aa.', '.....a.', '.....a.', '.aaaaa.', 'aaaaaa.', '..a.a..', '..a.a..'],
@@ -63,18 +65,18 @@ async function girar() {
   hora = (hora + 1) % HORAS.length;
   sfx('g-mente'); M.cena.tremer(3);
   pintar();
-  avisar(`O céu girou: ${HORAS[hora]}.`);
+  avisar(tr('O céu girou: {hora}.', { hora: HORAS[hora] }));
 }
 async function saltar(i: number) {
   const p = PORTAIS[i], c = p.c[hora];
   const j = c ? PORTAIS.findIndex((q, k) => k !== i && q.c[hora] === c) : -1;
-  if (j < 0) { sfx('ui-erro'); await falar(c ? `O portal mostra ${NOME[c]}, mas nenhum outro portal brilha com ela nesta hora.` : `O portal está apagado: nenhuma constelação passa por ele no céu da ${HORAS[hora]}.`); return; }
+  if (j < 0) { sfx('ui-erro'); await falar(c ? tr('O portal mostra {n}, mas nenhum outro portal brilha com ela nesta hora.', { n: NOME[c] }) : tr('O portal está apagado: nenhuma constelação passa por ele no céu da {hora}.', { hora: HORAS[hora] })); return; }
   sfx('warp');
   await quadros(14, (k) => { M.jog.visivel = k % 4 < 2; });
   recolocar(PORTAIS[j].x, PORTAIS[j].y, M.jog.dir);
   await quadros(12, (k) => { M.jog.visivel = k % 4 < 2; });
   M.jog.visivel = true;
-  avisar(`Constelação: ${NOME[c!].replace(/^(a|o|as) /, '')}`);
+  avisar(tr('Constelação: {nome}', { nome: CONST_SEM_ARTIGO[c!] }));
 }
 
 registrarMecanica(ZONA, {
@@ -93,9 +95,9 @@ registrarMecanica(ZONA, {
   },
   interagir(x, y) {
     const i = portalEm(x, y);
-    if (i >= 0) { const c = PORTAIS[i].c[hora]; cena(() => falar(c ? `Um portal de constelação. No céu da ${HORAS[hora]}, ele mostra ${NOME[c]}.` : `Um portal apagado. No céu da ${HORAS[hora]}, nenhuma constelação passa por ele.`)); return true; }
+    if (i >= 0) { const c = PORTAIS[i].c[hora]; cena(() => falar(c ? tr('Um portal de constelação. No céu da {hora}, ele mostra {n}.', { hora: HORAS[hora], n: NOME[c] }) : tr('Um portal apagado. No céu da {hora}, nenhuma constelação passa por ele.', { hora: HORAS[hora] }))); return true; }
     if (M.zv.ch(x, y) === 'x') { cena(() => falar(vencido() ? 'O campo mental zumbe baixinho. Nem a vitória deixa alguém atravessar pensamento puro.' : 'Um campo mental: o ar treme como água e empurra a gente de volta. Só os portais atravessam.')); return true; }
-    if (M.zv.ch(x, y) === ',') { cena(() => falar(`Uma estrela-guia no chão. Pisar nela gira o céu uma hora adiante. Agora é ${HORAS[hora]}.`)); return true; }
+    if (M.zv.ch(x, y) === ',') { cena(() => falar(tr('Uma estrela-guia no chão. Pisar nela gira o céu uma hora adiante. Agora é {hora}.', { hora: HORAS[hora] }))); return true; }
     return false;
   },
   sair() { enf.esquecer(); hora = 0; },

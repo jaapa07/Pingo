@@ -6,6 +6,7 @@ import kit from './gerado/kit.json';
 import type { Bolso, StatusId, TipoId } from '../core/tipos';
 import { precarregar } from '../core/assets';
 import { texto, em, type CorTexto, type Tamanho } from './fonte';
+import { t as traduz } from '../i18n';
 export { em } from './fonte';
 
 export type TipoMoldura = 'madeira' | 'cipo' | 'azulejo' | 'texto' | 'placa' | 'tinta' | 'botao' | 'botao-foco' | 'botao-ap' | 'trilho' | 'selecao' | 'bisel';
@@ -74,7 +75,7 @@ export function chipTipo(t: TipoId, largura = 50): HTMLElement {
   const [base, escura] = CORES_TIPO[t];
   const el = document.createElement('div'); el.className = 'chip-tipo';
   el.style.cssText = `width:${largura}px;height:12px;background:${base};box-shadow:inset -1px -1px 0 ${escura}`;
-  el.append(em(iconeTipo(t), 0, 0), em(texto(NOME_TIPO[t].toUpperCase(), { sombra: true }), 14, 2));
+  el.append(em(iconeTipo(t), 0, 0), em(texto(traduz(NOME_TIPO[t]).toUpperCase(), { sombra: true }), 14, 2));
   return el;
 }
 

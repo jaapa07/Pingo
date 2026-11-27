@@ -18,6 +18,7 @@ import { diaCorrido } from '../revancha';
 import { TROCAS, troca } from '../trocas';
 import { NOME_GRUPO, gruposDe } from '../ninhos';
 import { NOTICIAS } from '../radio';
+import { t, juntar, tr } from '../../i18n';
 
 const deps = () => import('../../world/deps');
 const hoje = () => diaCorrido(jogo.save.relogio.deslocamentoMin);
@@ -49,7 +50,7 @@ registrarComando('cuieira', async () => {
   if (jogo.save.flags[chave] === hoje()) { await falar('Uma cuieira de galhos tortos. Os frutos que sobraram ainda estão verdes demais.\nAmanhã tem mais.'); return; }
   setFlag(chave, hoje()); darItem(c.fruto);
   bus.emit('sfx', { id: 'item-obtido' }); bus.emit('item-obtido', { id: c.fruto, qtd: 1 });
-  await falar(`Uma cuieira carregada! {JOGADOR} colheu uma ${nomeItem(c.fruto)}.`);
+  await falar(tr('Uma cuieira carregada! {JOGADOR} colheu uma {item}.', { item: nomeItem(c.fruto) }));
   if (!jogo.save.flags['cuieira-dica']) { setFlag('cuieira-dica'); await falar('Dizem que em Vila Caiçara mora um artesão que transforma cabaça em cuia especial.'); }
 });
 
@@ -59,20 +60,20 @@ registrarComando('artesao', async () => {
   const { falar, escolher, nomeItem } = await deps(), f = jogo.save.flags;
   const cuia = typeof f['artesao-cuia'] === 'string' ? (f['artesao-cuia'] as string) : '', qtd = Number(f['artesao-qtd'] ?? 0), dia = Number(f['artesao-dia'] ?? 0);
   if (cuia && qtd > 0) {
-    if (hoje() <= dia) { await falar(`A cuia ainda está secando ao sol, de boca para baixo. Cuia apressada racha!\fVolte amanhã para buscar ${qtd > 1 ? `as ${qtd}` : 'a'} ${nomeItem(cuia)}${qtd > 1 ? 's' : ''}.`, CABACEIRO); return; }
+    if (hoje() <= dia) { await falar(tr(qtd > 1 ? 'A cuia ainda está secando ao sol, de boca para baixo. Cuia apressada racha!\fVolte amanhã para buscar as {n} {cuia}s.' : 'A cuia ainda está secando ao sol, de boca para baixo. Cuia apressada racha!\fVolte amanhã para buscar a {cuia}.', { n: qtd, cuia: nomeItem(cuia) }), CABACEIRO); return; }
     darItem(cuia, qtd); setFlag('artesao-cuia', ''); setFlag('artesao-qtd', 0);
     bus.emit('sfx', { id: 'item-obtido' }); bus.emit('item-obtido', { id: cuia, qtd });
-    await falar(`Prontinha, lixada e encerada! Aqui ${qtd > 1 ? `estão as suas ${qtd} ${nomeItem(cuia)}s` : `está a sua ${nomeItem(cuia)}`}.`, CABACEIRO);
-    await falar(`{JOGADOR} recebeu ${qtd > 1 ? qtd + '× ' : ''}${nomeItem(cuia)}!`);
+    await falar(tr(qtd > 1 ? 'Prontinha, lixada e encerada! Aqui estão as suas {n} {cuia}s.' : 'Prontinha, lixada e encerada! Aqui está a sua {cuia}.', { n: qtd, cuia: nomeItem(cuia) }), CABACEIRO);
+    await falar(tr(qtd > 1 ? '{JOGADOR} recebeu {n}× {item}!' : '{JOGADOR} recebeu {item}!', { n: qtd, item: nomeItem(cuia) }));
     return;
   }
   const tem = Object.entries(CABACAS).filter(([, c]) => qtdItem(c.fruto) > 0);
   if (!tem.length) { await falar('Cuia boa nasce de cabaça boa. As cuieiras dão fruto de sete cores, cada cor uma cuia diferente.\fTraga as cabaças que eu faço o resto: amanhã está pronto.', CABACEIRO); return; }
-  const i = await escolher('Qual cabaça vamos trabalhar?', [...tem.map(([, c]) => `${nomeItem(c.fruto)} ×${qtdItem(c.fruto)}`), 'Nenhuma']);
+  const i = await escolher('Qual cabaça vamos trabalhar?', [...tem.map(([, c]) => `${t(nomeItem(c.fruto))} ×${qtdItem(c.fruto)}`), 'Nenhuma']);
   if (i < 0 || i >= tem.length) { await falar('Quando quiser, a faca está afiada.', CABACEIRO); return; }
   const c = tem[i][1], n = qtdItem(c.fruto);
   tirarItem(c.fruto, n); setFlag('artesao-cuia', c.cuia); setFlag('artesao-qtd', n); setFlag('artesao-dia', hoje());
-  await falar(`${n > 1 ? `${n} cabaças` : 'Uma cabaça'} dessas vira${n > 1 ? 'm' : ''} ${nomeItem(c.cuia)}.\fAgora é cortar, raspar, deixar secar a noite inteira e encerar. Volte amanhã!`, CABACEIRO);
+  await falar(tr(n > 1 ? '{n} cabaças dessas viram {cuia}.\fAgora é cortar, raspar, deixar secar a noite inteira e encerar. Volte amanhã!' : 'Uma cabaça dessas vira {cuia}.\fAgora é cortar, raspar, deixar secar a noite inteira e encerar. Volte amanhã!', { n, cuia: nomeItem(c.cuia) }), CABACEIRO);
 });
 
 /* ============================== Viveiro do Seu Aroeira (ninhos e ovos) ============================== */
@@ -96,7 +97,7 @@ registrarComando('criadouro', async () => {
       else await falar('Mas a sua equipe está cheia. Abra espaço que eu guardo o ovo até lá.', AROEIRA);
     }
     const casal = cr.casal;
-    const estado = casal.length === 0 ? 'O ninho está vazio.' : casal.length === 1 ? `${nomeCriatura(casal[0])} está sozinho no ninho.` : `${nomeCriatura(casal[0])} e ${nomeCriatura(casal[1])} estão no ninho. ${fraseCasal(N.afinidade(casal[0], casal[1]))}`;
+    const estado = casal.length === 0 ? 'O ninho está vazio.' : casal.length === 1 ? tr('{casal} está sozinho no ninho.', { casal: nomeCriatura(casal[0]) }) : tr('{casal} e {casal2} estão no ninho. {casal3}', { casal: nomeCriatura(casal[0]), casal2: nomeCriatura(casal[1]), casal3: fraseCasal(N.afinidade(casal[0], casal[1])) });
     const ops: string[] = [], acoes: ('deixar' | 'retirar' | 'grupo' | 'sair')[] = [];
     if (casal.length < 2) { ops.push('Deixar criatura'); acoes.push('deixar'); }
     if (casal.length) { ops.push('Retirar criatura'); acoes.push('retirar'); ops.push('Grupos de ninho'); acoes.push('grupo'); }
@@ -104,23 +105,23 @@ registrarComando('criadouro', async () => {
     const i = await escolher(estado, ops);
     const a = acoes[i] ?? 'sair';
     if (a === 'sair') { await falar('Volte sempre! Ovo gosta de visita.', AROEIRA); return; }
-    if (a === 'grupo') { for (const c of casal) await falar(`${nomeCriatura(c)}: ${gruposDe(c.especie).map((g) => NOME_GRUPO[g]).join(' e ')}.`, JUREMA); continue; }
+    if (a === 'grupo') { for (const c of casal) await falar(`${nomeCriatura(c)}: ${juntar(gruposDe(c.especie).map((g) => t(NOME_GRUPO[g])))}.`, JUREMA); continue; }
     if (a === 'deixar') {
       const cand = s.equipe.map((c, k) => ({ c, k })).filter(({ c }) => !c.ovo);
-      const j = await escolher('Quem fica no ninho?', [...cand.map(({ c }) => `${nomeCriatura(c)} Nv${c.nivel}${c.sexo === 'F' ? ' ♀' : c.sexo === 'M' ? ' ♂' : ''}`), 'Ninguém']);
+      const j = await escolher('Quem fica no ninho?', [...cand.map(({ c }) => `${nomeCriatura(c)} ${tr('Nv{n}', { n: c.nivel })}${c.sexo === 'F' ? ' ♀' : c.sexo === 'M' ? ' ♂' : ''}`), 'Ninguém']); // i18n-ok
       if (j < 0 || j >= cand.length) continue;
       if (!N.deixar(cand[j].k)) { await falar('Assim você fica sem ninguém para lutar na estrada! Leve pelo menos uma criatura disposta.', AROEIRA); continue; }
-      await falar(`Pode deixar: ${nomeCriatura(cand[j].c)} fica bem cuidado aqui. Cada passo que você der lá fora, ele treina um pouquinho aqui dentro.`, JUREMA);
+      await falar(tr('Pode deixar: {n} fica bem cuidado aqui. Cada passo que você der lá fora, ele treina um pouquinho aqui dentro.', { n: nomeCriatura(cand[j].c) }), JUREMA);
       continue;
     }
     // retirar: 100 patacas mais 100 por nível ganho
-    const j = await escolher('Quem volta com você?', [...casal.map((c) => { const g = N.niveisGanhos(c); return `${nomeCriatura(c)} Nv${c.nivel + g}${g ? ` (+${g})` : ''}`; }), 'Ninguém']);
+    const j = await escolher('Quem volta com você?', [...casal.map((c) => { const g = N.niveisGanhos(c); return `${nomeCriatura(c)} ${tr('Nv{n}', { n: c.nivel + g })}${g ? ` (+${g})` : ''}`; }), 'Ninguém']); // i18n-ok
     if (j < 0 || j >= casal.length) continue;
     const c = casal[j], g = N.niveisGanhos(c), preco = 100 + 100 * g;
     if (s.equipe.length >= 6) { await falar('A sua equipe está cheia. Guarde alguém no Viveiro de Cuias primeiro.', AROEIRA); continue; }
-    if (s.jogador.dinheiro < preco) { await falar(`São ${preco} patacas pela hospedagem e pela comida. Volte quando tiver.`, JUREMA); continue; }
+    if (s.jogador.dinheiro < preco) { await falar(tr('São {preco} patacas pela hospedagem e pela comida. Volte quando tiver.', { preco }), JUREMA); continue; }
     s.jogador.dinheiro -= preco; N.retirar(j);
-    await falar(`${preco} patacas, certinho. ${g ? `${nomeCriatura(c)} cresceu ${g} nível${g > 1 ? 'is' : ''} aqui com a gente!` : `${nomeCriatura(c)} descansou bastante.`}`, JUREMA);
+    await falar(tr('{preco} patacas, certinho.', { preco }) + ' ' + tr(!g ? '{nome} descansou bastante.' : g > 1 ? '{nome} cresceu {n} níveis aqui com a gente!' : '{nome} cresceu {n} nível aqui com a gente!', { nome: nomeCriatura(c), n: g }), JUREMA);
   }
 });
 /** o casal avisa pelo Rádio Cipó quando aparece um ovo (só quem tem o rádio; quem não tem vê o ovo ao passar no viveiro) */
@@ -147,7 +148,7 @@ registrarComando('troca', async ([id]) => {
   if (!cond(t.requer)) { await falar('Hum… tenho uma proposta de troca, mas você ainda está começando. Volte com mais insígnias no estojo!', quem); return; }
   await falar(t.falas.pedido, quem);
   const nQuer = especie(t.quer)?.nome ?? `nº ${t.quer}`, nDa = especie(t.da)?.nome ?? `nº ${t.da}`;
-  if (!(await simNao(`Trocar um ${nQuer} pelo ${nDa} ${t.apelido}?`))) { await falar(t.falas.recusa, quem); return; }
+  if (!(await simNao(tr('Trocar um {nQuer} pelo {nDa} {apelido}?', { nQuer, nDa, apelido: t.apelido })))) { await falar(t.falas.recusa, quem); return; }
   const i = s.equipe.findIndex((c) => c.especie === t.quer && !c.ovo);
   if (i < 0) { await falar(t.falas.semCriatura, quem); return; }
   const dada = s.equipe[i];
@@ -156,7 +157,7 @@ registrarComando('troca', async ([id]) => {
   const v = s.diario; if (!v.visto.includes(t.da)) v.visto.push(t.da); if (!v.capturado.includes(t.da)) v.capturado.push(t.da);
   setFlag('troca:' + t.id);
   bus.emit('sfx', { id: 'evolucao' });
-  await falar(`{JOGADOR} entregou ${nomeCriatura(dada)} e recebeu ${t.apelido}!`);
+  await falar(tr('{JOGADOR} entregou {dada} e recebeu {apelido}!', { dada: nomeCriatura(dada), apelido: t.apelido }));
   await falar(t.falas.feito, quem);
 });
 

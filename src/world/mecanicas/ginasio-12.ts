@@ -15,6 +15,7 @@ import { entrada, simNao } from '../deps';
 import { registrarMecanica } from '../registro';
 import type { Pix } from '../pixel';
 import { M, Enfeites, DIVISAS, cena, falar, avisar, sfx, quadros } from './_pecas';
+import { tr } from '../../i18n';
 
 const ZONA = 'B5-ginasio';
 interface Roda {
@@ -52,7 +53,7 @@ const tchi = () => bus.emit('sfx', { id: 'passo-madeira', pitch: 1.6 });
 async function volta(r: Roda, n: number, cam: { x: number; y: number }, num: number, total: number): Promise<number> {
   const j = M.jog, B = r.batida;
   const seq: Dir[] = Array.from({ length: n }, () => (['n', 's', 'o', 'l'] as Dir[])[rng.int(0, 3)]);
-  avisar(`Volta ${num} de ${total}: ${n} golpes`);
+  avisar(tr('Volta {num} de {total}: {nome} golpes', { num, total, nome: n }));
   const marca = enf.pix('marca', BOLINHA, { k: '#201420', w: '#6c5c4c' }, j.x, j.y, { dx: 5, dy: -22, z: 5000 }) as Pix;
   marca.el.dataset.rodaFase = 'entrada';
   const respostas: (boolean | null)[] = seq.map(() => null);
@@ -110,7 +111,7 @@ async function jogar(k: number) {
   if (!n) return;
   n.ator.olharPara(M.jog.x, M.jog.y);
   if (aberta[k]) { await falar('Iê, camará! A roda já está aberta para você. Siga em frente.', { nome: r.nome }); return; }
-  await falar(`Iê! Sou ${r.nome}. Aqui só passa quem joga comigo no toque de ${r.toque}.\fEu chamo os golpes, uma seta em cada batida do berimbau. Depois da pausa, você devolve as mesmas setas, cada uma na batida dela.`, { nome: r.nome });
+  await falar(tr('Iê! Sou {nome}. Aqui só passa quem joga comigo no toque de {toque}.\fEu chamo os golpes, uma seta em cada batida do berimbau. Depois da pausa, você devolve as mesmas setas, cada uma na batida dela.', { nome: r.nome, toque: r.toque }), { nome: r.nome });
   if (!(await simNao('Entrar na roda?'))) { await falar('A roda fica esperando. Ninguém tem pressa na capoeira.', { nome: r.nome }); return; }
   const musicaAntes = M.musica;
   bus.emit('musica', { id: 'nenhuma', fade: 0.4 });
@@ -119,7 +120,7 @@ async function jogar(k: number) {
     const erros = await volta(r, r.voltas[v], { x: n.ator.x, y: n.ator.y }, v + 1, r.voltas.length);
     if (erros > 1) {
       bus.emit('musica', musicaAntes);
-      await falar(`Opa, ${erros} tropeços! A roda pede volta ao mundo: o jogo recomeça do princípio.\nRespire e fale comigo de novo quando quiser.`, { nome: r.nome });
+      await falar(tr('Opa, {erros} tropeços! A roda pede volta ao mundo: o jogo recomeça do princípio.\nRespire e fale comigo de novo quando quiser.', { erros }), { nome: r.nome });
       return;
     }
     avisar(erros ? 'Um tropeço, mas a roda segue!' : 'Jogo limpo!');

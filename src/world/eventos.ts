@@ -12,6 +12,7 @@ import { lutar, soltarErrante } from './encontros';
 import { irPara, reavaliar } from './index';
 import { seguirParceira } from './parceira';
 import { garantirItensDeAmuleto } from './integracao';
+import { tr } from '../i18n';
 
 /** lançado para encerrar o script em curso (derrota em batalha) */
 class Encerrar extends Error {}
@@ -23,15 +24,15 @@ function quemFala(q: unknown): Quem | undefined {
   if (q === 'jogador') return { nome: jogo.save.jogador.nome, retrato: jogo.save.jogador.avatar };
   const n = M.npcs.find((x) => x.id === q);
   if (!n) return { nome: String(q) };
-  return { nome: n.treinador ? `${n.treinador.classe} ${n.treinador.nome}` : (n.def as { nome?: string }).nome, retrato: n.def.sprite };
+  return { nome: n.treinador ? tr('{classe} {nome}', { classe: n.treinador.classe, nome: n.treinador.nome }) : (n.def as { nome?: string }).nome, retrato: n.def.sprite };
 }
 async function entregar(c: CriaturaInst, apelidar: boolean) {
   const nome = nomeCriatura(c);
   sfx('item-obtido');
-  await falar(`{JOGADOR} recebeu ${nome}!`);
-  if (apelidar && (await simNao(`Quer dar um apelido para ${nome}?`))) { const a = (await pedirNome('Apelido', 10, nome)).trim(); if (a && a !== nome) c.apelido = a; }
+  await falar(tr('{JOGADOR} recebeu {nome}!', { nome }));
+  if (apelidar && (await simNao(tr('Quer dar um apelido para {nome}?', { nome })))) { const a = (await pedirNome('Apelido', 10, nome)).trim(); if (a && a !== nome) c.apelido = a; }
   const onde = receberCriatura(c);
-  if (onde === 'viveiro') await falar(`A equipe está cheia. ${nomeCriatura(c)} foi para o Viveiro de Cuias.`);
+  if (onde === 'viveiro') await falar(tr('A equipe está cheia. {n} foi para o Viveiro de Cuias.', { n: nomeCriatura(c) }));
 }
 
 const PADRAO: Record<string, FnComando> = {
@@ -47,7 +48,7 @@ const PADRAO: Record<string, FnComando> = {
   virar: ([q, d]) => { atorDe(q)?.virar(d as Dir); },
   esperar: ([ms]) => espera(Number(ms)),
   emote: async ([q, e]) => { atorDe(q)?.emote(String(e), 50); await quadros(50); },
-  dar: async ([id, q]) => { const n = Number(q ?? 1); darItem(String(id), n); sfx('item-obtido'); bus.emit('item-obtido', { id, qtd: n }); await falar(`{JOGADOR} recebeu ${n > 1 ? n + '× ' : ''}${nomeItem(String(id))}!`); },
+  dar: async ([id, q]) => { const n = Number(q ?? 1); darItem(String(id), n); sfx('item-obtido'); bus.emit('item-obtido', { id, qtd: n }); await falar(tr(n > 1 ? '{JOGADOR} recebeu {n}× {item}!' : '{JOGADOR} recebeu {item}!', { n, item: nomeItem(String(id)) })); },
   tirar: ([id, q]) => { tirarItem(String(id), Number(q ?? 1)); },
   dinheiro: ([n]) => { const j = jogo.save.jogador; j.dinheiro = Math.max(0, j.dinheiro + Number(n)); },
   darCriatura: async ([e, nv, o]) => entregar(criarCriatura(Number(e), Number(nv), { localCaptura: M.zv.def.nome, nivelCaptura: Number(nv) }), !!(o as { apelidar?: boolean } | undefined)?.apelidar),
@@ -75,7 +76,7 @@ const PADRAO: Record<string, FnComando> = {
   },
   flag: ([n, v]) => { setFlag(String(n), (v ?? true) as boolean | number | string); },
   insignia: ([n]) => { const k = Number(n); if (!jogo.save.insignias.includes(k)) jogo.save.insignias.push(k); sfx('insignia'); bus.emit('insignia', k); },
-  amuleto: ([id]) => { const a = id as AmuletoId; if (!temAmuleto(a)) jogo.save.amuletos.push(a); garantirItensDeAmuleto(); sfx('item-obtido'); bus.emit('amuleto', a); avisar(`Amuleto de Campo: ${AMULETOS[a]?.nome ?? a}`); },
+  amuleto: ([id]) => { const a = id as AmuletoId; if (!temAmuleto(a)) jogo.save.amuletos.push(a); garantirItensDeAmuleto(); sfx('item-obtido'); bus.emit('amuleto', a); avisar(tr('Amuleto de Campo: {n}', { n: AMULETOS[a]?.nome ?? a })); },
   se: async ([c, entao, senao]) => { await passos(cond(String(c)) ? (entao as Comando[]) : ((senao as Comando[] | undefined) ?? [])); },
   musica: ([id]) => { musica(String(id), true); },
   sfx: ([id]) => { sfx(String(id)); },

@@ -10,6 +10,7 @@ import { ajustesDeEncontro } from './registro';
 import { prepararSelvagem } from '../battle/cuias';
 import { passoCriadouro } from './ninhos';
 import { irPara, reavaliar } from './index';
+import { tr } from '../i18n';
 
 /** tabela em vigor para o método nesta zona (camada pós-insígnia → período → estação) */
 export function tabela(z: ZonaDef, metodo: MetodoEncontro): { h: Habitat; t: Encontro[] } | null {
@@ -100,8 +101,8 @@ async function encontrarErrante(n: number) {
   const r = await lutar({ tipo: 'lendario', inimigos: [c], arena: M.zv.def.arena, clima: M.zv.def.clima, errante: true });
   // lendário aparece uma vez só (decisão do autor; spec 6.4): capturado ou vencido sem captura, não volta mais
   if (r.resultado === 'captura' || r.resultado === 'vitoria') setFlag(`errante:${n}`, 'fim');
-  if (r.resultado === 'vitoria') avisar(`${especie(n)?.nome ?? 'A criatura'} fugiu ferida e não foi mais vista.`);
-  else if (r.resultado === 'fuga') { setFlag(`errante-vida:${n}`, Math.max(1, c.vida)); moverErrantes(true); avisar(`${especie(n)?.nome ?? 'A criatura'} sumiu na mata…`); }
+  if (r.resultado === 'vitoria') avisar(tr('{nome} fugiu ferida e não foi mais vista.', { nome: especie(n)?.nome ?? 'A criatura' }));
+  else if (r.resultado === 'fuga') { setFlag(`errante-vida:${n}`, Math.max(1, c.vida)); moverErrantes(true); avisar(tr('{nome} sumiu na mata…', { nome: especie(n)?.nome ?? 'A criatura' })); }
 }
 
 /* ------------------------------ ovos e amizade por passo ------------------------------ */
@@ -118,7 +119,7 @@ export function passoDaEquipe() {
       if (!s.diario.visto.includes(c.especie)) s.diario.visto.push(c.especie);
       if (!s.diario.capturado.includes(c.especie)) s.diario.capturado.push(c.especie);
       bus.emit('ovo-chocou', { especie: c.especie });
-      await falar(`Opa! O ovo está se mexendo…\fNasceu ${nomeCriatura(c)}!`);
+      await falar(tr('Opa! O ovo está se mexendo…\fNasceu {n}!', { n: nomeCriatura(c) }));
     });
     break;
   }

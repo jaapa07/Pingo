@@ -28,6 +28,7 @@ import { registrarComando } from '../../world/registro';
 import { registrarEspecies } from '../../battle/criatura';
 import { VISITANTES } from '../criaturas';
 import './comuns';
+import { tr } from '../../i18n';
 
 /* o módulo de batalha só registra as 180 (src/battle/index.ts): os visitantes entram aqui */
 registrarEspecies(VISITANTES);
@@ -243,7 +244,7 @@ const lanterna = (n: number, onde: string): EventoDef => ({
   id: `vis-lanterna-${n}`,
   passos: [
     se(`flag:boreal-lanterna-${n}`, [f(null, n === 4 ? 'O navegador confere a bússola e aponta para o alto da serra: o Pico Pingorama.' : 'O pesquisador da expedição anota alguma coisa num caderno molhado de neve e acena para você.')], [
-      f(null, `Um pesquisador da expedição da Drª Solveig guarda uma Lanterna Boreal ${onde}.`),
+      f(null, tr('Um pesquisador da expedição da Drª Solveig guarda uma Lanterna Boreal {onde}.', { onde })),
       ['batalha', `B-EXP-${n}`],
       ['dar', 'lanterna-boreal', 1],
       ['flag', `boreal-lanterna-${n}`],

@@ -14,6 +14,7 @@ import { faixaDica, placaTitulo, patacas, caixa, rotulo } from './comum';
 import { pedirQuantidade } from './quantidade';
 import { caber } from './mochila';
 import { T } from '../../data/textos-ui';
+import { t, tr } from '../../i18n';
 
 /** `moeda`: troca por outra moeda que não patacas (pontos da Gincana): só compra, com preço e saldo próprios */
 export interface ArgsLoja { itens?: string[]; titulo?: string; moeda?: { nome: string; saldo(): number; gastar(n: number): void; preco(id: string): number } }
@@ -22,7 +23,7 @@ export function criarLoja(args: ArgsLoja = {}): Tela {
   const el = elTela('ui', 'tela-loja', 'fundo-terra');
   const venda = (args.itens ?? []).filter(temItemDef).map(itemDef), md = args.moeda;
   const preco = (i: ItemInfo) => (md ? md.preco(i.id) : i.preco), saldo = () => (md ? md.saldo() : s.jogador.dinheiro);
-  placaTitulo(el, (args.titulo ?? 'VENDA').toUpperCase(), 2, 1, 150);
+  placaTitulo(el, t(args.titulo ?? 'VENDA').toUpperCase(), 2, 1, 150);
   const cxDin = moldura('placa', 120, 15, 198, 1); el.append(cxDin);
   const tDin = texto('', { cor: 'amarelo', sombra: true }); cxDin.append(em(tDin, 6, 4));
   const painel = moldura('madeira', 186, 146, 2, 18), info = moldura('tinta', 128, 146, 190, 18); el.append(painel, info);
@@ -46,14 +47,14 @@ export function criarLoja(args: ArgsLoja = {}): Tela {
   }
   function pintarInfo() {
     corpo.replaceChildren();
-    if (modo === 'menu') { rotulo(corpo, (md ? [`Troque seus ${md.nome} por prêmios.`, 'Volte sempre!'] : [T.loja.ola, 'Pago a metade do preço pelo que você não usa mais.', 'Volte sempre!'])[lista?.indice ?? 0], 0, 2, 'creme', { largura: 116 }); return; }
+    if (modo === 'menu') { rotulo(corpo, (md ? [tr('Troque seus {nome} por prêmios.', { nome: md.nome }), 'Volte sempre!'] : [T.loja.ola, 'Pago a metade do preço pelo que você não usa mais.', 'Volte sempre!'])[lista?.indice ?? 0], 0, 2, 'creme', { largura: 116 }); return; }
     const it = atuais[lista?.indice ?? 0]; if (!it) return;
     corpo.append(em(iconeBolso(it.bolso), 0, 0));
     const n = rotulo(corpo, it.nome, 20, 0, 'amarelo', { largura: 96 });
     const y = Math.max(20, parseInt(n.style.height) + 6);
     const d = rotulo(corpo, it.desc, 0, y, 'creme', { largura: 116 });
     const yy = Math.min(124, y + parseInt(d.style.height) + 6);
-    rotulo(corpo, `Na mochila: {c:amarelo}×${qtdItem(it.id)}{/c}`, 0, yy, 'cinza');
+    rotulo(corpo, tr('Na mochila: {c:amarelo}×{qtd}{/c}', { qtd: qtdItem(it.id) }), 0, yy, 'cinza');
   }
   async function negociar(it: ItemInfo | undefined) {
     if (!it || ocupado) return; ocupado = true;
@@ -61,7 +62,7 @@ export function criarLoja(args: ArgsLoja = {}): Tela {
       if (modo === 'comprar') {
         const max = Math.min(99, Math.floor(saldo() / Math.max(1, preco(it))));
         if (max < 1) { som('ui-erro'); await informar(T.loja.semDinheiro); return; }
-        const q = await pedirQuantidade(`${it.nome}: quantas?`, max, md ? {} : { preco: preco(it) }); if (!q) return;
+        const q = await pedirQuantidade(tr('{item}: quantas?', { item: it.nome }), max, md ? {} : { preco: preco(it) }); if (!q) return;
         if (md) md.gastar(q * preco(it)); else s.jogador.dinheiro -= q * it.preco;
         darItem(it.id, q); som('item-obtido');
         const brinde = it.id === 'cuia' && !md ? Math.floor(q / 10) : 0; if (brinde) darItem('cuia', brinde);
@@ -69,7 +70,7 @@ export function criarLoja(args: ArgsLoja = {}): Tela {
       } else {
         const q = await pedirQuantidade(`Vender quantas?`, qtdItem(it.id), { preco: precoVenda(it) }); if (!q) return;
         tirarItem(it.id, q); s.jogador.dinheiro += q * precoVenda(it); som('item-obtido');
-        await informar(`${T.loja.vendeu} Você recebeu ${patacas(q * precoVenda(it))} patacas.`);
+        await informar(tr('{vendeu} Você recebeu {valor} patacas.', { vendeu: T.loja.vendeu, valor: patacas(q * precoVenda(it)) }));
       }
     } finally { ocupado = false; if (viva) montar(lista?.indice ?? 0); }
   }

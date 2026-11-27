@@ -21,6 +21,7 @@ import type { EventoDef, Comando } from '../../core/tipos';
 import { jogo, setFlag, diaSemana } from '../../core/estado';
 import { registrarComando } from '../../world/registro';
 import { ESPECIES } from '../criaturas';
+import { tr } from '../../i18n';
 import './comuns'; // comandos extras: temItens, temEspecie, grito, vitrine…
 
 /* ------------------------------ comandos do time ------------------------------ */
@@ -101,8 +102,8 @@ const batalhaRival6: Comando[] = [
 const foto = (n: number, onde: string): EventoDef => ({
   id: `b1-foto-${n}`,
   passos: [
-    se(`flag:m-foto-${n}`, [f(null, `O ninho ${onde} já está no rolo de filme da observadora. Os filhotes nem olharam para a câmera.`)], [
-      f(null, `Um ninho de gravetos ${onde}. Dentro, ovos quentinhos e um cheiro de capim.`),
+    se(`flag:m-foto-${n}`, [f(null, tr('O ninho {onde} já está no rolo de filme da observadora. Os filhotes nem olharam para a câmera.', { onde }))], [
+      f(null, tr('Um ninho de gravetos {onde}. Dentro, ovos quentinhos e um cheiro de capim.', { onde })),
       se('flag:m-fotos&!flag:m-fotos-ok', [
         ['sfx', 'ui-ok'], ['flag', `m-foto-${n}`],
         f(null, 'CLIQUE! {JOGADOR} fotografou o ninho com a câmera emprestada, sem encostar em nada.'),

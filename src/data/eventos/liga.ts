@@ -10,6 +10,7 @@ import { jogo } from '../../core/estado';
 import { registrarComando } from '../../world/registro';
 import { LIGA_ENTRADA } from '../zonas/A-LG';
 import './comuns';
+import { tr } from '../../i18n';
 
 let hall: { el: HTMLElement; parar: () => void } | null = null;
 function fecharHall() { if (hall) { hall.parar(); hall.el.remove(); hall = null; } }
@@ -25,7 +26,7 @@ registrarComando('hallDaFama', async () => {
   el.style.cssText = 'position:absolute;left:5px;top:6px;width:310px;height:106px;z-index:60;background:#141026;box-shadow:0 0 0 2px #f2c230,0 0 0 4px #141026;overflow:hidden';
   const pos = (e: HTMLElement, x: number, y: number) => { e.style.position = 'absolute'; e.style.left = x + 'px'; e.style.top = y + 'px'; return e; };
   el.append(pos(texto('HALL DA FAMA', { tamanho: 12, cor: 'creme', largura: 310, alinhar: 'centro' }), 0, 4));
-  el.append(pos(texto(`Campeão da Costa do Sol: ${jogo.save.jogador.nome}`, { cor: 'creme', largura: 310, alinhar: 'centro' }), 0, 19));
+  el.append(pos(texto(tr('Campeão da Costa do Sol: {jogador}', { jogador: jogo.save.jogador.nome }), { cor: 'creme', largura: 310, alinhar: 'centro' }), 0, 19));
   const equipe = jogo.save.equipe.filter((c) => !c.ovo).slice(0, 6);
   const sprites = equipe.map((c, i) => {
     const esp = ESPECIES.find((e) => e.num === c.especie);
@@ -34,7 +35,7 @@ registrarComando('hallDaFama', async () => {
     pedestal.style.cssText = `position:absolute;left:${cx - 12}px;top:${y0 + 22}px;width:24px;height:3px;background:#f2c230;box-shadow:0 1px 0 #a0522d`;
     el.append(pedestal);
     el.append(pos(texto(c.apelido ?? esp?.nome ?? '', { cor: 'creme' }), x0 + 34, y0 + 3));
-    el.append(pos(texto(`Nv ${c.nivel}`, { cor: 'creme' }), x0 + 34, y0 + 13));
+    el.append(pos(texto(tr('Nv {nivel}', { nivel: c.nivel }), { cor: 'creme' }), x0 + 34, y0 + 13));
     const s = new Sprite(esp?.id ?? '', 'mapa', el);
     s.x = cx; s.y = y0 + 22; s.tocar(s.tem('idle-s') ? 'idle-s' : 'andar-s');
     return s;

@@ -18,6 +18,7 @@ import { fxUi, temFx } from './cena';
 import { div, type Ator } from './palco';
 import { painel } from './hud';
 import { botaoVoltar, larguraVoltar } from '../../ui/componentes/voltar';
+import { t, tr } from '../../i18n';
 
 /** "◀ Voltar" da batalha (classe `bt-voltar`): saída visível por toque de cada submenu, além do B */
 function voltar(pai: HTMLElement, x: number, y: number, aoTocar: () => void, folga: [number, number, number, number] = [4, 4, 4, 4]): HTMLElement {
@@ -77,9 +78,9 @@ function fichaGolpe(pai: HTMLElement, x: number, y: number, larg = 70) {
   return (id: string, pgAtual: number | null, pgMax: number, e: InfoEficacia | null) => {
     const g = defGolpe(id);
     chip?.remove(); chip = chipTipo(g.tipo, larg); cx.append(em(chip, 0, 0));
-    escrever(pg, pgAtual === null ? `PG ${pgMax}` : `PG {c:${pgAtual === 0 ? 'vermelho' : pgAtual <= pgMax / 4 ? 'laranja' : 'tinta'}}${pgAtual}{/c}/${pgMax}`);
-    escrever(cat, `${CAT[g.cat]}${g.poder ? ' · ' + g.poder : ''}`);
-    escrever(ef, e ? `{c:${e.cor}}${e.texto}{/c}` : '');
+    escrever(pg, pgAtual === null ? tr('PG {pgMax}', { pgMax }) : `${tr('PG')} {c:${pgAtual === 0 ? 'vermelho' : pgAtual <= pgMax / 4 ? 'laranja' : 'tinta'}}${pgAtual}{/c}/${pgMax}`);
+    escrever(cat, `${t(CAT[g.cat])}${g.poder ? ' · ' + g.poder : ''}`);
+    escrever(ef, e ? `{c:${e.cor}}${t(e.texto)}{/c}` : '');
   };
 }
 export function menuGolpes(o: { c: CriaturaInst; eficacia(id: string): InfoEficacia | null; aoEscolher(slot: number): void }): Modal {
@@ -176,7 +177,7 @@ export function menuMochila(o: { mochila: Record<string, number>; podeCuia: bool
       aoCancelar: () => o.aoEscolher(null),
     });
     el.append(lista.el);
-    escrever(desc, its[0] ? (b === 'cuias' && !o.podeCuia ? o.motivoCuia : its[0].desc) : `Sem ${NOME_BOLSO[b].toLowerCase()} que sirvam em batalha.`);
+    escrever(desc, its[0] ? (b === 'cuias' && !o.podeCuia ? o.motivoCuia : its[0].desc) : tr('Sem {bolso} que sirvam em batalha.', { bolso: t(NOME_BOLSO[b]).toLowerCase() }));
   };
   const abas = new Abas({ rotulos: BOLSOS_BATALHA.map((b) => NOME_BOLSO[b]), icones: BOLSOS_BATALHA.map((b) => iconeBolso(b)), x: 10, y: 8, inicial: ultimoBolso, aoTrocar: montar });
   el.append(abas.el);
@@ -218,9 +219,9 @@ export function menuEquipe(o: OpEquipe): Modal {
     const mi = miniatura(c); minis.push(mi); cx.append(em(mi.el, 5, 11));
     if (c.ovo) { cx.append(em(texto('Ovo', { cor: 'creme' }), 34, 6)); tocavel(cx, () => { i = j; pintar(); ok(); }, () => ir(j)); return; }
     const max = atributos(c).vida, sexo = c.sexo === 'F' ? ' {c:rosa}♀{/c}' : c.sexo === 'M' ? ' {c:agua}♂{/c}' : '';
-    const nv = texto(`Nv${c.nivel}`, { cor: 'amarelo' });
+    const nv = texto(tr('Nv{n}', { n: c.nivel }), { cor: 'amarelo' });
     const bv = barra('vida', 72); bv.definir(c.vida / max);
-    cx.append(em(texto(nomeDe(c) + sexo, { cor: 'creme' }), 34, 6), em(nv, 142 - medir(`Nv${c.nivel}`), 6), em(texto('VD', { cor: 'amarelo' }), 34, 18), em(bv.el, 48, 19), em(texto(`${c.vida}/${max}`, { cor: 'creme' }), 34, 30));
+    cx.append(em(texto(nomeDe(c) + sexo, { cor: 'creme' }), 34, 6), em(nv, 142 - parseInt(nv.style.width), 6), em(texto(tr('VD'), { cor: 'amarelo' }), 34, 18), em(bv.el, 48, 19), em(texto(`${c.vida}/${max}`, { cor: 'creme' }), 34, 30));
     const s = c.vida <= 0 ? 'desmaiado' : c.status; if (s) cx.append(em(iconeStatus(s), 73, 30));
     if (o.emCampo.includes(j)) { const t = texto('em campo', { cor: 'agua' }); cx.append(em(t, 142 - medir('em campo'), 30)); }
     tocavel(cx, () => { i = j; pintar(); ok(); }, () => ir(j));
@@ -230,7 +231,7 @@ export function menuEquipe(o: OpEquipe): Modal {
   const pintar = () => {
     cartoes.forEach((c, j) => c.classList.toggle('foco', j === i));
     em(cursor, (i % 2) * 155, 18 + Math.floor(i / 2) * 49 + 18);
-    const p = o.pode(i); escrever(tdica, p === true ? 'Confirmar: escolher' + (o.obrigatorio ? '' : '   Voltar: cancelar') : `{c:laranja}${p}{/c}`);
+    const p = o.pode(i); escrever(tdica, p === true ? (o.obrigatorio ? 'Confirmar: escolher' : 'Confirmar: escolher   Voltar: cancelar') : `{c:laranja}${t(p)}{/c}`);
   };
   const ir = (n: number) => { if (n === i || n < 0 || n >= o.equipe.length) return; i = n; som('ui-mover'); pintar(); };
   const ok = () => { const p = o.pode(i); if (p !== true) { som('ui-erro'); pintar(); return; } som('ui-ok'); o.aoEscolher(i); };

@@ -10,6 +10,7 @@
 import { flag } from '../../core/estado';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, Ladrilho, laco, cena, falar, avisar, sfx, quadros, naZona, bloco } from './_pecas';
+import { tr } from '../../i18n';
 
 const ZONA = 'A6-ginasio';
 type Ramo = 'oeste' | 'leste' | 'norte' | 'lider' | 'piso';
@@ -62,8 +63,8 @@ async function virar(i: number) {
   await quadros(10);
   aplicar();
   const para = pos[i] ? c.b : c.a;
-  if (comEnergia(i)) { sfx('trovao'); avisar(`Chave ${i + 1}: energia para ${para}.`); await falar(`CLAC! A corrente agora segue para ${para}.\nO ramo que estava ligado ficou sem energia.`); }
-  else await falar(`CLAC! A chave ${i + 1} agora aponta para ${para}.\nMas não chega corrente aqui: nada mudou… por enquanto.`);
+  if (comEnergia(i)) { sfx('trovao'); avisar(tr('Chave {n}: energia para {para}.', { n: i + 1, para })); await falar(tr('CLAC! A corrente agora segue para {para}.\nO ramo que estava ligado ficou sem energia.', { para })); }
+  else await falar(tr('CLAC! A chave {n} agora aponta para {para}.\nMas não chega corrente aqui: nada mudou… por enquanto.', { n: i + 1, para }));
 }
 
 registrarMecanica(ZONA, {

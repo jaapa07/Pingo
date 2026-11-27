@@ -4,6 +4,7 @@
  * tabelas de habitat das zonas (src/ui/telas/dados.ts).
  */
 import type { Cond } from '../core/tipos';
+import { t, tr } from '../i18n';
 
 export interface Noticia { id: string; titulo: string; se?: Cond; texto: string }
 /** da mais antiga para a mais nova; o rádio mostra as que valem, a mais recente primeiro */
@@ -74,12 +75,13 @@ export function agendaDoDia(o: { dia: number; periodo: string; liga: boolean; co
   const DIA = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'][o.dia];
   const PER: Record<string, string> = { manha: 'manhã', dia: 'dia', tarde: 'tarde', noite: 'noite' };
   const linhas: string[] = [];
-  if (o.enxame) linhas.push(`ENXAME: ${o.enxame.especie || 'uma criatura rara'} aparece aos montes em ${o.enxame.local} hoje.`);
+  if (o.enxame) linhas.push(tr('ENXAME: {especie} aparece aos montes em {local} hoje.', { especie: o.enxame.especie || 'uma criatura rara', local: o.enxame.local }));
   if (o.dia === 5 && o.mergulho) linhas.push('SEXTA DA TARTARUGA: a Tartaruga-Gigante sobe para respirar no Recife Submerso, embaixo da Baía Azul. Só hoje!');
   if (o.liga && (o.dia === 2 || o.dia === 4)) linhas.push('TREINO DA RIVAL: a Tainá está na Gruta do Eco, perto da saída para Porto Sereia. Uma batalha por dia.');
-  linhas.push(o.contatos.length ? `REVANCHES agora (${PER[o.periodo]}): ${o.contatos.join(', ')}.` : `REVANCHES: ninguém da sua lista treina nesta ${PER[o.periodo]}. Veja a tabela em Revanches.`);
+  linhas.push(o.contatos.length ? tr('REVANCHES agora ({periodo}): {lista}.', { periodo: PER[o.periodo], lista: o.contatos.join(', ') }) : tr('REVANCHES: ninguém da sua lista treina nesta {periodo}. Veja a tabela em Revanches.', { periodo: PER[o.periodo] }));
   if (o.liga) linhas.push('TORRE DE DESAFIOS: o Juiz da Torre espera no Platô da Liga. Uma batalha por dia, todos no nível 50.');
   linhas.push(o.cartao ? 'QUIZ DA FAUNA: a Locutora Sabiá grava perguntas novas hoje na Rádio Farol.' : 'QUIZ DA FAUNA: acerte 4 de 5 perguntas na Rádio Farol, na Ilha do Farol, e ganhe o Cartão do Rádio!');
-  const resumo = `Hoje é ${DIA}, ${PER[o.periodo]}.\n${o.enxame ? `Enxame em ${o.enxame.local}. ` : ''}${o.contatos.length ? `${o.contatos.length} revanche(s) agora.` : 'Nenhuma revanche agora.'}`;
-  return { resumo, texto: `${o.periodo === 'noite' ? 'Boa noite' : o.periodo === 'tarde' ? 'Boa tarde' : 'Bom dia'}, Pingorama! Hoje é ${DIA}.\n\n${linhas.join('\n\n')}` };
+  const resumo = tr('Hoje é {dia}, {periodo}.', { dia: DIA, periodo: PER[o.periodo] }) + '\n' + (o.enxame ? tr('Enxame em {local}.', { local: o.enxame.local }) + ' ' : '') + (o.contatos.length ? tr('{n} revanche(s) agora.', { n: o.contatos.length }) : t('Nenhuma revanche agora.'));
+  const ola = o.periodo === 'noite' ? 'Boa noite, Pingorama! Hoje é {dia}.' : o.periodo === 'tarde' ? 'Boa tarde, Pingorama! Hoje é {dia}.' : 'Bom dia, Pingorama! Hoje é {dia}.';
+  return { resumo, texto: tr(ola, { dia: DIA }) + '\n\n' + linhas.map(t).join('\n\n') };
 }

@@ -21,6 +21,7 @@ import { Batalha, LIMIAR_CHOCALHO, FATOR_EXP_POS_LIGA, FATOR_EXP_INSIGNIA_12, fa
 import { escolherAcaoIA, escolherSubstitutoIA, iaUsaItens, nivelEfetivo, type NivelIA, type OpcoesIA } from './ia';
 import { limiteObediencia } from './cuias';
 import { amizadePor, curarCriatura, evoluir, nomeDe, registrarEspecies, totalEspecies } from './criatura';
+import { tr } from '../i18n';
 
 export { criarCriatura, criarDeMembro, atributos, registrarEspecies, especie, podeEvoluir, evoluir, expParaNivel, nomeDe, mudarAmizade, amizadePor, aprenderGolpe, ganharExp, curarCriatura } from './criatura';
 export { Batalha } from './engine';
@@ -89,7 +90,7 @@ export class ControleBatalha {
   /** resolve sozinho o que só depende do rival e acrescenta a mensagem do prêmio */
   private depois(evs: EventoBatalha[]): EventoBatalha[] {
     while (this.b.fase === 'substituir' && this.pedidosJogador().length === 0) evs = evs.concat(this.substituir({}));
-    if (this.b.fase === 'fim' && this.b.resultado === 'vitoria' && this.premio > 0) { evs = evs.concat([{ t: 'msg', texto: `Você ganhou ${this.premio} patacas!` }]); this.premio = -this.premio; }
+    if (this.b.fase === 'fim' && this.b.resultado === 'vitoria' && this.premio > 0) { evs = evs.concat([{ t: 'msg', texto: tr('Você ganhou {premio} patacas!', { premio: this.premio }) }]); this.premio = -this.premio; }
     return evs;
   }
   /** prêmio em patacas desta batalha (0 se não houver) */
@@ -121,7 +122,7 @@ export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } 
   }
   const cfg: ConfigBatalha = {
     tipo: p.tipo,
-    lados: [{ equipe: s.equipe, itens: s.mochila, nome: s.jogador.nome }, { equipe: p.inimigos, itens, nome: t ? `${t.classe} ${t.nome}` : '' }],
+    lados: [{ equipe: s.equipe, itens: s.mochila, nome: s.jogador.nome }, { equipe: p.inimigos, itens, nome: t ? tr('{classe} {nome}', { classe: t.classe, nome: t.nome }) : '' }],
     clima: p.clima, dupla: p.dupla ?? t?.dupla, semFuga: p.semFuga, semCaptura: p.semCaptura, periodo: periodo(),
     trocaGratis: dif !== 'veterano', autoAprender: o.autoAprender, ganhaExp: !p.semExp, expPartilhada: (s.mochila['chocalho-mutirao'] ?? 0) > 0,
     limiarPartilha: limiarChocalho(s.flags), fatorExp: fatorExpDoProgresso(s.flags, s.insignias.length),

@@ -9,6 +9,7 @@ import { rng } from './rng';
 import { bus } from './events';
 import { plataforma } from './plataforma';
 import { DEMO, motivoForaDaDemo } from './demo';
+import { tr } from '../i18n';
 
 export const N_SLOTS = 3;
 export interface ResumoSlot { nome: string; avatar: 'kaue' | 'ayra'; insignias: number[]; diario: number; vistos: number; tempo: number; zona: string; quando: number; equipe: number[] }
@@ -100,12 +101,16 @@ function por(chave: string, valor: string) { cache.set(chave, valor); void plata
 function tirar(chave: string) { cache.delete(chave); void plataforma.armazenamento.apagar(chave).catch(() => undefined); }
 
 /* ------------------------------ API ------------------------------ */
+/** true na primeira vez que o jogo abre neste aparelho (nada gravado): a tela de idioma aparece antes do título */
+export let primeiraAbertura = false;
 /** carrega slots e opções do adaptador da plataforma para o cache (chamar 1× na inicialização) */
 export async function iniciarSave(): Promise<void> {
   const chaves = [CH_OPCOES, CH_RETOMADA, ...Array.from({ length: N_SLOTS }, (_, i) => [CH_SLOT(i), CH_SLOT(i) + '.bak']).flat()];
   await Promise.all(chaves.map(async (k) => { try { const v = await plataforma.armazenamento.ler(k); if (v != null) cache.set(k, v); } catch { /* chave ilegível: segue sem ela */ } }));
   try { const o = JSON.parse(cache.get(CH_OPCOES) ?? 'null') as Partial<Opcoes> | null; if (o) jogo.opcoes = { ...opcoesPadrao(), ...o, teclas: { ...(o.teclas ?? {}) } }; } catch { /* opções corrompidas: fica o padrão */ }
   if (!cache.has(CH_OPCOES) && plataforma.toque) jogo.opcoes.qualidade = 'celular';
+  // 1ª abertura: sem opções nem jogos gravados (quem já jogava fica em português: opcoesPadrao)
+  primeiraAbertura = !cache.has(CH_OPCOES) && !chaves.some((k) => k !== CH_OPCOES && cache.has(k));
   pronto = true;
   bus.on('autosave', () => autosalvar());
   bus.on('zona', () => autosalvar());
@@ -143,6 +148,8 @@ export const estaEmJogo = () => emJogo;
 export function autosalvar(): boolean { return emJogo && pronto ? gravarSlot(jogo.slot) : false; }
 
 export function gravarOpcoes() { por(CH_OPCOES, JSON.stringify(jogo.opcoes)); bus.emit('opcoes', jogo.opcoes); }
+/** grava as opções e espera o armazenamento confirmar (antes de recarregar a página) */
+export async function gravarOpcoesAgora(): Promise<void> { const v = JSON.stringify(jogo.opcoes); cache.set(CH_OPCOES, v); try { await plataforma.armazenamento.gravar(CH_OPCOES, v); } catch { /* segue com o cache */ } }
 
 /* ----- ponto de retomada (app foi para segundo plano no meio do jogo) ----- */
 export function gravarRetomada() { if (!emJogo) return; jogo.save.rng = rng.estado(); por(CH_RETOMADA, JSON.stringify({ slot: jogo.slot, reg: embrulhar(jogo.save) })); }
@@ -174,7 +181,7 @@ export function lerExportado(txt: string): SaveData {
   if (!/PINGO1:([0-9a-fA-F]{8}):([A-Za-z0-9_-]+)/.test(limpo)) {
     if (/PINGO1:/.test(limpo)) throw new Error('O código está incompleto: copie o código inteiro de novo.');
     const ini = bruto.trim().replace(/\s+/g, ' ').slice(0, 14);
-    throw new Error(`Isto não é um código do jogo${ini ? ` (começa com "${ini}…")` : ''}. Copie de novo pelo menu do jogo: Copiar código → Copiar.`);
+    throw new Error(ini ? tr('Isto não é um código do jogo (começa com "{ini}…"). Copie de novo pelo menu do jogo: Copiar código → Copiar.', { ini }) : 'Isto não é um código do jogo. Copie de novo pelo menu do jogo: Copiar código → Copiar.');
   }
   // o texto depois do código numa linha nova ("Abraço!") se gruda nele quando os espaços somem: tenta cortar
   // nas quebras, do fim para o começo, até a soma conferir

@@ -9,6 +9,7 @@ import { elTela, fechar } from '../base';
 import { texto, escrever, em } from '../fonte';
 import { moldura, som } from '../kit';
 import { Lista, type ItemLista } from '../componentes/lista';
+import { tr } from '../../i18n';
 
 interface Linha { rotulo: string; valor(): string; mudar?(d: number): void; acao?(): void; dica: string }
 const nivel = (v: number) => '•'.repeat(Math.round(v * 10)) + '·'.repeat(10 - Math.round(v * 10));
@@ -44,7 +45,7 @@ export function criarOpcoes(): Tela {
   const lista = new Lista({ itens: itens(), moldura: null, largura: 270, visiveis: 9, circular: true, aoEscolher: (i) => { const l = linhas[i]; if (l.acao) l.acao(); else { l.mudar?.(1); lista.definirValor(i, l.valor()); } }, aoCancelar: sair, aoMover: pintarDica });
   cx.append(em(lista.el, 14, 24));
   const dica = texto('', { cor: 'chumbo', largura: 270 }); cx.append(em(dica, 17, 140));
-  function pintarDica() { escrever(dica, capturando ? `Aperte a nova tecla para "${NOME_ACAO[capturando]}"…` : sub ? 'A: trocar a tecla.  B: voltar.' : linhas[lista.indice].dica); }
+  function pintarDica() { escrever(dica, capturando ? tr('Aperte a nova tecla para "{capturando}"…', { capturando: NOME_ACAO[capturando] }) : sub ? 'A: trocar a tecla.  B: voltar.' : linhas[lista.indice].dica); }
   function sair() { gravarOpcoes(); fechar(tela); }
 
   function itensTeclas(): ItemLista[] { return [...ACOES.map((a) => ({ rotulo: NOME_ACAO[a], valor: input.teclasDe(a).map(input.nomeTecla).join(', ') })), { rotulo: 'Restaurar o padrão' }, { rotulo: 'Voltar' }]; }

@@ -191,7 +191,9 @@ export type Comando = [string, ...unknown[]];
 export interface EventoDef { id: string; passos: Comando[] }
 
 /* ============================== save ============================== */
-export interface Opcoes { musica: number; sfx: number; velTexto: 1 | 2 | 3; dificuldade: 'explorador' | 'aventureiro' | 'veterano'; animBatalha: boolean; numerosDano: boolean; vibrar: boolean; parceiraSegue: boolean; teclas: Record<string, string[]>; qualidade: 'pc' | 'celular'; /** vozes balbuciadas dos personagens nas falas (padrão: desligadas) */ vozes?: boolean }
+export interface Opcoes { musica: number; sfx: number; velTexto: 1 | 2 | 3; dificuldade: 'explorador' | 'aventureiro' | 'veterano'; animBatalha: boolean; numerosDano: boolean; vibrar: boolean; parceiraSegue: boolean; teclas: Record<string, string[]>; qualidade: 'pc' | 'celular'; /** vozes balbuciadas dos personagens nas falas (padrão: desligadas) */ vozes?: boolean;
+  /** idioma dos textos (docs/I18N.md); escolhido na 1ª abertura ou na tela de título. Opções antigas, sem o campo: 'pt' */
+  idioma?: 'pt' | 'en' }
 export interface SaveData {
   versao: 1;
   jogador: { nome: string; avatar: 'kaue' | 'ayra'; id: string; zona: string; x: number; y: number; dir: Dir; dinheiro: number; poupanca: number; modo: 'pe' | 'bike' | 'remo' | 'mergulho' };

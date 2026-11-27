@@ -21,13 +21,14 @@ import { Lista, type ItemLista } from '../componentes/lista';
 import { input } from '../../core/input';
 import { elTela, retirar } from '../base';
 import type { Tela } from '../telas';
+import { t, tr } from '../../i18n';
 
 /* ------------------------------ espécies (tolerante a lotes ainda não entregues) ------------------------------ */
 // os Visitantes (181–182, spec 6.5) também têm nome, figura e ficha, fora do total de 180
 const MAPA_ESP = new Map<number, EspecieDef>([...ESPECIES, ...VISITANTES].map((e) => [e.num, e]));
 export const TOTAL_DIARIO = 180;
 export const esp = (n: number): EspecieDef | undefined => MAPA_ESP.get(n);
-export const nomeEsp = (n: number) => esp(n)?.nome ?? `Criatura nº ${n}`;
+export const nomeEsp = (n: number) => esp(n)?.nome ?? tr('Criatura nº {nome}', { nome: n });
 export const nomeCri = (c: CriaturaInst) => (c.ovo ? 'Ovo' : c.apelido || nomeEsp(c.especie));
 export const tiposDe = (n: number): TipoId[] => esp(n)?.tipos ?? ['comum'];
 export const vidaMaxDe = (c: CriaturaInst) => (esp(c.especie) ? atributos(c).vida : Math.max(1, c.vida));
@@ -164,13 +165,13 @@ const nada = (msg = 'Não teria efeito.'): ResultadoUso => ({ ok: false, msg, ga
 export async function ensinar(c: CriaturaInst, golpeId: string): Promise<boolean> {
   if (!temGolpe(golpeId)) return false;
   const g = golpe(golpeId), nome = nomeCri(c);
-  if (c.golpes.some((x) => x.id === golpeId)) { await informar(`${nome} já sabe ${g.nome}.`); return false; }
-  if (c.golpes.length < 4) { aprenderGolpe(c, golpeId); som('item-obtido'); await informar(`${nome} aprendeu ${g.nome}!`); return true; }
-  const i = await perguntar(`${nome} quer aprender ${g.nome}, mas já sabe 4 golpes. Esquecer qual?`, [...c.golpes.map((x) => golpe(x.id).nome), 'Não aprender'], 4);
-  if (i < 0 || i >= c.golpes.length) { await informar(`${nome} não aprendeu ${g.nome}.`); return false; }
+  if (c.golpes.some((x) => x.id === golpeId)) { await informar(tr('{nome} já sabe {golpe}.', { nome, golpe: g.nome })); return false; }
+  if (c.golpes.length < 4) { aprenderGolpe(c, golpeId); som('item-obtido'); await informar(tr('{nome} aprendeu {golpe}!', { nome, golpe: g.nome })); return true; }
+  const i = await perguntar(tr('{nome} quer aprender {golpe}, mas já sabe 4 golpes. Esquecer qual?', { nome, golpe: g.nome }), [...c.golpes.map((x) => golpe(x.id).nome), 'Não aprender'], 4);
+  if (i < 0 || i >= c.golpes.length) { await informar(tr('{nome} não aprendeu {golpe}.', { nome, golpe: g.nome })); return false; }
   const velho = golpe(c.golpes[i].id).nome;
   aprenderGolpe(c, golpeId, i); som('item-obtido');
-  await informar(`1, 2 e… pronto! ${nome} esqueceu ${velho} e aprendeu ${g.nome}!`);
+  await informar(tr('1, 2 e… pronto! {nome} esqueceu {velho} e aprendeu {golpe}!', { nome, velho, golpe: g.nome }));
   return true;
 }
 /** roda a evolução (cinemática da tela 'evolucao', se existir) e trata os golpes novos. true = evoluiu */
@@ -182,11 +183,11 @@ export async function evoluirCom(c: CriaturaInst, para: number): Promise<boolean
       let feito = false;
       const t = telas.empilhar(criarTela('evolucao', { criatura: c, de, para, concluir: (x: boolean) => { if (feito) return; feito = true; telas.desempilhar(t); ok(!!x); } }));
     });
-  } else { som('evolucao'); await informar(`O quê? ${antes} está evoluindo!`); }
-  if (cancelou) { await informar(`${antes} parou de evoluir.`); return false; }
+  } else { som('evolucao'); await informar(tr('O quê? {nome} está evoluindo!', { nome: antes })); }
+  if (cancelou) { await informar(tr('{nome} parou de evoluir.', { nome: antes })); return false; }
   const pendentes = evoluir(c, para);
   marcarCapturado(para); bus.emit('evoluiu', { uid: c.uid, de, para });
-  await informar(`Parabéns! ${antes} evoluiu para ${nomeEsp(para)}!`);
+  await informar(tr('Parabéns! {nome} evoluiu para {nova}!', { nome: antes, nova: nomeEsp(para) }));
   for (const g of pendentes) await ensinar(c, g);
   return true;
 }
@@ -198,23 +199,23 @@ export async function usarItemEm(id: string, c: CriaturaInst): Promise<Resultado
   if (!esp(c.especie)) return nada();
   const max = atributos(c).vida;
   if (u.golpe) {
-    if (!esp(c.especie)!.pergaminhos.includes(id)) return nada(`${nome} não consegue aprender ${golpe(u.golpe).nome}.`);
+    if (!esp(c.especie)!.pergaminhos.includes(id)) return nada(tr('{nome} não consegue aprender {golpe}.', { nome, golpe: golpe(u.golpe).nome }));
     const ok = await ensinar(c, u.golpe);
     return { ok, msg: '', gasta: false };
   }
   if (u.evolui) {
     const ev = podeEvoluir(c, { item: id, periodo: periodo() });
-    if (!ev) return nada(`A ${it.nome} não reage a ${nome}.`);
+    if (!ev) return nada(tr('A {item} não reage a {nome}.', { item: it.nome, nome }));
     const ok = await evoluirCom(c, ev.para);
     return { ok, msg: '', gasta: ok };
   }
   if (u.nivel) {
-    if (c.nivel >= 100) return nada(`${nome} já está no nível máximo.`);
+    if (c.nivel >= 100) return nada(tr('{nome} já está no nível máximo.', { nome }));
     const curva = esp(c.especie)!.crescimento;
     const subidas = ganharExp(c, Math.max(1, expParaNivel(curva, c.nivel + 1) - c.exp));
     som('subir-nivel');
-    await informar(`${nome} subiu para o nível ${c.nivel}!`);
-    for (const s of subidas) for (const g of s.golpes) if (!c.golpes.some((x) => x.id === g)) await ensinar(c, g); else await informar(`${nome} aprendeu ${golpe(g).nome}!`);
+    await informar(tr('{nome} subiu para o nível {nivel}!', { nome, nivel: c.nivel }));
+    for (const s of subidas) for (const g of s.golpes) if (!c.golpes.some((x) => x.id === g)) await ensinar(c, g); else await informar(tr('{nome} aprendeu {n}!', { nome, n: golpe(g).nome }));
     const ev = podeEvoluir(c, { periodo: periodo() });
     if (ev) await evoluirCom(c, ev.para);
     return { ok: true, msg: '', gasta: true };
@@ -223,32 +224,32 @@ export async function usarItemEm(id: string, c: CriaturaInst): Promise<Resultado
     // vitaminas da Gincana (src/data/itens.ts): esforço num atributo, até o teto só com vitaminas e o teto geral da batalha
     const { stat, qtd, teto } = u.esforco, total = Object.values(c.esf).reduce((x, y) => x + y, 0);
     const n = Math.min(qtd, teto - c.esf[stat], 252 - c.esf[stat], 510 - total);
-    if (n <= 0) return nada(`A vitamina não faz mais efeito em ${nome}.`);
+    if (n <= 0) return nada(tr('A vitamina não faz mais efeito em {nome}.', { nome }));
     const antes = atributos(c).vida; c.esf[stat] += n;
     if (stat === 'vida' && c.vida > 0) c.vida = Math.min(atributos(c).vida, c.vida + atributos(c).vida - antes);
     mudarAmizade(c, 2); som('cura-posto');
-    return { ok: true, msg: `${nome} tomou a vitamina e ficou mais forte!`, gasta: true };
+    return { ok: true, msg: tr('{nome} tomou a vitamina e ficou mais forte!', { nome }), gasta: true };
   }
   if (u.amizade) {
-    if (c.amizade >= 255) return nada(`${nome} já é sua amiga do peito.`);
-    mudarAmizade(c, u.amizade); return { ok: true, msg: `${nome} adorou! Ficou mais amiga.`, gasta: true };
+    if (c.amizade >= 255) return nada(tr('{nome} já é sua amiga do peito.', { nome }));
+    mudarAmizade(c, u.amizade); return { ok: true, msg: tr('{nome} adorou! Ficou mais amiga.', { nome }), gasta: true };
   }
   let fez = false; const partes: string[] = [];
   if (u.reanima) {
-    if (c.vida > 0) return nada(`${nome} não está desmaiada.`);
-    c.vida = Math.max(1, Math.floor((max * u.reanima) / 100)); c.status = null; fez = true; partes.push(`${nome} voltou a si!`);
-  } else if (c.vida <= 0) return nada(`${nome} está desmaiada.`);
-  if (u.cura && c.vida < max) { const antes = c.vida; c.vida = u.cura === 'total' ? max : Math.min(max, c.vida + u.cura); fez = true; partes.push(`${nome} recuperou ${c.vida - antes} de vida.`); }
-  if (u.curaStatus && c.status && (u.curaStatus === 'todos' || u.curaStatus.includes(c.status))) { const s = NOME_STATUS[c.status].toLowerCase(); c.status = null; delete c.sonoTurnos; fez = true; partes.push(`${nome} não está mais ${s}.`); }
+    if (c.vida > 0) return nada(tr('{nome} não está desmaiada.', { nome }));
+    c.vida = Math.max(1, Math.floor((max * u.reanima) / 100)); c.status = null; fez = true; partes.push(tr('{nome} voltou a si!', { nome }));
+  } else if (c.vida <= 0) return nada(tr('{nome} está desmaiada.', { nome }));
+  if (u.cura && c.vida < max) { const antes = c.vida; c.vida = u.cura === 'total' ? max : Math.min(max, c.vida + u.cura); fez = true; partes.push(tr('{nome} recuperou {qtd} de vida.', { nome, qtd: c.vida - antes })); }
+  if (u.curaStatus && c.status && (u.curaStatus === 'todos' || u.curaStatus.includes(c.status))) { const s = t(NOME_STATUS[c.status]).toLowerCase(); c.status = null; delete c.sonoTurnos; fez = true; partes.push(tr('{nome} não está mais {n}.', { nome, n: s })); }
   if (u.pg) {
     const faltam = c.golpes.filter((g) => g.pg < g.pgMax);
     if (faltam.length) {
-      if (u.pgTodos) { for (const g of c.golpes) g.pg = g.pgMax; fez = true; partes.push(`Os PG de ${nome} foram restaurados.`); }
+      if (u.pgTodos) { for (const g of c.golpes) g.pg = g.pgMax; fez = true; partes.push(tr('Os PG de {nome} foram restaurados.', { nome })); }
       else {
         const i = await perguntar('Restaurar os PG de qual golpe?', [...c.golpes.map((g) => `${golpe(g.id).nome}  ${g.pg}/${g.pgMax}`), 'Desistir']);
         const g = c.golpes[i];
-        if (g && g.pg < g.pgMax) { g.pg = Math.min(g.pgMax, g.pg + u.pg); fez = true; partes.push(`${golpe(g.id).nome} recuperou PG.`); }
-        else if (g) return nada(`${golpe(g.id).nome} já está com todos os PG.`);
+        if (g && g.pg < g.pgMax) { g.pg = Math.min(g.pgMax, g.pg + u.pg); fez = true; partes.push(tr('{golpe} recuperou PG.', { golpe: golpe(g.id).nome })); }
+        else if (g) return nada(tr('{golpe} já está com todos os PG.', { golpe: golpe(g.id).nome }));
         else return { ok: false, msg: '', gasta: false };
       }
     }

@@ -15,6 +15,7 @@ import { falar, avisar, especie, nomeCriatura, nomeItem, item as itemDef } from 
 import { pixBrilho } from './pixel';
 import { TILE } from '../core/tipos';
 import { vista } from '../core/assets';
+import { tr } from '../i18n';
 
 const PASSOS_ACHADO = 1000;
 /** interiores com menos tiles que isto não têm espaço para a parceira */
@@ -88,7 +89,7 @@ export function passoDaParceira() {
   const id = sortearAchado(); if (!id) return;
   setFlag('parceira-achado', id);
   p.emote('!', 70); sfx('ui-ok');
-  avisar(`${nomeCriatura(c)} achou alguma coisa no caminho!`);
+  avisar(tr('{n} achou alguma coisa no caminho!', { n: nomeCriatura(c) }));
   bus.emit('parceira-achado', { item: id });
 }
 
@@ -111,16 +112,16 @@ export async function falarComParceira() {
   if (achado) {
     setFlag('parceira-achado', false); darItem(achado);
     p.emote('nota', 50); sfx('item-obtido'); bus.emit('item-obtido', { id: achado, qtd: 1 });
-    await falar(`${nome} trouxe uma coisa guardada com todo o cuidado.\f{JOGADOR} recebeu ${nomeItem(achado)}!`);
+    await falar(tr('{nome} trouxe uma coisa guardada com todo o cuidado.\f{JOGADOR} recebeu {item}!', { nome, item: nomeItem(achado) }));
     return;
   }
-  if (estavaDormindo) { p.emote('?', 50); await falar(`${nome} acorda num susto, boceja e se ajeita para seguir viagem.`); return; }
+  if (estavaDormindo) { p.emote('?', 50); await falar(tr('{nome} acorda num susto, boceja e se ajeita para seguir viagem.', { nome })); return; }
   const max = jogo.save.equipe.length ? c.vida / Math.max(1, vidaCheia(c)) : 1;
-  if (c.status) { p.emote('...', 50); await falar(`${nome} não parece bem. Melhor passar num Posto Guardião.`); return; }
-  if (max < 0.3) { p.emote('...', 50); await falar(`${nome} está exausta, mas não sai do seu lado.`); return; }
+  if (c.status) { p.emote('...', 50); await falar(tr('{nome} não parece bem. Melhor passar num Posto Guardião.', { nome })); return; }
+  if (max < 0.3) { p.emote('...', 50); await falar(tr('{nome} está exausta, mas não sai do seu lado.', { nome })); return; }
   const faixa = FALAS.find(([min]) => c.amizade >= min) ?? FALAS[FALAS.length - 1];
   p.emote(c.amizade >= 150 ? 'coracao' : c.amizade >= 40 ? 'nota' : '...', 50);
-  await falar(faixa[1][(M.passos + c.amizade) % faixa[1].length].replace('{N}', nome));
+  await falar(tr(faixa[1][(M.passos + c.amizade) % faixa[1].length], { N: nome }));
 }
 /** estimativa da vida cheia só para o humor da fala (a batalha tem a conta exata) */
 function vidaCheia(c: CriaturaInst): number { const b = especie(c.especie)?.base.vida ?? 50; return Math.floor(((b * 2 + c.gen.vida * 2) * c.nivel) / 100) + c.nivel + 10; }

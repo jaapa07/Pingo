@@ -18,6 +18,7 @@ import { mundo } from '../index';
 import type { Ator } from '../ator';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, Ladrilho, DX, DY, cena, recolocar, arrastar, olharTreinadores, falar, avisar, sfx, quadros } from './_pecas';
+import { juntar, tr } from '../../i18n';
 
 const ZONA = 'A9-ginasio';
 type Elem = 'fogo' | 'terra' | 'vento' | 'agua';
@@ -131,7 +132,7 @@ function pintarVento() {
   };
   for (let y = ala.y0; y <= ala.y1; y++) for (let x = ala.x0; x <= ala.x1; x++) if (M.zv.ch(x, y) === 'g' && (x + y) % 2 === 0) enf.pix('v' + k(x, y), [SETA[vento]], { a: '#ffffff' }, x, y, { dx: 4, dy: 4, z: 3 });
 }
-function girarVento() { vento = ORDEM[(ORDEM.indexOf(vento) + 1) % 4]; sfx('vento'); pintarVento(); avisar(`O vento virou: sopra para o ${({ n: 'norte', l: 'leste', s: 'sul', o: 'oeste' } as const)[vento]}.`); }
+function girarVento() { vento = ORDEM[(ORDEM.indexOf(vento) + 1) % 4]; sfx('vento'); pintarVento(); avisar(({ n: 'O vento virou: sopra para o norte.', l: 'O vento virou: sopra para o leste.', s: 'O vento virou: sopra para o sul.', o: 'O vento virou: sopra para o oeste.' } as const)[vento]); }
 async function levarNoVento() {
   const j = M.jog;
   sfx('vento');
@@ -171,13 +172,13 @@ async function vencer(a: Ala) {
   if (a.el === 'vento') pintarVento();
   pintarTotens();
   await quadros(20);
-  await falar(`O totem ${NOME[a.el]} se acendeu!${todos() ? '\nOs quatro totens brilham juntos, e a porta de taquara do Pajé se abriu.' : ''}`);
+  await falar(tr(todos() ? 'O totem {el} se acendeu!\nOs quatro totens brilham juntos, e a porta de taquara do Pajé se abriu.' : 'O totem {el} se acendeu!', { el: NOME[a.el] }));
   tirarReflexo();
   sfx('warp');
   await quadros(10, (q) => { M.jog.visivel = q % 4 < 2; });
   recolocar(a.fora[0], a.fora[1], 'n');
   atual = null;
-  avisar(`Totens acesos: ${ALAS.filter((q) => feito(q.el)).length} de 4`);
+  avisar(tr('Totens acesos: {n} de 4', { n: ALAS.filter((q) => feito(q.el)).length }));
 }
 async function queimar() {
   sfx('fogueira'); M.cena.tremer(6);
@@ -252,12 +253,12 @@ registrarMecanica(ZONA, {
     }
     if (buracoAberto(x, y)) { cena(() => falar('Um buraco fundo na terra. Uma pedra empurrada para dentro dele vira chão.')); return true; }
     if (x === PORTA[0] && y === PORTA[1] && !todos()) {
-      const faltam = ALAS.filter((a) => !feito(a.el)).map((a) => 'o totem ' + NOME[a.el]);
-      cena(() => falar(`Uma porta de taquara amarrada com cipó. Só abre quando os quatro totens estiverem acesos.\nFalta${faltam.length > 1 ? 'm' : ''}: ${faltam.join(', ').replace(/, ([^,]*)$/, ' e $1')}.`));
+      const faltam = ALAS.filter((a) => !feito(a.el)).map((a) => tr('o totem {el}', { el: NOME[a.el] }));
+      cena(() => falar(tr(faltam.length > 1 ? 'Uma porta de taquara amarrada com cipó. Só abre quando os quatro totens estiverem acesos.\nFaltam: {lista}.' : 'Uma porta de taquara amarrada com cipó. Só abre quando os quatro totens estiverem acesos.\nFalta: {lista}.', { lista: juntar(faltam) })));
       return true;
     }
     const t = ALAS.find((a) => a.totem[0] === x && a.totem[1] === y);
-    if (t) { cena(() => falar(feito(t.el) ? `O totem ${NOME[t.el]} brilha. A prova está cumprida.` : `O totem ${NOME[t.el]} está apagado. A prova é ali dentro.`)); return true; }
+    if (t) { cena(() => falar(feito(t.el) ? tr('O totem {el} brilha. A prova está cumprida.', { el: NOME[t.el] }) : tr('O totem {el} está apagado. A prova é ali dentro.', { el: NOME[t.el] }))); return true; }
     if (M.zv.ch(x, y) === 'x' && alaEm(x, y)) { cena(() => falar(feito('fogo') ? 'As brasas dormem desde que você venceu a prova.' : 'Brasas que acendem em ondas. A vermelha queima no próximo passo; a chama, agora.')); return true; }
     return false;
   },

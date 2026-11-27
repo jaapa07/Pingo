@@ -9,6 +9,7 @@
 import { flag } from '../../core/estado';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, laco, cair, cena, falar, avisar, sfx, naZona, chave } from './_pecas';
+import { tr } from '../../i18n';
 
 const ZONA = 'A7-ginasio';
 const OLEO = 16;
@@ -43,7 +44,7 @@ async function acender() {
   if (vencido()) { await falar('Os lustres do sobrado estão acesos desde a sua vitória. A lamparina pode descansar.'); return; }
   oleo = OLEO; sfx('item-obtido');
   luz(); revelar();
-  avisar(`Lamparina acesa: óleo para ${OLEO} passos.`);
+  avisar(tr('Lamparina acesa: óleo para {OLEO} passos.', { OLEO }));
 }
 async function queda(x: number, y: number) {
   const [vx, vy] = volta(y);

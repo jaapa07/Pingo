@@ -11,6 +11,7 @@ import { MAPA_B_ABERTO } from '../core/progresso';
 import { enxameDoDia, diaCorrido } from '../data/revancha';
 import { listaZonas } from './zonas';
 import { especie, temEspecie } from '../battle/criatura';
+import { tr } from '../i18n';
 
 export interface Enxame { zona: string; zonaNome: string; especie: number; especieNome: string; nv: [number, number]; metodo: MetodoEncontro }
 export const CHANCE_ENXAME = 0.4;
@@ -27,5 +28,5 @@ export function enxameDeHoje(dia = diaDoJogo()): Enxame | null {
 /** frase pronta do locutor do Rádio Cipó para o enxame de hoje */
 export function anuncioEnxame(): string | null {
   const e = enxameDeHoje();
-  return e ? `Notícia quentinha do mato: hoje tem enxame de ${e.especieNome} no capim da ${e.zonaNome}! Quem tiver cuia sobrando, é a hora.` : null;
+  return e ? tr('Notícia quentinha do mato: hoje tem enxame de {especieNome} no capim da {zonaNome}! Quem tiver cuia sobrando, é a hora.', { especieNome: e.especieNome, zonaNome: e.zonaNome }) : null;
 }

@@ -19,6 +19,7 @@ import { pedirQuantidade } from './quantidade';
 import { caber } from './mochila';
 import { CATEGORIAS, pecasDe, temPeca, decoracaoAtual, type CategoriaDeco } from '../../data/decoracao';
 import { CARTAS, T } from '../../data/textos-ui';
+import { t, tr } from '../../i18n';
 
 const ARTE: Record<CategoriaDeco, string[]> = {
   tapete: ['............', '............', '.f.f.f.f.f.f', 'kkkkkkkkkkkk', 'kabababababk', 'kbabababab.k', 'kabababababk', 'kbabababab.k', 'kkkkkkkkkkkk', '.f.f.f.f.f.f', '............', '............'],
@@ -38,7 +39,7 @@ export function lerCarta(c: { de: string; assunto: string; texto: string }): Pro
   return new Promise((ok) => {
     const el = elTela('ui', 'veu');
     const papel = moldura('texto', 264, 150, 28, 14); el.append(papel);
-    papel.append(em(texto(`De: {c:azul}${c.de}{/c}`, { cor: 'tinta' }), 14, 12), em(texto(c.assunto, { cor: 'marrom' }), 14, 24), em(caixa('linha-div', 236, 1), 14, 36));
+    papel.append(em(texto(tr('De: {c:azul}{de}{/c}', { de: c.de }), { cor: 'tinta' }), 14, 12), em(texto(c.assunto, { cor: 'marrom' }), 14, 24), em(caixa('linha-div', 236, 1), 14, 36));
     papel.append(em(texto(substituir(c.texto), { tamanho: 12, cor: 'tinta', largura: 236 }), 14, 42));
     papel.append(em(texto('A: fechar', { cor: 'cinza' }), 204, 134));
     const tela: Tela = { el, sobreposta: true, atualizar() { if (input.apertou('a') || input.apertou('b')) { input.consumir('a'); input.consumir('b'); som('ui-voltar'); retirar(tela); ok(); } } };
@@ -61,11 +62,11 @@ export function criarPcQuarto(): Tela {
   const cartas = () => CARTAS.filter((c) => cond(c.se));
   function pintar() {
     corpo.replaceChildren();
-    rotulo(corpo, ops[lista.indice].toUpperCase(), 0, 0, 'amarelo', { sombra: true });
+    rotulo(corpo, t(ops[lista.indice]).toUpperCase(), 0, 0, 'amarelo', { sombra: true });
     rotulo(corpo, AJUDA[lista.indice], 0, 14, 'creme', { largura: 150 });
     const nPc = Object.values(s.pcItens).reduce((a, b) => a + b, 0);
-    if (lista.indice < 3) rotulo(corpo, `No PC: {c:amarelo}${nPc}{/c} ${nPc === 1 ? 'item' : 'itens'}`, 0, 60, 'cinza');
-    else if (lista.indice === 3) rotulo(corpo, `Cartas: {c:amarelo}${cartas().length}{/c}`, 0, 60, 'cinza');
+    if (lista.indice < 3) rotulo(corpo, tr(nPc === 1 ? 'No PC: {c:amarelo}{n}{/c} item' : 'No PC: {c:amarelo}{n}{/c} itens', { n: nPc }), 0, 60, 'cinza');
+    else if (lista.indice === 3) rotulo(corpo, tr('Cartas: {c:amarelo}{n}{/c}', { n: cartas().length }), 0, 60, 'cinza');
     else if (lista.indice === 4) CATEGORIAS.forEach((c, i) => { const id = decoracaoAtual(c.id), p = pecasDe(c.id).find((x) => x.id === id); corpo.append(em(pix(ARTE[c.id], PAL[c.id]), (i % 2) * 76, 58 + Math.floor(i / 2) * 26)); rotulo(corpo, caber(p?.nome ?? c.vazio, 58), (i % 2) * 76 + 15, 60 + Math.floor(i / 2) * 26, p ? 'creme' : 'cinza', { largura: 60 }); });
   }
   const linha = (i: ItemInfo, q: number) => ({ rotulo: caber(i.nome, 124), valor: `×${q}` });
@@ -79,7 +80,7 @@ export function criarPcQuarto(): Tela {
       if (ind < 0) return;
       const it = its[ind], q = await pedirQuantidade(descartar ? 'Descartar quantos?' : deMochila ? 'Guardar quantos?' : 'Retirar quantos?', fonte[it.id]);
       if (!q) continue;
-      if (descartar && !(await confirmar(`Apagar ${q}× ${it.nome} do PC?`, false))) continue;
+      if (descartar && !(await confirmar(tr('Apagar {n}× {item} do PC?', { n: q, item: it.nome }), false))) continue;
       if (deMochila) { tirarItem(it.id, q); s.pcItens[it.id] = (s.pcItens[it.id] ?? 0) + q; }
       else { const r = s.pcItens[it.id] - q; if (r > 0) s.pcItens[it.id] = r; else delete s.pcItens[it.id]; if (!descartar) darItem(it.id, q); }
       som('ui-ok');
@@ -89,7 +90,7 @@ export function criarPcQuarto(): Tela {
     let ind = 0;
     for (;;) {
       const cs = cartas(); if (!cs.length) { await informar(T.pc.semCartas); return; }
-      ind = await escolherEm('CARTAS', cs.map((c) => ({ rotulo: caber(c.assunto, 150), cor: s.flags['carta-lida:' + c.id] ? ('chumbo' as const) : undefined })), { inicial: ind, descricao: (k) => `De: ${cs[k].de}\n\n${s.flags['carta-lida:' + cs[k].id] ? 'Já lida.' : 'Carta nova!'}` });
+      ind = await escolherEm('CARTAS', cs.map((c) => ({ rotulo: caber(c.assunto, 150), cor: s.flags['carta-lida:' + c.id] ? ('chumbo' as const) : undefined })), { inicial: ind, descricao: (k) => tr(s.flags['carta-lida:' + cs[k].id] ? 'De: {de}\n\nJá lida.' : 'De: {de}\n\nCarta nova!', { de: cs[k].de }) });
       if (ind < 0) return;
       s.flags['carta-lida:' + cs[ind].id] = true; som('ui-ok'); await lerCarta(cs[ind]);
     }
@@ -97,14 +98,14 @@ export function criarPcQuarto(): Tela {
   async function decorar() {
     let ic = 0;
     for (;;) {
-      ic = await escolherEm('DECORAÇÃO DO QUARTO', CATEGORIAS.map((c) => { const p = pecasDe(c.id).find((x) => x.id === decoracaoAtual(c.id)); return { rotulo: c.nome, valor: caber(p?.nome ?? c.vazio, 100) }; }), { inicial: ic, descricao: (k) => `Escolha ${CATEGORIAS[k].id === 'planta' || CATEGORIAS[k].id === 'pelucia' || CATEGORIAS[k].id === 'movel' ? 'a' : 'o'} ${CATEGORIAS[k].nome.toLowerCase()} do quarto.\n\nVocê tem ${pecasDe(CATEGORIAS[k].id).filter(temPeca).length} de ${pecasDe(CATEGORIAS[k].id).length} peças.` });
+      ic = await escolherEm('DECORAÇÃO DO QUARTO', CATEGORIAS.map((c) => { const p = pecasDe(c.id).find((x) => x.id === decoracaoAtual(c.id)); return { rotulo: c.nome, valor: caber(p?.nome ?? c.vazio, 100) }; }), { inicial: ic, descricao: (k) => tr(CATEGORIAS[k].id === 'planta' || CATEGORIAS[k].id === 'pelucia' || CATEGORIAS[k].id === 'movel' ? 'Escolha a {categoria} do quarto.\n\nVocê tem {n} de {total} peças.' : 'Escolha o {categoria} do quarto.\n\nVocê tem {n} de {total} peças.', { categoria: t(CATEGORIAS[k].nome).toLowerCase(), n: pecasDe(CATEGORIAS[k].id).filter(temPeca).length, total: pecasDe(CATEGORIAS[k].id).length }) });
       if (ic < 0) return;
       const cat = CATEGORIAS[ic], pecas = pecasDe(cat.id), atual = decoracaoAtual(cat.id);
       const ops2 = [...pecas.map((p) => ({ rotulo: caber(p.nome, 130), valor: p.id === atual ? '★' : '', cor: temPeca(p) ? undefined : ('marrom' as const) })), { rotulo: cat.vazio, valor: atual === '' ? '★' : '' }];
-      const ip = await escolherEm(cat.nome.toUpperCase(), ops2, { inicial: Math.max(0, pecas.findIndex((p) => p.id === atual)), descricao: (k) => (pecas[k] ? `${pecas[k].nome}\n\n${pecas[k].desc[0].toUpperCase() + pecas[k].desc.slice(1)}.\n\n${temPeca(pecas[k]) ? 'Na sua coleção.' : 'Ainda não é sua. ' + pecas[k].origem}` : 'Deixa o lugar vazio.') });
+      const ip = await escolherEm(t(cat.nome).toUpperCase(), ops2, { inicial: Math.max(0, pecas.findIndex((p) => p.id === atual)), descricao: (k) => { if (!pecas[k]) return 'Deixa o lugar vazio.'; const d = t(pecas[k].desc); return `${t(pecas[k].nome)}\n\n${d[0].toUpperCase() + d.slice(1)}.\n\n${temPeca(pecas[k]) ? t('Na sua coleção.') : t('Ainda não é sua.') + ' ' + t(pecas[k].origem)}`; } });
       if (ip < 0) continue;
       const p = pecas[ip];
-      if (p && !temPeca(p)) { som('ui-erro'); await informar(`${T.pc.naoTem} ${p.origem}`); continue; }
+      if (p && !temPeca(p)) { som('ui-erro'); await informar(`${t(T.pc.naoTem)} ${t(p.origem)}`); continue; }
       s.decoracao[cat.id] = p ? p.id : ''; bus.emit('decoracao', { categoria: cat.id, id: s.decoracao[cat.id] }); som('ui-ok');
       await informar(T.pc.aplicado);
     }

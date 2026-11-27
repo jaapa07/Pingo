@@ -26,6 +26,7 @@ import { habitatsDe, NOME_MEIO, type PeriodoTabela } from './dados';
 import { ESPECIES } from '../../data/criaturas';
 import { caber } from './mochila';
 import { T } from '../../data/textos-ui';
+import { tr } from '../../i18n';
 
 const CUIA = ['........', '..kkkk..', '.kooook.', 'koollook', 'kooooook', 'kddddddk', '.kddddk.', '..kkkk..'];
 const OLHO = ['........', '........', '..kkkk..', '.kwkkwk.', 'kwwkkwwk', '.kwkkwk.', '..kkkk..', '........'];
@@ -43,10 +44,10 @@ const NOME_PER: Record<PeriodoTabela, string> = { manha: 'manhã', dia: 'dia', n
 const num1 = (n: number) => String(Math.round(n * 10) / 10).replace('.', ',');
 function condEvolucao(ev: Evolucao): string {
   const p: string[] = [];
-  if (ev.nivel) p.push(`Nv ${ev.nivel}`);
+  if (ev.nivel) p.push(tr('Nv {nivel}', { nivel: ev.nivel }));
   if (ev.item) p.push(temItemDef(ev.item) ? itemDef(ev.item).nome : ev.item);
   if (ev.amizade) p.push('amizade');
-  if (ev.periodo) p.push(`de ${NOME_PER[ev.periodo === 'tarde' ? 'dia' : ev.periodo]}`);
+  if (ev.periodo) p.push(tr('de {periodo}', { periodo: NOME_PER[ev.periodo === 'tarde' ? 'dia' : ev.periodo] }));
   if (ev.sexo) p.push(ev.sexo === 'F' ? '♀' : '♂');
   return p.join(', ') || 'evento';
 }
@@ -85,7 +86,7 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
   painel.append(em(lista.el, 8, 7));
   const lado = moldura('tinta', 156, 148, 162, 17); cLista.append(lado);
   const resumo = moldura('placa', 156, 15, 162, 1); cLista.append(resumo);
-  resumo.append(em(texto(`Vistas {c:amarelo}${nVis}{/c}  Capturadas {c:amarelo}${nCap}{/c}`, { cor: 'creme' }), 6, 4));
+  resumo.append(em(texto(tr('Vistas {c:amarelo}{vistas}{/c}  Capturadas {c:amarelo}{capturadas}{/c}', { vistas: nVis, capturadas: nCap }), { cor: 'creme' }), 6, 4));
   const ladoDyn = caixa('', 148, 106); lado.append(em(ladoDyn, 4, 4));
   let figLado: Icone | null = null;
   const nMedalhas = Math.min(6, Math.floor(nCap / 30));
@@ -108,7 +109,7 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
   let ocupado = false;
   async function medalhas() {
     if (ocupado) return; ocupado = true;
-    const prox = nMedalhas < 6 ? `Faltam ${(nMedalhas + 1) * 30 - nCap} capturas para a ${T.diario.medalhas[nMedalhas]}.` : 'Diário completo. A Profª Ipê chorou de alegria!';
+    const prox = nMedalhas < 6 ? tr('Faltam {n} capturas para a {medalha}.', { n: (nMedalhas + 1) * 30 - nCap, medalha: T.diario.medalhas[nMedalhas] }) : 'Diário completo. A Profª Ipê chorou de alegria!';
     await informar(`${nMedalhas ? T.diario.medalhas.slice(0, nMedalhas).join(', ') + '. ' : 'Nenhuma medalha ainda. '}${prox}`);
     ocupado = false;
   }
@@ -148,7 +149,7 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
   }
   function pgFicha(e: EspecieDef, cap: boolean) {
     rotulo(corpo, cap ? e.habitat : 'Habitat: ???', 2, 2, 'marrom', { largura: 186 });
-    rotulo(corpo, `Altura: ${cap ? num1(e.altura) + ' m' : '???'}`, 2, 24); rotulo(corpo, `Peso: ${cap ? num1(e.peso) + ' kg' : '???'}`, 100, 24);
+    rotulo(corpo, cap ? tr('Altura: {n} m', { n: num1(e.altura) }) : 'Altura: ???', 2, 24); rotulo(corpo, cap ? tr('Peso: {n} kg', { n: num1(e.peso) }) : 'Peso: ???', 100, 24);
     corpo.append(em(caixa('linha-div', 186, 1), 2, 36));
     rotulo(corpo, cap ? e.diario : T.diario.soVisto, 2, 41, 'chumbo', { largura: 186 });
     const bt = moldura('botao-foco', 98, 14); bt.append(em(texto('A: Ouvir o grito ♪', { cor: 'tinta' }), 6, 3)); corpo.append(em(bt, 68, 117)); tocavel(bt, () => gritar());
@@ -167,7 +168,7 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
     if (m) { jog = new Sprite(av, 'mapa', corpo); jog.x = m.px + 8; jog.y = m.py + chao - m.ch; jog.tocar('idle-s'); jog.desenhar(); }
     const ic = iconeCriatura(e.num); corpo.append(em(ic.el, 98, chao - 24)); ic.animar(true); anim.push(ic);
     rotulo(corpo, 'Pegada', 150, 2, 'marrom'); corpo.append(em(pix(PEGADAS[pegadaDe(e.tipos[0])], { k: '#6b4226' }, 2), 156, 14));
-    rotulo(corpo, `${num1(e.peso)} kg`, 140, 34, 'chumbo', { largura: 46, alinhar: 'centro' });
+    rotulo(corpo, tr('{peso} kg', { peso: num1(e.peso) }), 140, 34, 'chumbo', { largura: 46, alinhar: 'centro' });
   }
   function pgHabitat(e: EspecieDef) {
     if (e.num > TOTAL_DIARIO) { // Visitante: onde encontrar (missão) e, no Borealce, a nota da Drª Solveig
@@ -186,11 +187,11 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
       const per = h.periodos.length >= 3 ? '' : `, ${h.periodos.map((p) => NOME_PER[p]).join('/')}`;
       rotulo(corpo, '•', 2, 76 + i * 10, 'vermelho'); rotulo(corpo, caber(`${local(h.local)?.nome ?? h.local}: ${NOME_MEIO[h.metodos[0]]}${per}`, 176), 10, 76 + i * 10, 'tinta');
     });
-    if (hs.length > 5) rotulo(corpo, `e mais ${hs.length - 5} ${hs.length - 5 === 1 ? 'lugar' : 'lugares'}`, 2, 126, 'chumbo');
+    if (hs.length > 5) rotulo(corpo, tr(hs.length - 5 === 1 ? 'e mais {n} lugar' : 'e mais {n} lugares', { n: hs.length - 5 }), 2, 126, 'chumbo');
   }
   function pgEvolucao(e: EspecieDef) {
     const fam = familia(e.num);
-    if (fam.length < 2) { const ic = iconeCriatura(e.num); corpo.append(em(ic.el, 2, 2)); anim.push(ic); rotulo(corpo, `${e.nome} não evolui.`, 32, 10); return; }
+    if (fam.length < 2) { const ic = iconeCriatura(e.num); corpo.append(em(ic.el, 2, 2)); anim.push(ic); rotulo(corpo, tr('{nome} não evolui.', { nome: e.nome }), 32, 10); return; }
     const passo = Math.min(26, Math.floor(130 / fam.length));
     fam.forEach((f, i) => {
       const y = i * passo, x = Math.min(2, f.estagio) * 14, conhecida = viu(f.n);

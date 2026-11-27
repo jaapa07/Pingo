@@ -9,6 +9,7 @@ import { em, escrever, medir, texto } from '../../ui/fonte';
 import type { ResumoCriatura } from '../engine';
 import { fxUi } from './cena';
 import { div } from './palco';
+import { tr } from '../../i18n';
 
 /** recorte com cantos chanfrados em degraus (sem diagonais suavizadas) */
 export function chanfro(n: number): string {
@@ -40,12 +41,12 @@ export class CaixaStatus {
     this.faixa = div('bt-faixa', p.miolo);
     const wb = jog ? (compacta ? 50 : 72) : 56;
     this.bv = barra('vida', wb, (px, max) => { if (jog) this.escreverNum(Math.round((px / max) * this.vidaMax)); });
-    p.miolo.append(em(this.nome, 5, 2), em(this.nv, 0, 2), em(texto('VD', { cor: 'laranja' }), 4, jog && !compacta ? 13 : 15), em(this.bv.el, 17, 14), em(this.st, wb + 19, 13));
+    p.miolo.append(em(this.nome, 5, 2), em(this.nv, 0, 2), em(texto(tr('VD'), { cor: 'laranja' }), 4, jog && !compacta ? 13 : 15), em(this.bv.el, 17, 14), em(this.st, wb + 19, 13));
     if (jog) this.el.classList.toggle('compacta', compacta);
     em(this.cap.el, 0, 2); this.cap.el.style.display = 'none'; p.miolo.append(this.cap.el);
     if (jog) {
       p.miolo.append(em(this.num, 0, compacta ? 14 : 21));
-      if (!compacta) { this.be = barra('exp', 92); p.miolo.append(em(texto('EXP', { cor: 'azul' }), 4, 29), em(this.be.el, 23, 31)); }
+      if (!compacta) { this.be = barra('exp', 92); p.miolo.append(em(texto(tr('EXP'), { cor: 'azul' }), 4, 29), em(this.be.el, 23, 31)); }
       
     }
     this.el.style.visibility = 'hidden';
@@ -58,7 +59,7 @@ export class CaixaStatus {
     const sexo = r.sexo === 'F' ? ' {c:rosa}♀{/c}' : r.sexo === 'M' ? ' {c:agua}♂{/c}' : '';
     const estrela = rara ? ' {c:ouro}★{/c}' : '', wEstrela = rara ? medir(' ★') : 0;
     // o nome encolhe até caber, com sexo, estrela e cuia, antes do nível (5 px de margem e 4 de folga)
-    const cuia = capturada && this.lado === 1 ? 11 : 0, livre = this.w - 8 - medir(`Nv${r.nivel}`) - 9;
+    const cuia = capturada && this.lado === 1 ? 11 : 0, livre = this.w - 8 - medir(tr('Nv{n}', { n: r.nivel })) - 9;
     const extra = (r.sexo ? medir(' ♀') : 0) + wEstrela + cuia;
     let nome = r.nome; while ((medir(nome) > this.w - 42 || medir(nome) + extra > livre) && nome.length > 3) nome = nome.slice(0, -1);
     escrever(this.nome, nome + sexo + estrela);
@@ -70,7 +71,7 @@ export class CaixaStatus {
     if (this.be) this.be.definir(fracExp(r), false);
     this.el.style.visibility = '';
   }
-  nivel(n: number) { escrever(this.nv, `Nv${n}`); this.nv.style.left = this.w - 8 - medir(`Nv${n}`) + 'px'; }
+  nivel(n: number) { escrever(this.nv, tr('Nv{n}', { n })); this.nv.style.left = this.w - 8 - medir(tr('Nv{n}', { n })) + 'px'; }
   vida(v: number, max: number, animar = true) { this.vidaMax = max; this.vidaAlvo = v; this.bv.definir(v / max, animar); if (!animar && this.lado === 0) this.escreverNum(v); }
   status(s: StatusId | 'desmaiado' | null) { this.st.replaceChildren(); if (s) this.st.append(iconeStatus(s, this.compacta && this.lado === 0)); }
   exp(frac: number, animar = true) { this.be?.definir(Math.max(0, Math.min(1, frac)), animar); }

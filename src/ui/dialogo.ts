@@ -13,11 +13,12 @@ import { texto, escrever, revelar, em, type CorTexto } from './fonte';
 import { moldura, spr, som } from './kit';
 import { Lista } from './componentes/lista';
 import { criarTelaNome } from './telas/nome';
+import { tela as traduzir, t } from '../i18n';
 
 export interface Quem { nome?: string; retrato?: string; expressao?: 'neutro' | 'feliz' | 'bravo'; voz?: string }
 
-/** troca {JOGADOR} e {RIVAL} pelos nomes do save */
-export const substituir = (s: string) => s.replace(/\{JOGADOR\}/g, jogo.save.jogador.nome).replace(/\{RIVAL\}/g, String(jogo.save.flags['rival'] ?? 'Tainá'));
+/** traduz (catálogo EN, src/i18n) e troca {JOGADOR} e {RIVAL} pelos nomes do save */
+export const substituir = (s: string) => traduzir(s).replace(/\{JOGADOR\}/g, jogo.save.jogador.nome).replace(/\{RIVAL\}/g, String(jogo.save.flags['rival'] ?? 'Tainá'));
 
 const VEL = [28, 55, 120]; // letras por segundo para velTexto 1, 2, 3
 const LINHAS = 2, ENTRE = 14;
@@ -180,7 +181,7 @@ export function escolher(pergunta: string, opcoes: string[], padrao = 0): Promis
     soltar(); return i;
   });
 }
-export const simNao = (pergunta: string): Promise<boolean> => escolher(pergunta, ['Sim', 'Não']).then((i) => i === 0);
+export const simNao = (pergunta: string): Promise<boolean> => escolher(pergunta, [t('Sim'), t('Não')]).then((i) => i === 0);
 /** teclado em grade; devolve o nome digitado (ou `padrao` se o jogador confirmar vazio) */
 export function pedirNome(titulo: string, max: number, padrao = ''): Promise<string> {
   return emFila(() => new Promise<string>((r) => { const t = criarTelaNome({ titulo: substituir(titulo), max, padrao }); const s = t.sair?.bind(t); t.sair = () => { s?.(); r(String((t as Tela & { resultado?: unknown }).resultado ?? padrao)); }; telas.empilhar(t); }));

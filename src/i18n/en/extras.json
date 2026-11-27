@@ -1,0 +1,1810 @@
+{
+ "App Store": {
+  "en": "",
+  "ctx": "src/core/demo.ts:37 · campo nome"
+ },
+ "Google Play": {
+  "en": "",
+  "ctx": "src/core/demo.ts:38 · campo nome"
+ },
+ "Demo": {
+  "en": "",
+  "ctx": "src/core/demo.ts:45 · campo selo"
+ },
+ "FIM DA DEMO": {
+  "en": "",
+  "ctx": "src/core/demo.ts:46 · campo titulo"
+ },
+ "Obrigado por jogar, {JOGADOR}! Você venceu a Lia Teia e ganhou a Insígnia Casulo.": {
+  "en": "",
+  "ctx": "src/core/demo.ts:47 · campo agradecimento"
+ },
+ "A aventura continua no jogo completo: mais 14 insígnias, a Liga dos Guardiões, o Sertão das Névoas e muito mais.": {
+  "en": "",
+  "ctx": "src/core/demo.ts:48 · campo completo"
+ },
+ "Em breve na App Store, no Google Play e no PC.": {
+  "en": "",
+  "ctx": "src/core/demo.ts:49 · campo lojas"
+ },
+ "Seu jogo continua de onde parou: no menu de jogos use \"Copiar código\" ou \"Exportar arquivo .pingo\" e abra no jogo completo.": {
+  "en": "",
+  "ctx": "src/core/demo.ts:50 · campo save"
+ },
+ "Até lá, dá para continuar explorando, capturando e treinando por aqui.": {
+  "en": "",
+  "ctx": "src/core/demo.ts:51 · campo seguir"
+ },
+ "A: continuar explorando": {
+  "en": "",
+  "ctx": "src/core/demo.ts:52 · campo rodape"
+ },
+ "Fim da demo!\fA Gruta do Eco, Porto Sereia e o resto de Pingorama estão no jogo completo, em breve na App Store, no Google Play e no PC.\fSeu jogo vai junto: no menu de jogos, use \"Copiar código\" ou \"Exportar arquivo .pingo\".\fAté lá, a Trilha dos Cipós e o Bosque Alto são todos seus!": {
+  "en": "",
+  "ctx": "src/core/demo.ts:54 · campo guarda"
+ },
+ "Fim da demo! Este caminho fica para o jogo completo.": {
+  "en": "",
+  "ctx": "src/core/demo.ts:56 · campo zonaFechada"
+ },
+ "Este jogo já passou do fim da demo (2ª insígnia). Ele abre no jogo completo, na App Store, no Google Play e no PC. Nada foi apagado.": {
+  "en": "",
+  "ctx": "src/core/demo.ts:58 · campo saveCompleto"
+ },
+ "Corrida da Vereda": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:17 · campo nome"
+ },
+ "Troque de raia com CIMA e BAIXO (ou toque na raia). Pegue as estrelas e desvie de pedras e cupinzeiros: cada tropeço custa pontos.": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:17 · campo regra"
+ },
+ "Empurra-Tora": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:18 · campo nome"
+ },
+ "Aperte A (ou toque) quando a marca passar pela faixa verde. Ritmo certo empurra a tora morro acima.": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:18 · campo regra"
+ },
+ "Salto do Riacho": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:19 · campo nome"
+ },
+ "Aperte A (ou toque) para pular os troncos. Pulo bem no limite vale salto perfeito.": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:19 · campo regra"
+ },
+ "Lina Ligeira": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:35 · campo nome"
+ },
+ "Minha Saguinete não erra raia. Corrida é com a gente!": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:35 · campo fala"
+ },
+ "Dona Marreta": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:36 · campo nome"
+ },
+ "O Antão empurra tora desde filhote. Quero ver você chegar perto.": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:36 · campo fala"
+ },
+ "Zeca Saltador": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:37 · campo nome"
+ },
+ "Pulo é tempo, não força. O Emaçu sabe a hora certinha.": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:37 · campo fala"
+ },
+ "Suco de Caju": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:97 · campo nome"
+ },
+ "Suco de Pitanga": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:98 · campo nome"
+ },
+ "Suco de Cupuaçu": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:99 · campo nome"
+ },
+ "Suco de Pequi": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:100 · campo nome"
+ },
+ "Suco de Jabuticaba": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:101 · campo nome"
+ },
+ "Suco de Buriti": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:102 · campo nome"
+ },
+ "Suco de Acerola": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:103 · campo nome"
+ },
+ "Vitamina de Açaí": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:104 · campo nome"
+ },
+ "agilidade": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:106 · campo agilidade"
+ },
+ "força": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:106 · campo forca"
+ },
+ "salto": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:106 · campo salto"
+ },
+ "todas as provas": {
+  "en": "",
+  "ctx": "src/data/gincana.ts:106 · campo todas"
+ },
+ "Bichos do Campo": {
+  "en": "",
+  "ctx": "src/data/ninhos.ts:20 · campo campo"
+ },
+ "Bichos de Copa": {
+  "en": "",
+  "ctx": "src/data/ninhos.ts:20 · campo copa"
+ },
+ "Asas": {
+  "en": "",
+  "ctx": "src/data/ninhos.ts:20 · campo voador"
+ },
+ "Nadadores": {
+  "en": "",
+  "ctx": "src/data/ninhos.ts:20 · campo nadador"
+ },
+ "Répteis": {
+  "en": "",
+  "ctx": "src/data/ninhos.ts:20 · campo reptil"
+ },
+ "Anfíbios": {
+  "en": "",
+  "ctx": "src/data/ninhos.ts:20 · campo anfibio"
+ },
+ "Peixes": {
+  "en": "",
+  "ctx": "src/data/ninhos.ts:21 · campo peixe"
+ },
+ "Bichos do Mar": {
+  "en": "",
+  "ctx": "src/data/ninhos.ts:21 · campo marinho"
+ },
+ "Miúdos de Seis e Oito Patas": {
+  "en": "",
+  "ctx": "src/data/ninhos.ts:21 · campo artropode"
+ },
+ "Cavadores": {
+  "en": "",
+  "ctx": "src/data/ninhos.ts:21 · campo escavador"
+ },
+ "Sem ninho": {
+  "en": "",
+  "ctx": "src/data/ninhos.ts:21 · campo sem-ninho"
+ },
+ "O tamanduá-bandeira tem dentes?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:9 · campo p"
+ },
+ "Não tem nenhum dente! Ele cata formigas e cupins com uma língua comprida e grudenta, de uns 60 centímetros.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:9 · campo porque"
+ },
+ "A preguiça é parente próxima dos macacos?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:10 · campo p"
+ },
+ "Não. A preguiça é parente dos tamanduás e dos tatus: os três formam o grupo dos xenartros.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:10 · campo porque"
+ },
+ "A preguiça desce da árvore mais ou menos uma vez por semana para fazer as necessidades?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:11 · campo p"
+ },
+ "Isso mesmo. É praticamente a única hora em que ela pisa no chão, e é quando corre mais perigo.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:11 · campo porque"
+ },
+ "A ariranha é a maior lontra do mundo?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:12 · campo p"
+ },
+ "Sim! A ariranha passa de 1,5 metro com a cauda e vive em grupos familiares nos rios da Amazônia e do Pantanal.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:12 · campo porque"
+ },
+ "O boto-cor-de-rosa vive no mar?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:13 · campo p"
+ },
+ "Não. O boto-cor-de-rosa é de água doce: vive nos rios e lagos da bacia amazônica.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:13 · campo porque"
+ },
+ "O tuiuiú é conhecido como a ave-símbolo do Pantanal?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:14 · campo p"
+ },
+ "Sim. O tuiuiú, uma cegonha enorme de pescoço preto e vermelho, faz ninhos gigantes no alto das árvores do Pantanal.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:14 · campo porque"
+ },
+ "A capivara é o maior roedor do mundo?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:15 · campo p"
+ },
+ "É sim! Uma capivara adulta pode passar de 60 quilos e adora ficar perto da água.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:15 · campo porque"
+ },
+ "O lobo-guará também come frutos, como a fruta-do-lobo?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:16 · campo p"
+ },
+ "Sim. Cerca de metade do que ele come é fruta, principalmente a lobeira, a fruta-do-lobo do Cerrado.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:16 · campo porque"
+ },
+ "A onça-pintada é o maior felino das Américas?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:17 · campo p"
+ },
+ "Sim. A onça-pintada é o maior felino do continente e tem uma das mordidas mais fortes entre os felinos.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:17 · campo porque"
+ },
+ "O mico-leão-dourado vive na Floresta Amazônica?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:18 · campo p"
+ },
+ "Não. Ele só existe na Mata Atlântica do estado do Rio de Janeiro e quase foi extinto.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:18 · campo porque"
+ },
+ "O peixe-boi-da-amazônia vive em água doce?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:19 · campo p"
+ },
+ "Sim. É o único peixe-boi que vive só em água doce, nos rios e lagos da Amazônia.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:19 · campo porque"
+ },
+ "O pirarucu precisa subir à superfície para respirar ar?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:20 · campo p"
+ },
+ "Precisa! Ele respira ar com a bexiga natatória e sobe para respirar a cada poucos minutos.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:20 · campo porque"
+ },
+ "O poraquê é uma enguia de verdade?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:21 · campo p"
+ },
+ "Não. Apesar do apelido \"enguia-elétrica\", o poraquê é um peixe-elétrico de outro grupo, mais aparentado com os bagres do que com as enguias.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:21 · campo porque"
+ },
+ "O tatu-bola consegue se fechar como uma bola completa?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:22 · campo p"
+ },
+ "Consegue. O tatu-bola da Caatinga encaixa a cabeça e a cauda na carapaça e vira uma bola fechada.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:22 · campo porque"
+ },
+ "O tatu-canastra é o maior tatu do mundo?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:23 · campo p"
+ },
+ "Sim. Pode passar de 1,5 metro com a cauda, e a garra do meio da mão da frente é a maior entre todos os mamíferos vivos.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:23 · campo porque"
+ },
+ "A sucuri é uma cobra peçonhenta?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:24 · campo p"
+ },
+ "Não. A sucuri não tem peçonha: ela mata apertando a presa com o corpo (constrição).": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:24 · campo porque"
+ },
+ "A jararaca é uma cobra peçonhenta?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:25 · campo p"
+ },
+ "Sim. A picada da jararaca é tratada com soro antibotrópico. Nunca mexa com ela!": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:25 · campo porque"
+ },
+ "A jiboia é uma cobra peçonhenta?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:26 · campo p"
+ },
+ "Não. A jiboia, como a sucuri, mata por constrição e não tem peçonha.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:26 · campo porque"
+ },
+ "O beija-flor consegue voar para trás?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:27 · campo p"
+ },
+ "Consegue! Batendo as asas dezenas de vezes por segundo, ele paira no ar, sobe, desce e voa de ré.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:27 · campo porque"
+ },
+ "O urubu-rei tem a cabeça colorida?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:28 · campo p"
+ },
+ "Tem: a pele da cabeça mistura laranja, vermelho, roxo e amarelo. É a mais colorida dos urubus.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:28 · campo porque"
+ },
+ "O guará, a ave vermelha do mangue, já nasce vermelho?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:29 · campo p"
+ },
+ "Não. O filhote é escuro. O vermelho vem dos pigmentos dos caranguejinhos e camarões que ele come.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:29 · campo porque"
+ },
+ "O jacaré-açu é o maior jacaré do Brasil?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:30 · campo p"
+ },
+ "Sim. O jacaré-açu, da Amazônia, pode passar de 4 metros de comprimento.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:30 · campo porque"
+ },
+ "A ema consegue voar?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:31 · campo p"
+ },
+ "Não voa. A ema é a maior ave do Brasil e compensa correndo muito rápido.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:31 · campo porque"
+ },
+ "Na ema, é o macho quem choca os ovos?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:32 · campo p"
+ },
+ "Sim. Várias fêmeas põem os ovos no mesmo ninho e o macho choca e cuida dos filhotes sozinho.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:32 · campo porque"
+ },
+ "No cavalo-marinho, é o macho quem carrega os ovos até os filhotes nascerem?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:33 · campo p"
+ },
+ "Isso mesmo: a fêmea deposita os ovos numa bolsa na barriga do macho, que \"dá à luz\" os filhotes.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:33 · campo porque"
+ },
+ "As baleias-jubarte vêm ao litoral da Bahia para ter filhotes?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:34 · campo p"
+ },
+ "Sim. Entre o inverno e a primavera elas visitam o Banco dos Abrolhos para acasalar e ter filhotes.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:34 · campo porque"
+ },
+ "A anta é o maior mamífero terrestre do Brasil?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:35 · campo p"
+ },
+ "É sim. A anta pode passar de 250 quilos e espalha sementes pela floresta: é a \"jardineira\" da mata.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:35 · campo porque"
+ },
+ "O gambá, também chamado de saruê, é um marsupial?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:36 · campo p"
+ },
+ "Sim. Como o canguru, a mãe gambá leva os filhotes numa bolsa e, depois, nas costas.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:36 · campo porque"
+ },
+ "Os morcegos são cegos?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:37 · campo p"
+ },
+ "Não. Os morcegos enxergam; muitos também usam o eco dos próprios gritos para se orientar no escuro.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:37 · campo porque"
+ },
+ "O urutau passa o dia parado imitando um galho quebrado?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:38 · campo p"
+ },
+ "Sim. De olhos quase fechados e penas cor de casca, o urutau some no tronco. À noite ele caça insetos.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:38 · campo porque"
+ },
+ "Jacarés e crocodilos são o mesmo bicho com nomes diferentes?": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:39 · campo p"
+ },
+ "Não. São famílias diferentes de répteis. Os do Brasil são jacarés: focinho mais largo e dentes de baixo escondidos com a boca fechada.": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:39 · campo porque"
+ },
+ "Locutora Sabiá": {
+  "en": "",
+  "ctx": "src/data/quiz.ts:44 · campo nome"
+ },
+ "Jaulas na estrada": {
+  "en": "",
+  "ctx": "src/data/radio.ts:12 · campo titulo"
+ },
+ "Moradores da Trilha do Ipê viram caminhões cobertos de lona passando de madrugada. Quem souber de algo avise o Posto Guardião mais próximo.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:12 · campo texto"
+ },
+ "Ovo Pintado em boas mãos": {
+  "en": "",
+  "ctx": "src/data/radio.ts:13 · campo titulo"
+ },
+ "O Seu Aroeira confirma: o Ovo Pintado chegou inteiro à Vila Caiçara, levado por uma jovem treinadora de Vila Jacarandá.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:13 · campo texto"
+ },
+ "Apagão no Porto": {
+  "en": "",
+  "ctx": "src/data/radio.ts:14 · campo titulo"
+ },
+ "Porto Sereia segue às escuras. A Usina Velha parou e o Trem Serra-Sol não sai da estação. Há gente estranha de macacão cor de ferrugem rondando por lá.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:14 · campo texto"
+ },
+ "A luz voltou!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:15 · campo titulo"
+ },
+ "A Usina Velha voltou a girar. O tenente Lata, do Cartel Ferrugem, fugiu deixando jaulas vazias para trás. O Trem Serra-Sol já apita outra vez.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:15 · campo texto"
+ },
+ "Ninhos salvos no Pantanal": {
+  "en": "",
+  "ctx": "src/data/radio.ts:16 · campo titulo"
+ },
+ "A Drª Buriti informa que os ninhos do Pantanal Grande estão a salvo. O tenente Arame foi visto correndo de um tuiuiú muito bravo.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:16 · campo texto"
+ },
+ "Farol aceso de novo": {
+  "en": "",
+  "ctx": "src/data/radio.ts:17 · campo titulo"
+ },
+ "A Ilha do Farol voltou a guiar os saveiros. O tenente Rebite deixou o posto às pressas. As criaturas presas foram soltas na baía.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:17 · campo texto"
+ },
+ "Mina libertada": {
+  "en": "",
+  "ctx": "src/data/radio.ts:18 · campo titulo"
+ },
+ "Os garimpeiros da Chapada Rubra retomaram a mina. As criaturas de pedra voltaram às galerias e, dizem, até o eco ficou mais alegre.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:18 · campo texto"
+ },
+ "Laboratório secreto cai": {
+  "en": "",
+  "ctx": "src/data/radio.ts:19 · campo titulo"
+ },
+ "O esconderijo do Cartel no Brejo Roxo foi desmontado. Cuidado nas estradas: algo grande escapou de lá e anda sem rumo pelo sertão.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:19 · campo texto"
+ },
+ "Coronel Garrote derrotado": {
+  "en": "",
+  "ctx": "src/data/radio.ts:20 · campo titulo"
+ },
+ "Acabou! O chefe do Cartel Ferrugem perdeu no alto do Pico Pingorama. O Conselho dos Guardiões decide agora o que fazer com ele.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:20 · campo texto"
+ },
+ "Pingorama tem nova guardiã": {
+  "en": "",
+  "ctx": "src/data/radio.ts:21 · campo titulo"
+ },
+ "O Conselho dos Guardiões foi vencido em batalha limpa. Festa nas duas regiões! E a Floresta Ancestral, enfim, abriu suas trilhas.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:21 · campo texto"
+ },
+ "Sobrados da Serra (choro)": {
+  "en": "",
+  "ctx": "src/data/radio.ts:26 · campo nome"
+ },
+ "Ladeiras do Porto (frevo)": {
+  "en": "",
+  "ctx": "src/data/radio.ts:26 · campo nome"
+ },
+ "Roda na Praça (samba)": {
+  "en": "",
+  "ctx": "src/data/radio.ts:27 · campo nome"
+ },
+ "A Venda (xote)": {
+  "en": "",
+  "ctx": "src/data/radio.ts:27 · campo nome"
+ },
+ "Remando na Baía": {
+  "en": "",
+  "ctx": "src/data/radio.ts:27 · campo nome"
+ },
+ "Trem da Serra": {
+  "en": "",
+  "ctx": "src/data/radio.ts:28 · campo nome"
+ },
+ "Varanda do Buriti (catira)": {
+  "en": "",
+  "ctx": "src/data/radio.ts:28 · campo nome"
+ },
+ "Cortejo de Coral (maracatu)": {
+  "en": "",
+  "ctx": "src/data/radio.ts:29 · campo nome"
+ },
+ "Travessia de Saveiro": {
+  "en": "",
+  "ctx": "src/data/radio.ts:29 · campo nome"
+ },
+ "Feira da Chapada (baião)": {
+  "en": "",
+  "ctx": "src/data/radio.ts:30 · campo nome"
+ },
+ "Arraial em Festa (forró)": {
+  "en": "",
+  "ctx": "src/data/radio.ts:30 · campo nome"
+ },
+ "Galpão da Geada (rancheira)": {
+  "en": "",
+  "ctx": "src/data/radio.ts:31 · campo nome"
+ },
+ "Até a Próxima Trilha": {
+  "en": "",
+  "ctx": "src/data/radio.ts:31 · campo nome"
+ },
+ "Domingo é dia de descanso: os Postos Guardiões servem café e bolo de fubá para as parceiras.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:36"
+ },
+ "Segunda-feira: maré baixa de manhã na Praia das Tartarugas. Bom dia para procurar conchas.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:37"
+ },
+ "Terça-feira: os pescadores juram que a pesca rende mais ao entardecer.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:38"
+ },
+ "Quarta-feira: vento forte na Serra Fumaça. Segure o chapéu e as criaturas de pena!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:39"
+ },
+ "Quinta-feira é dia de feira em Porto Sereia: tem banca que só abre hoje.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:40"
+ },
+ "Sexta-feira: roda de capoeira aberta na Cidade Ginga, ao cair da tarde.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:41"
+ },
+ "Sábado tem festival! Fogueira, sanfona e prêmios para quem aparecer com a equipe em forma.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:42"
+ },
+ "Alô, alô! Aqui é {N}. Que bom ouvir você!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:47 · campo atende"
+ },
+ "Opa, {N} na linha! Como vai essa equipe?": {
+  "en": "",
+  "ctx": "src/data/radio.ts:47 · campo atende"
+ },
+ "{N} falando. Achei que tinha esquecido de mim!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:47 · campo atende"
+ },
+ "Alô? Ah, é você! {N} às ordens.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:47 · campo atende"
+ },
+ "Minhas parceiras andam treinando sem parar.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:48 · campo conversa"
+ },
+ "Vi um bicho diferente hoje cedo, mas ele fugiu antes de eu chegar perto.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:48 · campo conversa"
+ },
+ "Ouviu o Rádio Cipó hoje? Sempre tem dica boa.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:48 · campo conversa"
+ },
+ "Não esqueça de dar cafuné na sua equipe, viu?": {
+  "en": "",
+  "ctx": "src/data/radio.ts:48 · campo conversa"
+ },
+ "Que tal uma revanche agora mesmo? Minha equipe está mais forte!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:49 · campo propoe"
+ },
+ "Uma revanche de líder é coisa séria. Volte a ligar quando a Liga dos Guardiões reconhecer você como Campeão.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:50 · campo lider"
+ },
+ "Revanche comigo? Primeiro termine a sua jornada pelo Sertão: vença os dezesseis ginásios. Aí a gente conversa, no Ginásio de Treino.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:51 · campo liderSertao"
+ },
+ "Hoje não vai dar, tenho outros compromissos. Revanche comigo é {Q}. Me liga nessa hora!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:52 · campo foraDaAgenda"
+ },
+ "Hoje é o meu dia de treino! Às vezes você me encontra {L}, mas revanche de líder é no {G}. Te espero lá ainda hoje, no salão!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:53 · campo treino"
+ },
+ "Já combinamos: estou te esperando no {G}. Não demora!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:54 · campo treinoMarcado"
+ },
+ "É você, é? Eu sei que você quer revanche. Terça e quinta eu treino {L}. Uma batalha por dia. Não se atrase!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:55 · campo rival"
+ },
+ "Tô ocupada treinando. A gente se esbarra na estrada, como sempre. E da próxima vez eu ganho!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:56 · campo rivalAntes"
+ },
+ "Ufa! Você continua em forma. Me liga amanhã para outra!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:57 · campo venceu"
+ },
+ "Viu só como eu treinei? Cuide da equipe e me ligue amanhã.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:58 · campo perdeu"
+ },
+ "O Boitatá da Caverna": {
+  "en": "",
+  "ctx": "src/data/radio.ts:63 · campo titulo"
+ },
+ "Fala da cobra de fogo que dorme na Caverna Vulcânica do Sertão.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:63 · campo dica"
+ },
+ "Lá no fundo da caverna, onde a pedra é de brasa,\numa cobra feita de fogo vigia a própria casa.\nQuem acorda o Boitatá leva fogo no olhar:\ncom respeito e coragem, ele deixa você passar.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:63 · campo versos"
+ },
+ "A Boiúna do Canal": {
+  "en": "",
+  "ctx": "src/data/radio.ts:64 · campo titulo"
+ },
+ "Fala da cobra grande do canal da Gruta do Recife, que só acorda para quem chega remando de longe.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:64 · campo dica"
+ },
+ "Rio abaixo, rio acima, a Boiúna vai nadando,\ncom os olhos de lanterna, os barqueiros vai guiando.\nQuem rema com paciência ouve o rio respirar:\né a cobra grande dormindo, esperando o seu lugar.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:64 · campo versos"
+ },
+ "Mapinguari, o Guardião": {
+  "en": "",
+  "ctx": "src/data/radio.ts:65 · campo titulo"
+ },
+ "Fala do gigante da mata funda, que anda onde a floresta é mais antiga.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:65 · campo dica"
+ },
+ "Tem um grito na mata que faz a onça calar,\né o velho Mapinguari andando devagar.\nNão derruba árvore nova, não maltrata quem é bom:\nsó aparece pra quem sabe escutar o próprio som.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:65 · campo versos"
+ },
+ "Fala da guardiã dos bichos que passou a vagar depois que o laboratório do Cartel caiu.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:66 · campo dica"
+ },
+ "Montada no queixada, a Caipora vem ligeira,\npega o caçador sem dó e solta a bicharada inteira.\nQuem caça por maldade se perde no caminho;\nquem cuida da floresta nunca anda sozinho.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:66 · campo versos"
+ },
+ "O Canto do Uirapuru": {
+  "en": "",
+  "ctx": "src/data/radio.ts:67 · campo titulo"
+ },
+ "Fala do pássaro cujo canto faz a mata inteira parar para ouvir.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:67 · campo dica"
+ },
+ "Quando canta o Uirapuru, a mata para de falar,\no rio segura a água, o vento para de soprar.\nDizem que dá sorte ouvir um canto só:\nquem ouve duas vezes nunca mais fica sozinho.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:67 · campo versos"
+ },
+ "Fala da ave do trovão que mora nas nuvens do alto da serra.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:68 · campo dica"
+ },
+ "Lá no alto da serra, onde o céu faz trovoada,\nmora o Gavião-Tupã de asa relampejada.\nCada pena é um raio, cada grito é um trovão:\nsó sobe até ele quem tem calma no coração.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:68 · campo versos"
+ },
+ "Lobo-Jaci e Onça-Guaraci": {
+  "en": "",
+  "ctx": "src/data/radio.ts:69 · campo titulo"
+ },
+ "Fala do lobo da lua e da onça do sol, que só andam soltos depois do Conselho dos Guardiões.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:69 · campo dica"
+ },
+ "Jaci é a lua cheia, Guaraci é o sol nascente,\num é lobo, a outra é onça, os dois andam pela gente.\nUm aparece de noite, a outra quando é manhã:\nquem vencer o Conselho vai ver a dança dos dois irmãos.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:69 · campo versos"
+ },
+ "terça-feira": {
+  "en": "Tuesday",
+  "ctx": "src/data/radio.ts:75 | src/data/revancha.ts:24"
+ },
+ "ENXAME: {especie} aparece aos montes em {local} hoje.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:78 · linhas.push()"
+ },
+ "uma criatura rara": {
+  "en": "",
+  "ctx": "src/data/radio.ts:78 · campo especie"
+ },
+ "SEXTA DA TARTARUGA: a Tartaruga-Gigante sobe para respirar no Recife Submerso, embaixo da Baía Azul. Só hoje!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:79 · linhas.push()"
+ },
+ "TREINO DA RIVAL: a Tainá está na Gruta do Eco, perto da saída para Porto Sereia. Uma batalha por dia.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:80 · linhas.push()"
+ },
+ "REVANCHES agora ({periodo}): {lista}.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:81 · linhas.push()"
+ },
+ "REVANCHES: ninguém da sua lista treina nesta {periodo}. Veja a tabela em Revanches.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:81 · linhas.push()"
+ },
+ "TORRE DE DESAFIOS: o Juiz da Torre espera no Platô da Liga. Uma batalha por dia, todos no nível 50.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:82 · linhas.push()"
+ },
+ "QUIZ DA FAUNA: a Locutora Sabiá grava perguntas novas hoje na Rádio Farol.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:83 · linhas.push()"
+ },
+ "QUIZ DA FAUNA: acerte 4 de 5 perguntas na Rádio Farol, na Ilha do Farol, e ganhe o Cartão do Rádio!": {
+  "en": "",
+  "ctx": "src/data/radio.ts:83 · linhas.push()"
+ },
+ "Hoje é {dia}, {periodo}.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:84"
+ },
+ "Enxame em {local}.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:84"
+ },
+ "{n} revanche(s) agora.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:84"
+ },
+ "Nenhuma revanche agora.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:84 · t()"
+ },
+ "Boa noite, Pingorama! Hoje é {dia}.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:85"
+ },
+ "Boa tarde, Pingorama! Hoje é {dia}.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:85"
+ },
+ "Bom dia, Pingorama! Hoje é {dia}.": {
+  "en": "",
+  "ctx": "src/data/radio.ts:85"
+ },
+ "início": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:22 · campo 1"
+ },
+ "depois da Usina": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:22 · campo 2"
+ },
+ "depois da Liga": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:22 · campo 3 | src/data/revancha.ts:85"
+ },
+ "16 insígnias": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:22 · campo 4"
+ },
+ "de manhã": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:23 · campo manha"
+ },
+ "de dia": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:23 · campo dia"
+ },
+ "à noite": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:23 · campo noite"
+ },
+ "segunda-feira": {
+  "en": "Monday",
+  "ctx": "src/data/revancha.ts:24"
+ },
+ "quarta-feira": {
+  "en": "Wednesday",
+  "ctx": "src/data/revancha.ts:24"
+ },
+ "quinta-feira": {
+  "en": "Thursday",
+  "ctx": "src/data/revancha.ts:24"
+ },
+ "sexta-feira": {
+  "en": "Friday",
+  "ctx": "src/data/revancha.ts:24"
+ },
+ "dom": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:25"
+ },
+ "seg": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:25"
+ },
+ "ter": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:25"
+ },
+ "qua": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:25"
+ },
+ "qui": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:25"
+ },
+ "sex": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:25"
+ },
+ "sáb": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:25"
+ },
+ "no píer de Vila Caiçara": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:58 · campo lugar"
+ },
+ "nas copas de Bosque Alto": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:59 · campo lugar"
+ },
+ "nas eclusas de Porto Sereia": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:60 · campo lugar"
+ },
+ "no mirante de Cidade Coral": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:61 · campo lugar"
+ },
+ "na Oficina do Volta": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:62 · campo lugar"
+ },
+ "no cemitério velho": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:63 · campo lugar"
+ },
+ "na forja de Vila Ferrugem": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:64 · campo lugar"
+ },
+ "no buritizal de Vila Buriti": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:65 · campo lugar"
+ },
+ "no barreiro do Sertão": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:66 · campo lugar"
+ },
+ "na Chapada Rubra": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:67 · campo lugar"
+ },
+ "no Arraial Brasa": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:68 · campo lugar"
+ },
+ "na roda de capoeira da Cidade Ginga": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:69 · campo lugar"
+ },
+ "no Brejo Roxo": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:70 · campo lugar"
+ },
+ "no galpão da geada": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:71 · campo lugar"
+ },
+ "no observatório": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:72 · campo lugar"
+ },
+ "no Monte Tupã": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:73 · campo lugar"
+ },
+ "depois das 16 insígnias": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:85"
+ },
+ "Ginásio de Treino de Porto Sereia": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:87 · campo nome"
+ },
+ "na Gruta do Eco, perto da saída para Porto Sereia": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:104 · campo lugar"
+ },
+ "Dezesseis insígnias, hein? Eu conto as minhas toda terça e quinta aqui embaixo. Hoje a gruta vai ecoar o MEU nome!": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:121 · campo desafio"
+ },
+ "Achou meu esconderijo! Terça e quinta eu treino aqui, no escuro, que é para ninguém copiar. Uma batalha. Só uma. Vale o dia!": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:122 · campo desafio"
+ },
+ "O eco repete \"perdeu, perdeu, perdeu\"… Até a gruta é sua torcida. Volta no próximo dia de treino!": {
+  "en": "",
+  "ctx": "src/data/revancha.ts:123 · campo derrota"
+ },
+ "A vereda já está pronta: buriti, capim e bicho do cerrado.": {
+  "en": "",
+  "ctx": "src/data/safari.ts:42 · campo pedido"
+ },
+ "Lagoa das Garças": {
+  "en": "",
+  "ctx": "src/data/safari.ts:53 · campo nome"
+ },
+ "Pedra de rio! Com ela eu calço a margem e a lagoa segura água o ano inteiro. Volte amanhã… brincadeira, já está pronta!": {
+  "en": "",
+  "ctx": "src/data/safari.ts:54 · campo pedido"
+ },
+ "Mata Ciliar": {
+  "en": "",
+  "ctx": "src/data/safari.ts:65 · campo nome"
+ },
+ "Muda de buriti da Vila Buriti! Onde tem buriti tem água, e onde tem água a mata volta. Pode ir ver: já tem bugio gritando lá.": {
+  "en": "",
+  "ctx": "src/data/safari.ts:66 · campo pedido"
+ },
+ "Toca dos Troncos Ocos": {
+  "en": "",
+  "ctx": "src/data/safari.ts:77 · campo nome"
+ },
+ "Um tronco oco inteirinho! É casa para coruja, para urutau, para quem gosta de escuro. A toca está aberta, mas cuidado: lá dentro tem bicho grande.": {
+  "en": "",
+  "ctx": "src/data/safari.ts:78 · campo pedido"
+ },
+ "Iberê": {
+  "en": "",
+  "ctx": "src/data/torre.ts:21"
+ },
+ "cl-capoeirista": {
+  "en": "",
+  "ctx": "src/data/torre.ts:21"
+ },
+ "cl-mateira": {
+  "en": "",
+  "ctx": "src/data/torre.ts:21"
+ },
+ "cl-vaqueiro": {
+  "en": "",
+  "ctx": "src/data/torre.ts:21"
+ },
+ "cl-biologa": {
+  "en": "",
+  "ctx": "src/data/torre.ts:22"
+ },
+ "Caetê": {
+  "en": "",
+  "ctx": "src/data/torre.ts:22"
+ },
+ "cl-pescador": {
+  "en": "",
+  "ctx": "src/data/torre.ts:22"
+ },
+ "Potira": {
+  "en": "",
+  "ctx": "src/data/torre.ts:22"
+ },
+ "cl-repentista": {
+  "en": "",
+  "ctx": "src/data/torre.ts:22"
+ },
+ "Tibiriçá": {
+  "en": "",
+  "ctx": "src/data/torre.ts:22"
+ },
+ "cl-ferreiro": {
+  "en": "",
+  "ctx": "src/data/torre.ts:22"
+ },
+ "Na Torre todo mundo é nível 50. Aqui ganha quem pensa melhor!": {
+  "en": "",
+  "ctx": "src/data/torre.ts:33 · campo desafio"
+ },
+ "Pensou melhor mesmo. Até amanhã na Torre!": {
+  "en": "",
+  "ctx": "src/data/torre.ts:33 · campo derrota"
+ },
+ "Pipoca": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:24 · campo apelido"
+ },
+ "Ai, que saudade de uma Cotiazinha! A minha fugiu atrás de um coquinho e nunca mais voltou.\fEu tenho um Saguinho espevitado, o Pipoca. Troca ele por uma Cotiazinha?": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:26 · campo pedido"
+ },
+ "Sem Cotiazinha na equipe? Elas vivem no sub-bosque da Mata dos Sabiás. Traz uma, que o Pipoca está pronto!": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:27 · campo semCriatura"
+ },
+ "Tudo bem… O Pipoca vai continuar roubando banana da fruteira.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:28 · campo recusa"
+ },
+ "Que lindeza! Cuida bem do Pipoca: ele adora caju e grita quando vê gavião.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:29 · campo feito"
+ },
+ "A Cotiazinha já enterrou três coquinhos no meu quintal. Vai nascer coqueiro até na cozinha!": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:30 · campo depois"
+ },
+ "Bigode": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:40 · campo apelido"
+ },
+ "Psiu! Pescador velho não grita, que espanta o peixe. Eu sinto falta de um Pipirim no ombro: avisava quando a boia mexia.\fTenho o Bigode, um Mandizinho que pesquei de anzol. Ele é do tipo Rio: puxa canoa que é uma beleza. Troca por um Pipirim?": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:42 · campo pedido"
+ },
+ "Pipirim, aquele passarinho de topete, vive no capim da Trilha do Ipê e dos Campos de Restinga. Traga um na equipe!\fE se tiver pressa: com a vara, aqui mesmo na beira do cais, sai Piabinha. Também é do tipo Rio.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:43 · campo semCriatura"
+ },
+ "Tudo bem. Mas lembre: sem criatura de Rio na equipe, o Remo não sai do lugar.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:44 · campo recusa"
+ },
+ "Que topete bonito! O Bigode gosta de caju e de água parada. Com ele na equipe, o Remo leva você para a Baía Azul.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:45 · campo feito"
+ },
+ "O Pipirim já avisou três fisgadas hoje. Duas eram minha bota. Ainda assim, é um bom ajudante.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:46 · campo depois"
+ },
+ "Seu Maré-Cheia": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:50 · campo morador"
+ },
+ "Marola": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:51 · campo apelido"
+ },
+ "Pescador sem caranguejo é que nem samba sem pandeiro! Me falta um Caranguejim para a rede de cerco.\fEm troca dou a Marola, uma Ariranhinha que eu achei no corixo. Topa?": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:53 · campo pedido"
+ },
+ "Caranguejim mora no mangue e na areia da Baía Azul. Volta com um, que a Marola espera.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:54 · campo semCriatura"
+ },
+ "Então a Marola fica comigo… e com os meus peixes, infelizmente.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:55 · campo recusa"
+ },
+ "Trato feito! A Marola é brincalhona: mergulha, rouba açaí e volta rindo. Boa viagem pros dois!": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:56 · campo feito"
+ },
+ "O Caranguejim já é o capitão da rede. Pesquei o dobro esta semana!": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:57 · campo depois"
+ },
+ "Mestre Zé Malho": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:61 · campo morador"
+ },
+ "Os cupins comeram a perna da minha bancada… e eu quero um Cupinzim para estudar como eles fazem isso!\fDou em troca o Trovoada, um Bugiozinho que berra mais alto que o meu martelo.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:64 · campo pedido"
+ },
+ "Cupinzim vive no capim aqui da vila, perto dos cupinzeiros. Traga um!": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:65 · campo semCriatura"
+ },
+ "Pois bem. O Trovoada continua acordando a vila às cinco da manhã.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:66 · campo recusa"
+ },
+ "Negócio fechado! O Trovoada gosta de pequi e de ventania. Se ele não ouvir você, é que ainda está se acostumando.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:67 · campo feito"
+ },
+ "O Cupinzim roeu a bancada nova também. Estou aprendendo muito. E comprando muita madeira.": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:68 · campo depois"
+ },
+ "src/data/eventos/b1.ts ('b1-trocar')": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:75 · campo roteiro"
+ },
+ "src/data/eventos/b2-sul.ts ('b2s-trocar')": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:76 · campo roteiro"
+ },
+ "src/data/eventos/b2-norte.ts ('b2n-trocar')": {
+  "en": "",
+  "ctx": "src/data/trocas.ts:77 · campo roteiro"
+ },
+ "{nome} {n} {c:amarelo}Nv {nivel}{/c}": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:43 · texto()"
+ },
+ "CUIA": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:51"
+ },
+ "ISCA": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:51"
+ },
+ "PEDRA": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:51"
+ },
+ "PERTO": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:51"
+ },
+ "Atenta": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:63"
+ },
+ "{est}   Perto {perto}/2": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:64 · escrever()"
+ },
+ "Acabaram as Cuias-Safári!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:85 · msg()"
+ },
+ "Você arremessou a Cuia-Safári!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:90 · msg()"
+ },
+ "Ah, não! Escapou da cuia!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:113 · msg()"
+ },
+ "Você se afastou devagarinho e deixou a criatura em paz.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:119 · msg()"
+ },
+ "Sem Cuias-Safári, o passeio acaba aqui.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:122 · msg()"
+ },
+ "Você jogou uma isca de capim-doce. {nome} está comendo!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:128 · msg()"
+ },
+ "Você jogou uma pedrinha. {nome} ficou brava!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:134 · msg()"
+ },
+ "Mais perto que isso, só fazendo carinho.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:136 · msg()"
+ },
+ "Você chegou bem pertinho, sem fazer barulho…": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:141 · msg()"
+ },
+ "Você deu uns passos à frente, devagar…": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:141 · msg()"
+ },
+ "{nome} terminou de comer e olha em volta.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:151 · msg()"
+ },
+ "{nome} se acalmou.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:152 · msg()"
+ },
+ "{nome} continua comendo.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:153 · msg()"
+ },
+ "{nome} está de olho em você!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:154 · msg()"
+ },
+ "{nome} espera, atenta.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:155 · msg()"
+ },
+ "O que fazer com {nome}?": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:158 · escrever()"
+ },
+ "Apareceu no capim: {nome} selvagem!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:179 · msg()"
+ },
+ "Pedra de rio, lisinha, de correnteza. Um pescador da Trilha dos Cipós vive juntando seixo na beira do rio.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:206 · campo pedra-de-rio"
+ },
+ "Muda de buriti. A viveirista de Vila Buriti tem canteiro de muda perto das hortas.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:207 · campo muda-de-buriti"
+ },
+ "Tronco oco, caído e seco. O lenhador da Estrada do Buriti só corta árvore que já caiu.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:208 · campo tronco-oco"
+ },
+ "Ora, visita! Eu sou o Jatobá. Comprei um pasto cansado e estou devolvendo ele para os bichos, setor por setor.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:213 · falar()"
+ },
+ "A Vereda dos Buritis já está pronta. Para os outros três setores, preciso de material que só se acha pela Costa do Sol.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:214 · falar()"
+ },
+ "Isso é {obj}! Me dá aqui!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:219 · falar()"
+ },
+ "Setor aberto: {nome}": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:222 · avisar()"
+ },
+ "O parque está completo: Vereda, Lagoa, Mata e Toca. Já foram {n} parcerias firmadas aqui por você. Obrigado, Campeão!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:225 · falar()"
+ },
+ "{objeto}? Guarde, que é para depois! Primeiro preciso de {proximo} para {setor}.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:227 · falar()"
+ },
+ "O próximo setor é {setor}. Para ele eu preciso de: {objeto}": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:228 · falar()"
+ },
+ "{setor}: aberto": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:231 · SETORES.map()"
+ },
+ "{setor}: falta {objeto}": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:231 · SETORES.map()"
+ },
+ "A maquete do parque, de barro e palitinho:\n{linhas}": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana-safari.ts:232 · falar()"
+ },
+ "CIMA/BAIXO ou toque na raia: trocar de raia   B: desistir": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:132 · campo dica"
+ },
+ "PERFEITO!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:200 · x.fx.txt()"
+ },
+ "Boa!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:200 · x.fx.txt()"
+ },
+ "Escorregou!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:203 · x.fx.txt()"
+ },
+ "A ou toque: empurrar na faixa verde   B: desistir": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:208 · campo dica"
+ },
+ "A ou toque: pular   B: desistir": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:250 · campo dica"
+ },
+ "Tropeçou!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:274 · x.fx.txt()"
+ },
+ "PERFEITO +{ganho}": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:280 · x.fx.txt()"
+ },
+ "Suco": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:313 · texto()"
+ },
+ "Tempo {resto}s": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:322 · escreverSe()"
+ },
+ "Pontos {pontos}": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:323 · escreverSe()"
+ },
+ "{n} fez": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:329"
+ },
+ "{c:vermelho}{pts} pontos{/c}": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:329"
+ },
+ "Recorde do dia!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:329"
+ },
+ "Recorde do dia: {rec}": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:329"
+ },
+ "A: continuar": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:331 · texto() | src/ui/telas/gincana.ts:333 · dica()"
+ },
+ "Desistir da prova? Os pontos desta rodada não contam.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:337 · perguntar()"
+ },
+ "JÁ!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:346 · mostrarAviso()"
+ },
+ "FIM!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:353 · mostrarAviso()"
+ },
+ "RANKING DO DIA": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:365 · placaTitulo()"
+ },
+ "Pontos da Gincana: {c:amarelo}{pontosGincana}{/c}": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:367 · texto()"
+ },
+ "Participante": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:370"
+ },
+ "Agilidade": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:370 | src/ui/telas/gincana.ts:407 · escolher()"
+ },
+ "Salto": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:370 | src/ui/telas/gincana.ts:407 · escolher()"
+ },
+ "Pódio de cada prova vale pontos extras uma vez por dia: 1º 30, 2º 15, 3º 5. Os rivais treinam de novo amanhã.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:383 · texto()"
+ },
+ "A ou B: fechar": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:384"
+ },
+ "Ovo não corre.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:397 · campo pode"
+ },
+ "Desmaiada não dá para correr.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:397 · campo pode"
+ },
+ "Bem-vindo à Gincana de Criaturas do Buriti-Alto! Aqui ninguém briga: as criaturas correm, empurram e pulam.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:403 · falar()"
+ },
+ "Três provas: AGILIDADE (Velocidade), FORÇA (Ataque) e SALTO (Velocidade e Defesa). O recorde do dia em cada prova rende pontos da Gincana, e o pódio do dia rende mais.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:404 · falar()"
+ },
+ "O Seu Graviola bate suco de fruto que deixa a criatura mais disposta até o fim do dia. Os pontos a Tesoureira Pataca troca por vitamina, pedra e pergaminho.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:405 · falar()"
+ },
+ "Qual prova vai ser?": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:407 · escolher()"
+ },
+ "Ver o ranking": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:407 · escolher()"
+ },
+ "Volte quando quiser. A pista não sai daqui.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:409 · falar()"
+ },
+ "{prova}: QUEM VAI?": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:412 · escolherCriatura()"
+ },
+ "{nome} tomou {suco} hoje: +{pct}% nesta prova!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:415 · falar()"
+ },
+ "{nome} tomou {suco} hoje: só vale para {alvo}.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:415 · falar()"
+ },
+ "Desistiu? Sem problema. Respira, toma uma água e volta.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:417 · falar()"
+ },
+ "{nome} fez {pontos} pontos no {prova}!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:419 · falar()"
+ },
+ "{nome} fez {pontos} pontos na {prova}!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:419 · falar()"
+ },
+ "É o seu melhor resultado de hoje.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:419 · traduz()"
+ },
+ "Posição desta rodada no ranking de hoje: {pos}º lugar.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:421"
+ },
+ "No quadro vale o seu recorde: {pos}º.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:421"
+ },
+ "Você ganhou {ganhos} pontos da Gincana (total: {pontosGincana}).": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:422"
+ },
+ "Sem pontos novos: só o recorde do dia vale pontos (total: {pontosGincana}).": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:422"
+ },
+ "Prêmio de pódio: +{premio}!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:423 · falar()"
+ },
+ "Freguês novo! Olha o liquidificador: fruto entra inteiro, sai suco que dá gás na criatura até o fim do dia.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:428 · falar()"
+ },
+ "Para começar, a casa dá três cajus. Caju é bom para correr.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:429 · falar()"
+ },
+ "Recebeu 3× Caju!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:430 · avisar()"
+ },
+ "Sem fruto não tem suco. Caju, pitanga, cupuaçu, pequi, jabuticaba, buriti, acerola ou açaí: colha nos canteiros e nas árvores e traga aqui.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:433 · falar()"
+ },
+ "Qual fruto vai no liquidificador?": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:434 · escolher()"
+ },
+ "Nenhum": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:434 · escolher()"
+ },
+ "Tá certo. O liquidificador fica ligado na tomada esperando.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:435 · falar()"
+ },
+ "QUEM BEBE O SUCO?": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:437 · escolherCriatura()"
+ },
+ "{n} já tomou {nome} hoje. O suco novo toma o lugar do outro.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:440 · falar()"
+ },
+ "Vrrrrrrum! {nome} na cuia! {n} bebeu tudinho: +{pct}% em {alvo} até o fim do dia.": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:442 · falar()"
+ },
+ "Tesouraria": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:445 · campo titulo"
+ },
+ "Hoje eu fiz… {lista}. Bate isso se for capaz!": {
+  "en": "",
+  "ctx": "src/ui/telas/gincana.ts:452 · falar()"
+ },
+ "RÁDIO CIPÓ": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:52 · placaTitulo()"
+ },
+ "Agenda do dia": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:58"
+ },
+ "Contatos": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+ },
+ "Revanches": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:58"
+ },
+ "Bicho do Dia": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+ },
+ "Hora da Música": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+ },
+ "Notícias": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+ },
+ "Recado do dia": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+ },
+ "Cantiga das Lendas": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:58"
+ },
+ "Mapa": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+ },
+ "A: escolher   B: desligar": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:69"
+ },
+ "{resumo}\n\nA: ouvir tudo": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:78"
+ },
+ "Quem aceita revanche em cada dia da semana. Hoje: {c:amarelo}{n}{/c} disponível(is).": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:79"
+ },
+ "Programa do Cartão do Rádio: as cantigas antigas sobre as criaturas lendárias de Pingorama.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:80"
+ },
+ "Ligue para treinadores que deixaram o número. Contatos: {c:amarelo}{n}{/c}": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:82"
+ },
+ "Onde andam as criaturas raras nesta {periodo}. O programa muda todo dia.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:83"
+ },
+ "Tocando agora: {c:verde}{tocando}{/c} ♪": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:84"
+ },
+ "Escolha uma faixa. Ao desligar o rádio, volta a música do lugar.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:84"
+ },
+ "O que se sabe do Cartel Ferrugem. Última: {c:amarelo}{titulo}{/c}": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:85"
+ },
+ "Hoje é {hoje}.\n\n{diaSemana}": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:86"
+ },
+ "O mapa de Pingorama: Costa do Sol e Sertão das Névoas.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:87"
+ },
+ "Desliga o rádio.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:87"
+ },
+ "Aceitar a revanche?": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:109 · simNao()"
+ },
+ "{venceu}\fO prêmio da revanche foi de {premio} patacas.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:116 · falar()"
+ },
+ "CONTATOS": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:127 · escolherEm()"
+ },
+ "{classe} {nome}\n\n{agenda}\n\nA: ligar": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:127 · campo descricao"
+ },
+ "Treina na Gruta do Eco às terças e quintas.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:133"
+ },
+ "Sua rival. Ainda anda pela estrada.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:133"
+ },
+ "Líder de ginásio. Revanche {quando}: {agenda}.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:135"
+ },
+ "Já batalhou com você hoje.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:136"
+ },
+ "Líder de ginásio.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:137 · traduz()"
+ },
+ "Revanche: {agenda}.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:137"
+ },
+ "Hoje!": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:137 · traduz()"
+ },
+ "REVANCHES": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:147 · escolherEm()"
+ },
+ "No {lugar}.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:149"
+ },
+ "Luta pelo rádio.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:149 · traduz()"
+ },
+ "Fase: {fase}": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:149"
+ },
+ "Equipe: {n} criaturas, nível até {nivel}.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:149"
+ },
+ "A: ligar": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:149 · traduz()"
+ },
+ "Dica: fácil de pegar, a Cuia comum resolve": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:157"
+ },
+ "Dica: deixe a vida no amarelo e use Cuia Trançada": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:157"
+ },
+ "Dica: arisca! Vida no vermelho, faça dormir e use Cuia de Ouro": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:157"
+ },
+ "; à noite a Cuia Noturna ajuda.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:158 · traduz()"
+ },
+ "CANTIGA DAS LENDAS": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:163 · escolherEm()"
+ },
+ "Hoje o locutor não tem nenhuma pista. Tente em outro período do dia.": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:171 · informar()"
+ },
+ "BICHO DO DIA": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:175 · escolherEm()"
+ },
+ "Ouvintes avisam: {nome} foi vista em {local} ({meio}).": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:175 · campo descricao"
+ },
+ "uma criatura que você ainda não registrou": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:175 · campo nome"
+ },
+ "A: abrir a ficha": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:175 · traduz()"
+ },
+ "HORA DA MÚSICA": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:187 · escolherEm()"
+ },
+ "Tocando agora.\n\nA: parar e voltar à música do lugar": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:187 · campo descricao"
+ },
+ "A: pedir esta música": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:187 · campo descricao"
+ },
+ "NOTÍCIAS": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:197 · escolherEm()"
+ },
+ "Agenda de {hoje}": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:206 · campo assunto"
+ },
+ "Recado de {hoje}": {
+  "en": "",
+  "ctx": "src/ui/telas/radio.ts:209 · campo assunto"
+ },
+ "Passos {c:amarelo}{passos}{/c}   Cuias {c:amarelo}{cuias}{/c}": {
+  "en": "",
+  "ctx": "src/world/mecanicas/safari.ts:28 · escrever()"
+ },
+ "PÍÍÍ! {motivo}\nA Dona Ingá chama todo mundo de volta para a porteira.": {
+  "en": "",
+  "ctx": "src/world/mecanicas/safari.ts:50 · falar()"
+ },
+ "Fim do passeio! Volte quando quiser: o parque abre todos os dias.": {
+  "en": "",
+  "ctx": "src/world/mecanicas/safari.ts:53 · falar()"
+ },
+ "A equipe está cheia. {apelido} foi para o Viveiro de Cuias.": {
+  "en": "",
+  "ctx": "src/world/mecanicas/safari.ts:67 · falar()"
+ },
+ "Acabaram as Cuias-Safári.": {
+  "en": "",
+  "ctx": "src/world/mecanicas/safari.ts:70 · fimDoPasseio()"
+ },
+ "Pííí! A Dona Ingá apita da porteira: \"Passeio sem bilhete não vale! Volte aqui.\"": {
+  "en": "",
+  "ctx": "src/world/mecanicas/safari.ts:78 · falar()"
+ },
+ "Acabaram os passos do passeio.": {
+  "en": "",
+  "ctx": "src/world/mecanicas/safari.ts:87 · fimDoPasseio()"
+ },
+ "Passeio encerrado: {nome} Cuias-Safári ficaram na porteira.": {
+  "en": "",
+  "ctx": "src/world/mecanicas/safari.ts:100 · avisar()"
+ },
+ "Passeio encerrado.": {
+  "en": "",
+  "ctx": "src/world/mecanicas/safari.ts:100 · avisar()"
+ }
+}

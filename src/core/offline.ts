@@ -11,6 +11,7 @@
 import { plataforma } from './plataforma';
 import { gravarRetomada } from './save';
 import { DEMO } from './progresso';
+import { tr } from '../i18n';
 
 type Entrada = [caminho: string, hash: string, bytes: number, grupo: 'n' | 'r' | 'd'];
 interface Lista { v: string; arquivos: Entrada[] }
@@ -88,7 +89,7 @@ async function baixarResto(lista: Lista, atualizacao = false): Promise<boolean> 
       }
       falhas++;
     }));
-    if (!atualizacao) avisar(`Guardando o jogo para jogar sem internet: ${Math.floor((offline.feitos / offline.total) * 100)}%`);
+    if (!atualizacao) avisar(tr('Guardando o jogo para jogar sem internet: {total}%', { total: Math.floor((offline.feitos / offline.total) * 100) }));
     if (falhas > 20) break; // a rede caiu: continua na próxima abertura
   }
   // a página aberta continua na versão antiga: os arquivos dela ficam no cache até o recarregamento
@@ -188,7 +189,7 @@ export async function iniciarOffline(): Promise<void> {
     // se a lista já não cita o código desta página, o Service Worker trocou de versão enquanto ela abria
     const eu = decodeURIComponent(new URL(import.meta.url).href.slice(new URL('./', location.href).href.length));
     const antiga = !lista.arquivos.some((q) => q[0] === eu);
-    offline.versao = antiga ? 'anterior a ' + lista.v : lista.v;
+    offline.versao = antiga ? tr('anterior a {v}', { v: lista.v }) : lista.v;
     if ((await baixarResto(lista)) && antiga) { offline.versaoNova = lista.v; mostrarAtualizacao(); }
     // procura versão nova nesta sessão e sempre que o jogo volta ao primeiro plano (o PWA do iPhone fica dias aberto)
     const buscar = () => {

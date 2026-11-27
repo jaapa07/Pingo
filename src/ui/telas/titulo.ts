@@ -9,6 +9,7 @@ import { camada } from '../kit';
 import { Lista } from '../componentes/lista';
 import { plataforma } from '../../core/plataforma';
 import { DEMO, TEXTOS_DEMO } from '../../core/demo';
+import { emIngles } from '../../i18n';
 
 function faixa(nome: string, y: number, pai: HTMLElement, altura?: number): HTMLElement {
   const c = camada(nome), d = div('', pai);
@@ -22,7 +23,7 @@ function solto(nome: string, x: number, y: number, pai: HTMLElement): HTMLElemen
   return d;
 }
 
-export function criarTitulo(args: { aoJogar(): void; aoOpcoes(): void }): Tela {
+export function criarTitulo(args: { aoJogar(): void; aoOpcoes(): void; aoIdioma?(): void }): Tela {
   const el = elTela('ui', 'titulo');
   // céu do amanhecer em faixas chapadas
   el.style.background = 'linear-gradient(to bottom, #2f6fb4 0 14px, #3f86c8 14px 30px, #58a2d8 30px 48px, #7fc0e4 48px 66px, #a8d8ea 66px 82px, #f6e6b8 82px 96px, #f9d28a 96px 110px, #2f86c4 110px)';
@@ -35,8 +36,11 @@ export function criarTitulo(args: { aoJogar(): void; aoOpcoes(): void }): Tela {
   const logo = div('', el); logo.style.cssText = 'position:absolute;left:0;top:0;width:320px;height:80px';
   solto('logo-sub', Math.floor((320 - lSub.w) / 2), 12, logo);
   solto('logo-pingo', Math.floor((320 - lPingo.w) / 2), 27, logo);
-  const itens = ['Jogar', 'Opções', ...(plataforma.podeSair ? ['Sair'] : [])];
-  const menu = new Lista({ itens, tamanho: 12, circular: true, aoEscolher: (i) => { if (i === 0) args.aoJogar(); else if (i === 1) args.aoOpcoes(); else plataforma.sair(); } });
+  // o idioma só se troca aqui, antes de entrar num jogo (docs/I18N.md); o rótulo aparece na língua atual
+  const acoes: [string, () => void][] = [['Jogar', args.aoJogar], ['Opções', args.aoOpcoes]];
+  if (args.aoIdioma) acoes.push([emIngles() ? 'Language: English' : 'Idioma: Português', args.aoIdioma]);
+  if (plataforma.podeSair) acoes.push(['Sair', () => plataforma.sair()]);
+  const menu = new Lista({ itens: acoes.map((a) => a[0]), tamanho: 12, circular: true, aoEscolher: (i) => acoes[i][1]() });
   em(menu.el, Math.floor((320 - menu.largura) / 2), 176 - parseInt(menu.el.style.height) - 2);
   el.append(menu.el);
   if (DEMO) { const v = texto(`${TEXTOS_DEMO.selo} · v1.0`, { cor: 'creme', sombra: true }); el.append(em(v, 316 - (parseInt(v.style.width) || 60), 170)); }

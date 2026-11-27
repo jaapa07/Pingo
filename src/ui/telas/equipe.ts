@@ -19,6 +19,7 @@ import { perguntar, informar } from '../componentes/confirmacao';
 import { abrirTela } from '../dialogo';
 import { iconeCriatura, nomeCri, sexoTxt, vidaMaxDe, esp, faixaDica, placaTitulo, usarItemEm, type Icone, estrelaRara } from './comum';
 import { T } from '../../data/textos-ui';
+import { t, tr } from '../../i18n';
 
 export interface ArgsEquipe { modo?: 'menu' | 'escolher' | 'usar'; item?: string; titulo?: string; pode?(c: CriaturaInst, i: number): boolean | string }
 interface Cartao { el: HTMLElement; ic: Icone; vida?: Barra; tag: HTMLElement; pintar(animar?: boolean): void }
@@ -27,7 +28,7 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
   const modo = args.modo === 'escolher' || args.modo === 'usar' ? args.modo : 'menu';
   const el = elTela('ui', 'tela-equipe', 'fundo-trama');
   const eq = jogo.save.equipe;
-  placaTitulo(el, args.titulo ?? (modo === 'usar' && args.item ? itemDef(args.item).nome.toUpperCase() : 'EQUIPE'), 2, 1, 150);
+  placaTitulo(el, args.titulo ?? (modo === 'usar' && args.item ? t(itemDef(args.item).nome).toUpperCase() : 'EQUIPE'), 2, 1, 150);
   const dica = faixaDica(el);
   let cartoes: Cartao[] = [], grade: Grade | null = null, movendo = -1, ocupado = false, usou = false;
   const camada = document.createElement('div'); el.append(camada);
@@ -53,13 +54,13 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
     const tag = document.createElement('div'); tag.className = 'etiqueta-troca'; cx.append(tag);
     const pintar = (animar = false) => {
       const max = vidaMaxDe(c);
-      escrever(nome, `${nomeCri(c)} ${sexoTxt(c)}`); escrever(nv, c.ovo ? '' : `Nv${c.nivel}`); nv.style.left = 150 - parseInt(nv.style.width) + 'px';
+      escrever(nome, `${nomeCri(c)} ${sexoTxt(c)}`); escrever(nv, c.ovo ? '' : tr('Nv{n}', { n: c.nivel })); nv.style.left = 150 - parseInt(nv.style.width) + 'px';
       st.replaceChildren();
       if (c.ovo) { escrever(num, c.ovo > 1200 ? 'Vai demorar…' : c.ovo > 300 ? 'Às vezes se mexe.' : 'Quase chocando!'); return; }
       vida!.definir(c.vida / max, animar);
       if (!animar) escrever(num, `${c.vida}/${max}`);
       const s = c.vida <= 0 ? 'desmaiado' : c.status; if (s) st.append(iconeStatus(s));
-      const n = nota(c); escrever(obs, n || (c.item && temItemDef(c.item) ? `{c:agua}${itemDef(c.item).nome.slice(0, 11)}{/c}` : ''));
+      const n = nota(c); escrever(obs, n || (c.item && temItemDef(c.item) ? `{c:agua}${t(itemDef(c.item).nome).slice(0, 11)}{/c}` : ''));
       obs.style.left = 142 - parseInt(obs.style.width) + 'px';
     };
     pintar();
@@ -85,7 +86,7 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
     });
     const nomeDe = (k: number) => (eq[k] ? nomeCri(eq[k]) : '');
     dica(movendo >= 0
-      ? (i === movendo ? T.equipe.dicaMover.replace('{nome}', nomeDe(movendo)) : T.equipe.dicaTrocar.replace('{a}', nomeDe(movendo)).replace('{b}', nomeDe(i)))
+      ? (i === movendo ? tr(T.equipe.dicaMover, { nome: nomeDe(movendo) }) : tr(T.equipe.dicaTrocar, { a: nomeDe(movendo), b: nomeDe(i) }))
       : modo === 'escolher' ? T.equipe.dicaEscolher : modo === 'usar' ? T.equipe.dicaUsar : T.equipe.dicaMenu);
   }
   function voltar() {
@@ -100,7 +101,7 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
     try {
       if (modo === 'escolher') {
         const r = args.pode ? args.pode(c, i) : true;
-        if (r !== true) { som('ui-erro'); await informar(typeof r === 'string' ? r : `${nomeCri(c)} não pode ser escolhida agora.`); return; }
+        if (r !== true) { som('ui-erro'); await informar(typeof r === 'string' ? r : tr('{n} não pode ser escolhida agora.', { n: nomeCri(c) })); return; }
         fechar(tela, i); return;
       }
       if (modo === 'usar' && args.item) {
@@ -119,16 +120,16 @@ export function criarEquipe(args: ArgsEquipe = {}): Tela {
       const op = ops[await perguntar(nomeCri(c), ops)];
       if (op === 'Resumo') { const r = (await abrirTela('resumo', { lista: eq, indice: i })) as number | undefined; montar(typeof r === 'number' ? r : i); }
       else if (op === 'Mover') { movendo = i; pintarFoco(); }
-      else if (op === 'Parar de seguir') { jogo.opcoes.parceiraSegue = false; gravarOpcoes(); som('ui-ok'); await informar(`${nomeCri(c)} volta para a cuia e não segue mais você no mapa.`); }
+      else if (op === 'Parar de seguir') { jogo.opcoes.parceiraSegue = false; gravarOpcoes(); som('ui-ok'); await informar(tr('{n} volta para a cuia e não segue mais você no mapa.', { n: nomeCri(c) })); }
       else if (op === 'Seguir você') {
         jogo.opcoes.parceiraSegue = true; gravarOpcoes(); som('ui-ok');
         if (i > 0) { [eq[0], eq[i]] = [eq[i], eq[0]]; montar(0); }
-        await informar(c.vida > 0 ? `${nomeCri(c)} vai na frente da equipe e anda atrás de você no mapa!` : `${nomeCri(c)} vai seguir você assim que se recuperar.`);
+        await informar(c.vida > 0 ? tr('{n} vai na frente da equipe e anda atrás de você no mapa!', { n: nomeCri(c) }) : tr('{n} vai seguir você assim que se recuperar.', { n: nomeCri(c) }));
       }
-      else if (op === 'Tirar item' && c.item) { darItem(c.item); const n = temItemDef(c.item) ? itemDef(c.item).nome : c.item; delete c.item; cartoes[i].pintar(); await informar(`${n} voltou para a mochila.`); }
+      else if (op === 'Tirar item' && c.item) { darItem(c.item); const n = temItemDef(c.item) ? itemDef(c.item).nome : c.item; delete c.item; cartoes[i].pintar(); await informar(tr('{nome} voltou para a mochila.', { nome: n })); }
       else if (op === 'Dar item') {
         const id = (await abrirTela('mochila', { modo: 'escolher', filtro: 'dar', titulo: 'DAR QUAL ITEM?' })) as string | null;
-        if (id && tirarItem(id)) { c.item = id; cartoes[i].pintar(); await informar(`${nomeCri(c)} agora segura ${itemDef(id).nome}.`); }
+        if (id && tirarItem(id)) { c.item = id; cartoes[i].pintar(); await informar(tr('{n} agora segura {item}.', { n: nomeCri(c), item: itemDef(id).nome })); }
       }
     } finally { ocupado = false; if (telaViva) pintarFoco(); }
   }

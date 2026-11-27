@@ -17,6 +17,7 @@ import { jogo, setFlag } from '../../core/estado';
 import { registrarComando } from '../../world/registro';
 import { ESPECIES } from '../criaturas';
 import './comuns';
+import { tr } from '../../i18n';
 
 /* ------------------------------ comandos do time ------------------------------ */
 /** número do dia no relógio do jogo (o deslocamento do relógio conta) */
@@ -39,10 +40,10 @@ registrarComando('b2n-registro', async () => {
   const nome = (c: CriaturaInst) => c.apelido ?? ESPECIES.find((e) => e.num === c.especie)?.nome ?? `nº ${c.especie}`;
   for (const c of jogo.save.equipe.filter((x) => !x.ovo)) {
     // "registro" em vez de "encontrada": a frase vale para criatura de qualquer gênero (Bandeirão, Ema-Mirim…)
-    const onde = c.localCaptura ? `em ${c.localCaptura}` : 'num lugar que o livro não guardou';
-    const nv = c.nivelCaptura ? `no nível ${c.nivelCaptura}` : 'num nível que ninguém anotou';
-    const dono = c.treinadorOriginal && c.treinadorOriginal !== jogo.save.jogador.nome ? ` Veio das mãos de ${c.treinadorOriginal}.` : '';
-    await falar(`${nome(c)}: registro ${onde}, ${nv}. Hoje está no nível ${c.nivel}.${dono}`, { nome: 'Dona Lembrança' });
+    const onde = c.localCaptura ? tr('em {localCaptura}', { localCaptura: c.localCaptura }) : 'num lugar que o livro não guardou';
+    const nv = c.nivelCaptura ? tr('no nível {nivelCaptura}', { nivelCaptura: c.nivelCaptura }) : 'num nível que ninguém anotou';
+    const dono = c.treinadorOriginal && c.treinadorOriginal !== jogo.save.jogador.nome ? tr(' Veio das mãos de {treinadorOriginal}.', { treinadorOriginal: c.treinadorOriginal }) : '';
+    await falar(tr('{n}: registro {onde}, {nv}. Hoje está no nível {nivel}.{dono}', { n: nome(c), onde, nv, nivel: c.nivel, dono }), { nome: 'Dona Lembrança' });
   }
 });
 /** ['b2n-trocar', dada, recebida, nivel, apelido, item, flagOk]: troca a primeira criatura da espécie dada pela recebida */
@@ -76,16 +77,16 @@ const ninho = (linha: string, meio: number, final: number, onde: string): Evento
     se('flag:b2n-ninho-livre', [
       ['b2n-marcar', `b2n-ninho-${linha}-dia`],
       se('periodo:manha', [
-        f(null, `No ${onde}, o capim se abre. Uma criatura enorme se ergue sobre os ovos e encara você, protegendo o ninho.`),
+        f(null, tr('No {onde}, o capim se abre. Uma criatura enorme se ergue sobre os ovos e encara você, protegendo o ninho.', { onde })),
         ['grito', final], ['selvagem', final, 66],
       ], [
-        f(null, `No ${onde}, um filhote crescido pula para fora do ninho, eriçado, pronto para defender os ovos.`),
+        f(null, tr('No {onde}, um filhote crescido pula para fora do ninho, eriçado, pronto para defender os ovos.', { onde })),
         ['grito', meio], ['selvagem', meio, 52],
       ]),
       ['b2n-resultado'],
       se('flag:b2n-capturou', [f(null, 'A parceria foi firmada. O ninho fica quieto, e os ovos continuam quentinhos.')]),
     ], [
-      f(null, `O ${onde} está quieto. Só os ovos, quentes e pintados. A mãe não volta enquanto houver gente por perto hoje.\fVolte amanhã — e, se quiser ver o bicho crescido, venha de manhãzinha.`),
+      f(null, tr('O {onde} está quieto. Só os ovos, quentes e pintados. A mãe não volta enquanto houver gente por perto hoje.\fVolte amanhã — e, se quiser ver o bicho crescido, venha de manhãzinha.', { onde })),
     ]),
   ],
 });

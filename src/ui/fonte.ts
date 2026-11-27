@@ -4,9 +4,12 @@
  *
  *   texto('Olá, {c:vermelho}Pingo{/c}!', { tamanho: 12, cor: 'tinta', sombra: false, largura: 200 })
  *
+ * Em inglês, o texto passa antes pelo catálogo (`tela` de src/i18n): frase conhecida vira a tradução.
+ *
  * A origem do elemento é o topo da célula da letra; acentos de maiúsculas sobem até 3 px acima.
  */
 import kit from './gerado/kit.json';
+import { tela } from '../i18n';
 
 export type Tamanho = 8 | 12;
 export type CorTexto = 'branco' | 'creme' | 'tinta' | 'cinza' | 'chumbo' | 'vermelho' | 'verde' | 'azul' | 'amarelo' | 'laranja' | 'roxo' | 'rosa' | 'marrom' | 'ouro' | 'agua';
@@ -57,9 +60,9 @@ function linhasDe(ls: Letra[], f: MetaFonte, largura: number): Letra[][] {
 const larguraLinha = (l: Letra[], f: MetaFonte) => { let n = l.length; while (n && l[n - 1].ch === ' ') n--; let w = 0; for (let i = 0; i < n; i++) w += larguraDe(f, l[i].ch) + 1; return Math.max(0, w - 1); };
 
 /** largura em px de uma linha de texto (sem quebra) */
-export function medir(str: string, tamanho: Tamanho = 8): number { const f = meta(tamanho); return larguraLinha(letras(str.replace(/\n/g, ' '), f), f); }
+export function medir(str: string, tamanho: Tamanho = 8): number { const f = meta(tamanho); return larguraLinha(letras(tela(str).replace(/\n/g, ' '), f), f); }
 /** quebra o texto em linhas (sem marcação de cor) que cabem em `largura` */
-export function quebrar(str: string, largura: number, tamanho: Tamanho = 8): string[] { const f = meta(tamanho); return linhasDe(letras(str, f), f, largura).map((l) => l.map((x) => x.ch).join('').trimEnd()); }
+export function quebrar(str: string, largura: number, tamanho: Tamanho = 8): string[] { const f = meta(tamanho); return linhasDe(letras(tela(str), f), f, largura).map((l) => l.map((x) => x.ch).join('').trimEnd()); }
 
 const guardado = new WeakMap<HTMLElement, OpTexto>();
 /** (re)escreve o conteúdo de um elemento criado por `texto` */
@@ -67,7 +70,7 @@ export function escrever(el: HTMLElement, str: string, o?: OpTexto): HTMLElement
   const op = { ...(guardado.get(el) ?? {}), ...(o ?? {}) }; guardado.set(el, op);
   const tam = op.tamanho ?? 8, f = meta(tam), sombra = op.sombra ?? false;
   const corBase = Math.max(0, f.cores.indexOf(op.cor ?? 'branco'));
-  const linhas = linhasDe(letras(String(str), f), f, op.largura ?? 1e9);
+  const linhas = linhasDe(letras(tela(String(str)), f), f, op.largura ?? 1e9);
   const entre = op.entrelinha ?? f.entrelinha;
   const largs = linhas.map((l) => larguraLinha(l, f));
   const W = op.largura ?? Math.max(0, ...largs);
