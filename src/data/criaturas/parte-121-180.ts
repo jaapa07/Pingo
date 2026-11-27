@@ -159,7 +159,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'lufada'], [9, 'jogar-areia'], [13, 'sopro-frio'], [17, 'golpe-de-asa'], [21, 'assobio-agudo'], [25, 'granizo-miudo'], [30, 'geada-serrana'], [34, 'pouso-no-galho'], [38, 'pe-de-vento'], [43, 'erva-de-passarinho'], [48, 'vento-minuano'], [54, 'bico-furador'], [60, 'ventania']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-06', 'pt-07', 'pt-09', 'pt-20', 'pt-21', 'pt-22', 'pt-31', 'pt-32', 'pt-33'],
     taxaCaptura: 45, expBase: 190, esforco: { atqEsp: 1, vel: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'A gralha-azul enterra pinhões para comer depois e esquece boa parte deles, que brotam: foi assim que ela ganhou fama de plantadora das araucárias e virou ave-símbolo do Paraná. Onde a Gralha-Azul pousa, a geada da manhã seguinte desenha um pinheirinho no chão.',
+    diario: 'A gralha-azul enterra pinhões e esquece boa parte, que brota: por isso é tida como plantadora das araucárias e é a ave-símbolo do Paraná. Onde a Gralha-Azul pousa, a geada da manhã seguinte desenha um pinheirinho no chão.',
     altura: 0.9, peso: 6, habitat: 'Copas de araucária na Serra Gelada e no Pico Pingorama', porte: 'M',
   },
   {
@@ -197,7 +197,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'escorregao'], [10, 'chapa-de-costas'], [14, 'faro-fino'], [18, 'rasteira'], [22, 'granizo-miudo'], [26, 'au-giratorio'], [30, 'mordida-gelada'], [34, 'meia-lua'], [39, 'ginga'], [44, 'estaca-de-gelo'], [49, 'armada'], [55, 'rabo-de-arraia'], [61, 'voo-do-morcego']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-20', 'pt-21', 'pt-22', 'pt-23', 'pt-24', 'pt-25', 'pt-31', 'pt-41', 'pt-44'],
     taxaCaptura: 35, expBase: 215, esforco: { atq: 1, vel: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'O maracajá passa quase a vida toda nas árvores, e há registro na Amazônia de um deles imitando o chamado de filhotes de sauim para atrair os adultos. O Maracajá-Nevado caça em silêncio sobre a geada, e o único rastro que deixa é um floco no formato de pata.',
+    diario: 'O maracajá vive quase só nas árvores, e na Amazônia já foi visto imitando filhotes de sauim para atrair os adultos. O Maracajá-Nevado caça em silêncio sobre a geada, e o único rastro que deixa é um floco em forma de pata.',
     altura: 1.0, peso: 19, habitat: 'Cristas nevadas da Serra Gelada e do Pico Pingorama, à noite', porte: 'M',
   },
 
@@ -218,7 +218,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'choquinho'], [9, 'jogar-areia'], [13, 'corisco'], [17, 'nuvem-de-mosquitos'], [21, 'faisca-dupla'], [26, 'zunido-de-alta-tensao'], [31, 'toca-de-tatu'], [36, 'zumbido'], [41, 'dinamo'], [46, 'tempestade-de-raios'], [51, 'enxame'], [57, 'relampago'], [63, 'curto-circuito']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-06', 'pt-16', 'pt-17', 'pt-18', 'pt-19', 'pt-29', 'pt-38', 'pt-39', 'pt-48'],
     taxaCaptura: 45, expBase: 185, esforco: { atqEsp: 1, vel: 1 }, crescimento: 'rapido', femeas: 0.5,
-    diario: 'Só o grilo macho canta, raspando uma asa na outra, e o ritmo acelera com o calor: dá para estimar a temperatura contando os cricris. As asas do Grilão-Elétrico guardam carga como capacitores, e nas noites abafadas ele acende sozinho os postes da Usina.',
+    diario: 'Só o grilo macho canta, raspando uma asa na outra, e o ritmo acelera com o calor: dá para estimar a temperatura pelos cricris. As asas do Grilão-Elétrico guardam carga, e nas noites abafadas ele acende sozinho os postes da Usina.',
     altura: 0.9, peso: 14, habitat: 'Pátios da Usina e cerrado à noite', porte: 'M',
   },
   {
@@ -275,7 +275,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'teia-pegajosa'], [6, 'espinho-peconhento'], [14, 'formigueiro'], [18, 'presa-dupla'], [22, 'susto'], [26, 'mordida-de-sauva'], [30, 'curare'], [35, 'fumaca-fedida'], [40, 'sanguessuga'], [45, 'pele-amarga'], [50, 'bote-de-jararaca'], [56, 'sombra-rasteira'], [62, 'chorume']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-26', 'pt-27', 'pt-28', 'pt-29', 'pt-38', 'pt-39', 'pt-42', 'pt-43', 'pt-44'],
     taxaCaptura: 45, expBase: 190, esforco: { atq: 2 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'A caranguejeira-golias da Amazônia é a maior aranha do mundo em peso: as pernas abertas passam de um palmo e meio, e as fêmeas vivem mais de vinte anos. O Caranguejeirão anda tão macio sobre as folhas que só o pelo arrepiado do treinador avisa que ele chegou.',
+    diario: 'A caranguejeira-golias da Amazônia é a maior aranha do mundo em peso: as pernas passam de um palmo e meio, e as fêmeas vivem vinte anos. O Caranguejeirão anda tão macio nas folhas que só o arrepio do treinador avisa que ele chegou.',
     altura: 1.2, peso: 36, habitat: 'Chão sombreado do Vale Verde', porte: 'G',
   },
   {
@@ -294,7 +294,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'piscadela'], [1, 'nuvem-de-mosquitos'], [9, 'cafune'], [13, 'estrela-guia'], [17, 'beijo-de-beija-flor'], [21, 'polen-dorminhoco'], [26, 'zumbido'], [31, 'mel-de-jatai'], [36, 'poeira-de-estrela'], [41, 'simpatia'], [46, 'enxame'], [51, 'serenata'], [57, 'ciranda'], [63, 'arraial-encantado']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-06', 'pt-07', 'pt-12', 'pt-33', 'pt-35', 'pt-36', 'pt-37', 'pt-38', 'pt-39', 'pt-49', 'pt-50'],
     taxaCaptura: 40, expBase: 195, esforco: { defEsp: 2 }, crescimento: 'rapido', femeas: 1,
-    diario: 'Nas colmeias de jataí, soldados maiores que as operárias ficam pairando dia e noite diante da entrada, coisa rara entre as abelhas. A coroa de cera da Jataí-Rainha nunca derrete, e dizem que uma gota do seu mel adoça um rio inteiro.',
+    diario: 'Nas colmeias de jataí, soldados maiores que as operárias pairam dia e noite diante da entrada, coisa rara entre abelhas. A coroa de cera da Jataí-Rainha nunca derrete, e dizem que uma gota do seu mel adoça um rio inteiro.',
     altura: 0.8, peso: 9, habitat: 'Colmeias antigas no Planalto, de dia', porte: 'M',
   },
   {
@@ -332,7 +332,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'berro'], [5, 'casulo'], [9, 'nuvem-de-mosquitos'], [13, 'assobio-agudo'], [17, 'sorver-seiva'], [21, 'eco-da-serra'], [24, 'lufada'], [29, 'zumbido'], [34, 'brisa-da-serra'], [39, 'cantiga-de-ninar'], [44, 'pe-de-vento'], [50, 'estrondo'], [57, 'ventania']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-06', 'pt-07', 'pt-12', 'pt-29', 'pt-31', 'pt-32', 'pt-33', 'pt-38', 'pt-39'],
     taxaCaptura: 45, expBase: 180, esforco: { atqEsp: 2 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'O canto da cigarra sai de duas membranas no abdômen, os tímbalos, e em algumas espécies passa de 100 decibéis, tão alto quanto uma motosserra. Quando o Cigarrão abre as asas e canta, as folhas caem em roda e o chapéu do treinador vai junto.',
+    diario: 'A cigarra canta com duas membranas no abdômen, os tímbalos, e algumas passam de 100 decibéis, alto como uma motosserra. Quando o Cigarrão abre as asas e canta, as folhas caem em roda e o chapéu do treinador vai junto.',
     altura: 0.9, peso: 8, habitat: 'Copas das árvores nas rotas do sertão', porte: 'M',
   },
   {
@@ -351,7 +351,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'lufada'], [1, 'bote-ligeiro'], [9, 'faro-fino'], [13, 'nuvem-de-mosquitos'], [18, 'golpe-de-asa'], [23, 'mordida-de-sauva'], [28, 'brisa-da-serra'], [33, 'vento-a-favor'], [38, 'sopro-ancestral'], [43, 'voo-de-mamangava'], [48, 'garra-ancestral'], [54, 'enxame'], [60, 'pulso-das-eras'], [67, 'voo-do-guardiao']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-10', 'pt-14', 'pt-31', 'pt-32', 'pt-33', 'pt-37', 'pt-38', 'pt-39', 'pt-45', 'pt-46'],
     taxaCaptura: 25, expBase: 225, esforco: { atq: 1, atqEsp: 1 }, crescimento: 'lento', femeas: 0.5,
-    diario: 'Há 300 milhões de anos voavam parentes das libélulas com setenta centímetros de uma ponta da asa à outra, os maiores insetos que já existiram. A Lavadeira-Dragão herdou esse tamanho, e a luz que atravessa suas asas de vitral pinta o chão como dentro de uma igreja.',
+    diario: 'Há 300 milhões de anos voavam parentes das libélulas com setenta centímetros de asa a asa, os maiores insetos que já existiram. A Lavadeira-Dragão herdou o tamanho, e a luz que passa por suas asas pinta o chão como vitral.',
     altura: 1.6, peso: 26, habitat: 'Margens da Lagoa Gelada e encostas do Monte Tupã', porte: 'G',
   },
   {
@@ -370,7 +370,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'faro-fino'], [6, 'chapa-de-costas'], [14, 'mordida-de-sauva'], [18, 'rasteira'], [22, 'au-giratorio'], [26, 'esquiva'], [30, 'meia-lua'], [35, 'ginga'], [40, 'sanguessuga'], [45, 'armada'], [50, 'amolar-garras'], [56, 'martelo'], [63, 'chifrada-de-besouro']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-23', 'pt-24', 'pt-25', 'pt-31', 'pt-35', 'pt-38', 'pt-39', 'pt-41', 'pt-44'],
     taxaCaptura: 35, expBase: 210, esforco: { atq: 2 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'O bote do louva-a-deus dura poucos centésimos de segundo, rápido demais para o olho humano acompanhar. O Louva-Mestre repete a mesma sequência de golpes a cada amanhecer no Planalto, e os capoeiristas sobem a serra só para assistir.',
+    diario: 'O bote do louva-a-deus dura poucos centésimos de segundo, rápido demais para o olho humano. O Louva-Mestre repete a mesma sequência de golpes a cada amanhecer no Planalto, e os capoeiristas sobem a serra só para assistir.',
     altura: 1.3, peso: 21, habitat: 'Campos altos do Planalto', porte: 'M',
   },
 
@@ -391,7 +391,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'jogar-areia'], [11, 'laco-de-cipo'], [16, 'areia-movedica'], [21, 'rabada'], [26, 'barro-curativo'], [31, 'pisao-de-anta'], [36, 'atoleiro'], [40, 'sopro-ancestral'], [45, 'toca-de-tatu'], [50, 'vocoroca'], [56, 'garra-ancestral'], [62, 'tremor-de-terra'], [70, 'desbarrancar']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-14', 'pt-16', 'pt-26', 'pt-28', 'pt-29', 'pt-30', 'pt-40', 'pt-41', 'pt-45', 'pt-46'],
     taxaCaptura: 25, expBase: 230, esforco: { vida: 1, atq: 1 }, crescimento: 'lento', femeas: 0.5,
-    diario: 'No século XIX, naturalistas registraram relatos sertanejos de um verme colossal, o Minhocão, que abriria valas, desviaria rios e derrubaria barrancos. Quando a terra treme sem motivo na Floresta Ancestral, os mais velhos dizem apenas que ele mudou de lado para dormir.',
+    diario: 'No século XIX, naturalistas registraram relatos sertanejos do Minhocão, um verme colossal que abriria valas e desviaria rios. Quando a terra treme sem motivo na Floresta Ancestral, os mais velhos dizem que ele virou de lado para dormir.',
     altura: 9.0, peso: 1500, habitat: 'Túneis sob a Floresta Ancestral e fundo dos rios turvos', porte: 'G',
   },
   {
@@ -410,7 +410,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'jogar-areia'], [9, 'dentada'], [13, 'bola-de-barro'], [17, 'tatu-bola'], [21, 'bote-ligeiro'], [25, 'terra-batida'], [29, 'toca-de-tatu'], [32, 'unha-de-aco'], [37, 'casco-pesado'], [42, 'amolar-garras'], [47, 'vocoroca'], [53, 'bigornada'], [60, 'tremor-de-terra']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-28', 'pt-29', 'pt-30', 'pt-40', 'pt-41', 'pt-46', 'pt-47', 'pt-48'],
     taxaCaptura: 45, expBase: 190, esforco: { atq: 2 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Os dentes do tuco-tuco são alaranjados porque o esmalte tem ferro, e ele os usa junto com as unhas para escavar; os lábios se fecham atrás dos dentes para não engolir terra. As garras-pá do Tuco-Escavador abrem um túnel mais depressa do que o treinador consegue segui-lo.',
+    diario: 'Os dentes do tuco-tuco são alaranjados porque o esmalte tem ferro, e os lábios fecham atrás deles para não engolir terra ao cavar. As garras-pá do Tuco-Escavador abrem túnel mais depressa do que o treinador consegue segui-lo.',
     altura: 0.9, peso: 32, habitat: 'Barrancos e rochas rachadas das rotas frias', porte: 'M',
   },
   {
@@ -429,7 +429,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'pedrada'], [9, 'mordida-de-sauva'], [13, 'casulo'], [17, 'formigueiro'], [21, 'chuva-de-cascalho'], [25, 'cuspe-acido'], [30, 'soterrar'], [34, 'danca-do-vaga-lume'], [39, 'couraca-de-pedra'], [44, 'deslizamento'], [50, 'enxame'], [56, 'pedregulho-rolante'], [63, 'peso-da-serra']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-09', 'pt-13', 'pt-28', 'pt-29', 'pt-30', 'pt-36', 'pt-38', 'pt-40', 'pt-41', 'pt-47'],
     taxaCaptura: 30, expBase: 210, esforco: { def: 2 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'No Cerrado, larvas de vaga-lume moram nos cupinzeiros e acendem luzes verdes nas noites quentes e úmidas para atrair presas, e há murundus de cupim com milhares de anos de idade. O Cupinzeiro-Vivo cansou de esperar no mesmo lugar e saiu andando, com a colônia inteira e as luzinhas dentro.',
+    diario: 'Há murundus de cupim no Cerrado com milhares de anos, e larvas de vaga-lume moram neles, acendendo luzes verdes para atrair presas. O Cupinzeiro-Vivo cansou de esperar e saiu andando, com a colônia e as luzinhas dentro.',
     altura: 2.4, peso: 420, habitat: 'Campos de murundus do cerrado', porte: 'G',
   },
   {
@@ -448,7 +448,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'faro-fino'], [5, 'estilingue'], [13, 'pedrada'], [17, 'dentada'], [21, 'bote-ligeiro'], [25, 'chuva-de-cascalho'], [30, 'brilho-de-cristal'], [35, 'couraca-de-pedra'], [40, 'lasca-afiada'], [45, 'polir-casco'], [50, 'pedra-preciosa'], [56, 'pedregulho-rolante'], [63, 'cabeca-dura']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-28', 'pt-29', 'pt-30', 'pt-37', 'pt-40', 'pt-41', 'pt-47', 'pt-48'],
     taxaCaptura: 45, expBase: 185, esforco: { def: 2 }, crescimento: 'rapido', femeas: 0.5,
-    diario: 'O mocó tem almofadas nas patas que grudam na rocha lisa, e os grupos usam os mesmos esconderijos de pedra por muitas gerações. O pelo do Mocó-da-Rocha cristalizou com o tempo, e ao sol do meio-dia ele parece um veio de quartzo que respira.',
+    diario: 'O mocó tem almofadas nas patas que grudam na rocha lisa, e os grupos usam os mesmos esconderijos por gerações. O pelo do Mocó-da-Rocha cristalizou com o tempo, e ao sol do meio-dia ele parece um veio de quartzo que respira.',
     altura: 0.8, peso: 45, habitat: 'Paredões da Chapada e rochas das rotas altas', porte: 'M',
   },
 
@@ -460,7 +460,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-03', 'pt-04', 'pt-06', 'pt-14', 'pt-31', 'pt-32', 'pt-33', 'pt-40', 'pt-41'],
     evolui: [{ para: 168, nivel: 32 }],
     taxaCaptura: 200, expBase: 60, esforco: { vel: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Os andorinhões têm pernas tão curtas que não pousam em galhos: agarram-se de pé às paredes de pedra e fazem quase tudo voando, inclusive beber água. O Andorim dorme pendurado no teto da gruta e acorda de mau humor se alguém acende o lampião.',
+    diario: 'Os andorinhões têm pernas tão curtas que não pousam em galhos: agarram-se às paredes de pedra e fazem quase tudo voando, até beber. O Andorim dorme pendurado no teto da gruta e acorda de mau humor se alguém acende o lampião.',
     altura: 0.2, peso: 0.1, habitat: 'Paredes da Gruta do Eco e penhascos', porte: 'P',
   },
   {
@@ -469,7 +469,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'lufada'], [9, 'estilingue'], [13, 'bote-ligeiro'], [17, 'golpe-de-asa'], [21, 'esguicho'], [25, 'rasante'], [29, 'vento-a-favor'], [32, 'jato-de-igarape'], [37, 'bico-furador'], [42, 'cachoeirada'], [48, 'pe-de-vento'], [54, 'revoada'], [61, 'mergulho-de-gaviao']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-06', 'pt-14', 'pt-15', 'pt-16', 'pt-20', 'pt-31', 'pt-32', 'pt-33', 'pt-40', 'pt-41'],
     taxaCaptura: 40, expBase: 195, esforco: { vel: 2 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Nas Cataratas do Iguaçu, os andorinhões atravessam a cortina de água para dormir e fazer ninho na rocha molhada atrás das quedas, onde nenhum predador chega. O Andorinhão-da-Cachoeira fura a cascata sem molhar as penas, e quem o segue encontra sempre uma gruta escondida.',
+    diario: 'Nas Cataratas do Iguaçu, os andorinhões atravessam a cortina de água para dormir na rocha atrás das quedas, longe dos predadores. O Andorinhão-da-Cachoeira fura a cascata sem se molhar, e quem o segue acha uma gruta escondida.',
     altura: 0.9, peso: 5, habitat: 'Atrás das cascatas e nas encostas do Monte Tupã', porte: 'M',
   },
   {
@@ -479,7 +479,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-02', 'pt-03', 'pt-04', 'pt-31', 'pt-32', 'pt-33', 'pt-42', 'pt-43', 'pt-44', 'pt-49'],
     evolui: [{ para: 170, nivel: 36 }],
     taxaCaptura: 100, expBase: 66, esforco: { atqEsp: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'O urutau passa o dia imóvel na ponta de um tronco quebrado, de bico para cima, e fica idêntico a um pedaço de galho; põe um único ovo, equilibrado ali mesmo, sem ninho. O Urutauzim já nasce sabendo ficar parado, e é o filhote mais difícil de achar de Pingorama.',
+    diario: 'O urutau passa o dia imóvel na ponta de um tronco quebrado, idêntico a um galho, e põe um único ovo ali mesmo, sem ninho. O Urutauzim já nasce sabendo ficar parado, e é o filhote mais difícil de achar de Pingorama.',
     altura: 0.3, peso: 0.2, habitat: 'Tocos secos à beira da mata, à noite', porte: 'P',
   },
   {
@@ -488,7 +488,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'susto'], [11, 'lufada'], [16, 'luz-de-lamparina'], [21, 'eco-da-serra'], [26, 'assombracao'], [31, 'pouso-no-galho'], [36, 'olho-de-coruja'], [41, 'pressentimento'], [46, 'bola-de-breu'], [51, 'mau-agouro'], [56, 'sonho-ruim'], [62, 'forca-do-pensamento'], [69, 'rasga-mortalha']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-31', 'pt-32', 'pt-33', 'pt-34', 'pt-35', 'pt-36', 'pt-37', 'pt-42', 'pt-43', 'pt-44', 'pt-49'],
     taxaCaptura: 30, expBase: 215, esforco: { atqEsp: 2 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'As pálpebras do urutau têm duas fendas pelas quais ele enxerga de olhos fechados, e seu canto triste, descendo de tom, deu origem à lenda da mãe-da-lua que chora um amor perdido. Quem escuta o Urutau-Fantasma na estrada sente saudade de alguém que nem chegou a conhecer.',
+    diario: 'O urutau enxerga de olhos fechados por fendas nas pálpebras, e seu canto triste deu origem à lenda da mãe-da-lua que chora um amor perdido. Quem ouve o Urutau-Fantasma na estrada sente saudade de quem nem conheceu.',
     altura: 1.2, peso: 7, habitat: 'Árvores mortas da rota enevoada, à noite', porte: 'M',
   },
   {
@@ -518,7 +518,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'fagulha'], [1, 'ira-antiga'], [10, 'bote-duplo'], [20, 'lume-errante'], [30, 'brasa-viva'], [40, 'sopro-ancestral'], [50, 'queimada'], [55, 'escama-sagrada'], [60, 'pulso-das-eras'], [66, 'labareda'], [72, 'chamado-antigo'], [78, 'fogo-de-coivara'], [85, 'estrela-cadente'], [92, 'fornalha']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-10', 'pt-11', 'pt-12', 'pt-13', 'pt-28', 'pt-30', 'pt-37', 'pt-42', 'pt-43', 'pt-45', 'pt-46'],
     taxaCaptura: 3, expBase: 270, esforco: { atqEsp: 3 }, crescimento: 'lento', femeas: null,
-    diario: 'Boitatá vem do tupi mboi tatá, cobra de fogo: a serpente que sobreviveu a uma grande noite sem fim comendo os olhos dos bichos e ficou cheia de luz. Em 1560 o padre Anchieta já escrevia sobre esse facho que corre pelos campos; em Pingorama, ele ainda queima quem põe fogo na mata e poupa quem a protege.',
+    diario: 'Boitatá vem do tupi mboi tatá, cobra de fogo, e em 1560 o padre Anchieta já escrevia sobre esse facho que corre pelos campos. Em Pingorama ele ainda queima quem põe fogo na mata e poupa quem a protege.',
     altura: 7.5, peso: 210, habitat: 'Câmara mais funda da Caverna do Vulcão', porte: 'L', lendario: true,
   },
   {
@@ -527,7 +527,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'esguicho'], [1, 'ira-antiga'], [10, 'bote-duplo'], [20, 'redemoinho'], [30, 'rabanada'], [40, 'sopro-ancestral'], [48, 'chuva-de-verao'], [52, 'cauda-de-boiuna'], [58, 'mergulho-fundo'], [64, 'garra-ancestral'], [70, 'escama-sagrada'], [76, 'pororoca'], [84, 'furia-lendaria'], [92, 'tromba-dagua']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-14', 'pt-15', 'pt-16', 'pt-20', 'pt-22', 'pt-28', 'pt-40', 'pt-42', 'pt-43', 'pt-45', 'pt-46'],
     taxaCaptura: 3, expBase: 270, esforco: { vida: 2, def: 1 }, crescimento: 'lento', femeas: null,
-    diario: 'Boiúna quer dizer cobra preta em tupi: é a Cobra-Grande dos ribeirinhos da Amazônia, cujos olhos brilham como tochas e cujo rastro teria cavado os igarapés. Dizem que ela se disfarça de navio iluminado nas noites sem lua; no fundo do recife, as luzes que os mergulhadores veem são só ela piscando devagar.',
+    diario: 'Boiúna quer dizer cobra preta em tupi: é a Cobra-Grande da Amazônia, de olhos como tochas, que se disfarça de navio iluminado nas noites sem lua. No fundo do recife, as luzes que os mergulhadores veem são ela piscando devagar.',
     altura: 14.0, peso: 980, habitat: 'Fossa escura no fundo do Recife Submerso', porte: 'L', lendario: true,
   },
   {
@@ -536,7 +536,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'ira-antiga'], [10, 'fumaca-fedida'], [20, 'pisao-de-anta'], [30, 'esturro'], [40, 'terra-batida'], [50, 'garra-ancestral'], [58, 'vocoroca'], [65, 'espreguicar'], [70, 'tremor-de-terra'], [76, 'danca-ancestral'], [82, 'desbarrancar'], [88, 'furia-lendaria'], [95, 'mutirao']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-07', 'pt-09', 'pt-24', 'pt-26', 'pt-28', 'pt-29', 'pt-30', 'pt-40', 'pt-41', 'pt-45', 'pt-46', 'pt-47'],
     taxaCaptura: 3, expBase: 290, esforco: { atq: 3 }, crescimento: 'lento', femeas: null,
-    diario: 'O Mapinguari das histórias amazônicas é um gigante peludo, de fedor insuportável e pele que flecha não fura; alguns pesquisadores acham que a lenda guarda a memória das preguiças-gigantes, extintas há cerca de dez mil anos. O de Pingorama dorme de pé entre as sumaúmas, e a floresta inteira prende a respiração quando ele boceja.',
+    diario: 'O Mapinguari das lendas amazônicas é um gigante peludo e fedido de couro que flecha não fura; talvez lembre as preguiças-gigantes extintas. O de Pingorama dorme de pé entre as sumaúmas, e a mata prende o fôlego quando ele boceja.',
     altura: 4.2, peso: 1900, habitat: 'Coração da Floresta Ancestral', porte: 'L', lendario: true,
   },
   {
@@ -545,7 +545,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'ira-antiga'], [10, 'chicote-de-cipo'], [20, 'assobio-agudo'], [30, 'pisoteio'], [40, 'erva-de-passarinho'], [50, 'espinho-de-mandacaru'], [55, 'garra-ancestral'], [60, 'danca-ancestral'], [66, 'vendaval-de-folhas'], [72, 'floresta-em-flor'], [78, 'queda-de-jequitiba'], [85, 'furia-lendaria'], [93, 'juizo-da-floresta']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-07', 'pt-08', 'pt-09', 'pt-12', 'pt-28', 'pt-29', 'pt-43', 'pt-44', 'pt-45', 'pt-46'],
     taxaCaptura: 3, expBase: 275, esforco: { atq: 2, vel: 1 }, crescimento: 'lento', femeas: null,
-    diario: 'Caipora vem do tupi caá-póra, morador do mato: o protetor da caça que anda montado num queixada, confunde os rastros e castiga quem mata além da conta, mas aceita fumo deixado num toco como agrado. Os queixadas de verdade andam em varas de centenas e batem os dentes como castanholas; este corre sozinho, e a mata fecha a trilha atrás dele.',
+    diario: 'Caipora vem do tupi caá-póra, morador do mato: protetor da caça montado num queixada, que confunde rastros, castiga quem caça demais e aceita agrado de fumo. Queixadas andam em bando; este corre só, e a mata se fecha atrás dele.',
     altura: 1.8, peso: 240, habitat: 'Errante pelas matas do Sertão das Névoas', porte: 'L', lendario: true,
   },
   {
@@ -554,7 +554,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'piscadela'], [10, 'lufada'], [20, 'cantiga-de-ninar'], [30, 'estrela-guia'], [40, 'brisa-da-serra'], [50, 'canto-da-iara'], [56, 'pouso-no-galho'], [62, 'canto-do-uirapuru'], [68, 'pe-de-vento'], [74, 'serenata'], [80, 'clarao-da-lua'], [87, 'ventania'], [95, 'arraial-encantado']],
     pergaminhos: ['pt-02', 'pt-03', 'pt-04', 'pt-06', 'pt-08', 'pt-12', 'pt-20', 'pt-31', 'pt-32', 'pt-33', 'pt-34', 'pt-35', 'pt-36', 'pt-37', 'pt-49', 'pt-50'],
     taxaCaptura: 3, expBase: 260, esforco: { atqEsp: 1, defEsp: 2 }, crescimento: 'lento', femeas: null,
-    diario: 'O uirapuru-verdadeiro é um passarinho pardo da Amazônia que canta poucos minutos ao amanhecer, em poucos dias do ano, enquanto constrói o ninho; diz a lenda que a mata inteira se cala para ouvir. Em Pingorama ele só aparece a quem já conhece quase todas as criaturas, e quem o escuta carrega sorte pelo resto da jornada.',
+    diario: 'O uirapuru é um passarinho pardo da Amazônia que canta poucos minutos ao amanhecer, poucos dias por ano; diz a lenda que a mata se cala para ouvir. Em Pingorama ele só aparece a quem conhece quase todas as criaturas, e dá sorte.',
     altura: 0.4, peso: 0.3, habitat: 'Clareira da Serra Gelada, ao amanhecer', porte: 'L', lendario: true,
   },
   {
@@ -563,7 +563,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'ira-antiga'], [10, 'choquinho'], [20, 'golpe-de-asa'], [30, 'sopro-ancestral'], [40, 'pelo-arrepiado'], [50, 'tempestade-de-raios'], [56, 'bico-furador'], [60, 'chuva-de-verao'], [65, 'pulso-das-eras'], [71, 'relampago'], [78, 'voo-do-guardiao'], [86, 'trovoada'], [94, 'estrela-cadente']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-16', 'pt-17', 'pt-18', 'pt-19', 'pt-31', 'pt-32', 'pt-33', 'pt-41', 'pt-45', 'pt-46', 'pt-48'],
     taxaCaptura: 3, expBase: 285, esforco: { atqEsp: 2, vel: 1 }, crescimento: 'lento', femeas: null,
-    diario: 'Para os povos tupis, Tupã não era um deus com rosto: era o próprio estrondo do trovão, a voz que vinha do céu. O gavião-real, a harpia, tem garras do tamanho das de um urso-pardo; o Gavião-Tupã junta as duas coisas, e cada batida de suas asas no alto do monte chega aos vales como trovoada.',
+    diario: 'Para os tupis, Tupã era o próprio estrondo do trovão, a voz do céu. A harpia, o gavião-real, tem garras do tamanho das de um urso; o Gavião-Tupã junta as duas coisas, e cada batida de suas asas chega aos vales como trovoada.',
     altura: 2.6, peso: 85, habitat: 'Cume do Monte Tupã, entre as nuvens', porte: 'L', lendario: true,
   },
   {
@@ -572,7 +572,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'dentada'], [1, 'susto'], [10, 'intuicao'], [20, 'faro-fino'], [30, 'luz-de-lamparina'], [40, 'pressentimento'], [50, 'sombra-rasteira'], [56, 'cabeca-fria'], [61, 'bola-de-breu'], [66, 'luar'], [72, 'forca-do-pensamento'], [79, 'clarao-da-lua'], [87, 'rasga-mortalha'], [95, 'premonicao']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-20', 'pt-22', 'pt-34', 'pt-35', 'pt-36', 'pt-37', 'pt-42', 'pt-43', 'pt-44', 'pt-49'],
     taxaCaptura: 3, expBase: 295, esforco: { atqEsp: 2, vel: 1 }, crescimento: 'lento', femeas: null,
-    diario: 'Jaci é a lua na tradição tupi, guardiã da noite e das plantas, irmã e companheira de Guaraci, o sol. O lobo-guará, de pernas compridas como pernas-de-pau, anda sozinho pelo cerrado ao anoitecer; o Lobo-Jaci só deixa pegadas na lua cheia, e elas somem quando a primeira nuvem passa.',
+    diario: 'Jaci é a lua dos tupis, guardiã da noite e irmã de Guaraci, o sol. O lobo-guará anda sozinho pelo cerrado ao anoitecer; o Lobo-Jaci só deixa pegadas na lua cheia, e elas somem quando passa a primeira nuvem.',
     altura: 1.9, peso: 62, habitat: 'Errante nas noites de lua cheia', porte: 'L', lendario: true,
   },
   {
@@ -581,7 +581,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'ira-antiga'], [10, 'fagulha'], [20, 'esturro'], [30, 'dentada'], [40, 'patada-ardente'], [50, 'sol-a-pino'], [56, 'garra-ancestral'], [61, 'fogueira-de-sao-joao'], [66, 'labareda'], [72, 'danca-ancestral'], [79, 'carreira-em-chamas'], [87, 'furia-lendaria'], [95, 'estrela-cadente']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-08', 'pt-10', 'pt-11', 'pt-12', 'pt-13', 'pt-23', 'pt-28', 'pt-41', 'pt-45', 'pt-46'],
     taxaCaptura: 3, expBase: 300, esforco: { atq: 3 }, crescimento: 'lento', femeas: null,
-    diario: 'Guaraci é o sol dos tupis, aquele que dá vida aos viventes; e em várias tradições indígenas os eclipses acontecem quando uma onça celeste tenta devorá-lo. A onça-pintada tem a mordida mais forte entre os grandes felinos, capaz de furar casco de jabuti; as pintas da Onça-Guaraci são pequenos sóis, e ela só caminha onde há luz do dia.',
+    diario: 'Guaraci é o sol dos tupis, e em várias tradições os eclipses são uma onça celeste tentando devorá-lo. A onça-pintada morde mais forte que qualquer grande felino; as pintas da Onça-Guaraci são pequenos sóis, e ela só anda à luz do dia.',
     altura: 2.3, peso: 165, habitat: 'Errante sob o sol do meio-dia', porte: 'L', lendario: true,
   },
 ];

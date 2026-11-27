@@ -68,7 +68,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'berro'], [5, 'fagulha'], [9, 'bote-ligeiro'], [13, 'dentada'], [16, 'brasa-viva'], [25, 'pirueta-em-chamas'], [30, 'lume-errante'], [35, 'patada-ardente'], [36, 'meia-lua'], [42, 'fogueira-de-sao-joao'], [48, 'rabo-de-arraia'], [54, 'carreira-em-chamas'], [60, 'martelo']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-10', 'pt-11', 'pt-12', 'pt-23', 'pt-25', 'pt-29', 'pt-31', 'pt-41', 'pt-46'],
     taxaCaptura: 45, expBase: 228, esforco: { vel: 2, atq: 1 }, crescimento: 'medio', femeas: 0.125,
-    diario: 'O lobo-guará é o maior canídeo da América do Sul e caminha movendo as duas pernas do mesmo lado ao mesmo tempo, num passo balançado. Lobo-Fornalha transformou esse balanço em ginga e luta de pé, com as pernas longas acesas como tochas.',
+    diario: 'O lobo-guará é o maior canídeo da América do Sul e anda movendo as duas pernas do mesmo lado ao mesmo tempo, num passo balançado. Lobo-Fornalha virou esse balanço em ginga e luta de pé, com as pernas acesas como tochas.',
     altura: 1.7, peso: 39.0, habitat: 'Campos altos da Floresta Ancestral', porte: 'G',
   },
   {
@@ -147,7 +147,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'cara-feia'], [4, 'bote-ligeiro'], [8, 'jogar-areia'], [12, 'dentada'], [16, 'faro-fino'], [20, 'chuva-de-sementes'], [25, 'toca-e-foge'], [30, 'ultima-cartada'], [35, 'cabecada'], [40, 'espreguicar'], [46, 'atropelo'], [52, 'mutirao']],
     pergaminhos: ['pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-07', 'pt-09', 'pt-28', 'pt-29', 'pt-30', 'pt-41'],
     taxaCaptura: 45, expBase: 182, esforco: { vel: 2, atq: 1 }, crescimento: 'rapido', femeas: 0.5,
-    diario: 'A cutia é um dos raríssimos animais com dentes capazes de abrir o ouriço da castanha-do-pará, e a castanheira depende dela para se espalhar. Cotiadã guarda nas bochechas sementes de todas as matas por onde passou e as dispara como chumbinho.',
+    diario: 'A cutia é dos raros bichos que abrem o ouriço da castanha-do-pará, e a castanheira depende dela para se espalhar. Cotiadã guarda nas bochechas sementes de todas as matas por onde passou e as dispara como chumbinho.',
     altura: 0.7, peso: 9.5, habitat: 'Matas de galeria e rotas do Sertão', porte: 'M',
   },
 
@@ -178,7 +178,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'teia-pegajosa'], [3, 'ferroada'], [6, 'sorver-seiva'], [7, 'casulo'], [10, 'piscadela'], [13, 'lufada'], [18, 'polen-dorminhoco'], [22, 'poeira-de-estrela'], [26, 'zumbido'], [30, 'mau-agouro'], [35, 'luar'], [41, 'enxame'], [47, 'arraial-encantado']],
     pergaminhos: ['pt-03', 'pt-04', 'pt-06', 'pt-08', 'pt-27', 'pt-31', 'pt-33', 'pt-34', 'pt-35', 'pt-36', 'pt-37', 'pt-39', 'pt-42', 'pt-43', 'pt-49', 'pt-50'],
     taxaCaptura: 45, expBase: 180, esforco: { atqEsp: 2, defEsp: 1 }, crescimento: 'rapido', femeas: 0.5,
-    diario: 'A mariposa-bruxa chega a 16 centímetros de envergadura e costuma entrar nas casas à noite, o que lhe rendeu a fama injusta de trazer mau agouro. Os olhos desenhados nas asas de Bruxaluz piscam de verdade e hipnotizam quem os encara por tempo demais.',
+    diario: 'A mariposa-bruxa chega a 16 centímetros de envergadura e entra nas casas à noite, o que lhe rendeu a fama injusta de mau agouro. Os olhos desenhados nas asas de Bruxaluz piscam de verdade e hipnotizam quem os encara demais.',
     altura: 1.1, peso: 8.0, habitat: 'Matas e cerrados à noite', porte: 'M',
   },
   {
@@ -188,7 +188,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-09', 'pt-28', 'pt-30', 'pt-38', 'pt-39', 'pt-40'],
     evolui: [{ para: 19, nivel: 26 }],
     taxaCaptura: 200, expBase: 58, esforco: { atq: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'A saúva não come as folhas que corta: ela as usa como adubo para cultivar um fungo dentro do formigueiro, e é dele que a colônia se alimenta. Formigaço carrega pedaços de folha dez vezes maiores que o próprio corpo só para se exibir.',
+    diario: 'A saúva não come as folhas que corta: usa-as de adubo para cultivar um fungo dentro do formigueiro, e é dele que a colônia se alimenta. Formigaço carrega folhas dez vezes maiores que o próprio corpo só para se exibir.',
     altura: 0.3, peso: 3.0, habitat: 'Cerrado e barrancos', porte: 'P',
   },
   {
@@ -197,7 +197,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'jogar-areia'], [5, 'ferroada'], [9, 'formigueiro'], [13, 'mordida-de-sauva'], [17, 'bola-de-barro'], [21, 'terra-batida'], [26, 'golpe-de-asa'], [30, 'toca-de-tatu'], [35, 'sanguessuga'], [40, 'vocoroca'], [45, 'enxame'], [50, 'mel-de-jatai'], [56, 'tremor-de-terra']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-09', 'pt-30', 'pt-31', 'pt-32', 'pt-39', 'pt-40', 'pt-41'],
     taxaCaptura: 45, expBase: 190, esforco: { atq: 2, def: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'No voo nupcial, a rainha da saúva leva na boca um pedacinho do fungo do formigueiro natal para fundar a nova colônia, onde pode viver mais de quinze anos. Saúva-Rainha nunca luta sozinha: basta um toque das antenas e o chão inteiro começa a andar.',
+    diario: 'No voo nupcial, a rainha da saúva leva na boca um pedaço do fungo natal para fundar a nova colônia, onde vive mais de quinze anos. Saúva-Rainha nunca luta sozinha: um toque das antenas e o chão inteiro começa a andar.',
     altura: 1.2, peso: 36.0, habitat: 'Sauveiros do Sertão', porte: 'M',
   },
 
@@ -218,7 +218,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'fumaca-fedida'], [5, 'cara-feia'], [9, 'cuspe-acido'], [13, 'dentada'], [17, 'fincar-pe'], [21, 'gas-do-pantano'], [24, 'tabefes'], [29, 'ultima-cartada'], [34, 'peconha-forte'], [39, 'purga'], [44, 'dar-o-troco'], [50, 'chorume']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-05', 'pt-06', 'pt-26', 'pt-27', 'pt-29', 'pt-42', 'pt-43', 'pt-44'],
     taxaCaptura: 45, expBase: 186, esforco: { vida: 2, defEsp: 1 }, crescimento: 'rapido', femeas: 0.5,
-    diario: 'O gambá-de-orelha-branca é um marsupial resistente ao veneno da jararaca, e a mãe carrega a ninhada agarrada nas costas depois que os filhotes saem da bolsa. Os filhotes de Gambarrão pulam das costas dele na hora da luta e voltam a tempo do jantar.',
+    diario: 'O gambá-de-orelha-branca é um marsupial resistente ao veneno da jararaca, e a mãe leva a ninhada nas costas depois que os filhotes saem da bolsa. Os filhotes de Gambarrão pulam das costas dele na hora da luta e voltam a tempo do jantar.',
     altura: 0.9, peso: 14.0, habitat: 'Brejos e vilas do Sertão', porte: 'M',
   },
   {
@@ -237,7 +237,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'cara-feia'], [5, 'bote-ligeiro'], [9, 'assobio-agudo'], [13, 'tabefes'], [17, 'dentada'], [21, 'toca-e-foge'], [25, 'au-giratorio'], [29, 'ginga'], [33, 'meia-lua'], [38, 'esquiva'], [43, 'armada'], [48, 'rabo-de-arraia'], [54, 'voo-do-morcego']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-24', 'pt-25', 'pt-31', 'pt-33', 'pt-44'],
     taxaCaptura: 45, expBase: 188, esforco: { vel: 3 }, crescimento: 'rapido', femeas: 0.5,
-    diario: 'Diferente dos outros macacos, os saguis têm garras em vez de unhas, o que lhes permite correr de cabeça para baixo pelos troncos como esquilos. Saguinete aprendeu a jogar capoeira espiando uma roda do alto de uma mangueira e nunca mais parou de dar estrelas.',
+    diario: 'Diferente dos outros macacos, os saguis têm garras em vez de unhas e correm de cabeça para baixo pelos troncos como esquilos. Saguinete aprendeu capoeira espiando uma roda do alto de uma mangueira e nunca mais parou de dar estrelas.',
     altura: 0.6, peso: 5.2, habitat: 'Copas da Rota 6', porte: 'M',
   },
 
@@ -296,7 +296,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [5, 'choquinho'], [9, 'luz-de-lamparina'], [13, 'ferroada'], [17, 'faisca-dupla'], [21, 'zunido-de-alta-tensao'], [25, 'nuvem-de-mosquitos'], [27, 'corisco'], [31, 'danca-do-vaga-lume'], [36, 'zumbido'], [41, 'relampago'], [46, 'enxame'], [52, 'curto-circuito']],
     pergaminhos: ['pt-03', 'pt-04', 'pt-06', 'pt-16', 'pt-18', 'pt-19', 'pt-31', 'pt-33', 'pt-37', 'pt-39', 'pt-48'],
     taxaCaptura: 45, expBase: 184, esforco: { atqEsp: 2, vel: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'No Cerrado, larvas de vaga-lume moram nas paredes dos cupinzeiros e acendem todas juntas nas noites quentes, fazendo o campo parecer uma cidade vista do alto. Vagalampo guarda tanta carga na lanterna que já foi usado para acender a Usina num dia de apagão.',
+    diario: 'No Cerrado, larvas de vaga-lume moram nos cupinzeiros e acendem juntas nas noites quentes, e o campo parece uma cidade vista do alto. Vagalampo guarda tanta carga na lanterna que já acendeu a Usina num dia de apagão.',
     altura: 0.8, peso: 6.5, habitat: 'Arredores da Usina e cerrado noturno', porte: 'M',
   },
 
@@ -318,7 +318,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-03', 'pt-04', 'pt-06', 'pt-26', 'pt-27', 'pt-32', 'pt-33', 'pt-42', 'pt-43', 'pt-44'],
     evolui: [{ para: 32, amizade: true }],
     taxaCaptura: 110, expBase: 136, esforco: { vel: 2 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Só três espécies de morcego no mundo se alimentam de sangue, todas das Américas, e a saliva delas tem uma substância que impede a coagulação. Morcegão parece mal-encarado, mas só precisa de alguém que confie nele para mostrar quem realmente é.',
+    diario: 'Só três espécies de morcego no mundo se alimentam de sangue, todas das Américas, e a saliva delas impede a coagulação. Morcegão parece mal-encarado, mas só precisa de alguém que confie nele para mostrar quem realmente é.',
     altura: 0.8, peso: 7.5, habitat: 'Grutas fundas e cavernas quentes', porte: 'M',
   },
   {
@@ -327,7 +327,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'assobio-agudo'], [5, 'lufada'], [9, 'susto'], [13, 'golpe-de-asa'], [17, 'lambida-fria'], [22, 'presa-dupla'], [26, 'mau-agouro'], [30, 'rasante'], [34, 'sanguessuga'], [38, 'bote-de-jararaca'], [42, 'pouso-no-galho'], [48, 'sombra-rasteira'], [54, 'mergulho-de-gaviao']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-06', 'pt-20', 'pt-26', 'pt-27', 'pt-32', 'pt-33', 'pt-42', 'pt-43', 'pt-44', 'pt-49'],
     taxaCaptura: 30, expBase: 222, esforco: { vel: 3 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Morcegos-vampiros dividem a refeição com as companheiras de abrigo que voltaram com fome, e lembram por anos de quem já os ajudou. Vampirinha se enrola na capa membranosa para dormir e só a abre inteira diante de quem considera amigo.',
+    diario: 'Morcegos-vampiros dividem a refeição com as companheiras que voltaram com fome e lembram por anos de quem os ajudou. Vampirinha se enrola na capa membranosa para dormir e só a abre inteira diante de quem considera amigo.',
     altura: 1.4, peso: 19.0, habitat: 'Cavernas vulcânicas e Pico Pingorama', porte: 'G',
   },
 
@@ -348,7 +348,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'jogar-areia'], [5, 'tatu-bola'], [9, 'fincar-pe'], [13, 'bola-de-barro'], [17, 'terra-batida'], [21, 'soterrar'], [25, 'toca-de-tatu'], [29, 'couraca-de-pedra'], [30, 'unha-de-aco'], [35, 'blindagem'], [40, 'vocoroca'], [45, 'marretada'], [51, 'tremor-de-terra']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-05', 'pt-30', 'pt-40', 'pt-41', 'pt-46', 'pt-47', 'pt-48'],
     taxaCaptura: 40, expBase: 196, esforco: { def: 3 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'O tatu-canastra é o maior tatu do mundo, e a garra do dedo do meio de sua mão passa de vinte centímetros; suas tocas abandonadas viram abrigo para dezenas de outros bichos. As placas de Tatucanastra são de metal vivo e tinem como sino quando ele cava.',
+    diario: 'O tatu-canastra é o maior tatu do mundo, com uma garra de mais de vinte centímetros, e suas tocas abandonadas abrigam dezenas de outros bichos. As placas de Tatucanastra são de metal vivo e tinem como sino quando ele cava.',
     altura: 1.5, peso: 92.0, habitat: 'Chapadas e Rota 2 do Sertão', porte: 'G',
   },
   {
@@ -358,7 +358,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-03', 'pt-05', 'pt-14', 'pt-16', 'pt-29', 'pt-30', 'pt-40', 'pt-41'],
     evolui: [{ para: 36, nivel: 28 }],
     taxaCaptura: 225, expBase: 58, esforco: { def: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Algumas vezes por ano, na lua cheia ou nova, os caranguejos-uçá saem todos juntos das tocas para namorar, fenômeno que os catadores chamam de andada. Caranguejim anda de lado até quando está com pressa e jura que é o resto do mundo que está torto.',
+    diario: 'Algumas vezes por ano, na lua cheia ou nova, os caranguejos-uçá saem juntos das tocas para namorar: é a andada, dizem os catadores. Caranguejim anda de lado até com pressa e jura que o resto do mundo é que está torto.',
     altura: 0.3, peso: 2.2, habitat: 'Mangue e praias da Baía', porte: 'P',
   },
   {
@@ -386,7 +386,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [5, 'esguicho'], [9, 'bote-ligeiro'], [13, 'rabanada'], [17, 'jato-de-igarape'], [21, 'toca-e-foge'], [25, 'redemoinho'], [29, 'canoa-virada'], [30, 'brasa-viva'], [35, 'mordida-de-piranha'], [40, 'pirueta-em-chamas'], [45, 'cachoeirada'], [50, 'queimada'], [56, 'carreira-em-chamas']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-10', 'pt-11', 'pt-12', 'pt-14', 'pt-15', 'pt-16', 'pt-33', 'pt-46'],
     taxaCaptura: 30, expBase: 224, esforco: { atq: 2, vel: 1 }, crescimento: 'lento', femeas: 0.5,
-    diario: 'O dourado é chamado de rei do rio porque sobe as corredeiras aos saltos na época da piracema, vencendo quedas de mais de um metro. As escamas de Dourado-Rei fervem a água em volta, e ele sobe cachoeiras deixando uma trilha de vapor.',
+    diario: 'O dourado é o rei do rio porque sobe as corredeiras aos saltos na piracema, vencendo quedas de mais de um metro. As escamas de Dourado-Rei fervem a água em volta, e ele sobe cachoeiras deixando uma trilha de vapor.',
     altura: 1.2, peso: 31.0, habitat: 'Corredeiras do Pantanal das Araras', porte: 'G',
   },
   {
@@ -445,7 +445,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'cara-feia'], [5, 'lufada'], [9, 'intuicao'], [13, 'cisma'], [17, 'golpe-de-asa'], [21, 'olho-de-coruja'], [24, 'faro-fino'], [28, 'pressentimento'], [32, 'pouso-no-galho'], [36, 'onda-mental'], [40, 'pe-de-vento'], [45, 'dor-de-cabeca'], [50, 'rasga-mortalha']],
     pergaminhos: ['pt-02', 'pt-03', 'pt-04', 'pt-20', 'pt-31', 'pt-32', 'pt-33', 'pt-34', 'pt-35', 'pt-36', 'pt-37', 'pt-42', 'pt-43', 'pt-49'],
     taxaCaptura: 45, expBase: 198, esforco: { atqEsp: 2, defEsp: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'O corujão-orelhudo é a maior coruja do Brasil, e suas orelhas são apenas tufos de penas: os ouvidos de verdade ficam escondidos nas laterais da cabeça. Corujão-Orelha voa sem fazer ruído algum e escuta até o pensamento de quem está com medo.',
+    diario: 'O corujão-orelhudo é a maior coruja do Brasil, e as orelhas são só tufos de penas: os ouvidos ficam escondidos nas laterais da cabeça. Corujão-Orelha voa sem ruído algum e escuta até o pensamento de quem está com medo.',
     altura: 1.1, peso: 16.0, habitat: 'Cerrado e Rota 6 à noite', porte: 'M',
   },
 
@@ -485,7 +485,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'piscadela'], [5, 'lufada'], [9, 'beijo-de-beija-flor'], [13, 'bote-ligeiro'], [17, 'estrela-guia'], [21, 'cafune'], [25, 'brisa-da-serra'], [29, 'poeira-de-estrela'], [33, 'pouso-no-galho'], [37, 'rasante'], [41, 'ciranda'], [45, 'pe-de-vento'], [52, 'arraial-encantado']],
     pergaminhos: ['pt-03', 'pt-04', 'pt-06', 'pt-08', 'pt-12', 'pt-20', 'pt-32', 'pt-33', 'pt-34', 'pt-36', 'pt-37', 'pt-45', 'pt-49', 'pt-50'],
     taxaCaptura: 25, expBase: 220, esforco: { vel: 2, atqEsp: 1 }, crescimento: 'lento', femeas: 0.5,
-    diario: 'As cores metálicas do beija-flor não vêm de tinta alguma: são a luz se desmanchando em camadas microscópicas das penas, e por isso mudam conforme o ângulo. Beija-Arco-Íris só aparece no planalto depois da chuva e some no instante em que o arco-íris se apaga.',
+    diario: 'As cores do beija-flor não vêm de tinta: são a luz se desmanchando em camadas microscópicas das penas, e mudam conforme o ângulo. Beija-Arco-Íris só aparece no planalto depois da chuva e some quando o arco-íris se apaga.',
     altura: 0.4, peso: 0.6, habitat: 'Planalto florido em dias claros', porte: 'M',
   },
   {
@@ -523,7 +523,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'berro'], [5, 'lufada'], [9, 'assobio-agudo'], [13, 'golpe-de-asa'], [21, 'barro-curativo'], [25, 'rasante'], [29, 'brisa-da-serra'], [33, 'vento-a-favor'], [34, 'zunido-de-alta-tensao'], [38, 'pe-de-vento'], [44, 'tempestade-de-raios'], [50, 'ventania'], [57, 'curto-circuito']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-06', 'pt-12', 'pt-16', 'pt-17', 'pt-18', 'pt-19', 'pt-20', 'pt-32', 'pt-41'],
     taxaCaptura: 35, expBase: 214, esforco: { atqEsp: 2, vel: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Araras-vermelhas se reúnem em barrancos para comer argila, que ajuda a neutralizar as toxinas das sementes verdes de sua dieta. As penas de Araracanga estalam de eletricidade quando ela abre as asas, e seu grito chega antes do trovão.',
+    diario: 'Araras-vermelhas se reúnem em barrancos para comer argila, que neutraliza as toxinas das sementes verdes que comem. As penas de Araracanga estalam de eletricidade quando ela abre as asas, e seu grito chega antes do trovão.',
     altura: 1.1, peso: 12.0, habitat: 'Paredões das chapadas e Pico Pingorama', porte: 'G',
   },
   {
@@ -542,7 +542,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'berro'], [5, 'lufada'], [9, 'assobio-agudo'], [13, 'eco-da-serra'], [17, 'golpe-de-asa'], [21, 'cantiga-de-ninar'], [25, 'intuicao'], [29, 'pouso-no-galho'], [33, 'cisma'], [37, 'dar-o-troco'], [41, 'onda-mental'], [46, 'canto-do-uirapuru'], [52, 'estrondo']],
     pergaminhos: ['pt-03', 'pt-04', 'pt-06', 'pt-17', 'pt-20', 'pt-31', 'pt-32', 'pt-33', 'pt-34', 'pt-35', 'pt-36', 'pt-37', 'pt-49'],
     taxaCaptura: 45, expBase: 200, esforco: { atqEsp: 2, defEsp: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Papagaios não têm cordas vocais: eles imitam a fala controlando os músculos da siringe, um órgão no fundo da traqueia. Papagálio decora o som de cada golpe que escuta e os devolve com sotaque, de tanto conviver com a pessoa de quem gosta.',
+    diario: 'Papagaios não têm cordas vocais: imitam a fala com os músculos da siringe, um órgão no fundo da traqueia. Papagálio decora o som de cada golpe que escuta e o devolve com o sotaque da pessoa de quem mais gosta.',
     altura: 0.9, peso: 8.4, habitat: 'Planalto e povoados altos', porte: 'M',
   },
   {
@@ -561,7 +561,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'fumaca-fedida'], [5, 'lufada'], [9, 'susto'], [13, 'cuspe-acido'], [17, 'golpe-de-asa'], [21, 'mau-agouro'], [25, 'faro-fino'], [29, 'sombra-rasteira'], [33, 'pouso-no-galho'], [36, 'purga'], [40, 'assombracao'], [45, 'pe-de-vento'], [51, 'rasga-mortalha']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-20', 'pt-26', 'pt-31', 'pt-32', 'pt-33', 'pt-42', 'pt-43', 'pt-44', 'pt-45', 'pt-46'],
     taxaCaptura: 25, expBase: 226, esforco: { vida: 2, atq: 1 }, crescimento: 'lento', femeas: 0.5,
-    diario: 'Quando o urubu-rei pousa, os outros urubus abrem espaço: só o bico dele é forte o bastante para rasgar o couro grosso, e todos esperam que ele comece. A cabeça colorida de Urubu-Rei é tida como coroa, e nenhuma criatura da chapada come antes dele.',
+    diario: 'Quando o urubu-rei pousa, os outros urubus abrem espaço: só o bico dele rasga o couro grosso, e todos esperam que ele comece. A cabeça colorida de Urubu-Rei é tida como coroa, e nenhuma criatura da chapada come antes dele.',
     altura: 1.6, peso: 28.0, habitat: 'Paredões da chapada e planalto', porte: 'G',
   },
 
@@ -582,7 +582,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'berro'], [5, 'esguicho'], [9, 'bola-de-barro'], [13, 'dentada'], [17, 'espreguicar'], [21, 'jato-de-igarape'], [25, 'pisoteio'], [29, 'mergulho-fundo'], [30, 'cafune'], [35, 'cabecada'], [40, 'serenata'], [45, 'cachoeirada'], [51, 'mutirao']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-14', 'pt-15', 'pt-16', 'pt-22', 'pt-28', 'pt-29', 'pt-30', 'pt-36', 'pt-37'],
     taxaCaptura: 45, expBase: 198, esforco: { vida: 3 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Capivaras deixam que aves pousem em suas costas para catar carrapatos e conseguem ficar até cinco minutos debaixo da água, só com o focinho de fora. Capivarona é tão serena que as brigas em volta dela acabam sozinhas, por pura falta de clima.',
+    diario: 'Capivaras deixam aves catarem carrapatos nas suas costas e ficam até cinco minutos debaixo da água, só com o focinho de fora. Capivarona é tão serena que as brigas em volta dela acabam sozinhas, por pura falta de clima.',
     altura: 1.2, peso: 74.0, habitat: 'Pantanal das Araras e Lagoa Grande', porte: 'G',
   },
   {

@@ -84,7 +84,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'berro'], [5, 'fagulha'], [9, 'au-giratorio'], [13, 'esquiva'], [17, 'brasa-viva'], [21, 'rasteira'], [25, 'pirueta-em-chamas'], [29, 'ginga'], [34, 'patada-ardente'], [39, 'esturro'], [44, 'meia-lua'], [50, 'labareda'], [57, 'carreira-em-chamas']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-10', 'pt-11', 'pt-12', 'pt-13', 'pt-23', 'pt-24', 'pt-25'],
     taxaCaptura: 30, expBase: 210, esforco: { vel: 2, atq: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'Nos anos 1970 restavam cerca de 200 micos-leões-dourados na natureza; a reprodução em zoológicos e a soltura na Mata Atlântica salvaram a espécie. A juba de Leão-Dourado arde sem queimar a mata e só se apaga quando ele dorme em um oco de árvore.',
+    diario: 'Nos anos 1970 restavam uns 200 micos-leões-dourados na natureza; a reprodução em zoológicos e a soltura na Mata Atlântica salvaram a espécie. A juba de Leão-Dourado arde sem queimar a mata e só se apaga quando ele dorme num oco.',
     altura: 0.7, peso: 5.4, habitat: 'Copas ensolaradas do Monte Tupã', porte: 'G',
   },
 
@@ -296,7 +296,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bote-ligeiro'], [1, 'cara-feia'], [5, 'presa-dupla'], [9, 'jogar-areia'], [13, 'cuspe-acido'], [17, 'dentada'], [21, 'pele-amarga'], [25, 'peconha-forte'], [29, 'toca-e-foge'], [32, 'pisao-de-anta'], [36, 'curare'], [41, 'bote-de-jararaca'], [47, 'toca-de-tatu'], [54, 'tremor-de-terra']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-06', 'pt-09', 'pt-26', 'pt-27', 'pt-28', 'pt-29', 'pt-30', 'pt-40', 'pt-43'],
     taxaCaptura: 45, expBase: 192, esforco: { atq: 2, vel: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'O veneno da jararaca deu origem ao captopril, um dos remédios para pressão alta mais usados no mundo, criado a partir de pesquisas brasileiras. As escamas foscas de Jararacuçu não refletem luz alguma, e ela parece um pedaço de chão que se move.',
+    diario: 'O veneno da jararaca deu origem ao captopril, remédio para pressão alta usado no mundo todo, criado por pesquisadores brasileiros. As escamas foscas de Jararacuçu não refletem luz alguma, e ela parece um pedaço de chão que se move.',
     altura: 2.0, peso: 6.5, habitat: 'Veredas e barrancos úmidos', porte: 'G',
   },
   {
@@ -305,7 +305,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'presa-dupla'], [1, 'piscadela'], [6, 'cara-feia'], [11, 'cuspe-acido'], [16, 'cortina-de-brilho'], [21, 'estrela-guia'], [26, 'peconha-forte'], [31, 'simpatia'], [36, 'poeira-de-estrela'], [41, 'curare'], [46, 'ciranda'], [52, 'borra-de-timbo'], [58, 'clarao-da-lua']],
     pergaminhos: ['pt-03', 'pt-06', 'pt-09', 'pt-26', 'pt-27', 'pt-29', 'pt-36', 'pt-37', 'pt-43', 'pt-49', 'pt-50'],
     taxaCaptura: 45, expBase: 150, esforco: { atqEsp: 2 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'A coral-verdadeira tem um dos venenos mais potentes do Brasil, mas é tímida e, quando ameaçada, esconde a cabeça e ergue a cauda enrolada para confundir o predador. Os anéis de Coralzinha acendem em sequência, como luzinhas de festa, e hipnotizam quem olha demais.',
+    diario: 'A coral-verdadeira tem um dos venenos mais fortes do Brasil, mas é tímida: ameaçada, esconde a cabeça e ergue a cauda para confundir. Os anéis de Coralzinha acendem em sequência, como luzinhas de festa, e hipnotizam quem olha.',
     altura: 0.8, peso: 0.4, habitat: 'Folhiço fundo de mata e veredas', porte: 'M',
   },
   {
@@ -364,7 +364,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'arranhao'], [1, 'faro-fino'], [5, 'rabada'], [9, 'jogar-areia'], [13, 'tabefes'], [17, 'dentada'], [21, 'toca-e-foge'], [25, 'patada'], [28, 'rasteira'], [32, 'grito-de-guerra'], [36, 'meia-lua'], [41, 'cabecada'], [46, 'atropelo'], [52, 'armada']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-09', 'pt-23', 'pt-24', 'pt-25', 'pt-29', 'pt-30', 'pt-41'],
     taxaCaptura: 45, expBase: 184, esforco: { atq: 2, vel: 1 }, crescimento: 'rapido', femeas: 0.6,
-    diario: 'Os quatis andam em bandos de fêmeas e filhotes com a cauda erguida como antenas, o que ajuda o grupo a não se perder no capim alto; os machos adultos vivem sozinhos. A cauda anelada de Quatizão é o estandarte do bando: abaixada é paz, girando é roda de briga.',
+    diario: 'Os quatis andam em bandos de fêmeas e filhotes, de cauda erguida como antena para não se perder no capim; os machos vivem sozinhos. A cauda anelada de Quatizão é o estandarte do bando: abaixada é paz, girando é roda de briga.',
     altura: 0.7, peso: 9.0, habitat: 'Matas de galeria e trilhas de serra', porte: 'G',
   },
   {
@@ -383,7 +383,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'faro-fino'], [5, 'jogar-areia'], [13, 'bola-de-barro'], [17, 'fincar-pe'], [21, 'pisao-de-anta'], [25, 'barro-curativo'], [29, 'cabecada'], [33, 'casco-pesado'], [34, 'erva-de-passarinho'], [39, 'terra-batida'], [44, 'espinho-de-mandacaru'], [50, 'tremor-de-terra'], [57, 'queda-de-jequitiba']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-07', 'pt-08', 'pt-09', 'pt-12', 'pt-14', 'pt-28', 'pt-29', 'pt-30', 'pt-40'],
     taxaCaptura: 35, expBase: 214, esforco: { vida: 2, atq: 1 }, crescimento: 'medio', femeas: 0.5,
-    diario: 'A anta é o maior mamífero terrestre do Brasil e é chamada de jardineira da floresta, porque espalha sementes grandes por quilômetros em suas fezes. No lombo de Antão as sementes brotam ali mesmo, e ele deixa uma trilha de mudas por onde passa.',
+    diario: 'A anta é o maior mamífero terrestre do Brasil, a jardineira da floresta: espalha sementes grandes por quilômetros nas fezes. No lombo de Antão as sementes brotam ali mesmo, e ele deixa uma trilha de mudas por onde passa.',
     altura: 2.0, peso: 250.0, habitat: 'Pantanal e clareiras da Floresta Ancestral', porte: 'G',
   },
   {
@@ -442,7 +442,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'assobio-agudo'], [5, 'jogar-areia'], [9, 'bote-ligeiro'], [17, 'eco-da-serra'], [21, 'faro-fino'], [25, 'patada'], [29, 'toca-e-foge'], [30, 'bencao'], [34, 'bico-furador'], [38, 'meia-lua'], [43, 'estrondo'], [48, 'armada'], [54, 'martelo']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-06', 'pt-23', 'pt-24', 'pt-25', 'pt-30', 'pt-31'],
     taxaCaptura: 45, expBase: 186, esforco: { atq: 2, vel: 1 }, crescimento: 'rapido', femeas: 0.5,
-    diario: 'A seriema caça cobras: agarra a presa com o bico e a bate repetidas vezes contra o chão ou contra uma pedra, e ainda tem uma garra curva no segundo dedo. Seriemão desafia as serpentes da chapada para duelos e conta as vitórias em voz alta.',
+    diario: 'A seriema caça cobras: agarra a presa com o bico e a bate contra o chão ou uma pedra, e ainda tem uma garra curva no segundo dedo. Seriemão desafia as serpentes da chapada para duelos e conta as vitórias em voz alta.',
     altura: 0.9, peso: 2.5, habitat: 'Estradas de terra e chapadas', porte: 'G',
   },
 
@@ -513,7 +513,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-03', 'pt-04', 'pt-05', 'pt-14', 'pt-15', 'pt-16', 'pt-22', 'pt-40'],
     evolui: [{ para: 112, nivel: 40 }],
     taxaCaptura: 100, expBase: 66, esforco: { vida: 1 }, crescimento: 'lento', femeas: 0.5,
-    diario: 'Os filhotes de pirarucu nadam em cardume colados à cabeça do pai, que os protege por meses e escurece para escondê-los. Pirarucinho sobe à superfície para respirar a cada poucos minutos e aproveita para espiar o barco do pescador.',
+    diario: 'Os filhotes de pirarucu nadam colados à cabeça do pai, que os protege por meses e escurece para escondê-los. Pirarucinho sobe para respirar a cada poucos minutos e aproveita para espiar o barco do pescador.',
     altura: 0.6, peso: 4.0, habitat: 'Lagos de várzea, só na pesca', porte: 'P',
   },
   {
@@ -522,7 +522,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'cara-feia'], [6, 'esguicho'], [11, 'rabada'], [16, 'fincar-pe'], [21, 'rabanada'], [26, 'agua-de-cacimba'], [31, 'cabecada'], [36, 'canoa-virada'], [40, 'cauda-de-boiuna'], [44, 'mergulho-fundo'], [49, 'escama-sagrada'], [54, 'cachoeirada'], [60, 'garra-ancestral']],
     pergaminhos: ['pt-01', 'pt-02', 'pt-03', 'pt-04', 'pt-05', 'pt-14', 'pt-15', 'pt-16', 'pt-22', 'pt-28', 'pt-40', 'pt-45', 'pt-46'],
     taxaCaptura: 25, expBase: 230, esforco: { vida: 2, atq: 1 }, crescimento: 'lento', femeas: 0.5,
-    diario: 'O pirarucu é um dos maiores peixes de água doce do mundo, precisa respirar ar na superfície e tem escamas tão duras que resistem a mordidas de piranha. As escamas vermelhas de Pirarucão guardam o desenho de rios que já secaram há muito tempo.',
+    diario: 'O pirarucu é um dos maiores peixes de água doce do mundo, respira ar na superfície e tem escamas que resistem a mordida de piranha. As escamas vermelhas de Pirarucão guardam o desenho de rios que secaram há muito tempo.',
     altura: 3.0, peso: 200.0, habitat: 'Poços fundos do pantanal e túneis alagados', porte: 'G',
   },
   {
@@ -532,7 +532,7 @@ export const especies: EspecieDef[] = [
     pergaminhos: ['pt-01', 'pt-03', 'pt-05', 'pt-06', 'pt-14', 'pt-15', 'pt-16', 'pt-43'],
     evolui: [{ para: 114, nivel: 30 }],
     taxaCaptura: 225, expBase: 56, esforco: { atq: 1 }, crescimento: 'rapido', femeas: 0.5,
-    diario: 'A piranha-vermelha é mais medrosa do que a fama: anda em cardume para se proteger de botos, jacarés e aves, e come muita carniça e pedaços de nadadeira. Piranhinha late como um cachorrinho quando é tirada da água, som que as piranhas de verdade também fazem.',
+    diario: 'A piranha-vermelha é mais medrosa que a fama: anda em cardume para fugir de botos, jacarés e aves, e come muita carniça. Piranhinha late como um cachorrinho quando sai da água, som que as piranhas de verdade também fazem.',
     altura: 0.2, peso: 0.5, habitat: 'Rios e baías de água barrenta', porte: 'P',
   },
   {

@@ -39,7 +39,7 @@
   "en": "High fields of Floresta Ancestral",
   "ctx": "src/data/criaturas/parte-001-060.ts:63 · campo habitat | src/data/criaturas/parte-001-060.ts:72 · campo habitat"
  },
- "O lobo-guará é o maior canídeo da América do Sul e caminha movendo as duas pernas do mesmo lado ao mesmo tempo, num passo balançado. Lobo-Fornalha transformou esse balanço em ginga e luta de pé, com as pernas longas acesas como tochas.": {
+ "O lobo-guará é o maior canídeo da América do Sul e anda movendo as duas pernas do mesmo lado ao mesmo tempo, num passo balançado. Lobo-Fornalha virou esse balanço em ginga e luta de pé, com as pernas acesas como tochas.": {
   "en": "The maned wolf is the largest canid in South America and walks by moving both legs on the same side at once, in a swaying stride. Lobo-Fornalha turned that sway into ginga and fights upright, its long legs lit like torches.",
   "ctx": "src/data/criaturas/parte-001-060.ts:71 · campo diario"
  },
@@ -99,7 +99,7 @@
   "en": "Understory and forest trails",
   "ctx": "src/data/criaturas/parte-001-060.ts:142 · campo habitat"
  },
- "A cutia é um dos raríssimos animais com dentes capazes de abrir o ouriço da castanha-do-pará, e a castanheira depende dela para se espalhar. Cotiadã guarda nas bochechas sementes de todas as matas por onde passou e as dispara como chumbinho.": {
+ "A cutia é dos raros bichos que abrem o ouriço da castanha-do-pará, e a castanheira depende dela para se espalhar. Cotiadã guarda nas bochechas sementes de todas as matas por onde passou e as dispara como chumbinho.": {
   "en": "The agouti is one of the very few animals whose teeth can crack the Brazil nut pod, and the Brazil nut tree depends on it to spread. Cotiadã keeps seeds from every forest it has crossed in its cheeks and fires them like buckshot.",
   "ctx": "src/data/criaturas/parte-001-060.ts:150 · campo diario"
  },
@@ -123,7 +123,7 @@
   "en": "Mata do Sussurro branches",
   "ctx": "src/data/criaturas/parte-001-060.ts:173 · campo habitat | src/data/criaturas/parte-001-060.ts:232 · campo habitat"
  },
- "A mariposa-bruxa chega a 16 centímetros de envergadura e costuma entrar nas casas à noite, o que lhe rendeu a fama injusta de trazer mau agouro. Os olhos desenhados nas asas de Bruxaluz piscam de verdade e hipnotizam quem os encara por tempo demais.": {
+ "A mariposa-bruxa chega a 16 centímetros de envergadura e entra nas casas à noite, o que lhe rendeu a fama injusta de mau agouro. Os olhos desenhados nas asas de Bruxaluz piscam de verdade e hipnotizam quem os encara demais.": {
   "en": "The black witch moth spans up to 16 centimeters and often flies into houses at night, which earned it an unfair name as a bad omen. The eyes on Bruxaluz's wings really blink, and they hypnotize anyone who stares too long.",
   "ctx": "src/data/criaturas/parte-001-060.ts:181 · campo diario"
  },
@@ -131,7 +131,7 @@
   "en": "Forests and cerrado at night",
   "ctx": "src/data/criaturas/parte-001-060.ts:182 · campo habitat"
  },
- "A saúva não come as folhas que corta: ela as usa como adubo para cultivar um fungo dentro do formigueiro, e é dele que a colônia se alimenta. Formigaço carrega pedaços de folha dez vezes maiores que o próprio corpo só para se exibir.": {
+ "A saúva não come as folhas que corta: usa-as de adubo para cultivar um fungo dentro do formigueiro, e é dele que a colônia se alimenta. Formigaço carrega folhas dez vezes maiores que o próprio corpo só para se exibir.": {
   "en": "Leafcutter ants don't eat the leaves they cut: they use them as compost to grow a fungus inside the nest, and that fungus feeds the colony. Formigaço carries leaf pieces ten times bigger than itself just to show off.",
   "ctx": "src/data/criaturas/parte-001-060.ts:191 · campo diario"
  },
@@ -139,7 +139,7 @@
   "en": "Cerrado and ravines",
   "ctx": "src/data/criaturas/parte-001-060.ts:192 · campo habitat"
  },
- "No voo nupcial, a rainha da saúva leva na boca um pedacinho do fungo do formigueiro natal para fundar a nova colônia, onde pode viver mais de quinze anos. Saúva-Rainha nunca luta sozinha: basta um toque das antenas e o chão inteiro começa a andar.": {
+ "No voo nupcial, a rainha da saúva leva na boca um pedaço do fungo natal para fundar a nova colônia, onde vive mais de quinze anos. Saúva-Rainha nunca luta sozinha: um toque das antenas e o chão inteiro começa a andar.": {
   "en": "On her nuptial flight, the leafcutter queen carries a bit of fungus from home to start a new colony, where she may live over fifteen years. Saúva-Rainha never fights alone: one tap of her antennae and the ground starts to walk.",
   "ctx": "src/data/criaturas/parte-001-060.ts:200 · campo diario"
  },
@@ -155,7 +155,7 @@
   "en": "Yards and routes by night",
   "ctx": "src/data/criaturas/parte-001-060.ts:213 · campo habitat"
  },
- "O gambá-de-orelha-branca é um marsupial resistente ao veneno da jararaca, e a mãe carrega a ninhada agarrada nas costas depois que os filhotes saem da bolsa. Os filhotes de Gambarrão pulam das costas dele na hora da luta e voltam a tempo do jantar.": {
+ "O gambá-de-orelha-branca é um marsupial resistente ao veneno da jararaca, e a mãe leva a ninhada nas costas depois que os filhotes saem da bolsa. Os filhotes de Gambarrão pulam das costas dele na hora da luta e voltam a tempo do jantar.": {
   "en": "The white-eared opossum is a marsupial immune to jararaca venom, and the mother carries her litter clinging to her back once the young leave the pouch. Gambarrão's babies jump off its back when a fight starts and come back in time for dinner.",
   "ctx": "src/data/criaturas/parte-001-060.ts:221 · campo diario"
  },
@@ -167,7 +167,7 @@
   "en": "The common marmoset gnaws tree bark with its front teeth to lick the gum that oozes out, and is almost always born a twin. Saguinho whistles so high that only small creatures can hear it.",
   "ctx": "src/data/criaturas/parte-001-060.ts:231 · campo diario"
  },
- "Diferente dos outros macacos, os saguis têm garras em vez de unhas, o que lhes permite correr de cabeça para baixo pelos troncos como esquilos. Saguinete aprendeu a jogar capoeira espiando uma roda do alto de uma mangueira e nunca mais parou de dar estrelas.": {
+ "Diferente dos outros macacos, os saguis têm garras em vez de unhas e correm de cabeça para baixo pelos troncos como esquilos. Saguinete aprendeu capoeira espiando uma roda do alto de uma mangueira e nunca mais parou de dar estrelas.": {
   "en": "Unlike other monkeys, marmosets have claws instead of nails, so they can run headfirst down trunks like squirrels. Saguinete learned capoeira watching a roda from a mango tree and has been doing cartwheels ever since.",
   "ctx": "src/data/criaturas/parte-001-060.ts:240 · campo diario"
  },
@@ -215,7 +215,7 @@
   "en": "Grassland, cerrado by night",
   "ctx": "src/data/criaturas/parte-001-060.ts:291 · campo habitat"
  },
- "No Cerrado, larvas de vaga-lume moram nas paredes dos cupinzeiros e acendem todas juntas nas noites quentes, fazendo o campo parecer uma cidade vista do alto. Vagalampo guarda tanta carga na lanterna que já foi usado para acender a Usina num dia de apagão.": {
+ "No Cerrado, larvas de vaga-lume moram nos cupinzeiros e acendem juntas nas noites quentes, e o campo parece uma cidade vista do alto. Vagalampo guarda tanta carga na lanterna que já acendeu a Usina num dia de apagão.": {
   "en": "In the Cerrado, firefly larvae live in termite mound walls and light up together on warm nights, making the field look like a city seen from above. Vagalampo holds so much charge that it once lit up the Power Plant in a blackout.",
   "ctx": "src/data/criaturas/parte-001-060.ts:299 · campo diario"
  },
@@ -231,7 +231,7 @@
   "en": "Caves of Costa do Sol",
   "ctx": "src/data/criaturas/parte-001-060.ts:312 · campo habitat"
  },
- "Só três espécies de morcego no mundo se alimentam de sangue, todas das Américas, e a saliva delas tem uma substância que impede a coagulação. Morcegão parece mal-encarado, mas só precisa de alguém que confie nele para mostrar quem realmente é.": {
+ "Só três espécies de morcego no mundo se alimentam de sangue, todas das Américas, e a saliva delas impede a coagulação. Morcegão parece mal-encarado, mas só precisa de alguém que confie nele para mostrar quem realmente é.": {
   "en": "Only three bat species in the world feed on blood, all from the Americas, and their saliva has a substance that stops clotting. Morcegão looks grumpy, but it just needs someone to trust it to show who it really is.",
   "ctx": "src/data/criaturas/parte-001-060.ts:321 · campo diario"
  },
@@ -239,7 +239,7 @@
   "en": "Deep grottos and hot caves",
   "ctx": "src/data/criaturas/parte-001-060.ts:322 · campo habitat"
  },
- "Morcegos-vampiros dividem a refeição com as companheiras de abrigo que voltaram com fome, e lembram por anos de quem já os ajudou. Vampirinha se enrola na capa membranosa para dormir e só a abre inteira diante de quem considera amigo.": {
+ "Morcegos-vampiros dividem a refeição com as companheiras que voltaram com fome e lembram por anos de quem os ajudou. Vampirinha se enrola na capa membranosa para dormir e só a abre inteira diante de quem considera amigo.": {
   "en": "Vampire bats share their meal with roostmates who came back hungry, and remember for years who once helped them. Vampirinha wraps itself in its membrane cape to sleep and only opens it all the way for those it calls a friend.",
   "ctx": "src/data/criaturas/parte-001-060.ts:330 · campo diario"
  },
@@ -255,7 +255,7 @@
   "en": "Caatinga and dry cerrado",
   "ctx": "src/data/criaturas/parte-001-060.ts:343 · campo habitat"
  },
- "O tatu-canastra é o maior tatu do mundo, e a garra do dedo do meio de sua mão passa de vinte centímetros; suas tocas abandonadas viram abrigo para dezenas de outros bichos. As placas de Tatucanastra são de metal vivo e tinem como sino quando ele cava.": {
+ "O tatu-canastra é o maior tatu do mundo, com uma garra de mais de vinte centímetros, e suas tocas abandonadas abrigam dezenas de outros bichos. As placas de Tatucanastra são de metal vivo e tinem como sino quando ele cava.": {
   "en": "The giant armadillo is the world's largest armadillo, with a middle claw over twenty centimeters long; its old burrows shelter dozens of other animals. Tatucanastra's plates are living metal and ring like a bell when it digs.",
   "ctx": "src/data/criaturas/parte-001-060.ts:351 · campo diario"
  },
@@ -263,7 +263,7 @@
   "en": "Plateaus and Sertão Route 2",
   "ctx": "src/data/criaturas/parte-001-060.ts:352 · campo habitat"
  },
- "Algumas vezes por ano, na lua cheia ou nova, os caranguejos-uçá saem todos juntos das tocas para namorar, fenômeno que os catadores chamam de andada. Caranguejim anda de lado até quando está com pressa e jura que é o resto do mundo que está torto.": {
+ "Algumas vezes por ano, na lua cheia ou nova, os caranguejos-uçá saem juntos das tocas para namorar: é a andada, dizem os catadores. Caranguejim anda de lado até com pressa e jura que o resto do mundo é que está torto.": {
   "en": "A few times a year, at the full or new moon, mangrove crabs all leave their burrows at once to court, an event crabbers call the \"andada\". Caranguejim walks sideways even in a hurry and swears it's the rest of the world that's crooked.",
   "ctx": "src/data/criaturas/parte-001-060.ts:361 · campo diario"
  },
@@ -287,7 +287,7 @@
   "en": "Rivers, bays and lagoons",
   "ctx": "src/data/criaturas/parte-001-060.ts:381 · campo habitat"
  },
- "O dourado é chamado de rei do rio porque sobe as corredeiras aos saltos na época da piracema, vencendo quedas de mais de um metro. As escamas de Dourado-Rei fervem a água em volta, e ele sobe cachoeiras deixando uma trilha de vapor.": {
+ "O dourado é o rei do rio porque sobe as corredeiras aos saltos na piracema, vencendo quedas de mais de um metro. As escamas de Dourado-Rei fervem a água em volta, e ele sobe cachoeiras deixando uma trilha de vapor.": {
   "en": "The dorado is called king of the river because it leaps up the rapids during the spawning run, clearing falls over a meter high. Dourado-Rei's scales make the water around it boil, and it climbs waterfalls leaving a trail of steam.",
   "ctx": "src/data/criaturas/parte-001-060.ts:389 · campo diario"
  },
@@ -335,7 +335,7 @@
   "en": "Costa do Sol forests at night",
   "ctx": "src/data/criaturas/parte-001-060.ts:440 · campo habitat"
  },
- "O corujão-orelhudo é a maior coruja do Brasil, e suas orelhas são apenas tufos de penas: os ouvidos de verdade ficam escondidos nas laterais da cabeça. Corujão-Orelha voa sem fazer ruído algum e escuta até o pensamento de quem está com medo.": {
+ "O corujão-orelhudo é a maior coruja do Brasil, e as orelhas são só tufos de penas: os ouvidos ficam escondidos nas laterais da cabeça. Corujão-Orelha voa sem ruído algum e escuta até o pensamento de quem está com medo.": {
   "en": "The great horned owl is the biggest owl in Brazil, and its \"ears\" are just tufts of feathers: the real ones are hidden on the sides of its head. Corujão-Orelha flies without a sound and can hear even the thoughts of someone who's scared.",
   "ctx": "src/data/criaturas/parte-001-060.ts:448 · campo diario"
  },
@@ -367,7 +367,7 @@
   "en": "Gardens and flowering hills",
   "ctx": "src/data/criaturas/parte-001-060.ts:480 · campo habitat"
  },
- "As cores metálicas do beija-flor não vêm de tinta alguma: são a luz se desmanchando em camadas microscópicas das penas, e por isso mudam conforme o ângulo. Beija-Arco-Íris só aparece no planalto depois da chuva e some no instante em que o arco-íris se apaga.": {
+ "As cores do beija-flor não vêm de tinta: são a luz se desmanchando em camadas microscópicas das penas, e mudam conforme o ângulo. Beija-Arco-Íris só aparece no planalto depois da chuva e some quando o arco-íris se apaga.": {
   "en": "A hummingbird's metallic colors aren't pigment: they're light splitting in microscopic layers of the feathers, so they shift with the angle. Beija-Arco-Íris only shows up on the plateau after rain and vanishes when the rainbow fades.",
   "ctx": "src/data/criaturas/parte-001-060.ts:488 · campo diario"
  },
@@ -399,7 +399,7 @@
   "en": "Buriti groves and plateaus",
   "ctx": "src/data/criaturas/parte-001-060.ts:518 · campo habitat"
  },
- "Araras-vermelhas se reúnem em barrancos para comer argila, que ajuda a neutralizar as toxinas das sementes verdes de sua dieta. As penas de Araracanga estalam de eletricidade quando ela abre as asas, e seu grito chega antes do trovão.": {
+ "Araras-vermelhas se reúnem em barrancos para comer argila, que neutraliza as toxinas das sementes verdes que comem. As penas de Araracanga estalam de eletricidade quando ela abre as asas, e seu grito chega antes do trovão.": {
   "en": "Scarlet macaws gather on riverbanks to eat clay, which helps neutralize the toxins in the green seeds they eat. Araracanga's feathers crackle with electricity when it spreads its wings, and its cry arrives before the thunder.",
   "ctx": "src/data/criaturas/parte-001-060.ts:526 · campo diario"
  },
@@ -415,7 +415,7 @@
   "en": "Orchards and roadside woods",
   "ctx": "src/data/criaturas/parte-001-060.ts:537 · campo habitat"
  },
- "Papagaios não têm cordas vocais: eles imitam a fala controlando os músculos da siringe, um órgão no fundo da traqueia. Papagálio decora o som de cada golpe que escuta e os devolve com sotaque, de tanto conviver com a pessoa de quem gosta.": {
+ "Papagaios não têm cordas vocais: imitam a fala com os músculos da siringe, um órgão no fundo da traqueia. Papagálio decora o som de cada golpe que escuta e o devolve com o sotaque da pessoa de quem mais gosta.": {
   "en": "Parrots have no vocal cords: they imitate speech with the muscles of the syrinx, an organ deep in the windpipe. Papagálio memorizes the sound of every move it hears and plays it back with the accent of the person it loves.",
   "ctx": "src/data/criaturas/parte-001-060.ts:545 · campo diario"
  },
@@ -431,7 +431,7 @@
   "en": "Roads and open land",
   "ctx": "src/data/criaturas/parte-001-060.ts:556 · campo habitat"
  },
- "Quando o urubu-rei pousa, os outros urubus abrem espaço: só o bico dele é forte o bastante para rasgar o couro grosso, e todos esperam que ele comece. A cabeça colorida de Urubu-Rei é tida como coroa, e nenhuma criatura da chapada come antes dele.": {
+ "Quando o urubu-rei pousa, os outros urubus abrem espaço: só o bico dele rasga o couro grosso, e todos esperam que ele comece. A cabeça colorida de Urubu-Rei é tida como coroa, e nenhuma criatura da chapada come antes dele.": {
   "en": "When the king vulture lands, the other vultures make room: only its beak is strong enough to tear thick hide, and they all wait for it to start. Urubu-Rei's colorful head is seen as a crown, and no creature on the plateau eats before it does.",
   "ctx": "src/data/criaturas/parte-001-060.ts:564 · campo diario"
  },
@@ -447,7 +447,7 @@
   "en": "Riverbanks and wetlands",
   "ctx": "src/data/criaturas/parte-001-060.ts:577 · campo habitat"
  },
- "Capivaras deixam que aves pousem em suas costas para catar carrapatos e conseguem ficar até cinco minutos debaixo da água, só com o focinho de fora. Capivarona é tão serena que as brigas em volta dela acabam sozinhas, por pura falta de clima.": {
+ "Capivaras deixam aves catarem carrapatos nas suas costas e ficam até cinco minutos debaixo da água, só com o focinho de fora. Capivarona é tão serena que as brigas em volta dela acabam sozinhas, por pura falta de clima.": {
   "en": "Capybaras let birds perch on their backs to pick off ticks and can stay underwater for up to five minutes, with just their snout sticking out. Capivarona is so calm that fights around it simply fizzle out for lack of mood.",
   "ctx": "src/data/criaturas/parte-001-060.ts:585 · campo diario"
  },
@@ -527,7 +527,7 @@
   "en": "Low coastal forest, daytime only",
   "ctx": "src/data/criaturas/parte-061-120.ts:79 · campo habitat"
  },
- "Nos anos 1970 restavam cerca de 200 micos-leões-dourados na natureza; a reprodução em zoológicos e a soltura na Mata Atlântica salvaram a espécie. A juba de Leão-Dourado arde sem queimar a mata e só se apaga quando ele dorme em um oco de árvore.": {
+ "Nos anos 1970 restavam uns 200 micos-leões-dourados na natureza; a reprodução em zoológicos e a soltura na Mata Atlântica salvaram a espécie. A juba de Leão-Dourado arde sem queimar a mata e só se apaga quando ele dorme num oco.": {
   "en": "In the 1970s only about 200 golden lion tamarins were left in the wild; zoo breeding and release into the Atlantic Forest saved the species. Leão-Dourado's mane burns without scorching the forest and only goes out when it sleeps.",
   "ctx": "src/data/criaturas/parte-061-120.ts:87 · campo diario"
  },
@@ -695,7 +695,7 @@
   "en": "Leaf litter of hot routes",
   "ctx": "src/data/criaturas/parte-061-120.ts:291 · campo habitat"
  },
- "O veneno da jararaca deu origem ao captopril, um dos remédios para pressão alta mais usados no mundo, criado a partir de pesquisas brasileiras. As escamas foscas de Jararacuçu não refletem luz alguma, e ela parece um pedaço de chão que se move.": {
+ "O veneno da jararaca deu origem ao captopril, remédio para pressão alta usado no mundo todo, criado por pesquisadores brasileiros. As escamas foscas de Jararacuçu não refletem luz alguma, e ela parece um pedaço de chão que se move.": {
   "en": "Jararaca venom led to captopril, one of the most widely used blood pressure drugs in the world, developed from Brazilian research. Jararacuçu's dull scales reflect no light at all, and it looks like a patch of ground that moves.",
   "ctx": "src/data/criaturas/parte-061-120.ts:299 · campo diario"
  },
@@ -703,7 +703,7 @@
   "en": "Damp trails and ravines",
   "ctx": "src/data/criaturas/parte-061-120.ts:300 · campo habitat"
  },
- "A coral-verdadeira tem um dos venenos mais potentes do Brasil, mas é tímida e, quando ameaçada, esconde a cabeça e ergue a cauda enrolada para confundir o predador. Os anéis de Coralzinha acendem em sequência, como luzinhas de festa, e hipnotizam quem olha demais.": {
+ "A coral-verdadeira tem um dos venenos mais fortes do Brasil, mas é tímida: ameaçada, esconde a cabeça e ergue a cauda para confundir. Os anéis de Coralzinha acendem em sequência, como luzinhas de festa, e hipnotizam quem olha.": {
   "en": "The true coral snake has one of Brazil's most potent venoms, but it's shy: when threatened, it hides its head and raises its curled tail to fool predators. Coralzinha's rings light up in sequence, like party lights, and hypnotize onlookers.",
   "ctx": "src/data/criaturas/parte-061-120.ts:308 · campo diario"
  },
@@ -751,7 +751,7 @@
   "en": "Forest trails and picnic spots",
   "ctx": "src/data/criaturas/parte-061-120.ts:359 · campo habitat"
  },
- "Os quatis andam em bandos de fêmeas e filhotes com a cauda erguida como antenas, o que ajuda o grupo a não se perder no capim alto; os machos adultos vivem sozinhos. A cauda anelada de Quatizão é o estandarte do bando: abaixada é paz, girando é roda de briga.": {
+ "Os quatis andam em bandos de fêmeas e filhotes, de cauda erguida como antena para não se perder no capim; os machos vivem sozinhos. A cauda anelada de Quatizão é o estandarte do bando: abaixada é paz, girando é roda de briga.": {
   "en": "Coatis roam in bands of females and young with their tails raised like antennas, which helps the group stay together in tall grass; adult males live alone. Quatizão's ringed tail is the band's banner: lowered means peace, spinning means a brawl.",
   "ctx": "src/data/criaturas/parte-061-120.ts:367 · campo diario"
  },
@@ -767,7 +767,7 @@
   "en": "Damp forests and riverbanks",
   "ctx": "src/data/criaturas/parte-061-120.ts:378 · campo habitat"
  },
- "A anta é o maior mamífero terrestre do Brasil e é chamada de jardineira da floresta, porque espalha sementes grandes por quilômetros em suas fezes. No lombo de Antão as sementes brotam ali mesmo, e ele deixa uma trilha de mudas por onde passa.": {
+ "A anta é o maior mamífero terrestre do Brasil, a jardineira da floresta: espalha sementes grandes por quilômetros nas fezes. No lombo de Antão as sementes brotam ali mesmo, e ele deixa uma trilha de mudas por onde passa.": {
   "en": "The tapir is Brazil's largest land mammal and is called the forest's gardener, because it spreads big seeds for miles in its droppings. Seeds sprout right on Antão's back, and it leaves a trail of seedlings wherever it goes.",
   "ctx": "src/data/criaturas/parte-061-120.ts:386 · campo diario"
  },
@@ -815,7 +815,7 @@
   "en": "Scrubby fields and cerrado pastures",
   "ctx": "src/data/criaturas/parte-061-120.ts:437 · campo habitat"
  },
- "A seriema caça cobras: agarra a presa com o bico e a bate repetidas vezes contra o chão ou contra uma pedra, e ainda tem uma garra curva no segundo dedo. Seriemão desafia as serpentes da chapada para duelos e conta as vitórias em voz alta.": {
+ "A seriema caça cobras: agarra a presa com o bico e a bate contra o chão ou uma pedra, e ainda tem uma garra curva no segundo dedo. Seriemão desafia as serpentes da chapada para duelos e conta as vitórias em voz alta.": {
   "en": "The seriema hunts snakes: it grabs the prey in its beak and slams it again and again against the ground or a rock, and it has a curved claw on its second toe. Seriemão challenges the plateau's serpents to duels and counts its wins out loud.",
   "ctx": "src/data/criaturas/parte-061-120.ts:445 · campo diario"
  },
@@ -871,7 +871,7 @@
   "en": "Canopy of Floresta Ancestral and the Peak",
   "ctx": "src/data/criaturas/parte-061-120.ts:505 · campo habitat"
  },
- "Os filhotes de pirarucu nadam em cardume colados à cabeça do pai, que os protege por meses e escurece para escondê-los. Pirarucinho sobe à superfície para respirar a cada poucos minutos e aproveita para espiar o barco do pescador.": {
+ "Os filhotes de pirarucu nadam colados à cabeça do pai, que os protege por meses e escurece para escondê-los. Pirarucinho sobe para respirar a cada poucos minutos e aproveita para espiar o barco do pescador.": {
   "en": "Baby arapaima swim in a school pressed against their father's head; he guards them for months and turns dark to hide them. Pirarucinho comes up to breathe every few minutes and takes the chance to peek at the fisher's boat.",
   "ctx": "src/data/criaturas/parte-061-120.ts:516 · campo diario"
  },
@@ -879,7 +879,7 @@
   "en": "Floodplain lakes, fishing only",
   "ctx": "src/data/criaturas/parte-061-120.ts:517 · campo habitat"
  },
- "O pirarucu é um dos maiores peixes de água doce do mundo, precisa respirar ar na superfície e tem escamas tão duras que resistem a mordidas de piranha. As escamas vermelhas de Pirarucão guardam o desenho de rios que já secaram há muito tempo.": {
+ "O pirarucu é um dos maiores peixes de água doce do mundo, respira ar na superfície e tem escamas que resistem a mordida de piranha. As escamas vermelhas de Pirarucão guardam o desenho de rios que secaram há muito tempo.": {
   "en": "The arapaima is one of the largest freshwater fish in the world, must breathe air at the surface and has scales so tough they resist piranha bites. Pirarucão's red scales keep the pattern of rivers that dried up long ago.",
   "ctx": "src/data/criaturas/parte-061-120.ts:525 · campo diario"
  },
@@ -887,7 +887,7 @@
   "en": "Deep Pantanal pools and flooded tunnels",
   "ctx": "src/data/criaturas/parte-061-120.ts:526 · campo habitat"
  },
- "A piranha-vermelha é mais medrosa do que a fama: anda em cardume para se proteger de botos, jacarés e aves, e come muita carniça e pedaços de nadadeira. Piranhinha late como um cachorrinho quando é tirada da água, som que as piranhas de verdade também fazem.": {
+ "A piranha-vermelha é mais medrosa que a fama: anda em cardume para fugir de botos, jacarés e aves, e come muita carniça. Piranhinha late como um cachorrinho quando sai da água, som que as piranhas de verdade também fazem.": {
   "en": "The red-bellied piranha is shyer than its fame: it travels in schools to stay safe from dolphins, caimans and birds, and eats lots of carrion. Piranhinha barks like a puppy when pulled out of the water, just like real piranhas do.",
   "ctx": "src/data/criaturas/parte-061-120.ts:535 · campo diario"
  },
@@ -1071,7 +1071,7 @@
   "en": "Serra Gelada pine woods by day",
   "ctx": "src/data/criaturas/parte-121-180.ts:154 · campo habitat"
  },
- "A gralha-azul enterra pinhões para comer depois e esquece boa parte deles, que brotam: foi assim que ela ganhou fama de plantadora das araucárias e virou ave-símbolo do Paraná. Onde a Gralha-Azul pousa, a geada da manhã seguinte desenha um pinheirinho no chão.": {
+ "A gralha-azul enterra pinhões e esquece boa parte, que brota: por isso é tida como plantadora das araucárias e é a ave-símbolo do Paraná. Onde a Gralha-Azul pousa, a geada da manhã seguinte desenha um pinheirinho no chão.": {
   "en": "The azure jay buries pine nuts and forgets many of them, which sprout: that's how it became the planter of the araucarias and the state bird of Paraná. Wherever Gralha-Azul lands, the next morning's frost draws a little pine tree.",
   "ctx": "src/data/criaturas/parte-121-180.ts:162 · campo diario"
  },
@@ -1103,7 +1103,7 @@
   "en": "Cold highland woods at night",
   "ctx": "src/data/criaturas/parte-121-180.ts:192 · campo habitat"
  },
- "O maracajá passa quase a vida toda nas árvores, e há registro na Amazônia de um deles imitando o chamado de filhotes de sauim para atrair os adultos. O Maracajá-Nevado caça em silêncio sobre a geada, e o único rastro que deixa é um floco no formato de pata.": {
+ "O maracajá vive quase só nas árvores, e na Amazônia já foi visto imitando filhotes de sauim para atrair os adultos. O Maracajá-Nevado caça em silêncio sobre a geada, e o único rastro que deixa é um floco em forma de pata.": {
   "en": "The margay spends almost its whole life in trees, and in the Amazon one was recorded imitating the call of baby tamarins to lure the adults. Maracajá-Nevado hunts silently over the frost, and its only trail is a snowflake shaped like a paw.",
   "ctx": "src/data/criaturas/parte-121-180.ts:200 · campo diario"
  },
@@ -1119,7 +1119,7 @@
   "en": "Route grass at night and Power Plant outskirts",
   "ctx": "src/data/criaturas/parte-121-180.ts:213 · campo habitat"
  },
- "Só o grilo macho canta, raspando uma asa na outra, e o ritmo acelera com o calor: dá para estimar a temperatura contando os cricris. As asas do Grilão-Elétrico guardam carga como capacitores, e nas noites abafadas ele acende sozinho os postes da Usina.": {
+ "Só o grilo macho canta, raspando uma asa na outra, e o ritmo acelera com o calor: dá para estimar a temperatura pelos cricris. As asas do Grilão-Elétrico guardam carga, e nas noites abafadas ele acende sozinho os postes da Usina.": {
   "en": "Only male crickets sing, scraping one wing on the other, and the beat speeds up with the heat: count the chirps and you can tell the temperature. Grilão-Elétrico's wings store charge, and on muggy nights it lights the Power Plant's lampposts.",
   "ctx": "src/data/criaturas/parte-121-180.ts:221 · campo diario"
  },
@@ -1167,7 +1167,7 @@
   "en": "Ground burrows in Vale Verde and caves at night",
   "ctx": "src/data/criaturas/parte-121-180.ts:270 · campo habitat"
  },
- "A caranguejeira-golias da Amazônia é a maior aranha do mundo em peso: as pernas abertas passam de um palmo e meio, e as fêmeas vivem mais de vinte anos. O Caranguejeirão anda tão macio sobre as folhas que só o pelo arrepiado do treinador avisa que ele chegou.": {
+ "A caranguejeira-golias da Amazônia é a maior aranha do mundo em peso: as pernas passam de um palmo e meio, e as fêmeas vivem vinte anos. O Caranguejeirão anda tão macio nas folhas que só o arrepio do treinador avisa que ele chegou.": {
   "en": "The Goliath birdeater of the Amazon is the world's heaviest spider: its legs span over a hand and a half, and females live over twenty years. Caranguejeirão walks so softly that only the trainer's hair standing on end warns it has arrived.",
   "ctx": "src/data/criaturas/parte-121-180.ts:278 · campo diario"
  },
@@ -1183,7 +1183,7 @@
   "en": "Tree hollows near flowers, by day",
   "ctx": "src/data/criaturas/parte-121-180.ts:289 · campo habitat"
  },
- "Nas colmeias de jataí, soldados maiores que as operárias ficam pairando dia e noite diante da entrada, coisa rara entre as abelhas. A coroa de cera da Jataí-Rainha nunca derrete, e dizem que uma gota do seu mel adoça um rio inteiro.": {
+ "Nas colmeias de jataí, soldados maiores que as operárias pairam dia e noite diante da entrada, coisa rara entre abelhas. A coroa de cera da Jataí-Rainha nunca derrete, e dizem que uma gota do seu mel adoça um rio inteiro.": {
   "en": "In jataí hives, soldiers bigger than the workers hover day and night in front of the entrance, something rare among bees. Jataí-Rainha's wax crown never melts, and they say a single drop of its honey sweetens a whole river.",
   "ctx": "src/data/criaturas/parte-121-180.ts:297 · campo diario"
  },
@@ -1215,7 +1215,7 @@
   "en": "Sunny tree trunks, by day",
   "ctx": "src/data/criaturas/parte-121-180.ts:327 · campo habitat"
  },
- "O canto da cigarra sai de duas membranas no abdômen, os tímbalos, e em algumas espécies passa de 100 decibéis, tão alto quanto uma motosserra. Quando o Cigarrão abre as asas e canta, as folhas caem em roda e o chapéu do treinador vai junto.": {
+ "A cigarra canta com duas membranas no abdômen, os tímbalos, e algumas passam de 100 decibéis, alto como uma motosserra. Quando o Cigarrão abre as asas e canta, as folhas caem em roda e o chapéu do treinador vai junto.": {
   "en": "The cicada's song comes from two membranes on its abdomen, the tymbals, and in some species it tops 100 decibels, as loud as a chainsaw. When Cigarrão spreads its wings and sings, the leaves fall in a circle and the trainer's hat goes with them.",
   "ctx": "src/data/criaturas/parte-121-180.ts:335 · campo diario"
  },
@@ -1231,7 +1231,7 @@
   "en": "Creek banks and wetlands",
   "ctx": "src/data/criaturas/parte-121-180.ts:346 · campo habitat"
  },
- "Há 300 milhões de anos voavam parentes das libélulas com setenta centímetros de uma ponta da asa à outra, os maiores insetos que já existiram. A Lavadeira-Dragão herdou esse tamanho, e a luz que atravessa suas asas de vitral pinta o chão como dentro de uma igreja.": {
+ "Há 300 milhões de anos voavam parentes das libélulas com setenta centímetros de asa a asa, os maiores insetos que já existiram. A Lavadeira-Dragão herdou o tamanho, e a luz que passa por suas asas pinta o chão como vitral.": {
   "en": "300 million years ago, dragonfly relatives seventy centimeters across flew the skies, the largest insects ever. Lavadeira-Dragão inherited that size, and light through its stained-glass wings paints the ground like a church floor.",
   "ctx": "src/data/criaturas/parte-121-180.ts:354 · campo diario"
  },
@@ -1247,7 +1247,7 @@
   "en": "Tall grass and flowering shrubs",
   "ctx": "src/data/criaturas/parte-121-180.ts:365 · campo habitat"
  },
- "O bote do louva-a-deus dura poucos centésimos de segundo, rápido demais para o olho humano acompanhar. O Louva-Mestre repete a mesma sequência de golpes a cada amanhecer no Planalto, e os capoeiristas sobem a serra só para assistir.": {
+ "O bote do louva-a-deus dura poucos centésimos de segundo, rápido demais para o olho humano. O Louva-Mestre repete a mesma sequência de golpes a cada amanhecer no Planalto, e os capoeiristas sobem a serra só para assistir.": {
   "en": "A mantis strike lasts a few hundredths of a second, too fast for the human eye to follow. Louva-Mestre repeats the same sequence of strikes every dawn on the Planalto, and capoeiristas climb the mountain just to watch.",
   "ctx": "src/data/criaturas/parte-121-180.ts:373 · campo diario"
  },
@@ -1263,7 +1263,7 @@
   "en": "Under cracked rocks of the sertão and cerrado",
   "ctx": "src/data/criaturas/parte-121-180.ts:386 · campo habitat"
  },
- "No século XIX, naturalistas registraram relatos sertanejos de um verme colossal, o Minhocão, que abriria valas, desviaria rios e derrubaria barrancos. Quando a terra treme sem motivo na Floresta Ancestral, os mais velhos dizem apenas que ele mudou de lado para dormir.": {
+ "No século XIX, naturalistas registraram relatos sertanejos do Minhocão, um verme colossal que abriria valas e desviaria rios. Quando a terra treme sem motivo na Floresta Ancestral, os mais velhos dizem que ele virou de lado para dormir.": {
   "en": "In the 1800s, naturalists recorded backlanders' tales of a colossal worm, the Minhocão, said to dig ditches, divert rivers and topple riverbanks. When Floresta Ancestral shakes for no reason, the elders say it just rolled over in its sleep.",
   "ctx": "src/data/criaturas/parte-121-180.ts:394 · campo diario"
  },
@@ -1279,7 +1279,7 @@
   "en": "Fields of cold, sandy soil",
   "ctx": "src/data/criaturas/parte-121-180.ts:405 · campo habitat"
  },
- "Os dentes do tuco-tuco são alaranjados porque o esmalte tem ferro, e ele os usa junto com as unhas para escavar; os lábios se fecham atrás dos dentes para não engolir terra. As garras-pá do Tuco-Escavador abrem um túnel mais depressa do que o treinador consegue segui-lo.": {
+ "Os dentes do tuco-tuco são alaranjados porque o esmalte tem ferro, e os lábios fecham atrás deles para não engolir terra ao cavar. As garras-pá do Tuco-Escavador abrem túnel mais depressa do que o treinador consegue segui-lo.": {
   "en": "The tuco-tuco's teeth are orange because their enamel contains iron, and it digs with them and its claws; its lips close behind its teeth to keep dirt out. Tuco-Escavador's shovel claws dig faster than its trainer can follow.",
   "ctx": "src/data/criaturas/parte-121-180.ts:413 · campo diario"
  },
@@ -1295,7 +1295,7 @@
   "en": "Cerrado termite mounds",
   "ctx": "src/data/criaturas/parte-121-180.ts:424 · campo habitat"
  },
- "No Cerrado, larvas de vaga-lume moram nos cupinzeiros e acendem luzes verdes nas noites quentes e úmidas para atrair presas, e há murundus de cupim com milhares de anos de idade. O Cupinzeiro-Vivo cansou de esperar no mesmo lugar e saiu andando, com a colônia inteira e as luzinhas dentro.": {
+ "Há murundus de cupim no Cerrado com milhares de anos, e larvas de vaga-lume moram neles, acendendo luzes verdes para atrair presas. O Cupinzeiro-Vivo cansou de esperar e saiu andando, com a colônia e as luzinhas dentro.": {
   "en": "In the Cerrado, firefly larvae live in termite mounds and glow green on warm nights to lure prey, and some mounds are thousands of years old. Cupinzeiro-Vivo got tired of waiting and walked off, with the whole colony and the little lights inside.",
   "ctx": "src/data/criaturas/parte-121-180.ts:432 · campo diario"
  },
@@ -1311,7 +1311,7 @@
   "en": "Backland rock flats and quarries",
   "ctx": "src/data/criaturas/parte-121-180.ts:443 · campo habitat"
  },
- "O mocó tem almofadas nas patas que grudam na rocha lisa, e os grupos usam os mesmos esconderijos de pedra por muitas gerações. O pelo do Mocó-da-Rocha cristalizou com o tempo, e ao sol do meio-dia ele parece um veio de quartzo que respira.": {
+ "O mocó tem almofadas nas patas que grudam na rocha lisa, e os grupos usam os mesmos esconderijos por gerações. O pelo do Mocó-da-Rocha cristalizou com o tempo, e ao sol do meio-dia ele parece um veio de quartzo que respira.": {
   "en": "The rock cavy has paw pads that grip smooth rock, and groups use the same stone hideouts for many generations. Mocó-da-Rocha's fur crystallized over time, and in the noon sun it looks like a vein of quartz that breathes.",
   "ctx": "src/data/criaturas/parte-121-180.ts:451 · campo diario"
  },
@@ -1319,7 +1319,7 @@
   "en": "Chapada cliffs and rocks of the high routes",
   "ctx": "src/data/criaturas/parte-121-180.ts:452 · campo habitat"
  },
- "Os andorinhões têm pernas tão curtas que não pousam em galhos: agarram-se de pé às paredes de pedra e fazem quase tudo voando, inclusive beber água. O Andorim dorme pendurado no teto da gruta e acorda de mau humor se alguém acende o lampião.": {
+ "Os andorinhões têm pernas tão curtas que não pousam em galhos: agarram-se às paredes de pedra e fazem quase tudo voando, até beber. O Andorim dorme pendurado no teto da gruta e acorda de mau humor se alguém acende o lampião.": {
   "en": "Swifts have legs so short they can't perch on branches: they cling upright to rock walls and do almost everything on the wing, even drink. Andorim sleeps hanging from the cave ceiling and wakes up grumpy if anyone lights a lantern.",
   "ctx": "src/data/criaturas/parte-121-180.ts:463 · campo diario"
  },
@@ -1327,7 +1327,7 @@
   "en": "Walls of Gruta do Eco and cliffs",
   "ctx": "src/data/criaturas/parte-121-180.ts:464 · campo habitat"
  },
- "Nas Cataratas do Iguaçu, os andorinhões atravessam a cortina de água para dormir e fazer ninho na rocha molhada atrás das quedas, onde nenhum predador chega. O Andorinhão-da-Cachoeira fura a cascata sem molhar as penas, e quem o segue encontra sempre uma gruta escondida.": {
+ "Nas Cataratas do Iguaçu, os andorinhões atravessam a cortina de água para dormir na rocha atrás das quedas, longe dos predadores. O Andorinhão-da-Cachoeira fura a cascata sem se molhar, e quem o segue acha uma gruta escondida.": {
   "en": "At Iguaçu Falls, swifts fly through the falling water to nest on the wet rock behind it, where no predator can reach. Andorinhão-da-Cachoeira pierces waterfalls without wetting a feather, and following it leads to hidden grottos.",
   "ctx": "src/data/criaturas/parte-121-180.ts:472 · campo diario"
  },
@@ -1335,7 +1335,7 @@
   "en": "Behind waterfalls and on the slopes of Monte Tupã",
   "ctx": "src/data/criaturas/parte-121-180.ts:473 · campo habitat"
  },
- "O urutau passa o dia imóvel na ponta de um tronco quebrado, de bico para cima, e fica idêntico a um pedaço de galho; põe um único ovo, equilibrado ali mesmo, sem ninho. O Urutauzim já nasce sabendo ficar parado, e é o filhote mais difícil de achar de Pingorama.": {
+ "O urutau passa o dia imóvel na ponta de um tronco quebrado, idêntico a um galho, e põe um único ovo ali mesmo, sem ninho. O Urutauzim já nasce sabendo ficar parado, e é o filhote mais difícil de achar de Pingorama.": {
   "en": "By day the potoo sits motionless on a broken trunk, beak up, looking just like a branch; it lays a single egg balanced right there, with no nest. Urutauzim is born knowing how to stay still, and it's the hardest chick to find in Pingorama.",
   "ctx": "src/data/criaturas/parte-121-180.ts:482 · campo diario"
  },
@@ -1343,7 +1343,7 @@
   "en": "Dry stumps at forest edges, at night",
   "ctx": "src/data/criaturas/parte-121-180.ts:483 · campo habitat"
  },
- "As pálpebras do urutau têm duas fendas pelas quais ele enxerga de olhos fechados, e seu canto triste, descendo de tom, deu origem à lenda da mãe-da-lua que chora um amor perdido. Quem escuta o Urutau-Fantasma na estrada sente saudade de alguém que nem chegou a conhecer.": {
+ "O urutau enxerga de olhos fechados por fendas nas pálpebras, e seu canto triste deu origem à lenda da mãe-da-lua que chora um amor perdido. Quem ouve o Urutau-Fantasma na estrada sente saudade de quem nem conheceu.": {
   "en": "The potoo's eyelids have two slits it sees through with its eyes shut, and its sad, falling song inspired the legend of the moon-mother weeping for a lost love. Whoever hears Urutau-Fantasma misses someone they never even met.",
   "ctx": "src/data/criaturas/parte-121-180.ts:491 · campo diario"
  },
@@ -1367,23 +1367,23 @@
   "en": "Treetops of Monte Tupã and the foggy route, at night",
   "ctx": "src/data/criaturas/parte-121-180.ts:511 · campo habitat"
  },
- "Boitatá vem do tupi mboi tatá, cobra de fogo: a serpente que sobreviveu a uma grande noite sem fim comendo os olhos dos bichos e ficou cheia de luz. Em 1560 o padre Anchieta já escrevia sobre esse facho que corre pelos campos; em Pingorama, ele ainda queima quem põe fogo na mata e poupa quem a protege.": {
-  "en": "Boitatá is Tupi for fire snake: the serpent that survived an endless night eating the eyes of animals and grew full of light. Anchieta wrote of it in 1560; in Pingorama, it burns those who set fire to the forest and spares its protectors.",
+ "Boitatá vem do tupi mboi tatá, cobra de fogo, e em 1560 o padre Anchieta já escrevia sobre esse facho que corre pelos campos. Em Pingorama ele ainda queima quem põe fogo na mata e poupa quem a protege.": {
+  "en": "Boitatá comes from the Tupi mboi tatá, fire snake, and back in 1560 Father Anchieta was already writing about this blaze that races across the fields. In Pingorama it still burns those who set the forest on fire and spares those who protect it.",
   "ctx": "src/data/criaturas/parte-121-180.ts:521 · campo diario"
  },
  "Câmara mais funda da Caverna do Vulcão": {
   "en": "Deepest chamber of Caverna do Vulcão",
   "ctx": "src/data/criaturas/parte-121-180.ts:522 · campo habitat"
  },
- "Boiúna quer dizer cobra preta em tupi: é a Cobra-Grande dos ribeirinhos da Amazônia, cujos olhos brilham como tochas e cujo rastro teria cavado os igarapés. Dizem que ela se disfarça de navio iluminado nas noites sem lua; no fundo do recife, as luzes que os mergulhadores veem são só ela piscando devagar.": {
-  "en": "Boiúna is Tupi for black snake: the Great Snake of Amazon river folk, with eyes like torches and a trail said to have carved the creeks. It is said to pose as a lit-up ship on moonless nights; deep in the reef, divers see it blinking slowly.",
+ "Boiúna quer dizer cobra preta em tupi: é a Cobra-Grande da Amazônia, de olhos como tochas, que se disfarça de navio iluminado nas noites sem lua. No fundo do recife, as luzes que os mergulhadores veem são ela piscando devagar.": {
+  "en": "Boiúna is Tupi for black snake: the Great Snake of the Amazon, with eyes like torches, that disguises itself as a lit-up ship on moonless nights. Deep in the reef, the lights divers see are just it blinking slowly.",
   "ctx": "src/data/criaturas/parte-121-180.ts:530 · campo diario"
  },
  "Fossa escura no fundo do Recife Submerso": {
   "en": "Dark trench at the bottom of Recife Submerso",
   "ctx": "src/data/criaturas/parte-121-180.ts:531 · campo habitat"
  },
- "O Mapinguari das histórias amazônicas é um gigante peludo, de fedor insuportável e pele que flecha não fura; alguns pesquisadores acham que a lenda guarda a memória das preguiças-gigantes, extintas há cerca de dez mil anos. O de Pingorama dorme de pé entre as sumaúmas, e a floresta inteira prende a respiração quando ele boceja.": {
+ "O Mapinguari das lendas amazônicas é um gigante peludo e fedido de couro que flecha não fura; talvez lembre as preguiças-gigantes extintas. O de Pingorama dorme de pé entre as sumaúmas, e a mata prende o fôlego quando ele boceja.": {
   "en": "The Mapinguari of Amazon tales is a hairy, smelly giant whose hide no arrow can pierce; it may echo giant ground sloths that died out ages ago. Pingorama's sleeps standing among kapok trees, and the forest holds its breath when it yawns.",
   "ctx": "src/data/criaturas/parte-121-180.ts:539 · campo diario"
  },
@@ -1391,7 +1391,7 @@
   "en": "Heart of Floresta Ancestral",
   "ctx": "src/data/criaturas/parte-121-180.ts:540 · campo habitat"
  },
- "Caipora vem do tupi caá-póra, morador do mato: o protetor da caça que anda montado num queixada, confunde os rastros e castiga quem mata além da conta, mas aceita fumo deixado num toco como agrado. Os queixadas de verdade andam em varas de centenas e batem os dentes como castanholas; este corre sozinho, e a mata fecha a trilha atrás dele.": {
+ "Caipora vem do tupi caá-póra, morador do mato: protetor da caça montado num queixada, que confunde rastros, castiga quem caça demais e aceita agrado de fumo. Queixadas andam em bando; este corre só, e a mata se fecha atrás dele.": {
   "en": "Caipora is Tupi for dweller of the woods: the protector of game who rides a peccary, muddles tracks and punishes overhunting, but accepts a gift of tobacco. Real peccaries roam in herds; this one runs alone, and the forest closes the trail behind it.",
   "ctx": "src/data/criaturas/parte-121-180.ts:548 · campo diario"
  },
@@ -1399,7 +1399,7 @@
   "en": "Roaming the woods of Sertão das Névoas",
   "ctx": "src/data/criaturas/parte-121-180.ts:549 · campo habitat"
  },
- "O uirapuru-verdadeiro é um passarinho pardo da Amazônia que canta poucos minutos ao amanhecer, em poucos dias do ano, enquanto constrói o ninho; diz a lenda que a mata inteira se cala para ouvir. Em Pingorama ele só aparece a quem já conhece quase todas as criaturas, e quem o escuta carrega sorte pelo resto da jornada.": {
+ "O uirapuru é um passarinho pardo da Amazônia que canta poucos minutos ao amanhecer, poucos dias por ano; diz a lenda que a mata se cala para ouvir. Em Pingorama ele só aparece a quem conhece quase todas as criaturas, e dá sorte.": {
   "en": "The musician wren is a little brown Amazon bird that sings at dawn a few days a year, while nesting; legend says the forest goes silent to listen. In Pingorama it appears only to those who know nearly every creature, and brings luck.",
   "ctx": "src/data/criaturas/parte-121-180.ts:557 · campo diario"
  },
@@ -1407,31 +1407,31 @@
   "en": "Serra Gelada clearing at dawn",
   "ctx": "src/data/criaturas/parte-121-180.ts:558 · campo habitat"
  },
- "Para os povos tupis, Tupã não era um deus com rosto: era o próprio estrondo do trovão, a voz que vinha do céu. O gavião-real, a harpia, tem garras do tamanho das de um urso-pardo; o Gavião-Tupã junta as duas coisas, e cada batida de suas asas no alto do monte chega aos vales como trovoada.": {
-  "en": "For the Tupi, Tupã had no face: he was the roar of thunder itself, the voice from the sky. The harpy eagle has talons as big as a grizzly's claws; Gavião-Tupã unites the two, and each beat of its wings on the summit rolls down the valleys as thunder.",
+ "Para os tupis, Tupã era o próprio estrondo do trovão, a voz do céu. A harpia, o gavião-real, tem garras do tamanho das de um urso; o Gavião-Tupã junta as duas coisas, e cada batida de suas asas chega aos vales como trovoada.": {
+  "en": "For the Tupi, Tupã was the very roar of thunder, the voice of the sky. The harpy eagle has talons as big as a bear's claws; Gavião-Tupã unites the two, and each beat of its wings rolls down the valleys as thunder.",
   "ctx": "src/data/criaturas/parte-121-180.ts:566 · campo diario"
  },
  "Cume do Monte Tupã, entre as nuvens": {
   "en": "Summit of Monte Tupã, among the clouds",
   "ctx": "src/data/criaturas/parte-121-180.ts:567 · campo habitat"
  },
- "Jaci é a lua na tradição tupi, guardiã da noite e das plantas, irmã e companheira de Guaraci, o sol. O lobo-guará, de pernas compridas como pernas-de-pau, anda sozinho pelo cerrado ao anoitecer; o Lobo-Jaci só deixa pegadas na lua cheia, e elas somem quando a primeira nuvem passa.": {
-  "en": "In Tupi tradition Jaci is the moon, guardian of night and of plants, sister of Guaraci, the sun. The maned wolf, on legs like stilts, roams the cerrado alone at dusk; Lobo-Jaci leaves tracks only under a full moon, and they vanish with the first cloud.",
+ "Jaci é a lua dos tupis, guardiã da noite e irmã de Guaraci, o sol. O lobo-guará anda sozinho pelo cerrado ao anoitecer; o Lobo-Jaci só deixa pegadas na lua cheia, e elas somem quando passa a primeira nuvem.": {
+  "en": "Jaci is the Tupi moon, guardian of the night and sister of Guaraci, the sun. The maned wolf roams the cerrado alone at dusk; Lobo-Jaci leaves tracks only under a full moon, and they vanish with the first passing cloud.",
   "ctx": "src/data/criaturas/parte-121-180.ts:575 · campo diario"
  },
  "Errante nas noites de lua cheia": {
   "en": "Roaming on full-moon nights",
   "ctx": "src/data/criaturas/parte-121-180.ts:576 · campo habitat"
  },
- "Guaraci é o sol dos tupis, aquele que dá vida aos viventes; e em várias tradições indígenas os eclipses acontecem quando uma onça celeste tenta devorá-lo. A onça-pintada tem a mordida mais forte entre os grandes felinos, capaz de furar casco de jabuti; as pintas da Onça-Guaraci são pequenos sóis, e ela só caminha onde há luz do dia.": {
-  "en": "Guaraci is the Tupi sun, giver of life; in several Indigenous traditions, eclipses happen when a sky jaguar tries to eat it. The jaguar's bite can pierce a tortoise shell; Onça-Guaraci's spots are little suns, and it only walks in daylight.",
+ "Guaraci é o sol dos tupis, e em várias tradições os eclipses são uma onça celeste tentando devorá-lo. A onça-pintada morde mais forte que qualquer grande felino; as pintas da Onça-Guaraci são pequenos sóis, e ela só anda à luz do dia.": {
+  "en": "Guaraci is the Tupi sun, and in several traditions eclipses are a sky jaguar trying to eat it. The jaguar bites harder than any other big cat; Onça-Guaraci's spots are little suns, and it only walks in daylight.",
   "ctx": "src/data/criaturas/parte-121-180.ts:584 · campo diario"
  },
  "Errante sob o sol do meio-dia": {
   "en": "Roaming under the noon sun",
   "ctx": "src/data/criaturas/parte-121-180.ts:585 · campo habitat"
  },
- "O galo-da-serra vive nas serras ao norte de Manaus, e os machos dançam em arenas no chão da mata com a crista laranja aberta em leque. O Galo-Manaó só dança onde o rio Negro e o Solimões correm lado a lado sem se misturar, e traz uma água em cada metade das penas.": {
+ "O galo-da-serra vive nas serras ao norte de Manaus, e os machos dançam no chão da mata com a crista laranja aberta. O Galo-Manaó só dança onde o rio Negro e o Solimões correm juntos, com uma água em cada metade das penas.": {
   "en": "The cock-of-the-rock lives in the hills north of Manaus, where males dance on the forest floor, orange crests fanned out. Galo-Manaó dances only where the Negro and Solimões rivers run side by side unmixed, one water on each half of its plumage.",
   "ctx": "src/data/criaturas/parte-181-182.ts:15 · campo diario"
  },
@@ -1439,7 +1439,7 @@
   "en": "Encontro das Águas islet",
   "ctx": "src/data/criaturas/parte-181-182.ts:16 · campo habitat"
  },
- "O alce é o maior dos cervos: o macho passa de dois metros no ombro e troca a cada ano a galhada em forma de pá. O Borealce veio do norte com uma expedição de pesquisa, e nas noites frias do Pico a galhada dele acende em verde e violeta, como a aurora boreal.": {
+ "O alce é o maior dos cervos: o macho passa de dois metros no ombro e troca todo ano a galhada em forma de pá. O Borealce veio do norte com uma expedição, e nas noites frias do Pico a galhada dele acende em verde e violeta, como a aurora.": {
   "en": "The moose is the largest deer: males stand over two meters tall at the shoulder and regrow shovel-shaped antlers yearly. Borealce came from the north with a research team, and on cold nights at the Peak its antlers glow green and violet.",
   "ctx": "src/data/criaturas/parte-181-182.ts:24 · campo diario"
  },
