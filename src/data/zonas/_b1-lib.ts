@@ -14,7 +14,7 @@ import { CATALOGO_INTERIOR } from '../catalogo-interiores';
 import { tr } from '../../i18n';
 
 export const ERROS_B1: string[] = [];
-const erro = (s: string) => { ERROS_B1.push(s); console.error('[zonas B1] ' + s); };
+const erro = (s: string) => { ERROS_B1.push(s); console.error('[zonas B1]', s); };
 
 const LEGENDA = new Set('.,:;"%~dw=#Ttbfcprev<>glxCo+M ');
 export type Ponto = [number, number];

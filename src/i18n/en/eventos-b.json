@@ -2184,239 +2184,239 @@
   "ctx": "src/data/eventos/posliga.ts:128 · doador()"
  },
  "Seu Tarumã": {
-  "en": "",
+  "en": "Seu Tarumã",
   "ctx": "src/data/eventos/visitantes.ts:240 · campo nome"
  },
  "Drª Solveig": {
-  "en": "",
+  "en": "Dr. Solveig",
   "ctx": "src/data/eventos/visitantes.ts:241 · campo nome"
  },
  "O navegador confere a bússola e aponta para o alto da serra: o Pico Pingorama.": {
-  "en": "",
+  "en": "The navigator checks his compass and points to the top of the mountains: Pico Pingorama.",
   "ctx": "src/data/eventos/visitantes.ts:246 · f()"
  },
  "O pesquisador da expedição anota alguma coisa num caderno molhado de neve e acena para você.": {
-  "en": "",
+  "en": "The expedition researcher jots something in a snow-dampened notebook and waves at you.",
   "ctx": "src/data/eventos/visitantes.ts:246 · f()"
  },
  "Um pesquisador da expedição da Drª Solveig guarda uma Lanterna Boreal {onde}.": {
-  "en": "",
+  "en": "A researcher from Dr. Solveig's expedition is keeping a Boreal Lantern {onde}.",
   "ctx": "src/data/eventos/visitantes.ts:247 · f()"
  },
  "As quatro Lanternas Boreais estão na mochila! O vidro verde brilha sozinho quando sopra o vento frio.\fAgora é subir ao alto do Pico Pingorama, de noite, e acendê-las.": {
-  "en": "",
+  "en": "All four Boreal Lanterns are in your bag! The green glass glows by itself when the cold wind blows.\fNow climb to the top of Pico Pingorama, at night, and light them.",
   "ctx": "src/data/eventos/visitantes.ts:252 · f()"
  },
  "Mais uma Lanterna Boreal! Faltam as dos outros pesquisadores, espalhados pelas terras geladas da serra.": {
-  "en": "",
+  "en": "Another Boreal Lantern! The other researchers still have theirs, scattered across the mountains' frozen lands.",
   "ctx": "src/data/eventos/visitantes.ts:253 · f()"
  },
  "Eu sou o Tarumã, canoeiro lá do Amazonas. Desci o rio atrás de uma história e vim parar neste porto.\fLá na minha terra tem um lugar onde um rio preto e um rio barrento correm lado a lado e não se misturam. E tem uma ave que só dança ali.": {
-  "en": "",
+  "en": "I'm Tarumã, a canoeist from the Amazon. I came down the river chasing a story and ended up in this port.\fBack home there's a place where a black river and a muddy river run side by side and never mix. And there's a bird that only dances there.",
   "ctx": "src/data/eventos/visitantes.ts:265 · f()"
  },
  "Mas essa ave não dança para quem ainda está de passagem. Quando você tiver as dezesseis insígnias de Pingorama, volte para conversar.": {
-  "en": "",
+  "en": "But that bird doesn't dance for those just passing through. When you have Pingorama's sixteen badges, come back and we'll talk.",
   "ctx": "src/data/eventos/visitantes.ts:266 · f()"
  },
  "Dezesseis insígnias! Então você já remou, mergulhou e subiu cascata por esta terra inteira. É de você que eu preciso.": {
-  "en": "",
+  "en": "Sixteen badges! Then you've paddled, dived and climbed waterfalls all over this land. You're the one I need.",
   "ctx": "src/data/eventos/visitantes.ts:269 · f()"
  },
  "Escute: a ave que eu procuro é o Galo-Manaó. Metade das penas é escura como o rio Negro, metade é cor de areia como o Solimões, e as duas metades nunca se misturam.\fEle só dança onde duas águas correm juntas. Eu sei abrir esse caminho, mas preciso de duas águas para chamar o encontro.": {
-  "en": "",
+  "en": "Listen: the bird I'm looking for is the Galo-Manaó. Half its feathers are dark like the Rio Negro, half are sand-colored like the Solimões, and the two halves never mix.\fIt only dances where two waters run together. I know how to open that path, but I need two waters to call the meeting.",
   "ctx": "src/data/eventos/visitantes.ts:270 · f()"
  },
  "Uma água ESCURA, colhida de NOITE no fundo de um rio daqui da Costa do Sol. O Poço do Breu, no fim do Rio Cachoeira-Véu, perto de Serra Fumaça. Tem que mergulhar.\fE uma água BARRENTA, colhida de DIA num rio do Sertão. O poço da cascata seca da Estrada Vermelha, perto de Porto Pantaneiro. Tem que subir a cascata.": {
-  "en": "",
+  "en": "A DARK water, collected at NIGHT from the bottom of a river here on the Costa do Sol. The Poço do Breu, at the end of the Rio Cachoeira-Véu, near Serra Fumaça. You'll have to dive.\fAnd a MUDDY water, collected by DAY from a Sertão river. The pool of the dry waterfall on the Estrada Vermelha, near Porto Pantaneiro. You'll have to climb the waterfall.",
   "ctx": "src/data/eventos/visitantes.ts:271 · f()"
  },
  "Dois frascos de vidro grosso, com rolha de cortiça. Encha um em cada poço e traga para mim, aqui no cais.": {
-  "en": "",
+  "en": "Two thick glass flasks with cork stoppers. Fill one at each pool and bring them to me, here on the dock.",
   "ctx": "src/data/eventos/visitantes.ts:274 · f()"
  },
  "As duas águas! Deixe eu ver contra a luz… Escura como café de coador, e barrenta como café com leite. É isso mesmo.": {
-  "en": "",
+  "en": "Both waters! Let me hold them up to the light… Dark as filtered coffee, and muddy as milky coffee. That's it exactly.",
   "ctx": "src/data/eventos/visitantes.ts:278 · f()"
  },
  "Seu Tarumã despeja os dois frascos na água do porto, um de cada lado da canoa.\fA água escura escorre para a esquerda, a barrenta para a direita… e entre elas se abre uma linha fina, reta como um fio esticado.": {
-  "en": "",
+  "en": "Seu Tarumã pours both flasks into the port water, one on each side of the canoe.\fThe dark water flows to the left, the muddy to the right… and between them opens a thin line, straight as a stretched thread.",
   "ctx": "src/data/eventos/visitantes.ts:281 · f()"
  },
  "O encontro respondeu. Agora eu sei o caminho até a ilhota onde o galo dança. Lá a canoa é sua: reme sempre em cima da linha onde as águas se encontram.\fSe escapar para um lado só, a correnteza leva você de volta. E quando o galo dançar, nem respire.": {
-  "en": "",
+  "en": "The meeting answered. Now I know the way to the islet where the rooster dances. Out there the canoe is yours: always paddle along the line where the waters meet.\fIf you drift to one side, the current takes you back. And when the rooster dances, don't even breathe.",
   "ctx": "src/data/eventos/visitantes.ts:283 · f()"
  },
  "Ainda faltam águas. Lembre: a ESCURA é de noite, no Poço do Breu, no fim do Rio Cachoeira-Véu, com Mergulho.\fA BARRENTA é de dia, no poço da cascata seca da Estrada Vermelha, no Sertão, subindo a cascata.": {
-  "en": "",
+  "en": "Still missing waters. Remember: the DARK one is at night, in the Poço do Breu, at the end of the Rio Cachoeira-Véu, with Dive.\fThe MUDDY one is by day, in the pool of the dry waterfall on the Estrada Vermelha, in the Sertão, climbing the waterfall.",
   "ctx": "src/data/eventos/visitantes.ts:285 · f()"
  },
  "Quebrou um frasco? Tome outro. Vidro é que nem promessa: tem que levar com cuidado.": {
-  "en": "",
+  "en": "Broke a flask? Take another. Glass is like a promise: you have to carry it with care.",
   "ctx": "src/data/eventos/visitantes.ts:286 · f()"
  },
  "O Galo-Manaó viajando com você! Lá no Amazonas ninguém vai acreditar. Vou ter que levar você para contar a história.": {
-  "en": "",
+  "en": "The Galo-Manaó traveling with you! Back in the Amazon nobody will believe it. I'll have to bring you along to tell the story.",
   "ctx": "src/data/eventos/visitantes.ts:290 · f()"
  },
  "Sem o Amuleto do Remo não adianta: no Encontro das Águas quem rema é você.": {
-  "en": "",
+  "en": "It's no use without the Paddle Charm: at the Encontro das Águas, you're the one paddling.",
   "ctx": "src/data/eventos/visitantes.ts:291 · f()"
  },
  "Vamos para o Encontro das Águas?": {
-  "en": "",
+  "en": "Shall we go to the Encontro das Águas?",
   "ctx": "src/data/eventos/visitantes.ts:292 · pergunta/opção"
  },
  "Segura firme! Daqui até lá é rio que não acaba mais.": {
-  "en": "",
+  "en": "Hold on tight! From here to there it's river that never ends.",
   "ctx": "src/data/eventos/visitantes.ts:294 · f()"
  },
  "Chegamos. Olhe a água: preta de um lado, barrenta do outro. A ilhota fica lá no norte.\fQuando quiser voltar, fale comigo aqui na praia.": {
-  "en": "",
+  "en": "We're here. Look at the water: black on one side, muddy on the other. The islet is up north.\fWhen you want to go back, talk to me here on the beach.",
   "ctx": "src/data/eventos/visitantes.ts:296 · f()"
  },
  "Quando quiser, é só falar. O rio espera.": {
-  "en": "",
+  "en": "Whenever you're ready, just say so. The river will wait.",
   "ctx": "src/data/eventos/visitantes.ts:297 · f()"
  },
  "Voltar para Porto Sereia na canoa do Seu Tarumã?": {
-  "en": "",
+  "en": "Go back to Porto Sereia in Seu Tarumã's canoe?",
   "ctx": "src/data/eventos/visitantes.ts:307 · pergunta/opção"
  },
  "Porto Sereia! Quando quiser voltar ao encontro, é só falar comigo.": {
-  "en": "",
+  "en": "Porto Sereia! Whenever you want to go back to the meeting of the waters, just talk to me.",
   "ctx": "src/data/eventos/visitantes.ts:310 · f()"
  },
  "Pode ir. A canoa espera, e eu fico aqui contando boto.": {
-  "en": "",
+  "en": "Go ahead. The canoe will wait, and I'll stay here counting river dolphins.",
   "ctx": "src/data/eventos/visitantes.ts:311 · f()"
  },
  "O GALO-MANAÓ desce da crista de pedra para lutar!": {
-  "en": "",
+  "en": "The GALO-MANAÓ comes down from the stone crest to fight!",
   "ctx": "src/data/eventos/visitantes.ts:318 · f()"
  },
  "O Galo-Manaó se aquietou na cuia. Por um instante, a água escura e a barrenta brilharam juntas em volta da ilhota.": {
-  "en": "",
+  "en": "The Galo-Manaó settled down in the gourd. For a moment, the dark water and the muddy water shone together around the islet.",
   "ctx": "src/data/eventos/visitantes.ts:322 · f()"
  },
  "O Galo-Manaó bate as asas e some sobre a mata, rio abaixo. Ele não voltou mais a dançar na ilhota.": {
-  "en": "",
+  "en": "The Galo-Manaó flaps its wings and vanishes over the forest, downriver. It never danced on the islet again.",
   "ctx": "src/data/eventos/visitantes.ts:325 · f()"
  },
  "Você se afastou. O Galo-Manaó sacode as penas e volta para o alto da pedra.": {
-  "en": "",
+  "en": "You moved away. The Galo-Manaó shakes its feathers and goes back to the top of the rock.",
   "ctx": "src/data/eventos/visitantes.ts:326 · f()"
  },
  "Olá! Desculpe a bagunça: o nosso navio encalhou no banco de areia na noite em que chegamos. Eu sou a Drª Solveig, chefe desta expedição de pesquisa.\fViemos de muito ao norte, de onde o inverno dura meio ano, estudando um animal que nunca tinha saído das nossas montanhas.": {
-  "en": "",
+  "en": "Hello! Sorry about the mess: our ship ran aground on the sandbar the night we arrived. I'm Dr. Solveig, head of this research expedition.\fWe came from far up north, where winter lasts half the year, studying an animal that had never left our mountains.",
   "ctx": "src/data/eventos/visitantes.ts:336 · f()"
  },
  "É um alce, mas não um alce qualquer: quando a noite esfria, a galhada dele acende em faixas verdes e violeta, como a aurora boreal. Nós o chamamos de Borealce.\fNo calor do porto ele ficou inquieto… e uma noite pulou do convés e subiu a serra atrás de frio.": {
-  "en": "",
+  "en": "It's a moose, but not just any moose: when the night gets cold, its antlers light up in green and violet bands, like the northern lights. We call it Borealce.\fIn the heat of the port it got restless… and one night it jumped off the deck and climbed the mountains looking for cold.",
   "ctx": "src/data/eventos/visitantes.ts:337 · f()"
  },
  "Ele só se acalma debaixo da aurora. Aqui não existe aurora, mas trouxemos quatro Lanternas Boreais que imitam a luz dela, e os meus pesquisadores subiram a serra com elas.\fTraga as quatro, acenda-as no lugar mais alto e mais frio desta terra, de noite, e ele vai aparecer.": {
-  "en": "",
+  "en": "It only calms down under the aurora. There's no aurora here, but we brought four Boreal Lanterns that imitate its light, and my researchers went up the mountains with them.\fBring all four, light them at the highest, coldest place in this land, at night, and it will appear.",
   "ctx": "src/data/eventos/visitantes.ts:338 · f()"
  },
  "A Ingrid está em Serra da Geada, o Halvard nos Campos de Altitude, a Sigrid na Lagoa Gelada e o Eirik no Caminho das Névoas.\fSó que eles prometeram entregar as lanternas apenas a quem vencesse uma batalha. Pesquisador do norte é teimoso.": {
-  "en": "",
+  "en": "Ingrid is in Serra da Geada, Halvard in the Campos de Altitude, Sigrid at Lagoa Gelada and Eirik on the Caminho das Névoas.\fBut they promised to hand over the lanterns only to whoever wins a battle. Northern researchers are stubborn.",
   "ctx": "src/data/eventos/visitantes.ts:339 · f()"
  },
  "Ele está com você, e calmo! Eu escrevi uma nota no seu Diário de Campo, na página dos Visitantes: o Borealce não é da fauna daqui, é um visitante do norte.\fCuide dele com frio, sombra e água gelada. E, de vez em quando, olhe para o céu com ele.": {
-  "en": "",
+  "en": "It's with you, and calm! I wrote a note in your Field Journal, on the Visitors page: Borealce isn't from the local fauna, it's a visitor from the north.\fCare for it with cold, shade and icy water. And every now and then, look at the sky with it.",
   "ctx": "src/data/eventos/visitantes.ts:343 · f()"
  },
  "O Borealce sumiu nas nuvens e não voltou mais… Pelo menos ele está livre, no frio que tanto queria. Obrigada por tentar.": {
-  "en": "",
+  "en": "Borealce vanished into the clouds and never came back… At least it's free, in the cold it wanted so much. Thank you for trying.",
   "ctx": "src/data/eventos/visitantes.ts:346 · f()"
  },
  "Você acendeu as lanternas no Pico! Se você só se afastou dele, volte lá de noite: debaixo da aurora ele continua por perto.": {
-  "en": "",
+  "en": "You lit the lanterns on the Peak! If you just walked away from it, go back up at night: under the aurora it's still nearby.",
   "ctx": "src/data/eventos/visitantes.ts:346 · f()"
  },
  "As quatro lanternas! Agora suba ao alto do Pico Pingorama, de noite, e acenda todas juntas. Eu fico aqui, tentando desencalhar o navio.": {
-  "en": "",
+  "en": "All four lanterns! Now climb to the top of Pico Pingorama, at night, and light them all together. I'll stay here, trying to get the ship unstuck.",
   "ctx": "src/data/eventos/visitantes.ts:347 · f()"
  },
  "Ainda faltam lanternas. Os meus pesquisadores só entregam a quem vence uma batalha com eles.": {
-  "en": "",
+  "en": "Still missing lanterns. My researchers only hand them over to whoever beats them in battle.",
   "ctx": "src/data/eventos/visitantes.ts:348 · f()"
  },
  "A da Ingrid, em Serra da Geada.": {
-  "en": "",
+  "en": "Ingrid's, in Serra da Geada.",
   "ctx": "src/data/eventos/visitantes.ts:349 · f()"
  },
  "A do Halvard, nos Campos de Altitude.": {
-  "en": "",
+  "en": "Halvard's, in the Campos de Altitude.",
   "ctx": "src/data/eventos/visitantes.ts:350 · f()"
  },
  "A da Sigrid, na Lagoa Gelada.": {
-  "en": "",
+  "en": "Sigrid's, at Lagoa Gelada.",
   "ctx": "src/data/eventos/visitantes.ts:351 · f()"
  },
  "A do Eirik, no Caminho das Névoas.": {
-  "en": "",
+  "en": "Eirik's, on the Caminho das Névoas.",
   "ctx": "src/data/eventos/visitantes.ts:352 · f()"
  },
  "no alto de Serra da Geada": {
-  "en": "",
+  "en": "up high in Serra da Geada",
   "ctx": "src/data/eventos/visitantes.ts:359 · lanterna()"
  },
  "nos Campos de Altitude": {
-  "en": "",
+  "en": "in the Campos de Altitude",
   "ctx": "src/data/eventos/visitantes.ts:360 · lanterna()"
  },
  "na beira da Lagoa Gelada": {
-  "en": "",
+  "en": "on the shore of Lagoa Gelada",
   "ctx": "src/data/eventos/visitantes.ts:361 · lanterna()"
  },
  "no Caminho das Névoas": {
-  "en": "",
+  "en": "on the Caminho das Névoas",
   "ctx": "src/data/eventos/visitantes.ts:362 · lanterna()"
  },
  "O alto do Pico Pingorama. Daqui se vê o mar da Costa do Sol de um lado e o Sertão das Névoas do outro.\fA Drª Solveig disse que as lanternas só fazem efeito de noite.": {
-  "en": "",
+  "en": "The top of Pico Pingorama. From here you can see the Costa do Sol sea on one side and the Sertão das Névoas on the other.\fDr. Solveig said the lanterns only work at night.",
   "ctx": "src/data/eventos/visitantes.ts:367 · f()"
  },
  "Debaixo da aurora, uma galhada acende entre as nuvens. O Borealce voltou!": {
-  "en": "",
+  "en": "Under the aurora, a set of antlers lights up among the clouds. Borealce is back!",
   "ctx": "src/data/eventos/visitantes.ts:370 · f()"
  },
  "A aurora dança sobre o Pico, mas nenhuma galhada acende entre as nuvens. O Borealce não voltou.": {
-  "en": "",
+  "en": "The aurora dances over the Peak, but no antlers light up among the clouds. Borealce didn't come back.",
   "ctx": "src/data/eventos/visitantes.ts:372 · f()"
  },
  "A aurora dança sobre o Pico. O Borealce, na cuia, parece sonhar com ela.": {
-  "en": "",
+  "en": "The aurora dances over the Peak. Borealce, in its gourd, seems to dream of it.",
   "ctx": "src/data/eventos/visitantes.ts:372 · f()"
  },
  "Um platô de pedra fria, varrido pelo vento. Seria o lugar certo para as Lanternas Boreais da Drª Solveig, mas ainda não há quatro na mochila.": {
-  "en": "",
+  "en": "A plateau of cold stone, swept by the wind. It would be the right place for Dr. Solveig's Boreal Lanterns, but you don't have four in your bag yet.",
   "ctx": "src/data/eventos/visitantes.ts:374 · f()"
  },
  "Lá no alto, o vento de serra assobia frio. {JOGADOR} põe as quatro Lanternas Boreais sobre a pedra, uma em cada canto.\fUma a uma, elas acendem em verde.": {
-  "en": "",
+  "en": "Up high, the mountain wind whistles cold. {JOGADOR} sets the four Boreal Lanterns on the rock, one in each corner.\fOne by one, they light up green.",
   "ctx": "src/data/eventos/visitantes.ts:375 · f()"
  },
  "O céu do Pico se rasga em faixas verdes e violeta: uma aurora boreal, em plena Pingorama!\fDescendo das nuvens, com a galhada acesa como a própria aurora, vem o BOREALCE!": {
-  "en": "",
+  "en": "The sky over the Peak tears open in green and violet bands: northern lights, right here in Pingorama!\fComing down from the clouds, antlers lit like the aurora itself, comes BOREALCE!",
   "ctx": "src/data/eventos/visitantes.ts:378 · f()"
  },
  "O Borealce entrou na cuia. Lá no alto, a aurora ainda brilhou um pouco, como quem se despede.\fA Drª Solveig vai querer saber disso, lá em Porto Pantaneiro.": {
-  "en": "",
+  "en": "Borealce went into the gourd. Up high, the aurora shone a little longer, as if saying goodbye.\fDr. Solveig will want to hear about this, down in Porto Pantaneiro.",
   "ctx": "src/data/eventos/visitantes.ts:392 · f()"
  },
  "O Borealce recua para dentro das nuvens e a galhada apaga devagar. Ele não foi mais visto em Pingorama.": {
-  "en": "",
+  "en": "Borealce retreats into the clouds and its antlers slowly go dark. It was never seen in Pingorama again.",
   "ctx": "src/data/eventos/visitantes.ts:395 · f()"
  },
  "O Borealce sacode a galhada e fica olhando o céu. Ele continua por perto.": {
-  "en": "",
+  "en": "Borealce shakes its antlers and keeps watching the sky. It's still nearby.",
   "ctx": "src/data/eventos/visitantes.ts:396 · f()"
  },
  "Desafiante": {
-  "en": "",
+  "en": "Challenger",
   "ctx": "src/data/torre.ts:21 | src/data/torre.ts:22 | src/data/treinadores/liga.ts:27 · desafiante() | +5"
  },
  "Moema": {
@@ -4508,7 +4508,7 @@
   "ctx": "src/data/treinadores/b2-sul.ts:162 · campo derrota"
  },
  "Coronel do Cartel": {
-  "en": "",
+  "en": "Cartel Colonel",
   "ctx": "src/data/treinadores/conselho.ts:23 · campo classe"
  },
  "Garrote": {
@@ -5532,83 +5532,83 @@
   "ctx": "src/data/treinadores/liga.ts:133 · campo derrota"
  },
  "Glacióloga": {
-  "en": "",
+  "en": "Glaciologist",
   "ctx": "src/data/treinadores/visitantes.ts:14 · exp()"
  },
  "Ingrid": {
-  "en": "",
+  "en": "Ingrid",
   "ctx": "src/data/treinadores/visitantes.ts:14 · exp()"
  },
  "Lanterna? Esta aqui? Eu a guardo desde que o navio encalhou. A Solveig disse para entregar só a quem aguentasse o frio do norte!": {
-  "en": "",
+  "en": "Lantern? This one? I've kept it since the ship ran aground. Solveig said to hand it only to someone who could take the northern cold!",
   "ctx": "src/data/treinadores/visitantes.ts:16 · exp()"
  },
  "Brrr. Você é mais quente do que parece.": {
-  "en": "",
+  "en": "Brrr. You're warmer than you look.",
   "ctx": "src/data/treinadores/visitantes.ts:17 · exp()"
  },
  "Na minha terra a neve dura meio ano. Aqui na serra ela dura uma manhã, e o povo ainda reclama.": {
-  "en": "",
+  "en": "Where I'm from the snow lasts half a year. Up here it lasts a morning, and folks still complain.",
   "ctx": "src/data/treinadores/visitantes.ts:18 · exp()"
  },
  "Meteorologista": {
-  "en": "",
+  "en": "Meteorologist",
   "ctx": "src/data/treinadores/visitantes.ts:19 · exp()"
  },
  "Halvard": {
-  "en": "",
+  "en": "Halvard",
   "ctx": "src/data/treinadores/visitantes.ts:19 · exp()"
  },
  "Pressão caindo, vento virando para o sul… e um desafiante subindo o morro. Previsão: batalha!": {
-  "en": "",
+  "en": "Pressure dropping, wind shifting south… and a challenger coming up the hill. Forecast: battle!",
   "ctx": "src/data/treinadores/visitantes.ts:21 · exp()"
  },
  "Errei a previsão. Acontece até com satélite.": {
-  "en": "",
+  "en": "My forecast was wrong. Happens even to satellites.",
   "ctx": "src/data/treinadores/visitantes.ts:22 · exp()"
  },
  "O frio daqui vem do sul, com o minuano. O nosso vem do polo. Os dois cortam igual a orelha.": {
-  "en": "",
+  "en": "The cold here comes from the south, with the minuano. Ours comes from the pole. Both nip your ears just the same.",
   "ctx": "src/data/treinadores/visitantes.ts:23 · exp()"
  },
  "Mergulhadora Polar": {
-  "en": "",
+  "en": "Polar Diver",
   "ctx": "src/data/treinadores/visitantes.ts:24 · exp()"
  },
  "Sigrid": {
-  "en": "",
+  "en": "Sigrid",
   "ctx": "src/data/treinadores/visitantes.ts:24 · exp()"
  },
  "A lagoa gelada é a coisa mais parecida com casa que eu achei por aqui. A lanterna fica comigo até alguém me tirar da água!": {
-  "en": "",
+  "en": "The frozen lagoon is the closest thing to home I've found around here. The lantern stays with me until someone gets me out of the water!",
   "ctx": "src/data/treinadores/visitantes.ts:26 · exp()"
  },
  "Saí da água. Molhada e derrotada.": {
-  "en": "",
+  "en": "I'm out of the water. Wet and beaten.",
   "ctx": "src/data/treinadores/visitantes.ts:27 · exp()"
  },
  "Debaixo do gelo fino da lagoa tem Pinguimares dormindo em fila. Parecem uma família de casaco igual.": {
-  "en": "",
+  "en": "Under the lagoon's thin ice there are Pinguimares sleeping in a row. They look like a family in matching coats.",
   "ctx": "src/data/treinadores/visitantes.ts:28 · exp()"
  },
  "Navegador": {
-  "en": "",
+  "en": "Navigator",
   "ctx": "src/data/treinadores/visitantes.ts:29 · exp()"
  },
  "Eirik": {
-  "en": "",
+  "en": "Eirik",
   "ctx": "src/data/treinadores/visitantes.ts:29 · exp()"
  },
  "Eu traço o rumo da expedição, e o rumo da última lanterna passa por mim. Bússola na mão, criaturas na neve!": {
-  "en": "",
+  "en": "I plot the expedition's course, and the course to the last lantern runs through me. Compass in hand, creatures in the snow!",
   "ctx": "src/data/treinadores/visitantes.ts:31 · exp()"
  },
  "O norte é para lá. E a lanterna é sua.": {
-  "en": "",
+  "en": "North is that way. And the lantern is yours.",
   "ctx": "src/data/treinadores/visitantes.ts:32 · exp()"
  },
  "Com as quatro na mochila, suba ao alto do Pico Pingorama de noite e acenda todas juntas. Lá em cima o céu fica perto demais para mentir.": {
-  "en": "",
+  "en": "With all four in your bag, climb to the top of Pico Pingorama at night and light them all together. Up there the sky is too close to lie.",
   "ctx": "src/data/treinadores/visitantes.ts:33 · exp()"
  },
  "Dona Quitéria": {
@@ -5620,7 +5620,7 @@
   "ctx": "src/data/trocas.ts:75 · campo morador | src/data/zonas/B1-casa-3.ts:11 · campo nome"
  },
  "Desafiante Ginga-Mole": {
-  "en": "",
+  "en": "Challenger Ginga-Mole",
   "ctx": "src/data/zonas/A-LG-posto.ts:5 · campo nome"
  },
  "Perdi para o Pajé Neblina. As criaturas dele botam a gente para dormir e depois assombram o sono.": {
@@ -9584,16 +9584,12 @@
   "ctx": "src/data/zonas/PP.ts:95 · campo fala"
  },
  "Encontro das Águas": {
-  "en": "",
+  "en": "Encontro das Águas",
   "ctx": "src/data/zonas/X-EA.ts:59 · campo nome"
  },
  "ENCONTRO DAS ÁGUAS\nÁgua escura de um lado, barrenta do outro. Elas correm juntas por léguas e não se misturam.\nQuem rema na linha do encontro chega à ilhota. Quem se distrai, volta para a praia.": {
-  "en": "",
+  "en": "ENCONTRO DAS ÁGUAS\nDark water on one side, muddy on the other. They run side by side for leagues and never mix.\nWhoever paddles along the meeting line reaches the islet. Whoever gets distracted ends up back on the beach.",
   "ctx": "src/data/zonas/X-EA.ts:65 · campo texto"
- },
- "[zonas B1] ": {
-  "en": "",
-  "ctx": "src/data/zonas/_b1-lib.ts:17 · console.error()"
  },
  "Prateleiras cheias: cuias, chás, rapadura e um vidro de pequi em conserva que ninguém tem coragem de abrir.": {
   "en": "Full shelves: gourds, teas, brown sugar and a jar of pickled pequi nobody has the nerve to open.",
@@ -10092,59 +10088,59 @@
   "ctx": "src/world/mecanicas/ginasio-16.ts:262 · falar()"
  },
  "A água escura puxou a canoa para o lado dela, rápida e fria!\nA correnteza devolveu você ao último remanso.": {
-  "en": "",
+  "en": "The dark water pulled the canoe over to its side, fast and cold!\nThe current brought you back to the last still pool.",
   "ctx": "src/world/mecanicas/x-ea.ts:123 · falar()"
  },
  "Longe da linha do encontro, a água barrenta arrastou a canoa rio abaixo!\nA correnteza devolveu você ao último remanso.": {
-  "en": "",
+  "en": "Away from the meeting line, the muddy water dragged the canoe downriver!\nThe current brought you back to the last still pool.",
   "ctx": "src/world/mecanicas/x-ea.ts:124 · falar()"
  },
  "Reme sempre colado à linha onde as duas águas se encontram.": {
-  "en": "",
+  "en": "Always paddle right along the line where the two waters meet.",
   "ctx": "src/world/mecanicas/x-ea.ts:125 · avisar()"
  },
  "O Galo-Manaó se assustou com o seu movimento e voou para o alto das árvores!\nSaia da arena e volte devagar. Para ver a dança, é preciso ficar imóvel até o fim.": {
-  "en": "",
+  "en": "The Galo-Manaó got startled by your movement and flew up into the trees!\nLeave the arena and come back slowly. To see the dance, you have to stay still until the end.",
   "ctx": "src/world/mecanicas/x-ea.ts:173 · falar()"
  },
  "O Galo-Manaó abre a crista em leque, metade escura, metade cor de areia, e encara você.\nA dança terminou: ele aceitou o desafio!": {
-  "en": "",
+  "en": "The Galo-Manaó fans out its crest, half dark, half sand-colored, and stares at you.\nThe dance is over: it accepted the challenge!",
   "ctx": "src/world/mecanicas/x-ea.ts:177 · falar()"
  },
  "Remanso: a correnteza volta para cá.": {
-  "en": "",
+  "en": "Still pool: the current will bring you back here.",
   "ctx": "src/world/mecanicas/x-ea.ts:202 · avisar()"
  },
  "O Galo-Manaó salta para o meio da arena e arrepia a crista.\nÉ a dança de corte! Fique PARADO e assista: um passo, um giro, e ele vai embora.": {
-  "en": "",
+  "en": "The Galo-Manaó leaps into the middle of the arena and ruffles its crest.\nIt's the courtship dance! Stay STILL and watch: one step, one spin, and it'll fly off.",
   "ctx": "src/world/mecanicas/x-ea.ts:212 · falar()"
  },
  "No Poço do Breu a água é preta como café e funda que não se vê o fim.\nMergulhar até o fundo para encher o frasco?": {
-  "en": "",
+  "en": "In the Poço do Breu the water is black as coffee and so deep you can't see the bottom.\nDive to the bottom to fill the flask?",
   "ctx": "src/world/mecanicas/x-ea.ts:266 · pedirAmuleto()"
  },
  "Mergulho!": {
-  "en": "",
+  "en": "Dive!",
   "ctx": "src/world/mecanicas/x-ea.ts:268 · avisar()"
  },
  "Lá no fundo, onde a luz da lua não chega, {JOGADOR} encheu o frasco de água escura, preta como café.\nA rolha de cortiça fecha bem: não vaza uma gota.": {
-  "en": "",
+  "en": "Down at the bottom, where the moonlight doesn't reach, {JOGADOR} filled the flask with dark water, black as coffee.\nThe cork stopper seals tight: not a drop leaks.",
   "ctx": "src/world/mecanicas/x-ea.ts:274 · colheu()"
  },
  "O Poço do Breu. De dia o sol bate no fundo e a água fica só esverdeada.\nO Seu Tarumã disse: a água escura de verdade só aparece à noite.": {
-  "en": "",
+  "en": "The Poço do Breu. By day the sun hits the bottom and the water just looks greenish.\nSeu Tarumã said: the truly dark water only shows up at night.",
   "ctx": "src/world/mecanicas/x-ea.ts:275 · pontoDeColheita()"
  },
  "A água deste poço é grossa, cor de barro vermelho, de tanta terra da chapada.\nEncher um frasco aqui?": {
-  "en": "",
+  "en": "The water in this pool is thick, the color of red clay, from all the chapada's earth.\nFill a flask here?",
   "ctx": "src/world/mecanicas/x-ea.ts:277 · simNao()"
  },
  "{JOGADOR} encheu o frasco com a água barrenta, cor de café com leite.\nAté a rolha ficou vermelha de terra.": {
-  "en": "",
+  "en": "{JOGADOR} filled the flask with the muddy water, the color of milky coffee.\nEven the cork turned red with earth.",
   "ctx": "src/world/mecanicas/x-ea.ts:278 · colheu()"
  },
  "À noite o poço fica escuro e não dá para ver a cor da água.\nMelhor voltar de dia para colher a água barrenta.": {
-  "en": "",
+  "en": "At night the pool goes dark and you can't see the water's color.\nBetter come back by day to collect the muddy water.",
   "ctx": "src/world/mecanicas/x-ea.ts:279 · pontoDeColheita()"
  }
 }
