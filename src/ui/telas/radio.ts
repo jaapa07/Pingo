@@ -35,12 +35,13 @@ import { t as traduz, tr } from '../../i18n';
 async function lerCarta(c: { de: string; assunto: string; texto: string }) {
   const h1 = parseInt(txtFonte('A', { tamanho: 12 }).style.height, 10), entre = parseInt(txtFonte('A\nA', { tamanho: 12 }).style.height, 10) - h1;
   const cabe = Math.max(1, Math.floor((134 - 3 - 42 - h1) / Math.max(1, entre)) + 1);
-  const linhas = c.texto.split('\n').flatMap((p) => (p ? quebrar(p, 236, 12) : ['']));
+  // traduz a carta inteira antes de quebrar: o catálogo tem o texto completo, não cada linha (docs/I18N.md)
+  const linhas = traduz(c.texto).split('\n').flatMap((p) => (p ? quebrar(p, 236, 12) : ['']));
   const paginas: string[][] = [[]];
   for (const l of linhas) { const pg = paginas[paginas.length - 1]; if (pg.length >= cabe) { if (l) paginas.push([l]); continue; } if (l || pg.length) pg.push(l); }
   const ps = paginas.map((pg) => { while (pg.length && !pg[pg.length - 1]) pg.pop(); return pg.join('\n'); }).filter(Boolean);
   if (ps.length <= 1) { await lerCartaInteira(c); return; }
-  for (let i = 0; i < ps.length; i++) await lerCartaInteira({ de: c.de, assunto: `${c.assunto} (${i + 1}/${ps.length})`, texto: ps[i] });
+  for (let i = 0; i < ps.length; i++) await lerCartaInteira({ de: c.de, assunto: `${traduz(c.assunto)} (${i + 1}/${ps.length})`, texto: ps[i] });
 }
 
 const ANTENA = ['......k.....', '.....k......', '....k.......', '.kkkkkkkkkk.', 'kaaaaaaaaaak', 'kakkkkakkbak', 'kakwwkakkaak', 'kakkkkakkbak', 'kaaaaaaaaaak', '.kkkkkkkkkk.'];

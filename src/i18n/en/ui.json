@@ -381,7 +381,7 @@
  },
  "tarde": {
   "en": "afternoon",
-  "ctx": "src/data/radio.ts:76 · campo tarde | src/ui/telas/menu.ts:22 · campo tarde | src/ui/telas/radio.ts:47 · campo tarde"
+  "ctx": "src/data/radio.ts:76 · campo tarde | src/ui/telas/menu.ts:22 · campo tarde | src/ui/telas/radio.ts:48 · campo tarde"
  },
  "noite": {
   "en": "night",
@@ -753,7 +753,7 @@
  },
  "Desligar": {
   "en": "Turn off",
-  "ctx": "src/data/textos-ui.ts:53 · campo desligar | src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+  "ctx": "src/data/textos-ui.ts:53 · campo desligar | src/ui/telas/radio.ts:59 | src/ui/telas/radio.ts:89"
  },
  "Não há nada na mochila que caiba no PC.": {
   "en": "There's nothing in your bag that fits in the PC.",
@@ -1770,6 +1770,14 @@
  "EVOL.": {
   "en": "EVOL.",
   "ctx": "src/ui/telas/diario.ts:123 · campo rotulos"
+ },
+ "Capturada": {
+  "en": "Caught",
+  "ctx": "src/ui/telas/diario.ts:143 · traduz()"
+ },
+ "Avistada": {
+  "en": "Seen",
+  "ctx": "src/ui/telas/diario.ts:143 · traduz()"
  },
  "Habitat: ???": {
   "en": "Habitat: ???",

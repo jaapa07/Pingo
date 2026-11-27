@@ -26,7 +26,7 @@ import { habitatsDe, NOME_MEIO, type PeriodoTabela } from './dados';
 import { ESPECIES } from '../../data/criaturas';
 import { caber } from './mochila';
 import { T } from '../../data/textos-ui';
-import { tr } from '../../i18n';
+import { t as traduz, tr } from '../../i18n';
 
 const CUIA = ['........', '..kkkk..', '.kooook.', 'koollook', 'kooooook', 'kddddddk', '.kddddk.', '..kkkk..'];
 const OLHO = ['........', '........', '..kkkk..', '.kwkkwk.', 'kwwkkwwk', '.kwkkwk.', '..kkkk..', '........'];
@@ -140,7 +140,7 @@ export function criarDiario(args: { especie?: number } = {}): Tela {
     // Pelagem Rara registrada (vista ou capturada): a estrela alterna a figura entre a cor comum e a rara
     if (temRara(atual)) { const est = em(estrelaRara(2), 2, 2); est.style.opacity = verRara ? '1' : '0.55'; esqDyn.append(est); tocavel(est, () => { verRara = !verRara; som('ui-ok'); pintarFicha(); }); }
     rotulo(esqDyn, nomeEsp(atual), 0, 92, 'creme', { largura: 100, alinhar: 'centro' });
-    rotulo(esqDyn, cap ? '{c:verde}Capturada{/c}' : '{c:cinza}Avistada{/c}', 0, 102, 'creme', { largura: 100, alinhar: 'centro' });
+    rotulo(esqDyn, cap ? `{c:verde}${traduz('Capturada')}{/c}` : `{c:cinza}${traduz('Avistada')}{/c}`, 0, 102, 'creme', { largura: 100, alinhar: 'centro' }); // i18n-ok
     if (e) e.tipos.forEach((t, i) => esqDyn.append(em(chipTipo(t, 56), 24, e.tipos.length === 1 ? 120 : 114 + i * 13)));
     escrever(posT, `Nº ${n3(atual)}`); posT.style.left = Math.floor((108 - parseInt(posT.style.width)) / 2) + 'px';
     if (!e) { rotulo(corpo, T.diario.soVisto, 2, 4, 'tinta', { largura: 186 }); return; }

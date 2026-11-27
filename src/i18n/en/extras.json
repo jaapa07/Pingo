@@ -1553,223 +1553,223 @@
  },
  "RÁDIO CIPÓ": {
   "en": "RÁDIO CIPÓ",
-  "ctx": "src/ui/telas/radio.ts:52 · placaTitulo()"
+  "ctx": "src/ui/telas/radio.ts:53 · placaTitulo()"
  },
  "Agenda do dia": {
   "en": "Today's Agenda",
-  "ctx": "src/ui/telas/radio.ts:58"
+  "ctx": "src/ui/telas/radio.ts:59"
  },
  "Contatos": {
   "en": "Contacts",
-  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+  "ctx": "src/ui/telas/radio.ts:59 | src/ui/telas/radio.ts:89"
  },
  "Revanches": {
   "en": "Rematches",
-  "ctx": "src/ui/telas/radio.ts:58"
+  "ctx": "src/ui/telas/radio.ts:59"
  },
  "Bicho do Dia": {
   "en": "Critter of the Day",
-  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+  "ctx": "src/ui/telas/radio.ts:59 | src/ui/telas/radio.ts:89"
  },
  "Hora da Música": {
   "en": "Music Hour",
-  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+  "ctx": "src/ui/telas/radio.ts:59 | src/ui/telas/radio.ts:89"
  },
  "Notícias": {
   "en": "News",
-  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+  "ctx": "src/ui/telas/radio.ts:59 | src/ui/telas/radio.ts:89"
  },
  "Recado do dia": {
   "en": "Daily Note",
-  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+  "ctx": "src/ui/telas/radio.ts:59 | src/ui/telas/radio.ts:89"
  },
  "Cantiga das Lendas": {
   "en": "Legend Songs",
-  "ctx": "src/ui/telas/radio.ts:58"
+  "ctx": "src/ui/telas/radio.ts:59"
  },
  "Mapa": {
   "en": "Map",
-  "ctx": "src/ui/telas/radio.ts:58 | src/ui/telas/radio.ts:88"
+  "ctx": "src/ui/telas/radio.ts:59 | src/ui/telas/radio.ts:89"
  },
  "A: escolher   B: desligar": {
-  "en": "A: choose   B: turn off",
-  "ctx": "src/ui/telas/radio.ts:69"
+  "en": "A: choose   B: off",
+  "ctx": "src/ui/telas/radio.ts:70"
  },
  "{resumo}\n\nA: ouvir tudo": {
   "en": "{resumo}\n\nA: hear it all",
-  "ctx": "src/ui/telas/radio.ts:78"
+  "ctx": "src/ui/telas/radio.ts:79"
  },
  "Quem aceita revanche em cada dia da semana. Hoje: {c:amarelo}{n}{/c} disponível(is).": {
   "en": "Who accepts rematches on each day of the week. Today: {c:amarelo}{n}{/c} available.",
-  "ctx": "src/ui/telas/radio.ts:79"
+  "ctx": "src/ui/telas/radio.ts:80"
  },
  "Programa do Cartão do Rádio: as cantigas antigas sobre as criaturas lendárias de Pingorama.": {
   "en": "A Radio Card program: the old songs about Pingorama's legendary creatures.",
-  "ctx": "src/ui/telas/radio.ts:80"
+  "ctx": "src/ui/telas/radio.ts:81"
  },
  "Ligue para treinadores que deixaram o número. Contatos: {c:amarelo}{n}{/c}": {
   "en": "Call trainers who left you their number. Contacts: {c:amarelo}{n}{/c}",
-  "ctx": "src/ui/telas/radio.ts:82"
+  "ctx": "src/ui/telas/radio.ts:83"
  },
  "Onde andam as criaturas raras nesta {periodo}. O programa muda todo dia.": {
   "en": "Where the rare creatures are this {periodo}. The program changes every day.",
-  "ctx": "src/ui/telas/radio.ts:83"
+  "ctx": "src/ui/telas/radio.ts:84"
  },
  "Tocando agora: {c:verde}{tocando}{/c} ♪": {
   "en": "Now playing: {c:verde}{tocando}{/c} ♪",
-  "ctx": "src/ui/telas/radio.ts:84"
+  "ctx": "src/ui/telas/radio.ts:85"
  },
  "Escolha uma faixa. Ao desligar o rádio, volta a música do lugar.": {
   "en": "Pick a track. When you turn off the radio, the local music comes back.",
-  "ctx": "src/ui/telas/radio.ts:84"
+  "ctx": "src/ui/telas/radio.ts:85"
  },
  "O que se sabe do Cartel Ferrugem. Última: {c:amarelo}{titulo}{/c}": {
   "en": "What's known about the Rust Cartel. Latest: {c:amarelo}{titulo}{/c}",
-  "ctx": "src/ui/telas/radio.ts:85"
+  "ctx": "src/ui/telas/radio.ts:86"
  },
  "Hoje é {hoje}.\n\n{diaSemana}": {
   "en": "Today is {hoje}.\n\n{diaSemana}",
-  "ctx": "src/ui/telas/radio.ts:86"
+  "ctx": "src/ui/telas/radio.ts:87"
  },
  "O mapa de Pingorama: Costa do Sol e Sertão das Névoas.": {
   "en": "The map of Pingorama: Costa do Sol and Sertão das Névoas.",
-  "ctx": "src/ui/telas/radio.ts:87"
+  "ctx": "src/ui/telas/radio.ts:88"
  },
  "Desliga o rádio.": {
   "en": "Turns off the radio.",
-  "ctx": "src/ui/telas/radio.ts:87"
+  "ctx": "src/ui/telas/radio.ts:88"
  },
  "Aceitar a revanche?": {
   "en": "Accept the rematch?",
-  "ctx": "src/ui/telas/radio.ts:109 · simNao()"
+  "ctx": "src/ui/telas/radio.ts:110 · simNao()"
  },
  "{venceu}\fO prêmio da revanche foi de {premio} patacas.": {
   "en": "{venceu}\fThe rematch prize was {premio} patacas.",
-  "ctx": "src/ui/telas/radio.ts:116 · falar()"
+  "ctx": "src/ui/telas/radio.ts:117 · falar()"
  },
  "CONTATOS": {
   "en": "CONTACTS",
-  "ctx": "src/ui/telas/radio.ts:127 · escolherEm()"
+  "ctx": "src/ui/telas/radio.ts:128 · escolherEm()"
  },
  "{classe} {nome}\n\n{agenda}\n\nA: ligar": {
   "en": "{classe} {nome}\n\n{agenda}\n\nA: call",
-  "ctx": "src/ui/telas/radio.ts:127 · campo descricao"
+  "ctx": "src/ui/telas/radio.ts:128 · campo descricao"
  },
  "Treina na Gruta do Eco às terças e quintas.": {
   "en": "Trains at Gruta do Eco on Tuesdays and Thursdays.",
-  "ctx": "src/ui/telas/radio.ts:133"
+  "ctx": "src/ui/telas/radio.ts:134"
  },
  "Sua rival. Ainda anda pela estrada.": {
   "en": "Your rival. Still out on the road.",
-  "ctx": "src/ui/telas/radio.ts:133"
+  "ctx": "src/ui/telas/radio.ts:134"
  },
  "Líder de ginásio. Revanche {quando}: {agenda}.": {
   "en": "Gym Leader. Rematch {quando}: {agenda}.",
-  "ctx": "src/ui/telas/radio.ts:135"
+  "ctx": "src/ui/telas/radio.ts:136"
  },
  "Já batalhou com você hoje.": {
   "en": "Already battled you today.",
-  "ctx": "src/ui/telas/radio.ts:136"
+  "ctx": "src/ui/telas/radio.ts:137"
  },
  "Líder de ginásio.": {
   "en": "Gym Leader.",
-  "ctx": "src/ui/telas/radio.ts:137 · traduz()"
+  "ctx": "src/ui/telas/radio.ts:138 · traduz()"
  },
  "Revanche: {agenda}.": {
   "en": "Rematch: {agenda}.",
-  "ctx": "src/ui/telas/radio.ts:137"
+  "ctx": "src/ui/telas/radio.ts:138"
  },
  "Hoje!": {
   "en": "Today!",
-  "ctx": "src/ui/telas/radio.ts:137 · traduz()"
+  "ctx": "src/ui/telas/radio.ts:138 · traduz()"
  },
  "REVANCHES": {
   "en": "REMATCHES",
-  "ctx": "src/ui/telas/radio.ts:147 · escolherEm()"
+  "ctx": "src/ui/telas/radio.ts:148 · escolherEm()"
  },
  "No {lugar}.": {
   "en": "At the {lugar}.",
-  "ctx": "src/ui/telas/radio.ts:149"
+  "ctx": "src/ui/telas/radio.ts:150"
  },
  "Luta pelo rádio.": {
   "en": "Battles over the radio.",
-  "ctx": "src/ui/telas/radio.ts:149 · traduz()"
+  "ctx": "src/ui/telas/radio.ts:150 · traduz()"
  },
  "Fase: {fase}": {
   "en": "Stage: {fase}",
-  "ctx": "src/ui/telas/radio.ts:149"
+  "ctx": "src/ui/telas/radio.ts:150"
  },
  "Equipe: {n} criaturas, nível até {nivel}.": {
   "en": "Team: {n} creatures, up to level {nivel}.",
-  "ctx": "src/ui/telas/radio.ts:149"
+  "ctx": "src/ui/telas/radio.ts:150"
  },
  "A: ligar": {
   "en": "A: call",
-  "ctx": "src/ui/telas/radio.ts:149 · traduz()"
+  "ctx": "src/ui/telas/radio.ts:150 · traduz()"
  },
  "Dica: fácil de pegar, a Cuia comum resolve": {
   "en": "Tip: easy to catch, a regular Gourd will do",
-  "ctx": "src/ui/telas/radio.ts:157"
+  "ctx": "src/ui/telas/radio.ts:158"
  },
  "Dica: deixe a vida no amarelo e use Cuia Trançada": {
   "en": "Tip: get its HP into the yellow and use a Woven Gourd",
-  "ctx": "src/ui/telas/radio.ts:157"
+  "ctx": "src/ui/telas/radio.ts:158"
  },
  "Dica: arisca! Vida no vermelho, faça dormir e use Cuia de Ouro": {
   "en": "Tip: skittish! HP in the red, put it to sleep and use a Gold Gourd",
-  "ctx": "src/ui/telas/radio.ts:157"
+  "ctx": "src/ui/telas/radio.ts:158"
  },
  "; à noite a Cuia Noturna ajuda.": {
   "en": "; at night the Night Gourd helps.",
-  "ctx": "src/ui/telas/radio.ts:158 · traduz()"
+  "ctx": "src/ui/telas/radio.ts:159 · traduz()"
  },
  "CANTIGA DAS LENDAS": {
   "en": "LEGEND SONGS",
-  "ctx": "src/ui/telas/radio.ts:163 · escolherEm()"
+  "ctx": "src/ui/telas/radio.ts:164 · escolherEm()"
  },
  "Hoje o locutor não tem nenhuma pista. Tente em outro período do dia.": {
   "en": "The announcer has no leads today. Try another time of day.",
-  "ctx": "src/ui/telas/radio.ts:171 · informar()"
+  "ctx": "src/ui/telas/radio.ts:172 · informar()"
  },
  "BICHO DO DIA": {
   "en": "CRITTER OF THE DAY",
-  "ctx": "src/ui/telas/radio.ts:175 · escolherEm()"
+  "ctx": "src/ui/telas/radio.ts:176 · escolherEm()"
  },
  "Ouvintes avisam: {nome} foi vista em {local} ({meio}).": {
   "en": "Listeners report: {nome} was seen at {local} ({meio}).",
-  "ctx": "src/ui/telas/radio.ts:175 · campo descricao"
+  "ctx": "src/ui/telas/radio.ts:176 · campo descricao"
  },
  "uma criatura que você ainda não registrou": {
   "en": "a creature you haven't logged yet",
-  "ctx": "src/ui/telas/radio.ts:175 · campo nome"
+  "ctx": "src/ui/telas/radio.ts:176 · campo nome"
  },
  "A: abrir a ficha": {
   "en": "A: open its entry",
-  "ctx": "src/ui/telas/radio.ts:175 · traduz()"
+  "ctx": "src/ui/telas/radio.ts:176 · traduz()"
  },
  "HORA DA MÚSICA": {
   "en": "MUSIC HOUR",
-  "ctx": "src/ui/telas/radio.ts:187 · escolherEm()"
+  "ctx": "src/ui/telas/radio.ts:188 · escolherEm()"
  },
  "Tocando agora.\n\nA: parar e voltar à música do lugar": {
   "en": "Now playing.\n\nA: stop and go back to the local music",
-  "ctx": "src/ui/telas/radio.ts:187 · campo descricao"
+  "ctx": "src/ui/telas/radio.ts:188 · campo descricao"
  },
  "A: pedir esta música": {
   "en": "A: request this song",
-  "ctx": "src/ui/telas/radio.ts:187 · campo descricao"
+  "ctx": "src/ui/telas/radio.ts:188 · campo descricao"
  },
  "NOTÍCIAS": {
   "en": "NEWS",
-  "ctx": "src/ui/telas/radio.ts:197 · escolherEm()"
+  "ctx": "src/ui/telas/radio.ts:198 · escolherEm()"
  },
  "Agenda de {hoje}": {
   "en": "Agenda for {hoje}",
-  "ctx": "src/ui/telas/radio.ts:206 · campo assunto"
+  "ctx": "src/ui/telas/radio.ts:207 · campo assunto"
  },
  "Recado de {hoje}": {
   "en": "Note for {hoje}",
-  "ctx": "src/ui/telas/radio.ts:209 · campo assunto"
+  "ctx": "src/ui/telas/radio.ts:210 · campo assunto"
  },
  "Passos {c:amarelo}{passos}{/c}   Cuias {c:amarelo}{cuias}{/c}": {
   "en": "Steps {c:amarelo}{passos}{/c}   Gourds {c:amarelo}{cuias}{/c}",
