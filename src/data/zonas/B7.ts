@@ -45,10 +45,10 @@ const g = grade('B7', p.fim(), {
 const placas = [
   placa(g, 'q', 'SERRA DA GEADA\n"Aqui o frio é de lei e o chimarrão é de graça."\nSul: Subida da Serra · Oeste: Campos de Altitude · Leste: Lagoa Gelada · Norte: Caminho das Névoas.'),
   placa(g, 's', 'GINÁSIO DA SERRA DA GEADA\nLíder: Gaúcha Pinhão.\nInsígnia Floco. Piso de gelo: quem escorrega, recomeça.'),
-  placa(g, 'u', 'CAMPOS DE ALTITUDE ⇠\nCapim dourado, gralhas e serelepes.'),
-  placa(g, 'y', 'LAGOA GELADA ⇢\nCanoa, pinguim e frio no osso.'),
-  placa(g, 'z', 'SUBIDA DA SERRA ⇣\nDescida para o Brejo Roxo. Use as saliências: é mais rápido do que subir.'),
-  placa(g, 'k', 'CAMINHO DAS NÉVOAS ⇡\nPara o Planalto Lume. A névoa engole quem anda sem Lampião.\nA Guarda da Serra só deixa passar quem tem a Insígnia Floco.'),
+  placa(g, 'u', 'CAMPOS DE ALTITUDE ←\nCapim dourado, gralhas e serelepes.'),
+  placa(g, 'y', 'LAGOA GELADA →\nCanoa, pinguim e frio no osso.'),
+  placa(g, 'z', 'SUBIDA DA SERRA ↓\nDescida para o Brejo Roxo. Use as saliências: é mais rápido do que subir.'),
+  placa(g, 'k', 'CAMINHO DAS NÉVOAS ↑\nPara o Planalto Lume. A névoa engole quem anda sem Lampião.\nA Guarda da Serra só deixa passar quem tem a Insígnia Floco.'),
 ];
 const zona: ZonaDef = {
   id: 'B7', nome: 'Serra da Geada', mapa: 'B', tipo: 'cidade', tileset: 'geada', musica: 'cidade-gaucha', arena: 'geada', passo: 14, pouso: [14, 18], clima: 'limpo',

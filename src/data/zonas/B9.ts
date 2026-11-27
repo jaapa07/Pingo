@@ -24,7 +24,7 @@ const g = grade('B9', p.fim(), {
 });
 const placas = [
   placa(g, 'a', 'PORTO PANTANEIRO\nCais do Saveiro: Cidade Coral, na Costa do Sol, rio abaixo.\nNorte: canal do Pantanal. Leste: Estrada Vermelha.'),
-  placa(g, 'n', 'ESTRADA VERMELHA ⇢ CHAPADA RUBRA\nTerra roxa, rocha rachada e sol na cabeça. Leve água.'),
+  placa(g, 'n', 'ESTRADA VERMELHA → CHAPADA RUBRA\nTerra roxa, rocha rachada e sol na cabeça. Leve água.'),
   placa(g, 'h', 'MIRANTE DO PORTO\nDaqui de cima se conta os barcos. Daí de baixo, se conta os degraus que faltam.'),
   placa(g, 'm', 'CAIS DO SAVEIRO\nEmbarque pela prancha. Bilhete na mão, criatura na cuia, chapéu amarrado.'),
 ];

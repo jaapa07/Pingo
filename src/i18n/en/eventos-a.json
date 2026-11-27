@@ -3923,7 +3923,7 @@
   "en": "Result: inconclusive, for me.",
   "ctx": "src/data/treinadores/a2.ts:170 · t()"
  },
- "O Andorinhão-da-Cachoeira faz ninho atrás do véu d’água. Só sai para caçar e para se exibir.": {
+ "O Andorinhão-da-Cachoeira faz ninho atrás do véu d'água. Só sai para caçar e para se exibir.": {
   "en": "The Waterfall Swift nests behind the curtain of water. It only comes out to hunt and to show off.",
   "ctx": "src/data/treinadores/a2.ts:170 · t()"
  },
@@ -3947,7 +3947,7 @@
   "en": "Master Cachoeira",
   "ctx": "src/data/treinadores/a2.ts:172 · t()"
  },
- "Treino debaixo da queda d’água para firmar a base. Vem ver se firmou!": {
+ "Treino debaixo da queda d'água para firmar a base. Vem ver se firmou!": {
   "en": "I train under the waterfall to steady my stance. Come see if it's steady!",
   "ctx": "src/data/treinadores/a2.ts:172 · t()"
  },
@@ -3958,6 +3958,10 @@
  "Bugio-Trovão ronca lá no alto. Quando ele ronca, a cascata treme.": {
   "en": "Bugio-Trovão roars up high. When it roars, the waterfall shakes.",
   "ctx": "src/data/treinadores/a2.ts:172 · t()"
+ },
+ "Cipó-d'Água": {
+  "en": "Cipó-d'Água",
+  "ctx": "src/data/treinadores/a2.ts:173 · t()"
  },
  "Esta margem é reserva. Quem entra, mostra que merece!": {
   "en": "This riverbank is a reserve. Whoever comes in must prove they deserve it!",
@@ -5231,7 +5235,7 @@
   "en": "To get back up, you need the Waterfall Charm and a River or Legend partner. Otherwise the way back is on foot, through Serra Fumaça.",
   "ctx": "src/data/zonas/A-R6.ts:85 · campo fala"
  },
- "Atrás do véu da segunda cascata mora o Andorinhão-da-Cachoeira. Sai voando por dentro d’água, sem molhar uma pena.": {
+ "Atrás do véu da segunda cascata mora o Andorinhão-da-Cachoeira. Sai voando por dentro d'água, sem molhar uma pena.": {
   "en": "Behind the curtain of the second waterfall lives the Waterfall Swift. It flies out through the water without wetting a feather.",
   "ctx": "src/data/zonas/A-R6.ts:86 · campo fala"
  },
@@ -7007,7 +7011,7 @@
   "en": "In the grass on the east point you'll find crabs, more crabs and, now and then, a stuck-up heron.",
   "ctx": "src/data/zonas/A5.ts:96 · campo fala"
  },
- "Na estação fria dá para ver jubarte pulando lá na baía. Parece ônibus caindo n’água.": {
+ "Na estação fria dá para ver jubarte pulando lá na baía. Parece ônibus caindo n'água.": {
   "en": "In the cold season you can see humpbacks leaping out in the bay. Looks like a bus falling into the water.",
   "ctx": "src/data/zonas/A5.ts:96 · campo fala"
  },

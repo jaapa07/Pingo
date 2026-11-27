@@ -83,7 +83,7 @@ const zona: ZonaDef = {
   ],
   npcs: [
     { id: 'r6-guarda', sprite: 'cl-pescador', x: 8, y: 3, mov: 'olhar', fala: ['Do açude para baixo são três quedas. A canoa desce sozinha, mas reze um pouco antes de cada uma.', 'Para subir de volta, só com o Amuleto da Cachoeira e parceira de Rio ou de Lenda. Senão a volta é a pé, por Serra Fumaça.'] },
-    { id: 'r6-senhor', sprite: 'npc-idoso', x: 22, y: 31, mov: 'vagar', fala: ['Atrás do véu da segunda cascata mora o Andorinhão-da-Cachoeira. Sai voando por dentro d’água, sem molhar uma pena.', 'Eu fico aqui todo dia esperando ele errar. Faz onze anos.'] },
+    { id: 'r6-senhor', sprite: 'npc-idoso', x: 22, y: 31, mov: 'vagar', fala: ['Atrás do véu da segunda cascata mora o Andorinhão-da-Cachoeira. Sai voando por dentro d\'água, sem molhar uma pena.', 'Eu fico aqui todo dia esperando ele errar. Faz onze anos.'] },
     { id: 'A-R6-1', sprite: 'cl-pescador', ...g.p('1'), dir: 'o', treinador: 'A-R6-1', visao: 4 },
     { id: 'A-R6-2', sprite: 'cl-biologa', ...g.p('2'), dir: 'l', mov: 'olhar', treinador: 'A-R6-2', visao: 4 },
     { id: 'A-R6-3', sprite: 'cl-observadora', ...g.p('3'), dir: 'o', treinador: 'A-R6-3', visao: 4 },

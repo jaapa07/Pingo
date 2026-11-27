@@ -4,7 +4,7 @@ import { postoGuardiao } from './_b2n-lib';
 export default postoGuardiao('B8', 'Planalto Lume', 15, 'planalto', [10, 18], [
   'MURAL DE MISSÕES — PLANALTO LUME',
   '• Observatório aberto toda noite: a Astrônoma-assistente procura quem registre criaturas da noite no Diário.',
-  '• A aprendiz Estrela-d’Alva precisa de alguém que leve uma carta à Lagoa Gelada.',
+  '• A aprendiz Estrela-d\'Alva precisa de alguém que leve uma carta à Lagoa Gelada.',
   '• Dona Lembrança, escrivã da praça, sabe onde cada criatura sua foi encontrada. Pergunte a ela.',
 ], [
   { sprite: 'cl-observadora', nome: 'Observadora Plêiade', fala: ['Vim do Pantanal só para ver o céu daqui. No Pantanal tem mosquito demais para olhar para cima.', 'Nos Campos do Lume, de dia, às vezes passa um Beija-Arco-Íris. Eu vi um em três anos. Um.'] },

@@ -667,7 +667,7 @@
   "en": "",
   "ctx": "src/data/eventos/b2-norte.ts:109 · pergunta/opção"
  },
- "{JOGADOR} guardou a carta da Estrela-d’Alva na mochila.": {
+ "{JOGADOR} guardou a carta da Estrela-d'Alva na mochila.": {
   "en": "",
   "ctx": "src/data/eventos/b2-norte.ts:110 · f()"
  },
@@ -3347,7 +3347,7 @@
   "en": "",
   "ctx": "src/data/treinadores/b2-norte.ts:39 · t()"
  },
- "Só tenho um parceiro. Mas ele canta debaixo d’água e a lagoa inteira treme!": {
+ "Só tenho um parceiro. Mas ele canta debaixo d'água e a lagoa inteira treme!": {
   "en": "",
   "ctx": "src/data/treinadores/b2-norte.ts:40 · t()"
  },
@@ -3959,7 +3959,7 @@
   "en": "",
   "ctx": "src/data/treinadores/b2-sul.ts:51 · t()"
  },
- "Blub! Batalha debaixo d’água: quem respira primeiro perde!": {
+ "Blub! Batalha debaixo d'água: quem respira primeiro perde!": {
   "en": "",
   "ctx": "src/data/treinadores/b2-sul.ts:52 · t()"
  },
@@ -5923,7 +5923,7 @@
   "en": "",
   "ctx": "src/data/zonas/B-LG.ts:45 · placa()"
  },
- "CAMPOS DE ALTITUDE ⇢\nCapim dourado e geada.": {
+ "CAMPOS DE ALTITUDE →\nCapim dourado e geada.": {
   "en": "",
   "ctx": "src/data/zonas/B-LG.ts:46 · placa()"
  },
@@ -5939,7 +5939,7 @@
   "en": "",
   "ctx": "src/data/zonas/B-LG.ts:69 · campo fala"
  },
- "A ilha do meio é do Joca, pai da Estrela-d’Alva do Planalto Lume. Ele não sai de lá nem para buscar carta.": {
+ "A ilha do meio é do Joca, pai da Estrela-d'Alva do Planalto Lume. Ele não sai de lá nem para buscar carta.": {
   "en": "",
   "ctx": "src/data/zonas/B-LG.ts:69 · campo fala"
  },
@@ -6195,7 +6195,7 @@
   "en": "",
   "ctx": "src/data/zonas/B-R4.ts:48 · placa()"
  },
- "TRILHA DO PICO PINGORAMA ⇡\nA oeste, depois da trepadeira grande.\nO Guia do Pico leva só quem tem as dezesseis insígnias.": {
+ "TRILHA DO PICO PINGORAMA ↑\nA oeste, depois da trepadeira grande.\nO Guia do Pico leva só quem tem as dezesseis insígnias.": {
   "en": "",
   "ctx": "src/data/zonas/B-R4.ts:49 · placa()"
  },
@@ -6335,7 +6335,7 @@
   "en": "",
   "ctx": "src/data/zonas/B-SG.ts:44 · placa()"
  },
- "LAGOA GELADA ⇠\nPelo pinheiral. Canoa só para quem sabe remar.": {
+ "LAGOA GELADA ←\nPelo pinheiral. Canoa só para quem sabe remar.": {
   "en": "",
   "ctx": "src/data/zonas/B-SG.ts:45 · placa()"
  },
@@ -6555,7 +6555,7 @@
   "en": "",
   "ctx": "src/data/zonas/B1-estacao.ts:27 · campo texto"
  },
- "LINHA SERRA-SOL\nPorto Sereia (Costa do Sol) ⇄ Vila Cascavel (Sertão das Névoas).\nCuidado com o vão entre o trem e a serra.": {
+ "LINHA SERRA-SOL\nPorto Sereia (Costa do Sol) – Vila Cascavel (Sertão das Névoas).\nCuidado com o vão entre o trem e a serra.": {
   "en": "",
   "ctx": "src/data/zonas/B1-estacao.ts:34 · campo texto"
  },
@@ -6763,7 +6763,7 @@
   "en": "",
   "ctx": "src/data/zonas/B1.ts:53 · placa()"
  },
- "ESTAÇÃO DE VILA CASCAVEL\nLinha Serra-Sol: Porto Sereia ⇄ Vila Cascavel. Segure o chapéu no túnel.": {
+ "ESTAÇÃO DE VILA CASCAVEL\nLinha Serra-Sol: Porto Sereia – Vila Cascavel. Segure o chapéu no túnel.": {
   "en": "",
   "ctx": "src/data/zonas/B1.ts:54 · placa()"
  },
@@ -7615,7 +7615,7 @@
   "en": "",
   "ctx": "src/data/zonas/B4.ts:33 · placa()"
  },
- "TRILHA DA RODA ⇢ CIDADE GINGA\nPorteira dos capoeiristas: só passa quem tem a Insígnia da Chama.": {
+ "TRILHA DA RODA → CIDADE GINGA\nPorteira dos capoeiristas: só passa quem tem a Insígnia da Chama.": {
   "en": "",
   "ctx": "src/data/zonas/B4.ts:34 · placa()"
  },
@@ -7987,7 +7987,7 @@
   "en": "",
   "ctx": "src/data/zonas/B5-venda.ts:10 · campo fala"
  },
- "No Túnel Alagado você vai agradecer. Ou não vai, porque estará debaixo d’água. Agradeça agora.": {
+ "No Túnel Alagado você vai agradecer. Ou não vai, porque estará debaixo d'água. Agradeça agora.": {
   "en": "",
   "ctx": "src/data/zonas/B5-venda.ts:10 · campo fala"
  },
@@ -8451,7 +8451,7 @@
   "en": "",
   "ctx": "src/data/zonas/B6.ts:52 · placa()"
  },
- "CHARCO DO TÚNEL\nFundo de lama, saída para Cidade Ginga por baixo d’água.": {
+ "CHARCO DO TÚNEL\nFundo de lama, saída para Cidade Ginga por baixo d'água.": {
   "en": "",
   "ctx": "src/data/zonas/B6.ts:53 · placa()"
  },
@@ -8819,19 +8819,19 @@
   "en": "",
   "ctx": "src/data/zonas/B7.ts:47 · placa()"
  },
- "CAMPOS DE ALTITUDE ⇠\nCapim dourado, gralhas e serelepes.": {
+ "CAMPOS DE ALTITUDE ←\nCapim dourado, gralhas e serelepes.": {
   "en": "",
   "ctx": "src/data/zonas/B7.ts:48 · placa()"
  },
- "LAGOA GELADA ⇢\nCanoa, pinguim e frio no osso.": {
+ "LAGOA GELADA →\nCanoa, pinguim e frio no osso.": {
   "en": "",
   "ctx": "src/data/zonas/B7.ts:49 · placa()"
  },
- "SUBIDA DA SERRA ⇣\nDescida para o Brejo Roxo. Use as saliências: é mais rápido do que subir.": {
+ "SUBIDA DA SERRA ↓\nDescida para o Brejo Roxo. Use as saliências: é mais rápido do que subir.": {
   "en": "",
   "ctx": "src/data/zonas/B7.ts:50 · placa()"
  },
- "CAMINHO DAS NÉVOAS ⇡\nPara o Planalto Lume. A névoa engole quem anda sem Lampião.\nA Guarda da Serra só deixa passar quem tem a Insígnia Floco.": {
+ "CAMINHO DAS NÉVOAS ↑\nPara o Planalto Lume. A névoa engole quem anda sem Lampião.\nA Guarda da Serra só deixa passar quem tem a Insígnia Floco.": {
   "en": "",
   "ctx": "src/data/zonas/B7.ts:51 · placa()"
  },
@@ -9083,7 +9083,7 @@
   "en": "",
   "ctx": "src/data/zonas/B8-posto.ts:6 · postoGuardiao()"
  },
- "• A aprendiz Estrela-d’Alva precisa de alguém que leve uma carta à Lagoa Gelada.": {
+ "• A aprendiz Estrela-d'Alva precisa de alguém que leve uma carta à Lagoa Gelada.": {
   "en": "",
   "ctx": "src/data/zonas/B8-posto.ts:7 · postoGuardiao()"
  },
@@ -9339,7 +9339,7 @@
   "en": "",
   "ctx": "src/data/zonas/B9.ts:26 · placa()"
  },
- "ESTRADA VERMELHA ⇢ CHAPADA RUBRA\nTerra roxa, rocha rachada e sol na cabeça. Leve água.": {
+ "ESTRADA VERMELHA → CHAPADA RUBRA\nTerra roxa, rocha rachada e sol na cabeça. Leve água.": {
   "en": "",
   "ctx": "src/data/zonas/B9.ts:27 · placa()"
  },

@@ -49,7 +49,7 @@ const GINGA: TreinadorDef[] = [
 /* ------------------------------ B-TA · Túnel Alagado e Gruta do Fôlego (nv 61–63) ------------------------------ */
 const TUNEL: TreinadorDef[] = [
   t('B-TA-1', 'Mergulhador', 'Mergulhador Bagre', 'cl-mergulhador', [{ e: 116, nv: 62 }, { e: 114, nv: 61 }],
-    'Blub! Batalha debaixo d’água: quem respira primeiro perde!', 'Blub… blub… perdi o fôlego e a luta.', 'Suba nas clareiras de luz do fundo. A da gruta tem ar e um eremita que adora visita.'),
+    'Blub! Batalha debaixo d\'água: quem respira primeiro perde!', 'Blub… blub… perdi o fôlego e a luta.', 'Suba nas clareiras de luz do fundo. A da gruta tem ar e um eremita que adora visita.'),
   t('B-TA-2', 'Mergulhadora', 'Mergulhadora Raia', 'cl-mergulhador', [{ e: 118, nv: 62 }, { e: 74, nv: 63 }],
     'A minha Arraião se esconde na areia do fundo. Você nem viu ela chegando!', 'Agora quem se esconde na areia sou eu.', 'Este trecho do túnel termina no charco do Brejo Roxo. Dizem que a água de lá anda roxa por causa de um curtume.'),
   t('B-TA-3', 'Mergulhador', 'Mergulhador Cação', 'cl-mergulhador', [{ e: 130, nv: 62 }, { e: 122, nv: 62 }, { e: 116, nv: 63 }],

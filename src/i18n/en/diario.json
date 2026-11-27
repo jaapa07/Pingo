@@ -591,7 +591,7 @@
   "en": "Clear rivers and lagoons",
   "ctx": "src/data/criaturas/parte-061-120.ts:159 · campo habitat"
  },
- "A lontra tem um dos pelos mais densos entre os mamíferos, e uma camada de ar presa nele mantém a pele seca debaixo d’água. Lontra-Veloz desce as corredeiras de pé na crista da onda, com o vento empurrando as costas.": {
+ "A lontra tem um dos pelos mais densos entre os mamíferos, e uma camada de ar presa nele mantém a pele seca debaixo d'água. Lontra-Veloz desce as corredeiras de pé na crista da onda, com o vento empurrando as costas.": {
   "en": "The otter has some of the densest fur of any mammal, and a layer of air trapped in it keeps its skin dry underwater. Lontra-Veloz rides the rapids standing on the crest of the wave, with the wind pushing its back.",
   "ctx": "src/data/criaturas/parte-061-120.ts:167 · campo diario"
  },
@@ -847,7 +847,7 @@
   "en": "Mangroves and riverbanks",
   "ctx": "src/data/criaturas/parte-061-120.ts:477 · campo habitat"
  },
- "A garça-real tem um capuz negro e longas penas brancas na nuca, e é vista quase sempre sozinha, imóvel na beira d’água. Garça-Real só bebe de rios limpos, e os moradores a seguem para saber onde a água é boa.": {
+ "A garça-real tem um capuz negro e longas penas brancas na nuca, e é vista quase sempre sozinha, imóvel na beira d'água. Garça-Real só bebe de rios limpos, e os moradores a seguem para saber onde a água é boa.": {
   "en": "The capped heron has a black cap and long white plumes on its nape, and is almost always seen alone, standing still at the water's edge. Garça-Real only drinks from clean rivers, and locals follow it to find good water.",
   "ctx": "src/data/criaturas/parte-061-120.ts:485 · campo diario"
  },

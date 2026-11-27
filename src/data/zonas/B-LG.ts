@@ -43,7 +43,7 @@ const g = grade('B-LG', p.fim(), {
 });
 const placas = [
   placa(g, 'a', 'LAGOA GELADA\nSul: Serra da Geada. Leste: Campos de Altitude.\nÁgua fria o ano todo. Remo para a ilha e para a praia dos juncos.'),
-  placa(g, 'n', 'CAMPOS DE ALTITUDE ⇢\nCapim dourado e geada.'),
+  placa(g, 'n', 'CAMPOS DE ALTITUDE →\nCapim dourado e geada.'),
   placa(g, 'm', 'TRAPICHE COMPRIDO\n"Na ponta, nos dias de silêncio, os velhos juram que se ouve uma baleia cantando no fundo da lagoa."'),
 ];
 const zona: ZonaDef = {
@@ -66,7 +66,7 @@ const zona: ZonaDef = {
     duelista(g, '3', 'B-LG-3', 'cl-mergulhador', 'n', 3),
     duelista(g, '4', 'B-LG-4', 'cl-observadora', 'l', 3),
     duelista(g, '5', 'B-LG-5', 'cl-pescador', 's', 3),
-    gente(g, 'G', 'b-lg-canoeira', 'npc-mulher-2', 'Canoeira Itaipava', { dir: 'n', fala: ['A canoa é sua se a sua criatura de Rio quiser puxar. Na água gelada, só bicho de Rio aceita.', 'A ilha do meio é do Joca, pai da Estrela-d’Alva do Planalto Lume. Ele não sai de lá nem para buscar carta.'] }),
+    gente(g, 'G', 'b-lg-canoeira', 'npc-mulher-2', 'Canoeira Itaipava', { dir: 'n', fala: ['A canoa é sua se a sua criatura de Rio quiser puxar. Na água gelada, só bicho de Rio aceita.', 'A ilha do meio é do Joca, pai da Estrela-d\'Alva do Planalto Lume. Ele não sai de lá nem para buscar carta.'] }),
     gente(g, 'H', 'b-lg-juncos', 'cl-biologa', 'Drª Junco', { dir: 's', fala: ['Estudo as libélulas da praia dos juncos. A Lavadeira-Dragão é a mais rara: aparece de vez em quando, com asas de vitral.', 'O Tuiuiú também passa por aqui. Ele sobe do Pantanal no inverno, ninguém sabe por quê. Talvez goste de frio.'] }),
   ],
   gatilhos: [{ x: 36, y: 26, script: 'b2n-jubarte', se: 'pos-jogo' }],

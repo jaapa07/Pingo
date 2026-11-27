@@ -31,7 +31,7 @@ const zona: ZonaDef = {
     { o: 'placa', x: 6, y: 8 },
     { o: 'buriti', x: 2, y: 9 }, { o: 'ipe-amarelo', x: 15, y: 9 },
   ],
-  placas: [{ x: 6, y: 8, texto: 'LINHA SERRA-SOL\nPorto Sereia (Costa do Sol) ⇄ Vila Cascavel (Sertão das Névoas).\nCuidado com o vão entre o trem e a serra.' }],
+  placas: [{ x: 6, y: 8, texto: 'LINHA SERRA-SOL\nPorto Sereia (Costa do Sol) – Vila Cascavel (Sertão das Névoas).\nCuidado com o vão entre o trem e a serra.' }],
   warps: [
     { x: 8, y: 3, para: { zona: 'A4-estacao', x: 8, y: 6, dir: 's' }, tipo: 'trem', requer: 'flag:liga-vencida&item:passe-trem', recusa: 'O maquinista confere a mochila e coça a cabeça:\n"Sem o Passe do Trem não desço a serra, Campeão. O Cacique Aracê entrega um a quem vence a Liga."' },
     { x: 8, y: 10, para: { zona: 'B1', x: 6, y: 6, dir: 's' }, tipo: 'borda' },

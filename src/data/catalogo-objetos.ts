@@ -33,7 +33,7 @@ export const CATALOGO_EXTERIOR: Record<string, ObjetoCatalogo> = {
   'casa-c': predio(5, 3, 2, 2, 'casa larga com alpendre e duas janelas'),
   'casa-d': predio(4, 3, 2, 1, 'casa de madeira com telhado de zinco'),
   'casa-e': predio(3, 3, 2, 1, 'casinha estreita de porta e janela'),
-  'casa-f': predio(5, 3, 2, 3, 'casa de esquina com varal e caixa-d’água'),
+  'casa-f': predio(5, 3, 2, 3, 'casa de esquina com varal e caixa-d\'água'),
   'casa-palafita': predio(4, 3, 2, 1, 'casa de madeira sobre estacas, com escada e telhado de palha'),
   'casa-colonial-a': predio(4, 3, 3, 1, 'sobrado colonial amarelo com sacadas de ferro'),
   'casa-colonial-b': predio(4, 3, 3, 2, 'sobrado colonial azul com barra de azulejos'),

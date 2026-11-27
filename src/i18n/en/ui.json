@@ -2215,7 +2215,7 @@
   "en": "A stone trail around the mountains.",
   "ctx": "src/ui/telas/mapa-dados.ts:98 · L()"
  },
- "Quedas d’água em degraus.": {
+ "Quedas d'água em degraus.": {
   "en": "Waterfalls in steps.",
   "ctx": "src/ui/telas/mapa-dados.ts:99 · L()"
  },
@@ -2323,7 +2323,7 @@
   "en": "Golden grass and cold wind.",
   "ctx": "src/ui/telas/mapa-dados.ts:125 · L()"
  },
- "Espelho d’água entre as araucárias.": {
+ "Espelho d'água entre as araucárias.": {
   "en": "A mirror of water among the araucarias.",
   "ctx": "src/ui/telas/mapa-dados.ts:126 · L()"
  },

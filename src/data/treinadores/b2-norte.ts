@@ -37,7 +37,7 @@ const LAGOA: TreinadorDef[] = [
   t('B-LG-2', 'Surfista', 'Maré-Fria', 'cl-surfista', m([76, 64], [134, 65], [58, 65]),
     'Onda de lagoa é pequena, mas é minha! Rema que eu te pego!', 'Caí da prancha. Na água gelada.', 'A Lontra-Veloz desce a cachoeira da lagoa de costas. Exibida.'),
   t('B-LG-3', 'Mergulhador', 'Mergulhador Neblina', 'cl-mergulhador', m([132, 66]),
-    'Só tenho um parceiro. Mas ele canta debaixo d’água e a lagoa inteira treme!', 'O canto parou. Que silêncio.', 'Dizem que, depois que alguém vencer o Conselho, uma baleia de verdade vai cantar no fundo desta lagoa. Eu acredito.'),
+    'Só tenho um parceiro. Mas ele canta debaixo d\'água e a lagoa inteira treme!', 'O canto parou. Que silêncio.', 'Dizem que, depois que alguém vencer o Conselho, uma baleia de verdade vai cantar no fundo desta lagoa. Eu acredito.'),
   t('B-LG-4', 'Observadora de Aves', 'Dona Tuiuiú', 'cl-observadora', m([106, 64], [156, 65]),
     'O Tuiuiú subiu do Pantanal atrás de mim. Ou eu subi atrás dele. Não importa: luta!', 'O Tuiuiú voltou para o Pantanal. Eu fico.', 'A Lavadeira-Dragão pousa nos juncos da margem. As asas dela parecem vitral quando o sol bate.'),
   t('B-LG-5', 'Pescador', 'Velho Lambari', 'cl-pescador', m([58, 65], [134, 65], [76, 66]),

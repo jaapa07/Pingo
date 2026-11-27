@@ -51,7 +51,7 @@ const g = grade('B1', [
 
 const placas = [
   placa(g, 'n', 'VILA CASCAVEL\nOnde o Trem Serra-Sol desce a serra e o Sertão começa.\nNorte: Vereda dos Buritis. Leste, pela lagoa: Pantanal Alagado.'),
-  placa(g, 'm', 'ESTAÇÃO DE VILA CASCAVEL\nLinha Serra-Sol: Porto Sereia ⇄ Vila Cascavel. Segure o chapéu no túnel.'),
+  placa(g, 'm', 'ESTAÇÃO DE VILA CASCAVEL\nLinha Serra-Sol: Porto Sereia – Vila Cascavel. Segure o chapéu no túnel.'),
   placa(g, 'h', 'SALÃO DA RAIZEIRA\nAqui já foi ginásio. Hoje é chá, conselho e cura de raiz.\n"Planta que cura não tem pressa."'),
   placa(g, 'a', 'LAGOA DO CASCAVEL\nCanoa só com o Amuleto do Remo e uma criatura de Rio puxando.\nO Pantanal Alagado começa onde a lagoa acaba, a leste.'),
   placa(g, 'q', 'MIRANTE DO PEQUIZEIRO\nDaqui se vê a Chapada Rubra num dia limpo. Num dia de névoa, se vê névoa.'),

@@ -7,4 +7,4 @@ export default venda('B5', 'Cidade Ginga', 12, 'cerrado', [33, 18],
     ['insignia:12', ['cuia-trancada', 'cuia-ouro', 'cuia-rede', 'garrafada', 'garrafada-forte', 'elixir-andiroba', 'cha-guarana', 'mel-puro', 'unguento', 'pomada-copaiba', 'fumaca-andiroba-forte', 'corda-de-cipo']],
     ['!insignia:12', ['cuia-trancada', 'cuia-ouro', 'cuia-rede', 'garrafada', 'garrafada-forte', 'cha-guarana', 'mel-puro', 'unguento', 'pomada-copaiba', 'fumaca-andiroba-forte', 'corda-de-cipo']],
   ],
-  { sprite: 'npc-idosa', nome: 'Dona Nazinha', fala: ['Cuia de Rede é uma mão na roda para bicho de água.', 'No Túnel Alagado você vai agradecer. Ou não vai, porque estará debaixo d’água. Agradeça agora.'] });
+  { sprite: 'npc-idosa', nome: 'Dona Nazinha', fala: ['Cuia de Rede é uma mão na roda para bicho de água.', 'No Túnel Alagado você vai agradecer. Ou não vai, porque estará debaixo d\'água. Agradeça agora.'] });

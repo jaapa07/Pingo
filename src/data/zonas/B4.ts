@@ -31,7 +31,7 @@ const g = grade('B4', p.fim(), {
 const placas = [
   placa(g, 'a', 'GINÁSIO DE ARRAIAL BRASA\nLíder: Ferreira Labareda.\n"Ferro só aprende no fogo. Gente também."'),
   placa(g, 'n', 'ARRAIAL BRASA\nSul: Chapada dos Paredões. Leste: Trilha da Roda, para Cidade Ginga.\nTerreiro da fogueira: festa de São João todo sábado.'),
-  placa(g, 'h', 'TRILHA DA RODA ⇢ CIDADE GINGA\nPorteira dos capoeiristas: só passa quem tem a Insígnia da Chama.'),
+  placa(g, 'h', 'TRILHA DA RODA → CIDADE GINGA\nPorteira dos capoeiristas: só passa quem tem a Insígnia da Chama.'),
   placa(g, 'm', 'Lagoa da Cascata Velha. A prateleira lá em cima tem dono: quem subir a água.'),
 ];
 const zona: ZonaDef = {

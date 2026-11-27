@@ -42,7 +42,7 @@ const g = grade('B-SG', p.fim(), {
 });
 const placas = [
   placa(g, 'a', 'CAMPOS DE ALTITUDE\nSul: Serra da Geada. Oeste: Lagoa Gelada.\nCuidado: a geada da manhã escorrega.'),
-  placa(g, 'n', 'LAGOA GELADA ⇠\nPelo pinheiral. Canoa só para quem sabe remar.'),
+  placa(g, 'n', 'LAGOA GELADA ←\nPelo pinheiral. Canoa só para quem sabe remar.'),
   placa(g, 'm', 'MIRANTE DO UIRAPURU\nSubida pela trepadeira. Os antigos dizem: "quem ouve o Uirapuru ao amanhecer, ouve a mata inteira calar".'),
   placa(g, 'h', 'TRILHA VELHA DOS GUARDIÕES\nCercada por ordem do Conselho. Só para quem já foi recebido no Pico.'),
 ];

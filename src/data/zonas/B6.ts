@@ -50,7 +50,7 @@ const placas = [
   placa(g, 'a', 'PASSO DA SERRA\nNorte: Subida da Serra e Serra da Geada.\nSó sobe quem tem a Insígnia Espinho. E agasalho.'),
   placa(g, 'q', 'GINÁSIO DE BREJO ROXO\nLíder: Doutor Peçonha, o homem que abraça cobra.\nInsígnia Espinho.'),
   placa(g, 's', 'VALE DO VENENO →\nNão beba a água. Não lamba os sapos. Não diga que não avisamos.'),
-  placa(g, 'u', 'CHARCO DO TÚNEL\nFundo de lama, saída para Cidade Ginga por baixo d’água.'),
+  placa(g, 'u', 'CHARCO DO TÚNEL\nFundo de lama, saída para Cidade Ginga por baixo d\'água.'),
   placa(g, 'y', 'CURTUME ABANDONADO\nFechado desde a última cheia.\n(Alguém rabiscou embaixo: "então por que sai fumaça roxa da chaminé?")'),
   placa(g, 'z', 'BREJO ROXO\n"Aqui até o sapo tem nome e sobrenome."'),
 ];

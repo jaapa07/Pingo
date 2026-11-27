@@ -46,7 +46,7 @@ const g = grade('B-R4', p.fim(), {
 });
 const placas = [
   placa(g, 'q', 'SUBIDA DA SERRA\nNorte: Serra da Geada. Paredões com trepadeira e fendas de pedregulho.\nSuba devagar; desça pelas saliências.'),
-  placa(g, 's', 'TRILHA DO PICO PINGORAMA ⇡\nA oeste, depois da trepadeira grande.\nO Guia do Pico leva só quem tem as dezesseis insígnias.'),
+  placa(g, 's', 'TRILHA DO PICO PINGORAMA ↑\nA oeste, depois da trepadeira grande.\nO Guia do Pico leva só quem tem as dezesseis insígnias.'),
 ];
 const zona: ZonaDef = {
   id: 'B-R4', nome: 'Subida da Serra', mapa: 'B', tipo: 'rota', tileset: 'serra', musica: 'rota-dia-B', arena: 'pico', passo: 14, clima: 'limpo',

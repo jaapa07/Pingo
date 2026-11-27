@@ -164,7 +164,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'encontrao'], [1, 'faro-fino'], [5, 'esguicho'], [9, 'bote-ligeiro'], [13, 'redemoinho'], [17, 'espuma-do-mar'], [21, 'toca-e-foge'], [25, 'agua-de-cacimba'], [30, 'lufada'], [34, 'jato-de-igarape'], [38, 'vento-a-favor'], [42, 'pe-de-vento'], [47, 'enxurrada'], [53, 'ventania']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-06', 'pt-14', 'pt-15', 'pt-16', 'pt-20', 'pt-22', 'pt-29', 'pt-31', 'pt-32', 'pt-33', 'pt-37'],
     taxaCaptura: 45, expBase: 186, esforco: { vel: 3 }, crescimento: 'rapido', femeas: 0.5,
-    diario: 'A lontra tem um dos pelos mais densos entre os mamíferos, e uma camada de ar presa nele mantém a pele seca debaixo d’água. Lontra-Veloz desce as corredeiras de pé na crista da onda, com o vento empurrando as costas.',
+    diario: 'A lontra tem um dos pelos mais densos entre os mamíferos, e uma camada de ar presa nele mantém a pele seca debaixo d\'água. Lontra-Veloz desce as corredeiras de pé na crista da onda, com o vento empurrando as costas.',
     altura: 1.1, peso: 11.0, habitat: 'Corredeiras das lagoas do sertão', porte: 'G',
   },
 
@@ -482,7 +482,7 @@ export const especies: EspecieDef[] = [
     golpes: [[1, 'bicada'], [1, 'faro-fino'], [5, 'esguicho'], [9, 'lufada'], [13, 'jogar-areia'], [17, 'espuma-do-mar'], [21, 'pouso-no-galho'], [25, 'brisa-da-serra'], [29, 'vento-a-favor'], [30, 'chuva-de-penas'], [35, 'jato-de-igarape'], [40, 'pe-de-vento'], [46, 'enxurrada'], [52, 'ventania']],
     pergaminhos: ['pt-01', 'pt-03', 'pt-06', 'pt-14', 'pt-15', 'pt-16', 'pt-20', 'pt-22', 'pt-31', 'pt-32', 'pt-33', 'pt-37', 'pt-49'],
     taxaCaptura: 45, expBase: 188, esforco: { atqEsp: 2, vel: 1 }, crescimento: 'rapido', femeas: 0.5,
-    diario: 'A garça-real tem um capuz negro e longas penas brancas na nuca, e é vista quase sempre sozinha, imóvel na beira d’água. Garça-Real só bebe de rios limpos, e os moradores a seguem para saber onde a água é boa.',
+    diario: 'A garça-real tem um capuz negro e longas penas brancas na nuca, e é vista quase sempre sozinha, imóvel na beira d\'água. Garça-Real só bebe de rios limpos, e os moradores a seguem para saber onde a água é boa.',
     altura: 0.8, peso: 0.9, habitat: 'Mangues e baías de água limpa', porte: 'G',
   },
   {
