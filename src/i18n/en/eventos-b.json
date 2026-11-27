@@ -5955,10 +5955,6 @@
   "en": "",
   "ctx": "src/data/zonas/B-LG.ts:70 · campo fala"
  },
- "XXXX": {
-  "en": "",
-  "ctx": "src/data/zonas/B-PA.ts:37"
- },
  "PANTANAL ALAGADO\nOeste: Cerrado Aberto. Leste, pelas passarelas: Pantanal Grande.\nSul: o ninhal (área interditada pela Boiadeira Zefa).": {
   "en": "",
   "ctx": "src/data/zonas/B-PA.ts:49 · placa()"
@@ -6114,14 +6110,6 @@
  "Para subir aquilo você precisa do Amuleto da Cachoeira. Para ter paciência, precisa de chá de camomila.": {
   "en": "",
   "ctx": "src/data/zonas/B-R2.ts:57 · campo fala"
- },
- "TTTT": {
-  "en": "",
-  "ctx": "src/data/zonas/B-R3.ts:14 | src/data/zonas/B-R3.ts:15 | src/data/zonas/B5.ts:14 | +3"
- },
- "TTTTT": {
-  "en": "",
-  "ctx": "src/data/zonas/B-R3.ts:14 | src/data/zonas/B-R3.ts:15 · p.t() | src/data/zonas/B-R3.ts:15 | +2"
  },
  "TRILHA DA RODA\nOeste: Arraial Brasa · Leste: Cidade Ginga.\nQuem passa sem gingar paga prenda!": {
   "en": "",
@@ -6438,10 +6426,6 @@
  "Se vir gente de macacão ferrugem do outro lado, não dê bom-dia. Eles levaram os sapos do brejo em jaulas.": {
   "en": "",
   "ctx": "src/data/zonas/B-TA-gruta.ts:49 · campo fala"
- },
- "TTTTTTT": {
-  "en": "",
-  "ctx": "src/data/zonas/B-VV.ts:13 | src/data/zonas/B6.ts:19"
  },
  "VALE DO VENENO\nPassarela de tábuas: siga as tábuas, não a vontade de nadar.\n— Associação dos Moradores do Brejo Roxo": {
   "en": "",
@@ -8827,14 +8811,6 @@
   "en": "",
   "ctx": "src/data/zonas/B7-venda.ts:8 · venda()"
  },
- "TTTTTTTTT": {
-  "en": "",
-  "ctx": "src/data/zonas/B7.ts:14"
- },
- "TTTTTT": {
-  "en": "",
-  "ctx": "src/data/zonas/B7.ts:14"
- },
  "SERRA DA GEADA\n\"Aqui o frio é de lei e o chimarrão é de graça.\"\nSul: Subida da Serra · Oeste: Campos de Altitude · Leste: Lagoa Gelada · Norte: Caminho das Névoas.": {
   "en": "",
   "ctx": "src/data/zonas/B7.ts:46 · placa()"
@@ -9358,10 +9334,6 @@
  "E Fumaça de Andiroba Forte, para os bichos pequenos não atrasarem a minha vida.": {
   "en": "",
   "ctx": "src/data/zonas/B9-venda.ts:7 · campo fala"
- },
- "NNNN": {
-  "en": "",
-  "ctx": "src/data/zonas/B9.ts:15"
  },
  "PORTO PANTANEIRO\nCais do Saveiro: Cidade Coral, na Costa do Sol, rio abaixo.\nNorte: canal do Pantanal. Leste: Estrada Vermelha.": {
   "en": "",

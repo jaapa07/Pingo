@@ -40,6 +40,7 @@ export function pareceTexto(s: string): boolean {
   if (/[A-Za-z]\(|[~^]{2}|\.\.|,,/.test(t)) return false; // css, grades de pixel
   if (!/ /.test(t)) {
     if (!/^[A-Za-zÀ-ÿºª'.!?:,;…/+-]+$/.test(t)) return false; // sem espaço, só vale palavra de letras
+    if (/([A-Z:;])\1{3,}/.test(t) && !/[a-zß-ÿ]/.test(t)) return false; // TTTTNNTTTT: linha de grade de zona
     if (!/^([A-ZÀ-Þ][a-zß-ÿ]*|[A-ZÀ-Þ]+|[a-zß-ÿ]+)([^A-Za-zÀ-ÿ]+([A-ZÀ-Þ][a-zß-ÿ]*|[A-ZÀ-Þ]+|[a-zß-ÿ]+))*[^A-Za-zÀ-ÿ]*$/.test(t)) return false; // gG, kTTt…: grade de pixels
     if (/^[A-Z0-9_-]+$/.test(t) && (t.length < 4 || /[0-9_-]/.test(t))) return false; // A1, B2-N, PP, MAPA_B
     if (/^[A-Z][A-Za-z0-9]*[A-Z][a-z]/.test(t) && !/[À-ÿ]/.test(t)) return false; // CamelCase de código (HTMLElement)
