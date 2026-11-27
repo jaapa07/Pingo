@@ -175,25 +175,45 @@
   "en": "The Saveiro's skipper points at the hull upside down in the boatyard:\n\"Upriver? Only after the refit, Champ. The boat is getting new planks, a new sail, the works.\"\f\"Keep your ticket. When the Saveiro is back in the water, Rádio Cipó will let you know.\"",
   "ctx": "src/core/progresso.ts:12 · campo saveiro"
  },
+ "Este jogo está vazio.": {
+  "en": "This game is empty.",
+  "ctx": "src/core/save.ts:25 · campo vazio"
+ },
+ "O código está incompleto: copie o código inteiro de novo.": {
+  "en": "The code is incomplete: copy the whole code again.",
+  "ctx": "src/core/save.ts:26 · campo incompleto"
+ },
+ "O código está incompleto ou foi alterado: copie o código inteiro de novo (ou use o arquivo .pingo).": {
+  "en": "The code is incomplete or was changed: copy the whole code again (or use the .pingo file).",
+  "ctx": "src/core/save.ts:27 · campo alterado"
+ },
+ "O arquivo está danificado.": {
+  "en": "The file is damaged.",
+  "ctx": "src/core/save.ts:28 · campo danificado"
+ },
+ "Não há jogo vazio. Escolha um para substituir.": {
+  "en": "There's no empty game. Choose one to replace.",
+  "ctx": "src/core/save.ts:29 · campo semVaga"
+ },
  "Isto não é um código do jogo (começa com \"{ini}…\"). Copie de novo pelo menu do jogo: Copiar código → Copiar.": {
   "en": "This is not a game code (it starts with \"{ini}…\"). Copy it again from the game menu: Copy code → Copy.",
-  "ctx": "src/core/save.ts:184"
+  "ctx": "src/core/save.ts:192"
  },
  "Isto não é um código do jogo. Copie de novo pelo menu do jogo: Copiar código → Copiar.": {
   "en": "This is not a game code. Copy it again from the game menu: Copy code → Copy.",
-  "ctx": "src/core/save.ts:184"
+  "ctx": "src/core/save.ts:192"
  },
  "Este código é de uma versão mais nova do jogo. Atualize o jogo neste aparelho e tente de novo.": {
   "en": "This code comes from a newer version of the game. Update the game on this device and try again.",
-  "ctx": "src/core/save.ts:202"
+  "ctx": "src/core/save.ts:210"
  },
  "O código é de uma versão que este jogo não conhece.": {
   "en": "This code comes from a version this game doesn't know.",
-  "ctx": "src/core/save.ts:202"
+  "ctx": "src/core/save.ts:210"
  },
  "Teste": {
   "en": "Test",
-  "ctx": "src/core/save.ts:239"
+  "ctx": "src/core/save.ts:247"
  },
  "Profª Ipê": {
   "en": "Prof. Ipê",

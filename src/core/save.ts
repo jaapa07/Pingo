@@ -20,6 +20,14 @@ const PFX = DEMO ? 'pingo-demo.' : 'pingo.';
 const CH_SLOT = (i: number) => PFX + 'slot.' + i;
 const CH_OPCOES = PFX + 'opcoes', CH_RETOMADA = PFX + 'retomada', CH_QR = PFX + 'qr';
 /** por que o último `carregarSlot`/`carregarRetomada` recusou o save ('' = vazio ou danificado) */
+/** mensagens mostradas ao jogador (a tela as passa pelo catálogo; numa tabela MSG_ para entrarem nele) */
+const MSG_SAVE = {
+  vazio: 'Este jogo está vazio.',
+  incompleto: 'O código está incompleto: copie o código inteiro de novo.',
+  alterado: 'O código está incompleto ou foi alterado: copie o código inteiro de novo (ou use o arquivo .pingo).',
+  danificado: 'O arquivo está danificado.',
+  semVaga: 'Não há jogo vazio. Escolha um para substituir.',
+};
 export let motivoRecusa = '';
 const cache = new Map<string, string>();
 let pronto = false;
@@ -166,7 +174,7 @@ const MARCA = 'PINGO1';
 /** conteúdo do arquivo `.pingo`: MARCA:checksum:base64url(LZSS(JSON)). Sem argumento, exporta o jogo em memória. */
 export function exportar(slot?: number): string {
   const dados = slot == null ? (jogo.save.rng = rng.estado(), jogo.save) : registro(slot)?.dados;
-  if (!dados) throw new Error('Este jogo está vazio.');
+  if (!dados) throw new Error(MSG_SAVE.vazio);
   const bytes = utf8(JSON.stringify(dados));
   return `${MARCA}:${crc32(bytes)}:${b64(compactar(bytes))}`;
 }
@@ -179,7 +187,7 @@ export function lerExportado(txt: string): SaveData {
   const outra = /PINGO(\d+):/.exec(limpo);
   if (outra && outra[1] !== '1') throw new Error('Este código é de uma versão mais nova do jogo. Atualize o jogo neste aparelho e tente de novo.');
   if (!/PINGO1:([0-9a-fA-F]{8}):([A-Za-z0-9_-]+)/.test(limpo)) {
-    if (/PINGO1:/.test(limpo)) throw new Error('O código está incompleto: copie o código inteiro de novo.');
+    if (/PINGO1:/.test(limpo)) throw new Error(MSG_SAVE.incompleto);
     const ini = bruto.trim().replace(/\s+/g, ' ').slice(0, 14);
     throw new Error(ini ? tr('Isto não é um código do jogo (começa com "{ini}…"). Copie de novo pelo menu do jogo: Copiar código → Copiar.', { ini }) : 'Isto não é um código do jogo. Copie de novo pelo menu do jogo: Copiar código → Copiar.');
   }
@@ -196,9 +204,9 @@ export function lerExportado(txt: string): SaveData {
       try { const b = descompactar(deB64(m[2])); if (crc32(b) === m[1].toLowerCase()) bytes = b; } catch { /* tenta um corte menor */ }
     }
   }
-  if (!bytes) throw new Error('O código está incompleto ou foi alterado: copie o código inteiro de novo (ou use o arquivo .pingo).');
+  if (!bytes) throw new Error(MSG_SAVE.alterado);
   let d: unknown;
-  try { d = JSON.parse(deUtf8(bytes)); } catch { throw new Error('O arquivo está danificado.'); }
+  try { d = JSON.parse(deUtf8(bytes)); } catch { throw new Error(MSG_SAVE.danificado); }
   if (!saveValido(d)) throw new Error((d as { versao?: number } | null)?.versao && (d as { versao: number }).versao > 1 ? 'Este código é de uma versão mais nova do jogo. Atualize o jogo neste aparelho e tente de novo.' : 'O código é de uma versão que este jogo não conhece.');
   // demo: um save que já passou do limite (jogo completo) não entra; nada é gravado
   const fora = motivoForaDaDemo(d); if (fora) throw new Error(fora);
@@ -208,7 +216,7 @@ export function lerExportado(txt: string): SaveData {
 export function importar(txt: string, slot?: number): number {
   const dados = lerExportado(txt);
   const i = slot ?? listarSlots().findIndex((s) => !s);
-  if (i < 0 || i >= N_SLOTS) throw new Error('Não há jogo vazio. Escolha um para substituir.');
+  if (i < 0 || i >= N_SLOTS) throw new Error(MSG_SAVE.semVaga);
   const antigo = cache.get(CH_SLOT(i)); if (antigo && desembrulhar(antigo)) por(CH_SLOT(i) + '.bak', antigo);
   por(CH_SLOT(i), embrulhar(dados));
   return i;
