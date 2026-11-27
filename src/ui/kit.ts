@@ -6,7 +6,7 @@ import kit from './gerado/kit.json';
 import type { Bolso, StatusId, TipoId } from '../core/tipos';
 import { precarregar } from '../core/assets';
 import { texto, em, type CorTexto, type Tamanho } from './fonte';
-import { t as traduz } from '../i18n';
+import { t as traduz, emIngles } from '../i18n';
 export { em } from './fonte';
 
 export type TipoMoldura = 'madeira' | 'cipo' | 'azulejo' | 'texto' | 'placa' | 'tinta' | 'botao' | 'botao-foco' | 'botao-ap' | 'trilho' | 'selecao' | 'bisel';
@@ -65,7 +65,11 @@ export const fatiaDe = (tipo: TipoMoldura) => MOL[tipo].fatia;
 export function cursorMao(): HTMLElement { const c = document.createElement('div'); c.className = 'cursor-mao'; c.append(spr('cursor')); return c; }
 export const seta = (dir: 'cima' | 'baixo' | 'esq' | 'dir', pisca = false) => spr('seta-' + dir, pisca ? 'pisca' : '');
 export const iconeTipo = (t: TipoId) => spr('tipo-' + t);
-export const iconeStatus = (s: StatusId | 'desmaiado', mini = false) => spr(`status-${s}${mini ? '-mini' : ''}`);
+/** etiqueta de status com a sigla (QMD… em português, BRN… em inglês) ou o mini 9×9, que não tem texto */
+export function iconeStatus(s: StatusId | 'desmaiado', mini = false): HTMLElement {
+  if (mini) return spr(`status-${s}-mini`);
+  return spr(emIngles() && SPR[`status-${s}-en`] ? `status-${s}-en` : `status-${s}`);
+}
 /** insígnia 1..16; `tem = false` mostra a silhueta */
 export const insignia = (n: number, tem = true) => spr(`insignia-${n}${tem ? '' : '-vazia'}`);
 export const iconeBolso = (b: Bolso) => spr('bolso-' + b);

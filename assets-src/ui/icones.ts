@@ -32,15 +32,15 @@ export const SIMBOLOS_TIPO: Record<string, string[]> = {
   encanto: ['....##....', '....##....', '...####...', '##########', '.########.', '..######..', '..######..', '.###..###.', '.##....##.', '.#......#.'],
 };
 
-/** símbolos de status (7×7). cor = [fundo, borda, símbolo, detalhe] */
-export const SIMBOLOS_STATUS: Record<string, { sigla: string; cor: [string, string, string, string?]; linhas: string[] }> = {
-  queimado: { sigla: 'QMD', cor: ['#e0483c', '#7a1c28', '#fff8e7', '#f9c22b'], linhas: ['..#....', '..##...', '.###.#.', '.#####.', '##+###.', '#+++##.', '.###...'] },
-  envenenado: { sigla: 'ENV', cor: ['#9a4fb8', '#4a2068', '#fff8e7', '#d9f07a'], linhas: ['...#...', '..###..', '..###..', '.#####.', '.#+###.', '.#####.', '..###..'] },
-  paralisado: { sigla: 'PAR', cor: ['#f9c22b', '#8a5a10', '#3b2a35', '#3b2a35'], linhas: ['...##..', '..##...', '.##....', '#####..', '..##...', '.##....', '.#.....'] },
-  dormindo: { sigla: 'SON', cor: ['#6a7a9c', '#343e58', '#fff8e7', '#c8f0f4'], linhas: ['###....', '.#.....', '###.###', '.....#.', '....#..', '...###.', '.......'] },
-  congelado: { sigla: 'GEL', cor: ['#5fc4d8', '#1f5f76', '#fff8e7', '#fff8e7'], linhas: ['...#...', '.#.#.#.', '..###..', '#######', '..###..', '.#.#.#.', '...#...'] },
-  encantado: { sigla: 'ENC', cor: ['#f07ab8', '#8a2a5e', '#fff8e7', '#fff8e7'], linhas: ['.......', '.##.##.', '#######', '#######', '.#####.', '..###..', '...#...'] },
-  desmaiado: { sigla: 'DSM', cor: ['#6e6858', '#2e2a26', '#fff8e7', '#fff8e7'], linhas: ['.......', '#...#..', '.#.#...', '..#....', '.#.#...', '#...#..', '.......'] },
+/** símbolos de status (7×7). cor = [fundo, borda, símbolo, detalhe]; `siglaEn` = etiqueta em inglês (sprite `status-<id>-en`) */
+export const SIMBOLOS_STATUS: Record<string, { sigla: string; siglaEn: string; cor: [string, string, string, string?]; linhas: string[] }> = {
+  queimado: { sigla: 'QMD', siglaEn: 'BRN', cor: ['#e0483c', '#7a1c28', '#fff8e7', '#f9c22b'], linhas: ['..#....', '..##...', '.###.#.', '.#####.', '##+###.', '#+++##.', '.###...'] },
+  envenenado: { sigla: 'ENV', siglaEn: 'PSN', cor: ['#9a4fb8', '#4a2068', '#fff8e7', '#d9f07a'], linhas: ['...#...', '..###..', '..###..', '.#####.', '.#+###.', '.#####.', '..###..'] },
+  paralisado: { sigla: 'PAR', siglaEn: 'PAR', cor: ['#f9c22b', '#8a5a10', '#3b2a35', '#3b2a35'], linhas: ['...##..', '..##...', '.##....', '#####..', '..##...', '.##....', '.#.....'] },
+  dormindo: { sigla: 'SON', siglaEn: 'SLP', cor: ['#6a7a9c', '#343e58', '#fff8e7', '#c8f0f4'], linhas: ['###....', '.#.....', '###.###', '.....#.', '....#..', '...###.', '.......'] },
+  congelado: { sigla: 'GEL', siglaEn: 'FRZ', cor: ['#5fc4d8', '#1f5f76', '#fff8e7', '#fff8e7'], linhas: ['...#...', '.#.#.#.', '..###..', '#######', '..###..', '.#.#.#.', '...#...'] },
+  encantado: { sigla: 'ENC', siglaEn: 'CHM', cor: ['#f07ab8', '#8a2a5e', '#fff8e7', '#fff8e7'], linhas: ['.......', '.##.##.', '#######', '#######', '.#####.', '..###..', '...#...'] },
+  desmaiado: { sigla: 'DSM', siglaEn: 'FNT', cor: ['#6e6858', '#2e2a26', '#fff8e7', '#fff8e7'], linhas: ['.......', '#...#..', '.#.#...', '..#....', '.#.#...', '#...#..', '.......'] },
 };
 
 export const ARTES: Arte[] = [

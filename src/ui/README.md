@@ -28,7 +28,7 @@ em(el, x, y)               // posiciona qualquer elemento em px nativos
 | `moldura(tipo, w, h, x?, y?)` | 9-slice: `madeira` (menus), `cipo`, `azulejo`, `texto` (caixa de fala), `placa` (nomes/avisos), `tinta` (painel escuro de status), `botao`, `botao-foco`, `botao-ap`, `trilho`, `selecao` (cantoneiras), `bisel`. Anexe o conteúdo direto no elemento. Bordas: 8 px (madeira, cipo, azulejo, texto, bisel), 4 px (placa, tinta, botões, selecao). |
 | `spr(nome)` / `trocarSpr(el, nome)` | sprite do atlas: `cursor`, `seta-cima/baixo/esq/dir`, `continuar`, `sol`, `lua`, `folha-cipo`, `tipo-<tipo>`, `status-<id>` e `status-<id>-mini`, `insignia-<1..16>` e `-vazia`, `bolso-<bolso>`, peças de toque. |
 | `iconeTipo(t)` · `chipTipo(t, largura)` | ícone 12×12 · etiqueta com nome na cor do tipo. `CORES_TIPO[t] = [base, escura, clara]`, `NOME_TIPO`. |
-| `iconeStatus(s, mini?)` | etiqueta com sigla (QMD ENV PAR SON GEL ENC DSM) ou mini 9×9. |
+| `iconeStatus(s, mini?)` | etiqueta com sigla (QMD ENV PAR SON GEL ENC DSM; em inglês BRN PSN PAR SLP FRZ CHM FNT, sprites `status-<id>-en`) ou mini 9×9. |
 | `insignia(n, tem)` · `fileiraInsignias(lista, porLinha, passo)` | 16×16; sem a insígnia mostra a silhueta. `NOME_INSIGNIA`. |
 | `iconeBolso(b)` | 16×16 (`itens remedios cuias pergaminhos frutos chave`), `NOME_BOLSO`. |
 | `barra('vida' \| 'exp', largura, aoAndar?)` | `{ el, definir(frac, animar), atualizar(dt), px }`. Vida: 6 px de altura, verde > 50%, amarelo > 20%, vermelho; anda 1 px por vez (chame `atualizar` no passo; `aoAndar(px, max)` serve para os números descerem junto). Exp: 4 px. |

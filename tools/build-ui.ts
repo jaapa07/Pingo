@@ -150,14 +150,19 @@ const larguraTxt = (gl: Glifo[], txt: string, espaco = 3) => [...txt].reduce((a,
 
 /* ------------------------------ atlas ------------------------------ */
 const pecas: { nome: string; img: Img }[] = [];
+/** peças empacotadas depois de todas as outras, em linhas novas no fim do atlas (ex.: siglas de status em inglês) */
+const pecasFim: { nome: string; img: Img }[] = [];
 const add = (nome: string, img: Img) => { if (pecas.some((p) => p.nome === nome)) erros.push('sprite duplicado: ' + nome); pecas.push({ nome, img }); };
+const addFim = (nome: string, img: Img) => { if ([...pecas, ...pecasFim].some((p) => p.nome === nome)) erros.push('sprite duplicado: ' + nome); pecasFim.push({ nome, img }); };
 function empacotar(largura = 256) {
-  const ord = [...pecas].sort((a, b) => b.img.h - a.img.h || b.img.w - a.img.w);
+  const porTamanho = (a: { img: Img }, b: { img: Img }) => b.img.h - a.img.h || b.img.w - a.img.w;
+  const principais = [...pecas].sort(porTamanho), fim = [...pecasFim].sort(porTamanho);
+  const ord = [...principais, ...fim];
   const pos: Record<string, [number, number, number, number]> = {};
   let x = 0, y = 0, hLinha = 0;
   for (const p of ord) {
     if (p.img.w > largura) erros.push(`sprite ${p.nome} mais largo que o atlas`);
-    if (x + p.img.w > largura) { x = 0; y += hLinha + 1; hLinha = 0; }
+    if (x + p.img.w > largura || (p === fim[0] && x > 0)) { x = 0; y += hLinha + 1; hLinha = 0; }
     pos[p.nome] = [x, y, p.img.w, p.img.h]; x += p.img.w + 1; hLinha = Math.max(hLinha, p.img.h);
   }
   const atlas = new Img(largura, y + hLinha);
@@ -219,11 +224,16 @@ for (const [id, s] of Object.entries(SIMBOLOS_STATUS)) {
   const simb = deGrade('status ' + id, s.linhas, cores);
   const mini = deGrade('status-mini', ['.YYYYYYY.', ...Array.from({ length: 7 }, () => 'YXXXXXXXY'), '.YYYYYYY.'], cores).colar(simb, 1, 1);
   add(`status-${id}-mini`, mini);
-  const wt = larguraTxt(f8.gl, s.sigla);
-  const et = new Img(9 + wt + 3, 9);
-  for (let y = 0; y < 9; y++) for (let x = 0; x < et.w; x++) { const canto = (x === 0 || x === et.w - 1) && (y === 0 || y === 8); if (!canto) et.set(x, y, hex(x === 0 || y === 0 || x === et.w - 1 || y === 8 ? cores.Y : cores.X)); }
-  et.colar(simb, 1, 1); escrever(et, f8.gl, s.sigla, 9, 1, hex(cores['#']));
-  add(`status-${id}`, et);
+  const etiqueta = (sigla: string) => {
+    const wt = larguraTxt(f8.gl, sigla);
+    const et = new Img(9 + wt + 3, 9);
+    for (let y = 0; y < 9; y++) for (let x = 0; x < et.w; x++) { const canto = (x === 0 || x === et.w - 1) && (y === 0 || y === 8); if (!canto) et.set(x, y, hex(x === 0 || y === 0 || x === et.w - 1 || y === 8 ? cores.Y : cores.X)); }
+    et.colar(simb, 1, 1); escrever(et, f8.gl, sigla, 9, 1, hex(cores['#']));
+    return et;
+  };
+  add(`status-${id}`, etiqueta(s.sigla));
+  // versão em inglês (docs/I18N.md): vai para o fim do atlas, sem mexer na posição das peças em português
+  if (s.siglaEn !== s.sigla) addFim(`status-${id}-en`, etiqueta(s.siglaEn));
 }
 
 // controles de toque: cada botão ganha a versão apertada (1 px mais baixa e mais escura)
@@ -302,4 +312,4 @@ if (process.argv.includes('--previa')) {
 }
 
 if (erros.length) { console.error('build-ui: ' + erros.length + ' erro(s)\n' + erros.slice(0, 60).join('\n')); process.exit(1); }
-console.log(`build-ui: ${pecas.length} sprites no atlas ${atlas.w}×${atlas.h}, ${Object.keys(f8.meta.glifos).length}+${Object.keys(f12.meta.glifos).length} glifos, ${MOLDURAS.length} molduras.`);
+console.log(`build-ui: ${pecas.length + pecasFim.length} sprites no atlas ${atlas.w}×${atlas.h}, ${Object.keys(f8.meta.glifos).length}+${Object.keys(f12.meta.glifos).length} glifos, ${MOLDURAS.length} molduras.`);
