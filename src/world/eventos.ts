@@ -12,7 +12,7 @@ import { lutar, soltarErrante } from './encontros';
 import { irPara, reavaliar } from './index';
 import { seguirParceira } from './parceira';
 import { garantirItensDeAmuleto } from './integracao';
-import { tr } from '../i18n';
+import { tr, classeDe } from '../i18n';
 
 /** lançado para encerrar o script em curso (derrota em batalha) */
 class Encerrar extends Error {}
@@ -24,7 +24,7 @@ function quemFala(q: unknown): Quem | undefined {
   if (q === 'jogador') return { nome: jogo.save.jogador.nome, retrato: jogo.save.jogador.avatar };
   const n = M.npcs.find((x) => x.id === q);
   if (!n) return { nome: String(q) };
-  return { nome: n.treinador ? tr('{classe} {nome}', { classe: n.treinador.classe, nome: n.treinador.nome }) : (n.def as { nome?: string }).nome, retrato: n.def.sprite };
+  return { nome: n.treinador ? tr('{classe} {nome}', { classe: classeDe(n.treinador), nome: n.treinador.nome }) : (n.def as { nome?: string }).nome, retrato: n.def.sprite };
 }
 async function entregar(c: CriaturaInst, apelidar: boolean) {
   const nome = nomeCriatura(c);

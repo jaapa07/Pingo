@@ -677,47 +677,51 @@
  },
  "VD": {
   "en": "HP",
-  "ctx": "src/battle/view/hud.ts:44 · texto() | src/battle/view/menus.ts:224 · texto()"
+  "ctx": "src/battle/view/hud.ts:44 · texto() | src/battle/view/menus.ts:226 · texto()"
  },
  "EXP": {
   "en": "EXP",
   "ctx": "src/battle/view/hud.ts:49 · texto()"
  },
+ "Apoio": {
+  "en": "Status",
+  "ctx": "src/battle/view/menus.ts:30"
+ },
  "LUTAR": {
   "en": "FIGHT",
-  "ctx": "src/battle/view/menus.ts:37 · texto() | src/battle/view/menus.ts:37 · medir()"
+  "ctx": "src/battle/view/menus.ts:39 · texto() | src/battle/view/menus.ts:39 · medir()"
  },
  "MOCHILA": {
   "en": "BAG",
-  "ctx": "src/battle/view/menus.ts:38"
+  "ctx": "src/battle/view/menus.ts:40"
  },
  "PG {pgMax}": {
   "en": "MP {pgMax}",
-  "ctx": "src/battle/view/menus.ts:81 · escrever()"
+  "ctx": "src/battle/view/menus.ts:83 · escrever()"
  },
  "PG": {
   "en": "MP",
-  "ctx": "src/battle/view/menus.ts:81 · escrever()"
+  "ctx": "src/battle/view/menus.ts:83 · escrever()"
  },
  "Nada neste bolso.": {
   "en": "Nothing in this pocket.",
-  "ctx": "src/battle/view/menus.ts:173 · campo rotulo"
+  "ctx": "src/battle/view/menus.ts:175 · campo rotulo"
  },
  "Sem {bolso} que sirvam em batalha.": {
   "en": "No {bolso} usable in battle.",
-  "ctx": "src/battle/view/menus.ts:180 · escrever()"
+  "ctx": "src/battle/view/menus.ts:182 · escrever()"
  },
  "em campo": {
   "en": "in battle",
-  "ctx": "src/battle/view/menus.ts:226 · texto() | src/battle/view/menus.ts:226 · medir()"
+  "ctx": "src/battle/view/menus.ts:228 · texto() | src/battle/view/menus.ts:228 · medir()"
  },
  "Confirmar: escolher": {
   "en": "Confirm: choose",
-  "ctx": "src/battle/view/menus.ts:234 · escrever()"
+  "ctx": "src/battle/view/menus.ts:236 · escrever()"
  },
  "Confirmar: escolher   Voltar: cancelar": {
   "en": "Confirm: choose   Back: cancel",
-  "ctx": "src/battle/view/menus.ts:234 · escrever()"
+  "ctx": "src/battle/view/menus.ts:236 · escrever()"
  },
  "{nome} quer aprender {golpe}, mas já sabe quatro golpes.": {
   "en": "{nome} wants to learn {golpe}, but already knows four moves.",
@@ -1344,7 +1348,7 @@
   "ctx": "src/data/golpes.ts:154 · g()"
  },
  "Bolhas do Mangue": {
-  "en": "Mangrove Bubbles",
+  "en": "Mangrove Foam",
   "ctx": "src/data/golpes.ts:155 · g()"
  },
  "Bolhas pegajosas nos adversários. Podem baixar a Velocidade.": {
@@ -1676,7 +1680,7 @@
   "ctx": "src/data/golpes.ts:202 · g()"
  },
  "Aú Giratório": {
-  "en": "Spinning Cartwheel",
+  "en": "Cartwheel Spin",
   "ctx": "src/data/golpes.ts:203 · g()"
  },
  "Estrela de capoeira que acerta duas vezes.": {

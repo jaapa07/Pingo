@@ -7,7 +7,7 @@ import type { Tela } from '../telas';
 import { elTela, fechar } from '../base';
 import { texto, escrever, em } from '../fonte';
 import { moldura, som } from '../kit';
-import { tr } from '../../i18n';
+import { tr, nomesFixos } from '../../i18n';
 
 const PAGINAS = [
   ['ABCDEFGHIJKLM', 'NOPQRSTUVWXYZ', 'ÁÀÂÃÉÊÍÓÔÕÚÜÇ', "0123456789-'."],
@@ -57,6 +57,7 @@ export function criarTelaNome(args: ArgsNome): Tela {
     escrever(rotCmd[0], pagina === 0 ? 'abc' : 'ABC'); rotCmd[0].style.left = Math.floor((60 - parseInt(rotCmd[0].style.width)) / 2) + 'px';
   }
   function pintarNome() {
+    nomesFixos([nome]); // o que o jogador digita não tem tradução (lista de textos sem tradução, só em desenvolvimento)
     escrever(tNome, nome + (nome.length < max ? '_' : ''));
     escrever(cont, `${nome.length}/${max}`); cont.style.left = 152 - 10 - parseInt(cont.style.width) + 'px';
   }

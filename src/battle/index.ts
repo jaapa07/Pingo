@@ -21,7 +21,7 @@ import { Batalha, LIMIAR_CHOCALHO, FATOR_EXP_POS_LIGA, FATOR_EXP_INSIGNIA_12, fa
 import { escolherAcaoIA, escolherSubstitutoIA, iaUsaItens, nivelEfetivo, type NivelIA, type OpcoesIA } from './ia';
 import { limiteObediencia } from './cuias';
 import { amizadePor, curarCriatura, evoluir, nomeDe, registrarEspecies, totalEspecies } from './criatura';
-import { tr } from '../i18n';
+import { tr, classeDe } from '../i18n';
 
 export { criarCriatura, criarDeMembro, atributos, registrarEspecies, especie, podeEvoluir, evoluir, expParaNivel, nomeDe, mudarAmizade, amizadePor, aprenderGolpe, ganharExp, curarCriatura } from './criatura';
 export { Batalha } from './engine';
@@ -122,7 +122,7 @@ export function prepararBatalha(p: PedidoBatalha, o: { autoAprender?: boolean } 
   }
   const cfg: ConfigBatalha = {
     tipo: p.tipo,
-    lados: [{ equipe: s.equipe, itens: s.mochila, nome: s.jogador.nome }, { equipe: p.inimigos, itens, nome: t ? tr('{classe} {nome}', { classe: t.classe, nome: t.nome }) : '' }],
+    lados: [{ equipe: s.equipe, itens: s.mochila, nome: s.jogador.nome }, { equipe: p.inimigos, itens, nome: t ? tr('{classe} {nome}', { classe: classeDe(t), nome: t.nome }) : '' }],
     clima: p.clima, dupla: p.dupla ?? t?.dupla, semFuga: p.semFuga, semCaptura: p.semCaptura, periodo: periodo(),
     trocaGratis: dif !== 'veterano', autoAprender: o.autoAprender, ganhaExp: !p.semExp, expPartilhada: (s.mochila['chocalho-mutirao'] ?? 0) > 0,
     limiarPartilha: limiarChocalho(s.flags), fatorExp: fatorExpDoProgresso(s.flags, s.insignias.length),

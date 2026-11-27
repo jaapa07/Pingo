@@ -26,7 +26,7 @@ import { quebrar, texto as txtFonte } from '../fonte';
 import { caber } from './mochila';
 import { NOTICIAS, FAIXAS_RADIO, RECADOS_SEMANA, FALAS_CONTATO } from '../../data/radio';
 import { T } from '../../data/textos-ui';
-import { t as traduz, tr } from '../../i18n';
+import { t as traduz, tr, classeDe } from '../../i18n';
 
 /**
  * o papel de `lerCarta` (pc-quarto.ts) tem espaço para poucas linhas: textos longos do rádio (agenda do dia, cantigas)
@@ -58,7 +58,7 @@ export function criarRadio(): Tela {
   const cartao = (s.mochila['cartao-radio'] ?? 0) > 0;
   const ops = ['Agenda do dia', 'Contatos', 'Revanches', 'Bicho do Dia', 'Hora da Música', 'Notícias', 'Recado do dia', ...(cartao ? ['Cantiga das Lendas'] : []), 'Mapa', 'Desligar'];
   const fase = (): Fase => faseDoProgresso(s.insignias.length, s.flags);
-  const agendaHoje = () => agendaDoDia({ dia: diaSemana(), periodo: periodo(), liga: !!flag('liga-vencida'), contatos: contatos().filter((t) => podeHoje(t)).map((t) => tr('{classe} {nome}', { classe: t.classe, nome: t.nome })), enxame: enxameHoje(), cartao, mergulho: s.amuletos.includes('mergulho') });
+  const agendaHoje = () => agendaDoDia({ dia: diaSemana(), periodo: periodo(), liga: !!flag('liga-vencida'), contatos: contatos().filter((t) => podeHoje(t)).map((t) => tr('{classe} {nome}', { classe: classeDe(t), nome: t.nome })), enxame: enxameHoje(), cartao, mergulho: s.amuletos.includes('mergulho') });
   const enxameHoje = () => { const e = enxameDoDia(todasZonas(), diaDoAno(), MAPA_B_ABERTO); return e ? { local: e.zona.nome, especie: s.diario.visto.includes(e.e) ? nomeEsp(e.e) : '' } : null; };
   const ehRival = (t: TreinadorDef) => /^rival-/.test(t.id);
   /** pode lutar hoje: no dia e período da agenda, sem revanche hoje; líder só depois da Liga */
@@ -125,7 +125,7 @@ export function criarRadio(): Tela {
     let ind = 0;
     for (;;) {
       const cs = contatos(); if (!cs.length) { await informar(T.radio.semContatos); return; }
-      ind = await escolherEm('CONTATOS', cs.map((t) => ({ rotulo: caber(t.nome, 96), valor: caber(t.classe, 66) })), { inicial: Math.min(ind, cs.length - 1), descricao: (k) => tr('{classe} {nome}\n\n{agenda}\n\nA: ligar', { classe: cs[k].classe, nome: cs[k].nome, agenda: descAgenda(cs[k]) }) });
+      ind = await escolherEm('CONTATOS', cs.map((t) => ({ rotulo: caber(t.nome, 96), valor: caber(t.classe, 66) })), { inicial: Math.min(ind, cs.length - 1), descricao: (k) => tr('{classe} {nome}\n\n{agenda}\n\nA: ligar', { classe: classeDe(cs[k]), nome: cs[k].nome, agenda: descAgenda(cs[k]) }) });
       if (ind < 0) return;
       await ligar(cs[ind]);
     }
@@ -147,7 +147,7 @@ export function criarRadio(): Tela {
     for (;;) {
       ind = await escolherEm('REVANCHES', cs.map((t) => ({ rotulo: caber(t.nome, 96), valor: `${traduz(NOME_DIA_CURTO[agendaDe(t).dia])} ${traduz(PER[agendaDe(t).periodo])}`, cor: podeHoje(t) ? 'verde' as const : undefined })), {
         inicial: ind,
-        descricao: (k) => { const t = cs[k], eq = equipeDaFase(t, t.insignia ? Math.max(3, fase()) as Fase : fase(), especie); return [tr('{classe} {nome}', { classe: t.classe, nome: t.nome }), descAgenda(t), t.insignia ? tr('No {lugar}.', { lugar: TREINO.nome }) : traduz('Luta pelo rádio.'), tr('Fase: {fase}', { fase: NOME_FASE[t.insignia ? Math.max(3, fase()) as Fase : fase()] }), tr('Equipe: {n} criaturas, nível até {nivel}.', { n: eq.length, nivel: Math.max(...eq.map((m) => m.nv)) }), '', traduz('A: ligar')].join('\n'); },
+        descricao: (k) => { const t = cs[k], eq = equipeDaFase(t, t.insignia ? Math.max(3, fase()) as Fase : fase(), especie); return [tr('{classe} {nome}', { classe: classeDe(t), nome: t.nome }), descAgenda(t), t.insignia ? tr('No {lugar}.', { lugar: TREINO.nome }) : traduz('Luta pelo rádio.'), tr('Fase: {fase}', { fase: NOME_FASE[t.insignia ? Math.max(3, fase()) as Fase : fase()] }), tr('Equipe: {n} criaturas, nível até {nivel}.', { n: eq.length, nivel: Math.max(...eq.map((m) => m.nv)) }), '', traduz('A: ligar')].join('\n'); },
       });
       if (ind < 0) return;
       await ligar(cs[ind]);

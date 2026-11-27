@@ -10,7 +10,7 @@ import { temTela } from '../ui/telas';
 import { rng } from '../core/rng';
 import { treinadoresExtras, eventosExtras } from './registro';
 import { entradaReserva, pollReserva, ligarEntrada, falarR, escolherR, pedirNomeR, avisarR, abrirTelaR, type Entrada } from './reserva';
-import { tr } from '../i18n';
+import { tr, classeDe } from '../i18n';
 
 type Mod = Record<string, any>;
 const primeiro = (g: Record<string, unknown>): Mod | undefined => Object.values(g)[0] as Mod | undefined;
@@ -61,7 +61,7 @@ export async function iniciarBatalha(p: PedidoBatalha): Promise<ResultadoBatalha
   if (f) return f(p);
   // sem o módulo de batalha (teste isolado): anuncia e devolve vitória
   const e = p.inimigos[0];
-  await falar(p.treinador ? tr('{classe} {treinador} quer batalhar!', { classe: p.treinador.classe, treinador: p.treinador.nome }) : tr('Um {n} selvagem apareceu!', { n: nomeCriatura(e) }));
+  await falar(p.treinador ? tr('{classe} {treinador} quer batalhar!', { classe: classeDe(p.treinador), treinador: p.treinador.nome }) : tr('Um {n} selvagem apareceu!', { n: nomeCriatura(e) }));
   const resultado = (jogo.save.flags['teste-resultado-batalha'] as ResultadoBatalha['resultado']) ?? 'vitoria';
   // com o módulo de batalha, quem emite 'batalha-fim' é ele (uma vez só); aqui é o substituto do teste isolado
   bus.emit('batalha-fim', { tipo: p.tipo, resultado, pedido: p });

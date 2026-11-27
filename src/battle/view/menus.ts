@@ -26,7 +26,9 @@ function voltar(pai: HTMLElement, x: number, y: number, aoTocar: () => void, fol
 }
 
 export interface Modal { el: HTMLElement; atualizar(dt: number): void; fechar?(): void }
-const CAT = { fisico: 'Físico', especial: 'Especial', status: 'Apoio' } as const;
+// (o rótulo fica numa constante: o extrator do catálogo ignora valores de campos chamados `status`)
+const APOIO = 'Apoio';
+const CAT = { fisico: 'Físico', especial: 'Especial', status: APOIO } as const;
 
 /* ------------------------------ menu de ações ------------------------------ */
 export type OpcaoAcao = 'lutar' | 'mochila' | 'equipe' | 'fugir';
@@ -107,7 +109,7 @@ export function menuGolpes(o: { c: CriaturaInst; eficacia(id: string): InfoEfica
     const g = gs[j];
     if (!g) { c.append(em(texto('—', { cor: 'cinza' }), 17, 5)); continue; }
     const d = defGolpe(g.id);
-    let nome = d.nome; while (medir(nome) > 84 && nome.length > 3) nome = nome.slice(0, -1);
+    let nome = t(d.nome); while (medir(nome) > 84 && nome.length > 3) nome = nome.slice(0, -1);
     c.append(em(iconeTipo(d.tipo), 2, 3), em(texto(nome, { cor: g.pg > 0 ? 'tinta' : 'cinza' }), 17, 5));
     tocavel(c, () => { i = j; pintar(); ok(); }, () => ir(j));
   }

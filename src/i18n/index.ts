@@ -56,7 +56,9 @@ function faltou(s: string) {
   if (conferidos.size > 20000) conferidos.clear();
   conferidos.add(s);
   const palavras = s.replace(/\{[^}]*\}/g, ' ').match(PALAVRA); // sem as marcações ({c:cor}, {/c}, {marcador})
-  if (!palavras || palavras.every((p) => vocabulario.has(p.toLowerCase()))) return;
+  // a última palavra pode vir cortada (nome encolhido para caber: "Tamanduá-Cop")
+  const conhecida = (p: string, ultima: boolean) => { const q = p.toLowerCase(); if (vocabulario.has(q)) return true; if (!ultima || q.length < 3) return false; for (const v of vocabulario) if (v.startsWith(q)) return true; return false; };
+  if (!palavras || palavras.every((p, i) => conhecida(p, i === palavras.length - 1))) return;
   faltas.add(s); console.info('[i18n] sem tradução:', JSON.stringify(s));
 }
 function produzido(s: string) { if (produzidos.size > 4000) produzidos.clear(); produzidos.add(s); return s; }
@@ -85,8 +87,22 @@ export function tr(modelo: string, valores?: Valores): string {
   const ing = idioma === 'en';
   let m = modelo;
   if (ing) { const e = catalogo.get(modelo); if (e !== undefined) m = e; else faltou(modelo); }
-  if (valores) m = m.replace(MARCADOR, (todo, k: string) => { if (!(k in valores)) return todo; const v = valores[k]; return v == null ? '' : typeof v === 'number' ? String(v) : ing ? valorEn(v) : v; });
+  let vazio = false;
+  if (valores) m = m.replace(MARCADOR, (todo, k: string) => { if (!(k in valores)) return todo; const v = valores[k]; if (v === '') vazio = true; return v == null ? '' : typeof v === 'number' ? String(v) : ing ? valorEn(v) : v; });
+  // em inglês, um valor vazio (classe omitida por `classeDe`) não deixa espaço sobrando
+  if (ing && vazio) m = m.replace(/^ +/, '').replace(/(\S) {2,}/g, '$1 ');
   return ing ? produzido(m) : m;
+}
+/**
+ * classe de treinador para `tr('{classe} {nome}…')`. Muitos nomes já trazem um título ("Peão Laço-Firme",
+ * "Pescador Traíra"); em inglês "Cowhand Ranch Hand Laço-Firme" / "Fisher Fisher Traíra" soa quebrado, então a classe
+ * sai quando o nome traduzido já começa com um título (Líder fica: "Leader Sailor Netuno Silva"). Em português, a classe.
+ */
+const TITULO_EN = /^(Ranch Hand|Drover|Climber|Mountaineer|Smith|Blacksmith|Scout|Diver|Fisher|Prospector|Woodswoman|Hiker|Apprentice Guardian) /;
+export function classeDe(tr: { classe: string; nome: string }): string {
+  if (idioma === 'pt' || tr.classe === 'Líder') return tr.classe;
+  const c = catalogo.get(tr.classe) ?? tr.classe, n = catalogo.get(tr.nome) ?? tr.nome;
+  return n.startsWith(c + ' ') || TITULO_EN.test(n) ? '' : tr.classe;
 }
 /** junta uma lista como na fala: "A, B e C" / "A, B and C" (`conj` 'ou' → "ou"/"or"); os itens já vêm traduzidos */
 export function juntar(itens: string[], conj: 'e' | 'ou' = 'e'): string {

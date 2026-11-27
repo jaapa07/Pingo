@@ -17,19 +17,19 @@
  },
  "Físico": {
   "en": "Physical",
-  "ctx": "src/battle/view/menus.ts:29 · campo fisico | src/ui/telas/resumo.ts:28 · campo fisico"
+  "ctx": "src/battle/view/menus.ts:31 · campo fisico | src/ui/telas/resumo.ts:28 · campo fisico"
  },
  "Especial": {
   "en": "Special",
-  "ctx": "src/battle/view/menus.ts:29 · campo especial | src/ui/telas/resumo.ts:28 · campo especial"
+  "ctx": "src/battle/view/menus.ts:31 · campo especial | src/ui/telas/resumo.ts:28 · campo especial"
  },
  "EQUIPE": {
   "en": "TEAM",
-  "ctx": "src/battle/view/menus.ts:38 | src/ui/telas/equipe.ts:31 · placaTitulo() | src/ui/telas/viveiro.ts:37 · texto()"
+  "ctx": "src/battle/view/menus.ts:40 | src/ui/telas/equipe.ts:31 · placaTitulo() | src/ui/telas/viveiro.ts:37 · texto()"
  },
  "Ovo": {
   "en": "Egg",
-  "ctx": "src/battle/view/menus.ts:220 · texto() | src/ui/telas/comum.ts:32 | src/ui/telas/resumo.ts:58 · rotulo()"
+  "ctx": "src/battle/view/menus.ts:222 · texto() | src/ui/telas/comum.ts:32 | src/ui/telas/resumo.ts:58 · rotulo()"
  },
  "Vida": {
   "en": "HP",
@@ -1436,7 +1436,7 @@
   "ctx": "src/ui/kit.ts:19"
  },
  "Lamparina": {
-  "en": "Oil Lamp",
+  "en": "Lamp",
   "ctx": "src/ui/kit.ts:19"
  },
  "Cristal": {
@@ -1460,7 +1460,7 @@
   "ctx": "src/ui/kit.ts:19"
  },
  "Floco": {
-  "en": "Snowflake",
+  "en": "Flake",
   "ctx": "src/ui/kit.ts:19"
  },
  "Olho": {
