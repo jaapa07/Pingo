@@ -10,7 +10,6 @@ import { flag } from '../../core/estado';
 import { OPOSTO } from '../zonas';
 import { registrarMecanica } from '../registro';
 import { M, Enfeites, DIVISAS, DX, DY, laco, arrastar, cair, cena, livre, olharTreinadores, falar, avisar, sfx, quadros, naZona } from './_pecas';
-import { tr } from '../../i18n';
 
 const ZONA = 'A8-ginasio';
 const INICIO: [number, number] = [8, 16];
@@ -98,7 +97,7 @@ registrarMecanica(ZONA, {
     const g = ENGRENAGENS.find((o) => o.x === x && o.y === y);
     if (g) { cena(() => girar(g)); return true; }
     const e = esteiraEm(x, y);
-    if (e && !vencido()) { cena(() => falar(tr('Uma esteira do circuito {cor}. Ela carrega tudo o que encosta para onde a seta aponta.', { cor: e.cor }))); return true; }
+    if (e && !vencido()) { cena(() => falar(e.cor === 'vermelho' ? 'Uma esteira do circuito vermelho. Ela carrega tudo o que encosta para onde a seta aponta.' : 'Uma esteira do circuito azul. Ela carrega tudo o que encosta para onde a seta aponta.')); return true; }
     if (M.zv.ch(x, y) === 'x') { cena(() => falar('A prensa de vapor bufa a cada dois segundos. Melhor não ficar embaixo.')); return true; }
     return false;
   },

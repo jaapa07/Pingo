@@ -1548,135 +1548,135 @@
   "ctx": "src/data/eventos/ginasio-02.ts:22 · fala de LIA"
  },
  "A Rota 4 sai pelo leste da cidade e termina na Usina Velha. Enquanto aquilo não for resolvido, o cais sul fica sem energia e ninguém zarpa para a Baía Azul.\fVá ver o que é aquilo, marujo. Depois, com o Remo, é só descer pelo cais até a Cidade Coral.": {
-  "en": "",
+  "en": "Route 4 leaves from the east side of the city and ends at the Old Power Plant. Until that's sorted out, the south dock has no power and nobody sets sail for Baía Azul.\fGo see what's going on, sailor. After that, with the Paddle, just head down the dock to Cidade Coral.",
   "ctx": "src/data/eventos/ginasio-03.ts:10 · fala de NETUNO"
  },
  "Abriu as minhas eclusas na ordem certa! Tem cabeça de piloto de rio.\fEu sou o Netuno Silva, capitão deste ginásio. Agora vamos ver se o braço acompanha a cabeça!": {
-  "en": "",
+  "en": "You opened my locks in the right order! You've got a river pilot's head.\fI'm Netuno Silva, captain of this gym. Now let's see if your arm keeps up with your head!",
   "ctx": "src/data/eventos/ginasio-03.ts:12 · fala de NETUNO"
  },
  "Naufraguei no meu próprio cais! Você merece: a Insígnia Concha é sua!": {
-  "en": "",
+  "en": "Shipwrecked on my own dock! You've earned it: the Shell Badge is yours!",
   "ctx": "src/data/eventos/ginasio-03.ts:16 · fala de NETUNO"
  },
  "{JOGADOR} recebeu a Insígnia Concha!": {
-  "en": "",
+  "en": "{JOGADOR} received the Shell Badge!",
   "ctx": "src/data/eventos/ginasio-03.ts:18 · fala de null"
  },
  "E leve o Amuleto do Remo. Com uma criatura do tipo Rio na equipe, ela puxa a sua canoa por qualquer água mansa.\fNão tem nenhuma? Não precisa voltar: com a Vara Velha, na beira do cais sai Piabinha.\fE o Seu Arraia, lá na praia, troca o Mandizinho dele por um Pipirim. Sem criatura de Rio, ninguém atravessa a Baía Azul.": {
-  "en": "",
+  "en": "And take the Paddle Charm. With a River-type creature on your team, it'll pull your canoe across any calm water.\fDon't have one? No need to go back: with the Old Rod, Piabinhas bite right off the edge of the dock.\fAnd Seu Arraia, down on the beach, will trade his Mandizinho for a Pipirim. Without a River creature, nobody crosses Baía Azul.",
   "ctx": "src/data/eventos/ginasio-03.ts:19 · fala de NETUNO"
  },
  "Esse pergaminho ensina a Enxurrada: uma parede de água que arrasta o que estiver na frente.\fAgora preste atenção. Faz dias que sai uma fumaça esquisita da Usina Velha, no fim da Rota 4, a leste daqui. Desde então o cais sul está sem energia e a estação do trem, às escuras.\fDizem que é coisa de um tal Cartel. Resolva isso e o cais volta a funcionar: com o Remo você desce pela Baía Azul até a Cidade Coral, onde a rendeira Iracema Lua guarda o ginásio de Encanto.": {
-  "en": "",
+  "en": "This scroll teaches Flash Flood: a wall of water that sweeps away whatever's in front of it.\fNow pay attention. For days, strange smoke has been coming out of the Old Power Plant, at the end of Route 4, east of here. Since then the south dock has had no power and the train station's been dark.\fThey say it's the work of some Cartel. Sort it out and the dock will work again: with the Paddle you can go down Baía Azul to Cidade Coral, where the lacemaker Iracema Lua keeps the Charm gym.",
   "ctx": "src/data/eventos/ginasio-03.ts:22 · fala de NETUNO"
  },
  "A Ilha do Farol fica ao norte da cidade. O farol anda apagado e o Faroleiro Volta sumiu lá dentro: vá ver o que houve.\fE passe na Praia das Tartarugas quando puder. Dizem que tem ninho novo por lá.": {
-  "en": "",
+  "en": "Ilha do Farol is north of the city. The lighthouse has gone dark and Lighthouse Keeper Volta vanished inside: go see what happened.\fAnd stop by Praia das Tartarugas when you can. They say there's a new nest there.",
   "ctx": "src/data/eventos/ginasio-04.ts:10 · fala de IRACEMA"
  },
  "Acendeu as minhas duas estrelas! Pouca gente entende que a luz precisa de caminho, igual linha na almofada.\fEu sou a Iracema Lua, rendeira de Cidade Coral. Vamos ver se a sua equipe também brilha!": {
-  "en": "",
+  "en": "You lit both my stars! Few people understand that light needs a path, just like thread on a lace pillow.\fI'm Iracema Lua, lacemaker of Cidade Coral. Let's see if your team shines too!",
   "ctx": "src/data/eventos/ginasio-04.ts:12 · fala de IRACEMA"
  },
  "Que coisa mais linda de se ver! Tome, meu bem: a Insígnia Estrela é sua!": {
-  "en": "",
+  "en": "What a lovely thing to see! Here, dear: the Star Badge is yours!",
   "ctx": "src/data/eventos/ginasio-04.ts:16 · fala de IRACEMA"
  },
  "{JOGADOR} recebeu a Insígnia Estrela!": {
-  "en": "",
+  "en": "{JOGADOR} received the Star Badge!",
   "ctx": "src/data/eventos/ginasio-04.ts:18 · fala de null"
  },
  "Esse pergaminho ensina o Clarão da Lua: uma luz tão forte que até criatura de Lenda sente.\fAgora escute, meu bem. Faz noites que o farol da Ilha do Farol não acende, e os saveiros estão batendo nos recifes. O Faroleiro Volta, que também é o líder de lá, não aparece desde então.\fDizem que uns sujeitos de uniforme cinza tomaram a torre. A ilha fica ao norte daqui. Se resolver isso, o Volta vai querer conhecer você… e o ginásio dele é de Trovão.": {
-  "en": "",
+  "en": "This scroll teaches Moonflash: a light so bright even Legend creatures feel it.\fNow listen, dear. For nights the Ilha do Farol lighthouse hasn't lit, and the sailboats are hitting the reefs. Lighthouse Keeper Volta, who's also the Leader there, hasn't been seen since.\fThey say some fellows in gray uniforms took over the tower. The island is north of here. If you sort it out, Volta will want to meet you… and his gym is Thunder type.",
   "ctx": "src/data/eventos/ginasio-04.ts:20 · fala de IRACEMA"
  },
  "Deixei todas as pontes ligadas para você passear.\fA Gruta Breu sai de Cidade Coral: com o Lampião aceso você atravessa até a Serra Fumaça. A Dona Benta Sombra, de lá, conta causo de arrepiar.": {
-  "en": "",
+  "en": "I left all the bridges on so you can wander around.\fGruta Breu starts from Cidade Coral: with your Lantern lit you can cross to Serra Fumaça. Dona Benta Sombra, over there, tells hair-raising tales.",
   "ctx": "src/data/eventos/ginasio-05.ts:10 · fala de VOLTA"
  },
  "Então foi você que tirou aquele bando do meu farol! E ainda ligou as minhas pontes na ordem certa.\fEu devia agradecer… mas inventor agradece com experiência. Vamos testar a sua resistência!": {
-  "en": "",
+  "en": "So you're the one who ran that gang out of my lighthouse! And you switched on my bridges in the right order too.\fI ought to thank you… but an inventor says thanks with an experiment. Let's test your resistance!",
   "ctx": "src/data/eventos/ginasio-05.ts:12 · fala de VOLTA"
  },
  "Experiência concluída: você conduz melhor que fio de cobre! A Insígnia Raio é sua!": {
-  "en": "",
+  "en": "Experiment complete: you conduct better than copper wire! The Bolt Badge is yours!",
   "ctx": "src/data/eventos/ginasio-05.ts:16 · fala de VOLTA"
  },
  "{JOGADOR} recebeu a Insígnia Raio!": {
-  "en": "",
+  "en": "{JOGADOR} received the Bolt Badge!",
   "ctx": "src/data/eventos/ginasio-05.ts:18 · fala de null"
  },
  "Esse pergaminho ensina o Choque de Poraquê: uma descarga que deixa o adversário paralisado.\fAgora anote aí. Com o Lampião que você ganhou no farol dá para atravessar a Gruta Breu, que sai de Cidade Coral. Do outro lado fica a Serra Fumaça.\fO ginásio de lá é da Dona Benta Sombra, contadora de causos. O tipo dela é Assombro, e a casa é mais escura que porão de navio. Leve criatura que acenda o Lampião!": {
-  "en": "",
+  "en": "This scroll teaches Eel Shock: a discharge that leaves the opponent paralyzed.\fNow write this down. With the Lantern you got at the lighthouse you can cross Gruta Breu, which starts from Cidade Coral. On the other side is Serra Fumaça.\fThe gym there belongs to Dona Benta Sombra, the storyteller. Her type is Spook, and the place is darker than a ship's hold. Bring a creature that can light the Lantern!",
   "ctx": "src/data/eventos/ginasio-05.ts:20 · fala de VOLTA"
  },
  "Deixei os lustres acesos para você: agora os alçapões estão todos à mostra.\fAs rochas rachadas da Rota 5 não seguram mais ninguém que tenha o Quebra-pedra. No fim dela fica a Vila Ferrugem.": {
-  "en": "",
+  "en": "I left the chandeliers lit for you: now all the trapdoors are in plain sight.\fThe cracked rocks on Route 5 won't stop anyone with Rock Smash anymore. At the end of it is Vila Ferrugem.",
   "ctx": "src/data/eventos/ginasio-06.ts:10 · fala de BENTA"
  },
  "Ora, ora… atravessou o meu sobrado e ainda chegou com a chama acesa. Faz tempo que um causo não começa tão bem.\fEu sou a Benta Sombra. Agora deixe eu contar a parte em que as assombrações aparecem!": {
-  "en": "",
+  "en": "Well, well… you crossed my old manor and still arrived with your flame lit. It's been a long time since a tale started off so well.\fI'm Benta Sombra. Now let me tell the part where the ghosts show up!",
   "ctx": "src/data/eventos/ginasio-06.ts:12 · fala de BENTA"
  },
  "Credo em cruz! Você espantou até as minhas visagens. A Insígnia Lamparina é sua!": {
-  "en": "",
+  "en": "Heavens above! You scared off even my apparitions. The Lamp Badge is yours!",
   "ctx": "src/data/eventos/ginasio-06.ts:16 · fala de BENTA"
  },
  "{JOGADOR} recebeu a Insígnia Lamparina!": {
-  "en": "",
+  "en": "{JOGADOR} received the Lamp Badge!",
   "ctx": "src/data/eventos/ginasio-06.ts:18 · fala de null"
  },
  "Leve também o Amuleto Quebra-pedra. Com uma criatura de Pedra, Terra, Ferro ou Ginga na equipe, rocha rachada vira cascalho.": {
-  "en": "",
+  "en": "Take the Rock Smash Charm too. With a Stone, Earth, Iron or Brawl creature on your team, cracked rocks turn to gravel.",
   "ctx": "src/data/eventos/ginasio-06.ts:19 · fala de BENTA"
  },
  "Esse pergaminho ensina a Bola de Breu: um punhado de escuridão atirado bem no meio do adversário.\fAgora ouça o próximo capítulo. A Rota 5 desce a serra, mas está entupida de rochas rachadas: o Quebra-pedra resolve.\fNo fim dela fica a Vila Ferrugem, onde a Engenheira Bigorna comanda um ginásio de Ferro cheio de esteiras e engrenagens. Dizem que lá o chão anda sozinho… esse causo eu quero ouvir de você.": {
-  "en": "",
+  "en": "This scroll teaches Pitch Ball: a handful of darkness hurled right at the opponent.\fNow hear the next chapter. Route 5 goes down the mountain, but it's clogged with cracked rocks: Rock Smash takes care of that.\fAt the end of it is Vila Ferrugem, where Engineer Bigorna runs an Iron gym full of conveyor belts and gears. They say the floor there moves by itself… that's a tale I want to hear from you.",
   "ctx": "src/data/eventos/ginasio-06.ts:22 · fala de BENTA"
  },
  "Desliguei as esteiras para você circular à vontade.\fOs pedregulhos da saída leste da vila já não seguram quem tem a Força. A Estrada do Buriti leva à Vila Buriti, a última insígnia da Costa do Sol.": {
-  "en": "",
+  "en": "I turned off the conveyor belts so you can move around freely.\fThe boulders at the town's east exit won't stop anyone with Strength anymore. Estrada do Buriti leads to Vila Buriti, the last badge of the Costa do Sol.",
   "ctx": "src/data/eventos/ginasio-07.ts:10 · fala de BIGORNA"
  },
  "Dois circuitos, quatro engrenagens, uma prensa… e você aqui, sem um arranhão. Gostei.\fSou a Engenheira Bigorna. Vamos ao teste de carga: a sua equipe contra a minha!": {
-  "en": "",
+  "en": "Two circuits, four gears, a press… and here you are, without a scratch. I like it.\fI'm Engineer Bigorna. On to the load test: your team against mine!",
   "ctx": "src/data/eventos/ginasio-07.ts:12 · fala de BIGORNA"
  },
  "Teste concluído: resistência acima da norma. A Insígnia Engrenagem é sua!": {
-  "en": "",
+  "en": "Test complete: resistance above spec. The Gear Badge is yours!",
   "ctx": "src/data/eventos/ginasio-07.ts:16 · fala de BIGORNA"
  },
  "{JOGADOR} recebeu a Insígnia Engrenagem!": {
-  "en": "",
+  "en": "{JOGADOR} received the Gear Badge!",
   "ctx": "src/data/eventos/ginasio-07.ts:18 · fala de null"
  },
  "Leve o Amuleto da Força. Com uma criatura de Terra, Pedra ou Ginga na equipe, pedregulho vira carrinho de mão.": {
-  "en": "",
+  "en": "Take the Strength Charm. With an Earth, Stone or Brawl creature on your team, boulders become wheelbarrows.",
   "ctx": "src/data/eventos/ginasio-07.ts:19 · fala de BIGORNA"
  },
  "Esse pergaminho ensina a Bigornada: o peso de uma oficina inteira num golpe só.\fAgora o roteiro. A saída leste da vila está travada por pedregulhos: com a Força você empurra e passa para a Estrada do Buriti.\fNo fim dela fica a Vila Buriti, onde a raizeira Dona Buriti guarda a oitava insígnia. E depois dela… bem, dizem que há um platô onde só entra quem tem as oito.": {
-  "en": "",
+  "en": "This scroll teaches Anvil Drop: the weight of a whole workshop in a single blow.\fNow, the route. The town's east exit is blocked by boulders: with Strength you push through to Estrada do Buriti.\fAt the end of it is Vila Buriti, where the herbalist Dona Buriti keeps the eighth badge. And after that… well, they say there's a plateau that only those with all eight can enter.",
   "ctx": "src/data/eventos/ginasio-07.ts:22 · fala de BIGORNA"
  },
  "Os cipós sossegaram desde a sua vitória: pode andar pela estufa à vontade.\fA trilha que sai da vila sobe até o Platô da Liga. Com as oito insígnias, o Guardião da Entrada abre o portão para você.": {
-  "en": "",
+  "en": "The vines have calmed down since your win: you can wander the greenhouse as you please.\fThe trail out of town climbs to the Platô da Liga. With all eight badges, the Entrance Guardian will open the gate for you.",
   "ctx": "src/data/eventos/ginasio-08.ts:10 · fala de BURITI"
  },
  "Ora, ora! Passou pelos meus cipós sem levar uma chicotada? Então tem paciência e tem pressa na medida certa.\fSou a Dona Buriti, raizeira desta vila e última líder da Costa do Sol. Vamos ver o que a sua equipe tem na raiz!": {
-  "en": "",
+  "en": "Well, well! Got past my vines without getting whipped? Then you've got patience and hurry in just the right amounts.\fI'm Dona Buriti, this town's herbalist and the last Leader of the Costa do Sol. Let's see what your team has at the root!",
   "ctx": "src/data/eventos/ginasio-08.ts:12 · fala de BURITI"
  },
  "Arre! Nem chá de boldo cura uma derrota dessas. Tome, a Insígnia Folha é sua!": {
-  "en": "",
+  "en": "Goodness! Not even boldo tea cures a loss like that. Here, the Leaf Badge is yours!",
   "ctx": "src/data/eventos/ginasio-08.ts:16 · fala de BURITI"
  },
  "{JOGADOR} recebeu a Insígnia Folha!": {
-  "en": "",
+  "en": "{JOGADOR} received the Leaf Badge!",
   "ctx": "src/data/eventos/ginasio-08.ts:18 · fala de null"
  },
  "Esse pergaminho ensina o Abraço de Sumaúma: a árvore aperta e ainda devolve força para quem usa.\fAgora ouça a velha: são oito insígnias no seu peito. A trilha que sai da vila sobe até o Platô da Liga, e o Guardião da Entrada só abre o portão para quem tem as oito.\fLá em cima são quatro Mestres e o Campeão, um atrás do outro, sem descanso. Quem vence a Liga ganha passagem para o Sertão das Névoas. Leve remédio na mochila e vá com a bênção desta raizeira.": {
-  "en": "",
+  "en": "This scroll teaches Kapok Hug: the tree squeezes and even gives strength back to its user.\fNow listen to this old woman: that's eight badges on your chest. The trail out of town climbs to the Platô da Liga, and the Entrance Guardian only opens the gate for those who have all eight.\fUp there are four Masters and the Champion, one after the other, with no rest. Whoever beats the League earns passage to the Sertão das Névoas. Pack medicine in your bag and go with this herbalist's blessing.",
   "ctx": "src/data/eventos/ginasio-08.ts:20 · fala de BURITI"
  },
  "Carreiro Tião": {
@@ -4208,7 +4208,7 @@
   "ctx": "src/data/treinadores/a2.ts:199 · t()"
  },
  "Fiquei sem ar.": {
-  "en": "",
+  "en": "I'm out of breath.",
   "ctx": "src/data/treinadores/b1.ts:153 · t() | src/data/treinadores/ginasio-03.ts:13 · campo derrota"
  },
  "Ferreiro Malho": {
@@ -4384,495 +4384,495 @@
   "ctx": "src/data/treinadores/ginasio-02.ts:37 · campo depois"
  },
  "Zé da Tarrafa": {
-  "en": "",
+  "en": "Zé da Tarrafa",
   "ctx": "src/data/treinadores/ginasio-03.ts:5 · campo nome"
  },
  "Quer subir na balsa? Primeiro passa pela minha rede!": {
-  "en": "",
+  "en": "Want to board the raft? First get past my net!",
   "ctx": "src/data/treinadores/ginasio-03.ts:7 · campo desafio"
  },
  "Rede furada…": {
-  "en": "",
+  "en": "Net's got a hole in it…",
   "ctx": "src/data/treinadores/ginasio-03.ts:7 · campo derrota"
  },
  "A balsa só encosta com o canal cheio. O volante lá do canto enche este canal e o do meio de uma vez.": {
-  "en": "",
+  "en": "The raft only docks when the channel's full. The wheel in the corner fills this channel and the middle one at once.",
   "ctx": "src/data/treinadores/ginasio-03.ts:7 · campo depois"
  },
  "Duda Maré": {
-  "en": "",
+  "en": "Duda Maré",
   "ctx": "src/data/treinadores/ginasio-03.ts:8 · campo nome"
  },
  "Onda de canal é pequena, mas é minha. Bora dropar uma batalha?": {
-  "en": "",
+  "en": "Channel waves are small, but they're mine. Wanna drop in on a battle?",
   "ctx": "src/data/treinadores/ginasio-03.ts:10 · campo desafio"
  },
  "O volante deste lado troca: esvazia o canal do meio e enche o braço do salão. Pense antes de girar.": {
-  "en": "",
+  "en": "The wheel on this side switches things: it drains the middle channel and fills the hall's arm. Think before you turn it.",
   "ctx": "src/data/treinadores/ginasio-03.ts:10 · campo depois"
  },
  "Caetano": {
-  "en": "",
+  "en": "Caetano",
   "ctx": "src/data/treinadores/ginasio-03.ts:11 · campo nome"
  },
  "Glub! Quer dizer: alto lá! Este volante é meu posto.": {
-  "en": "",
+  "en": "Glub! I mean: halt! This wheel is my post.",
   "ctx": "src/data/treinadores/ginasio-03.ts:13 · campo desafio"
  },
  "Este volante enche o canal do líder. Gire, volte pelo braço enquanto ele está vazio e só depois mexa no outro.": {
-  "en": "",
+  "en": "This wheel fills the leader's channel. Turn it, go back through the arm while it's empty, and only then touch the other one.",
   "ctx": "src/data/treinadores/ginasio-03.ts:13 · campo depois"
  },
  "Nico Girino": {
-  "en": "",
+  "en": "Nico Girino",
   "ctx": "src/data/treinadores/ginasio-03.ts:14 · campo nome"
  },
  "Meu pai cuida das comportas. Eu cuido de quem passa por elas!": {
-  "en": "",
+  "en": "My dad looks after the floodgates. I look after whoever goes through them!",
   "ctx": "src/data/treinadores/ginasio-03.ts:16 · campo desafio"
  },
  "Vou contar para o meu pai!": {
-  "en": "",
+  "en": "I'm telling my dad!",
   "ctx": "src/data/treinadores/ginasio-03.ts:16 · campo derrota"
  },
  "Se a balsa do líder está no fundo, faltou girar o volante do salão leste.": {
-  "en": "",
+  "en": "If the leader's raft is at the bottom, you forgot to turn the wheel in the east hall.",
   "ctx": "src/data/treinadores/ginasio-03.ts:16 · campo depois"
  },
  "Iara Funda": {
-  "en": "",
+  "en": "Iara Funda",
   "ctx": "src/data/treinadores/ginasio-03.ts:17 · campo nome"
  },
  "Última eclusa antes do capitão. Daqui ninguém passa seco!": {
-  "en": "",
+  "en": "Last lock before the captain. Nobody gets past here dry!",
   "ctx": "src/data/treinadores/ginasio-03.ts:19 · campo desafio"
  },
  "Encharcada eu já estava mesmo.": {
-  "en": "",
+  "en": "I was already soaked anyway.",
   "ctx": "src/data/treinadores/ginasio-03.ts:19 · campo derrota"
  },
  "O Marujo foi campeão de remo. Ele gosta de começar devagar e terminar em corredeira.": {
-  "en": "",
+  "en": "The Sailor was a rowing champion. He likes to start slow and finish in the rapids.",
   "ctx": "src/data/treinadores/ginasio-03.ts:19 · campo depois"
  },
  "Remei da nascente até a foz do Rio Sereia sem parar para o almoço. Acha que meia dúzia de comportas me cansam? Em guarda, marujo de primeira viagem!": {
-  "en": "",
+  "en": "I rowed from the source to the mouth of the Rio Sereia without stopping for lunch. You think a handful of floodgates will tire me out? On guard, greenhorn sailor!",
   "ctx": "src/data/treinadores/ginasio-03.ts:36 · campo desafio"
  },
  "Homem ao mar! E o homem sou eu…": {
-  "en": "",
+  "en": "Man overboard! And the man is me…",
   "ctx": "src/data/treinadores/ginasio-03.ts:37 · campo derrota"
  },
  "Rio que corre nunca passa duas vezes pela mesma pedra. Siga em frente.": {
-  "en": "",
+  "en": "A flowing river never passes the same stone twice. Keep moving forward.",
   "ctx": "src/data/treinadores/ginasio-03.ts:37 · campo depois"
  },
  "Dona Zizi": {
-  "en": "",
+  "en": "Dona Zizi",
   "ctx": "src/data/treinadores/ginasio-04.ts:5 · campo nome"
  },
  "Não encoste no espelho com a mão suja! Primeiro batalha, depois mexe.": {
-  "en": "",
+  "en": "Don't touch the mirror with dirty hands! Battle first, then fiddle.",
   "ctx": "src/data/treinadores/ginasio-04.ts:7 · campo desafio"
  },
  "Perdi o ponto.": {
-  "en": "",
+  "en": "I dropped a stitch.",
   "ctx": "src/data/treinadores/ginasio-04.ts:7 · campo derrota"
  },
  "O espelho gira entre duas posições só. Nas duas ele desvia a luz: o que muda é para que lado.": {
-  "en": "",
+  "en": "The mirror only turns between two positions. In both it deflects the light: what changes is which way.",
   "ctx": "src/data/treinadores/ginasio-04.ts:7 · campo depois"
  },
  "Estelinha": {
-  "en": "",
+  "en": "Estelinha",
   "ctx": "src/data/treinadores/ginasio-04.ts:8 · campo nome"
  },
  "A vovó me deixou tomando conta deste espelho. Ninguém gira sem falar comigo!": {
-  "en": "",
+  "en": "Grandma left me in charge of this mirror. Nobody turns it without talking to me!",
   "ctx": "src/data/treinadores/ginasio-04.ts:10 · campo desafio"
  },
  "Vovóóó!": {
-  "en": "",
+  "en": "Grandmaaa!",
   "ctx": "src/data/treinadores/ginasio-04.ts:10 · campo derrota"
  },
  "Com o raio para cima, a passagem da esquerda fecha. Com o raio para baixo, ela abre.": {
-  "en": "",
+  "en": "With the beam pointing up, the left passage closes. With the beam pointing down, it opens.",
   "ctx": "src/data/treinadores/ginasio-04.ts:10 · campo depois"
  },
  "Celeste": {
-  "en": "",
+  "en": "Celeste",
   "ctx": "src/data/treinadores/ginasio-04.ts:11 · campo nome"
  },
  "Estou anotando de onde vem cada raio. Você acabou de entrar na minha frente!": {
-  "en": "",
+  "en": "I'm noting where each beam comes from. You just walked right in front of me!",
   "ctx": "src/data/treinadores/ginasio-04.ts:13 · campo desafio"
  },
  "Perdi a conta e a batalha.": {
-  "en": "",
+  "en": "Lost count and lost the battle.",
   "ctx": "src/data/treinadores/ginasio-04.ts:13 · campo derrota"
  },
  "A estrela deste salão fica na parede oeste. O espelho de cima precisa mandar a luz para lá, não para o leste.": {
-  "en": "",
+  "en": "This hall's star is on the west wall. The upper mirror needs to send the light there, not east.",
   "ctx": "src/data/treinadores/ginasio-04.ts:13 · campo depois"
  },
  "Dona Bilu": {
-  "en": "",
+  "en": "Dona Bilu",
   "ctx": "src/data/treinadores/ginasio-04.ts:14 · campo nome"
  },
  "Menina… menino… quem mexe em espelho alheio leva sete anos de batalha!": {
-  "en": "",
+  "en": "Young lady… young man… whoever messes with someone else's mirror gets seven years of battle!",
   "ctx": "src/data/treinadores/ginasio-04.ts:16 · campo desafio"
  },
  "Foram só sete minutos.": {
-  "en": "",
+  "en": "It was only seven minutes.",
   "ctx": "src/data/treinadores/ginasio-04.ts:16 · campo derrota"
  },
  "Este espelho manda o raio para cima, na outra estrela, e de quebra libera a passagem do leste.": {
-  "en": "",
+  "en": "This mirror sends the beam up to the other star, and opens the east passage while it's at it.",
   "ctx": "src/data/treinadores/ginasio-04.ts:16 · campo depois"
  },
  "Mestra Dadá": {
-  "en": "",
+  "en": "Master Dadá",
   "ctx": "src/data/treinadores/ginasio-04.ts:17 · campo nome"
  },
  "Abriu a cortina? Então a Iracema vai gostar de você. Mas antes passa por mim!": {
-  "en": "",
+  "en": "Opened the curtain? Then Iracema's going to like you. But first, get past me!",
   "ctx": "src/data/treinadores/ginasio-04.ts:19 · campo desafio"
  },
  "Desmanchou meu bordado inteiro.": {
-  "en": "",
+  "en": "You unraveled my whole embroidery.",
   "ctx": "src/data/treinadores/ginasio-04.ts:19 · campo derrota"
  },
  "A Iracema confunde a cabeça do adversário e só depois bate. Leve fruta de curar encanto.": {
-  "en": "",
+  "en": "Iracema confuses her opponent's head and only then strikes. Bring fruit that cures charm.",
   "ctx": "src/data/treinadores/ginasio-04.ts:19 · campo depois"
  },
  "Renda se faz com paciência, luz boa e mão firme. Batalha também. Sente-se… ou melhor, fique de pé: vamos trançar os fios!": {
-  "en": "",
+  "en": "Lace takes patience, good light and a steady hand. So do battles. Have a seat… or rather, stay standing: let's weave some threads!",
   "ctx": "src/data/treinadores/ginasio-04.ts:36 · campo desafio"
  },
  "Ai, que beleza de ponto! Você arrematou a batalha sem deixar fio solto.": {
-  "en": "",
+  "en": "Oh, what a lovely stitch! You finished off the battle without leaving a loose thread.",
   "ctx": "src/data/treinadores/ginasio-04.ts:37 · campo derrota"
  },
  "Luz não se prende. A gente só mostra o caminho para ela.": {
-  "en": "",
+  "en": "You can't catch light. We just show it the way.",
   "ctx": "src/data/treinadores/ginasio-04.ts:37 · campo depois"
  },
  "Tonho Solda": {
-  "en": "",
+  "en": "Tonho Solda",
   "ctx": "src/data/treinadores/ginasio-05.ts:9 · campo nome"
  },
  "Não pise nos cabos! Quer dizer… pise em mim, não: batalhe comigo!": {
-  "en": "",
+  "en": "Don't step on the cables! I mean… don't step on me either: battle me!",
   "ctx": "src/data/treinadores/ginasio-05.ts:11 · campo desafio"
  },
  "Queimou o fusível.": {
-  "en": "",
+  "en": "Blew a fuse.",
   "ctx": "src/data/treinadores/ginasio-05.ts:11 · campo derrota"
  },
  "A ponte daqui só fica estendida enquanto a chave 1 manda energia para ela. Virou a chave, ela recolhe.": {
-  "en": "",
+  "en": "The bridge here only stays extended while switch 1 sends it power. Flip the switch and it retracts.",
   "ctx": "src/data/treinadores/ginasio-05.ts:11 · campo depois"
  },
  "O vô Volta disse que eu sou o relé mais rápido da ilha!": {
-  "en": "",
+  "en": "Grandpa Volta says I'm the fastest relay on the island!",
   "ctx": "src/data/treinadores/ginasio-05.ts:14 · campo desafio"
  },
  "Desarmei…": {
-  "en": "",
+  "en": "I tripped…",
   "ctx": "src/data/treinadores/ginasio-05.ts:14 · campo derrota"
  },
  "O relé está sem corrente agora, mas dá para deixar ele apontado para a ponte leste. Depois é voltar e virar a chave 1.": {
-  "en": "",
+  "en": "The relay has no current right now, but you can leave it pointed at the east bridge. Then go back and flip switch 1.",
   "ctx": "src/data/treinadores/ginasio-05.ts:14 · campo depois"
  },
  "Seu Lume": {
-  "en": "",
+  "en": "Seu Lume",
   "ctx": "src/data/treinadores/ginasio-05.ts:15 · campo nome"
  },
  "Pesco poraquê com vara de bambu seco. Sabe por quê? Você vai descobrir!": {
-  "en": "",
+  "en": "I fish for eels with a dry bamboo rod. Know why? You're about to find out!",
   "ctx": "src/data/treinadores/ginasio-05.ts:17 · campo desafio"
  },
  "Levei o choque eu mesmo.": {
-  "en": "",
+  "en": "I got shocked myself.",
   "ctx": "src/data/treinadores/ginasio-05.ts:17 · campo derrota"
  },
  "Agora o relé tem corrente. Vire-o para a linha de cima e a ponte do salão norte estende.": {
-  "en": "",
+  "en": "Now the relay has current. Turn it toward the upper line and the north hall bridge extends.",
   "ctx": "src/data/treinadores/ginasio-05.ts:17 · campo depois"
  },
  "Aurora": {
-  "en": "",
+  "en": "Aurora",
   "ctx": "src/data/treinadores/ginasio-05.ts:18 · campo nome | src/data/treinadores/ginasio-15.ts:21 · campo nome"
  },
  "Conto os relâmpagos do alto do farol. Hoje vou contar os seus tropeços!": {
-  "en": "",
+  "en": "I count the lightning from the top of the lighthouse. Today I'll count your stumbles!",
   "ctx": "src/data/treinadores/ginasio-05.ts:20 · campo desafio"
  },
  "Um, dois… perdi a conta.": {
-  "en": "",
+  "en": "One, two… lost count.",
   "ctx": "src/data/treinadores/ginasio-05.ts:20 · campo derrota"
  },
  "O piso de teste só dá choque enquanto a chave 3 manda corrente para ele. Vire a chave e a ponte do Volta estende.": {
-  "en": "",
+  "en": "The test floor only shocks you while switch 3 sends current to it. Flip the switch and Volta's bridge extends.",
   "ctx": "src/data/treinadores/ginasio-05.ts:20 · campo depois"
  },
  "Eureca! Um desafiante que entende de circuito! Eu sou o Volta: acendo o farol, conserto rádio e dou choque em treinador distraído. Liga a chave, que lá vai descarga!": {
-  "en": "",
+  "en": "Eureka! A challenger who understands circuits! I'm Volta: I light the lighthouse, fix radios and zap distracted trainers. Flip the switch, here comes the discharge!",
   "ctx": "src/data/treinadores/ginasio-05.ts:38 · campo desafio"
  },
  "Curto-circuito geral! Mas que beleza de apagão…": {
-  "en": "",
+  "en": "Total short circuit! But what a beautiful blackout…",
   "ctx": "src/data/treinadores/ginasio-05.ts:39 · campo derrota"
  },
  "Energia boa é a que chega aonde precisa. A sua chega.": {
-  "en": "",
+  "en": "Good energy is the kind that gets where it's needed. Yours does.",
   "ctx": "src/data/treinadores/ginasio-05.ts:39 · campo depois"
  },
  "Zeca Medroso": {
-  "en": "",
+  "en": "Zeca Medroso",
   "ctx": "src/data/treinadores/ginasio-06.ts:9 · campo nome"
  },
  "Q-quem está aí? Ah, é gente. Então batalha comigo, que assim eu esqueço o medo!": {
-  "en": "",
+  "en": "W-who's there? Oh, it's a person. Then battle me, so I forget I'm scared!",
   "ctx": "src/data/treinadores/ginasio-06.ts:11 · campo desafio"
  },
  "Agora o medo é de você.": {
-  "en": "",
+  "en": "Now I'm scared of you.",
   "ctx": "src/data/treinadores/ginasio-06.ts:11 · campo derrota"
  },
  "A lamparina de pé ali do canto acende a sua. Sem luz, não dá para saber onde o chão é chão.": {
-  "en": "",
+  "en": "The standing lamp in the corner lights yours. Without light, you can't tell where the floor is really floor.",
   "ctx": "src/data/treinadores/ginasio-06.ts:11 · campo depois"
  },
  "Chico Viola": {
-  "en": "",
+  "en": "Chico Viola",
   "ctx": "src/data/treinadores/ginasio-06.ts:12 · campo nome"
  },
  "No escuro desta sala / fiz um verso de arrepiar: / quem pisa sem lamparina / vai lá embaixo se encontrar!": {
-  "en": "",
+  "en": "In the dark of this old room / I wrote a verse to chill your bones: / whoever walks without a lamp / ends up down below, alone!",
   "ctx": "src/data/treinadores/ginasio-06.ts:14 · campo desafio"
  },
  "Perdi a rima e a batalha.": {
-  "en": "",
+  "en": "Lost the rhyme and the battle.",
   "ctx": "src/data/treinadores/ginasio-06.ts:14 · campo derrota"
  },
  "O óleo acaba antes da porta. No fim da fila de baixo tem outra lamparina: é reto, pode ir.": {
-  "en": "",
+  "en": "The oil runs out before the door. At the end of the bottom row there's another lamp: it's straight ahead, go on.",
   "ctx": "src/data/treinadores/ginasio-06.ts:14 · campo depois"
  },
  "Dalva": {
-  "en": "",
+  "en": "Dalva",
   "ctx": "src/data/treinadores/ginasio-06.ts:15 · campo nome"
  },
  "Psiu! Estou esperando a assombração da meia-noite. Enquanto ela não vem, serve você.": {
-  "en": "",
+  "en": "Shh! I'm waiting for the midnight ghost. Until it shows up, you'll do.",
   "ctx": "src/data/treinadores/ginasio-06.ts:17 · campo desafio"
  },
  "A assombrada fui eu.": {
-  "en": "",
+  "en": "I'm the one who got spooked.",
   "ctx": "src/data/treinadores/ginasio-06.ts:17 · campo derrota"
  },
  "Corredor comprido para o leste? É beco. O caminho bom sobe só dois passos e vira para o oeste.": {
-  "en": "",
+  "en": "Long corridor to the east? Dead end. The good path goes up just two steps and turns west.",
   "ctx": "src/data/treinadores/ginasio-06.ts:17 · campo depois"
  },
  "Mestre Agouro": {
-  "en": "",
+  "en": "Master Agouro",
   "ctx": "src/data/treinadores/ginasio-06.ts:18 · campo nome"
  },
  "Passou pelas três salas? Então escute o último causo antes da Dona Benta: o da sua derrota!": {
-  "en": "",
+  "en": "Made it through all three rooms? Then hear the last tale before Dona Benta: the tale of your defeat!",
   "ctx": "src/data/treinadores/ginasio-06.ts:20 · campo desafio"
  },
  "Esse causo acabou diferente.": {
-  "en": "",
+  "en": "That tale had a different ending.",
   "ctx": "src/data/treinadores/ginasio-06.ts:20 · campo derrota"
  },
  "A Dona Benta derruba a sua precisão com névoa e mau agouro. Golpe que nunca erra vale ouro.": {
-  "en": "",
+  "en": "Dona Benta knocks down your accuracy with mist and bad omens. Moves that never miss are worth their weight in gold.",
   "ctx": "src/data/treinadores/ginasio-06.ts:20 · campo depois"
  },
  "Senta que lá vem história… Era uma vez um desafiante que atravessou o breu sem cair. Como termina? Isso a gente descobre agora!": {
-  "en": "",
+  "en": "Gather round for a story… Once upon a time, a challenger crossed the darkness without falling. How does it end? We're about to find out!",
   "ctx": "src/data/treinadores/ginasio-06.ts:40 · campo desafio"
  },
  "E viveram assombrados para sempre… eu, pelo menos. Que causo bom você me deu!": {
-  "en": "",
+  "en": "And they lived haunted ever after… me, at least. What a good tale you gave me!",
   "ctx": "src/data/treinadores/ginasio-06.ts:41 · campo derrota"
  },
  "Medo é só uma história mal contada.": {
-  "en": "",
+  "en": "Fear is just a story told badly.",
   "ctx": "src/data/treinadores/ginasio-06.ts:41 · campo depois"
  },
  "Zé Rebite": {
-  "en": "",
+  "en": "Zé Rebite",
   "ctx": "src/data/treinadores/ginasio-07.ts:10 · campo nome"
  },
  "Crachá, capacete e batalha: sem os três ninguém sobe na esteira!": {
-  "en": "",
+  "en": "ID badge, hard hat and a battle: without all three, nobody rides the belt!",
   "ctx": "src/data/treinadores/ginasio-07.ts:12 · campo desafio"
  },
  "Bati o ponto mais cedo.": {
-  "en": "",
+  "en": "I clocked out early.",
   "ctx": "src/data/treinadores/ginasio-07.ts:12 · campo derrota"
  },
  "A esteira da porta está descendo. A engrenagem vermelha ali do canto resolve.": {
-  "en": "",
+  "en": "The belt by the door runs downward. The red gear in the corner sorts that out.",
   "ctx": "src/data/treinadores/ginasio-07.ts:12 · campo depois"
  },
  "Nonô Sucata": {
-  "en": "",
+  "en": "Nonô Sucata",
   "ctx": "src/data/treinadores/ginasio-07.ts:13 · campo nome"
  },
  "Tudo que cai da esteira é meu. Você caiu?": {
-  "en": "",
+  "en": "Everything that falls off the belt is mine. Did you fall?",
   "ctx": "src/data/treinadores/ginasio-07.ts:15 · campo desafio"
  },
  "Virei sucata.": {
-  "en": "",
+  "en": "I've been scrapped.",
   "ctx": "src/data/treinadores/ginasio-07.ts:15 · campo derrota"
  },
  "A esteira do meio parece o caminho mais curto. É: o mais curto até a prensa.": {
-  "en": "",
+  "en": "The middle belt looks like the shortest path. It is: the shortest path to the press.",
   "ctx": "src/data/treinadores/ginasio-07.ts:15 · campo depois"
  },
  "Tonha Malho": {
-  "en": "",
+  "en": "Tonha Malho",
   "ctx": "src/data/treinadores/ginasio-07.ts:16 · campo nome"
  },
  "Subiu pela azul? Esperta… esperto… agora aguenta a martelada!": {
-  "en": "",
+  "en": "Came up the blue one? Clever… now take this hammering!",
   "ctx": "src/data/treinadores/ginasio-07.ts:18 · campo desafio"
  },
  "Entortei o malho.": {
-  "en": "",
+  "en": "I bent my mallet.",
   "ctx": "src/data/treinadores/ginasio-07.ts:18 · campo derrota"
  },
  "A engrenagem vermelha deste andar inverte de novo o circuito. A esteira do canto noroeste só sobe assim.": {
-  "en": "",
+  "en": "The red gear on this floor flips the circuit again. That's the only way the northwest belt goes up.",
   "ctx": "src/data/treinadores/ginasio-07.ts:18 · campo depois"
  },
  "Guto Polia": {
-  "en": "",
+  "en": "Guto Polia",
   "ctx": "src/data/treinadores/ginasio-07.ts:19 · campo nome"
  },
  "Escalo chaminé de fábrica nas horas vagas. Você é a minha hora vaga!": {
-  "en": "",
+  "en": "I climb factory chimneys in my spare time. You're my spare time!",
   "ctx": "src/data/treinadores/ginasio-07.ts:21 · campo desafio"
  },
  "Escorreguei na graxa.": {
-  "en": "",
+  "en": "Slipped on the grease.",
   "ctx": "src/data/treinadores/ginasio-07.ts:21 · campo derrota"
  },
  "Lá no mezanino tem a última engrenagem azul. Sem girar, a esteira da Bigorna empurra você de volta.": {
-  "en": "",
+  "en": "Up on the mezzanine is the last blue gear. If you don't turn it, Bigorna's belt pushes you right back.",
   "ctx": "src/data/treinadores/ginasio-07.ts:21 · campo depois"
  },
  "Mestre Torno": {
-  "en": "",
+  "en": "Master Torno",
   "ctx": "src/data/treinadores/ginasio-07.ts:22 · campo nome"
  },
  "Trinta anos de chão de fábrica. Ninguém chega à engenheira sem passar pelo meu controle de qualidade!": {
-  "en": "",
+  "en": "Thirty years on the factory floor. Nobody gets to the engineer without passing my quality control!",
   "ctx": "src/data/treinadores/ginasio-07.ts:24 · campo desafio"
  },
  "Aprovado. Com louvor.": {
-  "en": "",
+  "en": "Approved. With honors.",
   "ctx": "src/data/treinadores/ginasio-07.ts:24 · campo derrota"
  },
  "A Bigorna endurece a defesa antes de bater. Golpe especial atravessa melhor que pancada.": {
-  "en": "",
+  "en": "Bigorna toughens her defense before she strikes. Special moves get through better than brute force.",
   "ctx": "src/data/treinadores/ginasio-07.ts:24 · campo depois"
  },
  "Projetei cada parafuso desta fábrica, e você desmontou o meu circuito em dez minutos. Agora quero ver o seu projeto de batalha. Liguem as máquinas!": {
-  "en": "",
+  "en": "I designed every bolt in this factory, and you took my circuit apart in ten minutes. Now I want to see your battle design. Start the machines!",
   "ctx": "src/data/treinadores/ginasio-07.ts:42 · campo desafio"
  },
  "Parada geral! Meu projeto tinha uma falha: não contava com você.": {
-  "en": "",
+  "en": "Full stop! My design had a flaw: it didn't account for you.",
   "ctx": "src/data/treinadores/ginasio-07.ts:43 · campo derrota"
  },
  "Toda engrenagem importa. Até a menor.": {
-  "en": "",
+  "en": "Every gear matters. Even the smallest.",
   "ctx": "src/data/treinadores/ginasio-07.ts:43 · campo depois"
  },
  "Cuidado onde pisa, que aqui tudo brota! Inclusive batalha.": {
-  "en": "",
+  "en": "Watch where you step, everything sprouts here! Including battles.",
   "ctx": "src/data/treinadores/ginasio-08.ts:11 · campo desafio"
  },
  "Podaram a minha equipe…": {
-  "en": "",
+  "en": "They pruned my team…",
   "ctx": "src/data/treinadores/ginasio-08.ts:11 · campo derrota"
  },
  "Viu o cipó correndo pela fila de cima? Ele fecha a portinhola do canto. Se fechar, é só borrifar o vaso.": {
-  "en": "",
+  "en": "See the vine creeping along the top row? It shuts the little corner door. If it closes, just spray the pot.",
   "ctx": "src/data/treinadores/ginasio-08.ts:11 · campo depois"
  },
  "Drª Flora": {
-  "en": "",
+  "en": "Dr. Flora",
   "ctx": "src/data/treinadores/ginasio-08.ts:12 · campo nome"
  },
  "Estou medindo quanto o cipó cresce por passo. Fique parado… ou melhor, batalhe parado!": {
-  "en": "",
+  "en": "I'm measuring how much the vine grows per step. Stand still… or better, battle standing still!",
   "ctx": "src/data/treinadores/ginasio-08.ts:14 · campo desafio"
  },
  "Dados perdidos, que pena.": {
-  "en": "",
+  "en": "Data lost, what a shame.",
   "ctx": "src/data/treinadores/ginasio-08.ts:14 · campo derrota"
  },
  "Batalha não conta passo. O cipó do norte só acorda no 10º passo depois do vaso e fecha a subida no 16º.": {
-  "en": "",
+  "en": "Battles don't count as steps. The north vine only wakes on the 10th step after the pot and closes the way up on the 16th.",
   "ctx": "src/data/treinadores/ginasio-08.ts:14 · campo depois"
  },
  "Achou que por aqui tinha saída? Tem é eu!": {
-  "en": "",
+  "en": "Thought there was an exit this way? There's just me!",
   "ctx": "src/data/treinadores/ginasio-08.ts:17 · campo desafio"
  },
  "Este lado é beco. A saída de verdade fica no canto de cima, depois da fila do meio.": {
-  "en": "",
+  "en": "This side is a dead end. The real exit is in the top corner, past the middle row.",
   "ctx": "src/data/treinadores/ginasio-08.ts:17 · campo depois"
  },
  "Montei acampamento no canto mais sossegado da estufa. Até você aparecer!": {
-  "en": "",
+  "en": "I set up camp in the quietest corner of the greenhouse. Until you showed up!",
   "ctx": "src/data/treinadores/ginasio-08.ts:20 · campo desafio"
  },
  "Desmonta a barraca, pessoal.": {
-  "en": "",
+  "en": "Take down the tent, everyone.",
   "ctx": "src/data/treinadores/ginasio-08.ts:20 · campo derrota"
  },
  "O vaso do meio tem dois lados. Só o lado de cima serve para alcançar a saída a tempo.": {
-  "en": "",
+  "en": "The middle pot has two sides. Only the top side gets you to the exit in time.",
   "ctx": "src/data/treinadores/ginasio-08.ts:20 · campo depois"
  },
  "Dona Arruda": {
-  "en": "",
+  "en": "Dona Arruda",
   "ctx": "src/data/treinadores/ginasio-08.ts:21 · campo nome"
  },
  "Quarenta anos de mato e nunca vi desafiante passar pelos cipós tão ligeiro. Deixa eu ver de perto!": {
-  "en": "",
+  "en": "Forty years in the bush and I've never seen a challenger get past the vines so quickly. Let me take a closer look!",
   "ctx": "src/data/treinadores/ginasio-08.ts:23 · campo desafio"
  },
  "Ligeiro mesmo.": {
-  "en": "",
+  "en": "Quick indeed.",
   "ctx": "src/data/treinadores/ginasio-08.ts:23 · campo derrota"
  },
  "A Dona Buriti cura a equipe com seiva e com garrafada no meio da luta. Não deixe a batalha se arrastar.": {
-  "en": "",
+  "en": "Dona Buriti heals her team with sap and herbal tonic mid-fight. Don't let the battle drag on.",
   "ctx": "src/data/treinadores/ginasio-08.ts:23 · campo depois"
  },
  "Menino, menina… senta aí que eu vou contar: toda planta tem um veneno e um remédio. Vamos ver qual dos dois você trouxe!": {
-  "en": "",
+  "en": "Young man, young lady… sit down and I'll tell you: every plant has a poison and a remedy. Let's see which one you brought!",
   "ctx": "src/data/treinadores/ginasio-08.ts:41 · campo desafio"
  },
  "Arre! Você é erva boa. Dessas que curam.": {
-  "en": "",
+  "en": "Goodness! You're a good herb. The healing kind.",
   "ctx": "src/data/treinadores/ginasio-08.ts:42 · campo derrota"
  },
  "Raiz forte não se vê. Cuide da sua.": {
-  "en": "",
+  "en": "Strong roots can't be seen. Take care of yours.",
   "ctx": "src/data/treinadores/ginasio-08.ts:42 · campo depois"
  },
  "Seu Arraia": {
@@ -7952,227 +7952,231 @@
   "ctx": "src/world/mecanicas/ginasio-02.ts:86 · falar()"
  },
  "canal da entrada": {
-  "en": "",
+  "en": "entrance channel",
   "ctx": "src/world/mecanicas/ginasio-03.ts:14 · campo A"
  },
  "canal do meio": {
-  "en": "",
+  "en": "middle channel",
   "ctx": "src/world/mecanicas/ginasio-03.ts:14 · campo B"
  },
  "canal do líder": {
-  "en": "",
+  "en": "leader's channel",
   "ctx": "src/world/mecanicas/ginasio-03.ts:14 · campo C"
  },
  "braço que divide o salão": {
-  "en": "",
+  "en": "arm that splits the hall",
   "ctx": "src/world/mecanicas/ginasio-03.ts:14 · campo D"
  },
  "{canal}: CHEIO": {
-  "en": "",
+  "en": "{canal}: FULL",
   "ctx": "src/world/mecanicas/ginasio-03.ts:54 · v.canais.map()"
  },
  "{canal}: VAZIO": {
-  "en": "",
+  "en": "{canal}: EMPTY",
   "ctx": "src/world/mecanicas/ginasio-03.ts:54 · v.canais.map()"
  },
  "O volante range e a água corre pelas comportas.": {
-  "en": "",
+  "en": "The wheel creaks and water rushes through the floodgates.",
   "ctx": "src/world/mecanicas/ginasio-03.ts:55 · t()"
  },
  "O {canal} encheu.": {
-  "en": "",
+  "en": "The {canal} filled up.",
   "ctx": "src/world/mecanicas/ginasio-03.ts:55 · v.canais.map()"
  },
  "O {canal} esvaziou.": {
-  "en": "",
+  "en": "The {canal} drained.",
   "ctx": "src/world/mecanicas/ginasio-03.ts:55 · v.canais.map()"
  },
  "As comportas voltaram ao começo enquanto você estava fora.\nUm marujo levou você de volta à entrada do ginásio.": {
-  "en": "",
+  "en": "The floodgates reset while you were away.\nA sailor took you back to the gym entrance.",
   "ctx": "src/world/mecanicas/ginasio-03.ts:62 · falar()"
  },
  "A balsa está encalhada no fundo do canal. Só com o canal cheio ela sobe até o cais.": {
-  "en": "",
+  "en": "The raft is stuck at the bottom of the channel. It only rises to the dock when the channel's full.",
   "ctx": "src/world/mecanicas/ginasio-03.ts:78"
  },
  "Dá para ver uma passarela baixa debaixo d'água. Com o canal vazio ela ficaria à mostra.": {
-  "en": "",
+  "en": "You can see a low walkway under the water. With the channel empty, it would be exposed.",
   "ctx": "src/world/mecanicas/ginasio-03.ts:79"
  },
  "A água do canal corre forte e funda. Sem balsa, nada feito.": {
-  "en": "",
+  "en": "The channel water runs fast and deep. Without the raft, no dice.",
   "ctx": "src/world/mecanicas/ginasio-03.ts:80"
  },
  "O leito do canal fica dois metros abaixo do piso, liso de limo. Só a passarela baixa atravessa.": {
-  "en": "",
+  "en": "The channel bed is two meters below the floor, slick with algae. Only the low walkway crosses it.",
   "ctx": "src/world/mecanicas/ginasio-03.ts:81"
  },
  "As duas estrelas de cristal estão acesas!": {
-  "en": "",
+  "en": "Both crystal stars are lit!",
   "ctx": "src/world/mecanicas/ginasio-04.ts:61 · avisar()"
  },
  "Uma estrela de cristal acendeu!": {
-  "en": "",
+  "en": "A crystal star lit up!",
   "ctx": "src/world/mecanicas/ginasio-04.ts:61 · avisar()"
  },
  "A cortina de renda do salão da líder se abriu!": {
-  "en": "",
+  "en": "The lace curtain to the leader's hall opened!",
   "ctx": "src/world/mecanicas/ginasio-04.ts:66 · falar()"
  },
  "Uma estrela apagou e a cortina de renda se fechou de novo.": {
-  "en": "",
+  "en": "A star went out and the lace curtain closed again.",
   "ctx": "src/world/mecanicas/ginasio-04.ts:66 · falar()"
  },
  "Os espelhos voltaram ao lugar enquanto você estava fora.\nA Iracema mandou você recomeçar pela entrada do salão.": {
-  "en": "",
+  "en": "The mirrors went back into place while you were away.\nIracema sent you back to the start of the hall.",
   "ctx": "src/world/mecanicas/ginasio-04.ts:74 · falar()"
  },
  "Um raio de luz forte demais para encarar. Só girando um espelho ele sai do caminho.": {
-  "en": "",
+  "en": "A beam of light too bright to look at. Only turning a mirror will move it out of the way.",
   "ctx": "src/world/mecanicas/ginasio-04.ts:87 · falar()"
  },
  "Uma cortina de renda grossa fecha o salão da líder.\nEla só abre com as duas estrelas de cristal acesas ({n} de 2).": {
-  "en": "",
+  "en": "A thick lace curtain closes off the leader's hall.\nIt only opens with both crystal stars lit ({n} of 2).",
   "ctx": "src/world/mecanicas/ginasio-04.ts:88 · falar()"
  },
  "A estrela de cristal brilha com a luz do vitral.": {
-  "en": "",
+  "en": "The crystal star shines with the light from the stained glass.",
   "ctx": "src/world/mecanicas/ginasio-04.ts:90 · falar()"
  },
  "Uma estrela de cristal apagada, presa à parede. Falta luz.": {
-  "en": "",
+  "en": "An unlit crystal star, fixed to the wall. It needs light.",
   "ctx": "src/world/mecanicas/ginasio-04.ts:90 · falar()"
  },
  "Um vitral amarelo. A luz do sol entra por ele num raio só, reto como linha de bilro.": {
-  "en": "",
+  "en": "A yellow stained-glass window. Sunlight comes through it in a single beam, straight as bobbin-lace thread.",
   "ctx": "src/world/mecanicas/ginasio-04.ts:91 · falar()"
  },
  "a ponte oeste": {
-  "en": "",
+  "en": "the west bridge",
   "ctx": "src/world/mecanicas/ginasio-05.ts:22 · campo a"
  },
  "o relé do meio": {
-  "en": "",
+  "en": "the middle relay",
   "ctx": "src/world/mecanicas/ginasio-05.ts:22 · campo b"
  },
  "a ponte leste": {
-  "en": "",
+  "en": "the east bridge",
   "ctx": "src/world/mecanicas/ginasio-05.ts:23 · campo a"
  },
  "a linha de cima": {
-  "en": "",
+  "en": "the upper line",
   "ctx": "src/world/mecanicas/ginasio-05.ts:23 · campo b"
  },
  "o piso de teste": {
-  "en": "",
+  "en": "the test floor",
   "ctx": "src/world/mecanicas/ginasio-05.ts:24 · campo a"
  },
  "a ponte do líder": {
-  "en": "",
+  "en": "the leader's bridge",
   "ctx": "src/world/mecanicas/ginasio-05.ts:24 · campo b"
  },
  "O Faroleiro deixou tudo ligado depois da sua vitória. A chave nem precisa mais de dono.": {
-  "en": "",
+  "en": "The Lighthouse Keeper left everything on after your win. The switch doesn't even need an owner anymore.",
   "ctx": "src/world/mecanicas/ginasio-05.ts:60 · falar()"
  },
  "Chave {n}: energia para {para}.": {
-  "en": "",
+  "en": "Switch {n}: power to {para}.",
   "ctx": "src/world/mecanicas/ginasio-05.ts:66 · avisar()"
  },
  "CLAC! A corrente agora segue para {para}.\nO ramo que estava ligado ficou sem energia.": {
-  "en": "",
+  "en": "CLACK! The current now flows to {para}.\nThe branch that was on lost its power.",
   "ctx": "src/world/mecanicas/ginasio-05.ts:66 · falar()"
  },
  "CLAC! A chave {n} agora aponta para {para}.\nMas não chega corrente aqui: nada mudou… por enquanto.": {
-  "en": "",
+  "en": "CLACK! Switch {n} now points to {para}.\nBut no current reaches here: nothing changed… for now.",
   "ctx": "src/world/mecanicas/ginasio-05.ts:67 · falar()"
  },
  "ZZZT! O piso de teste está eletrificado. Os pelos do braço arrepiam só de chegar perto.": {
-  "en": "",
+  "en": "ZZZT! The test floor is electrified. The hair on your arms stands up just from getting close.",
   "ctx": "src/world/mecanicas/ginasio-05.ts:82 · falar()"
  },
  "A ponte elétrica está recolhida: a lâmpada ao lado está vermelha. Falta energia neste ramo.": {
-  "en": "",
+  "en": "The electric bridge is retracted: the lamp beside it is red. This branch has no power.",
   "ctx": "src/world/mecanicas/ginasio-05.ts:84 · falar()"
  },
  "Um vão fundo, cheio de cabos e isoladores. Lá embaixo o mar bate na base do farol.": {
-  "en": "",
+  "en": "A deep gap, full of cables and insulators. Far below, the sea pounds the base of the lighthouse.",
   "ctx": "src/world/mecanicas/ginasio-05.ts:85 · falar()"
  },
  "Os lustres do sobrado estão acesos desde a sua vitória. A lamparina pode descansar.": {
-  "en": "",
+  "en": "The manor's chandeliers have been lit since your win. The lamp can rest.",
   "ctx": "src/world/mecanicas/ginasio-06.ts:44 · falar()"
  },
  "Lamparina acesa: óleo para {OLEO} passos.": {
-  "en": "",
+  "en": "Lamp lit: oil for {OLEO} steps.",
   "ctx": "src/world/mecanicas/ginasio-06.ts:47 · avisar()"
  },
  "NHEEEC… PLOFT! Um alçapão se abriu debaixo dos seus pés.\nVocê escorregou por um tobogã empoeirado até o começo da sala, e a lamparina apagou.": {
-  "en": "",
+  "en": "CREEEAK… FWUMP! A trapdoor opened under your feet.\nYou slid down a dusty chute to the start of the room, and the lamp went out.",
   "ctx": "src/world/mecanicas/ginasio-06.ts:55 · falar()"
  },
  "A chama da lamparina está fraquinha…": {
-  "en": "",
+  "en": "The lamp's flame is getting weak…",
   "ctx": "src/world/mecanicas/ginasio-06.ts:70 · avisar()"
  },
  "A lamparina apagou!": {
-  "en": "",
+  "en": "The lamp went out!",
   "ctx": "src/world/mecanicas/ginasio-06.ts:71 · avisar()"
  },
  "PSSSSH! A prensa de vapor soltou um jato bem na sua cara.\nOs operários carregaram você, tossindo, de volta para a entrada.": {
-  "en": "",
-  "ctx": "src/world/mecanicas/ginasio-07.ts:59 · falar()"
+  "en": "PSSSSH! The steam press blew a jet right in your face.\nThe workers carried you, coughing, back to the entrance.",
+  "ctx": "src/world/mecanicas/ginasio-07.ts:58 · falar()"
  },
  "As esteiras estão paradas desde a sua vitória. A engrenagem gira em falso.": {
-  "en": "",
-  "ctx": "src/world/mecanicas/ginasio-07.ts:69 · falar()"
+  "en": "The belts have been stopped since your win. The gear just spins freely.",
+  "ctx": "src/world/mecanicas/ginasio-07.ts:68 · falar()"
  },
  "Circuito VERMELHO invertido!": {
-  "en": "",
-  "ctx": "src/world/mecanicas/ginasio-07.ts:74 · avisar()"
+  "en": "RED circuit reversed!",
+  "ctx": "src/world/mecanicas/ginasio-07.ts:73 · avisar()"
  },
  "Circuito AZUL invertido!": {
-  "en": "",
-  "ctx": "src/world/mecanicas/ginasio-07.ts:74 · avisar()"
+  "en": "BLUE circuit reversed!",
+  "ctx": "src/world/mecanicas/ginasio-07.ts:73 · avisar()"
  },
  "CLANC-CLANC! Todas as esteiras de seta vermelha mudaram de sentido.": {
-  "en": "",
-  "ctx": "src/world/mecanicas/ginasio-07.ts:75 · falar()"
+  "en": "CLANK-CLANK! All the red-arrow belts switched direction.",
+  "ctx": "src/world/mecanicas/ginasio-07.ts:74 · falar()"
  },
  "CLANC-CLANC! Todas as esteiras de seta azul mudaram de sentido.": {
-  "en": "",
-  "ctx": "src/world/mecanicas/ginasio-07.ts:75 · falar()"
+  "en": "CLANK-CLANK! All the blue-arrow belts switched direction.",
+  "ctx": "src/world/mecanicas/ginasio-07.ts:74 · falar()"
  },
  "PSSSSH! Você pisou bem debaixo da prensa de vapor.\nOs operários carregaram você de volta para a entrada.": {
-  "en": "",
-  "ctx": "src/world/mecanicas/ginasio-07.ts:92 · falar()"
+  "en": "PSSSSH! You stepped right under the steam press.\nThe workers carried you back to the entrance.",
+  "ctx": "src/world/mecanicas/ginasio-07.ts:91 · falar()"
  },
- "Uma esteira do circuito {cor}. Ela carrega tudo o que encosta para onde a seta aponta.": {
-  "en": "",
-  "ctx": "src/world/mecanicas/ginasio-07.ts:101 · falar()"
+ "Uma esteira do circuito vermelho. Ela carrega tudo o que encosta para onde a seta aponta.": {
+  "en": "A conveyor belt on the red circuit. It carries whatever touches it in the direction the arrow points.",
+  "ctx": "src/world/mecanicas/ginasio-07.ts:100 · falar()"
+ },
+ "Uma esteira do circuito azul. Ela carrega tudo o que encosta para onde a seta aponta.": {
+  "en": "A conveyor belt on the blue circuit. It carries whatever touches it in the direction the arrow points.",
+  "ctx": "src/world/mecanicas/ginasio-07.ts:100 · falar()"
  },
  "A prensa de vapor bufa a cada dois segundos. Melhor não ficar embaixo.": {
-  "en": "",
-  "ctx": "src/world/mecanicas/ginasio-07.ts:102 · falar()"
+  "en": "The steam press puffs every two seconds. Better not stand under it.",
+  "ctx": "src/world/mecanicas/ginasio-07.ts:101 · falar()"
  },
  "Os cipós murcharam!": {
-  "en": "",
+  "en": "The vines withered!",
   "ctx": "src/world/mecanicas/ginasio-08.ts:54 · avisar()"
  },
  "O extrato de raiz amarga perfuma a estufa. Os cipós já dormem desde a sua vitória.": {
-  "en": "",
+  "en": "The bitter root extract perfumes the greenhouse. The vines have been asleep since your win.",
   "ctx": "src/world/mecanicas/ginasio-08.ts:55 · falar()"
  },
  "Você borrifou o extrato de raiz amarga. Todos os cipós da estufa murcharam…\nmas já estão brotando de novo. Cada passo conta!": {
-  "en": "",
+  "en": "You sprayed the bitter root extract. All the vines in the greenhouse withered…\nbut they're already sprouting again. Every step counts!",
   "ctx": "src/world/mecanicas/ginasio-08.ts:55 · falar()"
  },
  "Um cipó grosso e vivo fechou a passagem.\nSem o Facão e uma criatura que saiba usá-lo, só o extrato dos vasos faz o cipó murchar.": {
-  "en": "",
+  "en": "A thick, living vine has closed the passage.\nWithout the Machete and a creature that knows how to use it, only the extract from the pots makes the vine wither.",
   "ctx": "src/world/mecanicas/ginasio-08.ts:59 · falar()"
  },
  "{n} cortou o cipó com o Facão! Ele murchou até a raiz… e já começa a brotar de novo.": {
-  "en": "",
+  "en": "{n} cut the vine with the Machete! It withered down to the root… and it's already starting to sprout again.",
   "ctx": "src/world/mecanicas/ginasio-08.ts:63 · falar()"
  }
 }
