@@ -119,11 +119,11 @@ const GRUTA_DO_ECO: TreinadorDef[] = [
 /* ------------------------------ A4 · Porto Sereia ------------------------------ */
 const PORTO_SEREIA: TreinadorDef[] = [
   t('A4-1', 'Surfista', 'Tubo', 'cl-surfista', [{ e: 37, nv: 19 }, { e: 57, nv: 19 }, { e: 24, nv: 20 }], 760,
-    'Onda pequena, batalha grande. Cai dentro!', 'Vaca total.', 'A Capitã Marola treinou comigo quando era grumete. Hoje nem me cumprimenta — só de apito.', { ia: 'treinador' }),
+    'Onda pequena, batalha grande. Cai dentro!', 'Vaca total.', 'O Marujo Netuno Silva treinou comigo quando era grumete. Hoje nem me cumprimenta — só de apito.', { ia: 'treinador' }),
   t('A4-2', 'Rendeira', 'Dona Bilro', 'cl-rendeira', [{ e: 17, nv: 19 }, { e: 27, nv: 19 }, { e: 149, nv: 20 }], 836,
     'Renda se faz com paciência. Batalha, também. Senta que lá vem ponto!', 'Embolou a linha.', 'Criatura do tipo Encanto não teme Lenda nenhuma. Guarde isso para o fim da sua viagem.', { ia: 'treinador' }),
   t('A4-3', 'Pescador', 'Seu Robalinho', 'cl-pescador', [{ e: 37, nv: 19 }, { e: 39, nv: 20 }, { e: 37, nv: 20 }], 760,
-    'Este cais é do Clube do Anzol. Para pisar aqui, tem que fisgar uma vitória!', 'A linha arrebentou.', 'Do fim do cais para lá é a Baía Azul. Com o Remo da Capitã e a luz da Usina no guincho, o mar é seu.', { ia: 'treinador' }),
+    'Este cais é do Clube do Anzol. Para pisar aqui, tem que fisgar uma vitória!', 'A linha arrebentou.', 'Do fim do cais para lá é a Baía Azul. Com o Remo do Marujo e a luz da Usina no guincho, o mar é seu.', { ia: 'treinador' }),
 ];
 
 /* ------------------------------ A-R7 · Estrada do Buriti (líder 8, ás 40 → nv 34–38) ------------------------------ */

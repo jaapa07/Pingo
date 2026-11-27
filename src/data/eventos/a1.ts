@@ -135,7 +135,7 @@ export const EVENTOS_A1: EventoDef[] = [
           se('!flag:ovo-no-aroeira', [f('prof', 'O Seu Aroeira mora em Vila Caiçara, ao norte, no fim da Trilha do Ipê. É a casa grande com cheiro de café.\fCuidado com o Ovo Pintado: nada de correr com ele debaixo do braço!')], [
             se('!flag:ovo-entregue', [['chamar', 'rival-1']], [
               se('!insignia:1', [f('prof', 'O Diário de Campo anota sozinho cada criatura que você encontra. As que você captura ganham ficha completa.\fO primeiro ginásio fica em Vila Caiçara. O Mestre Gaivota é do tipo Vento: Trovão e Pedra dão trabalho para ele.')], [
-                se('!insignia:3', [f('prof', 'Insígnia no estojo e criatura bem cuidada: você está me saindo melhor que a encomenda!\fDepois de Bosque Alto, siga até Porto Sereia. A Capitã Marola, de lá, é quem entrega o Amuleto do Remo: a Costa do Sol continua pelo mar.')], [
+                se('!insignia:3', [f('prof', 'Insígnia no estojo e criatura bem cuidada: você está me saindo melhor que a encomenda!\fDepois de Bosque Alto, siga até Porto Sereia. O Marujo Netuno Silva, de lá, é quem entrega o Amuleto do Remo: a Costa do Sol continua pelo mar.')], [
                   f('prof', 'Três insígnias! Eu sabia que aquele atraso todo era só para tomar impulso.\fSão oito insígnias na Costa do Sol, e depois delas a Liga dos Guardiões, no Platô. Só Campeão da Liga embarca para o Sertão das Névoas.\fA última insígnia fica em Vila Buriti, onde trabalha a Drª Buriti, minha colega. Diga que eu mandei um abraço e que ela me deve um livro.'),
                 ]),
               ]),

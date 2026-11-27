@@ -2,7 +2,7 @@ import type { ZonaDef, NpcDef } from '../../core/tipos';
 import { grade, obj, entrada, saidas, gente, duelista, item, placa } from './_a1-grade';
 
 /**
- * A4 · Porto Sereia — cidade portuária: Estação do Trem Serra-Sol (norte), Ginásio do Rio (Capitã Marola), mercado de
+ * A4 · Porto Sereia — cidade portuária: Estação do Trem Serra-Sol (norte), Ginásio do Rio (Marujo Netuno Silva), mercado de
  * peixe, praia e o cais sul, de onde se rema para a Baía Azul. A boca da Gruta do Eco fica no paredão do noroeste.
  * A estrada leste (Usina Velha) só abre com a Insígnia da Concha. O cais sul pede o Remo (insígnia 3) E a luz da Usina
  * (`usina-ok`, que religa o guincho das canoas). A estação reabre com a luz, mas o trem é só para Campeões da Liga.
@@ -65,7 +65,7 @@ const placas = [
   placa(g, 'q', 'ESTAÇÃO DE PORTO SEREIA\nTrem Serra-Sol — Porto Sereia – Sertão das Névoas.\nLinha da serra: embarque só para Campeões da Liga dos Guardiões.'),
   placa(g, 'm', 'POSTO GUARDIÃO\nCura grátis. Sal grosso na porta por conta da casa.'),
   placa(g, 'n', 'VENDA DO PORTO\nCuias, remédios e novidade que chega de trem.'),
-  placa(g, 'u', 'GINÁSIO DE PORTO SEREIA\nLíder: Capitã Marola — "quem não sabe remar, que aprenda a nadar".'),
+  placa(g, 'u', 'GINÁSIO DE PORTO SEREIA\nLíder: Marujo Netuno Silva — "quem não sabe remar, que aprenda a nadar".'),
   placa(g, 'j', 'MERCADO DE PEIXE\nPeixe fresco, fruto maduro e raridade de além-mar. Feira todo dia.'),
   placa(g, 'h', 'Casa do Mestre Remendo, o veleiro.'),
   placa(g, 'i', 'Casa da Dona Enseada.\nRendas e fofocas sob encomenda.'),
@@ -102,13 +102,13 @@ const zona: ZonaDef = {
     { x: dx, y: dy, para: { zona: 'A-BA', x: 4, y: 20, dir: 'l' }, tipo: 'borda', requer: 'amuleto:remo&flag:usina-ok', recusa: 'O cais termina aqui. Para lá é só Baía Azul.\fSem o Amuleto do Remo ninguém sai do porto — e, enquanto a Usina Velha não devolver a luz, o guincho das canoas não desce nem com reza.' },
   ],
   portoes: [
-    { x: qx, y: qy, requer: 'insignia:3', sprite: 'npc-homem-2', fala: 'Estrada da Usina interditada! Tem fio solto cuspindo faísca por todo lado.\fA Capitã Marola mandou liberar só para quem tiver a Insígnia da Concha. Ordem é ordem, e a dela vem com apito.' },
+    { x: qx, y: qy, requer: 'insignia:3', sprite: 'npc-homem-2', fala: 'Estrada da Usina interditada! Tem fio solto cuspindo faísca por todo lado.\fO Marujo Netuno Silva mandou liberar só para quem tiver a Insígnia da Concha. Ordem é ordem, e a dele vem com apito.' },
     { x: 44, y: 8, requer: 'flag:usina-ok', sprite: 'npc-maquinista', fala: 'Estação fechada, freguesia. Sem energia da Usina Velha, a Maria-Fumaça não apita nem para espantar galinha.\fQuando a luz voltar eu abro a porta. Embarcar já é outra conversa: a linha da serra é só para Campeões da Liga.' },
   ],
   npcs: [
     // Ginásio de Treino (revanches dos líderes, spec 10A item 25): o guia leva até o salão; eventos em src/data/eventos/regras.ts
     { id: 'a4-guia-treino', sprite: 'npc-homem-2', x: 17, y: 17, dir: 'o', se: 'flag:liga-vencida', script: 'treino-guia', nome: 'Guia do Treino' } as NpcDef,
-    gente(g, '1', 'a4-moca', 'npc-mulher-2', 'Moça do Guarda-sol', { mov: 'olhar', fala: ['Criatura do tipo Rio apaga Brasa, afoga Terra e desgasta Pedra.', 'Para enfrentar a Capitã Marola, leve Mata ou Trovão. E um casaco: lá dentro respinga.'] }),
+    gente(g, '1', 'a4-moca', 'npc-mulher-2', 'Moça do Guarda-sol', { mov: 'olhar', fala: ['Criatura do tipo Rio apaga Brasa, afoga Terra e desgasta Pedra.', 'Para enfrentar o Marujo Netuno Silva, leve Mata ou Trovão. E um casaco: lá dentro respinga.'] }),
     gente(g, '2', 'a4-menino', 'cl-crianca-m', 'Biu', { mov: 'vagar', fala: ['Quando eu crescer vou ser maquinista do Trem Serra-Sol!', 'Ou sorveteiro. O que tiver menos fila.'] }),
     gente(g, '3', 'a4-feirante', 'npc-vendedor', 'Feirante Deodato', { script: 'm-peixe' }),
     gente(g, '4', 'a4-senhora', 'npc-idosa', 'Dona Maroca', { fala: ['No meu tempo, a luz da Usina Velha nunca piscava.', 'Agora pisca tanto que meu rádio aprendeu código Morse sozinho.'] }),

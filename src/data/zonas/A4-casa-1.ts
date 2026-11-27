@@ -6,7 +6,7 @@ export default casaSimples({
   estante: ['Rolos de lona, agulhas do tamanho de um dedo e um livro: "Nós de Marinheiro — volume 7 de 12".'],
   bau: ['Uma vela dobrada com um remendo em forma de Botinho.'],
   moradores: [
-    { id: 'a4-remendo', sprite: 'npc-idoso', nome: 'Mestre Remendo', fala: ['Canoa em Pingorama não tem motor nem vela: quem puxa é criatura do tipo Rio.', 'O Amuleto do Remo quem entrega é a Capitã Marola, junto com a Insígnia da Concha. Mas o cais só solta canoa quando a Usina devolver a luz do guincho.'] },
+    { id: 'a4-remendo', sprite: 'npc-idoso', nome: 'Mestre Remendo', fala: ['Canoa em Pingorama não tem motor nem vela: quem puxa é criatura do tipo Rio.', 'O Amuleto do Remo quem entrega é o Marujo Netuno Silva, junto com a Insígnia da Concha. Mas o cais só solta canoa quando a Usina devolver a luz do guincho.'] },
     { id: 'a4-neta', sprite: 'cl-crianca-f', nome: 'Nina', mov: 'vagar', fala: ['O vô costura vela o dia todo e ronca a noite toda.', 'Eu durmo de algodão no ouvido. É tipo dormir numa nuvem surda.'] },
   ],
 });

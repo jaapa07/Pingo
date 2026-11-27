@@ -147,8 +147,8 @@
   "en": "The Field Journal records every creature you meet on its own. The ones you catch get a complete entry.\fThe first gym is in Vila Caiçara. Master Gaivota uses the Wind type: Thunder and Stone give him trouble.",
   "ctx": "src/data/eventos/a1.ts:137 · f()"
  },
- "Insígnia no estojo e criatura bem cuidada: você está me saindo melhor que a encomenda!\fDepois de Bosque Alto, siga até Porto Sereia. A Capitã Marola, de lá, é quem entrega o Amuleto do Remo: a Costa do Sol continua pelo mar.": {
-  "en": "A badge in the case and a well-cared-for creature: you're turning out better than I ordered!\fAfter Bosque Alto, head on to Porto Sereia. Captain Marola there is the one who gives out the Paddle Charm: the Costa do Sol continues by sea.",
+ "Insígnia no estojo e criatura bem cuidada: você está me saindo melhor que a encomenda!\fDepois de Bosque Alto, siga até Porto Sereia. O Marujo Netuno Silva, de lá, é quem entrega o Amuleto do Remo: a Costa do Sol continua pelo mar.": {
+  "en": "A badge in the case and a well-cared-for creature: you're turning out better than I ordered!\fAfter Bosque Alto, head on to Porto Sereia. Sailor Netuno Silva there is the one who gives out the Paddle Charm: the Costa do Sol continues by sea.",
   "ctx": "src/data/eventos/a1.ts:138 · f()"
  },
  "Três insígnias! Eu sabia que aquele atraso todo era só para tomar impulso.\fSão oito insígnias na Costa do Sol, e depois delas a Liga dos Guardiões, no Platô. Só Campeão da Liga embarca para o Sertão das Névoas.\fA última insígnia fica em Vila Buriti, onde trabalha a Drª Buriti, minha colega. Diga que eu mandei um abraço e que ela me deve um livro.": {
@@ -2587,8 +2587,8 @@
   "en": "Total wipeout.",
   "ctx": "src/data/treinadores/a1.ts:122 · t() | src/data/treinadores/ginasio-03.ts:10 · campo derrota"
  },
- "A Capitã Marola treinou comigo quando era grumete. Hoje nem me cumprimenta — só de apito.": {
-  "en": "Captain Marola trained with me back when she was a deckhand. Now she won't even say hi — just blows her whistle.",
+ "O Marujo Netuno Silva treinou comigo quando era grumete. Hoje nem me cumprimenta — só de apito.": {
+  "en": "Sailor Netuno Silva trained with me back when he was a deckhand. Now he won't even say hi — just blows his whistle.",
   "ctx": "src/data/treinadores/a1.ts:122 · t()"
  },
  "Rendeira": {
@@ -2619,8 +2619,8 @@
   "en": "My line snapped.",
   "ctx": "src/data/treinadores/a1.ts:126 · t()"
  },
- "Do fim do cais para lá é a Baía Azul. Com o Remo da Capitã e a luz da Usina no guincho, o mar é seu.": {
-  "en": "Past the end of the dock is Baía Azul. With the Captain's Paddle and the Power Plant's light on the crane, the sea is yours.",
+ "Do fim do cais para lá é a Baía Azul. Com o Remo do Marujo e a luz da Usina no guincho, o mar é seu.": {
+  "en": "Past the end of the dock is Baía Azul. With the Sailor's Paddle and the Power Plant's light on the crane, the sea is yours.",
   "ctx": "src/data/treinadores/a1.ts:126 · t()"
  },
  "Seu Lajedo": {
@@ -6387,8 +6387,8 @@
   "en": "Canoes in Pingorama have no motor or sail: River-type creatures pull them.",
   "ctx": "src/data/zonas/A4-casa-1.ts:9 · campo fala"
  },
- "O Amuleto do Remo quem entrega é a Capitã Marola, junto com a Insígnia da Concha. Mas o cais só solta canoa quando a Usina devolver a luz do guincho.": {
-  "en": "Captain Marola hands out the Paddle Charm, along with the Shell Badge. But the dock only releases canoes once the Power Plant gets the crane's power back.",
+ "O Amuleto do Remo quem entrega é o Marujo Netuno Silva, junto com a Insígnia da Concha. Mas o cais só solta canoa quando a Usina devolver a luz do guincho.": {
+  "en": "Sailor Netuno Silva hands out the Paddle Charm, along with the Shell Badge. But the dock only releases canoes once the Power Plant gets the crane's power back.",
   "ctx": "src/data/zonas/A4-casa-1.ts:9 · campo fala"
  },
  "Nina": {
@@ -6435,8 +6435,8 @@
   "en": "Comadre Restinga",
   "ctx": "src/data/zonas/A4-casa-2.ts:11 · campo nome"
  },
- "A Capitã Marola abre e fecha comporta dentro do ginásio para mudar a altura da água.": {
-  "en": "Captain Marola opens and closes floodgates inside the gym to change the water level.",
+ "O Marujo Netuno Silva abre e fecha comporta dentro do ginásio para mudar a altura da água.": {
+  "en": "Sailor Netuno Silva opens and closes floodgates inside the gym to change the water level.",
   "ctx": "src/data/zonas/A4-casa-2.ts:11 · campo fala"
  },
  "Meu sobrinho entrou seco e saiu ensopado três vezes. Aprendeu a ler placa.": {
@@ -6711,8 +6711,8 @@
   "en": "PORT SHOP\nGourds, medicine and news that arrives by train.",
   "ctx": "src/data/zonas/A4.ts:67 · placa()"
  },
- "GINÁSIO DE PORTO SEREIA\nLíder: Capitã Marola — \"quem não sabe remar, que aprenda a nadar\".": {
-  "en": "PORTO SEREIA GYM\nLeader: Captain Marola — \"if you can't paddle, learn to swim\".",
+ "GINÁSIO DE PORTO SEREIA\nLíder: Marujo Netuno Silva — \"quem não sabe remar, que aprenda a nadar\".": {
+  "en": "PORTO SEREIA GYM\nLeader: Sailor Netuno Silva — \"if you can't paddle, learn to swim\".",
   "ctx": "src/data/zonas/A4.ts:68 · placa()"
  },
  "MERCADO DE PEIXE\nPeixe fresco, fruto maduro e raridade de além-mar. Feira todo dia.": {
@@ -6739,8 +6739,8 @@
   "en": "The dock ends here. Beyond is nothing but Baía Azul.\fWithout the Paddle Charm nobody leaves the port — and until the Old Power Plant gets the power back, the canoe crane won't come down even with prayers.",
   "ctx": "src/data/zonas/A4.ts:102 · campo recusa"
  },
- "Estrada da Usina interditada! Tem fio solto cuspindo faísca por todo lado.\fA Capitã Marola mandou liberar só para quem tiver a Insígnia da Concha. Ordem é ordem, e a dela vem com apito.": {
-  "en": "Estrada da Usina is closed! There are loose wires spitting sparks everywhere.\fCaptain Marola said to only let through those with the Shell Badge. Orders are orders, and hers come with a whistle.",
+ "Estrada da Usina interditada! Tem fio solto cuspindo faísca por todo lado.\fO Marujo Netuno Silva mandou liberar só para quem tiver a Insígnia da Concha. Ordem é ordem, e a dele vem com apito.": {
+  "en": "Estrada da Usina is closed! There are loose wires spitting sparks everywhere.\fSailor Netuno Silva said to only let through those with the Shell Badge. Orders are orders, and his come with a whistle.",
   "ctx": "src/data/zonas/A4.ts:105 · campo fala"
  },
  "Estação fechada, freguesia. Sem energia da Usina Velha, a Maria-Fumaça não apita nem para espantar galinha.\fQuando a luz voltar eu abro a porta. Embarcar já é outra conversa: a linha da serra é só para Campeões da Liga.": {
@@ -6755,8 +6755,8 @@
   "en": "River-type creatures put out Ember, drown Earth and wear down Stone.",
   "ctx": "src/data/zonas/A4.ts:111 · campo fala"
  },
- "Para enfrentar a Capitã Marola, leve Mata ou Trovão. E um casaco: lá dentro respinga.": {
-  "en": "To face Captain Marola, bring Grass or Thunder. And a jacket: it splashes in there.",
+ "Para enfrentar o Marujo Netuno Silva, leve Mata ou Trovão. E um casaco: lá dentro respinga.": {
+  "en": "To face Sailor Netuno Silva, bring Grass or Thunder. And a jacket: it splashes in there.",
   "ctx": "src/data/zonas/A4.ts:111 · campo fala"
  },
  "Biu": {
