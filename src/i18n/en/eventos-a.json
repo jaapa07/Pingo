@@ -1835,6 +1835,10 @@
   "en": "Tower Judge",
   "ctx": "src/data/eventos/regras.ts:151 · campo nome"
  },
+ "TORRE DE DESAFIOS — você tem {n} ponto(s). O que vai ser?": {
+  "en": "CHALLENGE TOWER — Points: {n}. What will it be?",
+  "ctx": "src/data/eventos/regras.ts:154 · d.escolher()"
+ },
  "Desafio do dia": {
   "en": "Daily challenge",
   "ctx": "src/data/eventos/regras.ts:154 · d.escolher()"

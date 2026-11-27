@@ -441,8 +441,9 @@ registrarComando('gincanaSucos', async () => {
   tirarItem(s.fruto, 1); tomarSuco(c, s); som('cura-posto');
   await falar(tr('Vrrrrrrum! {nome} na cuia! {n} bebeu tudinho: +{pct}% em {alvo} até o fim do dia.', { nome: s.nome, n: nomeCri(c), pct: s.pct, alvo: NOME_ALVO[s.alvo] }), GRAVIOLA);
 });
+const NOME_MOEDA = 'pontos'; // numa tabela NOME_: entra no catálogo
 registrarComando('gincanaTroca', async () => {
-  await abrirTela('loja', { titulo: 'Tesouraria', itens: Object.keys(TROCA), moeda: { nome: 'pontos', saldo: pontosGincana, gastar: gastarPontos, preco: (id: string) => TROCA[id] ?? 999 } });
+  await abrirTela('loja', { titulo: 'Tesouraria', itens: Object.keys(TROCA), moeda: { nome: NOME_MOEDA, saldo: pontosGincana, gastar: gastarPontos, preco: (id: string) => TROCA[id] ?? 999 } });
 });
 registrarComando('gincanaRival', async ([n]) => {
   const r = RIVAIS[Number(n) || 0]; if (!r) return;

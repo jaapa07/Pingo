@@ -864,7 +864,7 @@
   "ctx": "src/data/textos-ui.ts:67 · campo apagar"
  },
  "←→: aba   A: escolher   B: desligar": {
-  "en": "←→: tab   A: choose   B: turn off",
+  "en": "←→: tab   A: choose   B: off",
   "ctx": "src/data/textos-ui.ts:69 · campo dica"
  },
  "Nenhum contato ainda. Treinadores que simpatizarem com você passam o número depois da batalha.": {

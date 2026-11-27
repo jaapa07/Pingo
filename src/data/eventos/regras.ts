@@ -25,7 +25,7 @@ import {
 } from '../revancha';
 import { QUIZ_FAUNA, QUIZ_RODADA, QUIZ_META, LOCUTORA } from '../quiz';
 import { TORRE, PREMIOS_TORRE, adversarioDaTorre } from '../torre';
-import { t, tr } from '../../i18n';
+import { t, t as traduzir, tr } from '../../i18n';
 
 const mundoDeps = () => import('../../world/deps');
 const hoje = () => diaCorrido(jogo.save.relogio.deslocamentoMin);
@@ -61,8 +61,8 @@ const GUIA = { nome: 'Guia do Treino', retrato: 'npc-homem-2' };
 registrarComando('agendaTreino', async () => {
   const d = await mundoDeps(), dia = diaSemana(), s = jogo.save;
   const ORDEM = ['manha', 'dia', 'noite'];
-  const linha = (dd: number) => LIDERES_AGENDA.filter((l) => l.dia === dd && liberada(l) && d.treinador(l.id)).sort((a, b) => ORDEM.indexOf(a.periodo) - ORDEM.indexOf(b.periodo)).map((l) => `${d.treinador(l.id)!.nome} (${t(NOME_PERIODO[l.periodo])})`).join(', ');
-  const marcados = LIDERES_AGENDA.filter((l) => liberada(l) && s.flags['treino:' + l.id] === hoje() && s.flags['revanche:' + l.id] !== hoje()).map((l) => d.treinador(l.id)?.nome).filter(Boolean);
+  const linha = (dd: number) => LIDERES_AGENDA.filter((l) => l.dia === dd && liberada(l) && d.treinador(l.id)).sort((a, b) => ORDEM.indexOf(a.periodo) - ORDEM.indexOf(b.periodo)).map((l) => `${t(d.treinador(l.id)!.nome)} (${t(NOME_PERIODO[l.periodo])})`).join(', ');
+  const marcados = LIDERES_AGENDA.filter((l) => liberada(l) && s.flags['treino:' + l.id] === hoje() && s.flags['revanche:' + l.id] !== hoje()).map((l) => d.treinador(l.id)?.nome).filter(Boolean).map((n) => t(n!));
   await d.falar(tr('Bem-vindo ao {lugar}! Hoje é {dia}.', { lugar: TREINO.nome, dia: NOME_DIA_LONGO[dia] }) + '\f' + tr('Quem aceita revanche hoje: {lista}.', { lista: linha(dia) || 'ninguém' }) + '\f' + (marcados.length ? tr('Já confirmaram presença: {lista}. Estão no salão!', { lista: marcados.join(', ') }) : t('Ninguém marcou hoje. Ligue pelo Rádio Cipó no dia e no período do líder: ele vem para cá.')), RECEPCAO);
   if (!(await d.simNao('Quer ouvir a agenda da semana inteira?'))) return;
   // um dia por caixa: cabe nas duas linhas do diálogo
@@ -151,11 +151,11 @@ registrarComando('quizRadio', async () => {
 const JUIZ = { nome: 'Juiz da Torre', retrato: 'npc-homem-4' };
 registrarComando('torre', async () => {
   const d = await mundoDeps(), s = jogo.save, pontos = () => Number(s.flags['torre-pontos'] ?? 0);
-  const op = await d.escolher(`TORRE DE DESAFIOS — você tem ${pontos()} ponto(s). O que vai ser?`, ['Desafio do dia', 'Trocar pontos', 'Regras', 'Sair']);
+  const op = await d.escolher(tr('TORRE DE DESAFIOS — você tem {n} ponto(s). O que vai ser?', { n: pontos() }), ['Desafio do dia', 'Trocar pontos', 'Regras', 'Sair']);
   if (op === 2) { await d.falar(tr('Uma batalha por dia. Todas as criaturas, as suas e as do desafiante, lutam no nível {nivel}.\fNinguém ganha experiência e nada de mochila: só estratégia. Vitória vale {pontosVitoria} pontos; a 7ª vitória seguida vale o dobro.\fOs pontos se trocam aqui por itens raros.', { nivel: TORRE.nivel, pontosVitoria: TORRE.pontosVitoria }), JUIZ); return; }
   if (op === 1) {
     for (;;) {
-      const i = await d.escolher(tr('Pontos: {pontos}. Escolha um prêmio:', { pontos: pontos() }), [...PREMIOS_TORRE.map((p) => `${d.nomeItem(p.item)} (${p.custo})`), 'Voltar']);
+      const i = await d.escolher(tr('Pontos: {pontos}. Escolha um prêmio:', { pontos: pontos() }), [...PREMIOS_TORRE.map((p) => `${traduzir(d.nomeItem(p.item))} (${p.custo})`), 'Voltar']);
       if (i < 0 || i >= PREMIOS_TORRE.length) return;
       const p = PREMIOS_TORRE[i];
       if (pontos() < p.custo) { await d.falar('Pontos insuficientes. Volte depois de mais algumas vitórias.', JUIZ); continue; }

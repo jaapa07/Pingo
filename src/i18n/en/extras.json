@@ -1320,7 +1320,7 @@
   "ctx": "src/ui/telas/gincana-safari.ts:232 · falar()"
  },
  "CIMA/BAIXO ou toque na raia: trocar de raia   B: desistir": {
-  "en": "UP/DOWN or tap a lane: switch lanes   B: give up",
+  "en": "UP/DOWN or tap a lane: switch lanes   B: quit",
   "ctx": "src/ui/telas/gincana.ts:132 · campo dica"
  },
  "PERFEITO!": {
@@ -1336,11 +1336,11 @@
   "ctx": "src/ui/telas/gincana.ts:203 · x.fx.txt()"
  },
  "A ou toque: empurrar na faixa verde   B: desistir": {
-  "en": "A or tap: push on the green band   B: give up",
+  "en": "A or tap: push on the green band   B: quit",
   "ctx": "src/ui/telas/gincana.ts:208 · campo dica"
  },
  "A ou toque: pular   B: desistir": {
-  "en": "A or tap: jump   B: give up",
+  "en": "A or tap: jump   B: quit",
   "ctx": "src/ui/telas/gincana.ts:250 · campo dica"
  },
  "Tropeçou!": {
@@ -1543,13 +1543,17 @@
   "en": "Vrrrrrrm! {nome} in the gourd! {n} drank every drop: +{pct}% in {alvo} until the end of the day.",
   "ctx": "src/ui/telas/gincana.ts:442 · falar()"
  },
+ "pontos": {
+  "en": "points",
+  "ctx": "src/ui/telas/gincana.ts:444"
+ },
  "Tesouraria": {
   "en": "Treasury",
-  "ctx": "src/ui/telas/gincana.ts:445 · campo titulo"
+  "ctx": "src/ui/telas/gincana.ts:446 · campo titulo"
  },
  "Hoje eu fiz… {lista}. Bate isso se for capaz!": {
   "en": "Today I scored… {lista}. Beat that if you can!",
-  "ctx": "src/ui/telas/gincana.ts:452 · falar()"
+  "ctx": "src/ui/telas/gincana.ts:453 · falar()"
  },
  "RÁDIO CIPÓ": {
   "en": "RÁDIO CIPÓ",

@@ -55,9 +55,10 @@ function faltou(s: string) {
   if (!DEV || faltas.has(s) || produzidos.has(s) || conferidos.has(s)) return;
   if (conferidos.size > 20000) conferidos.clear();
   conferidos.add(s);
+  if (/^[a-z0-9]+(-[a-z0-9]+)+$/.test(s)) return; // id interno ("b7-patrao"), não é texto de tela
   const palavras = s.replace(/\{[^}]*\}/g, ' ').match(PALAVRA); // sem as marcações ({c:cor}, {/c}, {marcador})
   // a última palavra pode vir cortada (nome encolhido para caber: "Tamanduá-Cop")
-  const conhecida = (p: string, ultima: boolean) => { const q = p.toLowerCase(); if (vocabulario.has(q)) return true; if (!ultima || q.length < 3) return false; for (const v of vocabulario) if (v.startsWith(q)) return true; return false; };
+  const conhecida = (p: string, ultima: boolean) => { const q = p.toLowerCase(); if (vocabulario.has(q)) return true; if (!ultima || q.length < 2) return false; for (const v of vocabulario) if (v.startsWith(q)) return true; return false; };
   if (!palavras || palavras.every((p, i) => conhecida(p, i === palavras.length - 1))) return;
   faltas.add(s); console.info('[i18n] sem tradução:', JSON.stringify(s));
 }

@@ -12,12 +12,13 @@ import { texto, em } from '../fonte';
 import { camada, som } from '../kit';
 import { caixa } from './comum';
 import { TEXTOS_DEMO, LOJAS } from '../../core/demo';
+import { t as traduzir } from '../../i18n';
 
 export function criarFimDemo(): Tela {
   const el = elTela('ui', 'tela-fim-demo');
   el.style.background = 'linear-gradient(#1a1423 0 120px, #241c3a 120px 150px, #2f6b3a 150px)';
   const c = camada('mata'), mata = caixa('', 320 + c.w, c.h); mata.style.background = `url(${c.url}) repeat-x`; el.append(em(mata, 0, 180 - c.h));
-  const nome = (t: string) => t.replace(/\{JOGADOR\}/g, jogo.save.jogador.nome);
+  const nome = (t: string) => traduzir(t).replace(/\{JOGADOR\}/g, jogo.save.jogador.nome);
   el.append(em(texto(TEXTOS_DEMO.titulo, { tamanho: 12, cor: 'amarelo', sombra: true, largura: 320, alinhar: 'centro' }), 0, 6));
   const comLink = LOJAS.filter((l) => l.url);
   const paragrafos: [string, 'creme' | 'ouro'][] = [
