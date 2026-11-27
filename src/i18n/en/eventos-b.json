@@ -1,6 +1,6 @@
 {
  "Qual filhote você quer adotar hoje?": {
-  "en": "",
+  "en": "Which baby do you want to adopt today?",
   "ctx": "src/data/eventos/b1.ts:62 · escolher()"
  },
  "Agora não": {
@@ -8,11 +8,11 @@
   "ctx": "src/data/eventos/b1.ts:62 · escolher() | src/data/eventos/posliga.ts:94 · pergunta/opção | src/ui/telas/gincana.ts:407 · escolher()"
  },
  "Tenente Arame": {
-  "en": "",
+  "en": "Lieutenant Arame",
   "ctx": "src/data/eventos/b1.ts:89 · campo nome | src/data/zonas/B-PA.ts:87 · gente()"
  },
  "Maquinista Firmino": {
-  "en": "",
+  "en": "Engineer Firmino",
   "ctx": "src/data/eventos/b1.ts:92 · campo nome | src/data/zonas/B1-estacao.ts:41 · campo nome"
  },
  "Dona Sucupira": {
@@ -20,555 +20,555 @@
   "ctx": "src/data/eventos/b1.ts:93 · campo nome | src/data/zonas/B1-salao.ts:39 · gente()"
  },
  "O ninho {onde} já está no rolo de filme da observadora. Os filhotes nem olharam para a câmera.": {
-  "en": "",
+  "en": "The nest {onde} is already on the birdwatcher's film roll. The chicks didn't even look at the camera.",
   "ctx": "src/data/eventos/b1.ts:105 · f()"
  },
  "Um ninho de gravetos {onde}. Dentro, ovos quentinhos e um cheiro de capim.": {
-  "en": "",
+  "en": "A nest of twigs {onde}. Inside, warm eggs and a smell of grass.",
   "ctx": "src/data/eventos/b1.ts:106 · f()"
  },
  "CLIQUE! {JOGADOR} fotografou o ninho com a câmera emprestada, sem encostar em nada.": {
-  "en": "",
+  "en": "CLICK! {JOGADOR} photographed the nest with the borrowed camera, without touching a thing.",
   "ctx": "src/data/eventos/b1.ts:109 · f()"
  },
  "Melhor não mexer. Ninho tocado é ninho abandonado.": {
-  "en": "",
+  "en": "Better not touch. A touched nest is an abandoned nest.",
   "ctx": "src/data/eventos/b1.ts:110 · f()"
  },
  "Chegamos, Campeão! Vila Cascavel, porta de entrada do Sertão das Névoas. Desça devagar: a plataforma é velha e a serra é nova.": {
-  "en": "",
+  "en": "We're here, Champion! Vila Cascavel, gateway to the Sertão das Névoas. Step down slowly: the platform is old and the mountain is young.",
   "ctx": "src/data/eventos/b1.ts:122 · f()"
  },
  "Aqui o mato é outro e os bichos já nascem do tamanho da Liga. Nada de Tamanduí de nível cinco: aqui é Emaçu de quarenta e cinco para cima.\fO primeiro ginásio do Sertão é o da Boiadeira Zefa, em Pantanal Grande, a leste. Dá para ir a pé, pela Vereda, pelo Cerrado e pelas passarelas do Pantanal… ou de canoa, pela lagoa da vila.": {
-  "en": "",
+  "en": "The brush is different here and the critters are born League-sized. No level-five Tamanduí: here it's Emaçu from forty-five up.\fThe first gym in the Sertão is Cowgirl Zefa's, in Pantanal Grande, to the east. You can walk there, through the Vereda, the Cerrado and the Pantanal boardwalks… or go by canoe, across the village lagoon.",
   "ctx": "src/data/eventos/b1.ts:123 · f()"
  },
  "E não estranhe: a Vila Cascavel não tem ginásio. O prédio de pedra virou o Salão da Raizeira. Lá a Dona Sucupira cura a sua equipe de graça.": {
-  "en": "",
+  "en": "And don't be surprised: Vila Cascavel has no gym. The stone building became the Herbalist's Hall. Dona Sucupira heals your team there for free.",
   "ctx": "src/data/eventos/b1.ts:124 · f()"
  },
  "Rádio Cipó, edição do Sertão! Notícia urgente: a Polícia Ambiental pede atenção com gente de macacão cor de ferrugem no Pantanal. Quem vir gaiola, avise a Boiadeira Zefa.": {
-  "en": "",
+  "en": "Rádio Cipó, Sertão edition! Breaking news: the Environmental Police ask everyone to watch out for people in rust-colored overalls in the Pantanal. If you see a cage, tell Cowgirl Zefa.",
   "ctx": "src/data/eventos/b1.ts:126 · f()"
  },
  "Chegue, menino. Sente. Deixe as cuias aqui na bancada que eu passo um chá de casca em cada uma.": {
-  "en": "",
+  "en": "Come in, child. Sit. Leave the gourds here on the bench and I'll rub some bark tea on each one.",
   "ctx": "src/data/eventos/b1.ts:135 · f()"
  },
  "Pronto: jurubeba para o fígado, barbatimão para os cortes e um cafuné para a alma. A equipe está nova.": {
-  "en": "",
+  "en": "There: jurubeba for the liver, barbatimão for the cuts and a head pat for the soul. Your team is good as new.",
   "ctx": "src/data/eventos/b1.ts:137 · f()"
  },
  "E aquele pergaminho, você já ensinou? Força de raiz não se guarda: se usa.": {
-  "en": "",
+  "en": "And that scroll, have you taught it yet? Root strength isn't for keeping: it's for using.",
   "ctx": "src/data/eventos/b1.ts:138 · f()"
  },
  "Pequi do cerrado, buriti da vereda e acerola do quintal! Era isso mesmo. Vou fazer o meu xarope das três raízes.": {
-  "en": "",
+  "en": "Cerrado pequi, vereda buriti and backyard acerola! That's just it. I'll make my three-root syrup.",
   "ctx": "src/data/eventos/b1.ts:142 · f()"
  },
  "Em troca, leve isto. Era da Dona Buriti, minha aluna, de antes de ela abrir o ginásio dela lá na Vila Buriti. Ensina a criatura a bater com a força das eras.": {
-  "en": "",
+  "en": "In return, take this. It belonged to Dona Buriti, my student, from before she opened her gym in Vila Buriti. It teaches a creature to strike with the strength of the ages.",
   "ctx": "src/data/eventos/b1.ts:144 · f()"
  },
  "Ainda faltam frutos: um pequi, um buriti e uma acerola. Tem pequi no cerrado e no Pantanal, buriti na Vereda e acerola por aí, escondida em moita.": {
-  "en": "",
+  "en": "Still missing fruit: a pequi, a buriti and an acerola. There's pequi in the cerrado and the Pantanal, buriti in the Vereda and acerola around, hidden in the bushes.",
   "ctx": "src/data/eventos/b1.ts:146 · f()"
  },
  "Quer me ajudar, menino? Para o meu xarope das três raízes eu preciso de um pequi, um buriti e uma acerola. Minhas pernas não vão mais tão longe.": {
-  "en": "",
+  "en": "Will you help me, child? For my three-root syrup I need a pequi, a buriti and an acerola. My legs don't go that far anymore.",
   "ctx": "src/data/eventos/b1.ts:148 · f()"
  },
  "Ajudar a raizeira com os três frutos?": {
-  "en": "",
+  "en": "Help the herbalist with the three fruits?",
   "ctx": "src/data/eventos/b1.ts:149 · pergunta/opção"
  },
  "Deus lhe pague. Traga quando achar, sem pressa: planta que cura não tem pressa.": {
-  "en": "",
+  "en": "Bless you. Bring them when you find them, no rush: healing plants are never in a hurry.",
   "ctx": "src/data/eventos/b1.ts:150 · f()"
  },
  "Tudo bem. A porta fica aberta.": {
-  "en": "",
+  "en": "All right. The door stays open.",
   "ctx": "src/data/eventos/b1.ts:150 · f()"
  },
  "O tacho está cheio de doce de buriti graças a você! Volte sempre que a tristeza bater. Ou a fome.": {
-  "en": "",
+  "en": "The pot is full of buriti preserves thanks to you! Come back whenever sadness strikes. Or hunger.",
   "ctx": "src/data/eventos/b1.ts:160 · f()"
  },
  "Três frutos de buriti, maduros que só! Agora sim sai o doce. Me dê aqui que eu já ponho no tacho.": {
-  "en": "",
+  "en": "Three buriti fruits, ripe as can be! Now we can make the preserves. Hand them over and I'll put them in the pot.",
   "ctx": "src/data/eventos/b1.ts:163 · f()"
  },
  "Leve rapadura para a viagem e garapa para a sede. Criatura cansada sobe de nível com rapadura, viu?": {
-  "en": "",
+  "en": "Take brown sugar for the trip and cane juice for thirst. A tired creature levels up with brown sugar, you know?",
   "ctx": "src/data/eventos/b1.ts:165 · f()"
  },
  "Ô, meu filho, a receita do doce de buriti pede três frutos e o buritizal da Vereda está cheio de bicho. Eu não tenho mais idade para brigar com Antão.": {
-  "en": "",
+  "en": "Oh, dear, the buriti preserves recipe calls for three fruits and the Vereda's buriti grove is full of critters. I'm too old to be fighting Antão.",
   "ctx": "src/data/eventos/b1.ts:168 · f()"
  },
  "Se você achar três frutos de buriti por aí, traga aqui. Pago em rapadura, que é a moeda mais forte do Sertão.": {
-  "en": "",
+  "en": "If you find three buriti fruits around, bring them here. I'll pay in brown sugar, the strongest currency in the Sertão.",
   "ctx": "src/data/eventos/b1.ts:169 · f()"
  },
  "A Açucena mandou dizer que vem para a festa de São João no Arraial! Já estou afinando a viola. E o coração.": {
-  "en": "",
+  "en": "Açucena says she's coming to the São João festival in the Arraial! I'm already tuning the viola. And my heart.",
   "ctx": "src/data/eventos/b1.ts:179 · f()"
  },
  "Resposta dela?! Deixa eu ler… \"Volte quando a viola aprender a minha moda.\" Ela escreveu a moda embaixo!": {
-  "en": "",
+  "en": "Her reply?! Let me read… \"Come back when your viola learns my song.\" She wrote the song underneath!",
   "ctx": "src/data/eventos/b1.ts:181 · f()"
  },
  "Vinte anos esperando essa moda. Tome, é o pergaminho que o meu pai ganhou numa cantoria. Ensina a sumir que nem saudade.": {
-  "en": "",
+  "en": "Twenty years waiting for that song. Here, it's the scroll my father won at a singing contest. It teaches you to vanish like longing.",
   "ctx": "src/data/eventos/b1.ts:182 · f()"
  },
  "O meu Bem-te-viço está no seu ombro, com a carta no pé. Leve até Porto Pantaneiro, na casa larga ao lado do Posto. Ele só desce do seu ombro quando vir a Açucena.": {
-  "en": "",
+  "en": "My Bem-te-viço is on your shoulder, with the letter on its foot. Take it to Porto Pantaneiro, the wide house next to the Post. It only gets off your shoulder when it sees Açucena.",
   "ctx": "src/data/eventos/b1.ts:185 · f()"
  },
  "Você vai para os lados de Porto Pantaneiro, Campeão? Eu tenho uma carta para a Dona Açucena. Escrevi faz vinte anos e nunca tive coragem de mandar.": {
-  "en": "",
+  "en": "Are you headed toward Porto Pantaneiro, Champion? I have a letter for Dona Açucena. I wrote it twenty years ago and never had the courage to send it.",
   "ctx": "src/data/eventos/b1.ts:186 · f()"
  },
  "O correio do Sertão é por ave: o meu Bem-te-viço leva a carta presa no pé e vai no seu ombro até lá. Ele não luta, não come muito e canta de manhã.": {
-  "en": "",
+  "en": "The Sertão mail goes by bird: my Bem-te-viço carries the letter tied to its foot and rides on your shoulder all the way. It doesn't fight, doesn't eat much and sings in the morning.",
   "ctx": "src/data/eventos/b1.ts:187 · f()"
  },
  "Levar a carta do violeiro para Porto Pantaneiro?": {
-  "en": "",
+  "en": "Take the fiddler's letter to Porto Pantaneiro?",
   "ctx": "src/data/eventos/b1.ts:188 · pergunta/opção"
  },
  "O Bem-te-viço do violeiro pousou no ombro de {JOGADOR}, com a carta enrolada no pé.": {
-  "en": "",
+  "en": "The fiddler's Bem-te-viço landed on {JOGADOR}'s shoulder, with the letter rolled around its foot.",
   "ctx": "src/data/eventos/b1.ts:191 · f()"
  },
  "Porto Pantaneiro fica no fim do canal do Pantanal, rio abaixo. Diga que é do Zabelê. Ela vai saber.": {
-  "en": "",
+  "en": "Porto Pantaneiro is at the end of the Pantanal canal, downriver. Tell her it's from Zabelê. She'll know.",
   "ctx": "src/data/eventos/b1.ts:192 · f()"
  },
  "Tudo bem. Esperei vinte anos, espero mais uma semana.": {
-  "en": "",
+  "en": "That's fine. I waited twenty years, I can wait another week.",
   "ctx": "src/data/eventos/b1.ts:193 · f()"
  },
  "O Bem-te-viço desce do ombro de {JOGADOR}, pousa na mesa e estica o pé com a carta.": {
-  "en": "",
+  "en": "The Bem-te-viço hops off {JOGADOR}'s shoulder, lands on the table and holds out the foot with the letter.",
   "ctx": "src/data/eventos/b1.ts:204 · f()"
  },
  "Um Bem-te-viço de Vila Cascavel… essa letra eu conheço. É do Zabelê! Vinte anos e ele não muda a letra.": {
-  "en": "",
+  "en": "A Bem-te-viço from Vila Cascavel… I know this handwriting. It's Zabelê's! Twenty years and his handwriting hasn't changed.",
   "ctx": "src/data/eventos/b1.ts:205 · f()"
  },
  "Espere aí, que eu escrevo a resposta agora. E vou mandar a moda que eu fiz para ele. Ele nunca soube tocar.": {
-  "en": "",
+  "en": "Hold on, I'll write the reply right now. And I'll send the song I wrote for him. He never could play it.",
   "ctx": "src/data/eventos/b1.ts:206 · f()"
  },
  "O Bem-te-viço voltou para o ombro de {JOGADOR} com a resposta presa no pé.": {
-  "en": "",
+  "en": "The Bem-te-viço went back to {JOGADOR}'s shoulder with the reply tied to its foot.",
   "ctx": "src/data/eventos/b1.ts:208 · f()"
  },
  "Já respondi. Agora é com ele. E com a viola.": {
-  "en": "",
+  "en": "I've replied. Now it's up to him. And the viola.",
   "ctx": "src/data/eventos/b1.ts:210 · f()"
  },
  "Moro aqui há vinte anos. Costuro, canto e espero carta de Vila Cascavel. A carta nunca vem.": {
-  "en": "",
+  "en": "I've lived here twenty years. I sew, I sing and I wait for a letter from Vila Cascavel. The letter never comes.",
   "ctx": "src/data/eventos/b1.ts:211 · f()"
  },
  "O casal de Tuiuiú voltou ao ninho e os ovos estão inteiros. Graças a você, menino.": {
-  "en": "",
+  "en": "The Tuiuiú couple came back to the nest and the eggs are all whole. Thanks to you, child.",
   "ctx": "src/data/eventos/b1.ts:221 · f()"
  },
  "Um dia inteiro e nenhum ovo sumiu! O pessoal disse que viu você rondando o telhado e espantando urubu.": {
-  "en": "",
+  "en": "A whole day and not one egg went missing! Folks say they saw you on the roof chasing off vultures.",
   "ctx": "src/data/eventos/b1.ts:225 · f()"
  },
  "Tome: Cuia de Mel, que filhote ama, e este pergaminho que o meu finado marido ganhou num rodeio.": {
-  "en": "",
+  "en": "Here: a Honey Gourd, which babies love, and this scroll my late husband won at a rodeo.",
   "ctx": "src/data/eventos/b1.ts:226 · f()"
  },
  "Ainda não virou o dia, menino. Ninho de Tuiuiú se vigia de sol a sol. Volte amanhã e me conte.": {
-  "en": "",
+  "en": "The day isn't over yet, child. A Tuiuiú nest is watched from sunup to sundown. Come back tomorrow and tell me.",
   "ctx": "src/data/eventos/b1.ts:228 · f()"
  },
  "O casal de Tuiuiú do meu telhado saiu para pescar no Pantanal e eu preciso ir a Porto Pantaneiro. Quem vai vigiar os ovos?": {
-  "en": "",
+  "en": "The Tuiuiú couple on my roof went fishing in the Pantanal and I need to go to Porto Pantaneiro. Who's going to watch the eggs?",
   "ctx": "src/data/eventos/b1.ts:230 · f()"
  },
  "Vigiar o ninho da Dona Brejeira até amanhã?": {
-  "en": "",
+  "en": "Watch Dona Brejeira's nest until tomorrow?",
   "ctx": "src/data/eventos/b1.ts:231 · pergunta/opção"
  },
  "Fique de olho no céu: urubu, gavião e gente de macacão ferrugem. Volte amanhã, que eu já estarei de volta.": {
-  "en": "",
+  "en": "Keep an eye on the sky: vultures, hawks and people in rust-colored overalls. Come back tomorrow, I'll be home by then.",
   "ctx": "src/data/eventos/b1.ts:234 · f()"
  },
  "Tudo bem. Eu peço para a Jandira. Ela vai dormir em cima do telhado, mas vai.": {
-  "en": "",
+  "en": "That's fine. I'll ask Jandira. She'll sleep on the roof, but she'll do it.",
   "ctx": "src/data/eventos/b1.ts:235 · f()"
  },
  "Sou a Drª Taiamã, veterinária do Centro. Estamos de mãos atadas: o Cartel Ferrugem está saqueando o ninhal do sul.": {
-  "en": "",
+  "en": "I'm Dr. Taiamã, the Center's vet. Our hands are tied: the Rust Cartel is raiding the southern rookery.",
   "ctx": "src/data/eventos/b1.ts:246 · f()"
  },
  "Quando os ninhos estiverem seguros, os filhotes que eles roubaram vão chegar aqui. E vão precisar de alguém que cuide.": {
-  "en": "",
+  "en": "Once the nests are safe, the babies they stole will come here. And they'll need someone to look after them.",
   "ctx": "src/data/eventos/b1.ts:247 · f()"
  },
  "Hoje você já adotou um filhote. Um por dia, para cada um receber atenção de verdade. Volte amanhã!": {
-  "en": "",
+  "en": "You already adopted a baby today. One per day, so each one gets real attention. Come back tomorrow!",
   "ctx": "src/data/eventos/b1.ts:250 · f()"
  },
  "Os filhotes resgatados do Cartel estão crescendo! Soltos no mato eles não sobreviveriam: aprenderam a viver em gaiola.": {
-  "en": "",
+  "en": "The babies rescued from the Cartel are growing! Loose in the wild they wouldn't survive: they learned to live in cages.",
   "ctx": "src/data/eventos/b1.ts:251 · f()"
  },
  "Com um treinador eles aprendem a caçar, a nadar e a voar. Um filhote por dia, combinado? Assim cada um recebe atenção.": {
-  "en": "",
+  "en": "With a trainer they learn to hunt, swim and fly. One baby a day, deal? That way each one gets attention.",
   "ctx": "src/data/eventos/b1.ts:252 · f()"
  },
  "E não se preocupe com o tamanho: aqui eles comem bem e treinam com a gente. Saem quase no passo da sua equipe.": {
-  "en": "",
+  "en": "And don't worry about size: here they eat well and train with us. They leave almost at your team's pace.",
   "ctx": "src/data/eventos/b1.ts:253 · f()"
  },
  "Todos os filhotes já têm treinador! Você foi incrível. O Centro nunca esteve tão vazio, e isso é ótimo.": {
-  "en": "",
+  "en": "Every baby has a trainer now! You were amazing. The Center has never been so empty, and that's wonderful.",
   "ctx": "src/data/eventos/b1.ts:255 · f()"
  },
  "Cuide bem dele. E traga para visitar: a tratadora vai chorar de saudade.": {
-  "en": "",
+  "en": "Take good care of it. And bring it to visit: the keeper is going to miss it like crazy.",
   "ctx": "src/data/eventos/b1.ts:258 · f()"
  },
  "As suas fotos estão no mural da Estação de Pesquisa! A Bióloga Ingá chorou. Eu também.": {
-  "en": "",
+  "en": "Your photos are on the Research Station board! Biologist Ingá cried. So did I.",
   "ctx": "src/data/eventos/b1.ts:269 · f()"
  },
  "Cinco ninhos! Vereda, cerrado duas vezes, o Morro do Urucum e o pasto de Pantanal Grande. Sem encostar em nenhum!": {
-  "en": "",
+  "en": "Five nests! The Vereda, the cerrado twice, Morro do Urucum and the Pantanal Grande pasture. Without touching a single one!",
   "ctx": "src/data/eventos/b1.ts:272 · f()"
  },
  "Fique com a câmera, ela é sua. E com estas penas que eu juntei do chão: pena caída é presente.": {
-  "en": "",
+  "en": "Keep the camera, it's yours. And these feathers I picked up off the ground: a fallen feather is a gift.",
   "ctx": "src/data/eventos/b1.ts:273 · f()"
  },
  "Faltam ninhos! Um na Vereda dos Buritis, dois aqui no cerrado, um no Pantanal Alagado, perto do Morro do Urucum, e um no pasto de Pantanal Grande.": {
-  "en": "",
+  "en": "Still missing nests! One in Vereda dos Buritis, two here in the cerrado, one in Pantanal Alagado, near Morro do Urucum, and one in the Pantanal Grande pasture.",
   "ctx": "src/data/eventos/b1.ts:275 · f()"
  },
  "Psiu! Estou fazendo o censo dos ninhos do Sertão para a Estação de Pesquisa, mas os meus joelhos não sobem mais em cupinzeiro.": {
-  "en": "",
+  "en": "Psst! I'm doing the Sertão nest census for the Research Station, but my knees don't climb termite mounds anymore.",
   "ctx": "src/data/eventos/b1.ts:277 · f()"
  },
  "Fotografar cinco ninhos para a observadora?": {
-  "en": "",
+  "en": "Photograph five nests for the birdwatcher?",
   "ctx": "src/data/eventos/b1.ts:278 · pergunta/opção"
  },
  "Leve a minha câmera. Regra de ouro: olhar, fotografar e ir embora. Ninho tocado é ninho abandonado.": {
-  "en": "",
+  "en": "Take my camera. Golden rule: look, photograph and leave. A touched nest is an abandoned nest.",
   "ctx": "src/data/eventos/b1.ts:281 · f()"
  },
  "Tem um na Vereda dos Buritis, dois aqui no cerrado, um no Pantanal Alagado, perto do Morro do Urucum, e um no pasto de Pantanal Grande.": {
-  "en": "",
+  "en": "There's one in Vereda dos Buritis, two here in the cerrado, one in Pantanal Alagado, near Morro do Urucum, and one in the Pantanal Grande pasture.",
   "ctx": "src/data/eventos/b1.ts:282 · f()"
  },
  "Quando mudar de ideia, estarei aqui. Imóvel. Observadora de ave aprende a esperar.": {
-  "en": "",
+  "en": "When you change your mind, I'll be here. Motionless. Birdwatchers learn to wait.",
   "ctx": "src/data/eventos/b1.ts:283 · f()"
  },
  "no buritizal da Vereda": {
-  "en": "",
+  "en": "in the Vereda's buriti grove",
   "ctx": "src/data/eventos/b1.ts:288 · foto()"
  },
  "na beira da lagoa do cerrado": {
-  "en": "",
+  "en": "by the cerrado lagoon",
   "ctx": "src/data/eventos/b1.ts:289 · foto()"
  },
  "no alto da mesa de pedra do cerrado": {
-  "en": "",
+  "en": "atop the cerrado's stone mesa",
   "ctx": "src/data/eventos/b1.ts:290 · foto()"
  },
  "na ilha do Morro do Urucum": {
-  "en": "",
+  "en": "on the Morro do Urucum island",
   "ctx": "src/data/eventos/b1.ts:291 · foto()"
  },
  "no pé de buriti do pasto de Pantanal Grande": {
-  "en": "",
+  "en": "under the buriti tree in the Pantanal Grande pasture",
   "ctx": "src/data/eventos/b1.ts:292 · foto()"
  },
  "E o Tucanuçu, como vai lá em Pantanal… ah, não, ele está comigo. O Corisco é que está com você! Ele obedece direitinho?": {
-  "en": "",
+  "en": "And how's the Tucanuçu doing over in Pantanal… oh, no, it's with me. It's Corisco who's with you! Does he behave?",
   "ctx": "src/data/eventos/b1.ts:298 · f()"
  },
  "Viajante! Eu crio emas e troco com quem passa. Bicho que viaja aprende mais.": {
-  "en": "",
+  "en": "Traveler! I raise rheas and trade with passersby. A critter that travels learns more.",
   "ctx": "src/data/eventos/b1.ts:299 · f()"
  },
  "Ando querendo um Tucanuçu, desses de bico em chamas. Em troca dou o meu Emaçu, o Corisco. Corre mais que o trem e vai segurando um Unguento.": {
-  "en": "",
+  "en": "I've been wanting a Tucanuçu, the kind with a flaming beak. In exchange I'll give you my Emaçu, Corisco. He runs faster than the train and he's holding an Ointment.",
   "ctx": "src/data/eventos/b1.ts:300 · f()"
  },
  "Trocar o seu Tucanuçu pelo Emaçu Corisco?": {
-  "en": "",
+  "en": "Trade your Tucanuçu for the Emaçu Corisco?",
   "ctx": "src/data/eventos/b1.ts:303 · pergunta/opção"
  },
  "{JOGADOR} trocou o Tucanuçu pelo Emaçu Corisco!": {
-  "en": "",
+  "en": "{JOGADOR} traded the Tucanuçu for the Emaçu Corisco!",
   "ctx": "src/data/eventos/b1.ts:308 · f()"
  },
  "Cuide bem dele! Criatura trocada aprende mais rápido, mas só obedece se você tiver insígnias para isso. Você tem de sobra.": {
-  "en": "",
+  "en": "Take good care of him! A traded creature learns faster, but only obeys if you have the badges for it. You've got plenty.",
   "ctx": "src/data/eventos/b1.ts:309 · f()"
  },
  "Tudo bem. Proposta não vence.": {
-  "en": "",
+  "en": "That's fine. The offer doesn't expire.",
   "ctx": "src/data/eventos/b1.ts:312 · f()"
  },
  "Tucanuçu tem muito na Vereda dos Buritis, ao norte. Pegue um e volte que o Corisco espera.": {
-  "en": "",
+  "en": "There are lots of Tucanuçu in Vereda dos Buritis, to the north. Catch one and come back; Corisco will wait.",
   "ctx": "src/data/eventos/b1.ts:313 · f()"
  },
  "Alto lá! Ninhal cercado: propriedade do Cartel Ferrugem, por ordem do Coronel Garrote. Arame farpado, ouviu? Farpado!": {
-  "en": "",
+  "en": "Halt! Fenced-off rookery: property of the Rust Cartel, by order of Colonel Garrote. Barbed wire, hear me? Barbed!",
   "ctx": "src/data/eventos/b1.ts:324 · f()"
  },
  "Esses ovos de tuiuiú vão descer o rio no próximo barco. Lá fora pagam uma fortuna por bicho do Pantanal em gaiola de ouro.\fE você… você é o tal Campeão que amassou a Lata e entortou o Rebite. Pois comigo o arame enrola!": {
-  "en": "",
+  "en": "These tuiuiú eggs are going downriver on the next boat. Out there they pay a fortune for Pantanal critters in golden cages.\fAnd you… you're that Champion who crushed Lata and bent Rebite. Well, with me you'll get all wired up!",
   "ctx": "src/data/eventos/b1.ts:325 · f()"
  },
  "Desenrolou… Arame velho, esse meu.": {
-  "en": "",
+  "en": "Unwound… This wire of mine is old.",
   "ctx": "src/data/eventos/b1.ts:327 · f()"
  },
  "Fique com o seu ninhal! A rede do canal sul eu deixo de lembrança. Ah, não: a Polícia vai tirar. Que seja!\fMas guarde o meu nome: o Rebite está esperando você na Chapada Rubra. E ele não esquece desaforo.": {
-  "en": "",
+  "en": "Keep your rookery! I'll leave you the net in the south canal as a souvenir. Oh, no: the Police will take it down. Whatever!\fBut remember my name: Rebite is waiting for you in Chapada Rubra. And he doesn't forget an insult.",
   "ctx": "src/data/eventos/b1.ts:328 · f()"
  },
  "O tenente Arame fugiu pelo canal, com os capangas atrás.\fOs peões da Zefa devolvem os ovos aos ninhos, um por um. Os tuiuiús voltam a pousar no ninhal.": {
-  "en": "",
+  "en": "Lieutenant Arame fled down the canal, with his goons behind him.\fZefa's ranch hands put the eggs back in the nests, one by one. The tuiuiús land in the rookery again.",
   "ctx": "src/data/eventos/b1.ts:331 · f()"
  },
  "Peão Bastião": {
-  "en": "",
+  "en": "Ranch Hand Bastião",
   "ctx": "src/data/eventos/b1.ts:332 · campo nome | src/data/eventos/b1.ts:334 · campo nome | src/data/zonas/B-PA.ts:89 · gente()"
  },
  "Campeão! A rede do Cartel saiu do canal sul e a porteira da Estrada Vermelha vai abrir. Porto Pantaneiro está livre de novo!\fA Zefa mandou isto de agradecimento. Ela disse que é para \"quem não tem medo de lama\".": {
-  "en": "",
+  "en": "Champion! The Cartel's net is out of the south canal and the Estrada Vermelha gate is going to open. Porto Pantaneiro is free again!\fZefa sent this as thanks. She said it's for \"someone who isn't afraid of mud\".",
   "ctx": "src/data/eventos/b1.ts:332 · f()"
  },
  "Os filhotes que o Cartel tirou dos ninhos foram para o Centro de Reabilitação de Pantanal Grande. A Drª Taiamã procura quem adote.": {
-  "en": "",
+  "en": "The babies the Cartel took from the nests went to the Pantanal Grande Rehabilitation Center. Dr. Taiamã is looking for people to adopt them.",
   "ctx": "src/data/eventos/b1.ts:334 · f()"
  },
  "A gaiola está vazia e aberta. No fundo ficou só um fiapo de pena de arara.": {
-  "en": "",
+  "en": "The cage is empty and open. All that's left at the bottom is a wisp of macaw feather.",
   "ctx": "src/data/eventos/b1.ts:344 · f()"
  },
  "Uma gaiola do Cartel Ferrugem com filhotes de Ararinha amontoados. O cadeado tem o símbolo de uma engrenagem enferrujada.\fQuem tem a chave é o tenente.": {
-  "en": "",
+  "en": "A Rust Cartel cage with Ararinha chicks huddled together. The padlock has a rusty gear symbol.\fThe lieutenant has the key.",
   "ctx": "src/data/eventos/b1.ts:346 · f()"
  },
  "Ô menino! Desamarra aqui… não, primeiro tira esse aparafusado da minha mina!": {
-  "en": "",
+  "en": "Hey, kid! Untie me… no, first get this screwball out of my mine!",
   "ctx": "src/data/eventos/b1.ts:355 · f()"
  },
  "Quieto aí, garimpeiro! VOCÊ! O moleque do Farol! Eu fui rebaixado a tenente de mina por sua culpa!\fAqui embaixo tem quarenta ovos do ninhal, doze filhotes de arara e um garimpeiro teimoso. Tudo meu. Saia ou vire parafuso!": {
-  "en": "",
+  "en": "Quiet, prospector! YOU! The kid from the Lighthouse! I got demoted to mine lieutenant because of you!\fDown here there are forty eggs from the rookery, twelve macaw chicks and one stubborn prospector. All mine. Get out or get screwed in!",
   "ctx": "src/data/eventos/b1.ts:356 · f()"
  },
  "Espanou… a rosca espanou de novo! O Coronel vai me mandar para o Brejo Roxo limpar tanque.": {
-  "en": "",
+  "en": "Stripped… the thread stripped again! The Colonel's going to send me to Brejo Roxo to clean tanks.",
   "ctx": "src/data/eventos/b1.ts:358 · f()"
  },
  "Fique com a mina, com o garimpeiro e com os bichos! Eu vou… eu vou para a superfície. Pela escada. Que eu odeio.": {
-  "en": "",
+  "en": "Keep the mine, the prospector and the critters! I'm… I'm going to the surface. By the stairs. Which I hate.",
   "ctx": "src/data/eventos/b1.ts:359 · f()"
  },
  "As gaiolas se abrem uma a uma. As Ararinhas saem voando pela galeria em direção à luz, e os ovos do ninhal vão para um cesto de palha forrado.": {
-  "en": "",
+  "en": "The cages open one by one. The Ararinhas fly down the tunnel toward the light, and the rookery eggs go into a lined straw basket.",
   "ctx": "src/data/eventos/b1.ts:362 · f()"
  },
  "Ufa! Três dias amarrado ouvindo esse sujeito assobiar fora do tom.\fObrigado, Campeão. A mina voltou a ser do povo da chapada. Os ovos voltam para o Pantanal no primeiro barco, e os filhotes que não sabem voar vão para o Centro de Reabilitação.": {
-  "en": "",
+  "en": "Phew! Three days tied up listening to that guy whistle off-key.\fThanks, Champion. The mine belongs to the plateau folks again. The eggs go back to the Pantanal on the first boat, and the chicks that can't fly go to the Rehabilitation Center.",
   "ctx": "src/data/eventos/b1.ts:363 · f()"
  },
  "Agora eu vou subir, tomar um banho de bateia e abrir o ginásio. Pode ir lá me desafiar quando quiser: vagonete, desvio e pedra bruta.\fE não pense que eu vou pegar leve só porque você me desamarrou!": {
-  "en": "",
+  "en": "Now I'm going up, take a gold-pan bath and open the gym. Come challenge me whenever you like: mine carts, switches and raw stone.\fAnd don't think I'll go easy on you just because you untied me!",
   "ctx": "src/data/eventos/b1.ts:364 · f()"
  },
  "O salão está quieto. O chão ainda é morno, e as paredes têm marcas de fogo em forma de serpente.": {
-  "en": "",
+  "en": "The chamber is quiet. The floor is still warm, and the walls have fire marks shaped like a serpent.",
   "ctx": "src/data/eventos/b1.ts:375 · f()"
  },
  "No fundo do salão, uma serpente de fogo dorme enrolada sobre a pedra. A respiração dela faz a lava borbulhar.\fEla nem abre os olhos. Parece esperar alguém com a força da Chapada Rubra.": {
-  "en": "",
+  "en": "At the back of the chamber, a fire serpent sleeps coiled on the rock. Its breathing makes the lava bubble.\fIt doesn't even open its eyes. It seems to be waiting for someone with the strength of Chapada Rubra.",
   "ctx": "src/data/eventos/b1.ts:377 · f()"
  },
  "A serpente de fogo abre os olhos. O salão inteiro clareia como se o sol tivesse entrado na caverna.": {
-  "en": "",
+  "en": "The fire serpent opens its eyes. The whole chamber lights up as if the sun had entered the cave.",
   "ctx": "src/data/eventos/b1.ts:380 · f()"
  },
  "O BOITATÁ desperta, sentindo a Insígnia Cristal!": {
-  "en": "",
+  "en": "BOITATÁ awakens, sensing the Crystal Badge!",
   "ctx": "src/data/eventos/b1.ts:381 · f()"
  },
  "O Boitatá se acomodou na cuia, morno como brasa de fogão.": {
-  "en": "",
+  "en": "Boitatá settled into the gourd, warm as embers in a stove.",
   "ctx": "src/data/eventos/b1.ts:384 · f()"
  },
  "O Boitatá se desfez em brasas e afundou na lava. A caverna esfriou de vez: ele não foi mais visto.": {
-  "en": "",
+  "en": "Boitatá crumbled into embers and sank into the lava. The cave cooled for good: it was never seen again.",
   "ctx": "src/data/eventos/b1.ts:388 · f()"
  },
  "O Boitatá se enrola de novo sobre a pedra, de olhos semiabertos. Ele continua ali, esperando.": {
-  "en": "",
+  "en": "Boitatá coils up on the rock again, eyes half open. It's still there, waiting.",
   "ctx": "src/data/eventos/b1.ts:390 · f()"
  },
  "{JOGADOR}!! Eu sabia que você ia subir a chapada por aqui. Eu subi pela trepadeira também, mas caí duas vezes.": {
-  "en": "",
+  "en": "{JOGADOR}!! I knew you'd climb the plateau this way. I came up the vine too, but I fell twice.",
   "ctx": "src/data/eventos/b1.ts:402 · f()"
  },
  "Ganhei! Ganhei do Campeão da Liga! Anota aí, Rádio Cipó!\fMas… a sua equipe está cansada da subida. Não valeu tanto assim. Vá ao Posto e volte que eu ganho de novo.": {
-  "en": "",
+  "en": "I won! I beat the League Champion! Write that down, Rádio Cipó!\fBut… your team is tired from the climb. It doesn't count that much. Go to the Post and come back so I can win again.",
   "ctx": "src/data/eventos/b1.ts:404 · f()"
  },
  "Sabe o que eu descobri no Sertão? Que perder de você não dói mais tanto. Dói só um pouco. É progresso.": {
-  "en": "",
+  "en": "Know what I figured out in the Sertão? That losing to you doesn't hurt so much anymore. Just a little. That's progress.",
   "ctx": "src/data/eventos/b1.ts:405 · f()"
  },
  "A Labareda acende as fogueiras do ginásio na ordem de uma música. Eu errei a nota três vezes. Boa sorte, e não conte para ninguém que eu dei dica.": {
-  "en": "",
+  "en": "Labareda lights the gym's bonfires in the order of a song. I got the note wrong three times. Good luck, and don't tell anyone I gave you a hint.",
   "ctx": "src/data/eventos/b1.ts:406 · f()"
  },
  "O melhor marcador de quadrilha que o Arraial já teve! Volte todo sábado: o quentão é de graça e a bandeirinha é de papel.": {
-  "en": "",
+  "en": "The best square-dance caller the Arraial has ever had! Come back every Saturday: the mulled drink is free and the bunting is paper.",
   "ctx": "src/data/eventos/b1.ts:418 · f()"
  },
  "A festa de São João é no sábado, no terreiro. Fogueira, quadrilha, pé-de-moleque e quentão.": {
-  "en": "",
+  "en": "The São João festival is on Saturday, in the yard. Bonfire, square dance, peanut brittle and mulled drink.",
   "ctx": "src/data/eventos/b1.ts:420 · f()"
  },
  "Volte no sábado que eu preciso de um marcador para a quadrilha. O Seu Anarriê se aposentou e a sanfona não espera.": {
-  "en": "",
+  "en": "Come back Saturday, I need a caller for the square dance. Seu Anarriê retired and the accordion won't wait.",
   "ctx": "src/data/eventos/b1.ts:421 · f()"
  },
  "É SÁBADO! Dia de São João! E o marcador da quadrilha sumiu. Você marca para a gente? É só responder certo a cada passo!": {
-  "en": "",
+  "en": "IT'S SATURDAY! São João day! And the square-dance caller has vanished. Will you call it for us? Just answer right at each step!",
   "ctx": "src/data/eventos/b1.ts:423 · f()"
  },
  "O sanfoneiro puxa o baião. O que o marcador grita primeiro?": {
-  "en": "",
+  "en": "The accordionist strikes up the baião. What does the caller shout first?",
   "ctx": "src/data/eventos/b1.ts:424 · pergunta/opção"
  },
  "Balancê!": {
-  "en": "",
+  "en": "Balancê!",
   "ctx": "src/data/eventos/b1.ts:424 · pergunta/opção"
  },
  "Olha a chuva!": {
-  "en": "",
+  "en": "Here comes the rain!",
   "ctx": "src/data/eventos/b1.ts:424 · pergunta/opção"
  },
  "Anarriê!": {
-  "en": "",
+  "en": "Anarriê!",
   "ctx": "src/data/eventos/b1.ts:424 · pergunta/opção"
  },
  "Os pares balançaram. Agora vem a pegadinha da quadrilha:": {
-  "en": "",
+  "en": "The couples swayed. Now comes the square-dance prank:",
   "ctx": "src/data/eventos/b1.ts:426 · pergunta/opção"
  },
  "Olha a cobra!": {
-  "en": "",
+  "en": "Watch out, snake!",
   "ctx": "src/data/eventos/b1.ts:426 · pergunta/opção"
  },
  "Todo mundo sentado!": {
-  "en": "",
+  "en": "Everybody sit!",
   "ctx": "src/data/eventos/b1.ts:426 · pergunta/opção"
  },
  "Cadê o fole?": {
-  "en": "",
+  "en": "Where's the accordion?",
   "ctx": "src/data/eventos/b1.ts:426 · pergunta/opção"
  },
  "Todos gritam \"Olha a cobra!\". E a resposta é…": {
-  "en": "",
+  "en": "Everyone shouts \"Watch out, snake!\". And the answer is…",
   "ctx": "src/data/eventos/b1.ts:428 · pergunta/opção"
  },
  "É mentira!": {
-  "en": "",
+  "en": "It's a lie!",
   "ctx": "src/data/eventos/b1.ts:428 · pergunta/opção"
  },
  "Corre!": {
-  "en": "",
+  "en": "Run!",
   "ctx": "src/data/eventos/b1.ts:428 · pergunta/opção"
  },
  "Chama o vaqueiro!": {
-  "en": "",
+  "en": "Call the cowhand!",
   "ctx": "src/data/eventos/b1.ts:428 · pergunta/opção"
  },
  "É MENTIRA! Isso, marcador! O terreiro inteiro caiu na risada e a fogueira subiu alta!": {
-  "en": "",
+  "en": "IT'S A LIE! That's it, caller! The whole yard burst out laughing and the bonfire leaped up high!",
   "ctx": "src/data/eventos/b1.ts:431 · f()"
  },
  "Tome o seu prêmio de São João: Pedra Solar, que a Ferreira Labareda diz que guarda o calor da fogueira, e pé-de-moleque. Quer dizer, rapadura. Acabou o pé-de-moleque.": {
-  "en": "",
+  "en": "Here's your São João prize: a Sun Stone, which Smith Labareda says holds the bonfire's heat, and peanut brittle. I mean, brown sugar. We ran out of peanut brittle.",
   "ctx": "src/data/eventos/b1.ts:432 · f()"
  },
  "Não, não! Quando gritam \"olha a cobra\", a resposta é que é mentira! Respire e tente de novo.": {
-  "en": "",
+  "en": "No, no! When they shout \"watch out, snake\", the answer is that it's a lie! Breathe and try again.",
   "ctx": "src/data/eventos/b1.ts:434 · f()"
  },
  "A pegadinha é a cobra, marcador! Tente de novo, que a quadrilha espera.": {
-  "en": "",
+  "en": "The prank is the snake, caller! Try again, the square dance is waiting.",
   "ctx": "src/data/eventos/b1.ts:435 · f()"
  },
  "Começa com o balancê, marcador! Balançar primeiro, correr depois. Tente de novo.": {
-  "en": "",
+  "en": "It starts with the balancê, caller! Sway first, run later. Try again.",
   "ctx": "src/data/eventos/b1.ts:436 · f()"
  },
  "Três pepitas na minha coleção nova! Agora tenho onze. Quer dizer, tenho três e oito de pirita.": {
-  "en": "",
+  "en": "Three nuggets for my new collection! Now I have eleven. I mean, I have three, plus eight of fool's gold.",
   "ctx": "src/data/eventos/b1.ts:446 · f()"
  },
  "Três pepitas! Brilho de verdade, não é pirita! Deixe eu morder para conferir… é ouro!": {
-  "en": "",
+  "en": "Three nuggets! Real shine, not fool's gold! Let me bite one to check… it's gold!",
   "ctx": "src/data/eventos/b1.ts:449 · f()"
  },
  "Trato é trato: um pergaminho por três pepitas. Esse ensina a criatura a deslizar a terra em cima do inimigo.": {
-  "en": "",
+  "en": "A deal's a deal: one scroll for three nuggets. This one teaches a creature to slide the earth right onto the enemy.",
   "ctx": "src/data/eventos/b1.ts:451 · f()"
  },
  "Eu troco um pergaminho raro por três pepitas. Pepita sai de rocha rachada: na Estrada Vermelha, aqui na chapada e na Mina Velha. Quebre e procure!": {
-  "en": "",
+  "en": "I'll trade a rare scroll for three nuggets. Nuggets come from cracked rocks: on Estrada Vermelha, here on the plateau and in Mina Velha. Smash them and look!",
   "ctx": "src/data/eventos/b1.ts:453 · f()"
  },
  "As Cuias de Ouro saíram perfeitas. Brasa de Boitatá não erra.": {
-  "en": "",
+  "en": "The Gold Gourds came out perfect. Boitatá embers never miss.",
   "ctx": "src/data/eventos/b1.ts:462 · f()"
  },
  "Você viu o Boitatá?! Então você sabe o que é fogo de verdade. Com a brasa que ele deixa na pedra eu forjo qualquer coisa.": {
-  "en": "",
+  "en": "You saw Boitatá?! Then you know what real fire is. With the embers it leaves on the rock I can forge anything.",
   "ctx": "src/data/eventos/b1.ts:464 · f()"
  },
  "Dar uma pepita ao Ferreiro Malho para ele forjar cuias?": {
-  "en": "",
+  "en": "Give a nugget to Smith Malho so he can forge gourds?",
   "ctx": "src/data/eventos/b1.ts:467 · pergunta/opção"
  },
  "Ouro derretido no fogo do Boitatá e moldado na casca da cuieira… Pronto! Cuia de Ouro, cinco de uma vez!": {
-  "en": "",
+  "en": "Gold melted in Boitatá's fire and molded on a calabash shell… Done! Gold Gourds, five at once!",
   "ctx": "src/data/eventos/b1.ts:470 · f()"
  },
  "Guarde, então. Ouro guardado também é ouro.": {
-  "en": "",
+  "en": "Keep it, then. Gold in the pocket is still gold.",
   "ctx": "src/data/eventos/b1.ts:472 · f()"
  },
  "Traga uma pepita que eu derreto no fogo do Boitatá e faço cuia de ouro para você.": {
-  "en": "",
+  "en": "Bring me a nugget and I'll melt it in Boitatá's fire and make you gold gourds.",
   "ctx": "src/data/eventos/b1.ts:473 · f()"
  },
  "A Forja Grande faz sino, ferradura e facão. Mas o fogo daqui é fraco para ouro.": {
-  "en": "",
+  "en": "The Great Forge makes bells, horseshoes and machetes. But the fire here is too weak for gold.",
   "ctx": "src/data/eventos/b1.ts:475 · f()"
  },
  "Dizem que o Boitatá, lá na Caverna Vulcânica, deixa brasa que não apaga. Quem encontrar a serpente de fogo e voltar inteiro, me procure.": {
-  "en": "",
+  "en": "They say Boitatá, over in Caverna Vulcânica, leaves embers that never go out. Whoever finds the fire serpent and comes back in one piece, come see me.",
   "ctx": "src/data/eventos/b1.ts:476 · f()"
  },
  "em {localCaptura}": {
@@ -6636,7 +6636,7 @@
   "ctx": "src/data/zonas/B1-lab.ts:35 · campo fala"
  },
  "A Boiadeira Zefa interditou o ninhal. Ela só deixa passar quem provar que sabe lidar com bicho grande: quem tiver a Insígnia do Barro.": {
-  "en": "Herder Zefa closed off the rookery. She only lets through those who prove they can handle big critters: whoever has the Clay Badge.",
+  "en": "Cowgirl Zefa closed off the rookery. She only lets through those who prove they can handle big critters: whoever has the Clay Badge.",
   "ctx": "src/data/zonas/B1-lab.ts:35 · campo fala"
  },
  "Estagiário Tico": {
@@ -6676,7 +6676,7 @@
   "ctx": "src/data/zonas/B1-posto.ts:10 · campo fala"
  },
  "A Boiadeira Zefa só usa bicho de Terra. Leve Rio, Mata ou Geada, que barro com água vira lama, e lama a Zefa não segura.": {
-  "en": "Herder Zefa only uses Earth critters. Bring River, Grass or Frost, since clay plus water makes mud, and Zefa can't hold mud.",
+  "en": "Cowgirl Zefa only uses Earth critters. Bring River, Grass or Frost, since clay plus water makes mud, and Zefa can't hold mud.",
   "ctx": "src/data/zonas/B1-posto.ts:10 · campo fala"
  },
  "Escoteira Lúcia": {
@@ -6828,7 +6828,7 @@
   "ctx": "src/data/zonas/B1.ts:88 · campo fala"
  },
  "A Boiadeira Zefa é a líder de lá. Bicho de Terra que não sai do lugar nem com reza. Leve Rio, Mata ou Geada.": {
-  "en": "Herder Zefa is the leader there. Earth critters that won't budge even with prayer. Bring River, Grass or Frost.",
+  "en": "Cowgirl Zefa is the leader there. Earth critters that won't budge even with prayer. Bring River, Grass or Frost.",
   "ctx": "src/data/zonas/B1.ts:88 · campo fala"
  },
  "Zé Trilho": {
