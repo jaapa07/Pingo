@@ -572,55 +572,55 @@
   "ctx": "src/data/eventos/b1.ts:476 · f()"
  },
  "em {localCaptura}": {
-  "en": "",
+  "en": "in {localCaptura}",
   "ctx": "src/data/eventos/b2-norte.ts:43"
  },
  "num lugar que o livro não guardou": {
-  "en": "",
+  "en": "somewhere the book didn't keep",
   "ctx": "src/data/eventos/b2-norte.ts:43"
  },
  "no nível {nivelCaptura}": {
-  "en": "",
+  "en": "at level {nivelCaptura}",
   "ctx": "src/data/eventos/b2-norte.ts:44"
  },
  "num nível que ninguém anotou": {
-  "en": "",
+  "en": "at a level nobody wrote down",
   "ctx": "src/data/eventos/b2-norte.ts:44"
  },
  " Veio das mãos de {treinadorOriginal}.": {
-  "en": "",
+  "en": " Came from {treinadorOriginal}'s hands.",
   "ctx": "src/data/eventos/b2-norte.ts:45"
  },
  "{n}: registro {onde}, {nv}. Hoje está no nível {nivel}.{dono}": {
-  "en": "",
+  "en": "{n}: recorded {onde}, {nv}. Today it's at level {nivel}.{dono}",
   "ctx": "src/data/eventos/b2-norte.ts:46 · falar()"
  },
  "Dona Lembrança": {
-  "en": "",
+  "en": "Dona Lembrança",
   "ctx": "src/data/eventos/b2-norte.ts:46 · campo nome | src/data/zonas/B8.ts:79 · gente()"
  },
  "Lã-Grossa": {
-  "en": "",
+  "en": "Lã-Grossa",
   "ctx": "src/data/eventos/b2-norte.ts:55 · campo treinadorOriginal"
  },
  "Aprendiz Estrela-d'Alva": {
-  "en": "",
+  "en": "Apprentice Estrela-d'Alva",
   "ctx": "src/data/eventos/b2-norte.ts:65 · campo nome | src/data/zonas/B8.ts:78 · gente()"
  },
  "Pescador Joca": {
-  "en": "",
+  "en": "Fisher Joca",
   "ctx": "src/data/eventos/b2-norte.ts:66 · campo nome | src/data/zonas/B-LG-cabana.ts:11 · campo nome"
  },
  "Astrônoma-assistente Vega": {
-  "en": "",
+  "en": "Assistant Astronomer Vega",
   "ctx": "src/data/eventos/b2-norte.ts:67 · campo nome | src/data/zonas/B8-observatorio.ts:38 · gente()"
  },
  "Seu Lã-Grossa": {
-  "en": "",
+  "en": "Seu Lã-Grossa",
   "ctx": "src/data/eventos/b2-norte.ts:68 · campo nome | src/data/trocas.ts:77 · campo morador | src/data/zonas/B-SG.ts:74 · gente()"
  },
  "Seu Floco-Velho": {
-  "en": "",
+  "en": "Seu Floco-Velho",
   "ctx": "src/data/eventos/b2-norte.ts:69 · campo nome | src/data/zonas/PP.ts:99 · gente()"
  },
  "Andarilho do Cume": {
@@ -628,251 +628,251 @@
   "ctx": "src/data/eventos/b2-norte.ts:70 · campo nome | src/data/zonas/PP.ts:98 · gente()"
  },
  "No {onde}, o capim se abre. Uma criatura enorme se ergue sobre os ovos e encara você, protegendo o ninho.": {
-  "en": "",
+  "en": "At the {onde}, the grass parts. An enormous creature rises over the eggs and stares you down, guarding the nest.",
   "ctx": "src/data/eventos/b2-norte.ts:80 · f()"
  },
  "No {onde}, um filhote crescido pula para fora do ninho, eriçado, pronto para defender os ovos.": {
-  "en": "",
+  "en": "At the {onde}, a grown chick jumps out of the nest, bristling, ready to defend the eggs.",
   "ctx": "src/data/eventos/b2-norte.ts:83 · f()"
  },
  "A parceria foi firmada. O ninho fica quieto, e os ovos continuam quentinhos.": {
-  "en": "",
+  "en": "The partnership is sealed. The nest goes quiet, and the eggs stay nice and warm.",
   "ctx": "src/data/eventos/b2-norte.ts:87 · f()"
  },
  "O {onde} está quieto. Só os ovos, quentes e pintados. A mãe não volta enquanto houver gente por perto hoje.\fVolte amanhã — e, se quiser ver o bicho crescido, venha de manhãzinha.": {
-  "en": "",
+  "en": "The {onde} is quiet. Just the eggs, warm and speckled. The mother won't come back while people are around today.\fCome back tomorrow — and if you want to see the grown critter, come early in the morning.",
   "ctx": "src/data/eventos/b2-norte.ts:89 · f()"
  },
  "O meu pai respondeu! Pela primeira vez em três meses! Ele disse que vai descer a serra para ver o céu comigo. Obrigada de novo.": {
-  "en": "",
+  "en": "My dad wrote back! For the first time in three months! He said he'll come down the mountain to look at the sky with me. Thanks again.",
   "ctx": "src/data/eventos/b2-norte.ts:99 · f()"
  },
  "Uma carta do meu pai?! Dá aqui, dá aqui!": {
-  "en": "",
+  "en": "A letter from my dad?! Give it here, give it here!",
   "ctx": "src/data/eventos/b2-norte.ts:101 · f()"
  },
  "\"Filha, o céu da lagoa também é bonito. Mas o daí tem você.\" …Ele nunca escreveu tanto!\fToma, isto era do meu avô, o primeiro luneteiro do Lume. Ensina a criatura a congelar o ar à sua volta.": {
-  "en": "",
+  "en": "\"Sweetheart, the sky over the lagoon is pretty too. But the one up there has you.\" …He's never written so much!\fHere, this was my grandpa's, the first stargazer of Lume. It teaches a creature to freeze the air around it.",
   "ctx": "src/data/eventos/b2-norte.ts:102 · f()"
  },
  "Já levou a carta? O barraco do meu pai fica na ilha do meio da Lagoa Gelada. Só de canoa.": {
-  "en": "",
+  "en": "Did you take the letter yet? My dad's shack is on the island in the middle of Lagoa Gelada. Canoe only.",
   "ctx": "src/data/eventos/b2-norte.ts:106 · f()"
  },
  "Você vai passar pela Serra da Geada? Meu pai, o Joca, pesca na Lagoa Gelada e mora numa ilha no meio da água.\fEle não sobe nem desce a serra, e eu não saio do observatório. Pode levar esta carta para ele?": {
-  "en": "",
+  "en": "Are you passing through Serra da Geada? My dad, Joca, fishes at Lagoa Gelada and lives on an island in the middle of the water.\fHe never goes up or down the mountain, and I never leave the observatory. Could you take him this letter?",
   "ctx": "src/data/eventos/b2-norte.ts:108 · f()"
  },
  "Levar a carta ao pescador Joca?": {
-  "en": "",
+  "en": "Take the letter to Fisher Joca?",
   "ctx": "src/data/eventos/b2-norte.ts:109 · pergunta/opção"
  },
  "{JOGADOR} guardou a carta da Estrela-d'Alva na mochila.": {
-  "en": "",
+  "en": "{JOGADOR} put Estrela-d'Alva's letter in the bag.",
   "ctx": "src/data/eventos/b2-norte.ts:110 · f()"
  },
  "Obrigada! A Lagoa Gelada fica a leste da Serra da Geada. Leve o Remo: a ilha é no meio da água.": {
-  "en": "",
+  "en": "Thank you! Lagoa Gelada is east of Serra da Geada. Bring the Paddle: the island is in the middle of the water.",
   "ctx": "src/data/eventos/b2-norte.ts:110 · f()"
  },
  "Tudo bem. Se mudar de ideia, eu estou sempre aqui, olhando para cima.": {
-  "en": "",
+  "en": "That's okay. If you change your mind, I'm always here, looking up.",
   "ctx": "src/data/eventos/b2-norte.ts:110 · f()"
  },
  "Uma carta? Para mim? …É a letra da minha Estrela!": {
-  "en": "",
+  "en": "A letter? For me? …It's my Estrela's handwriting!",
   "ctx": "src/data/eventos/b2-norte.ts:120 · f()"
  },
  "Ela está bem… está contando estrelas… quatro mil cento e dezessete. Essa menina.\fEspere aí. Vou escrever de volta agora mesmo, antes que eu perca a coragem.": {
-  "en": "",
+  "en": "She's well… she's counting stars… four thousand one hundred and seventeen. That girl.\fHold on. I'll write back right now, before I lose my nerve.",
   "ctx": "src/data/eventos/b2-norte.ts:121 · f()"
  },
  "{JOGADOR} guardou a resposta do Joca na mochila.": {
-  "en": "",
+  "en": "{JOGADOR} put Joca's reply in the bag.",
   "ctx": "src/data/eventos/b2-norte.ts:123 · f()"
  },
  "Leve para ela, por favor. E leve também estas Cuias de Rede: pegam até peixe de água de geada.": {
-  "en": "",
+  "en": "Please take it to her. And take these Net Gourds too: they catch even frost-water fish.",
   "ctx": "src/data/eventos/b2-norte.ts:124 · f()"
  },
  "A minha Estrela escreveu de novo. Vou descer a serra no fim do mês. Faz tanto tempo que eu não vejo o céu do Lume…": {
-  "en": "",
+  "en": "My Estrela wrote again. I'm going down the mountain at the end of the month. It's been so long since I saw the Lume sky…",
   "ctx": "src/data/eventos/b2-norte.ts:127 · f()"
  },
  "Já está com a resposta? Então corre, que carta velha esfria.": {
-  "en": "",
+  "en": "Got the reply already? Then hurry, an old letter goes cold.",
   "ctx": "src/data/eventos/b2-norte.ts:128 · f()"
  },
  "Pescar no gelo é coisa de paciência. Eu tenho de sobra. O que me falta é notícia da minha filha, lá no Planalto Lume.": {
-  "en": "",
+  "en": "Ice fishing takes patience. I've got plenty. What I'm missing is news from my daughter, up on Planalto Lume.",
   "ctx": "src/data/eventos/b2-norte.ts:129 · f()"
  },
  "A sua constelação viva está no meu caderno: Urutau, Noitão e Corujão. A Jaci adorou. Volte de noite, que o céu do Lume nunca se repete.": {
-  "en": "",
+  "en": "Your living constellation is in my notebook: Urutau, Noitão and Corujão. Jaci loved it. Come back at night, the Lume sky never repeats itself.",
   "ctx": "src/data/eventos/b2-norte.ts:140 · f()"
  },
  "De dia o observatório dorme. Volte de noite, quando a cúpula abre: tenho um pedido que só se entende olhando para cima.": {
-  "en": "",
+  "en": "By day the observatory sleeps. Come back at night, when the dome opens: I have a request that only makes sense looking up.",
   "ctx": "src/data/eventos/b2-norte.ts:142 · f()"
  },
  "Urutau-Fantasma, Noitão e Corujão-Orelha, os três no seu Diário! A Coruja, o Olho e o Galho Seco: as três estrelas da Constelação da Mata Noturna, como os antigos contavam.": {
-  "en": "",
+  "en": "Urutau-Fantasma, Noitão and Corujão-Orelha, all three in your Journal! The Owl, the Eye and the Dry Branch: the three stars of the Night Forest Constellation, as the ancients told it.",
   "ctx": "src/data/eventos/b2-norte.ts:146 · f()"
  },
  "Leve isto. A Jaci disse que é para quem enxerga no escuro.": {
-  "en": "",
+  "en": "Take this. Jaci said it's for those who can see in the dark.",
   "ctx": "src/data/eventos/b2-norte.ts:147 · f()"
  },
  "Os antigos do Lume desenhavam uma constelação chamada Mata Noturna: a Coruja, o Olho e o Galho Seco.\fNa terra, elas são o Corujão-Orelha, o Noitão e o Urutau-Fantasma. Registre os três no seu Diário de Campo e me mostre. Eles saem de noite, no Caminho das Névoas.": {
-  "en": "",
+  "en": "The ancients of Lume drew a constellation called Night Forest: the Owl, the Eye and the Dry Branch.\fOn earth, they're Corujão-Orelha, Noitão and Urutau-Fantasma. Record all three in your Field Journal and show me. They come out at night on the Caminho das Névoas.",
   "ctx": "src/data/eventos/b2-norte.ts:150 · f()"
  },
  "Sou a escrivã da praça. Anoto tudo o que passa pelo Lume, até criatura.\fQuer saber de onde veio cada uma da sua equipe? Deixe-me ler.": {
-  "en": "",
+  "en": "I'm the town square's scribe. I write down everything that passes through Lume, even creatures.\fWant to know where each one on your team came from? Let me read.",
   "ctx": "src/data/eventos/b2-norte.ts:162 · f()"
  },
  "Cada criatura tem uma história. A sua é a que junta todas elas.": {
-  "en": "",
+  "en": "Every creature has a story. Yours is the one that ties them all together.",
   "ctx": "src/data/eventos/b2-norte.ts:164 · f()"
  },
  "E o Geadinha, tchê? Cuide bem dele. Ele gosta de dormir em cima de lã quente.": {
-  "en": "",
+  "en": "And Geadinha, tchê? Take good care of him. He likes to sleep on warm wool.",
   "ctx": "src/data/eventos/b2-norte.ts:172 · f()"
  },
  "Bah! Um treinador! Escuta: eu tenho um Maracajá-Nevado, o Geadinha, que não para de caçar as minhas ovelhas de brincadeira.\fQueria trocar por uma Gralha-Azul, que planta pinheiro e não assusta ninguém. Tem uma na equipe?": {
-  "en": "",
+  "en": "Bah! A trainer! Listen: I have a Maracajá-Nevado, Geadinha, who won't stop chasing my sheep for fun.\fI'd like to trade it for a Gralha-Azul, which plants pine trees and doesn't scare anybody. Got one on your team?",
   "ctx": "src/data/eventos/b2-norte.ts:173 · f()"
  },
  "Trocar a sua Gralha-Azul pelo Maracajá-Nevado do pastor?": {
-  "en": "",
+  "en": "Trade your Gralha-Azul for the shepherd's Maracajá-Nevado?",
   "ctx": "src/data/eventos/b2-norte.ts:176 · pergunta/opção"
  },
  "Geadinha": {
-  "en": "",
+  "en": "Geadinha",
   "ctx": "src/data/eventos/b2-norte.ts:178 · se()"
  },
  "Troca feita! O Geadinha pulou para a equipe com um Buriti na boca.": {
-  "en": "",
+  "en": "Trade done! Geadinha jumped onto the team with a Buriti in his mouth.",
   "ctx": "src/data/eventos/b2-norte.ts:179 · f()"
  },
  "Ele vem com um buriti: é o petisco dele. Quando o frio apertar, ele come sozinho.": {
-  "en": "",
+  "en": "He comes with a buriti: it's his snack. When the cold bites, he eats it on his own.",
   "ctx": "src/data/eventos/b2-norte.ts:179 · f()"
  },
  "Tudo bem, tchê. A oferta fica de pé, como o capim.": {
-  "en": "",
+  "en": "All right, tchê. The offer stays standing, like the grass.",
   "ctx": "src/data/eventos/b2-norte.ts:180 · f()"
  },
  "Sem Gralha-Azul? Elas vivem aqui nos campos, de dia. Volte com uma que a gente troca.": {
-  "en": "",
+  "en": "No Gralha-Azul? They live here in the fields, by day. Come back with one and we'll trade.",
   "ctx": "src/data/eventos/b2-norte.ts:181 · f()"
  },
  "O mirante está em silêncio. Só o vento no capim dourado.": {
-  "en": "",
+  "en": "The lookout is silent. Just the wind in the golden grass.",
   "ctx": "src/data/eventos/b2-norte.ts:190 · f()"
  },
  "O sol nasce atrás da serra. Um passarinho pequeno, cor de ferrugem, pousa no totem e abre o bico.\fO canto é tão bonito que os outros pássaros calam, um por um. Até o vento para para ouvir.": {
-  "en": "",
+  "en": "The sun rises behind the mountains. A small rust-colored bird lands on the totem and opens its beak.\fIts song is so beautiful the other birds fall silent, one by one. Even the wind stops to listen.",
   "ctx": "src/data/eventos/b2-norte.ts:192 · f()"
  },
  "O UIRAPURU olha para você como quem reconhece um velho amigo dos bichos!": {
-  "en": "",
+  "en": "The UIRAPURU looks at you as if recognizing an old friend of the animals!",
   "ctx": "src/data/eventos/b2-norte.ts:194 · f()"
  },
  "O Uirapuru se aninhou na cuia. A mata volta a cantar, aos poucos.": {
-  "en": "",
+  "en": "The Uirapuru nestled into the gourd. Little by little, the forest starts singing again.",
   "ctx": "src/data/eventos/b2-norte.ts:197 · f()"
  },
  "O Uirapuru cai do totem, se recompõe e voa para longe, mata adentro. O canto dele nunca mais foi ouvido no mirante.": {
-  "en": "",
+  "en": "The Uirapuru falls from the totem, collects itself and flies far away, deep into the forest. Its song was never heard at the lookout again.",
   "ctx": "src/data/eventos/b2-norte.ts:199 · f()"
  },
  "O Uirapuru pousa de novo no totem e continua cantando, como se nada tivesse acontecido.": {
-  "en": "",
+  "en": "The Uirapuru lands on the totem again and keeps singing, as if nothing had happened.",
   "ctx": "src/data/eventos/b2-norte.ts:200 · f()"
  },
  "Um totem de pinho com um passarinho entalhado. O silêncio aqui em cima é de quem espera alguém.": {
-  "en": "",
+  "en": "A pine totem with a carved little bird. The silence up here is the silence of someone waiting.",
   "ctx": "src/data/eventos/b2-norte.ts:201 · f()"
  },
  "Na ponta do Trapiche Comprido, a madeira vibra. Lá do fundo da lagoa vem um canto grave, longo, que faz a água tremer em círculos.": {
-  "en": "",
+  "en": "At the end of the Long Pier, the wood vibrates. From the bottom of the lagoon comes a deep, long song that makes the water ripple in circles.",
   "ctx": "src/data/eventos/b2-norte.ts:213 · f()"
  },
  "Um JUBARTÃO sobe à superfície, soprando um jato de água gelada!": {
-  "en": "",
+  "en": "A JUBARTÃO surfaces, blowing a spout of icy water!",
   "ctx": "src/data/eventos/b2-norte.ts:215 · f()"
  },
  "A lagoa está quieta. O canto da baleia já passou hoje. Volte amanhã.": {
-  "en": "",
+  "en": "The lagoon is quiet. The whale song has already passed today. Come back tomorrow.",
   "ctx": "src/data/eventos/b2-norte.ts:217 · f()"
  },
  "Ninho Raro da Mata": {
-  "en": "",
+  "en": "Rare Grass Nest",
   "ctx": "src/data/eventos/b2-norte.ts:222 · ninho()"
  },
  "Ninho Raro da Brasa": {
-  "en": "",
+  "en": "Rare Ember Nest",
   "ctx": "src/data/eventos/b2-norte.ts:223 · ninho()"
  },
  "Ninho Raro do Rio": {
-  "en": "",
+  "en": "Rare River Nest",
   "ctx": "src/data/eventos/b2-norte.ts:224 · ninho()"
  },
  "Só sobraram as marcas de garra no tronco e um cheiro forte de mato molhado.": {
-  "en": "",
+  "en": "Only claw marks on the trunk remain, and a strong smell of wet brush.",
   "ctx": "src/data/eventos/b2-norte.ts:228 · f()"
  },
  "O chão treme. Do meio das árvores sai uma criatura enorme, de pelo vermelho-escuro e garras que parecem raízes.\fEla para na frente do tronco das marcas, como quem guarda a casa.": {
-  "en": "",
+  "en": "The ground shakes. From among the trees comes an enormous creature with dark red fur and claws like roots.\fIt stops in front of the clawed trunk, like someone guarding their home.",
   "ctx": "src/data/eventos/b2-norte.ts:229 · f()"
  },
  "O MAPINGUARI, guardião da Floresta Ancestral, ruge!": {
-  "en": "",
+  "en": "MAPINGUARI, guardian of the Floresta Ancestral, roars!",
   "ctx": "src/data/eventos/b2-norte.ts:231 · f()"
  },
  "O Mapinguari aceitou a parceria. A floresta inteira solta um suspiro.": {
-  "en": "",
+  "en": "Mapinguari accepted the partnership. The whole forest lets out a sigh.",
   "ctx": "src/data/eventos/b2-norte.ts:234 · f()"
  },
  "O Mapinguari tomba, levanta devagar e some no fundo da mata, abrindo caminho entre os troncos. A Floresta Ancestral nunca mais o viu.": {
-  "en": "",
+  "en": "Mapinguari falls, slowly gets up and vanishes deep into the forest, pushing its way between the trunks. The Floresta Ancestral never saw it again.",
   "ctx": "src/data/eventos/b2-norte.ts:236 · f()"
  },
  "O Mapinguari continua de pé na frente do tronco, respirando fundo. Ele não vai a lugar nenhum.": {
-  "en": "",
+  "en": "Mapinguari is still standing in front of the trunk, breathing deeply. It's not going anywhere.",
   "ctx": "src/data/eventos/b2-norte.ts:237 · f()"
  },
  "Viu a neve brilhando? Volta só no ano que vem. Neve boa não se repete.": {
-  "en": "",
+  "en": "Saw the snow shining? It only comes back next year. Good snow doesn't repeat itself.",
   "ctx": "src/data/eventos/b2-norte.ts:248 · f()"
  },
  "Hoje é vinte de novembro! O dia em que o Pico acorda brilhando.\fOlhe o chão do Cume: cada floco tem uma faísca de cor. Os antigos dizem que é a memória de todos os que subiram, cintilando de uma vez.": {
-  "en": "",
+  "en": "Today is November twentieth! The day the Peak wakes up shining.\fLook at the Summit ground: every flake has a spark of color. The ancients say it's the memory of everyone who ever climbed, twinkling all at once.",
   "ctx": "src/data/eventos/b2-norte.ts:249 · f()"
  },
  "A neve do Cume cintila em todas as cores. Entre os flocos, alguma coisa brilha mais que o resto.": {
-  "en": "",
+  "en": "The Summit snow sparkles in every color. Among the flakes, something shines brighter than the rest.",
   "ctx": "src/data/eventos/b2-norte.ts:250 · f()"
  },
  "Moro no acampamento há cinquenta invernos. Uma vez por ano, no dia vinte de novembro, a neve do Cume brilha em todas as cores.\fSó quem já foi recebido pelo Conselho consegue ver. Eu vi uma vez. Chorei feito criança.": {
-  "en": "",
+  "en": "I've lived at the camp for fifty winters. Once a year, on November twentieth, the Summit snow shines in every color.\fOnly those already received by the Council can see it. I saw it once. Cried like a baby.",
   "ctx": "src/data/eventos/b2-norte.ts:255 · f()"
  },
  "Subi desde o mar. Dizem que alguém venceu o Conselho outra vez. Vim ver se é verdade.\fNão tenho nome para dar. Tenho uma equipe. Mostre-me a sua.": {
-  "en": "",
+  "en": "I climbed all the way from the sea. They say someone beat the Council again. I came to see if it's true.\fI have no name to give. I have a team. Show me yours.",
   "ctx": "src/data/eventos/b2-norte.ts:263 · f()"
  },
  "Ainda não. Vença o Conselho de novo e eu volto.": {
-  "en": "",
+  "en": "Not yet. Beat the Council again and I'll come back.",
   "ctx": "src/data/eventos/b2-norte.ts:266 · f()"
  },
  "…É verdade.": {
-  "en": "",
+  "en": "…It's true.",
   "ctx": "src/data/eventos/b2-norte.ts:267 · f()"
  },
  "O andarilho ajeita o chapéu, vira as costas e desce a trilha da Costa do Sol sem olhar para trás. Na pedra, onde ele estava, a neve tem a marca de duas botas — e mais nada.": {
-  "en": "",
+  "en": "The wanderer adjusts his hat, turns his back and heads down the Costa do Sol trail without looking back. On the rock where he stood, the snow bears the print of two boots — and nothing else.",
   "ctx": "src/data/eventos/b2-norte.ts:268 · f()"
  },
  "Doutora Zinabre": {
@@ -1436,7 +1436,7 @@
   "ctx": "src/data/eventos/b2-sul.ts:441 · f()"
  },
  "Três de três de novo! A prenda de hoje é uma Cuia de Ouro, que o Bolicheiro Valdir me deu fiado.": {
-  "en": "Three for three again! Today's prize is a Gold Gourd, which Bolicheiro Valdir gave me on credit.",
+  "en": "Three for three again! Today's prize is a Gold Gourd, which Storekeeper Valdir gave me on credit.",
   "ctx": "src/data/eventos/b2-sul.ts:447 · f()"
  },
  "Três de três! Bah, que cabeça! Teu nome vai para o quadro de honra do CTG, ao lado dos campeões do laço.": {
@@ -3200,575 +3200,575 @@
   "ctx": "src/data/treinadores/b1.ts:173 · campo derrota"
  },
  "Peão Charqueada": {
-  "en": "",
+  "en": "Ranch Hand Charqueada",
   "ctx": "src/data/treinadores/b2-norte.ts:17 · t()"
  },
  "Tchê! Campo de altitude é campo de peão. Aqui o vento é minuano e a luta é no laço!": {
-  "en": "",
+  "en": "Tchê! The high fields are ranch hand country. Here the wind is the minuano and the fight is with the lasso!",
   "ctx": "src/data/treinadores/b2-norte.ts:18 · t()"
  },
  "Me derrubou do pingo, tchê.": {
-  "en": "",
+  "en": "You knocked me off my horse, tchê.",
   "ctx": "src/data/treinadores/b2-norte.ts:18 · t()"
  },
  "Quando a geada pega o capim, o Maracajá-Nevado sai para caçar. Só de noite, e só quem tem paciência vê.": {
-  "en": "",
+  "en": "When the frost hits the grass, the Maracajá-Nevado comes out to hunt. Only at night, and only the patient get to see it.",
   "ctx": "src/data/treinadores/b2-norte.ts:18 · t()"
  },
  "Dona Gralha": {
-  "en": "",
+  "en": "Dona Gralha",
   "ctx": "src/data/treinadores/b2-norte.ts:19 · t()"
  },
  "A Gralha-Azul planta pinheiro sem querer: enterra o pinhão e esquece. Eu não esqueço desafiante!": {
-  "en": "",
+  "en": "The Gralha-Azul plants pine trees by accident: it buries the pine nut and forgets. I never forget a challenger!",
   "ctx": "src/data/treinadores/b2-norte.ts:20 · t()"
  },
  "Agora eu vou esquecer essa luta.": {
-  "en": "",
+  "en": "Now I'm going to forget this fight.",
   "ctx": "src/data/treinadores/b2-norte.ts:20 · t()"
  },
  "O beija-flor dos campos só aparece de dia, perto das flores amarelas. De noite ele dorme encolhido como uma noz.": {
-  "en": "",
+  "en": "The field hummingbird only shows up by day, near the yellow flowers. At night it sleeps curled up like a nut.",
   "ctx": "src/data/treinadores/b2-norte.ts:20 · t()"
  },
  "Lobinha Pinhão": {
-  "en": "",
+  "en": "Cub Scout Pinhão",
   "ctx": "src/data/treinadores/b2-norte.ts:21 · t()"
  },
  "Acampamento de inverno! Barraca, fogueira e uma batalha para esquentar!": {
-  "en": "",
+  "en": "Winter camp! Tent, campfire and a battle to warm up!",
   "ctx": "src/data/treinadores/b2-norte.ts:22 · t()"
  },
  "Esquentou. Demais.": {
-  "en": "",
+  "en": "Warmed up. Too much.",
   "ctx": "src/data/treinadores/b2-norte.ts:22 · t()"
  },
  "O lago congelado do campo tem um tesouro no meio. Pise no gelo e deixe deslizar — mas mire antes!": {
-  "en": "",
+  "en": "The frozen lake in the field has a treasure in the middle. Step on the ice and let yourself slide — but aim first!",
   "ctx": "src/data/treinadores/b2-norte.ts:22 · t()"
  },
  "Seu Altitude": {
-  "en": "",
+  "en": "Seu Altitude",
   "ctx": "src/data/treinadores/b2-norte.ts:23 · t()"
  },
  "Mil e oitocentos metros de altura e eu ainda subo correndo. Quer ver quem perde o fôlego primeiro?": {
-  "en": "",
+  "en": "Eighteen hundred meters up and I still run uphill. Want to see who runs out of breath first?",
   "ctx": "src/data/treinadores/b2-norte.ts:24 · t()"
  },
  "Perdi eu. O ar daqui é fino.": {
-  "en": "",
+  "en": "I did. The air up here is thin.",
   "ctx": "src/data/treinadores/b2-norte.ts:24 · t()"
  },
  "Lá do mirante norte, de madrugada, já ouvi um canto que fez a mata inteira calar. Os antigos dizem que é o Uirapuru.": {
-  "en": "",
+  "en": "From the north lookout, before dawn, I once heard a song that made the whole forest go silent. The ancients say it's the Uirapuru.",
   "ctx": "src/data/treinadores/b2-norte.ts:24 · t()"
  },
  "Araucária": {
-  "en": "",
+  "en": "Araucária",
   "ctx": "src/data/treinadores/b2-norte.ts:25 · t()"
  },
  "Cuido das araucárias desde menina. Quem pisa em pinhão verde leva bronca — e batalha!": {
-  "en": "",
+  "en": "I've looked after the araucarias since I was a girl. Whoever steps on green pine nuts gets a scolding — and a battle!",
   "ctx": "src/data/treinadores/b2-norte.ts:26 · t()"
  },
  "Leva bronca de mim, isso sim.": {
-  "en": "",
+  "en": "The scolding's on me, actually.",
   "ctx": "src/data/treinadores/b2-norte.ts:26 · t()"
  },
  "Sacuda as araucárias de tronco grosso: às vezes cai um Serelepão junto com o pinhão.": {
-  "en": "",
+  "en": "Shake the thick-trunked araucarias: sometimes a Serelepão falls along with the pine nuts.",
   "ctx": "src/data/treinadores/b2-norte.ts:26 · t()"
  },
  "Gaiteiro Minuano": {
-  "en": "",
+  "en": "Accordionist Minuano",
   "ctx": "src/data/treinadores/b2-norte.ts:27 · t()"
  },
  "Gaita no peito e verso na língua: / quem cruza o campo de mim não se livra!": {
-  "en": "",
+  "en": "Accordion at my chest and verse on my tongue: / whoever crosses the field won't escape me, young one!",
   "ctx": "src/data/treinadores/b2-norte.ts:28 · t()"
  },
  "A gaita desafinou, / e o verso também acabou.": {
-  "en": "",
+  "en": "The accordion went out of tune, / and the verse ended too soon.",
   "ctx": "src/data/treinadores/b2-norte.ts:28 · t()"
  },
  "Rumo norte, depois das pedras, tem uma trilha velha cercada. O Guardião do Campo só abre depois do Conselho.": {
-  "en": "",
+  "en": "Heading north, past the rocks, there's an old fenced-off trail. The Field Guardian only opens it after the Council.",
   "ctx": "src/data/treinadores/b2-norte.ts:28 · t()"
  },
  "Drª Turfa": {
-  "en": "",
+  "en": "Dr. Turfa",
   "ctx": "src/data/treinadores/b2-norte.ts:29 · t()"
  },
  "Estudo o solo dos campos de altitude: turfa, musgo e Tuco-Escavador. Vamos ver o que você tem por baixo!": {
-  "en": "",
+  "en": "I study the soil of the high fields: peat, moss and Tuco-Escavador. Let's see what you've got underneath!",
   "ctx": "src/data/treinadores/b2-norte.ts:30 · t()"
  },
  "Escavei e achei a minha derrota.": {
-  "en": "",
+  "en": "I dug and found my defeat.",
   "ctx": "src/data/treinadores/b2-norte.ts:30 · t()"
  },
  "O Tuquim mora em túneis que parecem um labirinto. Quando evolui, vira um minerador de Ferro.": {
-  "en": "",
+  "en": "The Tuquim lives in tunnels that look like a maze. When it evolves, it becomes an Iron miner.",
   "ctx": "src/data/treinadores/b2-norte.ts:30 · t()"
  },
  "Seu Pacu-Frio": {
-  "en": "",
+  "en": "Seu Pacu-Frio",
   "ctx": "src/data/treinadores/b2-norte.ts:35 · t()"
  },
  "Pescar no gelo é arte: faz o furo, joga a linha e espera. Esperei você!": {
-  "en": "",
+  "en": "Ice fishing is an art: drill the hole, drop the line and wait. I waited for you!",
   "ctx": "src/data/treinadores/b2-norte.ts:36 · t()"
  },
  "Peguei resfriado em vez de peixe.": {
-  "en": "",
+  "en": "I caught a cold instead of a fish.",
   "ctx": "src/data/treinadores/b2-norte.ts:36 · t()"
  },
  "O Pinguimar surfa nas ondinhas da lagoa. Ninguém sabe como ele chegou à serra. Ele também não conta.": {
-  "en": "",
+  "en": "The Pinguimar surfs the lagoon's little waves. Nobody knows how it got to the hills. It won't tell either.",
   "ctx": "src/data/treinadores/b2-norte.ts:36 · t()"
  },
  "Maré-Fria": {
-  "en": "",
+  "en": "Maré-Fria",
   "ctx": "src/data/treinadores/b2-norte.ts:37 · t()"
  },
  "Onda de lagoa é pequena, mas é minha! Rema que eu te pego!": {
-  "en": "",
+  "en": "Lagoon waves are small, but they're mine! Paddle, I'll catch you!",
   "ctx": "src/data/treinadores/b2-norte.ts:38 · t()"
  },
  "Caí da prancha. Na água gelada.": {
-  "en": "",
+  "en": "I fell off the board. Into the icy water.",
   "ctx": "src/data/treinadores/b2-norte.ts:38 · t()"
  },
  "A Lontra-Veloz desce a cachoeira da lagoa de costas. Exibida.": {
-  "en": "",
+  "en": "The Lontra-Veloz goes down the lagoon's waterfall on its back. Show-off.",
   "ctx": "src/data/treinadores/b2-norte.ts:38 · t()"
  },
  "Mergulhador Neblina": {
-  "en": "",
+  "en": "Diver Neblina",
   "ctx": "src/data/treinadores/b2-norte.ts:39 · t()"
  },
  "Só tenho um parceiro. Mas ele canta debaixo d'água e a lagoa inteira treme!": {
-  "en": "",
+  "en": "I only have one partner. But it sings underwater and the whole lagoon shakes!",
   "ctx": "src/data/treinadores/b2-norte.ts:40 · t()"
  },
  "O canto parou. Que silêncio.": {
-  "en": "",
+  "en": "The song stopped. So quiet.",
   "ctx": "src/data/treinadores/b2-norte.ts:40 · t()"
  },
  "Dizem que, depois que alguém vencer o Conselho, uma baleia de verdade vai cantar no fundo desta lagoa. Eu acredito.": {
-  "en": "",
+  "en": "They say that after someone beats the Council, a real whale will sing at the bottom of this lagoon. I believe it.",
   "ctx": "src/data/treinadores/b2-norte.ts:40 · t()"
  },
  "Dona Tuiuiú": {
-  "en": "",
+  "en": "Dona Tuiuiú",
   "ctx": "src/data/treinadores/b2-norte.ts:41 · t()"
  },
  "O Tuiuiú subiu do Pantanal atrás de mim. Ou eu subi atrás dele. Não importa: luta!": {
-  "en": "",
+  "en": "The Tuiuiú came up from the Pantanal after me. Or I came up after it. Doesn't matter: fight!",
   "ctx": "src/data/treinadores/b2-norte.ts:42 · t()"
  },
  "O Tuiuiú voltou para o Pantanal. Eu fico.": {
-  "en": "",
+  "en": "The Tuiuiú went back to the Pantanal. I'm staying.",
   "ctx": "src/data/treinadores/b2-norte.ts:42 · t()"
  },
  "A Lavadeira-Dragão pousa nos juncos da margem. As asas dela parecem vitral quando o sol bate.": {
-  "en": "",
+  "en": "The Lavadeira-Dragão lands on the reeds by the shore. Its wings look like stained glass when the sun hits them.",
   "ctx": "src/data/treinadores/b2-norte.ts:42 · t()"
  },
  "Velho Lambari": {
-  "en": "",
+  "en": "Old Lambari",
   "ctx": "src/data/treinadores/b2-norte.ts:43 · t()"
  },
  "Cinquenta invernos nesta lagoa. Você é o primeiro peixe que fala!": {
-  "en": "",
+  "en": "Fifty winters on this lagoon. You're the first fish that talks!",
   "ctx": "src/data/treinadores/b2-norte.ts:44 · t()"
  },
  "O peixe me pescou.": {
-  "en": "",
+  "en": "The fish caught me.",
   "ctx": "src/data/treinadores/b2-norte.ts:44 · t()"
  },
  "Ilha do meio? Só de canoa. Lá tem o barraco do meu compadre Joca, pescador da família Alva.": {
-  "en": "",
+  "en": "The middle island? Canoe only. That's where my buddy Joca's shack is, a fisher from the Alva family.",
   "ctx": "src/data/treinadores/b2-norte.ts:44 · t()"
  },
  "Guia Cerração": {
-  "en": "",
+  "en": "Guide Cerração",
   "ctx": "src/data/treinadores/b2-norte.ts:49 · t()"
  },
  "Na névoa eu ando de olho fechado. Você anda de Lampião? Então é desafio justo!": {
-  "en": "",
+  "en": "In the fog I walk with my eyes closed. You walk with a Lantern? Then it's a fair challenge!",
   "ctx": "src/data/treinadores/b2-norte.ts:50 · t()"
  },
  "Acendeu a luz em mim.": {
-  "en": "",
+  "en": "You lit me up.",
   "ctx": "src/data/treinadores/b2-norte.ts:50 · t()"
  },
  "A trilha sobe pelo pinheiral e desce até a Ponte do Cânion. Não saia dela: o cânion não tem fundo de mentira.": {
-  "en": "",
+  "en": "The trail goes up through the pines and down to the Canyon Bridge. Don't leave it: the canyon's lack of a bottom is no joke.",
   "ctx": "src/data/treinadores/b2-norte.ts:50 · t()"
  },
  "Dona Urutau": {
-  "en": "",
+  "en": "Dona Urutau",
   "ctx": "src/data/treinadores/b2-norte.ts:51 · t()"
  },
  "O Urutau-Fantasma imita um galho seco. Eu imito uma observadora calma. Até agora!": {
-  "en": "",
+  "en": "The Urutau-Fantasma imitates a dry branch. I imitate a calm birdwatcher. Until now!",
   "ctx": "src/data/treinadores/b2-norte.ts:52 · t()"
  },
  "Voltei a ser galho seco.": {
-  "en": "",
+  "en": "Back to being a dry branch.",
   "ctx": "src/data/treinadores/b2-norte.ts:52 · t()"
  },
  "De noite, sacuda os pinheiros do mirante: o Noitão desce para reclamar e o Urutau-Fantasma desce para assustar.": {
-  "en": "",
+  "en": "At night, shake the pines at the lookout: Noitão comes down to complain and Urutau-Fantasma comes down to scare.",
   "ctx": "src/data/treinadores/b2-norte.ts:52 · t()"
  },
  "Cantador Neblinado": {
-  "en": "",
+  "en": "Misty Singer",
   "ctx": "src/data/treinadores/b2-norte.ts:53 · t()"
  },
  "Quem anda na névoa escuta o que não vê: / um verso de longe, e o verso é para você!": {
-  "en": "",
+  "en": "Whoever walks in the fog hears what they can't see: / a verse from afar, and the verse is for thee!",
   "ctx": "src/data/treinadores/b2-norte.ts:54 · t()"
  },
  "A névoa engoliu meu verso, / e me deixou do avesso.": {
-  "en": "",
+  "en": "The fog swallowed my verse, / and turned me in reverse.",
   "ctx": "src/data/treinadores/b2-norte.ts:54 · t()"
  },
  "O degrau de pedra do campo é atalho de mão única. Desceu, desceu. Para subir, dá a volta.": {
-  "en": "",
+  "en": "The stone step in the field is a one-way shortcut. Once you're down, you're down. To go up, go around.",
   "ctx": "src/data/treinadores/b2-norte.ts:54 · t()"
  },
  "Drª Bruma": {
-  "en": "",
+  "en": "Dr. Bruma",
   "ctx": "src/data/treinadores/b2-norte.ts:55 · t()"
  },
  "Pesquiso como os bichos se orientam na névoa. Hipótese: pelo cheiro de desafiante!": {
-  "en": "",
+  "en": "I research how critters find their way in the fog. Hypothesis: by the smell of challengers!",
   "ctx": "src/data/treinadores/b2-norte.ts:56 · t()"
  },
  "Hipótese confirmada. Resultado: derrota.": {
-  "en": "",
+  "en": "Hypothesis confirmed. Result: defeat.",
   "ctx": "src/data/treinadores/b2-norte.ts:56 · t()"
  },
  "O Graxaim-da-Névoa é feito de neblina. Golpe de Assombro acerta; golpe Comum passa direto.": {
-  "en": "",
+  "en": "The Graxaim-da-Névoa is made of mist. Spook moves hit it; Normal moves pass right through.",
   "ctx": "src/data/treinadores/b2-norte.ts:56 · t()"
  },
  "Coruja-Mirim": {
-  "en": "",
+  "en": "Coruja-Mirim",
   "ctx": "src/data/treinadores/b2-norte.ts:57 · t()"
  },
  "Distintivo de orientação noturna: tenho. Distintivo de vitória contra Campeão: vou ganhar agora!": {
-  "en": "",
+  "en": "Night Navigation Badge: got it. Victory Against a Champion Badge: I'm about to win it!",
   "ctx": "src/data/treinadores/b2-norte.ts:58 · t()"
  },
  "Ganhei o distintivo de humildade.": {
-  "en": "",
+  "en": "I won the humility badge.",
   "ctx": "src/data/treinadores/b2-norte.ts:58 · t()"
  },
  "Do outro lado da ponte o capim é tão alto que a névoa fica presa. É onde a Jaguatiricão caça.": {
-  "en": "",
+  "en": "On the other side of the bridge the grass is so tall the fog gets stuck in it. That's where the Jaguatiricão hunts.",
   "ctx": "src/data/treinadores/b2-norte.ts:58 · t()"
  },
  "Tropeiro Garoa": {
-  "en": "",
+  "en": "Drover Garoa",
   "ctx": "src/data/treinadores/b2-norte.ts:59 · t()"
  },
  "Tropa de mula na névoa só anda com sino no pescoço. A minha tropa anda com batalha!": {
-  "en": "",
+  "en": "A mule train in the fog only moves with bells on their necks. My train moves with battles!",
   "ctx": "src/data/treinadores/b2-norte.ts:60 · t()"
  },
  "Perdi a tropa e a batalha.": {
-  "en": "",
+  "en": "I lost the train and the battle.",
   "ctx": "src/data/treinadores/b2-norte.ts:60 · t()"
  },
  "Planalto Lume é logo ali. A Astrônoma Jaci joga com bicho de Mente: leve Assombro e Inseto.": {
-  "en": "",
+  "en": "Planalto Lume is just ahead. Astronomer Jaci plays with Mind critters: bring Spook and Bug.",
   "ctx": "src/data/treinadores/b2-norte.ts:60 · t()"
  },
  "Jaguatirica": {
-  "en": "",
+  "en": "Jaguatirica",
   "ctx": "src/data/treinadores/b2-norte.ts:61 · t()"
  },
  "Meu nome é de bicho e o meu bicho é de nome. A Jaguatiricão some na névoa… e aparece atrás de você!": {
-  "en": "",
+  "en": "My name is a critter's and my critter is my name's. The Jaguatiricão vanishes in the fog… and appears behind you!",
   "ctx": "src/data/treinadores/b2-norte.ts:62 · t()"
  },
  "Sumiu ela, sumi eu.": {
-  "en": "",
+  "en": "She vanished, so did I.",
   "ctx": "src/data/treinadores/b2-norte.ts:62 · t()"
  },
  "O mirante cercado do nordeste é dos Guardiões. O vigia diz que só depois do Conselho.": {
-  "en": "",
+  "en": "The fenced lookout to the northeast belongs to the Guardians. The watchman says only after the Council.",
   "ctx": "src/data/treinadores/b2-norte.ts:62 · t()"
  },
  "Mestre Cerrado-Alto": {
-  "en": "",
+  "en": "Master Cerrado-Alto",
   "ctx": "src/data/treinadores/b2-norte.ts:63 · t()"
  },
  "Capoeira na névoa: o adversário não vê o golpe chegando. Nem eu, às vezes. Iê!": {
-  "en": "",
+  "en": "Capoeira in the fog: your opponent can't see the kick coming. Sometimes neither can I. Iê!",
   "ctx": "src/data/treinadores/b2-norte.ts:64 · t()"
  },
  "Iê, camarada. Bom jogo.": {
-  "en": "",
+  "en": "Iê, comrade. Good game.",
   "ctx": "src/data/treinadores/b2-norte.ts:64 · t()"
  },
  "Na beira do Planalto Lume tem roda de choro, não de capoeira. Mas a ginga é a mesma.": {
-  "en": "",
+  "en": "At the edge of Planalto Lume there's a choro circle, not capoeira. But the ginga is the same.",
   "ctx": "src/data/treinadores/b2-norte.ts:64 · t()"
  },
  "Dona Beija-Flor": {
-  "en": "",
+  "en": "Dona Beija-Flor",
   "ctx": "src/data/treinadores/b2-norte.ts:69 · t()"
  },
  "Três anos para ver um Beija-Arco-Íris! Agora tenho um, e ele está louco para lutar!": {
-  "en": "",
+  "en": "Three years to see a Beija-Arco-Íris! Now I have one, and it's itching to fight!",
   "ctx": "src/data/treinadores/b2-norte.ts:70 · t()"
  },
  "Ele voou de volta para as flores.": {
-  "en": "",
+  "en": "It flew back to the flowers.",
   "ctx": "src/data/treinadores/b2-norte.ts:70 · t()"
  },
  "Nos Campos do Lume, de dia, sacuda os ipês: a Jataí-Rainha mora no oco do tronco.": {
-  "en": "",
+  "en": "In the Lume Fields, by day, shake the ipês: the Jataí-Rainha lives in the hollow trunk.",
   "ctx": "src/data/treinadores/b2-norte.ts:70 · t()"
  },
  "Drª Louva": {
-  "en": "",
+  "en": "Dr. Louva",
   "ctx": "src/data/treinadores/b2-norte.ts:71 · t()"
  },
  "O Louva-Mestre luta em kata: posição, respiração, golpe. Você está respirando?": {
-  "en": "",
+  "en": "The Louva-Mestre fights in kata: stance, breath, strike. Are you breathing?",
   "ctx": "src/data/treinadores/b2-norte.ts:72 · t()"
  },
  "Respirei fundo. Perdi do mesmo jeito.": {
-  "en": "",
+  "en": "I took a deep breath. Lost anyway.",
   "ctx": "src/data/treinadores/b2-norte.ts:72 · t()"
  },
  "A Astrônoma Jaci troca de criatura no meio da luta como quem troca de constelação. Tenha uma resposta para cada uma.": {
-  "en": "",
+  "en": "Astronomer Jaci switches creatures mid-fight like switching constellations. Have an answer for each one.",
   "ctx": "src/data/treinadores/b2-norte.ts:72 · t()"
  },
  "Seresteiro Lunar": {
-  "en": "",
+  "en": "Lunar Serenader",
   "ctx": "src/data/treinadores/b2-norte.ts:73 · t()"
  },
  "Serenata no coreto para a lua e para você: / se eu perder, eu canto; se ganhar, canto também!": {
-  "en": "",
+  "en": "A serenade at the bandstand for the moon and for you: / if I lose, I sing; if I win, I sing too!",
   "ctx": "src/data/treinadores/b2-norte.ts:74 · t()"
  },
  "Canto a derrota: tem mais rima.": {
-  "en": "",
+  "en": "I'll sing of my defeat: it rhymes better.",
   "ctx": "src/data/treinadores/b2-norte.ts:74 · t()"
  },
  "O Papagálio aprende qualquer golpe que escuta. Não fale estratégia perto dele.": {
-  "en": "",
+  "en": "The Papagálio learns any move it hears. Don't talk strategy around it.",
   "ctx": "src/data/treinadores/b2-norte.ts:74 · t()"
  },
  "Alpinista Cume-Raso": {
-  "en": "",
+  "en": "Mountaineer Cume-Raso",
   "ctx": "src/data/treinadores/b2-norte.ts:79 · t()"
  },
  "Dezesseis insígnias? Bonito. Aqui em cima elas pesam o dobro. Vamos ver se você aguenta o peso!": {
-  "en": "",
+  "en": "Sixteen badges? Nice. Up here they weigh twice as much. Let's see if you can carry the weight!",
   "ctx": "src/data/treinadores/b2-norte.ts:80 · t()"
  },
  "Aguentou com folga.": {
-  "en": "",
+  "en": "You carried it with ease.",
   "ctx": "src/data/treinadores/b2-norte.ts:80 · t()"
  },
  "A trilha sobe em zigue-zague. Cada curva tem um montanhista querendo provar alguma coisa. Inclusive eu.": {
-  "en": "",
+  "en": "The trail zigzags up. Every bend has a mountaineer who wants to prove something. Me included.",
   "ctx": "src/data/treinadores/b2-norte.ts:80 · t()"
  },
  "Chefe-Escoteira Geada": {
-  "en": "",
+  "en": "Scout Leader Geada",
   "ctx": "src/data/treinadores/b2-norte.ts:81 · t()"
  },
  "Lição de escoteira para o Pico: sempre leve remédio a mais. Lição dois: nunca recuse um desafio!": {
-  "en": "",
+  "en": "Scout lesson for the Peak: always bring extra medicine. Lesson two: never turn down a challenge!",
   "ctx": "src/data/treinadores/b2-norte.ts:82 · t()"
  },
  "Lição três: perder também conta como experiência.": {
-  "en": "",
+  "en": "Lesson three: losing counts as experience too.",
   "ctx": "src/data/treinadores/b2-norte.ts:82 · t()"
  },
  "O campo de gelo do oeste tem um prêmio na beira. Deslize em linha reta e pare na rocha.": {
-  "en": "",
+  "en": "The west ice field has a prize at the edge. Slide in a straight line and stop at the rock.",
   "ctx": "src/data/treinadores/b2-norte.ts:82 · t()"
  },
  "A Harpia vê um tatu a um quilômetro. E vê você bem mais perto!": {
-  "en": "",
+  "en": "The Harpia can spot an armadillo a kilometer away. And it can see you much closer!",
   "ctx": "src/data/treinadores/b2-norte.ts:84 · t()"
  },
  "A Harpia piscou. Eu chorei um pouquinho.": {
-  "en": "",
+  "en": "The Harpia blinked. I cried a little.",
   "ctx": "src/data/treinadores/b2-norte.ts:84 · t()"
  },
  "A gruta do leste tem uma fenda que sai numa prateleira escondida. Morcego grande mora lá dentro.": {
-  "en": "",
+  "en": "The east cave has a crack that comes out on a hidden ledge. A big bat lives in there.",
   "ctx": "src/data/treinadores/b2-norte.ts:84 · t()"
  },
  "Mestre Cume": {
-  "en": "",
+  "en": "Master Cume",
   "ctx": "src/data/treinadores/b2-norte.ts:85 · t()"
  },
  "Roda de capoeira no topo do Brasil! O berimbau aqui ecoa até o mar!": {
-  "en": "",
+  "en": "A capoeira roda at the top of Brazil! The berimbau up here echoes all the way to the sea!",
   "ctx": "src/data/treinadores/b2-norte.ts:86 · t()"
  },
  "Iê! Volta do mundo, camarada.": {
-  "en": "",
+  "en": "Iê! Round the world, comrade.",
   "ctx": "src/data/treinadores/b2-norte.ts:86 · t()"
  },
  "O Coronel Garrote passou por aqui com dois capangas e uma corrente. Foi direto para o Cume.": {
-  "en": "",
+  "en": "Colonel Garrote came through here with two goons and a chain. Went straight to the Summit.",
   "ctx": "src/data/treinadores/b2-norte.ts:86 · t()"
  },
  "Guardiã-Aprendiz Mbaé": {
-  "en": "",
+  "en": "Apprentice Guardian Mbaé",
   "ctx": "src/data/treinadores/b2-norte.ts:87 · t()"
  },
  "Sou aprendiz do Guardião Cauã. Ele mandou eu testar quem sobe. Não leve para o lado pessoal!": {
-  "en": "",
+  "en": "I'm Guardian Cauã's apprentice. He told me to test whoever comes up. Don't take it personally!",
   "ctx": "src/data/treinadores/b2-norte.ts:88 · t()"
  },
  "Vou contar ao Cauã que você é bom. Ele vai sorrir. Ele quase nunca sorri.": {
-  "en": "",
+  "en": "I'll tell Cauã you're good. He'll smile. He almost never smiles.",
   "ctx": "src/data/treinadores/b2-norte.ts:88 · t()"
  },
  "O Conselho tem cinco Guardiões, um atrás do outro. Iara, Cauã, Jandaia, Moacir e o Guardião-Mor Arandu.": {
-  "en": "",
+  "en": "The Council has five Guardians, one after another. Iara, Cauã, Jandaia, Moacir and High Guardian Arandu.",
   "ctx": "src/data/treinadores/b2-norte.ts:88 · t()"
  },
  "Escalador Vento-Norte": {
-  "en": "",
+  "en": "Climber Vento-Norte",
   "ctx": "src/data/treinadores/b2-norte.ts:89 · t()"
  },
  "Já subi o Pico quarenta vezes. Nunca entrei no Salão. Hoje vou ao menos ganhar de quem vai entrar!": {
-  "en": "",
+  "en": "I've climbed the Peak forty times. Never got into the Hall. Today I'll at least beat someone who will!",
   "ctx": "src/data/treinadores/b2-norte.ts:90 · t()"
  },
  "Quarenta e uma subidas, nenhuma vitória hoje.": {
-  "en": "",
+  "en": "Forty-one climbs, no win today.",
   "ctx": "src/data/treinadores/b2-norte.ts:90 · t()"
  },
  "O Guardião Tibiriçá deixou dois Elixires e dois Chás de Guaraná na saída do Portão. É a oferenda para quem sobe.": {
-  "en": "",
+  "en": "Guardian Tibiriçá left two Elixirs and two Guaraná Teas at the Gate exit. It's the offering for those who climb.",
   "ctx": "src/data/treinadores/b2-norte.ts:90 · t()"
  },
  "O Coronel mandou ninguém subir! Principalmente VOCÊ!": {
-  "en": "",
+  "en": "The Colonel said nobody goes up! Especially YOU!",
   "ctx": "src/data/treinadores/b2-norte.ts:92 · t()"
  },
  "O Coronel vai me demitir de novo.": {
-  "en": "",
+  "en": "The Colonel's going to fire me again.",
   "ctx": "src/data/treinadores/b2-norte.ts:92 · t()"
  },
  "Ele está lá em cima, na porta do Salão. Diz que lá dentro tem as criaturas mais raras de Pingorama.": {
-  "en": "",
+  "en": "He's up there, at the Hall door. Says the rarest creatures in Pingorama are inside.",
   "ctx": "src/data/treinadores/b2-norte.ts:92 · t()"
  },
  "Última capanga antes do Coronel! Corrente nova, cuia nova, raiva velha!": {
-  "en": "",
+  "en": "Last goon before the Colonel! New chain, new gourd, old grudge!",
   "ctx": "src/data/treinadores/b2-norte.ts:94 · t()"
  },
  "Corrente arrebentada. Raiva também.": {
-  "en": "",
+  "en": "Chain snapped. Grudge too.",
   "ctx": "src/data/treinadores/b2-norte.ts:94 · t()"
  },
  "Eu só queria um emprego com vista para a serra. Arrumei um com vista para a derrota.": {
-  "en": "",
+  "en": "I just wanted a job with a mountain view. I got one with a view of defeat.",
   "ctx": "src/data/treinadores/b2-norte.ts:94 · t()"
  },
  "Anciã Sumaúma": {
-  "en": "",
+  "en": "Elder Sumaúma",
   "ctx": "src/data/treinadores/b2-norte.ts:99 · t()"
  },
  "Esta floresta é mais velha que as cidades. Quem entra aqui, entra para aprender. Lição número um: respeito!": {
-  "en": "",
+  "en": "This forest is older than the towns. Whoever comes in, comes in to learn. Lesson number one: respect!",
   "ctx": "src/data/treinadores/b2-norte.ts:100 · t()"
  },
  "Lição aprendida. Por mim.": {
-  "en": "",
+  "en": "Lesson learned. By me.",
   "ctx": "src/data/treinadores/b2-norte.ts:100 · t()"
  },
  "Os Ninhos Raros ficam nas clareiras: cada um com o filho de um dos três primeiros parceiros dos treinadores.": {
-  "en": "",
+  "en": "The Rare Nests are in the clearings: each one with the offspring of one of the three first trainer partners.",
   "ctx": "src/data/treinadores/b2-norte.ts:100 · t()"
  },
  "Drª Megafauna": {
-  "en": "",
+  "en": "Dr. Megafauna",
   "ctx": "src/data/treinadores/b2-norte.ts:101 · t()"
  },
  "Pesquiso a megafauna: preguiça-gigante, tatu do tamanho de carro… e o Mapinguari, que ninguém viu e todo mundo ouviu.": {
-  "en": "",
+  "en": "I research megafauna: giant sloths, car-sized armadillos… and the Mapinguari, which nobody's seen and everybody's heard.",
   "ctx": "src/data/treinadores/b2-norte.ts:102 · t()"
  },
  "Megaderrota.": {
-  "en": "",
+  "en": "Mega-defeat.",
   "ctx": "src/data/treinadores/b2-norte.ts:102 · t()"
  },
  "O Mapinguari só aparece no coração da floresta, depois que o Conselho reconhece um novo Campeão. Leve Cuia de Ouro e paciência.": {
-  "en": "",
+  "en": "The Mapinguari only appears in the heart of the forest, after the Council recognizes a new Champion. Bring a Gold Gourd and patience.",
   "ctx": "src/data/treinadores/b2-norte.ts:102 · t()"
  },
  "Dona Gavião-Real": {
-  "en": "",
+  "en": "Dona Gavião-Real",
   "ctx": "src/data/treinadores/b2-norte.ts:103 · t()"
  },
  "A Harpia daqui tem penacho de rainha. A minha tem cara de quem vai ganhar!": {
-  "en": "",
+  "en": "The Harpia here has a queen's crest. Mine looks like it's about to win!",
   "ctx": "src/data/treinadores/b2-norte.ts:104 · t()"
  },
  "Penacho caído.": {
-  "en": "",
+  "en": "Crest fallen.",
   "ctx": "src/data/treinadores/b2-norte.ts:104 · t()"
  },
  "De madrugada, a clareira dos ipês enche de beija-flor. Até o de arco-íris.": {
-  "en": "",
+  "en": "Before dawn, the ipê clearing fills with hummingbirds. Even the rainbow one.",
   "ctx": "src/data/treinadores/b2-norte.ts:104 · t()"
  },
  "Mestre Raiz": {
-  "en": "",
+  "en": "Master Raiz",
   "ctx": "src/data/treinadores/b2-norte.ts:105 · t()"
  },
  "Capoeira de raiz, na floresta de raiz! Entra na roda, Campeão!": {
-  "en": "",
+  "en": "Roots capoeira, in a forest of roots! Get in the roda, Champ!",
   "ctx": "src/data/treinadores/b2-norte.ts:106 · t()"
  },
  "Raiz arrancada. Ainda bem que cresce de novo.": {
-  "en": "",
+  "en": "Root pulled up. Good thing it grows back.",
   "ctx": "src/data/treinadores/b2-norte.ts:106 · t()"
  },
  "O revanche do Conselho vale a pena: cada vez que você vence, o andarilho do Cume volta para o topo.": {
-  "en": "",
+  "en": "The Council rematch is worth it: every time you win, the Summit wanderer comes back to the top.",
   "ctx": "src/data/treinadores/b2-norte.ts:106 · t()"
  },
  "Seu Jacaré-Açu": {
-  "en": "",
+  "en": "Seu Jacaré-Açu",
   "ctx": "src/data/treinadores/b2-norte.ts:107 · t()"
  },
  "O rio da floresta não tem nome no mapa. Tem jacaré do tamanho de canoa. E eu, do tamanho do desafio!": {
-  "en": "",
+  "en": "The forest river has no name on the map. It has caimans the size of canoes. And me, the size of the challenge!",
   "ctx": "src/data/treinadores/b2-norte.ts:108 · t()"
  },
  "O jacaré me olhou com pena.": {
-  "en": "",
+  "en": "The caiman looked at me with pity.",
   "ctx": "src/data/treinadores/b2-norte.ts:108 · t()"
  },
  "Na lagoa escura do sul, de canoa, às vezes passa um Jacaruçu. Não estique a mão.": {
-  "en": "",
+  "en": "In the dark lagoon to the south, by canoe, a Jacaruçu sometimes swims by. Don't reach out your hand.",
   "ctx": "src/data/treinadores/b2-norte.ts:108 · t()"
  },
  "Andarilho": {
-  "en": "",
+  "en": "Wanderer",
   "ctx": "src/data/treinadores/b2-norte.ts:120 · campo classe"
  },
  "do Cume": {
-  "en": "",
+  "en": "of the Summit",
   "ctx": "src/data/treinadores/b2-norte.ts:120 · campo nome"
  },
  "Mestre Cobrinha": {
@@ -5856,103 +5856,103 @@
   "ctx": "src/data/zonas/B-CV.ts:30 · campo texto"
  },
  "FLORESTA ANCESTRAL\n\"Ande devagar: aqui cada árvore é mais velha que o seu bisavô.\"\nNinhos Raros a oeste, a leste e a nordeste.": {
-  "en": "",
+  "en": "FLORESTA ANCESTRAL\n\"Walk slowly: every tree here is older than your great-grandpa.\"\nRare Nests to the west, east and northeast.",
   "ctx": "src/data/zonas/B-FA.ts:43 · placa()"
  },
  "LAGOA ESCURA\nÁgua parada, fundo de lama. Jacaré do tamanho de canoa. Não estique a mão.": {
-  "en": "",
+  "en": "DARK LAGOON\nStill water, muddy bottom. Canoe-sized caimans. Don't reach out your hand.",
   "ctx": "src/data/zonas/B-FA.ts:44 · placa()"
  },
  "CORAÇÃO DA FLORESTA\nAqui os antigos ouviam o grito do Mapinguari. Respeite o silêncio.": {
-  "en": "",
+  "en": "HEART OF THE FOREST\nHere the ancients heard the Mapinguari's cry. Respect the silence.",
   "ctx": "src/data/zonas/B-FA.ts:45 · placa()"
  },
  "Um tronco caído há séculos, coberto de musgo, com marcas de garras do tamanho de um braço. Alguma coisa muito grande se coça aqui.": {
-  "en": "",
+  "en": "A trunk fallen centuries ago, covered in moss, with claw marks as long as an arm. Something very big scratches itself here.",
   "ctx": "src/data/zonas/B-FA.ts:53 · campo texto"
  },
  "Seu Jequitibá": {
-  "en": "",
+  "en": "Seu Jequitibá",
   "ctx": "src/data/zonas/B-FA.ts:66 · gente()"
  },
  "Os Ninhos Raros são dos filhos dos primeiros parceiros: Tamanduá-Copa, Guaraflama, Botorosa. Cada ninho recebe uma visita por dia — mais que isso, a mãe estranha.": {
-  "en": "",
+  "en": "The Rare Nests belong to the offspring of the first partners: Tamanduá-Copa, Guaraflama, Botorosa. Each nest takes one visit a day — any more and the mother gets suspicious.",
   "ctx": "src/data/zonas/B-FA.ts:66 · campo fala"
  },
  "De manhãzinha, às vezes, quem está no ninho é o bicho crescido: Bandeirão, Lobo-Fornalha, Iaraboto. Esses são raríssimos. Leve Cuia de Ouro.": {
-  "en": "",
+  "en": "Early in the morning, sometimes, the one in the nest is the grown critter: Bandeirão, Lobo-Fornalha, Iaraboto. Those are super rare. Bring a Gold Gourd.",
   "ctx": "src/data/zonas/B-FA.ts:66 · campo fala"
  },
  "Guardiã-Mirim Jurema": {
-  "en": "",
+  "en": "Junior Guardian Jurema",
   "ctx": "src/data/zonas/B-FA.ts:67 · gente()"
  },
  "A Guardiã da Floresta me deixou aqui para cuidar da entrada. Eu cuido. Principalmente dos cogumelos.": {
-  "en": "",
+  "en": "The Forest Warden left me here to watch the entrance. I do. Mostly the mushrooms.",
   "ctx": "src/data/zonas/B-FA.ts:67 · campo fala"
  },
  "Lá no Coração da Floresta mora o Mapinguari. Ele só se mostra para quem o Conselho reconheceu. Você foi reconhecido? Então vai lá. Eu fico aqui.": {
-  "en": "",
+  "en": "In the Heart of the Forest lives the Mapinguari. It only shows itself to those the Council has recognized. Have you been recognized? Then go on. I'll stay here.",
   "ctx": "src/data/zonas/B-FA.ts:67 · campo fala"
  },
  "Barraco do Joca": {
-  "en": "",
+  "en": "Joca's Shack",
   "ctx": "src/data/zonas/B-LG-cabana.ts:5 · campo nome"
  },
  "Anzóis em caixinhas de fósforo, uma lata de minhoca vazia e um retrato de uma menina olhando por uma luneta.": {
-  "en": "",
+  "en": "Hooks in matchboxes, an empty worm can and a picture of a girl looking through a telescope.",
   "ctx": "src/data/zonas/B-LG-cabana.ts:7 · campo estante"
  },
  "Cartas antigas amarradas com linha de pesca. Todas de Planalto Lume. A última tem três meses.": {
-  "en": "",
+  "en": "Old letters tied with fishing line. All from Planalto Lume. The last one is three months old.",
   "ctx": "src/data/zonas/B-LG-cabana.ts:8 · campo bau"
  },
  "O fogão a lenha mantém o barraco quente. Em cima dele, uma panela de pinhão cozido que nunca acaba.": {
-  "en": "",
+  "en": "The wood stove keeps the shack warm. On top, a pot of boiled pine nuts that never runs out.",
   "ctx": "src/data/zonas/B-LG-cabana.ts:9 · campo cantoTexto"
  },
  "Maracajá do Joca": {
-  "en": "",
+  "en": "Joca's Maracajá",
   "ctx": "src/data/zonas/B-LG-cabana.ts:12 · campo nome"
  },
  "O Maracajá-Nevado do Joca se espreguiça perto do fogão e finge que você não existe.": {
-  "en": "",
+  "en": "Joca's Maracajá-Nevado stretches near the stove and pretends you don't exist.",
   "ctx": "src/data/zonas/B-LG-cabana.ts:12 · campo fala"
  },
  "LAGOA GELADA\nSul: Serra da Geada. Leste: Campos de Altitude.\nÁgua fria o ano todo. Remo para a ilha e para a praia dos juncos.": {
-  "en": "",
+  "en": "LAGOA GELADA\nSouth: Serra da Geada. East: Campos de Altitude.\nCold water all year round. Paddle to the island and to the reed beach.",
   "ctx": "src/data/zonas/B-LG.ts:45 · placa()"
  },
  "CAMPOS DE ALTITUDE →\nCapim dourado e geada.": {
-  "en": "",
+  "en": "CAMPOS DE ALTITUDE →\nGolden grass and frost.",
   "ctx": "src/data/zonas/B-LG.ts:46 · placa()"
  },
  "TRAPICHE COMPRIDO\n\"Na ponta, nos dias de silêncio, os velhos juram que se ouve uma baleia cantando no fundo da lagoa.\"": {
-  "en": "",
+  "en": "LONG PIER\n\"At the end, on quiet days, the old folks swear you can hear a whale singing at the bottom of the lagoon.\"",
   "ctx": "src/data/zonas/B-LG.ts:47 · placa()"
  },
  "Canoeira Itaipava": {
-  "en": "",
+  "en": "Canoeist Itaipava",
   "ctx": "src/data/zonas/B-LG.ts:69 · gente()"
  },
  "A canoa é sua se a sua criatura de Rio quiser puxar. Na água gelada, só bicho de Rio aceita.": {
-  "en": "",
+  "en": "The canoe is yours if your River creature wants to pull it. In icy water, only River critters will do it.",
   "ctx": "src/data/zonas/B-LG.ts:69 · campo fala"
  },
  "A ilha do meio é do Joca, pai da Estrela-d'Alva do Planalto Lume. Ele não sai de lá nem para buscar carta.": {
-  "en": "",
+  "en": "The middle island is Joca's, Estrela-d'Alva's dad from Planalto Lume. He won't leave it, not even to pick up letters.",
   "ctx": "src/data/zonas/B-LG.ts:69 · campo fala"
  },
  "Drª Junco": {
-  "en": "",
+  "en": "Dr. Junco",
   "ctx": "src/data/zonas/B-LG.ts:70 · gente()"
  },
  "Estudo as libélulas da praia dos juncos. A Lavadeira-Dragão é a mais rara: aparece de vez em quando, com asas de vitral.": {
-  "en": "",
+  "en": "I study the dragonflies on the reed beach. The Lavadeira-Dragão is the rarest: it shows up now and then, with stained-glass wings.",
   "ctx": "src/data/zonas/B-LG.ts:70 · campo fala"
  },
  "O Tuiuiú também passa por aqui. Ele sobe do Pantanal no inverno, ninguém sabe por quê. Talvez goste de frio.": {
-  "en": "",
+  "en": "The Tuiuiú passes through here too. It comes up from the Pantanal in winter, nobody knows why. Maybe it likes the cold.",
   "ctx": "src/data/zonas/B-LG.ts:70 · campo fala"
  },
  "PANTANAL ALAGADO\nOeste: Cerrado Aberto. Leste, pelas passarelas: Pantanal Grande.\nSul: o ninhal (área interditada pela Boiadeira Zefa).": {
@@ -6188,255 +6188,255 @@
   "ctx": "src/data/zonas/B-R3.ts:88 · campo fala"
  },
  "SUBIDA DA SERRA\nNorte: Serra da Geada. Paredões com trepadeira e fendas de pedregulho.\nSuba devagar; desça pelas saliências.": {
-  "en": "",
+  "en": "SUBIDA DA SERRA\nNorth: Serra da Geada. Creeper cliffs and boulder cracks.\nClimb slowly; come down by the ledges.",
   "ctx": "src/data/zonas/B-R4.ts:48 · placa()"
  },
  "TRILHA DO PICO PINGORAMA ↑\nA oeste, depois da trepadeira grande.\nO Guia do Pico leva só quem tem as dezesseis insígnias.": {
-  "en": "",
+  "en": "PICO PINGORAMA TRAIL ↑\nTo the west, past the big creeper.\nThe Peak Guide only takes those with all sixteen badges.",
   "ctx": "src/data/zonas/B-R4.ts:49 · placa()"
  },
  "Um vento gelado desce do Pico e empurra {JOGADOR} de volta. Lá em cima, o Portão dos Guardiões só se abre para quem tem as dezesseis insígnias.": {
-  "en": "",
+  "en": "An icy wind comes down from the Peak and pushes {JOGADOR} back. Up there, the Guardians' Gate only opens for those with all sixteen badges.",
   "ctx": "src/data/zonas/B-R4.ts:59 · campo recusa"
  },
  "Guia do Pico Carijó: \"A trilha do Pico Pingorama começa nesta trepadeira. Lá em cima o vento derruba até Gavião.\"\f\"O Portão dos Guardiões só abre para quem tem as dezesseis insígnias. Antes disso, a serra é que leva você.\"": {
-  "en": "",
+  "en": "Peak Guide Carijó: \"The Pico Pingorama trail starts at this creeper. Up there the wind knocks down even hawks.\"\f\"The Guardians' Gate only opens for those with all sixteen badges. Before that, the mountain takes you instead.\"",
   "ctx": "src/data/zonas/B-R4.ts:61 · campo fala"
  },
  "Tropeira Graúna": {
-  "en": "",
+  "en": "Drover Graúna",
   "ctx": "src/data/zonas/B-R4.ts:72 · gente()"
  },
  "Subo esta serra toda semana levando erva-mate. As mulas sobem pela trilha; eu subo reclamando.": {
-  "en": "",
+  "en": "I climb these hills every week carrying yerba mate. The mules go up the trail; I go up complaining.",
   "ctx": "src/data/zonas/B-R4.ts:72 · campo fala"
  },
  "Pedregulho na fenda? Peça para uma criatura de Terra, Pedra ou Ginga empurrar. Trepadeira? Ginga, Comum ou Inseto sobe.": {
-  "en": "",
+  "en": "Boulder in a crack? Ask an Earth, Stone or Brawl creature to push it. Creepers? Brawl, Normal or Bug can climb.",
   "ctx": "src/data/zonas/B-R4.ts:72 · campo fala"
  },
  "Seu Pinhão-Manso": {
-  "en": "",
+  "en": "Seu Pinhão-Manso",
   "ctx": "src/data/zonas/B-R4.ts:73 · gente()"
  },
  "Guia do Pico Carijó": {
-  "en": "",
+  "en": "Peak Guide Carijó",
   "ctx": "src/data/zonas/B-R4.ts:74 · gente()"
  },
  "O Pico Pingorama fica entre os dois mapas, em cima de tudo. No topo, os Guardiões esperam quem junta as dezesseis insígnias.": {
-  "en": "",
+  "en": "Pico Pingorama sits between the two maps, above everything. At the top, the Guardians wait for whoever gathers all sixteen badges.",
   "ctx": "src/data/zonas/B-R4.ts:74 · campo fala"
  },
  "Pelo lado da Costa, a subida é pelo Monte Tupã. Por aqui, é pela trepadeira grande.": {
-  "en": "",
+  "en": "From the Coast side, the climb is via Monte Tupã. From here, it's via the big creeper.",
   "ctx": "src/data/zonas/B-R4.ts:74 · campo fala"
  },
  "CAMINHO DAS NÉVOAS\nOeste: Serra da Geada · Leste: Planalto Lume.\nNa névoa, ande com o Lampião aceso e o pé na trilha.": {
-  "en": "",
+  "en": "CAMINHO DAS NÉVOAS\nWest: Serra da Geada · East: Planalto Lume.\nIn the fog, keep your Lantern lit and your feet on the trail.",
   "ctx": "src/data/zonas/B-R5.ts:54 · placa()"
  },
  "PLANALTO LUME logo adiante.\nObservatório, cânions e o Ginásio da Astrônoma Jaci.": {
-  "en": "",
+  "en": "PLANALTO LUME just ahead.\nObservatory, canyons and Astronomer Jaci's Gym.",
   "ctx": "src/data/zonas/B-R5.ts:55 · placa()"
  },
  "MIRANTE DO PINHEIRAL\nDaqui se vê o cânion inteiro — quando a névoa deixa. Quase nunca deixa.": {
-  "en": "",
+  "en": "PINE GROVE LOOKOUT\nFrom here you can see the whole canyon — when the fog allows. It almost never does.",
   "ctx": "src/data/zonas/B-R5.ts:56 · placa()"
  },
  "Um totem antigo de madeira de lei, coberto de líquen. Olha para o Pico Pingorama como quem espera alguém.": {
-  "en": "",
+  "en": "An ancient hardwood totem, covered in lichen. It faces Pico Pingorama like someone waiting.",
   "ctx": "src/data/zonas/B-R5.ts:64 · campo texto"
  },
  "O Guarda da Névoa finca o cajado no meio da trilha:\n— Daqui para leste a névoa não tem fim, e o cânion não perdoa passo errado.\f— Só passa quem traz a Insígnia do Floco, da Gaúcha Pinhão, e um Lampião para abrir a névoa. Volte quando tiver os dois.": {
-  "en": "",
+  "en": "The Fog Guard plants his staff in the middle of the trail:\n\"East of here the fog never ends, and the canyon doesn't forgive a wrong step.\"\f\"Only those carrying Gaúcha Pinhão's Flake Badge and a Lantern to part the fog get through. Come back when you have both.\"",
   "ctx": "src/data/zonas/B-R5.ts:73 · campo fala"
  },
  "Um velho vigia de poncho guarda a porteira do mirante:\n— Este é o Mirante do Guardião Velho. Só sobe quem já se sentou à mesa do Conselho no Pico.\f— Não é desfeita, criança. É costume: o mirante mostra coisas que só servem a quem terminou a viagem.": {
-  "en": "",
+  "en": "An old watchman in a poncho guards the lookout gate:\n\"This is the Old Guardian's Lookout. Only those who've sat at the Council's table on the Peak go up.\"\f\"No offense, child. It's tradition: the lookout shows things that only matter to those who finished the journey.\"",
   "ctx": "src/data/zonas/B-R5.ts:74 · campo fala"
  },
  "Guarda da Névoa": {
-  "en": "",
+  "en": "Fog Guard",
   "ctx": "src/data/zonas/B-R5.ts:85 · gente()"
  },
  "Insígnia do Floco e Lampião aceso: pode seguir. Mantenha a luz na trilha e o ouvido no vento.": {
-  "en": "",
+  "en": "Flake Badge and a lit Lantern: go on ahead. Keep the light on the trail and your ear on the wind.",
   "ctx": "src/data/zonas/B-R5.ts:85 · campo fala"
  },
  "Os bichos da névoa enxergam melhor que a gente. O Graxaim-da-Névoa, então, nem precisa de olho: ele É a névoa.": {
-  "en": "",
+  "en": "Fog critters see better than we do. The Graxaim-da-Névoa doesn't even need eyes: it IS the fog.",
   "ctx": "src/data/zonas/B-R5.ts:85 · campo fala"
  },
  "Seu Neblino": {
-  "en": "",
+  "en": "Seu Neblino",
   "ctx": "src/data/zonas/B-R5.ts:86 · gente()"
  },
  "A névoa daqui não é água no ar, menino. É o hálito do cânion. Ele respira de manhã e de noite.": {
-  "en": "",
+  "en": "The fog here isn't water in the air, kid. It's the canyon's breath. It breathes in the morning and at night.",
   "ctx": "src/data/zonas/B-R5.ts:86 · campo fala"
  },
  "Quem anda com Lampião vê a trilha. Quem anda sem, vê fantasma. Às vezes o fantasma é um Urutau-Fantasma mesmo, pousado no pinheiro.": {
-  "en": "",
+  "en": "Whoever walks with a Lantern sees the trail. Whoever walks without one sees ghosts. Sometimes the ghost really is an Urutau-Fantasma, perched on a pine.",
   "ctx": "src/data/zonas/B-R5.ts:86 · campo fala"
  },
  "Andarilha Cerração": {
-  "en": "",
+  "en": "Wanderer Cerração",
   "ctx": "src/data/zonas/B-R5.ts:87 · gente()"
  },
  "Lá do outro lado da ponte tem um campo de capim tão alto que a névoa fica presa nele. É onde a Jaguatiricão caça, de noite.": {
-  "en": "",
+  "en": "On the other side of the bridge there's a field of grass so tall the fog gets stuck in it. That's where the Jaguatiricão hunts at night.",
   "ctx": "src/data/zonas/B-R5.ts:87 · campo fala"
  },
  "Do mirante cercado, lá no nordeste, dizem que dá para ver o Pico Pingorama inteiro. Mas o vigia não deixa ninguém subir.": {
-  "en": "",
+  "en": "From the fenced lookout, up northeast, they say you can see all of Pico Pingorama. But the watchman won't let anyone up.",
   "ctx": "src/data/zonas/B-R5.ts:87 · campo fala"
  },
  "Tiquinho": {
-  "en": "",
+  "en": "Tiquinho",
   "ctx": "src/data/zonas/B-R5.ts:88 · gente()"
  },
  "Eu pulei o degrau de pedra e agora não consigo voltar por ele! Tenho que dar a volta toda.": {
-  "en": "",
+  "en": "I jumped down the stone step and now I can't go back up it! I have to go all the way around.",
   "ctx": "src/data/zonas/B-R5.ts:88 · campo fala"
  },
  "Pelo menos o capim lá embaixo é macio.": {
-  "en": "",
+  "en": "At least the grass down there is soft.",
   "ctx": "src/data/zonas/B-R5.ts:88 · campo fala"
  },
  "CAMPOS DE ALTITUDE\nSul: Serra da Geada. Oeste: Lagoa Gelada.\nCuidado: a geada da manhã escorrega.": {
-  "en": "",
+  "en": "CAMPOS DE ALTITUDE\nSouth: Serra da Geada. West: Lagoa Gelada.\nCareful: the morning frost is slippery.",
   "ctx": "src/data/zonas/B-SG.ts:44 · placa()"
  },
  "LAGOA GELADA ←\nPelo pinheiral. Canoa só para quem sabe remar.": {
-  "en": "",
+  "en": "LAGOA GELADA ←\nThrough the pines. Canoes only for those who can paddle.",
   "ctx": "src/data/zonas/B-SG.ts:45 · placa()"
  },
  "MIRANTE DO UIRAPURU\nSubida pela trepadeira. Os antigos dizem: \"quem ouve o Uirapuru ao amanhecer, ouve a mata inteira calar\".": {
-  "en": "",
+  "en": "UIRAPURU LOOKOUT\nClimb up by the creepers. The ancients say: \"whoever hears the Uirapuru at dawn hears the whole forest fall silent\".",
   "ctx": "src/data/zonas/B-SG.ts:46 · placa()"
  },
  "TRILHA VELHA DOS GUARDIÕES\nCercada por ordem do Conselho. Só para quem já foi recebido no Pico.": {
-  "en": "",
+  "en": "OLD GUARDIANS' TRAIL\nFenced off by order of the Council. Only for those already received at the Peak.",
   "ctx": "src/data/zonas/B-SG.ts:47 · placa()"
  },
  "O Guardião do Campo, de poncho e chimarrão, fecha a porteira com o pé:\n— Trilha Velha, tchê. Por aqui os Guardiões desciam do Pico para benzer o campo.\f— Só passa quem já foi recebido pelo Conselho. Volte com essa honra no peito que eu mesmo abro.": {
-  "en": "",
+  "en": "The Field Guardian, in poncho and with chimarrão, shuts the gate with his foot:\n\"The Old Trail, tchê. The Guardians used to come down from the Peak this way to bless the fields.\"\f\"Only those already received by the Council get through. Come back with that honor on your chest and I'll open it myself.\"",
   "ctx": "src/data/zonas/B-SG.ts:64 · campo fala"
  },
  "Gaiteira Rosa-dos-Ventos": {
-  "en": "",
+  "en": "Accordionist Rosa-dos-Ventos",
   "ctx": "src/data/zonas/B-SG.ts:75 · gente()"
  },
  "Aqui em cima a geada cai de madrugada e o sol derrete antes do almoço. O capim fica dourado de tanto apanhar de frio.": {
-  "en": "",
+  "en": "Up here the frost falls before dawn and the sun melts it before lunch. The grass turns golden from all the cold it takes.",
   "ctx": "src/data/zonas/B-SG.ts:75 · campo fala"
  },
  "O beija-flor dos campos só sai de dia. De noite quem manda é o Maracajá-Nevado, que caça no capim.": {
-  "en": "",
+  "en": "The field hummingbird only comes out by day. At night the boss is the Maracajá-Nevado, hunting in the grass.",
   "ctx": "src/data/zonas/B-SG.ts:75 · campo fala"
  },
  "Piá Tchico": {
-  "en": "",
+  "en": "Kid Tchico",
   "ctx": "src/data/zonas/B-SG.ts:76 · gente()"
  },
  "Eu subi o paredão do mirante pela trepadeira! Lá em cima tem um totem de passarinho.": {
-  "en": "",
+  "en": "I climbed the lookout cliff by the creepers! Up top there's a bird totem.",
   "ctx": "src/data/zonas/B-SG.ts:76 · campo fala"
  },
  "Meu avô diz que o Uirapuru canta lá ao amanhecer, mas só para quem conhece MUITO bicho. Tipo cento e cinquenta. Eu conheço onze.": {
-  "en": "",
+  "en": "My grandpa says the Uirapuru sings up there at dawn, but only for those who know LOTS of critters. Like a hundred and fifty. I know eleven.",
   "ctx": "src/data/zonas/B-SG.ts:76 · campo fala"
  },
  "Guardião do Campo": {
-  "en": "",
+  "en": "Field Guardian",
   "ctx": "src/data/zonas/B-SG.ts:78 · gente()"
  },
  "Tchê! O Conselho mandou avisar: a Trilha Velha é sua. Lá dentro o capim é alto e a geada é antiga.": {
-  "en": "",
+  "en": "Tchê! The Council sent word: the Old Trail is yours. Inside, the grass is tall and the frost is ancient.",
   "ctx": "src/data/zonas/B-SG.ts:78 · campo fala"
  },
  "Diz que os pesquisadores do estrangeiro andam atrás de bicho do frio por estes campos. Não sei de bicho nenhum. Sei de chimarrão.": {
-  "en": "",
+  "en": "They say researchers from abroad are after cold-weather critters in these fields. I don't know about any critters. I know about chimarrão.",
   "ctx": "src/data/zonas/B-SG.ts:78 · campo fala"
  },
  "GRUTA DO FÔLEGO\nRespire. Conte até dez. Empurre o pedregulho.\n— Clube de Mergulho de Cidade Ginga": {
-  "en": "",
+  "en": "BREATH CAVE\nBreathe. Count to ten. Push the boulder.\n— Cidade Ginga Diving Club",
   "ctx": "src/data/zonas/B-TA-gruta.ts:31 · placa()"
  },
  "Gruta do Fôlego": {
-  "en": "",
+  "en": "Breath Cave",
   "ctx": "src/data/zonas/B-TA-gruta.ts:33 · campo nome"
  },
  "Eremita Bolha": {
-  "en": "",
+  "en": "Hermit Bolha",
   "ctx": "src/data/zonas/B-TA-gruta.ts:44 · gente()"
  },
  "Moro aqui desde que perdi a hora de subir. Faz uns trinta anos.": {
-  "en": "",
+  "en": "I've lived here since I missed my time to surface. About thirty years ago.",
   "ctx": "src/data/zonas/B-TA-gruta.ts:45 · campo fala"
  },
  "No lago mora um Jaú do tamanho de uma canoa. Com Vara Velha ele nem se mexe; com Vara Mestra, ele pensa no assunto.": {
-  "en": "",
+  "en": "In the lake lives a Jaú the size of a canoe. With an Old Rod it doesn't even budge; with a Master Rod, it gives it some thought.",
   "ctx": "src/data/zonas/B-TA-gruta.ts:46 · campo fala"
  },
  "A cascata do canto sobe para a piscina do leste. Quem tem o Amuleto da Cachoeira sobe remando. Quem não tem, me faz companhia.": {
-  "en": "",
+  "en": "The waterfall in the corner goes up to the east pool. Whoever has the Waterfall Charm paddles up. Whoever doesn't keeps me company.",
   "ctx": "src/data/zonas/B-TA-gruta.ts:47 · campo fala"
  },
  "Mergulhadora Anêmona": {
-  "en": "",
+  "en": "Diver Anêmona",
   "ctx": "src/data/zonas/B-TA-gruta.ts:49 · gente()"
  },
  "A piscina de cá desce para o trecho do leste do túnel.": {
-  "en": "",
+  "en": "The pool on this side goes down to the east stretch of the tunnel.",
   "ctx": "src/data/zonas/B-TA-gruta.ts:49 · campo fala"
  },
  "Siga as clareiras de luz no fundo: é nelas que dá para subir. A última sai no charco do Brejo Roxo.": {
-  "en": "",
+  "en": "Follow the patches of light at the bottom: that's where you can surface. The last one comes out in the Brejo Roxo marsh.",
   "ctx": "src/data/zonas/B-TA-gruta.ts:49 · campo fala"
  },
  "Se vir gente de macacão ferrugem do outro lado, não dê bom-dia. Eles levaram os sapos do brejo em jaulas.": {
-  "en": "",
+  "en": "If you see folks in rust-colored overalls on the other side, don't say good morning. They took the swamp's frogs away in cages.",
   "ctx": "src/data/zonas/B-TA-gruta.ts:49 · campo fala"
  },
  "VALE DO VENENO\nPassarela de tábuas: siga as tábuas, não a vontade de nadar.\n— Associação dos Moradores do Brejo Roxo": {
-  "en": "",
+  "en": "VALE DO VENENO\nPlank boardwalk: follow the planks, not your urge to swim.\n— Brejo Roxo Residents' Association",
   "ctx": "src/data/zonas/B-VV.ts:47 · placa()"
  },
  "HORTO DO DOUTOR PEÇONHA\nPlantas que curam picada de cobra. E plantas que picam como cobra.\nProibida a entrada sem autorização do Doutor.": {
-  "en": "",
+  "en": "DOCTOR PEÇONHA'S GROVE\nPlants that cure snakebites. And plants that bite like snakes.\nNo entry without the Doctor's permission.",
   "ctx": "src/data/zonas/B-VV.ts:48 · placa()"
  },
  "Jardineiro Timbó: \"O Horto é do Doutor Peçonha. Sem a palavra dele, ninguém entra.\"\f\"Ele só dá a palavra para quem ganha a Insígnia Espinho. Volte com ela no peito.\"": {
-  "en": "",
+  "en": "Gardener Timbó: \"The Grove belongs to Doctor Peçonha. Without his word, nobody gets in.\"\f\"He only gives his word to those who earn the Thorn Badge. Come back with it on your chest.\"",
   "ctx": "src/data/zonas/B-VV.ts:56 · campo fala"
  },
  "Jardineiro Timbó": {
-  "en": "",
+  "en": "Gardener Timbó",
   "ctx": "src/data/zonas/B-VV.ts:68 · gente()"
  },
  "Seu Jiboião": {
-  "en": "",
+  "en": "Seu Jiboião",
   "ctx": "src/data/zonas/B-VV.ts:69 · gente()"
  },
  "Vim morar no Covil para estudar as cobras de perto. Perto demais, às vezes.": {
-  "en": "",
+  "en": "I moved to the Den to study snakes up close. Too close, sometimes.",
   "ctx": "src/data/zonas/B-VV.ts:69 · campo fala"
  },
  "A Coralzinha de anéis que brilham aparece pouco. Quem vê, faz pedido. Eu pedi para ela ir embora.": {
-  "en": "",
+  "en": "The Coralzinha with glowing rings rarely shows up. Whoever sees one makes a wish. I wished for it to go away.",
   "ctx": "src/data/zonas/B-VV.ts:69 · campo fala"
  },
  "Guia Ingá": {
-  "en": "",
+  "en": "Guide Ingá",
   "ctx": "src/data/zonas/B-VV.ts:70 · gente()"
  },
  "O Vale é do tamanho de uma fazenda e tem mais cobra que gente.": {
-  "en": "",
+  "en": "The Vale is the size of a ranch and has more snakes than people.",
   "ctx": "src/data/zonas/B-VV.ts:70 · campo fala"
  },
  "De canoa você chega nas ilhas da lagoa. A do norte tem uma Pererequinha fujona, e a do sul, um treinador que não sai de lá nem com chuva.": {
-  "en": "",
+  "en": "By canoe you can reach the lagoon islands. The north one has a runaway Pererequinha, and the south one, a trainer who won't leave even in the rain.",
   "ctx": "src/data/zonas/B-VV.ts:70 · campo fala"
  },
  "Casa da Dona Mangaba": {
@@ -8560,843 +8560,843 @@
   "ctx": "src/data/zonas/B6.ts:104 · gente()"
  },
  "Casa da Vó Querência": {
-  "en": "",
+  "en": "Grandma Querência's House",
   "ctx": "src/data/zonas/B7-casa-1.ts:5 · campo nome"
  },
  "Uma foto antiga: a Vó Querência moça, de bombacha, montada numa Seriemão com uma cuia de chimarrão na mão.": {
-  "en": "",
+  "en": "An old photo: young Grandma Querência in bombacha pants, riding a Seriemão with a chimarrão gourd in her hand.",
   "ctx": "src/data/zonas/B7-casa-1.ts:19 · campo texto"
  },
  "A lareira estala. Em cima da chapa, uma fileira de pinhões assando, cada um com a casca rachada no ponto.": {
-  "en": "",
+  "en": "The fireplace crackles. On the stovetop, a row of pine nuts roasting, each shell cracked just right.",
   "ctx": "src/data/zonas/B7-casa-1.ts:20 · campo texto"
  },
  "Vó Querência": {
-  "en": "",
+  "en": "Grandma Querência",
   "ctx": "src/data/zonas/B7-casa-1.ts:24 · gente()"
  },
  "Senta, meu filho, que o pinhão está quase pronto.": {
-  "en": "",
+  "en": "Sit down, dear, the pine nuts are almost ready.",
   "ctx": "src/data/zonas/B7-casa-1.ts:24 · campo fala"
  },
  "A Gralha-Azul enterra pinhão e esquece onde. É assim que nasce araucária nova: de esquecimento.": {
-  "en": "",
+  "en": "The Gralha-Azul buries pine nuts and forgets where. That's how new araucarias are born: from forgetting.",
   "ctx": "src/data/zonas/B7-casa-1.ts:24 · campo fala"
  },
  "Quem dera eu esquecesse as contas da luz e nascesse dinheiro.": {
-  "en": "",
+  "en": "If only I'd forget the electric bill and money would sprout.",
   "ctx": "src/data/zonas/B7-casa-1.ts:24 · campo fala"
  },
  "Piá Tonico": {
-  "en": "",
+  "en": "Kid Tonico",
   "ctx": "src/data/zonas/B7-casa-1.ts:25 · gente()"
  },
  "A Gaúcha Pinhão me deixou ver o ginásio por dentro! O chão é todo de gelo.": {
-  "en": "",
+  "en": "Gaúcha Pinhão let me see inside the gym! The whole floor is ice.",
   "ctx": "src/data/zonas/B7-casa-1.ts:25 · campo fala"
  },
  "Se você escorregar para o lado errado, volta para o começo. Eu voltei onze vezes.": {
-  "en": "",
+  "en": "If you slide the wrong way, you go back to the start. I went back eleven times.",
   "ctx": "src/data/zonas/B7-casa-1.ts:25 · campo fala"
  },
  "Casa do Seu Tchê Barbosa": {
-  "en": "",
+  "en": "Seu Tchê Barbosa's House",
   "ctx": "src/data/zonas/B7-casa-2.ts:5 · campo nome"
  },
  "Ponchos dobrados, uma bombacha remendada e um saquinho de sementes de araucária com o rótulo \"para as gralhas\".": {
-  "en": "",
+  "en": "Folded ponchos, patched bombacha pants and a little bag of araucaria seeds labeled \"for the jays\".",
   "ctx": "src/data/zonas/B7-casa-2.ts:20 · campo texto"
  },
  "Dona Clarinda": {
-  "en": "",
+  "en": "Dona Clarinda",
   "ctx": "src/data/zonas/B7-casa-2.ts:22 · gente()"
  },
  "O meu marido cria gralha no quintal. Cria, solta, e elas voltam para comer o pinhão dele.": {
-  "en": "",
+  "en": "My husband raises jays in the yard. He raises them, lets them go, and they come back to eat his pine nuts.",
   "ctx": "src/data/zonas/B7-casa-2.ts:22 · campo fala"
  },
  "Ele quer trocar uma das gralhas por um Tuco-Escavador, para cavar a horta. Tuco cava. Gralha só planta pinheiro onde não deve.": {
-  "en": "",
+  "en": "He wants to trade one of the jays for a Tuco-Escavador, to dig the garden. Tucos dig. Jays only plant pine trees where they shouldn't.",
   "ctx": "src/data/zonas/B7-casa-2.ts:22 · campo fala"
  },
  "Galpão do CTG": {
-  "en": "",
+  "en": "CTG Hall",
   "ctx": "src/data/zonas/B7-ctg.ts:22 · campo nome"
  },
  "Quadro de honra do CTG: \"Campeões do Laço, da Chula e da Payada de Adivinha\".": {
-  "en": "",
+  "en": "CTG honor board: \"Champions of the Lasso, the Chula and the Riddle Payada\".",
   "ctx": "src/data/zonas/B7-ctg.ts:26 · campo texto"
  },
  "Um rádio antigo tocando milonga baixinho. Ninguém sabe a estação: ele só pega milonga.": {
-  "en": "",
+  "en": "An old radio softly playing milonga. Nobody knows the station: it only picks up milonga.",
   "ctx": "src/data/zonas/B7-ctg.ts:27 · campo texto"
  },
  "Troféus de laço, um par de esporas e uma pilha de discos de milonga.": {
-  "en": "",
+  "en": "Lasso trophies, a pair of spurs and a stack of milonga records.",
   "ctx": "src/data/zonas/B7-ctg.ts:27 · campo texto"
  },
  "Gaiteiro Tibúrcio": {
-  "en": "",
+  "en": "Accordionist Tibúrcio",
   "ctx": "src/data/zonas/B7-ctg.ts:33 · gente()"
  },
  "♪ Chimarrão, chimarrão, amargo de coração… ♪": {
-  "en": "",
+  "en": "♪ Chimarrão, chimarrão, bitter in my heart… ♪",
   "ctx": "src/data/zonas/B7-ctg.ts:33 · campo fala"
  },
  "O Juvenal faz adivinha em verso. Quem erra aprende, quem acerta ganha prenda.": {
-  "en": "",
+  "en": "Juvenal does riddles in verse. Whoever gets it wrong learns, whoever gets it right wins a prize.",
   "ctx": "src/data/zonas/B7-ctg.ts:33 · campo fala"
  },
  "Prenda Lurdinha": {
-  "en": "",
+  "en": "Prenda Lurdinha",
   "ctx": "src/data/zonas/B7-ctg.ts:34 · gente()"
  },
  "Ensaio de chula! O peão sapateia em volta da lança sem encostar nela.": {
-  "en": "",
+  "en": "Chula rehearsal! The ranch hand tap-dances around the spear without touching it.",
   "ctx": "src/data/zonas/B7-ctg.ts:34 · campo fala"
  },
  "O meu par encostou três vezes. Agora ensaia sozinho.": {
-  "en": "",
+  "en": "My partner touched it three times. Now he rehearses alone.",
   "ctx": "src/data/zonas/B7-ctg.ts:34 · campo fala"
  },
  "Peão Laçador": {
-  "en": "",
+  "en": "Ranch Hand Laçador",
   "ctx": "src/data/zonas/B7-ctg.ts:35 · gente()"
  },
  "Laço de doze braças! Pego qualquer coisa: boi, cavalo, Emaçu.": {
-  "en": "",
+  "en": "A twelve-fathom lasso! I can catch anything: cattle, horses, Emaçu.",
   "ctx": "src/data/zonas/B7-ctg.ts:35 · campo fala"
  },
  "Só não pego Gralha-Azul. Ela voa e ainda dá risada.": {
-  "en": "",
+  "en": "Except the Gralha-Azul. It flies off and laughs at me.",
   "ctx": "src/data/zonas/B7-ctg.ts:35 · campo fala"
  },
  "Seu Valdomiro": {
-  "en": "",
+  "en": "Seu Valdomiro",
   "ctx": "src/data/zonas/B7-ctg.ts:36 · gente()"
  },
  "Nos tempos do meu pai, o Cartel Ferrugem quis comprar as araucárias da serra para fazer tábua.": {
-  "en": "",
+  "en": "Back in my father's day, the Rust Cartel wanted to buy the hills' araucarias to make planks.",
   "ctx": "src/data/zonas/B7-ctg.ts:36 · campo fala"
  },
  "O CTG inteiro se plantou na frente das árvores. Ficamos três dias. Ganhamos no cansaço. E no chimarrão.": {
-  "en": "",
+  "en": "The whole CTG planted itself in front of the trees. We stayed three days. We won by wearing them out. And with chimarrão.",
   "ctx": "src/data/zonas/B7-ctg.ts:36 · campo fala"
  },
  "Ginásio da Serra da Geada": {
-  "en": "",
+  "en": "Serra da Geada Gym",
   "ctx": "src/data/zonas/B7-ginasio.ts:16 · campo nome"
  },
  "GINÁSIO DA SERRA DA GEADA\nLíder: Gaúcha Pinhão\n\"No gelo, quem não pensa antes, escorrega depois.\"": {
-  "en": "",
+  "en": "SERRA DA GEADA GYM\nLeader: Gaúcha Pinhão\n\"On ice, whoever doesn't think first slips later.\"",
   "ctx": "src/data/zonas/B7-ginasio.ts:40 · campo texto"
  },
  "Regra do galpão: no gelo você só para quando bate em alguma coisa. A neve batida segura o passo.": {
-  "en": "",
+  "en": "Hall rule: on ice you only stop when you hit something. Packed snow holds your step.",
   "ctx": "src/data/zonas/B7-ginasio.ts:40 · campo texto"
  },
  "Blocos de gelo: olhe para o bloco e aperte A. Ele também escorrega até bater, e vira batente para você.": {
-  "en": "",
+  "en": "Ice blocks: face the block and press A. It also slides until it hits something, and becomes a stopper for you.",
   "ctx": "src/data/zonas/B7-ginasio.ts:41 · campo texto"
  },
  "Bloco encalhado num canto? Saia da pista e volte: os peões arrumam tudo no lugar.": {
-  "en": "",
+  "en": "Block stuck in a corner? Leave the rink and come back: the ranch hands put everything back in place.",
   "ctx": "src/data/zonas/B7-ginasio.ts:41 · campo texto"
  },
  "MURAL DE MISSÕES — SERRA DA GEADA": {
-  "en": "",
+  "en": "MISSION BOARD — SERRA DA GEADA",
   "ctx": "src/data/zonas/B7-posto.ts:5 · postoGuardiao()"
  },
  "• Seu Tchê Barbosa troca uma Gralha-Azul mansinha por um Tuco-Escavador.": {
-  "en": "",
+  "en": "• Seu Tchê Barbosa will trade a tame Gralha-Azul for a Tuco-Escavador.",
   "ctx": "src/data/zonas/B7-posto.ts:6 · postoGuardiao()"
  },
  "• Payada de adivinha no Galpão do CTG, todo dia. Quem acerta as três leva prenda.": {
-  "en": "",
+  "en": "• Riddle payada at the CTG Hall, every day. Get all three right and win a prize.",
   "ctx": "src/data/zonas/B7-posto.ts:7 · postoGuardiao()"
  },
  "• A Prenda Dorinha espera carta do Brejo Roxo. O carteiro de lá não sobe a serra: tem medo de altura.": {
-  "en": "",
+  "en": "• Prenda Dorinha is waiting for a letter from Brejo Roxo. The mail carrier there won't climb the hills: he's scared of heights.",
   "ctx": "src/data/zonas/B7-posto.ts:8 · postoGuardiao()"
  },
  "Dona Cuca": {
-  "en": "",
+  "en": "Dona Cuca",
   "ctx": "src/data/zonas/B7-posto.ts:10 · campo nome"
  },
  "Trouxe a minha Pinguimar para a máquina. Ela pegou friagem nadando na Lagoa Gelada.": {
-  "en": "",
+  "en": "I brought my Pinguimar to the machine. She caught a chill swimming in Lagoa Gelada.",
   "ctx": "src/data/zonas/B7-posto.ts:10 · campo fala"
  },
  "Pinguim com friagem. Quem diria.": {
-  "en": "",
+  "en": "A penguin with a chill. Who'd have thought.",
   "ctx": "src/data/zonas/B7-posto.ts:10 · campo fala"
  },
  "Alpinista Taquara": {
-  "en": "",
+  "en": "Mountaineer Taquara",
   "ctx": "src/data/zonas/B7-posto.ts:11 · campo nome"
  },
  "Depois da Insígnia Floco a Gaúcha Pinhão entrega o Amuleto do Voo.": {
-  "en": "",
+  "en": "After the Flake Badge, Gaúcha Pinhão hands out the Flight Charm.",
   "ctx": "src/data/zonas/B7-posto.ts:11 · campo fala"
  },
  "Aí é montar numa criatura de Vento e ir para qualquer cidade que você já visitou, nos dois mapas. Eu prefiro escalar. Sou teimosa.": {
-  "en": "",
+  "en": "Then you just ride a Wind creature to any town you've visited, on both maps. I prefer climbing. I'm stubborn.",
   "ctx": "src/data/zonas/B7-posto.ts:11 · campo fala"
  },
  "Piá Juca": {
-  "en": "",
+  "en": "Kid Juca",
   "ctx": "src/data/zonas/B7-posto.ts:12 · campo nome"
  },
  "Lá fora tem a pista de gelo! Eu escorrego de barriga.": {
-  "en": "",
+  "en": "There's an ice rink outside! I slide on my belly.",
   "ctx": "src/data/zonas/B7-posto.ts:12 · campo fala"
  },
  "A minha mãe diz que é por isso que a minha roupa vive rasgada.": {
-  "en": "",
+  "en": "My mom says that's why my clothes are always torn.",
   "ctx": "src/data/zonas/B7-posto.ts:12 · campo fala"
  },
  "Bolicheiro Valdir": {
-  "en": "",
+  "en": "Storekeeper Valdir",
   "ctx": "src/data/zonas/B7-venda.ts:5 · campo nome"
  },
  "Buenas! Armazém da Serra: tem cuia, tem remédio e tem erva-mate. A erva é de enfeite, que criatura não toma chimarrão.": {
-  "en": "",
+  "en": "Buenas! Serra General Store: gourds, medicine and yerba mate. The yerba is just for show, creatures don't drink chimarrão.",
   "ctx": "src/data/zonas/B7-venda.ts:5 · campo fala"
  },
  "Seu Lauro": {
-  "en": "",
+  "en": "Seu Lauro",
   "ctx": "src/data/zonas/B7-venda.ts:7 · campo nome"
  },
  "Unguento é bom para queimadura. E aqui na serra, para quem encosta no fogão de lenha para se esquentar.": {
-  "en": "",
+  "en": "Ointment is good for burns. And up here in the hills, for whoever leans on the wood stove to warm up.",
   "ctx": "src/data/zonas/B7-venda.ts:7 · campo fala"
  },
  "Já Pomada de Copaíba descongela criatura congelada. Leve umas, que a Gaúcha Pinhão congela até pensamento.": {
-  "en": "",
+  "en": "Copaíba Ointment thaws frozen creatures. Take a few, Gaúcha Pinhão freezes even your thoughts.",
   "ctx": "src/data/zonas/B7-venda.ts:7 · campo fala"
  },
  "Armazém da Serra": {
-  "en": "",
+  "en": "Serra General Store",
   "ctx": "src/data/zonas/B7-venda.ts:8 · venda()"
  },
  "SERRA DA GEADA\n\"Aqui o frio é de lei e o chimarrão é de graça.\"\nSul: Subida da Serra · Oeste: Campos de Altitude · Leste: Lagoa Gelada · Norte: Caminho das Névoas.": {
-  "en": "",
+  "en": "SERRA DA GEADA\n\"Here the cold is the law and the chimarrão is free.\"\nSouth: Subida da Serra · West: Campos de Altitude · East: Lagoa Gelada · North: Caminho das Névoas.",
   "ctx": "src/data/zonas/B7.ts:46 · placa()"
  },
  "GINÁSIO DA SERRA DA GEADA\nLíder: Gaúcha Pinhão.\nInsígnia Floco. Piso de gelo: quem escorrega, recomeça.": {
-  "en": "",
+  "en": "SERRA DA GEADA GYM\nLeader: Gaúcha Pinhão.\nFlake Badge. Ice floor: whoever slips starts over.",
   "ctx": "src/data/zonas/B7.ts:47 · placa()"
  },
  "CAMPOS DE ALTITUDE ←\nCapim dourado, gralhas e serelepes.": {
-  "en": "",
+  "en": "CAMPOS DE ALTITUDE ←\nGolden grass, jays and squirrels.",
   "ctx": "src/data/zonas/B7.ts:48 · placa()"
  },
  "LAGOA GELADA →\nCanoa, pinguim e frio no osso.": {
-  "en": "",
+  "en": "LAGOA GELADA →\nCanoes, penguins and bone-deep cold.",
   "ctx": "src/data/zonas/B7.ts:49 · placa()"
  },
  "SUBIDA DA SERRA ↓\nDescida para o Brejo Roxo. Use as saliências: é mais rápido do que subir.": {
-  "en": "",
+  "en": "SUBIDA DA SERRA ↓\nDown to Brejo Roxo. Use the ledges: it's faster than climbing.",
   "ctx": "src/data/zonas/B7.ts:50 · placa()"
  },
  "CAMINHO DAS NÉVOAS ↑\nPara o Planalto Lume. A névoa engole quem anda sem Lampião.\nA Guarda da Serra só deixa passar quem tem a Insígnia Floco.": {
-  "en": "",
+  "en": "CAMINHO DAS NÉVOAS ↑\nTo Planalto Lume. The fog swallows whoever walks without a Lantern.\nThe Serra Guard only lets through those with the Flake Badge.",
   "ctx": "src/data/zonas/B7.ts:51 · placa()"
  },
  "O fogo de chão do CTG. Uma chaleira de ferro chia em cima da brasa: água para o chimarrão, nunca fervendo.": {
-  "en": "",
+  "en": "The CTG hearth fire. An iron kettle hisses over the embers: water for chimarrão, never boiling.",
   "ctx": "src/data/zonas/B7.ts:59 · campo texto"
  },
  "Estátua de um tropeiro de poncho, com uma Gralha-Azul no ombro. Na base: \"aos que plantaram a serra, um pinhão de cada vez\".": {
-  "en": "",
+  "en": "Statue of a drover in a poncho, with a Gralha-Azul on his shoulder. On the base: \"to those who planted the hills, one pine nut at a time\".",
   "ctx": "src/data/zonas/B7.ts:61 · campo texto"
  },
  "Guarda da Serra Minuano: \"Daqui para o norte é o Caminho das Névoas. A cerração é tanta que o sujeito perde a própria sombra.\"\f\"Só passa quem a Gaúcha Pinhão aprovou: volte com a Insígnia Floco.\"": {
-  "en": "",
+  "en": "Serra Guard Minuano: \"North of here is the Caminho das Névoas. The fog's so thick a fella loses his own shadow.\"\f\"Only those Gaúcha Pinhão approved get through: come back with the Flake Badge.\"",
   "ctx": "src/data/zonas/B7.ts:77 · campo fala"
  },
  "Guarda da Serra Minuano": {
-  "en": "",
+  "en": "Serra Guard Minuano",
   "ctx": "src/data/zonas/B7.ts:83 · gente()"
  },
  "Insígnia Floco! Pode seguir para o Caminho das Névoas, tchê.": {
-  "en": "",
+  "en": "Flake Badge! You can go on to the Caminho das Névoas, tchê.",
   "ctx": "src/data/zonas/B7.ts:83 · campo fala"
  },
  "Leve o Lampião aceso: a névoa de lá não tem fim nem começo.": {
-  "en": "",
+  "en": "Keep your Lantern lit: the fog out there has no end and no beginning.",
   "ctx": "src/data/zonas/B7.ts:83 · campo fala"
  },
  "Patrão Ernesto": {
-  "en": "",
+  "en": "Boss Ernesto",
   "ctx": "src/data/zonas/B7.ts:84 · gente()"
  },
  "Guria Neve": {
-  "en": "",
+  "en": "Girl Neve",
   "ctx": "src/data/zonas/B7.ts:85 · gente()"
  },
  "Na pista de gelo a gente não anda: escorrega até bater em alguma coisa!": {
-  "en": "",
+  "en": "On the ice rink you don't walk: you slide until you hit something!",
   "ctx": "src/data/zonas/B7.ts:85 · campo fala"
  },
  "Tem um pacotinho perdido na ilhota do meio. Eu nunca consigo parar lá. Você consegue?": {
-  "en": "",
+  "en": "There's a little package lost on the middle islet. I can never stop there. Can you?",
   "ctx": "src/data/zonas/B7.ts:85 · campo fala"
  },
  "Tropeiro Bento": {
-  "en": "",
+  "en": "Drover Bento",
   "ctx": "src/data/zonas/B7.ts:86 · gente()"
  },
  "Na mangueira do CTG a gente guarda as mulas. E a Seriemão do patrão, que se acha mula.": {
-  "en": "",
+  "en": "In the CTG corral we keep the mules. And the boss's Seriemão, who thinks it's a mule.",
   "ctx": "src/data/zonas/B7.ts:86 · campo fala"
  },
  "Dizem que a Gaúcha Pinhão escorrega no gelo de propósito, só para mostrar que não cai.": {
-  "en": "",
+  "en": "They say Gaúcha Pinhão slips on the ice on purpose, just to show she doesn't fall.",
   "ctx": "src/data/zonas/B7.ts:86 · campo fala"
  },
  "Gaiteiro Chiru": {
-  "en": "",
+  "en": "Accordionist Chiru",
   "ctx": "src/data/zonas/B7.ts:87 · gente()"
  },
  "♪ Vem cá, minha prenda, que a gaita chorou… ♪": {
-  "en": "",
+  "en": "♪ Come here, my prenda, the accordion cried… ♪",
   "ctx": "src/data/zonas/B7.ts:87 · campo fala"
  },
  "Tipo Geada sofre com Brasa, Pedra, Ferro e Ginga. A Gaúcha sabe disso e põe Ferro no meio para enganar.": {
-  "en": "",
+  "en": "Frost types suffer against Ember, Stone, Iron and Brawl. The Gaúcha knows it and puts Iron in the middle to trick you.",
   "ctx": "src/data/zonas/B7.ts:87 · campo fala"
  },
  "Prenda Dorinha": {
-  "en": "",
+  "en": "Prenda Dorinha",
   "ctx": "src/data/zonas/B7.ts:88 · gente()"
  },
  "Pescador Jundiá": {
-  "en": "",
+  "en": "Fisher Jundiá",
   "ctx": "src/data/zonas/B7.ts:89 · gente()"
  },
  "O riacho desce para a Lagoa Gelada. Lá tem pinguim, acredita? Pinguim na serra!": {
-  "en": "",
+  "en": "The creek runs down to Lagoa Gelada. There are penguins there, believe it? Penguins in the hills!",
   "ctx": "src/data/zonas/B7.ts:89 · campo fala"
  },
  "Vieram com o frio e ficaram. Igual a mim, que vim passar o fim de semana e estou aqui há trinta anos.": {
-  "en": "",
+  "en": "They came with the cold and stayed. Like me: I came for a weekend and I've been here thirty years.",
   "ctx": "src/data/zonas/B7.ts:89 · campo fala"
  },
  "Seu Tchê Barbosa": {
-  "en": "",
+  "en": "Seu Tchê Barbosa",
   "ctx": "src/data/zonas/B7.ts:90 · gente()"
  },
  "Viajante Querência": {
-  "en": "",
+  "en": "Traveler Querência",
   "ctx": "src/data/zonas/B7.ts:91 · gente()"
  },
  "Os Campos de Altitude, a oeste, são o lugar da Gralha-Azul e do Serelepe. Ao amanhecer, dizem, canta um pássaro que cala a mata.": {
-  "en": "",
+  "en": "The Campos de Altitude, to the west, are home to the Gralha-Azul and the Serelepe. At dawn, they say, a bird sings that hushes the forest.",
   "ctx": "src/data/zonas/B7.ts:91 · campo fala"
  },
  "Só canta para quem já registrou muita criatura no Diário. Tipo cento e cinquenta.": {
-  "en": "",
+  "en": "It only sings for those who've recorded lots of creatures in the Journal. Like a hundred and fifty.",
   "ctx": "src/data/zonas/B7.ts:91 · campo fala"
  },
  "Sobrado da Família Alva": {
-  "en": "",
+  "en": "Alva Family Townhouse",
   "ctx": "src/data/zonas/B8-casa-1.ts:5 · campo nome"
  },
  "Cartas de astronomia enroladas, um globo celeste de papel machê e um caderno: \"Estrelas que eu já vi: 4.117. Faltam umas 9 mil.\"": {
-  "en": "",
+  "en": "Rolled-up star charts, a papier-mâché celestial globe and a notebook: \"Stars I've seen: 4,117. About 9,000 to go.\"",
   "ctx": "src/data/zonas/B8-casa-1.ts:7 · campo estante"
  },
  "Um cobertor de lã de ovelha da Serra da Geada e um par de luvas sem dedos — para escrever de noite sem congelar.": {
-  "en": "",
+  "en": "A Serra da Geada sheep's wool blanket and a pair of fingerless gloves — for writing at night without freezing.",
   "ctx": "src/data/zonas/B8-casa-1.ts:8 · campo bau"
  },
  "Uma rede de algodão cru pendurada perto da janela, de frente para o céu. Tem até um travesseiro em forma de lua.": {
-  "en": "",
+  "en": "A raw cotton hammock hung by the window, facing the sky. There's even a moon-shaped pillow.",
   "ctx": "src/data/zonas/B8-casa-1.ts:9 · campo cantoTexto"
  },
  "Dona Aurora": {
-  "en": "",
+  "en": "Dona Aurora",
   "ctx": "src/data/zonas/B8-casa-1.ts:11 · campo nome"
  },
  "Minha filha vive no observatório com a Jaci. Volta para casa só quando o sol nasce.": {
-  "en": "",
+  "en": "My daughter lives at the observatory with Jaci. She only comes home when the sun comes up.",
   "ctx": "src/data/zonas/B8-casa-1.ts:11 · campo fala"
  },
  "O pai dela é pescador lá na Lagoa Gelada. Ela escreve para ele toda semana, mas ninguém sobe a serra para levar a carta.": {
-  "en": "",
+  "en": "Her father is a fisher at Lagoa Gelada. She writes to him every week, but nobody goes up the hills to take the letters.",
   "ctx": "src/data/zonas/B8-casa-1.ts:11 · campo fala"
  },
  "Seu Crepúsculo": {
-  "en": "",
+  "en": "Seu Crepúsculo",
   "ctx": "src/data/zonas/B8-casa-1.ts:12 · campo nome"
  },
  "No meu tempo, a gente sabia a hora olhando o Cruzeiro do Sul. Relógio era luxo.": {
-  "en": "",
+  "en": "In my day, we told the time by looking at the Southern Cross. Clocks were a luxury.",
   "ctx": "src/data/zonas/B8-casa-1.ts:12 · campo fala"
  },
  "Hoje a criançada tem Rádio Cipó com relógio. Mas olhar o céu continua de graça.": {
-  "en": "",
+  "en": "Nowadays kids have a Rádio Cipó with a clock. But looking at the sky is still free.",
   "ctx": "src/data/zonas/B8-casa-1.ts:12 · campo fala"
  },
  "Casa do Choro": {
-  "en": "",
+  "en": "Choro House",
   "ctx": "src/data/zonas/B8-casa-2.ts:5 · campo nome"
  },
  "Cavaquinhos sem corda, uma flauta de bambu e partituras com títulos como \"Choro para um Papagálio que não para de imitar\".": {
-  "en": "",
+  "en": "Stringless cavaquinhos, a bamboo flute and sheet music with titles like \"Choro for a Papagálio That Won't Stop Copying\".",
   "ctx": "src/data/zonas/B8-casa-2.ts:7 · campo estante"
  },
  "Cordas de violão novas, ainda no papel, e um pandeiro com o couro remendado com fita.": {
-  "en": "",
+  "en": "New guitar strings, still in their paper, and a tambourine with its skin patched with tape.",
   "ctx": "src/data/zonas/B8-casa-2.ts:8 · campo bau"
  },
  "Um oratório pequeno com uma vela acesa e um bilhete: \"Para a névoa abrir no caminho de quem sobe a serra\".": {
-  "en": "",
+  "en": "A small altar with a lit candle and a note: \"So the fog opens for those climbing the hills\".",
   "ctx": "src/data/zonas/B8-casa-2.ts:9 · campo cantoTexto"
  },
  "Mestre Cavaquinho": {
-  "en": "",
+  "en": "Master Cavaquinho",
   "ctx": "src/data/zonas/B8-casa-2.ts:11 · campo nome"
  },
  "Faço instrumento com madeira caída da Floresta Ancestral. Só a caída: a viva tem dono, e o dono é grande e peludo.": {
-  "en": "",
+  "en": "I make instruments from fallen wood from the Floresta Ancestral. Only fallen: the living wood has an owner, and the owner is big and hairy.",
   "ctx": "src/data/zonas/B8-casa-2.ts:11 · campo fala"
  },
  "O Papagálio do vizinho aprendeu o meu choro inteiro. Agora ele toca melhor que eu.": {
-  "en": "",
+  "en": "The neighbor's Papagálio learned my whole choro. Now it plays better than me.",
   "ctx": "src/data/zonas/B8-casa-2.ts:11 · campo fala"
  },
  "Dona Pixinguinha": {
-  "en": "",
+  "en": "Dona Pixinguinha",
   "ctx": "src/data/zonas/B8-casa-2.ts:12 · campo nome"
  },
  "A praça do coreto toca choro toda noite. Quando o observatório abre, a gente toca baixinho para não espantar as estrelas.": {
-  "en": "",
+  "en": "The bandstand square plays choro every night. When the observatory opens, we play softly so we don't scare off the stars.",
   "ctx": "src/data/zonas/B8-casa-2.ts:12 · campo fala"
  },
  "Dizem que no alto do Pico Pingorama o vento toca flauta sozinho. Quem chega lá conta.": {
-  "en": "",
+  "en": "They say at the top of Pico Pingorama the wind plays the flute by itself. Whoever gets there can tell.",
   "ctx": "src/data/zonas/B8-casa-2.ts:12 · campo fala"
  },
  "Ginásio do Planalto Lume": {
-  "en": "",
+  "en": "Planalto Lume Gym",
   "ctx": "src/data/zonas/B8-ginasio.ts:20 · campo nome"
  },
  "GINÁSIO DO PLANALTO LUME\nLíder: Astrônoma Jaci\n\"Quem aprende a ler o céu nunca se perde.\"": {
-  "en": "",
+  "en": "PLANALTO LUME GYM\nLeader: Astronomer Jaci\n\"Whoever learns to read the sky never gets lost.\"",
   "ctx": "src/data/zonas/B8-ginasio.ts:44 · campo texto"
  },
  "Os portais ligam constelações iguais: pise num portal e você sai no outro que mostra o mesmo desenho de estrelas.": {
-  "en": "",
+  "en": "The portals link matching constellations: step on a portal and you come out at the other one showing the same star pattern.",
   "ctx": "src/data/zonas/B8-ginasio.ts:44 · campo texto"
  },
  "O céu daqui tem quatro horas: anoitecer, meia-noite, madrugada e alvorada. Pisar numa estrela-guia gira o céu uma hora adiante, e as constelações dos portais mudam junto.": {
-  "en": "",
+  "en": "The sky here has four hours: dusk, midnight, small hours and dawn. Stepping on a guide star turns the sky one hour ahead, and the portals' constellations change with it.",
   "ctx": "src/data/zonas/B8-ginasio.ts:45 · campo texto"
  },
  "Os mais velhos da Aldeia Tupã ensinaram à Jaci os nomes das estrelas: a Ema, a Anta, o Homem Velho, o Veado e o Eixu, a colmeia que nós chamamos de Plêiades.": {
-  "en": "",
+  "en": "The elders of Aldeia Tupã taught Jaci the names of the stars: the Rhea, the Tapir, the Old Man, the Deer and the Eixu, the beehive we call the Pleiades.",
   "ctx": "src/data/zonas/B8-ginasio.ts:45 · campo texto"
  },
  "Observatório do Lume": {
-  "en": "",
+  "en": "Lume Observatory",
   "ctx": "src/data/zonas/B8-observatorio.ts:23 · campo nome"
  },
  "Um mapa do céu do Sertão, com as constelações dos antigos: a Ema, o Homem Velho, a Anta do Norte. Ao lado, alfinetes marcam onde cada uma nasce no horizonte.": {
-  "en": "",
+  "en": "A map of the Sertão sky, with the ancients' constellations: the Rhea, the Old Man, the Northern Tapir. Next to it, pins mark where each one rises on the horizon.",
   "ctx": "src/data/zonas/B8-observatorio.ts:27 · campo texto"
  },
  "Cadernos de observação desde o tempo do avô da Jaci. O primeiro registro: \"Hoje vi uma estrela cair no Pico. Ninguém acredita.\"": {
-  "en": "",
+  "en": "Observation notebooks going back to Jaci's grandfather's time. The first entry: \"Today I saw a star fall on the Peak. Nobody believes me.\"",
   "ctx": "src/data/zonas/B8-observatorio.ts:29 · campo texto"
  },
  "A luneta grande aponta para fora pela fenda da cúpula. De dia, ela mostra só nuvem. De noite, mostra o mundo.": {
-  "en": "",
+  "en": "The big telescope points out through the dome's slit. By day it only shows clouds. By night, it shows the world.",
   "ctx": "src/data/zonas/B8-observatorio.ts:30 · campo texto"
  },
  "Lentes polidas, um astrolábio de latão e um prato de pão de queijo pela metade.": {
-  "en": "",
+  "en": "Polished lenses, a brass astrolabe and a half-eaten plate of cheese bread.",
   "ctx": "src/data/zonas/B8-observatorio.ts:32 · campo texto"
  },
  "Estudante Antares": {
-  "en": "",
+  "en": "Student Antares",
   "ctx": "src/data/zonas/B8-observatorio.ts:39 · gente()"
  },
  "A Astrônoma Jaci diz que cada criatura de Mente é uma estrela que desceu para ver a gente de perto.": {
-  "en": "",
+  "en": "Astronomer Jaci says every Mind creature is a star that came down to see us up close.",
   "ctx": "src/data/zonas/B8-observatorio.ts:39 · campo fala"
  },
  "Eu acho que é só um jeito bonito de dizer que elas são difíceis de acertar.": {
-  "en": "",
+  "en": "I think it's just a pretty way of saying they're hard to hit.",
   "ctx": "src/data/zonas/B8-observatorio.ts:39 · campo fala"
  },
  "Zelador Eclipse": {
-  "en": "",
+  "en": "Caretaker Eclipse",
   "ctx": "src/data/zonas/B8-observatorio.ts:40 · gente()"
  },
  "Eu cuido da cúpula. Abro de noite, fecho de dia e limpo coco de Urubu-Rei o tempo todo.": {
-  "en": "",
+  "en": "I look after the dome. I open it at night, close it by day and clean up Urubu-Rei droppings all the time.",
   "ctx": "src/data/zonas/B8-observatorio.ts:40 · campo fala"
  },
  "Ontem um Papagálio entrou e imitou a voz da Jaci: \"Pode ir embora mais cedo\". Quase fui.": {
-  "en": "",
+  "en": "Yesterday a Papagálio got in and imitated Jaci's voice: \"You can go home early\". I almost did.",
   "ctx": "src/data/zonas/B8-observatorio.ts:40 · campo fala"
  },
  "MURAL DE MISSÕES — PLANALTO LUME": {
-  "en": "",
+  "en": "MISSION BOARD — PLANALTO LUME",
   "ctx": "src/data/zonas/B8-posto.ts:5 · postoGuardiao()"
  },
  "• Observatório aberto toda noite: a Astrônoma-assistente procura quem registre criaturas da noite no Diário.": {
-  "en": "",
+  "en": "• Observatory open every night: the Assistant Astronomer is looking for someone to record night creatures in the Journal.",
   "ctx": "src/data/zonas/B8-posto.ts:6 · postoGuardiao()"
  },
  "• A aprendiz Estrela-d'Alva precisa de alguém que leve uma carta à Lagoa Gelada.": {
-  "en": "",
+  "en": "• Apprentice Estrela-d'Alva needs someone to take a letter to Lagoa Gelada.",
   "ctx": "src/data/zonas/B8-posto.ts:7 · postoGuardiao()"
  },
  "• Dona Lembrança, escrivã da praça, sabe onde cada criatura sua foi encontrada. Pergunte a ela.": {
-  "en": "",
+  "en": "• Dona Lembrança, the square's scribe, knows where each of your creatures was found. Ask her.",
   "ctx": "src/data/zonas/B8-posto.ts:8 · postoGuardiao()"
  },
  "Observadora Plêiade": {
-  "en": "",
+  "en": "Stargazer Plêiade",
   "ctx": "src/data/zonas/B8-posto.ts:10 · campo nome"
  },
  "Vim do Pantanal só para ver o céu daqui. No Pantanal tem mosquito demais para olhar para cima.": {
-  "en": "",
+  "en": "I came from the Pantanal just to see the sky here. In the Pantanal there are too many mosquitoes to look up.",
   "ctx": "src/data/zonas/B8-posto.ts:10 · campo fala"
  },
  "Nos Campos do Lume, de dia, às vezes passa um Beija-Arco-Íris. Eu vi um em três anos. Um.": {
-  "en": "",
+  "en": "In the Lume Fields, by day, a Beija-Arco-Íris sometimes flies by. I've seen one in three years. One.",
   "ctx": "src/data/zonas/B8-posto.ts:10 · campo fala"
  },
  "Caminhoneiro Lua-Nova": {
-  "en": "",
+  "en": "Trucker Lua-Nova",
   "ctx": "src/data/zonas/B8-posto.ts:11 · campo nome"
  },
  "Subi a serra com uma carga de lunetas. Desci com uma carga de saudade.": {
-  "en": "",
+  "en": "I drove up the hills with a load of telescopes. I drove down with a load of longing.",
   "ctx": "src/data/zonas/B8-posto.ts:11 · campo fala"
  },
  "A névoa do Caminho é tão grossa que eu buzinava para os Urutaus. Eles nem ligavam.": {
-  "en": "",
+  "en": "The fog on the Caminho is so thick I'd honk at the Urutaus. They didn't care.",
   "ctx": "src/data/zonas/B8-posto.ts:11 · campo fala"
  },
  "Seu Quarto-Crescente": {
-  "en": "",
+  "en": "Seu Quarto-Crescente",
   "ctx": "src/data/zonas/B8-venda.ts:5 · campo nome"
  },
  "Bem-vindo à Venda do Lume! Aqui a cuia é boa e o preço é astronômico. Brincadeira: o preço é o de sempre.": {
-  "en": "",
+  "en": "Welcome to the Lume Shop! The gourds are good and the prices are astronomical. Kidding: same prices as always.",
   "ctx": "src/data/zonas/B8-venda.ts:5 · campo fala"
  },
  "Menina Cometa": {
-  "en": "",
+  "en": "Girl Cometa",
   "ctx": "src/data/zonas/B8-venda.ts:7 · campo nome"
  },
  "Eu comprei uma Cuia Noturna para pegar um Noitão. Ele piscou para mim e foi embora.": {
-  "en": "",
+  "en": "I bought a Night Gourd to catch a Noitão. It winked at me and left.",
   "ctx": "src/data/zonas/B8-venda.ts:7 · campo fala"
  },
  "A Cuia Noturna é boa de noite. De dia é só uma cuia pintada.": {
-  "en": "",
+  "en": "The Night Gourd is good at night. By day it's just a painted gourd.",
   "ctx": "src/data/zonas/B8-venda.ts:7 · campo fala"
  },
  "GINÁSIO DE PLANALTO LUME\nLíder: Astrônoma Jaci.\n\"O céu é um mapa. Quem sabe ler, nunca se perde.\"": {
-  "en": "",
+  "en": "PLANALTO LUME GYM\nLeader: Astronomer Jaci.\n\"The sky is a map. Whoever can read it never gets lost.\"",
   "ctx": "src/data/zonas/B8.ts:43 · placa()"
  },
  "PLANALTO LUME\nOeste: Caminho das Névoas. Nordeste: Floresta Ancestral (fechada).\nObservatório aberto toda noite.": {
-  "en": "",
+  "en": "PLANALTO LUME\nWest: Caminho das Névoas. Northeast: Floresta Ancestral (closed).\nObservatory open every night.",
   "ctx": "src/data/zonas/B8.ts:44 · placa()"
  },
  "ESTRADA DA FLORESTA ANCESTRAL\nPassagem guardada. Só entra quem já foi recebido pelo Conselho dos Guardiões.": {
-  "en": "",
+  "en": "FLORESTA ANCESTRAL ROAD\nGuarded passage. Only those already received by the Guardians' Council may enter.",
   "ctx": "src/data/zonas/B8.ts:45 · placa()"
  },
  "MIRANTE DO CÂNION\nLá embaixo corre o Rio Lume. À noite a água reflete tanta estrela que parece outro céu.": {
-  "en": "",
+  "en": "CANYON LOOKOUT\nThe Rio Lume runs down below. At night the water reflects so many stars it looks like another sky.",
   "ctx": "src/data/zonas/B8.ts:46 · placa()"
  },
  "Estátua de uma moça olhando pela luneta. A placa diz: \"Jaci, a primeira astrônoma do Lume. Ela contou as estrelas e as estrelas contaram com ela.\"": {
-  "en": "",
+  "en": "Statue of a young woman looking through a telescope. The plaque says: \"Jaci, Lume's first astronomer. She counted the stars and the stars counted on her.\"",
   "ctx": "src/data/zonas/B8.ts:57 · campo texto"
  },
  "A Guardiã da Floresta cruza a lança de taquara na estrada:\n— A Floresta Ancestral é a casa mais velha do Sertão. Tem árvore que viu a serra nascer.\f— Ela só recebe quem já foi recebido pelo Conselho dos Guardiões, lá no Pico Pingorama. Vença o Conselho e eu mesma abro o caminho.": {
-  "en": "",
+  "en": "The Forest Warden crosses her bamboo spear over the road:\n\"The Floresta Ancestral is the oldest home in the Sertão. There are trees that saw the hills being born.\"\f\"It only welcomes those already received by the Guardians' Council, up on Pico Pingorama. Beat the Council and I'll open the way myself.\"",
   "ctx": "src/data/zonas/B8.ts:72 · campo fala"
  },
  "Luzinha": {
-  "en": "",
+  "en": "Luzinha",
   "ctx": "src/data/zonas/B8.ts:80 · gente()"
  },
  "De noite o céu daqui tem mais estrela que a areia do Pantanal. Eu contei até mil e dormi.": {
-  "en": "",
+  "en": "At night the sky here has more stars than the Pantanal has sand. I counted to a thousand and fell asleep.",
   "ctx": "src/data/zonas/B8.ts:80 · campo fala"
  },
  "A Astrônoma Jaci tem uma criatura que some e aparece em outro lugar do ginásio. Eu acho que é mágica. A Jaci diz que é Mente.": {
-  "en": "",
+  "en": "Astronomer Jaci has a creature that vanishes and reappears somewhere else in the gym. I think it's magic. Jaci says it's Mind.",
   "ctx": "src/data/zonas/B8.ts:80 · campo fala"
  },
  "Tropeiro Cerrito": {
-  "en": "",
+  "en": "Drover Cerrito",
   "ctx": "src/data/zonas/B8.ts:81 · gente()"
  },
  "Lá no Monte Tupã, do outro lado da serra, tem um guardião que não deixa ninguém subir. O Abaeté.": {
-  "en": "",
+  "en": "On Monte Tupã, on the other side of the hills, there's a guardian who won't let anyone up. Abaeté.",
   "ctx": "src/data/zonas/B8.ts:81 · campo fala"
  },
  "Ele só abre a trilha para quem traz quinze insígnias. Com a da Jaci, você chega lá. A Aldeia Tupã fica no topo, e o Ginásio da Lenda também.": {
-  "en": "",
+  "en": "He only opens the trail for those with fifteen badges. With Jaci's, you'll get there. Aldeia Tupã is at the top, and so is the Legend Gym.",
   "ctx": "src/data/zonas/B8.ts:81 · campo fala"
  },
  "Seu Luneta": {
-  "en": "",
+  "en": "Seu Luneta",
   "ctx": "src/data/zonas/B8.ts:82 · gente()"
  },
  "Bicho de Mente adora o Lume: Papagálio, Corujão-Orelha, Noitão. A Jaci joga com eles.": {
-  "en": "",
+  "en": "Mind critters love Lume: Papagálio, Corujão-Orelha, Noitão. Jaci plays with them.",
   "ctx": "src/data/zonas/B8.ts:82 · campo fala"
  },
  "Contra a Mente vale Assombro e Inseto. E paciência: a Jaci troca de criatura como quem troca de estrela.": {
-  "en": "",
+  "en": "Against Mind, use Spook and Bug. And patience: Jaci switches creatures like switching stars.",
   "ctx": "src/data/zonas/B8.ts:82 · campo fala"
  },
  "Guardiã da Floresta": {
-  "en": "",
+  "en": "Forest Warden",
   "ctx": "src/data/zonas/B8.ts:83 · gente()"
  },
  "O Conselho mandou avisar: o caminho está aberto. Pise de leve na Floresta Ancestral.": {
-  "en": "",
+  "en": "The Council sent word: the way is open. Tread lightly in the Floresta Ancestral.",
   "ctx": "src/data/zonas/B8.ts:83 · campo fala"
  },
  "Lá dentro tem ninho raro de criatura que a gente só via em livro: Tamanduá-Copa, Guaraflama, Botorosa… e coisa maior. Muito maior.": {
-  "en": "",
+  "en": "Inside there are rare nests of creatures we'd only seen in books: Tamanduá-Copa, Guaraflama, Botorosa… and something bigger. Much bigger.",
   "ctx": "src/data/zonas/B8.ts:83 · campo fala"
  },
  "Choro do Lume": {
-  "en": "",
+  "en": "Lume Choro Band",
   "ctx": "src/data/zonas/B8.ts:84 · gente()"
  },
  "Aqui a música da praça é choro: flauta, cavaquinho e pandeiro. O coreto foi feito para a lua ouvir.": {
-  "en": "",
+  "en": "Here the square's music is choro: flute, cavaquinho and tambourine. The bandstand was built for the moon to listen.",
   "ctx": "src/data/zonas/B8.ts:84 · campo fala"
  },
  "Volte de noite: o observatório abre e a praça inteira apaga a luz para ver o céu.": {
-  "en": "",
+  "en": "Come back at night: the observatory opens and the whole square turns off the lights to see the sky.",
   "ctx": "src/data/zonas/B8.ts:84 · campo fala"
  },
  "Casa da Dona Açucena": {
-  "en": "",
+  "en": "Dona Açucena's House",
   "ctx": "src/data/zonas/B9-casa-1.ts:5 · campo nome"
  },
  "Livros de moda de viola com páginas dobradas. Um deles tem uma flor de açucena seca entre as folhas.": {
-  "en": "",
+  "en": "Viola songbooks with dog-eared pages. One of them has a dried lily pressed between the pages.",
   "ctx": "src/data/zonas/B9-casa-1.ts:7 · campo estante"
  },
  "Cartas antigas amarradas com fita azul. O remetente de todas é o mesmo: \"Z., de Vila Cascavel\".": {
-  "en": "",
+  "en": "Old letters tied with blue ribbon. They're all from the same sender: \"Z., from Vila Cascavel\".",
   "ctx": "src/data/zonas/B9-casa-1.ts:8 · campo bau"
  },
  "Uma máquina de costura de pedal com um lenço bordado pela metade: uma viola e um rio.": {
-  "en": "",
+  "en": "A treadle sewing machine with a half-embroidered handkerchief: a viola and a river.",
   "ctx": "src/data/zonas/B9-casa-1.ts:9 · campo cantoTexto"
  },
  "Dona Açucena": {
-  "en": "",
+  "en": "Dona Açucena",
   "ctx": "src/data/zonas/B9-casa-1.ts:11 · campo nome"
  },
  "(O Jaguatirim da casa se esfrega na sua perna e finge que não foi nada.)": {
-  "en": "",
+  "en": "(The house Jaguatirim rubs against your leg and pretends nothing happened.)",
   "ctx": "src/data/zonas/B9-casa-1.ts:12 · campo fala"
  },
  "Casa do Carpinteiro Naval": {
-  "en": "",
+  "en": "Boatwright's House",
   "ctx": "src/data/zonas/B9-casa-2.ts:5 · campo nome"
  },
  "Maquetes de barco: chalana, batelão, canoa de um tronco só e, no meio, um Saveiro com a vela costurada de pano de prato.": {
-  "en": "",
+  "en": "Boat models: a chalana, a barge, a dugout canoe and, in the middle, a Saveiro with a sail sewn from a dish towel.",
   "ctx": "src/data/zonas/B9-casa-2.ts:7 · campo estante"
  },
  "Formões, plaina e um lápis de carpinteiro gasto até o toco. No fundo, a planta do Saveiro novo, assinada \"Mestre Arapuã\".": {
-  "en": "",
+  "en": "Chisels, a plane and a carpenter's pencil worn down to a stub. At the back, the new Saveiro's blueprint, signed \"Master Arapuã\".",
   "ctx": "src/data/zonas/B9-casa-2.ts:8 · campo bau"
  },
  "Carpinteiro Itaúba": {
-  "en": "",
+  "en": "Boatwright Itaúba",
   "ctx": "src/data/zonas/B9-casa-2.ts:10 · campo nome"
  },
  "Fui eu que reformei o Saveiro. Tábua de itaúba, que não apodrece nem com cem anos de rio.": {
-  "en": "",
+  "en": "I'm the one who refitted the Saveiro. Itaúba planks, which won't rot even after a hundred years on the river.",
   "ctx": "src/data/zonas/B9-casa-2.ts:10 · campo fala"
  },
  "O mestre queria vela vermelha. Eu fiz vela laranja. Ele disse que é vermelha. Deixei ele acreditar.": {
-  "en": "",
+  "en": "The master wanted a red sail. I made an orange one. He says it's red. I let him believe it.",
   "ctx": "src/data/zonas/B9-casa-2.ts:10 · campo fala"
  },
  "Raquel": {
-  "en": "",
+  "en": "Raquel",
   "ctx": "src/data/zonas/B9-casa-2.ts:11 · campo nome"
  },
  "Meu pai faz barco e eu faço barquinho de buriti. O meu flutua mais.": {
-  "en": "",
+  "en": "My dad makes boats and I make little buriti boats. Mine float better.",
   "ctx": "src/data/zonas/B9-casa-2.ts:11 · campo fala"
  },
  "Ele diz que o dele carrega gente. Eu digo que o meu carrega sonho. Empate.": {
-  "en": "",
+  "en": "He says his carries people. I say mine carries dreams. It's a tie.",
   "ctx": "src/data/zonas/B9-casa-2.ts:11 · campo fala"
  },
  "MURAL DE MISSÕES — PORTO PANTANEIRO": {
-  "en": "",
+  "en": "MISSION BOARD — PORTO PANTANEIRO",
   "ctx": "src/data/zonas/B9-posto.ts:5 · postoGuardiao()"
  },
  "• Carta para Dona Açucena? Ela mora na casa larga, ao lado do Posto. (Quem entrega é o violeiro de Vila Cascavel.)": {
-  "en": "",
+  "en": "• Letter for Dona Açucena? She lives in the wide house next to the Post. (The fiddler from Vila Cascavel is the one delivering.)",
   "ctx": "src/data/zonas/B9-posto.ts:6 · postoGuardiao()"
  },
  "• Polícia Ambiental: Estrada Vermelha interditada até segunda ordem (ou até alguém dar um jeito no ninhal).": {
-  "en": "",
+  "en": "• Environmental Police: Estrada Vermelha closed until further notice (or until someone sorts out the rookery).",
   "ctx": "src/data/zonas/B9-posto.ts:7 · postoGuardiao()"
  },
  "Marinheiro Iguatu": {
-  "en": "",
+  "en": "Sailor Iguatu",
   "ctx": "src/data/zonas/B9-posto.ts:9 · campo nome"
  },
  "O Saveiro desce o rio até Cidade Coral em meia tarde. Subir é que demora: o rio empurra.": {
-  "en": "",
+  "en": "The Saveiro goes downriver to Cidade Coral in half an afternoon. Going up is what takes a while: the river pushes back.",
   "ctx": "src/data/zonas/B9-posto.ts:9 · campo fala"
  },
  "Se enjoar, olhe para o horizonte. Se o horizonte enjoar, olhe para o chão.": {
-  "en": "",
+  "en": "If you get seasick, look at the horizon. If the horizon gets seasick, look at the floor.",
   "ctx": "src/data/zonas/B9-posto.ts:9 · campo fala"
  },
  "Garimpeiro Ametista": {
-  "en": "",
+  "en": "Prospector Ametista",
   "ctx": "src/data/zonas/B9-posto.ts:10 · campo nome"
  },
  "Desci da Chapada Rubra para comprar mantimento. A mina velha está tomada por gente do Cartel Ferrugem.": {
-  "en": "",
+  "en": "I came down from Chapada Rubra to buy supplies. The old mine has been taken over by Rust Cartel folks.",
   "ctx": "src/data/zonas/B9-posto.ts:10 · campo fala"
  },
  "O Garimpeiro Topázio fechou o ginásio e foi para a mina tentar tirar eles de lá. Sozinho. Teimoso que só.": {
-  "en": "",
+  "en": "Prospector Topázio closed the gym and went to the mine to try to get them out. Alone. Stubborn as they come.",
   "ctx": "src/data/zonas/B9-posto.ts:10 · campo fala"
  },
  "Seu Pacu": {
-  "en": "",
+  "en": "Seu Pacu",
   "ctx": "src/data/zonas/B9-venda.ts:5 · campo nome"
  },
  "Venda do Porto! Mercadoria que sobe de Saveiro: cuia de ouro, elixir, garrafada. E isca, que é o que mais sai.": {
-  "en": "",
+  "en": "Port Shop! Goods that come up by Saveiro: gold gourds, elixirs, herbal tonics. And bait, which is what sells most.",
   "ctx": "src/data/zonas/B9-venda.ts:5 · campo fala"
  },
  "Remadora Jaci": {
-  "en": "",
+  "en": "Rower Jaci",
   "ctx": "src/data/zonas/B9-venda.ts:7 · campo nome"
  },
  "Comprei Corda de Cipó para sair rápido da mina da Chapada, se precisar. Dizem que lá dentro é um labirinto.": {
-  "en": "",
+  "en": "I bought Vine Rope to get out of the Chapada mine fast, if I need to. They say inside it's a maze.",
   "ctx": "src/data/zonas/B9-venda.ts:7 · campo fala"
  },
  "E Fumaça de Andiroba Forte, para os bichos pequenos não atrasarem a minha vida.": {
-  "en": "",
+  "en": "And Strong Andiroba Smoke, so small critters don't slow me down.",
   "ctx": "src/data/zonas/B9-venda.ts:7 · campo fala"
  },
  "PORTO PANTANEIRO\nCais do Saveiro: Cidade Coral, na Costa do Sol, rio abaixo.\nNorte: canal do Pantanal. Leste: Estrada Vermelha.": {
-  "en": "",
+  "en": "PORTO PANTANEIRO\nSaveiro Dock: Cidade Coral, on the Costa do Sol, downriver.\nNorth: Pantanal channel. East: Estrada Vermelha.",
   "ctx": "src/data/zonas/B9.ts:26 · placa()"
  },
  "ESTRADA VERMELHA → CHAPADA RUBRA\nTerra roxa, rocha rachada e sol na cabeça. Leve água.": {
-  "en": "",
+  "en": "ESTRADA VERMELHA → CHAPADA RUBRA\nRed dirt, cracked rocks and sun on your head. Bring water.",
   "ctx": "src/data/zonas/B9.ts:27 · placa()"
  },
  "MIRANTE DO PORTO\nDaqui de cima se conta os barcos. Daí de baixo, se conta os degraus que faltam.": {
-  "en": "",
+  "en": "PORT LOOKOUT\nFrom up here you count the boats. From down there, you count the steps left.",
   "ctx": "src/data/zonas/B9.ts:28 · placa()"
  },
  "CAIS DO SAVEIRO\nEmbarque pela prancha. Bilhete na mão, criatura na cuia, chapéu amarrado.": {
-  "en": "",
+  "en": "SAVEIRO DOCK\nBoard by the gangplank. Ticket in hand, creature in its gourd, hat tied on.",
   "ctx": "src/data/zonas/B9.ts:29 · placa()"
  },
  "O mestre do Saveiro confere a mochila:\n— Sem o Bilhete do Saveiro não desço o rio, Campeão. O Cacique Aracê entrega um junto com o Passe do Trem.": {
-  "en": "",
+  "en": "The Saveiro's skipper checks your bag:\n\"Without the Saveiro Ticket I'm not going downriver, Champ. Chief Aracê hands one out along with the Train Pass.\"",
   "ctx": "src/data/zonas/B9.ts:47 · campo recusa"
  },
  "Um guarda da Polícia Ambiental fecha a porteira da Estrada Vermelha:\n— Estrada interditada! O Cartel Ferrugem está escoando bicho roubado do ninhal por aqui.\f— Enquanto aquele tenente de arame farpado mandar no ninhal, ninguém sobe para a Chapada. Se alguém der um jeito nele… aí eu abro.": {
-  "en": "",
+  "en": "An Environmental Police officer shuts the Estrada Vermelha gate:\n\"Road closed! The Rust Cartel is smuggling stolen critters from the rookery through here.\"\f\"As long as that barbed-wire lieutenant runs the rookery, nobody goes up to the Chapada. If someone deals with him… then I'll open it.\"",
   "ctx": "src/data/zonas/B9.ts:53 · campo fala"
  },
  "Mestre Arapuã": {
-  "en": "",
+  "en": "Master Arapuã",
   "ctx": "src/data/zonas/B9.ts:57 · gente()"
  },
  "Saveiro de volta para a água, Campeão! Tábua nova, vela nova, mestre velho.": {
-  "en": "",
+  "en": "The Saveiro's back in the water, Champ! New planks, new sail, old skipper.",
   "ctx": "src/data/zonas/B9.ts:57 · campo fala"
  },
  "Desce o rio até Cidade Coral quando quiser. É só subir a prancha, aí atrás de você.": {
-  "en": "",
+  "en": "Go downriver to Cidade Coral whenever you like. Just step up the gangplank, right behind you.",
   "ctx": "src/data/zonas/B9.ts:57 · campo fala"
  },
  "Pedrinho Bagre": {
-  "en": "",
+  "en": "Pedrinho Bagre",
   "ctx": "src/data/zonas/B9.ts:58 · gente()"
  },
  "Meu pai diz que a Estrada Vermelha é só pedra rachada. Quem não tem Quebra-pedra volta de ré.": {
-  "en": "",
+  "en": "My dad says the Estrada Vermelha is nothing but cracked rocks. Whoever doesn't have Rock Smash goes back in reverse.",
   "ctx": "src/data/zonas/B9.ts:58 · campo fala"
  },
  "Eu tenho um Quebra-pedra. É o meu dente da frente. Quebrou numa rapadura.": {
-  "en": "",
+  "en": "I've got a rock smasher. It's my front tooth. It broke on a rapadura.",
   "ctx": "src/data/zonas/B9.ts:58 · campo fala"
  },
  "Seu Capim-Açu": {
-  "en": "",
+  "en": "Seu Capim-Açu",
   "ctx": "src/data/zonas/B9.ts:59 · gente()"
  },
  "O mirante lá no alto do paredão tem a melhor vista do porto e uma pedra que brilha.": {
-  "en": "",
+  "en": "The lookout up on the cliff has the best view of the port and a stone that shines.",
   "ctx": "src/data/zonas/B9.ts:59 · campo fala"
  },
  "Só sobe quem escala. O Garimpeiro Topázio, da Chapada Rubra, dá o Amuleto de Escalar para quem o vence.": {
-  "en": "",
+  "en": "Only climbers go up. Prospector Topázio, from Chapada Rubra, gives the Climb Charm to whoever beats him.",
   "ctx": "src/data/zonas/B9.ts:59 · campo fala"
  },
  "Estivadora Cida": {
-  "en": "",
+  "en": "Dockworker Cida",
   "ctx": "src/data/zonas/B9.ts:60 · gente()"
  },
  "Carreguei caixote do Cartel sem saber o que tinha dentro. Um caixote miou. Outro grasnou.": {
-  "en": "",
+  "en": "I hauled Cartel crates without knowing what was inside. One crate meowed. Another squawked.",
   "ctx": "src/data/zonas/B9.ts:60 · campo fala"
  },
  "Larguei o serviço no mesmo dia. Agora só carrego peixe. Peixe não reclama.": {
-  "en": "",
+  "en": "I quit the same day. Now I only haul fish. Fish don't complain.",
   "ctx": "src/data/zonas/B9.ts:60 · campo fala"
  },
  "Guarda Ambiental Sebastião": {
-  "en": "",
+  "en": "Ranger Sebastião",
   "ctx": "src/data/zonas/B9.ts:61 · gente()"
  },
  "Porteira aberta! O tenente Arame saiu do ninhal correndo, e o Cartel com ele.": {
-  "en": "",
+  "en": "Gate's open! Lieutenant Arame ran out of the rookery, and the Cartel with him.",
   "ctx": "src/data/zonas/B9.ts:61 · campo fala"
  },
  "Mas ouvi no rádio que levaram as gaiolas para a Chapada Rubra, para a mina velha. Cuidado na estrada.": {
-  "en": "",
+  "en": "But I heard on the radio they took the cages to Chapada Rubra, to the old mine. Careful on the road.",
   "ctx": "src/data/zonas/B9.ts:61 · campo fala"
  },
  "Pescadora Lambari": {
-  "en": "",
+  "en": "Fisher Lambari",
   "ctx": "src/data/zonas/B9.ts:62 · gente()"
  },
  "Do cais dá Piranhão e Dourado-Rei na Vara Boa. No canal, de noite, até Arraião.": {
-  "en": "",
+  "en": "From the dock you get Piranhão and Dourado-Rei on a Good Rod. In the channel, at night, even Arraião.",
   "ctx": "src/data/zonas/B9.ts:62 · campo fala"
  },
  "Água boa de pesca é água calma. Água calma do Pantanal é aquela que tem jacaré dormindo em cima.": {
-  "en": "",
+  "en": "Good fishing water is calm water. Calm water in the Pantanal is the kind with a caiman sleeping on top.",
   "ctx": "src/data/zonas/B9.ts:62 · campo fala"
  },
  "SALÃO DO CONSELHO DOS GUARDIÕES\n1. Entrou, não volta.  2. Cinco lutas seguidas.  3. Cura só pela mochila.\n4. Perdeu, desce ao Portão.  5. Ganhou, sobe à Memória.": {
