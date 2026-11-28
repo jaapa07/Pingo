@@ -21,7 +21,7 @@ export const palco = {
 };
 let sonda: HTMLElement;
 /** largura mínima (px CSS) de cada margem lateral para os controles de toque ficarem fora da tela, deitado */
-const MARGEM_CONTROLES = 84;
+const MARGEM_CONTROLES = 120; // deitado: margem mínima ao lado da tela para controles grandes (a tela encolhe um passo se precisar)
 /** em pé, aceita escala de meio pixel do aparelho quando a inteira deixa o texto pequeno demais */
 const MEIO_PASSO_RETRATO = true;
 const noPixel = (v: number) => Math.round(v * palco.dpr) / palco.dpr;
